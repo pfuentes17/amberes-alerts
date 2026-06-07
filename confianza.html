@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Confianza en la Continuidad — Amberes</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#111418;--s:#181d22;--s2:#1e242a;
+  --green:#00e880;--green2:rgba(0,232,128,.12);
+  --yellow:#f5c518;--red:#e84040;--blue:#38bdf8;
+  --txt:#e8f0f8;--mu:rgba(232,240,248,.45);--dim:rgba(232,240,248,.2);
+  --bdr:rgba(0,232,128,.15);--bdr2:rgba(232,240,248,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--txt);font-family:'Lato',sans-serif;min-height:100vh;}
+
+/* HEADER */
+header{background:var(--s);border-bottom:3px solid var(--green);padding:0 44px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.logo-wrap{display:flex;align-items:center;gap:14px;}
+.logo-box{width:34px;height:34px;border:1.5px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--green);}
+.logo-title{font-size:17px;font-weight:300;color:var(--txt);}
+.logo-title strong{font-weight:700;}
+.hdr-right{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);}
+.live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:6px;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+/* PAGE */
+.page{max-width:1100px;margin:0 auto;padding:36px 44px 60px;}
+
+/* TITLE SECTION */
+.page-title{margin-bottom:36px;}
+.page-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:10px;}
+.page-h1{font-size:36px;font-weight:900;line-height:1.1;margin-bottom:8px;}
+.page-h1 span{color:var(--green);}
+.page-sub{font-size:13px;color:var(--mu);font-weight:300;line-height:1.6;max-width:640px;}
+
+/* MAIN GRID */
+.main-grid{display:grid;grid-template-columns:340px 1fr;gap:20px;align-items:start;margin-bottom:20px;}
+
+/* INDEX CARD */
+.index-card{background:var(--s);border:1px solid var(--bdr);border-radius:10px;padding:28px;text-align:center;}
+.index-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:20px;}
+
+/* GAUGE */
+.gauge-wrap{position:relative;width:220px;height:120px;margin:0 auto 20px;}
+.gauge-wrap canvas{position:absolute;top:0;left:0;}
+.gauge-val{position:absolute;bottom:0;left:50%;transform:translateX(-50%);text-align:center;}
+.gauge-num{font-size:52px;font-weight:900;line-height:1;transition:color .5s;}
+.gauge-max{font-size:11px;color:var(--mu);letter-spacing:1px;}
+
+.index-date{font-size:11px;color:var(--mu);margin-bottom:24px;}
+
+/* COMPONENTS TABLE */
+.comp-title{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:12px;text-align:left;}
+.comp-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--bdr2);}
+.comp-row:last-child{border-bottom:none;}
+.comp-name{font-size:12px;font-weight:600;}
+.comp-ytm{font-size:12px;color:var(--mu);}
+.comp-tag{font-size:9px;padding:2px 7px;border-radius:3px;font-weight:700;letter-spacing:.5px;}
+.tag-current{background:rgba(0,232,128,.15);color:var(--green);}
+.tag-next{background:rgba(248,113,113,.15);color:#f87171;}
+
+.spread-box{background:var(--s2);border-radius:8px;padding:14px;margin-top:18px;}
+.spread-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.spread-row:last-child{margin-bottom:0;}
+.spread-lbl{font-size:10px;color:var(--mu);}
+.spread-val{font-size:13px;font-weight:700;}
+
+/* CHART CARD */
+.chart-card{background:var(--s);border:1px solid var(--bdr);border-radius:10px;padding:24px;}
+.chart-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;}
+.chart-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);}
+.chart-sub{font-size:11px;color:var(--mu);margin-top:4px;}
+.chart-box{height:300px;position:relative;}
+
+/* BOTTOM GRID */
+.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+
+/* INFO CARD */
+.info-card{background:var(--s);border:1px solid var(--bdr2);border-radius:10px;padding:22px;}
+.info-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:14px;}
+.info-item{padding:10px 0;border-bottom:1px solid var(--bdr2);}
+.info-item:last-child{border-bottom:none;}
+.info-item-title{font-size:12px;font-weight:700;margin-bottom:3px;}
+.info-item-desc{font-size:11px;color:var(--mu);line-height:1.5;}
+.formula-box{background:var(--s2);border-left:3px solid var(--green);padding:10px 14px;border-radius:0 6px 6px 0;margin-top:12px;font-size:11px;color:var(--mu);line-height:1.8;}
+.formula-box strong{color:var(--txt);}
+
+/* HISTORICAL TABLE */
+.hist-table{width:100%;border-collapse:collapse;}
+.hist-table th{font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--mu);padding:6px 10px;border-bottom:1px solid var(--bdr2);text-align:right;}
+.hist-table th:first-child{text-align:left;}
+.hist-table td{font-size:11px;padding:8px 10px;border-bottom:1px solid rgba(232,240,248,.04);text-align:right;}
+.hist-table td:first-child{text-align:left;color:var(--mu);}
+.hist-table tbody tr:hover td{background:rgba(0,232,128,.04);}
+
+/* FOOTER */
+footer{border-top:1px solid var(--bdr2);margin-top:40px;padding-top:16px;display:flex;justify-content:space-between;font-size:10px;color:var(--dim);}
+footer a{color:var(--green);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-wrap">
+    <div class="logo-box">A</div>
+    <div>
+      <div class="logo-title"><strong>Amberes</strong> · Research</div>
+    </div>
+  </div>
+  <div class="hdr-right"><span class="live-dot" id="ldot"></span><span id="lstat">Cargando…</span></div>
+</header>
+
+<div class="page">
+
+  <div class="page-title">
+    <div class="page-eyebrow">Indicador de Mercado · Argentina 2026</div>
+    <h1 class="page-h1">Índice de <span>Confianza en la</span><br>Continuidad</h1>
+    <p class="page-sub">Mide la probabilidad implícita en los precios de los bonos soberanos de que Argentina honre sus compromisos durante la próxima gestión de gobierno (post dic. 2027). Un nivel más alto indica que el mercado no exige una prima de riesgo por la transición política.</p>
+  </div>
+
+  <!-- MAIN GRID -->
+  <div class="main-grid">
+
+    <!-- INDEX CARD -->
+    <div class="index-card">
+      <div class="index-label">Confianza en la Continuidad</div>
+      <div class="gauge-wrap">
+        <canvas id="gaugeCanvas" width="220" height="120"></canvas>
+        <div class="gauge-val">
+          <div class="gauge-num" id="idx-num">—</div>
+          <div class="gauge-max">/ 100</div>
+        </div>
+      </div>
+      <div class="index-date" id="idx-date">Actualizando…</div>
+
+      <div class="comp-title">Componentes</div>
+
+      <!-- Esta gestión -->
+      <div style="margin-bottom:6px">
+        <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);margin-bottom:6px;text-align:left">Esta gestión (≤ dic 2027)</div>
+        <div class="comp-row" id="cr-ao27">
+          <div><span class="comp-name">AO27</span> <span style="font-size:9px;color:var(--mu)">Oct 2027</span></div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="comp-ytm" id="ytm-ao27">—</span>
+            <span class="comp-tag tag-current">ACTUAL</span>
+          </div>
+        </div>
+        <div class="comp-row">
+          <div><span class="comp-name">BOPREALes</span> <span style="font-size:9px;color:var(--mu)">Oct 2027 · prom.</span></div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="comp-ytm" id="ytm-bp">—</span>
+            <span class="comp-tag tag-current">ACTUAL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Próxima gestión -->
+      <div>
+        <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#f87171;margin-bottom:6px;text-align:left">Próxima gestión (> dic 2027)</div>
+        <div class="comp-row">
+          <div><span class="comp-name">GD29</span> <span style="font-size:9px;color:var(--mu)">Jul 2029</span></div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="comp-ytm" id="ytm-gd29">—</span>
+            <span class="comp-tag tag-next">PRÓXIMO</span>
+          </div>
+        </div>
+        <div class="comp-row">
+          <div><span class="comp-name">GD30</span> <span style="font-size:9px;color:var(--mu)">Jul 2030</span></div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="comp-ytm" id="ytm-gd30">—</span>
+            <span class="comp-tag tag-next">PRÓXIMO</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="spread-box">
+        <div class="spread-row">
+          <span class="spread-lbl">YTM Esta Gestión</span>
+          <span class="spread-val" id="ytm-current" style="color:var(--green)">—</span>
+        </div>
+        <div class="spread-row">
+          <span class="spread-lbl">YTM Próxima Gestión</span>
+          <span class="spread-val" id="ytm-next" style="color:#f87171">—</span>
+        </div>
+        <div class="spread-row" style="border-top:1px solid var(--bdr2);padding-top:8px;margin-top:4px">
+          <span class="spread-lbl" style="font-weight:700;color:var(--txt)">Spread de Transición</span>
+          <span class="spread-val" id="spread-val" style="color:var(--yellow)">—</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHART CARD -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Evolución histórica</div>
+          <div class="chart-sub">Índice mensual · Dic 2023 – hoy · Base Milei = 0</div>
+        </div>
+        <div style="display:flex;gap:16px;font-size:10px;align-items:center">
+          <span style="color:var(--green)">━ Índice</span>
+          <span style="color:var(--yellow)">━ Spread (bp)</span>
+        </div>
+      </div>
+      <div class="chart-box"><canvas id="histChart"></canvas></div>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM GRID -->
+  <div class="bottom-grid">
+
+    <!-- HISTÓRICO TABLE -->
+    <div class="info-card">
+      <div class="info-title">Serie histórica mensual</div>
+      <div style="overflow-x:auto">
+        <table class="hist-table" id="hist-table">
+          <thead><tr>
+            <th style="text-align:left">Mes</th>
+            <th>YTM Actual</th>
+            <th>YTM Próximo</th>
+            <th>Spread (bp)</th>
+            <th>Índice</th>
+          </tr></thead>
+          <tbody id="hist-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- METODOLOGÍA -->
+    <div class="info-card">
+      <div class="info-title">Metodología</div>
+      <div class="info-item">
+        <div class="info-item-title">¿Qué mide?</div>
+        <div class="info-item-desc">El diferencial de rendimiento entre bonos soberanos que vencen dentro del mandato actual (≤ dic 2027) y los que vencen bajo la próxima gestión (> dic 2027). Captura la prima de riesgo político de la transición.</div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-title">Fórmula</div>
+        <div class="formula-box">
+          <strong>YTM_actual</strong> = promedio(AO27, BOPREALes D)<br>
+          <strong>YTM_próximo</strong> = promedio(GD29, GD30)<br>
+          <strong>Spread</strong> = YTM_próximo − YTM_actual<br>
+          <strong>Índice</strong> = max(0, min(100, 100 − Spread_bp / 5))
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-title">Interpretación</div>
+        <div class="info-item-desc">
+          <span style="color:var(--green)">▲ 80–100</span> — Alta confianza. El mercado no exige prima por transición.<br>
+          <span style="color:var(--yellow)">◆ 50–80</span> — Moderada. Incertidumbre electoral priceada.<br>
+          <span style="color:#f87171">▼ 0–50</span> — Baja confianza. Prima de transición significativa.
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-title">Mandato actual</div>
+        <div class="info-item-desc">Gobierno de Javier Milei: 10 dic 2023 — 10 dic 2027. Fuentes: rendimientos.co · data912.com (BYMA ~15min delay)</div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>Fuentes: rendimientos.co · data912.com · Amberes Research</span>
+    <span><a href="https://grupoamberes.com.ar">grupoamberes.com.ar</a></span>
+  </footer>
+</div>
+
+<script>
+// ── Datos históricos seed (mensual desde dic 2023) ──────────────
+// YTM aproximados basados en precios de mercado observados
+// Spread = YTM_próximo − YTM_actual
+const HIST = [
+  {m:'Dic 23', ya:18.5, yn:22.1, sp:360, idx:28},
+  {m:'Ene 24', ya:16.2, yn:19.8, sp:360, idx:28},
+  {m:'Feb 24', ya:14.1, yn:17.5, sp:340, idx:32},
+  {m:'Mar 24', ya:13.0, yn:16.0, sp:300, idx:40},
+  {m:'Abr 24', ya:11.5, yn:14.5, sp:300, idx:40},
+  {m:'May 24', ya:10.8, yn:13.5, sp:270, idx:46},
+  {m:'Jun 24', ya:10.2, yn:12.8, sp:260, idx:48},
+  {m:'Jul 24', ya: 9.5, yn:11.8, sp:230, idx:54},
+  {m:'Ago 24', ya: 9.0, yn:11.2, sp:220, idx:56},
+  {m:'Sep 24', ya: 8.5, yn:10.5, sp:200, idx:60},
+  {m:'Oct 24', ya: 8.0, yn: 9.9, sp:190, idx:62},
+  {m:'Nov 24', ya: 7.5, yn: 9.2, sp:170, idx:66},
+  {m:'Dic 24', ya: 7.0, yn: 8.6, sp:160, idx:68},
+  {m:'Ene 25', ya: 6.8, yn: 8.3, sp:150, idx:70},
+  {m:'Feb 25', ya: 6.5, yn: 8.0, sp:150, idx:70},
+  {m:'Mar 25', ya: 6.3, yn: 7.8, sp:150, idx:70},
+  {m:'Abr 25', ya: 6.1, yn: 7.4, sp:130, idx:74},
+  {m:'May 25', ya: 5.9, yn: 7.2, sp:130, idx:74},
+  {m:'Jun 25', ya: 5.7, yn: 7.0, sp:130, idx:74},
+  {m:'Jul 25', ya: 5.6, yn: 6.8, sp:120, idx:76},
+  {m:'Ago 25', ya: 5.4, yn: 6.6, sp:120, idx:76},
+  {m:'Sep 25', ya: 5.3, yn: 6.4, sp:110, idx:78},
+  {m:'Oct 25', ya: 5.2, yn: 6.3, sp:110, idx:78},
+  {m:'Nov 25', ya: 5.1, yn: 6.2, sp:110, idx:78},
+  {m:'Dic 25', ya: 5.0, yn: 6.1, sp:110, idx:78},
+  {m:'Ene 26', ya: 5.0, yn: 6.0, sp:100, idx:80},
+  {m:'Feb 26', ya: 5.0, yn: 5.9, sp: 90, idx:82},
+  {m:'Mar 26', ya: 4.9, yn: 5.8, sp: 90, idx:82},
+  {m:'Abr 26', ya: 4.9, yn: 5.7, sp: 80, idx:84},
+  {m:'May 26', ya: 4.9, yn: 5.6, sp: 70, idx:86},
+];
+
+// ── Helpers ─────────────────────────────────────────────────────
+function p2(v){ return v!=null ? v.toFixed(2)+'%' : '—'; }
+function calcIndex(sp_bp){ return Math.max(0, Math.min(100, 100 - sp_bp/5)); }
+function indexColor(idx){
+  if(idx >= 75) return '#00e880';
+  if(idx >= 50) return '#f5c518';
+  return '#e84040';
+}
+
+// ── Gauge ────────────────────────────────────────────────────────
+function drawGauge(value){
+  const canvas = document.getElementById('gaugeCanvas');
+  const ctx = canvas.getContext('2d');
+  const W = 220, H = 120;
+  ctx.clearRect(0,0,W,H);
+
+  const cx = W/2, cy = H-8, r = 95;
+  const startAngle = Math.PI, endAngle = 2*Math.PI;
+
+  // Background arc
+  ctx.beginPath();
+  ctx.arc(cx,cy,r,startAngle,endAngle);
+  ctx.strokeStyle='rgba(232,240,248,.08)';
+  ctx.lineWidth=14;
+  ctx.stroke();
+
+  // Color zones
+  const zones=[
+    {from:0,to:.5,color:'rgba(232,64,64,.35)'},
+    {from:.5,to:.75,color:'rgba(245,197,24,.35)'},
+    {from:.75,to:1,color:'rgba(0,232,128,.35)'},
+  ];
+  zones.forEach(z=>{
+    ctx.beginPath();
+    ctx.arc(cx,cy,r,startAngle+(z.from)*Math.PI,startAngle+(z.to)*Math.PI);
+    ctx.strokeStyle=z.color;
+    ctx.lineWidth=14;
+    ctx.stroke();
+  });
+
+  // Value arc
+  const pct = value/100;
+  ctx.beginPath();
+  ctx.arc(cx,cy,r,startAngle,startAngle+pct*Math.PI);
+  ctx.strokeStyle=indexColor(value);
+  ctx.lineWidth=14;
+  ctx.lineCap='round';
+  ctx.stroke();
+
+  // Needle
+  const angle = startAngle + pct*Math.PI;
+  const nx = cx + Math.cos(angle)*(r-18);
+  const ny = cy + Math.sin(angle)*(r-18);
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.lineTo(nx, ny);
+  ctx.strokeStyle='#fff';
+  ctx.lineWidth=2.5;
+  ctx.lineCap='round';
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(cx,cy,5,0,2*Math.PI);
+  ctx.fillStyle='#fff';
+  ctx.fill();
+
+  // Update number
+  const numEl = document.getElementById('idx-num');
+  numEl.textContent = Math.round(value);
+  numEl.style.color = indexColor(value);
+}
+
+// ── Historical chart ─────────────────────────────────────────────
+function buildHistChart(data){
+  const ctx = document.getElementById('histChart').getContext('2d');
+  const labels = data.map(d=>d.m);
+  new Chart(ctx, {
+    data: {
+      labels,
+      datasets:[
+        {
+          type:'line', label:'Índice',
+          data: data.map(d=>d.idx),
+          borderColor:'#00e880', backgroundColor:'rgba(0,232,128,.08)',
+          fill:true, tension:.4, pointRadius:3, pointBackgroundColor:'#00e880',
+          yAxisID:'yIdx', order:1, borderWidth:2.5,
+        },
+        {
+          type:'bar', label:'Spread (bp)',
+          data: data.map(d=>d.sp),
+          backgroundColor: data.map(d=>
+            d.sp<=100?'rgba(0,232,128,.5)':d.sp<=200?'rgba(245,197,24,.5)':'rgba(232,64,64,.5)'
+          ),
+          yAxisID:'ySp', order:2,
+        }
+      ]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        legend:{labels:{color:'rgba(232,240,248,.5)',font:{size:10},boxWidth:10}},
+        tooltip:{
+          backgroundColor:'#1e242a',borderColor:'rgba(0,232,128,.3)',borderWidth:1,
+          titleColor:'#e8f0f8',bodyColor:'rgba(232,240,248,.6)',padding:10,
+        }
+      },
+      scales:{
+        x:{grid:{color:'rgba(232,240,248,.04)'},ticks:{color:'rgba(232,240,248,.4)',font:{size:9},maxTicksLimit:12}},
+        yIdx:{position:'left',min:0,max:100,
+          grid:{color:'rgba(232,240,248,.04)'},
+          ticks:{color:'#00e880',font:{size:10},callback:v=>v}},
+        ySp:{position:'right',min:0,max:500,
+          grid:{display:false},
+          ticks:{color:'rgba(245,197,24,.6)',font:{size:10},callback:v=>v+'bp'}},
+      }
+    }
+  });
+}
+
+// ── Historical table ─────────────────────────────────────────────
+function buildHistTable(data){
+  const col = idx => indexColor(idx);
+  document.getElementById('hist-body').innerHTML = [...data].reverse().slice(0,15).map(d=>`
+    <tr>
+      <td>${d.m}</td>
+      <td>${d.ya.toFixed(2)}%</td>
+      <td>${d.yn.toFixed(2)}%</td>
+      <td style="color:${d.sp<=100?'#00e880':d.sp<=200?'#f5c518':'#e84040'}">${d.sp}bp</td>
+      <td style="color:${col(d.idx)};font-weight:700">${d.idx}</td>
+    </tr>`).join('');
+}
+
+// ── Fetch live data ───────────────────────────────────────────────
+async function loadLive(){
+  try {
+    const [sobRes, bondsRes] = await Promise.all([
+      fetch('https://calm-dusk-fa89d8.netlify.app/.netlify/functions/soberanos')
+        .then(r => r.ok ? r.json() : null),
+      fetch('https://calm-dusk-fa89d8.netlify.app/.netlify/functions/bonds')
+        .then(r => r.ok ? r.json() : null),
+    ]);
+
+    const sob   = sobRes ? (sobRes.data || sobRes) : [];
+    const bonds = bondsRes ? (Array.isArray(bondsRes) ? bondsRes : bondsRes.data || []) : [];
+
+    // Esta gestión: AO27
+    const ao27 = sob.find(d=>d.symbol==='AO27');
+    // BOPREALes D series (cable, más líquidos)
+    const bpSyms = ['BPA7D','BPB7D','BPC7D','BPD7D'];
+    const bpData = bonds.filter(d=>bpSyms.includes(d.symbol));
+
+    // Próxima gestión: GD29, GD30
+    const gd29 = sob.find(d=>d.symbol==='GD29');
+    const gd30 = sob.find(d=>d.symbol==='GD30');
+
+    // YTM helpers
+    function ytmNum(s){ return s?.ytm ? parseFloat(s.ytm) : null; }
+
+    // BOPREALes YTM — calculamos desde precio con flujos exactos
+    // Serie base: cupón oct-26, amort+cupón abr-27, amort+cupón oct-27
+    function bpYTM(price){
+      if(!price||price<=0) return null;
+      const cfs = [[184,2.5],[336,52.5],[519,51.25]];
+      const f = r => cfs.reduce((s,[d,c])=>s+c*Math.pow(1+r,-d/365),0)-price;
+      let lo=-0.99,hi=5;
+      for(let i=0;i<300;i++){const m=(lo+hi)/2;f(m)>0?lo=m:hi=m;if(hi-lo<1e-9)break;}
+      return ((lo+hi)/2)*100;
+    }
+
+    const bpYtms = bpData.map(b=>bpYTM(b.c)).filter(v=>v!=null);
+    const ytmBP  = bpYtms.length ? bpYtms.reduce((a,b)=>a+b,0)/bpYtms.length : null;
+    const ytmAO27 = ytmNum(ao27);
+
+    // YTM esta gestión = promedio AO27 + BOPREALes
+    const currentParts = [ytmAO27, ytmBP].filter(v=>v!=null);
+    const ytmCurrent = currentParts.length ? currentParts.reduce((a,b)=>a+b,0)/currentParts.length : null;
+
+    // YTM próxima gestión = promedio GD29 + GD30
+    const nextParts = [ytmNum(gd29), ytmNum(gd30)].filter(v=>v!=null);
+    const ytmNext = nextParts.length ? nextParts.reduce((a,b)=>a+b,0)/nextParts.length : null;
+
+    if(!ytmCurrent || !ytmNext) throw new Error('datos insuficientes');
+
+    const spread_bp = Math.round((ytmNext - ytmCurrent) * 100);
+    const idx = calcIndex(spread_bp);
+
+    // Update UI
+    document.getElementById('ytm-ao27').textContent  = ytmAO27 ? ytmAO27.toFixed(2)+'%' : '—';
+    document.getElementById('ytm-bp').textContent    = ytmBP   ? ytmBP.toFixed(2)+'%'   : '—';
+    document.getElementById('ytm-gd29').textContent  = ytmNum(gd29) ? ytmNum(gd29).toFixed(2)+'%' : '—';
+    document.getElementById('ytm-gd30').textContent  = ytmNum(gd30) ? ytmNum(gd30).toFixed(2)+'%' : '—';
+    document.getElementById('ytm-current').textContent = ytmCurrent.toFixed(2)+'%';
+    document.getElementById('ytm-next').textContent    = ytmNext.toFixed(2)+'%';
+    document.getElementById('spread-val').textContent  = spread_bp+'bp';
+    document.getElementById('idx-date').textContent    = 'Dato en vivo · ' + new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});
+
+    drawGauge(idx);
+
+    // Add today to history
+    const now = new Date();
+    const mLabel = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'][now.getMonth()]+' '+String(now.getFullYear()).slice(2);
+    const lastHist = HIST[HIST.length-1];
+    const livePoint = {m: mLabel+' (live)', ya: ytmCurrent, yn: ytmNext, sp: spread_bp, idx: Math.round(idx)};
+    const histWithLive = lastHist.m.startsWith(mLabel) ? [...HIST.slice(0,-1), livePoint] : [...HIST, livePoint];
+
+    buildHistChart(histWithLive);
+    buildHistTable(histWithLive);
+
+    document.getElementById('ldot').style.background='#00e880';
+    document.getElementById('lstat').textContent='En vivo · BYMA ~15min';
+
+  } catch(e) {
+    console.warn('loadLive:', e.message);
+    // Fallback to seed
+    const last = HIST[HIST.length-1];
+    drawGauge(last.idx);
+    document.getElementById('ytm-current').textContent = last.ya.toFixed(2)+'%';
+    document.getElementById('ytm-next').textContent    = last.yn.toFixed(2)+'%';
+    document.getElementById('spread-val').textContent  = last.sp+'bp';
+    document.getElementById('idx-date').textContent    = 'Último dato disponible · '+last.m;
+    document.getElementById('ldot').style.background  ='#f5c518';
+    document.getElementById('lstat').textContent      ='Datos de referencia';
+
+    buildHistChart(HIST);
+    buildHistTable(HIST);
+  }
+}
+
+// Init
+buildHistChart(HIST);
+buildHistTable(HIST);
+drawGauge(HIST[HIST.length-1].idx);
+loadLive();
+setInterval(loadLive, 5*60*1000);
+</script>
+</body>
+</html>

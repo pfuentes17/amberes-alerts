@@ -1,0 +1,6 @@
+{
+  "crons": [
+    { "path": "/api/alert?day=monday", "schedule": "0 12 * * 1" },
+    { "path": "/api/alert?day=friday", "schedule": "0 12 * * 5" }
+  ]
+}

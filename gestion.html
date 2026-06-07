@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Índice de Gestión — Amberes</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#111418;--s:#181d22;--s2:#1e242a;
+  --green:#00e880;--green2:rgba(0,232,128,.1);
+  --yellow:#f5c518;--red:#e84040;--blue:#38bdf8;--pu:#a78bfa;
+  --txt:#e8f0f8;--mu:rgba(232,240,248,.45);--dim:rgba(232,240,248,.18);
+  --bdr:rgba(0,232,128,.15);--bdr2:rgba(232,240,248,.07);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--txt);font-family:'Lato',sans-serif;min-height:100vh;}
+
+header{background:var(--s);border-bottom:3px solid var(--green);padding:0 44px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.logo-wrap{display:flex;align-items:center;gap:14px;}
+.logo-box{width:34px;height:34px;border:1.5px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--green);}
+.hdr-right{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);}
+.live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--yellow);margin-right:6px;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+.page{max-width:1200px;margin:0 auto;padding:36px 44px 60px;}
+
+.page-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:10px;}
+.page-h1{font-size:36px;font-weight:900;line-height:1.1;margin-bottom:8px;}
+.page-h1 span{color:var(--green);}
+.page-sub{font-size:13px;color:var(--mu);font-weight:300;line-height:1.6;max-width:680px;margin-bottom:36px;}
+
+/* TOP ROW */
+.top-row{display:grid;grid-template-columns:280px 1fr;gap:20px;margin-bottom:20px;align-items:start;}
+
+/* MAIN INDEX CARD */
+.main-card{background:var(--s);border:1px solid var(--bdr);border-radius:10px;padding:28px;text-align:center;}
+.main-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:16px;}
+.main-num{font-size:72px;font-weight:900;line-height:1;transition:color .5s;margin-bottom:2px;}
+.main-max{font-size:12px;color:var(--mu);}
+.main-date{font-size:11px;color:var(--mu);margin-top:10px;margin-bottom:20px;}
+.main-desc{font-size:12px;color:var(--mu);font-weight:300;line-height:1.5;padding:12px;background:var(--s2);border-radius:6px;}
+
+/* CHART CARD */
+.chart-card{background:var(--s);border:1px solid var(--bdr);border-radius:10px;padding:24px;}
+.chart-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
+.chart-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);}
+.chart-sub{font-size:11px;color:var(--mu);margin-top:3px;}
+.chart-box{height:260px;}
+
+/* COMPONENTS GRID */
+.comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;}
+.comp-card{background:var(--s);border:1px solid var(--bdr2);border-radius:10px;padding:18px;position:relative;overflow:hidden;}
+.comp-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--green);}
+.comp-name{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:8px;}
+.comp-val{font-size:24px;font-weight:900;line-height:1;margin-bottom:4px;}
+.comp-raw{font-size:11px;color:var(--mu);margin-bottom:12px;}
+.comp-bar-wrap{height:4px;background:rgba(232,240,248,.1);border-radius:2px;margin-bottom:6px;}
+.comp-bar{height:100%;border-radius:2px;transition:width .6s;}
+.comp-weight{font-size:9px;color:var(--dim);}
+.comp-source{font-size:9px;color:var(--dim);margin-top:2px;}
+
+/* BOTTOM */
+.bottom-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.info-card{background:var(--s);border:1px solid var(--bdr2);border-radius:10px;padding:22px;}
+.info-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:14px;}
+
+/* SPIDER */
+.spider-box{height:260px;}
+
+/* TABLE */
+.hist-table{width:100%;border-collapse:collapse;}
+.hist-table th{font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--mu);padding:6px 8px;border-bottom:1px solid var(--bdr2);text-align:right;}
+.hist-table th:first-child{text-align:left;}
+.hist-table td{font-size:11px;padding:7px 8px;border-bottom:1px solid rgba(232,240,248,.04);text-align:right;}
+.hist-table td:first-child{text-align:left;color:var(--mu);}
+.hist-table tbody tr:hover td{background:rgba(0,232,128,.04);}
+
+footer{border-top:1px solid var(--bdr2);margin-top:40px;padding-top:16px;display:flex;justify-content:space-between;font-size:10px;color:var(--dim);}
+footer a{color:var(--green);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-wrap">
+    <div class="logo-box">A</div>
+    <div style="font-size:17px;font-weight:300">
+      <strong style="font-weight:700">Amberes</strong> · Research
+    </div>
+  </div>
+  <div class="hdr-right">
+    <span class="live-dot" id="ldot"></span>
+    <span id="lstat">Cargando…</span>
+  </div>
+</header>
+
+<div class="page">
+  <div class="page-eyebrow">Indicador Compuesto · Argentina 2026</div>
+  <h1 class="page-h1">Índice de <span>Confianza en la</span><br>Gestión</h1>
+  <p class="page-sub">Indicador compuesto de 6 variables macroeconómicas, financieras y de percepción que mide el desempeño del gobierno en tiempo real. Cada componente se normaliza 0–100 y se pondera según su relevancia. 100 = gestión óptima.</p>
+
+  <!-- TOP ROW -->
+  <div class="top-row">
+
+    <!-- MAIN INDEX -->
+    <div class="main-card">
+      <div class="main-label">Índice de Gestión</div>
+      <div class="main-num" id="main-num" style="color:var(--yellow)">—</div>
+      <div class="main-max">/ 100</div>
+      <div class="main-date" id="main-date">Actualizando…</div>
+      <div class="main-desc" id="main-desc">—</div>
+    </div>
+
+    <!-- HISTORICAL CHART -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <div>
+          <div class="chart-title">Evolución del índice</div>
+          <div class="chart-sub">Mensual · Dic 2023 – hoy · Gestión Milei</div>
+        </div>
+        <div style="font-size:10px;color:var(--mu)">Base: asunción dic 2023</div>
+      </div>
+      <div class="chart-box"><canvas id="histChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- COMPONENTS -->
+  <div class="comp-grid" id="comp-grid">
+    <!-- filled by JS -->
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="bottom-row">
+
+    <!-- RADAR CHART -->
+    <div class="info-card">
+      <div class="info-title">Perfil de componentes — hoy</div>
+      <div class="spider-box"><canvas id="radarChart"></canvas></div>
+    </div>
+
+    <!-- HIST TABLE -->
+    <div class="info-card">
+      <div class="info-title">Serie histórica mensual</div>
+      <div style="overflow-x:auto">
+        <table class="hist-table">
+          <thead><tr>
+            <th style="text-align:left">Mes</th>
+            <th title="Riesgo País">RP</th>
+            <th title="Inflación">Inf</th>
+            <th title="Salarios">Sal</th>
+            <th title="Reservas">Res</th>
+            <th title="Brecha">Brch</th>
+            <th title="ICG UTDT">ICG</th>
+            <th><strong>Índice</strong></th>
+          </tr></thead>
+          <tbody id="hist-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>Fuentes: argentinadatos.com · api.bcra.gob.ar · dolarapi.com · INDEC · UTDT</span>
+    <span><a href="https://grupoamberes.com.ar">grupoamberes.com.ar</a></span>
+  </footer>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════
+// COMPONENTES: definición y normalización
+// ═══════════════════════════════════════════════════
+const COMPONENTS = [
+  {
+    id:'rp', name:'Riesgo País', unit:'bp', weight:.20,
+    color:'#f87171',
+    normalize: v => Math.max(0, Math.min(100, 100 - v/50)),
+    // 0bp=100, 5000bp=0. Cada 50bp = 1 punto
+    desc: raw => `EMBI ${Math.round(raw)} bp`,
+    interp: s => s>=75?'Bajo riesgo soberano':s>=50?'Riesgo moderado':'Alto riesgo soberano',
+  },
+  {
+    id:'inf', name:'Inflación MoM', unit:'%', weight:.20,
+    color:'#fb923c',
+    normalize: v => Math.max(0, Math.min(100, 100 - v*10)),
+    // 0%=100, 10%=0
+    desc: raw => `IPC ${raw.toFixed(1)}% mensual`,
+    interp: s => s>=75?'Inflación baja':s>=50?'Inflación moderada':'Inflación elevada',
+  },
+  {
+    id:'sal', name:'Salarios Reales Reg.', unit:'% YoY', weight:.15,
+    color:'#a78bfa',
+    normalize: v => Math.max(0, Math.min(100, 50 + v*2.5)),
+    // +20%=100, 0%=50, -20%=0  — basado en rango real INDEC 2024-2026
+    desc: raw => `Sal. reg. real ${raw>0?'+':''}${raw.toFixed(1)}% i.a.`,
+    interp: s => s>=60?'Salarios reales en alza':s>=45?'Salarios reales estables':'Salarios reales cayendo',
+  },
+  {
+    id:'res', name:'Reservas BCRA', unit:'MM USD', weight:.15,
+    color:'#34d399',
+    normalize: v => Math.max(0, Math.min(100, (v-15)/35*100)),
+    // 15B=0, 50B=100
+    desc: raw => `Reservas USD ${Math.round(raw/1000)}B`,
+    interp: s => s>=70?'Reservas sólidas':s>=40?'Reservas en recuperación':'Reservas bajas',
+  },
+  {
+    id:'brecha', name:'Brecha Cambiaria', unit:'%', weight:.15,
+    color:'#38bdf8',
+    normalize: v => Math.max(0, Math.min(100, 100 - v*1.5)),
+    // 0%=100, 67%=0
+    desc: raw => `Brecha CCL/oficial ${raw.toFixed(0)}%`,
+    interp: s => s>=80?'Brecha mínima':s>=50?'Brecha moderada':'Brecha elevada',
+  },
+  {
+    id:'icg', name:'ICG UTDT', unit:'/ 5', weight:.15,
+    color:'#f5c518',
+    normalize: v => (v/5)*100,
+    // 0-5 scale → 0-100
+    desc: raw => `ICG ${raw.toFixed(2)} / 5.00`,
+    interp: s => s>=50?'Confianza ciudadana positiva':s>=30?'Confianza moderada':'Baja confianza ciudadana',
+  },
+];
+
+// ═══════════════════════════════════════════════════
+// HISTORICAL SEED DATA (mensual dic 2023 – may 2026)
+// ═══════════════════════════════════════════════════
+// [rp_bp, inf_mom%, sal_real_yoy%, res_mm_usd, brecha%, icg_utdt]
+// Salarios reales: IS registrado total (pub+priv) INDEC serie 149.1_TL_REGIADO_OCTU_0_16
+// deflactado por IPC 148.3_INIVELNAL_DICI_M_26 — YoY calculado con datos reales INDEC
+const HIST_SEED = [
+  {m:'Dic 23', v:[1700, 25.5,  -8.0, 22000, 150, 1.85]}, // sal: estimado (devaluación dic)
+  {m:'Ene 24', v:[1600, 20.6, -17.7, 24000,  40, 1.90]}, // sal: INDEC real
+  {m:'Feb 24', v:[1550, 13.2, -16.2, 25000,  35, 1.95]},
+  {m:'Mar 24', v:[1450, 11.0, -19.1, 26000,  32, 2.00]}, // peor mes salarios
+  {m:'Abr 24', v:[1400,  8.8, -15.9, 27000,  30, 2.05]},
+  {m:'May 24', v:[1350,  4.2, -13.3, 28000,  40, 2.15]},
+  {m:'Jun 24', v:[1500,  4.6, -12.2, 27000,  42, 2.10]},
+  {m:'Jul 24', v:[1600,  4.0, -14.5, 26500,  45, 2.05]},
+  {m:'Ago 24', v:[1500,  4.2,  -9.9, 26000,  38, 2.10]},
+  {m:'Sep 24', v:[1400,  3.5,  -9.3, 27500,  30, 2.20]},
+  {m:'Oct 24', v:[1200,  2.4,  -8.6, 29000,  20, 2.30]},
+  {m:'Nov 24', v:[ 900,  2.4,  -4.9, 31000,  15, 2.45]},
+  {m:'Dic 24', v:[ 750,  2.7,   9.2, 33000,  12, 2.55]}, // recuperación real
+  {m:'Ene 25', v:[ 700,  2.3,  11.9, 35000,  10, 2.60]}, // pico salarios reales
+  {m:'Feb 25', v:[ 720,  2.4,  11.4, 36000,  10, 2.58]},
+  {m:'Mar 25', v:[ 800,  3.7,  10.8, 35000,  12, 2.50]},
+  {m:'Abr 25', v:[ 850,  3.0,   8.8, 35500,  11, 2.52]},
+  {m:'May 25', v:[ 820,  3.3,   6.0, 37000,  10, 2.55]},
+  {m:'Jun 25', v:[ 780,  3.2,   4.7, 38000,   9, 2.60]},
+  {m:'Jul 25', v:[ 750,  2.7,   2.7, 39500,   8, 2.65]},
+  {m:'Ago 25', v:[ 720,  2.8,   2.5, 40500,   7, 2.68]},
+  {m:'Sep 25', v:[ 700,  2.5,   1.4, 41000,   7, 2.72]},
+  {m:'Oct 25', v:[ 680,  2.4,  -0.3, 42000,   6, 2.75]},
+  {m:'Nov 25', v:[ 660,  2.4,  -1.5, 43000,   6, 2.78]},
+  {m:'Dic 25', v:[ 640,  2.7,  -2.1, 44000,   5, 2.80]},
+  {m:'Ene 26', v:[ 630,  2.9,  -2.6, 44500,   5, 2.82]},
+  {m:'Feb 26', v:[ 620,  2.9,  -4.2, 45000,   4, 2.85]},
+  {m:'Mar 26', v:[ 610,  3.4,  -3.4, 45500,   4, 2.83]}, // último dato IS disponible
+  {m:'Abr 26', v:[ 600,  2.6,  -3.4, 46000,   4, 2.85]}, // IS abr n/d → proyectado
+  {m:'May 26', v:[ 595,  2.8,  -3.0, 47000,   4, 2.87]},
+];
+
+function calcIndex(vals){
+  return COMPONENTS.reduce((sum, c, i) => sum + c.normalize(vals[i]) * c.weight, 0);
+}
+
+function calcScores(vals){
+  return COMPONENTS.map((c, i) => c.normalize(vals[i]));
+}
+
+function idxColor(v){
+  if(v>=65) return '#00e880';
+  if(v>=45) return '#f5c518';
+  return '#e84040';
+}
+
+function idxDesc(v){
+  if(v>=75) return 'Gestión sólida — los indicadores macro y financieros muestran una tendencia positiva consolidada.';
+  if(v>=60) return 'Gestión en curso favorable — mejoras en la mayoría de los frentes con algunos desafíos pendientes.';
+  if(v>=45) return 'Gestión mixta — avances en estabilización pero presiones latentes en indicadores clave.';
+  if(v>=30) return 'Gestión bajo presión — deterioro en múltiples componentes que requieren corrección.';
+  return 'Gestión en crisis — indicadores en zona crítica generalizada.';
+}
+
+// ── Build components cards ────────────────────────
+function buildCompCards(scores, raws){
+  document.getElementById('comp-grid').innerHTML = COMPONENTS.map((c, i) => {
+    const score = Math.round(scores[i]);
+    const col = c.color;
+    return `
+      <div class="comp-card" style="border-left-color:${col}">
+        <div class="comp-name">${c.name} · ${Math.round(c.weight*100)}%</div>
+        <div class="comp-val" style="color:${col}">${score}</div>
+        <div class="comp-raw">${c.desc(raws[i])}</div>
+        <div class="comp-bar-wrap">
+          <div class="comp-bar" style="width:${score}%;background:${col}"></div>
+        </div>
+        <div class="comp-weight">${c.interp(score)}</div>
+      </div>`;
+  }).join('');
+}
+
+// ── Build historical chart ────────────────────────
+let histChartInst = null;
+function buildHistChart(data){
+  const labels = data.map(d=>d.m);
+  const indices = data.map(d=>Math.round(calcIndex(d.v)));
+  if(histChartInst) histChartInst.destroy();
+  const ctx = document.getElementById('histChart').getContext('2d');
+  histChartInst = new Chart(ctx, {
+    type:'line',
+    data:{
+      labels,
+      datasets:[{
+        label:'Índice de Gestión',
+        data: indices,
+        borderColor:'#00e880',
+        backgroundColor:'rgba(0,232,128,.08)',
+        fill:true, tension:.4,
+        pointRadius: 3,
+        pointBackgroundColor: indices.map(v=>idxColor(v)),
+        borderWidth:2.5,
+      }]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          backgroundColor:'#1e242a',borderColor:'rgba(0,232,128,.3)',borderWidth:1,
+          titleColor:'#e8f0f8',bodyColor:'rgba(232,240,248,.6)',padding:10,
+          callbacks:{
+            label: i => `Índice: ${i.parsed.y} / 100`
+          }
+        },
+        annotation:{
+          annotations:{
+            line50:{type:'line',yMin:50,yMax:50,borderColor:'rgba(245,197,24,.3)',borderWidth:1,borderDash:[5,5]},
+          }
+        }
+      },
+      scales:{
+        x:{grid:{color:'rgba(232,240,248,.04)'},ticks:{color:'rgba(232,240,248,.4)',font:{size:9},maxTicksLimit:12}},
+        y:{min:0,max:100,grid:{color:'rgba(232,240,248,.04)'},ticks:{color:'rgba(232,240,248,.4)',font:{size:10}}},
+      }
+    }
+  });
+}
+
+// ── Build radar chart ─────────────────────────────
+let radarInst = null;
+function buildRadar(scores){
+  if(radarInst) radarInst.destroy();
+  const ctx = document.getElementById('radarChart').getContext('2d');
+  radarInst = new Chart(ctx, {
+    type:'radar',
+    data:{
+      labels: COMPONENTS.map(c=>c.name),
+      datasets:[{
+        label:'Hoy',
+        data: scores.map(s=>Math.round(s)),
+        borderColor:'#00e880',
+        backgroundColor:'rgba(0,232,128,.12)',
+        borderWidth:2,
+        pointBackgroundColor:'#00e880',
+        pointRadius:4,
+      }]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},
+        tooltip:{backgroundColor:'#1e242a',borderColor:'rgba(0,232,128,.3)',borderWidth:1,titleColor:'#e8f0f8',bodyColor:'rgba(232,240,248,.6)',padding:8}},
+      scales:{r:{
+        min:0,max:100,
+        grid:{color:'rgba(232,240,248,.06)'},
+        angleLines:{color:'rgba(232,240,248,.06)'},
+        ticks:{display:false},
+        pointLabels:{color:'rgba(232,240,248,.5)',font:{size:10}},
+      }}
+    }
+  });
+}
+
+// ── Build hist table ──────────────────────────────
+function buildHistTable(data){
+  document.getElementById('hist-body').innerHTML = [...data].reverse().slice(0,12).map(d=>{
+    const scores = calcScores(d.v);
+    const idx = Math.round(calcIndex(d.v));
+    const col = idxColor(idx);
+    return `<tr>
+      <td>${d.m}</td>
+      ${scores.map((s,i)=>`<td style="color:${COMPONENTS[i].color}">${Math.round(s)}</td>`).join('')}
+      <td style="color:${col};font-weight:700">${idx}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ── Render with values ────────────────────────────
+function render(vals, date, isLive){
+  const scores = calcScores(vals);
+  const idx = calcIndex(vals);
+  const idxRnd = Math.round(idx);
+  const col = idxColor(idxRnd);
+
+  document.getElementById('main-num').textContent = idxRnd;
+  document.getElementById('main-num').style.color = col;
+  document.getElementById('main-date').textContent = date;
+  document.getElementById('main-desc').textContent = idxDesc(idxRnd);
+
+  buildCompCards(scores, vals);
+  buildRadar(scores);
+
+  document.getElementById('ldot').style.background = isLive ? '#00e880' : '#f5c518';
+  document.getElementById('lstat').textContent = isLive ? 'Datos en vivo' : 'Datos de referencia';
+}
+
+// ── Fetch live data ───────────────────────────────
+async function loadLive(){
+  try {
+    const [rpRes, infRes, dolarRes, bcraRes, wageRes] = await Promise.all([
+      fetch('https://api.argentinadatos.com/v1/finanzas/indices/riesgo-pais').then(r=>r.ok?r.json():null),
+      fetch('https://api.argentinadatos.com/v1/finanzas/indices/inflacion').then(r=>r.ok?r.json():null),
+      fetch('https://dolarapi.com/v1/dolares').then(r=>r.ok?r.json():null),
+      fetch('https://api.bcra.gob.ar/estadisticas/v3.0/monetarias/1?limit=1',{headers:{'Accept-Language':'es-AR'}}).then(r=>r.ok?r.json():null),
+      // Salarios registrados (pub+priv) + IPC para calcular real YoY
+      fetch('https://apis.datos.gob.ar/series/api/series/?ids=149.1_TL_REGIADO_OCTU_0_16,148.3_INIVELNAL_DICI_M_26&limit=26&sort=desc&format=json').then(r=>r.ok?r.json():null),
+    ]);
+
+    // Riesgo país (último valor)
+    const rpArr = Array.isArray(rpRes) ? rpRes : null;
+    const rp_bp = rpArr?.length ? rpArr[rpArr.length-1].valor : null;
+
+    // Inflación MoM (último)
+    const infArr = Array.isArray(infRes) ? infRes : null;
+    const inf_mom = infArr?.length ? infArr[infArr.length-1].valor : null;
+
+    // Brecha cambiaria
+    let brecha = null;
+    if(dolarRes){
+      const ccl = dolarRes.find(d=>d.casa==='contadoconliqui' || d.casa==='ccl');
+      const oficial = dolarRes.find(d=>d.casa==='oficial');
+      if(ccl?.venta && oficial?.venta)
+        brecha = ((ccl.venta/oficial.venta)-1)*100;
+    }
+
+    // Reservas BCRA (MM USD → en millones)
+    let reservas = null;
+    if(bcraRes?.results?.length){
+      reservas = bcraRes.results[0].valor * 1000; // B → MM USD
+    }
+
+    // Calcular salario real YoY desde datos.gob.ar
+    let salReal = null;
+    if(wageRes?.data?.length >= 14){
+      // rows: [date, wage_index, cpi_index] — sort desc, so index 0 = latest
+      const rows = wageRes.data.filter(r => r[1] != null && r[2] != null);
+      if(rows.length >= 13){
+        const latest = rows[0];   // más reciente
+        const year_ago = rows[12]; // 12 meses antes
+        if(latest[1] && latest[2] && year_ago[1] && year_ago[2]){
+          const real_latest  = latest[1]  / latest[2];
+          const real_year_ago = year_ago[1] / year_ago[2];
+          salReal = (real_latest / real_year_ago - 1) * 100;
+        }
+      }
+    }
+
+    // ICG UTDT: desde manual.json
+    const manualRes = await fetch('https://amberes-alerts.vercel.app/api/data').then(r=>r.ok?r.json():null);
+    const icgUtdt = manualRes?.icg_utdt ?? null;
+
+    // Seed fallback
+    const seed = HIST_SEED[HIST_SEED.length-1].v;
+    const vals = [
+      rp_bp  ?? seed[0],
+      inf_mom ?? seed[1],
+      salReal ?? seed[2],
+      reservas ?? seed[3],
+      brecha  ?? seed[4],
+      icgUtdt ?? seed[5],
+    ];
+
+    const isLive = !!(rp_bp && inf_mom);
+    const now = new Date();
+    const MES=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+    const dateStr = `${isLive?'En vivo':'Referencia'} · ${MES[now.getMonth()]} ${now.getFullYear()} · ${now.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'})}`;
+
+    // Add live point to history
+    const liveLabel = MES[now.getMonth()]+' '+String(now.getFullYear()).slice(2)+' ●';
+    const histWithLive = [...HIST_SEED, {m:liveLabel, v:vals}];
+
+    render(vals, dateStr, isLive);
+    buildHistChart(histWithLive);
+    buildHistTable(histWithLive);
+
+  } catch(e){
+    console.warn('loadLive:', e.message);
+    const seed = HIST_SEED[HIST_SEED.length-1];
+    render(seed.v, 'Datos de referencia · '+seed.m, false);
+    buildHistChart(HIST_SEED);
+    buildHistTable(HIST_SEED);
+  }
+}
+
+// ── Init ──────────────────────────────────────────
+const lastSeed = HIST_SEED[HIST_SEED.length-1];
+render(lastSeed.v, 'Cargando datos en vivo…', false);
+buildHistChart(HIST_SEED);
+buildHistTable(HIST_SEED);
+loadLive();
+setInterval(loadLive, 5*60*1000);
+</script>
+</body>
+</html>

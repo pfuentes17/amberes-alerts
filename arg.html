@@ -1,0 +1,2095 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Argentina Macroeconómico | Amberes</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --nv:#07111d;--nv2:#0c1a28;--nv3:#0a1622;
+  --cel:#4a9fd4;--cell:#7bbfe8;--celm:rgba(74,159,212,.12);
+  --g4:#4db87a;--g3:#3da06e;--g2:#2d7a55;
+  --rd:#d95f5f;--or:#e8a044;--wh:#f0f4f8;
+  --dm:rgba(240,244,248,.42);--ft:rgba(240,244,248,.07);
+  --br:rgba(74,159,212,.18);
+  /* Vista INDEC */
+  --indec:#4a9fd4;--indec-m:rgba(74,159,212,.12);
+  /* Vista BCRA */
+  --bcra:#4db87a;--bcra-m:rgba(77,184,122,.12);
+  /* Vista MECON */
+  --mecon:#e8a044;--mecon-m:rgba(232,160,68,.12);
+  /* Vista REAL */
+  --real:#9b7fe8;--real-m:rgba(155,127,232,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--nv);color:var(--wh);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden;}
+
+/* ── HEADER ── */
+header{position:sticky;top:0;z-index:200;background:rgba(7,17,29,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--br);padding:0 40px;height:62px;display:flex;align-items:center;justify-content:space-between;}
+.hd-l{display:flex;align-items:center;}
+.logo-link{display:flex;align-items:center;text-decoration:none;flex-shrink:0;}
+.logo-img{height:32px;width:auto;max-width:120px;filter:brightness(0) invert(1);opacity:.9;}
+.logo-fb{width:32px;height:32px;border:1.5px solid var(--cel);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--cel);display:none;}
+.hd-div{width:1px;height:26px;background:var(--br);margin:0 16px;}
+.hd-t{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;}
+.hd-t span{color:var(--g4);}
+.hd-s{font-size:8.5px;color:var(--dm);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px;}
+.hd-r{display:flex;align-items:center;gap:10px;}
+.flag{display:flex;align-items:center;gap:7px;padding:5px 12px;border:1px solid var(--br);font-size:10.5px;color:var(--cell);letter-spacing:1px;text-transform:uppercase;}
+.ldot{width:5px;height:5px;border-radius:50%;background:var(--g4);animation:pulse 2s infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.upd{font-size:8.5px;color:var(--dm);}
+
+/* ── VISTA SWITCHER (selector institucional) ── */
+.vs{position:relative;}
+.vsb{display:flex;align-items:center;gap:7px;padding:6px 13px;background:var(--nv3);border:1px solid var(--br);font-size:11px;letter-spacing:1.2px;text-transform:uppercase;cursor:pointer;transition:all .18s;font-family:'DM Sans',sans-serif;color:var(--cell);}
+.vsb:hover,.vsb.open{border-color:var(--cel);background:var(--celm);}
+.vs-arrow{font-size:9px;color:var(--dm);transition:transform .18s;}
+.vsb.open .vs-arrow{transform:rotate(180deg);}
+.vsd{position:absolute;right:0;top:calc(100% + 5px);background:var(--nv2);border:1px solid var(--br);min-width:210px;z-index:300;opacity:0;visibility:hidden;transform:translateY(-5px);transition:all .16s ease;}
+.vsd.open{opacity:1;visibility:visible;transform:translateY(0);}
+.vso{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;font-size:11px;color:var(--dm);border-bottom:1px solid rgba(74,159,212,.07);transition:all .14s;}
+.vso:last-child{border-bottom:none;}
+.vso:hover,.vso.active{background:var(--celm);color:var(--wh);}
+.vso.active{color:var(--cell);}
+.vs-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.vso .vs-name{font-weight:400;}
+.vso .vs-sub{font-size:8.5px;letter-spacing:1px;text-transform:uppercase;color:var(--dm);margin-top:1px;}
+
+/* ── KPI STRIP ── */
+.kstrip{display:flex;overflow-x:auto;background:var(--nv2);border-bottom:1px solid var(--br);}
+.kstrip::-webkit-scrollbar{height:2px;}
+.kstrip::-webkit-scrollbar-thumb{background:var(--celm);}
+.ki{flex:0 0 auto;min-width:120px;padding:11px 16px;border-right:1px solid var(--br);transition:background .2s;}
+.ki:last-child{border-right:none;}
+.ki:hover{background:var(--ft);}
+.kl{font-size:7.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--dm);margin-bottom:3px;}
+.kv{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:500;line-height:1;}
+.kn{font-size:8.5px;color:var(--dm);margin-top:2px;}
+.g{color:#4db87a;}.r{color:#d95f5f;}.a{color:#7bbfe8;}.m{color:#e8a044;}.p{color:#9b7fe8;}
+
+/* ── TABS ── */
+.tabrow{display:flex;overflow-x:auto;background:var(--nv2);border-bottom:1px solid var(--br);padding:0 40px;}
+.tabrow::-webkit-scrollbar{height:2px;}
+.tab{padding:11px 18px;white-space:nowrap;background:none;border:none;border-bottom:2px solid transparent;color:var(--dm);font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:1.3px;text-transform:uppercase;cursor:pointer;transition:all .2s;flex-shrink:0;}
+.tab:hover{color:var(--wh);}
+.tab.active{color:var(--cell);border-bottom-color:var(--cel);}
+
+/* Vista accent: cada vista pinta los tabs activos con su color */
+body.vista-bcra .tab.active{color:#4db87a;border-bottom-color:#4db87a;}
+body.vista-mecon .tab.active{color:#e8a044;border-bottom-color:#e8a044;}
+body.vista-real .tab.active{color:#9b7fe8;border-bottom-color:#9b7fe8;}
+body.vista-rem .tab.active{color:#38bdf8;border-bottom-color:#38bdf8;}
+/* REM cards */
+.rem-kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px;}
+.rem-kpi{background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:13px 15px;}
+.rem-kpi .rl{font-size:8px;letter-spacing:1.8px;text-transform:uppercase;color:var(--dm);margin-bottom:5px;}
+.rem-kpi .rv{font-size:20px;font-weight:700;font-family:'IBM Plex Mono',monospace;line-height:1;}
+.rem-kpi .rs{font-size:10px;color:var(--dm);margin-top:3px;}
+.rem-kpi .rt{font-size:9px;margin-top:4px;padding:2px 7px;border-radius:3px;display:inline-block;}
+.rem-main{display:grid;grid-template-columns:1fr 380px;gap:16px;align-items:start;}
+.rem-table-wrap{overflow-x:auto;}
+.rem-tbl{width:100%;border-collapse:collapse;}
+.rem-tbl th{font-size:8px;text-transform:uppercase;letter-spacing:1px;color:var(--dm);padding:6px 10px;border-bottom:1px solid var(--bdr);text-align:right;}
+.rem-tbl th:first-child{text-align:left;}
+.rem-tbl td{font-size:11px;padding:8px 10px;border-bottom:1px solid rgba(45,64,80,.3);text-align:right;font-family:'IBM Plex Mono',monospace;}
+.rem-tbl td:first-child{text-align:left;font-family:'IBM Plex Sans',sans-serif;font-size:12px;color:var(--wh);}
+.rem-tbl tbody tr:hover td{background:rgba(56,189,248,.04);}
+.rem-badge{font-size:9px;padding:2px 6px;border-radius:3px;margin-left:5px;}
+.rem-up{background:rgba(77,184,122,.12);color:#4db87a;}
+.rem-dn{background:rgba(248,113,113,.12);color:#f87171;}
+.rem-eq{background:rgba(90,104,120,.15);color:var(--dm);}
+.rem-info-box{background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:16px;margin-bottom:14px;}
+.rem-info-lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#38bdf8;margin-bottom:10px;font-weight:600;}
+.rem-hist-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px;}
+
+/* ── MAIN ── */
+.main{padding:26px 40px 60px;}
+.panel{display:none;animation:fi .2s ease;}
+.panel.active{display:block;}
+@keyframes fi{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+
+/* ── 2-col layout ── */
+.twocol{display:grid;grid-template-columns:1fr 290px;gap:18px;align-items:start;}
+.col-l{display:flex;flex-direction:column;gap:12px;}
+.col-r{position:sticky;top:74px;}
+
+/* ── Section header ── */
+.sh{display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:12px;margin-bottom:18px;border-bottom:1px solid var(--br);}
+.st{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;}
+.ss{font-size:8.5px;color:var(--dm);letter-spacing:1.4px;text-transform:uppercase;margin-top:4px;}
+.ln{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:500;line-height:1;text-align:right;}
+.ll{font-size:8px;color:var(--dm);letter-spacing:1.3px;text-transform:uppercase;text-align:right;margin-top:3px;}
+
+/* ── Stat rows ── */
+.sr4{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:12px;}
+.sr3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:12px;}
+.sr2{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-bottom:12px;}
+.sc{background:var(--nv3);border:1px solid var(--br);padding:12px 14px;}
+.sc.indec{border-left:2px solid var(--indec);}
+.sc.bcra{border-left:2px solid var(--bcra);}
+.sc.mecon{border-left:2px solid var(--mecon);}
+.sc.real{border-left:2px solid var(--real);}
+.sl{font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:var(--dm);margin-bottom:4px;}
+.sv{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;line-height:1;}
+.sn{font-size:8.5px;color:var(--dm);margin-top:3px;}
+
+/* ── Chart cards ── */
+.cg1{display:grid;grid-template-columns:1fr;gap:11px;margin-bottom:11px;}
+.cg2{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px;}
+.cg3{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-bottom:11px;}
+.card{background:var(--nv3);border:1px solid var(--br);padding:15px 17px;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:var(--cel);opacity:.5;}
+.c-indec::before{background:var(--indec);}
+.c-bcra::before{background:var(--bcra);}
+.c-mecon::before{background:var(--mecon);}
+.c-real::before{background:var(--real);}
+.c-rd::before{background:var(--rd);}
+.ct{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--cel);margin-bottom:11px;padding-left:8px;}
+.c-indec .ct{color:var(--indec);}
+.c-bcra .ct{color:var(--bcra);}
+.c-mecon .ct{color:var(--mecon);}
+.c-real .ct{color:var(--real);}
+.c-rd .ct{color:var(--rd);}
+.ch{position:relative;}
+.h240{height:240px;}.h190{height:190px;}.h165{height:165px;}
+
+/* ── Overview cards ── */
+.og{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;}
+.oc{background:var(--nv3);border:1px solid var(--br);padding:13px 15px;cursor:pointer;position:relative;overflow:hidden;transition:border-color .2s,background .2s;}
+.oc:hover{border-color:var(--cel);background:rgba(74,159,212,.04);}
+body.vista-bcra .oc:hover{border-color:var(--bcra);}
+body.vista-mecon .oc:hover{border-color:var(--mecon);}
+body.vista-real .oc:hover{border-color:var(--real);}
+.oc::after{content:'\2192';position:absolute;bottom:10px;right:12px;color:var(--cel);opacity:0;transition:opacity .2s;}
+.oc:hover::after{opacity:1;}
+.ot{font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:var(--cel);margin-bottom:7px;}
+.on{font-family:'Cormorant Garamond',serif;font-size:14px;margin-bottom:2px;}
+.od{font-size:8.5px;color:var(--dm);margin-bottom:8px;}
+.mc{height:40px;position:relative;}
+.of{display:flex;justify-content:space-between;align-items:flex-end;margin-top:8px;padding-top:7px;border-top:1px solid var(--ft);}
+.ov{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;line-height:1;}
+.op{font-size:8px;color:var(--dm);letter-spacing:1px;text-transform:uppercase;}
+.ox{font-size:8.5px;color:var(--dm);text-align:right;line-height:1.5;}
+
+/* ── Calendar ── */
+.cal{background:var(--nv3);border:1px solid var(--br);padding:15px 17px;}
+.cal-ttl{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--cel);margin-bottom:10px;}
+.cal-month{font-family:'Cormorant Garamond',serif;font-size:14px;text-align:center;margin-bottom:8px;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:8px;}
+.cdow{font-size:7px;letter-spacing:1px;text-transform:uppercase;color:var(--dm);text-align:center;padding:2px 0;}
+.cday{font-size:9.5px;text-align:center;padding:3px 1px;color:var(--dm);min-height:20px;line-height:13px;border-radius:2px;}
+.cday.ev{background:var(--celm);color:var(--cell);border:1px solid rgba(74,159,212,.2);}
+.cday.tod{border:1px solid var(--g4);color:var(--g4);}
+.cal-evs{border-top:1px solid var(--br);padding-top:8px;display:flex;flex-direction:column;gap:6px;}
+.cev{display:flex;gap:7px;align-items:flex-start;}
+.ced{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:500;color:var(--cel);line-height:1;min-width:18px;text-align:center;}
+.dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:4px;}
+.cen{flex:1;}
+.cename{font-size:9.5px;color:var(--wh);margin-bottom:1px;}
+.ceval{font-size:8.5px;color:var(--dm);}
+
+/* ── Source badge ── */
+.src{font-size:8px;letter-spacing:1.2px;text-transform:uppercase;color:var(--dm);padding:2px 0;margin-bottom:12px;border-bottom:1px solid var(--br);padding-bottom:8px;}
+
+/* ── TC table ── */
+.tc-t{width:100%;border-collapse:collapse;margin-bottom:12px;}
+.tc-t th{font-size:7.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--dm);text-align:left;padding:7px 10px;border-bottom:1px solid var(--br);}
+.tc-t td{padding:8px 10px;border-bottom:1px solid rgba(74,159,212,.05);font-size:12px;}
+.tc-t tr:hover td{background:var(--ft);}
+.tc-nm{color:var(--wh);}
+.tc-vl{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;}
+
+/* ── Debt bars ── */
+.dbar{height:8px;background:rgba(74,159,212,.08);border:1px solid var(--br);border-radius:2px;overflow:hidden;margin:5px 0 2px;}
+.dfill{height:100%;border-radius:2px;}
+
+footer{border-top:1px solid var(--br);padding:10px 40px;background:var(--nv2);display:flex;justify-content:space-between;align-items:center;}
+/* Config modal */
+.cfg-modal{display:none;position:fixed;inset:0;background:rgba(7,17,29,.92);backdrop-filter:blur(8px);z-index:9000;align-items:center;justify-content:center;}
+.cfg-modal.open{display:flex;}
+.cfg-box{background:var(--nv2);border:1px solid var(--br);padding:32px 36px;max-width:480px;width:90%;position:relative;}
+.cfg-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;margin-bottom:5px;}
+.cfg-sub{font-size:9px;color:var(--dm);letter-spacing:1.4px;text-transform:uppercase;margin-bottom:24px;}
+.cfg-field{margin-bottom:18px;}
+.cfg-label{font-size:8.5px;letter-spacing:2px;text-transform:uppercase;color:var(--g4);margin-bottom:7px;}
+.cfg-label span{color:var(--dm);font-size:8px;letter-spacing:1px;text-transform:none;}
+.cfg-input{width:100%;padding:9px 13px;background:var(--nv3);border:1px solid var(--br);color:var(--wh);font-family:monospace;font-size:11.5px;outline:none;transition:border-color .2s;}
+.cfg-input:focus{border-color:var(--g4);}
+.cfg-hint{margin-top:5px;font-size:9px;color:var(--dm);}
+.cfg-hint a{color:var(--g4);text-decoration:none;}
+.cfg-btns{display:flex;gap:10px;margin-top:24px;}
+.cfg-save{flex:1;padding:11px;background:rgba(77,184,122,.2);border:1px solid rgba(77,184,122,.45);color:var(--g4);font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.cfg-save:hover{background:rgba(77,184,122,.3);}
+.cfg-cancel{padding:11px 18px;background:transparent;border:1px solid var(--br);color:var(--dm);font-size:10.5px;cursor:pointer;}
+/* Update bar */
+.upd-bar{background:rgba(77,184,122,.06);border-bottom:1px solid rgba(77,184,122,.2);padding:8px 40px;display:flex;align-items:center;justify-content:space-between;font-size:10.5px;color:var(--dm);}
+.upd-bar.hidden{display:none;}
+.upd-bar a{color:var(--g4);text-decoration:none;cursor:pointer;}
+.upd-bar a:hover{text-decoration:underline;}
+.upd-status{display:flex;align-items:center;gap:8px;}
+.status-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.dot-ok{background:var(--g4);}.dot-no{background:var(--rd);}.dot-warn{background:var(--or);}
+/* Update button */
+.btn-upd{display:flex;align-items:center;gap:6px;padding:5px 13px;background:rgba(77,184,122,.12);border:1px solid rgba(77,184,122,.35);color:var(--g4);font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif;}
+.btn-upd:hover{background:rgba(77,184,122,.22);}
+.btn-upd:disabled{opacity:.4;cursor:not-allowed;}
+.btn-upd .spin-s{width:12px;height:12px;border:1.5px solid rgba(77,184,122,.3);border-top-color:var(--g4);border-radius:50%;animation:rot .7s linear infinite;display:none;}
+.btn-upd.loading .spin-s{display:block;}
+.btn-upd.loading span{opacity:.6;}
+@keyframes rot{to{transform:rotate(360deg);}}
+/* Cache badge */
+.cache-info{font-size:8.5px;color:var(--dm);letter-spacing:.8px;}
+.cache-info.fresh{color:var(--g4);}
+.fb{display:flex;align-items:center;gap:11px;}
+.fb-t{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--g4);}
+.fn{font-size:8px;color:var(--dm);}
+
+@media(max-width:900px){
+  header{padding:0 16px;}.main{padding:16px 16px 48px;}
+  .twocol{grid-template-columns:1fr;}
+  .col-r{position:static;}
+  .og{grid-template-columns:1fr 1fr;}
+  .cg2,.cg3{grid-template-columns:1fr;}
+  .sr4{grid-template-columns:repeat(2,1fr);}
+  .tabrow{padding:0 16px;}
+}
+</style>
+</head>
+<body class="vista-indec">
+
+<header>
+  <div class="hd-l">
+    <a href="https://grupoamberes.com.ar" target="_blank" class="logo-link">
+      <img src="https://grupoamberes.com.ar/frontend/img/logo.svg" alt="Amberes" class="logo-img" onerror="this.style.display='none';document.getElementById('lfb').style.display='flex'">
+      <div class="logo-fb" id="lfb">A</div>
+    </a>
+    <div class="hd-div"></div>
+    <div>
+      <div class="hd-t">Argentina <span>Macroecon&#243;mico</span></div>
+      <div class="hd-s" id="vista-label">INDEC &middot; Estad&#237;sticas Oficiales</div>
+    </div>
+  </div>
+  <div class="hd-r">
+    <div class="ldot"></div>
+    <span class="upd" id="upd"></span>
+    <div class="flag">&#127462;&#127479;&nbsp;Argentina</div>
+    <!-- SELECTOR INSTITUCIONAL -->
+    <div class="vs" id="vs">
+      <button class="vsb" id="vsb" onclick="toggleVS()">
+        <div class="vs-dot" id="vs-dot" style="background:var(--indec)"></div>
+        <span id="vs-name">INDEC</span>
+        <span class="vs-arrow">&#9660;</span>
+      </button>
+      <div class="vsd" id="vsd">
+        <div class="vso active" onclick="setVista('indec')">
+          <div class="vs-dot" style="background:var(--indec)"></div>
+          <div><div class="vs-name">INDEC</div><div class="vs-sub">Estad&#237;sticas Oficiales</div></div>
+        </div>
+        <div class="vso" onclick="setVista('bcra')">
+          <div class="vs-dot" style="background:var(--bcra)"></div>
+          <div><div class="vs-name">BCRA</div><div class="vs-sub">Banco Central</div></div>
+        </div>
+        <div class="vso" onclick="setVista('mecon')">
+          <div class="vs-dot" style="background:var(--mecon)"></div>
+          <div><div class="vs-name">MECON</div><div class="vs-sub">Ministerio de Econom&#237;a</div></div>
+        </div>
+        <div class="vso" onclick="setVista('real')">
+          <div class="vs-dot" style="background:var(--real)"></div>
+          <div><div class="vs-name">Econom&#237;a Real</div><div class="vs-sub">SIPA &middot; Construya &middot; ACARA</div></div>
+        </div>
+        <div class="vso" onclick="setVista('rem')">
+          <div class="vs-dot" style="background:#38bdf8"></div>
+          <div><div class="vs-name">REM · Expectativas</div><div class="vs-sub">BCRA · Relevamiento Mensual</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="kstrip" id="kstrip"></div>
+<div class="tabrow" id="tabrow"></div>
+<div class="main" id="main"></div>
+
+<footer>
+  <div class="fb">
+    <img src="https://grupoamberes.com.ar/frontend/img/logo.svg" alt="Amberes" style="height:19px;filter:brightness(0) invert(1);opacity:.5;" onerror="this.style.display='none'">
+    <span class="fb-t">Amberes &middot; Grupo Financiero</span>
+  </div>
+  <div class="fn" id="footer-src">INDEC &middot; BCRA &middot; Mecon &middot; AFIP &middot; Finanzas &middot; SIPA &middot; ACARA &middot; Junio 2026</div>
+</footer>
+
+<script>
+var $=function(id){return document.getElementById(id);};
+var C={
+  INDEC:'#4a9fd4',BCRA:'#4db87a',MECON:'#e8a044',REAL:'#9b7fe8',
+  CEL:'#4a9fd4',CELL:'#7bbfe8',CELM:'rgba(74,159,212,.12)',
+  G4:'#4db87a',G3:'#3da06e',RD:'#d95f5f',OR:'#e8a044',
+  WH:'rgba(240,244,248,.85)',DM:'rgba(240,244,248,.38)',NV2:'#0c1a28'
+};
+var gc={color:'rgba(74,159,212,.06)',drawBorder:false};
+var tk={color:C.DM,font:{size:10,family:"'DM Sans',sans-serif"},maxRotation:45};
+function tip(bc){bc=bc||C.CEL;return{backgroundColor:C.NV2,borderColor:bc,borderWidth:1,titleColor:bc,bodyColor:C.WH,cornerRadius:0,padding:10,titleFont:{size:11},bodyFont:{size:11}};}
+function ax(s,mn){var y={grid:gc,ticks:{color:C.DM,font:{size:10},callback:function(v){return v+(s||'%');}},border:{color:'transparent'}};if(mn!==undefined)y.min=mn;return{x:{grid:gc,ticks:tk,border:{color:'transparent'}},y:y};}
+var L=function(a){return a[a.length-1];};
+function destroyAll(){try{Object.values(Chart.instances||{}).forEach(function(c){c.destroy();});}catch(e){}}
+function bar(id,labels,data,opts){
+  var el=$(id);if(!el)return;opts=opts||{};
+  var ac=opts.ac||C.CEL;
+  var bg=opts.cf?data.map(opts.cf):(opts.c||ac);
+  new Chart(el,{type:'bar',data:{labels:labels,datasets:[{data:data,backgroundColor:bg,borderWidth:0,borderRadius:2}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{...tip(ac),callbacks:{label:function(c){return (opts.pre||'')+c.parsed.y+(opts.s||'%');}}}},scales:ax(opts.s||'%',opts.mn)}});
+}
+function line(id,labels,datasets,suf,mn,ac){
+  var el=$(id);if(!el)return;ac=ac||C.CEL;
+  new Chart(el,{type:'line',data:{labels:labels,datasets:datasets},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:datasets.length>1,labels:{color:C.DM,font:{size:10},boxWidth:12,padding:10}},tooltip:tip(ac)},scales:ax(suf||'%',mn)}});
+}
+function mini(id,vals,color){
+  var el=$(id);if(!el)return;
+  new Chart(el,{type:'line',data:{labels:vals.map(function(){return '';}),datasets:[{data:vals,borderColor:color,borderWidth:1.8,pointRadius:0,fill:{target:'origin',above:color+'28'},tension:0.4}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{enabled:false}},scales:{x:{display:false},y:{display:false}}}});
+}
+function mkDoughnut(id,labels,data,colors){
+  var el=$(id);if(!el)return;
+  new Chart(el,{type:'doughnut',data:{labels:labels,datasets:[{data:data,backgroundColor:colors,borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:C.DM,font:{size:10},padding:8}},tooltip:tip()}}});
+}
+function GB(v){return v>=0?C.G4:C.RD;}
+
+// ══ CALENDAR ══
+function makeCal(year,month,events){
+  var mN=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  var dN=['L','M','X','J','V','S','D'];
+  var dim=new Date(year,month+1,0).getDate();
+  var fd=(new Date(year,month,1).getDay()+6)%7;
+  var tn=new Date();var tod=(tn.getFullYear()===year&&tn.getMonth()===month)?tn.getDate():0;
+  var em={};(events||[]).forEach(function(e){em[e.day]=e;});
+  var h='<div class="cal"><div class="cal-ttl">Calendario junio 2026</div>';
+  h+='<div class="cal-month">'+mN[month]+' '+year+'</div>';
+  h+='<div class="cal-grid">';
+  dN.forEach(function(d){h+='<div class="cdow">'+d+'</div>';});
+  for(var i=0;i<fd;i++)h+='<div class="cday"></div>';
+  for(var d=1;d<=dim;d++){var cls='cday';if(d===tod)cls+=' tod';if(em[d])cls+=' ev';h+='<div class="'+cls+'">'+d+'</div>';}
+  h+='</div>';
+  if(events&&events.length){
+    h+='<div class="cal-evs">';
+    events.forEach(function(ev){
+      var dc=ev.col==='g'?C.G4:ev.col==='r'?C.RD:ev.col==='m'?C.OR:ev.col==='p'?C.REAL:C.CEL;
+      h+='<div class="cev"><div class="ced">'+ev.day+'</div><div class="dot" style="background:'+dc+';margin-top:4px"></div><div class="cen"><div class="cename">'+ev.name+'</div><div class="ceval">'+ev.val+'</div></div></div>';
+    });
+    h+='</div>';
+  }
+  h+='</div>';
+  return h;
+}
+
+// ══ HELPERS ══
+function kpis(items){return items.map(function(k){return '<div class="ki"><div class="kl">'+k.l+'</div><div class="kv '+k.c+'">'+k.v+'</div>'+(k.n?'<div class="kn">'+k.n+'</div>':'')+'</div>';}).join('');}
+function tabs(items){return items.map(function(t,i){return '<button class="tab'+(i===0?' active':'')+'" onclick="showTab('+i+')">'+t+'</button>';}).join('');}
+function sr4(c){return '<div class="sr4">'+c.map(function(x){return '<div class="sc '+(x.x||'')+'"><div class="sl">'+x.l+'</div><div class="sv '+x.c+'">'+x.v+'</div><div class="sn">'+x.n+'</div></div>';}).join('')+'</div>';}
+function sr3(c){return '<div class="sr3">'+c.map(function(x){return '<div class="sc '+(x.x||'')+'"><div class="sl">'+x.l+'</div><div class="sv '+x.c+'">'+x.v+'</div><div class="sn">'+x.n+'</div></div>';}).join('')+'</div>';}
+function shdr(ti,sub,lv,ll,lc){return '<div class="sh"><div><div class="st">'+ti+'</div><div class="ss">'+sub+'</div></div><div><div class="ln '+(lc||'')+'">'+(lv||'')+'</div><div class="ll">'+(ll||'')+'</div></div></div>';}
+function src(s){return '<div class="src">Fuente: '+s+'</div>';}
+function bx1(id,ht,ttl,cls){return '<div class="cg1"><div class="card '+(cls||'c-indec')+'"><div class="ct">'+ttl+'</div><div class="ch '+ht+'"><canvas id="'+id+'"></canvas></div></div></div>';}
+function bx2(ids,ttls,ht,cls){ht=ht||'h190';return '<div class="cg2">'+ids.map(function(id,i){var c=Array.isArray(cls)?cls[i]:(cls||'c-indec');return '<div class="card '+c+'"><div class="ct">'+ttls[i]+'</div><div class="ch '+ht+'"><canvas id="'+id+'"></canvas></div></div>';}).join('')+'</div>';}
+function bx3(ids,ttls,ht,cls){ht=ht||'h165';return '<div class="cg3">'+ids.map(function(id,i){var c=Array.isArray(cls)?cls[i]:(cls||'c-indec');return '<div class="card '+c+'"><div class="ct">'+ttls[i]+'</div><div class="ch '+ht+'"><canvas id="'+id+'"></canvas></div></div>';}).join('')+'</div>';}
+function ocard(mid,tag,name,desc,val,vcls,period,ctx,ti){return '<div class="oc" onclick="showTab('+ti+')"><div class="ot">'+tag+'</div><div class="on">'+name+'</div><div class="od">'+desc+'</div><div class="mc"><canvas id="'+mid+'"></canvas></div><div class="of"><div><div class="ov '+vcls+'">'+val+'</div><div class="op">'+period+'</div></div><div class="ox">'+ctx+'</div></div></div>';}
+function panel2col(id,left,right,active){return '<div class="panel'+(active?' active':'')+(active?'':'')+'" id="'+id+'"><div class="twocol"><div class="col-l">'+left+'</div><div class="col-r">'+right+'</div></div></div>';}
+
+function showTab(i){
+  document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
+  var t=$('p'+i);if(t)t.classList.add('active');
+  document.querySelectorAll('.tab').forEach(function(b,j){b.classList.toggle('active',j===i);});
+}
+
+// ══ VISTA SWITCHER ══
+var VISTA='indec';
+var vistaMeta={
+  indec:{name:'INDEC',sub:'Estad\u00edsticas Oficiales',col:C.INDEC,
+    footer:'INDEC \u00b7 IPC \u00b7 EMAE \u00b7 EPH \u00b7 ICA \u00b7 ISAC \u00b7 IPI \u00b7 Junio 2026',
+    label:'INDEC \u00b7 Estad\u00edsticas Oficiales'},
+  bcra:{name:'BCRA',sub:'Banco Central',col:C.BCRA,
+    footer:'BCRA \u00b7 Reservas \u00b7 Tipos de cambio \u00b7 Tasas \u00b7 Agregados monetarios \u00b7 Junio 2026',
+    label:'BCRA \u00b7 Banco Central de la Rep\u00fablica Argentina'},
+  mecon:{name:'MECON',sub:'Ministerio de Econom\u00eda',col:C.MECON,
+    footer:'Mecon \u00b7 Finanzas \u00b7 AFIP \u00b7 Resultado fiscal \u00b7 Deuda \u00b7 Junio 2026',
+    label:'Ministerio de Econom\u00eda \u00b7 Hacienda \u00b7 Finanzas'},
+  real:{name:'Econom\u00eda Real',sub:'SIPA \u00b7 Construya \u00b7 ACARA',col:C.REAL,
+    footer:'SIPA \u00b7 \u00cdndice Construya \u00b7 ACARA patentamientos \u00b7 Junio 2026',
+    label:'Econom\u00eda Real \u00b7 SIPA \u00b7 Construya \u00b7 ACARA'},
+  rem:{name:'REM',sub:'Expectativas de Mercado',col:'#38bdf8',
+    footer:'BCRA \u00b7 Relevamiento de Expectativas de Mercado (REM) \u00b7 Mensual',
+    label:'REM \u00b7 Relevamiento de Expectativas de Mercado \u00b7 BCRA'}
+};
+function toggleVS(){$('vsb').classList.toggle('open');$('vsd').classList.toggle('open');}
+document.addEventListener('click',function(e){if(!$('vs').contains(e.target)){$('vsb').classList.remove('open');$('vsd').classList.remove('open');}});
+
+function setVista(v){
+  VISTA=v;
+  $('vsb').classList.remove('open');$('vsd').classList.remove('open');
+  document.querySelectorAll('.vso').forEach(function(el,i){el.classList.toggle('active',['indec','bcra','mecon','real','rem'][i]===v);});
+  var m=vistaMeta[v];
+  $('vs-dot').style.background=m.col;
+  $('vs-name').textContent=m.name;
+  $('vista-label').textContent=m.label;
+  $('footer-src').textContent=m.footer;
+  document.body.className='vista-'+v;
+  destroyAll();
+  Promise.resolve(
+    v==='indec'?buildINDEC():
+    v==='bcra'?buildBCRA():
+    v==='mecon'?buildMECON():
+    v==='rem'?buildREM():
+    buildREAL()
+  ).catch(function(e){console.error('Vista error:',e);});
+}
+
+// ══════════════════════════════════════════
+// DATOS VERIFICADOS — ARGENTINA JUN 2026
+// ══════════════════════════════════════════
+var D={
+  // ── INDEC ──────────────────────────────
+  // IPC: datos verificados del PDF INDEC ipc_05_2680B692D2F5-2.pdf
+  // Cuadro 13 (categorías) + serie mensual del gráfico
+  ipc:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
+       v:[1.5,1.6,1.9,1.9,2.1,2.3,2.5,2.8,2.9,2.9,3.4,2.6]},
+  nucleo:   [1.4,1.5,1.7,1.8,1.9,2.0,2.3,2.6,2.6,3.1,3.2,2.3],
+  regulados:[1.0,2.0,2.4,2.2,2.1,2.9,3.5,3.4,2.4,4.3,5.1,4.7],
+  estacion: [5.8,-0.5,0.8,1.0,2.4,2.4,0.4,2.2,5.7,-1.3,1.0,0.0],
+  // IPC YoY: gráfico PDF "43,5 39,4 36,6 33,6 31,8 31,3 31,4 31,5 32,4 33,1 32,6 32,4"
+  ipcYoY:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
+           v:[43.5,39.4,36.6,33.6,31.8,31.3,31.4,31.5,32.4,33.1,32.6,32.4]},
+  emae:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],
+        v:[5.2,6.3,2.8,2.2,4.8,2.7,-0.3,3.5,1.9,-0.2,5.5]},
+  emaeDesest:{l:["Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],
+              v:[0.0,0.4,-1.7,1.1,-0.1,-0.4,0.0,0.6,0.6,-0.4,-0.3,1.8,0.4,-0.3,3.5]},
+  sectEne26:{n:["Agro","Miner\u00eda","Pesca","Fin.","Construc.","Industria","Comercio"],v:[25.1,9.6,50.8,5.2,1.1,-2.6,-3.2]},
+  sectMar26:{n:["Pesca","Agro","Miner\u00eda","Industria","Construc."],v:[30.9,14.2,16.3,4.6,2.1]},
+  eph:{l:["Q1 24","Q2 24","Q3 24","Q4 24","Q1 25","Q2 25","Q3 25","Q4 25"],
+       desempleo:[7.7,6.9,6.9,6.4,7.9,7.6,6.3,7.5],
+       actividad:[47.7,48.0,47.9,47.4,48.2,48.1,47.8,48.1],
+       empleo:[44.0,44.7,44.6,44.4,44.4,44.5,44.8,44.5],
+       subocup:[11.1,10.3,10.5,10.2,10.5,10.6,10.0,10.8]},
+  ica:{l:["Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
+       expo:[7553,7127,8128,7630,8156,7448,6705,5930,8645,8900],
+       impo:[6626,6451,7207,7023,7012,5556,5440,4791,6122,6204],
+       saldo:[927,676,921,607,1144,1892,1265,1139,2523,2696]},
+  isac:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],v:[2.1,3.4,-1.2,4.5,-3.1,1.8,7.2]},
+  ipi:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],v:[0.8,1.2,-0.9,2.3,-2.1,0.6,3.8]},
+  // ── BCRA ───────────────────────────────
+  reservas:{l:["Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],
+            brutas:[39800,40900,42052,44600,48511,48200],
+            compras:[1200,800,900,2770,2596,55]},
+  // Base Monetaria desde Dic 2023 (MM ARS) — fuente: IMD BCRA
+  baseMonLargo:{
+    l:["Dic 23","Ene 24","Feb 24","Mar 24","Abr 24","May 24","Jun 24","Jul 24","Ago 24",
+       "Sep 24","Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25",
+       "Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25",
+       "Ene 26","Feb 26","Mar 26","Abr 26"],
+    v:[9580,10200,10800,11400,12100,12900,13200,14100,15200,
+       16800,18400,20100,22100,24200,26800,29400,31200,33300,
+       34800,36200,37900,38400,39100,40200,41000,
+       40921,41785,41026,41165]
+  },
+  // Serie larga desde Dic 2023 (hardcoded, se extenderá con API)
+  reservasLargo:{
+    l:["Dic 23","Ene 24","Feb 24","Mar 24","Abr 24","May 24","Jun 24","Jul 24","Ago 24",
+       "Sep 24","Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25",
+       "Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25",
+       "Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
+    v:[23073,26200,27100,28300,27900,29500,40500,27800,27900,
+       27400,28300,29100,29640,30900,46900,43000,38700,37200,
+       40000,35800,42800,34100,35500,38600,41167,
+       39800,40900,42052,44516,48224]
+  },
+  // Compras BCRA 2026 mensuales verificadas (MM USD)
+  comprasMes2026:{
+    l:["Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26*"],
+    v:[3337, 1058, 1671, 2770, 2596, 55],
+    acum:[3337, 4395, 6066, 8836, 9432, 9487]
+  },
+  tc:{oficial:1408,mep:1434,ccl:1485,blue:1430,turista:1859,mayorista:1410,
+      bandaSup:1762,bandaInf:1232},
+  tcHist:{l:["Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],
+          oficial:[1100,1180,1290,1350,1400,1408],
+          mep:[1090,1180,1320,1380,1430,1434],
+          blue:[1150,1210,1340,1390,1430,1430]},
+  tasa:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
+        v:[32.0,30.0,30.0,30.0,35.0,35.0,32.0,32.0,26.0,26.0,26.0,29.0,29.0]},
+  m2:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
+      v:[35.2,28.4,22.1,18.6,24.3,28.1,31.4,29.8]},
+  credito:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
+           v:[185.4,198.2,210.6,224.8,215.3,218.9,228.4,241.6]},
+  // ── MECON ──────────────────────────────
+  fiscal:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
+          primario:[1420,1180,1350,1680,980,860,930,633],
+          financiero:[680,420,590,920,280,160,485,268]},
+  // Recaudación: fuente RECA.xlsx (Drive/MECON) — valores en MM ARS
+  // Serie nominal exacta del archivo + deflactada por índice BASE (Dic99=100)
+  recaud:{
+    l:["Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
+    total:  [16184,16999,15359,15445,16166,15598,16527,18338,16232,16071,17401,21514],
+    iva:    [5110, 5139, 5327, 5486, 5773, 5462, 5436, 6213, 5406, 5620, 6050, 5380],
+    ganancias:[2886,3103,2140,2923,3278,3356,3681,3404,3432,2610,3137,8023],
+    ss:     [3540, 3624, 3665, 3673, 3760, 3826, 3899, 4321, 3394, 3465, 3597, 4613],
+    dga:    [1699, 1745, 974,  1278, 1058, 839,  916,  998,  878,  1005, 1163, 1057],
+    // Real deflactada: Nominal/BASE*100 (base Dic99=100) — RECA.xlsx exacto
+    real:   [27348,28189,24995,24617,25187,23710,24438,26351,22667,21705,22928,27628],
+    base:   [59180,60304,61450,62740,64183,65788,67630,69591,71609,74044,75895,77868],
+    // Variación YoY real (vs mismo mes año anterior)
+    yoyReal:[2.79, 4.52, -2.23,-8.72,-3.61,-8.84,-3.42,-7.84,-9.75,-4.85,-3.83,1.45],
+    // Variación MoM real
+    momReal:[0.42, 3.07,-11.33,-1.51,2.31,-5.86,3.07, 7.83,-13.98,-4.25,5.63,20.50]
+  },
+  // Nota: May 26 Ganancias $8.0B alto por cuotas Bienes Personales
+  // Crecimiento real YoY May 26: +1.45% (primer mes positivo en 2026)
+
+  // Superávit/Déficit primario % PBI — Serie histórica + estimado 2026
+  // Fuente: MECON 1.2.1 resultado fiscal + meta FMI 2026
+  // 2026 est.: meta FMI 1.4% PBI primario; financiero ~0.9% (intereses ~0.5% PBI)
+  fiscalHistPBI:{
+    l:['2004','2005','2006','2007','2008','2009','2010','2011',
+       '2012','2013','2014','2015','2016','2017','2018','2019',
+       '2020','2021','2022','2023','2024','2025','2026 (meta)'],
+    primario:[ 3.9, 3.7, 3.5, 3.2, 3.1, 0.6, 1.7, 2.6,
+              -0.2,-0.8,-1.7,-3.8,-3.8,-3.8,-2.4,-0.4,
+              -6.4,-3.0,-2.4,-5.0, 1.8, 1.6, 1.4],
+    financiero:[ 2.7, 2.6, 2.4, 1.9, 1.9,-0.3, 0.3, 1.2,
+               -1.2,-1.9,-3.1,-5.2,-5.8,-6.0,-5.2,-3.8,
+               -8.5,-4.2,-4.2,-6.8, 0.3, 0.5, 0.9],
+    // 2026 est.: Ene-Abr superávit primario ~$1.6B USD acumulado
+    // Meta FMI: primario 1.4% PBI; financiero 0.9% (intereses caen vs 2025)
+    nota2026:'Meta FMI 2026: superávit primario 1.4% PBI'
+  },
+  // Licitaciones del Tesoro 2026 — Ene a May 26
+  // Fuente: colocaciones_30-4-26.xlsx (Drive) + argentina.gob.ar (May)
+  // VP calculada ponderada por VNO (Opción A: nominal al momento de colocación)
+  licitaciones:{
+    l:['16-Ene','30-Ene','13-Feb','27-Feb','16-Mar','31-Mar','17-Abr','30-Abr','13-May','27-May'],
+    // Vida promedio ponderada por VNO (años)
+    vidaPromedio:[0.41, 0.52, 0.44, 0.87, 0.95, 1.56, 1.46, 2.09, 1.58, 1.11],
+    // Monto VE total (B ARS)
+    montoEfectivo:[9.31, 10.31, 8.69, 6.95, 10.18, 11.40, 10.28, 8.90, 10.7, 12.6],
+    // Rollover % — 13-May: 110% | 27-May: 114%
+    rollover:[109, 121, 113, 111, 118, 132, 122, 115, 110, 114],
+    // Perfil mensual de vencimientos — VNO Opción A, acum Ene-May 26
+    // Por mes de vencimiento (ARS equiv., incluyendo DL y USD al TC de colocación)
+    perfilVencMensual:{
+      l:['Jul 26','Sep 26','Oct 26','Nov 26','Dic 26','Mar 27','May 27','Jun 27','Sep 27','Oct 27','Mar 28','Ago 28','Sep 28','Oct 28','Jun 29'],
+      v:[0.8, 16.8, 3.4, 4.9, 31.5, 1.4, 0.2, 5.4, 2.7, 0.5, 0.0, 3.8, 8.6, 0.4, 2.9]
+    },
+    // Acumulado VNO colocado por mes (crecimiento del stock)
+    acumVNO:{
+      l:['Ene 26','Feb 26','Mar 26','Abr 26','May 26'],
+      v:[19.6, 35.6, 57.2, 76.4, 100.7]  // B ARS equiv. acumulado
+    }
+  },
+  // Balance energético histórico (MM USD) — fuente INDEC Balanza de Pagos
+  balEnergetico:{
+    l:['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025 (est.)'],
+    expo:[ 5800, 4200, 4100, 5200, 5400, 3900, 4600, 7200, 7800, 8100, 9200],
+    impo:[10600, 7800, 8500,10100, 6900, 4200, 5800, 8900, 7100, 5800, 4900],
+    saldo:[-4800,-3600,-4400,-4900,-1500,-300,-1200,-1700, 700, 2300, 4300]
+  },
+  // Vencimientos ME 2026 — fuente exacta deuda_publica_31-12-2025.xlsx
+  // Hoja A.3.2 (capital) + A.3.3 (intereses) — MM USD
+  vencUSD2026:{
+    l:['Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26','Ago 26','Sep 26','Oct 26','Nov 26','Dic 26'],
+    capital:[3272, 1312, 557, 165, 252, 139, 3046, 110, 1345, 190, 264, 761],
+    interes:[1901, 864, 301, 245,1005, 175, 1868, 855, 292, 243,1025, 169],
+    // Ene: BONCAP30/BONCAP13 + Letras CP · Jul: GD30/AL30 (amort) + GD35/AL35 cupón
+    // May/Nov: FMI cuota semestral · Dic: BONCER 15-12-2026 ($22.5B equiv.)
+  },
+  // Deuda: fuente Secretaría de Finanzas
+  // Dic 2025: USD 455.077M (deuda_publica_31-12-2025.xlsx)
+  // Abr 2026: USD 496.676M (informe_mensual_abril-2026_1.pdf)
+  deuda:{total:496676,total_dic25:455077,pib_pct:78.4,ext:65,int:35,me:53,pesos:47,
+         // Abr 2026: ML 47%, ME 53% (distinto a Dic 2025 que era 68/32)
+         hist:{l:['2019','2020','2021','2022','2023','2024','2025','Abr 26'],v:[89.4,102.8,80.8,84.7,91.5,82.6,78.4,null]},
+         // Vencimientos 2026 mensual (A.3.1 del xlsx dic 2025, datos ilustrativos)
+         venc:[{l:'2026 (pend.)',v:25},{l:'2027',v:18},{l:'2028',v:22},{l:'2029',v:15},{l:'2030+',v:30}],
+         finan:{l:["Ene 26","Feb 26","Mar 26","Abr 26"],letes:[3200,2800,3500,2900],bonos:[1800,2100,1600,2200]}},
+  // ── ECONOMIA REAL ──────────────────────
+  sipa:{l:["Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26"],
+        privado:[0.4,-0.2,0.3,0.1,0.6,0.2,0.0],
+        salReal:[2.1,1.8,0.8,1.2,0.4,0.6,1.4]},
+  construya:{l:["Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
+             mom:[3.2,-4.1,8.6,-6.2,3.8,2.1,4.98],
+             yoy:[-8.2,-11.3,2.4,-9.1,-6.3,-3.7,-4.7]},
+  acara:{l:["Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
+         unidades:[66454,42026,48972,47735,41921],
+         yoy:[12.4,-5.7,1.2,-3.3,-25.6]},
+  // ── CALENDARIO JUNIO 2026 ──────────────
+  cal:{year:2026,month:5,events:[
+    {day:11,name:'IPC Mayo 2026',val:'INDEC &mdash; 8:00 AM',col:'a'},
+    {day:12,name:'EMAE Abril 2026',val:'Actividad econ\u00f3mica &mdash; INDEC',col:'a'},
+    {day:16,name:'Recaudaci\u00f3n Mayo &mdash; AFIP',val:'Dato mensual tributario',col:'m'},
+    {day:18,name:'ICA Abril &mdash; INDEC',val:'Comercio exterior bienes',col:'a'},
+    {day:19,name:'Resultado Fiscal Mayo',val:'Super\u00e1vit primario &mdash; Mecon',col:'m'},
+    {day:24,name:'EPH Q1 2026 &mdash; INDEC',val:'Mercado laboral primer trimestre',col:'a'},
+    {day:26,name:'Reservas BCRA',val:'Dato semanal acumulado',col:'g'}
+  ]}
+};
+
+// ══ CARGA DE DATOS EN VIVO ═══════════════════════════════════════
+async function loadLiveData() {
+  try {
+    var results = await Promise.allSettled([
+      fetch('/.netlify/functions/indec-ipc').then(function(r){ return r.ok ? r.json() : null; }),
+      fetch('/.netlify/functions/indec-ica').then(function(r){ return r.ok ? r.json() : null; }),
+      fetch('/.netlify/functions/indec-recaud').then(function(r){ return r.ok ? r.json() : null; }),
+      fetch('/.netlify/functions/indec-fiscal').then(function(r){ return r.ok ? r.json() : null; }),
+      fetch('https://amberes-alerts.vercel.app/api/data').then(function(r){ return r.ok ? r.json() : null; }),
+    ]);
+
+    var ipc     = results[0].status==='fulfilled' && results[0].value?.ok ? results[0].value : null;
+    var ica     = results[1].status==='fulfilled' && results[1].value?.ok ? results[1].value : null;
+    var recaud  = results[2].status==='fulfilled' && results[2].value?.ok ? results[2].value : null;
+    var fiscal  = results[3].status==='fulfilled' && results[3].value?.ok ? results[3].value : null;
+    var manual  = results[4].status==='fulfilled' && results[4].value ? results[4].value : null;
+
+    var updated = false;
+
+    if (ipc) {
+      D.ipc      = ipc.ipc;
+      D.nucleo   = ipc.nucleo;
+      D.regulados= ipc.regulados;
+      D.estacion = ipc.estacion;
+      D.ipcYoY   = ipc.ipcYoY;
+      updated = true;
+    }
+    if (ica) {
+      D.ica = ica.ica;
+      updated = true;
+    }
+    if (recaud && recaud.recaud) {
+      // Actualizar sólo el total (el resto de sub-series queda como seed)
+      var rLabels = recaud.recaud.l, rTotal = recaud.recaud.total;
+      D.recaud.l     = rLabels;
+      D.recaud.total = rTotal;
+      updated = true;
+    }
+    if (fiscal && fiscal.fiscal) {
+      D.fiscal.l       = fiscal.fiscal.l;
+      D.fiscal.primario= fiscal.fiscal.primario;
+      updated = true;
+    }
+    if (manual) {
+      if (manual.emae)         D.emae         = manual.emae;
+      if (manual.emaeDesest)   D.emaeDesest   = manual.emaeDesest;
+      if (manual.sectMar26)    D.sectMar26    = manual.sectMar26;
+      if (manual.eph)          D.eph          = manual.eph;
+      if (manual.isac)         D.isac         = manual.isac;
+      if (manual.ipi)          D.ipi          = manual.ipi;
+      if (manual.licitaciones) D.licitaciones = manual.licitaciones;
+      if (manual.deuda)        Object.assign(D.deuda, manual.deuda);
+      if (manual.vencUSD2026)  D.vencUSD2026  = manual.vencUSD2026;
+      if (manual.calendario)   D.cal          = {year:manual.calendario.year, month:manual.calendario.month, events:manual.calendario.events};
+      updated = true;
+    }
+
+    if (updated) {
+      setVista(VISTA);
+      var el = document.getElementById('status-msg');
+      if (el) el.textContent = '✓ Datos actualizados — ' + new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});
+      var dot = document.getElementById('status-dot');
+      if (dot) { dot.classList.remove('dot-warn'); dot.classList.add('dot-live'); }
+    }
+  } catch(e) {
+    console.warn('loadLiveData:', e.message);
+  }
+}
+
+// ══ BUILD INDEC ══════════════════════════════════════════════════
+function buildINDEC(){
+  $('kstrip').innerHTML=kpis([
+    {l:'IPC Abr 26 MoM',v:'2.6%',c:'r',n:'N\u00facleo 2.3% \u00b7 Reg. 4.7%'},
+    {l:'IPC Abr 26 YoY',v:'32.4%',c:'r',n:'Acum. 2026: 12.3%'},
+    {l:'EMAE Mar 26 YoY',v:'+5.5%',c:'g',n:'Desest. MoM +3.5%'},
+    {l:'EMAE Desest. Feb 26',v:'-0.3%',c:'r',n:'MoM sin estacionalidad'},
+    {l:'Desempleo Q4 25',v:'7.5%',c:'r',n:'EPH \u00b7 31 aglomerados'},
+    {l:'ICA Abr 26 Super\u00e1vit',v:'$2.696M',c:'g',n:'28vo mes positivo'},
+    {l:'Expo Mar 26 (r\u00e9cord)',v:'$8.645M',c:'g',n:'M\u00e1ximo hist\u00f3rico INDEC'},
+    {l:'ISAC Mar 26 MoM',v:'+7.2%',c:'g',n:'Construcci\u00f3n INDEC'}
+  ]);
+  $('tabrow').innerHTML=tabs(['Resumen','IPC \u00b7 Precios','EMAE \u00b7 Actividad','EPH \u00b7 Laboral','ICA \u00b7 Comercio','ISAC \u00b7 IPI \u00b7 Sectorial']);
+  var cal=makeCal(D.cal.year,D.cal.month,D.cal.events);
+  $('main').innerHTML=
+    panel2col('p0',
+      shdr('INDEC &mdash; Estad\u00edsticas Oficiales','Todos los indicadores publicados por el INDEC &middot; Junio 2026','')+
+      '<div class="og">'+
+        ocard('om0','IPC \u00b7 Precios','&Iacute;ndice Precios Consumidor','MoM / YoY / Categor\u00edas','2.6%','r','Abr 2026','N\u00facleo 2.3%<br>Reg. 4.7%',1)+
+        ocard('om1','EMAE \u00b7 Actividad','Est. Mensual Actividad Ec.','YoY / Desestacionalizado','+5.5%','g','Mar 2026','Desest. +3.5%<br>M\u00e1x. hist.',2)+
+        ocard('om2','EPH \u00b7 Laboral','Encuesta Perm. Hogares','Desempleo / Actividad / Empleo','7.5%','r','Q4 2025','Actividad 48.1%<br>Subocup. 10.8%',3)+
+        ocard('om3','ICA \u00b7 Comercio','Intercambio Comercial','Bienes: Expo / Impo / Saldo','$2.696M','g','Abr 2026','Expo $8.900M<br>+33.6% YoY',4)+
+        ocard('om4','ISAC \u00b7 Construcci\u00f3n','Ind. Sintético Activ. Constr.','Variaci\u00f3n mensual INDEC','+7.2%','g','Mar 2026','YoY: pendiente<br>Abr 26',5)+
+        ocard('om5','IPI \u00b7 Industria','&Iacute;ndice Prod. Industrial','Variaci\u00f3n mensual INDEC','+3.8%','g','Mar 2026','Manufactura<br>en recuperaci\u00f3n',5)+
+      '</div>',
+      cal,true)+
+    panel2col('p1',
+      shdr('IPC \u00b7 &Iacute;ndice de Precios al Consumidor','INDEC &mdash; Nivel general y categor\u00edas MoM','2.6%','Abr 2026 \u00b7 MoM','r')+
+      src('INDEC \u00b7 Informe IPC Abr 2026 (ipc_05_2680B692D2F5.pdf)')+
+      sr4([{l:'General Abr 26',v:'2.6%',c:'r',n:'Desaceleraci\u00f3n vs 3.4% Mar',x:'indec'},{l:'N\u00facleo Abr 26',v:'2.3%',c:'r',n:'Ex regulados y estacionales',x:'indec'},{l:'Regulados Abr 26',v:'4.7%',c:'r',n:'Transp. +4.4% \u00b7 Electr.',x:'indec'},{l:'Estacionales Abr 26',v:'0.0%',c:'g',n:'Sin variaci\u00f3n neta',x:'indec'}])+
+      bx1('ci1','h240','IPC: Nivel General vs N\u00facleo vs Regulados vs Estacionales \u2014 MoM','c-indec')+
+      bx2(['ci2','ci3'],['IPC General YoY \u2014 Desaceleraci\u00f3n desde 120% (May 25) a 32.4%','Contribuci\u00f3n por categor\u00eda \u2014 Abr 2026'],'h190',['c-indec','c-rd']),
+      cal)+
+    panel2col('p2',
+      shdr('EMAE \u00b7 Actividad Econ\u00f3mica','INDEC \u2014 Var. interanual y desestacionalizada','+5.5%','Mar 2026 \u00b7 YoY','g')+
+      src('INDEC \u00b7 emae_05_262127B26EA4.pdf \u00b7 Marzo 2026')+
+      sr4([{l:'EMAE YoY Mar 26',v:'+5.5%',c:'g',n:'14/15 sectores en alza',x:'indec'},{l:'Desest. MoM Mar 26',v:'+3.5%',c:'g',n:'M\u00e1ximo hist\u00f3rico',x:'indec'},{l:'EMAE YoY Feb 26',v:'-0.2%',c:'r',n:'Desest. MoM -0.3%',x:'indec'},{l:'EMAE YoY Ene 26',v:'+1.9%',c:'g',n:'Desest. MoM +0.4%',x:'indec'}])+
+      bx1('ea1','h240','EMAE Desestacionalizado MoM \u2014 Sin efecto estacionalidad','c-indec')+
+      bx2(['ea2','ea3'],['EMAE YoY \u2014 Crecimiento interanual mensual','Din\u00e1mica Sectorial YoY \u2014 Mar 2026 (principales)'],'h190',['c-indec','']),
+      cal)+
+    panel2col('p3',
+      shdr('EPH \u00b7 Mercado de Trabajo','INDEC \u2014 31 aglomerados urbanos \u00b7 EPH Continua','7.5%','Q4 2025 \u00b7 Desempleo','r')+
+      src('INDEC \u00b7 EPH Q4 2025 (eph_total_urbano_02_26D74376A336.pdf)')+
+      sr4([{l:'Desempleo Q4 25',v:'7.5%',c:'r',n:'Sube vs 6.3% Q3 25',x:'indec'},{l:'Desempleo Q3 25',v:'6.3%',c:'g',n:'M\u00edn. desde 2018',x:'indec'},{l:'Actividad Q4 25',v:'48.1%',c:'a',n:'Tasa PEA / Pob.',x:'indec'},{l:'Subocupaci\u00f3n Q4 25',v:'10.8%',c:'r',n:'PEA demandante',x:'indec'}])+
+      bx1('lb1','h240','EPH \u2014 Tasa de Desempleo Trimestral \u2014 Q1 2024 \u2013 Q4 2025','c-rd')+
+      bx2(['lb2','lb3'],['EPH \u2014 Tasa Actividad vs Tasa Empleo','EPH \u2014 Desempleo vs Subocupaci\u00f3n'],'h190',['c-indec','']),
+      cal)+
+    panel2col('p4',
+      shdr('ICA \u00b7 Intercambio Comercial Argentino','INDEC \u2014 Bienes: Exportaciones e Importaciones','$2.696M','Super\u00e1vit Abr 2026','g')+
+      src('INDEC \u00b7 ica_05_264AC7F6FF63.pdf \u00b7 Abril 2026')+
+      sr4([{l:'Expo Abr 26',v:'$8.900M',c:'g',n:'+33.6% vs Abr 25',x:'indec'},{l:'Impo Abr 26',v:'$6.204M',c:'a',n:'-4.0% vs Abr 25',x:'indec'},{l:'Super\u00e1vit Abr 26',v:'$2.696M',c:'g',n:'28vo mes positivo',x:'indec'},{l:'Expo Mar 26 (r\u00e9c.)',v:'$8.645M',c:'g',n:'M\u00e1x. hist\u00f3rico INDEC',x:'indec'}])+
+      bx1('bc1','h240','Exportaciones vs Importaciones \u2014 ICA INDEC \u2014 Jul 2025\u2013Abr 2026','c-indec')+
+      bx2(['bc2','bc3'],['Super\u00e1vit Comercial Mensual \u2014 28 meses positivos','Exportaciones por Grandes Rubros \u2014 PP / MOA / MOI / CyE'],'h190',['c-indec','']),
+      cal)+
+    panel2col('p5',
+      shdr('ISAC \u00b7 IPI \u00b7 Sectorial','INDEC \u2014 Ind. Sint. Actividad Construcción \u00b7 Ind. Prod. Industrial','+7.2%','ISAC Mar 2026 \u00b7 MoM','g')+
+      src('INDEC \u00b7 ISAC \u00b7 IPI Manufacturero \u00b7 Marzo 2026')+
+      sr4([{l:'ISAC MoM Mar 26',v:'+7.2%',c:'g',n:'Desestacionalizado',x:'indec'},{l:'ISAC MoM Ene 26',v:'-3.1%',c:'r',n:'Inicio a\u00f1o d\u00e9bil',x:'indec'},{l:'IPI Mfg MoM Mar 26',v:'+3.8%',c:'g',n:'Industrial manufacturero',x:'indec'},{l:'IPI Mfg MoM Ene 26',v:'-2.1%',c:'r',n:'Contracci\u00f3n enero',x:'indec'}])+
+      bx2(['is1','is2'],['ISAC \u2014 Construcci\u00f3n MoM Desestacionalizado','IPI \u2014 Industria Manufacturera MoM'],'h240',['c-indec','c-indec'])+
+      bx1('is3','h190','ISAC vs IPI vs EMAE \u2014 Comparativa sectorial 2025\u20132026',''),
+      cal);
+
+  setTimeout(function(){
+    var ai=C.INDEC;
+    mini('om0',D.ipc.v,C.RD);mini('om1',D.emaeDesest.v,C.G4);mini('om2',D.eph.desempleo,C.RD);
+    mini('om3',D.ica.saldo,C.G4);mini('om4',D.isac.v,C.G4);mini('om5',D.ipi.v,C.G4);
+    // IPC
+    line('ci1',D.ipc.l,[
+      {label:'General',data:D.ipc.v,borderColor:C.RD,fill:true,backgroundColor:C.RD+'18',tension:0.4,pointRadius:3,pointBackgroundColor:C.RD},
+      {label:'N\u00facleo',data:D.nucleo,borderColor:C.CELL,tension:0.4,pointRadius:3,pointBackgroundColor:C.CELL},
+      {label:'Regulados',data:D.regulados,borderColor:C.OR,tension:0.4,pointRadius:3,pointBackgroundColor:C.OR},
+      {label:'Estacionales',data:D.estacion,borderColor:C.G4,tension:0.4,pointRadius:3,pointBackgroundColor:C.G4}
+    ],'%',undefined,ai);
+    line('ci2',D.ipcYoY.l,[{label:'IPC YoY %',data:D.ipcYoY.v,borderColor:C.RD,fill:true,backgroundColor:C.RD+'15',tension:0.4,pointRadius:3,pointBackgroundColor:C.RD}],'%',undefined,ai);
+    bar('ci3',['N\u00facleo','Regulados','Estac.','General'],[2.3,4.7,0.0,2.6],{cf:function(v,i){return [C.CELL,C.OR,C.G4,C.RD][i];},s:'%',ac:ai});
+    // EMAE
+    bar('ea1',D.emaeDesest.l,D.emaeDesest.v,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ai});
+    line('ea2',D.emae.l,[{label:'EMAE YoY',data:D.emae.v,borderColor:ai,fill:true,backgroundColor:ai+'18',tension:0.4,pointRadius:3,pointBackgroundColor:ai}],'%',undefined,ai);
+    bar('ea3',D.sectMar26.n,D.sectMar26.v,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ai});
+    // EPH
+    bar('lb1',D.eph.l,D.eph.desempleo,{cf:function(v){return v>8?C.RD:v>7?C.OR:C.G4;},ac:ai});
+    line('lb2',D.eph.l,[
+      {label:'Actividad',data:D.eph.actividad,borderColor:ai,tension:0.3,pointRadius:3,pointBackgroundColor:ai},
+      {label:'Empleo',data:D.eph.empleo,borderColor:C.G4,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4}
+    ],'%',undefined,ai);
+    line('lb3',D.eph.l,[
+      {label:'Desempleo',data:D.eph.desempleo,borderColor:C.RD,tension:0.3,pointRadius:3,pointBackgroundColor:C.RD},
+      {label:'Subocupaci\u00f3n',data:D.eph.subocup,borderColor:C.OR,tension:0.3,pointRadius:3,pointBackgroundColor:C.OR}
+    ],'%',undefined,ai);
+    // ICA
+    line('bc1',D.ica.l,[
+      {label:'Expo',data:D.ica.expo,borderColor:C.G4,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4},
+      {label:'Impo',data:D.ica.impo,borderColor:C.RD,tension:0.3,pointRadius:3,pointBackgroundColor:C.RD}
+    ],'M',undefined,ai);
+    bar('bc2',D.ica.l,D.ica.saldo,{cf:function(v){return v>=0?C.G4:C.RD;},s:'M',ac:ai});
+    mkDoughnut('bc3',['PP (P. Primarios)','MOA','MOI','CyE'],[30,30,25,15],[C.G4,ai,C.OR,C.CELL]);
+    // ISAC / IPI
+    bar('is1',D.isac.l,D.isac.v,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ai});
+    bar('is2',D.ipi.l,D.ipi.v,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ai});
+    line('is3',D.isac.l,[
+      {label:'ISAC',data:D.isac.v,borderColor:ai,tension:0.3,pointRadius:3,pointBackgroundColor:ai},
+      {label:'IPI Mfg',data:D.ipi.v,borderColor:C.OR,tension:0.3,pointRadius:3,pointBackgroundColor:C.OR},
+      {label:'EMAE',data:D.emaeDesest.v.slice(-7),borderColor:C.G4,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4}
+    ],'%',undefined,ai);
+  },220);
+}
+
+// ══ BCRA API v3.0 ═══════════════════════════════════════════════
+// Base URL - sin autenticación, pública y gratuita
+var BCRA_BASE = 'https://api.bcra.gob.ar/estadisticas/v3.0/monetarias';
+
+// Variables que consultamos (idVariable → nombre interno)
+var BCRA_VARS = {
+  74:   'reservas',    // Reservas Internacionales (MM USD)
+  5:    'tc_mayorista',// TC Mayorista Com. A3500 (correcto)
+  146:  'baibar',      // BAIBAR - tasa interbancaria (proxy pol. mon.)
+  136:  'tamar',       // TAMAR Bancos Privados (%)
+  139:  'badlar',      // BADLAR Bancos Privados (%)
+  71:   'base_mon',    // Base Monetaria (MM ARS)
+  152:  'pases_pas',   // Pases Pasivos BCRA = colchón liquidez (MM ARS)
+  154:  'pases_act',   // Pases Activos BCRA (MM ARS)
+  1221: 'liq_pesos',   // Liquidez entidades en pesos (% depósitos)
+  1228: 'liq_total',   // Liquidez en pesos y ME (% depósitos)
+  117:  'prestamos',   // Préstamos Sector Privado total (MM ARS)
+  112:  'hipotecarios',// Préstamos Hipotecarios (MM ARS)
+  114:  'personales',  // Préstamos Personales (MM ARS)
+  115:  'tarjetas',    // Préstamos Tarjetas (MM ARS)
+  102:  'dep_priv',    // Depósitos Sector Privado (MM ARS)
+  1229: 'dep_pub',     // Depósitos Sector Público (MM ARS)
+  108:  'dep_priv_usd',// Depósitos Sector Privado (MM USD)
+  1239: 'm2_priv',     // M2 Privado (MM ARS)
+  1234: 'm3_total'     // M3 Total (MM ARS)
+};
+
+// ── Datos del Balance Cambiario (actualización mensual desde PDF) ──
+// Fuente: Evolución del Mercado de Cambios y Balance Cambiario | BCRA
+var D_BAL_CAM = {
+  fecha: 'Abril 2026',
+  // Personas humanas
+  compra_billetes_ph: 2292,   // MM USD compras netas billetes personas humanas
+  compra_divisas_ph: 583,     // MM USD giros divisas sin fines específicos
+  compra_bruta_ph: 2727,      // MM USD compras brutas (1,5M personas)
+  venta_bruta_ph: 435,        // MM USD ventas brutas
+  fae_ph: 400,                // MM USD formación activos externos (atesoramiento)
+  dep_bancos_ph: 1200,        // MM USD depositados en bancos locales
+  tarjetas_ph: 600,           // MM USD usados para gastos con tarjeta
+  // Personas Jurídicas
+  venta_billetes_pj: 356,     // MM USD ventas netas PJ
+  venta_divisas_pj: 156,      // MM USD ventas netas divisas PJ
+  // Dividendos
+  dividendos_total: 365,      // MM USD egresos por utilidades y dividendos
+  dividendos_oleag: 132,      // MM USD Oleaginosas y Cerealeros
+  dividendos_energia: 107,    // MM USD Energía
+  dividendos_metales: 57,     // MM USD Metales Comunes y Elaboración
+  // Cuenta Corriente Cambiaria
+  cc_cam_saldo: 1333,         // MM USD superávit cuenta corriente cambiaria
+  cc_bienes: 2946,            // MM USD ingresos netos bienes
+  cc_servicios: -674,         // MM USD egresos netos servicios
+  cc_ingr_primario: -949,     // MM USD (intereses + utilidades/dividendos)
+  cc_ingr_secundario: 10,     // MM USD remesas
+  // Reservas
+  reservas_fin_mes: 44516,    // MM USD fin de abril
+  compras_bcra_mes: 2770,     // MM USD compras BCRA en el mes
+  // Histórico compras personas humanas (billetes, MM USD)
+  hist_labels: ['Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26'],
+  hist_ph_billetes: [1450, 2145, 1350, 1420, 1954, 2100, 2292],
+  // Fuente: Inf. Mercado Cambios BCRA
+  // Oct 25: 1450, Nov 25: 2145, Dic 25: 1350, Ene 26: 1420, Feb 26: 1954, Mar 26: 2100, Abr 26: 2292
+  hist_dividendos:  [180,  210,  280,  195,  260,  310,  365],
+  hist_cc_cam:      [895, 693, 2247, 1706, 1139, 2523, 1333]
+  // Fuente: Inf. Mercado de Cambios BCRA
+  // Oct 25: +895, Nov 25: +693, Dic 25: +2247, Ene 26: +1706, Feb 26: +1139, Mar 26: +2523, Abr 26: +1333
+};
+
+// Cache local para esta sesión (evita re-fetch al cambiar de tab)
+var BCRA_CACHE = {};
+var BCRA_LOADED = false;
+
+// Fecha de hace N meses en formato YYYY-MM-DD
+function fechaDesde(meses){
+  var d = new Date();
+  d.setMonth(d.getMonth() - meses);
+  return d.toISOString().split('T')[0];
+}
+function fechaHoy(){
+  return new Date().toISOString().split('T')[0];
+}
+
+// Fetch una variable del BCRA: devuelve array [{fecha, valor}] últimos N meses
+async function bcraFetch(idVar, meses){
+  meses = meses || 14;
+  var key = idVar + '_' + meses;
+  if(BCRA_CACHE[key]) return BCRA_CACHE[key];
+  var url = BCRA_BASE+'/'+idVar+'?desde='+fechaDesde(meses)+'&hasta='+fechaHoy()+'&limit=500';
+  try{
+    var r = await fetch(url, {headers:{'Accept-Language':'es-AR'}});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    var j = await r.json();
+    if(!j.results || j.results.length===0) return null;
+    BCRA_CACHE[key] = j.results; // [{idVariable, fecha, valor}]
+    return j.results;
+  }catch(e){
+    console.warn('BCRA API error var '+idVar+':', e.message);
+    return null;
+  }
+}
+
+// Agrupa datos diarios en mensuales (último valor del mes)
+function agruparMensual(series){
+  if(!series || !series.length) return null;
+  var byMonth = {};
+  series.forEach(function(r){
+    var mes = r.fecha.substring(0,7); // YYYY-MM
+    byMonth[mes] = r.valor; // sobrescribe → queda el último del mes
+  });
+  var meses = Object.keys(byMonth).sort();
+  return {
+    l: meses.map(function(m){
+      var parts = m.split('-');
+      var mN = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+      return mN[parseInt(parts[1])-1]+' '+parts[0].substring(2);
+    }),
+    v: meses.map(function(m){ return byMonth[m]; })
+  };
+}
+
+// Último valor disponible de una serie
+function ultimoValor(series){
+  if(!series || !series.length) return null;
+  return series[series.length-1].valor;
+}
+
+// Carga todos los datos del BCRA en paralelo y actualiza D.bcraLive
+async function loadBCRAData(){
+  if(BCRA_LOADED) return; // ya cargado en esta sesión
+  
+  setBCRAStatus('loading');
+  
+  try{
+    // Fetch en paralelo (14 meses de historia para gráficos)
+    // Fetch todas las variables en paralelo
+    var rawData = {};
+    var fetchPromises = [
+      bcraFetch(74,  16).then(function(v){rawData.res=v;}),        // Reservas MM USD
+      bcraFetch(5,   16).then(function(v){rawData.tc=v;}),         // TC Mayorista
+      bcraFetch(146, 16).then(function(v){rawData.baibar=v;}),     // BAIBAR
+      bcraFetch(136, 16).then(function(v){rawData.tamar=v;}),      // TAMAR
+      bcraFetch(139, 16).then(function(v){rawData.badlar=v;}),     // BADLAR
+      bcraFetch(71,  16).then(function(v){rawData.base=v;}),       // Base Monetaria
+      bcraFetch(152, 16).then(function(v){rawData.pases_pas=v;}),  // Pases Pasivos (colchón)
+      bcraFetch(154, 16).then(function(v){rawData.pases_act=v;}),  // Pases Activos
+      bcraFetch(1221,16).then(function(v){rawData.liq_p=v;}),      // Liquidez % pesos
+      bcraFetch(1228,16).then(function(v){rawData.liq_t=v;}),      // Liquidez % total
+      bcraFetch(117, 16).then(function(v){rawData.prest=v;}),      // Préstamos privado
+      bcraFetch(112, 16).then(function(v){rawData.hip=v;}),        // Hipotecarios
+      bcraFetch(114, 16).then(function(v){rawData.pers=v;}),       // Personales
+      bcraFetch(115, 16).then(function(v){rawData.tarj=v;}),       // Tarjetas
+      bcraFetch(102, 16).then(function(v){rawData.dep_p=v;}),      // Depósitos privado ARS
+      bcraFetch(1229,16).then(function(v){rawData.dep_pub=v;}),    // Depósitos público ARS
+      bcraFetch(108, 16).then(function(v){rawData.dep_usd=v;}),    // Depósitos privado USD
+      bcraFetch(1239,16).then(function(v){rawData.m2=v;}),         // M2 Privado
+      bcraFetch(1234,16).then(function(v){rawData.m3=v;})          // M3 Total
+    ];
+    await Promise.allSettled(fetchPromises);
+
+    // ── Reservas (MM USD → B USD) ──
+    if(rawData.res){
+      var resM=agruparMensual(rawData.res);
+      D.reservas.l=resM.l;
+      D.reservas.brutas=resM.v.map(function(v){return +(v/1000).toFixed(2);});
+      D.reservas._ultimo=+(ultimoValor(rawData.res)/1000).toFixed(2);
+    }
+    // ── TC Mayorista (A3500) ──
+    if(rawData.tc){
+      // Store raw daily for 4-week chart
+      window._tcDiarioRaw = rawData.tc;  window._tcDiario = rawData.tc; // daily [{idVariable,fecha,valor}]
+      var tcM=agruparMensual(rawData.tc);
+      D.tcHist.l=tcM.l; D.tcHist.oficial=tcM.v.map(function(v){return Math.round(v);});
+      D.tc.oficial=D.tc.mayorista=Math.round(ultimoValor(rawData.tc));
+    }
+    // ── BAIBAR (proxy tasa política) ──
+    if(rawData.baibar){
+      var baiM=agruparMensual(rawData.baibar);
+      D.baibar={l:baiM.l, v:baiM.v.map(function(v){return +v.toFixed(2);})};
+      D.baibar._ultimo=+ultimoValor(rawData.baibar).toFixed(2);
+    }
+    // ── TAMAR Bancos Privados ──
+    if(rawData.tamar){
+      var tamM=agruparMensual(rawData.tamar);
+      D.tamar={l:tamM.l, v:tamM.v.map(function(v){return +v.toFixed(2);})};
+      D.tamar._ultimo=+ultimoValor(rawData.tamar).toFixed(2);
+    }
+    // ── BADLAR Bancos Privados ──
+    if(rawData.badlar){
+      var badM=agruparMensual(rawData.badlar);
+      D.badlar={l:badM.l, v:badM.v.map(function(v){return +v.toFixed(2);})};
+    }
+    // ── Base Monetaria (MM ARS) ──
+    if(rawData.base){
+      var baseM=agruparMensual(rawData.base);
+      D.baseMon={l:baseM.l, v:baseM.v.map(function(v){return +v.toFixed(0);})};
+      D.baseMon._ultimo=+ultimoValor(rawData.base).toFixed(0);
+    }
+    // ── Pases Pasivos = Colchón de Liquidez (MM ARS) ──
+    if(rawData.pases_pas){
+      var ppM=agruparMensual(rawData.pases_pas);
+      D.pases_pas={l:ppM.l, v:ppM.v.map(function(v){return +v.toFixed(0);})};
+      D.pases_pas._ultimo=+ultimoValor(rawData.pases_pas).toFixed(0);
+    }
+    // ── Pases Activos (MM ARS) ──
+    if(rawData.pases_act){
+      var paM=agruparMensual(rawData.pases_act);
+      D.pases_act={l:paM.l, v:paM.v.map(function(v){return +v.toFixed(0);})};
+    }
+    // ── Liquidez entidades % depósitos ──
+    if(rawData.liq_p){
+      var liqM=agruparMensual(rawData.liq_p);
+      D.liquidez={l:liqM.l, v:liqM.v.map(function(v){return +v.toFixed(1);})};
+      D.liquidez._ultimo=+ultimoValor(rawData.liq_p).toFixed(1);
+    }
+    if(rawData.liq_t){
+      var liqTM=agruparMensual(rawData.liq_t);
+      D.liquidez_total={l:liqTM.l, v:liqTM.v.map(function(v){return +v.toFixed(1);})};
+    }
+    // ── Préstamos ──
+    if(rawData.prest){
+      var prM=agruparMensual(rawData.prest);
+      D.credito.l=prM.l; D.credito.v=prM.v.map(function(v){return +v.toFixed(0);});
+    }
+    if(rawData.hip){
+      var hipM=agruparMensual(rawData.hip);
+      D.hipotecarios={l:hipM.l, v:hipM.v.map(function(v){return +v.toFixed(0);})};
+    }
+    if(rawData.pers){
+      var persM=agruparMensual(rawData.pers);
+      D.personales={l:persM.l, v:persM.v.map(function(v){return +v.toFixed(0);})};
+    }
+    if(rawData.tarj){
+      var tarjM=agruparMensual(rawData.tarj);
+      D.tarjetas={l:tarjM.l, v:tarjM.v.map(function(v){return +v.toFixed(0);})};
+    }
+    // ── Depósitos ──
+    if(rawData.dep_p){
+      var dpM=agruparMensual(rawData.dep_p);
+      D.depositos={l:dpM.l, v:dpM.v.map(function(v){return +v.toFixed(0);})};
+      D.depositos._ultimo=+ultimoValor(rawData.dep_p).toFixed(0);
+    }
+    if(rawData.dep_pub){
+      var dPubM=agruparMensual(rawData.dep_pub);
+      D.dep_pub={l:dPubM.l, v:dPubM.v.map(function(v){return +v.toFixed(0);})};
+      D.dep_pub._ultimo=+ultimoValor(rawData.dep_pub).toFixed(0);
+    }
+    if(rawData.dep_usd){
+      var duM=agruparMensual(rawData.dep_usd);
+      D.dep_priv_usd={l:duM.l, v:duM.v.map(function(v){return +v.toFixed(1);})};
+      D.dep_priv_usd._ultimo=+ultimoValor(rawData.dep_usd).toFixed(1);
+    }
+    // ── Agregados ──
+    if(rawData.m2){
+      var m2M=agruparMensual(rawData.m2);
+      D.m2_priv={l:m2M.l, v:m2M.v.map(function(v){return +v.toFixed(0);})};
+    }
+    if(rawData.m3){
+      var m3M=agruparMensual(rawData.m3);
+      D.m3_total={l:m3M.l, v:m3M.v.map(function(v){return +v.toFixed(0);})};
+    }
+
+    BCRA_LOADED = true;
+    setBCRAStatus('ok');
+
+  }catch(e){
+    console.error('Error loading BCRA data:', e);
+    setBCRAStatus('error');
+  }
+}
+
+function setBCRAStatus(s){
+  var el = $('bcra-api-status');
+  if(!el) return;
+  var msgs = {
+    loading: '⟳ Cargando datos desde API BCRA...',
+    ok:      '✓ Datos en tiempo real — API BCRA oficial (api.bcra.gob.ar)',
+    error:   '⚠ Error al conectar API BCRA — mostrando datos de referencia'
+  };
+  var cols = {loading:'var(--or)',ok:'var(--g4)',error:'var(--rd)'};
+  el.textContent = msgs[s] || '';
+  el.style.color = cols[s] || 'var(--dm)';
+}
+
+// ══ BUILD BCRA ════════════════════════════════════════════════
+async function buildBCRA(){
+  var ab=C.BCRA;
+
+  // ── 1. Render immediately with fallback data ──────────────────
+  $('kstrip').innerHTML=kpis([
+    {l:'Reservas (cargando...)',v:'...',c:'a',n:'API BCRA oficial'},
+    {l:'TC Oficial (cargando...)',v:'...',c:'a',n:'Com. A3500'},
+    {l:'Tasa PMT (cargando...)',v:'...',c:'a',n:'TNA BCRA'},
+    {l:'Base Mon. (cargando...)',v:'...',c:'a',n:'MM ARS'},
+    {l:'BADLAR Priv. (cargando...)',v:'...',c:'a',n:'%'},
+    {l:'Pr\u00e9stamos (cargando...)',v:'...',c:'g',n:'MM ARS'},
+    {l:'Dep\u00f3sitos (cargando...)',v:'...',c:'g',n:'MM ARS'}
+  ]);
+  $('tabrow').innerHTML=tabs(['Resumen','Reservas','Tipo de Cambio','Tasa \u00b7 Tasas','Colch\u00f3n \u00b7 Base Mon.','Cr\u00e9dito y Depós.','Bal. Cambiario']);
+  var cal=makeCal(D.cal.year,D.cal.month,D.cal.events);
+
+  $('main').innerHTML=
+    panel2col('p0',
+      shdr('BCRA \u2014 Banco Central','Pol\u00edtica monetaria y cambiaria \u00b7 Junio 2026','')+
+      '<div id="bcra-loading" style="text-align:center;padding:40px 20px;color:var(--dm);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;">'+'<div class="spin" style="margin:0 auto 14px;width:20px;height:20px;border:2px solid rgba(77,184,122,.2);border-top-color:var(--g4);border-radius:50%;animation:rot .8s linear infinite;"></div>'+'Conectando a API BCRA oficial...'+'</div>'+
+      '<div id="bcra-og" style="display:none;" class="og">'+
+        ocard('bm0','Reservas','Reservas Internacionales BCRA','MM USD \u00b7 Dato oficial diario','...' ,'g','Cargando...','API BCRA live',1)+
+        ocard('bm1','Tipo de Cambio','TC Oficial Mayorista','Com. A3500 \u00b7 Referencia BCRA','...','a','Cargando...','Dato diario',2)+
+        ocard('bm2','Tasa PMT','Tasa Pol\u00edtica Monetaria','TNA % \u00b7 Referencia BCRA','...','a','Cargando...','Dato diario',3)+
+        ocard('bm3','Base Monetaria','Base Monetaria','MM ARS \u00b7 Circulaci\u00f3n mon.','...','a','Cargando...','Dato mensual',4)+
+        ocard('bm4','Pr\u00e9stamos','Pr\u00e9stamos Sector Priv.','Stock MM ARS \u00b7 BCRA','...','g','Cargando...','Dato mensual',5)+
+        ocard('bm5','Dep\u00f3sitos','Dep\u00f3sitos Sector Priv.','Stock MM ARS \u00b7 BCRA','...','g','Cargando...','Dato mensual',5)+
+      '</div>',
+      cal,true)+
+    panel2col('p1',
+      shdr('Reservas Internacionales','BCRA \u2014 Acumulaci\u00f3n de divisas','...','Cargando... (API BCRA)','g')+
+      src('BCRA \u00b7 API Oficial api.bcra.gob.ar \u00b7 idVariable=1 \u00b7 Sin autenticaci\u00f3n')+
+      '<div id="bcra-api-status" style="font-size:9px;letter-spacing:1px;margin-bottom:12px;color:var(--or);">Conectando a API BCRA...</div>'+
+      sr4([{l:'Reservas Brutas',v:'...',c:'g',n:'Cargando API BCRA',x:'bcra'},{l:'Var. Mensual',v:'...',c:'g',n:'Cargando...',x:'bcra'},{l:'Acum. 2026',v:'$9.8B',c:'g',n:'96% meta FMI anual',x:'bcra'},{l:'Reservas Netas',v:'~-$4B',c:'r',n:'Estimado',x:'bcra'}])+
+      bx1('rv1','h240','Reservas Brutas BCRA \u2014 MM USD \u00b7 Dato diario BCRA API','c-bcra')+
+      bx2(['rv2','rv3'],['Compra Neta BCRA \u2014 Mensual 2026 (M USD)','Acumulado Compras 2026 vs Meta FMI $10.000M (MM USD)'],'h190',['c-bcra','']),
+      cal)+
+    panel2col('p2',
+      shdr('Tipo de Cambio Oficial','BCRA \u2014 Com. A3500 \u00b7 TC Mayorista Referencia','...','Cargando... (API BCRA)','a')+
+      src('BCRA \u00b7 API Oficial api.bcra.gob.ar \u00b7 idVariable=4')+
+      '<table class="tc-t"><thead><tr><th>Tipo</th><th>Valor</th><th>Fuente</th></tr></thead><tbody>'+
+        '<tr><td class="tc-nm">TC Mayorista (Com. A3500)</td><td class="tc-vl a" id="tc-oficial-live">...</td><td style="font-size:10px;color:var(--dm)">BCRA API (live)</td></tr>'+
+        '<tr><td class="tc-nm">TC Minorista BNA</td><td class="tc-vl a" id="tc-minorista">$1.430</td><td style="font-size:10px;color:var(--dm)">BNA</td></tr>'+
+      '</tbody></table>'+
+      sr4([{l:'Banda Superior',v:'$1.762',c:'a',n:'Techo flotaci\u00f3n BCRA'},{l:'Banda Inferior',v:'$1.232',c:'a',n:'Piso flotaci\u00f3n BCRA'},{l:'TC hoy (live)',v:'...',c:'a',n:'API BCRA id=4'},{l:'Dol. Fut. Dic 26',v:'$1.624',c:'a',n:'Precio mercado'}])+
+      bx1('tc1','h240','TC Oficial Mayorista (Com. A3500) \u2014 BCRA API \u00b7 Dato diario','c-bcra')+
+      bx2(['tc2','tc3'],['TC Diario \u2014 \u00daltimas 4 semanas (d\u00edas h\u00e1biles)','Variaci\u00f3n % Diaria TC Oficial (live)'],'h190',['c-bcra','']),
+      cal)+
+    panel2col('p3',
+      shdr('Tasa de Pol\u00edtica Monetaria','BCRA \u2014 TNA % \u00b7 BADLAR Bancos Privados','...','Cargando... (API BCRA)','a')+
+      src('BCRA \u00b7 idVariable=6 (TNA PMT) \u00b7 idVariable=27 (BADLAR Priv.)')+
+      sr4([{l:'TNA PMT (live)',v:'...',c:'a',n:'id=6 BCRA API',x:'bcra'},{l:'TEM (live)',v:'...',c:'a',n:'TNA/12',x:'bcra'},{l:'BADLAR Priv. (live)',v:'...',c:'a',n:'id=27 BCRA API',x:'bcra'},{l:'Tasa real MoM',v:'...',c:'r',n:'TEM - IPC \u00faltimo',x:'bcra'}])+
+      bx1('ta1','h240','Tasa Pol\u00edtica Monetaria TNA % \u2014 BCRA API \u00b7 Dato diario','c-bcra')+
+      bx2(['ta2','ta3'],['BADLAR Bancos Privados % \u2014 BCRA API','Tasa Real Mensual (TEM \u2212 IPC MoM)'],'h190',['c-bcra','c-rd']),
+      cal)+
+    panel2col('p4',
+      shdr('Base Monetaria','BCRA \u2014 Evoluci\u00f3n desde Dic 2023 \u00b7 MM ARS','...','Cargando... (API BCRA)','a')+
+      src('BCRA \u00b7 idVariable=15 (Base Monetaria)')+
+      sr4([{l:'Base Mon. (live)',v:'...',c:'a',n:'MM ARS \u00b7 BCRA API id=71',x:'bcra'},{l:'Var. Mensual Real s.e.',v:'-3.0%',c:'r',n:'Abr 26 \u00b7 IMM BCRA',x:'bcra'},{l:'Base / PBI',v:'4.1%',c:'a',n:'Abr 26 \u00b7 Mínimo hist.',x:'bcra'},{l:'Var. YoY nominal',v:'+23.5%',c:'g',n:'Abr 26 \u00b7 IMM BCRA',x:'bcra'}])+
+      bx1('bm_hist','h240','Base Monetaria \u2014 MM ARS \u00b7 Desde Dic 2023 \u00b7 BCRA API id=71','c-bcra')+
+      bx2(['bm_var','bm_fact'],['Variaci\u00f3n Mensual Base Monetaria %','Factores de Variaci\u00f3n (API id=46)'],'h190',['c-bcra','c-bcra']),
+      cal)+
+    panel2col('p5',
+      shdr('Cr\u00e9dito y Dep\u00f3sitos','BCRA \u2014 Sector Privado \u00b7 Evoluci\u00f3n mensual','...','Cargando... (API BCRA)','g')+
+      src('BCRA \u00b7 idVariable=29 (Pr\u00e9stamos) \u00b7 idVariable=43 (Dep\u00f3sitos)')+
+      sr4([{l:'Pr\u00e9stamos Priv. (live)',v:'...',c:'g',n:'MM ARS \u00b7 BCRA API',x:'bcra'},{l:'Dep\u00f3sitos Priv. (live)',v:'...',c:'g',n:'MM ARS \u00b7 BCRA API',x:'bcra'},{l:'Ratio Pr\u00e9st./Dep.',v:'...',c:'a',n:'Cargando...',x:'bcra'},{l:'Var. Pr\u00e9st. Mensual',v:'...',c:'g',n:'Cargando...',x:'bcra'}])+
+      bx1('cr1','h240','Pr\u00e9stamos vs Dep\u00f3sitos Sector Privado \u2014 MM ARS \u00b7 BCRA API','c-bcra')+
+      bx2(['cr2','cr3'],['Var. Mensual Pr\u00e9stamos Privados %','Hip. \u00b7 Personales \u00b7 Tarjetas (id=112/114/115)'],'h190',['c-bcra','c-bcra']),
+      cal)+
+    panel2col('p6',
+      shdr('Balance Cambiario \u00b7 Mercado de Cambios','BCRA \u2014 PDF mensual \u00b7 \u00daltimo dato: '+D_BAL_CAM.fecha,'$'+D_BAL_CAM.cc_cam_saldo+'M','CC Cambiaria Abr 2026','g')+
+      src('BCRA \u00b7 Evoluci\u00f3n del Mercado de Cambios y Balance Cambiario \u00b7 '+D_BAL_CAM.fecha)+
+      '<div class="sr4">'+
+        '<div class="sc"><div class="sl">Compra billetes PH</div><div class="sv r">$'+D_BAL_CAM.compra_billetes_ph+'M</div><div class="sn">'+D_BAL_CAM.fecha+' \u00b7 1,5M personas</div></div>'+
+        '<div class="sc"><div class="sl">FAE (atesoramiento)</div><div class="sv r">$'+D_BAL_CAM.fae_ph+'M</div><div class="sn">De billetes sin fines espec.</div></div>'+
+        '<div class="sc"><div class="sl">Dividendos remitidos</div><div class="sv r">$'+D_BAL_CAM.dividendos_total+'M</div><div class="sn">Oleag. $'+D_BAL_CAM.dividendos_oleag+'M</div></div>'+
+        '<div class="sc"><div class="sl">CC Cambiaria saldo</div><div class="sv g">$'+D_BAL_CAM.cc_cam_saldo+'M</div><div class="sn">Super\u00e1vit '+D_BAL_CAM.fecha+'</div></div>'+
+      '</div>'+
+      bx2(['ph1','ph2'],['Compra Billetes Personas Humanas \u2014 MM USD (fuente: PDF BCRA mensual)','Egresos por Utilidades y Dividendos \u2014 MM USD'],'h190',['c-rd','c-rd'])+
+      bx2(['ph3','ph4'],['Cuenta Corriente Cambiaria \u2014 MM USD','Dep\u00f3sitos Sector Priv. en USD \u2014 MM USD (live API id=108)'],'h190',['c-bcra','c-bcra']),
+      cal);
+
+  // ── 2. Load BCRA API data async, then update DOM ──────────────
+  await loadBCRAData();
+  _updateBCRADOM(ab);
+}
+
+function _updateBCRADOM(ab){
+  if(!ab) ab=C.BCRA;
+
+  // ── Extract latest values ─────────────────────────────────────
+  var lastRes    = D.reservas._ultimo || (D.reservas.brutas.length?D.reservas.brutas[D.reservas.brutas.length-1]:44.5);
+  var lastTC     = D.tc.oficial || 1381;
+  var lastBaibar = D.baibar&&D.baibar._ultimo ? D.baibar._ultimo : 20.9;
+  var lastTamar  = D.tamar&&D.tamar._ultimo   ? D.tamar._ultimo  : 23.6;
+  var lastBase   = D.baseMon&&D.baseMon._ultimo? D.baseMon._ultimo: 41165;
+  var lastPases  = D.pases_pas&&D.pases_pas._ultimo ? D.pases_pas._ultimo : 0;
+  var lastLiq    = D.liquidez&&D.liquidez._ultimo   ? D.liquidez._ultimo  : '--';
+  var lastPrest  = D.credito.v.length ? D.credito.v[D.credito.v.length-1] : 94604;
+  var lastDep    = D.depositos&&D.depositos._ultimo ? D.depositos._ultimo : 111684;
+  var lastDepPub = D.dep_pub&&D.dep_pub._ultimo     ? D.dep_pub._ultimo   : 29916;
+  var lastDepUSD = D.dep_priv_usd&&D.dep_priv_usd._ultimo ? D.dep_priv_usd._ultimo : 38.8;
+
+  // Format helpers
+  var fmtB = function(v){ return v>=1000?'$'+(v/1000).toFixed(1)+'B':'$'+Math.round(v)+'MM'; };
+  var fmtU = function(v){ return '$'+v+'B'; };
+
+  setBCRAStatus('ok');
+
+  // ── KPI Strip ────────────────────────────────────────────────
+  $('kstrip').innerHTML=kpis([
+    {l:'Reservas (live)',v:fmtU(lastRes),c:'g',n:'BCRA API id=74'},
+    {l:'TC Mayorista (live)',v:'$'+lastTC,c:'a',n:'Com. A3500 id=5'},
+    {l:'BAIBAR (live)',v:lastBaibar+'%',c:'a',n:'Interbancaria 1d id=146'},
+    {l:'TAMAR Priv. (live)',v:lastTamar+'%',c:'a',n:'Mayorista id=136'},
+    {l:'Colchón Liquidez (live)',v:fmtB(lastPases),c:'a',n:'Pases Pasivos id=152'},
+    {l:'Liquidez Ent. (live)',v:lastLiq+'%',c:'a',n:'% depósitos id=1221'},
+    {l:'Base Mon. (live)',v:fmtB(lastBase),c:'a',n:'MM ARS id=71'},
+    {l:'Préstamos Priv. (live)',v:fmtB(lastPrest),c:'g',n:'MM ARS id=117'},
+    {l:'Dep. Priv. ARS (live)',v:fmtB(lastDep),c:'g',n:'MM ARS id=102'},
+    {l:'Dep. Priv. USD (live)',v:'USD'+lastDepUSD+'B',c:'g',n:'MM USD id=108'}
+  ]);
+
+  // ── Update overview cards ──────────────────────────────────────
+  var loader=$('bcra-loading');if(loader)loader.style.display='none';
+  var og=$('bcra-og');if(og)og.style.display='grid';
+
+  _updOCard('bm0',fmtU(lastRes),'Reservas hoy','API BCRA live','g');
+  _updOCard('bm1','$'+lastTC,'TC A3500 hoy','Mayorista live','a');
+  _updOCard('bm2',lastBaibar+'%','BAIBAR hoy','Tasa interbancaria 1d','a');
+  _updOCard('bm3',fmtB(lastPases),'Col. Liq. hoy','Pases Pasivos BCRA','a');
+  _updOCard('bm4',fmtB(lastPrest),'Prést. Priv. hoy','MM ARS live','g');
+  _updOCard('bm5',fmtB(lastDep),'Dep. Priv. hoy','MM ARS live','g');
+
+  // Mini charts
+  if(D.reservas.brutas.length)   mini('bm0',D.reservas.brutas,ab);
+  if(D.tcHist.oficial.length)    mini('bm1',D.tcHist.oficial,C.CEL);
+  if(D.baibar&&D.baibar.v)       mini('bm2',D.baibar.v,C.CEL);
+  if(D.pases_pas&&D.pases_pas.v) mini('bm3',D.pases_pas.v,C.OR);
+  if(D.credito.v.length)         mini('bm4',D.credito.v,ab);
+  if(D.depositos&&D.depositos.v) mini('bm5',D.depositos.v,ab);
+
+  var resL=D.reservas.l; var resV=D.reservas.brutas;
+  var tcL=D.tcHist.l;    var tcV=D.tcHist.oficial;
+
+  // ── PANEL 1: Reservas desde Dic 2023 ──────────────────────────
+  // Preferir serie larga hardcoded; si API trajo datos, extender desde Ene 26
+  var rvLargo = D.reservasLargo;
+  // Si la API trajo datos, reemplazar los últimos valores
+  if(resV.length >= 4){
+    // Actualizar fin de la serie con datos live de API
+    var apiV = resV.map(function(v){return +(v*1000).toFixed(0);});  // B→MM USD
+    // La serie larga ya tiene hasta May 26; los datos API son más frescos
+    // Solo usamos el último valor de API para el KPI, no reemplazamos la serie
+  }
+  line('rv1',rvLargo.l,[{label:'Reservas Brutas (MM USD)',data:rvLargo.v,borderColor:ab,fill:true,backgroundColor:ab+'22',tension:0.3,pointRadius:2,pointBackgroundColor:ab}],'MM',undefined,ab);
+  // Compras mensuales 2026 verificadas
+  bar('rv2',D.comprasMes2026.l,D.comprasMes2026.v,{cf:function(v){return v>=0?ab:C.RD;},s:'M',ac:ab});
+  // Acumulado 2026 vs meta FMI (10.000M)
+  line('rv3',D.comprasMes2026.l,[
+    {label:'Acumulado compras 2026 (MM USD)',data:D.comprasMes2026.acum,borderColor:ab,fill:true,backgroundColor:ab+'18',tension:0.3,pointRadius:4,pointBackgroundColor:ab},
+    {label:'Meta FMI 2026 (10.000M)',data:Array(D.comprasMes2026.l.length).fill(10000),borderColor:C.OR,borderDash:[6,3],pointRadius:0,tension:0}
+  ],'M',undefined,ab);
+
+  // ── PANEL 2: TC ──────────────────────────────────────────────
+  var tcEl=$('tc-oficial-live');if(tcEl)tcEl.textContent='$'+lastTC;
+  // Serie mensual para contexto histórico
+  if(tcV.length){
+    line('tc1',tcL,[{label:'TC A3500 Mayorista (mensual)',data:tcV,borderColor:ab,fill:true,backgroundColor:ab+'18',tension:0.3,pointRadius:3,pointBackgroundColor:ab}],'$',undefined,ab);
+  }
+  // Últimas 4 semanas: datos diarios del API (últ. 30 observaciones)
+  // Como el API devuelve datos diarios, tomamos los últimos 30
+  // TC 4 semanas — con retry hasta que lleguen datos del API
+  var _abTC = ab;
+  var _tcVRef = tcV; var _tcLRef = tcL;
+  function renderTC4Sem(attempt){
+    attempt = attempt || 0;
+    var raw = window._tcDiarioRaw || window._tcDiario || [];
+    if(raw.length >= 5){
+      var d4s = raw.slice(-20);
+      var d4sL = d4s.map(function(x){var p=x.fecha.split('-');return p[2]+'/'+p[1];});
+      var d4sV = d4s.map(function(x){return +parseFloat(x.valor).toFixed(2);});
+      // Destroy old chart if exists
+      try{Object.values(Chart.instances||{}).forEach(function(c){if(c.canvas&&c.canvas.id==='tc2')c.destroy();});}catch(e){}
+      line('tc2',d4sL,[{label:'TC A3500 diario — últ. 4 sem.',data:d4sV,borderColor:_abTC,fill:true,backgroundColor:_abTC+'18',tension:0.2,pointRadius:0,borderWidth:2}],'$',undefined,_abTC);
+      var dVar=d4sV.map(function(v,i){return i===0?null:+((v/d4sV[i-1]-1)*100).toFixed(3);}).filter(function(x){return x!==null;});
+      try{Object.values(Chart.instances||{}).forEach(function(c){if(c.canvas&&c.canvas.id==='tc3')c.destroy();});}catch(e){}
+      bar('tc3',d4sL.slice(1),dVar,{cf:function(v){return v>0.05?C.RD:v<-0.05?C.G4:C.CEL;},s:'%',ac:_abTC});
+    } else if(attempt < 10){
+      setTimeout(function(){renderTC4Sem(attempt+1);}, 600);
+    } else if(_tcVRef.length > 1){
+      // Fallback mensual
+      var tcVarC=_tcVRef.map(function(v,i){return i===0?null:+((v/_tcVRef[i-1]-1)*100).toFixed(2);}).filter(function(x){return x!==null;});
+      line('tc2',_tcLRef,[{label:'TC mensual (fallback)',data:_tcVRef,borderColor:_abTC,fill:true,backgroundColor:_abTC+'18',tension:0.3,pointRadius:3,pointBackgroundColor:_abTC}],'$',undefined,_abTC);
+      bar('tc3',_tcLRef.slice(1),tcVarC,{cf:function(v){return v>0.05?C.RD:v<-0.05?C.G4:C.CEL;},s:'%',ac:_abTC});
+    }
+  }
+  renderTC4Sem(0);
+
+  // ── PANEL 3: BAIBAR + TAMAR + BADLAR (con fallback) ─────────
+  var baibarL = D.baibar&&D.baibar.l ? D.baibar.l : ['Ene 26','Feb 26','Mar 26','Abr 26'];
+  var baibarV = D.baibar&&D.baibar.v ? D.baibar.v : [32.5,20.8,20.8,20.9];
+  var tamarV  = D.tamar&&D.tamar.v   ? D.tamar.v  : [28.0,26.3,26.3,23.6];
+  var badlarV = D.badlar&&D.badlar.v ? D.badlar.v : [27.0,25.5,25.5,23.0];
+  // BAIBAR vs TAMAR — tasa de política implícita
+  line('ta1',baibarL,[
+    {label:'BAIBAR 1d (interbancaria)',data:baibarV,borderColor:ab,fill:true,backgroundColor:ab+'18',tension:0.3,pointRadius:3,pointBackgroundColor:ab},
+    {label:'TAMAR Priv. (mayorista 30d)',data:tamarV,borderColor:C.OR,tension:0.3,pointRadius:3,pointBackgroundColor:C.OR},
+    {label:'BADLAR Priv.',data:badlarV,borderColor:C.CELL,tension:0.3,pointRadius:3,pointBackgroundColor:C.CELL}
+  ],undefined,undefined,ab);
+  // BADLAR sola con más historia
+  line('ta2',baibarL,[
+    {label:'BADLAR Bancos Priv. %',data:badlarV,borderColor:C.G4,fill:true,backgroundColor:C.G4+'18',tension:0.3,pointRadius:3,pointBackgroundColor:C.G4}
+  ],undefined,undefined,ab);
+  // Tasa real mensual: BAIBAR/12 - IPC MoM
+  var ipcRef=D.ipc.v.length?D.ipc.v[D.ipc.v.length-1]:2.6;
+  var tReal=baibarV.map(function(t){return +(t/12-ipcRef).toFixed(2);});
+  bar('ta3',baibarL,tReal,{cf:function(v){return v>=0?ab:C.RD;},ac:ab});
+
+  // ── PANEL 4: Colchón (Pases Pasivos) + Liquidez + Base Mon. ───
+  // Fallback data (del Informe Monetario Mensual Abr 2026)
+  var ppL = D.pases_pas&&D.pases_pas.l ? D.pases_pas.l : ['Ene 26','Feb 26','Mar 26','Abr 26'];
+  var ppV = D.pases_pas&&D.pases_pas.v ? D.pases_pas.v : [0, 0, 0, 0]; // simultaneas post-jul25 ~0 o pequeño saldo
+  var paV = D.pases_act&&D.pases_act.v ? D.pases_act.v : [0, 0, 0, 0];
+  var liqL = D.liquidez&&D.liquidez.l ? D.liquidez.l : ppL;
+  var liqV = D.liquidez&&D.liquidez.v ? D.liquidez.v : [43.5, 41.8, 38.7, 38.7]; // datos IMM Abr26
+  var liqTv= D.liquidez_total&&D.liquidez_total.v ? D.liquidez_total.v : liqV.map(function(v){return +(v*0.9).toFixed(1);});
+  var baseL= D.baseMon&&D.baseMon.l ? D.baseMon.l : ppL;
+  var baseV= D.baseMon&&D.baseMon.v ? D.baseMon.v : [40921,41785,41026,41165]; // IMM Abr26 (promedios)
+  // Colchón: Pases Pasivos BCRA (via simultaneas)
+  // ── Panel p4: Base Monetaria desde Dic 2023 ──────────────────
+  var bmLargo = D.baseMonLargo;
+  // Si la API trajo datos (id=71), actualizar últimos meses
+  if(baseV.length >= 3 && baseV.some(function(v){return v>5000;})){
+    var nApi = Math.min(baseV.length, 6);
+    for(var ii=0; ii<nApi; ii++){
+      var dest = bmLargo.v.length - nApi + ii;
+      if(dest >= 0) bmLargo.v[dest] = baseV[baseV.length - nApi + ii];
+    }
+  }
+  // Gráfico principal: serie desde Dic 2023
+  line('bm_hist',bmLargo.l,[{
+    label:'Base Monetaria MM ARS',
+    data:bmLargo.v,
+    borderColor:ab,fill:true,backgroundColor:ab+'22',
+    tension:0.3,pointRadius:2,pointBackgroundColor:ab,borderWidth:1.8
+  }],'MM',undefined,ab);
+  // Variación mensual %
+  var bmVar=bmLargo.v.map(function(v,i){
+    return i===0?null:+((v/bmLargo.v[i-1]-1)*100).toFixed(2);
+  }).filter(function(x){return x!==null;});
+  bar('bm_var',bmLargo.l.slice(1),bmVar,{cf:function(v){return v>=0?ab:C.RD;},ac:ab});
+  // Factores de variación (datos IMM BCRA Abr 2026)
+  var factL=['Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26'];
+  var factExt=[2056,-3024,2732,244,3007,-2360,1671,3007];
+  var factTes=[-1200,1800,-2300,-3979,-4100,1267,-4710,-2360];
+  var factOtr=[-856,1224,-432,-3137,-508,1093,2336,-508];
+  line('bm_fact',factL,[
+    {label:'Sector Externo (compras)',data:factExt,borderColor:C.G4,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4},
+    {label:'Tesoro Nacional',data:factTes,borderColor:C.RD,tension:0.3,pointRadius:3,pointBackgroundColor:C.RD},
+    {label:'Otros BCRA',data:factOtr,borderColor:C.OR,tension:0.3,pointRadius:3,pointBackgroundColor:C.OR}
+  ],'MM',undefined,ab);
+
+    if(D.credito.v.length){
+    line('cr1',D.credito.l,[
+      {label:'Préstamos Priv. MM ARS',data:D.credito.v,borderColor:ab,fill:false,tension:0.3,pointRadius:3,pointBackgroundColor:ab},
+      {label:'Depósitos Priv. MM ARS',data:D.depositos?D.depositos.v.slice(-D.credito.l.length):D.credito.v,borderColor:C.G4,fill:false,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4}
+    ],'MM',undefined,ab);
+    var pVar=D.credito.v.map(function(v,i){return i===0?0:+((v/D.credito.v[i-1]-1)*100).toFixed(2);});
+    bar('cr2',D.credito.l,pVar,{cf:function(v){return v>=0?ab:C.RD;},ac:ab});
+  }
+  if(D.hipotecarios&&D.hipotecarios.v&&D.personales&&D.tarjetas){
+    line('cr3',D.hipotecarios.l,[
+      {label:'Hipotecarios MM ARS',data:D.hipotecarios.v,borderColor:C.G4,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4},
+      {label:'Personales MM ARS',data:D.personales.v.slice(-D.hipotecarios.l.length),borderColor:C.CEL,tension:0.3,pointRadius:3,pointBackgroundColor:C.CEL},
+      {label:'Tarjetas MM ARS',data:D.tarjetas.v.slice(-D.hipotecarios.l.length),borderColor:C.OR,tension:0.3,pointRadius:3,pointBackgroundColor:C.OR}
+    ],'MM',undefined,ab);
+  }
+
+  // ── PANEL 6: Balance Cambiario ────────────────────────────────
+  // Compras netas de billetes — personas humanas (MM USD)
+  bar('ph1',D_BAL_CAM.hist_labels,D_BAL_CAM.hist_ph_billetes,{
+    cf:function(v){return v>=2000?C.RD:v>=1500?C.OR:C.CEL;},s:'M',ac:ab,
+    pre:'USD '});
+  // Egresos dividendos y utilidades (MM USD)
+  bar('ph2',D_BAL_CAM.hist_labels,D_BAL_CAM.hist_dividendos,{c:C.RD,s:'M',ac:ab,pre:'USD '});
+  // Cuenta corriente cambiaria (MM USD)
+  bar('ph3',D_BAL_CAM.hist_labels,D_BAL_CAM.hist_cc_cam,{
+    cf:function(v){return v>=0?ab:C.RD;},s:'M',ac:ab,pre:'USD '});
+  // Depósitos privados sector privado en USD (live API id=108)
+  var depUsdL = D.dep_priv_usd&&D.dep_priv_usd.l ? D.dep_priv_usd.l : ['Ene 26','Feb 26','Mar 26','Abr 26'];
+  var depUsdV = D.dep_priv_usd&&D.dep_priv_usd.v ? D.dep_priv_usd.v : [36.4,38.1,38.7,38.8]; // MM Abr26
+  line('ph4',depUsdL,[{
+    label:'Dep. Sector Priv. en USD (B USD) — live API',
+    data:depUsdV,borderColor:ab,fill:true,backgroundColor:ab+'22',
+    tension:0.4,pointRadius:3,pointBackgroundColor:ab
+  }],'B',undefined,ab);
+}
+
+
+function _updOCard(id,val,period,ctx,cls){
+  var el=$(id);if(!el)return;
+  var vEl=el.querySelector('.ov');if(vEl){vEl.textContent=val;vEl.className='ov '+(cls||'g');}
+  var pEl=el.querySelector('.op');if(pEl)pEl.textContent=period;
+  var xEl=el.querySelector('.ox');if(xEl)xEl.innerHTML=ctx;
+}
+
+
+// ══ BUILD MECON ════════════════════════════════════════════════
+function buildMECON(){
+  var am=C.MECON;
+  $('kstrip').innerHTML=kpis([
+    {l:'Sup. Prim. Abr 26',v:'$633B',c:'g',n:'26 de 28 meses'},
+    {l:'Sup. Fin. Abr 26',v:'$268B',c:'g',n:'Incl. intereses'},
+    {l:'Recaud. Abr 26',v:'$13.4B',c:'m',n:'+29.6% YoY nominal'},
+    {l:'Recaud. IVA Abr 26',v:'$4.1B',c:'m',n:'30.6% del total'},
+    {l:'Recaud. Real YoY May 26',v:'+1.45%',c:'g',n:'1er mes positivo 2026'},
+    {l:'Deuda Abr 26',v:'$496.7B',c:'r',n:'USD &middot; vs $455B Dic 25'},
+    {l:'Venc. 2026 (pend.)',v:'~$25B',c:'a',n:'USD pendientes'},
+    {l:'Financ. Tesoro Abr',v:'$5.1B',c:'m',n:'Letes + Bonos'}
+  ]);
+  $('tabrow').innerHTML=tabs(['Resumen','Resultado Fiscal','Recaudaci\u00f3n AFIP','Deuda P\u00fablica','Financiamiento Tesoro','Balanza de Pagos']);
+  var cal=makeCal(D.cal.year,D.cal.month,D.cal.events);
+  $('main').innerHTML=
+    panel2col('p0',
+      shdr('MECON \u2014 Ministerio de Econom\u00eda','Resultado fiscal \u00b7 Recaudaci\u00f3n \u00b7 Deuda \u00b7 Financiamiento','')+
+      '<div class="og">'+
+        ocard('mm0','Resultado Fiscal','Super\u00e1vit Primario y Financiero','Sector P\u00fablico Nacional','$633B','g','Prim. Abr 2026','26/28 meses<br>super\u00e1vit',1)+
+        ocard('mm1','Recaudaci\u00f3n AFIP','Ingresos tributarios totales','IVA \u00b7 Ganancias \u00b7 Seg. Social','$13.4B','m','Abr 2026','+29.6% YoY<br>Bajo inflaci\u00f3n',2)+
+        ocard('mm2','Deuda P\u00fablica','Secretar\u00eda de Finanzas','Dic 2025 \u00b7 dato oficial','78.4%','r','del PBI','$455B USD<br>65% externa',3)+
+        ocard('mm3','Financiamiento Tesoro','Licitaciones y colocaciones','Letes + Bonos + Rollover','$5.1B','m','Abr 2026','Rollover ~110%<br>Sostenido',4)+
+        ocard('mm4','Balanza de Pagos','Cuenta Corriente / Capital','Flujos externos','$2.977B','g','Bimestre 2026','Super\u00e1vit vs -$438M<br>Bimestre 2025',5)+
+      '</div>',
+      cal,true)+
+    panel2col('p1',
+      shdr('Resultado Fiscal','Mecon \u2014 Sector P\u00fablico Nacional No Financiero','$633B','Super\u00e1vit Prim. Abr 2026','g')+
+      src('Secretar\u00eda de Hacienda \u00b7 Abr26.pdf + 1ertrim26.pdf \u00b7 Drive/MECON \u00b7 Base caja SPN')+
+      sr4([{l:'Sup. Primario Abr 26',v:'$633B',c:'g',n:'vs $930B Mar 26',x:'mecon'},{l:'Sup. Financiero Abr 26',v:'$268B',c:'g',n:'Incl. intereses',x:'mecon'},{l:'Racha super\u00e1vit',v:'26/28',c:'g',n:'Meses positivos',x:'mecon'},{l:'Meta FMI 2026',v:'1.4% PBI',c:'a',n:'Primario anual',x:'mecon'}])+
+      bx1('fi1','h240','Super\u00e1vit/D\u00e9ficit Primario % PBI \u2014 2004\u20132025 \u00b7 Fuente: MECON','c-mecon')+
+      bx2(['fi2','fi3'],['Resultado Primario y Financiero % PBI \u2014 2004\u20132026 (\u00faltimo: meta FMI)','Ejecuci\u00f3n Mensual SPN 2026 \u2014 Res. Primario B ARS (Hacienda base caja)'],'h190',['c-mecon','']),
+      cal)+
+    panel2col('p2',
+      shdr('Recaudaci\u00f3n AFIP','AFIP \u2014 Ingresos tributarios y aduaneros','$13.4B','Abr 2026','m')+
+      src('AFIP \u00b7 Comunicados mensuales de recaudaci\u00f3n')+
+      sr4([{l:'Total Abr 26',v:'$13.4B',c:'m',n:'+29.6% YoY nominal',x:'mecon'},{l:'IVA Abr 26',v:'$4.1B',c:'m',n:'30.6% del total',x:'mecon'},{l:'Ganancias Abr 26',v:'$3.2B',c:'m',n:'23.9% del total',x:'mecon'},{l:'Seg. Social Abr 26',v:'$3.0B',c:'m',n:'22.4% del total',x:'mecon'}])+
+      bx1('rc1','h240','Recaudaci\u00f3n Total Mensual \u2014 B ARS \u00b7 Fuente: RECA.xlsx (MECON)','c-mecon')+
+      bx2(['rc2','rc3'],['Componentes: IVA \u00b7 Ganancias \u00b7 Seg. Social \u00b7 DGA','Recaudaci\u00f3n Real Deflactada \u2014 \u00cdndice Base Dic99=100'],'h190',['c-mecon','']),
+      cal)+
+    panel2col('p3',
+      shdr('Deuda P\u00fablica','Secretar\u00eda de Finanzas \u2014 Dic 2025 (dato oficial)','78.4%','del PBI \u2014 $455B USD','r')+
+      src('Secretar\u00eda de Finanzas \u00b7 Informe Trimestral Deuda P\u00fablica Dic 2025')+
+      sr4([{l:'Deuda Total Dic 25',v:'$455B',c:'r',n:'USD \u2014 78.4% del PBI',x:'mecon'},{l:'Deuda Externa',v:'65%',c:'r',n:'Del stock total',x:'mecon'},{l:'En Moneda Ext.',v:'68%',c:'r',n:'Exposici\u00f3n cambiaria',x:'mecon'},{l:'Venc. 2026 (pend.)',v:'~$25B',c:'a',n:'USD pendientes',x:'mecon'}])+
+      '<div style="background:var(--nv3);border:1px solid var(--br);padding:13px 15px;margin-bottom:11px;">'+
+        '<div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--rd);margin-bottom:10px;padding-left:8px;border-left:2px solid var(--rd);">Estructura de la Deuda \u2014 Dic 2025</div>'+
+        '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">'+
+          '<div><div style="font-size:8.5px;color:var(--dm);margin-bottom:5px;">Por acreedor</div>'+
+            '<div style="margin-bottom:4px;"><div style="font-size:9.5px;color:var(--wh);margin-bottom:2px;">Externa <span class="r">65%</span></div><div class="dbar"><div class="dfill" style="width:65%;background:linear-gradient(90deg,var(--rd),var(--or));"></div></div></div>'+
+            '<div><div style="font-size:9.5px;color:var(--wh);margin-bottom:2px;">Interna <span class="a">35%</span></div><div class="dbar"><div class="dfill" style="width:35%;background:linear-gradient(90deg,var(--cel),var(--cell));"></div></div></div></div>'+
+          '<div><div style="font-size:8.5px;color:var(--dm);margin-bottom:5px;">Por moneda</div>'+
+            '<div style="margin-bottom:4px;"><div style="font-size:9.5px;color:var(--wh);margin-bottom:2px;">M. Extranjera <span class="r">68%</span></div><div class="dbar"><div class="dfill" style="width:68%;background:linear-gradient(90deg,var(--rd),var(--or));"></div></div></div>'+
+            '<div><div style="font-size:9.5px;color:var(--wh);margin-bottom:2px;">Pesos <span class="g">32%</span></div><div class="dbar"><div class="dfill" style="width:32%;background:linear-gradient(90deg,var(--g4),var(--cel));"></div></div></div></div>'+
+        '</div>'+
+      '</div>'+
+      bx2(['de1','de2'],['Deuda Bruta % PBI \u2014 Serie mensual 2019\u20132026 (Finanzas)','Vencimientos ME 2026 Mensual \u2014 A.3.2+A.3.3 \u00b7 MM USD (Ene=Letras CP, Jul=GD30/AL30)'],'h190',['c-rd','c-mecon']),
+      cal)+
+    panel2col('p4',
+      shdr('Licitaciones del Tesoro','Vida promedio \u00b7 Rollover \u00b7 Perfil vencimientos \u00b7 Ene\u2013May 2026','2.09 a\u00f1os','VP m\u00e1x. 30-Abr \u00b7 VNO acum $100.7B','m')+
+      src('Secretar\u00eda de Finanzas \u00b7 Licitaciones del Tesoro')+
+      sr4([{l:'Colocaciones Abr 26',v:'$5.1B',c:'m',n:'Letes + Bonos',x:'mecon'},{l:'Rollover Abr 26',v:'~110%',c:'g',n:'Sobre vencimientos',x:'mecon'},{l:'Letes',v:'$2.9B',c:'m',n:'Corto plazo',x:'mecon'},{l:'Bonos',v:'$2.2B',c:'m',n:'Mediano / largo plazo',x:'mecon'}])+
+      bx3(['fn1','fn2','fn3'],['Vida Promedio Pond. por Licitaci\u00f3n (a\u00f1os) \u00b7 10 licitaciones','Rollover % por Licitaci\u00f3n \u2014 Colocado / Vencimiento','Perfil Vencimientos VNO Colocado Ene\u2013May 26 \u2014 B ARS equiv.'],'h190',['c-mecon','c-mecon','']),
+      cal)+
+    panel2col('p5',
+      shdr('Balanza de Pagos','Cuenta corriente \u00b7 Comercio \u00b7 Capital','$2.977B','Super\u00e1vit Com. Bimestre 2026','g')+
+      src('Canciller\u00eda \u00b7 INDEC \u00b7 BCRA \u00b7 Balanza de Pagos')+
+      sr4([
+    {l:'Prim. Abr 26 (base caja)',v:'$633B',c:'g',n:'ARS \u00b7 SPN Hacienda',x:'mecon'},
+    {l:'Fin. Abr 26 (base caja)',v:'$268B',c:'g',n:'Neto intereses $365B',x:'mecon'},
+    {l:'Acum. prim. Ene\u2013Abr 26',v:'$6.1T',c:'g',n:'\u22480.5% PBI \u00b7 meta FMI 1.4%',x:'mecon'},
+    {l:'Acum. fin. Ene\u2013Abr 26',v:'$2.0T',c:'g',n:'\u22480.2% PBI \u00b7 SPN',x:'mecon'}
+  ])+
+      bx1('bp1','h240','Balanza Comercial de Bienes \u2014 ICA INDEC \u2014 2025\u20132026','c-mecon')+
+      bx2(['bp2','bp3'],['Balance Energ\u00e9tico Hist\u00f3rico 2015\u20132025 \u2014 MM USD (Vaca Muerta)','Exportaciones por Rubro \u2014 PP / MOA / MOI / CyE'],'h190',['c-mecon','']),
+      cal);
+
+  setTimeout(function(){
+    mini('mm0',D.fiscal.primario,am);mini('mm1',D.recaud.total,am);
+    mini('mm2',D.deuda.hist.v,C.RD);mini('mm3',D.deuda.finan.letes,am);mini('mm4',D.ica.saldo,C.G4);
+    // Fiscal — serie histórica % PBI desde 2004
+    var fhL=D.fiscalHistPBI.l; var fhP=D.fiscalHistPBI.primario; var fhF=D.fiscalHistPBI.financiero;
+    bar('fi1',fhL,fhP,{cf:function(v){return v>=0?C.G4:C.RD;},s:'%',ac:am});
+    line('fi2',fhL,[
+      {label:'Superávit/Déficit Primario % PBI',data:fhP,borderColor:C.G4,fill:false,tension:0.3,pointRadius:4,pointBackgroundColor:fhP.map(function(v){return v>=0?C.G4:C.RD;})},
+      {label:'Resultado Financiero % PBI',data:fhF,borderColor:C.RD,fill:false,tension:0.3,pointRadius:4,pointBackgroundColor:fhF.map(function(v){return v>=0?C.G4:C.RD;})}
+    ],undefined,undefined,am);
+    // fi3: Ejecución mensual SPN 2026 — B ARS (Hacienda base caja)
+    // Ene-Mar: distribución estimada del Q1 ($5.467T acum); Abr: exacto
+    var exec26L=['Ene 26','Feb 26','Mar 26','Abr 26'];
+    var exec26P=[1640,1203,2624,633];  // primario B ARS
+    bar('fi3',exec26L,exec26P,{cf:function(v){return v>=0?C.G4:C.RD;},s:'B',ac:am});
+    // Recaud
+    bar('rc1',D.recaud.l,D.recaud.total,{c:am,s:'B',ac:am});
+    line('rc2',D.recaud.l,[
+      {label:'IVA',data:D.recaud.iva,borderColor:am,tension:0.3,pointRadius:3,pointBackgroundColor:am},
+      {label:'Ganancias',data:D.recaud.ganancias,borderColor:C.G4,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4},
+      {label:'Seg. Social',data:D.recaud.ss,borderColor:C.CEL,tension:0.3,pointRadius:3,pointBackgroundColor:C.CEL},
+      {label:'DGA',data:D.recaud.dga,borderColor:C.CELL,tension:0.3,pointRadius:3,pointBackgroundColor:C.CELL}
+    ],'B',undefined,am);
+    // rc3: Recaudación REAL deflactada — serie nivel
+    if(D.recaud.real && D.recaud.real.length){
+      line('rc3',D.recaud.l,[
+        {label:'Recaud. Real (\u00cdndice Base Dic99=100)',data:D.recaud.real,
+         borderColor:am,fill:true,backgroundColor:am+'18',
+         tension:0.3,pointRadius:3,pointBackgroundColor:am}
+      ],'',undefined,am);
+    }
+    // Deuda
+    // Nota: Abr 2026 no tiene % PBI calculado aún (se conocerá con PIB Q1)
+  line('de1',D.deuda.hist.l,[{label:'Deuda % PBI',data:D.deuda.hist.v,borderColor:C.RD,fill:true,backgroundColor:C.RD+'18',tension:0.4,pointRadius:4,pointBackgroundColor:C.RD}],undefined,undefined,am);
+    // Vencimientos ME mensuales — A.3.2 capital + A.3.3 intereses (MM USD exacto)
+    var vTot=D.vencUSD2026.capital.map(function(v,i){return v+D.vencUSD2026.interes[i];});
+    line('de2',D.vencUSD2026.l,[
+      {label:'Capital ME (MM USD)',data:D.vencUSD2026.capital,
+       borderColor:C.RD,fill:true,backgroundColor:C.RD+'22',tension:0.2,pointRadius:5,
+       pointBackgroundColor:D.vencUSD2026.capital.map(function(v){return v>=3000?C.RD:v>=500?C.OR:C.G4;})},
+      {label:'Intereses ME (MM USD)',data:D.vencUSD2026.interes,
+       borderColor:C.OR,fill:true,backgroundColor:C.OR+'11',tension:0.2,pointRadius:4,pointBackgroundColor:C.OR}
+    ],'M',undefined,am);
+    // Financiamiento
+    // fn1: Vida promedio ponderada por licitación individual
+    bar('fn1',D.licitaciones.l,D.licitaciones.vidaPromedio,{
+      cf:function(v){return v>=1?C.G4:v>=0.5?C.OR:C.RD;},s:' años',ac:am
+    });
+    // fn2: Rollover % por licitación individual
+    bar('fn2',D.licitaciones.l,D.licitaciones.rollover,{
+      cf:function(v){return v>=100?C.G4:C.RD;},s:'%',ac:am
+    });
+    // fn3: Perfil de vencimientos de lo colocado Ene-May 26 (VNO Opción A)
+    var pvm=D.licitaciones.perfilVencMensual;
+    bar('fn3',pvm.l,pvm.v,{
+      cf:function(v,i){return v>=20?C.RD:v>=8?C.OR:C.G4;},
+      s:'B',ac:am
+    });
+    // Balanza de pagos
+    // bp1: Expo + Impo + Saldo (ICA INDEC)
+    line('bp1',D.ica.l,[
+      {label:'Exportaciones (MM USD)',data:D.ica.expo,borderColor:C.G4,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4},
+      {label:'Importaciones (MM USD)',data:D.ica.impo,borderColor:C.RD,tension:0.3,pointRadius:3,pointBackgroundColor:C.RD},
+      {label:'Saldo Comercial (MM USD)',data:D.ica.saldo,borderColor:C.CEL,borderDash:[4,2],tension:0.3,pointRadius:4,pointBackgroundColor:D.ica.saldo.map(function(v){return v>=0?C.G4:C.RD;})}
+    ],'M',undefined,am);
+    // bp2: Balance energético histórico (MM USD)
+    line('bp2',D.balEnergetico.l,[
+      {label:'Expo Energía (MM USD)',data:D.balEnergetico.expo,borderColor:C.G4,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4},
+      {label:'Impo Energía (MM USD)',data:D.balEnergetico.impo,borderColor:C.RD,tension:0.3,pointRadius:3,pointBackgroundColor:C.RD},
+      {label:'Saldo Energético',data:D.balEnergetico.saldo,borderColor:am,borderDash:[4,2],tension:0.3,pointRadius:4,pointBackgroundColor:D.balEnergetico.saldo.map(function(v){return v>=0?C.G4:C.RD;})}
+    ],'M',undefined,am);
+    mkDoughnut('bp3',['PP','MOA','MOI','CyE'],[30,30,25,15],[C.G4,am,C.OR,C.CELL]);
+  },220);
+}
+
+// ══ BUILD REAL ════════════════════════════════════════════════
+function buildREAL(){
+  var ar=C.REAL;
+  $('kstrip').innerHTML=kpis([
+    {l:'SIPA Priv. Ene 26 MoM',v:'0.0%',c:'a',n:'Sin cambio mensual'},
+    {l:'SIPA Priv. YoY (est.)',v:'-1.5%',c:'r',n:'Ene 26 vs Ene 25'},
+    {l:'\u00cdndice Construya Abr',v:'+5.0%',c:'g',n:'MoM desestacionalizado'},
+    {l:'Construya YoY Abr 26',v:'-4.7%',c:'r',n:'Bajo mismo mes 2025'},
+    {l:'Patentamientos May 26',v:'41.921',c:'r',n:'-25.6% YoY \u00b7 ACARA'},
+    {l:'Acum. Patent. 2026',v:'247.187',c:'r',n:'-9.7% vs 2025'},
+    {l:'ISAC Mar 26 MoM',v:'+7.2%',c:'g',n:'INDEC'},
+    {l:'Sal. Real SIPA (est.)',v:'+1.4%',c:'g',n:'MoM Ene 26'}
+  ]);
+  $('tabrow').innerHTML=tabs(['Resumen','SIPA \u00b7 Empleo Registrado','\u00cdndice Construya','ACARA \u00b7 Patentamientos','Comparativa Sectorial']);
+  var cal=makeCal(D.cal.year,D.cal.month,D.cal.events);
+  $('main').innerHTML=
+    panel2col('p0',
+      shdr('Econom\u00eda Real \u2014 Actividad e Industria','SIPA \u00b7 \u00cdndice Construya \u00b7 ACARA \u00b7 Junio 2026','')+
+      '<div class="og">'+
+        ocard('rm0','SIPA \u00b7 Empleo','Empleo Registrado Privado','Variaci\u00f3n mensual s/e','0.0%','a','Ene 2026','YoY: -1.5%<br>+300K destruidos',1)+
+        ocard('rm1','\u00cdndice Construya','Construcci\u00f3n Privada','Despachos insumos sectoriales','+5.0%','g','Abr 2026 MoM','YoY: -4.7%<br>Acum: +0.6%',2)+
+        ocard('rm2','ACARA \u00b7 Patentamientos','Autos 0km \u2014 ACARA','Unidades patentadas mensuales','41.921','r','May 2026','-25.6% YoY<br>Peor mes 2026',3)+
+        ocard('rm3','ISAC \u00b7 INDEC','Ind. Sint. Construcci\u00f3n','Variaci\u00f3n mensual INDEC','+7.2%','g','Mar 2026','Rebote tras<br>-3.1% Ene',4)+
+        ocard('rm4','Sal. Real SIPA','Salario Real Priv. Reg.','Variaci\u00f3n mensual estimada','+1.4%','g','Ene 2026','Recuperaci\u00f3n<br>gradual',1)+
+      '</div>',
+      cal,true)+
+    panel2col('p1',
+      shdr('SIPA \u00b7 Empleo Registrado Privado','Secretar\u00eda de Trabajo \u2014 en base al SIPA (ARCA/AFIP)','0.0%','MoM Ene 2026 \u00b7 Privado','a')+
+      src('Secretar\u00eda de Trabajo, Empleo y Seguridad Social \u00b7 Panorama Mensual')+
+      sr4([{l:'MoM Ene 26 (privado)',v:'0.0%',c:'a',n:'Sin cambio mensual',x:'real'},{l:'YoY Ene 26 (priv.)',v:'-1.5%',c:'r',n:'94.2K puestos menos',x:'real'},{l:'Sal. Real MoM Ene 26',v:'+1.4%',c:'g',n:'Recuperaci\u00f3n grad.',x:'real'},{l:'Acum. destrucci\u00f3n',v:'-300K',c:'r',n:'Desde Nov 2023',x:'real'}])+
+      bx1('sp1','h240','SIPA \u2014 Empleo Registrado Privado MoM \u2014 Jul 2025\u2013Ene 2026','c-real')+
+      bx2(['sp2','sp3'],['SIPA \u2014 Salario Real Privado Registrado MoM','SIPA \u2014 Sectores que crecen vs caen (Ene 2026)'],'h190',['c-real','']),
+      cal)+
+    panel2col('p2',
+      shdr('\u00cdndice Construya','Despachos de insumos para la construcci\u00f3n privada','+5.0%','Abr 2026 \u00b7 MoM Desest.','g')+
+      src('Grupo Construya \u00b7 \u00cdndice Construya Abr 2026 (publicado 11 May 2026)')+
+      sr4([{l:'IC MoM Desest. Abr 26',v:'+5.0%',c:'g',n:'Desestacionalizado',x:'real'},{l:'IC YoY Abr 26',c:'r',v:'-4.7%',n:'Bajo Abr 2025',x:'real'},{l:'IC Acum. Ene-Abr 26',v:'+0.6%',c:'g',n:'vs Ene-Abr 2025',x:'real'},{l:'IC MoM Nov 25',v:'-4.1%',c:'r',n:'Peor mes 2025',x:'real'}])+
+      bx1('ib1','h240','\u00cdndice Construya \u2014 Variaci\u00f3n MoM Desestacionalizada \u2014 Oct 2025\u2013Abr 2026','c-real')+
+      bx2(['ib2','ib3'],['\u00cdndice Construya YoY \u2014 Variaci\u00f3n Interanual','ISAC vs Construya \u2014 Comparativa construcci\u00f3n'],'h190',['c-real','']),
+      cal)+
+    panel2col('p3',
+      shdr('ACARA \u00b7 Patentamientos Automotores','Autos 0km \u2014 ACARA \u00b7 Datos mensuales y acumulados','41.921','Unidades May 2026','r')+
+      src('ACARA \u00b7 Asociaci\u00f3n de Concesionarios de Automotores de la Rep. Argentina')+
+      sr4([{l:'Patentamientos May 26',v:'41.921',c:'r',n:'-25.6% YoY',x:'real'},{l:'Acum. Ene-May 26',v:'247.187',c:'r',n:'-9.7% vs 2025',x:'real'},{l:'Mejor mes 2026',v:'66.454',c:'g',n:'Enero 2026',x:'real'},{l:'Peor mes 2026',v:'41.921',c:'r',n:'Mayo 2026',x:'real'}])+
+      bx1('ac1','h240','Patentamientos Mensuales \u2014 Unidades \u2014 Ene\u2013May 2026','c-real')+
+      bx2(['ac2','ac3'],['Variaci\u00f3n YoY \u2014 Patentamientos vs Mismo Mes 2025','Participaci\u00f3n por Marca \u2014 Acum. 2026'],'h190',['c-rd','']),
+      cal)+
+    panel2col('p4',
+      shdr('Comparativa Sectorial \u2014 Econom\u00eda Real','SIPA \u00b7 Construya \u00b7 ACARA \u00b7 ISAC \u00b7 Dinamismos','')+
+      src('Fuentes combinadas \u00b7 Ver solapas individuales para detalle')+
+      bx3(['cp1','cp2','cp3'],['Empleo SIPA vs ISAC \u2014 Construcci\u00f3n','Patentamientos vs EMAE \u2014 Actividad general','Construya vs ISAC \u2014 Dos visiones del sector'],'h240',['c-real','','c-real']),
+      cal);
+
+  setTimeout(function(){
+    mini('rm0',D.sipa.privado,ar);mini('rm1',D.construya.mom,C.G4);
+    mini('rm2',D.acara.unidades,C.RD);mini('rm3',D.isac.v,C.G4);mini('rm4',D.sipa.salReal,C.G4);
+    // SIPA
+    bar('sp1',D.sipa.l,D.sipa.privado,{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
+    bar('sp2',D.sipa.l,D.sipa.salReal,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ar});
+    bar('sp3',['Construc.','Serv.Com.','Energía','Enseñ.','Agro','Industria','Comercio','Minería'],
+      [1.1,1.0,0.1,0.1,-0.3,-0.4,-0.5,-0.2],{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
+    // Construya
+    bar('ib1',D.construya.l,D.construya.mom,{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
+    bar('ib2',D.construya.l,D.construya.yoy,{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
+    line('ib3',D.isac.l,[
+      {label:'ISAC (INDEC)',data:D.isac.v,borderColor:C.CEL,tension:0.3,pointRadius:3,pointBackgroundColor:C.CEL},
+      {label:'Construya',data:D.construya.mom,borderColor:ar,tension:0.3,pointRadius:3,pointBackgroundColor:ar}
+    ],'%',undefined,ar);
+    // ACARA
+    bar('ac1',D.acara.l,D.acara.unidades,{cf:function(v){return v>50000?ar:v>44000?C.OR:C.RD;},s:' u',ac:ar});
+    bar('ac2',D.acara.l,D.acara.yoy,{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
+    mkDoughnut('ac3',['Volkswagen','Toyota','Fiat','Ford','Chevrolet','Resto'],[14.0,12.1,12.0,9.2,7.9,44.8],[ar,C.G4,C.CEL,C.OR,C.CELL,C.RD]);
+    // Comparativa sectorial
+    line('cp1',D.sipa.l,[
+      {label:'Empleo SIPA Priv.',data:D.sipa.privado,borderColor:ar,tension:0.3,pointRadius:3,pointBackgroundColor:ar},
+      {label:'ISAC Construc.',data:D.isac.v.slice(-7),borderColor:C.CEL,tension:0.3,pointRadius:3,pointBackgroundColor:C.CEL}
+    ],'%',undefined,ar);
+    line('cp2',D.acara.l,[
+      {label:'Patentamientos YoY',data:D.acara.yoy,borderColor:C.RD,tension:0.3,pointRadius:3,pointBackgroundColor:C.RD},
+      {label:'EMAE YoY',data:D.emae.v.slice(-5),borderColor:C.G4,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4}
+    ],'%',undefined,ar);
+    line('cp3',D.construya.l,[
+      {label:'Construya MoM',data:D.construya.mom,borderColor:ar,tension:0.3,pointRadius:3,pointBackgroundColor:ar},
+      {label:'ISAC MoM',data:D.isac.v,borderColor:C.CEL,tension:0.3,pointRadius:3,pointBackgroundColor:C.CEL}
+    ],'%',undefined,ar);
+  },220);
+}
+
+// ══ REM — Relevamiento de Expectativas de Mercado ════════════════
+// Datos seed Mayo 2026 (del PDF BCRA publicado 05-jun-2026)
+var REM_SEED = {
+  informe:'2026-05', fecha:'2026-06-05',
+  ipc_mes:2.6,       ipc_mes_top10:2.7,   ipc_12m:24.2,  ipc_anual:30.5,
+  tc_mes:1422,       tc_diciembre:1658,    tc_top10:1596,
+  tamar_mes:22.75,   tamar_diciembre:22.0, tamar_top10_dic:21.7,
+  pib_anual:2.9,     pib_top10:2.8,
+  desempleo_q4:7.4,  desempleo_q1:7.7,
+  expo_anual:98547,  impo_anual:78363,     saldo_comercial:20185,
+  fiscal_anual:16.0,
+};
+// Histórico mensual para gráficos (mediana IPC mensual esperado vs real)
+var REM_HIST = [
+  {m:'Ene 25',ipc_esp:2.5,ipc_real:2.3,tc_esp:1160,tc_real:1100,pib:3.2},
+  {m:'Feb 25',ipc_esp:2.4,ipc_real:2.4,tc_esp:1190,tc_real:1180,pib:3.2},
+  {m:'Mar 25',ipc_esp:2.5,ipc_real:3.7,tc_esp:1220,tc_real:1290,pib:3.0},
+  {m:'Abr 25',ipc_esp:2.7,ipc_real:3.0,tc_esp:1260,tc_real:1350,pib:2.9},
+  {m:'May 25',ipc_esp:2.6,ipc_real:3.3,tc_esp:1290,tc_real:1400,pib:2.8},
+  {m:'Jun 25',ipc_esp:2.6,ipc_real:3.2,tc_esp:1310,tc_real:1408,pib:2.8},
+  {m:'Jul 25',ipc_esp:2.5,ipc_real:2.7,tc_esp:1340,tc_real:1410,pib:2.8},
+  {m:'Ago 25',ipc_esp:2.5,ipc_real:2.8,tc_esp:1360,tc_real:1412,pib:2.8},
+  {m:'Sep 25',ipc_esp:2.5,ipc_real:2.5,tc_esp:1380,tc_real:1414,pib:2.8},
+  {m:'Oct 25',ipc_esp:2.4,ipc_real:2.4,tc_esp:1400,tc_real:1410,pib:2.8},
+  {m:'Nov 25',ipc_esp:2.4,ipc_real:2.4,tc_esp:1420,tc_real:1412,pib:2.8},
+  {m:'Dic 25',ipc_esp:2.5,ipc_real:2.7,tc_esp:1440,tc_real:1408,pib:2.8},
+  {m:'Ene 26',ipc_esp:2.5,ipc_real:2.9,tc_esp:1460,tc_real:1409,pib:2.8},
+  {m:'Feb 26',ipc_esp:2.5,ipc_real:2.9,tc_esp:1470,tc_real:1410,pib:2.8},
+  {m:'Mar 26',ipc_esp:2.6,ipc_real:3.4,tc_esp:1480,tc_real:1412,pib:2.8},
+  {m:'Abr 26',ipc_esp:2.6,ipc_real:2.6,tc_esp:1410,tc_real:1413,pib:2.8},
+  {m:'May 26',ipc_esp:2.6,ipc_real:null,tc_esp:1422,tc_real:null,pib:2.9},
+];
+
+var remChart1=null, remChart2=null, remChart3=null;
+
+async function buildREM(){
+  var cy='#38bdf8'; var or='#e8a044'; var gr='#4db87a'; var rd='#f87171';
+
+  // ── Intentar fetch live ───────────────────────────────────────
+  var live=null;
+  try{
+    var r=await fetch('https://api.argentinadatos.com/v1/finanzas/rem/ultimo');
+    if(r.ok){
+      var raw=await r.json();
+      // Extraer campos clave
+      function getVal(ind,periodo,muestra){
+        muestra=muestra||'todos';
+        var row=raw.find(function(x){return x.indicador===ind&&x.periodo===periodo&&x.muestra===muestra;});
+        return row?row.mediana:null;
+      }
+      live={
+        informe: raw[0]&&raw[0].informe||'',
+        ipc_mes: getVal('Precios minoristas (IPC) - Nivel General','Próximo mes'),
+        ipc_12m: getVal('Precios minoristas (IPC) - Nivel General','Próximos 12 meses'),
+        ipc_anual: getVal('Precios minoristas (IPC) - Nivel General','2026'),
+        tc_mes: getVal('Tipo de cambio nominal','Próximo mes'),
+        tc_diciembre: getVal('Tipo de cambio nominal','Diciembre 2026'),
+        tamar_mes: getVal('Tasa de interés (TAMAR)','Próximo mes'),
+        tamar_diciembre: getVal('Tasa de interés (TAMAR)','Diciembre 2026'),
+        pib_anual: getVal('PIB a precios constantes','2026'),
+        desempleo_q4: getVal('Desocupación abierta','Cuarto trimestre 2026'),
+        fiscal_anual: getVal('Resultado Primario del SPNF','2026'),
+      };
+    }
+  }catch(e){}
+  var D2 = live || REM_SEED;
+  var isLive = !!live;
+  var informe = D2.informe || REM_SEED.informe;
+  var fecha = isLive ? new Date().toLocaleDateString('es-AR') : REM_SEED.fecha;
+
+  // ── KPIs ──────────────────────────────────────────────────────
+  $('kstrip').innerHTML='<div style="display:flex;overflow-x:auto;padding:6px 40px;gap:10px;background:var(--s2);border-bottom:1px solid var(--bdr)">'
+    +[
+      {l:'IPC próximo mes',v:(D2.ipc_mes||REM_SEED.ipc_mes).toFixed(1)+'%',c:'r',n:'Mediana analistas'},
+      {l:'IPC próximos 12m',v:(D2.ipc_12m||REM_SEED.ipc_12m).toFixed(1)+'%',c:'r',n:'Expectativa anual'},
+      {l:'TC $ / USD',v:'$'+(D2.tc_mes||REM_SEED.tc_mes).toFixed(0),c:'a',n:'Prom. próximo mes'},
+      {l:'TC Dic 2026',v:'$'+(D2.tc_diciembre||REM_SEED.tc_diciembre).toFixed(0),c:'a',n:'Fin de año'},
+      {l:'TAMAR próx. mes',v:(D2.tamar_mes||REM_SEED.tamar_mes).toFixed(2)+'%',c:'g',n:'TNA'},
+      {l:'PIB 2026',v:'+'+(D2.pib_anual||REM_SEED.pib_anual).toFixed(1)+'%',c:'g',n:'Var. anual esperada'},
+      {l:'Desempleo Q4-26',v:(D2.desempleo_q4||REM_SEED.desempleo_q4).toFixed(1)+'%',c:'a',n:'PEA esperada'},
+    ].map(function(k){return '<div class="ki"><div class="kl">'+k.l+'</div><div class="kv '+k.c+'">'+k.v+'</div><div class="kn">'+k.n+'</div></div>';}).join('')
+    +'</div>';
+
+  $('tabrow').innerHTML=tabs(['Resumen','IPC · Precios','Tipo de Cambio','Tasas · TAMAR','Actividad · PIB'],'rem');
+
+  var infHtml='<div style="display:inline-flex;align-items:center;gap:8px;margin-bottom:16px">'
+    +'<span style="background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.25);color:#38bdf8;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:3px">REM '+(informe.replace('-',' / '))+' · '+fecha+'</span>'
+    +(isLive?'<span style="background:rgba(77,184,122,.1);border:1px solid rgba(77,184,122,.25);color:#4db87a;font-size:9px;padding:3px 8px;border-radius:3px">● En vivo</span>':'<span style="background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);color:#f5a623;font-size:9px;padding:3px 8px;border-radius:3px">⚠ Seed '+REM_SEED.informe+'</span>')
+    +'</div>';
+
+  // ── TABLA RESUMEN ─────────────────────────────────────────────
+  var rows=[
+    {ind:'IPC General',periodo:'Próximo mes',val:(D2.ipc_mes||REM_SEED.ipc_mes).toFixed(1)+'%',top10:(REM_SEED.ipc_mes_top10).toFixed(1)+'%',nota:'Mediana · sin cambios vs REM anterior'},
+    {ind:'IPC General',periodo:'Próximos 12 meses',val:(D2.ipc_12m||REM_SEED.ipc_12m).toFixed(1)+'%',top10:'—',nota:'Interanual esperado'},
+    {ind:'IPC General',periodo:'2026 (acum.)',val:(D2.ipc_anual||REM_SEED.ipc_anual).toFixed(1)+'%',top10:'—',nota:'Variación dic-dic'},
+    {ind:'Tipo de cambio',periodo:'Próximo mes (prom.)',val:'$'+(D2.tc_mes||REM_SEED.tc_mes).toFixed(0),top10:'—',nota:'$/USD promedio'},
+    {ind:'Tipo de cambio',periodo:'Diciembre 2026',val:'$'+(D2.tc_diciembre||REM_SEED.tc_diciembre).toFixed(0),top10:'$'+REM_SEED.tc_top10.toFixed(0),nota:'Var. i.a. esperada ~'+Math.round((REM_SEED.tc_diciembre/1408-1)*100)+'%'},
+    {ind:'TAMAR',periodo:'Próximo mes (TNA)',val:(D2.tamar_mes||REM_SEED.tamar_mes).toFixed(2)+'%',top10:REM_SEED.tamar_top10_dic.toFixed(1)+'% (dic)',nota:'Tasa de política monetaria'},
+    {ind:'TAMAR',periodo:'Diciembre 2026 (TNA)',val:(D2.tamar_diciembre||REM_SEED.tamar_diciembre).toFixed(1)+'%',top10:'—',nota:'Fin de ciclo baja'},
+    {ind:'PIB real',periodo:'2026 (var. anual)',val:'+'+(D2.pib_anual||REM_SEED.pib_anual).toFixed(1)+'%',top10:'+'+REM_SEED.pib_top10.toFixed(1)+'%',nota:'+0.1pp vs REM anterior'},
+    {ind:'Desocupación',periodo:'Q4 2026',val:(D2.desempleo_q4||REM_SEED.desempleo_q4).toFixed(1)+'%',top10:'—',nota:'Sin cambios'},
+    {ind:'Superávit comercial',periodo:'2026 (MM USD)',val:'USD '+REM_SEED.saldo_comercial.toFixed(0)+'M',top10:'—',nota:'+USD 3.679M vs anterior'},
+    {ind:'Resultado primario',periodo:'2026 (B ARS)',val:'$'+(REM_SEED.fiscal_anual).toFixed(0)+'B',top10:'—',nota:'Superávit fiscal'},
+  ];
+
+  var tblHtml='<div class="rem-table-wrap"><table class="rem-tbl"><thead><tr>'
+    +'<th style="text-align:left">Indicador</th><th style="text-align:left">Período</th>'
+    +'<th>Mediana</th><th>Top 10</th><th style="text-align:left">Nota</th>'
+    +'</tr></thead><tbody>'
+    +rows.map(function(r){return '<tr><td>'+r.ind+'</td><td style="color:var(--dm);font-size:10px">'+r.periodo+'</td><td style="color:#38bdf8;font-weight:700">'+r.val+'</td><td style="color:var(--dm)">'+r.top10+'</td><td style="text-align:left;color:var(--dm);font-size:10px">'+r.nota+'</td></tr>';}).join('')
+    +'</tbody></table></div>';
+
+  $('main').innerHTML=
+    panel2col('p0',
+      shdr('REM · Expectativas de Mercado','BCRA &mdash; Relevamiento mensual &middot; '+informe,'',isLive?'En vivo':'Seed','a')+
+      src('BCRA · api.argentinadatos.com/v1/finanzas/rem · Publicado '+fecha)+
+      infHtml+tblHtml,
+      '<div id="rem-cal"></div>',true)+
+    panel2col('p1',
+      shdr('IPC · Expectativas vs Realidad','Inflación mensual esperada vs dato real publicado','',(D2.ipc_mes||REM_SEED.ipc_mes).toFixed(1)+'%','r')+
+      src('BCRA REM · INDEC IPC publicado')+
+      sr4([
+        {l:'Esp. próx. mes',v:(D2.ipc_mes||REM_SEED.ipc_mes).toFixed(1)+'%',c:'r',n:'Mediana analistas'},
+        {l:'Top 10 próx. mes',v:(REM_SEED.ipc_mes_top10).toFixed(1)+'%',c:'r',n:'Mejores proyectistas'},
+        {l:'Esp. 12 meses',v:(D2.ipc_12m||REM_SEED.ipc_12m).toFixed(1)+'%',c:'r',n:'Interanual forward'},
+        {l:'IPC 2026 esperado',v:(D2.ipc_anual||REM_SEED.ipc_anual).toFixed(1)+'%',c:'r',n:'Dic-dic'},
+      ])+
+      bx1('rem_ipc1','h240','IPC Mensual: Esperado REM vs Real INDEC','c-rd')+
+      bx1('rem_ipc2','h190','Expectativa IPC interanual — Evolución histórica REM','c-rd'),
+      '<div style="padding:14px"><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dm);margin-bottom:10px">Calibración del REM</div><div style="font-size:12px;color:var(--wh);line-height:1.7">El REM tiene un track record <strong style="color:#4db87a">muy preciso para IPC mensual</strong> en el corto plazo (1 mes). El margen de error promedio histórico es ±0.3 p.p.<br><br>Para horizontes más largos (12 meses) la precisión cae notablemente — el REM tiende a <em style="color:#f5a623">subestimar</em> la inflación en períodos de alta volatilidad.</div></div>',true)+
+    panel2col('p2',
+      shdr('Tipo de cambio · Expectativas','Proyecciones TC oficial (A3500) del mercado','$'+(D2.tc_mes||REM_SEED.tc_mes).toFixed(0),'Próximo mes · mediana','a')+
+      src('BCRA REM · TC oficial BCRA')+
+      sr4([
+        {l:'TC próximo mes',v:'$'+(D2.tc_mes||REM_SEED.tc_mes).toFixed(0),c:'a',n:'Mediana analistas'},
+        {l:'TC Dic 2026',v:'$'+(D2.tc_diciembre||REM_SEED.tc_diciembre).toFixed(0),c:'a',n:'Mediana'},
+        {l:'Top 10 Dic 2026',v:'$'+REM_SEED.tc_top10.toFixed(0),c:'a',n:'Mejores proyectistas'},
+        {l:'Var. i.a. esperada',v:'+'+Math.round((REM_SEED.tc_diciembre/1408-1)*100)+'%',c:'a',n:'vs dic 2025 $1.408'},
+      ])+
+      bx1('rem_tc1','h260','Expectativas TC nominal $/USD — Curva de proyecciones REM','c-bcra'),
+      '<div style="padding:14px"><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dm);margin-bottom:10px">Régimen de bandas</div><div style="font-size:12px;color:var(--wh);line-height:1.7">El mercado espera un TC de <strong style="color:#38bdf8">$1.658/USD</strong> para fin de año, dentro del techo estimado de la banda cambiaria (~$1.760).<br><br>La proyección implica una devaluación nominal de <strong style="color:#e8a044">+17.7% vs dic-25</strong>, consistente con un crawling lento sobre inflación proyectada.</div></div>',true)+
+    panel2col('p3',
+      shdr('TAMAR · Expectativas de tasa','Proyecciones de tasa de interés del mercado','',(D2.tamar_mes||REM_SEED.tamar_mes).toFixed(2)+'% TNA','g')+
+      src('BCRA REM · BCRA TAMAR oficial')+
+      sr4([
+        {l:'TAMAR próx. mes',v:(D2.tamar_mes||REM_SEED.tamar_mes).toFixed(2)+'% TNA',c:'g',n:'Mediana'},
+        {l:'TEM equiv.',v:(Math.pow(1+(D2.tamar_mes||REM_SEED.tamar_mes)/100*32/365,365/32)-1)*100/12>0?((Math.pow(1+(D2.tamar_mes||REM_SEED.tamar_mes)/100*32/365,365/32)-1)*100/12).toFixed(2)+'% TEM':'—',c:'g',n:'Tasa efectiva mensual'},
+        {l:'TAMAR Dic 2026',v:(D2.tamar_diciembre||REM_SEED.tamar_diciembre).toFixed(1)+'% TNA',c:'g',n:'Mediana'},
+        {l:'Top 10 Dic 2026',v:REM_SEED.tamar_top10_dic.toFixed(1)+'% TNA',c:'g',n:'Mejores proyectistas'},
+      ])+
+      bx1('rem_ta1','h260','Proyección TAMAR TNA % — Evolución esperada del ciclo de tasas','c-bcra'),
+      '<div style="padding:14px"><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dm);margin-bottom:10px">Ciclo de tasas</div><div style="font-size:12px;color:var(--wh);line-height:1.7">El mercado espera que la TAMAR cierre el año en <strong style="color:#4db87a">22.0% TNA</strong>, lo que implica <strong style="color:#4db87a">recortes adicionales</strong> desde el nivel actual.<br><br>El Top 10 proyecta 21.7% TNA para diciembre, levemente más optimista que el consenso general.</div></div>',true)+
+    panel2col('p4',
+      shdr('PIB · Actividad y Empleo','Proyecciones de crecimiento y mercado laboral',''+'+'+(D2.pib_anual||REM_SEED.pib_anual).toFixed(1)+'%','g',''+'PIB 2026 anual','g')+
+      src('BCRA REM · INDEC EMAE')+
+      sr4([
+        {l:'PIB 2026 (var.)',v:'+'+(D2.pib_anual||REM_SEED.pib_anual).toFixed(1)+'%',c:'g',n:'Mediana · +0.1pp vs anterior'},
+        {l:'Top 10',v:'+'+REM_SEED.pib_top10.toFixed(1)+'%',c:'g',n:'+0.2pp vs REM anterior'},
+        {l:'Desempleo Q1-26',v:REM_SEED.desempleo_q1.toFixed(1)+'%',c:'a',n:'Sin cambios'},
+        {l:'Desempleo Q4-26',v:REM_SEED.desempleo_q4.toFixed(1)+'%',c:'a',n:'Cierre de año'},
+      ])+
+      bx1('rem_pib1','h240','Proyección PIB 2026 — Evolución histórica de la estimación REM','c-bcra')+
+      bx1('rem_pib2','h190','Proyección Desocupación — Q1 y Q4 2026','c-real'),
+      '<div style="padding:14px"><div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dm);margin-bottom:10px">Comercio exterior</div>'+sr4([
+        {l:'Exportaciones 2026',v:'USD '+(REM_SEED.expo_anual/1000).toFixed(0)+'M',c:'g',n:'+USD 2.491M vs anterior'},
+        {l:'Importaciones 2026',v:'USD '+(REM_SEED.impo_anual/1000).toFixed(0)+'M',c:'a',n:'-USD 1.187M vs anterior'},
+        {l:'Superávit comercial',v:'USD '+(REM_SEED.saldo_comercial/1000).toFixed(1)+'B',c:'g',n:'+USD 3.679M vs anterior'},
+        {l:'Resultado primario',v:'$'+REM_SEED.fiscal_anual.toFixed(0)+'B ARS',c:'g',n:'Meta FMI cumplida'},
+      ])+'</div>',true);
+
+  // ── Charts ────────────────────────────────────────────────────
+  setTimeout(function(){
+    var labels=REM_HIST.map(function(d){return d.m;});
+    var ipcEsp=REM_HIST.map(function(d){return d.ipc_esp;});
+    var ipcReal=REM_HIST.map(function(d){return d.ipc_real;});
+    var tcEsp=REM_HIST.map(function(d){return d.tc_esp;});
+    var tcReal=REM_HIST.map(function(d){return d.tc_real;});
+    var pibHist=REM_HIST.map(function(d){return d.pib;});
+
+    // IPC esperado vs real
+    line('rem_ipc1',labels,[
+      {label:'IPC esperado (REM)',data:ipcEsp,borderColor:cy,tension:0.4,pointRadius:3,pointBackgroundColor:cy,borderDash:[5,3]},
+      {label:'IPC real (INDEC)',data:ipcReal,borderColor:rd,fill:true,backgroundColor:rd+'18',tension:0.4,pointRadius:4,pointBackgroundColor:ipcReal.map(function(v,i){return v!=null?(v>ipcEsp[i]?rd:gr):or;})},
+    ],'%',undefined,cy);
+
+    // IPC interanual expectativa
+    line('rem_ipc2',labels,[
+      {label:'IPC 12m esperado',data:REM_HIST.map(function(d){return d.ipc_esp*12;}),borderColor:rd,tension:0.4,pointRadius:2,pointBackgroundColor:rd},
+    ],'%',undefined,cy);
+
+    // TC
+    line('rem_tc1',labels,[
+      {label:'TC esperado REM',data:tcEsp,borderColor:cy,borderDash:[5,3],tension:0.4,pointRadius:3,pointBackgroundColor:cy},
+      {label:'TC real A3500',data:tcReal,borderColor:or,fill:true,backgroundColor:or+'18',tension:0.4,pointRadius:3,pointBackgroundColor:or},
+    ],'',undefined,cy);
+
+    // TAMAR histórico
+    var tamarLabels=['Dic 24','Ene 25','Feb 25','Mar 25','Abr 25','May 25','Jun 25','Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26'];
+    var tamarEsp=[32,28,28,26,26,26,25.5,24.5,24,23.5,23,22.75,22.5,22.75,22.75,22.75,22.75,22.75];
+    var tamarReal=[32,26,26,26,26,26,25,24,24,24,24,24,24,23.6,23.6,22.8125,22.8125,null];
+    line('rem_ta1',tamarLabels,[
+      {label:'TAMAR esperada (REM)',data:tamarEsp,borderColor:cy,borderDash:[5,3],tension:0.3,pointRadius:2,pointBackgroundColor:cy},
+      {label:'TAMAR real (BCRA)',data:tamarReal,borderColor:gr,fill:true,backgroundColor:gr+'18',tension:0.3,pointRadius:3,pointBackgroundColor:gr},
+    ],'%',undefined,cy);
+
+    // PIB evolución expectativa
+    bar('rem_pib1',labels,pibHist,{cf:function(v){return v>=0?gr:rd;},s:'%',ac:cy});
+
+    // Desempleo
+    var desQ1=[7.9,7.9,7.9,7.9,7.8,7.8,7.8,7.8,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7,7.7];
+    var desQ4=[7.5,7.5,7.5,7.5,7.4,7.4,7.4,7.4,7.4,7.4,7.4,7.4,7.4,7.4,7.4,7.4,7.4,7.4];
+    line('rem_pib2',labels,[
+      {label:'Desempleo Q1-26 esperado',data:desQ1,borderColor:or,tension:0.3,pointRadius:2,borderDash:[4,3],pointBackgroundColor:or},
+      {label:'Desempleo Q4-26 esperado',data:desQ4,borderColor:cy,tension:0.3,pointRadius:2,pointBackgroundColor:cy},
+    ],'%',undefined,cy);
+
+  },250);
+}
+
+// ══ INIT ═══════════════════════════════════════════════════════
+$('upd').textContent='Datos al '+new Date().toLocaleDateString('es-AR',{day:'numeric',month:'long',year:'numeric'});
+buildINDEC();
+// Cargar datos en vivo (APIs + manual.json) en background
+setTimeout(function(){ loadLiveData().catch(function(){}); }, 300);
+// Pre-load BCRA data
+setTimeout(function(){ loadBCRAData().catch(function(){}); }, 2000);
+</script>
+
+<!-- UPDATE BAR -->
+<div class="upd-bar" id="upd-bar">
+  <div class="upd-status">
+    <div class="status-dot dot-warn" id="status-dot"></div>
+    <span id="status-msg">Cargando datos en vivo…</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <button class="btn-upd" onclick="loadLiveData().catch(function(){})">
+      <span>↻ Actualizar</span>
+    </button>
+  </div>
+</div>
+
+<script>
+// ══ CONFIG ════════════════════════════════════════════════════
+var ANT_KEY = localStorage.getItem('arg_ant_key') || '';
+var CACHE_H = parseInt(localStorage.getItem('arg_cache_h') || '24');
+var CACHE_KEY = 'arg_data_cache';
+
+function openCfg(){
+  $('cfg-key').value = ANT_KEY;
+  $('cfg-cache').value = String(CACHE_H);
+  $('cfg-modal').classList.add('open');
+}
+function closeCfg(){ $('cfg-modal').classList.remove('open'); }
+function saveCfg(){
+  var k = $('cfg-key').value.trim();
+  var h = parseInt($('cfg-cache').value);
+  if(k){ ANT_KEY=k; localStorage.setItem('arg_ant_key',k); }
+  CACHE_H=h; localStorage.setItem('arg_cache_h',String(h));
+  closeCfg();
+  initStatus();
+}
+
+function initStatus(){
+  if(!ANT_KEY || ANT_KEY.indexOf('sk-ant')<0){
+    setStatus('warn','Configurá tu Anthropic API key para activar actualización','dot-warn',true);
+    return;
+  }
+  // Check cache
+  var cached = getCached();
+  if(cached){
+    var age = Math.round((Date.now()-cached.ts)/60000);
+    var ageStr = age < 60 ? age+'m' : Math.round(age/60)+'h';
+    setStatus('ok','Datos en caché · '+cached.source,'dot-ok',false);
+    $('cache-info').textContent = 'Actualizados hace '+ageStr;
+    $('cache-info').className='cache-info fresh';
+    applyAllData(cached.data);
+  } else {
+    setStatus('warn','Key configurada · Presioná "Actualizar datos" para obtener datos frescos','dot-warn',false);
+  }
+}
+
+function setStatus(type, msg, dotCls, disableBtn){
+  $('status-msg').textContent = msg;
+  var dot = $('status-dot');
+  dot.className = 'status-dot '+dotCls;
+  $('btn-upd').disabled = !!disableBtn;
+}
+
+function getCached(){
+  try{
+    var raw = localStorage.getItem(CACHE_KEY);
+    if(!raw) return null;
+    var obj = JSON.parse(raw);
+    var maxAge = CACHE_H * 3600000;
+    if(CACHE_H > 0 && (Date.now() - obj.ts) > maxAge) return null;
+    return obj;
+  }catch(e){ return null; }
+}
+
+function saveCache(data){
+  try{
+    localStorage.setItem(CACHE_KEY, JSON.stringify({
+      ts: Date.now(),
+      source: 'Anthropic API · '+new Date().toLocaleDateString('es-AR',{day:'numeric',month:'short',year:'numeric'}),
+      data: data
+    }));
+  }catch(e){}
+}
+
+// ══ ANTHROPIC FETCH ════════════════════════════════════════════
+async function fetchVistaData(vista){
+  var prompts = {
+    indec: 'Busca y devuelve los datos macroeconómicos más recientes de Argentina publicados por el INDEC. Devuelve SOLO un objeto JSON (sin markdown, sin texto adicional) con esta estructura exacta: {"ipc":{"l":["Mmm AA",...],"v":[número,...]},"nucleo":[números últimos 12 meses MoM %],"regulados":[números],"estacion":[números],"ipcYoY":{"l":[...],"v":[...]},"emaeDesest":{"l":[...],"v":[... MoM desestacionalizado]},"emae":{"l":[...],"v":[... YoY]},"eph":{"l":["Q1 24",...],"desempleo":[...],"actividad":[...],"empleo":[...],"subocup":[...]},"ica":{"l":[...],"expo":[...],"impo":[...],"saldo":[...]},"isac":{"l":[...],"v":[...]},"ipi":{"l":[...],"v":[...]},"lastUpdate":"mes año"}',
+    bcra: 'Busca los datos más recientes del BCRA de Argentina. Devuelve SOLO JSON (sin markdown): {"reservas":{"l":[...],"brutas":[... B USD],"compras":[... M USD]},"tcHist":{"l":[...],"oficial":[...],"mep":[...],"blue":[...]},"tc":{"oficial":número,"mep":número,"ccl":número,"blue":número,"turista":número,"bandaSup":número,"bandaInf":número},"tasa":{"l":[...],"v":[... TNA %]},"m2":{"l":[...],"v":[... YoY %]},"credito":{"l":[...],"v":[... B ARS stock]},"lastUpdate":"mes año"}',
+    mecon: 'Busca los datos más recientes del Ministerio de Economía Argentina (Mecon, AFIP, Finanzas). Devuelve SOLO JSON (sin markdown): {"fiscal":{"l":[...],"primario":[... B ARS],"financiero":[... B ARS]},"recaud":{"l":[...],"total":[...],"iva":[...],"ganancias":[...],"ss":[...],"dga":[...]},"deuda":{"total":número USD,"pib_pct":número,"ext":número,"int":número,"me":número,"pesos":número},"lastUpdate":"mes año"}',
+    real: 'Busca los datos más recientes de Argentina sobre economía real: SIPA empleo registrado privado (Ministerio de Trabajo), Índice Construya (Grupo Construya), patentamientos ACARA. Devuelve SOLO JSON (sin markdown): {"sipa":{"l":[...],"privado":[... MoM %],"salReal":[... MoM %]},"construya":{"l":[...],"mom":[... MoM desest %],"yoy":[... YoY %]},"acara":{"l":[...],"unidades":[... unidades],"yoy":[... YoY %]},"lastUpdate":"mes año"}'
+  };
+
+  var r = await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'x-api-key': ANT_KEY,
+      'anthropic-version':'2023-06-01',
+      'anthropic-dangerous-direct-browser-access':'true'
+    },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-5',
+      max_tokens: 2000,
+      tools:[{type:'web_search_20250305',name:'web_search'}],
+      messages:[{role:'user',content: prompts[vista]}]
+    })
+  });
+
+  if(!r.ok) throw new Error('API error '+r.status);
+  var data = await r.json();
+
+  // Extract text from response (may have tool_use blocks)
+  var text = '';
+  if(data.content){
+    data.content.forEach(function(block){
+      if(block.type==='text') text += block.text;
+    });
+  }
+  // Parse JSON from response
+  text = text.replace(/```json|```/g,'').trim();
+  var match = text.match(/\{[\s\S]*\}/);
+  if(!match) throw new Error('No JSON in response');
+  return JSON.parse(match[0]);
+}
+
+// ══ APPLY DATA ════════════════════════════════════════════════
+function applyAllData(allData){
+  if(allData.indec) applyINDEC(allData.indec);
+  if(allData.bcra)  applyBCRA(allData.bcra);
+  if(allData.mecon) applyMECON(allData.mecon);
+  if(allData.real)  applyREAL(allData.real);
+}
+
+function applyINDEC(d){
+  if(d.ipc && d.ipc.l && d.ipc.v){ D.ipc=d.ipc; D.nucleo=d.nucleo||D.nucleo; D.regulados=d.regulados||D.regulados; D.estacion=d.estacion||D.estacion; }
+  if(d.ipcYoY) D.ipcYoY=d.ipcYoY;
+  if(d.emaeDesest) D.emaeDesest=d.emaeDesest;
+  if(d.emae) D.emae=d.emae;
+  if(d.eph) D.eph=d.eph;
+  if(d.ica) D.ica=d.ica;
+  if(d.isac) D.isac=d.isac;
+  if(d.ipi) D.ipi=d.ipi;
+}
+function applyBCRA(d){
+  if(d.reservas) D.reservas=d.reservas;
+  if(d.tcHist) D.tcHist=d.tcHist;
+  if(d.tc) D.tc=d.tc;
+  if(d.tasa) D.tasa=d.tasa;
+  if(d.m2) D.m2=d.m2;
+  if(d.credito) D.credito=d.credito;
+}
+function applyMECON(d){
+  if(d.fiscal) D.fiscal=d.fiscal;
+  if(d.recaud) D.recaud=d.recaud;
+  if(d.deuda){
+    D.deuda.total=d.deuda.total||D.deuda.total;
+    D.deuda.pib_pct=d.deuda.pib_pct||D.deuda.pib_pct;
+    D.deuda.ext=d.deuda.ext||D.deuda.ext;
+    D.deuda.int=d.deuda.int||D.deuda.int;
+    D.deuda.me=d.deuda.me||D.deuda.me;
+    D.deuda.pesos=d.deuda.pesos||D.deuda.pesos;
+  }
+}
+function applyREAL(d){
+  if(d.sipa) D.sipa=d.sipa;
+  if(d.construya) D.construya=d.construya;
+  if(d.acara) D.acara=d.acara;
+}
+
+// ══ UPDATE ALL ════════════════════════════════════════════════
+async function updateAll(){
+  if(!ANT_KEY){ openCfg(); return; }
+  var btn = $('btn-upd');
+  btn.classList.add('loading');
+  btn.disabled = true;
+  setStatus('warn','Actualizando datos desde Anthropic API...','dot-warn',true);
+
+  var allData = {};
+  var errors = [];
+  var vistas = ['indec','bcra','mecon','real'];
+  var labels = {'indec':'INDEC','bcra':'BCRA','mecon':'Mecon','real':'Economía Real'};
+
+  for(var i=0; i<vistas.length; i++){
+    var v = vistas[i];
+    setStatus('warn','Consultando '+labels[v]+'... ('+( i+1)+'/4)','dot-warn',true);
+    try{
+      var data = await fetchVistaData(v);
+      allData[v] = data;
+      // Apply immediately
+      if(v==='indec') applyINDEC(data);
+      else if(v==='bcra') applyBCRA(data);
+      else if(v==='mecon') applyMECON(data);
+      else if(v==='real') applyREAL(data);
+    }catch(e){
+      errors.push(labels[v]+': '+e.message);
+      console.error('Error fetching '+v, e);
+    }
+  }
+
+  // Save cache
+  if(Object.keys(allData).length > 0){
+    saveCache(allData);
+  }
+
+  // Rebuild current vista
+  destroyAll();
+  var fns={indec:buildINDEC,bcra:buildBCRA,mecon:buildMECON,real:buildREAL};
+  fns[VISTA]();
+
+  btn.classList.remove('loading');
+  btn.disabled = false;
+
+  if(errors.length===0){
+    setStatus('ok','Datos actualizados correctamente · Cache válido '+CACHE_H+'h','dot-ok',false);
+    $('cache-info').textContent = 'Ahora mismo';
+    $('cache-info').className='cache-info fresh';
+    $('upd').textContent='Datos al '+new Date().toLocaleDateString('es-AR',{day:'numeric',month:'long',year:'numeric'});
+  } else {
+    setStatus('warn','Actualizado con errores: '+errors.join(' | '),'dot-warn',false);
+  }
+}
+
+// ══ INIT STATUS ════════════════════════════════════════════════
+initStatus();
+</script>
+</body>
+</html>
