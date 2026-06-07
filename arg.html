@@ -1581,7 +1581,7 @@ function buildREAL(){
     {l:'Ventas Pyme May 26',v:'-1.2%',c:'r',n:'YoY \u00b7 CAME'},
     {l:'Prod. ADEFA May 26',v:'37.762 u',c:'r',n:'-21.5% YoY \u00b7 ADEFA'}
   ]);
-  $('tabrow').innerHTML=tabs(['Resumen','SIPA \u00b7 Empleo Registrado','\u00cdndice Construya','ACARA \u00b7 Patentamientos','Comparativa Sectorial']);
+  $('tabrow').innerHTML=tabs(['Resumen','SIPA \u00b7 Empleo Registrado','\u00cdndice Construya','ACARA \u00b7 Patentamientos','Cemento \u00b7 CAME \u00b7 ADEFA','Comparativa Sectorial']);
   var cal=makeCal(D.cal.year,D.cal.month,D.cal.events);
   $('main').innerHTML=
     panel2col('p0',
@@ -1592,6 +1592,9 @@ function buildREAL(){
         ocard('rm2','ACARA \u00b7 Patentamientos','Autos 0km \u2014 ACARA','Unidades patentadas mensuales','41.921','r','May 2026','-25.6% YoY<br>Peor mes 2026',3)+
         ocard('rm3','ISAC \u00b7 INDEC','Ind. Sint. Construcci\u00f3n','Variaci\u00f3n mensual INDEC','+7.2%','g','Mar 2026','Rebote tras<br>-3.1% Ene',4)+
         ocard('rm4','Sal. Real SIPA','Salario Real Priv. Reg.','Variaci\u00f3n mensual estimada','+1.4%','g','Ene 2026','Recuperaci\u00f3n<br>gradual',1)+
+        ocard('rm5','Cemento \u00b7 AFCP','Despacho mensual nacional','Variaci\u00f3n interanual YoY','-1.5%','r','May 2026','809.983 t<br>MoM: +10.4%',2)+
+        ocard('rm6','Ventas Pyme \u00b7 CAME','\u00cdndice Ventas Minoristas','Variaci\u00f3n interanual real','-1.2%','r','May 2026','MoM: +1.2%<br>Acum: -3.1%',2)+
+        ocard('rm7','ADEFA \u00b7 Producci\u00f3n','Autom\u00f3viles y com. livianos','Unidades producidas','37.762','r','May 2026','-21.5% YoY<br>Acum: -19.3%',3)+
       '</div>',
       cal,true)+
     panel2col('p1',
@@ -1616,15 +1619,34 @@ function buildREAL(){
       bx2(['ac2','ac3'],['Variaci\u00f3n YoY \u2014 Patentamientos vs Mismo Mes 2025','Participaci\u00f3n por Marca \u2014 Acum. 2026'],'h190',['c-rd','']),
       cal)+
     panel2col('p4',
+      shdr('Cemento \u00b7 CAME \u00b7 ADEFA','AFCP \u00b7 Ventas Minoristas Pyme \u00b7 Producci\u00f3n Automotriz \u2014 Mayo 2026','')+
+      src('AFCP (Asociaci\u00f3n Fabricantes Cemento Portland) \u00b7 CAME \u00b7 ADEFA \u00b7 Mayo 2026')+
+      sr4([
+        {l:'Cemento YoY May 26',v:'-1.5%',c:'r',n:'809.983 t despacho',x:'real'},
+        {l:'Cemento MoM May 26',v:'+10.4%',c:'g',n:'vs Abril 2026',x:'real'},
+        {l:'Cemento Acum Ene-May',v:'-3.3%',c:'r',n:'3.867.569 t total',x:'real'},
+        {l:'Ventas Pyme YoY',v:'-1.2%',c:'r',n:'CAME \u00b7 \u00cdndice 89.2',x:'real'}
+      ])+
+      bx2(['cm1','cm2'],['Cemento \u2014 Despacho Mensual YoY % 2026 (AFCP)','Cemento \u2014 Toneladas Mensuales 2026'],'h210',['c-real',''])+
+      sr4([
+        {l:'ADEFA Prod. May 26',v:'37.762 u',c:'r',n:'-21.5% YoY',x:'real'},
+        {l:'ADEFA Expo May 26',v:'25.237 u',c:'g',n:'-4.2% YoY',x:'real'},
+        {l:'Ventas May. May 26',v:'35.979 u',c:'r',n:'-39.0% YoY',x:'real'},
+        {l:'CAME MoM May 26',v:'+1.2%',c:'g',n:'Intermensual',x:'real'}
+      ])+
+      bx2(['ad1','ad2'],['ADEFA \u2014 Producci\u00f3n vs Exportaciones 2026 (unidades)','ADEFA \u2014 Var. YoY Producci\u00f3n 2026 (%)'],'h210',['','c-real']),
+      cal)+
+    panel2col('p5',
       shdr('Comparativa Sectorial \u2014 Econom\u00eda Real','SIPA \u00b7 Construya \u00b7 ACARA \u00b7 ISAC \u00b7 Cemento \u00b7 ADEFA','')+
       src('Fuentes combinadas \u00b7 Ver solapas individuales para detalle')+
       bx3(['cp1','cp2','cp3'],['Empleo SIPA vs ISAC \u2014 Construcci\u00f3n','Patentamientos vs EMAE \u2014 Actividad general','Construya vs ISAC \u2014 Dos visiones del sector'],'h220',['c-real','','c-real'])+
-      bx2(['cp4','cp5'],['Cemento \u2014 Despacho Mensual YoY % (AFCP)','ADEFA \u2014 Producci\u00f3n vs Exportaciones 2026 (u.)'],'h220',['c-real','']),
+      bx2(['cp4','cp5'],['Cemento YoY vs ISAC \u2014 Construcci\u00f3n','ADEFA Producci\u00f3n vs Patentamientos ACARA'],'h220',['c-real','']),
       cal);
 
   setTimeout(function(){
     mini('rm0',D.sipa.privado,ar);mini('rm1',D.construya.mom,C.G4);
     mini('rm2',D.acara.unidades,C.RD);mini('rm3',D.isac.v,C.G4);mini('rm4',D.sipa.salReal,C.G4);
+    mini('rm5',D.cemento.yoy,C.RD);mini('rm6',D.came.yoy,C.RD);mini('rm7',D.adefa.prod,C.RD);
     // SIPA
     bar('sp1',D.sipa.l,D.sipa.privado,{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
     bar('sp2',D.sipa.l,D.sipa.salReal,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ar});
@@ -1654,11 +1676,19 @@ function buildREAL(){
       {label:'Construya MoM',data:D.construya.mom,borderColor:ar,tension:0.3,pointRadius:3,pointBackgroundColor:ar},
       {label:'ISAC MoM',data:D.isac.v,borderColor:C.CEL,tension:0.3,pointRadius:3,pointBackgroundColor:C.CEL}
     ],'%',undefined,ar);
-    // Cemento y ADEFA
-    bar('cp4',D.cemento.l,D.cemento.yoy,{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
-    line('cp5',D.adefa.l,[
+    // Cemento · CAME · ADEFA (tab p4)
+    bar('cm1',D.cemento.l,D.cemento.yoy,{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
+    bar('cm2',D.cemento.l,D.cemento.desp,{cf:function(){return C.CEL;},s:' t',ac:ar});
+    line('ad1',D.adefa.l,[
       {label:'Producción',data:D.adefa.prod,borderColor:C.CEL,tension:0.3,pointRadius:3,pointBackgroundColor:C.CEL},
       {label:'Exportaciones',data:D.adefa.expo,borderColor:ar,tension:0.3,pointRadius:3,pointBackgroundColor:ar}
+    ],' u',undefined,ar);
+    bar('ad2',D.adefa.l,D.adefa.yoyProd,{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
+    // Comparativa sectorial (tab p5)
+    bar('cp4',D.cemento.l,D.cemento.yoy,{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
+    line('cp5',D.adefa.l,[
+      {label:'ADEFA Prod.',data:D.adefa.prod,borderColor:C.CEL,tension:0.3,pointRadius:3,pointBackgroundColor:C.CEL},
+      {label:'ACARA Patent.',data:D.acara.unidades,borderColor:C.RD,tension:0.3,pointRadius:3,pointBackgroundColor:C.RD}
     ],' u',undefined,ar);
   },220);
 }
