@@ -357,6 +357,16 @@ function mkDoughnut(id,labels,data,colors){
   new Chart(el,{type:'doughnut',data:{labels:labels,datasets:[{data:data,backgroundColor:colors,borderWidth:0}]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:C.DM,font:{size:10},padding:8}},tooltip:tip()}}});
 }
+function barH(id,labels,data,opts){
+  var el=$(id);if(!el)return;opts=opts||{};
+  var ac=opts.ac||C.CEL;
+  var bg=opts.cf?data.map(opts.cf):(opts.c||ac);
+  new Chart(el,{type:'bar',data:{labels:labels,datasets:[{data:data,backgroundColor:bg,borderWidth:0,borderRadius:2}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{...tip(ac),callbacks:{label:function(c){return (opts.pre||'')+c.parsed.x+(opts.s||'K pers.');}}}},
+      scales:{x:{ticks:{color:C.DM,font:{size:10},callback:function(v){return v+(opts.s||'K');}},grid:{color:'rgba(255,255,255,.04)'},border:{color:'transparent'}},
+              y:{ticks:{color:C.DM,font:{size:10}},grid:{display:false},border:{color:'transparent'}}}}});
+}
 function GB(v){return v>=0?C.G4:C.RD;}
 
 // ══ CALENDAR ══
@@ -617,6 +627,18 @@ var D={
         privado:[0.4,-0.2,0.3,0.1,0.6,-0.2,0.0,-0.2,-0.1],  // Fuente: EIL Secretaría de Trabajo
         yoy:   [null,null,null,null,null,-1.1,-1.3,-1.4,-1.4], // YoY mensual EIL
         salReal:[2.1,1.8,0.8,1.2,0.4,0.6,1.4,null,null]},     // salReal: datos IS hasta Ene 26
+  // ── SIPA COMPLETO — Fuente: "Situación y evolución del trabajo registrado" MCyH Feb 2026
+  sipaFull:{
+    // Snapshot Feb 2026 (en miles de trabajadores) — Tabla 1 informe SIPA feb 2026
+    cats:['Asal. Privados','Monotributistas','Asal. Públicos','Casas Part.','Autónomos','M. Social'],
+    feb26:[6198.9,2210.4,3372.2,451.6,398.8,247.0],
+    feb25:[6299.0,2119.7,3386.0,443.9,399.8,241.7],
+    varAbs:[-100.1,90.7,-13.8,7.7,-1.0,5.3],   // variación absoluta en miles (YoY Feb26 vs Feb25)
+    varPct:[-1.6,4.3,-0.4,1.7,-0.3,2.2],        // variación % YoY
+    // Serie mensual nominales asalariados privados (en miles) — Tabla 5 informe SIPA
+    lPriv:["Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26"],
+    privNom:[6216.8,6204.5,6198.5,6196.1,6190.7,6193.5,6195.9,6198.9]
+  },
   construya:{l:["Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
              mom:[3.2,-4.1,8.6,-6.2,3.8,2.1,4.98],
              yoy:[-8.2,-11.3,2.4,-9.1,-6.3,-3.7,-4.7]},
@@ -1577,6 +1599,8 @@ function buildREAL(){
     {l:'Acum. Patent. 2026',v:'247.187',c:'r',n:'-9.7% vs 2025'},
     {l:'ISAC Mar 26 MoM',v:'+7.2%',c:'g',n:'INDEC'},
     {l:'Sal. Real SIPA (est.)',v:'+1.4%',c:'g',n:'MoM Ene 26'},
+    {l:'Monot. YoY Feb 26',v:'+90.700',c:'g',n:'SIPA · compensa priv. formal'},
+    {l:'Asal.Priv. YoY Feb 26',v:'−100.100',c:'r',n:'SIPA · destrucción formal'},
     {l:'Cemento May 26 YoY',v:'-1.5%',c:'r',n:'809.983 t \u00b7 AFCP'},
     {l:'Cemento MoM',v:'+10.4%',c:'g',n:'vs Abril 2026'},
     {l:'Ventas Pyme May 26',v:'-1.2%',c:'r',n:'YoY \u00b7 CAME'},
@@ -1596,6 +1620,7 @@ function buildREAL(){
         ocard('rm5','Cemento \u00b7 AFCP','Despacho mensual nacional','Variaci\u00f3n interanual YoY','-1.5%','r','May 2026','809.983 t<br>MoM: +10.4%',2)+
         ocard('rm6','Ventas Pyme \u00b7 CAME','\u00cdndice Ventas Minoristas','Variaci\u00f3n interanual real','-1.2%','r','May 2026','MoM: +1.2%<br>Acum: -3.1%',2)+
         ocard('rm7','ADEFA \u00b7 Producci\u00f3n','Autom\u00f3viles y com. livianos','Unidades producidas','37.762','r','May 2026','-21.5% YoY<br>Acum: -19.3%',3)+
+        ocard('rm8','SIPA \u00b7 Composici\u00f3n','Empleo registrado Feb 2026','Asalariados priv. vs Monotributistas','-100K/+91K','r','Feb 2026','Sustituci\u00f3n formal<br>12.878.900 totales',3)+
       '</div>',
       cal,true)+
     panel2col('p1',
@@ -1603,7 +1628,15 @@ function buildREAL(){
       src('Encuesta de Indicadores Laborales (EIL) \u00b7 Secretar\u00eda de Trabajo, Empleo y Seguridad Social \u00b7 Mayo 2026')+
       sr4([{l:'MoM Mar 26 (privado)',v:'-0.1%',c:'r',n:'12 meses consecutivos',x:'real'},{l:'YoY Mar 26 (priv.)',v:'-1.4%',c:'r',n:'Construc. -4.6% \u00b7 Ind. -2.5%',x:'real'},{l:'MoM Feb 26',v:'-0.2%',c:'r',n:'Expectativas negativas',x:'real'},{l:'MoM Ene 26',v:'0.0%',c:'a',n:'YoY: -1.3%',x:'real'}])+
       bx1('sp1','h240','SIPA \u2014 Empleo Registrado Privado MoM \u2014 Jul 2025\u2013Ene 2026','c-real')+
-      bx2(['sp2','sp3'],['SIPA \u2014 Salario Real Privado Registrado MoM','SIPA \u2014 Sectores que crecen vs caen (Ene 2026)'],'h190',['c-real','']),
+      bx2(['sp2','sp3'],['SIPA \u2014 Salario Real Privado Registrado MoM','SIPA \u2014 Sectores que crecen vs caen (Ene 2026)'],'h190',['c-real',''])+
+      src('SIPA \u00b7 Min. Capital Humano \u2014 \u201cSituaci\u00f3n y evoluci\u00f3n del trabajo registrado\u201d \u00b7 Datos Feb 2026')+
+      sr4([
+        {l:'Asal. Priv. YoY Feb 26',v:'\u2212100.100',c:'r',n:'6.198.900 registrados',x:'real'},
+        {l:'Monotributistas YoY',v:'+90.700',c:'g',n:'2.210.400 monotribut.',x:'real'},
+        {l:'Total Registrados Feb 26',v:'12.878.900',c:'a',n:'YoY: \u221211.100 personas',x:'real'},
+        {l:'Efecto Sustituci\u00f3n',v:'\u221290%',c:'r',n:'Monot. compensa p\u00e9rdida formal',x:'real'}
+      ])+
+      bx2(['sp4','sp5'],['SIPA \u2014 Variaci\u00f3n Absoluta YoY por Categor\u00eda (miles \u00b7 Feb26 vs Feb25)','SIPA \u2014 Asalariados Privados Nominales en miles \u00b7 Jul 25\u2013Feb 26'],'h230',['c-real','c-real']),
       cal)+
     panel2col('p2',
       shdr('\u00cdndice Construya','Despachos de insumos para la construcci\u00f3n privada','+5.0%','Abr 2026 \u00b7 MoM Desest.','g')+
@@ -1648,11 +1681,17 @@ function buildREAL(){
     mini('rm0',D.sipa.privado,ar);mini('rm1',D.construya.mom,C.G4);
     mini('rm2',D.acara.unidades,C.RD);mini('rm3',D.isac.v,C.G4);mini('rm4',D.sipa.salReal,C.G4);
     mini('rm5',D.cemento.yoy,C.RD);mini('rm6',D.came.yoy,C.RD);mini('rm7',D.adefa.prod,C.RD);
+    mini('rm8',D.sipaFull.privNom,C.RD);
     // SIPA
     bar('sp1',D.sipa.l,D.sipa.privado,{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
     bar('sp2',D.sipa.l,D.sipa.salReal,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ar});
     bar('sp3',['Construc.','Serv.Com.','Energía','Enseñ.','Agro','Industria','Comercio','Minería'],
       [1.1,1.0,0.1,0.1,-0.3,-0.4,-0.5,-0.2],{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
+    // SIPA Full breakdown
+    barH('sp4',D.sipaFull.cats,D.sipaFull.varAbs,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ar});
+    line('sp5',D.sipaFull.lPriv,[
+      {label:'Asalariados Privados (miles)',data:D.sipaFull.privNom,borderColor:ar,backgroundColor:ar+'22',fill:true,tension:0.3,pointRadius:4,pointBackgroundColor:ar}
+    ],'K',undefined,ar);
     // Construya
     bar('ib1',D.construya.l,D.construya.mom,{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
     bar('ib2',D.construya.l,D.construya.yoy,{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
