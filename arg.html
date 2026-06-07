@@ -626,7 +626,7 @@ var D={
   sipa:{l:["Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],
         privado:[0.4,-0.2,0.3,0.1,0.6,-0.2,0.0,-0.2,-0.1],  // Fuente: EIL Secretaría de Trabajo
         yoy:   [null,null,null,null,null,-1.1,-1.3,-1.4,-1.4], // YoY mensual EIL
-        salReal:[2.1,1.8,0.8,1.2,0.4,0.6,1.4,null,null]},     // salReal: datos IS hasta Ene 26
+        salReal:[2.1,1.8,0.8,1.2,0.4,0.6,1.4,-2.1,null]},     // salReal: IS hasta Ene 26; Feb 26 calc. SIPA Tabla3 nominal +0.73% / IPC 2.9% = -2.1%
   // ── SIPA COMPLETO — Fuente: "Situación y evolución del trabajo registrado" MCyH Feb 2026
   sipaFull:{
     // Snapshot Feb 2026 (en miles de trabajadores) — Tabla 1 informe SIPA feb 2026
@@ -1598,7 +1598,7 @@ function buildREAL(){
     {l:'Patentamientos May 26',v:'41.921',c:'r',n:'-25.6% YoY \u00b7 ACARA'},
     {l:'Acum. Patent. 2026',v:'247.187',c:'r',n:'-9.7% vs 2025'},
     {l:'ISAC Mar 26 MoM',v:'+7.2%',c:'g',n:'INDEC'},
-    {l:'Sal. Real SIPA (est.)',v:'+1.4%',c:'g',n:'MoM Ene 26'},
+    {l:'Sal. Real SIPA Feb 26',v:'-2.1%',c:'r',n:'Nom. +0.7% / IPC 2.9%'},
     {l:'Monot. YoY Feb 26',v:'+90.700',c:'g',n:'SIPA · compensa priv. formal'},
     {l:'Asal.Priv. YoY Feb 26',v:'−100.100',c:'r',n:'SIPA · destrucción formal'},
     {l:'Cemento May 26 YoY',v:'-1.5%',c:'r',n:'809.983 t \u00b7 AFCP'},
@@ -1616,7 +1616,7 @@ function buildREAL(){
         ocard('rm1','\u00cdndice Construya','Construcci\u00f3n Privada','Despachos insumos sectoriales','+5.0%','g','Abr 2026 MoM','YoY: -4.7%<br>Acum: +0.6%',2)+
         ocard('rm2','ACARA \u00b7 Patentamientos','Autos 0km \u2014 ACARA','Unidades patentadas mensuales','41.921','r','May 2026','-25.6% YoY<br>Peor mes 2026',3)+
         ocard('rm3','ISAC \u00b7 INDEC','Ind. Sint. Construcci\u00f3n','Variaci\u00f3n mensual INDEC','+7.2%','g','Mar 2026','Rebote tras<br>-3.1% Ene',4)+
-        ocard('rm4','Sal. Real SIPA','Salario Real Priv. Reg.','Variaci\u00f3n mensual estimada','+1.4%','g','Ene 2026','Recuperaci\u00f3n<br>gradual',1)+
+        ocard('rm4','Sal. Real SIPA','Salario Real Priv. Reg.','Variaci\u00f3n mensual real','-2.1%','r','Feb 2026','Nominal +0.7%<br>IPC 2.9%',1)+
         ocard('rm5','Cemento \u00b7 AFCP','Despacho mensual nacional','Variaci\u00f3n interanual YoY','-1.5%','r','May 2026','809.983 t<br>MoM: +10.4%',2)+
         ocard('rm6','Ventas Pyme \u00b7 CAME','\u00cdndice Ventas Minoristas','Variaci\u00f3n interanual real','-1.2%','r','May 2026','MoM: +1.2%<br>Acum: -3.1%',2)+
         ocard('rm7','ADEFA \u00b7 Producci\u00f3n','Autom\u00f3viles y com. livianos','Unidades producidas','37.762','r','May 2026','-21.5% YoY<br>Acum: -19.3%',3)+
