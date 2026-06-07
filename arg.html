@@ -1628,7 +1628,7 @@ function buildREAL(){
       src('Encuesta de Indicadores Laborales (EIL) \u00b7 Secretar\u00eda de Trabajo, Empleo y Seguridad Social \u00b7 Mayo 2026')+
       sr4([{l:'MoM Mar 26 (privado)',v:'-0.1%',c:'r',n:'12 meses consecutivos',x:'real'},{l:'YoY Mar 26 (priv.)',v:'-1.4%',c:'r',n:'Construc. -4.6% \u00b7 Ind. -2.5%',x:'real'},{l:'MoM Feb 26',v:'-0.2%',c:'r',n:'Expectativas negativas',x:'real'},{l:'MoM Ene 26',v:'0.0%',c:'a',n:'YoY: -1.3%',x:'real'}])+
       bx1('sp1','h240','SIPA \u2014 Empleo Registrado Privado MoM \u2014 Jul 2025\u2013Ene 2026','c-real')+
-      bx2(['sp2','sp3'],['SIPA \u2014 Salario Real Privado Registrado MoM','SIPA \u2014 Sectores que crecen vs caen (Ene 2026)'],'h190',['c-real',''])+
+      bx2(['sp2','sp3'],['SIPA \u2014 Salario Real Privado Registrado MoM','SIPA \u2014 Variaci\u00f3n YoY por Sector \u00b7 Feb 2026 (SIPA)'],'h320',['c-real',''])+
       src('SIPA \u00b7 Min. Capital Humano \u2014 \u201cSituaci\u00f3n y evoluci\u00f3n del trabajo registrado\u201d \u00b7 Datos Feb 2026')+
       sr4([
         {l:'Asal. Priv. YoY Feb 26',v:'\u2212100.100',c:'r',n:'6.198.900 registrados',x:'real'},
@@ -1685,8 +1685,10 @@ function buildREAL(){
     // SIPA
     bar('sp1',D.sipa.l,D.sipa.privado,{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
     bar('sp2',D.sipa.l,D.sipa.salReal,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ar});
-    bar('sp3',['Construc.','Serv.Com.','Energía','Enseñ.','Agro','Industria','Comercio','Minería'],
-      [1.1,1.0,0.1,0.1,-0.3,-0.4,-0.5,-0.2],{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
+    // sp3: YoY por sector Feb 2026 — Tabla 1 SIPA "Situación y evolución del trabajo registrado" feb 2026
+    barH('sp3',['Pesca','Elec./Gas/Agua','Serv.Com./Pers.','Construc.','Serv.Soc./Salud','Enseñanza','Agro','Hoteles/Rest.','Transporte','Act.Inmob./Emp.','Comercio','Intermed.Fin.','Industria','Minería'],
+      [2.9,0.6,0.3,0.0,0.0,-0.2,-0.6,-1.1,-1.2,-1.5,-1.7,-3.2,-3.8,-7.1],
+      {cf:function(v){return v>0?C.G4:v===0?C.OR:C.RD;},s:'%',ac:ar});
     // SIPA Full breakdown
     barH('sp4',D.sipaFull.cats,D.sipaFull.varAbs,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ar});
     line('sp5',D.sipaFull.lPriv,[
