@@ -332,7 +332,7 @@ var C={
 var gc={color:'rgba(74,159,212,.06)',drawBorder:false};
 var tk={color:C.DM,font:{size:10,family:"'DM Sans',sans-serif"},maxRotation:45};
 function tip(bc){bc=bc||C.CEL;return{backgroundColor:C.NV2,borderColor:bc,borderWidth:1,titleColor:bc,bodyColor:C.WH,cornerRadius:0,padding:10,titleFont:{size:11},bodyFont:{size:11}};}
-function ax(s,mn){var y={grid:gc,ticks:{color:C.DM,font:{size:10},callback:function(v){return v+(s||'%');}},border:{color:'transparent'}};if(mn!==undefined)y.min=mn;return{x:{grid:gc,ticks:tk,border:{color:'transparent'}},y:y};}
+function ax(s,mn){var sf=s||'%';var y={grid:gc,ticks:{color:C.DM,font:{size:10},callback:function(v){return (Number.isInteger(v)?v:parseFloat(v.toFixed(1)))+sf;}},border:{color:'transparent'}};if(mn!==undefined)y.min=mn;return{x:{grid:gc,ticks:tk,border:{color:'transparent'}},y:y};}
 var L=function(a){return a[a.length-1];};
 function destroyAll(){try{Object.values(Chart.instances||{}).forEach(function(c){c.destroy();});}catch(e){}}
 function bar(id,labels,data,opts){
@@ -340,7 +340,7 @@ function bar(id,labels,data,opts){
   var ac=opts.ac||C.CEL;
   var bg=opts.cf?data.map(opts.cf):(opts.c||ac);
   new Chart(el,{type:'bar',data:{labels:labels,datasets:[{data:data,backgroundColor:bg,borderWidth:0,borderRadius:2}]},
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{...tip(ac),callbacks:{label:function(c){return (opts.pre||'')+c.parsed.y+(opts.s||'%');}}}},scales:ax(opts.s||'%',opts.mn)}});
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{...tip(ac),callbacks:{label:function(c){var v=c.parsed.y;return (opts.pre||'')+(Number.isInteger(v)?v:parseFloat(v.toFixed(2)))+(opts.s||'%');}}}},scales:ax(opts.s||'%',opts.mn)}});
 }
 function line(id,labels,datasets,suf,mn,ac){
   var el=$(id);if(!el)return;ac=ac||C.CEL;
@@ -363,7 +363,7 @@ function barH(id,labels,data,opts){
   var bg=opts.cf?data.map(opts.cf):(opts.c||ac);
   new Chart(el,{type:'bar',data:{labels:labels,datasets:[{data:data,backgroundColor:bg,borderWidth:0,borderRadius:2}]},
     options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},tooltip:{...tip(ac),callbacks:{label:function(c){return (opts.pre||'')+c.parsed.x+(opts.s||'K pers.');}}}},
+      plugins:{legend:{display:false},tooltip:{...tip(ac),callbacks:{label:function(c){var v=c.parsed.x;return (opts.pre||'')+(Number.isInteger(v)?v:parseFloat(v.toFixed(1)))+(opts.s||'K pers.');}}}},
       scales:{x:{ticks:{color:C.DM,font:{size:10},callback:function(v){return v+(opts.s||'K');}},grid:{color:'rgba(255,255,255,.04)'},border:{color:'transparent'}},
               y:{ticks:{color:C.DM,font:{size:10}},grid:{display:false},border:{color:'transparent'}}}}});
 }
