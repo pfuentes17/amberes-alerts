@@ -467,7 +467,7 @@ async function loadLive(){
     }
 
     // ICG UTDT: desde manual.json
-    const manualRes = await fetch('https://amberes-alerts.vercel.app/api/data').then(r=>r.ok?r.json():null);
+    const manualRes = await fetch('/api/data').then(r=>r.ok?r.json():null);
     const icgUtdt = manualRes?.icg_utdt ?? null;
 
     // Seed fallback
