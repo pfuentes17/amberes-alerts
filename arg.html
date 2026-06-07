@@ -462,12 +462,12 @@ var D={
   // IPC YoY: gráfico PDF "43,5 39,4 36,6 33,6 31,8 31,3 31,4 31,5 32,4 33,1 32,6 32,4"
   ipcYoY:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
            v:[43.5,39.4,36.6,33.6,31.8,31.3,31.4,31.5,32.4,33.1,32.6,32.4]},
-  emae:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],
-        v:[5.2,6.3,2.8,2.2,4.8,2.7,-0.3,3.5,1.9,-0.2,5.5]},
+  emae:{l:["Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],
+        v:[7.8,5.2,6.3,2.8,2.2,4.8,3.1,-0.3,3.3,1.5,-2.0,5.5]},
   emaeDesest:{l:["Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],
-              v:[0.0,0.4,-1.7,1.1,-0.1,-0.4,0.0,0.6,0.6,-0.4,-0.3,1.8,0.4,-0.3,3.5]},
+              v:[0.2,1.1,-2.3,1.6,-0.1,-0.3,0.0,0.6,0.6,-0.4,0.0,1.9,-0.2,-2.7,3.5]},
   sectEne26:{n:["Agro","Miner\u00eda","Pesca","Fin.","Construc.","Industria","Comercio"],v:[25.1,9.6,50.8,5.2,1.1,-2.6,-3.2]},
-  sectMar26:{n:["Pesca","Agro","Miner\u00eda","Industria","Construc."],v:[30.9,14.2,16.3,4.6,2.1]},
+  sectMar26:{n:["Pesca","Agro","Miner\u00eda","Industria","Construc."],v:[30.9,17.9,16.3,4.6,7.6]},
   eph:{l:["Q1 24","Q2 24","Q3 24","Q4 24","Q1 25","Q2 25","Q3 25","Q4 25"],
        desempleo:[7.7,6.9,6.9,6.4,7.9,7.6,6.3,7.5],
        actividad:[47.7,48.0,47.9,47.4,48.2,48.1,47.8,48.1],
@@ -623,14 +623,15 @@ var D={
          unidades:[66454,42026,48972,47735,41921],
          yoy:[12.4,-5.7,1.2,-3.3,-25.6]},
   // ── CALENDARIO JUNIO 2026 ──────────────
-  cal:{year:2026,month:5,events:[
-    {day:11,name:'IPC Mayo 2026',val:'INDEC &mdash; 8:00 AM',col:'a'},
-    {day:12,name:'EMAE Abril 2026',val:'Actividad econ\u00f3mica &mdash; INDEC',col:'a'},
-    {day:16,name:'Recaudaci\u00f3n Mayo &mdash; AFIP',val:'Dato mensual tributario',col:'m'},
-    {day:18,name:'ICA Abril &mdash; INDEC',val:'Comercio exterior bienes',col:'a'},
-    {day:19,name:'Resultado Fiscal Mayo',val:'Super\u00e1vit primario &mdash; Mecon',col:'m'},
+  cal:{year:2026,month:6,events:[
+    {day: 9,name:'Licitaci\u00f3n Tesoro',val:'Secretar\u00eda de Finanzas',col:'m'},
+    {day:11,name:'IPC Mayo 2026 &mdash; INDEC',val:'Inflaci\u00f3n mensual \u2014 8:00 AM',col:'a'},
+    {day:12,name:'EMAE Abril 2026 &mdash; INDEC',val:'Actividad econ\u00f3mica',col:'a'},
+    {day:16,name:'Recaudaci\u00f3n Jun &mdash; AFIP',val:'Dato mensual tributario',col:'m'},
+    {day:19,name:'Resultado Fiscal Jun',val:'Super\u00e1vit primario &mdash; Mecon',col:'m'},
+    {day:23,name:'Licitaci\u00f3n Tesoro',val:'Secretar\u00eda de Finanzas',col:'m'},
     {day:24,name:'EPH Q1 2026 &mdash; INDEC',val:'Mercado laboral primer trimestre',col:'a'},
-    {day:26,name:'Reservas BCRA',val:'Dato semanal acumulado',col:'g'}
+    {day:30,name:'IPC Jun 2026 &mdash; INDEC',val:'Inflaci\u00f3n mensual \u2014 8:00 AM',col:'a'}
   ]}
 };
 
@@ -642,7 +643,7 @@ async function loadLiveData() {
       fetch('/.netlify/functions/indec-ica').then(function(r){ return r.ok ? r.json() : null; }),
       fetch('/.netlify/functions/indec-recaud').then(function(r){ return r.ok ? r.json() : null; }),
       fetch('/.netlify/functions/indec-fiscal').then(function(r){ return r.ok ? r.json() : null; }),
-      fetch('https://amberes-alerts.vercel.app/api/data').then(function(r){ return r.ok ? r.json() : null; }),
+      fetch('/api/data').then(function(r){ return r.ok ? r.json() : null; }),
     ]);
 
     var ipc     = results[0].status==='fulfilled' && results[0].value?.ok ? results[0].value : null;
@@ -709,7 +710,7 @@ function buildINDEC(){
     {l:'IPC Abr 26 MoM',v:'2.6%',c:'r',n:'N\u00facleo 2.3% \u00b7 Reg. 4.7%'},
     {l:'IPC Abr 26 YoY',v:'32.4%',c:'r',n:'Acum. 2026: 12.3%'},
     {l:'EMAE Mar 26 YoY',v:'+5.5%',c:'g',n:'Desest. MoM +3.5%'},
-    {l:'EMAE Desest. Feb 26',v:'-0.3%',c:'r',n:'MoM sin estacionalidad'},
+    {l:'EMAE Desest. Feb 26',v:'-2.7%',c:'r',n:'MoM sin estacionalidad'},
     {l:'Desempleo Q4 25',v:'7.5%',c:'r',n:'EPH \u00b7 31 aglomerados'},
     {l:'ICA Abr 26 Super\u00e1vit',v:'$2.696M',c:'g',n:'28vo mes positivo'},
     {l:'Expo Mar 26 (r\u00e9cord)',v:'$8.645M',c:'g',n:'M\u00e1ximo hist\u00f3rico INDEC'},
@@ -739,7 +740,7 @@ function buildINDEC(){
     panel2col('p2',
       shdr('EMAE \u00b7 Actividad Econ\u00f3mica','INDEC \u2014 Var. interanual y desestacionalizada','+5.5%','Mar 2026 \u00b7 YoY','g')+
       src('INDEC \u00b7 emae_05_262127B26EA4.pdf \u00b7 Marzo 2026')+
-      sr4([{l:'EMAE YoY Mar 26',v:'+5.5%',c:'g',n:'14/15 sectores en alza',x:'indec'},{l:'Desest. MoM Mar 26',v:'+3.5%',c:'g',n:'M\u00e1ximo hist\u00f3rico',x:'indec'},{l:'EMAE YoY Feb 26',v:'-0.2%',c:'r',n:'Desest. MoM -0.3%',x:'indec'},{l:'EMAE YoY Ene 26',v:'+1.9%',c:'g',n:'Desest. MoM +0.4%',x:'indec'}])+
+      sr4([{l:'EMAE YoY Mar 26',v:'+5.5%',c:'g',n:'14/15 sectores en alza',x:'indec'},{l:'Desest. MoM Mar 26',v:'+3.5%',c:'g',n:'M\u00e1ximo hist\u00f3rico',x:'indec'},{l:'EMAE YoY Feb 26',v:'-2.0%',c:'r',n:'Desest. MoM -2.7%',x:'indec'},{l:'EMAE YoY Ene 26',v:'+1.5%',c:'g',n:'Desest. MoM -0.2%',x:'indec'}])+
       bx1('ea1','h240','EMAE Desestacionalizado MoM \u2014 Sin efecto estacionalidad','c-indec')+
       bx2(['ea2','ea3'],['EMAE YoY \u2014 Crecimiento interanual mensual','Din\u00e1mica Sectorial YoY \u2014 Mar 2026 (principales)'],'h190',['c-indec','']),
       cal)+
