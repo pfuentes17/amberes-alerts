@@ -613,9 +613,10 @@ var D={
          venc:[{l:'2026 (pend.)',v:25},{l:'2027',v:18},{l:'2028',v:22},{l:'2029',v:15},{l:'2030+',v:30}],
          finan:{l:["Ene 26","Feb 26","Mar 26","Abr 26"],letes:[3200,2800,3500,2900],bonos:[1800,2100,1600,2200]}},
   // ── ECONOMIA REAL ──────────────────────
-  sipa:{l:["Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26"],
-        privado:[0.4,-0.2,0.3,0.1,0.6,0.2,0.0],
-        salReal:[2.1,1.8,0.8,1.2,0.4,0.6,1.4]},
+  sipa:{l:["Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],
+        privado:[0.4,-0.2,0.3,0.1,0.6,-0.2,0.0,-0.2,-0.1],  // Fuente: EIL Secretaría de Trabajo
+        yoy:   [null,null,null,null,null,-1.1,-1.3,-1.4,-1.4], // YoY mensual EIL
+        salReal:[2.1,1.8,0.8,1.2,0.4,0.6,1.4,null,null]},     // salReal: datos IS hasta Ene 26
   construya:{l:["Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
              mom:[3.2,-4.1,8.6,-6.2,3.8,2.1,4.98],
              yoy:[-8.2,-11.3,2.4,-9.1,-6.3,-3.7,-4.7]},
@@ -1568,8 +1569,8 @@ function buildMECON(){
 function buildREAL(){
   var ar=C.REAL;
   $('kstrip').innerHTML=kpis([
-    {l:'SIPA Priv. Ene 26 MoM',v:'0.0%',c:'a',n:'Sin cambio mensual'},
-    {l:'SIPA Priv. YoY (est.)',v:'-1.5%',c:'r',n:'Ene 26 vs Ene 25'},
+    {l:'SIPA Priv. Mar 26 MoM',v:'-0.1%',c:'r',n:'EIL · 12 meses caída'},
+    {l:'SIPA Priv. YoY Mar 26',v:'-1.4%',c:'r',n:'vs marzo 2025'},
     {l:'\u00cdndice Construya Abr',v:'+5.0%',c:'g',n:'MoM desestacionalizado'},
     {l:'Construya YoY Abr 26',v:'-4.7%',c:'r',n:'Bajo mismo mes 2025'},
     {l:'Patentamientos May 26',v:'41.921',c:'r',n:'-25.6% YoY \u00b7 ACARA'},
@@ -1587,7 +1588,7 @@ function buildREAL(){
     panel2col('p0',
       shdr('Econom\u00eda Real \u2014 Actividad e Industria','SIPA \u00b7 \u00cdndice Construya \u00b7 ACARA \u00b7 Junio 2026','')+
       '<div class="og">'+
-        ocard('rm0','SIPA \u00b7 Empleo','Empleo Registrado Privado','Variaci\u00f3n mensual s/e','0.0%','a','Ene 2026','YoY: -1.5%<br>+300K destruidos',1)+
+        ocard('rm0','SIPA \u00b7 Empleo','Empleo Registrado Privado','Variaci\u00f3n mensual s/e','-0.1%','r','Mar 2026','YoY: -1.4%<br>12 meses ca\u00edda',1)+
         ocard('rm1','\u00cdndice Construya','Construcci\u00f3n Privada','Despachos insumos sectoriales','+5.0%','g','Abr 2026 MoM','YoY: -4.7%<br>Acum: +0.6%',2)+
         ocard('rm2','ACARA \u00b7 Patentamientos','Autos 0km \u2014 ACARA','Unidades patentadas mensuales','41.921','r','May 2026','-25.6% YoY<br>Peor mes 2026',3)+
         ocard('rm3','ISAC \u00b7 INDEC','Ind. Sint. Construcci\u00f3n','Variaci\u00f3n mensual INDEC','+7.2%','g','Mar 2026','Rebote tras<br>-3.1% Ene',4)+
@@ -1598,9 +1599,9 @@ function buildREAL(){
       '</div>',
       cal,true)+
     panel2col('p1',
-      shdr('SIPA \u00b7 Empleo Registrado Privado','Secretar\u00eda de Trabajo \u2014 en base al SIPA (ARCA/AFIP)','0.0%','MoM Ene 2026 \u00b7 Privado','a')+
-      src('Secretar\u00eda de Trabajo, Empleo y Seguridad Social \u00b7 Panorama Mensual')+
-      sr4([{l:'MoM Ene 26 (privado)',v:'0.0%',c:'a',n:'Sin cambio mensual',x:'real'},{l:'YoY Ene 26 (priv.)',v:'-1.5%',c:'r',n:'94.2K puestos menos',x:'real'},{l:'Sal. Real MoM Ene 26',v:'+1.4%',c:'g',n:'Recuperaci\u00f3n grad.',x:'real'},{l:'Acum. destrucci\u00f3n',v:'-300K',c:'r',n:'Desde Nov 2023',x:'real'}])+
+      shdr('SIPA \u00b7 Empleo Registrado Privado','Secretar\u00eda de Trabajo \u2014 EIL (Encuesta de Indicadores Laborales)','-0.1%','MoM Mar 2026 \u00b7 Privado','r')+
+      src('Encuesta de Indicadores Laborales (EIL) \u00b7 Secretar\u00eda de Trabajo, Empleo y Seguridad Social \u00b7 Mayo 2026')+
+      sr4([{l:'MoM Mar 26 (privado)',v:'-0.1%',c:'r',n:'12 meses consecutivos',x:'real'},{l:'YoY Mar 26 (priv.)',v:'-1.4%',c:'r',n:'Construc. -4.6% \u00b7 Ind. -2.5%',x:'real'},{l:'MoM Feb 26',v:'-0.2%',c:'r',n:'Expectativas negativas',x:'real'},{l:'MoM Ene 26',v:'0.0%',c:'a',n:'YoY: -1.3%',x:'real'}])+
       bx1('sp1','h240','SIPA \u2014 Empleo Registrado Privado MoM \u2014 Jul 2025\u2013Ene 2026','c-real')+
       bx2(['sp2','sp3'],['SIPA \u2014 Salario Real Privado Registrado MoM','SIPA \u2014 Sectores que crecen vs caen (Ene 2026)'],'h190',['c-real','']),
       cal)+
