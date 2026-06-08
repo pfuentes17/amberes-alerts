@@ -2,7 +2,7 @@ const nodemailer = require('nodemailer');
 const path = require('path');
 const fs = require('fs');
 
-const SITE_URL = 'https://calm-dusk-fa89d8.netlify.app/macro.html';
+const SITE_URL = 'https://macroargy-eight.vercel.app/macro.html';
 
 const RECIPIENTS = [
   'pedrof@grupoamberes.com.ar',
