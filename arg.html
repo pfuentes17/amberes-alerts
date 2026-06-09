@@ -607,13 +607,19 @@ var D={
   // Fuente: colocaciones_30-4-26.xlsx (Drive) + argentina.gob.ar (May)
   // VP calculada ponderada por VNO (Opción A: nominal al momento de colocación)
   licitaciones:{
-    l:['16-Ene','30-Ene','13-Feb','27-Feb','16-Mar','31-Mar','17-Abr','30-Abr','13-May','27-May','10-Jun'],
-    // Vida promedio ponderada por VNO (años)
-    vidaPromedio:[0.41, 0.52, 0.44, 0.87, 0.95, 1.56, 1.46, 2.09, 1.58, 1.11, null],
+    // Fechas reales confirmadas (ene–may) + calendario oficial MECON (jun–dic)
+    l:['16-Ene','30-Ene','13-Feb','27-Feb','16-Mar','31-Mar','17-Abr','30-Abr','13-May','27-May',
+       '10-Jun','26-Jun','15-Jul','29-Jul','12-Ago','27-Ago','9-Sep','28-Sep',
+       '14-Oct','28-Oct','11-Nov','26-Nov','11-Dic'],
+    // Vida promedio ponderada por VNO (años) — null = pendiente
+    vidaPromedio:[0.41, 0.52, 0.44, 0.87, 0.95, 1.56, 1.46, 2.09, 1.58, 1.11,
+                  null,null,null,null,null,null,null,null,null,null,null,null,null],
     // Monto VE total (B ARS)
-    montoEfectivo:[9.31, 10.31, 8.69, 6.95, 10.18, 11.40, 10.28, 8.90, 10.7, 12.6, null],
-    // Rollover % — 13-May: 110% | 27-May: 114% | 10-Jun: pendiente resultado
-    rollover:[109, 121, 113, 111, 118, 132, 122, 115, 110, 114, null],
+    montoEfectivo:[9.31, 10.31, 8.69, 6.95, 10.18, 11.40, 10.28, 8.90, 10.7, 12.6,
+                   null,null,null,null,null,null,null,null,null,null,null,null,null],
+    // Rollover % — 13-May: 110% | 27-May: 114% | 10-Jun en adelante: pendiente
+    rollover:[109, 121, 113, 111, 118, 132, 122, 115, 110, 114,
+              null,null,null,null,null,null,null,null,null,null,null,null,null],
     // Perfil mensual de vencimientos — VNO Opción A, acum Ene-May 26
     // Por mes de vencimiento (ARS equiv., incluyendo DL y USD al TC de colocación)
     perfilVencMensual:{
@@ -692,7 +698,7 @@ var D={
     {day:12,name:'EMAE Abril 2026 &mdash; INDEC',val:'Actividad econ\u00f3mica',col:'a'},
     {day:16,name:'Recaudaci\u00f3n Jun &mdash; AFIP',val:'Dato mensual tributario',col:'m'},
     {day:19,name:'Resultado Fiscal Jun',val:'Super\u00e1vit primario &mdash; Mecon',col:'m'},
-    {day:23,name:'Licitaci\u00f3n Tesoro',val:'Secretar\u00eda de Finanzas',col:'m'},
+    {day:26,name:'Licitaci\u00f3n Tesoro',val:'Secretar\u00eda de Finanzas',col:'m'},
     {day:24,name:'EPH Q1 2026 &mdash; INDEC',val:'Mercado laboral primer trimestre',col:'a'},
     {day:30,name:'IPC Jun 2026 &mdash; INDEC',val:'Inflaci\u00f3n mensual \u2014 8:00 AM',col:'a'}
   ]}
