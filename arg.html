@@ -487,8 +487,8 @@ var D={
        expo:[7553,7127,8128,7630,8156,7448,6705,5930,8645,8900],
        impo:[6626,6451,7207,7023,7012,5556,5440,4791,6122,6204],
        saldo:[927,676,921,607,1144,1892,1265,1139,2523,2696]},
-  isac:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],v:[2.1,3.4,-1.2,4.5,-3.1,1.8,7.2]},
-  ipi:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],v:[0.8,1.2,-0.9,2.3,-2.1,0.6,3.8]},
+  isac:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],v:[1.2,0.0,-3.9,2.9,-0.1,-1.4,5.1,-4.0]},
+  ipi:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],v:[-0.1,-0.9,-1.1,0.4,2.4,-3.0,3.7,-2.1]},
   // IPI Minero — INDEC · Abril 2026 (publicado 08/06/2026)
   ipiMinero:{
     l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
@@ -783,7 +783,7 @@ function buildINDEC(){
     {l:'Desempleo Q4 25',v:'7.5%',c:'r',n:'EPH \u00b7 31 aglomerados'},
     {l:'ICA Abr 26 Super\u00e1vit',v:'$2.696M',c:'g',n:'28vo mes positivo'},
     {l:'Expo Mar 26 (r\u00e9cord)',v:'$8.645M',c:'g',n:'M\u00e1ximo hist\u00f3rico INDEC'},
-    {l:'ISAC Mar 26 MoM',v:'+7.2%',c:'g',n:'Construcci\u00f3n INDEC'}
+    {l:'ISAC Abr 26 MoM',v:'-4.0%',c:'r',n:'Construcci\u00f3n INDEC \u00b7 YoY -2.8%'}
   ]);
   $('tabrow').innerHTML=tabs(['Resumen','IPC \u00b7 Precios','EMAE \u00b7 Actividad','EPH \u00b7 Laboral','ICA \u00b7 Comercio','ISAC \u00b7 IPI \u00b7 Sectorial']);
   var cal=makeCal(D.cal.year,D.cal.month,D.cal.events);
@@ -795,7 +795,7 @@ function buildINDEC(){
         ocard('om1','EMAE \u00b7 Actividad','Est. Mensual Actividad Ec.','YoY / Desestacionalizado','+5.5%','g','Mar 2026','Desest. +3.5%<br>M\u00e1x. hist.',2)+
         ocard('om2','EPH \u00b7 Laboral','Encuesta Perm. Hogares','Desempleo / Actividad / Empleo','7.5%','r','Q4 2025','Actividad 48.1%<br>Subocup. 10.8%',3)+
         ocard('om3','ICA \u00b7 Comercio','Intercambio Comercial','Bienes: Expo / Impo / Saldo','$2.696M','g','Abr 2026','Expo $8.900M<br>+33.6% YoY',4)+
-        ocard('om4','ISAC \u00b7 Construcci\u00f3n','Ind. Sintético Activ. Constr.','Variaci\u00f3n mensual INDEC','+7.2%','g','Mar 2026','YoY: pendiente<br>Abr 26',5)+
+        ocard('om4','ISAC \u00b7 Construcci\u00f3n','Ind. Sintético Activ. Constr.','Variaci\u00f3n YoY INDEC','-2.8%','r','Abr 2026','MoM -4.0% \u00b7 acum +2.1%',5)+
         ocard('om5','IPI \u00b7 Industria','&Iacute;ndice Prod. Industrial','Variaci\u00f3n mensual INDEC','+3.8%','g','Mar 2026','Manufactura<br>en recuperaci\u00f3n',5)+
       '</div>',
       cal,true)+
@@ -828,9 +828,9 @@ function buildINDEC(){
       bx2(['bc2','bc3'],['Super\u00e1vit Comercial Mensual \u2014 28 meses positivos','Exportaciones por Grandes Rubros \u2014 PP / MOA / MOI / CyE'],'h190',['c-indec','']),
       cal)+
     panel2col('p5',
-      shdr('ISAC \u00b7 IPI \u00b7 Sectorial','INDEC \u2014 Ind. Sint. Actividad Construcción \u00b7 Ind. Prod. Industrial','+7.2%','ISAC Mar 2026 \u00b7 MoM','g')+
-      src('INDEC \u00b7 ISAC \u00b7 IPI Manufacturero \u00b7 Marzo 2026')+
-      sr4([{l:'ISAC MoM Mar 26',v:'+7.2%',c:'g',n:'Desestacionalizado',x:'indec'},{l:'ISAC MoM Ene 26',v:'-3.1%',c:'r',n:'Inicio a\u00f1o d\u00e9bil',x:'indec'},{l:'IPI Mfg MoM Mar 26',v:'+3.8%',c:'g',n:'Industrial manufacturero',x:'indec'},{l:'IPI Mfg MoM Ene 26',v:'-2.1%',c:'r',n:'Contracci\u00f3n enero',x:'indec'}])+
+      shdr('ISAC \u00b7 IPI \u00b7 Sectorial','INDEC \u2014 Ind. Sint. Actividad Construcción \u00b7 Ind. Prod. Industrial','-2.8%','ISAC Abr 2026 \u00b7 YoY','r')+
+      src('INDEC \u00b7 ISAC \u00b7 IPI Manufacturero \u00b7 Abril 2026')+
+      sr4([{l:'ISAC YoY Abr 26',v:'-2.8%',c:'r',n:'MoM desest -4.0% \u00b7 acum +2.1%',x:'indec'},{l:'ISAC MoM Mar 26',v:'+5.1%',c:'g',n:'Rebote fuerte construcci\u00f3n',x:'indec'},{l:'IPI Mfg YoY Abr 26',v:'-2.8%',c:'r',n:'MoM desest -2.1% \u00b7 acum -2.4%',x:'indec'},{l:'IPI Mfg MoM Mar 26',v:'+3.7%',c:'g',n:'Rebote industrial marzo',x:'indec'}])+
       bx2(['is1','is2'],['ISAC \u2014 Construcci\u00f3n MoM Desestacionalizado','IPI \u2014 Industria Manufacturera MoM'],'h240',['c-indec','c-indec'])+
       bx1('is3','h190','ISAC vs IPI vs EMAE \u2014 Comparativa sectorial 2025\u20132026','')+
       shdr('IPI Minero \u00b7 Energ\u00eda y Recursos','INDEC \u2014 Petr\u00f3leo \u00b7 Gas Natural \u00b7 Litio','+9.5%','IPI Minero Abr 2026 \u00b7 YoY','g')+
@@ -848,7 +848,7 @@ function buildINDEC(){
   setTimeout(function(){
     var ai=C.INDEC;
     mini('om0',D.ipc.v,C.RD);mini('om1',D.emaeDesest.v,C.G4);mini('om2',D.eph.desempleo,C.RD);
-    mini('om3',D.ica.saldo,C.G4);mini('om4',D.isac.v,C.G4);mini('om5',D.ipi.v,C.G4);
+    mini('om3',D.ica.saldo,C.G4);mini('om4',D.isac.v,C.RD);mini('om5',D.ipi.v,C.RD);
     // IPC
     line('ci1',D.ipc.l,[
       {label:'General',data:D.ipc.v,borderColor:C.RD,fill:true,backgroundColor:C.RD+'18',tension:0.4,pointRadius:3,pointBackgroundColor:C.RD},
@@ -1657,7 +1657,7 @@ function buildREAL(){
     {l:'Construya YoY Abr 26',v:'-4.7%',c:'r',n:'Bajo mismo mes 2025'},
     {l:'Patentamientos May 26',v:'41.921',c:'r',n:'-25.6% YoY \u00b7 ACARA'},
     {l:'Acum. Patent. 2026',v:'247.187',c:'r',n:'-9.7% vs 2025'},
-    {l:'ISAC Mar 26 MoM',v:'+7.2%',c:'g',n:'INDEC'},
+    {l:'ISAC Abr 26 YoY',v:'-2.8%',c:'r',n:'INDEC \u00b7 MoM -4.0%'},
     {l:'Sal. Real Mar 26 (IS)',v:'-1.3%',c:'r',n:'7 meses negativos consecutivos'},
     {l:'Monot. YoY Feb 26',v:'+90.700',c:'g',n:'SIPA · compensa priv. formal'},
     {l:'Asal.Priv. YoY Feb 26',v:'−100.100',c:'r',n:'SIPA · destrucción formal'},
@@ -1675,7 +1675,7 @@ function buildREAL(){
         ocard('rm0','SIPA \u00b7 Empleo','Empleo Registrado Privado','Variaci\u00f3n mensual s/e','-0.1%','r','Mar 2026','YoY: -1.4%<br>12 meses ca\u00edda',1)+
         ocard('rm1','\u00cdndice Construya','Construcci\u00f3n Privada','Despachos insumos sectoriales','+5.0%','g','Abr 2026 MoM','YoY: -4.7%<br>Acum: +0.6%',2)+
         ocard('rm2','ACARA \u00b7 Patentamientos','Autos 0km \u2014 ACARA','Unidades patentadas mensuales','41.921','r','May 2026','-25.6% YoY<br>Peor mes 2026',3)+
-        ocard('rm3','ISAC \u00b7 INDEC','Ind. Sint. Construcci\u00f3n','Variaci\u00f3n mensual INDEC','+7.2%','g','Mar 2026','Rebote tras<br>-3.1% Ene',4)+
+        ocard('rm3','ISAC \u00b7 INDEC','Ind. Sint. Construcci\u00f3n','Variaci\u00f3n YoY INDEC','-2.8%','r','Abr 2026','MoM -4.0% \u00b7 acum +2.1%',4)+
         ocard('rm4','Sal. Real \u00b7 IS','Salario Real Priv. Reg.','Variaci\u00f3n mensual real IS INDEC','-1.3%','r','Mar 2026','7 meses<br>consecutivos en rojo',1)+
         ocard('rm5','Cemento \u00b7 AFCP','Despacho mensual nacional','Variaci\u00f3n interanual YoY','-1.5%','r','May 2026','809.983 t<br>MoM: +10.4%',2)+
         ocard('rm6','Ventas Pyme \u00b7 CAME','\u00cdndice Ventas Minoristas','Variaci\u00f3n interanual real','-1.2%','r','May 2026','MoM: +1.2%<br>Acum: -3.1%',2)+
