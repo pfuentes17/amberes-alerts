@@ -607,13 +607,13 @@ var D={
   // Fuente: colocaciones_30-4-26.xlsx (Drive) + argentina.gob.ar (May)
   // VP calculada ponderada por VNO (Opción A: nominal al momento de colocación)
   licitaciones:{
-    l:['16-Ene','30-Ene','13-Feb','27-Feb','16-Mar','31-Mar','17-Abr','30-Abr','13-May','27-May'],
+    l:['16-Ene','30-Ene','13-Feb','27-Feb','16-Mar','31-Mar','17-Abr','30-Abr','13-May','27-May','10-Jun'],
     // Vida promedio ponderada por VNO (años)
-    vidaPromedio:[0.41, 0.52, 0.44, 0.87, 0.95, 1.56, 1.46, 2.09, 1.58, 1.11],
+    vidaPromedio:[0.41, 0.52, 0.44, 0.87, 0.95, 1.56, 1.46, 2.09, 1.58, 1.11, null],
     // Monto VE total (B ARS)
-    montoEfectivo:[9.31, 10.31, 8.69, 6.95, 10.18, 11.40, 10.28, 8.90, 10.7, 12.6],
-    // Rollover % — 13-May: 110% | 27-May: 114%
-    rollover:[109, 121, 113, 111, 118, 132, 122, 115, 110, 114],
+    montoEfectivo:[9.31, 10.31, 8.69, 6.95, 10.18, 11.40, 10.28, 8.90, 10.7, 12.6, null],
+    // Rollover % — 13-May: 110% | 27-May: 114% | 10-Jun: pendiente resultado
+    rollover:[109, 121, 113, 111, 118, 132, 122, 115, 110, 114, null],
     // Perfil mensual de vencimientos — VNO Opción A, acum Ene-May 26
     // Por mes de vencimiento (ARS equiv., incluyendo DL y USD al TC de colocación)
     perfilVencMensual:{
@@ -687,7 +687,7 @@ var D={
         yoy:[-1.2], mom:[1.2], acum:[-3.1]},          // ventas minoristas pyme CAME
   // ── CALENDARIO JUNIO 2026 ──────────────
   cal:{year:2026,month:6,events:[
-    {day: 9,name:'Licitaci\u00f3n Tesoro',val:'Secretar\u00eda de Finanzas',col:'m'},
+    {day:10,name:'Licitaci\u00f3n Tesoro',val:'CER/TAMAR (TXMD8/9/J0) \u00b7 DL (D31G6/TZVD8) \u00b7 Hard USD (AO28) \u00b7 Conversi\u00f3n TZX26/TTJ26',col:'m'},
     {day:11,name:'IPC Mayo 2026 &mdash; INDEC',val:'Inflaci\u00f3n mensual \u2014 8:00 AM',col:'a'},
     {day:12,name:'EMAE Abril 2026 &mdash; INDEC',val:'Actividad econ\u00f3mica',col:'a'},
     {day:16,name:'Recaudaci\u00f3n Jun &mdash; AFIP',val:'Dato mensual tributario',col:'m'},
