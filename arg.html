@@ -613,13 +613,13 @@ var D={
        '14-Oct','28-Oct','11-Nov','26-Nov','11-Dic'],
     // Vida promedio ponderada por VNO (años) — null = pendiente
     vidaPromedio:[0.41, 0.52, 0.44, 0.87, 0.95, 1.56, 1.46, 2.09, 1.58, 1.11,
-                  null,null,null,null,null,null,null,null,null,null,null,null,null],
+                  2.57,null,null,null,null,null,null,null,null,null,null,null,null],
     // Monto VE total (B ARS)
     montoEfectivo:[9.31, 10.31, 8.69, 6.95, 10.18, 11.40, 10.28, 8.90, 10.7, 12.6,
-                   null,null,null,null,null,null,null,null,null,null,null,null,null],
-    // Rollover % — 13-May: 110% | 27-May: 114% | 10-Jun en adelante: pendiente
+                   6.12,null,null,null,null,null,null,null,null,null,null,null,null],
+    // Rollover % — 10-Jun: 120% | 26-Jun en adelante: pendiente
     rollover:[109, 121, 113, 111, 118, 132, 122, 115, 110, 114,
-              null,null,null,null,null,null,null,null,null,null,null,null,null],
+              120,null,null,null,null,null,null,null,null,null,null,null,null],
     // Perfil mensual de vencimientos — VNO Opción A, acum Ene-May 26
     // Por mes de vencimiento (ARS equiv., incluyendo DL y USD al TC de colocación)
     perfilVencMensual:{
@@ -1554,10 +1554,10 @@ function buildMECON(){
       bx2(['de1','de2'],['Deuda Bruta % PBI \u2014 Serie mensual 2019\u20132026 (Finanzas)','Vencimientos ME 2026 Mensual \u2014 A.3.2+A.3.3 \u00b7 MM USD (Ene=Letras CP, Jul=GD30/AL30)'],'h190',['c-rd','c-mecon']),
       cal)+
     panel2col('p4',
-      shdr('Licitaciones del Tesoro','Vida promedio \u00b7 Rollover \u00b7 Perfil vencimientos \u00b7 Ene\u2013May 2026','2.09 a\u00f1os','VP m\u00e1x. 30-Abr \u00b7 VNO acum $100.7B','m')+
-      src('Secretar\u00eda de Finanzas \u00b7 Licitaciones del Tesoro')+
-      sr4([{l:'Colocaciones Abr 26',v:'$5.1B',c:'m',n:'Letes + Bonos',x:'mecon'},{l:'Rollover Abr 26',v:'~110%',c:'g',n:'Sobre vencimientos',x:'mecon'},{l:'Letes',v:'$2.9B',c:'m',n:'Corto plazo',x:'mecon'},{l:'Bonos',v:'$2.2B',c:'m',n:'Mediano / largo plazo',x:'mecon'}])+
-      bx3(['fn1','fn2','fn3'],['Vida Promedio Pond. por Licitaci\u00f3n (a\u00f1os) \u00b7 10 licitaciones','Rollover % por Licitaci\u00f3n \u2014 Colocado / Vencimiento','Perfil Vencimientos VNO Colocado Ene\u2013May 26 \u2014 B ARS equiv.'],'h190',['c-mecon','c-mecon','']),
+      shdr('Licitaciones del Tesoro','Vida promedio \u00b7 Rollover \u00b7 Perfil vencimientos \u00b7 Ene\u2013Jun 2026','120%','Rollover 10-Jun \u00b7 $6.12B adj.','g')+
+      src('Secretar\u00eda de Finanzas \u00b7 Licitaciones del Tesoro \u00b7 10 Jun 2026')+
+      sr4([{l:'Colocaciones 10-Jun',v:'$6.12B',c:'m',n:'CER/TAMAR + DL + HD',x:'mecon'},{l:'Rollover 10-Jun',v:'120.4%',c:'g',n:'$7.40B ofertas recibidas',x:'mecon'},{l:'Vida Prom. 10-Jun',v:'2.57 a\u00f1os',c:'m',n:'CER/TAMAR largo plazo',x:'mecon'},{l:'AO28 HD',v:'USD 200M',c:'g',n:'8.63% TIREA \u00b7 8.31% TNA',x:'mecon'}])+
+      bx3(['fn1','fn2','fn3'],['Vida Promedio Pond. por Licitaci\u00f3n (a\u00f1os) \u00b7 11 licitaciones','Rollover % por Licitaci\u00f3n \u2014 Colocado / Vencimiento','Perfil Vencimientos VNO Colocado Ene\u2013Jun 26 \u2014 B ARS equiv.'],'h190',['c-mecon','c-mecon','']),
       cal)+
     panel2col('p5',
       shdr('Balanza de Pagos','Cuenta corriente \u00b7 Comercio \u00b7 Capital','$2.977B','Super\u00e1vit Com. Bimestre 2026','g')+
