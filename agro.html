@@ -334,17 +334,18 @@ const D = {
     retNota:'Decreto jun-2026. Baja prog.: Soja 33%%->24%%->15%% (dic-28) | Maiz 12%%->8.5%%->5.5%% | Trigo 7.5%%->5.5%% | Girasol 7%%->4.5%%->3%%.',
 
     // TC  --  dolar blend eliminado; exportadores liquidan al TC oficial
-    tcOficial:1070, tcCCL:1142,
+    tcOficial:1425, tcCCL:1494,
     tcNota:'Dolar blend (80/20 oficial/CCL) eliminado. Exportadores liquidan al TC oficial.',
 
     // FAS teorico  --  Secretaria de Agricultura (semanal)
     fasNota:'El precio FAS (Free Alongside Ship) teorico es el valor que recibe el productor en tranquera. Se calcula partiendo del precio FOB de exportacion y restando: (1) retenciones, (2) gastos de comercializacion (fobbing, secado, zarandeo, comisiones ~$20/tn) y (3) flete a puerto. Lo publica la Secretaria de Agricultura cada semana y sirve como referencia para contratos de forward y opciones en Matba-Rofex.',
+    // FAS ARS = FAS USD x TC oficial ($1,425)
     fas:{
-      soja:   {usd:292.0, ars:312440},
-      maiz:   {usd:131.0, ars:140170},
-      trigo:  {usd:159.0, ars:170130},
-      girasol:{usd:240.0, ars:256800},
-      sorgo:  {usd:108.0, ars:115560},
+      soja:   {usd:292.0, ars:416100},
+      maiz:   {usd:131.0, ars:186675},
+      trigo:  {usd:159.0, ars:226575},
+      girasol:{usd:240.0, ars:342000},
+      sorgo:  {usd:108.0, ars:153900},
     },
 
     // Campana 25/26  --  BCR / BCBA  --  12-Jun-2026
@@ -358,11 +359,12 @@ const D = {
     campanaNota:'Maiz 25/26: 68 Mt es RECORD HISTORICO absoluto, supera en 36%% la campana anterior y +15.5 Mt vs previo record de 52.5 Mt. Soja: ajustada al alza por rindes superiores a lo previsto en cosecha final.',
 
     // Precios Matba-Rofex / Rosario (ARS/tn)
+    // Matba-Rofex / Rosario (ARS/tn) — consistente con TC $1,425
     precios:{
-      soja:   {disp:408500,jul26:412000,nov26:399000},
-      maiz:   {disp:174500,jul26:177000,dic26:179500},
-      trigo:  {disp:null,  dic26:192000,mar27:196000},
-      girasol:{disp:435000},
+      soja:   {disp:540000,jul26:545000,nov26:528000},
+      maiz:   {disp:228000,jul26:232000,dic26:236000},
+      trigo:  {disp:null,  dic26:252000,mar27:258000},
+      girasol:{disp:568000},
     },
 
     // Exportaciones INDEC (acum ene-abr 2026, USD M)
@@ -666,7 +668,16 @@ function buildCot(){
   </div>
   <div class="cg2">
     <div class="card c-cot"><div class="ct">Trigo &mdash; MM Net historico</div><div class="ch h240"><canvas id="ch-cot-trigo"></canvas></div></div>
-    <div class="card c-cot"><div class="ct">Soja &mdash; MM vs Commercial (comparacion)</div><div class="ch h240"><canvas id="ch-cot-comp"></canvas></div></div>
+    <div class="card c-cot"><div class="ct">Aceite Soja &mdash; MM Net historico</div><div class="ch h240"><canvas id="ch-cot-aceite"></canvas></div></div>
+  </div>
+  <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--cot);margin-bottom:10px;margin-top:4px;">&#9670; MM vs Commercial &mdash; Comparacion historica por cultivo</div>
+  <div class="cg2" style="margin-bottom:11px;">
+    <div class="card c-cot"><div class="ct">Soja &mdash; MM vs Commercial</div><div class="ch h240"><canvas id="ch-cot-comp-soja"></canvas></div></div>
+    <div class="card c-cot"><div class="ct">Maiz &mdash; MM vs Commercial</div><div class="ch h240"><canvas id="ch-cot-comp-maiz"></canvas></div></div>
+  </div>
+  <div class="cg2">
+    <div class="card c-cot"><div class="ct">Trigo &mdash; MM vs Commercial</div><div class="ch h240"><canvas id="ch-cot-comp-trigo"></canvas></div></div>
+    <div class="card c-cot"><div class="ct">Aceite Soja &mdash; MM vs Commercial</div><div class="ch h240"><canvas id="ch-cot-comp-aceite"></canvas></div></div>
   </div>`;
 }
 
@@ -677,14 +688,21 @@ function initCotCharts(){
     borderColor:data.map(v=>v>=0?C.AGRO:C.RD),borderWidth:1}]},
     options:{...chartBase,plugins:{...chartBase.plugins,tooltip:{...chartBase.plugins.tooltip,callbacks:{label:i=>`${i.raw>=0?'+':''}${i.raw}k contratos`}}},
       scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}k`}}}}});
-  mkChart('ch-cot-soja', barCfg(c.mm.soja));
-  mkChart('ch-cot-maiz', barCfg(c.mm.maiz));
-  mkChart('ch-cot-trigo',barCfg(c.mm.trigo));
-  mkChart('ch-cot-comp',{type:'line',data:{labels:l,datasets:[
-    {label:'MM Net',data:c.mm.soja,borderColor:C.AGRO,backgroundColor:'transparent',tension:.3,pointRadius:3,pointBackgroundColor:C.AGRO},
-    {label:'Commercial Net',data:c.comm.soja,borderColor:C.RD,backgroundColor:'transparent',tension:.3,borderDash:[5,3],pointRadius:3,pointBackgroundColor:C.RD},
+  mkChart('ch-cot-soja',  barCfg(c.mm.soja));
+  mkChart('ch-cot-maiz',  barCfg(c.mm.maiz));
+  mkChart('ch-cot-trigo', barCfg(c.mm.trigo));
+  mkChart('ch-cot-aceite',barCfg(c.mm.aceite));
+
+  const compCfg = (mmData, commData) => ({type:'line',data:{labels:l,datasets:[
+    {label:'MM Net',    data:mmData,   borderColor:C.AGRO,backgroundColor:'transparent',tension:.3,pointRadius:3,pointBackgroundColor:C.AGRO},
+    {label:'Comm. Net', data:commData, borderColor:C.RD,  backgroundColor:'transparent',tension:.3,borderDash:[5,3],pointRadius:3,pointBackgroundColor:C.RD},
   ]},options:{...chartBase,plugins:{...chartBase.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}}},
     scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}k`}}}}});
+
+  mkChart('ch-cot-comp-soja',  compCfg(c.mm.soja,  c.comm.soja));
+  mkChart('ch-cot-comp-maiz',  compCfg(c.mm.maiz,  c.comm.maiz));
+  mkChart('ch-cot-comp-trigo', compCfg(c.mm.trigo, c.comm.trigo));
+  mkChart('ch-cot-comp-aceite',compCfg(c.mm.aceite,c.comm.aceite));
 }
 
 // ================================================================
