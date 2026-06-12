@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agro Global &amp; Argentina | Amberes</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --nv:#07111d;--nv2:#0c1a28;--nv3:#0a1622;
+  --cel:#4a9fd4;--cell:#7bbfe8;--celm:rgba(74,159,212,.12);
+  --g4:#4db87a;--rd:#d95f5f;--or:#e8a044;--wh:#f0f4f8;
+  --dm:rgba(240,244,248,.42);--ft:rgba(240,244,248,.07);
+  --br:rgba(74,159,212,.18);
+  --agro:#4db87a;--agro-m:rgba(77,184,122,.12);
+  --cbot:#e8c84a;--cbot-m:rgba(232,200,74,.12);
+  --cot:#9b7fe8;--cot-m:rgba(155,127,232,.12);
+  --wasde:#4a9fd4;--wasde-m:rgba(74,159,212,.12);
+  --arg:#e8a044;--arg-m:rgba(232,160,68,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--nv);color:var(--wh);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden;}
+header{position:sticky;top:0;z-index:200;background:rgba(7,17,29,.97);backdrop-filter:blur(16px);border-bottom:1px solid var(--br);padding:0 40px;height:62px;display:flex;align-items:center;justify-content:space-between;}
+.hd-l{display:flex;align-items:center;}
+.logo-link{display:flex;align-items:center;text-decoration:none;flex-shrink:0;}
+.logo-img{height:32px;width:auto;max-width:120px;filter:brightness(0) invert(1);opacity:.9;}
+.hd-div{width:1px;height:26px;background:var(--br);margin:0 16px;}
+.hd-t{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:400;}
+.hd-t span{color:var(--agro);}
+.hd-s{font-size:8.5px;color:var(--dm);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px;}
+.hd-r{display:flex;align-items:center;gap:10px;}
+.flag{display:flex;align-items:center;gap:7px;padding:5px 12px;border:1px solid var(--br);font-size:10.5px;color:var(--cell);letter-spacing:1px;text-transform:uppercase;}
+.ldot{width:5px;height:5px;border-radius:50%;background:var(--agro);animation:pulse 2s infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.upd{font-size:8.5px;color:var(--dm);}
+/* KPI strip */
+.kstrip{display:flex;overflow-x:auto;background:var(--nv2);border-bottom:1px solid var(--br);}
+.kstrip::-webkit-scrollbar{height:2px;}
+.kstrip::-webkit-scrollbar-thumb{background:var(--agro-m);}
+.ki{flex:0 0 auto;min-width:130px;padding:11px 16px;border-right:1px solid var(--br);transition:background .2s;}
+.ki:last-child{border-right:none;}
+.ki:hover{background:var(--ft);}
+.kl{font-size:7.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--dm);margin-bottom:3px;}
+.kv{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:500;line-height:1;}
+.kn{font-size:8.5px;color:var(--dm);margin-top:2px;}
+.g{color:#4db87a;}.r{color:#d95f5f;}.a{color:#7bbfe8;}.m{color:#e8a044;}.p{color:#9b7fe8;}.y{color:#e8c84a;}
+/* Tabs */
+.tabrow{display:flex;overflow-x:auto;background:var(--nv2);border-bottom:1px solid var(--br);padding:0 40px;}
+.tabrow::-webkit-scrollbar{height:2px;}
+.tab{padding:11px 18px;white-space:nowrap;background:none;border:none;border-bottom:2px solid transparent;color:var(--dm);font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:1.3px;text-transform:uppercase;cursor:pointer;transition:all .2s;flex-shrink:0;}
+.tab:hover{color:var(--wh);}
+.tab.active{color:var(--agro);border-bottom-color:var(--agro);}
+/* Main */
+.main{padding:26px 40px 60px;}
+.panel{display:none;animation:fi .2s ease;}
+.panel.active{display:block;}
+@keyframes fi{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+/* Layout */
+.twocol{display:grid;grid-template-columns:1fr 290px;gap:18px;align-items:start;}
+.col-l{display:flex;flex-direction:column;gap:12px;}
+.col-r{position:sticky;top:74px;}
+/* Section header */
+.sh{display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:12px;margin-bottom:18px;border-bottom:1px solid var(--br);}
+.st{font-family:'Cormorant Garamond',serif;font-size:25px;font-weight:400;}
+.ss{font-size:8.5px;color:var(--dm);letter-spacing:1.4px;text-transform:uppercase;margin-top:4px;}
+.ln{font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:500;line-height:1;text-align:right;}
+.ll{font-size:8px;color:var(--dm);letter-spacing:1.3px;text-transform:uppercase;text-align:right;margin-top:3px;}
+/* Stat rows */
+.sr4{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:12px;}
+.sr3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:12px;}
+.sr2{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-bottom:12px;}
+.sc{background:var(--nv3);border:1px solid var(--br);padding:12px 14px;}
+.sc.cbot{border-left:2px solid var(--cbot);}
+.sc.cot{border-left:2px solid var(--cot);}
+.sc.wasde{border-left:2px solid var(--wasde);}
+.sc.arg{border-left:2px solid var(--arg);}
+.sc.agro{border-left:2px solid var(--agro);}
+.sl{font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:var(--dm);margin-bottom:4px;}
+.sv{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500;line-height:1;}
+.sn{font-size:8.5px;color:var(--dm);margin-top:3px;}
+/* Chart cards */
+.cg1{display:grid;grid-template-columns:1fr;gap:11px;margin-bottom:11px;}
+.cg2{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:11px;}
+.cg3{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-bottom:11px;}
+.cg4{display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-bottom:11px;}
+.card{background:var(--nv3);border:1px solid var(--br);padding:15px 17px;position:relative;overflow:hidden;}
+.card::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:var(--agro);opacity:.5;}
+.c-cbot::before{background:var(--cbot);}
+.c-cot::before{background:var(--cot);}
+.c-wasde::before{background:var(--wasde);}
+.c-arg::before{background:var(--arg);}
+.c-agro::before{background:var(--agro);}
+.c-rd::before{background:var(--rd);}
+.ct{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--agro);margin-bottom:11px;padding-left:8px;}
+.c-cbot .ct{color:var(--cbot);}
+.c-cot .ct{color:var(--cot);}
+.c-wasde .ct{color:var(--wasde);}
+.c-arg .ct{color:var(--arg);}
+.ch{position:relative;}
+.h280{height:280px;}.h240{height:240px;}.h200{height:200px;}.h190{height:190px;}.h165{height:165px;}.h140{height:140px;}
+/* Overview cards */
+.og{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-bottom:18px;}
+.og5{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;margin-bottom:18px;}
+.oc{background:var(--nv3);border:1px solid var(--br);padding:13px 15px;cursor:pointer;position:relative;overflow:hidden;transition:border-color .2s,background .2s;}
+.oc:hover{border-color:var(--agro);background:var(--agro-m);}
+.ot{font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:var(--agro);margin-bottom:7px;}
+.on{font-family:'Cormorant Garamond',serif;font-size:14px;margin-bottom:2px;}
+.od{font-size:8.5px;color:var(--dm);margin-bottom:8px;}
+.mc{height:40px;position:relative;}
+.of{display:flex;justify-content:space-between;align-items:flex-end;margin-top:8px;padding-top:7px;border-top:1px solid var(--ft);}
+.ov{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;line-height:1;}
+.op{font-size:8px;color:var(--dm);letter-spacing:1px;text-transform:uppercase;}
+.ox{font-size:8.5px;color:var(--dm);text-align:right;line-height:1.5;}
+/* Source badge */
+.src{font-size:8px;letter-spacing:1.2px;text-transform:uppercase;color:var(--dm);padding:2px 0;margin-bottom:12px;border-bottom:1px solid var(--br);padding-bottom:8px;}
+/* COT señal badge */
+.cot-badge{display:inline-block;padding:3px 10px;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;margin-left:8px;}
+.cot-long{background:rgba(77,184,122,.15);color:#4db87a;border:1px solid rgba(77,184,122,.3);}
+.cot-short{background:rgba(217,95,95,.15);color:#d95f5f;border:1px solid rgba(217,95,95,.3);}
+.cot-neutral{background:rgba(240,244,248,.08);color:var(--dm);border:1px solid var(--br);}
+/* WASDE table */
+.w-tbl{width:100%;border-collapse:collapse;margin-bottom:14px;}
+.w-tbl th{font-size:7.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--dm);text-align:right;padding:8px 10px;border-bottom:1px solid var(--br);}
+.w-tbl th:first-child{text-align:left;}
+.w-tbl td{padding:9px 10px;border-bottom:1px solid rgba(74,159,212,.05);font-size:12px;text-align:right;font-family:'Cormorant Garamond',serif;font-size:15px;}
+.w-tbl td:first-child{text-align:left;font-family:'DM Sans',sans-serif;font-size:11px;color:var(--wh);}
+.w-tbl tr:hover td{background:var(--ft);}
+.w-chg{font-size:9px;margin-left:4px;}
+/* Price table */
+.p-tbl{width:100%;border-collapse:collapse;margin-bottom:14px;}
+.p-tbl th{font-size:7.5px;letter-spacing:1.8px;text-transform:uppercase;color:var(--dm);padding:7px 10px;border-bottom:1px solid var(--br);text-align:right;}
+.p-tbl th:first-child{text-align:left;}
+.p-tbl td{padding:10px 10px;border-bottom:1px solid rgba(74,159,212,.05);font-size:12px;text-align:right;}
+.p-tbl td:first-child{text-align:left;color:var(--wh);font-weight:400;}
+.p-tbl tr:hover td{background:var(--ft);}
+.p-sym{font-size:9px;color:var(--dm);margin-left:4px;}
+.p-usd{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;}
+/* Ratio bar */
+.ratio-bar{height:6px;background:rgba(74,159,212,.08);border:1px solid var(--br);border-radius:2px;overflow:hidden;margin:4px 0 2px;}
+.ratio-fill{height:100%;border-radius:2px;transition:width .4s ease;}
+/* Argentina retenciones */
+.ret-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px;}
+.ret-card{background:var(--nv3);border:1px solid var(--br);padding:10px 12px;text-align:center;}
+.ret-crop{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dm);margin-bottom:4px;}
+.ret-val{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--rd);}
+.ret-sub{font-size:8px;color:var(--dm);margin-top:2px;}
+/* Footer */
+footer{border-top:1px solid var(--br);padding:10px 40px;background:var(--nv2);display:flex;justify-content:space-between;align-items:center;}
+.fb{display:flex;align-items:center;gap:11px;}
+.fb-t{font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--agro);}
+.fn{font-size:8px;color:var(--dm);}
+@media(max-width:900px){
+  header{padding:0 16px;}.main{padding:16px 16px 48px;}
+  .twocol{grid-template-columns:1fr;}.col-r{position:static;}
+  .og{grid-template-columns:1fr 1fr;}.og5{grid-template-columns:repeat(3,1fr);}
+  .cg2,.cg3,.cg4{grid-template-columns:1fr;}
+  .sr4{grid-template-columns:repeat(2,1fr);}
+  .tabrow{padding:0 16px;}.ret-grid{grid-template-columns:repeat(3,1fr);}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hd-l">
+    <a href="https://grupoamberes.com.ar" target="_blank" class="logo-link">
+      <img src="https://grupoamberes.com.ar/frontend/img/logo.svg" alt="Amberes" class="logo-img" onerror="this.style.display='none'">
+    </a>
+    <div class="hd-div"></div>
+    <div>
+      <div class="hd-t">Agro <span>Global &amp; Argentina</span></div>
+      <div class="hd-s">CBOT &middot; COT &middot; WASDE &middot; BCR &middot; BCBA &middot; INDEC &middot; BCRA</div>
+    </div>
+  </div>
+  <div class="hd-r">
+    <div class="ldot"></div>
+    <span class="upd" id="upd">Seed data &middot; Jun 2026</span>
+    <div class="flag">&#127806; Agro</div>
+  </div>
+</header>
+
+<div class="kstrip" id="kstrip"></div>
+<div class="tabrow" id="tabrow"></div>
+<div class="main" id="main"></div>
+
+<footer>
+  <div class="fb">
+    <img src="https://grupoamberes.com.ar/frontend/img/logo.svg" alt="Amberes" style="height:19px;filter:brightness(0) invert(1);opacity:.5;" onerror="this.style.display='none'">
+    <span class="fb-t">Amberes &middot; Grupo Financiero</span>
+  </div>
+  <div id="footer-src" class="fn">CBOT &middot; CFTC &middot; USDA &middot; BCR &middot; BCBA &middot; INDEC &middot; BCRA &middot; Junio 2026</div>
+</footer>
+
+<script>
+// ── SEED DATA ─────────────────────────────────────────────────────────────────
+const D = {
+
+  // ── CBOT Precios spot (USD/tn) ─────────────────────────────────
+  cbot: {
+    soja:   { spot:361.9, chg:+1.2, chgPct:+0.33, sym:'ZSN6', cBu:985 },
+    maiz:   { spot:175.2, chg:-0.8, chgPct:-0.46, sym:'ZCN6', cBu:445 },
+    trigo:  { spot:196.6, chg:+2.1, chgPct:+1.08, sym:'ZWN6', cBu:535 },
+    aceite: { spot:1069,  chg:+4.5, chgPct:+0.42, sym:'ZLN6', cLb:48.5 },
+    carne:  { spot:2360,  chg:-12,  chgPct:-0.51, sym:'GFQ6', cLb:215.0 }, // feeder cattle USD/tn
+  },
+
+  // ── CBOT Futuros clave (USD/tn) ────────────────────────────────
+  futuros: [
+    // Soja
+    { crop:'Soja',  exp:'Jul 26', sym:'ZSN6', spot:361.9, base:null },
+    { crop:'Soja',  exp:'Nov 26', sym:'ZSX6', price:358.2, chg:+0.8  },
+    { crop:'Soja',  exp:'Ene 27', sym:'ZSF7', price:362.1, chg:+1.1  },
+    { crop:'Soja',  exp:'Mar 27', sym:'ZSH7', price:365.4, chg:+0.9  },
+    // Maíz
+    { crop:'Maíz',  exp:'Jul 26', sym:'ZCN6', spot:175.2, base:null },
+    { crop:'Maíz',  exp:'Dic 26', sym:'ZCZ6', price:177.8, chg:-0.5  },
+    { crop:'Maíz',  exp:'Mar 27', sym:'ZCH7', price:180.1, chg:-0.3  },
+    // Trigo
+    { crop:'Trigo', exp:'Jul 26', sym:'ZWN6', spot:196.6, base:null },
+    { crop:'Trigo', exp:'Sep 26', sym:'ZWU6', price:198.9, chg:+1.8  },
+    { crop:'Trigo', exp:'Dic 26', sym:'ZWZ6', price:202.4, chg:+2.0  },
+    // Aceite
+    { crop:'Aceite Soja', exp:'Jul 26', sym:'ZLN6', spot:1069, base:null },
+    { crop:'Aceite Soja', exp:'Dic 26', sym:'ZLZ6', price:1042, chg:+3.2 },
+  ],
+
+  // ── Serie histórica CBOT spot (últimos 12 meses, USD/tn) ───────
+  cbotHist: {
+    l: ['Jun 25','Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26'],
+    soja:   [342, 328, 315, 295, 308, 322, 335, 348, 355, 362, 358, 362],
+    maiz:   [162, 155, 150, 148, 152, 158, 165, 170, 172, 174, 175, 175],
+    trigo:  [198, 188, 182, 178, 185, 192, 195, 198, 200, 196, 194, 197],
+    aceite: [985, 968, 942, 920, 948, 975, 1002, 1025, 1038, 1048, 1062, 1069],
+  },
+
+  // ── COT — Commitments of Traders (CFTC) ───────────────────────
+  // Net position en miles de contratos. Semana cierre martes.
+  cot: {
+    l: ['24-Feb','3-Mar','10-Mar','17-Mar','24-Mar','31-Mar','7-Abr','14-Abr','21-Abr','28-Abr','5-May','12-May','19-May','26-May','2-Jun'],
+
+    // Managed Money (fondos especulativos): long − short
+    mm: {
+      soja:   [-45,-38,-25,-10,  5, 18, 25, 30, 28, 22, 15,  8, 12, 18, 22],
+      maiz:   [-195,-185,-170,-155,-140,-125,-108,-95,-88,-82,-78,-72,-68,-65,-60],
+      trigo:  [-62,-55,-48,-42,-38,-35,-38,-40,-42,-38,-35,-32,-28,-25,-22],
+      aceite: [15, 18, 22, 28, 32, 35, 38, 35, 30, 25, 28, 32, 30, 28, 25],
+    },
+    // MM Long (posición larga bruta)
+    mmLong: {
+      soja:   [85, 90, 95, 100, 110, 118, 122, 125, 124, 120, 115, 108, 110, 115, 118],
+      maiz:   [180,190,200,205, 210, 215, 222, 228, 230, 228, 225, 222, 220, 218, 215],
+      trigo:  [42, 45, 48, 50,  52,  54,  50,  48,  46,  48,  50,  52,  54,  56,  58],
+      aceite: [48, 52, 56, 62,  66,  68,  70,  67,  62,  57,  60,  64,  62,  60,  57],
+    },
+    // MM Short (posición corta bruta)
+    mmShort: {
+      soja:   [130,128,120,110, 105, 100, 97, 95, 96, 98, 100, 100, 98, 97, 96],
+      maiz:   [375,375,370,360, 350, 340, 330,323,318,310,303,294,288,283,275],
+      trigo:  [104,100, 96, 92,  90,  89,  88, 88, 88, 86, 85, 84, 82, 81, 80],
+      aceite: [33,  34,  34, 34,  34,  33,  32, 32, 32, 32, 32, 32, 32, 32, 32],
+    },
+    // Commercial (productores/hedgers): long − short (típicamente negativo)
+    comm: {
+      soja:   [32, 25, 18,  5, -8,-20,-28,-35,-33,-28,-22,-15,-18,-24,-28],
+      maiz:   [185,175,160,145,130,115, 98, 85, 78, 72, 68, 62, 58, 55, 50],
+      trigo:  [45, 38, 32, 26, 22, 19, 22, 24, 26, 22, 19, 16, 12,  9,  6],
+      aceite: [-18,-20,-22,-26,-30,-33,-36,-33,-28,-23,-26,-30,-28,-26,-23],
+    },
+    // Non-reportable (pequeños especuladores)
+    nr: {
+      soja:   [13, 13, 7,  5,  3,  2,  3,  5,  5,  6,  7,  7,  6,  6,  6],
+      maiz:   [10, 10,10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+      trigo:  [17, 17,16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16, 16],
+      aceite: [ 3,  2, 0, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2],
+    },
+    // Rango histórico 52 semanas (min/max) para percentil visual
+    range52: {
+      soja:   { min:-85, max:+180 },
+      maiz:   { min:-220, max:+350 },
+      trigo:  { min:-90,  max:+65  },
+      aceite: { min:-10,  max:+90  },
+    },
+  },
+
+  // ── WASDE — USDA (junio 2026) ──────────────────────────────────
+  wasde: {
+    // fecha del último reporte
+    fecha: 'Junio 2026',
+    proximo: '10 Jul 2026',
+
+    soja: {
+      prod:   { mundo:422.3, arg:51.0,  bra:170.5, usa:120.8, chg:+1.2  },
+      cons:   { mundo:372.4,                                   chg:+0.8  },
+      stocks: { mundo:122.8, arg:3.2,   bra:36.1,  usa:12.8,  chg:+0.4  },
+      exp:    { mundo:185.0, arg:6.2,   bra:102.0, usa:56.0,  chg:+0.5  },
+      sxu:    32.9, // stocks/uso %
+      sxuPrev:32.5,
+    },
+    maiz: {
+      prod:   { mundo:1228.4, arg:50.0, bra:129.0, usa:386.0, chg:+3.5  },
+      cons:   { mundo:1220.5,                                  chg:+2.1  },
+      stocks: { mundo:312.8,  arg:4.5,  bra:12.0,  usa:58.2,  chg:+1.4  },
+      exp:    { mundo:208.0,  arg:28.0, bra:45.0,  usa:65.0,  chg:+0.8  },
+      sxu:    25.6,
+      sxuPrev:25.3,
+    },
+    trigo: {
+      prod:   { mundo:807.5, ue:138.0, rus:83.0,  chi:140.0, usa:51.0, chg:+2.0 },
+      cons:   { mundo:810.2,                                             chg:+1.5 },
+      stocks: { mundo:260.4, chi:132.0, ind:30.0, rus:12.0,  usa:19.2, chg:-0.2 },
+      exp:    { mundo:214.0, rus:42.0,  ue:38.0,  aus:22.0,  usa:26.0, chg:+0.5 },
+      sxu:    32.1,
+      sxuPrev:32.4,
+    },
+    aceite: {
+      prod:   { mundo:65.8, arg:8.2, bra:10.5, sea:22.0, chg:+0.4 }, // sea = sudeste asiático
+      cons:   { mundo:64.2,                               chg:+0.3 },
+      stocks: { mundo:4.8,                                chg:+0.1 },
+      sxu:    7.5,
+      sxuPrev:7.4,
+    },
+    carne: {
+      prod:   { mundo:73.5, arg:3.2, usa:12.8, bra:10.5, aus:2.4, chg:+0.2 },
+      exp:    { mundo:11.8, arg:0.85,bra:2.9,  aus:1.6,  usa:1.4, chg:+0.1 },
+      cons:   { mundo:73.2,                               chg:+0.2 },
+    },
+
+    // Serie histórica stocks/uso para gráfico
+    sxuHist: {
+      l: ['Jun 24','Sep 24','Dic 24','Mar 25','Jun 25','Sep 25','Dic 25','Mar 26','Jun 26'],
+      soja:   [34.2, 33.8, 33.5, 33.0, 32.8, 32.6, 32.4, 32.5, 32.9],
+      maiz:   [27.2, 26.8, 26.4, 25.8, 25.5, 25.2, 25.0, 25.3, 25.6],
+      trigo:  [34.1, 33.5, 33.0, 32.6, 32.4, 32.3, 32.2, 32.4, 32.1],
+    },
+  },
+
+  // ── ARGENTINA ─────────────────────────────────────────────────
+  arg: {
+    // Precios FAS teórico (USD/tn) — Secretaría de Agricultura
+    fas: {
+      soja:    350.5,
+      maiz:    155.0,
+      trigo:   170.0,
+      girasol: 385.0,
+      sorgo:   138.0,
+    },
+    // Retenciones vigentes (%)
+    ret: {
+      soja: 33, maiz: 12, trigo: 12, girasol: 7, carne: 9,
+    },
+    // Tipo de cambio exportador (dólar blend = 80% A3500 + 20% CCL)
+    tcBlend: 1082,
+    tcOficial: 1065,
+    tcCCL: 1138,
+
+    // Campaña 25/26 — estimaciones BCR / BCBA (MMt)
+    campania: {
+      soja:    { bcr:50.0,  bcba:50.5,  prev:48.8,  cosechado:92 }, // % cosechado
+      maiz:    { bcr:56.0,  bcba:56.5,  prev:50.2,  cosechado:98 },
+      trigo:   { bcr:19.5,  bcba:19.8,  prev:18.6,  cosechado:100 },
+      girasol: { bcr:3.8,   bcba:3.9,   prev:3.4,   cosechado:100 },
+      cebada:  { bcr:5.2,   bcba:5.3,   prev:4.8,   cosechado:100 },
+    },
+
+    // Exportaciones agro (INDEC — acumulado ene-abr 2026, USD M)
+    expo: {
+      l: ['Ene 26','Feb 26','Mar 26','Abr 26'],
+      moa: [1650, 1820, 2100, 1960],   // Manufacturas de origen agropecuario
+      pp:  [980,  1150, 1380, 1240],   // Productos primarios agro
+      total: [2630, 2970, 3480, 3200],
+      acumMOA: 7530, acumPP: 4750, acumTotal: 12280,
+    },
+
+    // Exportaciones por producto (CIARA-CEC + Aduana, acum 2026 USD M)
+    expoProducto: {
+      items: ['Harina soja','Aceite soja','Grano soja','Maíz','Trigo','Girasol','Carne','Otros'],
+      vals:  [3820, 1640, 820, 2150, 980, 420, 1100, 1350],
+    },
+
+    // BCRA — compras/ventas MULC (USD M, mensual)
+    bcra: {
+      l: ['Jun 25','Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26'],
+      compras: [1850, 1420, 980, 1240, 1680, 820, 450, 1120, 1580, 2240, 2350, 2100],
+      acum2026: 9390, // acum ene-may 2026
+    },
+
+    // Liquidaciones CIARA-CEC (USD M, mensual — cámaras exportadoras)
+    ciara: {
+      l: ['Jun 25','Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26'],
+      vals: [2850, 2200, 1650, 1980, 2450, 1320, 980, 1780, 2250, 3100, 3250, 2980],
+      acum2026: 13360,
+    },
+
+    // Precios internos (ARS/tn) — Matba-Rofex / Rosario
+    precios: {
+      soja:   { disponible: 378000, jul26: 382000, nov26: 372000 },
+      maiz:   { disponible: 165000, jul26: 167000, dic26: 170000 },
+      trigo:  { disponible: 182000, dic26: 185000, mar27: 188000 },
+      girasol:{ disponible: 415000 },
+    },
+  },
+
+  // ── Calendario próximos eventos ───────────────────────────────
+  cal: [
+    { d:'2026-06-18', n:'WASDE USDA',         v:'Próximo reporte mensual',      c:'wasde' },
+    { d:'2026-06-20', n:'COT Semanal CFTC',   v:'Publicación viernes',          c:'cot'   },
+    { d:'2026-06-26', n:'Informe Cosecha BCR', v:'Estimación campaña 25/26',    c:'arg'   },
+    { d:'2026-07-10', n:'WASDE USDA',          v:'Julio 2026',                  c:'wasde' },
+    { d:'2026-07-15', n:'Balance CIARA-CEC',   v:'Liquidaciones junio 2026',    c:'arg'   },
+  ],
+};
+
+// ── HELPERS ───────────────────────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const fmt = (v,d=1) => v==null?'—':Number(v).toLocaleString('es-AR',{minimumFractionDigits:d,maximumFractionDigits:d});
+const fmtB = v => v==null?'—':`$${fmt(v/1000,1)}B`;
+const fmtM = v => v==null?'—':`$${fmt(v,0)}M`;
+const chgStr = (v,pct=false) => v==null?'—':`${v>=0?'+':''}${fmt(v,pct?2:1)}${pct?'%':''}`;
+const clr = v => v>0?'g':v<0?'r':'a';
+
+const C = {
+  AGRO:'#4db87a', CBOT:'#e8c84a', COT:'#9b7fe8', WASDE:'#4a9fd4', ARG:'#e8a044',
+  RD:'#d95f5f', GR:'#4db87a', OR:'#e8a044', CEL:'#4a9fd4',
+  G4:'rgba(77,184,122,1)', G4a:'rgba(77,184,122,.15)',
+  S1:'rgba(74,159,212,.15)', S2:'rgba(74,159,212,.08)',
+  cot_long:'rgba(77,184,122,.7)', cot_long_a:'rgba(77,184,122,.15)',
+  cot_short:'rgba(217,95,95,.7)', cot_short_a:'rgba(217,95,95,.15)',
+};
+
+const chartDefaults = {
+  responsive:true, maintainAspectRatio:false,
+  plugins:{legend:{display:false},tooltip:{
+    backgroundColor:'#111827',borderColor:'#2d4060',borderWidth:1,
+    titleColor:'#e8f0f8',bodyColor:'#94adc8',padding:9,
+  }},
+  scales:{
+    x:{grid:{color:'rgba(31,45,64,.5)'},ticks:{color:'#4a6080',font:{size:9}}},
+    y:{grid:{color:'rgba(31,45,64,.5)'},ticks:{color:'#4a6080',font:{size:9}}},
+  },
+};
+
+const charts = {};
+function mkChart(id, cfg) {
+  if(charts[id]) charts[id].destroy();
+  const ctx = $(id)?.getContext('2d');
+  if(!ctx) return;
+  charts[id] = new Chart(ctx, cfg);
+  return charts[id];
+}
+
+function cotBadge(netPos, range52) {
+  const pct = (netPos - range52.min) / (range52.max - range52.min) * 100;
+  if(pct >= 70) return `<span class="cot-badge cot-long">&#9650; Sobrecomprado ${fmt(pct,0)}%ile</span>`;
+  if(pct <= 30) return `<span class="cot-badge cot-short">&#9660; Sobrevendido ${fmt(pct,0)}%ile</span>`;
+  return `<span class="cot-badge cot-neutral">&#9632; Neutral ${fmt(pct,0)}%ile</span>`;
+}
+
+function sxuBar(sxu, max=40) {
+  const w = Math.min(100, sxu/max*100);
+  const col = sxu > 30 ? C.GR : sxu > 20 ? C.OR : C.RD;
+  return `<div class="ratio-bar"><div class="ratio-fill" style="width:${w}%;background:${col}"></div></div>`;
+}
+
+// ── KPI STRIP ─────────────────────────────────────────────────────────────────
+function buildKstrip() {
+  const d = D.cbot;
+  const cotSoja  = D.cot.mm.soja.at(-1);
+  const cotMaiz  = D.cot.mm.maiz.at(-1);
+  const items = [
+    { l:'Soja CBOT',     v:`$${fmt(d.soja.spot)}`,   n:`${chgStr(d.soja.chgPct,true)} &middot; ${d.soja.sym}`, c:clr(d.soja.chg) },
+    { l:'Maíz CBOT',     v:`$${fmt(d.maiz.spot)}`,   n:`${chgStr(d.maiz.chgPct,true)} &middot; ${d.maiz.sym}`, c:clr(d.maiz.chg) },
+    { l:'Trigo CBOT',    v:`$${fmt(d.trigo.spot)}`,  n:`${chgStr(d.trigo.chgPct,true)} &middot; ${d.trigo.sym}`, c:clr(d.trigo.chg) },
+    { l:'Aceite Soja',   v:`$${fmt(d.aceite.spot,0)}`,n:`${chgStr(d.aceite.chgPct,true)} &middot; ${d.aceite.sym}`, c:clr(d.aceite.chg) },
+    { l:'Carne (Feeder)',v:`$${fmt(d.carne.spot,0)}`, n:`${chgStr(d.carne.chgPct,true)} &middot; ${d.carne.sym}`, c:clr(d.carne.chg) },
+    { l:'COT Soja MM',   v:`${cotSoja>0?'+':''}${cotSoja}k`, n:`Contratos netos`,        c:cotSoja>0?'g':cotSoja<0?'r':'a' },
+    { l:'COT Maíz MM',   v:`${cotMaiz>0?'+':''}${cotMaiz}k`, n:`Contratos netos`,        c:cotMaiz>0?'g':cotMaiz<0?'r':'a' },
+    { l:'FAS Soja ARG',  v:`$${fmt(D.arg.fas.soja)}`, n:`Retención 33%`,                c:'m' },
+    { l:'Blend USD',     v:`$${fmt(D.arg.tcBlend,0)}`,n:`80% Ofic · 20% CCL`,           c:'a' },
+    { l:'Campaña Soja',  v:`${D.arg.campania.soja.bcr} Mt`,n:`BCR · ${D.arg.campania.soja.cosechado}% cosechado`, c:'g' },
+  ];
+  $('kstrip').innerHTML = items.map(i=>
+    `<div class="ki"><div class="kl">${i.l}</div><div class="kv ${i.c}">${i.v}</div><div class="kn">${i.n}</div></div>`
+  ).join('');
+}
+
+// ── TABS ──────────────────────────────────────────────────────────────────────
+const TABS = ['Resumen','CBOT · Precios','COT · Posicionamiento','WASDE · USDA','Argentina · Campaña'];
+let activeTab = 0;
+
+function buildTabs() {
+  $('tabrow').innerHTML = TABS.map((t,i)=>
+    `<button class="tab${i===0?' active':''}" onclick="showTab(${i})">${t}</button>`
+  ).join('');
+}
+
+function showTab(i) {
+  activeTab = i;
+  document.querySelectorAll('.tab').forEach((t,j)=>t.classList.toggle('active',j===i));
+  document.querySelectorAll('.panel').forEach((p,j)=>p.classList.toggle('active',j===i));
+  if(i===1) initCbotCharts();
+  if(i===2) initCotCharts();
+  if(i===3) initWasdeCharts();
+  if(i===4) initArgCharts();
+}
+
+// ── PANEL 0 — RESUMEN ─────────────────────────────────────────────────────────
+function buildResumen() {
+  const d = D.cbot; const w = D.wasde; const a = D.arg;
+  const cotSoja = D.cot.mm.soja.at(-1); const rs = D.cot.range52.soja;
+  const cotMaiz = D.cot.mm.maiz.at(-1); const rm = D.cot.range52.maiz;
+  const cotTri  = D.cot.mm.trigo.at(-1); const rt = D.cot.range52.trigo;
+
+  return `
+  <div class="sh">
+    <div><div class="st">Agro Global &amp; Argentina</div>
+    <div class="ss">CBOT &middot; COT &middot; WASDE &middot; BCR &middot; BCBA &middot; INDEC &middot; BCRA &middot; Junio 2026</div></div>
+    <div><div class="ln g">$${fmt(d.soja.spot)}</div><div class="ll">Soja CBOT &middot; USD/tn</div></div>
+  </div>
+
+  <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--cbot);margin-bottom:10px;">CBOT &mdash; Precios Internacionales</div>
+  <div class="og5" style="margin-bottom:18px;">
+    ${[
+      {t:'Soja',v:`$${fmt(d.soja.spot)}`,n:`${chgStr(d.soja.chgPct,true)} hoy &middot; ${d.soja.sym}`,c:clr(d.soja.chg)},
+      {t:'Maíz',v:`$${fmt(d.maiz.spot)}`,n:`${chgStr(d.maiz.chgPct,true)} hoy &middot; ${d.maiz.sym}`,c:clr(d.maiz.chg)},
+      {t:'Trigo',v:`$${fmt(d.trigo.spot)}`,n:`${chgStr(d.trigo.chgPct,true)} hoy &middot; ${d.trigo.sym}`,c:clr(d.trigo.chg)},
+      {t:'Aceite Soja',v:`$${fmt(d.aceite.spot,0)}`,n:`${chgStr(d.aceite.chgPct,true)} hoy`,c:clr(d.aceite.chg)},
+      {t:'Feeder Cattle',v:`$${fmt(d.carne.spot,0)}`,n:`${chgStr(d.carne.chgPct,true)} hoy &middot; ${d.carne.sym}`,c:clr(d.carne.chg)},
+    ].map(x=>`<div class="oc" onclick="showTab(1)">
+      <div class="ot">CBOT &middot; USD/tn</div>
+      <div class="on">${x.t}</div>
+      <div class="of"><span class="ov ${x.c}">${x.v}</span><span class="ox">${x.n}</span></div>
+    </div>`).join('')}
+  </div>
+
+  <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--cot);margin-bottom:10px;">COT &mdash; Posición Managed Money (miles de contratos)</div>
+  <div class="sr4" style="margin-bottom:18px;">
+    ${[
+      {l:'Soja MM Net',v:`${cotSoja>=0?'+':''}${cotSoja}k`,n:`vs 52s: ${cotBadge(cotSoja,rs)}`,c:clr(cotSoja)},
+      {l:'Maíz MM Net', v:`${cotMaiz>=0?'+':''}${cotMaiz}k`,n:`vs 52s: ${cotBadge(cotMaiz,rm)}`,c:clr(cotMaiz)},
+      {l:'Trigo MM Net',v:`${cotTri>=0?'+':''}${cotTri}k`,n:`vs 52s: ${cotBadge(cotTri,rt)}`,c:clr(cotTri)},
+      {l:'Aceite Soja MM',v:`+${D.cot.mm.aceite.at(-1)}k`,n:`Fondos compradores`,c:'g'},
+    ].map(x=>`<div class="sc cot" style="cursor:pointer" onclick="showTab(2)">
+      <div class="sl">${x.l}</div><div class="sv ${x.c}">${x.v}</div><div class="sn">${x.n}</div>
+    </div>`).join('')}
+  </div>
+
+  <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--wasde);margin-bottom:10px;">WASDE USDA &mdash; ${w.fecha} &middot; Stocks/Uso Global</div>
+  <div class="sr4" style="margin-bottom:18px;">
+    ${[
+      {l:'Soja S/U',v:`${fmt(w.soja.sxu)}%`,n:`Stocks ${fmt(w.soja.stocks.mundo)} Mt &middot; Prod ${fmt(w.soja.prod.mundo)} Mt`,c:'a'},
+      {l:'Maíz S/U',v:`${fmt(w.maiz.sxu)}%`,n:`Stocks ${fmt(w.maiz.stocks.mundo)} Mt &middot; Prod ${fmt(w.maiz.prod.mundo,0)} Mt`,c:'a'},
+      {l:'Trigo S/U',v:`${fmt(w.trigo.sxu)}%`,n:`Stocks ${fmt(w.trigo.stocks.mundo)} Mt &middot; Prod ${fmt(w.trigo.prod.mundo)} Mt`,c:'a'},
+      {l:'Aceite S/U',v:`${fmt(w.aceite.sxu)}%`,n:`Stocks ${fmt(w.aceite.stocks.mundo)} Mt &middot; Prod ${fmt(w.aceite.prod.mundo)} Mt`,c:'g'},
+    ].map(x=>`<div class="sc wasde" style="cursor:pointer" onclick="showTab(3)">
+      <div class="sl">${x.l}</div><div class="sv ${x.c}">${x.v}</div><div class="sn">${x.n}</div>
+    </div>`).join('')}
+  </div>
+
+  <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--arg);margin-bottom:10px;">ARGENTINA &mdash; Campaña 25/26 &middot; BCR / BCBA</div>
+  <div class="og" style="margin-bottom:0;">
+    ${[
+      {t:'Soja 25/26',v:`${a.campania.soja.bcr} Mt`,n:`BCR &middot; ${a.campania.soja.cosechado}% cosechado`,x:`FAS $${fmt(a.fas.soja)} &middot; Ret. ${a.ret.soja}%`},
+      {t:'Maíz 25/26',v:`${a.campania.maiz.bcr} Mt`,n:`BCR &middot; ${a.campania.maiz.cosechado}% cosechado`,x:`FAS $${fmt(a.fas.maiz)} &middot; Ret. ${a.ret.maiz}%`},
+      {t:'Trigo 25/26',v:`${a.campania.trigo.bcr} Mt`,n:`BCR &middot; ${a.campania.trigo.cosechado}% cosechado`,x:`FAS $${fmt(a.fas.trigo)} &middot; Ret. ${a.ret.trigo}%`},
+    ].map(x=>`<div class="oc" onclick="showTab(4)">
+      <div class="ot">Campaña &middot; BCR</div>
+      <div class="on">${x.t}</div>
+      <div class="of"><span class="ov g">${x.v}</span><span class="ox">${x.n}<br>${x.x}</span></div>
+    </div>`).join('')}
+  </div>`;
+}
+
+// ── PANEL 1 — CBOT PRECIOS ────────────────────────────────────────────────────
+function buildCbot() {
+  const f = D.futuros;
+  const crops = ['Soja','Maíz','Trigo','Aceite Soja'];
+  const futsHtml = crops.map(crop => {
+    const rows = f.filter(x=>x.crop===crop);
+    return `<div style="margin-bottom:16px;">
+      <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--cbot);margin-bottom:8px;">${crop}</div>
+      <table class="p-tbl">
+        <thead><tr><th>Vencimiento</th><th>Símbolo</th><th>USD/tn</th><th>Cambio</th></tr></thead>
+        <tbody>
+        ${rows.map(r=>{
+          const price = r.price ?? r.spot;
+          const chg = r.chg ?? 0;
+          const label = r.base===null ? `<strong>${r.exp}</strong> <span class="p-sym">SPOT</span>` : r.exp;
+          return `<tr>
+            <td>${label}</td>
+            <td style="color:var(--dm);font-size:11px;">${r.sym}</td>
+            <td class="p-usd">${fmt(price)}</td>
+            <td class="${clr(chg)}" style="font-size:12px;">${chgStr(chg)}</td>
+          </tr>`;
+        }).join('')}
+        </tbody>
+      </table>
+    </div>`;
+  }).join('');
+
+  return `
+  <div class="sh">
+    <div><div class="st">CBOT &mdash; Precios &amp; Futuros</div>
+    <div class="ss">Chicago Board of Trade &middot; USD por tonelada &middot; Datos seed Jun 2026</div></div>
+    <div><div class="ln y">$${fmt(D.cbot.soja.spot)}</div><div class="ll">Soja spot &middot; USD/tn</div></div>
+  </div>
+  <div class="src">Chicago Board of Trade &middot; CME Group &middot; Futuros activos</div>
+
+  <div class="cg2" style="margin-bottom:16px;">
+    <div class="card c-cbot"><div class="ct">Evolución Spot — Soja &amp; Maíz (USD/tn)</div><div class="ch h240"><canvas id="ch-cbot1"></canvas></div></div>
+    <div class="card c-cbot"><div class="ct">Evolución Spot — Trigo &amp; Aceite Soja (USD/tn)</div><div class="ch h240"><canvas id="ch-cbot2"></canvas></div></div>
+  </div>
+
+  <div class="cg2">
+    <div class="card c-cbot"><div class="ct">Curva de Futuros — Soja</div><div class="ch h200"><canvas id="ch-fut-soja"></canvas></div></div>
+    <div class="card c-cbot"><div class="ct">Curva de Futuros — Maíz &amp; Trigo</div><div class="ch h200"><canvas id="ch-fut-mt"></canvas></div></div>
+  </div>
+
+  <div style="margin-top:18px;">${futsHtml}</div>`;
+}
+
+function initCbotCharts() {
+  const h = D.cbotHist;
+  const base = JSON.parse(JSON.stringify(chartDefaults));
+
+  mkChart('ch-cbot1',{type:'line',data:{labels:h.l,datasets:[
+    {label:'Soja',data:h.soja,borderColor:C.CBOT,backgroundColor:C.CBOT+'22',tension:.3,fill:true,pointRadius:3,pointBackgroundColor:C.CBOT,yAxisID:'y'},
+    {label:'Maíz',data:h.maiz,borderColor:C.AGRO,backgroundColor:'transparent',tension:.3,fill:false,pointRadius:3,pointBackgroundColor:C.AGRO,yAxisID:'y2'},
+  ]},options:{...base,plugins:{...base.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}}},
+    scales:{x:base.scales.x,y:{...base.scales.y,position:'left',ticks:{...base.scales.y.ticks,callback:v=>`$${v}`}},
+      y2:{...base.scales.y,position:'right',grid:{display:false},ticks:{...base.scales.y.ticks,callback:v=>`$${v}`}}}}});
+
+  mkChart('ch-cbot2',{type:'line',data:{labels:h.l,datasets:[
+    {label:'Trigo',data:h.trigo,borderColor:C.CEL,backgroundColor:C.CEL+'22',tension:.3,fill:true,pointRadius:3,pointBackgroundColor:C.CEL,yAxisID:'y'},
+    {label:'Aceite',data:h.aceite.map(v=>v/10),borderColor:C.OR,backgroundColor:'transparent',tension:.3,fill:false,pointRadius:3,pointBackgroundColor:C.OR,yAxisID:'y2'},
+  ]},options:{...base,plugins:{...base.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}}},
+    scales:{x:base.scales.x,y:{...base.scales.y,position:'left',ticks:{...base.scales.y.ticks,callback:v=>`$${v}`}},
+      y2:{...base.scales.y,position:'right',grid:{display:false},ticks:{...base.scales.y.ticks,callback:v=>`$${v*10}/tn`}}}}});
+
+  // Curva futuros soja
+  const fs = D.futuros.filter(x=>x.crop==='Soja');
+  mkChart('ch-fut-soja',{type:'line',data:{labels:fs.map(x=>x.exp),datasets:[{
+    label:'Soja USD/tn',data:fs.map(x=>x.price??x.spot),
+    borderColor:C.CBOT,backgroundColor:C.CBOT+'22',tension:0.2,fill:true,
+    pointRadius:5,pointBackgroundColor:C.CBOT,
+  }]},options:{...base,scales:{x:base.scales.x,y:{...base.scales.y,ticks:{...base.scales.y.ticks,callback:v=>`$${v}`}}}}});
+
+  // Curva futuros maíz + trigo
+  const fm = D.futuros.filter(x=>x.crop==='Maíz');
+  const ft = D.futuros.filter(x=>x.crop==='Trigo');
+  const lbl = [...new Set([...fm.map(x=>x.exp),...ft.map(x=>x.exp)])];
+  mkChart('ch-fut-mt',{type:'line',data:{labels:lbl,datasets:[
+    {label:'Maíz',data:lbl.map(l=>{const r=fm.find(x=>x.exp===l);return r?(r.price??r.spot):null;}),
+      borderColor:C.AGRO,backgroundColor:'transparent',tension:.2,pointRadius:5,pointBackgroundColor:C.AGRO,spanGaps:true},
+    {label:'Trigo',data:lbl.map(l=>{const r=ft.find(x=>x.exp===l);return r?(r.price??r.spot):null;}),
+      borderColor:C.CEL,backgroundColor:'transparent',tension:.2,pointRadius:5,pointBackgroundColor:C.CEL,spanGaps:true},
+  ]},options:{...base,plugins:{...base.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}}},
+    scales:{x:base.scales.x,y:{...base.scales.y,ticks:{...base.scales.y.ticks,callback:v=>`$${v}`}}}}});
+}
+
+// ── PANEL 2 — COT POSICIONAMIENTO ────────────────────────────────────────────
+function buildCot() {
+  const cot = D.cot;
+  const last = l => l.at(-1);
+  const crops = [
+    {k:'soja',  name:'Soja',        color:C.CBOT},
+    {k:'maiz',  name:'Maíz',        color:C.AGRO},
+    {k:'trigo', name:'Trigo',       color:C.CEL},
+    {k:'aceite',name:'Aceite Soja', color:C.OR},
+  ];
+  const cotSummary = crops.map(c=>{
+    const net = last(cot.mm[c.k]);
+    const lng = last(cot.mmLong[c.k]);
+    const sht = last(cot.mmShort[c.k]);
+    const comm = last(cot.comm[c.k]);
+    const r52 = cot.range52[c.k];
+    const pct = r52 ? ((net - r52.min)/(r52.max - r52.min)*100) : 50;
+    return `<div class="sc cot">
+      <div class="sl">${c.name} &mdash; MM Net</div>
+      <div class="sv ${clr(net)}">${net>=0?'+':''}${net}k</div>
+      <div class="sn">Long ${lng}k &middot; Short ${sht}k</div>
+      <div class="sn" style="margin-top:4px;">Comm: ${comm>=0?'+':''}${comm}k &middot; ${cotBadge(net, r52??{min:-100,max:100})}</div>
+      <div class="ratio-bar" style="margin-top:6px;">
+        <div class="ratio-fill" style="width:${Math.max(2,Math.min(100,pct))}%;background:${net>0?C.AGRO:C.RD}"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:8px;color:var(--dm);margin-top:2px;">
+        <span>Mín 52s: ${r52?.min}k</span><span>Máx 52s: ${r52?.max}k</span>
+      </div>
+    </div>`;
+  }).join('');
+
+  return `
+  <div class="sh">
+    <div><div class="st">COT &mdash; Commitments of Traders</div>
+    <div class="ss">CFTC &middot; Managed Money, Commercial &amp; Non-Reportable &middot; Miles de contratos</div></div>
+    <div><div class="ln ${clr(last(cot.mm.soja))}">${last(cot.mm.soja)>=0?'+':''}${last(cot.mm.soja)}k</div><div class="ll">MM Soja neto &middot; Contratos</div></div>
+  </div>
+  <div class="src">CFTC &middot; Disaggregated COT Report &middot; Chicago Board of Trade &middot; Semana 2-Jun-2026</div>
+
+  <div class="sr4" style="margin-bottom:18px;">${cotSummary}</div>
+
+  <div class="cg2">
+    <div class="card c-cot"><div class="ct">Soja — MM Net Position (miles de contratos)</div><div class="ch h240"><canvas id="ch-cot-soja"></canvas></div></div>
+    <div class="card c-cot"><div class="ct">Maíz — MM Net Position (miles de contratos)</div><div class="ch h240"><canvas id="ch-cot-maiz"></canvas></div></div>
+  </div>
+  <div class="cg2">
+    <div class="card c-cot"><div class="ct">Trigo — MM Net Position (miles de contratos)</div><div class="ch h240"><canvas id="ch-cot-trigo"></canvas></div></div>
+    <div class="card c-cot"><div class="ct">Aceite Soja — MM Net Position (miles de contratos)</div><div class="ch h240"><canvas id="ch-cot-aceite"></canvas></div></div>
+  </div>
+
+  <div class="cg2" style="margin-top:0;">
+    <div class="card c-cot"><div class="ct">Soja — Posiciones Brutas MM (Long vs Short)</div><div class="ch h240"><canvas id="ch-cot-soja-bruta"></canvas></div></div>
+    <div class="card c-cot"><div class="ct">Maíz — MM vs Commercial Net</div><div class="ch h240"><canvas id="ch-cot-maiz-comm"></canvas></div></div>
+  </div>
+
+  <div style="margin-top:14px;padding:14px;background:var(--nv3);border:1px solid var(--br);border-left:2px solid var(--cot);">
+    <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--cot);margin-bottom:8px;">&#9432; Lectura del COT</div>
+    <div style="font-size:11px;color:var(--dm);line-height:1.7;">
+      <strong style="color:var(--wh)">Managed Money (fondos especulativos)</strong>: posición neta = long − short. Positivo = fondos apostando a suba.
+      Percentil <span style="color:var(--rd)">≥70%</span> = sobrecomprado (señal de techo). Percentil <span style="color:var(--g4)">≤30%</span> = sobrevendido (señal de piso).<br>
+      <strong style="color:var(--wh)">Commercial (hedgers)</strong>: productores y exportadores cubriendo posición física. Típicamente inversa a MM.
+      Posición commercial muy larga = compraron mucho en físico = demanda real fuerte.
+    </div>
+  </div>`;
+}
+
+function initCotCharts() {
+  const cot = D.cot; const l = cot.l;
+  const base = JSON.parse(JSON.stringify(chartDefaults));
+  const barCfg = (data, color) => ({
+    type:'bar',
+    data:{labels:l,datasets:[{
+      label:'MM Net',data,
+      backgroundColor:data.map(v=>v>=0?C.cot_long:C.cot_short),
+      borderColor:data.map(v=>v>=0?C.AGRO:C.RD),
+      borderWidth:1,
+    }]},
+    options:{...base,plugins:{...base.plugins,tooltip:{...base.plugins.tooltip,callbacks:{label:i=>`${i.raw>=0?'+':''}${i.raw}k contratos`}}},
+      scales:{x:{...base.scales.x,ticks:{...base.scales.x.ticks,maxRotation:45,font:{size:8}}},
+        y:{...base.scales.y,ticks:{...base.scales.y.ticks,callback:v=>`${v}k`},
+          grid:{...base.scales.y.grid,drawBorder:false}}}}
+  });
+
+  mkChart('ch-cot-soja',  barCfg(cot.mm.soja));
+  mkChart('ch-cot-maiz',  barCfg(cot.mm.maiz));
+  mkChart('ch-cot-trigo', barCfg(cot.mm.trigo));
+  mkChart('ch-cot-aceite',barCfg(cot.mm.aceite));
+
+  // Posiciones brutas soja
+  mkChart('ch-cot-soja-bruta',{type:'bar',data:{labels:l,datasets:[
+    {label:'Long MM',data:cot.mmLong.soja,backgroundColor:'rgba(77,184,122,.55)',borderColor:C.AGRO,borderWidth:1},
+    {label:'Short MM',data:cot.mmShort.soja.map(v=>-v),backgroundColor:'rgba(217,95,95,.55)',borderColor:C.RD,borderWidth:1},
+  ]},options:{...base,plugins:{...base.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}}},
+    scales:{x:{...base.scales.x,stacked:true,ticks:{...base.scales.x.ticks,maxRotation:45,font:{size:8}}},
+      y:{...base.scales.y,stacked:true,ticks:{...base.scales.y.ticks,callback:v=>`${v}k`}}}}});
+
+  // MM vs Commercial maíz
+  mkChart('ch-cot-maiz-comm',{type:'line',data:{labels:l,datasets:[
+    {label:'MM Net',data:cot.mm.maiz,borderColor:C.AGRO,backgroundColor:'transparent',tension:.3,pointRadius:3,pointBackgroundColor:C.AGRO},
+    {label:'Commercial Net',data:cot.comm.maiz,borderColor:C.OR,backgroundColor:'transparent',tension:.3,borderDash:[5,3],pointRadius:3,pointBackgroundColor:C.OR},
+  ]},options:{...base,plugins:{...base.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}}},
+    scales:{x:{...base.scales.x,ticks:{...base.scales.x.ticks,maxRotation:45,font:{size:8}}},
+      y:{...base.scales.y,ticks:{...base.scales.y.ticks,callback:v=>`${v}k`}}}}});
+}
+
+// ── PANEL 3 — WASDE USDA ─────────────────────────────────────────────────────
+function buildWasde() {
+  const w = D.wasde;
+
+  const wasdeTable = (title, prod, cons, stocks, sxu, sxuPrev, extra='') => {
+    const chgColor = v => v>0?'style="color:var(--g4)"':v<0?'style="color:var(--rd)"':'';
+    return `<div style="margin-bottom:20px;">
+      <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--wasde);margin-bottom:10px;">${title}</div>
+      <table class="w-tbl">
+        <thead><tr><th>Variable</th><th>Mundial</th><th>Vs mes ant.</th>${extra}</tr></thead>
+        <tbody>
+          <tr><td>Producción (Mt)</td><td>${fmt(prod.mundo)}</td><td ${chgColor(prod.chg)} style="font-size:12px;">${chgStr(prod.chg)}</td>${extra?`<td style="font-size:11px;color:var(--dm)">${Object.entries(prod).filter(([k])=>k!='mundo'&&k!='chg').map(([k,v])=>`${k.toUpperCase()}: ${fmt(v)}`).join(' · ')}</td>`:''}</tr>
+          <tr><td>Consumo (Mt)</td><td>${fmt(cons.mundo)}</td><td ${chgColor(cons.chg)} style="font-size:12px;">${chgStr(cons.chg)}</td>${extra?'<td></td>':''}</tr>
+          <tr><td>Stocks finales (Mt)</td><td>${fmt(stocks.mundo)}</td><td ${chgColor(stocks.chg)} style="font-size:12px;">${chgStr(stocks.chg)}</td>${extra?`<td style="font-size:11px;color:var(--dm)">${Object.entries(stocks).filter(([k])=>k!='mundo'&&k!='chg').map(([k,v])=>`${k.toUpperCase()}: ${fmt(v)}`).join(' · ')}</td>`:''}</tr>
+          <tr><td>Stocks/Uso (%)</td><td>${fmt(sxu)}%</td><td ${chgColor(sxu-sxuPrev)} style="font-size:12px;">${chgStr(sxu-sxuPrev)}</td>${extra?'<td></td>':''}</tr>
+        </tbody>
+      </table>
+      ${sxuBar(sxu)}
+      <div style="font-size:8px;color:var(--dm);margin-top:2px;">Stocks/Uso: ${fmt(sxu)}% (prev. ${fmt(sxuPrev)}%)</div>
+    </div>`;
+  };
+
+  return `
+  <div class="sh">
+    <div><div class="st">WASDE &mdash; USDA Oferta &amp; Demanda</div>
+    <div class="ss">World Agricultural Supply and Demand Estimates &middot; ${w.fecha} &middot; Próximo: ${w.proximo}</div></div>
+    <div><div class="ln a">${fmt(w.soja.sxu)}%</div><div class="ll">Soja Stocks/Uso global</div></div>
+  </div>
+  <div class="src">USDA WASDE &middot; ${w.fecha} &middot; Millones de toneladas métricas</div>
+
+  <div class="cg2" style="margin-bottom:16px;">
+    <div class="card c-wasde"><div class="ct">Stocks/Uso histórico — Soja &amp; Maíz</div><div class="ch h240"><canvas id="ch-wasde-su1"></canvas></div></div>
+    <div class="card c-wasde"><div class="ct">Stocks/Uso histórico — Trigo</div><div class="ch h240"><canvas id="ch-wasde-su2"></canvas></div></div>
+  </div>
+
+  <div class="cg2">
+    <div>
+      ${wasdeTable('Soja', w.soja.prod, w.soja.cons, w.soja.stocks, w.soja.sxu, w.soja.sxuPrev, 'extra')}
+      ${wasdeTable('Maíz', w.maiz.prod, w.maiz.cons, w.maiz.stocks, w.maiz.sxu, w.maiz.sxuPrev, 'extra')}
+    </div>
+    <div>
+      ${wasdeTable('Trigo', w.trigo.prod, w.trigo.cons, w.trigo.stocks, w.trigo.sxu, w.trigo.sxuPrev, 'extra')}
+      ${wasdeTable('Aceite Vegetal', w.aceite.prod, w.aceite.cons, w.aceite.stocks, w.aceite.sxu, w.aceite.sxuPrev)}
+    </div>
+  </div>
+
+  <div style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--arg);margin-bottom:10px;">Carne Vacuna &mdash; Producción y Exportaciones Mundiales (MMt)</div>
+  <div class="sr4">
+    ${[
+      {l:'Prod. Mundial',v:`${fmt(w.carne.prod.mundo)} Mt`,n:'Total bovino'},
+      {l:'Prod. Argentina',v:`${fmt(w.carne.prod.arg)} Mt`,n:'4.4% del total mundial'},
+      {l:'Expo Argentina',v:`${fmt(w.carne.exp.arg*1000,0)} Mt`,n:'2da mayor exportadora'},
+      {l:'Expo Brasil',v:`${fmt(w.carne.exp.bra)} Mt`,n:'1er exportador mundial'},
+    ].map(x=>`<div class="sc arg"><div class="sl">${x.l}</div><div class="sv a">${x.v}</div><div class="sn">${x.n}</div></div>`).join('')}
+  </div>
+
+  <div class="cg2">
+    <div class="card c-wasde"><div class="ct">Producción Mundial por País — Soja (Mt)</div><div class="ch h200"><canvas id="ch-wasde-prod-soja"></canvas></div></div>
+    <div class="card c-wasde"><div class="ct">Producción Mundial por País — Maíz (Mt)</div><div class="ch h200"><canvas id="ch-wasde-prod-maiz"></canvas></div></div>
+  </div>`;
+}
+
+function initWasdeCharts() {
+  const w = D.wasde; const base = JSON.parse(JSON.stringify(chartDefaults));
+
+  mkChart('ch-wasde-su1',{type:'line',data:{labels:w.sxuHist.l,datasets:[
+    {label:'Soja S/U %',data:w.sxuHist.soja,borderColor:C.CBOT,backgroundColor:C.CBOT+'22',tension:.3,fill:true,pointRadius:4,pointBackgroundColor:C.CBOT,yAxisID:'y'},
+    {label:'Maíz S/U %',data:w.sxuHist.maiz,borderColor:C.AGRO,backgroundColor:'transparent',tension:.3,fill:false,pointRadius:4,pointBackgroundColor:C.AGRO,yAxisID:'y'},
+  ]},options:{...base,plugins:{...base.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}}},
+    scales:{x:base.scales.x,y:{...base.scales.y,ticks:{...base.scales.y.ticks,callback:v=>`${v}%`}}}}});
+
+  mkChart('ch-wasde-su2',{type:'line',data:{labels:w.sxuHist.l,datasets:[
+    {label:'Trigo S/U %',data:w.sxuHist.trigo,borderColor:C.CEL,backgroundColor:C.CEL+'22',tension:.3,fill:true,pointRadius:4,pointBackgroundColor:C.CEL},
+  ]},options:{...base,scales:{x:base.scales.x,y:{...base.scales.y,ticks:{...base.scales.y.ticks,callback:v=>`${v}%`}}}}});
+
+  const s = w.soja.prod; const m = w.maiz.prod;
+  mkChart('ch-wasde-prod-soja',{type:'doughnut',data:{
+    labels:['Argentina','Brasil','EE.UU.','Resto'],
+    datasets:[{data:[s.arg, s.bra, s.usa, +(s.mundo-s.arg-s.bra-s.usa).toFixed(1)],
+      backgroundColor:['#e8a044','#4db87a','#4a9fd4','#9b7fe8'],borderColor:'#0a1622',borderWidth:2}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'bottom',labels:{color:'#4a6080',font:{size:9},boxWidth:10,padding:8}},
+    tooltip:{backgroundColor:'#111827',borderColor:'#2d4060',borderWidth:1,titleColor:'#e8f0f8',bodyColor:'#94adc8',callbacks:{label:i=>`${i.label}: ${fmt(i.raw)} Mt`}}}}});
+
+  mkChart('ch-wasde-prod-maiz',{type:'doughnut',data:{
+    labels:['EE.UU.','China','Brasil','Argentina','Resto'],
+    datasets:[{data:[m.usa, m?.chi??295, m.bra, m.arg, +(m.mundo-m.usa-(m?.chi??295)-m.bra-m.arg).toFixed(1)],
+      backgroundColor:['#4a9fd4','#d95f5f','#4db87a','#e8a044','#9b7fe8'],borderColor:'#0a1622',borderWidth:2}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true,position:'bottom',labels:{color:'#4a6080',font:{size:9},boxWidth:10,padding:8}},
+    tooltip:{backgroundColor:'#111827',borderColor:'#2d4060',borderWidth:1,titleColor:'#e8f0f8',bodyColor:'#94adc8',callbacks:{label:i=>`${i.label}: ${fmt(i.raw)} Mt`}}}}});
+}
+
+// ── PANEL 4 — ARGENTINA ───────────────────────────────────────────────────────
+function buildArg() {
+  const a = D.arg;
+  const retHtml = Object.entries(a.ret).map(([k,v])=>
+    `<div class="ret-card"><div class="ret-crop">${k.charAt(0).toUpperCase()+k.slice(1)}</div><div class="ret-val">${v}%</div><div class="ret-sub">Retención</div></div>`
+  ).join('');
+
+  const campHtml = Object.entries(a.campania).map(([k,v])=>{
+    const fas = a.fas[k] ? `FAS $${fmt(a.fas[k])}` : '—';
+    const ret = a.ret[k] ? `Ret. ${a.ret[k]}%` : '—';
+    return `<div class="sc arg">
+      <div class="sl">${k.charAt(0).toUpperCase()+k.slice(1)} 25/26</div>
+      <div class="sv g">${v.bcr} Mt</div>
+      <div class="sn">BCR: ${v.bcr} &middot; BCBA: ${v.bcba} Mt</div>
+      <div class="sn">Cosechado: ${v.cosechado}% &middot; ${fas} &middot; ${ret}</div>
+    </div>`;
+  }).join('');
+
+  const fasHtml = Object.entries(a.fas).map(([k,v])=>
+    `<tr><td>${k.charAt(0).toUpperCase()+k.slice(1)}</td>
+     <td class="p-usd">$${fmt(v)}</td>
+     <td style="color:var(--dm);font-size:11px;">${a.ret[k]?a.ret[k]+'%':'—'}</td>
+     <td style="font-size:12px;color:var(--dm);">$${a.precios[k]?fmt(a.precios[k].disponible/1000,0)+'B ARS':'—'}</td>
+    </tr>`
+  ).join('');
+
+  const preciosHtml = Object.entries(a.precios).filter(([k,v])=>v).map(([k,v])=>
+    `<div class="sc arg"><div class="sl">${k.charAt(0).toUpperCase()+k.slice(1)} &middot; Disponible</div>
+     <div class="sv m">$${fmt(v.disponible/1000,0)}B</div>
+     <div class="sn">ARS/tn &middot; Matba-Rofex &middot; Rosario</div>
+    </div>`
+  ).join('');
+
+  return `
+  <div class="sh">
+    <div><div class="st">Argentina &mdash; Campaña &amp; Exportaciones</div>
+    <div class="ss">BCR &middot; BCBA &middot; INDEC &middot; BCRA &middot; Secretaría de Agricultura &middot; Jun 2026</div></div>
+    <div><div class="ln g">${a.campania.soja.bcr} Mt</div><div class="ll">Soja campaña 25/26 &middot; BCR</div></div>
+  </div>
+  <div class="src">BCR &middot; BCBA &middot; INDEC &middot; BCRA &middot; Secretaría de Agricultura &middot; Matba-Rofex &middot; CIARA-CEC</div>
+
+  <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--arg);margin-bottom:10px;">Tipo de Cambio Exportador &mdash; Dólar Blend</div>
+  <div class="sr4" style="margin-bottom:18px;">
+    ${[
+      {l:'TC Blend',v:`$${fmt(a.tcBlend,0)}`,n:'80% Oficial · 20% CCL'},
+      {l:'TC Oficial',v:`$${fmt(a.tcOficial,0)}`,n:'Tipo A3500 BCRA'},
+      {l:'TC CCL',v:`$${fmt(a.tcCCL,0)}`,n:'Contado con liqui'},
+      {l:'Descuento blend',v:`${fmt((1-a.tcBlend/a.tcCCL)*100,1)}%`,n:'vs CCL puro'},
+    ].map(x=>`<div class="sc agro"><div class="sl">${x.l}</div><div class="sv a">${x.v}</div><div class="sn">${x.n}</div></div>`).join('')}
+  </div>
+
+  <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--rd);margin-bottom:10px;">Retenciones Vigentes</div>
+  <div class="ret-grid" style="margin-bottom:18px;">${retHtml}</div>
+
+  <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--arg);margin-bottom:10px;">FAS Teórico &mdash; Secretaría de Agricultura</div>
+  <table class="p-tbl" style="margin-bottom:18px;">
+    <thead><tr><th>Cultivo</th><th>FAS USD/tn</th><th>Retención</th><th>Precio Disponible</th></tr></thead>
+    <tbody>${fasHtml}</tbody>
+  </table>
+
+  <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--agro);margin-bottom:10px;">Campaña 25/26 &mdash; Estimaciones BCR / BCBA</div>
+  <div class="sr3" style="margin-bottom:18px;">${campHtml}</div>
+
+  <div class="cg2" style="margin-bottom:11px;">
+    <div class="card c-arg"><div class="ct">Exportaciones Agro Mensuales — MOA + PP (USD M)</div><div class="ch h240"><canvas id="ch-arg-expo"></canvas></div></div>
+    <div class="card c-arg"><div class="ct">Expo por Producto — Acum Ene–Abr 2026 (USD M)</div><div class="ch h240"><canvas id="ch-arg-prod"></canvas></div></div>
+  </div>
+  <div class="cg2">
+    <div class="card c-agro"><div class="ct">BCRA Compras MULC — Ingreso Divisas Agro (USD M)</div><div class="ch h240"><canvas id="ch-arg-bcra"></canvas></div></div>
+    <div class="card c-agro"><div class="ct">Liquidaciones CIARA-CEC — Exportadores (USD M)</div><div class="ch h240"><canvas id="ch-arg-ciara"></canvas></div></div>
+  </div>
+
+  <div class="sr4" style="margin-top:14px;">
+    <div class="sc agro"><div class="sl">Expo Agro Acum 2026</div><div class="sv g">$${fmt(a.expo.acumTotal/1000,1)}B</div><div class="sn">Ene–Abr 2026 &middot; INDEC</div></div>
+    <div class="sc agro"><div class="sl">MOA Acum 2026</div><div class="sv g">$${fmt(a.expo.acumMOA/1000,1)}B</div><div class="sn">Manuf. Origen Agropecuario</div></div>
+    <div class="sc agro"><div class="sl">BCRA Compras 2026</div><div class="sv g">$${fmt(a.bcra.acum2026/1000,1)}B</div><div class="sn">Ene–May 2026 &middot; MULC</div></div>
+    <div class="sc agro"><div class="sl">CIARA-CEC 2026</div><div class="sv g">$${fmt(a.ciara.acum2026/1000,1)}B</div><div class="sn">Liquidaciones Ene–May</div></div>
+  </div>`;
+}
+
+function initArgCharts() {
+  const a = D.arg; const base = JSON.parse(JSON.stringify(chartDefaults));
+
+  mkChart('ch-arg-expo',{type:'bar',data:{labels:a.expo.l,datasets:[
+    {label:'MOA',data:a.expo.moa,backgroundColor:'rgba(232,160,68,.7)',borderColor:C.ARG,borderWidth:1,stack:'s'},
+    {label:'PP agro',data:a.expo.pp,backgroundColor:'rgba(77,184,122,.7)',borderColor:C.AGRO,borderWidth:1,stack:'s'},
+  ]},options:{...base,plugins:{...base.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}}},
+    scales:{x:{...base.scales.x,stacked:true},y:{...base.scales.y,stacked:true,ticks:{...base.scales.y.ticks,callback:v=>`$${v}M`}}}}});
+
+  const ep = a.expoProducto;
+  mkChart('ch-arg-prod',{type:'bar',data:{labels:ep.items,datasets:[{
+    label:'USD M',data:ep.vals,
+    backgroundColor:['#e8a044','#e8c84a','#4db87a','#4a9fd4','#7bbfe8','#f59e0b','#9b7fe8','#4a6080'],
+    borderColor:'#0a1622',borderWidth:1,
+  }]},options:{...base,indexAxis:'y',
+    scales:{x:{...base.scales.x,ticks:{...base.scales.x.ticks,callback:v=>`$${v}M`}},y:{...base.scales.y}}}});
+
+  mkChart('ch-arg-bcra',{type:'bar',data:{labels:a.bcra.l,datasets:[{
+    label:'Compras USD M',data:a.bcra.compras,
+    backgroundColor:'rgba(77,184,122,.6)',borderColor:C.AGRO,borderWidth:1,
+  }]},options:{...base,scales:{x:{...base.scales.x,ticks:{...base.scales.x.ticks,maxRotation:45,font:{size:8}}},
+    y:{...base.scales.y,ticks:{...base.scales.y.ticks,callback:v=>`$${v}M`}}}}});
+
+  mkChart('ch-arg-ciara',{type:'bar',data:{labels:a.ciara.l,datasets:[{
+    label:'Liquidaciones USD M',data:a.ciara.vals,
+    backgroundColor:'rgba(232,160,68,.6)',borderColor:C.ARG,borderWidth:1,
+  }]},options:{...base,scales:{x:{...base.scales.x,ticks:{...base.scales.x.ticks,maxRotation:45,font:{size:8}}},
+    y:{...base.scales.y,ticks:{...base.scales.y.ticks,callback:v=>`$${v}M`}}}}});
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+function init() {
+  buildKstrip();
+  buildTabs();
+
+  const panels = [buildResumen(), buildCbot(), buildCot(), buildWasde(), buildArg()];
+  $('main').innerHTML = panels.map((html,i)=>
+    `<div class="panel${i===0?' active':''}" id="panel-${i}">${html}</div>`
+  ).join('');
+
+  // Inicializar charts del panel activo (resumen no tiene, pero CBOT se init al primer click)
+  // Pequeño delay para que el DOM esté listo
+  setTimeout(()=>{
+    // Pre-init resumen mini charts si hubiera
+  }, 100);
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
