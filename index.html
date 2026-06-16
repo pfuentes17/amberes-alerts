@@ -2,322 +2,424 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amberes | Centro de Dashboards</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Amberes Research · Market Briefing</title>
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --nv:#07111d;--nv2:#0c1a28;--nv3:#0a1622;
-  --cel:#4a9fd4;--cell:#7bbfe8;
-  --g4:#4db87a;--rd:#d95f5f;--or:#e8a044;--wh:#f0f4f8;
-  --dm:rgba(240,244,248,.42);--ft:rgba(240,244,248,.07);
-  --br:rgba(74,159,212,.18);
+  --bg:#0d1117;--s1:#161b22;--s2:#21262d;--s3:#30363d;
+  --tx:#e6edf3;--t2:#8b949e;--t3:#6e7681;
+  --g:#3fb950;--r:#f85149;--a:#d29922;--b:#58a6ff;--p:#bc8cff;
+  --card-r:10px;
 }
-*{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--nv);color:var(--wh);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;display:flex;flex-direction:column;}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh}
 
-/* Header */
-header{border-bottom:1px solid var(--br);padding:0 48px;height:68px;display:flex;align-items:center;justify-content:space-between;background:rgba(7,17,29,.98);backdrop-filter:blur(20px);position:sticky;top:0;z-index:100;}
-.hd-l{display:flex;align-items:center;gap:16px;}
-.logo-img{height:34px;filter:brightness(0) invert(1);opacity:.9;}
-.hd-sep{width:1px;height:28px;background:var(--br);}
-.hd-t{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--dm);}
-.hd-r{display:flex;align-items:center;gap:8px;}
-.ldot{width:5px;height:5px;border-radius:50%;background:var(--cel);animation:pulse 2.5s infinite;}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.25;}}
-.hd-tag{padding:4px 12px;border:1px solid var(--br);font-size:9.5px;color:var(--cell);letter-spacing:1.2px;text-transform:uppercase;}
+/* ── TOP NAV ── */
+.topbar{background:var(--s1);border-bottom:1px solid var(--s3);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-weight:700;font-size:15px;color:var(--tx);letter-spacing:-.01em}
+.logo em{color:var(--b);font-style:normal}
+.nav-modules{display:flex;align-items:center;gap:4px}
+.nav-btn{display:flex;align-items:center;gap:6px;padding:5px 11px;border-radius:6px;text-decoration:none;font-size:12px;font-weight:500;color:var(--t2);border:1px solid transparent;transition:all .15s;white-space:nowrap}
+.nav-btn:hover{background:var(--s2);border-color:var(--s3);color:var(--tx)}
+.nav-btn .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.nb-macro .dot{background:#4a9fd4}.nb-tc .dot{background:#9b7fe8}
+.nb-arg .dot{background:#e8a044}.nb-agro .dot{background:#4db87a}
+.nb-bonos .dot{background:#e8c84a}
 
-/* Hero */
-.hero{padding:72px 48px 56px;border-bottom:1px solid var(--br);background:linear-gradient(180deg,rgba(74,159,212,.04) 0%,transparent 100%);}
-.hero-sup{font-size:8.5px;letter-spacing:3px;text-transform:uppercase;color:var(--cel);margin-bottom:14px;}
-.hero-h{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;line-height:1.1;margin-bottom:16px;}
-.hero-h em{font-style:normal;color:var(--cel);}
-.hero-sub{font-size:13px;color:var(--dm);max-width:560px;line-height:1.8;}
-.hero-meta{display:flex;align-items:center;gap:20px;margin-top:28px;}
-.hm-item{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dm);display:flex;align-items:center;gap:6px;}
-.hm-dot{width:4px;height:4px;border-radius:50%;}
+/* ── ASSET STRIP ── */
+.asset-strip{background:var(--s1);border-bottom:1px solid var(--s3);padding:9px 24px;display:flex;gap:28px;overflow-x:auto}
+.asset-strip::-webkit-scrollbar{height:3px}.asset-strip::-webkit-scrollbar-thumb{background:var(--s3)}
+.ast{display:flex;flex-direction:column;gap:1px;min-width:fit-content}
+.ast-lbl{font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:.07em}
+.ast-val{font-size:14px;font-weight:700;color:var(--tx)}
+.ast-chg{font-size:10px;font-weight:600}
+.up{color:var(--g)}.dn{color:var(--r)}.neu{color:var(--t2)}
 
-/* Grid */
-.grid-section{padding:48px 48px 0;}
-.gs-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--dm);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--br);}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:48px;}
-.grid-wide{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:48px;}
+/* ── HERO ── */
+.hero{padding:28px 24px 16px;max-width:1100px;margin:0 auto}
+.hero-eyebrow{font-size:11px;color:var(--t3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.hero-title{font-size:24px;font-weight:700;margin-bottom:5px}
+.hero-sub{font-size:13px;color:var(--t2);margin-bottom:16px}
+.hero-disc{font-size:11px;color:var(--t3);background:var(--s1);border:1px solid var(--s3);border-radius:6px;padding:7px 12px}
 
-/* Dashboard cards */
-.dcard{
-  display:block;text-decoration:none;
-  background:var(--nv3);border:1px solid var(--br);
-  padding:28px 28px 24px;
-  position:relative;overflow:hidden;
-  transition:border-color .25s,transform .25s,background .25s;
-  cursor:pointer;
-}
-.dcard::before{
-  content:'';position:absolute;top:0;left:0;width:3px;height:100%;
-  transition:opacity .25s;
-}
-.dcard:hover{transform:translateY(-2px);border-color:var(--accent,var(--cel));}
-.dcard:hover::before{opacity:1;}
-.dcard::before{opacity:.5;}
+/* ── SENTIMENT PILLS ── */
+.sent-row{max-width:1100px;margin:20px auto 4px;padding:0 24px;display:flex;gap:10px}
+.sp{flex:1;background:var(--s1);border:1px solid var(--s3);border-radius:8px;padding:10px 14px;min-width:0}
+.sp.ro{border-color:rgba(63,185,80,.4);background:rgba(63,185,80,.05)}
+.sp.rf{border-color:rgba(248,81,73,.4);background:rgba(248,81,73,.05)}
+.sp.mx{border-color:rgba(210,153,34,.4);background:rgba(210,153,34,.05)}
+.sp .icon{font-size:16px;margin-bottom:3px}
+.sp .lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.sp.ro .lbl{color:var(--g)}.sp.rf .lbl{color:var(--r)}.sp.mx .lbl{color:var(--a)}
+.sp .dsc{font-size:10px;color:var(--t2);margin-top:2px;line-height:1.4}
 
-/* Accent colors per card */
-.dc-macro::before{background:#4a9fd4;}.dc-macro{--accent:#4a9fd4;}
-.dc-tc::before{background:#9b7fe8;}.dc-tc{--accent:#9b7fe8;}
-.dc-arg::before{background:#e8a044;}.dc-arg{--accent:#e8a044;}
-.dc-agro::before{background:#4db87a;}.dc-agro{--accent:#4db87a;}
-.dc-bonos::before{background:#e8c84a;}.dc-bonos{--accent:#e8c84a;}
-.dc-brief::before{background:#f85149;}.dc-brief{--accent:#f85149;}
+/* ── MAIN ── */
+.wrap{max-width:1100px;margin:0 auto;padding:20px 24px 60px}
+.sec-title{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.sec-title::after{content:'';flex:1;height:1px;background:var(--s3)}
 
-.dc-icon{font-size:26px;margin-bottom:16px;display:block;}
-.dc-cat{font-size:7.5px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent,var(--cel));margin-bottom:8px;}
-.dc-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;margin-bottom:8px;line-height:1.2;}
-.dc-desc{font-size:11px;color:var(--dm);line-height:1.7;margin-bottom:18px;}
-.dc-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
-.dc-tag{font-size:8px;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border:1px solid var(--br);color:var(--dm);}
-.dc-foot{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--ft);}
-.dc-link{font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--accent,var(--cel));}
-.dc-arrow{font-size:14px;color:var(--accent,var(--cel));opacity:.6;transition:opacity .2s,transform .2s;}
-.dcard:hover .dc-arrow{opacity:1;transform:translateX(3px);}
-.dc-status{display:flex;align-items:center;gap:5px;font-size:8.5px;color:var(--dm);}
-.ds-dot{width:4px;height:4px;border-radius:50%;background:var(--g4);}
+/* ── DRIVER CARD ── */
+.dc{background:var(--s1);border:1px solid var(--s3);border-radius:var(--card-r);margin-bottom:12px;overflow:hidden}
+.dc-hd{padding:14px 18px 12px;display:flex;align-items:flex-start;gap:12px}
+.dc-num{font-size:10px;font-weight:700;color:var(--t3);min-width:18px;padding-top:2px}
+.dc-meta{flex:1;min-width:0}
+.tag{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:2px 7px;border-radius:4px;margin-bottom:5px;display:inline-block}
+.tg{background:rgba(188,140,255,.15);color:var(--p)}
+.tb{background:rgba(88,166,255,.15);color:var(--b)}
+.tr{background:rgba(248,81,73,.15);color:var(--r)}
+.ta{background:rgba(210,153,34,.15);color:var(--a)}
+.tq{background:rgba(63,185,80,.15);color:var(--g)}
+.dc-title{font-size:15px;font-weight:700;margin-bottom:3px;line-height:1.3}
+.dc-brief{font-size:12px;color:var(--t2);line-height:1.5}
+.sbadge{font-size:9px;font-weight:700;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-left:10px;white-space:nowrap;flex-shrink:0}
+.sbadge.ro{background:rgba(63,185,80,.15);color:var(--g);border:1px solid rgba(63,185,80,.3)}
+.sbadge.rf{background:rgba(248,81,73,.15);color:var(--r);border:1px solid rgba(248,81,73,.3)}
+.sbadge.mx{background:rgba(210,153,34,.15);color:var(--a);border:1px solid rgba(210,153,34,.3)}
 
-/* Stats strip */
-.stats-strip{display:flex;border-top:1px solid var(--br);border-bottom:1px solid var(--br);background:var(--nv2);margin-bottom:0;}
-.stat-item{flex:1;padding:16px 24px;border-right:1px solid var(--br);text-align:center;}
-.stat-item:last-child{border-right:none;}
-.stat-v{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:500;color:var(--cel);line-height:1;}
-.stat-l{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dm);margin-top:5px;}
+.dc-body{padding:0 18px 16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.dc-sec{background:var(--bg);border:1px solid var(--s3);border-radius:7px;padding:11px 13px}
+.dc-sec h4{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:7px;display:flex;align-items:center;gap:5px}
+.dc-sec h4 .d{width:5px;height:5px;border-radius:50%;display:inline-block}
+.dp{background:var(--p)}.db{background:var(--b)}.da{background:var(--a)}
+.dc-sec p{font-size:11px;color:var(--t2);line-height:1.6}
+.dc-sec strong{color:var(--tx)}
+.ig{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.ii{display:flex;justify-content:space-between;align-items:center;padding:3px 0;border-bottom:1px solid var(--s3);font-size:10px}
+.ii:last-child{border-bottom:none}
+.ii .ia{color:var(--t2)}.ii .id{font-weight:700}
 
-/* Footer */
-footer{margin-top:auto;border-top:1px solid var(--br);background:var(--nv2);padding:18px 48px;display:flex;align-items:center;justify-content:space-between;}
-.ft-l{display:flex;align-items:center;gap:12px;}
-.ft-brand{font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--cel);}
-.ft-r{font-size:8px;color:var(--dm);}
+/* ── SUMMARY ── */
+.sumbox{background:var(--s1);border:1px solid var(--s3);border-radius:var(--card-r);padding:18px;margin-bottom:16px}
+.sumbox h3{font-size:13px;font-weight:700;margin-bottom:10px;color:var(--tx)}
+.sumbox p{font-size:12px;color:var(--t2);line-height:1.7}
+.sumbox p strong{color:var(--tx)}
 
-@media(max-width:960px){
-  header{padding:0 20px;}
-  .hero{padding:40px 20px 36px;}
-  .hero-h{font-size:36px;}
-  .grid,.grid-wide{grid-template-columns:1fr;}
-  .grid-section{padding:32px 20px 0;}
-  .stats-strip{flex-wrap:wrap;}
-  .stat-item{min-width:50%;border-right:none;border-bottom:1px solid var(--br);}
-  footer{padding:16px 20px;flex-direction:column;gap:8px;text-align:center;}
+/* ── MODULE NAV (footer) ── */
+.mod-nav{margin-top:32px}
+.mod-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.mod-card{background:var(--s1);border:1px solid var(--s3);border-radius:var(--card-r);padding:14px 16px;text-decoration:none;display:block;transition:all .15s;position:relative;overflow:hidden}
+.mod-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.mod-card:hover{border-color:rgba(255,255,255,.15);transform:translateY(-1px)}
+.mc-macro::before{background:#4a9fd4}.mc-tc::before{background:#9b7fe8}
+.mc-arg::before{background:#e8a044}.mc-agro::before{background:#4db87a}
+.mc-bonos::before{background:#e8c84a}
+.mc-icon{font-size:20px;margin-bottom:8px}
+.mc-cat{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--t2);margin-bottom:4px}
+.mc-title{font-size:13px;font-weight:700;color:var(--tx);margin-bottom:3px}
+.mc-desc{font-size:10px;color:var(--t3);line-height:1.5}
+.mc-arrow{font-size:11px;color:var(--t3);margin-top:8px;display:block}
+
+/* ── FOOTER ── */
+footer{text-align:center;padding:20px;font-size:10px;color:var(--t3);border-top:1px solid var(--s3)}
+
+@media(max-width:768px){
+  .dc-body{grid-template-columns:1fr}
+  .nav-modules{display:none}
+  .sent-row{flex-wrap:wrap}
+  .sp{min-width:calc(50% - 5px)}
+  .mod-grid{grid-template-columns:repeat(2,1fr)}
+  .asset-strip{gap:16px}
 }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="hd-l">
-    <img src="https://grupoamberes.com.ar/frontend/img/logo.svg" alt="Amberes" class="logo-img" onerror="this.style.display='none'">
-    <div class="hd-sep"></div>
-    <span class="hd-t">Centro de Dashboards</span>
+<!-- TOP NAV -->
+<nav class="topbar">
+  <div class="logo">Amberes <em>·</em> Research</div>
+  <div class="nav-modules">
+    <a class="nav-btn nb-macro" href="https://macroargy-eight.vercel.app/macro.html" target="_blank">
+      <span class="dot"></span>Macro Global
+    </a>
+    <a class="nav-btn nb-tc" href="https://macroargy-eight.vercel.app/tc.html" target="_blank">
+      <span class="dot"></span>Tipo de Cambio
+    </a>
+    <a class="nav-btn nb-arg" href="/arg.html">
+      <span class="dot"></span>Argentina
+    </a>
+    <a class="nav-btn nb-agro" href="/agro.html">
+      <span class="dot"></span>Agro
+    </a>
+    <a class="nav-btn nb-bonos" href="https://calculadora-bonos-five.vercel.app" target="_blank">
+      <span class="dot"></span>Bonos
+    </a>
   </div>
-  <div class="hd-r">
-    <div class="ldot"></div>
-    <div class="hd-tag">&#9679; Live</div>
-  </div>
-</header>
+</nav>
 
+<!-- ASSET STRIP -->
+<div class="asset-strip">
+  <div class="ast"><div class="ast-lbl">S&amp;P 500</div><div class="ast-val">7,554</div><div class="ast-chg up">+0.1%</div></div>
+  <div class="ast"><div class="ast-lbl">Nasdaq</div><div class="ast-val">26,684</div><div class="ast-chg up">+0.0%</div></div>
+  <div class="ast"><div class="ast-lbl">WTI Crude</div><div class="ast-val">$76.0</div><div class="ast-chg dn">−2.6%</div></div>
+  <div class="ast"><div class="ast-lbl">Brent</div><div class="ast-val">$81.2</div><div class="ast-chg dn">−2.4%</div></div>
+  <div class="ast"><div class="ast-lbl">Gold</div><div class="ast-val">$4,300</div><div class="ast-chg up">+0.8%</div></div>
+  <div class="ast"><div class="ast-lbl">UST 10Y</div><div class="ast-val">4.97%</div><div class="ast-chg neu">─</div></div>
+  <div class="ast"><div class="ast-lbl">EUR/USD</div><div class="ast-val">1.108</div><div class="ast-chg up">+0.3%</div></div>
+  <div class="ast"><div class="ast-lbl">USD/JPY</div><div class="ast-val">158.4</div><div class="ast-chg dn">−0.5%</div></div>
+  <div class="ast"><div class="ast-lbl">VIX</div><div class="ast-val">16.2</div><div class="ast-chg dn">−8%</div></div>
+  <div class="ast"><div class="ast-lbl">BRL/USD</div><div class="ast-val">5.68</div><div class="ast-chg neu">─</div></div>
+  <div class="ast"><div class="ast-lbl">Soja CBOT</div><div class="ast-val">$409</div><div class="ast-chg up">+1.1%</div></div>
+</div>
+
+<!-- HERO -->
 <div class="hero">
-  <div class="hero-sup">Amberes &middot; Grupo Financiero &middot; Research &amp; Analytics</div>
-  <h1 class="hero-h">Plataforma de<br><em>Monitoreo Macro</em></h1>
-  <p class="hero-sub">Dashboards en tiempo real sobre macroeconomía global, mercados financieros y economía argentina. Datos actualizados de INDEC, BCRA, BLS, USDA, CFTC y más.</p>
-  <div class="hero-meta">
-    <span class="hm-item"><span class="hm-dot" style="background:#4a9fd4"></span>5 dashboards activos</span>
-    <span class="hm-dot" style="background:var(--br);width:1px;height:14px;border-radius:0"></span>
-    <span class="hm-item"><span class="hm-dot" style="background:#4db87a"></span>Actualización continua</span>
-    <span class="hm-dot" style="background:var(--br);width:1px;height:14px;border-radius:0"></span>
-    <span class="hm-item"><span class="hm-dot" style="background:#e8a044"></span>Junio 2026</span>
+  <div class="hero-eyebrow">Martes 16 de Junio · 2026 · Cierre NY</div>
+  <div class="hero-title">Market Briefing — Drivers del Día</div>
+  <div class="hero-sub">Los 5 catalizadores globales que están moviendo el capital institucional hoy · Análisis Wall Street style</div>
+  <div class="hero-disc">⚠️ Solo informativo · No constituye asesoramiento de inversión · Precios aproximados al cierre/apertura 16-jun-2026</div>
+</div>
+
+<!-- SENTIMENT -->
+<div class="sent-row">
+  <div class="sp ro"><div class="icon">🟢</div><div class="lbl">Risk-On dominante</div><div class="dsc">Acuerdo EEUU-Irán · petróleo cae · equities suben</div></div>
+  <div class="sp mx"><div class="icon">🟡</div><div class="lbl">CB hawkish global</div><div class="dsc">BOJ +25pb · BCE +25pb · inflación persiste</div></div>
+  <div class="sp rf"><div class="icon">🔴</div><div class="lbl">Riesgo macro China</div><div class="dsc">1ª caída retail desde dic 2022 · demanda colapsa</div></div>
+  <div class="sp mx"><div class="icon">🕐</div><div class="lbl">COPOM esta noche</div><div class="dsc">Brasil 18:30 BRT · mercado dividido en SELIC</div></div>
+</div>
+
+<!-- DRIVERS -->
+<div class="wrap">
+<div class="sec-title">Catalizadores Clave · 16 Jun 2026</div>
+
+<!-- 01 -->
+<div class="dc">
+  <div class="dc-hd">
+    <div class="dc-num">01</div>
+    <div class="dc-meta">
+      <div class="tag tg">Geopolítica · Energía</div>
+      <div class="dc-title">EE.UU. e Irán firman paz — Estrecho de Ormuz reabre</div>
+      <div class="dc-brief">El mayor tail risk del año se disipa. WTI cae 2.6% a $76/bbl. S&amp;P 500 +1.7% ayer. VIX se derrumba desde máximos.</div>
+    </div>
+    <div class="sbadge ro">🟢 Risk-On</div>
+  </div>
+  <div class="dc-body">
+    <div class="dc-sec">
+      <h4><span class="d dp"></span>El Evento</h4>
+      <p>EE.UU. e Irán firmaron un <strong>MOU el 14-15 jun</strong>, mediado por Pakistán: cese al fuego, reapertura del <strong>Estrecho de Ormuz</strong> (~20% del petróleo global), y 60 días de negociaciones nucleares. WTI cayó de ~$92 a <strong>$76/bbl en 48hs</strong> — mínimo desde marzo.</p>
+    </div>
+    <div class="dc-sec">
+      <h4><span class="d db"></span>El Contexto / Driver</h4>
+      <p>La guerra había disparado el Brent a ~$97, alimentando un <strong>shock inflacionario global</strong>: PPI USA +6.5%, BCE subió por primera vez desde 2023, BOJ aceleró normalización. El mercado estaba pricing <strong>"higher oil for longer"</strong> como riesgo principal para renta variable. La paz lo resuelve de golpe.</p>
+    </div>
+    <div class="dc-sec">
+      <h4><span class="d da"></span>Impacto en Activos</h4>
+      <div class="ig">
+        <div class="ii"><span class="ia">Equities S&amp;P</span><span class="id up">↑ Fuerte</span></div>
+        <div class="ii"><span class="ia">WTI / Brent</span><span class="id dn">↓ −2.6%</span></div>
+        <div class="ii"><span class="ia">UST 10Y yield</span><span class="id up">↓ Cae</span></div>
+        <div class="ii"><span class="ia">Oro</span><span class="id up">↑ $4,300</span></div>
+        <div class="ii"><span class="ia">USD (DXY)</span><span class="id dn">↓ Débil</span></div>
+        <div class="ii"><span class="ia">EM / Carry</span><span class="id up">↑ Inflows</span></div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="stats-strip">
-  <div class="stat-item"><div class="stat-v">5</div><div class="stat-l">Dashboards</div></div>
-  <div class="stat-item"><div class="stat-v">12+</div><div class="stat-l">Fuentes de datos</div></div>
-  <div class="stat-item"><div class="stat-v">4</div><div class="stat-l">Economías cubiertas</div></div>
-  <div class="stat-item"><div class="stat-v">ARG &middot; US &middot; EU &middot; BR</div><div class="stat-l">Mercados monitoreados</div></div>
+<!-- 02 -->
+<div class="dc">
+  <div class="dc-hd">
+    <div class="dc-num">02</div>
+    <div class="dc-meta">
+      <div class="tag tb">Bancos Centrales</div>
+      <div class="dc-title">BOJ +25pb a 1.0% y BCE +25pb a 2.5% — sincronización hawkish global</div>
+      <div class="dc-brief">Por primera vez en décadas, Japón y Europa suben el mismo día. BOJ en máximo desde 2008. BCE: primer hike desde 2023.</div>
+    </div>
+    <div class="sbadge mx">🟡 Mixto</div>
+  </div>
+  <div class="dc-body">
+    <div class="dc-sec">
+      <h4><span class="d dp"></span>El Evento</h4>
+      <p><strong>BOJ (15-16 jun):</strong> +25pb a <strong>1.00%</strong>, máximo desde 2008. Ueda citó inflación salarial sostenida y PPI +3.9%. <strong>BCE (11 jun):</strong> +25pb a <strong>2.50%</strong> (deposit facility). Lagarde: shock energético iraní elevó proyección inflación a 3% en 2026, convergencia al 2% recién en 2028.</p>
+    </div>
+    <div class="dc-sec">
+      <h4><span class="d db"></span>El Contexto / Driver</h4>
+      <p>El mercado venía pricing <strong>recortes</strong> de BCE y pausa del BOJ para H2. Ambas decisiones son <strong>contra-consenso</strong>: el ciclo de tasas globales se extiende. El capital institucional debe repricing toda la curva: renta fija corporativa, REITs y tech de alta duration bajo presión. El BOJ cierra el spread vs USD, presionando el <strong>carry trade yen</strong>.</p>
+    </div>
+    <div class="dc-sec">
+      <h4><span class="d da"></span>Impacto en Activos</h4>
+      <div class="ig">
+        <div class="ii"><span class="ia">JGB (bonos JP)</span><span class="id dn">↓ Precio</span></div>
+        <div class="ii"><span class="ia">JPY</span><span class="id up">↑ Se aprecia</span></div>
+        <div class="ii"><span class="ia">EUR/USD</span><span class="id up">↑ BCE hawkish</span></div>
+        <div class="ii"><span class="ia">Carry trade</span><span class="id dn">↓ Unwind risk</span></div>
+        <div class="ii"><span class="ia">Bunds (yield)</span><span class="id dn">↑ Sube yield</span></div>
+        <div class="ii"><span class="ia">Tech / Growth</span><span class="id dn">↓ Presión</span></div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="grid-section">
-  <div class="gs-label">Dashboards principales</div>
-  <div class="grid">
-
-    <a class="dcard dc-macro" href="https://macroargy-eight.vercel.app/macro.html" target="_blank">
-      <span class="dc-icon">&#127760;</span>
-      <div class="dc-cat">Macroeconom&iacute;a Global</div>
-      <div class="dc-title">Macro Global</div>
-      <div class="dc-desc">Indicadores macroecon&oacute;micos de EE.UU., Eurozona, Brasil, Jap&oacute;n y China. CPI, PPI, PCE, GDP, desempleo, tasas y comercio exterior.</div>
-      <div class="dc-tags">
-        <span class="dc-tag">CPI &middot; PPI &middot; PCE</span>
-        <span class="dc-tag">GDP &middot; Laboral</span>
-        <span class="dc-tag">Fed &middot; BCE</span>
-        <span class="dc-tag">BLS &middot; BEA</span>
-      </div>
-      <div class="dc-foot">
-        <div class="dc-status"><span class="ds-dot"></span><span>PPI May +6.5% YoY</span></div>
-        <span class="dc-arrow">&#8594;</span>
-      </div>
-    </a>
-
-    <a class="dcard dc-arg" href="https://amberes-alerts.vercel.app/arg.html" target="_blank">
-      <span class="dc-icon">&#127462;&#127479;</span>
-      <div class="dc-cat">Argentina &middot; Macro Local</div>
-      <div class="dc-title">Argentina</div>
-      <div class="dc-desc">IPC, actividad, tipo de cambio, reservas, licitaciones del Tesoro, balanza comercial e indicadores industriales. INDEC, BCRA y Ministerio de Econom&iacute;a.</div>
-      <div class="dc-tags">
-        <span class="dc-tag">IPC &middot; ISAC &middot; IPI</span>
-        <span class="dc-tag">BCRA &middot; Reservas</span>
-        <span class="dc-tag">Licitaciones</span>
-        <span class="dc-tag">INDEC</span>
-      </div>
-      <div class="dc-foot">
-        <div class="dc-status"><span class="ds-dot"></span><span>IPC May +2.1% MoM</span></div>
-        <span class="dc-arrow">&#8594;</span>
-      </div>
-    </a>
-
-    <a class="dcard dc-agro" href="https://amberes-alerts.vercel.app/agro.html" target="_blank">
-      <span class="dc-icon">&#127806;</span>
-      <div class="dc-cat">Agro Global &amp; Argentina</div>
-      <div class="dc-title">Agro</div>
-      <div class="dc-desc">Precios CBOT spot y futuros, posicionamiento COT (MM vs Commercial), WASDE USDA, y sector agropecuario argentino: BCR, BCBA, CIARA-CEC, BCRA.</div>
-      <div class="dc-tags">
-        <span class="dc-tag">CBOT &middot; Futuros</span>
-        <span class="dc-tag">COT &middot; CFTC</span>
-        <span class="dc-tag">WASDE &middot; USDA</span>
-        <span class="dc-tag">BCR &middot; CIARA</span>
-      </div>
-      <div class="dc-foot">
-        <div class="dc-status"><span class="ds-dot"></span><span>Ma&iacute;z 25/26: 68 Mt r&eacute;cord</span></div>
-        <span class="dc-arrow">&#8594;</span>
-      </div>
-    </a>
-
+<!-- 03 -->
+<div class="dc">
+  <div class="dc-hd">
+    <div class="dc-num">03</div>
+    <div class="dc-meta">
+      <div class="tag tr">Inflación · Fed</div>
+      <div class="dc-title">Pipeline inflacionario USA: PPI +6.5% YoY mayo — Fed sin margen de corte</div>
+      <div class="dc-brief">PPI corre 2.3pp por encima del CPI. Mercado tiene pricing de 0-1 cortes en todo 2026. Tasa real 10Y supera 2%.</div>
+    </div>
+    <div class="sbadge rf">🔴 Risk-Off parcial</div>
   </div>
-
-  <div class="gs-label">Herramientas &amp; mercados financieros</div>
-  <div class="grid-wide">
-
-    <a class="dcard dc-tc" href="https://macroargy-eight.vercel.app/tc.html" target="_blank">
-      <span class="dc-icon">&#128178;</span>
-      <div class="dc-cat">Tipo de Cambio Impl&iacute;cito</div>
-      <div class="dc-title">Tipo de Cambio</div>
-      <div class="dc-desc">Monitor de dólar impl&iacute;cito: CCL, MEP y blue calculados a partir de activos financieros locales y del exterior. Seguimiento de la brecha cambiaria y ALs vs GDs.</div>
-      <div class="dc-tags">
-        <span class="dc-tag">CCL &middot; MEP &middot; Blue</span>
-        <span class="dc-tag">Brecha cambiaria</span>
-        <span class="dc-tag">AL &middot; GD &middot; ADRs</span>
-        <span class="dc-tag">BCRA</span>
+  <div class="dc-body">
+    <div class="dc-sec">
+      <h4><span class="d dp"></span>El Evento</h4>
+      <p>BLS publicó PPI USA mayo: <strong>+6.5% YoY</strong>, Core PPI +5.1%, MoM +1.1%. CPI mayo <strong>+4.2% YoY</strong>. Brecha PPI−CPI de <strong>+2.3pp</strong>: leading indicator clásico — márgenes corporativos absorben costos hoy, pero se trasladan a precios al consumidor eventualmente. Fed: 0-1 cortes proyectados 2026. Próxima reunión: 29 jul.</p>
+    </div>
+    <div class="dc-sec">
+      <h4><span class="d db"></span>El Contexto / Driver</h4>
+      <p>El shock iraní agregó impulso exógeno a un pipeline ya elevado por aranceles Trump. La paz en Irán alivia la presión energética, pero el <strong>componente de servicios</strong> (vivienda, salarios) sigue sticky. El mercado navega entre "inflación buena" (cae por energía) vs "inflación mala" (core no cede). Si el core no afloja, la curva se invierte más y el techo del ciclo se extiende.</p>
+    </div>
+    <div class="dc-sec">
+      <h4><span class="d da"></span>Impacto en Activos</h4>
+      <div class="ig">
+        <div class="ii"><span class="ia">UST 2Y yield</span><span class="id dn">↑ 4.0%+</span></div>
+        <div class="ii"><span class="ia">UST 10Y yield</span><span class="id dn">↑ ~5%</span></div>
+        <div class="ii"><span class="ia">USD (DXY)</span><span class="id up">↑ Soportado</span></div>
+        <div class="ii"><span class="ia">Oro</span><span class="id up">↑ Hedge inf.</span></div>
+        <div class="ii"><span class="ia">REITs</span><span class="id dn">↓ Presión</span></div>
+        <div class="ii"><span class="ia">Small Caps</span><span class="id dn">↓ Rate sensitv.</span></div>
       </div>
-      <div class="dc-foot">
-        <div class="dc-status"><span class="ds-dot"></span><span>CCL ~$1,494</span></div>
-        <span class="dc-arrow">&#8594;</span>
-      </div>
-    </a>
-
-    <a class="dcard dc-brief" href="https://amberes-alerts.vercel.app/briefing.html" target="_blank">
-      <span class="dc-icon">&#128240;</span>
-      <div class="dc-cat">An&aacute;lisis &middot; Wall Street Style</div>
-      <div class="dc-title">Market Briefing</div>
-      <div class="dc-desc">Resumen ejecutivo diario de los drivers que mueven el capital institucional. Estructura: Evento → Contexto → Impacto en Activos → Sentimiento. 3 a 5 catalizadores globales clave.</div>
-      <div class="dc-tags">
-        <span class="dc-tag">Risk-On / Risk-Off</span>
-        <span class="dc-tag">Market Drivers</span>
-        <span class="dc-tag">Flujos institucionales</span>
-        <span class="dc-tag">Geo &middot; CB &middot; Inflaci&oacute;n</span>
-      </div>
-      <div class="dc-foot">
-        <div class="dc-status"><span class="ds-dot"></span><span>Actualizado 16 jun 2026</span></div>
-        <span class="dc-arrow">&#8594;</span>
-      </div>
-    </a>
-
-    <a class="dcard dc-bonos" href="https://calculadora-bonos-five.vercel.app" target="_blank">
-      <span class="dc-icon">&#128200;</span>
-      <div class="dc-cat">Renta Fija &middot; Soberanos</div>
-      <div class="dc-title">Calculadora de Bonos</div>
-      <div class="dc-desc">An&aacute;lisis de curvas de rendimiento soberanos HD y CER. Curva logar&iacute;tmica para identificar bonos baratos vs caros respecto a la curva. GD y AL con legislaci&oacute;n local incluida.</div>
-      <div class="dc-tags">
-        <span class="dc-tag">Soberanos HD</span>
-        <span class="dc-tag">Curva log TIR</span>
-        <span class="dc-tag">GD &middot; AL &middot; AO &middot; AN</span>
-        <span class="dc-tag">Duraci&oacute;n modificada</span>
-      </div>
-      <div class="dc-foot">
-        <div class="dc-status"><span class="ds-dot"></span><span>Curva logar&iacute;tmica activa</span></div>
-        <span class="dc-arrow">&#8594;</span>
-      </div>
-    </a>
-
+    </div>
   </div>
-
-  <div class="gs-label">Fuentes de datos cubiertas</div>
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:56px;">
-    <div style="background:var(--nv3);border:1px solid var(--br);padding:16px 18px;">
-      <div style="font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:var(--cel);margin-bottom:8px;">EE.UU.</div>
-      <div style="font-size:11px;color:var(--dm);line-height:1.8;">BLS &middot; BEA &middot; Fed &middot; CME &middot; CFTC &middot; USDA</div>
-    </div>
-<div style="background:var(--nv3);border:1px solid var(--br);padding:16px 18px;">
-      <div style="font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:var(--cel);margin-bottom:8px;">Argentina</div>
-      <div style="font-size:11px;color:var(--dm);line-height:1.8;">INDEC &middot; BCRA &middot; MinEcon &middot; BCR &middot; BCBA</div>
-    </div>
-<div style="background:var(--nv3);border:1px solid var(--br);padding:16px 18px;">
-      <div style="font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:var(--cel);margin-bottom:8px;">Agro global</div>
-      <div style="font-size:11px;color:var(--dm);line-height:1.8;">USDA WASDE &middot; CFTC COT &middot; CBOT &middot; CIARA-CEC</div>
-    </div>
-<div style="background:var(--nv3);border:1px solid var(--br);padding:16px 18px;">
-      <div style="font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:var(--cel);margin-bottom:8px;">Europa &amp; otros</div>
-      <div style="font-size:11px;color:var(--dm);line-height:1.8;">BCE &middot; Eurostat &middot; IBGE &middot; BOJ &middot; NBS</div>
-    </div>,
-      {cat:'Argentina',items:'INDEC &middot; BCRA &middot; MinEcon &middot; BCR &middot; BCBA'},
-      {cat:'Agro global',items:'USDA WASDE &middot; CFTC COT &middot; CBOT &middot; CIARA-CEC'},
-      {cat:'Europa &amp; otros',items:'BCE &middot; Eurostat &middot; IBGE &middot; BOJ &middot; NBS'},
-    ].map(s=>`<div style="background:var(--nv3);border:1px solid var(--br);padding:16px 18px;">
-      <div style="font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:var(--cel);margin-bottom:8px;"><div style="background:var(--nv3);border:1px solid var(--br);padding:16px 18px;">
-      <div style="font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:var(--cel);margin-bottom:8px;">EE.UU.</div>
-      <div style="font-size:11px;color:var(--dm);line-height:1.8;">BLS &middot; BEA &middot; Fed &middot; CME &middot; CFTC &middot; USDA</div>
-    </div>
-<div style="background:var(--nv3);border:1px solid var(--br);padding:16px 18px;">
-      <div style="font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:var(--cel);margin-bottom:8px;">Argentina</div>
-      <div style="font-size:11px;color:var(--dm);line-height:1.8;">INDEC &middot; BCRA &middot; MinEcon &middot; BCR &middot; BCBA</div>
-    </div>
-<div style="background:var(--nv3);border:1px solid var(--br);padding:16px 18px;">
-      <div style="font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:var(--cel);margin-bottom:8px;">Agro global</div>
-      <div style="font-size:11px;color:var(--dm);line-height:1.8;">USDA WASDE &middot; CFTC COT &middot; CBOT &middot; CIARA-CEC</div>
-    </div>
-<div style="background:var(--nv3);border:1px solid var(--br);padding:16px 18px;">
-      <div style="font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:var(--cel);margin-bottom:8px;">Europa &amp; otros</div>
-      <div style="font-size:11px;color:var(--dm);line-height:1.8;">BCE &middot; Eurostat &middot; IBGE &middot; BOJ &middot; NBS</div>
-    </div></div>
-      <div style="font-size:11px;color:var(--dm);line-height:1.8;"><div style="background:var(--nv3);border:1px solid var(--br);padding:16px 18px;">
-      <div style="font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:var(--cel);margin-bottom:8px;">EE.UU.</div>
-      <div style="font-size:11px;color:var(--dm);line-height:1.8;">BLS &middot; BEA &middot; Fed &middot; CME &middot; CFTC &middot; USDA</div>
-    </div>
-<div style="background:var(--nv3);border:1px solid var(--br);padding:16px 18px;">
-      <div style="font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:var(--cel);margin-bottom:8px;">Argentina</div>
-      <div style="font-size:11px;color:var(--dm);line-height:1.8;">INDEC &middot; BCRA &middot; MinEcon &middot; BCR &middot; BCBA</div>
-    </div>
-<div style="background:var(--nv3);border:1px solid var(--br);padding:16px 18px;">
-      <div style="font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:var(--cel);margin-bottom:8px;">Agro global</div>
-      <div style="font-size:11px;color:var(--dm);line-height:1.8;">USDA WASDE &middot; CFTC COT &middot; CBOT &middot; CIARA-CEC</div>
-    </div>
-<div style="background:var(--nv3);border:1px solid var(--br);padding:16px 18px;">
-      <div style="font-size:7.5px;letter-spacing:2px;text-transform:uppercase;color:var(--cel);margin-bottom:8px;">Europa &amp; otros</div>
-      <div style="font-size:11px;color:var(--dm);line-height:1.8;">BCE &middot; Eurostat &middot; IBGE &middot; BOJ &middot; NBS</div>
-    </div></div>
-    </div>`).join('')}
-  </div>
-
 </div>
+
+<!-- 04 -->
+<div class="dc">
+  <div class="dc-hd">
+    <div class="dc-num">04</div>
+    <div class="dc-meta">
+      <div class="tag ta">China · Macro</div>
+      <div class="dc-title">China: Retail mayo −0.6% — primera caída desde dic 2022</div>
+      <div class="dc-brief">Divergencia oferta/demanda crítica. IP +4.5% sólido, pero consumo colapsa. NBS: "desequilibrio entre oferta fuerte y demanda débil es agudo".</div>
+    </div>
+    <div class="sbadge rf">🔴 Risk-Off</div>
+  </div>
+  <div class="dc-body">
+    <div class="dc-sec">
+      <h4><span class="d dp"></span>El Evento</h4>
+      <p>NBS publicó hoy datos mayo: <strong>IP +4.5% YoY</strong> (rebote desde mínimo 3 años). <strong>Retail −0.6% YoY</strong>, primera caída desde dic 2022. Autos −16.1%, electrodomésticos −15.6%, materiales construcción −13.6%. PPI +3.9% (máx ~4 años) pero CPI +1.2% — diferencial 2.7pp: las empresas no trasladan costos al consumidor.</p>
+    </div>
+    <div class="dc-sec">
+      <h4><span class="d db"></span>El Contexto / Driver</h4>
+      <p>China atrapada en modelo <strong>"oferta sin demanda"</strong>: exporta más de lo que consume. Aranceles Trump (~47%) redujeron mercado externo. El estímulo fiscal de Pekín no llegó al consumidor. Riesgo: <strong>espiral deflacionaria doméstica</strong>. Para mercados globales: presión en commodities básicos, debilidad yuan, risk-off en emergentes expuestos (Brasil, Australia, Argentina vía granos).</p>
+    </div>
+    <div class="dc-sec">
+      <h4><span class="d da"></span>Impacto en Activos</h4>
+      <div class="ig">
+        <div class="ii"><span class="ia">Cobre</span><span class="id dn">↓ Demanda</span></div>
+        <div class="ii"><span class="ia">Soja / Granos</span><span class="id dn">↓ Presión</span></div>
+        <div class="ii"><span class="ia">Yuan (CNY)</span><span class="id dn">↓ Debilidad</span></div>
+        <div class="ii"><span class="ia">Hang Seng</span><span class="id dn">↓ Venta</span></div>
+        <div class="ii"><span class="ia">BRL / ARS</span><span class="id dn">↓ Exposición</span></div>
+        <div class="ii"><span class="ia">Mineras</span><span class="id dn">↓ Presión</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 -->
+<div class="dc">
+  <div class="dc-hd">
+    <div class="dc-num">05</div>
+    <div class="dc-meta">
+      <div class="tag ta">Emergentes · LATAM</div>
+      <div class="dc-title">COPOM Brasil decide SELIC esta noche (18:30 BRT) — mercado dividido</div>
+      <div class="dc-brief">IPCA mayo +4.72% YoY y Focus 2026 en 5.30% reducen margen de corte. Un "hold" inesperado podría mover BRL 1-2%.</div>
+    </div>
+    <div class="sbadge mx">🟡 Mixto</div>
+  </div>
+  <div class="dc-body">
+    <div class="dc-sec">
+      <h4><span class="d dp"></span>El Evento</h4>
+      <p>COPOM se reúne hoy 16-17 jun. SELIC en <strong>14.50%</strong> (−25bp desde pico 15%). Mercado: ~85% probabilidad de <strong>−25bp a 14.25%</strong>. Pero IPCA mayo fue <strong>+4.72% YoY</strong>, por encima del techo de meta (4.5%), y Focus 2026 subió a <strong>5.30%</strong>. Anuncio: <strong>18:30 BRT / 15:30 NY</strong>.</p>
+    </div>
+    <div class="dc-sec">
+      <h4><span class="d db"></span>El Contexto / Driver</h4>
+      <p>Dilema clásico de banco central emergente: inflación sobre el techo, pero SELIC real <strong>+9.8pp positiva</strong> (mayor en 20 años) que frena crecimiento. PIB Q1 +1.8% YoY da menos urgencia para cortar. Riesgo: si el COPOM pausa con mercado esperando corte, BRL se aprecia y bonos largos caen. Si corta con inflación alta, pierde credibilidad anti-inflacionaria.</p>
+    </div>
+    <div class="dc-sec">
+      <h4><span class="d da"></span>Impacto en Activos</h4>
+      <div class="ig">
+        <div class="ii"><span class="ia">BRL/USD</span><span class="id up">↑ si pausa</span></div>
+        <div class="ii"><span class="ia">Bovespa</span><span class="id dn">↓ si pausa</span></div>
+        <div class="ii"><span class="ia">NTN-B</span><span class="id up">↑ si pausa</span></div>
+        <div class="ii"><span class="ia">LTN / carry</span><span class="id up">↑ si corta</span></div>
+        <div class="ii"><span class="ia">Ibovespa</span><span class="id up">↑ si corta</span></div>
+        <div class="ii"><span class="ia">EM Bonds</span><span class="id neu">→ Neutral</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SYNTHESIS -->
+<div class="sec-title" style="margin-top:28px">Síntesis Ejecutiva</div>
+<div class="sumbox">
+  <h3>📋 Bottom Line — 16 Jun 2026</h3>
+  <p>El mercado está en <strong>transición de régimen</strong>: el mayor tail risk del año (guerra Irán) se disipa, pero el paisaje macro de fondo sigue complejo. El petróleo cae con fuerza y alivia la presión inflacionaria, pero los bancos centrales (BOJ, BCE) ya movieron hawkish y difícilmente retrocedan.<br><br>
+  Flujo institucional hoy: <strong>saliendo de energía, entrando en equities defensivos</strong>; rotando de bonos cortos USA hacia renta variable internacional; <strong>vendiendo yen corto</strong> dado que el BOJ sube pero la tasa sigue baja vs Fed.<br><br>
+  <strong>Comodín de la noche: COPOM Brasil 18:30 BRT.</strong> Una pausa inesperada genera volatilidad local y mini risk-off en LATAM. Para inversores en Argentina: la caída del petróleo es señal ambigua — reduce presión inflacionaria global, pero la debilidad de China presiona los precios de los granos.</p>
+</div>
+
+<!-- AGENDA -->
+<div class="sec-title">Próximos Eventos Clave</div>
+<div class="sumbox">
+  <h3>📅 Agenda 72hs</h3>
+  <p>
+    🇧🇷 <strong>Hoy 18:30 BRT</strong> — COPOM Brasil: decisión SELIC (14.50% → ¿14.25%?)<br>
+    🇯🇵 <strong>Vie 20 jun</strong> — CPI Nacional Japón mayo (Tokyo adelantó +1.4%)<br>
+    🇪🇺 <strong>Mar 24 jun</strong> — IPCA-15 Brasil junio (anticipo inflación jun)<br>
+    🇨🇳 <strong>Dom 30 jun</strong> — PMI NBS + Caixin junio<br>
+    🇺🇸 <strong>Jue 25 jun</strong> — GDP EE.UU. Q1 2026 tercera estimación<br>
+    🇨🇳 <strong>Mié 15 jul ⭐</strong> — GDP Q2 China + IP + Retail (dato grande del trimestre)
+  </p>
+</div>
+
+<!-- MODULE NAV -->
+<div class="mod-nav">
+<div class="sec-title">Módulos de Análisis</div>
+<div class="mod-grid">
+  <a class="mod-card mc-macro" href="https://macroargy-eight.vercel.app/macro.html" target="_blank">
+    <div class="mc-icon">🌐</div>
+    <div class="mc-cat">Global</div>
+    <div class="mc-title">Macro Global</div>
+    <div class="mc-desc">EE.UU. · Europa · Japón · China · Brasil · Fed · BCE · BOJ</div>
+    <span class="mc-arrow">→ Abrir módulo</span>
+  </a>
+  <a class="mod-card mc-tc" href="https://macroargy-eight.vercel.app/tc.html" target="_blank">
+    <div class="mc-icon">💱</div>
+    <div class="mc-cat">Argentina</div>
+    <div class="mc-title">Tipo de Cambio</div>
+    <div class="mc-desc">Oficial · CCL · MEP · Blue · Brecha · BCRA</div>
+    <span class="mc-arrow">→ Abrir módulo</span>
+  </a>
+  <a class="mod-card mc-arg" href="/arg.html">
+    <div class="mc-icon">🇦🇷</div>
+    <div class="mc-cat">Argentina</div>
+    <div class="mc-title">Economía Argentina</div>
+    <div class="mc-desc">IPC · Actividad · Reservas · Balanza de pagos · Deuda</div>
+    <span class="mc-arrow">→ Abrir módulo</span>
+  </a>
+  <a class="mod-card mc-agro" href="/agro.html">
+    <div class="mc-icon">🌾</div>
+    <div class="mc-cat">Commodities</div>
+    <div class="mc-title">Agro Global &amp; ARG</div>
+    <div class="mc-desc">CBOT · COT · WASDE · BCR · CIARA · FAS · Campaña</div>
+    <span class="mc-arrow">→ Abrir módulo</span>
+  </a>
+  <a class="mod-card mc-bonos" href="https://calculadora-bonos-five.vercel.app" target="_blank">
+    <div class="mc-icon">📈</div>
+    <div class="mc-cat">Renta Fija</div>
+    <div class="mc-title">Calculadora Bonos</div>
+    <div class="mc-desc">Soberanos HD · CER · Curva log TIR · GD · AL</div>
+    <span class="mc-arrow">→ Abrir módulo</span>
+  </a>
+</div>
+</div>
+
+</div><!-- /wrap -->
 
 <footer>
-  <div class="ft-l">
-    <img src="https://grupoamberes.com.ar/frontend/img/logo.svg" alt="Amberes" style="height:20px;filter:brightness(0) invert(1);opacity:.5;" onerror="this.style.display='none'">
-    <span class="ft-brand">Amberes &middot; Grupo Financiero</span>
-  </div>
-  <div class="ft-r">Research &amp; Analytics &middot; Junio 2026 &middot; Uso interno</div>
+  Amberes Research · Market Briefing · 16 jun 2026 · Solo informativo · No constituye asesoramiento de inversión
 </footer>
 
 </body>
