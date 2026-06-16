@@ -1,91 +1,73 @@
-// /api/markets.js — Live market data via Yahoo Finance (single batch request)
+// /api/markets.js — Yahoo Finance con cookie+crumb para evitar 401/429
 
-const SYMBOLS_MAP = {
-  sp500:   '^GSPC',
-  nasdaq:  '^IXIC',
-  vix:     '^VIX',
-  eurusd:  'EURUSD=X',
-  usdjpy:  'JPY=X',
-  cnhusd:  'CNH=X',
-  ust10y:  '^TNX',
-  ust2y:   '^IRX',
-  wti:     'CL=F',
-  brent:   'BZ=F',
-  gold:    'GC=F',
-  copper:  'HG=F',
-  dxy:     'DX-Y.NYB',
-};
+const SYMBOLS = ['^GSPC','^IXIC','^VIX','EURUSD=X','JPY=X','CNH=X','^TNX','^IRX','CL=F','BZ=F','GC=F','HG=F','DX-Y.NYB'];
+const KEY_MAP = {'^GSPC':'sp500','^IXIC':'nasdaq','^VIX':'vix','EURUSD=X':'eurusd','JPY=X':'usdjpy','CNH=X':'cnhusd','^TNX':'ust10y','^IRX':'ust2y','CL=F':'wti','BZ=F':'brent','GC=F':'gold','HG=F':'copper','DX-Y.NYB':'dxy'};
+
+const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36';
+
+async function getCrumb() {
+  // Step 1: get cookies from Yahoo Finance
+  const r1 = await fetch('https://finance.yahoo.com/', {
+    headers: { 'User-Agent': UA, 'Accept': 'text/html', 'Accept-Language': 'en-US,en;q=0.9' },
+    redirect: 'follow'
+  });
+  const cookies = (r1.headers.get('set-cookie') || '').split(',').map(c => c.split(';')[0].trim()).filter(Boolean).join('; ');
+
+  // Step 2: get crumb
+  const r2 = await fetch('https://query1.finance.yahoo.com/v1/test/getcrumb', {
+    headers: { 'User-Agent': UA, 'Cookie': cookies }
+  });
+  const crumb = await r2.text();
+  return { crumb: crumb.trim(), cookies };
+}
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120');
 
   try {
-    const syms = Object.values(SYMBOLS_MAP).join(',');
-    const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${encodeURIComponent(syms)}&fields=regularMarketPrice,regularMarketChangePercent,regularMarketPreviousClose,fiftyTwoWeekHigh,fiftyTwoWeekLow,fiftyDayAverage,regularMarketTime`;
+    const { crumb, cookies } = await getCrumb();
 
-    const yRes = await fetch(url, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
-        'Accept': 'application/json',
-        'Referer': 'https://finance.yahoo.com/',
-        'Origin': 'https://finance.yahoo.com',
-        'Accept-Language': 'en-US,en;q=0.9',
-      }
+    const syms = SYMBOLS.join(',');
+    const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${encodeURIComponent(syms)}&crumb=${encodeURIComponent(crumb)}&fields=regularMarketPrice,regularMarketChangePercent,regularMarketPreviousClose,fiftyTwoWeekHigh,fiftyTwoWeekLow,fiftyDayAverage`;
+
+    const qRes = await fetch(url, {
+      headers: { 'User-Agent': UA, 'Cookie': cookies, 'Accept': 'application/json', 'Referer': 'https://finance.yahoo.com/' }
     });
 
-    if (!yRes.ok) {
-      const txt = await yRes.text();
-      throw new Error(`Yahoo HTTP ${yRes.status}: ${txt.slice(0, 200)}`);
+    if (!qRes.ok) {
+      const txt = await qRes.text();
+      throw new Error(`Yahoo quote HTTP ${qRes.status}: ${txt.slice(0,200)}`);
     }
 
-    const json = await yRes.json();
+    const json = await qRes.json();
     const quotes = json?.quoteResponse?.result || [];
 
-    // Build lookup by symbol
     const bySymbol = {};
-    for (const q of quotes) {
-      bySymbol[q.symbol] = q;
-    }
+    for (const q of quotes) bySymbol[q.symbol] = q;
 
     const parse = (sym) => {
       const q = bySymbol[sym];
       if (!q) return null;
+      const price = q.regularMarketPrice;
+      const high52w = q.fiftyTwoWeekHigh;
       return {
-        price:   q.regularMarketPrice,
-        chgPct:  q.regularMarketChangePercent != null ? parseFloat(q.regularMarketChangePercent.toFixed(2)) : null,
-        prev:    q.regularMarketPreviousClose,
-        high52w: q.fiftyTwoWeekHigh,
-        low52w:  q.fiftyTwoWeekLow,
-        ma50:    q.fiftyDayAverage,
-        ts:      q.regularMarketTime,
+        price,
+        chgPct: q.regularMarketChangePercent != null ? parseFloat(q.regularMarketChangePercent.toFixed(2)) : null,
+        prev:   q.regularMarketPreviousClose,
+        high52w,
+        low52w: q.fiftyTwoWeekLow,
+        ma50:   q.fiftyDayAverage,
+        pctFromHigh: (price && high52w) ? parseFloat((((price - high52w) / high52w) * 100).toFixed(1)) : null,
       };
     };
 
-    const sp    = parse('^GSPC');
-    const t10   = parse('^TNX');
-    const t2    = parse('^IRX');
-    const gold  = parse('GC=F');
+    const data = {};
+    for (const [sym, key] of Object.entries(KEY_MAP)) data[key] = parse(sym);
 
-    if (sp?.price && sp?.high52w) sp.pctFromHigh = parseFloat((((sp.price - sp.high52w) / sp.high52w) * 100).toFixed(1));
-    if (gold?.price && gold?.high52w) gold.pctFromHigh = parseFloat((((gold.price - gold.high52w) / gold.high52w) * 100).toFixed(1));
-
-    const data = {
-      sp500:        sp,
-      nasdaq:       parse('^IXIC'),
-      vix:          parse('^VIX'),
-      eurusd:       parse('EURUSD=X'),
-      usdjpy:       parse('JPY=X'),
-      cnhusd:       parse('CNH=X'),
-      ust10y:       t10,
-      ust2y:        t2,
-      wti:          parse('CL=F'),
-      brent:        parse('BZ=F'),
-      gold:         gold,
-      copper:       parse('HG=F'),
-      dxy:          parse('DX-Y.NYB'),
-      spread2y10y:  (t10?.price && t2?.price) ? parseInt(((t10.price - t2.price) * 100).toFixed(0)) : null,
-    };
+    const t10 = data.ust10y?.price;
+    const t2  = data.ust2y?.price;
+    data.spread2y10y = (t10 && t2) ? parseInt(((t10 - t2) * 100).toFixed(0)) : null;
 
     res.status(200).json({ ok: true, data });
 

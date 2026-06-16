@@ -19,7 +19,7 @@
       "sentiment": "ro",
       "sentiment_label": "🟢 Risk-On",
       "evento": "EE.UU. e Irán firmaron un <strong>MOU el 14-15 jun</strong> mediado por Pakistán: cese al fuego, reapertura del <strong>Estrecho de Ormuz</strong> (~20% del petróleo global), y 60 días de negociaciones nucleares. WTI cayó de ~$92 a <strong>$76 en 48hs</strong>.",
-      "contexto": "La guerra había disparado el Brent a ~$97, alimentando un <strong>shock inflacionario global</strong> que forzó al BCE a subir y aceleró al BOJ. El mercado estaba pricing <strong>"higher oil for longer"</strong> como principal riesgo. La paz lo resuelve de golpe y descomprime la curva de futuros de energía hasta 2027.",
+      "contexto": "La guerra había disparado el Brent a ~$97, alimentando un <strong>shock inflacionario global</strong> que forzó al BCE a subir y aceleró al BOJ. El mercado estaba pricing <strong>&ldquo;higher oil for longer&rdquo;</strong> como principal riesgo. La paz lo resuelve de golpe y descomprime la curva de futuros de energía hasta 2027.",
       "impacto": [
         {"asset": "Equities S&P", "dir": "↑ Fuerte", "cls": "up"},
         {"asset": "WTI / Brent",  "dir": "↓ −2.6%",  "cls": "dn"},
