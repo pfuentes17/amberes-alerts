@@ -278,8 +278,10 @@ async function loadMarkets() {
     if (!res.ok) throw new Error('markets error');
     const { data: d } = await res.json();
     renderStrip(d);
-    document.getElementById('ts-label').textContent =
-      'Precios live · actualizado ' + new Date().toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit'});
+    const isFallback = data._fallback === true;
+    document.getElementById('ts-label').textContent = isFallback
+      ? '⚠ Precios de referencia · FX en vivo · actualizado ' + new Date().toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit'})
+      : '● Precios live · actualizado ' + new Date().toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit'});
   } catch(e) {
     console.warn('markets fallback:', e.message);
     renderStripFallback();
