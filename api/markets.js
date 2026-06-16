@@ -1,45 +1,49 @@
-// /api/markets.js — Finnhub (primary) + Frankfurter FX + fallback
+// /api/markets.js
+// Sources:
+//   - Finnhub (free US stocks): chgPct for S&P, NASDAQ, Gold, WTI proxies
+//   - Frankfurter: live FX (EUR/USD, USD/JPY, CNH/USD)
+//   - FRED: UST yields 10Y + 2Y (daily)
+//   - Fallback snapshot: absolute price levels updated in briefing.json
 
-const FINNHUB_KEY = process.env.FINNHUB_KEY;
-
-// Finnhub symbol map
-const FINNHUB_SYMBOLS = {
-  sp500:  'SPY',     // ETF proxy — Finnhub free tier: US stocks/ETFs
-  nasdaq: 'QQQ',
-  vix:    'VIXY',    // Volatility ETF proxy
-  wti:    'USO',
-  gold:   'GLD',
-  copper: 'COPX',
-  dxy:    'UUP',
-};
-
-// Forex symbols on Finnhub: OANDA:USD_JPY etc.
-const FINNHUB_FX = {
-  eurusd: 'OANDA:EUR_USD',
-  usdjpy: 'OANDA:USD_JPY',
-  cnhusd: 'OANDA:USD_CNH', // will invert
-};
-
-// UST yields via FRED (already configured)
+const KEY = process.env.FINNHUB_KEY;
 const FRED_KEY = process.env.FRED_API_KEY;
 
-async function fetchFinnhubQuote(symbol) {
-  const r = await fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${FINNHUB_KEY}`, {
-    signal: AbortSignal.timeout(5000)
-  });
-  if (!r.ok) throw new Error(`Finnhub ${symbol}: HTTP ${r.status}`);
-  const d = await r.json();
-  if (!d.c) throw new Error(`Finnhub ${symbol}: no data`);
-  return { price: d.c, chgPct: d.dp ?? null, prev: d.pc, high52w: d['52w'] ? null : null };
-}
+// ETF proxies — only chgPct is used; absolute prices come from fallback
+const ETF_MAP = {
+  sp500:  'SPY',
+  nasdaq: 'QQQ',
+  gold:   'GLD',
+  wti:    'USO',
+  dxy:    'UUP',
+  copper: 'COPX',
+};
 
-async function fetchFinnhubForex(symbol) {
-  const r = await fetch(`https://finnhub.io/api/v1/forex/rates?base=USD&token=${FINNHUB_KEY}`, {
+// Static snapshot (absolute price levels from today's briefing)
+// These get updated daily by the briefing agent
+const BASELINE = {
+  sp500:  { price:7511.35, high52w:7620.9, low52w:5943.23 },
+  nasdaq: { price:21727.69 },
+  vix:    { price:16.2, chgPct:-7.43 }, // VIX: no ETF proxy available on free
+  eurusd: { price:1.1594 },
+  usdjpy: { price:145.8 },
+  cnhusd: { price:7.24 },
+  ust10y: { price:4.97 },
+  ust2y:  { price:4.03 },
+  wti:    { price:76.4, low52w:55, high52w:97 },
+  brent:  { price:80.1 },
+  gold:   { price:4300, high52w:4430, low52w:2280 },
+  copper: { price:4.82 },
+  dxy:    { price:101.4 },
+};
+
+async function fetchFinnhub(symbol) {
+  const r = await fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${KEY}`, {
     signal: AbortSignal.timeout(5000)
   });
-  if (!r.ok) throw new Error(`Finnhub forex HTTP ${r.status}`);
+  if (!r.ok) throw new Error(`Finnhub ${symbol} HTTP ${r.status}`);
   const d = await r.json();
-  return d.quote || {};
+  if (d.error || !d.dp == null) throw new Error(`Finnhub ${symbol}: ${d.error || 'no data'}`);
+  return { chgPct: parseFloat(d.dp.toFixed(2)), prev: d.pc, current: d.c };
 }
 
 async function fetchFrankfurter() {
@@ -52,86 +56,84 @@ async function fetchFrankfurter() {
 
 async function fetchFred(series) {
   if (!FRED_KEY) return null;
-  const r = await fetch(`https://api.stlouisfed.org/fred/series/observations?series_id=${series}&api_key=${FRED_KEY}&limit=1&sort_order=desc&file_type=json`, {
-    signal: AbortSignal.timeout(5000)
-  });
+  const r = await fetch(
+    `https://api.stlouisfed.org/fred/series/observations?series_id=${series}&api_key=${FRED_KEY}&limit=1&sort_order=desc&file_type=json`,
+    { signal: AbortSignal.timeout(5000) }
+  );
   if (!r.ok) return null;
   const d = await r.json();
   const val = d.observations?.[0]?.value;
   return val && val !== '.' ? parseFloat(val) : null;
 }
 
-// Fallback snapshot (today's values from briefing)
-const FALLBACK = {"sp500":{"price":7511.35,"chgPct":-0.57,"high52w":7620.9,"low52w":5943.23},"nasdaq":{"price":21727.69,"chgPct":-0.82},"vix":{"price":16.2,"chgPct":-7.43},"eurusd":{"price":1.1594,"chgPct":0.31},"usdjpy":{"price":145.8,"chgPct":-0.48},"cnhusd":{"price":7.24,"chgPct":0.12},"ust10y":{"price":4.97,"chgPct":-0.30},"ust2y":{"price":4.03,"chgPct":-0.25},"wti":{"price":76.4,"chgPct":-2.6},"brent":{"price":80.1,"chgPct":-2.3},"gold":{"price":4300,"chgPct":0.9,"high52w":4430,"low52w":2280},"copper":{"price":4.82,"chgPct":-1.2},"dxy":{"price":101.4,"chgPct":-0.4},"spread2y10y":94,"_fallback":true};
-
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Cache-Control', 's-maxage=120, stale-while-revalidate=300');
 
-  try {
-    // Parallel: Finnhub stocks + FX + FRED yields
-    const [fxResult, t10Result, t2Result] = await Promise.allSettled([
-      fetchFrankfurter(),
-      fetchFred('DGS10'),
-      fetchFred('DGS2'),
-    ]);
-
-    // Finnhub: fetch all stock/ETF quotes in parallel (60 req/min free tier)
-    const stockResults = await Promise.allSettled(
-      Object.entries(FINNHUB_SYMBOLS).map(([key, sym]) =>
-        fetchFinnhubQuote(sym).then(q => ({ key, q }))
-      )
-    );
-
-    const data = { ...FALLBACK, _fallback: false };
-
-    // Apply Finnhub stock data
-    let finnhubOk = 0;
-    for (const r of stockResults) {
-      if (r.status === 'fulfilled') {
-        const { key, q } = r.value;
-        data[key] = { ...data[key], ...q };
-        finnhubOk++;
-      }
-    }
-
-    // Apply Frankfurter FX (most reliable free FX source)
-    if (fxResult.status === 'fulfilled') {
-      const rates = fxResult.value.rates;
-      if (rates?.EUR) {
-        const price = parseFloat((1 / rates.EUR).toFixed(4));
-        const prev = data.eurusd?.prev;
-        data.eurusd = { price, chgPct: prev ? parseFloat((((price-prev)/prev)*100).toFixed(2)) : null, source: 'live' };
-      }
-      if (rates?.JPY) {
-        data.usdjpy = { price: parseFloat(rates.JPY.toFixed(2)), chgPct: data.usdjpy?.chgPct ?? null, source: 'live' };
-      }
-      if (rates?.CNY) {
-        data.cnhusd = { price: parseFloat(rates.CNY.toFixed(4)), chgPct: data.cnhusd?.chgPct ?? null, source: 'live' };
-      }
-    }
-
-    // Apply FRED yields
-    if (t10Result.status === 'fulfilled' && t10Result.value) {
-      data.ust10y = { ...data.ust10y, price: t10Result.value, source: 'live' };
-    }
-    if (t2Result.status === 'fulfilled' && t2Result.value) {
-      data.ust2y = { ...data.ust2y, price: t2Result.value, source: 'live' };
-    }
-
-    // Spread 2Y-10Y
-    const t10 = data.ust10y?.price;
-    const t2  = data.ust2y?.price;
-    if (t10 && t2) data.spread2y10y = parseInt(((t10 - t2) * 100).toFixed(0));
-
-    if (finnhubOk === 0 && fxResult.status !== 'fulfilled') {
-      data._fallback = true;
-    }
-
-    res.status(200).json({ ok: true, data });
-
-  } catch (err) {
-    console.error('markets fatal:', err.message);
-    res.status(200).json({ ok: true, data: { ...FALLBACK, _fallback: true } });
+  // Start with baseline prices
+  const data = {};
+  for (const [k, v] of Object.entries(BASELINE)) {
+    data[k] = { ...v };
   }
+  data._fallback = false;
+
+  // Parallel fetches
+  const [fxR, t10R, t2R] = await Promise.allSettled([
+    fetchFrankfurter(),
+    fetchFred('DGS10'),
+    fetchFred('DGS2'),
+  ]);
+
+  const etfResults = await Promise.allSettled(
+    Object.entries(ETF_MAP).map(([key, sym]) =>
+      fetchFinnhub(sym).then(q => ({ key, q }))
+    )
+  );
+
+  // Apply Finnhub ETF change%
+  let finhubOk = 0;
+  for (const r of etfResults) {
+    if (r.status === 'fulfilled') {
+      const { key, q } = r.value;
+      data[key] = { ...data[key], chgPct: q.chgPct, _live: true };
+      finhubOk++;
+    }
+  }
+
+  // Apply live FX (Frankfurter)
+  if (fxR.status === 'fulfilled') {
+    const rates = fxR.value.rates;
+    if (rates?.EUR) {
+      const price = parseFloat((1 / rates.EUR).toFixed(4));
+      const prev = price / (1 + (data.eurusd.chgPct || 0) / 100);
+      data.eurusd = { price, chgPct: data.eurusd.chgPct ?? null, _live: true };
+    }
+    if (rates?.JPY) {
+      data.usdjpy = { price: parseFloat(rates.JPY.toFixed(2)), chgPct: data.usdjpy.chgPct ?? null, _live: true };
+    }
+    if (rates?.CNY) {
+      data.cnhusd = { price: parseFloat(rates.CNY.toFixed(4)), chgPct: data.cnhusd.chgPct ?? null, _live: true };
+    }
+  }
+
+  // Apply FRED yields
+  if (t10R.status === 'fulfilled' && t10R.value) {
+    const price = t10R.value;
+    const prev = data.ust10y.price;
+    data.ust10y = { ...data.ust10y, price, chgPct: prev ? parseFloat((((price-prev)/prev)*100).toFixed(2)) : null, _live: true };
+  }
+  if (t2R.status === 'fulfilled' && t2R.value) {
+    const price = t2R.value;
+    const prev = data.ust2y.price;
+    data.ust2y = { ...data.ust2y, price, chgPct: prev ? parseFloat((((price-prev)/prev)*100).toFixed(2)) : null, _live: true };
+  }
+
+  // Spread
+  const t10 = data.ust10y?.price;
+  const t2  = data.ust2y?.price;
+  if (t10 && t2) data.spread2y10y = parseInt(((t10 - t2) * 100).toFixed(0));
+
+  if (finhubOk === 0) data._fallback = true;
+
+  res.status(200).json({ ok: true, data });
 }
