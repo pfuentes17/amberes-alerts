@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Market Briefing · Amberes</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0d1117;--s1:#161b22;--s2:#21262d;--s3:#30363d;
+  --tx:#e6edf3;--t2:#8b949e;--t3:#6e7681;
+  --g:#3fb950;--r:#f85149;--a:#d29922;--b:#58a6ff;--p:#bc8cff;
+  --gd:#238636;--rd:#da3633;
+  --card-r:10px;
+}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh}
+
+/* TOP BAR */
+.topbar{background:var(--s1);border-bottom:1px solid var(--s3);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.topbar-left{display:flex;align-items:center;gap:12px}
+.logo{font-weight:700;font-size:15px;color:var(--tx)}
+.logo span{color:var(--b)}
+.badge{background:var(--s2);border:1px solid var(--s3);border-radius:20px;padding:3px 10px;font-size:11px;color:var(--t2)}
+.topbar-right{display:flex;align-items:center;gap:16px}
+.nav-link{color:var(--t2);text-decoration:none;font-size:13px}
+.nav-link:hover{color:var(--tx)}
+.btn-home{background:var(--s2);border:1px solid var(--s3);border-radius:6px;padding:5px 12px;color:var(--t2);text-decoration:none;font-size:12px}
+.btn-home:hover{border-color:var(--b);color:var(--b)}
+
+/* HERO */
+.hero{padding:32px 24px 20px;max-width:1100px;margin:0 auto}
+.hero-date{font-size:12px;color:var(--t2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.hero-title{font-size:26px;font-weight:700;color:var(--tx);margin-bottom:6px}
+.hero-sub{font-size:14px;color:var(--t2);margin-bottom:24px}
+.hero-disclaimer{font-size:11px;color:var(--t3);padding:8px 12px;background:var(--s1);border:1px solid var(--s3);border-radius:6px;margin-bottom:4px}
+
+/* ASSET STRIP */
+.asset-strip{background:var(--s1);border-top:1px solid var(--s3);border-bottom:1px solid var(--s3);padding:10px 24px;display:flex;gap:28px;overflow-x:auto;margin-bottom:28px}
+.asset-item{display:flex;flex-direction:column;gap:2px;min-width:fit-content}
+.asset-label{font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.06em}
+.asset-val{font-size:15px;font-weight:700;color:var(--tx)}
+.asset-chg{font-size:11px}
+.up{color:var(--g)}.dn{color:var(--r)}.neu{color:var(--t2)}
+
+/* SENTIMENT BAR */
+.sent-bar{max-width:1100px;margin:0 auto 24px;padding:0 24px}
+.sent-row{display:flex;gap:12px}
+.sent-pill{flex:1;background:var(--s1);border:1px solid var(--s3);border-radius:8px;padding:10px 16px;text-align:center}
+.sent-pill.ro{border-color:var(--g);background:rgba(63,185,80,.07)}
+.sent-pill.rf{border-color:var(--r);background:rgba(248,81,73,.07)}
+.sent-pill.mx{border-color:var(--a);background:rgba(210,153,34,.07)}
+.sent-pill .icon{font-size:18px;margin-bottom:2px}
+.sent-pill .label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.sent-pill.ro .label{color:var(--g)}
+.sent-pill.rf .label{color:var(--r)}
+.sent-pill.mx .label{color:var(--a)}
+.sent-pill .desc{font-size:10px;color:var(--t2);margin-top:2px}
+
+/* MAIN CONTENT */
+.content{max-width:1100px;margin:0 auto;padding:0 24px 60px}
+.section-title{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.section-title::after{content:'';flex:1;height:1px;background:var(--s3)}
+
+/* DRIVER CARDS */
+.driver-card{background:var(--s1);border:1px solid var(--s3);border-radius:var(--card-r);margin-bottom:16px;overflow:hidden;transition:border-color .2s}
+.driver-card:hover{border-color:var(--s3)}
+.driver-header{padding:16px 20px 14px;display:flex;align-items:flex-start;gap:14px;cursor:pointer}
+.driver-num{font-size:11px;font-weight:700;color:var(--t3);min-width:20px;padding-top:3px}
+.driver-meta{flex:1}
+.driver-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:2px 8px;border-radius:4px;margin-bottom:6px;display:inline-block}
+.tag-geo{background:rgba(188,140,255,.15);color:var(--p)}
+.tag-cb{background:rgba(88,166,255,.15);color:var(--b)}
+.tag-inf{background:rgba(248,81,73,.15);color:var(--r)}
+.tag-em{background:rgba(210,153,34,.15);color:var(--a)}
+.tag-tech{background:rgba(63,185,80,.15);color:var(--g)}
+.driver-title{font-size:16px;font-weight:700;color:var(--tx);margin-bottom:4px;line-height:1.3}
+.driver-brief{font-size:13px;color:var(--t2);line-height:1.5}
+.driver-sent{margin-left:auto;padding-left:12px}
+.sent-badge{font-size:10px;font-weight:700;text-transform:uppercase;padding:4px 10px;border-radius:20px;white-space:nowrap}
+.sent-badge.ro{background:rgba(63,185,80,.15);color:var(--g);border:1px solid rgba(63,185,80,.3)}
+.sent-badge.rf{background:rgba(248,81,73,.15);color:var(--r);border:1px solid rgba(248,81,73,.3)}
+.sent-badge.mx{background:rgba(210,153,34,.15);color:var(--a);border:1px solid rgba(210,153,34,.3)}
+
+.driver-body{padding:0 20px 20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.driver-section{background:var(--bg);border:1px solid var(--s3);border-radius:8px;padding:12px 14px}
+.driver-section h4{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.driver-section h4 .dot{width:6px;height:6px;border-radius:50%;display:inline-block;flex-shrink:0}
+.dot-ctx{background:var(--b)}
+.dot-imp{background:var(--a)}
+.dot-ev{background:var(--p)}
+.driver-section p{font-size:12px;color:var(--t2);line-height:1.6}
+.driver-section strong{color:var(--tx)}
+
+/* ASSET IMPACT GRID */
+.impact-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px}
+.impact-item{display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid var(--s3)}
+.impact-item:last-child{border-bottom:none}
+.impact-asset{font-size:11px;color:var(--t2)}
+.impact-dir{font-size:11px;font-weight:700}
+.up-dir{color:var(--g)}.dn-dir{color:var(--r)}.neu-dir{color:var(--t2)}
+
+/* SUMMARY BOX */
+.summary-box{background:var(--s1);border:1px solid var(--s3);border-radius:var(--card-r);padding:20px;margin-bottom:24px}
+.summary-box h3{font-size:13px;font-weight:700;color:var(--tx);margin-bottom:12px}
+.summary-box p{font-size:13px;color:var(--t2);line-height:1.7}
+.summary-box p strong{color:var(--tx)}
+
+/* FOOTER */
+.footer{text-align:center;padding:20px;font-size:11px;color:var(--t3);border-top:1px solid var(--s3)}
+
+@media(max-width:768px){
+  .driver-body{grid-template-columns:1fr}
+  .asset-strip{gap:18px}
+  .sent-row{flex-wrap:wrap}
+  .sent-pill{min-width:calc(50% - 6px)}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="logo">Amberes <span>·</span> Research</div>
+    <div class="badge">Market Briefing</div>
+  </div>
+  <div class="topbar-right">
+    <a class="nav-link" href="/macro.html" onclick="location.href='https://macroargy-eight.vercel.app/macro.html';return false">Macro Global</a>
+    <a class="nav-link" href="/agro.html">Agro</a>
+    <a class="btn-home" href="/">← Inicio</a>
+  </div>
+</div>
+
+<!-- ASSET STRIP -->
+<div class="asset-strip">
+  <div class="asset-item">
+    <div class="asset-label">S&amp;P 500</div>
+    <div class="asset-val">7,554</div>
+    <div class="asset-chg up">+0.1% hoy</div>
+  </div>
+  <div class="asset-item">
+    <div class="asset-label">Nasdaq</div>
+    <div class="asset-val">26,684</div>
+    <div class="asset-chg up">+0.0% hoy</div>
+  </div>
+  <div class="asset-item">
+    <div class="asset-label">WTI Crude</div>
+    <div class="asset-val">$76.0</div>
+    <div class="asset-chg dn">−2.6% hoy</div>
+  </div>
+  <div class="asset-item">
+    <div class="asset-label">Brent</div>
+    <div class="asset-val">$81.2</div>
+    <div class="asset-chg dn">−2.4% hoy</div>
+  </div>
+  <div class="asset-item">
+    <div class="asset-label">Oro / Gold</div>
+    <div class="asset-val">$4,300</div>
+    <div class="asset-chg up">+0.8% ayer</div>
+  </div>
+  <div class="asset-item">
+    <div class="asset-label">UST 10Y</div>
+    <div class="asset-val">4.97%</div>
+    <div class="asset-chg neu">estable</div>
+  </div>
+  <div class="asset-item">
+    <div class="asset-label">EUR/USD</div>
+    <div class="asset-val">1.108</div>
+    <div class="asset-chg up">+0.3%</div>
+  </div>
+  <div class="asset-item">
+    <div class="asset-label">USD/JPY</div>
+    <div class="asset-val">158.4</div>
+    <div class="asset-chg dn">−0.5%</div>
+  </div>
+  <div class="asset-item">
+    <div class="asset-label">VIX</div>
+    <div class="asset-val">16.2</div>
+    <div class="asset-chg dn">−8%</div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-date">Martes 16 de Junio de 2026 · Cierre NY</div>
+  <div class="hero-title">Market Briefing — Drivers del Día</div>
+  <div class="hero-sub">Análisis de los 5 catalizadores globales que están moviendo el capital institucional hoy</div>
+  <div class="hero-disclaimer">⚠️ Este análisis es informativo y no constituye asesoramiento de inversión. Todos los precios son aproximados al cierre/apertura del 16-jun-2026.</div>
+</div>
+
+<!-- SENTIMENT SUMMARY -->
+<div class="sent-bar">
+  <div class="sent-row">
+    <div class="sent-pill ro">
+      <div class="icon">🟢</div>
+      <div class="label">Risk-On Dominante</div>
+      <div class="desc">Acuerdo EEUU-Irán · petróleo cae · equities suben</div>
+    </div>
+    <div class="sent-pill mx">
+      <div class="icon">🟡</div>
+      <div class="label">CB Hawkish</div>
+      <div class="desc">BOJ +25pb · BCE +25pb · inflación persiste</div>
+    </div>
+    <div class="sent-pill rf">
+      <div class="icon">🔴</div>
+      <div class="desc">China: consumo interno colapsa · primera caída retail desde 2022</div>
+      <div class="label">Riesgo Macro</div>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+<div class="section-title">Drivers Clave · 16 Jun 2026</div>
+
+<!-- DRIVER 1 -->
+<div class="driver-card">
+  <div class="driver-header">
+    <div class="driver-num">01</div>
+    <div class="driver-meta">
+      <div class="driver-tag tag-geo">Geopolítica · Energía</div>
+      <div class="driver-title">EE.UU. e Irán firman acuerdo de paz — Estrecho de Ormuz reabre</div>
+      <div class="driver-brief">El mayor "tail risk" del año se disipa. Oil cae 2.6% a $76/bbl. El S&P 500 recuperó 1.7% ayer y el VIX se derrumba desde máximos.</div>
+    </div>
+    <div class="driver-sent"><div class="sent-badge ro">🟢 Risk-On</div></div>
+  </div>
+  <div class="driver-body">
+    <div class="driver-section">
+      <h4><span class="dot dot-ev"></span> El Evento</h4>
+      <p>EE.UU. e Irán firmaron un <strong>memorándum de entendimiento</strong> el 14-15 jun, mediado por Pakistán, que incluye: cese al fuego inmediato, reapertura del <strong>Estrecho de Ormuz</strong> (canal por donde pasa ~20% del petróleo global), y 60 días de negociaciones sobre el programa nuclear iraní. WTI cayó desde ~$92 a <strong>$76/bbl en 48hs</strong> — el nivel más bajo desde marzo.</p>
+    </div>
+    <div class="driver-section">
+      <h4><span class="dot dot-ctx"></span> El Contexto / Driver</h4>
+      <p>La "Guerra de los Doce Días" había disparado el petróleo a ~$97 Brent, alimentando un <strong>shock inflacionario global</strong>: PPI USA alcanzó +6.5% YoY en mayo, el BCE subió tasas por primera vez desde 2023, y el BOJ aceleró su normalización. El mercado estaba pricing un escenario de <strong>"higher oil for longer"</strong> que era el principal riesgo para la renta variable. La paz lo resuelve de golpe.</p>
+    </div>
+    <div class="driver-section">
+      <h4><span class="dot dot-imp"></span> Impacto en Activos</h4>
+      <div class="impact-grid">
+        <div class="impact-item"><span class="impact-asset">Equities (S&P)</span><span class="impact-dir up-dir">↑ Fuerte</span></div>
+        <div class="impact-item"><span class="impact-asset">Petróleo (WTI)</span><span class="impact-dir dn-dir">↓ −2.6%</span></div>
+        <div class="impact-item"><span class="impact-asset">UST 10Y</span><span class="impact-dir up-dir">↑ Baja yield</span></div>
+        <div class="impact-item"><span class="impact-asset">Oro</span><span class="impact-dir up-dir">↑ $4,300</span></div>
+        <div class="impact-item"><span class="impact-asset">USD (DXY)</span><span class="impact-dir dn-dir">↓ Debilitamiento</span></div>
+        <div class="impact-item"><span class="impact-asset">EM / Carry</span><span class="impact-dir up-dir">↑ Inflows</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DRIVER 2 -->
+<div class="driver-card">
+  <div class="driver-header">
+    <div class="driver-num">02</div>
+    <div class="driver-meta">
+      <div class="driver-tag tag-cb">Bancos Centrales</div>
+      <div class="driver-title">BOJ +25pb a 1.0% y BCE +25pb a 2.5% — Sincronización hawkish global</div>
+      <div class="driver-brief">Por primera vez en décadas, Japón y Europa suben tasas el mismo día. El BOJ alcanza su mayor nivel desde 2008; el BCE ejecuta su primer hike desde 2023.</div>
+    </div>
+    <div class="driver-sent"><div class="sent-badge mx">🟡 Mixto</div></div>
+  </div>
+  <div class="driver-body">
+    <div class="driver-section">
+      <h4><span class="dot dot-ev"></span> El Evento</h4>
+      <p><strong>BOJ (15-16 jun):</strong> subió +25pb a <strong>1.00%</strong>, el mayor nivel desde 2008. Ueda citó inflación salarial sostenida y PPI japonés en +3.9%. <strong>BCE (11 jun):</strong> subió +25pb a <strong>2.50%</strong> (deposit facility), primer hike desde 2023. Lagarde argumentó que el shock energético iraní elevó las proyecciones de inflación al 3% para 2026 y retrasó la convergencia al 2% hasta 2028.</p>
+    </div>
+    <div class="driver-section">
+      <h4><span class="dot dot-ctx"></span> El Contexto / Driver</h4>
+      <p>El mercado venía pricing <strong>recortes</strong> de BCE y pausa del BOJ para H2 2026. Ambas decisiones son contra-consenso e implican que el ciclo de tasas globales se extiende más de lo esperado. El capital institucional debe repricing toda la curva: <strong>renta fija corporativa, REITs y tech de alta duration</strong> son los más afectados. Para Japón, la suba del BOJ cierra parcialmente el diferencial vs USD, presionando el carry trade yen.</p>
+    </div>
+    <div class="driver-section">
+      <h4><span class="dot dot-imp"></span> Impacto en Activos</h4>
+      <div class="impact-grid">
+        <div class="impact-item"><span class="impact-asset">JGB (bonos JP)</span><span class="impact-dir dn-dir">↓ Precio cae</span></div>
+        <div class="impact-item"><span class="impact-asset">JPY</span><span class="impact-dir up-dir">↑ Se aprecia</span></div>
+        <div class="impact-item"><span class="impact-asset">EUR</span><span class="impact-dir up-dir">↑ Hawkish BCE</span></div>
+        <div class="impact-item"><span class="impact-asset">Carry Trade</span><span class="impact-dir dn-dir">↓ Riesgo unwind</span></div>
+        <div class="impact-item"><span class="impact-asset">Bonos EU</span><span class="impact-dir dn-dir">↓ Bund yield ↑</span></div>
+        <div class="impact-item"><span class="impact-asset">Tech / Growth</span><span class="impact-dir dn-dir">↓ Presión</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DRIVER 3 -->
+<div class="driver-card">
+  <div class="driver-header">
+    <div class="driver-num">03</div>
+    <div class="driver-meta">
+      <div class="driver-tag tag-inf">Inflación · Fed</div>
+      <div class="driver-title">Pipeline inflacionario USA: PPI +6.5% YoY mayo — Fed sin margen para cortar</div>
+      <div class="driver-brief">El PPI corre 2.3pp por encima del CPI, la mayor brecha en dos años. Los mercados tienen pricing de 0-1 corte para todo 2026. La tasa real del 10Y supera el 2%.</div>
+    </div>
+    <div class="driver-sent"><div class="sent-badge rf">🔴 Risk-Off parcial</div></div>
+  </div>
+  <div class="driver-body">
+    <div class="driver-section">
+      <h4><span class="dot dot-ev"></span> El Evento</h4>
+      <p>BLS publicó PPI USA mayo: <strong>+6.5% YoY</strong> (vs +9.8% abr, desacelera por base), Core PPI +5.1%, MoM +1.1%. El CPI mayo fue <strong>+4.2% YoY</strong>. La brecha PPI−CPI de <strong>+2.3pp</strong> es un leading indicator clásico: los márgenes corporativos están absorbiendo costos hoy, pero eventualmente se trasladan a precios al consumidor. La Fed proyecta solo 0-1 corte en 2026. Próxima reunión: 29 jul.</p>
+    </div>
+    <div class="driver-section">
+      <h4><span class="dot dot-ctx"></span> El Contexto / Driver</h4>
+      <p>El shock del petróleo iraní añadió un <strong>impulso exógeno</strong> al pipeline inflacionario ya elevado por los aranceles Trump. La paz Irán-EEUU aliviaría la presión energética, pero el <strong>componente de servicios</strong> (vivienda, salarios) sigue sticky. El mercado está en un estado de "inflación buena vs inflación mala": si cae el petróleo sin que suba el desempleo, la Fed puede tolerar. Si el core no cede, la curva se invierte más.</p>
+    </div>
+    <div class="driver-section">
+      <h4><span class="dot dot-imp"></span> Impacto en Activos</h4>
+      <div class="impact-grid">
+        <div class="impact-item"><span class="impact-asset">UST 2Y</span><span class="impact-dir dn-dir">↑ yield 4.0%+</span></div>
+        <div class="impact-item"><span class="impact-asset">UST 10Y</span><span class="impact-dir dn-dir">↑ yield 5%</span></div>
+        <div class="impact-item"><span class="impact-asset">USD (DXY)</span><span class="impact-dir up-dir">↑ Soportado</span></div>
+        <div class="impact-item"><span class="impact-asset">Oro</span><span class="impact-dir up-dir">↑ Hedge inf.</span></div>
+        <div class="impact-item"><span class="impact-asset">REITs</span><span class="impact-dir dn-dir">↓ Presión</span></div>
+        <div class="impact-item"><span class="impact-asset">Small Caps</span><span class="impact-dir dn-dir">↓ Rate sensitv.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DRIVER 4 -->
+<div class="driver-card">
+  <div class="driver-header">
+    <div class="driver-num">04</div>
+    <div class="driver-meta">
+      <div class="driver-tag tag-em">China · Macro</div>
+      <div class="driver-title">China: Ventas Minoristas mayo −0.6% — primera caída desde dic 2022</div>
+      <div class="driver-brief">La divergencia oferta/demanda se vuelve crítica. IP +4.5% (sólido) pero consumo colapsa. El NBS lo admite: "desequilibrio entre oferta fuerte y demanda débil es agudo".</div>
+    </div>
+    <div class="driver-sent"><div class="sent-badge rf">🔴 Risk-Off</div></div>
+  </div>
+  <div class="driver-body">
+    <div class="driver-section">
+      <h4><span class="dot dot-ev"></span> El Evento</h4>
+      <p>NBS publicó hoy (16 jun) datos de mayo: <strong>Producción Industrial +4.5% YoY</strong> (rebote desde mínimo 3 años de abr +4.1%). <strong>Ventas Minoristas −0.6% YoY</strong>, primera caída desde diciembre 2022. Autos −16.1%, electrodomésticos −15.6%, materiales de construcción −13.6%. PPI +3.9% (máximo ~4 años) pero CPI +1.2% — diferencial de 2.7pp señala que las empresas no pueden trasladar costos al consumidor.</p>
+    </div>
+    <div class="driver-section">
+      <h4><span class="dot dot-ctx"></span> El Contexto / Driver</h4>
+      <p>China está atrapada en un modelo de <strong>"oferta sin demanda"</strong>: exporta más de lo que consume internamente. Los aranceles Trump (~47%) redujeron el mercado externo disponible, y el estímulo fiscal de Pekín no llegó al consumidor final. El riesgo es una <strong>espiral deflacionaria doméstica</strong> (PPI alto en inputs, pero CPI plano = márgenes destruidos). Para los mercados globales: presión en commodities básicos, debilidad del yuan, y risk-off en emergentes expuestos a China (Brasil, Australia).</p>
+    </div>
+    <div class="driver-section">
+      <h4><span class="dot dot-imp"></span> Impacto en Activos</h4>
+      <div class="impact-grid">
+        <div class="impact-item"><span class="impact-asset">Cobre</span><span class="impact-dir dn-dir">↓ Demanda débil</span></div>
+        <div class="impact-item"><span class="impact-asset">Soja / Granos</span><span class="impact-dir dn-dir">↓ Presión</span></div>
+        <div class="impact-item"><span class="impact-asset">Yuan (CNY)</span><span class="impact-dir dn-dir">↓ Debilidad</span></div>
+        <div class="impact-item"><span class="impact-asset">Hang Seng</span><span class="impact-dir dn-dir">↓ Venta</span></div>
+        <div class="impact-item"><span class="impact-asset">BRL / ARS</span><span class="impact-dir dn-dir">↓ Exposición</span></div>
+        <div class="impact-item"><span class="impact-asset">Mineras</span><span class="impact-dir dn-dir">↓ Presión</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- DRIVER 5 -->
+<div class="driver-card">
+  <div class="driver-header">
+    <div class="driver-num">05</div>
+    <div class="driver-meta">
+      <div class="driver-tag tag-em">Emergentes · LATAM</div>
+      <div class="driver-title">COPOM Brasil decide SELIC esta noche — mercado dividido entre corte y pausa</div>
+      <div class="driver-brief">El Banco Central de Brasil anuncia hoy (18:30 BRT). Con IPCA mayo +4.72% YoY y Focus 2026 en 5.30%, el margen para cortar se redujo. Un "hold" inesperado podría mover BRL 1-2%.</div>
+    </div>
+    <div class="driver-sent"><div class="sent-badge mx">🟡 Mixto</div></div>
+  </div>
+  <div class="driver-body">
+    <div class="driver-section">
+      <h4><span class="dot dot-ev"></span> El Evento</h4>
+      <p>El COPOM se reúne hoy 16-17 jun. La SELIC está en <strong>14.50%</strong> (−25bp desde pico de 15% en Mar 26). El mercado tiene pricing de ~85% de probabilidad de un corte adicional de <strong>−25bp a 14.25%</strong>. Pero el IPCA mayo fue +4.72% YoY (+0.58% MoM), por encima del techo de meta (4.5%), y el Focus 2026 subió a <strong>5.30%</strong>. El anuncio sale a las <strong>18:30 BRT / 15:30 NY</strong>.</p>
+    </div>
+    <div class="driver-section">
+      <h4><span class="dot dot-ctx"></span> El Contexto / Driver</h4>
+      <p>Brasil enfrenta un <strong>dilema clásico de banco central emergente</strong>: inflación por encima del techo de meta, pero SELIC real de +9.8pp positiva (la más alta en 20 años) que frena el crecimiento. El PIB Q1 +1.8% YoY superó expectativas, dando menos urgencia para cortar. El riesgo: si el COPOM pausa y el mercado esperaba corte, el BRL se aprecia y los bonos largos caen. Si corta con inflación alta, pierde credibilidad.</p>
+    </div>
+    <div class="driver-section">
+      <h4><span class="dot dot-imp"></span> Impacto en Activos</h4>
+      <div class="impact-grid">
+        <div class="impact-item"><span class="impact-asset">BRL/USD</span><span class="impact-dir up-dir">↑ si pausa</span></div>
+        <div class="impact-item"><span class="impact-asset">Bovespa</span><span class="impact-dir dn-dir">↓ si pausa</span></div>
+        <div class="impact-item"><span class="impact-asset">NTN-B (TIPS BR)</span><span class="impact-dir up-dir">↑ si pausa</span></div>
+        <div class="impact-item"><span class="impact-asset">LTN / carry</span><span class="impact-dir up-dir">↑ si corta</span></div>
+        <div class="impact-item"><span class="impact-asset">Ibovespa</span><span class="impact-dir up-dir">↑ si corta</span></div>
+        <div class="impact-item"><span class="impact-asset">EM Bonds</span><span class="impact-dir neu-dir">→ Neutral</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<div class="section-title" style="margin-top:32px">Síntesis Ejecutiva</div>
+<div class="summary-box">
+  <h3>📋 Bottom Line — 16 Jun 2026</h3>
+  <p>
+    El mercado global está en una <strong>transición de régimen</strong>: el mayor tail risk del año (guerra Irán) se está disipando, pero el <strong>paisaje macro de fondo</strong> sigue siendo complejo. El petróleo cae con fuerza y eso alivia la presión inflacionaria, pero los bancos centrales (BOJ, BCE) ya movieron en hawkish y difícilmente retrocedan. 
+    <br><br>
+    El flujo de capital institucional hoy está: <strong>saliendo de energía y entrando en equities defensivos</strong>; rotando de bonos cortos de EEUU hacia renta variable internacional (Europa rebota con BCE resuelto); y <strong>vendiendo yen corto</strong> dado que el BOJ sube pero la tasa sigue baja vs Fed.
+    <br><br>
+    El <strong>comodín de la noche es Brasil (COPOM 18:30 BRT)</strong>: una pausa inesperada podría generar volatilidad local y un mini risk-off en LATAM. Para los inversores en Argentina, la caída del petróleo es una señal ambigua: reduce presión inflacionaria global pero también presiona los precios de los granos vía demanda de China.
+  </p>
+</div>
+
+<!-- UPCOMING -->
+<div class="section-title">Próximos Eventos Clave</div>
+<div class="summary-box">
+  <h3>📅 Agenda de las próximas 72hs</h3>
+  <p>
+    🇧🇷 <strong>Hoy 18:30 BRT</strong> — COPOM Brasil: decisión SELIC (14.50% → ¿14.25%?)<br>
+    🇯🇵 <strong>Vie 20 jun</strong> — CPI Nacional Japón mayo (Tokyo adelantó +1.4% YoY)<br>
+    🇪🇺 <strong>Mar 24 jun</strong> — IPCA-15 Brasil junio (primer anticipo inflación jun)<br>
+    🇨🇳 <strong>Dom 30 jun</strong> — PMI NBS + Caixin junio (¿se confirma la debilidad?)<br>
+    🇺🇸 <strong>25 jun</strong> — GDP EE.UU. Q1 2026 tercera estimación<br>
+    🇨🇳 <strong>15 jul</strong> ⭐ — GDP Q2 2026 China + IP + Retail (dato grande del trimestre)
+  </p>
+</div>
+
+</div>
+
+<div class="footer">
+  Amberes Research · Market Briefing · 16 jun 2026 · Solo informativo, no constituye asesoramiento de inversión
+</div>
+
+</body>
+</html>
