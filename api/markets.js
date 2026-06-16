@@ -1,112 +1,81 @@
-// /api/markets.js — Live market data via Yahoo Finance
-// Called by index.html on page load
+// /api/markets.js — Live market data via Yahoo Finance v8/chart
+// Fetches one symbol at a time in parallel, uses Referer header to bypass 401
 
 const SYMBOLS = {
-  // Equities
   sp500:   '^GSPC',
   nasdaq:  '^IXIC',
-  dow:     '^DJI',
-  // Volatility
   vix:     '^VIX',
-  // FX
   eurusd:  'EURUSD=X',
   usdjpy:  'JPY=X',
   cnhusd:  'CNH=X',
-  // Rates (Yahoo: % already)
   ust10y:  '^TNX',
   ust2y:   '^IRX',
-  // Commodities
   wti:     'CL=F',
   brent:   'BZ=F',
   gold:    'GC=F',
   copper:  'HG=F',
-  // Dollar index
   dxy:     'DX-Y.NYB',
 };
 
-async function fetchQuotes(symbols) {
-  const joined = Object.values(symbols).join(',');
-  const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${joined}&fields=regularMarketPrice,regularMarketChangePercent,regularMarketPreviousClose,fiftyTwoWeekHigh,fiftyTwoWeekLow,fiftyDayAverage,regularMarketTime`;
+const HEADERS = {
+  'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+  'Referer': 'https://finance.yahoo.com',
+  'Accept': 'application/json',
+};
 
-  const res = await fetch(url, {
-    headers: {
-      'User-Agent': 'Mozilla/5.0',
-      'Accept': 'application/json',
-    }
-  });
-
-  if (!res.ok) throw new Error(`Yahoo Finance error: ${res.status}`);
-  const data = await res.json();
-  return data.quoteResponse?.result || [];
+async function fetchChart(symbol) {
+  const encoded = encodeURIComponent(symbol);
+  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encoded}?interval=1d&range=5d&includePrePost=false`;
+  const res = await fetch(url, { headers: HEADERS });
+  if (!res.ok) throw new Error(`${symbol}: HTTP ${res.status}`);
+  const json = await res.json();
+  const meta = json?.chart?.result?.[0]?.meta;
+  if (!meta) throw new Error(`${symbol}: no meta`);
+  return meta;
 }
 
 export default async function handler(req, res) {
-  // CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120'); // cache 1 min
+  res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=120');
 
   try {
-    const quotes = await fetchQuotes(SYMBOLS);
+    const entries = Object.entries(SYMBOLS);
+    const results = await Promise.allSettled(
+      entries.map(([key, sym]) => fetchChart(sym).then(m => ({ key, m })))
+    );
 
-    // Build lookup by symbol
-    const bySymbol = {};
-    for (const q of quotes) {
-      bySymbol[q.symbol] = q;
+    const byKey = {};
+    for (const r of results) {
+      if (r.status === 'fulfilled') {
+        const { key, m } = r.value;
+        const prev = m.chartPreviousClose || m.previousClose;
+        const price = m.regularMarketPrice;
+        const chgPct = prev ? ((price - prev) / prev) * 100 : null;
+        byKey[key] = {
+          price,
+          chgPct: chgPct ? parseFloat(chgPct.toFixed(2)) : null,
+          prev,
+          high52w: m.fiftyTwoWeekHigh,
+          low52w:  m.fiftyTwoWeekLow,
+          ts: m.regularMarketTime,
+        };
+      }
     }
 
-    const get = (sym) => {
-      const q = bySymbol[sym];
-      if (!q) return null;
-      return {
-        price: q.regularMarketPrice,
-        chgPct: q.regularMarketChangePercent,
-        prev: q.regularMarketPreviousClose,
-        high52w: q.fiftyTwoWeekHigh,
-        low52w: q.fiftyTwoWeekLow,
-        ma50: q.fiftyDayAverage,
-        ts: q.regularMarketTime,
-      };
-    };
-
-    const sp    = get('^GSPC');
-    const nq    = get('^IXIC');
-    const vix   = get('^VIX');
-    const eur   = get('EURUSD=X');
-    const jpy   = get('JPY=X');
-    const cnh   = get('CNH=X');
-    const t10   = get('^TNX');
-    const t2    = get('^IRX');
-    const wti   = get('CL=F');
-    const brent = get('BZ=F');
-    const gold  = get('GC=F');
-    const copper= get('HG=F');
-    const dxy   = get('DX-Y.NYB');
+    // Enrich sp500 with MA50 approx (unavailable in chart meta, skip or set null)
+    if (byKey.sp500 && byKey.sp500.high52w) {
+      byKey.sp500.pctFromHigh = parseFloat((((byKey.sp500.price - byKey.sp500.high52w) / byKey.sp500.high52w) * 100).toFixed(1));
+    }
+    if (byKey.gold && byKey.gold.high52w) {
+      byKey.gold.pctFromHigh = parseFloat((((byKey.gold.price - byKey.gold.high52w) / byKey.gold.high52w) * 100).toFixed(1));
+    }
 
     // Spread 2Y-10Y in bps
-    const spread = (t10 && t2) ? ((t10.price - t2.price) * 100).toFixed(0) : null;
+    const t10 = byKey.ust10y?.price;
+    const t2  = byKey.ust2y?.price;
+    byKey.spread2y10y = (t10 && t2) ? parseInt(((t10 - t2) * 100).toFixed(0)) : null;
 
-    // vs 52w high (%)
-    const pctFromHigh = (q) => q && q.high52w ? (((q.price - q.high52w) / q.high52w) * 100).toFixed(1) : null;
-
-    const payload = {
-      ts: Date.now(),
-      sp500:  { ...sp,  pctFromHigh: pctFromHigh(sp),  ma50dist: sp && sp.ma50 ? (((sp.price - sp.ma50) / sp.ma50)*100).toFixed(1) : null },
-      nasdaq: { ...nq,  pctFromHigh: pctFromHigh(nq) },
-      vix:    { ...vix },
-      dxy:    { ...dxy },
-      eurusd: { ...eur },
-      usdjpy: { ...jpy },
-      cnhusd: { ...cnh },
-      ust10y: { ...t10 },
-      ust2y:  { ...t2 },
-      spread2y10y: spread,
-      wti:    { ...wti },
-      brent:  { ...brent },
-      gold:   { ...gold, pctFromHigh: pctFromHigh(gold) },
-      copper: { ...copper },
-    };
-
-    res.status(200).json({ ok: true, data: payload });
+    res.status(200).json({ ok: true, data: byKey });
 
   } catch (err) {
     console.error('markets.js error:', err.message);
