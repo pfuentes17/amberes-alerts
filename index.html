@@ -25,6 +25,7 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 .nb-macro .dot{background:#4a9fd4}.nb-tc .dot{background:#9b7fe8}
 .nb-arg .dot{background:#e8a044}.nb-agro .dot{background:#4db87a}
 .nb-bonos .dot{background:#e8c84a}
+.nb-conf .dot{background:#e05c97}.nb-gest .dot{background:#e05c97}
 
 /* ── ASSET STRIP ── */
 .asset-strip{background:var(--s1);border-bottom:1px solid var(--s3);padding:9px 24px;display:flex;gap:28px;overflow-x:auto}
@@ -103,6 +104,7 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 .mc-macro::before{background:#4a9fd4}.mc-tc::before{background:#9b7fe8}
 .mc-arg::before{background:#e8a044}.mc-agro::before{background:#4db87a}
 .mc-bonos::before{background:#e8c84a}
+.mc-conf::before{background:#e05c97}.mc-gest::before{background:#e05c97}
 .mc-icon{font-size:20px;margin-bottom:8px}
 .mc-cat{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--t2);margin-bottom:4px}
 .mc-title{font-size:13px;font-weight:700;color:var(--tx);margin-bottom:3px}
@@ -142,6 +144,12 @@ footer{text-align:center;padding:20px;font-size:10px;color:var(--t3);border-top:
     </a>
     <a class="nav-btn nb-bonos" href="https://calculadora-bonos-five.vercel.app" target="_blank">
       <span class="dot"></span>Bonos
+    </a>
+    <a class="nav-btn nb-conf" href="/confianza.html">
+      <span class="dot"></span>Continuidad
+    </a>
+    <a class="nav-btn nb-gest" href="/gestion.html">
+      <span class="dot"></span>Índice Gestión
     </a>
   </div>
 </nav>
@@ -411,6 +419,20 @@ footer{text-align:center;padding:20px;font-size:10px;color:var(--t3);border-top:
     <div class="mc-cat">Renta Fija</div>
     <div class="mc-title">Calculadora Bonos</div>
     <div class="mc-desc">Soberanos HD · CER · Curva log TIR · GD · AL</div>
+    <span class="mc-arrow">→ Abrir módulo</span>
+  </a>
+  <a class="mod-card mc-conf" href="/confianza.html">
+    <div class="mc-icon">🗳️</div>
+    <div class="mc-cat">Política · Argentina</div>
+    <div class="mc-title">Confianza en la Continuidad</div>
+    <div class="mc-desc">Índice de probabilidad de continuidad del gobierno · Componentes políticos y electorales</div>
+    <span class="mc-arrow">→ Abrir módulo</span>
+  </a>
+  <a class="mod-card mc-gest" href="/gestion.html">
+    <div class="mc-icon">📊</div>
+    <div class="mc-cat">Política · Argentina</div>
+    <div class="mc-title">Índice de Gestión</div>
+    <div class="mc-desc">Índice de confianza en la gestión del gobierno · Aprobación y expectativas</div>
     <span class="mc-arrow">→ Abrir módulo</span>
   </a>
 </div>
