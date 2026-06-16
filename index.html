@@ -14,9 +14,9 @@
 }
 body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh}
 
-/* ── TOP NAV ── */
+/* NAV */
 .topbar{background:var(--s1);border-bottom:1px solid var(--s3);padding:0 24px;height:50px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.logo{font-weight:700;font-size:15px;color:var(--tx);letter-spacing:-.01em;white-space:nowrap}
+.logo{font-weight:700;font-size:15px;color:var(--tx);white-space:nowrap}
 .logo em{color:var(--b);font-style:normal}
 .nav-modules{display:flex;align-items:center;gap:3px;overflow-x:auto}
 .nav-btn{display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:6px;text-decoration:none;font-size:11px;font-weight:500;color:var(--t2);border:1px solid transparent;transition:all .15s;white-space:nowrap;flex-shrink:0}
@@ -24,9 +24,9 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 .nav-btn .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .nb-macro .dot{background:#4a9fd4}.nb-tc .dot{background:#9b7fe8}
 .nb-arg .dot{background:#e8a044}.nb-agro .dot{background:#4db87a}
-.nb-bonos .dot{background:#e8c84a}.nb-conf .dot{background:#e05c97}.nb-gest .dot{background:#e05c97}
+.nb-bonos .dot{background:#e8c84a}.nb-conf .dot,.nb-gest .dot{background:#e05c97}
 
-/* ── ASSET STRIP ENHANCED ── */
+/* ASSET STRIP */
 .asset-strip{background:var(--s1);border-bottom:1px solid var(--s3);padding:8px 24px;display:flex;gap:0;overflow-x:auto}
 .asset-strip::-webkit-scrollbar{height:3px}.asset-strip::-webkit-scrollbar-thumb{background:var(--s3)}
 .ast{display:flex;flex-direction:column;gap:1px;min-width:fit-content;padding:4px 16px 4px 0;border-right:1px solid var(--s3);margin-right:16px}
@@ -41,55 +41,53 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 .badge-warn{background:rgba(210,153,34,.2);color:var(--a)}
 .badge-ok{background:rgba(63,185,80,.15);color:var(--g)}
 .badge-dn{background:rgba(248,81,73,.15);color:var(--r)}
+.ast-skeleton{opacity:.3;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:.6}}
 
-/* ── FEAR & GREED ── */
-.fg-bar{background:var(--s2);border-bottom:1px solid var(--s3);padding:7px 24px;display:flex;align-items:center;gap:20px}
+/* FEAR & GREED */
+.fg-bar{background:var(--s2);border-bottom:1px solid var(--s3);padding:7px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .fg-label{font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
-.fg-track{flex:1;max-width:280px;height:6px;border-radius:3px;background:linear-gradient(to right,#f85149,#d29922,#3fb950);position:relative}
-.fg-needle{position:absolute;top:-3px;width:12px;height:12px;border-radius:50%;background:var(--tx);border:2px solid var(--bg);transform:translateX(-50%);transition:left .3s}
+.fg-track{width:200px;height:6px;border-radius:3px;background:linear-gradient(to right,#f85149,#d29922,#3fb950);position:relative;flex-shrink:0}
+.fg-needle{position:absolute;top:-3px;width:12px;height:12px;border-radius:50%;background:var(--tx);border:2px solid var(--bg);transform:translateX(-50%);transition:left .5s}
 .fg-val{font-size:18px;font-weight:700}
 .fg-name{font-size:11px;font-weight:600}
-.fg-desc{font-size:10px;color:var(--t2);max-width:240px;line-height:1.4}
+.fg-desc{font-size:10px;color:var(--t2);max-width:280px;line-height:1.4}
 .fg-divider{width:1px;height:32px;background:var(--s3)}
+.fg-mini{display:flex;flex-direction:column;gap:3px;font-size:10px}
 
-/* ── HERO ── */
-.hero{padding:24px 24px 14px;max-width:1100px;margin:0 auto}
+/* HERO */
+.hero{padding:22px 24px 14px;max-width:1100px;margin:0 auto}
 .hero-eyebrow{font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px}
 .hero-title{font-size:22px;font-weight:700;margin-bottom:4px}
-.hero-sub{font-size:12px;color:var(--t2);margin-bottom:12px}
-.hero-disc{font-size:10px;color:var(--t3);background:var(--s1);border:1px solid var(--s3);border-radius:6px;padding:6px 12px}
+.hero-sub{font-size:12px;color:var(--t2)}
 
-/* ── SENTIMENT PILLS ── */
-.sent-row{max-width:1100px;margin:16px auto 0;padding:0 24px;display:flex;gap:8px}
-.sp{flex:1;background:var(--s1);border:1px solid var(--s3);border-radius:8px;padding:9px 13px;min-width:0}
-.sp.ro{border-color:rgba(63,185,80,.4);background:rgba(63,185,80,.05)}
-.sp.rf{border-color:rgba(248,81,73,.4);background:rgba(248,81,73,.05)}
-.sp.mx{border-color:rgba(210,153,34,.4);background:rgba(210,153,34,.05)}
-.sp .icon{font-size:14px;margin-bottom:2px}
-.sp .lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
-.sp.ro .lbl{color:var(--g)}.sp.rf .lbl{color:var(--r)}.sp.mx .lbl{color:var(--a)}
-.sp .dsc{font-size:9px;color:var(--t2);margin-top:2px;line-height:1.4}
+/* WRAP */
+.wrap{max-width:1100px;margin:0 auto;padding:16px 24px 60px}
+.sec-title{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:12px;margin-top:20px;display:flex;align-items:center;gap:8px}
+.sec-title::after{content:\'\';flex:1;height:1px;background:var(--s3)}
 
-/* ── MAIN ── */
-.wrap{max-width:1100px;margin:0 auto;padding:18px 24px 60px}
-.sec-title{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.sec-title::after{content:'';flex:1;height:1px;background:var(--s3)}
-
-/* ── TENSIÓN BOX ── */
-.tension-box{background:var(--s1);border:1px solid rgba(210,153,34,.35);border-radius:var(--card-r);padding:16px 18px;margin-bottom:18px}
-.tension-header{display:flex;align-items:center;gap:8px;margin-bottom:12px}
-.tension-header .icon{font-size:16px}
+/* TENSIÓN */
+.tension-box{background:var(--s1);border:1px solid rgba(210,153,34,.35);border-radius:var(--card-r);padding:14px 16px;margin-bottom:14px}
+.tension-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
 .tension-header h3{font-size:12px;font-weight:700;color:var(--a)}
 .tension-header .sub{font-size:10px;color:var(--t2);margin-left:auto}
 .tension-items{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.ti{background:var(--bg);border:1px solid rgba(210,153,34,.2);border-radius:7px;padding:10px 12px}
-.ti-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--a);margin-bottom:5px}
+.ti{background:var(--bg);border:1px solid rgba(210,153,34,.2);border-radius:6px;padding:9px 11px}
+.ti-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--a);margin-bottom:4px}
 .ti p{font-size:11px;color:var(--t2);line-height:1.55}
 .ti strong{color:var(--tx)}
 
-/* ── DRIVER CARD ── */
+/* CORR */
+.corr-box{background:var(--s1);border:1px solid var(--s3);border-radius:var(--card-r);padding:12px 14px;margin-bottom:14px}
+.corr-box h3{font-size:11px;font-weight:700;color:var(--tx);margin-bottom:8px}
+.corr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.corr-item{background:var(--bg);border:1px solid var(--s3);border-radius:6px;padding:8px 10px}
+.corr-pair{font-size:10px;font-weight:700;color:var(--b);margin-bottom:2px}
+.corr-dir{font-size:10px;color:var(--t2);line-height:1.4}
+
+/* DRIVERS */
 .dc{background:var(--s1);border:1px solid var(--s3);border-radius:var(--card-r);margin-bottom:10px;overflow:hidden}
-.dc-hd{padding:13px 16px 11px;display:flex;align-items:flex-start;gap:10px}
+.dc-hd{padding:12px 14px 10px;display:flex;align-items:flex-start;gap:10px}
 .dc-num{font-size:9px;font-weight:700;color:var(--t3);min-width:16px;padding-top:2px}
 .dc-meta{flex:1;min-width:0}
 .tag{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:2px 6px;border-radius:3px;margin-bottom:4px;display:inline-block}
@@ -104,10 +102,9 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 .sbadge.ro{background:rgba(63,185,80,.15);color:var(--g);border:1px solid rgba(63,185,80,.3)}
 .sbadge.rf{background:rgba(248,81,73,.15);color:var(--r);border:1px solid rgba(248,81,73,.3)}
 .sbadge.mx{background:rgba(210,153,34,.15);color:var(--a);border:1px solid rgba(210,153,34,.3)}
-
-.dc-body{padding:0 16px 14px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-.dc-sec{background:var(--bg);border:1px solid var(--s3);border-radius:6px;padding:10px 12px}
-.dc-sec h4{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:6px;display:flex;align-items:center;gap:4px}
+.dc-body{padding:0 14px 12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
+.dc-sec{background:var(--bg);border:1px solid var(--s3);border-radius:6px;padding:9px 11px}
+.dc-sec h4{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:5px;display:flex;align-items:center;gap:4px}
 .dc-sec h4 .d{width:5px;height:5px;border-radius:50%;display:inline-block;flex-shrink:0}
 .dp{background:var(--p)}.db{background:var(--b)}.da{background:var(--a)}
 .dc-sec p{font-size:11px;color:var(--t2);line-height:1.6}
@@ -117,53 +114,42 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 .ii:last-child{border-bottom:none}
 .ii .ia{color:var(--t2)}.ii .id{font-weight:700}
 
-/* ── CORR MAP ── */
-.corr-box{background:var(--s1);border:1px solid var(--s3);border-radius:var(--card-r);padding:14px 16px;margin-bottom:18px}
-.corr-box h3{font-size:11px;font-weight:700;color:var(--tx);margin-bottom:10px;display:flex;align-items:center;gap:6px}
-.corr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.corr-item{background:var(--bg);border:1px solid var(--s3);border-radius:6px;padding:9px 11px}
-.corr-pair{font-size:10px;font-weight:700;color:var(--b);margin-bottom:3px}
-.corr-dir{font-size:11px;color:var(--t2);line-height:1.4}
-.corr-dir strong{color:var(--tx)}
-
-/* ── SUMMARY ── */
-.sumbox{background:var(--s1);border:1px solid var(--s3);border-radius:var(--card-r);padding:16px;margin-bottom:12px}
+/* SUMMARY */
+.sumbox{background:var(--s1);border:1px solid var(--s3);border-radius:var(--card-r);padding:14px 16px;margin-bottom:10px}
 .sumbox h3{font-size:12px;font-weight:700;margin-bottom:8px;color:var(--tx)}
 .sumbox p{font-size:11px;color:var(--t2);line-height:1.7}
 .sumbox p strong{color:var(--tx)}
 
-/* ── MODULE NAV ── */
-.mod-nav{margin-top:28px}
-.mod-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
-.mod-card{background:var(--s1);border:1px solid var(--s3);border-radius:var(--card-r);padding:12px 13px;text-decoration:none;display:block;transition:all .15s;position:relative;overflow:hidden}
-.mod-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+/* MODULES */
+.mod-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}
+.mod-card{background:var(--s1);border:1px solid var(--s3);border-radius:var(--card-r);padding:11px 12px;text-decoration:none;display:block;transition:all .15s;position:relative;overflow:hidden}
+.mod-card::before{content:\'\';position:absolute;top:0;left:0;right:0;height:3px}
 .mod-card:hover{border-color:rgba(255,255,255,.15);transform:translateY(-1px)}
 .mc-macro::before{background:#4a9fd4}.mc-tc::before{background:#9b7fe8}
 .mc-arg::before{background:#e8a044}.mc-agro::before{background:#4db87a}
 .mc-bonos::before{background:#e8c84a}.mc-conf::before,.mc-gest::before{background:#e05c97}
-.mc-icon{font-size:18px;margin-bottom:6px}
-.mc-cat{font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--t2);margin-bottom:3px}
+.mc-icon{font-size:17px;margin-bottom:5px}
+.mc-cat{font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--t2);margin-bottom:2px}
 .mc-title{font-size:11px;font-weight:700;color:var(--tx);margin-bottom:2px}
-.mc-desc{font-size:9px;color:var(--t3);line-height:1.5}
-.mc-arrow{font-size:10px;color:var(--t3);margin-top:6px;display:block}
+.mc-desc{font-size:9px;color:var(--t3);line-height:1.4}
+.mc-arrow{font-size:10px;color:var(--t3);margin-top:5px;display:block}
 
-footer{text-align:center;padding:18px;font-size:10px;color:var(--t3);border-top:1px solid var(--s3)}
+/* LIVE DOT */
+.live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--g);animation:blink 2s infinite;margin-right:4px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.ts-label{font-size:10px;color:var(--t3)}
 
+footer{text-align:center;padding:16px;font-size:10px;color:var(--t3);border-top:1px solid var(--s3)}
 @media(max-width:900px){
   .dc-body{grid-template-columns:1fr}
   .nav-modules{display:none}
-  .sent-row{flex-wrap:wrap}
-  .sp{min-width:calc(50% - 4px)}
   .mod-grid{grid-template-columns:repeat(3,1fr)}
-  .tension-items{grid-template-columns:1fr}
-  .corr-grid{grid-template-columns:1fr 1fr}
-  .asset-strip{gap:0}
+  .tension-items,.corr-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
-<!-- TOP NAV -->
 <nav class="topbar">
   <div class="logo">Amberes <em>·</em> Research</div>
   <div class="nav-modules">
@@ -177,448 +163,336 @@ footer{text-align:center;padding:18px;font-size:10px;color:var(--t3);border-top:
   </div>
 </nav>
 
-<!-- ASSET STRIP ENHANCED -->
-<div class="asset-strip">
-  <!-- DXY — driver de drivers -->
-  <div class="ast">
-    <div class="ast-lbl">DXY · Dólar Index</div>
-    <div class="ast-val">101.4</div>
-    <div class="ast-row">
-      <span class="ast-chg dn">−0.4%</span>
-      <span class="ast-ctx">Rango sem: 100.8–102.1</span>
-    </div>
-    <div class="ast-row"><span class="ast-badge badge-warn">Bajo 102 = EM relief</span></div>
-  </div>
-  <!-- S&P 500 -->
-  <div class="ast">
-    <div class="ast-lbl">S&amp;P 500</div>
-    <div class="ast-val">7,554</div>
-    <div class="ast-row">
-      <span class="ast-chg up">+0.1%</span>
-      <span class="ast-ctx">52w máx: 7,750 · MA50: 7,300</span>
-    </div>
-    <div class="ast-row"><span class="ast-badge badge-ok">−2.5% vs máx · sobre MA50</span></div>
-  </div>
-  <!-- UST 10Y -->
-  <div class="ast">
-    <div class="ast-lbl">UST 10Y yield</div>
-    <div class="ast-val">4.97%</div>
-    <div class="ast-row">
-      <span class="ast-chg neu">─</span>
-      <span class="ast-ctx">Rango sem: 4.82–5.03%</span>
-    </div>
-    <div class="ast-row"><span class="ast-badge badge-warn">Rozando 5% — nivel clave</span></div>
-  </div>
-  <!-- UST 2Y -->
-  <div class="ast">
-    <div class="ast-lbl">UST 2Y yield</div>
-    <div class="ast-val">4.03%</div>
-    <div class="ast-row">
-      <span class="ast-chg dn">−3pb</span>
-      <span class="ast-ctx">Spread 2Y-10Y: +94pb</span>
-    </div>
-    <div class="ast-row"><span class="ast-badge badge-ok">Curva desinvirtiendo</span></div>
-  </div>
-  <!-- VIX -->
-  <div class="ast">
-    <div class="ast-lbl">VIX · Volatilidad</div>
-    <div class="ast-val">16.2</div>
-    <div class="ast-row">
-      <span class="ast-chg dn">−8% hoy</span>
-      <span class="ast-ctx">Prom 30d: 20.5</span>
-    </div>
-    <div class="ast-row"><span class="ast-badge badge-warn">Muy bajo vs contexto macro</span></div>
-  </div>
-  <!-- Gold -->
-  <div class="ast">
-    <div class="ast-lbl">Oro / Gold</div>
-    <div class="ast-val">$4,300</div>
-    <div class="ast-row">
-      <span class="ast-chg up">+0.8%</span>
-      <span class="ast-ctx">ATH: $4,312</span>
-    </div>
-    <div class="ast-row"><span class="ast-badge badge-ok">Cerca de ATH · DXY débil</span></div>
-  </div>
-  <!-- WTI -->
-  <div class="ast">
-    <div class="ast-lbl">WTI Crude</div>
-    <div class="ast-val">$76.0</div>
-    <div class="ast-row">
-      <span class="ast-chg dn">−2.6%</span>
-      <span class="ast-ctx">Mín 3 meses</span>
-    </div>
-    <div class="ast-row"><span class="ast-badge badge-ok">Paz Irán · Ormuz reabre</span></div>
-  </div>
-  <!-- EUR/USD -->
-  <div class="ast">
-    <div class="ast-lbl">EUR/USD</div>
-    <div class="ast-val">1.108</div>
-    <div class="ast-row">
-      <span class="ast-chg up">+0.3%</span>
-      <span class="ast-ctx">BCE hawkish</span>
-    </div>
-    <div class="ast-row"><span class="ast-badge badge-ok">Sobre MA50</span></div>
-  </div>
-  <!-- USD/JPY -->
-  <div class="ast">
-    <div class="ast-lbl">USD/JPY</div>
-    <div class="ast-val">158.4</div>
-    <div class="ast-row">
-      <span class="ast-chg dn">−0.5%</span>
-      <span class="ast-ctx">BOJ +25pb hoy</span>
-    </div>
-    <div class="ast-row"><span class="ast-badge badge-warn">Carry unwind en curso</span></div>
-  </div>
-  <!-- CNH/USD — China termómetro -->
-  <div class="ast">
-    <div class="ast-lbl">CNH/USD · Yuan offshore</div>
-    <div class="ast-val">7.24</div>
-    <div class="ast-row">
-      <span class="ast-chg dn">+0.1%</span>
-      <span class="ast-ctx">Debilidad post-retail</span>
-    </div>
-    <div class="ast-row"><span class="ast-badge badge-dn">Presión riesgo China</span></div>
-  </div>
-  <!-- Cobre -->
-  <div class="ast">
-    <div class="ast-lbl">Cobre</div>
-    <div class="ast-val">$4.18</div>
-    <div class="ast-row">
-      <span class="ast-chg dn">−1.2%</span>
-      <span class="ast-ctx">Doctor Copper débil</span>
-    </div>
-    <div class="ast-row"><span class="ast-badge badge-dn">Demanda China ↓</span></div>
-  </div>
+<!-- ASSET STRIP — populated by JS -->
+<div class="asset-strip" id="strip">
+  <div class="ast ast-skeleton"><div class="ast-lbl">Cargando</div><div class="ast-val">——</div></div>
 </div>
 
-<!-- FEAR & GREED -->
-<div class="fg-bar">
-  <div class="fg-label">Fear &amp; Greed Index</div>
-  <div class="fg-track"><div class="fg-needle" style="left:62%"></div></div>
-  <div class="fg-val up">62</div>
-  <div class="fg-name up">Codicia Moderada</div>
+<!-- FEAR & GREED — populated by JS -->
+<div class="fg-bar" id="fgbar">
+  <div class="fg-label">Fear &amp; Greed</div>
+  <div class="fg-track"><div class="fg-needle" id="fgneedle" style="left:50%"></div></div>
+  <div class="fg-val" id="fgval">—</div>
+  <div class="fg-name" id="fgname">Cargando…</div>
   <div class="fg-divider"></div>
-  <div class="fg-desc">Risk-on post-Irán impulsa el índice desde 38 (Miedo) de la semana pasada. Pero el VIX bajo con inflación alta es una señal de complacencia que vale monitorear.</div>
+  <div class="fg-desc" id="fgdesc"></div>
   <div class="fg-divider"></div>
-  <div style="display:flex;flex-direction:column;gap:3px;font-size:10px">
-    <div><span style="color:var(--t3)">Put/Call S&P:</span> <span style="color:var(--g);font-weight:700">0.82</span> <span style="color:var(--t3)">(bull)</span></div>
-    <div><span style="color:var(--t3)">AAII Bulls:</span> <span style="color:var(--a);font-weight:700">44%</span> <span style="color:var(--t3)">(neutral)</span></div>
-  </div>
+  <div class="fg-mini" id="fgmini"></div>
 </div>
 
-<!-- HERO -->
+<!-- HERO — populated by JS -->
 <div class="hero">
-  <div class="hero-eyebrow">Martes 16 de Junio · 2026 · Cierre NY</div>
+  <div class="hero-eyebrow" id="hero-date">Cargando…</div>
   <div class="hero-title">Market Briefing — Drivers del Día</div>
   <div class="hero-sub">5 catalizadores globales · Flujos institucionales · Correlaciones activas · Tensiones de mercado</div>
 </div>
 
 <div class="wrap">
-
-<!-- TENSIONES ACTIVAS -->
-<div class="sec-title" style="margin-top:18px">⚡ Mercados en Tensión — Contradicciones Activas</div>
-<div class="tension-box">
-  <div class="tension-header">
-    <span class="icon">⚡</span>
-    <h3>4 señales que el mercado está ignorando hoy</h3>
-    <span class="sub">Actualizadas · 16 jun 2026</span>
+  <!-- TENSIONES -->
+  <div class="sec-title">⚡ Mercados en Tensión</div>
+  <div class="tension-box" id="tension-box">
+    <div class="tension-header">
+      <h3 id="tension-title">Señales que el mercado puede estar ignorando</h3>
+      <span class="sub" id="tension-date"></span>
+    </div>
+    <div class="tension-items" id="tension-items"></div>
   </div>
-  <div class="tension-items">
+
+  <!-- CORRELACIONES -->
+  <div class="corr-box">
+    <h3>🔗 Correlaciones Activas</h3>
+    <div class="corr-grid" id="corr-grid"></div>
+  </div>
+
+  <!-- DRIVERS -->
+  <div class="sec-title">Catalizadores Clave</div>
+  <div id="drivers-list"></div>
+
+  <!-- BOTTOM LINE -->
+  <div class="sec-title">Síntesis Ejecutiva</div>
+  <div class="sumbox">
+    <h3>📋 Bottom Line</h3>
+    <p id="bottom-line"></p>
+  </div>
+
+  <!-- AGENDA -->
+  <div class="sumbox">
+    <h3>📅 Agenda Próximos Eventos</h3>
+    <p id="agenda-list"></p>
+  </div>
+
+  <!-- MODULES -->
+  <div class="sec-title">Módulos de Análisis</div>
+  <div class="mod-grid">
+    <a class="mod-card mc-macro" href="https://macroargy-eight.vercel.app/macro.html" target="_blank">
+      <div class="mc-icon">🌐</div><div class="mc-cat">Global</div>
+      <div class="mc-title">Macro Global</div><div class="mc-desc">EE.UU. · Europa · Japón · China · Brasil</div>
+      <span class="mc-arrow">→ Abrir</span>
+    </a>
+    <a class="mod-card mc-tc" href="https://macroargy-eight.vercel.app/tc.html" target="_blank">
+      <div class="mc-icon">💱</div><div class="mc-cat">Argentina</div>
+      <div class="mc-title">Tipo de Cambio</div><div class="mc-desc">Oficial · CCL · MEP · Blue</div>
+      <span class="mc-arrow">→ Abrir</span>
+    </a>
+    <a class="mod-card mc-arg" href="/arg.html">
+      <div class="mc-icon">🇦🇷</div><div class="mc-cat">Argentina</div>
+      <div class="mc-title">Economía Argentina</div><div class="mc-desc">IPC · Actividad · Reservas</div>
+      <span class="mc-arrow">→ Abrir</span>
+    </a>
+    <a class="mod-card mc-agro" href="/agro.html">
+      <div class="mc-icon">🌾</div><div class="mc-cat">Commodities</div>
+      <div class="mc-title">Agro Global &amp; ARG</div><div class="mc-desc">CBOT · COT · WASDE · BCR</div>
+      <span class="mc-arrow">→ Abrir</span>
+    </a>
+    <a class="mod-card mc-bonos" href="https://calculadora-bonos-five.vercel.app" target="_blank">
+      <div class="mc-icon">📈</div><div class="mc-cat">Renta Fija</div>
+      <div class="mc-title">Calculadora Bonos</div><div class="mc-desc">Soberanos HD · CER · TIR</div>
+      <span class="mc-arrow">→ Abrir</span>
+    </a>
+    <a class="mod-card mc-conf" href="/confianza.html">
+      <div class="mc-icon">🗳️</div><div class="mc-cat">Política ARG</div>
+      <div class="mc-title">Continuidad</div><div class="mc-desc">Índice prob. continuidad</div>
+      <span class="mc-arrow">→ Abrir</span>
+    </a>
+    <a class="mod-card mc-gest" href="/gestion.html">
+      <div class="mc-icon">📊</div><div class="mc-cat">Política ARG</div>
+      <div class="mc-title">Índice Gestión</div><div class="mc-desc">Aprobación · Expectativas</div>
+      <span class="mc-arrow">→ Abrir</span>
+    </a>
+  </div>
+  <div style="margin-top:10px;text-align:right"><span class="live-dot"></span><span class="ts-label" id="ts-label">Actualizando…</span></div>
+</div>
+
+<footer>Amberes Research · Market Briefing · Solo informativo · No constituye asesoramiento de inversión</footer>
+
+<script>
+// ── Helpers ──────────────────────────────────────────────────────
+const fmt = (n, dec=2) => n == null ? '—' : Number(n).toLocaleString('es-AR', {minimumFractionDigits:dec, maximumFractionDigits:dec});
+const fmtPct = (n) => n == null ? '—' : (n >= 0 ? '+' : '') + Number(n).toFixed(2) + '%';
+const cls = (n) => n == null ? 'neu' : n > 0 ? 'up' : n < 0 ? 'dn' : 'neu';
+
+// ── LOAD MARKETS ─────────────────────────────────────────────────
+async function loadMarkets() {
+  try {
+    const res = await fetch('/api/markets');
+    if (!res.ok) throw new Error('markets error');
+    const { data: d } = await res.json();
+    renderStrip(d);
+    document.getElementById('ts-label').textContent =
+      'Precios live · actualizado ' + new Date().toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit'});
+  } catch(e) {
+    console.warn('markets fallback:', e.message);
+    renderStripFallback();
+  }
+}
+
+function renderStrip(d) {
+  const spread = d.spread2y10y;
+  const spreadLabel = spread ? (spread > 0 ? '+' : '') + spread + 'pb · Curva ' + (spread > 0 ? 'normal' : 'invertida') : '—';
+
+  const items = [
+    {
+      lbl: 'DXY · Dólar Index',
+      val: d.dxy ? fmt(d.dxy.price, 1) : '—',
+      chg: d.dxy ? fmtPct(d.dxy.chgPct) : '',
+      cls: d.dxy ? cls(d.dxy.chgPct) : 'neu',
+      ctx: d.dxy ? 'Rango 52s: ' + fmt(d.dxy.low52w,1) + '–' + fmt(d.dxy.high52w,1) : '',
+      badge: d.dxy && d.dxy.price < 102 ? {t:'Bajo 102 = EM relief', c:'badge-ok'} : {t:'Sobre 102 = presión EM', c:'badge-warn'},
+    },
+    {
+      lbl: 'S&P 500',
+      val: d.sp500 ? fmt(d.sp500.price, 0) : '—',
+      chg: d.sp500 ? fmtPct(d.sp500.chgPct) : '',
+      cls: d.sp500 ? cls(d.sp500.chgPct) : 'neu',
+      ctx: d.sp500 && d.sp500.ma50 ? 'MA50: ' + fmt(d.sp500.ma50, 0) : '',
+      badge: d.sp500 && d.sp500.pctFromHigh ? {t: d.sp500.pctFromHigh + '% vs 52w máx', c: Math.abs(d.sp500.pctFromHigh) < 5 ? 'badge-ok' : 'badge-warn'} : null,
+    },
+    {
+      lbl: 'UST 10Y yield',
+      val: d.ust10y ? fmt(d.ust10y.price, 2) + '%' : '—',
+      chg: d.ust10y ? fmtPct(d.ust10y.chgPct) : '',
+      cls: d.ust10y ? cls(-d.ust10y.chgPct) : 'neu', // yield up = price down
+      ctx: d.ust10y ? '52s: ' + fmt(d.ust10y.low52w,2) + '–' + fmt(d.ust10y.high52w,2) + '%' : '',
+      badge: d.ust10y && d.ust10y.price >= 4.9 ? {t:'Rozando 5% — nivel clave', c:'badge-warn'} : {t:'Bajo 4.9%', c:'badge-ok'},
+    },
+    {
+      lbl: 'UST 2Y · Spread 2Y-10Y',
+      val: d.ust2y ? fmt(d.ust2y.price, 2) + '%' : '—',
+      chg: '',
+      cls: 'neu',
+      ctx: spread ? 'Spread: ' + (spread > 0 ? '+' : '') + spread + 'pb' : '',
+      badge: spread ? {t: spread > 0 ? 'Curva normal · desinvirtiendo' : 'Curva invertida', c: spread > 0 ? 'badge-ok' : 'badge-dn'} : null,
+    },
+    {
+      lbl: 'VIX · Volatilidad',
+      val: d.vix ? fmt(d.vix.price, 1) : '—',
+      chg: d.vix ? fmtPct(d.vix.chgPct) : '',
+      cls: d.vix ? cls(-d.vix.chgPct) : 'neu', // vix down = good
+      ctx: d.vix ? '52s: ' + fmt(d.vix.low52w,1) + '–' + fmt(d.vix.high52w,1) : '',
+      badge: d.vix && d.vix.price < 20 ? {t:'Complacencia — monitorear', c:'badge-warn'} : d.vix && d.vix.price > 30 ? {t:'Miedo extremo', c:'badge-dn'} : {t:'Volatilidad moderada', c:'badge-ok'},
+    },
+    {
+      lbl: 'Oro / Gold',
+      val: d.gold ? '$' + fmt(d.gold.price, 0) : '—',
+      chg: d.gold ? fmtPct(d.gold.chgPct) : '',
+      cls: d.gold ? cls(d.gold.chgPct) : 'neu',
+      ctx: d.gold ? 'ATH: $' + fmt(d.gold.high52w, 0) : '',
+      badge: d.gold && d.gold.pctFromHigh ? {t: d.gold.pctFromHigh + '% vs ATH', c: Math.abs(d.gold.pctFromHigh) < 3 ? 'badge-ok' : 'badge-warn'} : null,
+    },
+    {
+      lbl: 'WTI Crude',
+      val: d.wti ? '$' + fmt(d.wti.price, 1) : '—',
+      chg: d.wti ? fmtPct(d.wti.chgPct) : '',
+      cls: d.wti ? cls(d.wti.chgPct) : 'neu',
+      ctx: d.wti ? '52s: $' + fmt(d.wti.low52w,0) + '–$' + fmt(d.wti.high52w,0) : '',
+      badge: null,
+    },
+    {
+      lbl: 'EUR/USD',
+      val: d.eurusd ? fmt(d.eurusd.price, 4) : '—',
+      chg: d.eurusd ? fmtPct(d.eurusd.chgPct) : '',
+      cls: d.eurusd ? cls(d.eurusd.chgPct) : 'neu',
+      ctx: '',
+      badge: null,
+    },
+    {
+      lbl: 'USD/JPY',
+      val: d.usdjpy ? fmt(d.usdjpy.price, 2) : '—',
+      chg: d.usdjpy ? fmtPct(d.usdjpy.chgPct) : '',
+      cls: d.usdjpy ? cls(-d.usdjpy.chgPct) : 'neu', // JPY strength = pair down
+      ctx: 'BOJ +25pb Jun 26',
+      badge: d.usdjpy && d.usdjpy.chgPct < -0.3 ? {t:'Carry unwind activo', c:'badge-warn'} : null,
+    },
+    {
+      lbl: 'CNH/USD · Yuan offshore',
+      val: d.cnhusd ? fmt(d.cnhusd.price, 4) : '—',
+      chg: d.cnhusd ? fmtPct(d.cnhusd.chgPct) : '',
+      cls: d.cnhusd ? cls(-d.cnhusd.chgPct) : 'neu',
+      ctx: 'Termómetro China',
+      badge: d.cnhusd && d.cnhusd.price > 7.2 ? {t:'Presión riesgo China', c:'badge-dn'} : {t:'Yuan estable', c:'badge-ok'},
+    },
+    {
+      lbl: 'Cobre',
+      val: d.copper ? '$' + fmt(d.copper.price, 3) : '—',
+      chg: d.copper ? fmtPct(d.copper.chgPct) : '',
+      cls: d.copper ? cls(d.copper.chgPct) : 'neu',
+      ctx: 'Doctor Copper',
+      badge: d.copper && d.copper.chgPct < -1 ? {t:'Demanda China débil', c:'badge-dn'} : null,
+    },
+  ];
+
+  document.getElementById('strip').innerHTML = items.map(it => `
+    <div class="ast">
+      <div class="ast-lbl">${it.lbl}</div>
+      <div class="ast-val">${it.val}</div>
+      <div class="ast-row">
+        ${it.chg ? `<span class="ast-chg ${it.cls}">${it.chg}</span>` : ''}
+        ${it.ctx ? `<span class="ast-ctx">${it.ctx}</span>` : ''}
+      </div>
+      ${it.badge ? `<div class="ast-row"><span class="ast-badge ${it.badge.c}">${it.badge.t}</span></div>` : ''}
+    </div>
+  `).join('');
+}
+
+function renderStripFallback() {
+  document.getElementById('strip').innerHTML = `<div class="ast"><div class="ast-lbl">Mercados</div><div class="ast-val" style="font-size:11px;color:var(--t2)">No disponible temporalmente</div></div>`;
+}
+
+// ── LOAD BRIEFING ─────────────────────────────────────────────────
+async function loadBriefing() {
+  try {
+    const res = await fetch('/api/briefing');
+    if (!res.ok) throw new Error('briefing error');
+    const { data: b } = await res.json();
+    renderBriefing(b);
+  } catch(e) {
+    console.warn('briefing error:', e.message);
+  }
+}
+
+function renderBriefing(b) {
+  // Date
+  const d = new Date(b.date + 'T12:00:00Z');
+  const days = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  const months = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  document.getElementById('hero-date').textContent =
+    days[d.getUTCDay()] + ' ' + d.getUTCDate() + ' de ' + months[d.getUTCMonth()] + ' · ' + d.getUTCFullYear();
+
+  // Fear & Greed
+  const fg = b.sentiment;
+  const pct = (fg.fg / 100) * 100;
+  document.getElementById('fgneedle').style.left = pct + '%';
+  document.getElementById('fgval').textContent = fg.fg;
+  document.getElementById('fgval').className = 'fg-val ' + (fg.fg > 60 ? 'up' : fg.fg < 40 ? 'dn' : 'neu');
+  document.getElementById('fgname').textContent = fg.fg_label;
+  document.getElementById('fgname').className = 'fg-name ' + (fg.fg > 60 ? 'up' : fg.fg < 40 ? 'dn' : 'neu');
+  document.getElementById('fgmini').innerHTML = `
+    <div><span style="color:var(--t3)">Put/Call S&P:</span> <span style="color:var(--g);font-weight:700">${fg.putcall}</span></div>
+    <div><span style="color:var(--t3)">AAII Bulls:</span> <span style="color:var(--a);font-weight:700">${fg.aaii_bulls}%</span></div>
+  `;
+
+  // Tensiones
+  document.getElementById('tension-date').textContent = b.date;
+  document.getElementById('tension-items').innerHTML = b.tensiones.map(t => `
     <div class="ti">
-      <div class="ti-label">VIX vs. Macro</div>
-      <p><strong>VIX 16.2 (−8% hoy)</strong> señala complacencia extrema, pero <strong>PPI +6.5% YoY, BOJ y BCE subiendo tasas la misma semana</strong>. El mercado está ignorando el riesgo de inflación estructural. Un shock de datos (CPI core sin ceder) puede revertir esto violentamente.</p>
+      <div class="ti-label">${t.label}</div>
+      <p>${t.texto}</p>
     </div>
-    <div class="ti">
-      <div class="ti-label">JPY Carry Trade</div>
-      <p><strong>USD/JPY cae −0.5% con BOJ +25pb</strong> mientras el VIX baja. Si el <strong>carry trade en yenes empieza a deshacerse</strong>, hay posiciones largas en activos de riesgo financiadas con yenes que se cierran rápido — el mismo mecanismo del colapso de agosto 2024.</p>
-    </div>
-    <div class="ti">
-      <div class="ti-label">Curva USA: 2Y vs 10Y</div>
-      <p><strong>Spread 2Y-10Y en +94pb</strong> — la curva se está desinvirtiendo, pero no por caída del 10Y sino por <strong>caída del 2Y</strong>. El mercado está empezando a pricear recortes de la Fed para H1 2027. Si la inflación no cede, esa expectativa colapsa y el 10Y vuela.</p>
-    </div>
-    <div class="ti">
-      <div class="ti-label">Oro vs. Risk-On</div>
-      <p><strong>Oro en $4,300 (cerca de ATH)</strong> mientras el S&P también sube. Normalmente se mueven inversamente. La coexistencia de ambos en máximos refleja un mercado que compra <strong>risk-on por el petróleo pero cubre inflación estructural con oro simultáneamente</strong>. La correlación rota.</p>
-    </div>
-  </div>
-</div>
+  `).join('');
 
-<!-- CORRELACIONES ACTIVAS -->
-<div class="corr-box">
-  <h3>🔗 Correlaciones Activas Hoy</h3>
-  <div class="corr-grid">
+  // Correlaciones
+  document.getElementById('corr-grid').innerHTML = b.correlaciones.map(c => `
     <div class="corr-item">
-      <div class="corr-pair">DXY ↓ ↔ Oro ↑</div>
-      <div class="corr-dir">Correlación inversa activa. DXY en 101.4 (bajo 102) impulsa el oro a ATH. Si el DXY rompe 100, el oro podría superar $4,400.</div>
+      <div class="corr-pair">${c.par}</div>
+      <div class="corr-dir">${c.texto}</div>
     </div>
-    <div class="corr-item">
-      <div class="corr-pair">JPY ↑ ↔ Risk Assets ↓</div>
-      <div class="corr-dir">Carry unwind parcial en curso. BOJ +25pb comprime el spread USD/JPY. Cada 1% de apreciación del JPY históricamente mueve −0.3% al S&P.</div>
-    </div>
-    <div class="corr-item">
-      <div class="corr-pair">WTI ↓ ↔ UST 10Y ↓</div>
-      <div class="corr-dir">Petróleo cae → expectativas de inflación a la baja → yields bajan marginalmente. Pero el 10Y sigue cerca de 5% por hawkishness del BOJ/BCE.</div>
-    </div>
-    <div class="corr-item">
-      <div class="corr-pair">CNH débil ↔ Cobre ↓</div>
-      <div class="corr-dir">El yuan offshore y el cobre confirman que el mercado no cree en el rebote del IP chino. Ambos descontando debilidad de demanda, no recuperación.</div>
-    </div>
-    <div class="corr-item">
-      <div class="corr-pair">VIX ↓ ↔ Fear&amp;Greed ↑</div>
-      <div class="corr-dir">El F&G saltó de 38 a 62 en una semana. Movimientos de +24pp en el índice son históricamente señal de sobreextensión a corto plazo.</div>
-    </div>
-    <div class="corr-item">
-      <div class="corr-pair">EM · DXY ↓ = Respiro</div>
-      <div class="corr-dir">DXY bajo 102 + petróleo a la baja abre espacio para carry en EM. BRL, COP y PEN se benefician. El COPOM de esta noche decide si Brasil capitaliza el contexto.</div>
-    </div>
-  </div>
-</div>
+  `).join('');
 
-<!-- DRIVERS -->
-<div class="sec-title">Catalizadores Clave · 16 Jun 2026</div>
-
-<!-- 01 -->
-<div class="dc">
-  <div class="dc-hd">
-    <div class="dc-num">01</div>
-    <div class="dc-meta">
-      <div class="tag tg">Geopolítica · Energía</div>
-      <div class="dc-title">EE.UU. e Irán firman paz — Estrecho de Ormuz reabre</div>
-      <div class="dc-brief">El mayor tail risk del año se disipa. WTI cae 2.6% a $76/bbl — mínimo desde marzo. S&P +1.7% ayer. VIX desde 26 a 16.</div>
-    </div>
-    <div class="sbadge ro">🟢 Risk-On</div>
-  </div>
-  <div class="dc-body">
-    <div class="dc-sec">
-      <h4><span class="d dp"></span>El Evento</h4>
-      <p>EE.UU. e Irán firmaron un <strong>MOU el 14-15 jun</strong> mediado por Pakistán: cese al fuego, reapertura del <strong>Estrecho de Ormuz</strong> (~20% del petróleo global), y 60 días de negociaciones nucleares. WTI cayó de ~$92 a <strong>$76 en 48hs</strong>.</p>
-    </div>
-    <div class="dc-sec">
-      <h4><span class="d db"></span>El Contexto / Driver</h4>
-      <p>La guerra había disparado el Brent a ~$97, alimentando un <strong>shock inflacionario global</strong> que forzó al BCE a subir y aceleró al BOJ. El mercado estaba pricing <strong>"higher oil for longer"</strong> como principal riesgo. La paz lo resuelve de golpe y descomprime la curva de futuros de energía hasta 2027.</p>
-    </div>
-    <div class="dc-sec">
-      <h4><span class="d da"></span>Impacto en Activos</h4>
-      <div class="ig">
-        <div class="ii"><span class="ia">Equities S&P</span><span class="id up">↑ Fuerte</span></div>
-        <div class="ii"><span class="ia">WTI / Brent</span><span class="id dn">↓ −2.6%</span></div>
-        <div class="ii"><span class="ia">UST 10Y yield</span><span class="id dn">↓ Cede</span></div>
-        <div class="ii"><span class="ia">Oro</span><span class="id up">↑ $4,300</span></div>
-        <div class="ii"><span class="ia">DXY</span><span class="id dn">↓ 101.4</span></div>
-        <div class="ii"><span class="ia">EM Carry</span><span class="id up">↑ Inflows</span></div>
+  // Drivers
+  document.getElementById('drivers-list').innerHTML = b.drivers.map(dr => `
+    <div class="dc">
+      <div class="dc-hd">
+        <div class="dc-num">0${dr.id}</div>
+        <div class="dc-meta">
+          <div class="tag ${dr.tag_class}">${dr.tag}</div>
+          <div class="dc-title">${dr.title}</div>
+          <div class="dc-brief">${dr.brief}</div>
+        </div>
+        <div class="sbadge ${dr.sentiment}">${dr.sentiment_label}</div>
+      </div>
+      <div class="dc-body">
+        <div class="dc-sec">
+          <h4><span class="d dp"></span>El Evento</h4>
+          <p>${dr.evento}</p>
+        </div>
+        <div class="dc-sec">
+          <h4><span class="d db"></span>El Contexto / Driver</h4>
+          <p>${dr.contexto}</p>
+        </div>
+        <div class="dc-sec">
+          <h4><span class="d da"></span>Impacto en Activos</h4>
+          <div class="ig">
+            ${dr.impacto.map(i => `<div class="ii"><span class="ia">${i.asset}</span><span class="id ${i.cls}">${i.dir}</span></div>`).join('')}
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  `).join('');
 
-<!-- 02 -->
-<div class="dc">
-  <div class="dc-hd">
-    <div class="dc-num">02</div>
-    <div class="dc-meta">
-      <div class="tag tb">Bancos Centrales</div>
-      <div class="dc-title">BOJ +25pb a 1.0% y BCE +25pb a 2.5% — sincronización hawkish global</div>
-      <div class="dc-brief">Primera vez en décadas que Japón y Europa suben tasas en la misma semana. El ciclo global de tasas se extiende contra consenso.</div>
-    </div>
-    <div class="sbadge mx">🟡 Mixto</div>
-  </div>
-  <div class="dc-body">
-    <div class="dc-sec">
-      <h4><span class="d dp"></span>El Evento</h4>
-      <p><strong>BOJ (15-16 jun):</strong> +25pb a <strong>1.00%</strong>, máximo desde 2008. Ueda citó inflación salarial y PPI +3.9%. <strong>BCE (11 jun):</strong> +25pb a <strong>2.50%</strong> depósito. Lagarde: inflación proyectada al 3% en 2026, convergencia al 2% recién en 2028.</p>
-    </div>
-    <div class="dc-sec">
-      <h4><span class="d db"></span>El Contexto / Driver</h4>
-      <p>El mercado venía pricing <strong>recortes</strong> de BCE y pausa del BOJ para H2. Ambas decisiones son contra-consenso: el ciclo de tasas globales se extiende. El diferencial de tasas USD-JPY se comprime, activando el <strong>carry trade unwind</strong>. USD/JPY ya cedió 0.5% hoy.</p>
-    </div>
-    <div class="dc-sec">
-      <h4><span class="d da"></span>Impacto en Activos</h4>
-      <div class="ig">
-        <div class="ii"><span class="ia">JPY</span><span class="id up">↑ Aprecia</span></div>
-        <div class="ii"><span class="ia">JGB yield</span><span class="id dn">↑ Sube</span></div>
-        <div class="ii"><span class="ia">EUR/USD</span><span class="id up">↑ 1.108</span></div>
-        <div class="ii"><span class="ia">Carry trade</span><span class="id dn">↓ Riesgo</span></div>
-        <div class="ii"><span class="ia">Bunds yield</span><span class="id dn">↑ Sube</span></div>
-        <div class="ii"><span class="ia">Tech / Growth</span><span class="id dn">↓ Presión</span></div>
-      </div>
-    </div>
-  </div>
-</div>
+  // Bottom line
+  document.getElementById('bottom-line').innerHTML = b.bottom_line;
 
-<!-- 03 -->
-<div class="dc">
-  <div class="dc-hd">
-    <div class="dc-num">03</div>
-    <div class="dc-meta">
-      <div class="tag tr">Inflación · Fed</div>
-      <div class="dc-title">Pipeline inflacionario USA: PPI +6.5% YoY mayo — Fed sin margen de corte</div>
-      <div class="dc-brief">PPI corre 2.3pp sobre CPI. Spread 2Y-10Y en +94pb: mercado empieza a pricear cortes Fed para H1 2027. Si el core no cede, esa expectativa colapsa.</div>
-    </div>
-    <div class="sbadge rf">🔴 Risk-Off parcial</div>
-  </div>
-  <div class="dc-body">
-    <div class="dc-sec">
-      <h4><span class="d dp"></span>El Evento</h4>
-      <p>BLS mayo: PPI <strong>+6.5% YoY</strong>, Core PPI +5.1%, MoM +1.1%. CPI mayo <strong>+4.2% YoY</strong>. Brecha PPI−CPI <strong>+2.3pp</strong>: márgenes corporativos absorben costos hoy, pero eventualmente se trasladan al consumidor. Fed: 0-1 cortes 2026. Próxima reunión: 29 jul.</p>
-    </div>
-    <div class="dc-sec">
-      <h4><span class="d db"></span>El Contexto / Driver</h4>
-      <p>El <strong>spread 2Y-10Y en +94pb</strong> se está ampliando porque el 2Y cede (mercado pricando eventual corte Fed) mientras el 10Y se mantiene alto (inflación estructural). Esta divergencia resuelve de dos formas: o la Fed corta y el 10Y cae, o la inflación persiste y el 2Y vuelve a subir, <strong>aplastando la tesis de corte</strong>.</p>
-    </div>
-    <div class="dc-sec">
-      <h4><span class="d da"></span>Impacto en Activos</h4>
-      <div class="ig">
-        <div class="ii"><span class="ia">UST 2Y</span><span class="id neu">4.03%</span></div>
-        <div class="ii"><span class="ia">UST 10Y</span><span class="id dn">~5%</span></div>
-        <div class="ii"><span class="ia">DXY</span><span class="id up">↑ Soportado</span></div>
-        <div class="ii"><span class="ia">Oro</span><span class="id up">↑ Hedge</span></div>
-        <div class="ii"><span class="ia">REITs</span><span class="id dn">↓ Presión</span></div>
-        <div class="ii"><span class="ia">Small Caps</span><span class="id dn">↓ Rate sensitv.</span></div>
-      </div>
-    </div>
-  </div>
-</div>
+  // Agenda
+  document.getElementById('agenda-list').innerHTML = b.agenda.map(a =>
+    `${a.flag} ${a.bold ? '<strong>' : ''}${a.fecha}${a.bold ? '</strong>' : ''} — ${a.evento}<br>`
+  ).join('');
+}
 
-<!-- 04 -->
-<div class="dc">
-  <div class="dc-hd">
-    <div class="dc-num">04</div>
-    <div class="dc-meta">
-      <div class="tag ta">China · Macro</div>
-      <div class="dc-title">China: Retail mayo −0.6% — primera caída desde dic 2022. CNH y cobre confirman</div>
-      <div class="dc-brief">El mercado en tiempo real no compra el rebote del IP. CNH/USD en 7.24 (debilidad) y cobre −1.2% confirman que el dato industrial no convence. CSI 300 bajo presión.</div>
-    </div>
-    <div class="sbadge rf">🔴 Risk-Off</div>
-  </div>
-  <div class="dc-body">
-    <div class="dc-sec">
-      <h4><span class="d dp"></span>El Evento</h4>
-      <p>NBS hoy: <strong>IP +4.5% YoY</strong> (rebote) pero <strong>Retail −0.6% YoY</strong>, primera caída desde dic 2022. Autos −16.1%, electrodomésticos −15.6%. PPI +3.9% vs CPI +1.2%: diferencial 2.7pp señala que las empresas <strong>no pueden trasladar costos al consumidor</strong>. El NBS lo admite: "desequilibrio agudo oferta/demanda".</p>
-    </div>
-    <div class="dc-sec">
-      <h4><span class="d db"></span>El Contexto / Driver</h4>
-      <p>El <strong>CNH/USD en 7.24</strong> (debilitándose) y el <strong>cobre en −1.2%</strong> son los termómetros de mercado: ambos dicen que el rebote del IP no convence. Aranceles Trump ~47% reducen mercado externo. Sin demanda interna ni exportaciones, China entra en riesgo de <strong>espiral deflacionaria doméstica</strong> que presiona commodities globales.</p>
-    </div>
-    <div class="dc-sec">
-      <h4><span class="d da"></span>Impacto en Activos</h4>
-      <div class="ig">
-        <div class="ii"><span class="ia">Cobre</span><span class="id dn">↓ −1.2%</span></div>
-        <div class="ii"><span class="ia">CNH/USD</span><span class="id dn">7.24 ↑</span></div>
-        <div class="ii"><span class="ia">CSI 300</span><span class="id dn">↓ Presión</span></div>
-        <div class="ii"><span class="ia">Granos / Soja</span><span class="id dn">↓ Demand.</span></div>
-        <div class="ii"><span class="ia">AUD/USD</span><span class="id dn">↓ China exp.</span></div>
-        <div class="ii"><span class="ia">Mineras</span><span class="id dn">↓ Presión</span></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 05 -->
-<div class="dc">
-  <div class="dc-hd">
-    <div class="dc-num">05</div>
-    <div class="dc-meta">
-      <div class="tag ta">Emergentes · LATAM</div>
-      <div class="dc-title">COPOM Brasil decide SELIC esta noche (18:30 BRT) — mercado dividido</div>
-      <div class="dc-brief">IPCA mayo +4.72% YoY y Focus 5.30% reducen margen. Con DXY débil y petróleo cayendo, el contexto EM es favorable. Pero la inflación no da la autorización doméstica.</div>
-    </div>
-    <div class="sbadge mx">🟡 Mixto</div>
-  </div>
-  <div class="dc-body">
-    <div class="dc-sec">
-      <h4><span class="d dp"></span>El Evento</h4>
-      <p>COPOM 16-17 jun. SELIC en <strong>14.50%</strong>. Mercado: ~85% probabilidad de <strong>−25bp a 14.25%</strong>. Pero IPCA mayo <strong>+4.72% YoY</strong> (sobre techo 4.5%) y Focus 2026 en <strong>5.30%</strong>. Anuncio: <strong>18:30 BRT / 15:30 NY hoy</strong>.</p>
-    </div>
-    <div class="dc-sec">
-      <h4><span class="d db"></span>El Contexto / Driver</h4>
-      <p>El contexto externo es <strong>favorable para emergentes</strong>: DXY en 101.4, petróleo a la baja, VIX bajo. Pero la inflación doméstica no da la autorización: IPCA sobre el techo de meta y expectativas subiendo. SELIC real de <strong>+9.8pp</strong> es la mayor en 20 años, pero cortar con inflación alta destruye credibilidad. <strong>Dilema clásico EM</strong>.</p>
-    </div>
-    <div class="dc-sec">
-      <h4><span class="d da"></span>Impacto en Activos</h4>
-      <div class="ig">
-        <div class="ii"><span class="ia">BRL/USD</span><span class="id up">↑ si pausa</span></div>
-        <div class="ii"><span class="ia">Bovespa</span><span class="id dn">↓ si pausa</span></div>
-        <div class="ii"><span class="ia">NTN-B</span><span class="id up">↑ si pausa</span></div>
-        <div class="ii"><span class="ia">Ibovespa</span><span class="id up">↑ si corta</span></div>
-        <div class="ii"><span class="ia">LTN Carry</span><span class="id up">↑ si corta</span></div>
-        <div class="ii"><span class="ia">EM Bonds</span><span class="id neu">→ Neutral</span></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SYNTHESIS -->
-<div class="sec-title" style="margin-top:22px">Síntesis Ejecutiva</div>
-<div class="sumbox">
-  <h3>📋 Bottom Line — 16 Jun 2026</h3>
-  <p>El mercado está en <strong>transición de régimen</strong>: el principal tail risk del año (guerra Irán) se disipa, pero el paisaje macro de fondo sigue siendo estructuralmente complejo. La caída del petróleo alivia la presión inflacionaria, pero los bancos centrales (BOJ, BCE) ya se movieron hawkish y no retrocedan rápido.<br><br>
-  Flujo institucional hoy: <strong>saliendo de energía y entrando en equities defensivos</strong>; rotando de USTs cortos hacia renta variable europea (BCE resuelto); vendiendo <strong>carry en yenes</strong> dado el spread USD-JPY que se comprime. El DXY debajo de 102 abre una ventana para emergentes — pero el COPOM de esta noche decide si Brasil la puede aprovechar.<br><br>
-  <strong>La tensión más peligrosa del día:</strong> el VIX en 16 con inflación en +4-6% YoY y dos bancos centrales subiendo tasas la misma semana es complacencia clásica de "too much good news priced in". El mercado celebra la paz de Irán y no está pricing que la inflación estructural persistirá.</p>
-</div>
-
-<!-- AGENDA -->
-<div class="sumbox">
-  <h3>📅 Agenda 72hs</h3>
-  <p>
-    🇧🇷 <strong>Hoy 18:30 BRT</strong> — COPOM Brasil: decisión SELIC (14.50% → ¿14.25%?)<br>
-    🇯🇵 <strong>Vie 20 jun</strong> — CPI Nacional Japón mayo (Tokyo adelantó +1.4%)<br>
-    🇺🇸 <strong>Jue 25 jun</strong> — GDP EE.UU. Q1 2026 tercera estimación<br>
-    🇧🇷 <strong>Mar 24 jun</strong> — IPCA-15 Brasil junio<br>
-    🇨🇳 <strong>Dom 30 jun</strong> — PMI NBS + Caixin junio<br>
-    🇨🇳 <strong>Mié 15 jul ⭐</strong> — GDP Q2 China + IP + Retail (dato grande del trimestre)
-  </p>
-</div>
-
-<!-- MODULE NAV -->
-<div class="mod-nav">
-<div class="sec-title">Módulos de Análisis</div>
-<div class="mod-grid">
-  <a class="mod-card mc-macro" href="https://macroargy-eight.vercel.app/macro.html" target="_blank">
-    <div class="mc-icon">🌐</div><div class="mc-cat">Global</div>
-    <div class="mc-title">Macro Global</div>
-    <div class="mc-desc">EE.UU. · Europa · Japón · China · Brasil</div>
-    <span class="mc-arrow">→ Abrir</span>
-  </a>
-  <a class="mod-card mc-tc" href="https://macroargy-eight.vercel.app/tc.html" target="_blank">
-    <div class="mc-icon">💱</div><div class="mc-cat">Argentina</div>
-    <div class="mc-title">Tipo de Cambio</div>
-    <div class="mc-desc">Oficial · CCL · MEP · Blue</div>
-    <span class="mc-arrow">→ Abrir</span>
-  </a>
-  <a class="mod-card mc-arg" href="/arg.html">
-    <div class="mc-icon">🇦🇷</div><div class="mc-cat">Argentina</div>
-    <div class="mc-title">Economía Argentina</div>
-    <div class="mc-desc">IPC · Actividad · Reservas</div>
-    <span class="mc-arrow">→ Abrir</span>
-  </a>
-  <a class="mod-card mc-agro" href="/agro.html">
-    <div class="mc-icon">🌾</div><div class="mc-cat">Commodities</div>
-    <div class="mc-title">Agro Global &amp; ARG</div>
-    <div class="mc-desc">CBOT · COT · WASDE · BCR</div>
-    <span class="mc-arrow">→ Abrir</span>
-  </a>
-  <a class="mod-card mc-bonos" href="https://calculadora-bonos-five.vercel.app" target="_blank">
-    <div class="mc-icon">📈</div><div class="mc-cat">Renta Fija</div>
-    <div class="mc-title">Calculadora Bonos</div>
-    <div class="mc-desc">Soberanos HD · CER · TIR</div>
-    <span class="mc-arrow">→ Abrir</span>
-  </a>
-  <a class="mod-card mc-conf" href="/confianza.html">
-    <div class="mc-icon">🗳️</div><div class="mc-cat">Política ARG</div>
-    <div class="mc-title">Continuidad</div>
-    <div class="mc-desc">Índice prob. continuidad</div>
-    <span class="mc-arrow">→ Abrir</span>
-  </a>
-  <a class="mod-card mc-gest" href="/gestion.html">
-    <div class="mc-icon">📊</div><div class="mc-cat">Política ARG</div>
-    <div class="mc-title">Índice Gestión</div>
-    <div class="mc-desc">Aprobación · Expectativas</div>
-    <span class="mc-arrow">→ Abrir</span>
-  </a>
-</div>
-</div>
-
-</div><!-- /wrap -->
-<footer>Amberes Research · Market Briefing · 16 jun 2026 · Solo informativo · No constituye asesoramiento de inversión</footer>
+// ── INIT ─────────────────────────────────────────────────────────
+loadMarkets();
+loadBriefing();
+// Refresh prices every 2 minutes
+setInterval(loadMarkets, 120000);
+</script>
 </body>
 </html>

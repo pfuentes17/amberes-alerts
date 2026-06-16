@@ -1,0 +1,144 @@
+{
+  "date": "2026-06-16",
+  "generated": "2026-06-16T07:00:00Z",
+  "sentiment": {
+    "overall": "mixed",
+    "label": "Risk-On con cautela",
+    "fg": 62,
+    "fg_label": "Codicia Moderada",
+    "putcall": 0.82,
+    "aaii_bulls": 44
+  },
+  "drivers": [
+    {
+      "id": 1,
+      "tag": "Geopolítica · Energía",
+      "tag_class": "tg",
+      "title": "EE.UU. e Irán firman paz — Estrecho de Ormuz reabre",
+      "brief": "El mayor tail risk del año se disipa. WTI cae 2.6% a $76/bbl — mínimo desde marzo. S&P +1.7% ayer. VIX desde 26 a 16.",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "EE.UU. e Irán firmaron un <strong>MOU el 14-15 jun</strong> mediado por Pakistán: cese al fuego, reapertura del <strong>Estrecho de Ormuz</strong> (~20% del petróleo global), y 60 días de negociaciones nucleares. WTI cayó de ~$92 a <strong>$76 en 48hs</strong>.",
+      "contexto": "La guerra había disparado el Brent a ~$97, alimentando un <strong>shock inflacionario global</strong> que forzó al BCE a subir y aceleró al BOJ. El mercado estaba pricing <strong>"higher oil for longer"</strong> como principal riesgo. La paz lo resuelve de golpe y descomprime la curva de futuros de energía hasta 2027.",
+      "impacto": [
+        {"asset": "Equities S&P", "dir": "↑ Fuerte", "cls": "up"},
+        {"asset": "WTI / Brent",  "dir": "↓ −2.6%",  "cls": "dn"},
+        {"asset": "UST 10Y yield","dir": "↓ Cede",    "cls": "dn"},
+        {"asset": "Oro",           "dir": "↑ $4,300", "cls": "up"},
+        {"asset": "DXY",           "dir": "↓ 101.4",  "cls": "dn"},
+        {"asset": "EM Carry",      "dir": "↑ Inflows","cls": "up"}
+      ]
+    },
+    {
+      "id": 2,
+      "tag": "Bancos Centrales",
+      "tag_class": "tb",
+      "title": "BOJ +25pb a 1.0% y BCE +25pb a 2.5% — sincronización hawkish global",
+      "brief": "Primera vez en décadas que Japón y Europa suben tasas en la misma semana. El ciclo global de tasas se extiende contra consenso.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "<strong>BOJ (15-16 jun):</strong> +25pb a <strong>1.00%</strong>, máximo desde 2008. Ueda citó inflación salarial y PPI +3.9%. <strong>BCE (11 jun):</strong> +25pb a <strong>2.50%</strong> depósito. Lagarde: inflación proyectada al 3% en 2026, convergencia al 2% recién en 2028.",
+      "contexto": "El mercado venía pricing <strong>recortes</strong> de BCE y pausa del BOJ para H2. Ambas decisiones son contra-consenso: el ciclo de tasas globales se extiende. El diferencial de tasas USD-JPY se comprime, activando el <strong>carry trade unwind</strong>. USD/JPY ya cedió 0.5% hoy.",
+      "impacto": [
+        {"asset": "JPY",          "dir": "↑ Aprecia", "cls": "up"},
+        {"asset": "JGB yield",    "dir": "↑ Sube",    "cls": "dn"},
+        {"asset": "EUR/USD",      "dir": "↑ 1.108",   "cls": "up"},
+        {"asset": "Carry trade",  "dir": "↓ Riesgo",  "cls": "dn"},
+        {"asset": "Bunds yield",  "dir": "↑ Sube",    "cls": "dn"},
+        {"asset": "Tech / Growth","dir": "↓ Presión", "cls": "dn"}
+      ]
+    },
+    {
+      "id": 3,
+      "tag": "Inflación · Fed",
+      "tag_class": "tr",
+      "title": "Pipeline inflacionario USA: PPI +6.5% YoY mayo — Fed sin margen de corte",
+      "brief": "PPI corre 2.3pp sobre CPI. Spread 2Y-10Y en +94pb: mercado empieza a pricear cortes Fed para H1 2027. Si el core no cede, esa expectativa colapsa.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off parcial",
+      "evento": "BLS mayo: PPI <strong>+6.5% YoY</strong>, Core PPI +5.1%, MoM +1.1%. CPI mayo <strong>+4.2% YoY</strong>. Brecha PPI−CPI <strong>+2.3pp</strong>: márgenes corporativos absorben costos hoy, pero eventualmente se trasladan al consumidor. Fed: 0-1 cortes 2026. Próxima reunión: 29 jul.",
+      "contexto": "El <strong>spread 2Y-10Y en +94pb</strong> se está ampliando porque el 2Y cede (mercado priceando eventual corte Fed) mientras el 10Y se mantiene alto. Esta divergencia resuelve de dos formas: o la Fed corta y el 10Y cae, o la inflación persiste y el 2Y vuelve a subir, <strong>aplastando la tesis de corte</strong>.",
+      "impacto": [
+        {"asset": "UST 2Y",     "dir": "4.03%",     "cls": "neu"},
+        {"asset": "UST 10Y",    "dir": "~5%",       "cls": "dn"},
+        {"asset": "DXY",        "dir": "↑ Soport.", "cls": "up"},
+        {"asset": "Oro",        "dir": "↑ Hedge",   "cls": "up"},
+        {"asset": "REITs",      "dir": "↓ Presión", "cls": "dn"},
+        {"asset": "Small Caps", "dir": "↓ Rate s.", "cls": "dn"}
+      ]
+    },
+    {
+      "id": 4,
+      "tag": "China · Macro",
+      "tag_class": "ta",
+      "title": "China: Retail mayo −0.6% — primera caída desde dic 2022. CNH y cobre confirman",
+      "brief": "El mercado en tiempo real no compra el rebote del IP. CNH/USD en 7.24 y cobre −1.2% confirman que el dato industrial no convence.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "NBS hoy: <strong>IP +4.5% YoY</strong> (rebote) pero <strong>Retail −0.6% YoY</strong>, primera caída desde dic 2022. Autos −16.1%, electrodomésticos −15.6%. PPI +3.9% vs CPI +1.2%: diferencial 2.7pp señala que las empresas <strong>no pueden trasladar costos al consumidor</strong>.",
+      "contexto": "El <strong>CNH/USD en 7.24</strong> y el <strong>cobre en −1.2%</strong> son los termómetros de mercado: ambos dicen que el rebote del IP no convence. Sin demanda interna ni exportaciones libres, China entra en riesgo de <strong>espiral deflacionaria doméstica</strong> que presiona commodities globales.",
+      "impacto": [
+        {"asset": "Cobre",        "dir": "↓ −1.2%",  "cls": "dn"},
+        {"asset": "CNH/USD",      "dir": "7.24 ↑",   "cls": "dn"},
+        {"asset": "CSI 300",      "dir": "↓ Presión","cls": "dn"},
+        {"asset": "Granos / Soja","dir": "↓ Demand.","cls": "dn"},
+        {"asset": "AUD/USD",      "dir": "↓ China",  "cls": "dn"},
+        {"asset": "Mineras",      "dir": "↓ Presión","cls": "dn"}
+      ]
+    },
+    {
+      "id": 5,
+      "tag": "Emergentes · LATAM",
+      "tag_class": "ta",
+      "title": "COPOM Brasil decide SELIC esta noche (18:30 BRT) — mercado dividido",
+      "brief": "IPCA mayo +4.72% YoY y Focus 5.30% reducen margen. Con DXY débil y petróleo cayendo, el contexto EM es favorable. Pero la inflación no da la autorización doméstica.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "COPOM 16-17 jun. SELIC en <strong>14.50%</strong>. Mercado: ~85% probabilidad de <strong>−25bp a 14.25%</strong>. Pero IPCA mayo <strong>+4.72% YoY</strong> (sobre techo 4.5%) y Focus 2026 en <strong>5.30%</strong>. Anuncio: <strong>18:30 BRT / 15:30 NY hoy</strong>.",
+      "contexto": "El contexto externo es <strong>favorable para emergentes</strong>: DXY en 101.4, petróleo a la baja, VIX bajo. Pero la inflación doméstica no da la autorización: IPCA sobre el techo de meta y expectativas subiendo. SELIC real de <strong>+9.8pp</strong> es la mayor en 20 años.",
+      "impacto": [
+        {"asset": "BRL/USD",    "dir": "↑ si pausa", "cls": "up"},
+        {"asset": "Bovespa",    "dir": "↓ si pausa", "cls": "dn"},
+        {"asset": "NTN-B",      "dir": "↑ si pausa", "cls": "up"},
+        {"asset": "Ibovespa",   "dir": "↑ si corta", "cls": "up"},
+        {"asset": "LTN Carry",  "dir": "↑ si corta", "cls": "up"},
+        {"asset": "EM Bonds",   "dir": "→ Neutral",  "cls": "neu"}
+      ]
+    }
+  ],
+  "tensiones": [
+    {
+      "label": "VIX vs. Macro",
+      "texto": "<strong>VIX 16.2 (−8% hoy)</strong> señala complacencia extrema, pero <strong>PPI +6.5% YoY, BOJ y BCE subiendo tasas la misma semana</strong>. El mercado está ignorando el riesgo de inflación estructural. Un shock de datos puede revertir esto violentamente."
+    },
+    {
+      "label": "JPY Carry Trade",
+      "texto": "<strong>USD/JPY cae −0.5% con BOJ +25pb</strong> mientras el VIX baja. Si el <strong>carry trade en yenes empieza a deshacerse</strong>, hay posiciones largas en activos de riesgo financiadas con yenes que se cierran rápido — el mismo mecanismo del colapso de agosto 2024."
+    },
+    {
+      "label": "Curva USA: 2Y vs 10Y",
+      "texto": "<strong>Spread 2Y-10Y en +94pb</strong> — la curva se desinvierte, pero no por caída del 10Y sino por <strong>caída del 2Y</strong>. El mercado priceas cortes Fed para H1 2027. Si la inflación no cede, esa expectativa colapsa y el 10Y vuela."
+    },
+    {
+      "label": "Oro vs. Risk-On",
+      "texto": "<strong>Oro en $4,300 (cerca de ATH)</strong> mientras el S&P también sube. Normalmente se mueven inversamente. La coexistencia refleja un mercado que compra <strong>risk-on por el petróleo pero cubre inflación estructural con oro simultáneamente</strong>. La correlación rota."
+    }
+  ],
+  "correlaciones": [
+    {"par": "DXY ↓ ↔ Oro ↑", "texto": "Correlación inversa activa. DXY en 101.4 impulsa el oro a ATH. Si el DXY rompe 100, el oro podría superar $4,400."},
+    {"par": "JPY ↑ ↔ Risk Assets ↓", "texto": "Carry unwind parcial en curso. BOJ +25pb comprime el spread USD/JPY. Cada 1% de apreciación del JPY mueve ~−0.3% al S&P históricamente."},
+    {"par": "WTI ↓ ↔ UST 10Y ↓", "texto": "Petróleo cae → expectativas de inflación a la baja → yields bajan marginalmente. Pero el 10Y sigue cerca de 5% por hawkishness del BOJ/BCE."},
+    {"par": "CNH débil ↔ Cobre ↓", "texto": "El yuan offshore y el cobre confirman que el mercado no cree en el rebote del IP chino. Ambos descontando debilidad de demanda."},
+    {"par": "VIX ↓ ↔ Fear&Greed ↑", "texto": "El F&G saltó de 38 a 62 en una semana. Movimientos de +24pp son históricamente señal de sobreextensión a corto plazo."},
+    {"par": "EM · DXY ↓ = Respiro", "texto": "DXY bajo 102 + petróleo a la baja abre espacio para carry en EM. BRL, COP y PEN se benefician. El COPOM esta noche decide si Brasil capitaliza el contexto."}
+  ],
+  "bottom_line": "El mercado está en <strong>transición de régimen</strong>: el principal tail risk del año (guerra Irán) se disipa, pero el paisaje macro de fondo sigue siendo estructuralmente complejo. La caída del petróleo alivia la presión inflacionaria, pero los bancos centrales (BOJ, BCE) ya se movieron hawkish y no retrocedan rápido.<br><br>Flujo institucional hoy: <strong>saliendo de energía, entrando en equities defensivos</strong>; rotando de USTs cortos hacia renta variable europea; vendiendo <strong>carry en yenes</strong>.<br><br><strong>La tensión más peligrosa del día:</strong> el VIX en 16 con inflación en +4-6% YoY y dos bancos centrales subiendo tasas la misma semana es complacencia clásica de 'too much good news priced in'.",
+  "agenda": [
+    {"flag": "🇧🇷", "fecha": "Hoy 18:30 BRT", "evento": "COPOM Brasil: decisión SELIC (14.50% → ¿14.25%?)", "bold": true},
+    {"flag": "🇯🇵", "fecha": "Vie 20 jun",     "evento": "CPI Nacional Japón mayo (Tokyo adelantó +1.4%)", "bold": false},
+    {"flag": "🇺🇸", "fecha": "Jue 25 jun",     "evento": "GDP EE.UU. Q1 2026 tercera estimación", "bold": false},
+    {"flag": "🇧🇷", "fecha": "Mar 24 jun",     "evento": "IPCA-15 Brasil junio", "bold": false},
+    {"flag": "🇨🇳", "fecha": "Dom 30 jun",     "evento": "PMI NBS + Caixin junio", "bold": false},
+    {"flag": "🇨🇳", "fecha": "Mié 15 jul ⭐",  "evento": "GDP Q2 China + IP + Retail (dato grande del trimestre)", "bold": false}
+  ]
+}
