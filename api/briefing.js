@@ -1,5 +1,5 @@
 // /api/briefing.js — Sirve el briefing.json con headers correctos
-import data from './briefing.json' assert { type: 'json' };
+import data from '../data/briefing.json' assert { type: 'json' };
 
 export default function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
