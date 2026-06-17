@@ -134,11 +134,15 @@
   ],
   "bottom_line": "El mercado está en <strong>transición de régimen</strong>: el principal tail risk del año (guerra Irán) se disipa, pero el paisaje macro de fondo sigue siendo estructuralmente complejo. La caída del petróleo alivia la presión inflacionaria, pero los bancos centrales (BOJ, BCE) ya se movieron hawkish y no retrocedan rápido.<br><br>Flujo institucional hoy: <strong>saliendo de energía, entrando en equities defensivos</strong>; rotando de USTs cortos hacia renta variable europea; vendiendo <strong>carry en yenes</strong>.<br><br><strong>La tensión más peligrosa del día:</strong> el VIX en 16 con inflación en +4-6% YoY y dos bancos centrales subiendo tasas la misma semana es complacencia clásica de 'too much good news priced in'.",
   "agenda": [
-    {"flag": "🇧🇷", "fecha": "Hoy 18:30 BRT", "evento": "COPOM Brasil: decisión SELIC (14.50% → ¿14.25%?)", "bold": true},
-    {"flag": "🇯🇵", "fecha": "Vie 20 jun",     "evento": "CPI Nacional Japón mayo (Tokyo adelantó +1.4%)", "bold": false},
-    {"flag": "🇺🇸", "fecha": "Jue 25 jun",     "evento": "GDP EE.UU. Q1 2026 tercera estimación", "bold": false},
-    {"flag": "🇧🇷", "fecha": "Mar 24 jun",     "evento": "IPCA-15 Brasil junio", "bold": false},
-    {"flag": "🇨🇳", "fecha": "Dom 30 jun",     "evento": "PMI NBS + Caixin junio", "bold": false},
-    {"flag": "🇨🇳", "fecha": "Mié 15 jul ⭐",  "evento": "GDP Q2 China + IP + Retail (dato grande del trimestre)", "bold": false}
+    {"flag": "🇧🇷", "fecha": "Mié 17 jun · 18:30 BRT", "evento": "COPOM Brasil — decisión SELIC (14.50% → ¿14.25%?)", "bold": true},
+    {"flag": "🇪🇺", "fecha": "Mié 17 jun",     "evento": "HICP Final Eurozona mayo (confirma BCE +25pb a 2.50%)", "bold": false},
+    {"flag": "🇺🇸", "fecha": "Jue 25 jun",     "evento": "GDP EE.UU. Q1 2026 — 3ra estimación", "bold": false},
+    {"flag": "🇧🇷", "fecha": "Vie 26 jun",     "evento": "Desempleo PNAD Brasil mayo", "bold": false},
+    {"flag": "🇯🇵", "fecha": "Vie 26 jun",     "evento": "CPI Nacional + Balanza Comercial Japón mayo (Tokyo adelantó +1.4%)", "bold": false},
+    {"flag": "🇨🇳", "fecha": "Mar 30 jun",     "evento": "PMI NBS + Caixin China junio", "bold": false},
+    {"flag": "🇺🇸", "fecha": "Jue 2 jul",      "evento": "Nóminas no agrícolas (NFP) EE.UU. junio", "bold": false},
+    {"flag": "🇨🇳", "fecha": "Jue 9 jul",      "evento": "CPI + PPI China junio", "bold": false},
+    {"flag": "🇺🇸", "fecha": "Mar 14 jul",     "evento": "CPI EE.UU. junio", "bold": false},
+    {"flag": "🇨🇳", "fecha": "Mié 15 jul ⭐",  "evento": "GDP Q2 China + IP + Retail (dato grande del trimestre)", "bold": true}
   ]
 }

@@ -440,18 +440,7 @@ function renderBriefing(b) {
   document.getElementById('hero-date').textContent =
     days[d.getUTCDay()] + ' ' + d.getUTCDate() + ' de ' + months[d.getUTCMonth()] + ' · ' + d.getUTCFullYear();
 
-  // Fear & Greed
-  const fg = b.sentiment;
-  const pct = (fg.fg / 100) * 100;
-  document.getElementById('fgneedle').style.left = pct + '%';
-  document.getElementById('fgval').textContent = fg.fg;
-  document.getElementById('fgval').className = 'fg-val ' + (fg.fg > 60 ? 'up' : fg.fg < 40 ? 'dn' : 'neu');
-  document.getElementById('fgname').textContent = fg.fg_label;
-  document.getElementById('fgname').className = 'fg-name ' + (fg.fg > 60 ? 'up' : fg.fg < 40 ? 'dn' : 'neu');
-  document.getElementById('fgmini').innerHTML = `
-    <div><span style="color:var(--t3)">Put/Call S&P:</span> <span style="color:var(--g);font-weight:700">${fg.putcall}</span></div>
-    <div><span style="color:var(--t3)">AAII Bulls:</span> <span style="color:var(--a);font-weight:700">${fg.aaii_bulls}%</span></div>
-  `;
+  // Fear & Greed → handled by renderFearGreed() from /api/markets (live CNN data)
 
   // Tensiones
   document.getElementById('tension-date').textContent = b.date;
