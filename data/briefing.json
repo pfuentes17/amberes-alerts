@@ -1,136 +1,136 @@
 {
   "date": "2026-06-16",
-  "generated": "2026-06-16T07:00:00Z",
+  "generated": "2026-06-16T11:30:00Z",
   "sentiment": {
     "overall": "mixed",
-    "label": "Risk-On con cautela",
-    "fg": 62,
-    "fg_label": "Codicia Moderada",
-    "putcall": 0.82,
-    "aaii_bulls": 44
+    "label": "Mercado de dos velocidades — Dow récord, Nasdaq en tensión",
+    "fg": 39,
+    "fg_label": "Miedo",
+    "putcall": 0.95,
+    "aaii_bulls": 34
   },
   "drivers": [
     {
       "id": 1,
-      "tag": "Geopolítica · Energía",
-      "tag_class": "tg",
-      "title": "EE.UU. e Irán firman paz — Estrecho de Ormuz reabre",
-      "brief": "El mayor tail risk del año se disipa. WTI cae 2.6% a $76/bbl — mínimo desde marzo. S&P +1.7% ayer. VIX desde 26 a 16.",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "EE.UU. e Irán firmaron un <strong>MOU el 14-15 jun</strong> mediado por Pakistán: cese al fuego, reapertura del <strong>Estrecho de Ormuz</strong> (~20% del petróleo global), y 60 días de negociaciones nucleares. WTI cayó de ~$92 a <strong>$76 en 48hs</strong>.",
-      "contexto": "La guerra había disparado el Brent a ~$97, alimentando un <strong>shock inflacionario global</strong> que forzó al BCE a subir y aceleró al BOJ. El mercado estaba pricing <strong>&ldquo;higher oil for longer&rdquo;</strong> como principal riesgo. La paz lo resuelve de golpe y descomprime la curva de futuros de energía hasta 2027.",
+      "tag": "Bancos Centrales · Fed",
+      "tag_class": "tb",
+      "title": "Primera Fed de Kevin Warsh — hold esperado, pero el mercado teme el giro hawkish",
+      "brief": "FOMC 16-17 jun, debut del nuevo chair. Tasa sin cambio en 3.50–3.75% (4ª vez), pero CPI +4.2% (máx 3 años) y FedWatch ya pricing 67% de SUBA en diciembre.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "Arranca la <strong>primera reunión bajo Kevin Warsh</strong>. Consenso firme de mantener en <strong>3.50–3.75%</strong> por cuarta vez consecutiva. El foco está 100% en el tono: el empleo de mayo sorprendió fuerte (<strong>+172k vs +80k esperado</strong>) y el CPI corre al <strong>+4.2% YoY</strong>, el más alto en tres años.",
+      "contexto": "Warsh tiene fama de halcón. El mercado venía pricing cortes para 2026 y ahora la curva se da vuelta: <strong>FedWatch asigna 67% de probabilidad a una suba en diciembre</strong>. La comunicación del nuevo chair ya está moviendo la volatilidad en bonos. Cualquier señal hawkish hoy/mañana golpea a los activos de duración larga.",
       "impacto": [
-        {"asset": "Equities S&P", "dir": "↑ Fuerte", "cls": "up"},
-        {"asset": "WTI / Brent",  "dir": "↓ −2.6%",  "cls": "dn"},
-        {"asset": "UST 10Y yield","dir": "↓ Cede",    "cls": "dn"},
-        {"asset": "Oro",           "dir": "↑ $4,300", "cls": "up"},
-        {"asset": "DXY",           "dir": "↓ 101.4",  "cls": "dn"},
-        {"asset": "EM Carry",      "dir": "↑ Inflows","cls": "up"}
+        {"asset": "UST 2Y",       "dir": "↑ Presión", "cls": "dn"},
+        {"asset": "Tech / Growth", "dir": "↓ Riesgo",  "cls": "dn"},
+        {"asset": "DXY",           "dir": "↑ Soporte", "cls": "up"},
+        {"asset": "Oro",           "dir": "↑ Hedge",   "cls": "up"},
+        {"asset": "Small Caps",    "dir": "↓ Rate s.", "cls": "dn"},
+        {"asset": "Bancos",        "dir": "↑ Margen",  "cls": "up"}
       ]
     },
     {
       "id": 2,
-      "tag": "Bancos Centrales",
-      "tag_class": "tb",
-      "title": "BOJ +25pb a 1.0% y BCE +25pb a 2.5% — sincronización hawkish global",
-      "brief": "Primera vez en décadas que Japón y Europa suben tasas en la misma semana. El ciclo global de tasas se extiende contra consenso.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "<strong>BOJ (15-16 jun):</strong> +25pb a <strong>1.00%</strong>, máximo desde 2008. Ueda citó inflación salarial y PPI +3.9%. <strong>BCE (11 jun):</strong> +25pb a <strong>2.50%</strong> depósito. Lagarde: inflación proyectada al 3% en 2026, convergencia al 2% recién en 2028.",
-      "contexto": "El mercado venía pricing <strong>recortes</strong> de BCE y pausa del BOJ para H2. Ambas decisiones son contra-consenso: el ciclo de tasas globales se extiende. El diferencial de tasas USD-JPY se comprime, activando el <strong>carry trade unwind</strong>. USD/JPY ya cedió 0.5% hoy.",
+      "tag": "Equities · IPO",
+      "tag_class": "tg",
+      "title": "SpaceX: el IPO más grande de la historia — vale más que Tesla",
+      "brief": "Debutó el 12-jun en Nasdaq (SPCX), recaudó US$75B a $135. Cerró +19% y siguió subiendo: valuación superó los US$2,2 billones, dejando atrás a Tesla (~$1,2B).",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "SpaceX completó el <strong>mayor IPO de la historia</strong>: vendió 555,6M de acciones a <strong>$135</strong>, recaudando <strong>US$75.000M</strong>. El primer día cerró en $160,95 (<strong>+19,2%</strong>) y tocó $168,75, llevando el market cap a <strong>~US$2,2 billones</strong> — más que Tesla y a tiro de Amazon.",
+      "contexto": "El apetito por la historia espacial/defensa contrasta con el resto del Nasdaq, que viene golpeado. Es <strong>euforia selectiva</strong>: el capital institucional rota hacia el nombre estrella mientras castiga a los semiconductores. Señal clásica de mercado tardío — concentración extrema en pocos ganadores.",
       "impacto": [
-        {"asset": "JPY",          "dir": "↑ Aprecia", "cls": "up"},
-        {"asset": "JGB yield",    "dir": "↑ Sube",    "cls": "dn"},
-        {"asset": "EUR/USD",      "dir": "↑ 1.108",   "cls": "up"},
-        {"asset": "Carry trade",  "dir": "↓ Riesgo",  "cls": "dn"},
-        {"asset": "Bunds yield",  "dir": "↑ Sube",    "cls": "dn"},
-        {"asset": "Tech / Growth","dir": "↓ Presión", "cls": "dn"}
+        {"asset": "SPCX",          "dir": "↑ +20%",    "cls": "up"},
+        {"asset": "Defensa/Espacio","dir": "↑ Flujos",  "cls": "up"},
+        {"asset": "Tesla",         "dir": "↓ Rotación","cls": "dn"},
+        {"asset": "Nasdaq breadth","dir": "↓ Estrecho","cls": "dn"},
+        {"asset": "IPO pipeline",  "dir": "↑ Reabre",  "cls": "up"},
+        {"asset": "Cash → equity", "dir": "↑ Inflows", "cls": "up"}
       ]
     },
     {
       "id": 3,
-      "tag": "Inflación · Fed",
+      "tag": "Tech · AI",
       "tag_class": "tr",
-      "title": "Pipeline inflacionario USA: PPI +6.5% YoY mayo — Fed sin margen de corte",
-      "brief": "PPI corre 2.3pp sobre CPI. Spread 2Y-10Y en +94pb: mercado empieza a pricear cortes Fed para H1 2027. Si el core no cede, esa expectativa colapsa.",
+      "title": "Resaca del selloff de AI: Nvidia perdió US$279B y los semis no recuperan",
+      "brief": "El 5-jun el Nasdaq cayó 4,2% (peor día desde abr-25) por miedo a suba de tasas. SOXX −10%, Broadcom −12,6%, Marvell −17%. Hoy el Nasdaq vuelve a ceder ~1,9%.",
       "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off parcial",
-      "evento": "BLS mayo: PPI <strong>+6.5% YoY</strong>, Core PPI +5.1%, MoM +1.1%. CPI mayo <strong>+4.2% YoY</strong>. Brecha PPI−CPI <strong>+2.3pp</strong>: márgenes corporativos absorben costos hoy, pero eventualmente se trasladan al consumidor. Fed: 0-1 cortes 2026. Próxima reunión: 29 jul.",
-      "contexto": "El <strong>spread 2Y-10Y en +94pb</strong> se está ampliando porque el 2Y cede (mercado priceando eventual corte Fed) mientras el 10Y se mantiene alto. Esta divergencia resuelve de dos formas: o la Fed corta y el 10Y cae, o la inflación persiste y el 2Y vuelve a subir, <strong>aplastando la tesis de corte</strong>.",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El gatillo fue el <strong>empleo fuerte de mayo</strong> que reavivó las apuestas de suba Fed. <strong>Nvidia perdió US$279.000M</strong> de capitalización en un día, el índice de semis (SOXX) cayó <strong>10%</strong> en una sola sesión. El trade de AI, sobrecomprado, se frena en seco.",
+      "contexto": "Wells Fargo lo definió como <strong>&ldquo;más posicionamiento que fundamentals&rdquo;</strong> — el sector estaba &ldquo;muy sobrecomprado&rdquo;. Pero deja al descubierto la fragilidad: con la Fed potencialmente subiendo, las valuaciones de múltiplos altos quedan expuestas. El Nasdaq y el Russell 2000 retroceden mientras el Dow marca récord.",
       "impacto": [
-        {"asset": "UST 2Y",     "dir": "4.03%",     "cls": "neu"},
-        {"asset": "UST 10Y",    "dir": "~5%",       "cls": "dn"},
-        {"asset": "DXY",        "dir": "↑ Soport.", "cls": "up"},
-        {"asset": "Oro",        "dir": "↑ Hedge",   "cls": "up"},
-        {"asset": "REITs",      "dir": "↓ Presión", "cls": "dn"},
-        {"asset": "Small Caps", "dir": "↓ Rate s.", "cls": "dn"}
+        {"asset": "Nvidia / SOXX", "dir": "↓ Frágil",  "cls": "dn"},
+        {"asset": "Nasdaq 100",    "dir": "↓ Presión", "cls": "dn"},
+        {"asset": "Dow (value)",   "dir": "↑ Récord",  "cls": "up"},
+        {"asset": "Russell 2000",  "dir": "↓ Cede",    "cls": "dn"},
+        {"asset": "VIX",           "dir": "↑ Latente", "cls": "dn"},
+        {"asset": "Defensivos",    "dir": "↑ Rotación","cls": "up"}
       ]
     },
     {
       "id": 4,
-      "tag": "China · Macro",
-      "tag_class": "ta",
-      "title": "China: Retail mayo −0.6% — primera caída desde dic 2022. CNH y cobre confirman",
-      "brief": "El mercado en tiempo real no compra el rebote del IP. CNH/USD en 7.24 y cobre −1.2% confirman que el dato industrial no convence.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "NBS hoy: <strong>IP +4.5% YoY</strong> (rebote) pero <strong>Retail −0.6% YoY</strong>, primera caída desde dic 2022. Autos −16.1%, electrodomésticos −15.6%. PPI +3.9% vs CPI +1.2%: diferencial 2.7pp señala que las empresas <strong>no pueden trasladar costos al consumidor</strong>.",
-      "contexto": "El <strong>CNH/USD en 7.24</strong> y el <strong>cobre en −1.2%</strong> son los termómetros de mercado: ambos dicen que el rebote del IP no convence. Sin demanda interna ni exportaciones libres, China entra en riesgo de <strong>espiral deflacionaria doméstica</strong> que presiona commodities globales.",
+      "tag": "Geopolítica · Energía",
+      "tag_class": "tq",
+      "title": "Optimismo por acuerdo EE.UU.–Irán — el petróleo cede y descomprime inflación",
+      "brief": "Crece la expectativa de un acuerdo que reabra plenamente el flujo de crudo. WTI cae −4,7% a ~US$76. Alivio para la curva de inflación justo antes de la Fed.",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "Wall Street operó pendiente de un <strong>posible acuerdo de paz entre EE.UU. e Irán</strong>. El crudo retrocede con fuerza: <strong>WTI −4,7% a ~US$76</strong>, mínimos recientes. Menos petróleo = menos presión sobre las expectativas de inflación.",
+      "contexto": "Es el contrapeso bajista para la inflación que la Fed necesita: si el crudo se sostiene a la baja, alivia el componente de energía del CPI y le da aire a Warsh para no endurecer el discurso. Un acuerdo formal sería el <strong>catalizador risk-on</strong> que el mercado de acciones está esperando.",
       "impacto": [
-        {"asset": "Cobre",        "dir": "↓ −1.2%",  "cls": "dn"},
-        {"asset": "CNH/USD",      "dir": "7.24 ↑",   "cls": "dn"},
-        {"asset": "CSI 300",      "dir": "↓ Presión","cls": "dn"},
-        {"asset": "Granos / Soja","dir": "↓ Demand.","cls": "dn"},
-        {"asset": "AUD/USD",      "dir": "↓ China",  "cls": "dn"},
-        {"asset": "Mineras",      "dir": "↓ Presión","cls": "dn"}
+        {"asset": "WTI / Brent",   "dir": "↓ −4,7%",   "cls": "dn"},
+        {"asset": "Breakevens",    "dir": "↓ Ceden",   "cls": "dn"},
+        {"asset": "Aerolíneas",    "dir": "↑ Costos",  "cls": "up"},
+        {"asset": "Energía (XLE)", "dir": "↓ Presión", "cls": "dn"},
+        {"asset": "Equities",      "dir": "↑ Alivio",  "cls": "up"},
+        {"asset": "EM Carry",      "dir": "↑ Favorab.","cls": "up"}
       ]
     },
     {
       "id": 5,
       "tag": "Emergentes · LATAM",
       "tag_class": "ta",
-      "title": "COPOM Brasil decide SELIC esta noche (18:30 BRT) — mercado dividido",
-      "brief": "IPCA mayo +4.72% YoY y Focus 5.30% reducen margen. Con DXY débil y petróleo cayendo, el contexto EM es favorable. Pero la inflación no da la autorización doméstica.",
+      "title": "Argentina: riesgo país a 425 (mínimo) · COPOM Brasil decide mañana",
+      "brief": "El riesgo país argentino comprime a 425bp, mínimo de la era. Contexto EM favorable (DXY débil, petróleo a la baja). Brasil define SELIC mañana 17-jun, mercado dividido.",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "COPOM 16-17 jun. SELIC en <strong>14.50%</strong>. Mercado: ~85% probabilidad de <strong>−25bp a 14.25%</strong>. Pero IPCA mayo <strong>+4.72% YoY</strong> (sobre techo 4.5%) y Focus 2026 en <strong>5.30%</strong>. Anuncio: <strong>18:30 BRT / 15:30 NY hoy</strong>.",
-      "contexto": "El contexto externo es <strong>favorable para emergentes</strong>: DXY en 101.4, petróleo a la baja, VIX bajo. Pero la inflación doméstica no da la autorización: IPCA sobre el techo de meta y expectativas subiendo. SELIC real de <strong>+9.8pp</strong> es la mayor en 20 años.",
+      "evento": "El <strong>riesgo país argentino tocó 425bp</strong>, mínimo de los últimos años, con los globales firmes. El contexto externo ayuda: DXY en ~101, petróleo cayendo, apetito por carry. Mañana el <strong>COPOM de Brasil</strong> define la SELIC (14,50%) con el mercado dividido entre recorte de 25pb y pausa.",
+      "contexto": "Para Argentina, la combinación de <strong>DXY débil + commodities a la baja + Fed que (todavía) no sube</strong> es la ventana ideal para seguir comprimiendo spread. El riesgo es que un giro hawkish de Warsh corte el envión de los emergentes. Brasil es el primer test regional de la semana.",
       "impacto": [
-        {"asset": "BRL/USD",    "dir": "↑ si pausa", "cls": "up"},
-        {"asset": "Bovespa",    "dir": "↓ si pausa", "cls": "dn"},
-        {"asset": "NTN-B",      "dir": "↑ si pausa", "cls": "up"},
-        {"asset": "Ibovespa",   "dir": "↑ si corta", "cls": "up"},
-        {"asset": "LTN Carry",  "dir": "↑ si corta", "cls": "up"},
-        {"asset": "EM Bonds",   "dir": "→ Neutral",  "cls": "neu"}
+        {"asset": "Globales ARG",  "dir": "↑ Firmes",  "cls": "up"},
+        {"asset": "Riesgo país",   "dir": "↓ 425bp",   "cls": "up"},
+        {"asset": "BRL / Bovespa", "dir": "→ COPOM",   "cls": "neu"},
+        {"asset": "Merval",        "dir": "↑ Contexto","cls": "up"},
+        {"asset": "EM FX",         "dir": "↑ DXY débil","cls": "up"},
+        {"asset": "Carry LATAM",   "dir": "↑ Abierto", "cls": "up"}
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "VIX vs. Macro",
-      "texto": "<strong>VIX 16.2 (−8% hoy)</strong> señala complacencia extrema, pero <strong>PPI +6.5% YoY, BOJ y BCE subiendo tasas la misma semana</strong>. El mercado está ignorando el riesgo de inflación estructural. Un shock de datos puede revertir esto violentamente."
+      "label": "Dow récord vs. Nasdaq débil",
+      "texto": "El <strong>Dow marca máximos históricos</strong> mientras el <strong>Nasdaq y el Russell 2000 retroceden</strong>. Es un mercado de dos velocidades: el dinero rota de growth/tech hacia value y defensivos ante el miedo a una Fed más dura. La amplitud (breadth) se deteriora — pocos nombres sostienen los índices."
     },
     {
-      "label": "JPY Carry Trade",
-      "texto": "<strong>USD/JPY cae −0.5% con BOJ +25pb</strong> mientras el VIX baja. Si el <strong>carry trade en yenes empieza a deshacerse</strong>, hay posiciones largas en activos de riesgo financiadas con yenes que se cierran rápido — el mismo mecanismo del colapso de agosto 2024."
+      "label": "VIX 16 vs. Fed hawkish",
+      "texto": "El <strong>VIX en ~16</strong> señala calma, pero la foto macro no la justifica: <strong>CPI +4,2%, empleo +172k, y FedWatch 67% de suba en diciembre</strong>. El mercado de opciones no está pricing el riesgo de un giro hawkish de Warsh. Un susto de datos puede revertir la complacencia rápido."
     },
     {
-      "label": "Curva USA: 2Y vs 10Y",
-      "texto": "<strong>Spread 2Y-10Y en +94pb</strong> — la curva se desinvierte, pero no por caída del 10Y sino por <strong>caída del 2Y</strong>. El mercado priceas cortes Fed para H1 2027. Si la inflación no cede, esa expectativa colapsa y el 10Y vuela."
+      "label": "Euforia SpaceX vs. sangría AI",
+      "texto": "<strong>SpaceX vale +US$2 billones</strong> y sube 20% mientras <strong>Nvidia perdió US$279B</strong> y los semis se desploman. La euforia concentrada en un nombre conviviendo con el castigo al resto del tech es señal clásica de <strong>mercado tardío</strong> — concentración extrema de flujos."
     },
     {
-      "label": "Oro vs. Risk-On",
-      "texto": "<strong>Oro en $4,300 (cerca de ATH)</strong> mientras el S&P también sube. Normalmente se mueven inversamente. La coexistencia refleja un mercado que compra <strong>risk-on por el petróleo pero cubre inflación estructural con oro simultáneamente</strong>. La correlación rota."
+      "label": "Good news is bad news",
+      "texto": "El <strong>empleo fuerte (+172k)</strong> debería ser buena noticia, pero las acciones lo leen al revés: mejor economía = más chance de suba Fed = múltiplos bajo presión. Mientras el mercado opere en este régimen, cada dato macro sólido es bajista para la renta variable de duración larga."
     }
   ],
   "correlaciones": [
-    {"par": "DXY ↓ ↔ Oro ↑", "texto": "Correlación inversa activa. DXY en 101.4 impulsa el oro a ATH. Si el DXY rompe 100, el oro podría superar $4,400."},
-    {"par": "JPY ↑ ↔ Risk Assets ↓", "texto": "Carry unwind parcial en curso. BOJ +25pb comprime el spread USD/JPY. Cada 1% de apreciación del JPY mueve ~−0.3% al S&P históricamente."},
-    {"par": "WTI ↓ ↔ UST 10Y ↓", "texto": "Petróleo cae → expectativas de inflación a la baja → yields bajan marginalmente. Pero el 10Y sigue cerca de 5% por hawkishness del BOJ/BCE."},
-    {"par": "CNH débil ↔ Cobre ↓", "texto": "El yuan offshore y el cobre confirman que el mercado no cree en el rebote del IP chino. Ambos descontando debilidad de demanda."},
-    {"par": "VIX ↓ ↔ Fear&Greed ↑", "texto": "El F&G saltó de 38 a 62 en una semana. Movimientos de +24pp son históricamente señal de sobreextensión a corto plazo."},
-    {"par": "EM · DXY ↓ = Respiro", "texto": "DXY bajo 102 + petróleo a la baja abre espacio para carry en EM. BRL, COP y PEN se benefician. El COPOM esta noche decide si Brasil capitaliza el contexto."}
+    {"par": "Empleo ↑ ↔ Acciones ↓", "texto": "Régimen 'good news is bad news'. El dato de +172k empleos disparó las apuestas de suba Fed y el selloff de AI. Cada sorpresa positiva de actividad presiona los múltiplos."},
+    {"par": "WTI ↓ ↔ Breakevens ↓", "texto": "El petróleo a la baja (acuerdo Irán) descomprime las expectativas de inflación. Le da aire a la Fed para no endurecer y alivia la presión sobre los yields largos."},
+    {"par": "DXY débil ↔ Oro ATH", "texto": "Correlación inversa activa. DXY en ~101 sostiene el oro cerca de máximos (~US$4.300). Si el DXY rompe 100, el oro acelera."},
+    {"par": "Nasdaq ↔ SOXX", "texto": "Los semiconductores lideran al Nasdaq en ambas direcciones. SOXX −10% en un día arrastró todo el complejo tech. La salud del índice depende de los chips."},
+    {"par": "DXY < 102 ↔ EM relief", "texto": "Con el dólar débil y el petróleo cayendo, los emergentes respiran. El riesgo país argentino a 425bp y el carry LATAM se benefician del contexto."},
+    {"par": "VIX ↓ ↔ F&G en Miedo", "texto": "Divergencia: el VIX está bajo (16) pero el Fear & Greed marca Miedo (~39). El posicionamiento es cauto aunque la volatilidad implícita no lo refleje todavía."}
   ],
-  "bottom_line": "El mercado está en <strong>transición de régimen</strong>: el principal tail risk del año (guerra Irán) se disipa, pero el paisaje macro de fondo sigue siendo estructuralmente complejo. La caída del petróleo alivia la presión inflacionaria, pero los bancos centrales (BOJ, BCE) ya se movieron hawkish y no retrocedan rápido.<br><br>Flujo institucional hoy: <strong>saliendo de energía, entrando en equities defensivos</strong>; rotando de USTs cortos hacia renta variable europea; vendiendo <strong>carry en yenes</strong>.<br><br><strong>La tensión más peligrosa del día:</strong> el VIX en 16 con inflación en +4-6% YoY y dos bancos centrales subiendo tasas la misma semana es complacencia clásica de 'too much good news priced in'."
+  "bottom_line": "El mercado entra a la Fed de Warsh <strong>partido en dos</strong>: el Dow marca récords por rotación a value mientras el Nasdaq sufre la resaca del selloff de AI. El debut histórico de SpaceX (>US$2 billones) convive con Nvidia perdiendo US$279B — euforia selectiva clásica de ciclo tardío.<br><br>El driver dominante es el <strong>giro de expectativas sobre la Fed</strong>: empleo fuerte + CPI 4,2% llevaron al mercado a pricing 67% de suba en diciembre. El único contrapeso bajista para la inflación es el <strong>petróleo en caída</strong> por el optimismo del acuerdo EE.UU.–Irán.<br><br><strong>La tensión más peligrosa:</strong> un VIX en 16 con la Fed potencialmente girando hawkish y la amplitud del mercado deteriorándose. Para Argentina, la ventana de DXY débil sigue abierta (riesgo país a 425) — pero depende de que Warsh no la cierre."
 }

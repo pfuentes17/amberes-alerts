@@ -21,14 +21,14 @@ const ETF_MAP = {
 // Static snapshot (absolute price levels from today's briefing)
 // These get updated daily by the briefing agent
 const BASELINE = {
-  sp500:  { price:7511.35, high52w:7620.9, low52w:5943.23 },
-  nasdaq: { price:21727.69 },
+  sp500:  { price:7548.6, high52w:7620.9, low52w:5943.23 },
+  nasdaq: { price:25500, high52w:26450 },
   vix:    { price:16.2, chgPct:-7.43 }, // VIX: no ETF proxy available on free
   eurusd: { price:1.1594 },
   usdjpy: { price:145.8 },
   cnhusd: { price:7.24 },
-  ust10y: { price:4.97 },
-  ust2y:  { price:4.03 },
+  ust10y: { price:4.45 },
+  ust2y:  { price:4.06 },
   wti:    { price:76.4, low52w:55, high52w:97 },
   brent:  { price:80.1 },
   gold:   { price:4300, high52w:4430, low52w:2280 },
