@@ -278,6 +278,7 @@ async function loadMarkets() {
     if (!res.ok) throw new Error('markets error');
     const { data: d } = await res.json();
     renderStrip(d);
+    if (d.feargreed) renderFearGreed(d.feargreed);
     const isFallback = d._fallback === true;
     document.getElementById('ts-label').textContent = isFallback
       ? '⚠ Precios de referencia · FX en vivo · actualizado ' + new Date().toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit'})
@@ -398,6 +399,25 @@ function renderStrip(d) {
 
 function renderStripFallback() {
   document.getElementById('strip').innerHTML = `<div class="ast"><div class="ast-lbl">Mercados</div><div class="ast-val" style="font-size:11px;color:var(--t2)">No disponible temporalmente</div></div>`;
+}
+
+function renderFearGreed(fg) {
+  const score = fg.score;
+  const labels = {
+    extreme_fear: 'Miedo Extremo', fear: 'Miedo', neutral: 'Neutral',
+    greed: 'Codicia', extreme_greed: 'Codicia Extrema'
+  };
+  const name = labels[fg.rating] || fg.rating;
+  const colorCls = score < 25 ? 'dn' : score < 45 ? 'dn' : score < 55 ? 'neu' : score < 75 ? 'up' : 'up';
+  document.getElementById('fgneedle').style.left = score + '%';
+  document.getElementById('fgval').textContent = score;
+  document.getElementById('fgval').className = 'fg-val ' + colorCls;
+  document.getElementById('fgname').textContent = name;
+  document.getElementById('fgname').className = 'fg-name ' + colorCls;
+  document.getElementById('fgmini').innerHTML = `
+    <div><span style="color:var(--t3)">Cierre ant.:</span> <span style="font-weight:700">${fg.prev_close}</span></div>
+    <div><span style="color:var(--t3)">Hace 1 semana:</span> <span style="font-weight:700">${fg.prev_week}</span></div>
+  `;
 }
 
 // ── LOAD BRIEFING ─────────────────────────────────────────────────

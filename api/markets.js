@@ -54,6 +54,27 @@ async function fetchFrankfurter() {
   return r.json();
 }
 
+async function fetchFearGreed() {
+  const r = await fetch('https://production.dataviz.cnn.io/index/fearandgreed/graphdata', {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+      'Referer': 'https://edition.cnn.com/markets/fear-and-greed',
+      'Origin': 'https://edition.cnn.com',
+    },
+    signal: AbortSignal.timeout(5000)
+  });
+  if (!r.ok) throw new Error(`F&G HTTP ${r.status}`);
+  const d = await r.json();
+  const fg = d.fear_and_greed;
+  if (!fg) throw new Error('No F&G data');
+  return {
+    score:      parseFloat(fg.score.toFixed(1)),
+    rating:     fg.rating,          // "fear", "greed", "extreme_fear", etc.
+    prev_close: parseFloat((fg.previous_close || fg.score).toFixed(1)),
+    prev_week:  parseFloat((fg.previous_1_week || fg.score).toFixed(1)),
+  };
+}
+
 async function fetchFred(series) {
   if (!FRED_KEY) return null;
   const r = await fetch(
@@ -78,10 +99,11 @@ export default async function handler(req, res) {
   data._fallback = false;
 
   // Parallel fetches
-  const [fxR, t10R, t2R] = await Promise.allSettled([
+  const [fxR, t10R, t2R, fgR] = await Promise.allSettled([
     fetchFrankfurter(),
     fetchFred('DGS10'),
     fetchFred('DGS2'),
+    fetchFearGreed(),
   ]);
 
   const etfResults = await Promise.allSettled(
@@ -132,6 +154,13 @@ export default async function handler(req, res) {
   const t10 = data.ust10y?.price;
   const t2  = data.ust2y?.price;
   if (t10 && t2) data.spread2y10y = parseInt(((t10 - t2) * 100).toFixed(0));
+
+  // Apply live Fear & Greed
+  if (fgR.status === 'fulfilled') {
+    data.feargreed = fgR.value;
+  } else {
+    data.feargreed = { score: 62, rating: 'greed', prev_close: 60, prev_week: 38, _fallback: true };
+  }
 
   if (finhubOk === 0) data._fallback = true;
 
