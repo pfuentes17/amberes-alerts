@@ -1,0 +1,58 @@
+{
+  "_comment": "Fuente única de verdad del calendario macro internacional 2026. La agenda del dashboard se genera automáticamente desde acá vía /api/agenda. Mantener sólo este archivo. star=true marca datos clave del trimestre. source: auto=la API del dashboard lo actualiza sola | manual=requiere update del seed.",
+  "events": [
+    {"date": "2026-06-17", "flag": "🇧🇷", "evento": "COPOM Brasil — decisión SELIC (14.50% → ¿14.25%?)", "time": "18:30 BRT", "star": true,  "source": "manual"},
+    {"date": "2026-06-17", "flag": "🇪🇺", "evento": "HICP Final Eurozona mayo (confirma BCE +25pb a 2.50%)", "star": false, "source": "manual"},
+    {"date": "2026-06-25", "flag": "🇺🇸", "evento": "GDP EE.UU. Q1 2026 — 3ra estimación", "star": false, "source": "auto"},
+    {"date": "2026-06-26", "flag": "🇧🇷", "evento": "Desempleo PNAD Brasil mayo", "star": false, "source": "auto"},
+    {"date": "2026-06-26", "flag": "🇯🇵", "evento": "CPI Nacional + Balanza Comercial Japón mayo (Tokyo adelantó +1.4%)", "star": false, "source": "manual"},
+    {"date": "2026-06-30", "flag": "🇨🇳", "evento": "PMI NBS + Caixin China junio", "star": false, "source": "manual"},
+
+    {"date": "2026-07-02", "flag": "🇺🇸", "evento": "Nóminas no agrícolas (NFP) EE.UU. junio", "star": false, "source": "auto"},
+    {"date": "2026-07-07", "flag": "🇺🇸", "evento": "Balanza Comercial EE.UU. mayo", "star": false, "source": "auto"},
+    {"date": "2026-07-09", "flag": "🇨🇳", "evento": "CPI + PPI China junio", "star": false, "source": "manual"},
+    {"date": "2026-07-14", "flag": "🇺🇸", "evento": "CPI EE.UU. junio", "star": false, "source": "auto"},
+    {"date": "2026-07-15", "flag": "🇨🇳", "evento": "GDP Q2 China + IP + Retail (dato grande del trimestre)", "star": true, "source": "manual"},
+    {"date": "2026-07-17", "flag": "🇪🇺", "evento": "HICP Final Eurozona junio", "star": false, "source": "manual"},
+    {"date": "2026-07-23", "flag": "🇪🇺", "evento": "Reunión BCE — decisión de tasa", "star": false, "source": "manual"},
+    {"date": "2026-07-30", "flag": "🇺🇸", "evento": "GDP Q2 EE.UU. — avance", "star": true, "source": "auto"},
+    {"date": "2026-07-31", "flag": "🇯🇵", "evento": "Reunión BOJ — decisión de tasa", "star": false, "source": "manual"},
+    {"date": "2026-07-31", "flag": "🇯🇵", "evento": "CPI Nacional Japón junio", "star": false, "source": "manual"},
+
+    {"date": "2026-08-05", "flag": "🇧🇷", "evento": "COPOM Brasil — decisión SELIC", "star": true, "source": "manual"},
+    {"date": "2026-08-12", "flag": "🇺🇸", "evento": "CPI EE.UU. julio", "star": false, "source": "auto"},
+    {"date": "2026-08-17", "flag": "🇯🇵", "evento": "GDP Q2 Japón — 1ra estimación", "star": true, "source": "manual"},
+    {"date": "2026-08-17", "flag": "🇨🇳", "evento": "IP + Retail China julio", "star": false, "source": "manual"},
+    {"date": "2026-08-28", "flag": "🇯🇵", "evento": "CPI + Balanza Comercial Japón julio", "star": false, "source": "manual"},
+
+    {"date": "2026-09-01", "flag": "🇧🇷", "evento": "GDP Q2 Brasil", "star": true, "source": "manual"},
+    {"date": "2026-09-02", "flag": "🇧🇷", "evento": "IPCA Brasil agosto", "star": false, "source": "auto"},
+    {"date": "2026-09-04", "flag": "🇺🇸", "evento": "Nóminas no agrícolas (NFP) EE.UU. agosto", "star": false, "source": "auto"},
+    {"date": "2026-09-10", "flag": "🇪🇺", "evento": "Reunión BCE — decisión de tasa", "star": false, "source": "manual"},
+    {"date": "2026-09-11", "flag": "🇺🇸", "evento": "CPI EE.UU. agosto", "star": false, "source": "auto"},
+    {"date": "2026-09-15", "flag": "🇨🇳", "evento": "CPI + PPI + IP + Retail China agosto", "star": false, "source": "manual"},
+    {"date": "2026-09-16", "flag": "🇧🇷", "evento": "COPOM Brasil — decisión SELIC", "star": true, "source": "manual"},
+    {"date": "2026-09-16", "flag": "🇯🇵", "evento": "Reunión BOJ — decisión de tasa", "star": false, "source": "manual"},
+
+    {"date": "2026-10-14", "flag": "🇺🇸", "evento": "CPI + PPI EE.UU. septiembre", "star": false, "source": "auto"},
+    {"date": "2026-10-15", "flag": "🇨🇳", "evento": "GDP Q3 China + CPI + PPI + IP (dato grande del trimestre)", "star": true, "source": "manual"},
+    {"date": "2026-10-28", "flag": "🇺🇸", "evento": "FOMC — decisión de tasa", "star": true, "source": "auto"},
+    {"date": "2026-10-29", "flag": "🇪🇺", "evento": "Reunión BCE — decisión de tasa", "star": false, "source": "manual"},
+    {"date": "2026-10-29", "flag": "🇺🇸", "evento": "GDP Q3 EE.UU. — avance", "star": true, "source": "auto"},
+    {"date": "2026-10-30", "flag": "🇯🇵", "evento": "Reunión BOJ — decisión de tasa", "star": false, "source": "manual"},
+
+    {"date": "2026-11-04", "flag": "🇧🇷", "evento": "COPOM Brasil — decisión SELIC", "star": true, "source": "manual"},
+    {"date": "2026-11-06", "flag": "🇺🇸", "evento": "Nóminas no agrícolas (NFP) EE.UU. octubre", "star": false, "source": "auto"},
+    {"date": "2026-11-10", "flag": "🇺🇸", "evento": "CPI EE.UU. octubre", "star": false, "source": "auto"},
+    {"date": "2026-11-16", "flag": "🇯🇵", "evento": "GDP Q3 Japón — 1ra estimación", "star": true, "source": "manual"},
+    {"date": "2026-11-16", "flag": "🇨🇳", "evento": "CPI + PPI + IP + Retail China octubre", "star": false, "source": "manual"},
+
+    {"date": "2026-12-09", "flag": "🇺🇸", "evento": "FOMC — decisión de tasa", "star": true, "source": "auto"},
+    {"date": "2026-12-09", "flag": "🇧🇷", "evento": "COPOM Brasil — decisión SELIC", "star": true, "source": "manual"},
+    {"date": "2026-12-10", "flag": "🇺🇸", "evento": "CPI EE.UU. noviembre", "star": false, "source": "auto"},
+    {"date": "2026-12-15", "flag": "🇨🇳", "evento": "CPI + PPI + IP + Retail China noviembre", "star": false, "source": "manual"},
+    {"date": "2026-12-17", "flag": "🇪🇺", "evento": "Reunión BCE — decisión de tasa", "star": false, "source": "manual"},
+    {"date": "2026-12-18", "flag": "🇯🇵", "evento": "Reunión BOJ — decisión de tasa", "star": false, "source": "manual"},
+    {"date": "2026-12-25", "flag": "🇯🇵", "evento": "CPI + Balanza Comercial Japón noviembre", "star": false, "source": "manual"}
+  ]
+}

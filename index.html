@@ -493,15 +493,29 @@ function renderBriefing(b) {
   // Bottom line
   document.getElementById('bottom-line').innerHTML = b.bottom_line;
 
-  // Agenda
-  document.getElementById('agenda-list').innerHTML = b.agenda.map(a =>
-    `${a.flag} ${a.bold ? '<strong>' : ''}${a.fecha}${a.bold ? '</strong>' : ''} — ${a.evento}<br>`
-  ).join('');
+  // Agenda → se carga aparte desde /api/agenda (fuente: data/calendar.json)
+}
+
+// ── LOAD AGENDA ───────────────────────────────────────────────────
+// Fuente única: data/calendar.json → /api/agenda filtra próximos eventos
+async function loadAgenda() {
+  try {
+    const res = await fetch('/api/agenda');
+    if (!res.ok) throw new Error('agenda error');
+    const { data: items } = await res.json();
+    document.getElementById('agenda-list').innerHTML = items.map(a =>
+      `${a.flag} ${a.bold ? '<strong>' : ''}${a.fecha}${a.bold ? '</strong>' : ''} — ${a.evento}<br>`
+    ).join('');
+  } catch(e) {
+    console.warn('agenda error:', e.message);
+    document.getElementById('agenda-list').innerHTML = '<span style="color:var(--t2)">Agenda no disponible temporalmente</span>';
+  }
 }
 
 // ── INIT ─────────────────────────────────────────────────────────
 loadMarkets();
 loadBriefing();
+loadAgenda();
 // Refresh prices every 2 minutes
 setInterval(loadMarkets, 120000);
 </script>
