@@ -380,10 +380,12 @@ function drawGauge(value){
 }
 
 // ── Historical chart ─────────────────────────────────────────────
+let histChartInstance = null;
 function buildHistChart(data){
   const ctx = document.getElementById('histChart').getContext('2d');
   const labels = data.map(d=>d.m);
-  new Chart(ctx, {
+  if (histChartInstance) { histChartInstance.destroy(); histChartInstance = null; }
+  histChartInstance = new Chart(ctx, {
     data: {
       labels,
       datasets:[
