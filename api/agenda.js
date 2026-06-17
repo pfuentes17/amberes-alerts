@@ -13,9 +13,12 @@ module.exports = function handler(req, res) {
     const file = path.join(__dirname, '..', 'data', 'calendar.json');
     const { events } = JSON.parse(fs.readFileSync(file, 'utf8'));
 
-    // "Hoy" en UTC (la fecha de calendario, sin hora)
-    const now = new Date();
-    const today = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+    // "Hoy" según la fecha de calendario en Argentina (UTC-3), no en UTC del servidor
+    const todayStr = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'America/Argentina/Buenos_Aires',
+      year: 'numeric', month: '2-digit', day: '2-digit'
+    }).format(new Date()); // -> "2026-06-16"
+    const today = new Date(todayStr + 'T00:00:00Z');
 
     const upcoming = events
       .map(e => ({ ...e, _d: new Date(e.date + 'T00:00:00Z') }))
