@@ -490,6 +490,9 @@ var D={
        saldo:[927,676,921,607,1144,1892,1265,1139,2523,2696]},
   isac:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],v:[1.2,0.0,-3.9,2.9,-0.1,-1.4,5.1,-4.0]},
   ipi:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],v:[-0.1,-0.9,-1.1,0.4,2.4,-3.0,3.7,-2.1]},
+  // UCII — Utilización Capacidad Instalada Industria — INDEC capacidad_06_26EA3331AEEE.pdf (publicado 16/06/2026)
+  ucii:{l:["Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
+        v:[55.0,58.6,54.4,58.6,58.9,59.0,58.2,59.4,61.1,61.0,57.7,53.8,53.6,54.6,59.8,59.9]},
   // IPI Minero — INDEC · Abril 2026 (publicado 08/06/2026)
   ipiMinero:{
     l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
@@ -784,7 +787,8 @@ function buildINDEC(){
     {l:'Desempleo Q4 25',v:'7.5%',c:'r',n:'EPH \u00b7 31 aglomerados'},
     {l:'ICA Abr 26 Super\u00e1vit',v:'$2.696M',c:'g',n:'28vo mes positivo'},
     {l:'Expo Mar 26 (r\u00e9cord)',v:'$8.645M',c:'g',n:'M\u00e1ximo hist\u00f3rico INDEC'},
-    {l:'ISAC Abr 26 MoM',v:'-4.0%',c:'r',n:'Construcci\u00f3n INDEC \u00b7 YoY -2.8%'}
+    {l:'ISAC Abr 26 MoM',v:'-4.0%',c:'r',n:'Construcci\u00f3n INDEC \u00b7 YoY -2.8%'},
+    {l:'UCII Abr 26',v:'59.9%',c:'g',n:'+1.3pp YoY \u00b7 Cap. instalada industria'}
   ]);
   $('tabrow').innerHTML=tabs(['Resumen','IPC \u00b7 Precios','EMAE \u00b7 Actividad','EPH \u00b7 Laboral','ICA \u00b7 Comercio','ISAC \u00b7 IPI \u00b7 Sectorial']);
   var cal=makeCal(D.cal.year,D.cal.month,D.cal.events);
@@ -829,11 +833,12 @@ function buildINDEC(){
       bx2(['bc2','bc3'],['Super\u00e1vit Comercial Mensual \u2014 28 meses positivos','Exportaciones por Grandes Rubros \u2014 PP / MOA / MOI / CyE'],'h190',['c-indec','']),
       cal)+
     panel2col('p5',
-      shdr('ISAC \u00b7 IPI \u00b7 Sectorial','INDEC \u2014 Ind. Sint. Actividad Construcción \u00b7 Ind. Prod. Industrial','-2.8%','ISAC Abr 2026 \u00b7 YoY','r')+
-      src('INDEC \u00b7 ISAC \u00b7 IPI Manufacturero \u00b7 Abril 2026')+
-      sr4([{l:'ISAC YoY Abr 26',v:'-2.8%',c:'r',n:'MoM desest -4.0% \u00b7 acum +2.1%',x:'indec'},{l:'ISAC MoM Mar 26',v:'+5.1%',c:'g',n:'Rebote fuerte construcci\u00f3n',x:'indec'},{l:'IPI Mfg YoY Abr 26',v:'-2.8%',c:'r',n:'MoM desest -2.1% \u00b7 acum -2.4%',x:'indec'},{l:'IPI Mfg MoM Mar 26',v:'+3.7%',c:'g',n:'Rebote industrial marzo',x:'indec'}])+
+      shdr('ISAC \u00b7 IPI \u00b7 UCII \u00b7 Sectorial','INDEC \u2014 Construcci\u00f3n \u00b7 Industria \u00b7 Capacidad Instalada','-2.8%','ISAC Abr 2026 \u00b7 YoY','r')+
+      src('INDEC \u00b7 ISAC \u00b7 IPI Manufacturero \u00b7 UCII \u00b7 Abril 2026')+
+      sr4([{l:'ISAC YoY Abr 26',v:'-2.8%',c:'r',n:'MoM desest -4.0% \u00b7 acum +2.1%',x:'indec'},{l:'IPI Mfg YoY Abr 26',v:'-2.8%',c:'r',n:'MoM desest -2.1% \u00b7 acum -2.4%',x:'indec'},{l:'UCII Abr 26',v:'59.9%',c:'g',n:'+1.3pp YoY \u00b7 vs 58.6% abr 25',x:'indec'},{l:'UCII Mar 26',v:'59.8%',c:'g',n:'+5.4pp YoY \u00b7 vs 54.4% mar 25',x:'indec'}])+
       bx2(['is1','is2'],['ISAC \u2014 Construcci\u00f3n MoM Desestacionalizado','IPI \u2014 Industria Manufacturera MoM'],'h240',['c-indec','c-indec'])+
       bx1('is3','h190','ISAC vs IPI vs EMAE \u2014 Comparativa sectorial 2025\u20132026','')+
+      bx1('is3b','h220','UCII \u2014 Utilizaci\u00f3n Capacidad Instalada Industria (%) \u00b7 Ene 2025\u2013Abr 2026','c-indec')+
       shdr('IPI Minero \u00b7 Energ\u00eda y Recursos','INDEC \u2014 Petr\u00f3leo \u00b7 Gas Natural \u00b7 Litio','+9.5%','IPI Minero Abr 2026 \u00b7 YoY','g')+
       src('INDEC \u00b7 ipi_minero_06_26 \u00b7 Abril 2026')+
       sr4([
@@ -887,6 +892,11 @@ function buildINDEC(){
       {label:'ISAC',data:D.isac.v,borderColor:ai,tension:0.3,pointRadius:3,pointBackgroundColor:ai},
       {label:'IPI Mfg',data:D.ipi.v,borderColor:C.OR,tension:0.3,pointRadius:3,pointBackgroundColor:C.OR},
       {label:'EMAE',data:D.emaeDesest.v.slice(-7),borderColor:C.G4,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4}
+    ],'%',undefined,ai);
+    // UCII — Utilización Capacidad Instalada Industria
+    line('is3b',D.ucii.l,[
+      {label:'UCII %',data:D.ucii.v,borderColor:ai,fill:true,backgroundColor:ai+'18',tension:0.4,pointRadius:4,
+       pointBackgroundColor:D.ucii.v.map(function(v){return v>=59?C.G4:v>=55?C.OR:C.RD;})}
     ],'%',undefined,ai);
     // IPI Minero / Energía / Litio
     bar('is4',D.ipiMinero.l,D.ipiMinero.v,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ai});
