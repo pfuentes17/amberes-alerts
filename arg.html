@@ -564,9 +564,9 @@ var D={
   credito:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
            v:[185.4,198.2,210.6,224.8,215.3,218.9,228.4,241.6]},
   // ── MECON ──────────────────────────────
-  fiscal:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
-          primario:[1420,1180,1350,1680,980,860,930,633],
-          financiero:[680,420,590,920,280,160,485,268]},
+  fiscal:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
+          primario:[1420,1180,1350,1680,980,860,930,633,1924],
+          financiero:[680,420,590,920,280,160,485,268,479]},
   // Recaudación: fuente RECA.xlsx (Drive/MECON) — valores en MM ARS
   // Serie nominal exacta del archivo + deflactada por índice BASE (Dic99=100)
   recaud:{
@@ -1516,7 +1516,7 @@ function buildMECON(){
     panel2col('p0',
       shdr('MECON \u2014 Ministerio de Econom\u00eda','Resultado fiscal \u00b7 Recaudaci\u00f3n \u00b7 Deuda \u00b7 Financiamiento','')+
       '<div class="og">'+
-        ocard('mm0','Resultado Fiscal','Super\u00e1vit Primario y Financiero','Sector P\u00fablico Nacional','$633B','g','Prim. Abr 2026','26/28 meses<br>super\u00e1vit',1)+
+        ocard('mm0','Resultado Fiscal','Super\u00e1vit Primario y Financiero','Sector P\u00fablico Nacional','$1.924B','g','Prim. May 2026','27/29 meses<br>super\u00e1vit',1)+
         ocard('mm1','Recaudaci\u00f3n AFIP','Ingresos tributarios totales','IVA \u00b7 Ganancias \u00b7 Seg. Social','$13.4B','m','Abr 2026','+29.6% YoY<br>Bajo inflaci\u00f3n',2)+
         ocard('mm2','Deuda P\u00fablica','Secretar\u00eda de Finanzas','Dic 2025 \u00b7 dato oficial','78.4%','r','del PBI','$455B USD<br>65% externa',3)+
         ocard('mm3','Financiamiento Tesoro','Licitaciones y colocaciones','Letes + Bonos + Rollover','$5.1B','m','Abr 2026','Rollover ~110%<br>Sostenido',4)+
@@ -1524,9 +1524,9 @@ function buildMECON(){
       '</div>',
       cal,true)+
     panel2col('p1',
-      shdr('Resultado Fiscal','Mecon \u2014 Sector P\u00fablico Nacional No Financiero','$633B','Super\u00e1vit Prim. Abr 2026','g')+
-      src('Secretar\u00eda de Hacienda \u00b7 Abr26.pdf + 1ertrim26.pdf \u00b7 Drive/MECON \u00b7 Base caja SPN')+
-      sr4([{l:'Sup. Primario Abr 26',v:'$633B',c:'g',n:'vs $930B Mar 26',x:'mecon'},{l:'Sup. Financiero Abr 26',v:'$268B',c:'g',n:'Incl. intereses',x:'mecon'},{l:'Racha super\u00e1vit',v:'26/28',c:'g',n:'Meses positivos',x:'mecon'},{l:'Meta FMI 2026',v:'1.4% PBI',c:'a',n:'Primario anual',x:'mecon'}])+
+      shdr('Resultado Fiscal','Mecon \u2014 Sector P\u00fablico Nacional No Financiero','$1.924B','Super\u00e1vit Prim. May 2026','g')+
+      src('Secretar\u00eda de Hacienda \u00b7 May26.pdf \u00b7 Drive/MECON \u00b7 Base caja SPN')+
+      sr4([{l:'Sup. Primario May 26',v:'$1.924B',c:'g',n:'vs $633B Abr 26',x:'mecon'},{l:'Sup. Financiero May 26',v:'$479B',c:'g',n:'Incl. intereses',x:'mecon'},{l:'Racha super\u00e1vit',v:'27/29',c:'g',n:'Meses positivos',x:'mecon'},{l:'Acum. Ene\u2013May 26',v:'0.7% PBI',c:'g',n:'Primario \u00b7 0.2% fin.',x:'mecon'}])+
       bx1('fi1','h240','Super\u00e1vit/D\u00e9ficit Primario % PBI \u2014 2004\u20132025 \u00b7 Fuente: MECON','c-mecon')+
       bx2(['fi2','fi3'],['Resultado Primario y Financiero % PBI \u2014 2004\u20132026 (\u00faltimo: meta FMI)','Ejecuci\u00f3n Mensual SPN 2026 \u2014 Res. Primario B ARS (Hacienda base caja)'],'h190',['c-mecon','']),
       cal)+
@@ -1585,8 +1585,8 @@ function buildMECON(){
     ],undefined,undefined,am);
     // fi3: Ejecución mensual SPN 2026 — B ARS (Hacienda base caja)
     // Ene-Mar: distribución estimada del Q1 ($5.467T acum); Abr: exacto
-    var exec26L=['Ene 26','Feb 26','Mar 26','Abr 26'];
-    var exec26P=[1640,1203,2624,633];  // primario B ARS
+    var exec26L=['Ene 26','Feb 26','Mar 26','Abr 26','May 26'];
+    var exec26P=[1640,1203,2624,633,1924];  // primario B ARS
     bar('fi3',exec26L,exec26P,{cf:function(v){return v>=0?C.G4:C.RD;},s:'B',ac:am});
     // Recaud
     bar('rc1',D.recaud.l,D.recaud.total,{c:am,s:'B',ac:am});
