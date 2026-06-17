@@ -128,7 +128,7 @@ footer a{color:var(--accent);text-decoration:none;}
   <div class="page-title">
     <div class="page-eyebrow">Indicador de Mercado · Argentina 2026</div>
     <h1 class="page-h1">Índice de <span>Confianza en la</span><br>Continuidad</h1>
-    <p class="page-sub">Mide la probabilidad implícita en los precios de los bonos soberanos de que Argentina honre sus compromisos durante la próxima gestión de gobierno (post dic. 2027). Un nivel más alto indica que el mercado no exige una prima de riesgo por la transición política.</p>
+    <p class="page-sub">Mide el exceso de spread entre bonos soberanos del Tesoro Nacional (AL29 vs. GD30), ajustado por el term premium estructural de 80bp. Captura la prima de riesgo político pura de la transición, eliminando el ruido cambiario y de emisor presente en metodologías previas.</p>
   </div>
 
   <!-- MAIN GRID -->
@@ -148,30 +148,30 @@ footer a{color:var(--accent);text-decoration:none;}
 
       <div class="comp-title">Componentes</div>
 
-      <!-- Esta gestión -->
+      <!-- Tramo transición -->
       <div style="margin-bottom:6px">
-        <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);margin-bottom:6px;text-align:left">Esta gestión (≤ dic 2027)</div>
+        <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:6px;text-align:left">Tramo transición (AL29 · jul 2029)</div>
         <div class="comp-row">
-          <div><span class="comp-name">BOPREALes</span> <span style="font-size:9px;color:var(--mu)">Vto. 2025–27 · prom.</span></div>
+          <div><span class="comp-name">AL29</span> <span style="font-size:9px;color:var(--mu)">Jul 2029 · ley local</span></div>
           <div style="display:flex;align-items:center;gap:8px">
             <span class="comp-ytm" id="ytm-bp">—</span>
-            <span class="comp-tag tag-current">ACTUAL</span>
+            <span class="comp-tag tag-current">ANCLA</span>
           </div>
         </div>
       </div>
 
       <!-- Próxima gestión -->
       <div>
-        <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#f87171;margin-bottom:6px;text-align:left">Próxima gestión (> dic 2027)</div>
+        <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#f87171;margin-bottom:6px;text-align:left">Próxima gestión (GD30 · jul 2030)</div>
         <div class="comp-row">
-          <div><span class="comp-name">GD29</span> <span style="font-size:9px;color:var(--mu)">Jul 2029</span></div>
+          <div><span class="comp-name">GD29</span> <span style="font-size:9px;color:var(--mu)">Jul 2029 · ley NY</span></div>
           <div style="display:flex;align-items:center;gap:8px">
             <span class="comp-ytm" id="ytm-gd29">—</span>
-            <span class="comp-tag tag-next">PRÓXIMO</span>
+            <span class="comp-tag tag-next">REF.</span>
           </div>
         </div>
         <div class="comp-row">
-          <div><span class="comp-name">GD30</span> <span style="font-size:9px;color:var(--mu)">Jul 2030</span></div>
+          <div><span class="comp-name">GD30</span> <span style="font-size:9px;color:var(--mu)">Jul 2030 · ley NY</span></div>
           <div style="display:flex;align-items:center;gap:8px">
             <span class="comp-ytm" id="ytm-gd30">—</span>
             <span class="comp-tag tag-next">PRÓXIMO</span>
@@ -181,16 +181,24 @@ footer a{color:var(--accent);text-decoration:none;}
 
       <div class="spread-box">
         <div class="spread-row">
-          <span class="spread-lbl">YTM Esta Gestión</span>
-          <span class="spread-val" id="ytm-current" style="color:var(--green)">—</span>
+          <span class="spread-lbl">YTM AL29 (transición)</span>
+          <span class="spread-val" id="ytm-current" style="color:var(--accent)">—</span>
         </div>
         <div class="spread-row">
-          <span class="spread-lbl">YTM Próxima Gestión</span>
+          <span class="spread-lbl">YTM GD30 (próxima gestión)</span>
           <span class="spread-val" id="ytm-next" style="color:#f87171">—</span>
         </div>
-        <div class="spread-row" style="border-top:1px solid var(--bdr2);padding-top:8px;margin-top:4px">
-          <span class="spread-lbl" style="font-weight:700;color:var(--txt)">Spread de Transición</span>
+        <div class="spread-row" style="border-top:1px solid var(--bdr2);padding-top:6px;margin-top:4px">
+          <span class="spread-lbl">Spread bruto</span>
           <span class="spread-val" id="spread-val" style="color:var(--yellow)">—</span>
+        </div>
+        <div class="spread-row">
+          <span class="spread-lbl" style="font-size:9px">Term premium neutral</span>
+          <span class="spread-val" style="font-size:11px;color:var(--mu)">−80bp</span>
+        </div>
+        <div class="spread-row" style="border-top:1px solid var(--bdr2);padding-top:6px;margin-top:2px">
+          <span class="spread-lbl" style="font-weight:700;color:var(--txt)">Spread político ajustado</span>
+          <span class="spread-val" id="spread-adj" style="color:var(--yellow)">—</span>
         </div>
       </div>
     </div>
@@ -200,7 +208,7 @@ footer a{color:var(--accent);text-decoration:none;}
       <div class="chart-header">
         <div>
           <div class="chart-title">Evolución histórica</div>
-          <div class="chart-sub">Índice mensual · Mar 2024 (emisión BOPREAL) – hoy · TIR real de bonos</div>
+          <div class="chart-sub">Índice mensual · Mar 2024–hoy · AL29 vs GD30 · ajustado por term premium 80bp</div>
         </div>
         <div style="display:flex;gap:16px;font-size:10px;align-items:center">
           <span style="color:var(--green)">━ Índice</span>
@@ -237,28 +245,34 @@ footer a{color:var(--accent);text-decoration:none;}
       <div class="info-title">Metodología</div>
       <div class="info-item">
         <div class="info-item-title">¿Qué mide?</div>
-        <div class="info-item-desc">El diferencial de rendimiento entre bonos soberanos que vencen dentro del mandato actual (≤ dic 2027) y los que vencen bajo la próxima gestión (> dic 2027). Captura la prima de riesgo político de la transición.</div>
+        <div class="info-item-desc">El exceso de spread entre bonos soberanos del Tesoro Nacional del período de transición (AL29, jul 2029) y los de la próxima gestión (GD30, jul 2030), una vez descontado el term premium estructural. Captura únicamente la prima de riesgo político.</div>
       </div>
       <div class="info-item">
-        <div class="info-item-title">Fórmula</div>
+        <div class="info-item-title">Fórmula (v2 — corregida)</div>
         <div class="formula-box">
-          <strong>YTM_actual</strong> = promedio(BOPREALes, vto ≤ 2027)<br>
-          <strong>YTM_próximo</strong> = promedio(GD29, GD30)<br>
-          <strong>Spread</strong> = YTM_próximo − YTM_actual<br>
-          <strong>Índice</strong> = max(0, min(100, 100 − Spread_bp / 5))
+          <strong>YTM_ancla</strong> = AL29 (Tesoro Nac., ley local, jul 2029)<br>
+          <strong>YTM_próximo</strong> = GD30 (Tesoro Nac., ley NY, jul 2030)<br>
+          <strong>Spread_bruto</strong> = YTM_próximo − YTM_ancla<br>
+          <strong>Term_premium</strong> = 80bp (ley local vs NY ~50bp + plazo ~30bp)<br>
+          <strong>Spread_político</strong> = Spread_bruto − Term_premium<br>
+          <strong>Índice</strong> = max(0, min(100, 100 − Spread_político / 5))
         </div>
+      </div>
+      <div class="info-item">
+        <div class="info-item-title">¿Por qué AL29 y no BOPREALes?</div>
+        <div class="info-item-desc">Los BOPREALes son instrumentos del BCRA (no del Tesoro Nacional), sujetos a regulaciones cambiarias independientes. Comparar BCRA vs. Tesoro introduce ruido de política cambiaria en la señal política. AL29 y GD30 son ambos Tesoro Nacional, eliminando ese sesgo.</div>
       </div>
       <div class="info-item">
         <div class="info-item-title">Interpretación</div>
         <div class="info-item-desc">
-          <span style="color:var(--green)">▲ 80–100</span> — Alta confianza. El mercado no exige prima por transición.<br>
-          <span style="color:var(--yellow)">◆ 50–80</span> — Moderada. Incertidumbre electoral priceada.<br>
-          <span style="color:#f87171">▼ 0–50</span> — Baja confianza. Prima de transición significativa.
+          <span style="color:var(--accent)">▲ 80–100</span> — Alta confianza. Spread político ≤ 100bp, el mercado no exige prima de transición relevante.<br>
+          <span style="color:var(--yellow)">◆ 50–80</span> — Moderada. Spread político 100–250bp, incertidumbre electoral priceada.<br>
+          <span style="color:#f87171">▼ 0–50</span> — Baja confianza. Spread político &gt; 250bp, prima de transición significativa.
         </div>
       </div>
       <div class="info-item">
-        <div class="info-item-title">Mandato actual</div>
-        <div class="info-item-desc">Gobierno de Javier Milei: 10 dic 2023 — 10 dic 2027. Fuentes: rendimientos.co · data912.com (BYMA ~15min delay)</div>
+        <div class="info-item-title">Mandato actual · Fuentes</div>
+        <div class="info-item-desc">Gobierno de Javier Milei: 10 dic 2023 — 10 dic 2027. Serie histórica pre-jun 2026: proxy con BOPREALes (emisor BCRA). Fuentes: rendimientos.co · data912.com (BYMA ~15min delay)</div>
       </div>
     </div>
 
@@ -278,39 +292,47 @@ footer a{color:var(--accent);text-decoration:none;}
 // Gestión actual = BOPREALes (vencen dentro del mandato) · Próxima = GD29/GD30 (globales)
 // YTM por flujos exactos, precios en USD. Arranca mar-2024 (emisión BOPREAL).
 const HIST = [
+  // ──────────────────────────────────────────────────────────────────────────────
+  // Nota: "ya" (pre jun-2026) corresponde a BOPREALes como proxy (BCRA, no Tesoro).
+  // Desde jun-2026 el live usa AL29 (Tesoro Nac, ley local). Índice corregido por
+  // term premium neutral de 80bp (ley local vs ley NY + diferencia de plazo).
+  // Fórmula corregida: idx = max(0, min(100, 100 − (Spread − 80bp) / 5))
+  // ──────────────────────────────────────────────────────────────────────────────
   {m:'Mar 24', ya:12.12, yn:22.14, sp:1002, idx:0},
-  {m:'Abr 24', ya:11.27, yn:19.15, sp:788, idx:0},
-  {m:'May 24', ya:11.9, yn:22.0, sp:1010, idx:0},
+  {m:'Abr 24', ya:11.27, yn:19.15, sp:788,  idx:0},
+  {m:'May 24', ya:11.9,  yn:22.0,  sp:1010, idx:0},
   {m:'Jun 24', ya:13.87, yn:24.52, sp:1065, idx:0},
-  {m:'Jul 24', ya:15.5, yn:25.54, sp:1003, idx:0},
+  {m:'Jul 24', ya:15.5,  yn:25.54, sp:1003, idx:0},
   {m:'Ago 24', ya:13.27, yn:24.57, sp:1130, idx:0},
-  {m:'Sep 24', ya:10.76, yn:20.3, sp:954, idx:0},
-  {m:'Oct 24', ya:10.34, yn:15.32, sp:498, idx:0},
-  {m:'Nov 24', ya:8.98, yn:13.39, sp:441, idx:12},
-  {m:'Dic 24', ya:9.82, yn:10.59, sp:78, idx:84},
-  {m:'Ene 25', ya:7.87, yn:11.29, sp:343, idx:31},
-  {m:'Feb 25', ya:8.96, yn:13.14, sp:417, idx:17},
-  {m:'Mar 25', ya:8.84, yn:13.54, sp:470, idx:6},
-  {m:'Abr 25', ya:8.89, yn:10.79, sp:189, idx:62},
-  {m:'May 25', ya:6.44, yn:10.92, sp:447, idx:11},
-  {m:'Jun 25', ya:6.41, yn:10.95, sp:455, idx:9},
-  {m:'Jul 25', ya:6.47, yn:12.15, sp:569, idx:0},
-  {m:'Ago 25', ya:7.4, yn:13.81, sp:640, idx:0},
-  {m:'Sep 25', ya:9.97, yn:18.88, sp:892, idx:0},
-  {m:'Oct 25', ya:7.54, yn:9.83, sp:228, idx:54},
-  {m:'Nov 25', ya:6.26, yn:8.1, sp:184, idx:63},
-  {m:'Dic 25', ya:6.39, yn:7.21, sp:82, idx:84},
-  {m:'Ene 26', ya:4.87, yn:6.68, sp:181, idx:64},
-  {m:'Feb 26', ya:5.53, yn:7.41, sp:188, idx:62},
-  {m:'Mar 26', ya:4.43, yn:7.22, sp:279, idx:44},
-  {m:'Abr 26', ya:6.51, yn:6.39, sp:-11, idx:100},
-  {m:'May 26', ya:4.98, yn:6.5, sp:152, idx:70},
-  {m:'Jun 26', ya:4.01, yn:5.91, sp:190, idx:62},
+  {m:'Sep 24', ya:10.76, yn:20.3,  sp:954,  idx:0},
+  {m:'Oct 24', ya:10.34, yn:15.32, sp:498,  idx:16},
+  {m:'Nov 24', ya:8.98,  yn:13.39, sp:441,  idx:28},
+  {m:'Dic 24', ya:9.82,  yn:10.59, sp:78,   idx:100},
+  {m:'Ene 25', ya:7.87,  yn:11.29, sp:343,  idx:47},
+  {m:'Feb 25', ya:8.96,  yn:13.14, sp:417,  idx:33},
+  {m:'Mar 25', ya:8.84,  yn:13.54, sp:470,  idx:22},
+  {m:'Abr 25', ya:8.89,  yn:10.79, sp:189,  idx:78},
+  {m:'May 25', ya:6.44,  yn:10.92, sp:447,  idx:27},
+  {m:'Jun 25', ya:6.41,  yn:10.95, sp:455,  idx:25},
+  {m:'Jul 25', ya:6.47,  yn:12.15, sp:569,  idx:2},
+  {m:'Ago 25', ya:7.4,   yn:13.81, sp:640,  idx:0},
+  {m:'Sep 25', ya:9.97,  yn:18.88, sp:892,  idx:0},
+  {m:'Oct 25', ya:7.54,  yn:9.83,  sp:228,  idx:70},
+  {m:'Nov 25', ya:6.26,  yn:8.1,   sp:184,  idx:79},
+  {m:'Dic 25', ya:6.39,  yn:7.21,  sp:82,   idx:100},
+  {m:'Ene 26', ya:4.87,  yn:6.68,  sp:181,  idx:80},
+  {m:'Feb 26', ya:5.53,  yn:7.41,  sp:188,  idx:78},
+  {m:'Mar 26', ya:4.43,  yn:7.22,  sp:279,  idx:60},
+  {m:'Abr 26', ya:6.51,  yn:6.39,  sp:-11,  idx:100},
+  {m:'May 26', ya:4.98,  yn:6.5,   sp:152,  idx:86},
+  {m:'Jun 26', ya:4.01,  yn:5.91,  sp:190,  idx:78},
 ];
 
 // ── Helpers ─────────────────────────────────────────────────────
 function p2(v){ return v!=null ? v.toFixed(2)+'%' : '—'; }
-function calcIndex(sp_bp){ return Math.max(0, Math.min(100, 100 - sp_bp/5)); }
+// Term premium neutral: 80bp (diferencial ley local vs NY ~50bp + term structure ~30bp)
+const TERM_PREMIUM_BP = 80;
+function calcIndex(sp_bp){ return Math.max(0, Math.min(100, 100 - (sp_bp - TERM_PREMIUM_BP)/5)); }
 function indexColor(idx){
   if(idx >= 75) return '#00e880';
   if(idx >= 50) return '#f5c518';
@@ -455,11 +477,9 @@ async function loadLive(){
     const sob   = sobRes ? (sobRes.data || sobRes) : [];
     const bonds = bondsRes ? (Array.isArray(bondsRes) ? bondsRes : bondsRes.data || []) : [];
 
-    // Esta gestión: AO27
-    const ao27 = sob.find(d=>d.symbol==='AO27');
-    // BOPREALes D series (cable, más líquidos)
-    const bpSyms = ['BPA7D','BPB7D','BPC7D','BPD7D'];
-    const bpData = bonds.filter(d=>bpSyms.includes(d.symbol));
+    // Esta gestión: AL29 (Tesoro Nacional, ley local — mismo emisor que GD30)
+    // AL29 = bono soberano USD ley local, vto jul-2029, misma estructura de pagos que GD29
+    const al29 = sob.find(d=>d.symbol==='AL29') || sob.find(d=>d.symbol==='AL29D');
 
     // Próxima gestión: GD29, GD30
     const gd29 = sob.find(d=>d.symbol==='GD29');
@@ -494,36 +514,33 @@ async function loadLive(){
       for(const [d,a] of am){ const n=days(d); if(n>0) cfs.push([n, a+out*0.01/2]); out-=a; }
       return cfs;
     }
-    // BOPREAL serie 1 (vto oct-27): cupón 5%/yr semestral, amort 50% abr-27 + 50% oct-27
-    function bpCF(){
-      const sched=[['2024-10-30',2.5],['2025-04-30',2.5],['2025-10-30',2.5],['2026-04-30',2.5],
-                   ['2026-10-30',2.5],['2027-04-30',52.5],['2027-10-30',51.25]];
-      return sched.map(([d,c])=>[days(d),c]).filter(([n])=>n>0);
-    }
+    // AL29: misma estructura de flujos que GD29 (amort 10×10% ene/jul 2025-2029, cupón 1%/yr)
+    function al29CF(){ return gd29CF(); }
 
     const ytmGD29 = irr(gd29?.price_usd ?? gd29?.c, gd29CF());
     const ytmGD30 = irr(gd30?.price_usd ?? gd30?.c, gd30CF());
 
-    // Gestión actual = solo BOPREALes (vencen dentro del mandato Milei)
-    const bpYtms = bpData.map(b=>irr(b.c ?? b.price_usd, bpCF())).filter(v=>v!=null);
-    const ytmCurrent = bpYtms.length ? bpYtms.reduce((a,b)=>a+b,0)/bpYtms.length : null;
+    // Tramo transición = AL29 (bono soberano ley local más cercano al fin de mandato)
+    const ytmAL29 = irr(al29?.price_usd ?? al29?.c ?? al29?.price, al29CF());
+    const ytmCurrent = ytmAL29;
 
-    // Próxima gestión = promedio GD29 + GD30 (globales)
-    const nextParts = [ytmGD29, ytmGD30].filter(v=>v!=null);
-    const ytmNext = nextParts.length ? nextParts.reduce((a,b)=>a+b,0)/nextParts.length : null;
+    // Próxima gestión = GD30 (ley NY, mismo emisor Tesoro — curva homogénea)
+    const ytmNext = ytmGD30;
 
     if(!ytmCurrent || !ytmNext) throw new Error('datos insuficientes');
 
     const spread_bp = Math.round((ytmNext - ytmCurrent) * 100);
+    const spread_adj = spread_bp - TERM_PREMIUM_BP;
     const idx = calcIndex(spread_bp);
 
     // Update UI
-    document.getElementById('ytm-bp').textContent    = ytmCurrent ? ytmCurrent.toFixed(2)+'%' : '—';
-    document.getElementById('ytm-gd29').textContent  = ytmGD29 ? ytmGD29.toFixed(2)+'%' : '—';
-    document.getElementById('ytm-gd30').textContent  = ytmGD30 ? ytmGD30.toFixed(2)+'%' : '—';
+    document.getElementById('ytm-bp').textContent     = ytmCurrent.toFixed(2)+'%';
+    document.getElementById('ytm-gd29').textContent   = ytmGD29 ? ytmGD29.toFixed(2)+'%' : '—';
+    document.getElementById('ytm-gd30').textContent   = ytmGD30.toFixed(2)+'%';
     document.getElementById('ytm-current').textContent = ytmCurrent.toFixed(2)+'%';
     document.getElementById('ytm-next').textContent    = ytmNext.toFixed(2)+'%';
     document.getElementById('spread-val').textContent  = spread_bp+'bp';
+    document.getElementById('spread-adj').textContent  = spread_adj+'bp';
     document.getElementById('idx-date').textContent    = 'Dato en vivo · ' + new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});
 
     drawGauge(idx);
@@ -549,6 +566,7 @@ async function loadLive(){
     document.getElementById('ytm-current').textContent = last.ya.toFixed(2)+'%';
     document.getElementById('ytm-next').textContent    = last.yn.toFixed(2)+'%';
     document.getElementById('spread-val').textContent  = last.sp+'bp';
+    document.getElementById('spread-adj').textContent  = (last.sp - TERM_PREMIUM_BP)+'bp';
     document.getElementById('idx-date').textContent    = 'Último dato disponible · '+last.m;
     document.getElementById('ldot').style.background  ='#f5c518';
     document.getElementById('lstat').textContent      ='Datos de referencia';
