@@ -4,31 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Índice de Gestión — Amberes</title>
-<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
 :root{
-  --bg:#111418;--s:#181d22;--s2:#1e242a;
-  --green:#00e880;--green2:rgba(0,232,128,.1);
-  --yellow:#f5c518;--red:#e84040;--blue:#38bdf8;--pu:#a78bfa;
-  --txt:#e8f0f8;--mu:rgba(232,240,248,.45);--dim:rgba(232,240,248,.18);
-  --bdr:rgba(0,232,128,.15);--bdr2:rgba(232,240,248,.07);
+  --bg:#080c14;--s:#0e1420;--s2:#141d2d;
+  --accent:#8b5cf6;--accent-dim:rgba(139,92,246,.12);
+  --up:#22d3a0;--yellow:#f5c518;--red:#f87171;--blue:#38bdf8;
+  --txt:#e2eaf4;--mu:rgba(226,234,244,.45);--dim:rgba(226,234,244,.18);
+  --bdr:rgba(139,92,246,.22);--bdr2:rgba(226,234,244,.07);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--bg);color:var(--txt);font-family:'Lato',sans-serif;min-height:100vh;}
+body{background:var(--bg);color:var(--txt);font-family:'IBM Plex Sans',sans-serif;min-height:100vh;}
 
-header{background:var(--s);border-bottom:3px solid var(--green);padding:0 44px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+header{background:var(--s);border-bottom:3px solid var(--accent);padding:0 44px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
 .logo-wrap{display:flex;align-items:center;gap:14px;}
-.logo-box{width:34px;height:34px;border:1.5px solid var(--green);display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--green);}
-.hdr-right{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);}
+.logo-box{width:34px;height:34px;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--accent);font-family:'IBM Plex Mono',monospace;font-weight:600;}
+.hdr-title{font-size:14px;font-weight:300;color:var(--txt);letter-spacing:.02em;}
+.hdr-title strong{font-weight:600;}
+.hdr-right{display:flex;align-items:center;gap:16px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mu);}
 .live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--yellow);margin-right:6px;animation:pulse 2s infinite;}
+.hdr-back{font-size:11px;color:rgba(255,255,255,.4);text-decoration:none;border:1px solid rgba(255,255,255,.12);border-radius:5px;padding:4px 10px;white-space:nowrap;transition:all .15s;}
+.hdr-back:hover{color:var(--txt);border-color:rgba(255,255,255,.3);}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
 
 .page{max-width:1200px;margin:0 auto;padding:36px 44px 60px;}
 
-.page-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:10px;}
-.page-h1{font-size:36px;font-weight:900;line-height:1.1;margin-bottom:8px;}
-.page-h1 span{color:var(--green);}
+.page-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:10px;}
+.page-h1{font-size:36px;font-weight:600;line-height:1.1;margin-bottom:8px;}
+.page-h1 span{color:var(--accent);}
 .page-sub{font-size:13px;color:var(--mu);font-weight:300;line-height:1.6;max-width:680px;margin-bottom:36px;}
 
 /* TOP ROW */
@@ -36,8 +40,8 @@ header{background:var(--s);border-bottom:3px solid var(--green);padding:0 44px;h
 
 /* MAIN INDEX CARD */
 .main-card{background:var(--s);border:1px solid var(--bdr);border-radius:10px;padding:28px;text-align:center;}
-.main-label{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:16px;}
-.main-num{font-size:72px;font-weight:900;line-height:1;transition:color .5s;margin-bottom:2px;}
+.main-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:16px;}
+.main-num{font-family:'IBM Plex Mono',monospace;font-size:72px;font-weight:600;line-height:1;transition:color .5s;margin-bottom:2px;}
 .main-max{font-size:12px;color:var(--mu);}
 .main-date{font-size:11px;color:var(--mu);margin-top:10px;margin-bottom:20px;}
 .main-desc{font-size:12px;color:var(--mu);font-weight:300;line-height:1.5;padding:12px;background:var(--s2);border-radius:6px;}
@@ -45,18 +49,18 @@ header{background:var(--s);border-bottom:3px solid var(--green);padding:0 44px;h
 /* CHART CARD */
 .chart-card{background:var(--s);border:1px solid var(--bdr);border-radius:10px;padding:24px;}
 .chart-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
-.chart-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);}
+.chart-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--accent);}
 .chart-sub{font-size:11px;color:var(--mu);margin-top:3px;}
 .chart-box{height:260px;}
 
 /* COMPONENTS GRID */
 .comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;}
 .comp-card{background:var(--s);border:1px solid var(--bdr2);border-radius:10px;padding:18px;position:relative;overflow:hidden;}
-.comp-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--green);}
-.comp-name{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:8px;}
-.comp-val{font-size:24px;font-weight:900;line-height:1;margin-bottom:4px;}
+.comp-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--accent);}
+.comp-name{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:8px;}
+.comp-val{font-family:'IBM Plex Mono',monospace;font-size:24px;font-weight:600;line-height:1;margin-bottom:4px;}
 .comp-raw{font-size:11px;color:var(--mu);margin-bottom:12px;}
-.comp-bar-wrap{height:4px;background:rgba(232,240,248,.1);border-radius:2px;margin-bottom:6px;}
+.comp-bar-wrap{height:4px;background:rgba(226,234,244,.1);border-radius:2px;margin-bottom:6px;}
 .comp-bar{height:100%;border-radius:2px;transition:width .6s;}
 .comp-weight{font-size:9px;color:var(--dim);}
 .comp-source{font-size:9px;color:var(--dim);margin-top:2px;}
@@ -64,21 +68,21 @@ header{background:var(--s);border-bottom:3px solid var(--green);padding:0 44px;h
 /* BOTTOM */
 .bottom-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
 .info-card{background:var(--s);border:1px solid var(--bdr2);border-radius:10px;padding:22px;}
-.info-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:14px;}
+.info-title{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:14px;}
 
 /* SPIDER */
 .spider-box{height:260px;}
 
 /* TABLE */
 .hist-table{width:100%;border-collapse:collapse;}
-.hist-table th{font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--mu);padding:6px 8px;border-bottom:1px solid var(--bdr2);text-align:right;}
+.hist-table th{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:var(--mu);padding:6px 8px;border-bottom:1px solid var(--bdr2);text-align:right;}
 .hist-table th:first-child{text-align:left;}
-.hist-table td{font-size:11px;padding:7px 8px;border-bottom:1px solid rgba(232,240,248,.04);text-align:right;}
+.hist-table td{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:7px 8px;border-bottom:1px solid rgba(226,234,244,.04);text-align:right;}
 .hist-table td:first-child{text-align:left;color:var(--mu);}
-.hist-table tbody tr:hover td{background:rgba(0,232,128,.04);}
+.hist-table tbody tr:hover td{background:rgba(139,92,246,.05);}
 
 footer{border-top:1px solid var(--bdr2);margin-top:40px;padding-top:16px;display:flex;justify-content:space-between;font-size:10px;color:var(--dim);}
-footer a{color:var(--green);text-decoration:none;}
+footer a{color:var(--accent);text-decoration:none;}
 </style>
 </head>
 <body>
@@ -86,14 +90,12 @@ footer a{color:var(--green);text-decoration:none;}
 <header>
   <div class="logo-wrap">
     <div class="logo-box">A</div>
-    <div style="font-size:17px;font-weight:300">
-      <strong style="font-weight:700">Amberes</strong> · Research
-    </div>
+    <div class="hdr-title"><strong>Amberes</strong> · Research</div>
   </div>
   <div class="hdr-right">
     <span class="live-dot" id="ldot"></span>
-    <span id="lstat">Cargando…</span>
-    <a href="/" style="margin-left:16px;font-size:11px;color:rgba(255,255,255,.45);text-decoration:none;border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:4px 10px;white-space:nowrap" onmouseover="this.style.color='rgba(255,255,255,.9)'" onmouseout="this.style.color='rgba(255,255,255,.45)'">&#8592; Inicio</a>
+    <span id="lstat">Datos en vivo</span>
+    <a href="/" class="hdr-back">&#8592; Inicio</a>
   </div>
 </header>
 
