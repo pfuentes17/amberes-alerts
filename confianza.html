@@ -128,7 +128,7 @@ footer a{color:var(--accent);text-decoration:none;}
   <div class="page-title">
     <div class="page-eyebrow">Indicador de Mercado · Argentina 2026</div>
     <h1 class="page-h1">Índice de <span>Confianza en la</span><br>Continuidad</h1>
-    <p class="page-sub">Mide el exceso de spread entre bonos soberanos del Tesoro Nacional (AL29 vs. GD30), ajustado por el term premium estructural de 80bp. Captura la prima de riesgo político pura de la transición, eliminando el ruido cambiario y de emisor presente en metodologías previas.</p>
+    <p class="page-sub">Mide el exceso de spread entre bonos soberanos del Tesoro Nacional (AO27 vs. GD30), ajustado por el term premium estructural de 80bp. AO27 vence en jul 2027, dentro del mandato actual. GD30 vence en jul 2030, bajo la próxima gestión. Captura la prima de riesgo político pura.</p>
   </div>
 
   <!-- MAIN GRID -->
@@ -150,9 +150,9 @@ footer a{color:var(--accent);text-decoration:none;}
 
       <!-- Tramo transición -->
       <div style="margin-bottom:6px">
-        <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:6px;text-align:left">Tramo transición (AL29 · jul 2029)</div>
+        <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:6px;text-align:left">Esta gestión (AO27 · jul 2027)</div>
         <div class="comp-row">
-          <div><span class="comp-name">AL29</span> <span style="font-size:9px;color:var(--mu)">Jul 2029 · ley local</span></div>
+          <div><span class="comp-name">AO27</span> <span style="font-size:9px;color:var(--mu)">Jul 2027 · ley local</span></div>
           <div style="display:flex;align-items:center;gap:8px">
             <span class="comp-ytm" id="ytm-bp">—</span>
             <span class="comp-tag tag-current">ANCLA</span>
@@ -181,7 +181,7 @@ footer a{color:var(--accent);text-decoration:none;}
 
       <div class="spread-box">
         <div class="spread-row">
-          <span class="spread-lbl">YTM AL29 (transición)</span>
+          <span class="spread-lbl">YTM AO27 (esta gestión)</span>
           <span class="spread-val" id="ytm-current" style="color:var(--accent)">—</span>
         </div>
         <div class="spread-row">
@@ -208,7 +208,7 @@ footer a{color:var(--accent);text-decoration:none;}
       <div class="chart-header">
         <div>
           <div class="chart-title">Evolución histórica</div>
-          <div class="chart-sub">Índice mensual · Mar 2024–hoy · AL29 vs GD30 · ajustado por term premium 80bp</div>
+          <div class="chart-sub">Índice mensual · Mar 2024–hoy · AO27 vs GD30 · ajustado por term premium 80bp</div>
         </div>
         <div style="display:flex;gap:16px;font-size:10px;align-items:center">
           <span style="color:var(--green)">━ Índice</span>
@@ -250,17 +250,17 @@ footer a{color:var(--accent);text-decoration:none;}
       <div class="info-item">
         <div class="info-item-title">Fórmula (v2 — corregida)</div>
         <div class="formula-box">
-          <strong>YTM_ancla</strong> = AL29 (Tesoro Nac., ley local, jul 2029)<br>
+          <strong>YTM_actual</strong> = AO27 (Tesoro Nac., ley local, jul 2027)<br>
           <strong>YTM_próximo</strong> = GD30 (Tesoro Nac., ley NY, jul 2030)<br>
-          <strong>Spread_bruto</strong> = YTM_próximo − YTM_ancla<br>
+          <strong>Spread_bruto</strong> = YTM_próximo − YTM_actual<br>
           <strong>Term_premium</strong> = 80bp (ley local vs NY ~50bp + plazo ~30bp)<br>
           <strong>Spread_político</strong> = Spread_bruto − Term_premium<br>
           <strong>Índice</strong> = max(0, min(100, 100 − Spread_político / 5))
         </div>
       </div>
       <div class="info-item">
-        <div class="info-item-title">¿Por qué AL29 y no BOPREALes?</div>
-        <div class="info-item-desc">Los BOPREALes son instrumentos del BCRA (no del Tesoro Nacional), sujetos a regulaciones cambiarias independientes. Comparar BCRA vs. Tesoro introduce ruido de política cambiaria en la señal política. AL29 y GD30 son ambos Tesoro Nacional, eliminando ese sesgo.</div>
+        <div class="info-item-title">¿Por qué AO27 y no BOPREALes?</div>
+        <div class="info-item-desc">Los BOPREALes son instrumentos del BCRA (no del Tesoro Nacional), sujetos a regulaciones cambiarias. AO27 es Tesoro Nacional, ley local, vence jul 2027 (dentro del mandato actual) — comparación limpia contra GD30 del mismo emisor soberano. El diferencial de ley y plazo se ajusta vía term premium.</div>
       </div>
       <div class="info-item">
         <div class="info-item-title">Interpretación</div>
@@ -477,9 +477,8 @@ async function loadLive(){
     const sob   = sobRes ? (sobRes.data || sobRes) : [];
     const bonds = bondsRes ? (Array.isArray(bondsRes) ? bondsRes : bondsRes.data || []) : [];
 
-    // Esta gestión: AL29 (Tesoro Nacional, ley local — mismo emisor que GD30)
-    // AL29 = bono soberano USD ley local, vto jul-2029, misma estructura de pagos que GD29
-    const al29 = sob.find(d=>d.symbol==='AL29') || sob.find(d=>d.symbol==='AL29D');
+    // Esta gestión: AO27 (Tesoro Nacional, ley local, vto jul-2027 — dentro del mandato Milei)
+    const ao27 = sob.find(d=>d.symbol==='AO27') || sob.find(d=>d.symbol==='AO27D');
 
     // Próxima gestión: GD29, GD30
     const gd29 = sob.find(d=>d.symbol==='GD29');
@@ -514,15 +513,21 @@ async function loadLive(){
       for(const [d,a] of am){ const n=days(d); if(n>0) cfs.push([n, a+out*0.01/2]); out-=a; }
       return cfs;
     }
-    // AL29: misma estructura de flujos que GD29 (amort 10×10% ene/jul 2025-2029, cupón 1%/yr)
-    function al29CF(){ return gd29CF(); }
+    // AO27: Bonar 2027 — Tesoro Nacional, ley local, vto jul-2027 (dentro del mandato Milei)
+    // Estructura: amort 4×25% (ene/jul 2026-2027), cupón 3.875%/yr semestral
+    function ao27CF(){
+      const am=[['2026-01-09',25],['2026-07-09',25],['2027-01-09',25],['2027-07-09',25]];
+      const cfs=[]; let out=100;
+      for(const [d,a] of am){ const n=days(d); if(n>0) cfs.push([n, a+out*0.03875/2]); out-=a; }
+      return cfs;
+    }
 
     const ytmGD29 = irr(gd29?.price_usd ?? gd29?.c, gd29CF());
     const ytmGD30 = irr(gd30?.price_usd ?? gd30?.c, gd30CF());
 
-    // Tramo transición = AL29 (bono soberano ley local más cercano al fin de mandato)
-    const ytmAL29 = irr(al29?.price_usd ?? al29?.c ?? al29?.price, al29CF());
-    const ytmCurrent = ytmAL29;
+    // Esta gestión = AO27 (Tesoro Nacional, ley local, vto jul-2027 — dentro del mandato)
+    const ytmAO27 = irr(ao27?.price_usd ?? ao27?.c ?? ao27?.price, ao27CF());
+    const ytmCurrent = ytmAO27;
 
     // Próxima gestión = GD30 (ley NY, mismo emisor Tesoro — curva homogénea)
     const ytmNext = ytmGD30;
