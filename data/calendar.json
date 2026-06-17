@@ -1,6 +1,7 @@
 {
   "_comment": "Fuente única de verdad del calendario macro internacional 2026. La agenda del dashboard se genera automáticamente desde acá vía /api/agenda. Mantener sólo este archivo. star=true marca datos clave del trimestre. source: auto=la API del dashboard lo actualiza sola | manual=requiere update del seed.",
   "events": [
+    {"date": "2026-06-17", "flag": "🇺🇸", "evento": "FOMC — decisión de tasa (hold 3.50–3.75% · debut Kevin Warsh)", "star": true, "source": "auto"},
     {"date": "2026-06-17", "flag": "🇧🇷", "evento": "COPOM Brasil — decisión SELIC (14.50% → ¿14.25%?)", "time": "18:30 BRT", "star": true,  "source": "manual"},
     {"date": "2026-06-17", "flag": "🇪🇺", "evento": "HICP Final Eurozona mayo (confirma BCE +25pb a 2.50%)", "star": false, "source": "manual"},
     {"date": "2026-06-25", "flag": "🇺🇸", "evento": "GDP EE.UU. Q1 2026 — 3ra estimación", "star": false, "source": "auto"},
