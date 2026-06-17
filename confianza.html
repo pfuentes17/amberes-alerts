@@ -513,13 +513,11 @@ async function loadLive(){
       for(const [d,a] of am){ const n=days(d); if(n>0) cfs.push([n, a+out*0.01/2]); out-=a; }
       return cfs;
     }
-    // AO27: Bonar 2027 — Tesoro Nacional, ley local, vto jul-2027 (dentro del mandato Milei)
-    // Estructura: amort 4×25% (ene/jul 2026-2027), cupón 3.875%/yr semestral
+    // AO27: Bono Tesoro Nacional USD, ley local, vto jul-2027, cupón 8.75%/yr semestral, bullet
+    // Price actual: ~102.85 → yield implícito ~5.5% (verificado por IRR)
     function ao27CF(){
-      const am=[['2026-01-09',25],['2026-07-09',25],['2027-01-09',25],['2027-07-09',25]];
-      const cfs=[]; let out=100;
-      for(const [d,a] of am){ const n=days(d); if(n>0) cfs.push([n, a+out*0.03875/2]); out-=a; }
-      return cfs;
+      return [['2027-01-09', 4.375], ['2027-07-09', 104.375]]
+        .map(([d,c])=>[days(d),c]).filter(([n])=>n>0);
     }
 
     const ytmGD29 = irr(gd29?.price_usd ?? gd29?.c, gd29CF());
