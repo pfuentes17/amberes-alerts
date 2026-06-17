@@ -463,16 +463,16 @@ function setVista(v){
 // ══════════════════════════════════════════
 var D={
   // ── INDEC ──────────────────────────────
-  // IPC: datos verificados del PDF INDEC ipc_05_2680B692D2F5-2.pdf
+  // IPC: datos verificados del PDF INDEC ipc_05_2680B692D2F5-2.pdf + mayo 2026 INDEC
   // Cuadro 13 (categorías) + serie mensual del gráfico
-  ipc:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
-       v:[1.5,1.6,1.9,1.9,2.1,2.3,2.5,2.8,2.9,2.9,3.4,2.6]},
-  nucleo:   [1.4,1.5,1.7,1.8,1.9,2.0,2.3,2.6,2.6,3.1,3.2,2.3],
-  regulados:[1.0,2.0,2.4,2.2,2.1,2.9,3.5,3.4,2.4,4.3,5.1,4.7],
-  estacion: [5.8,-0.5,0.8,1.0,2.4,2.4,0.4,2.2,5.7,-1.3,1.0,0.0],
-  // IPC YoY: gráfico PDF "43,5 39,4 36,6 33,6 31,8 31,3 31,4 31,5 32,4 33,1 32,6 32,4"
-  ipcYoY:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
-           v:[43.5,39.4,36.6,33.6,31.8,31.3,31.4,31.5,32.4,33.1,32.6,32.4]},
+  ipc:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
+       v:[1.5,1.6,1.9,1.9,2.1,2.3,2.5,2.8,2.9,2.9,3.4,2.6,2.1]},
+  nucleo:   [1.4,1.5,1.7,1.8,1.9,2.0,2.3,2.6,2.6,3.1,3.2,2.3,1.9],
+  regulados:[1.0,2.0,2.4,2.2,2.1,2.9,3.5,3.4,2.4,4.3,5.1,4.7,2.4],
+  estacion: [5.8,-0.5,0.8,1.0,2.4,2.4,0.4,2.2,5.7,-1.3,1.0,0.0,2.1],
+  // IPC YoY: "43,5 39,4 36,6 33,6 31,8 31,3 31,4 31,5 32,4 33,1 32,6 32,4 33,2"
+  ipcYoY:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
+           v:[43.5,39.4,36.6,33.6,31.8,31.3,31.4,31.5,32.4,33.1,32.6,32.4,33.2]},
   emae:{l:["Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],
         v:[7.8,5.2,6.3,2.8,2.2,4.8,3.1,-0.3,3.3,1.5,-2.0,5.5]},
   emaeDesest:{l:["Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],
@@ -780,8 +780,8 @@ async function loadLiveData() {
 // ══ BUILD INDEC ══════════════════════════════════════════════════
 function buildINDEC(){
   $('kstrip').innerHTML=kpis([
-    {l:'IPC Abr 26 MoM',v:'2.6%',c:'r',n:'N\u00facleo 2.3% \u00b7 Reg. 4.7%'},
-    {l:'IPC Abr 26 YoY',v:'32.4%',c:'r',n:'Acum. 2026: 12.3%'},
+    {l:'IPC May 26 MoM',v:'2.1%',c:'r',n:'N\u00facleo 1.9% \u00b7 Reg. 2.4%'},
+    {l:'IPC May 26 YoY',v:'33.2%',c:'r',n:'Acum. 2026: 14.8%'},
     {l:'EMAE Mar 26 YoY',v:'+5.5%',c:'g',n:'Desest. MoM +3.5%'},
     {l:'EMAE Desest. Feb 26',v:'-2.7%',c:'r',n:'MoM sin estacionalidad'},
     {l:'Desempleo Q4 25',v:'7.5%',c:'r',n:'EPH \u00b7 31 aglomerados'},
@@ -796,7 +796,7 @@ function buildINDEC(){
     panel2col('p0',
       shdr('INDEC &mdash; Estad\u00edsticas Oficiales','Todos los indicadores publicados por el INDEC &middot; Junio 2026','')+
       '<div class="og">'+
-        ocard('om0','IPC \u00b7 Precios','&Iacute;ndice Precios Consumidor','MoM / YoY / Categor\u00edas','2.6%','r','Abr 2026','N\u00facleo 2.3%<br>Reg. 4.7%',1)+
+        ocard('om0','IPC \u00b7 Precios','&Iacute;ndice Precios Consumidor','MoM / YoY / Categor\u00edas','2.1%','r','May 2026','N\u00facleo 1.9%<br>Reg. 2.4%',1)+
         ocard('om1','EMAE \u00b7 Actividad','Est. Mensual Actividad Ec.','YoY / Desestacionalizado','+5.5%','g','Mar 2026','Desest. +3.5%<br>M\u00e1x. hist.',2)+
         ocard('om2','EPH \u00b7 Laboral','Encuesta Perm. Hogares','Desempleo / Actividad / Empleo','7.5%','r','Q4 2025','Actividad 48.1%<br>Subocup. 10.8%',3)+
         ocard('om3','ICA \u00b7 Comercio','Intercambio Comercial','Bienes: Expo / Impo / Saldo','$2.696M','g','Abr 2026','Expo $8.900M<br>+33.6% YoY',4)+
@@ -805,9 +805,9 @@ function buildINDEC(){
       '</div>',
       cal,true)+
     panel2col('p1',
-      shdr('IPC \u00b7 &Iacute;ndice de Precios al Consumidor','INDEC &mdash; Nivel general y categor\u00edas MoM','2.6%','Abr 2026 \u00b7 MoM','r')+
+      shdr('IPC \u00b7 &Iacute;ndice de Precios al Consumidor','INDEC &mdash; Nivel general y categor\u00edas MoM','2.1%','May 2026 \u00b7 MoM','r')+
       src('INDEC \u00b7 Informe IPC Abr 2026 (ipc_05_2680B692D2F5.pdf)')+
-      sr4([{l:'General Abr 26',v:'2.6%',c:'r',n:'Desaceleraci\u00f3n vs 3.4% Mar',x:'indec'},{l:'N\u00facleo Abr 26',v:'2.3%',c:'r',n:'Ex regulados y estacionales',x:'indec'},{l:'Regulados Abr 26',v:'4.7%',c:'r',n:'Transp. +4.4% \u00b7 Electr.',x:'indec'},{l:'Estacionales Abr 26',v:'0.0%',c:'g',n:'Sin variaci\u00f3n neta',x:'indec'}])+
+      sr4([{l:'General May 26',v:'2.1%',c:'r',n:'Desaceleraci\u00f3n vs 2.6% Abr',x:'indec'},{l:'N\u00facleo May 26',v:'1.9%',c:'r',n:'Ex regulados y estacionales',x:'indec'},{l:'Regulados May 26',v:'2.4%',c:'r',n:'Combustibles \u00b7 tarifas',x:'indec'},{l:'Estacionales May 26',v:'2.1%',c:'r',n:'Indumentaria y turismo',x:'indec'}])+
       bx1('ci1','h240','IPC: Nivel General vs N\u00facleo vs Regulados vs Estacionales \u2014 MoM','c-indec')+
       bx2(['ci2','ci3'],['IPC General YoY \u2014 Desaceleraci\u00f3n desde 120% (May 25) a 32.4%','Contribuci\u00f3n por categor\u00eda \u2014 Abr 2026'],'h190',['c-indec','c-rd']),
       cal)+
