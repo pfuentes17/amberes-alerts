@@ -208,7 +208,7 @@ footer a{color:var(--accent);text-decoration:none;}
       <div class="chart-header">
         <div>
           <div class="chart-title">Evolución histórica</div>
-          <div class="chart-sub">Índice mensual · Mar 2024–hoy · AO27 vs GD30 · ajustado por term premium 80bp</div>
+          <div class="chart-sub">Índice mensual · Nov 2024–hoy (desde emisión AO27) · AO27 vs GD30 · ajustado por term premium 80bp</div>
         </div>
         <div style="display:flex;gap:16px;font-size:10px;align-items:center">
           <span style="color:var(--green)">━ Índice</span>
@@ -250,7 +250,7 @@ footer a{color:var(--accent);text-decoration:none;}
       <div class="info-item">
         <div class="info-item-title">Fórmula (v2 — corregida)</div>
         <div class="formula-box">
-          <strong>YTM_actual</strong> = AO27 (Tesoro Nac., ley local, jul 2027)<br>
+          <strong>YTM_actual</strong> = AO27 (Bonar 2027, Tesoro Nac., ley local, oct 2027, cpn 8.5%)<br>
           <strong>YTM_próximo</strong> = GD30 (Tesoro Nac., ley NY, jul 2030)<br>
           <strong>Spread_bruto</strong> = YTM_próximo − YTM_actual<br>
           <strong>Term_premium</strong> = 80bp (ley local vs NY ~50bp + plazo ~30bp)<br>
@@ -272,7 +272,7 @@ footer a{color:var(--accent);text-decoration:none;}
       </div>
       <div class="info-item">
         <div class="info-item-title">Mandato actual · Fuentes</div>
-        <div class="info-item-desc">Gobierno de Javier Milei: 10 dic 2023 — 10 dic 2027. Serie histórica pre-jun 2026: proxy con BOPREALes (emisor BCRA). Fuentes: rendimientos.co · data912.com (BYMA ~15min delay)</div>
+        <div class="info-item-desc">Gobierno de Javier Milei: 10 dic 2023 — 10 dic 2027. Serie desde emisión de AO27 (nov 2024). Fuentes: Secretaría de Finanzas · BYMA · data912.com (~15min delay)</div>
       </div>
     </div>
 
@@ -292,22 +292,13 @@ footer a{color:var(--accent);text-decoration:none;}
 // Gestión actual = BOPREALes (vencen dentro del mandato) · Próxima = GD29/GD30 (globales)
 // YTM por flujos exactos, precios en USD. Arranca mar-2024 (emisión BOPREAL).
 const HIST = [
-  // ──────────────────────────────────────────────────────────────────────────────
-  // Nota: "ya" (pre jun-2026) corresponde a BOPREALes como proxy (BCRA, no Tesoro).
-  // Desde jun-2026 el live usa AL29 (Tesoro Nac, ley local). Índice corregido por
-  // term premium neutral de 80bp (ley local vs ley NY + diferencia de plazo).
-  // Fórmula corregida: idx = max(0, min(100, 100 − (Spread − 80bp) / 5))
-  // ──────────────────────────────────────────────────────────────────────────────
-  {m:'Mar 24', ya:12.12, yn:22.14, sp:1002, idx:0},
-  {m:'Abr 24', ya:11.27, yn:19.15, sp:788,  idx:0},
-  {m:'May 24', ya:11.9,  yn:22.0,  sp:1010, idx:0},
-  {m:'Jun 24', ya:13.87, yn:24.52, sp:1065, idx:0},
-  {m:'Jul 24', ya:15.5,  yn:25.54, sp:1003, idx:0},
-  {m:'Ago 24', ya:13.27, yn:24.57, sp:1130, idx:0},
-  {m:'Sep 24', ya:10.76, yn:20.3,  sp:954,  idx:0},
-  {m:'Oct 24', ya:10.34, yn:15.32, sp:498,  idx:16},
-  {m:'Nov 24', ya:8.98,  yn:13.39, sp:441,  idx:28},
-  {m:'Dic 24', ya:9.82,  yn:10.59, sp:78,   idx:100},
+  // ─────────────────────────────────────────────────────────────────────────────
+  // Serie desde emisión de AO27 (~nov 2024). "ya" = TIR AO27 (Bonar 2027 USD).
+  // "yn" = TIR GD30. Spread ajustado por term premium 80bp (ley local vs NY + plazo).
+  // Fórmula: idx = max(0, min(100, 100 − (Spread_bruto − 80bp) / 5))
+  // ─────────────────────────────────────────────────────────────────────────────
+  {m:'Nov 24', ya:11.2, yn:13.39, sp:219,  idx:75},
+  {m:'Dic 24', ya:9.5,  yn:10.59, sp:109,  idx:94},
   {m:'Ene 25', ya:7.87,  yn:11.29, sp:343,  idx:47},
   {m:'Feb 25', ya:8.96,  yn:13.14, sp:417,  idx:33},
   {m:'Mar 25', ya:8.84,  yn:13.54, sp:470,  idx:22},
@@ -513,10 +504,11 @@ async function loadLive(){
       for(const [d,a] of am){ const n=days(d); if(n>0) cfs.push([n, a+out*0.01/2]); out-=a; }
       return cfs;
     }
-    // AO27: Bono Tesoro Nacional USD, ley local, vto jul-2027, cupón 8.75%/yr semestral, bullet
-    // Price actual: ~102.85 → yield implícito ~5.5% (verificado por IRR)
+    // AO27: Bonar 2027 USD — Tesoro Nacional, ley local, cupón 8.5%/yr semestral
+    // Vto. octubre 2027. Cupones: Abr/Oct. Price actual ~102.85 → yield ~6.5%
+    // Fuente: Rava / Secretaría de Finanzas
     function ao27CF(){
-      return [['2027-01-09', 4.375], ['2027-07-09', 104.375]]
+      return [['2026-10-09', 4.25], ['2027-04-09', 4.25], ['2027-10-09', 104.25]]
         .map(([d,c])=>[days(d),c]).filter(([n])=>n>0);
     }
 
