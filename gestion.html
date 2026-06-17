@@ -423,7 +423,7 @@ async function loadLive(){
       fetch('https://api.argentinadatos.com/v1/finanzas/indices/riesgo-pais').then(r=>r.ok?r.json():null),
       fetch('https://api.argentinadatos.com/v1/finanzas/indices/inflacion').then(r=>r.ok?r.json():null),
       fetch('https://dolarapi.com/v1/dolares').then(r=>r.ok?r.json():null),
-      fetch('https://api.bcra.gob.ar/estadisticas/v3.0/monetarias/1?limit=1',{headers:{'Accept-Language':'es-AR'}}).then(r=>r.ok?r.json():null),
+      fetch('https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/1?limit=1',{headers:{'Accept-Language':'es-AR'}}).then(r=>r.ok?r.json():null),
       // Salarios registrados (pub+priv) + IPC para calcular real YoY
       fetch('https://apis.datos.gob.ar/series/api/series/?ids=149.1_TL_REGIADO_OCTU_0_16,148.3_INIVELNAL_DICI_M_26&limit=26&sort=desc&format=json').then(r=>r.ok?r.json():null),
     ]);
@@ -445,10 +445,12 @@ async function loadLive(){
         brecha = ((ccl.venta/oficial.venta)-1)*100;
     }
 
-    // Reservas BCRA (MM USD → en millones)
+    // Reservas BCRA — v4.0 devuelve results[0].detalle[0].valor ya en MM USD
     let reservas = null;
     if(bcraRes?.results?.length){
-      reservas = bcraRes.results[0].valor * 1000; // B → MM USD
+      const det = bcraRes.results[0].detalle;
+      const val = Array.isArray(det) && det.length ? det[0].valor : bcraRes.results[0].valor;
+      if(val != null) reservas = val; // ya en millones de USD
     }
 
     // Calcular salario real YoY desde datos.gob.ar
