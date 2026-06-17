@@ -18,15 +18,15 @@
 body{background:var(--bg);color:var(--txt);font-family:'IBM Plex Sans',sans-serif;min-height:100vh;}
 
 /* HEADER */
-header{background:var(--s);border-bottom:3px solid var(--accent);padding:0 44px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
-.logo-wrap{display:flex;align-items:center;gap:14px;}
-.logo-box{width:34px;height:34px;border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--accent);font-family:'IBM Plex Mono',monospace;font-weight:600;}
-.hdr-title{font-size:14px;font-weight:300;color:var(--txt);}
-.hdr-title strong{font-weight:600;}
-.hdr-right{display:flex;align-items:center;gap:16px;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mu);}
+header{background:#1e1e22;border-bottom:3px solid var(--accent);padding:0 32px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.amb-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.amb-wordmark{font-family:'IBM Plex Sans',sans-serif;font-size:15px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;}
+.amb-divider{width:1px;height:18px;background:rgba(255,255,255,.2);margin:0 6px;}
+.amb-section{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);}
+.hdr-right{display:flex;align-items:center;gap:16px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.45);}
 .live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:6px;animation:pulse 2s infinite;}
 .hdr-back{font-size:11px;color:rgba(255,255,255,.4);text-decoration:none;border:1px solid rgba(255,255,255,.12);border-radius:5px;padding:4px 10px;white-space:nowrap;transition:all .15s;}
-.hdr-back:hover{color:var(--txt);border-color:rgba(255,255,255,.3);}
+.hdr-back:hover{color:#fff;border-color:rgba(255,255,255,.3);}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
 
 /* PAGE */
@@ -107,10 +107,16 @@ footer a{color:var(--accent);text-decoration:none;}
 <body>
 
 <header>
-  <div class="logo-wrap">
-    <div class="logo-box">A</div>
-    <div class="hdr-title"><strong>Amberes</strong> · Research</div>
-  </div>
+  <a href="/" class="amb-logo">
+    <svg height="26" viewBox="0 0 46 43" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+      <path fill="#fff" d="M44.93,0l-10.52.78c-1.94,1.36-13.74,14.44-18.16,35.03.06.18,6.86,6.41,6.86,6.41,0,0,4.34-13.39,9.6-23.33C37.92,9.05,44.82.15,44.93,0"/>
+      <path fill="#fff" d="M28.97,2.62l-10.16,1.83c-.84,1.05-8.14,10.48-10.88,25.38l5.68,4.74c.03-.13,2.31-9.57,6.14-17.24,3.82-7.64,9.12-14.57,9.23-14.71"/>
+      <path fill="#fff" d="M13.83,7.31l-8,.99C2.06,12.05,0,22.83,0,22.83l5.66,5.06c.02-.1,1.64-6.8,3.61-11.41,1.95-4.6,4.5-9.08,4.56-9.18"/>
+    </svg>
+    <span class="amb-wordmark">Amberes</span>
+    <div class="amb-divider"></div>
+    <span class="amb-section">Continuidad</span>
+  </a>
   <div class="hdr-right">
     <span class="live-dot" id="ldot"></span><span id="lstat">EN VIVO · BYMA ~15MIN</span>
     <a href="/" class="hdr-back">&#8592; Inicio</a>
