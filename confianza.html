@@ -457,17 +457,48 @@ function buildHistTable(data){
     </tr>`).join('');
 }
 
-// ── Calibración por duración (rendimientos.co · 17-jun-2026) ────────────────
-// ΔYTM ≈ -(ΔP/P) / ModDur   donde ModDur = MacaulayDur / (1 + YTM)
-// Permite calcular YTM live desde precio sin necesitar flujos exactos
-const CAL = {
-  AO27: { p0:102.90, y0:4.13, mdur:1.257 },  // dur 1.31/(1+0.0413)
-  AO28: { p0:96.90,  y0:7.84, mdur:2.049 },  // dur 2.21/(1+0.0784)
-  AN29: { p0:94.65,  y0:8.60, mdur:2.882 },  // dur 3.13/(1+0.086)
+// ── Propiedades fijas de los bonos (no cambian nunca) ────────────────────────
+const BOND_SPECS = {
+  AO27: { mat:'2027-10-30', cpn:1.13 },  // coupon % anual sobre VNO
+  AO28: { mat:'2028-10-31', cpn:1.00 },
+  AN29: { mat:'2029-11-30', cpn:6.07 },
 };
+
+// ── Calibración de precio/yield de referencia ────────────────────────────────
+// Valores iniciales: rendimientos.co 17-jun-2026.
+// Se auto-actualizan en localStorage tras cada fetch exitoso → siempre frescos.
+let CAL = {
+  AO27:{ p0:102.90, y0:4.13 },
+  AO28:{ p0:96.90,  y0:7.84 },
+  AN29:{ p0:94.65,  y0:8.60 },
+};
+try{ const s=JSON.parse(localStorage.getItem('amberes_conf_cal')); if(s) CAL=s; }catch(e){}
+
+// ── Modified duration exacta (cupón semi-anual, amortización bullet) ─────────
+// Usa el YTM de referencia (se va actualizando) y el plazo real al día de hoy.
+// La duración se recalcula automáticamente cada carga sin intervención manual.
+function computeModDur(cpn_pct, ytm_pct, years){
+  const n = Math.max(1, Math.round(years*2));  // períodos semestrales restantes
+  const c = cpn_pct/200;                        // cupón semestral por $1
+  const y = Math.max(0.0005, ytm_pct/200);      // yield semestral
+  let pv=0, wsum=0;
+  for(let k=1; k<=n; k++){
+    const cf = k<n ? c : 1+c;
+    const pvk = cf/Math.pow(1+y,k);
+    pv+=pvk; wsum+=k*pvk;
+  }
+  return (wsum/pv)/(1+y)/2;  // ModDur en años
+}
+
+// ── YTM live desde precio: ΔYTM ≈ -(ΔP/P) / ModDur ──────────────────────────
 function ytmLive(sym, price){
-  const c = CAL[sym]; if(!c || !price || price <= 0) return null;
-  return c.y0 - (price - c.p0) / c.p0 / c.mdur * 100;
+  const b=BOND_SPECS[sym]; const c=CAL[sym];
+  if(!b||!c||!price||price<=0) return null;
+  const t=(new Date(b.mat+'T00:00:00Z')-new Date())/(365.25*86400000);
+  if(t<=0) return null;
+  const md=computeModDur(b.cpn, c.y0, t);
+  if(!md||md<=0) return null;
+  return c.y0-(price-c.p0)/c.p0/md*100;
 }
 
 // ── Fetch live data ───────────────────────────────────────────────
@@ -487,6 +518,11 @@ async function loadLive(){
     const ytmAN29 = ytmLive('AN29', an29?.price_usd);
 
     if(!ytmAO27 || !ytmAO28 || !ytmAN29) throw new Error('datos insuficientes');
+
+    // Auto-actualizar calibración con los precios y yields de esta ronda
+    // → la ModDur del próximo cálculo usa el YTM más reciente (converge en 2-3 ciclos)
+    CAL = { AO27:{p0:ao27.price_usd,y0:ytmAO27}, AO28:{p0:ao28.price_usd,y0:ytmAO28}, AN29:{p0:an29.price_usd,y0:ytmAN29} };
+    try{ localStorage.setItem('amberes_conf_cal', JSON.stringify(CAL)); }catch(e){}
 
     const ytmCurrent = ytmAO27;
     const ytmNext    = (ytmAO28 + ytmAN29) / 2;
