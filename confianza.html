@@ -463,8 +463,21 @@ async function loadLive(){
     const gd29 = sob.find(d=>d.symbol==='GD29');
     const gd30 = sob.find(d=>d.symbol==='GD30');
 
-    // YTM helpers
-    function ytmNum(s){ return s?.ytm ? parseFloat(s.ytm) : null; }
+    // YTM de soberanos — la API trae precio (price_usd) pero NO ytm.
+    // Partimos de YTM/duración semilla y ajustamos con duración modificada:
+    // ΔYTM ≈ -(ΔP/P) / Dur × 100  (relación precio-yield)
+    const SEED_SOB = {
+      GD29: {p:65.67,  ytm:5.46, dur:1.55},
+      GD30: {p:65.25,  ytm:6.47, dur:2.00},
+      AO27: {p:101.60, ytm:4.95, dur:1.36},
+    };
+    function sobYTM(sym, liveP){
+      const s = SEED_SOB[sym];
+      if(!s) return null;
+      if(liveP==null || liveP<=0 || Math.abs(liveP - s.p) < 0.01) return s.ytm;
+      const deltaYTM = -((liveP - s.p) / s.p) / s.dur * 100;
+      return s.ytm + deltaYTM;
+    }
 
     // BOPREALes YTM — calculamos desde precio con flujos exactos
     // Serie base: cupón oct-26, amort+cupón abr-27, amort+cupón oct-27
@@ -477,16 +490,18 @@ async function loadLive(){
       return ((lo+hi)/2)*100;
     }
 
-    const bpYtms = bpData.map(b=>bpYTM(b.c)).filter(v=>v!=null);
+    const bpYtms = bpData.map(b=>bpYTM(b.c ?? b.price_usd)).filter(v=>v!=null);
     const ytmBP  = bpYtms.length ? bpYtms.reduce((a,b)=>a+b,0)/bpYtms.length : null;
-    const ytmAO27 = ytmNum(ao27);
+    const ytmAO27 = sobYTM('AO27', ao27?.price_usd ?? ao27?.c);
+    const ytmGD29 = sobYTM('GD29', gd29?.price_usd ?? gd29?.c);
+    const ytmGD30 = sobYTM('GD30', gd30?.price_usd ?? gd30?.c);
 
     // YTM esta gestión = promedio AO27 + BOPREALes
     const currentParts = [ytmAO27, ytmBP].filter(v=>v!=null);
     const ytmCurrent = currentParts.length ? currentParts.reduce((a,b)=>a+b,0)/currentParts.length : null;
 
     // YTM próxima gestión = promedio GD29 + GD30
-    const nextParts = [ytmNum(gd29), ytmNum(gd30)].filter(v=>v!=null);
+    const nextParts = [ytmGD29, ytmGD30].filter(v=>v!=null);
     const ytmNext = nextParts.length ? nextParts.reduce((a,b)=>a+b,0)/nextParts.length : null;
 
     if(!ytmCurrent || !ytmNext) throw new Error('datos insuficientes');
@@ -497,8 +512,8 @@ async function loadLive(){
     // Update UI
     document.getElementById('ytm-ao27').textContent  = ytmAO27 ? ytmAO27.toFixed(2)+'%' : '—';
     document.getElementById('ytm-bp').textContent    = ytmBP   ? ytmBP.toFixed(2)+'%'   : '—';
-    document.getElementById('ytm-gd29').textContent  = ytmNum(gd29) ? ytmNum(gd29).toFixed(2)+'%' : '—';
-    document.getElementById('ytm-gd30').textContent  = ytmNum(gd30) ? ytmNum(gd30).toFixed(2)+'%' : '—';
+    document.getElementById('ytm-gd29').textContent  = ytmGD29 ? ytmGD29.toFixed(2)+'%' : '—';
+    document.getElementById('ytm-gd30').textContent  = ytmGD30 ? ytmGD30.toFixed(2)+'%' : '—';
     document.getElementById('ytm-current').textContent = ytmCurrent.toFixed(2)+'%';
     document.getElementById('ytm-next').textContent    = ytmNext.toFixed(2)+'%';
     document.getElementById('spread-val').textContent  = spread_bp+'bp';
