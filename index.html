@@ -8,14 +8,24 @@
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#0d1117;--s1:#161b22;--s2:#21262d;--s3:#30363d;
-  --tx:#e6edf3;--t2:#8b949e;--t3:#6e7681;
-  --g:#3fb950;--r:#f85149;--a:#d29922;--b:#58a6ff;--p:#bc8cff;
+  --tx:#e6edf3;--t2:#a8b5c2;--t3:#7a8896;
+  /* Paleta semántica unificada — usar estos en todo el doc */
+  --pos:#3fb950;--neg:#f85149;--warn:#d29922;--info:#58a6ff;--acc:#bc8cff;
+  /* Aliases legacy para no romper código existente */
+  --g:var(--pos);--r:var(--neg);--a:var(--warn);--b:var(--info);--p:var(--acc);
   --card-r:10px;
 }
 body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh}
 
+/* VALUE BAND */
+.value-band{background:#11161e;border-bottom:1px solid rgba(88,166,255,.12);padding:6px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.vb-name{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--info);white-space:nowrap}
+.vb-dot{color:var(--s3);font-size:10px}
+.vb-text{font-size:10px;color:var(--t2);line-height:1.4}
+.vb-live{margin-left:auto;display:flex;align-items:center;gap:5px;font-size:9px;color:var(--t3);white-space:nowrap;flex-shrink:0}
+
 /* NAV */
-.topbar{background:#1e1e22;border-bottom:3px solid var(--b);padding:0 20px;height:54px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.topbar{background:#1e1e22;border-bottom:3px solid var(--info);padding:0 20px;height:54px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .amb-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;}
 .amb-wordmark{font-weight:700;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#fff;white-space:nowrap;}
 .amb-divider{width:1px;height:16px;background:rgba(255,255,255,.2);margin:0 6px;}
@@ -47,26 +57,31 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 @keyframes pulse{0%,100%{opacity:.3}50%{opacity:.6}}
 
 /* FEAR & GREED */
-.fg-bar{background:var(--s2);border-bottom:1px solid var(--s3);padding:7px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.fg-bar{background:var(--s2);border-bottom:1px solid var(--s3);padding:8px 24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .fg-label{font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;white-space:nowrap}
-.fg-track{width:200px;height:6px;border-radius:3px;background:linear-gradient(to right,#f85149,#d29922,#3fb950);position:relative;flex-shrink:0}
-.fg-needle{position:absolute;top:-3px;width:12px;height:12px;border-radius:50%;background:var(--tx);border:2px solid var(--bg);transform:translateX(-50%);transition:left .5s}
-.fg-val{font-size:18px;font-weight:700}
-.fg-name{font-size:11px;font-weight:600}
-.fg-desc{font-size:10px;color:var(--t2);max-width:280px;line-height:1.4}
-.fg-divider{width:1px;height:32px;background:var(--s3)}
-.fg-mini{display:flex;flex-direction:column;gap:3px;font-size:10px}
+.fg-gauge{display:flex;flex-direction:column;gap:3px;flex-shrink:0}
+.fg-track{width:200px;height:7px;border-radius:4px;background:linear-gradient(to right,#f85149 0%,#d29922 50%,#3fb950 100%);position:relative}
+.fg-needle{position:absolute;top:-4px;width:14px;height:14px;border-radius:50%;background:var(--tx);border:2px solid var(--bg);transform:translateX(-50%);transition:left .5s;box-shadow:0 0 4px rgba(0,0,0,.6)}
+.fg-scale{display:flex;justify-content:space-between;width:200px}
+.fg-scale span{font-size:8px;color:var(--t3);letter-spacing:.02em}
+.fg-val{font-size:20px;font-weight:700;line-height:1}
+.fg-name{font-size:12px;font-weight:700}
+.fg-desc{font-size:10px;color:var(--t2);max-width:280px;line-height:1.5}
+.fg-divider{width:1px;height:36px;background:var(--s3)}
+.fg-mini{display:flex;flex-direction:column;gap:4px;font-size:10px}
 
 /* HERO */
-.hero{padding:22px 24px 14px;max-width:1100px;margin:0 auto}
-.hero-eyebrow{font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:5px}
-.hero-title{font-size:22px;font-weight:700;margin-bottom:4px}
-.hero-sub{font-size:12px;color:var(--t2)}
+.hero{padding:20px 24px 12px;max-width:1100px;margin:0 auto}
+.hero-eyebrow{display:flex;align-items:center;gap:10px;font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.hero-ts{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--t2);margin-left:auto;font-weight:500}
+.hero-ts-val{color:var(--tx);font-weight:700}
+.hero-title{font-size:22px;font-weight:700;margin-bottom:5px}
+.hero-sub{font-size:12px;color:var(--t2);line-height:1.5}
 
 /* WRAP */
-.wrap{max-width:1100px;margin:0 auto;padding:16px 24px 60px}
-.sec-title{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:12px;margin-top:20px;display:flex;align-items:center;gap:8px}
-.sec-title::after{content:\'\';flex:1;height:1px;background:var(--s3)}
+.wrap{max-width:1100px;margin:0 auto;padding:16px 24px 40px}
+.sec-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--t2);margin-bottom:14px;margin-top:24px;display:flex;align-items:center;gap:10px}
+.sec-title::after{content:\'\';flex:1;height:1px;background:linear-gradient(to right,var(--s3),transparent)}
 
 /* TENSIÓN */
 .tension-box{background:var(--s1);border:1px solid rgba(210,153,34,.35);border-radius:var(--card-r);padding:14px 16px;margin-bottom:14px}
@@ -98,12 +113,14 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 .tr{background:rgba(248,81,73,.15);color:var(--r)}
 .ta{background:rgba(210,153,34,.15);color:var(--a)}
 .tq{background:rgba(63,185,80,.15);color:var(--g)}
-.dc-title{font-size:14px;font-weight:700;margin-bottom:2px;line-height:1.3}
-.dc-brief{font-size:11px;color:var(--t2);line-height:1.5}
-.sbadge{font-size:8px;font-weight:700;text-transform:uppercase;padding:3px 8px;border-radius:20px;margin-left:8px;white-space:nowrap;flex-shrink:0}
-.sbadge.ro{background:rgba(63,185,80,.15);color:var(--g);border:1px solid rgba(63,185,80,.3)}
-.sbadge.rf{background:rgba(248,81,73,.15);color:var(--r);border:1px solid rgba(248,81,73,.3)}
-.sbadge.mx{background:rgba(210,153,34,.15);color:var(--a);border:1px solid rgba(210,153,34,.3)}
+.dc-title{font-size:15px;font-weight:700;margin-bottom:3px;line-height:1.3}
+.dc-tldr{font-size:12px;font-weight:600;color:var(--tx);line-height:1.5;margin-bottom:2px}
+.dc-brief{font-size:11px;color:var(--t2);line-height:1.55}
+.sbadge{font-size:8px;font-weight:700;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-left:8px;white-space:nowrap;flex-shrink:0;cursor:default;transition:filter .15s}
+.sbadge:hover{filter:brightness(1.25)}
+.sbadge.ro{background:rgba(63,185,80,.15);color:var(--pos);border:1px solid rgba(63,185,80,.3)}
+.sbadge.rf{background:rgba(248,81,73,.15);color:var(--neg);border:1px solid rgba(248,81,73,.3)}
+.sbadge.mx{background:rgba(210,153,34,.15);color:var(--warn);border:1px solid rgba(210,153,34,.3)}
 .dc-body{padding:0 14px 12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
 .dc-sec{background:var(--bg);border:1px solid var(--s3);border-radius:6px;padding:9px 11px}
 .dc-sec h4{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:5px;display:flex;align-items:center;gap:4px}
@@ -141,12 +158,23 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
 .ts-label{font-size:10px;color:var(--t3)}
 
-footer{text-align:center;padding:16px;font-size:10px;color:var(--t3);border-top:1px solid var(--s3)}
+footer{text-align:center;padding:20px 24px;font-size:10px;color:var(--t3);border-top:1px solid var(--s3);background:var(--s1);display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap}
+.ft-brand{font-weight:700;color:var(--t2);letter-spacing:.06em}
+.ft-sep{color:var(--s3)}
 @media(max-width:900px){
   .dc-body{grid-template-columns:1fr}
   .nav-modules{display:none}
   .mod-grid{grid-template-columns:repeat(3,1fr)}
   .tension-items,.corr-grid{grid-template-columns:1fr}
+  .value-band{display:none} /* En mobile no hay espacio para la banda */
+  .hero-ts{display:none}
+  .fg-gauge{display:none} /* Reemplazado por número + nombre */
+}
+@media(max-width:600px){
+  .mod-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-title{font-size:18px}
+  .wrap{padding:12px 16px 32px}
+  .fg-bar{padding:8px 16px;gap:12px}
 }
 
 
@@ -161,6 +189,14 @@ footer{text-align:center;padding:16px;font-size:10px;color:var(--t3);border-top:
 </style>
 </head>
 <body>
+
+<!-- VALUE BAND -->
+<div class="value-band">
+  <span class="vb-name">Amberes Research</span>
+  <span class="vb-dot">·</span>
+  <span class="vb-text">Análisis macroeconómico diario para portfolios institucionales y family offices en Argentina</span>
+  <span class="vb-live"><span class="live-dot"></span>Datos en tiempo real</span>
+</div>
 
 <nav class="topbar">
   <a href="/" class="amb-logo">
@@ -192,10 +228,19 @@ footer{text-align:center;padding:16px;font-size:10px;color:var(--t3);border-top:
 
 <!-- FEAR & GREED — populated by JS -->
 <div class="fg-bar" id="fgbar">
-  <div class="fg-label">Fear &amp; Greed</div>
-  <div class="fg-track"><div class="fg-needle" id="fgneedle" style="left:50%"></div></div>
-  <div class="fg-val" id="fgval">—</div>
-  <div class="fg-name" id="fgname">Cargando…</div>
+  <div class="fg-label">Fear &amp; Greed<br><span style="font-size:8px;letter-spacing:.03em;text-transform:none">CNN · Mercado EE.UU.</span></div>
+  <div class="fg-gauge">
+    <div class="fg-track"><div class="fg-needle" id="fgneedle" style="left:50%"></div></div>
+    <div class="fg-scale">
+      <span>Miedo extremo</span>
+      <span style="text-align:center">Neutral</span>
+      <span style="text-align:right">Avaricia extrema</span>
+    </div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:1px">
+    <div class="fg-val" id="fgval">—</div>
+    <div class="fg-name" id="fgname">Cargando…</div>
+  </div>
   <div class="fg-divider"></div>
   <div class="fg-desc" id="fgdesc"></div>
   <div class="fg-divider"></div>
@@ -204,9 +249,12 @@ footer{text-align:center;padding:16px;font-size:10px;color:var(--t3);border-top:
 
 <!-- HERO — populated by JS -->
 <div class="hero">
-  <div class="hero-eyebrow" id="hero-date">Cargando…</div>
+  <div class="hero-eyebrow">
+    <span id="hero-date">Cargando…</span>
+    <span class="hero-ts">Última actualización: <span class="hero-ts-val" id="hero-ts">—</span></span>
+  </div>
   <div class="hero-title">Market Briefing — Drivers del Día</div>
-  <div class="hero-sub">5 catalizadores globales · Flujos institucionales · Correlaciones activas · Tensiones de mercado</div>
+  <div class="hero-sub">Catalizadores globales · Flujos institucionales · Correlaciones activas · Tensiones de mercado</div>
 </div>
 
 <div class="wrap">
@@ -285,7 +333,15 @@ footer{text-align:center;padding:16px;font-size:10px;color:var(--t3);border-top:
   <div style="margin-top:10px;text-align:right"><span class="live-dot"></span><span class="ts-label" id="ts-label">Actualizando…</span></div>
 </div>
 
-<footer>Amberes Research · Market Briefing · Solo informativo · No constituye asesoramiento de inversión</footer>
+<footer>
+  <span class="ft-brand">Amberes Research</span>
+  <span class="ft-sep">·</span>
+  <span>Market Briefing</span>
+  <span class="ft-sep">·</span>
+  <span>Solo informativo — no constituye asesoramiento de inversión</span>
+  <span class="ft-sep">·</span>
+  <a href="mailto:pedrof@grupoamberes.com.ar" style="color:var(--info);text-decoration:none">Contacto</a>
+</footer>
 
 <script>
 // ── Helpers ──────────────────────────────────────────────────────
@@ -302,9 +358,12 @@ async function loadMarkets() {
     renderStrip(d);
     if (d.feargreed) renderFearGreed(d.feargreed);
     const isFallback = d._fallback === true;
+    const tsStr = new Date().toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit'});
     document.getElementById('ts-label').textContent = isFallback
-      ? '⚠ Precios de referencia · FX en vivo · actualizado ' + new Date().toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit'})
-      : '● Precios live · actualizado ' + new Date().toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit'});
+      ? '⚠ Precios de referencia · FX en vivo · ' + tsStr
+      : '● Precios live · ' + tsStr;
+    const heroTs = document.getElementById('hero-ts');
+    if (heroTs) heroTs.textContent = tsStr + (isFallback ? ' (referencia)' : ' hs');
   } catch(e) {
     console.warn('markets fallback:', e.message);
     renderStripFallback();
@@ -489,7 +548,8 @@ function renderBriefing(b) {
         <div class="dc-meta">
           <div class="tag ${dr.tag_class}">${dr.tag}</div>
           <div class="dc-title">${dr.title}</div>
-          <div class="dc-brief">${dr.brief}</div>
+          <div class="dc-tldr">${dr.tldr || dr.brief}</div>
+          ${dr.tldr ? `<div class="dc-brief">${dr.brief}</div>` : ''}
         </div>
         <div class="sbadge ${dr.sentiment}">${dr.sentiment_label}</div>
       </div>
