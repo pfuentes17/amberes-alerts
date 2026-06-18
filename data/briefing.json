@@ -21,13 +21,38 @@
       "evento": "La primera reunión de <strong>Kevin Warsh como presidente de la Fed</strong> entregó el hawkish shock que los mercados temían. Decisión unánime de mantener en <strong>3.50–3.75%</strong> (4ª pausa), pero el dot plot lo cambia todo: <strong>9 de 18 miembros proyectan al menos una suba antes de fin de año</strong>, llevando la mediana a <strong>3.8%</strong> (vs. 3.4% en marzo). El statement fue reescrito — más corto, sin sesgo de recorte.",
       "contexto": "Warsh fue explícito en conferencia: <strong>&ldquo;la estabilidad de precios es la misión central&rdquo;</strong>. El FedWatch ahora le asigna probabilidad real a una suba en <strong>octubre o diciembre</strong>. La reacción del mercado fue rápida: <strong>S&P −1.06%</strong>, Nasdaq −1%, Dow −410 puntos, y el <strong>10Y subió 3.5bp a 4.463%</strong>. Los activos de duración larga (growth, tech) son los más vulnerables en este régimen.",
       "impacto": [
-        { "asset": "UST 10Y", "dir": "↑ 4.46%", "cls": "dn" },
-        { "asset": "S&P 500", "dir": "↓ −1.1%", "cls": "dn" },
-        { "asset": "Nasdaq", "dir": "↓ −1.0%", "cls": "dn" },
-        { "asset": "DXY", "dir": "↑ +0.5%", "cls": "up" },
-        { "asset": "Bancos", "dir": "↑ Margen", "cls": "up" },
-        { "asset": "Growth/Tech", "dir": "↓ Múlt.", "cls": "dn" }
-      ]
+        {
+          "asset": "UST 10Y",
+          "dir": "↑ 4.46%",
+          "cls": "dn"
+        },
+        {
+          "asset": "S&P 500",
+          "dir": "↓ −1.1%",
+          "cls": "dn"
+        },
+        {
+          "asset": "Nasdaq",
+          "dir": "↓ −1.0%",
+          "cls": "dn"
+        },
+        {
+          "asset": "DXY",
+          "dir": "↑ +0.5%",
+          "cls": "up"
+        },
+        {
+          "asset": "Bancos",
+          "dir": "↑ Margen",
+          "cls": "up"
+        },
+        {
+          "asset": "Growth/Tech",
+          "dir": "↓ Múlt.",
+          "cls": "dn"
+        }
+      ],
+      "tldr": "Fed hawkish: 9 de 18 miembros proyectan suba en 2025 — el mercado priceó 2 recortes y está equivocado."
     },
     {
       "id": 2,
@@ -40,13 +65,38 @@
       "evento": "EE.UU. e Irán <strong>firmaron digitalmente el acuerdo de paz interim</strong>, permitiendo a Teherán reanudar exportaciones de crudo y liberar el Estrecho de Ormuz. El <strong>WTI cayó 2.9% a US$74.56</strong>, tocando mínimos desde principios de marzo. El petróleo barato es el único contrapeso desinflacionario que le da argumentos a Warsh para no acelerar las subas.",
       "contexto": "El <strong>oro cayó ~2%</strong> el miércoles post-Fed (tasas más altas = menor atractivo del metal) pero recuperó parte el jueves por el alivio geopolítico. La paradoja: el acuerdo con Irán <em>ayuda</em> a la inflación y le da margen a la Fed para no subir en octubre, pero el <strong>DXY +0.5%</strong> (más fuerte) encarece las importaciones en pesos y aprieta a los emergentes. Para Argentina, petróleo bajo es positivo (menos inflación importada, balanza), pero DXY fuerte neutraliza el carry.",
       "impacto": [
-        { "asset": "WTI / Brent", "dir": "↓ US$74.5", "cls": "dn" },
-        { "asset": "Oro", "dir": "↓ <$4.300", "cls": "dn" },
-        { "asset": "Breakevens", "dir": "↓ Ceden", "cls": "dn" },
-        { "asset": "Energía (XLE)", "dir": "↓ Presión", "cls": "dn" },
-        { "asset": "Aerolíneas", "dir": "↑ Costos", "cls": "up" },
-        { "asset": "DXY", "dir": "↑ +0.5%", "cls": "up" }
-      ]
+        {
+          "asset": "WTI / Brent",
+          "dir": "↓ US$74.5",
+          "cls": "dn"
+        },
+        {
+          "asset": "Oro",
+          "dir": "↓ <$4.300",
+          "cls": "dn"
+        },
+        {
+          "asset": "Breakevens",
+          "dir": "↓ Ceden",
+          "cls": "dn"
+        },
+        {
+          "asset": "Energía (XLE)",
+          "dir": "↓ Presión",
+          "cls": "dn"
+        },
+        {
+          "asset": "Aerolíneas",
+          "dir": "↑ Costos",
+          "cls": "up"
+        },
+        {
+          "asset": "DXY",
+          "dir": "↑ +0.5%",
+          "cls": "up"
+        }
+      ],
+      "tldr": "WTI cae a US$74 por acuerdo EE.UU.–Irán — el único factor que hoy frena la inflación y el hawkishness de la Fed."
     },
     {
       "id": 3,
@@ -59,13 +109,38 @@
       "evento": "El <strong>riesgo país argentino sube a ~437bp</strong>, alejándose del mínimo histórico reciente de 425bp (lunes). Los <strong>bonos soberanos ceden hasta −0.56%</strong> y los ADRs operan en forma mixta: los bancarios (<strong>BBAR +2.2%, GGAL +2%</strong>) resisten por su exposición al ciclo local; el tech (<strong>Globant −5.5%</strong>) siente el golpe del régimen de tasas altas.",
       "contexto": "El golpe del hawkish de Warsh llega en el peor momento: Argentina venía de un rally impresionante sostenido por el <strong>upgrade de S&P a B−</strong> (de CCC+) y el prospecto de ser recategorizada como Mercado de Frontera. El riesgo ahora es que el <strong>DXY fuerte + la suba esperada de la Fed</strong> compriman el apetito por carry EM justo cuando Argentina más necesita que los inversores internacionales estén comprados. Los fundamentos locales siguen sólidos (superávit primario, reservas en ascenso, acuerdo FMI), pero el contexto externo se pone cuesta arriba.",
       "impacto": [
-        { "asset": "Globales ARG", "dir": "↓ −0.6%", "cls": "dn" },
-        { "asset": "Riesgo país", "dir": "↑ 437bp", "cls": "dn" },
-        { "asset": "ADRs bancos", "dir": "↑ +2%", "cls": "up" },
-        { "asset": "ADRs tech", "dir": "↓ −5%", "cls": "dn" },
-        { "asset": "Merval USD", "dir": "→ Mixto", "cls": "neu" },
-        { "asset": "Carry ARG", "dir": "↓ Costo ext.", "cls": "dn" }
-      ]
+        {
+          "asset": "Globales ARG",
+          "dir": "↓ −0.6%",
+          "cls": "dn"
+        },
+        {
+          "asset": "Riesgo país",
+          "dir": "↑ 437bp",
+          "cls": "dn"
+        },
+        {
+          "asset": "ADRs bancos",
+          "dir": "↑ +2%",
+          "cls": "up"
+        },
+        {
+          "asset": "ADRs tech",
+          "dir": "↓ −5%",
+          "cls": "dn"
+        },
+        {
+          "asset": "Merval USD",
+          "dir": "→ Mixto",
+          "cls": "neu"
+        },
+        {
+          "asset": "Carry ARG",
+          "dir": "↓ Costo ext.",
+          "cls": "dn"
+        }
+      ],
+      "tldr": "Riesgo país sube a 437bp: el upgrade S&P es real, pero el viento externo se revierte — carry ARG en zona de transición."
     },
     {
       "id": 4,
@@ -78,13 +153,38 @@
       "evento": "El <strong>COPOM de Brasil recortó la SELIC a 14.25%</strong> en decisión unánime — el tercer corte consecutivo de 25pb desde el máximo de 15% en enero. Pero el comunicado fue <strong>hawkish</strong>: elevó la proyección de inflación 2026 a <strong>5.2%</strong>, muy por encima del techo de la banda (4.5%), y postergó el objetivo de inflación del 3% a <strong>principios de 2028</strong>.",
       "contexto": "Brasil enfrenta un <strong>dilema complejo</strong>: el ciclo de baja empuja el BRL a la baja (carry menos atractivo), pero la inflación acelerando no le da margen para recortar más. Con la <strong>Fed moviéndose en dirección contraria</strong> (posible suba), el diferencial de tasas se comprime y el BRL queda vulnerable. El Bovespa sufre de doble frente: tasa doméstica alta por inflación + contexto externo desfavorable. Para Argentina, el BRL débil presiona la competitividad.",
       "impacto": [
-        { "asset": "SELIC", "dir": "↓ 14.25%", "cls": "neu" },
-        { "asset": "BRL / R$", "dir": "↓ Presión", "cls": "dn" },
-        { "asset": "Bovespa", "dir": "↓ Double hdw.", "cls": "dn" },
-        { "asset": "Bonos BRA", "dir": "↓ Inflac.", "cls": "dn" },
-        { "asset": "Carry LATAM", "dir": "↓ Diferenc.", "cls": "dn" },
-        { "asset": "Comp. ARG", "dir": "↑ BRL débil", "cls": "up" }
-      ]
+        {
+          "asset": "SELIC",
+          "dir": "↓ 14.25%",
+          "cls": "neu"
+        },
+        {
+          "asset": "BRL / R$",
+          "dir": "↓ Presión",
+          "cls": "dn"
+        },
+        {
+          "asset": "Bovespa",
+          "dir": "↓ Double hdw.",
+          "cls": "dn"
+        },
+        {
+          "asset": "Bonos BRA",
+          "dir": "↓ Inflac.",
+          "cls": "dn"
+        },
+        {
+          "asset": "Carry LATAM",
+          "dir": "↓ Diferenc.",
+          "cls": "dn"
+        },
+        {
+          "asset": "Comp. ARG",
+          "dir": "↑ BRL débil",
+          "cls": "up"
+        }
+      ],
+      "tldr": "Brasil cierra el ciclo de cortes con SELIC a 14.25% — inflación por encima del techo presiona al BRL y al carry LATAM."
     },
     {
       "id": 5,
@@ -97,13 +197,38 @@
       "evento": "<strong>Ventas minoristas de mayo</strong> superaron las expectativas (datos sólidos del consumo americano). <strong>Pending home sales de mayo</strong> también batieron el consenso. Ambos refuerzan la narrativa de que la economía de EE.UU. sigue creciendo robustamente, sin señales de enfriamiento que justifiquen una pausa de la Fed.",
       "contexto": "El mercado opera en el régimen de <strong>'good news is bad news'</strong> más claro de 2026: datos fuertes = más probabilidad de suba Fed = venta de activos de duración. El DXY se fortaleció +0.5% apoyado en estos números. El <strong>10Y americano sube</strong> y presiona a todos los activos de larga duración: tech, growth, emergentes, oro y criptos. Warsh tiene los argumentos macroeconómicos para subir en octubre — el único freno es el petróleo cayendo por el acuerdo con Irán.",
       "impacto": [
-        { "asset": "DXY", "dir": "↑ +0.5%", "cls": "up" },
-        { "asset": "UST 10Y", "dir": "↑ 4.46%", "cls": "dn" },
-        { "asset": "Consumo USA", "dir": "↑ Sólido", "cls": "up" },
-        { "asset": "Growth / Tech", "dir": "↓ Duración", "cls": "dn" },
-        { "asset": "EM / ARG", "dir": "↓ DXY", "cls": "dn" },
-        { "asset": "Rate hike oct.", "dir": "↑ Prob.", "cls": "dn" }
-      ]
+        {
+          "asset": "DXY",
+          "dir": "↑ +0.5%",
+          "cls": "up"
+        },
+        {
+          "asset": "UST 10Y",
+          "dir": "↑ 4.46%",
+          "cls": "dn"
+        },
+        {
+          "asset": "Consumo USA",
+          "dir": "↑ Sólido",
+          "cls": "up"
+        },
+        {
+          "asset": "Growth / Tech",
+          "dir": "↓ Duración",
+          "cls": "dn"
+        },
+        {
+          "asset": "EM / ARG",
+          "dir": "↓ DXY",
+          "cls": "dn"
+        },
+        {
+          "asset": "Rate hike oct.",
+          "dir": "↑ Prob.",
+          "cls": "dn"
+        }
+      ],
+      "tldr": "Economía EE.UU. sigue fuerte: ventas minoristas y pending home sales baten expectativas, el \"good news is bad news\" activo."
     }
   ],
   "tensiones": [
