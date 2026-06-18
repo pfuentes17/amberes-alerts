@@ -256,6 +256,12 @@ footer{border-top:1px solid var(--br);padding:10px 40px;background:var(--nv2);di
   .sr4{grid-template-columns:repeat(2,1fr);}
   .tabrow{padding:0 16px;}
 }
+
+/* ── inter-page nav ── */
+.amb-pages{display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.amb-page-link{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(240,244,248,.45);text-decoration:none;border:1px solid rgba(240,244,248,.12);border-radius:5px;padding:4px 10px;white-space:nowrap;transition:all .15s;}
+.amb-page-link:hover{color:#fff;border-color:rgba(240,244,248,.45);}
+.amb-page-link.current{color:#fff;border-color:rgba(240,244,248,.5);background:rgba(240,244,248,.07);font-weight:600;}
 </style>
 </head>
 <body class="vista-indec">
@@ -276,7 +282,7 @@ footer{border-top:1px solid var(--br);padding:10px 40px;background:var(--nv2);di
     <div class="ldot"></div>
     <span class="upd" id="upd"></span>
     <div class="flag">&#127462;&#127479;&nbsp;Argentina</div>
-    <a href="/" style="font-size:11px;color:rgba(240,244,248,.5);text-decoration:none;border:1px solid rgba(240,244,248,.12);border-radius:5px;padding:4px 10px;white-space:nowrap" onmouseover="this.style.color='rgba(240,244,248,.9)'" onmouseout="this.style.color='rgba(240,244,248,.5)'">&#8592; Inicio</a>
+    <div class="amb-pages"><a href="/" class="amb-page-link">🏠 Inicio</a><a href="/arg.html" class="amb-page-link current">🇦🇷 Argentina</a><a href="/agro.html" class="amb-page-link">🌾 Agro</a><a href="/gestion.html" class="amb-page-link">📊 Gestión</a><a href="/confianza.html" class="amb-page-link">🔵 Confianza</a></div>
     <!-- SELECTOR INSTITUCIONAL -->
     <div class="vs" id="vs">
       <button class="vsb" id="vsb" onclick="toggleVS()">
