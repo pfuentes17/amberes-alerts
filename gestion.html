@@ -85,12 +85,14 @@ footer{border-top:1px solid var(--bdr2);margin-top:40px;padding-top:16px;display
 footer a{color:var(--accent);text-decoration:none;}
 
 
-/* ── subnav inter-páginas ── */
-.subnav{background:#0e1520;border-bottom:1px solid rgba(255,255,255,.08);padding:0 32px;display:flex;align-items:center;gap:6px;height:36px;position:sticky;top:62px;z-index:190;}
-.subnav-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-right:4px;white-space:nowrap;}
-.snav-link{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;padding:4px 12px;border-radius:4px;white-space:nowrap;transition:all .15s;}
-.snav-link:hover{color:#fff;background:rgba(255,255,255,.08);}
-.snav-link.active{color:#fff;background:rgba(255,255,255,.12);border-bottom:2px solid var(--accent,#22d3ee);}
+
+/* ── subnav inter-módulos ── */
+.subnav{background:#0e1520;border-bottom:1px solid rgba(255,255,255,.08);padding:0 24px;display:flex;align-items:center;gap:5px;height:36px;position:sticky;top:58px;z-index:190;overflow-x:auto;scrollbar-width:none;}
+.subnav::-webkit-scrollbar{display:none;}
+.subnav-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-right:6px;white-space:nowrap;flex-shrink:0;}
+.snav-link{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.03em;color:rgba(255,255,255,.55);text-decoration:none;padding:4px 10px;border-radius:4px;white-space:nowrap;transition:all .15s;flex-shrink:0;}
+.snav-link:hover{color:#fff;background:rgba(255,255,255,.1);}
+.snav-link.active{color:#fff;background:rgba(255,255,255,.13);border-bottom:2px solid rgba(255,255,255,.7);}
 </style>
 </head>
 <body>
@@ -112,7 +114,7 @@ footer a{color:var(--accent);text-decoration:none;}
     
   </div>
 </header>
-<div class="subnav"><span class="subnav-label">Módulos →</span><a href="/" class="snav-link">🏠 Inicio</a><a href="/arg.html" class="snav-link">🇦🇷 Argentina Macro</a><a href="/agro.html" class="snav-link">🌾 Agro</a><a href="/gestion.html" class="snav-link active">📊 Gestión</a><a href="/confianza.html" class="snav-link">🔵 Confianza</a></div>
+<div class="subnav"><span class="subnav-label">Módulos</span><a href="https://amberes-alerts.vercel.app/" class="snav-link">🏠 Inicio</a><a href="https://amberes-alerts.vercel.app/arg.html" class="snav-link">🇦🇷 Argentina</a><a href="https://amberes-alerts.vercel.app/agro.html" class="snav-link">🌾 Agro</a><a href="https://amberes-alerts.vercel.app/gestion.html" class="snav-link active">📊 Gestión</a><a href="https://amberes-alerts.vercel.app/confianza.html" class="snav-link">🔵 Confianza</a><a href="https://global-macro.vercel.app/macro.html" class="snav-link">🌍 Macro Global</a><a href="https://global-macro.vercel.app/tc.html" class="snav-link">💱 Tipo de Cambio</a><a href="https://calculadora-bonos-five.vercel.app" class="snav-link">📈 Bonos</a></div>
 
 <div class="page">
   <div class="page-eyebrow">Indicador Compuesto · Argentina 2026</div>
