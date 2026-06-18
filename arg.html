@@ -498,6 +498,20 @@ var D={
     l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
     v:[0.2,6.8,7.8,4.0,2.0,4.1,2.2,5.0,5.5,3.4,10.8,9.5]  // YoY %
   },
+  // ICC — Índice Costo Construcción GBA — INDEC · Mayo 2026 (publicado 17/06/2026)
+  icc:{
+    l:["Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
+    multi:[1.4,2.7,0.3,0.8,2.0,1.0,1.2,1.5,2.7,1.4,2.6,1.6,1.1,1.6,2.2,2.8,2.3],
+    uni:[1.5,2.5,-0.3,-0.2,3.3,1.1,2.1,2.1,2.8,1.8,3.0,1.4,2.1,2.2,2.8,3.1,3.6],
+    mom:2.7,yoy:29.0,acum:12.8,
+    materiales:1.6,manoDeObra:3.5,gastos:4.0
+  },
+  // SIPM — Sistema Índices Precios Mayoristas — INDEC · Mayo 2026 (publicado 17/06/2026)
+  sipm:{
+    ipim_mom:2.5,ipim_yoy:34.5,ipim_acum:14.4,
+    ipib_mom:2.7,ipib_yoy:33.5,
+    ipp_mom:2.7,ipp_yoy:34.6
+  },
   petroleo:{
     // Abril 2026 · miles de m3
     labels:['Convencional','No convencional (Vaca Muerta)'],
@@ -848,7 +862,24 @@ function buildINDEC(){
         {l:'Litio carbonato',v:'+79.0%',c:'g',n:'11.466 tons \u00b7 +60.4% YoY tons',x:'indec'}
       ])+
       bx2(['is4','is5'],['IPI Minero \u2014 Nivel General YoY %','Petr\u00f3leo \u2014 Convencional vs No Convencional (miles m\u00b3)'],'h240',['c-indec','c-indec'])+
-      bx2(['is6','is7'],['Gas Natural \u2014 Conv vs No Conv (mill. m\u00b3)','Litio \u2014 Carbonato de litio (toneladas)'],'h200',['c-indec','c-indec']),
+      bx2(['is6','is7'],['Gas Natural \u2014 Conv vs No Conv (mill. m\u00b3)','Litio \u2014 Carbonato de litio (toneladas)'],'h200',['c-indec','c-indec'])+
+      shdr('ICC \u00b7 Costo de la Construcci\u00f3n','INDEC \u2014 Gran Buenos Aires \u00b7 Nivel General y modelos','+2.7%','Mayo 2026 \u00b7 MoM','a')+
+      src('INDEC \u00b7 icc_06_26E525F0BF75.pdf \u00b7 Mayo 2026')+
+      sr4([
+        {l:'ICC Nivel General May 26',v:'+2.7%',c:'a',n:'Interanual +29.0% \u00b7 acum +12.8%',x:'indec'},
+        {l:'Materiales May 26',v:'+1.6%',c:'g',n:'Incidencia 0.66 pp',x:'indec'},
+        {l:'Mano de Obra May 26',v:'+3.5%',c:'r',n:'Asalariada +3.8% \u00b7 Subcontr. +1.9%',x:'indec'},
+        {l:'Gastos Generales May 26',v:'+4.0%',c:'r',n:'Energ\u00eda+Alquileres+UOCRA',x:'indec'}
+      ])+
+      bx2(['is8','is9'],['ICC \u2014 Vivienda Multifamiliar MoM %','ICC \u2014 Vivienda Unifamiliar MoM %'],'h220',['c-indec','c-indec'])+
+      shdr('SIPM \u00b7 Precios Mayoristas','INDEC \u2014 IPIM \u00b7 IPIB \u00b7 IPP \u00b7 Mayo 2026','+2.5%','IPIM Mayo 2026 \u00b7 MoM','a')+
+      src('INDEC \u00b7 ipm_06_264CAE653E80.pdf \u00b7 Mayo 2026')+
+      sr4([
+        {l:'IPIM May 26 MoM',v:'+2.5%',c:'a',n:'Interanual +34.5% \u00b7 acum +14.4%',x:'indec'},
+        {l:'IPIM May 26 YoY',v:'+34.5%',c:'r',n:'Prod. nacionales +35.1%',x:'indec'},
+        {l:'IPIB May 26 MoM',v:'+2.7%',c:'a',n:'YoY +33.5% (ex-impuestos)',x:'indec'},
+        {l:'IPP May 26 MoM',v:'+2.7%',c:'a',n:'YoY +34.6% (precios productor)',x:'indec'}
+      ]),
       cal);
 
   setTimeout(function(){
@@ -898,6 +929,9 @@ function buildINDEC(){
       {label:'UCII %',data:D.ucii.v,borderColor:ai,fill:true,backgroundColor:ai+'18',tension:0.4,pointRadius:4,
        pointBackgroundColor:D.ucii.v.map(function(v){return v>=59?C.G4:v>=55?C.OR:C.RD;})}
     ],'%',undefined,ai);
+    // ICC — Costo de Construcción
+    bar('is8',D.icc.l,D.icc.multi,{cf:function(v){return v>=0?C.G4:C.RD;},s:'%',ac:ai});
+    bar('is9',D.icc.l,D.icc.uni,{cf:function(v){return v>=0?C.G4:C.RD;},s:'%',ac:ai});
     // IPI Minero / Energía / Litio
     bar('is4',D.ipiMinero.l,D.ipiMinero.v,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ai});
     bar('is5',D.petroleo.labels,D.petroleo.vols,{
