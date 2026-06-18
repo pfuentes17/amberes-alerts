@@ -495,10 +495,11 @@ var D={
        actividad:[47.7,48.0,47.9,47.4,48.2,48.1,47.8,48.1],
        empleo:[44.0,44.7,44.6,44.4,44.4,44.5,44.8,44.5],
        subocup:[11.1,10.3,10.5,10.2,10.5,10.6,10.0,10.8]},
-  ica:{l:["Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
-       expo:[7553,7127,8128,7630,8156,7448,6705,5930,8645,8900],
-       impo:[6626,6451,7207,7023,7012,5556,5440,4791,6122,6204],
-       saldo:[927,676,921,607,1144,1892,1265,1139,2523,2696]},
+  // ICA — INDEC · Mayo 2026 (publicado 18/06/2026). Expo récord histórico USD 9.537M +34.4% YoY. Saldo récord USD 3.504M.
+  ica:{l:["Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
+       expo:[7553,7127,8128,7630,8156,7448,6705,5930,8645,8900,9537],
+       impo:[6626,6451,7207,7023,7012,5556,5440,4791,6122,6204,6033],
+       saldo:[927,676,921,607,1144,1892,1265,1139,2523,2696,3504]},
   isac:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],v:[1.2,0.0,-3.9,2.9,-0.1,-1.4,5.1,-4.0]},
   ipi:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],v:[-0.1,-0.9,-1.1,0.4,2.4,-3.0,3.7,-2.1]},
   // UCII — Utilización Capacidad Instalada Industria — INDEC capacidad_06_26EA3331AEEE.pdf (publicado 16/06/2026)
@@ -810,8 +811,8 @@ function buildINDEC(){
     {l:'EMAE Mar 26 YoY',v:'+5.5%',c:'g',n:'Desest. MoM +3.5%'},
     {l:'EMAE Desest. Feb 26',v:'-2.7%',c:'r',n:'MoM sin estacionalidad'},
     {l:'Desempleo Q4 25',v:'7.5%',c:'r',n:'EPH \u00b7 31 aglomerados'},
-    {l:'ICA Abr 26 Super\u00e1vit',v:'$2.696M',c:'g',n:'28vo mes positivo'},
-    {l:'Expo Mar 26 (r\u00e9cord)',v:'$8.645M',c:'g',n:'M\u00e1ximo hist\u00f3rico INDEC'},
+    {l:'ICA May 26 Super\u00e1vit',v:'$3.504M',c:'g',n:'29vo mes positivo'},
+    {l:'Expo May 26 (r\u00e9cord hist.)',v:'$9.537M',c:'g',n:'R\u00e9cord hist\u00f3rico INDEC \u00b7 +34.4% YoY'},
     {l:'ISAC Abr 26 MoM',v:'-4.0%',c:'r',n:'Construcci\u00f3n INDEC \u00b7 YoY -2.8%'},
     {l:'UCII Abr 26',v:'59.9%',c:'g',n:'+1.3pp YoY \u00b7 Cap. instalada industria'}
   ]);
@@ -824,7 +825,7 @@ function buildINDEC(){
         ocard('om0','IPC \u00b7 Precios','&Iacute;ndice Precios Consumidor','MoM / YoY / Categor\u00edas','2.1%','r','May 2026','N\u00facleo 1.9%<br>Reg. 2.4%',1)+
         ocard('om1','EMAE \u00b7 Actividad','Est. Mensual Actividad Ec.','YoY / Desestacionalizado','+5.5%','g','Mar 2026','Desest. +3.5%<br>M\u00e1x. hist.',2)+
         ocard('om2','EPH \u00b7 Laboral','Encuesta Perm. Hogares','Desempleo / Actividad / Empleo','7.5%','r','Q4 2025','Actividad 48.1%<br>Subocup. 10.8%',3)+
-        ocard('om3','ICA \u00b7 Comercio','Intercambio Comercial','Bienes: Expo / Impo / Saldo','$2.696M','g','Abr 2026','Expo $8.900M<br>+33.6% YoY',4)+
+        ocard('om3','ICA \u00b7 Comercio','Intercambio Comercial','Bienes: Expo / Impo / Saldo','$3.504M','g','May 2026','Expo $9.537M<br>+34.4% YoY',4)+
         ocard('om4','ISAC \u00b7 Construcci\u00f3n','Ind. Sintético Activ. Constr.','Variaci\u00f3n YoY INDEC','-2.8%','r','Abr 2026','MoM -4.0% \u00b7 acum +2.1%',5)+
         ocard('om5','IPI \u00b7 Industria','&Iacute;ndice Prod. Industrial','Variaci\u00f3n mensual INDEC','+3.8%','g','Mar 2026','Manufactura<br>en recuperaci\u00f3n',5)+
       '</div>',
@@ -851,11 +852,11 @@ function buildINDEC(){
       bx2(['lb2','lb3'],['EPH \u2014 Tasa Actividad vs Tasa Empleo','EPH \u2014 Desempleo vs Subocupaci\u00f3n'],'h190',['c-indec','']),
       cal)+
     panel2col('p4',
-      shdr('ICA \u00b7 Intercambio Comercial Argentino','INDEC \u2014 Bienes: Exportaciones e Importaciones','$2.696M','Super\u00e1vit Abr 2026','g')+
-      src('INDEC \u00b7 ica_05_264AC7F6FF63.pdf \u00b7 Abril 2026')+
-      sr4([{l:'Expo Abr 26',v:'$8.900M',c:'g',n:'+33.6% vs Abr 25',x:'indec'},{l:'Impo Abr 26',v:'$6.204M',c:'a',n:'-4.0% vs Abr 25',x:'indec'},{l:'Super\u00e1vit Abr 26',v:'$2.696M',c:'g',n:'28vo mes positivo',x:'indec'},{l:'Expo Mar 26 (r\u00e9c.)',v:'$8.645M',c:'g',n:'M\u00e1x. hist\u00f3rico INDEC',x:'indec'}])+
-      bx1('bc1','h240','Exportaciones vs Importaciones \u2014 ICA INDEC \u2014 Jul 2025\u2013Abr 2026','c-indec')+
-      bx2(['bc2','bc3'],['Super\u00e1vit Comercial Mensual \u2014 28 meses positivos','Exportaciones por Grandes Rubros \u2014 PP / MOA / MOI / CyE'],'h190',['c-indec','']),
+      shdr('ICA \u00b7 Intercambio Comercial Argentino','INDEC \u2014 Bienes: Exportaciones e Importaciones','$3.504M','Super\u00e1vit May 2026 \u00b7 R\u00c9CORD','g')+
+      src('INDEC \u00b7 ica_cuadros_18_06_26.xls \u00b7 Mayo 2026 (publicado 18/06/2026)')+
+      sr4([{l:'Expo May 26 (r\u00e9cord)',v:'$9.537M',c:'g',n:'+34.4% YoY \u00b7 r\u00e9cord hist\u00f3rico',x:'indec'},{l:'Impo May 26',v:'$6.033M',c:'a',n:'-7.0% YoY \u00b7 cantidades -13.6%',x:'indec'},{l:'Super\u00e1vit May 26',v:'$3.504M',c:'g',n:'29vo mes positivo \u00b7 r\u00e9cord',x:'indec'},{l:'T\u00e9rminos intercambio',v:'+5.8%',c:'g',n:'Precios expo > precios impo',x:'indec'}])+
+      bx1('bc1','h240','Exportaciones vs Importaciones \u2014 ICA INDEC \u2014 Jul 2025\u2013May 2026','c-indec')+
+      bx2(['bc2','bc3'],['Super\u00e1vit Comercial Mensual \u2014 29 meses positivos','Exportaciones por Grandes Rubros \u2014 PP / MOA / MOI / CyE'],'h190',['c-indec','']),
       cal)+
     panel2col('p5',
       shdr('ISAC \u00b7 IPI \u00b7 UCII \u00b7 Sectorial','INDEC \u2014 Construcci\u00f3n \u00b7 Industria \u00b7 Capacidad Instalada','-2.8%','ISAC Abr 2026 \u00b7 YoY','r')+
