@@ -108,7 +108,7 @@ footer a{color:var(--accent);text-decoration:none;}
 <div class="page">
   <div class="page-eyebrow">Indicador Compuesto · Argentina 2026</div>
   <h1 class="page-h1">Índice de <span>Confianza en la</span><br>Gestión</h1>
-  <p class="page-sub">Indicador compuesto de 6 variables macroeconómicas, financieras y de percepción que mide el desempeño del gobierno en tiempo real. Cada componente se normaliza 0–100 y se pondera según su relevancia. 100 = gestión óptima.</p>
+  <p class="page-sub">Indicador compuesto v2.0 · 6 variables macro, financieras y de percepción. Ponderaciones corregidas para reducir multicolinealidad entre RP, brecha y reservas. RP ajustado por excess spread vs. benchmark EM (descuenta factor Fed/VIX). Reservas en términos netos estimados. 100 = gestión óptima.</p>
 
   <!-- TOP ROW -->
   <div class="top-row">
@@ -170,8 +170,36 @@ footer a{color:var(--accent);text-decoration:none;}
     </div>
   </div>
 
+  <!-- METODOLOGÍA Y LIMITACIONES -->
+  <div style="margin-top:20px;background:var(--s);border:1px solid var(--bdr2);border-radius:10px;padding:22px;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:16px;">Metodología v2.0 · Limitaciones y advertencias</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;font-size:11px;color:var(--mu);line-height:1.6;">
+      <div>
+        <div style="color:var(--txt);font-weight:600;margin-bottom:6px;">Correcciones v2.0</div>
+        <b>RP:</b> Exceso vs. EM benchmark (~300bp). Descuenta el componente global (Fed, VIX) que mueve el EMBI sin relación a la gestión local.<br><br>
+        <b>Reservas:</b> Netas estimadas (brutas − swaps China − encajes − BIS ≈ 15B). Evita la ilusión contable de las brutas.<br><br>
+        <b>Brecha:</b> Peso reducido 15%→10% para mitigar multicolinealidad con RP.
+      </div>
+      <div>
+        <div style="color:var(--txt);font-weight:600;margin-bottom:6px;">Limitaciones vigentes</div>
+        <b>(*) Endogeneidad Inf↔Sal:</b> El salario real se deflacta por IPC, que también es un componente independiente. Un shock inflacionario penaliza dos veces el índice.<br><br>
+        <b>Multicolinealidad residual:</b> RP, Res y Brch siguen siendo parcialmente colineales — los tres mejoran ante un desembolso FMI o un contexto EM favorable.<br><br>
+        <b>Cambio de régimen:</b> El modelo asume parámetros estables. Si Argentina dolariza, el componente Brch colapsa a cero estructuralmente.
+      </div>
+      <div>
+        <div style="color:var(--txt);font-weight:600;margin-bottom:6px;">Factores exógenos no controlados</div>
+        <b>Ciclo Fed/DXY:</b> Hawkish pivot de la Fed sube el EMBI de todos los EM sin acción del gobierno argentino. El componente RP absorbe ruido global aun con el ajuste por benchmark.<br><br>
+        <b>Precio de soja:</b> Reservas correlacionan ~0.6 con el precio de la soja. Una caída internacional castiga Res sin error de política.<br><br>
+        <b>Contagio regional:</b> Eventos en Brasil o EM risk-off contaminan RP y Brch sin causalidad local.
+      </div>
+    </div>
+    <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--bdr2);font-size:10px;color:var(--dim)">
+      Ponderaciones v2.0: RP 20% · Inf 20% · Sal 15% · Res 20% · Brch 10% · UTDT 15% · Total 100% · Fuentes: argentinadatos.com · BCRA · INDEC · UTDT
+    </div>
+  </div>
+
   <footer>
-    <span>Fuentes: argentinadatos.com · api.bcra.gob.ar · dolarapi.com · INDEC · UTDT</span>
+    <span>argentinadatos.com · api.bcra.gob.ar · dolarapi.com · INDEC · UTDT · Amberes Research v2.0</span>
     <span><a href="https://grupoamberes.com.ar">grupoamberes.com.ar</a></span>
   </footer>
 </div>
@@ -180,53 +208,72 @@ footer a{color:var(--accent);text-decoration:none;}
 // ═══════════════════════════════════════════════════
 // COMPONENTES: definición y normalización
 // ═══════════════════════════════════════════════════
+// ── Pesos v2: corrige multicolinealidad RP-Brch-Res (reducir Brch, subir Res)
+// RP: 20% — Inf: 20% — Sal: 15% — Res: 20% — Brch: 10% — ICG UTDT: 15%
+// RP usa excess spread vs. benchmark EM (~300bp) para descontar factor Fed/VIX global
+// Res normaliza sobre netas estimadas (brutas − swaps/encajes ≈ 15B)
+// Nota: Sal sigue usando IPC como deflactor → leve endogeneidad con Inf (ver metodología)
+const EM_BENCHMARK_BP = 300; // EMBI EM peers promedio (CEMBI Broad ~300bp)
+const RES_NO_DISPONIBLES_MM = 15000; // encajes + swap China + BIS, est. MM USD
+
 const COMPONENTS = [
   {
     id:'rp', name:'Riesgo País', unit:'bp', weight:.20,
     color:'#f87171',
-    normalize: v => Math.max(0, Math.min(100, 100 - v/50)),
-    // 0bp=100, 5000bp=0. Cada 50bp = 1 punto
-    desc: raw => `EMBI ${Math.round(raw)} bp`,
-    interp: s => s>=75?'Bajo riesgo soberano':s>=50?'Riesgo moderado':'Alto riesgo soberano',
+    // Excess spread vs. EM peers: descuenta el factor global (Fed, VIX)
+    // 0bp excess=100 · 1300bp excess=0
+    normalize: v => {
+      const excess = Math.max(0, v - EM_BENCHMARK_BP);
+      return Math.max(0, Math.min(100, 100 - excess/13));
+    },
+    desc: raw => `EMBI ${Math.round(raw)}bp · excess vs EM: ${Math.max(0,Math.round(raw-EM_BENCHMARK_BP))}bp`,
+    interp: s => s>=80?'Spread comprimido vs. EM':s>=55?'Spread moderado vs. EM':'Spread elevado vs. EM',
   },
   {
     id:'inf', name:'Inflación MoM', unit:'%', weight:.20,
     color:'#fb923c',
+    // 0%=100 · 10%=0
     normalize: v => Math.max(0, Math.min(100, 100 - v*10)),
-    // 0%=100, 10%=0
-    desc: raw => `IPC ${raw.toFixed(1)}% mensual`,
+    desc: raw => `IPC ${raw.toFixed(1)}% MoM`,
     interp: s => s>=75?'Inflación baja':s>=50?'Inflación moderada':'Inflación elevada',
   },
   {
     id:'sal', name:'Salarios Reales Reg.', unit:'% YoY', weight:.15,
     color:'#a78bfa',
+    // +20%=100 · 0%=50 · −20%=0
     normalize: v => Math.max(0, Math.min(100, 50 + v*2.5)),
-    // +20%=100, 0%=50, -20%=0  — basado en rango real INDEC 2024-2026
-    desc: raw => `Sal. reg. real ${raw>0?'+':''}${raw.toFixed(1)}% i.a.`,
-    interp: s => s>=60?'Salarios reales en alza':s>=45?'Salarios reales estables':'Salarios reales cayendo',
+    desc: raw => `Sal. real ${raw>0?'+':''}${raw.toFixed(1)}% i.a. (deflactor IPC*)`,
+    interp: s => s>=60?'Salarios reales en alza':s>=45?'Salarios estables':'Salarios reales cayendo',
   },
   {
-    id:'res', name:'Reservas BCRA', unit:'MM USD', weight:.15,
+    id:'res', name:'Reservas Netas Est.', unit:'MM USD', weight:.20,
     color:'#34d399',
-    normalize: v => Math.max(0, Math.min(100, (v-15)/35*100)),
-    // 15B=0, 50B=100
-    desc: raw => `Reservas USD ${Math.round(raw/1000)}B`,
-    interp: s => s>=70?'Reservas sólidas':s>=40?'Reservas en recuperación':'Reservas bajas',
+    // Reservas netas estimadas = brutas − RES_NO_DISPONIBLES_MM
+    // 0B netas=0 · 35B netas=100
+    normalize: v => {
+      const netas = v - RES_NO_DISPONIBLES_MM;
+      return Math.max(0, Math.min(100, netas/35000*100));
+    },
+    desc: raw => {
+      const netas = Math.round((raw-RES_NO_DISPONIBLES_MM)/1000);
+      return `Brutas USD ${Math.round(raw/1000)}B · Netas est. ${netas}B`;
+    },
+    interp: s => s>=70?'Reservas netas sólidas':s>=40?'Reservas en recuperación':'Reservas netas bajas',
   },
   {
-    id:'brecha', name:'Brecha Cambiaria', unit:'%', weight:.15,
+    id:'brecha', name:'Brecha Cambiaria', unit:'%', weight:.10,
     color:'#38bdf8',
+    // 0%=100 · 67%=0  — peso reducido (colineal con RP)
     normalize: v => Math.max(0, Math.min(100, 100 - v*1.5)),
-    // 0%=100, 67%=0
     desc: raw => `Brecha CCL/oficial ${raw.toFixed(0)}%`,
     interp: s => s>=80?'Brecha mínima':s>=50?'Brecha moderada':'Brecha elevada',
   },
   {
-    id:'icg', name:'ICG UTDT', unit:'/ 5', weight:.15,
+    id:'icg', name:'Confianza UTDT', unit:'/ 5', weight:.15,
     color:'#f5c518',
-    normalize: v => (v/5)*100,
-    // 0-5 scale → 0-100
-    desc: raw => `ICG ${raw.toFixed(2)} / 5.00`,
+    // 0–5 → 0–100
+    normalize: v => Math.max(0, Math.min(100, (v/5)*100)),
+    desc: raw => `ICG UTDT ${raw.toFixed(2)} / 5.00`,
     interp: s => s>=50?'Confianza ciudadana positiva':s>=30?'Confianza moderada':'Baja confianza ciudadana',
   },
 ];
@@ -267,7 +314,7 @@ const HIST_SEED = [
   {m:'Feb 26', v:[ 620,  2.9,  -4.2, 45000,   4, 2.85]},
   {m:'Mar 26', v:[ 610,  3.4,  -3.4, 45500,   4, 2.83]}, // último dato IS disponible
   {m:'Abr 26', v:[ 600,  2.6,  -3.4, 46000,   4, 2.85]}, // IS abr n/d → proyectado
-  {m:'May 26', v:[ 595,  2.8,  -3.0, 47000,   4, 2.87]},
+  {m:'May 26', v:[ 560,  2.1,  -3.0, 47000,   4, 2.87]},  // IPC mayo real: 2.1%
 ];
 
 function calcIndex(vals){
