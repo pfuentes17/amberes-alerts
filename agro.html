@@ -163,11 +163,13 @@ footer{border-top:1px solid var(--br);padding:10px 40px;background:var(--nv2);di
   .div-grid{grid-template-columns:1fr;}.div-half:first-child{border-right:none;border-bottom:1px solid var(--br);}
 }
 
-/* ── inter-page nav ── */
-.amb-pages{display:flex;align-items:center;gap:5px;}
-.amb-page-link{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(240,244,248,.75);text-decoration:none;border:1px solid rgba(240,244,248,.3);border-radius:5px;padding:4px 10px;white-space:nowrap;transition:all .15s;background:rgba(255,255,255,.04);}
-.amb-page-link:hover{color:#fff;border-color:#fff;background:rgba(255,255,255,.12);}
-.amb-page-link.current{color:#fff;border-color:#fff;background:rgba(255,255,255,.15);font-weight:700;}
+
+/* ── subnav inter-páginas ── */
+.subnav{background:#0e1520;border-bottom:1px solid rgba(255,255,255,.08);padding:0 32px;display:flex;align-items:center;gap:6px;height:36px;position:sticky;top:62px;z-index:190;}
+.subnav-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-right:4px;white-space:nowrap;}
+.snav-link{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;padding:4px 12px;border-radius:4px;white-space:nowrap;transition:all .15s;}
+.snav-link:hover{color:#fff;background:rgba(255,255,255,.08);}
+.snav-link.active{color:#fff;background:rgba(255,255,255,.12);border-bottom:2px solid var(--accent,#22d3ee);}
 </style>
 </head>
 <body>
@@ -187,9 +189,10 @@ footer{border-top:1px solid var(--br);padding:10px 40px;background:var(--nv2);di
     <div class="ldot"></div>
     <span style="font-size:8.5px;color:var(--dm)">Datos verificados &middot; Jun 2026</span>
     <div class="flag">&#127806; Agro</div>
-    <div class="amb-pages"><a href="/" class="amb-page-link">Inicio</a><a href="/arg.html" class="amb-page-link">Argentina</a><a href="/agro.html" class="amb-page-link current">Agro</a><a href="/gestion.html" class="amb-page-link">Gestión</a><a href="/confianza.html" class="amb-page-link">Confianza</a></div>
+    
   </div>
 </header>
+<div class="subnav"><span class="subnav-label">Módulos →</span><a href="/" class="snav-link">🏠 Inicio</a><a href="/arg.html" class="snav-link">🇦🇷 Argentina Macro</a><a href="/agro.html" class="snav-link active">🌾 Agro</a><a href="/gestion.html" class="snav-link">📊 Gestión</a><a href="/confianza.html" class="snav-link">🔵 Confianza</a></div>
 
 <div class="kstrip" id="kstrip"></div>
 <div class="tabrow" id="tabrow"></div>
