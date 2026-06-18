@@ -1,274 +1,154 @@
 {
-  "date": "2026-06-17",
-  "generated": "2026-06-16T11:30:00Z",
+  "date": "2026-06-18",
+  "generated": "2026-06-18T09:00:00Z",
   "sentiment": {
-    "overall": "mixed",
-    "label": "Mercado de dos velocidades — Dow récord, Nasdaq en tensión",
-    "fg": 39,
+    "overall": "risk-off",
+    "label": "Warsh hawkish shock — Fed activa probabilidad de suba y emergentes ceden",
+    "fg": 33,
     "fg_label": "Miedo",
-    "putcall": 0.95,
-    "aaii_bulls": 34
+    "putcall": 1.07,
+    "aaii_bulls": 29
   },
   "drivers": [
     {
       "id": 1,
       "tag": "Bancos Centrales · Fed",
       "tag_class": "tb",
-      "title": "Primera Fed de Kevin Warsh — hold esperado, pero el mercado teme el giro hawkish",
-      "brief": "FOMC 16-17 jun, debut del nuevo chair. Tasa sin cambio en 3.50–3.75% (4ª vez), pero CPI +4.2% (máx 3 años) y FedWatch ya pricing 67% de SUBA en diciembre.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Arranca la <strong>primera reunión bajo Kevin Warsh</strong>. Consenso firme de mantener en <strong>3.50–3.75%</strong> por cuarta vez consecutiva. El foco está 100% en el tono: el empleo de mayo sorprendió fuerte (<strong>+172k vs +80k esperado</strong>) y el CPI corre al <strong>+4.2% YoY</strong>, el más alto en tres años.",
-      "contexto": "Warsh tiene fama de halcón. El mercado venía pricing cortes para 2026 y ahora la curva se da vuelta: <strong>FedWatch asigna 67% de probabilidad a una suba en diciembre</strong>. La comunicación del nuevo chair ya está moviendo la volatilidad en bonos. Cualquier señal hawkish hoy/mañana golpea a los activos de duración larga.",
+      "title": "Debut de Warsh: mantiene tasas pero 9 miembros ven suba — el mercado se vende",
+      "brief": "FOMC 17-jun: hold unánime en 3.50–3.75%, pero shock hawkish. Mediana de fin de año sube a 3.8%. 9/18 miembros proyectan suba en 2026. S&P −1.06%, Dow −410pts, 10Y a 4.46%.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "La primera reunión de <strong>Kevin Warsh como presidente de la Fed</strong> entregó el hawkish shock que los mercados temían. Decisión unánime de mantener en <strong>3.50–3.75%</strong> (4ª pausa), pero el dot plot lo cambia todo: <strong>9 de 18 miembros proyectan al menos una suba antes de fin de año</strong>, llevando la mediana a <strong>3.8%</strong> (vs. 3.4% en marzo). El statement fue reescrito — más corto, sin sesgo de recorte.",
+      "contexto": "Warsh fue explícito en conferencia: <strong>&ldquo;la estabilidad de precios es la misión central&rdquo;</strong>. El FedWatch ahora le asigna probabilidad real a una suba en <strong>octubre o diciembre</strong>. La reacción del mercado fue rápida: <strong>S&P −1.06%</strong>, Nasdaq −1%, Dow −410 puntos, y el <strong>10Y subió 3.5bp a 4.463%</strong>. Los activos de duración larga (growth, tech) son los más vulnerables en este régimen.",
       "impacto": [
-        {
-          "asset": "UST 2Y",
-          "dir": "↑ Presión",
-          "cls": "dn"
-        },
-        {
-          "asset": "Tech / Growth",
-          "dir": "↓ Riesgo",
-          "cls": "dn"
-        },
-        {
-          "asset": "DXY",
-          "dir": "↑ Soporte",
-          "cls": "up"
-        },
-        {
-          "asset": "Oro",
-          "dir": "↑ Hedge",
-          "cls": "up"
-        },
-        {
-          "asset": "Small Caps",
-          "dir": "↓ Rate s.",
-          "cls": "dn"
-        },
-        {
-          "asset": "Bancos",
-          "dir": "↑ Margen",
-          "cls": "up"
-        }
+        { "asset": "UST 10Y", "dir": "↑ 4.46%", "cls": "dn" },
+        { "asset": "S&P 500", "dir": "↓ −1.1%", "cls": "dn" },
+        { "asset": "Nasdaq", "dir": "↓ −1.0%", "cls": "dn" },
+        { "asset": "DXY", "dir": "↑ +0.5%", "cls": "up" },
+        { "asset": "Bancos", "dir": "↑ Margen", "cls": "up" },
+        { "asset": "Growth/Tech", "dir": "↓ Múlt.", "cls": "dn" }
       ]
     },
     {
       "id": 2,
-      "tag": "Equities · IPO",
-      "tag_class": "tg",
-      "title": "SpaceX: el IPO más grande de la historia — vale más que Tesla",
-      "brief": "Debutó el 12-jun en Nasdaq (SPCX), recaudó US$75B a $135. Cerró +19% y siguió subiendo: valuación superó los US$2,2 billones, dejando atrás a Tesla (~$1,2B).",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "SpaceX completó el <strong>mayor IPO de la historia</strong>: vendió 555,6M de acciones a <strong>$135</strong>, recaudando <strong>US$75.000M</strong>. El primer día cerró en $160,95 (<strong>+19,2%</strong>) y tocó $168,75, llevando el market cap a <strong>~US$2,2 billones</strong> — más que Tesla y a tiro de Amazon.",
-      "contexto": "El apetito por la historia espacial/defensa contrasta con el resto del Nasdaq, que viene golpeado. Es <strong>euforia selectiva</strong>: el capital institucional rota hacia el nombre estrella mientras castiga a los semiconductores. Señal clásica de mercado tardío — concentración extrema en pocos ganadores.",
+      "tag": "Geopolítica · Energía",
+      "tag_class": "tq",
+      "title": "EE.UU.–Irán firman acuerdo interim — WTI cae a US$74, el único contrapeso desinflacionario",
+      "brief": "Acuerdo de paz interim firmado digitalmente: Irán reactiva exportaciones de crudo. WTI −2.9% a US$74.56, mínimo desde marzo. El oro cede −2% post-Fed pero recupera parcialmente. DXY fuerte encarece materias primas para emergentes.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "EE.UU. e Irán <strong>firmaron digitalmente el acuerdo de paz interim</strong>, permitiendo a Teherán reanudar exportaciones de crudo y liberar el Estrecho de Ormuz. El <strong>WTI cayó 2.9% a US$74.56</strong>, tocando mínimos desde principios de marzo. El petróleo barato es el único contrapeso desinflacionario que le da argumentos a Warsh para no acelerar las subas.",
+      "contexto": "El <strong>oro cayó ~2%</strong> el miércoles post-Fed (tasas más altas = menor atractivo del metal) pero recuperó parte el jueves por el alivio geopolítico. La paradoja: el acuerdo con Irán <em>ayuda</em> a la inflación y le da margen a la Fed para no subir en octubre, pero el <strong>DXY +0.5%</strong> (más fuerte) encarece las importaciones en pesos y aprieta a los emergentes. Para Argentina, petróleo bajo es positivo (menos inflación importada, balanza), pero DXY fuerte neutraliza el carry.",
       "impacto": [
-        {
-          "asset": "SPCX",
-          "dir": "↑ +20%",
-          "cls": "up"
-        },
-        {
-          "asset": "Defensa/Espacio",
-          "dir": "↑ Flujos",
-          "cls": "up"
-        },
-        {
-          "asset": "Tesla",
-          "dir": "↓ Rotación",
-          "cls": "dn"
-        },
-        {
-          "asset": "Nasdaq breadth",
-          "dir": "↓ Estrecho",
-          "cls": "dn"
-        },
-        {
-          "asset": "IPO pipeline",
-          "dir": "↑ Reabre",
-          "cls": "up"
-        },
-        {
-          "asset": "Cash → equity",
-          "dir": "↑ Inflows",
-          "cls": "up"
-        }
+        { "asset": "WTI / Brent", "dir": "↓ US$74.5", "cls": "dn" },
+        { "asset": "Oro", "dir": "↓ <$4.300", "cls": "dn" },
+        { "asset": "Breakevens", "dir": "↓ Ceden", "cls": "dn" },
+        { "asset": "Energía (XLE)", "dir": "↓ Presión", "cls": "dn" },
+        { "asset": "Aerolíneas", "dir": "↑ Costos", "cls": "up" },
+        { "asset": "DXY", "dir": "↑ +0.5%", "cls": "up" }
       ]
     },
     {
       "id": 3,
-      "tag": "Tech · AI",
-      "tag_class": "tr",
-      "title": "Resaca del selloff de AI: Nvidia perdió US$279B y los semis no recuperan",
-      "brief": "El 5-jun el Nasdaq cayó 4,2% (peor día desde abr-25) por miedo a suba de tasas. SOXX −10%, Broadcom −12,6%, Marvell −17%. Hoy el Nasdaq vuelve a ceder ~1,9%.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El gatillo fue el <strong>empleo fuerte de mayo</strong> que reavivó las apuestas de suba Fed. <strong>Nvidia perdió US$279.000M</strong> de capitalización en un día, el índice de semis (SOXX) cayó <strong>10%</strong> en una sola sesión. El trade de AI, sobrecomprado, se frena en seco.",
-      "contexto": "Wells Fargo lo definió como <strong>&ldquo;más posicionamiento que fundamentals&rdquo;</strong> — el sector estaba &ldquo;muy sobrecomprado&rdquo;. Pero deja al descubierto la fragilidad: con la Fed potencialmente subiendo, las valuaciones de múltiplos altos quedan expuestas. El Nasdaq y el Russell 2000 retroceden mientras el Dow marca récord.",
+      "tag": "Argentina · Emergentes",
+      "tag_class": "ta",
+      "title": "Riesgo país sube a 437 — el viento de cola externo se debilita post-Fed",
+      "brief": "El riesgo país ARG rebota de 425 a 437bp. ADRs mixtos: bancos +2%, Globant −5.5%. El upgrade S&P a B− y los fundamentos macro sostienen, pero DXY fuerte + suba Fed esperada cierra la ventana EM ideal que había abierto el rally.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El <strong>riesgo país argentino sube a ~437bp</strong>, alejándose del mínimo histórico reciente de 425bp (lunes). Los <strong>bonos soberanos ceden hasta −0.56%</strong> y los ADRs operan en forma mixta: los bancarios (<strong>BBAR +2.2%, GGAL +2%</strong>) resisten por su exposición al ciclo local; el tech (<strong>Globant −5.5%</strong>) siente el golpe del régimen de tasas altas.",
+      "contexto": "El golpe del hawkish de Warsh llega en el peor momento: Argentina venía de un rally impresionante sostenido por el <strong>upgrade de S&P a B−</strong> (de CCC+) y el prospecto de ser recategorizada como Mercado de Frontera. El riesgo ahora es que el <strong>DXY fuerte + la suba esperada de la Fed</strong> compriman el apetito por carry EM justo cuando Argentina más necesita que los inversores internacionales estén comprados. Los fundamentos locales siguen sólidos (superávit primario, reservas en ascenso, acuerdo FMI), pero el contexto externo se pone cuesta arriba.",
       "impacto": [
-        {
-          "asset": "Nvidia / SOXX",
-          "dir": "↓ Frágil",
-          "cls": "dn"
-        },
-        {
-          "asset": "Nasdaq 100",
-          "dir": "↓ Presión",
-          "cls": "dn"
-        },
-        {
-          "asset": "Dow (value)",
-          "dir": "↑ Récord",
-          "cls": "up"
-        },
-        {
-          "asset": "Russell 2000",
-          "dir": "↓ Cede",
-          "cls": "dn"
-        },
-        {
-          "asset": "VIX",
-          "dir": "↑ Latente",
-          "cls": "dn"
-        },
-        {
-          "asset": "Defensivos",
-          "dir": "↑ Rotación",
-          "cls": "up"
-        }
+        { "asset": "Globales ARG", "dir": "↓ −0.6%", "cls": "dn" },
+        { "asset": "Riesgo país", "dir": "↑ 437bp", "cls": "dn" },
+        { "asset": "ADRs bancos", "dir": "↑ +2%", "cls": "up" },
+        { "asset": "ADRs tech", "dir": "↓ −5%", "cls": "dn" },
+        { "asset": "Merval USD", "dir": "→ Mixto", "cls": "neu" },
+        { "asset": "Carry ARG", "dir": "↓ Costo ext.", "cls": "dn" }
       ]
     },
     {
       "id": 4,
-      "tag": "Geopolítica · Energía",
-      "tag_class": "tq",
-      "title": "Optimismo por acuerdo EE.UU.–Irán — el petróleo cede y descomprime inflación",
-      "brief": "Crece la expectativa de un acuerdo que reabra plenamente el flujo de crudo. WTI cae −4,7% a ~US$76. Alivio para la curva de inflación justo antes de la Fed.",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "Wall Street operó pendiente de un <strong>posible acuerdo de paz entre EE.UU. e Irán</strong>. El crudo retrocede con fuerza: <strong>WTI −4,7% a ~US$76</strong>, mínimos recientes. Menos petróleo = menos presión sobre las expectativas de inflación.",
-      "contexto": "Es el contrapeso bajista para la inflación que la Fed necesita: si el crudo se sostiene a la baja, alivia el componente de energía del CPI y le da aire a Warsh para no endurecer el discurso. Un acuerdo formal sería el <strong>catalizador risk-on</strong> que el mercado de acciones está esperando.",
+      "tag": "Bancos Centrales · COPOM",
+      "tag_class": "tb",
+      "title": "Brasil recorta SELIC a 14.25% pero cierra el ciclo — inflación 5.2% supera el techo",
+      "brief": "COPOM recortó 25pb unánime a 14.25% (tercer corte desde 15% en marzo), pero sube su proyección de inflación 2026 a 5.2% (techo 4.5%) y señala que el ciclo de baja puede estar terminando. Double headwind para BRL: Fed hawkish + COPOM cauto.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El <strong>COPOM de Brasil recortó la SELIC a 14.25%</strong> en decisión unánime — el tercer corte consecutivo de 25pb desde el máximo de 15% en enero. Pero el comunicado fue <strong>hawkish</strong>: elevó la proyección de inflación 2026 a <strong>5.2%</strong>, muy por encima del techo de la banda (4.5%), y postergó el objetivo de inflación del 3% a <strong>principios de 2028</strong>.",
+      "contexto": "Brasil enfrenta un <strong>dilema complejo</strong>: el ciclo de baja empuja el BRL a la baja (carry menos atractivo), pero la inflación acelerando no le da margen para recortar más. Con la <strong>Fed moviéndose en dirección contraria</strong> (posible suba), el diferencial de tasas se comprime y el BRL queda vulnerable. El Bovespa sufre de doble frente: tasa doméstica alta por inflación + contexto externo desfavorable. Para Argentina, el BRL débil presiona la competitividad.",
       "impacto": [
-        {
-          "asset": "WTI / Brent",
-          "dir": "↓ −4,7%",
-          "cls": "dn"
-        },
-        {
-          "asset": "Breakevens",
-          "dir": "↓ Ceden",
-          "cls": "dn"
-        },
-        {
-          "asset": "Aerolíneas",
-          "dir": "↑ Costos",
-          "cls": "up"
-        },
-        {
-          "asset": "Energía (XLE)",
-          "dir": "↓ Presión",
-          "cls": "dn"
-        },
-        {
-          "asset": "Equities",
-          "dir": "↑ Alivio",
-          "cls": "up"
-        },
-        {
-          "asset": "EM Carry",
-          "dir": "↑ Favorab.",
-          "cls": "up"
-        }
+        { "asset": "SELIC", "dir": "↓ 14.25%", "cls": "neu" },
+        { "asset": "BRL / R$", "dir": "↓ Presión", "cls": "dn" },
+        { "asset": "Bovespa", "dir": "↓ Double hdw.", "cls": "dn" },
+        { "asset": "Bonos BRA", "dir": "↓ Inflac.", "cls": "dn" },
+        { "asset": "Carry LATAM", "dir": "↓ Diferenc.", "cls": "dn" },
+        { "asset": "Comp. ARG", "dir": "↑ BRL débil", "cls": "up" }
       ]
     },
     {
       "id": 5,
-      "tag": "Emergentes · LATAM",
-      "tag_class": "ta",
-      "title": "Argentina: riesgo país a 425 (mínimo) · COPOM Brasil decide HOY",
-      "brief": "El riesgo país argentino comprime a 425bp, mínimo de la era. Contexto EM favorable (DXY débil, petróleo a la baja). Brasil define SELIC HOY 17-jun, mercado dividido.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>riesgo país argentino tocó 425bp</strong>, mínimo de los últimos años, con los globales firmes. El contexto externo ayuda: DXY en ~101, petróleo cayendo, apetito por carry. HOY el <strong>COPOM de Brasil</strong> define la SELIC (14,50%) con el mercado dividido entre recorte de 25pb y pausa.",
-      "contexto": "Para Argentina, la combinación de <strong>DXY débil + commodities a la baja + Fed que (todavía) no sube</strong> es la ventana ideal para seguir comprimiendo spread. El riesgo es que un giro hawkish de Warsh corte el envión de los emergentes. Brasil es el primer test regional de la semana.",
+      "tag": "Macro · EE.UU.",
+      "tag_class": "tg",
+      "title": "'Good news is bad news' — ventas minoristas y pending home sales baten y alimentan la suba",
+      "brief": "Ventas minoristas mayo: beat. Pending home sales mayo: beat. La economía EE.UU. sigue fuerte. Para el mercado accionario en régimen hawkish, cada dato sólido es un argumento más para que la Fed suba y un motivo para vender duración.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "<strong>Ventas minoristas de mayo</strong> superaron las expectativas (datos sólidos del consumo americano). <strong>Pending home sales de mayo</strong> también batieron el consenso. Ambos refuerzan la narrativa de que la economía de EE.UU. sigue creciendo robustamente, sin señales de enfriamiento que justifiquen una pausa de la Fed.",
+      "contexto": "El mercado opera en el régimen de <strong>'good news is bad news'</strong> más claro de 2026: datos fuertes = más probabilidad de suba Fed = venta de activos de duración. El DXY se fortaleció +0.5% apoyado en estos números. El <strong>10Y americano sube</strong> y presiona a todos los activos de larga duración: tech, growth, emergentes, oro y criptos. Warsh tiene los argumentos macroeconómicos para subir en octubre — el único freno es el petróleo cayendo por el acuerdo con Irán.",
       "impacto": [
-        {
-          "asset": "Globales ARG",
-          "dir": "↑ Firmes",
-          "cls": "up"
-        },
-        {
-          "asset": "Riesgo país",
-          "dir": "↓ 425bp",
-          "cls": "up"
-        },
-        {
-          "asset": "BRL / Bovespa",
-          "dir": "→ COPOM",
-          "cls": "neu"
-        },
-        {
-          "asset": "Merval",
-          "dir": "↑ Contexto",
-          "cls": "up"
-        },
-        {
-          "asset": "EM FX",
-          "dir": "↑ DXY débil",
-          "cls": "up"
-        },
-        {
-          "asset": "Carry LATAM",
-          "dir": "↑ Abierto",
-          "cls": "up"
-        }
+        { "asset": "DXY", "dir": "↑ +0.5%", "cls": "up" },
+        { "asset": "UST 10Y", "dir": "↑ 4.46%", "cls": "dn" },
+        { "asset": "Consumo USA", "dir": "↑ Sólido", "cls": "up" },
+        { "asset": "Growth / Tech", "dir": "↓ Duración", "cls": "dn" },
+        { "asset": "EM / ARG", "dir": "↓ DXY", "cls": "dn" },
+        { "asset": "Rate hike oct.", "dir": "↑ Prob.", "cls": "dn" }
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Dow récord vs. Nasdaq débil",
-      "texto": "El <strong>Dow marca máximos históricos</strong> mientras el <strong>Nasdaq y el Russell 2000 retroceden</strong>. Es un mercado de dos velocidades: el dinero rota de growth/tech hacia value y defensivos ante el miedo a una Fed más dura. La amplitud (breadth) se deteriora — pocos nombres sostienen los índices."
+      "label": "Fed hawkish vs. petróleo desinflacionario",
+      "texto": "La <strong>Fed activa probabilidades de suba</strong> porque la inflación no cede al 2%, pero al mismo tiempo el <strong>acuerdo EE.UU.–Irán derrumba el WTI a US$74</strong>. El petróleo barato es el principal contrapeso: si el crudo se sostiene en estos niveles, el componente energético del CPI cede y Warsh puede demorar la suba. La tensión entre ambas fuerzas define el timing de octubre vs. diciembre."
     },
     {
-      "label": "VIX 16 vs. Fed hawkish",
-      "texto": "El <strong>VIX en ~16</strong> señala calma, pero la foto macro no la justifica: <strong>CPI +4,2%, empleo +172k, y FedWatch 67% de suba en diciembre</strong>. El mercado de opciones no está pricing el riesgo de un giro hawkish de Warsh. Un susto de datos puede revertir la complacencia rápido."
+      "label": "Argentina: upgrade S&P vs. DXY fuerte",
+      "texto": "Argentina logró el upgrade a <strong>B− (S&P)</strong> y vio el riesgo país en 425bp — mínimo en 8 años. Pero justo cuando se abría la puerta para la recategorización como Mercado de Frontera, la <strong>Fed se pone hawkish y el DXY se fortalece</strong>. El carry argentino sigue positivo en términos absolutos, pero el viento externo que potenciaba el rally se invierte: menos apetito por EM es el principal riesgo para seguir comprimiendo."
     },
     {
-      "label": "Euforia SpaceX vs. sangría AI",
-      "texto": "<strong>SpaceX vale +US$2 billones</strong> y sube 20% mientras <strong>Nvidia perdió US$279B</strong> y los semis se desploman. La euforia concentrada en un nombre conviviendo con el castigo al resto del tech es señal clásica de <strong>mercado tardío</strong> — concentración extrema de flujos."
+      "label": "COPOM + Fed: doble freno para LATAM carry",
+      "texto": "Brasil recortó (hawkish statement) y la Fed habla de suba: el diferencial de tasas real entre Brasil/Argentina y EE.UU. se comprime. Para los inversores extranjeros, el carry de la región se vuelve menos atractivo. <strong>BRL + carry LATAM bajo presión</strong> simultánea — el doble headwind que más duele a los activos regionales."
     },
     {
-      "label": "Good news is bad news",
-      "texto": "El <strong>empleo fuerte (+172k)</strong> debería ser buena noticia, pero las acciones lo leen al revés: mejor economía = más chance de suba Fed = múltiplos bajo presión. Mientras el mercado opere en este régimen, cada dato macro sólido es bajista para la renta variable de duración larga."
+      "label": "ADRs argentinos: bancos vs. tech — el mercado no lee todo igual",
+      "texto": "En la misma rueda, <strong>BBAR y GGAL suben +2%</strong> mientras <strong>Globant cae −5.5%</strong>. Los bancos argentinos son un juego de ciclo local (spread en pesos, crédito creciendo, estabilización macro) y no dependen del régimen de tasas globales. El tech local, como el global, sufre cuando las tasas largas suben. La divergencia es oportunidad y señal al mismo tiempo."
     }
   ],
   "correlaciones": [
     {
-      "par": "Empleo ↑ ↔ Acciones ↓",
-      "texto": "Régimen 'good news is bad news'. El dato de +172k empleos disparó las apuestas de suba Fed y el selloff de AI. Cada sorpresa positiva de actividad presiona los múltiplos."
+      "par": "Fed hawkish ↔ DXY fuerte",
+      "texto": "Correlación directa activada: el dot plot hawkish llevó al DXY +0.5% inmediatamente. Con el dólar fortaleciéndose, el carry de emergentes pierde atractivo relativo y el riesgo país argentino sube desde los mínimos."
     },
     {
       "par": "WTI ↓ ↔ Breakevens ↓",
-      "texto": "El petróleo a la baja (acuerdo Irán) descomprime las expectativas de inflación. Le da aire a la Fed para no endurecer y alivia la presión sobre los yields largos."
+      "texto": "El acuerdo con Irán derrumba el crudo a US$74, el nivel más bajo desde marzo. Menos presión sobre el componente energético del CPI = menos urgencia para que Warsh suba en octubre. Es la única fuerza que puede moderar el hawkishness."
     },
     {
-      "par": "DXY débil ↔ Oro ATH",
-      "texto": "Correlación inversa activa. DXY en ~101 sostiene el oro cerca de máximos (~US$4.300). Si el DXY rompe 100, el oro acelera."
+      "par": "10Y sube ↔ Growth/Tech cede",
+      "texto": "Cada punto básico que sube el 10Y aprieta los múltiplos de las acciones de alta duración. Con el 10Y en 4.46% post-FOMC, Nasdaq, semiconductores y growth quedan bajo presión estructural hasta que la curva ceda."
     },
     {
-      "par": "Nasdaq ↔ SOXX",
-      "texto": "Los semiconductores lideran al Nasdaq en ambas direcciones. SOXX −10% en un día arrastró todo el complejo tech. La salud del índice depende de los chips."
+      "par": "UST 10Y ↑ ↔ Globales ARG ↓",
+      "texto": "Los bonos soberanos argentinos tienen una correlación negativa con los treasuries: cuando el 10Y sube, el piso del spread ARG sube también. 4.46% en el treasury implica que para que ARG opere al mismo yield total, el spread tiene que abrirse — lo que empuja el riesgo país al alza."
     },
     {
-      "par": "DXY < 102 ↔ EM relief",
-      "texto": "Con el dólar débil y el petróleo cayendo, los emergentes respiran. El riesgo país argentino a 425bp y el carry LATAM se benefician del contexto."
+      "par": "SELIC ↓ + inflac. ↑ ↔ BRL débil",
+      "texto": "Brasil baja la tasa pero la inflación le come el diferencial real: con el IPC proyectado en 5.2%, la tasa real baja y el BRL pierde carry atractivo. Situación de stagflation lite que presiona al real y al Bovespa simultáneamente."
     },
     {
-      "par": "VIX ↓ ↔ F&G en Miedo",
-      "texto": "Divergencia: el VIX está bajo (16) pero el Fear & Greed marca Miedo (~39). El posicionamiento es cauto aunque la volatilidad implícita no lo refleje todavía."
+      "par": "F&G 33 (Miedo) ↔ Posicionamiento cauto",
+      "texto": "El Fear & Greed cayó a 33 post-hawkish Fed. Con el mercado en zona de Miedo moderado pero el VIX todavía sin explotar (implícita contenida), hay asimetría: si Warsh o los datos sorprenden más al alza, el salto del VIX puede ser brusco."
     }
   ],
-  "bottom_line": "El mercado entra a la Fed de Warsh <strong>partido en dos</strong>: el Dow marca récords por rotación a value mientras el Nasdaq sufre la resaca del selloff de AI. El debut histórico de SpaceX (>US$2 billones) convive con Nvidia perdiendo US$279B — euforia selectiva clásica de ciclo tardío.<br><br>El driver dominante es el <strong>giro de expectativas sobre la Fed</strong>: empleo fuerte + CPI 4,2% llevaron al mercado a pricing 67% de suba en diciembre. El único contrapeso bajista para la inflación es el <strong>petróleo en caída</strong> por el optimismo del acuerdo EE.UU.–Irán.<br><br><strong>La tensión más peligrosa:</strong> un VIX en 16 con la Fed potencialmente girando hawkish y la amplitud del mercado deteriorándose. Para Argentina, la ventana de DXY débil sigue abierta (riesgo país a 425) — pero depende de que Warsh no la cierre."
+  "bottom_line": "La primera reunión de Warsh entregó lo que los mercados temían pero no habían plenamente descontado: un <strong>hawkish shock con dot plot que activa probabilidades reales de suba en 2026</strong>. La mediana del FOMC sube a 3.8% para fin de año, nueve miembros ven un incremento, y el statement se reescribió sin sesgo de recorte. El S&P cayó 1.1%, el 10Y tocó 4.46% y el DXY subió 0.5% — el patrón clásico de repricing hawkish.<br><br>El único contrapeso es geopolítico: EE.UU. e Irán firmaron el acuerdo interim y el <strong>WTI derrumbó a US$74.56</strong>. Si el crudo se sostiene en estos niveles, el componente energético del CPI cede y Warsh tiene argumento para demorar la suba hasta diciembre. La tensión entre ambas fuerzas define el timing del mercado.<br><br><strong>Para Argentina</strong>, el contexto externo se pone cuesta arriba justo cuando los fundamentos locales estaban en su mejor momento. El riesgo país rebota de 425 a 437bp, los globales ceden −0.6% y el carry pierde su viento de cola. El <strong>upgrade S&P a B−</strong> y el superávit primario siguen siendo soporte estructural, pero la recategorización como Mercado de Frontera necesita que el contexto EM acompañe — y hoy no acompaña. Brasil suma su propio headwind: COPOM corta pero cierra el ciclo con inflación en 5.2%."
 }
