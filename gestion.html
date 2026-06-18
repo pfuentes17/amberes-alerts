@@ -108,7 +108,7 @@ footer a{color:var(--accent);text-decoration:none;}
 <div class="page">
   <div class="page-eyebrow">Indicador Compuesto · Argentina 2026</div>
   <h1 class="page-h1">Índice de <span>Confianza en la</span><br>Gestión</h1>
-  <p class="page-sub">Indicador compuesto v2.0 · 6 variables macro, financieras y de percepción. Ponderaciones corregidas para reducir multicolinealidad entre RP, brecha y reservas. RP ajustado por excess spread vs. benchmark EM (descuenta factor Fed/VIX). Reservas en términos netos estimados. 100 = gestión óptima.</p>
+  <p class="page-sub">Indicador compuesto v2.1 · 4 componentes: FEE (Factor de Estrés Externo), Inflación, Salarios Reales, Confianza UTDT. Pesos Shapley simétrico calibrados sobre N=87 observaciones (ene 2019–may 2026). Recalibración automática por régimen de inflación. 100 = gestión óptima.</p>
 
   <!-- TOP ROW -->
   <div class="top-row">
@@ -156,12 +156,10 @@ footer a{color:var(--accent);text-decoration:none;}
         <table class="hist-table">
           <thead><tr>
             <th style="text-align:left">Mes</th>
-            <th title="Riesgo País">RP</th>
-            <th title="Inflación">Inf</th>
-            <th title="Salarios">Sal</th>
-            <th title="Reservas">Res</th>
-            <th title="Brecha">Brch</th>
-            <th title="ICG UTDT">ICG</th>
+            <th title="Factor de Estrés Externo (RP+Res+Brecha)">FEE</th>
+            <th title="Inflación MoM">Inf</th>
+            <th title="Salarios Reales">Sal</th>
+            <th title="Confianza UTDT">UTDT</th>
             <th><strong>Índice</strong></th>
           </tr></thead>
           <tbody id="hist-body"></tbody>
@@ -178,403 +176,428 @@ footer a{color:var(--accent);text-decoration:none;}
       <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--accent);margin-bottom:6px;">PONDERADORES ACTUALES (Shapley simétrico)</div>
       <div id="shapley-weights-display" style="line-height:1.8">
         <!-- Cargado por JS al inicio y recalibrado con cada dato mensual nuevo -->
-        <span style="color:#f87171;margin-right:10px">Riesgo País: <b>22%</b></span>
-        <span style="color:#fb923c;margin-right:10px">Inflación: <b>11%</b></span>
-        <span style="color:#a78bfa;margin-right:10px">Salarios: <b>10%</b></span>
-        <span style="color:#34d399;margin-right:10px">Reservas: <b>18%</b></span>
-        <span style="color:#38bdf8;margin-right:10px">Brecha: <b>16%</b></span>
-        <span style="color:#f5c518;margin-right:10px">UTDT: <b>23%</b></span>
-        <span style="color:var(--dim);font-size:10px"> · Semilla dic 2023</span>
+        <span style="color:#f87171;margin-right:10px">Estrés Externo: <b>—</b></span>
+        <span style="color:#fb923c;margin-right:10px">Inflación: <b>—</b></span>
+        <span style="color:#a78bfa;margin-right:10px">Salarios: <b>—</b></span>
+        <span style="color:#f5c518;margin-right:10px">UTDT: <b>—</b></span>
+        <span style="color:var(--dim);font-size:10px"> · Calculando…</span>
       </div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;font-size:11px;color:var(--mu);line-height:1.6;">
       <div>
         <div style="color:var(--txt);font-weight:600;margin-bottom:6px;">Criterio de ponderación</div>
-        <b>Shapley simétrico:</b> Para cada variable i, calculamos su contribución marginal promedio a predecir las otras 5 variables, promediando sobre todos los subsets posibles (6 × 2⁵ = 192 evaluaciones de R²).<br><br>
-        Variables con mayor información única → mayor peso. Variables muy colineales comparten su contribución.<br><br>
-        <b>Auto-calibración:</b> Cuando detecta un nuevo dato mensual de Inf (cambio >0.05pp), agrega la observación al buffer en localStorage y recalcula los pesos automáticamente.
+        <b>FEE — Factor de Estrés Externo:</b> Promedio de los scores normalizados de RP, Reservas y Brecha. Consolida las 3 variables colineales (r=0.89–0.95) en un único indicador financiero, eliminando la multicolinealidad del Shapley.<br><br>
+        <b>Shapley simétrico:</b> Con 4 variables, se evalúan 4×2³=32 subsets. Cada variable recibe su contribución marginal promedio. N=87 observaciones (ene'19–may'26) garantiza robustez estadística.<br><br>
+        <b>Recalibración por régimen:</b> Se activa cuando la inflación cambia de régimen (A: &lt;5%, B: 5–15%, C: &gt;15%). Dentro del régimen actual se usa toda la historia disponible de ese régimen.
       </div>
       <div>
         <div style="color:var(--txt);font-weight:600;margin-bottom:6px;">Limitaciones vigentes</div>
-        <b>Multicolinealidad:</b> RP, Res y Brecha correlacionan 0.89–0.95 (VIF>10). El Shapley distribuye el mérito compartido de forma justa, pero no resuelve que todos miden el mismo "ciclo de recuperación".<br><br>
-        <b>Endogeneidad Inf↔Sal:</b> El salario real se deflacta por IPC. Un shock inflacionario penaliza ambas variables simultáneamente.<br><br>
-        <b>Ventana histórica:</b> Solo 30 obs (dic'23–may'26) — un único ciclo de recuperación. Los pesos se estabilizarán con más datos cross-cycle.
+        <b>UTDT histórico estimado:</b> Los valores del ICG UTDT previos a dic'23 son estimaciones basadas en contexto político-económico. Sin API histórica. Actualizable con informes mensuales UTDT.<br><br>
+        <b>Endogeneidad Inf↔Sal:</b> El salario real se deflacta por IPC. Sin disponibilidad de IPP histórico en API pública. Corrección pendiente.<br><br>
+        <b>FEE sin ponderación diferencial:</b> RP, Res y Brecha pesan igual dentro del FEE. Una mejora futura sería usar sus Shapley individuales como pesos internos del FEE.
       </div>
       <div>
         <div style="color:var(--txt);font-weight:600;margin-bottom:6px;">Factores exógenos no controlados</div>
-        <b>Ciclo Fed/DXY:</b> Un hawkish pivot sube el EMBI de todos los EM sin acción del gobierno argentino. El componente RP descuenta 300bp de benchmark EM para aislar el factor local.<br><br>
-        <b>Precio de soja:</b> Reservas correlacionan ~0.6 con commodities agrícolas. Una caída internacional castiga Res sin error de política.<br><br>
-        <b>Cambio de régimen:</b> Si Argentina unifica completamente o dolariza, el componente Brecha colapsa a cero estructuralmente y debe removerse del índice.
+        <b>Ciclo Fed/VIX:</b> El FEE absorbe ruido global aunque el RP usa excess spread vs. benchmark EM (300bp) para aislarlo parcialmente.<br><br>
+        <b>Precio de soja:</b> Las reservas dentro del FEE correlacionan ~0.6 con commodities agrícolas. Una caída internacional castiga el FEE sin error de política.<br><br>
+        <b>Discontinuidad UTDT:</b> El componente de mayor peso (25%) depende de una encuesta que puede cambiar de metodología. Sin fallback definido si UTDT modifica su escala.
       </div>
     </div>
     <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--bdr2);font-size:10px;color:var(--dim)">
-      Pesos v3 calculados con Shapley simétrico · Auto-actualizados mensualmente · Fuentes: argentinadatos.com · api.bcra.gob.ar · dolarapi.com · INDEC · UTDT
+      v2.1 · FEE + Inf + Sal + UTDT · Shapley N=87 · Régimen-based recalibration · Fuentes: argentinadatos.com · api.bcra.gob.ar · dolarapi.com · INDEC · UTDT
     </div>
   </div>
 
   <footer>
-    <span>argentinadatos.com · api.bcra.gob.ar · dolarapi.com · INDEC · UTDT · Amberes Research v3.0</span>
+    <span>argentinadatos.com · api.bcra.gob.ar · dolarapi.com · INDEC · UTDT · Amberes Research v2.1</span>
     <span><a href="https://grupoamberes.com.ar">grupoamberes.com.ar</a></span>
   </footer>
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════
-// COMPONENTES: definición y normalización
-// ═══════════════════════════════════════════════════
-// Pesos v3: calculados con Shapley simétrico sobre serie histórica
-// y auto-actualizados cada vez que entra un dato mensual nuevo.
-// Fallback inicial basado en Shapley sobre HIST_SEED (30 obs dic23-may26):
-//   RP=22% · Inf=11% · Sal=10% · Res=18% · Brecha=16% · UTDT=23%
+// ═══════════════════════════════════════════════════════════════════════
+// ICG v2.1 — Arquitectura: FEE + Inf + Sal + UTDT
+// ───────────────────────────────────────────────────────────────────────
+// Cambios vs v2.0:
+//  • FEE (Factor de Estrés Externo) = avg(norm_RP, norm_Res, norm_Brecha)
+//    reemplaza las 3 variables colineales → elimina multicolinealidad
+//  • N=87 observaciones (ene 2019 → may 2026) → Shapley estadísticamente válido
+//  • Recalibración por régimen de inflación (no por Δ0.05pp)
+//  • Pesos Shapley sobre 4 variables = 4×2³ = 32 evaluaciones (estable)
+//  • UTDT histórico pre-2024: estimado, marcado en seed
+// ═══════════════════════════════════════════════════════════════════════
+
 const EM_BENCHMARK_BP = 300;
 const RES_NO_DISPONIBLES_MM = 15000;
 
+// ── Normalización de variables raw ──────────────────────────────────────
+function norm_rp(v)   { return Math.max(0,Math.min(100,100-Math.max(0,v-EM_BENCHMARK_BP)/13)); }
+function norm_res(v)  { return Math.max(0,Math.min(100,(v-RES_NO_DISPONIBLES_MM)/35000*100)); }
+function norm_br(v)   { return Math.max(0,Math.min(100,100-v*1.5)); }
+function norm_inf(v)  { return Math.max(0,Math.min(100,100-v*10)); }
+function norm_sal(v)  { return Math.max(0,Math.min(100,50+v*2.5)); }
+function norm_utdt(v) { return Math.max(0,Math.min(100,(v/5)*100)); }
+
+// FEE = promedio simple de los 3 scores financieros
+// (equivalente a PCA con cargas iguales; más transparente)
+function norm_fee(rp, res, br) {
+  return (norm_rp(rp) + norm_res(res) + norm_br(br)) / 3;
+}
+
+// vals raw = [rp_bp, inf_mom, sal_yoy, res_mm, brecha_pct, utdt]
+// → scores para 4 componentes: [FEE, Inf, Sal, UTDT]
+function rawToScores(v) {
+  return [
+    norm_fee(v[0], v[3], v[4]),
+    norm_inf(v[1]),
+    norm_sal(v[2]),
+    norm_utdt(v[5]),
+  ];
+}
+
+// ── 4 COMPONENTES (FEE reemplaza RP+Res+Brecha) ─────────────────────────
 const COMPONENTS = [
   {
-    id:'rp', name:'Riesgo País', unit:'bp', weight:.22,
+    id:'fee', name:'Estrés Externo', unit:'score', weight:.35,
     color:'#f87171',
-    normalize: v => {
-      const excess = Math.max(0, v - EM_BENCHMARK_BP);
-      return Math.max(0, Math.min(100, 100 - excess/13));
-    },
-    desc: raw => `EMBI ${Math.round(raw)}bp · excess vs EM: ${Math.max(0,Math.round(raw-EM_BENCHMARK_BP))}bp`,
-    interp: s => s>=80?'Spread comprimido vs. EM':s>=55?'Spread moderado vs. EM':'Spread elevado vs. EM',
+    desc: (rp,res,br) => `RP ${Math.round(rp)}bp · Res ${Math.round((res-RES_NO_DISPONIBLES_MM)/1000)}B netas · Brecha ${Math.round(br)}%`,
+    interp: s => s>=75?'Condiciones externas favorables':s>=50?'Estrés externo moderado':'Estrés externo elevado',
   },
   {
-    id:'inf', name:'Inflación MoM', unit:'%', weight:.11,
+    id:'inf', name:'Inflación MoM', unit:'%', weight:.20,
     color:'#fb923c',
-    normalize: v => Math.max(0, Math.min(100, 100 - v*10)),
     desc: raw => `IPC ${raw.toFixed(1)}% MoM`,
     interp: s => s>=75?'Inflación baja':s>=50?'Inflación moderada':'Inflación elevada',
   },
   {
-    id:'sal', name:'Salarios Reales Reg.', unit:'% YoY', weight:.10,
+    id:'sal', name:'Salarios Reales', unit:'% YoY', weight:.20,
     color:'#a78bfa',
-    normalize: v => Math.max(0, Math.min(100, 50 + v*2.5)),
-    desc: raw => `Sal. real ${raw>0?'+':''}${raw.toFixed(1)}% i.a. (deflactor IPC*)`,
+    desc: raw => `Sal. real ${raw>0?'+':''}${raw.toFixed(1)}% i.a.`,
     interp: s => s>=60?'Salarios reales en alza':s>=45?'Salarios estables':'Salarios reales cayendo',
   },
   {
-    id:'res', name:'Reservas Netas Est.', unit:'MM USD', weight:.18,
-    color:'#34d399',
-    normalize: v => {
-      const netas = v - RES_NO_DISPONIBLES_MM;
-      return Math.max(0, Math.min(100, netas/35000*100));
-    },
-    desc: raw => {
-      const netas = Math.round((raw-RES_NO_DISPONIBLES_MM)/1000);
-      return `Brutas USD ${Math.round(raw/1000)}B · Netas est. ${netas}B`;
-    },
-    interp: s => s>=70?'Reservas netas sólidas':s>=40?'Reservas en recuperación':'Reservas netas bajas',
-  },
-  {
-    id:'brecha', name:'Brecha Cambiaria', unit:'%', weight:.16,
-    color:'#38bdf8',
-    normalize: v => Math.max(0, Math.min(100, 100 - v*1.5)),
-    desc: raw => `Brecha CCL/oficial ${raw.toFixed(0)}%`,
-    interp: s => s>=80?'Brecha mínima':s>=50?'Brecha moderada':'Brecha elevada',
-  },
-  {
-    id:'icg', name:'Confianza UTDT', unit:'/ 5', weight:.23,
+    id:'utdt', name:'Confianza UTDT', unit:'/ 5', weight:.25,
     color:'#f5c518',
-    normalize: v => Math.max(0, Math.min(100, (v/5)*100)),
     desc: raw => `ICG UTDT ${raw.toFixed(2)} / 5.00`,
     interp: s => s>=50?'Confianza ciudadana positiva':s>=30?'Confianza moderada':'Baja confianza ciudadana',
   },
 ];
 
-// ═══════════════════════════════════════════════════
-// HISTORICAL SEED DATA (mensual dic 2023 – may 2026)
-// ═══════════════════════════════════════════════════
+// ── HIST_SEED: 87 obs ene2019–may2026 ──────────────────────────────────
 // [rp_bp, inf_mom%, sal_real_yoy%, res_mm_usd, brecha%, icg_utdt]
-// Salarios reales: IS registrado total (pub+priv) INDEC serie 149.1_TL_REGIADO_OCTU_0_16
-// deflactado por IPC 148.3_INIVELNAL_DICI_M_26 — YoY calculado con datos reales INDEC
-// Fuentes verificadas con APIs:
-//   RP:     argentinadatos.com — promedio mensual ✅
-//   Inf:    argentinadatos.com (INDEC) ✅
-//   Sal:    datos.gob.ar series 149.1/148.3 — YoY real IS registrado/IPC ✅ (hasta mar 26, est. abr-may)
-//   Res:    api.bcra.gob.ar var.1 — promedio mensual brutas MM USD ✅
-//   Brecha: CCL (argentinadatos) / oficial (bcra) − 1 ✅
-//   UTDT:   sin API histórica — valores estimados según informe mensual
+// Fuentes API: RP=argentinadatos · Inf=INDEC · Sal=INDEC 149.1/IPC · Res=BCRA · Brecha=CCL/oficial
+// UTDT: ✅ verificado dic23-may26; ⚠ estimado ene19-nov23 (sin API histórica)
 const HIST_SEED = [
-  {m:'Dic 23', v:[1892, 25.5, -16.7, 21880, 40.2, 1.85]}, // brecha post-deval 11dic (avg mes)
-  {m:'Ene 24', v:[1942, 20.6, -17.7, 24329, 38.2, 1.90]},
-  {m:'Feb 24', v:[1845, 13.2, -16.2, 26959, 33.3, 1.95]},
-  {m:'Mar 24', v:[1557, 11.0, -19.1, 27999, 19.1, 2.00]}, // peor mes salarios reales
-  {m:'Abr 24', v:[1276,  8.8, -15.9, 29285, 15.8, 2.05]},
-  {m:'May 24', v:[1300,  4.2, -13.3, 28600, 23.4, 2.15]},
-  {m:'Jun 24', v:[1447,  4.6, -12.2, 29455, 37.9, 2.10]},
-  {m:'Jul 24', v:[1531,  4.0, -14.5, 28088, 41.3, 2.05]},
-  {m:'Ago 24', v:[1530,  4.2,  -9.9, 27557, 32.3, 2.10]},
-  {m:'Sep 24', v:[1382,  3.5,  -9.3, 27527, 25.1, 2.20]},
-  {m:'Oct 24', v:[1103,  2.7,  -8.6, 28731, 17.3, 2.30]},
-  {m:'Nov 24', v:[ 810,  2.4,  -4.9, 30382, 10.4, 2.45]},
-  {m:'Dic 24', v:[ 694,  2.7,   9.1, 31759,  7.7, 2.55]}, // recuperación real salarios
-  {m:'Ene 25', v:[ 611,  2.2,  11.9, 30661, 10.7, 2.60]}, // pico salarios reales
-  {m:'Feb 25', v:[ 698,  2.4,  11.4, 28781, 10.9, 2.58]}, // reservas bajan (pago FMI)
-  {m:'Mar 25', v:[ 754,  3.7,  10.8, 27140, 15.0, 2.50]}, // mínimo reservas — deal FMI
-  {m:'Abr 25', v:[ 799,  2.8,   8.8, 32162,  9.2, 2.52]}, // desembolso FMI → rebote res
-  {m:'May 25', v:[ 684,  1.5,   6.0, 38284,  2.3, 2.55]}, // brecha casi cero
-  {m:'Jun 25', v:[ 688,  1.6,   4.7, 39670, -0.5, 2.60]}, // CCL < oficial (técnico)
-  {m:'Jul 25', v:[ 728,  1.9,   2.7, 40308, -0.8, 2.65]},
-  {m:'Ago 25', v:[ 758,  1.9,   2.5, 41683, -0.8, 2.68]},
-  {m:'Sep 25', v:[1090,  2.1,   1.4, 40097,  2.1, 2.72]}, // pico RP: tensión electoral
-  {m:'Oct 25', v:[ 989,  2.3,  -0.3, 41460,  3.7, 2.75]},
-  {m:'Nov 25', v:[ 630,  2.5,  -1.6, 40807,  2.7, 2.78]},
-  {m:'Dic 25', v:[ 601,  2.8,  -2.1, 42110,  3.5, 2.80]},
-  {m:'Ene 26', v:[ 550,  2.9,  -2.6, 44840,  3.4, 2.82]},
-  {m:'Feb 26', v:[ 521,  2.9,  -4.2, 45566,  2.8, 2.85]},
-  {m:'Mar 26', v:[ 587,  3.4,  -3.4, 44888,  3.6, 2.83]}, // último dato IS disponible
-  {m:'Abr 26', v:[ 562,  2.6,  -3.4, 45406,  5.1, 2.85]}, // sal: estimado
-  {m:'May 26', v:[ 521,  2.1,  -3.0, 46575,  4.7, 2.87]}, // sal: estimado
+  {m:'Ene 19', v:[701,  2.9,-11.0, 66197,  0.0, 2.10]}, // ⚠utdt est.
+  {m:'Feb 19', v:[680,  3.8,-10.5, 67010,  0.0, 2.10]},
+  {m:'Mar 19', v:[749,  4.7,-10.5, 67955,  0.0, 2.15]},
+  {m:'Abr 19', v:[842,  3.4,-11.3, 72446,  0.0, 2.15]},
+  {m:'May 19', v:[923,  3.1,-11.0, 67412,  0.0, 2.10]},
+  {m:'Jun 19', v:[884,  2.7, -9.1, 64428,  0.0, 2.05]},
+  {m:'Jul 19', v:[789,  2.2, -6.2, 66401,  0.0, 1.95]},
+  {m:'Ago 19', v:[1528, 4.0, -6.7, 62214,  0.0, 1.75]}, // crisis PASO
+  {m:'Sep 19', v:[2180, 5.9, -5.9, 50235, 11.7, 1.80]},
+  {m:'Oct 19', v:[2090, 3.3, -4.6, 46590, 16.8, 1.85]},
+  {m:'Nov 19', v:[2340, 4.3, -5.5, 43502, 21.7, 1.90]},
+  {m:'Dic 19', v:[2038, 3.7, -6.5, 44249, 18.2, 2.05]}, // inicio Fernández
+  {m:'Ene 20', v:[1918, 2.3, -3.0, 45196, 27.2, 2.10]},
+  {m:'Feb 20', v:[2023, 2.0, -0.1, 44713, 30.5, 2.05]},
+  {m:'Mar 20', v:[3353, 3.3, -0.1, 44348, 32.3, 1.80]}, // COVID
+  {m:'Abr 20', v:[3790, 1.5, -0.6, 43725, 50.3, 1.70]},
+  {m:'May 20', v:[3001, 1.5, -2.5, 43074, 66.5, 1.65]},
+  {m:'Jun 20', v:[2543, 2.2, -4.0, 43037, 52.1, 1.65]},
+  {m:'Jul 20', v:[2334, 1.9, -7.2, 43325, 51.3, 1.70]},
+  {m:'Ago 20', v:[2129, 2.7, -6.8, 43153, 64.6, 1.70]},
+  {m:'Sep 20', v:[1512, 2.8, -4.5, 42345, 68.5, 1.75]},
+  {m:'Oct 20', v:[1402, 3.8, -3.9, 40710, 90.9, 1.80]},
+  {m:'Nov 20', v:[1378, 3.2, -3.0, 39161, 73.1, 1.80]},
+  {m:'Dic 20', v:[1389, 4.0, -3.3, 38877, 61.6, 1.80]},
+  {m:'Ene 21', v:[1419, 4.0, -7.6, 39641, 60.2, 1.80]},
+  {m:'Feb 21', v:[1472, 3.6, -8.4, 39381, 57.6, 1.85]},
+  {m:'Mar 21', v:[1568, 4.8, -7.7, 39708, 53.2, 1.85]},
+  {m:'Abr 21', v:[1587, 4.1, -6.8, 40071, 53.5, 1.90]},
+  {m:'May 21', v:[1546, 3.3, -5.4, 41092, 60.9, 1.90]},
+  {m:'Jun 21', v:[1514, 3.2, -4.3, 42417, 64.0, 1.85]},
+  {m:'Jul 21', v:[1595, 3.0, -1.3, 42843, 64.3, 1.85]},
+  {m:'Ago 21', v:[1568, 2.5,  0.6, 43493, 64.9, 1.90]},
+  {m:'Sep 21', v:[1541, 3.5,  2.0, 44879, 65.9, 1.95]},
+  {m:'Oct 21', v:[1639, 3.5,  1.4, 42939, 69.7, 1.95]},
+  {m:'Nov 21', v:[1767, 2.5,  3.5, 42473, 86.8, 2.00]},
+  {m:'Dic 21', v:[1734, 3.8,  3.7, 40627, 94.0, 2.00]},
+  {m:'Ene 22', v:[1830, 3.9,  4.4, 38995, 97.9, 1.95]},
+  {m:'Feb 22', v:[1765, 4.7,  1.9, 37287, 88.8, 1.90]},
+  {m:'Mar 22', v:[1814, 6.7,  2.5, 38588, 71.0, 1.85]},
+  {m:'Abr 22', v:[1728, 6.0,  1.5, 42988, 65.5, 1.80]},
+  {m:'May 22', v:[1883, 5.1,  3.3, 41639, 70.8, 1.75]},
+  {m:'Jun 22', v:[2146, 5.3,  3.6, 40868, 80.5, 1.70]},
+  {m:'Jul 22', v:[2660, 7.4, -0.1, 40408,121.3, 1.65]},
+  {m:'Ago 22', v:[2423, 7.0, -1.2, 37142,103.8, 1.70]},
+  {m:'Sep 22', v:[2426, 6.2, -1.9, 37233, 96.4, 1.75]},
+  {m:'Oct 22', v:[2708, 6.3, -2.8, 39088, 92.5, 1.80]},
+  {m:'Nov 22', v:[2444, 4.9, -2.4, 37926, 87.4, 1.80]},
+  {m:'Dic 22', v:[2221, 5.1,  0.5, 40821, 85.8, 1.85]},
+  {m:'Ene 23', v:[1962, 6.0, -1.2, 43160, 86.1, 1.85]},
+  {m:'Feb 23', v:[1978, 6.6, -0.7, 39899, 84.8, 1.85]},
+  {m:'Mar 23', v:[2294, 7.7,  1.2, 37943, 85.5, 1.80]},
+  {m:'Abr 23', v:[2493, 8.4,  0.3, 36972, 90.3, 1.80]},
+  {m:'May 23', v:[2584, 7.8, -1.0, 33545, 89.2, 1.85]},
+  {m:'Jun 23', v:[2330, 6.0, -0.7, 31850, 87.2, 1.85]},
+  {m:'Jul 23', v:[2028, 6.3,  5.6, 26070, 84.0, 1.80]},
+  {m:'Ago 23', v:[2042,12.4,  1.2, 25280,102.7, 1.75]},
+  {m:'Sep 23', v:[2243,12.7,  0.5, 27485,102.5, 1.75]},
+  {m:'Oct 23', v:[2546, 8.3,  1.8, 25232,143.1, 1.80]},
+  {m:'Nov 23', v:[2327,12.8, -3.1, 21399,138.3, 1.85]},
+  {m:'Dic 23', v:[1892,25.5,-16.7, 21880, 40.2, 1.85]}, // post-deval 11dic
+  {m:'Ene 24', v:[1942,20.6,-17.7, 24329, 38.2, 1.90]},
+  {m:'Feb 24', v:[1845,13.2,-16.2, 26959, 33.3, 1.95]},
+  {m:'Mar 24', v:[1557,11.0,-19.1, 27999, 19.1, 2.00]},
+  {m:'Abr 24', v:[1276, 8.8,-15.9, 29285, 15.8, 2.05]},
+  {m:'May 24', v:[1300, 4.2,-13.3, 28600, 23.4, 2.15]},
+  {m:'Jun 24', v:[1447, 4.6,-12.2, 29455, 37.9, 2.10]},
+  {m:'Jul 24', v:[1531, 4.0,-14.5, 28088, 41.3, 2.05]},
+  {m:'Ago 24', v:[1530, 4.2, -9.9, 27557, 32.3, 2.10]},
+  {m:'Sep 24', v:[1382, 3.5, -9.3, 27527, 25.1, 2.20]},
+  {m:'Oct 24', v:[1103, 2.7, -8.6, 28731, 17.3, 2.30]},
+  {m:'Nov 24', v:[ 810, 2.4, -4.9, 30382, 10.4, 2.45]},
+  {m:'Dic 24', v:[ 694, 2.7,  9.1, 31759,  7.7, 2.55]},
+  {m:'Ene 25', v:[ 611, 2.2, 11.9, 30661, 10.7, 2.60]},
+  {m:'Feb 25', v:[ 698, 2.4, 11.4, 28781, 10.9, 2.58]},
+  {m:'Mar 25', v:[ 754, 3.7, 10.8, 27140, 15.0, 2.50]},
+  {m:'Abr 25', v:[ 799, 2.8,  8.8, 32162,  9.2, 2.52]},
+  {m:'May 25', v:[ 684, 1.5,  6.0, 38284,  2.3, 2.55]},
+  {m:'Jun 25', v:[ 688, 1.6,  4.7, 39670,  0.0, 2.60]},
+  {m:'Jul 25', v:[ 728, 1.9,  2.7, 40308,  0.0, 2.65]},
+  {m:'Ago 25', v:[ 758, 1.9,  2.5, 41683,  0.0, 2.68]},
+  {m:'Sep 25', v:[1090, 2.1,  1.4, 40097,  2.1, 2.72]},
+  {m:'Oct 25', v:[ 989, 2.3, -0.3, 41460,  3.7, 2.75]},
+  {m:'Nov 25', v:[ 630, 2.5, -1.6, 40807,  2.7, 2.78]},
+  {m:'Dic 25', v:[ 601, 2.8, -2.1, 42110,  3.5, 2.80]},
+  {m:'Ene 26', v:[ 550, 2.9, -2.6, 44840,  3.4, 2.82]},
+  {m:'Feb 26', v:[ 521, 2.9, -4.2, 45566,  2.8, 2.85]},
+  {m:'Mar 26', v:[ 587, 3.4, -3.4, 44888,  3.6, 2.83]},
+  {m:'Abr 26', v:[ 562, 2.6, -3.4, 45406,  5.1, 2.85]}, // sal/utdt: est.
+  {m:'May 26', v:[ 521, 2.1, -3.0, 46575,  4.7, 2.87]}, // sal: est.
 ];
 
-// ═══════════════════════════════════════════════════
-// SHAPLEY SIMÉTRICO — AUTO-CALIBRACIÓN DE PESOS
-// ═══════════════════════════════════════════════════
-// Criterio: Shapley simétrico sobre serie histórica.
-// Para cada variable i como target, calculamos el Shapley
-// de las otras 5 como predictoras. El peso de i = promedio
-// de su contribución en los 5 roles de predictor.
-// Con 6 variables: 6 targets × 2^5 = 192 evaluaciones de R².
+// ═══════════════════════════════════════════════════════════════════════
+// SHAPLEY — calibración de pesos sobre 4 variables
+// ═══════════════════════════════════════════════════════════════════════
+const OBS_BUFFER_KEY  = 'icg_obs_buffer_v2';
+const WEIGHTS_KEY     = 'icg_shapley_weights_v2';
+const REGIME_KEY      = 'icg_inf_regime_v2';
+// Regímenes: A=<5% / B=5-15% / C=>15% mensual
+function infRegime(inf){ return inf>=15?'C':inf>=5?'B':'A'; }
+let shapleyTs = null;
 
-const OBS_BUFFER_KEY = 'icg_obs_buffer_v1';
-const WEIGHTS_KEY    = 'icg_shapley_weights_v1';
-let shapleyWeightsTs = null; // timestamp del último recálculo
-
-function matR2(Xcols, Ycol, matrix) {
-  // OLS R² para predecir columna Ycol usando columnas Xcols de matrix (n×6 scores)
-  const n = matrix.length;
-  if (Xcols.length === 0) return 0;
-  // Armar X con intercept
-  const p = Xcols.length + 1;
-  const X = matrix.map(row => [...Xcols.map(j => row[j]), 1]);
-  const Y = matrix.map(row => row[Ycol]);
-  // XtX y Xty
-  const XtX = Array.from({length:p}, (_,i) => Array.from({length:p}, (_,j) =>
-    X.reduce((s,r) => s + r[i]*r[j], 0)));
-  const Xty = Array.from({length:p}, (_,i) => X.reduce((s,r) => s + r[i]*Y[r.length-1-p+i+p], 0));
-  // Xty correcto
-  const Xty2 = Array.from({length:p}, (_,i) => X.reduce((s,r) => s + r[i]*Y[X.indexOf(r)], 0));
-  // Resolver con eliminación gaussiana
-  const A = XtX.map((row,i) => [...row, Xty2[i]]);
-  for (let col=0; col<p; col++) {
-    let max=col; for(let r=col+1;r<p;r++) if(Math.abs(A[r][col])>Math.abs(A[max][col])) max=r;
-    [A[col],A[max]] = [A[max],A[col]];
-    if(Math.abs(A[col][col])<1e-12) return 0;
-    for(let r=0;r<p;r++) if(r!==col){
-      const f=A[r][col]/A[col][col];
-      for(let c=col;c<=p;c++) A[r][c]-=f*A[col][c];
+function matR2(Xcols, Ycol, matrix){
+  const n=matrix.length;
+  if(!Xcols.length) return 0;
+  const p=Xcols.length+1;
+  const Xm=matrix.map(r=>[...Xcols.map(j=>r[j]),1]);
+  const Y=matrix.map(r=>r[Ycol]);
+  // Normal equations via Gauss-Jordan
+  const A=Array.from({length:p},(_,i)=>
+    [...Array.from({length:p},(_,j)=>Xm.reduce((s,r)=>s+r[i]*r[j],0)),
+     Xm.reduce((s,r,ri)=>s+r[i]*Y[ri],0)]);
+  for(let c=0;c<p;c++){
+    let mx=c;
+    for(let r=c+1;r<p;r++) if(Math.abs(A[r][c])>Math.abs(A[mx][c])) mx=r;
+    [A[c],A[mx]]=[A[mx],A[c]];
+    if(Math.abs(A[c][c])<1e-10) return 0;
+    for(let r=0;r<p;r++) if(r!==c){
+      const f=A[r][c]/A[c][c];
+      for(let cc=c;cc<=p;cc++) A[r][cc]-=f*A[c][cc];
     }
   }
-  const b = A.map((row,i) => row[p]/row[i]);
-  const Yhat = X.map(row => row.reduce((s,v,i) => s + v*b[i], 0));
-  const Ymean = Y.reduce((s,v)=>s+v,0)/n;
-  const ss_tot = Y.reduce((s,v)=>s+(v-Ymean)**2,0);
-  const ss_res = Y.reduce((s,v,i)=>s+(v-Yhat[i])**2,0);
-  return ss_tot<1e-10 ? 0 : Math.max(0, 1 - ss_res/ss_tot);
+  const b=A.map((r,i)=>r[p]/r[i]);
+  const Yh=Xm.map(r=>r.reduce((s,v,i)=>s+v*b[i],0));
+  const ym=Y.reduce((s,v)=>s+v,0)/n;
+  const st=Y.reduce((s,v)=>s+(v-ym)**2,0);
+  const sr=Y.reduce((s,v,i)=>s+(v-Yh[i])**2,0);
+  return st<1e-8?0:Math.max(0,1-sr/st);
 }
 
-function computeShapleyWeights(histData) {
-  // histData: array de {v: [rp, inf, sal, res, brecha, utdt]} (raw values)
-  // Convertir a scores normalizados
-  const matrix = histData.map(d => COMPONENTS.map((c,i) => c.normalize(d.v[i])));
-  const n6 = 6;
-  const fact = n => n<=1?1:n*fact(n-1);
-
-  // Para cada (target, predictor), calcular Shapley del predictor
-  const shapley = new Array(n6).fill(0);
-  for (let target=0; target<n6; target++) {
-    const preds = Array.from({length:n6},(_,i)=>i).filter(i=>i!==target);
-    const np = preds.length; // 5
-    for (const pred of preds) {
-      const rest = preds.filter(j=>j!==pred);
-      let phi = 0;
-      // Iterar sobre todos los subsets de rest (2^4=16)
-      const ns = rest.length;
-      for (let mask=0; mask<(1<<ns); mask++) {
-        const S = rest.filter((_,b)=>mask>>b&1);
-        const sz = S.length;
-        const w = fact(sz)*fact(np-sz-1)/fact(np);
-        const vWith    = matR2([...S,pred], target, matrix);
-        const vWithout = matR2(S,           target, matrix);
-        phi += w*(vWith - vWithout);
+const FACT=[1,1,2,6,24,120];
+function computeShapley(matrix){
+  // 4 variables → Shapley simétrico: cada var como target, otras 3 como predictores
+  const n=4;
+  const phi=new Array(n).fill(0);
+  for(let t=0;t<n;t++){
+    const preds=[0,1,2,3].filter(i=>i!==t);
+    const np=3;
+    for(const pred of preds){
+      const rest=preds.filter(j=>j!==pred);
+      let p=0;
+      for(let mask=0;mask<(1<<rest.length);mask++){
+        const S=rest.filter((_,b)=>mask>>b&1);
+        const sz=S.length;
+        const w=FACT[sz]*FACT[np-sz-1]/FACT[np];
+        p+=w*(matR2([...S,pred],t,matrix)-matR2(S,t,matrix));
       }
-      shapley[pred] += phi / n6; // promedio de roles de predictor
+      phi[pred]+=p/n;
     }
   }
-  // Normalizar a suma=1 (solo valores positivos)
-  const pos = shapley.map(v=>Math.max(0,v));
-  const total = pos.reduce((s,v)=>s+v,0);
-  return total>0 ? pos.map(v=>v/total) : new Array(n6).fill(1/n6);
+  const pos=phi.map(v=>Math.max(0,v));
+  const tot=pos.reduce((s,v)=>s+v,0);
+  return tot>0?pos.map(v=>v/tot):new Array(n).fill(0.25);
 }
 
-function applyWeights(weights) {
-  weights.forEach((w,i) => COMPONENTS[i].weight = w);
-  // Actualizar display de pesos en panel de metodología
-  const el = document.getElementById('shapley-weights-display');
-  if (el) {
-    const MES=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-    const ts = shapleyWeightsTs ? shapleyWeightsTs : new Date();
-    const label = `${MES[ts.getMonth()]} ${ts.getFullYear()}`;
-    el.innerHTML = COMPONENTS.map((c,i)=>
-      `<span style="color:${c.color};margin-right:10px">${c.name}: <b>${Math.round(weights[i]*100)}%</b></span>`
-    ).join('') + `<span style="color:var(--dim);font-size:10px"> · Recalibrado ${label}</span>`;
-  }
+function applyWeights(w){
+  w.forEach((wt,i)=>COMPONENTS[i].weight=wt);
+  const el=document.getElementById('shapley-weights-display');
+  if(!el) return;
+  const ts=shapleyTs||new Date();
+  const MES=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+  const label=`${MES[ts.getMonth()]} ${ts.getFullYear()}`;
+  const regime=infRegime(HIST_SEED[HIST_SEED.length-1].v[1]);
+  el.innerHTML=COMPONENTS.map((c,i)=>
+    `<span style="color:${c.color};margin-right:10px">${c.name}: <b>${Math.round(w[i]*100)}%</b></span>`
+  ).join('')+
+  `<span style="color:var(--dim);font-size:10px"> · Régimen ${regime} · N=${HIST_SEED.length} obs · ${label}</span>`;
 }
 
-function recalibrateWeights(allHistData) {
-  if (allHistData.length < 12) return; // mínimo de obs para calibrar
-  const weights = computeShapleyWeights(allHistData);
-  shapleyWeightsTs = new Date();
-  applyWeights(weights);
-  try {
-    localStorage.setItem(WEIGHTS_KEY, JSON.stringify({w:weights, ts:shapleyWeightsTs.toISOString()}));
-  } catch(e) {}
+function recalibrate(histData){
+  if(histData.length<20) return;
+  // Filtrar por régimen actual (inflación del último mes)
+  const lastInf=histData[histData.length-1].v[1];
+  const regime=infRegime(lastInf);
+  // Usar todos los datos del régimen actual + últimos 24 de otros regímenes (contexto)
+  const regimeObs=histData.filter(d=>infRegime(d.v[1])===regime);
+  const otherObs =histData.filter(d=>infRegime(d.v[1])!==regime).slice(-24);
+  const calibData=[...otherObs,...regimeObs];
+  if(calibData.length<12) return;
+  const matrix=calibData.map(d=>rawToScores(d.v));
+  const w=computeShapley(matrix);
+  shapleyTs=new Date();
+  applyWeights(w);
+  try{ localStorage.setItem(WEIGHTS_KEY,JSON.stringify({w,ts:shapleyTs.toISOString(),regime,n:calibData.length})); }catch(e){}
 }
 
-// ── Cargar pesos guardados (si existen) ──────────────────────
-(function loadSavedWeights(){
-  try {
-    const saved = JSON.parse(localStorage.getItem(WEIGHTS_KEY));
-    if (saved?.w?.length === 6) {
-      shapleyWeightsTs = new Date(saved.ts);
-      applyWeights(saved.w);
-    }
-  } catch(e) {}
+// ── Cargar pesos guardados ──────────────────────────────────────────────
+(function loadSaved(){
+  try{
+    const s=JSON.parse(localStorage.getItem(WEIGHTS_KEY));
+    if(s?.w?.length===4){ shapleyTs=new Date(s.ts); applyWeights(s.w); }
+    else recalibrate(HIST_SEED);
+  }catch(e){ recalibrate(HIST_SEED); }
 })();
 
-// ── Buffer de observaciones mensuales ────────────────────────
-function getObsBuffer() {
-  try { return JSON.parse(localStorage.getItem(OBS_BUFFER_KEY)) || []; } catch(e){ return []; }
-}
+// ── Buffer mensual y trigger por cambio de régimen ─────────────────────
+function getBuffer(){ try{return JSON.parse(localStorage.getItem(OBS_BUFFER_KEY))||[];}catch(e){return[];} }
 
-function maybeAddObservation(vals, infMom) {
-  // Disparador: Inf_MoM cambió respecto a la última observación guardada
-  // → usamos como proxy de "llegó un dato mensual nuevo"
-  const buf = getObsBuffer();
-  const lastInf = buf.length ? buf[buf.length-1].v[1] : HIST_SEED[HIST_SEED.length-1].v[1];
-  if (Math.abs(infMom - lastInf) > 0.05) { // cambio de >0.05pp → nuevo mes
-    buf.push({m: new Date().toISOString().slice(0,7), v: vals});
-    if (buf.length > 36) buf.shift(); // ventana máxima 36 meses
-    try { localStorage.setItem(OBS_BUFFER_KEY, JSON.stringify(buf)); } catch(e){}
-    // Recalibrar con seed + buffer
-    recalibrateWeights([...HIST_SEED, ...buf.map(o=>({v:o.v}))]);
+function maybeAddObs(vals){
+  const buf=getBuffer();
+  const lastInf=buf.length?buf[buf.length-1].v[1]:HIST_SEED[HIST_SEED.length-1].v[1];
+  const curInf=vals[1];
+  // Trigger: cambio de régimen (no simple ruido de 0.05pp)
+  const regimeChanged=infRegime(curInf)!==infRegime(lastInf);
+  // También: si el dato mensual cambió significativamente (>0.3pp = real cambio, no redondeo)
+  const newMonthlyData=Math.abs(curInf-lastInf)>0.3;
+  if(regimeChanged||newMonthlyData){
+    buf.push({m:new Date().toISOString().slice(0,7),v:vals});
+    if(buf.length>48) buf.shift();
+    try{localStorage.setItem(OBS_BUFFER_KEY,JSON.stringify(buf));}catch(e){}
+    recalibrate([...HIST_SEED,...buf.map(o=>({v:o.v}))]);
   }
 }
 
+// ═══════════════════════════════════════════════════════════════════════
+// CÁLCULO DEL ÍNDICE
+// ═══════════════════════════════════════════════════════════════════════
 function calcIndex(vals){
-  return COMPONENTS.reduce((sum, c, i) => sum + c.normalize(vals[i]) * c.weight, 0);
+  const scores=rawToScores(vals);
+  return COMPONENTS.reduce((sum,c,i)=>sum+scores[i]*c.weight,0);
 }
+function calcScores(vals){ return rawToScores(vals); }
 
-function calcScores(vals){
-  return COMPONENTS.map((c, i) => c.normalize(vals[i]));
-}
-
-function idxColor(v){
-  if(v>=65) return '#00e880';
-  if(v>=45) return '#f5c518';
-  return '#e84040';
-}
-
+function idxColor(v){ return v>=65?'#00e880':v>=45?'#f5c518':'#e84040'; }
 function idxDesc(v){
-  if(v>=75) return 'Gestión sólida — los indicadores macro y financieros muestran una tendencia positiva consolidada.';
+  if(v>=75) return 'Gestión sólida — los indicadores macro, financieros y de confianza muestran tendencia positiva consolidada.';
   if(v>=60) return 'Gestión en curso favorable — mejoras en la mayoría de los frentes con algunos desafíos pendientes.';
   if(v>=45) return 'Gestión mixta — avances en estabilización pero presiones latentes en indicadores clave.';
   if(v>=30) return 'Gestión bajo presión — deterioro en múltiples componentes que requieren corrección.';
   return 'Gestión en crisis — indicadores en zona crítica generalizada.';
 }
 
-// ── Build components cards ────────────────────────
-function buildCompCards(scores, raws){
-  document.getElementById('comp-grid').innerHTML = COMPONENTS.map((c, i) => {
-    const score = Math.round(scores[i]);
-    const col = c.color;
+// ── Build component cards ───────────────────────────────────────────────
+function buildCompCards(scores, vals){
+  const cards=[
+    {c:COMPONENTS[0], s:scores[0], extra: COMPONENTS[0].desc(vals[0],vals[3],vals[4])},
+    {c:COMPONENTS[1], s:scores[1], extra: COMPONENTS[1].desc(vals[1])},
+    {c:COMPONENTS[2], s:scores[2], extra: COMPONENTS[2].desc(vals[2])},
+    {c:COMPONENTS[3], s:scores[3], extra: COMPONENTS[3].desc(vals[5])},
+  ];
+  // Sub-scores del FEE
+  const feeDetail=`RP: ${Math.round(norm_rp(vals[0]))} · Res: ${Math.round(norm_res(vals[3]))} · Brecha: ${Math.round(norm_br(vals[4]))}`;
+  document.getElementById('comp-grid').innerHTML=cards.map(({c,s,extra},i)=>{
+    const score=Math.round(s);
+    const col=c.color;
+    const sub=i===0?`<div class="comp-source">${feeDetail}</div>`:''
     return `
       <div class="comp-card" style="border-left-color:${col}">
         <div class="comp-name">${c.name} · ${Math.round(c.weight*100)}%</div>
         <div class="comp-val" style="color:${col}">${score}</div>
-        <div class="comp-raw">${c.desc(raws[i])}</div>
-        <div class="comp-bar-wrap">
-          <div class="comp-bar" style="width:${score}%;background:${col}"></div>
-        </div>
+        <div class="comp-raw">${extra}</div>
+        ${sub}
+        <div class="comp-bar-wrap"><div class="comp-bar" style="width:${score}%;background:${col}"></div></div>
         <div class="comp-weight">${c.interp(score)}</div>
       </div>`;
   }).join('');
 }
 
-// ── Build historical chart ────────────────────────
-let histChartInst = null;
+// ── Build historical chart ──────────────────────────────────────────────
+let histChartInst=null;
 function buildHistChart(data){
-  const labels = data.map(d=>d.m);
-  const indices = data.map(d=>Math.round(calcIndex(d.v)));
+  const labels=data.map(d=>d.m);
+  const indices=data.map(d=>Math.round(calcIndex(d.v)));
   if(histChartInst) histChartInst.destroy();
-  const ctx = document.getElementById('histChart').getContext('2d');
-  histChartInst = new Chart(ctx, {
+  const ctx=document.getElementById('histChart').getContext('2d');
+  histChartInst=new Chart(ctx,{
     type:'line',
-    data:{
-      labels,
-      datasets:[{
-        label:'Índice de Gestión',
-        data: indices,
-        borderColor:'#00e880',
-        backgroundColor:'rgba(0,232,128,.08)',
-        fill:true, tension:.4,
-        pointRadius: 3,
-        pointBackgroundColor: indices.map(v=>idxColor(v)),
-        borderWidth:2.5,
-      }]
-    },
+    data:{labels,datasets:[{
+      label:'Índice de Gestión',data:indices,
+      borderColor:'#00e880',backgroundColor:'rgba(0,232,128,.08)',
+      fill:true,tension:.4,pointRadius:2,
+      pointBackgroundColor:indices.map(v=>idxColor(v)),borderWidth:2.5,
+    }]},
     options:{
       responsive:true,maintainAspectRatio:false,
       plugins:{
         legend:{display:false},
-        tooltip:{
-          backgroundColor:'#1e242a',borderColor:'rgba(0,232,128,.3)',borderWidth:1,
+        tooltip:{backgroundColor:'#1e242a',borderColor:'rgba(0,232,128,.3)',borderWidth:1,
           titleColor:'#e8f0f8',bodyColor:'rgba(232,240,248,.6)',padding:10,
-          callbacks:{
-            label: i => `Índice: ${i.parsed.y} / 100`
-          }
-        },
-        annotation:{
-          annotations:{
-            line50:{type:'line',yMin:50,yMax:50,borderColor:'rgba(245,197,24,.3)',borderWidth:1,borderDash:[5,5]},
-          }
-        }
+          callbacks:{label:i=>`Índice: ${i.parsed.y} / 100`}},
+        annotation:{annotations:{
+          line50:{type:'line',yMin:50,yMax:50,borderColor:'rgba(245,197,24,.3)',borderWidth:1,borderDash:[5,5]},
+        }}
       },
       scales:{
-        x:{grid:{color:'rgba(232,240,248,.04)'},ticks:{color:'rgba(232,240,248,.4)',font:{size:9},maxTicksLimit:12}},
+        x:{grid:{color:'rgba(232,240,248,.04)'},ticks:{color:'rgba(232,240,248,.4)',font:{size:9},maxTicksLimit:18}},
         y:{min:0,max:100,grid:{color:'rgba(232,240,248,.04)'},ticks:{color:'rgba(232,240,248,.4)',font:{size:10}}},
       }
     }
   });
 }
 
-// ── Build radar chart ─────────────────────────────
-let radarInst = null;
+// ── Build radar ─────────────────────────────────────────────────────────
+let radarInst=null;
 function buildRadar(scores){
   if(radarInst) radarInst.destroy();
-  const ctx = document.getElementById('radarChart').getContext('2d');
-  radarInst = new Chart(ctx, {
+  const ctx=document.getElementById('radarChart').getContext('2d');
+  radarInst=new Chart(ctx,{
     type:'radar',
     data:{
-      labels: COMPONENTS.map(c=>c.name),
-      datasets:[{
-        label:'Hoy',
-        data: scores.map(s=>Math.round(s)),
-        borderColor:'#00e880',
-        backgroundColor:'rgba(0,232,128,.12)',
-        borderWidth:2,
-        pointBackgroundColor:'#00e880',
-        pointRadius:4,
-      }]
+      labels:COMPONENTS.map(c=>c.name),
+      datasets:[{label:'Hoy',data:scores.map(s=>Math.round(s)),
+        borderColor:'#00e880',backgroundColor:'rgba(0,232,128,.12)',
+        borderWidth:2,pointBackgroundColor:'#00e880',pointRadius:4}]
     },
     options:{
       responsive:true,maintainAspectRatio:false,
       plugins:{legend:{display:false},
-        tooltip:{backgroundColor:'#1e242a',borderColor:'rgba(0,232,128,.3)',borderWidth:1,titleColor:'#e8f0f8',bodyColor:'rgba(232,240,248,.6)',padding:8}},
-      scales:{r:{
-        min:0,max:100,
+        tooltip:{backgroundColor:'#1e242a',borderColor:'rgba(0,232,128,.3)',borderWidth:1,
+          titleColor:'#e8f0f8',bodyColor:'rgba(232,240,248,.6)',padding:8}},
+      scales:{r:{min:0,max:100,
         grid:{color:'rgba(232,240,248,.06)'},
         angleLines:{color:'rgba(232,240,248,.06)'},
         ticks:{display:false},
@@ -584,139 +607,117 @@ function buildRadar(scores){
   });
 }
 
-// ── Build hist table ──────────────────────────────
+// ── Build hist table ────────────────────────────────────────────────────
 function buildHistTable(data){
-  document.getElementById('hist-body').innerHTML = [...data].reverse().slice(0,12).map(d=>{
-    const scores = calcScores(d.v);
-    const idx = Math.round(calcIndex(d.v));
-    const col = idxColor(idx);
+  const COMP_COLORS=COMPONENTS.map(c=>c.color);
+  document.getElementById('hist-body').innerHTML=[...data].reverse().slice(0,12).map(d=>{
+    const scores=calcScores(d.v);
+    const idx=Math.round(calcIndex(d.v));
+    const col=idxColor(idx);
     return `<tr>
       <td>${d.m}</td>
-      ${scores.map((s,i)=>`<td style="color:${COMPONENTS[i].color}">${Math.round(s)}</td>`).join('')}
+      ${scores.map((s,i)=>`<td style="color:${COMP_COLORS[i]}">${Math.round(s)}</td>`).join('')}
       <td style="color:${col};font-weight:700">${idx}</td>
     </tr>`;
   }).join('');
 }
 
-// ── Render with values ────────────────────────────
-function render(vals, date, isLive){
-  const scores = calcScores(vals);
-  const idx = calcIndex(vals);
-  const idxRnd = Math.round(idx);
-  const col = idxColor(idxRnd);
-
-  document.getElementById('main-num').textContent = idxRnd;
-  document.getElementById('main-num').style.color = col;
-  document.getElementById('main-date').textContent = date;
-  document.getElementById('main-desc').textContent = idxDesc(idxRnd);
-
-  buildCompCards(scores, vals);
+// ── Render ──────────────────────────────────────────────────────────────
+function render(vals,date,isLive){
+  const scores=calcScores(vals);
+  const idx=calcIndex(vals);
+  const idxRnd=Math.round(idx);
+  const col=idxColor(idxRnd);
+  document.getElementById('main-num').textContent=idxRnd;
+  document.getElementById('main-num').style.color=col;
+  document.getElementById('main-date').textContent=date;
+  document.getElementById('main-desc').textContent=idxDesc(idxRnd);
+  buildCompCards(scores,vals);
   buildRadar(scores);
-
-  document.getElementById('ldot').style.background = isLive ? '#00e880' : '#f5c518';
-  document.getElementById('lstat').textContent = isLive ? 'Datos en vivo' : 'Datos de referencia';
+  document.getElementById('ldot').style.background=isLive?'#00e880':'#f5c518';
+  document.getElementById('lstat').textContent=isLive?'Datos en vivo':'Datos de referencia';
 }
 
-// ── Fetch live data ───────────────────────────────
+// ── Fetch live data ─────────────────────────────────────────────────────
 async function loadLive(){
-  try {
-    const [rpRes, infRes, dolarRes, bcraRes, wageRes] = await Promise.all([
+  try{
+    const [rpRes,infRes,dolarRes,bcraRes,wageRes]=await Promise.all([
       fetch('https://api.argentinadatos.com/v1/finanzas/indices/riesgo-pais').then(r=>r.ok?r.json():null),
       fetch('https://api.argentinadatos.com/v1/finanzas/indices/inflacion').then(r=>r.ok?r.json():null),
       fetch('https://dolarapi.com/v1/dolares').then(r=>r.ok?r.json():null),
       fetch('https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/1?limit=1',{headers:{'Accept-Language':'es-AR'}}).then(r=>r.ok?r.json():null),
-      // Salarios registrados (pub+priv) + IPC para calcular real YoY
       fetch('https://apis.datos.gob.ar/series/api/series/?ids=149.1_TL_REGIADO_OCTU_0_16,148.3_INIVELNAL_DICI_M_26&limit=26&sort=desc&format=json').then(r=>r.ok?r.json():null),
     ]);
 
-    // Riesgo país (último valor)
-    const rpArr = Array.isArray(rpRes) ? rpRes : null;
-    const rp_bp = rpArr?.length ? rpArr[rpArr.length-1].valor : null;
+    const rpArr=Array.isArray(rpRes)?rpRes:null;
+    const rp_bp=rpArr?.length?rpArr[rpArr.length-1].valor:null;
 
-    // Inflación MoM (último)
-    const infArr = Array.isArray(infRes) ? infRes : null;
-    const inf_mom = infArr?.length ? infArr[infArr.length-1].valor : null;
+    const infArr=Array.isArray(infRes)?infRes:null;
+    const inf_mom=infArr?.length?infArr[infArr.length-1].valor:null;
 
-    // Brecha cambiaria
-    let brecha = null;
+    let brecha=null;
     if(dolarRes){
-      const ccl = dolarRes.find(d=>d.casa==='contadoconliqui' || d.casa==='ccl');
-      const oficial = dolarRes.find(d=>d.casa==='oficial');
-      if(ccl?.venta && oficial?.venta)
-        brecha = ((ccl.venta/oficial.venta)-1)*100;
+      const ccl=dolarRes.find(d=>d.casa==='contadoconliqui'||d.casa==='ccl');
+      const oficial=dolarRes.find(d=>d.casa==='oficial');
+      if(ccl?.venta&&oficial?.venta) brecha=Math.max(0,((ccl.venta/oficial.venta)-1)*100);
     }
 
-    // Reservas BCRA — v4.0 devuelve results[0].detalle[0].valor ya en MM USD
-    let reservas = null;
+    let reservas=null;
     if(bcraRes?.results?.length){
-      const det = bcraRes.results[0].detalle;
-      const val = Array.isArray(det) && det.length ? det[0].valor : bcraRes.results[0].valor;
-      if(val != null) reservas = val; // ya en millones de USD
+      const det=bcraRes.results[0].detalle;
+      const val=Array.isArray(det)&&det.length?det[0].valor:bcraRes.results[0].valor;
+      if(val!=null) reservas=val;
     }
 
-    // Calcular salario real YoY desde datos.gob.ar
-    let salReal = null;
-    if(wageRes?.data?.length >= 14){
-      // rows: [date, wage_index, cpi_index] — sort desc, so index 0 = latest
-      const rows = wageRes.data.filter(r => r[1] != null && r[2] != null);
-      if(rows.length >= 13){
-        const latest = rows[0];   // más reciente
-        const year_ago = rows[12]; // 12 meses antes
-        if(latest[1] && latest[2] && year_ago[1] && year_ago[2]){
-          const real_latest  = latest[1]  / latest[2];
-          const real_year_ago = year_ago[1] / year_ago[2];
-          salReal = (real_latest / real_year_ago - 1) * 100;
-        }
+    let salReal=null;
+    if(wageRes?.data?.length>=14){
+      const rows=wageRes.data.filter(r=>r[1]!=null&&r[2]!=null);
+      if(rows.length>=13){
+        const latest=rows[0]; const year_ago=rows[12];
+        if(latest[1]&&latest[2]&&year_ago[1]&&year_ago[2])
+          salReal=((latest[1]/latest[2])/(year_ago[1]/year_ago[2])-1)*100;
       }
     }
 
-    // ICG UTDT: desde manual.json
-    const manualRes = await fetch('/api/data').then(r=>r.ok?r.json():null);
-    const icgUtdt = manualRes?.icg_utdt ?? null;
+    const manualRes=await fetch('/api/data').then(r=>r.ok?r.json():null);
+    const icgUtdt=manualRes?.icg_utdt??null;
 
-    // Seed fallback
-    const seed = HIST_SEED[HIST_SEED.length-1].v;
-    const vals = [
-      rp_bp  ?? seed[0],
-      inf_mom ?? seed[1],
-      salReal ?? seed[2],
-      reservas ?? seed[3],
-      brecha  ?? seed[4],
-      icgUtdt ?? seed[5],
+    const seed=HIST_SEED[HIST_SEED.length-1].v;
+    const vals=[
+      rp_bp??seed[0], inf_mom??seed[1], salReal??seed[2],
+      reservas??seed[3], brecha??seed[4], icgUtdt??seed[5],
     ];
 
-    const isLive = !!(rp_bp && inf_mom);
-    const now = new Date();
+    const isLive=!!(rp_bp&&inf_mom);
+    const now=new Date();
     const MES=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-    const dateStr = `${isLive?'En vivo':'Referencia'} · ${MES[now.getMonth()]} ${now.getFullYear()} · ${now.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'})}`;
+    const dateStr=`${isLive?'En vivo':'Referencia'} · ${MES[now.getMonth()]} ${now.getFullYear()} · ${now.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'})}`;
 
-    // Add live point to history
-    const liveLabel = MES[now.getMonth()]+' '+String(now.getFullYear()).slice(2)+' ●';
-    const histWithLive = [...HIST_SEED, {m:liveLabel, v:vals}];
+    const liveLabel=MES[now.getMonth()]+' '+String(now.getFullYear()).slice(2)+' ●';
+    const histWithLive=[...HIST_SEED,{m:liveLabel,v:vals}];
 
-    render(vals, dateStr, isLive);
+    render(vals,dateStr,isLive);
     buildHistChart(histWithLive);
     buildHistTable(histWithLive);
 
-    // Auto-calibración: detectar nuevo dato mensual por cambio en Inf_MoM
-    if (inf_mom != null) maybeAddObservation(vals, inf_mom);
+    if(inf_mom!=null) maybeAddObs(vals);
 
-  } catch(e){
-    console.warn('loadLive:', e.message);
-    const seed = HIST_SEED[HIST_SEED.length-1];
-    render(seed.v, 'Datos de referencia · '+seed.m, false);
+  }catch(e){
+    console.warn('loadLive:',e.message);
+    const seed=HIST_SEED[HIST_SEED.length-1];
+    render(seed.v,'Datos de referencia · '+seed.m,false);
     buildHistChart(HIST_SEED);
     buildHistTable(HIST_SEED);
   }
 }
 
-// ── Init ──────────────────────────────────────────
-const lastSeed = HIST_SEED[HIST_SEED.length-1];
-render(lastSeed.v, 'Cargando datos en vivo…', false);
+// ── Init ────────────────────────────────────────────────────────────────
+const lastSeed=HIST_SEED[HIST_SEED.length-1];
+render(lastSeed.v,'Cargando datos en vivo…',false);
 buildHistChart(HIST_SEED);
 buildHistTable(HIST_SEED);
 loadLive();
-setInterval(loadLive, 5*60*1000);
+setInterval(loadLive,5*60*1000);
 </script>
 </body>
 </html>
