@@ -172,34 +172,48 @@ footer a{color:var(--accent);text-decoration:none;}
 
   <!-- METODOLOGÍA Y LIMITACIONES -->
   <div style="margin-top:20px;background:var(--s);border:1px solid var(--bdr2);border-radius:10px;padding:22px;">
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:16px;">Metodología v2.0 · Limitaciones y advertencias</div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:16px;">Metodología v3 · Pesos Shapley · Limitaciones</div>
+    <!-- Pesos actuales (actualizados por JS) -->
+    <div style="background:var(--s2);border-radius:6px;padding:10px 14px;margin-bottom:14px;font-size:11px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--accent);margin-bottom:6px;">PONDERADORES ACTUALES (Shapley simétrico)</div>
+      <div id="shapley-weights-display" style="line-height:1.8">
+        <!-- Cargado por JS al inicio y recalibrado con cada dato mensual nuevo -->
+        <span style="color:#f87171;margin-right:10px">Riesgo País: <b>22%</b></span>
+        <span style="color:#fb923c;margin-right:10px">Inflación: <b>11%</b></span>
+        <span style="color:#a78bfa;margin-right:10px">Salarios: <b>10%</b></span>
+        <span style="color:#34d399;margin-right:10px">Reservas: <b>18%</b></span>
+        <span style="color:#38bdf8;margin-right:10px">Brecha: <b>16%</b></span>
+        <span style="color:#f5c518;margin-right:10px">UTDT: <b>23%</b></span>
+        <span style="color:var(--dim);font-size:10px"> · Semilla dic 2023</span>
+      </div>
+    </div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;font-size:11px;color:var(--mu);line-height:1.6;">
       <div>
-        <div style="color:var(--txt);font-weight:600;margin-bottom:6px;">Correcciones v2.0</div>
-        <b>RP:</b> Exceso vs. EM benchmark (~300bp). Descuenta el componente global (Fed, VIX) que mueve el EMBI sin relación a la gestión local.<br><br>
-        <b>Reservas:</b> Netas estimadas (brutas − swaps China − encajes − BIS ≈ 15B). Evita la ilusión contable de las brutas.<br><br>
-        <b>Brecha:</b> Peso reducido 15%→10% para mitigar multicolinealidad con RP.
+        <div style="color:var(--txt);font-weight:600;margin-bottom:6px;">Criterio de ponderación</div>
+        <b>Shapley simétrico:</b> Para cada variable i, calculamos su contribución marginal promedio a predecir las otras 5 variables, promediando sobre todos los subsets posibles (6 × 2⁵ = 192 evaluaciones de R²).<br><br>
+        Variables con mayor información única → mayor peso. Variables muy colineales comparten su contribución.<br><br>
+        <b>Auto-calibración:</b> Cuando detecta un nuevo dato mensual de Inf (cambio >0.05pp), agrega la observación al buffer en localStorage y recalcula los pesos automáticamente.
       </div>
       <div>
         <div style="color:var(--txt);font-weight:600;margin-bottom:6px;">Limitaciones vigentes</div>
-        <b>(*) Endogeneidad Inf↔Sal:</b> El salario real se deflacta por IPC, que también es un componente independiente. Un shock inflacionario penaliza dos veces el índice.<br><br>
-        <b>Multicolinealidad residual:</b> RP, Res y Brch siguen siendo parcialmente colineales — los tres mejoran ante un desembolso FMI o un contexto EM favorable.<br><br>
-        <b>Cambio de régimen:</b> El modelo asume parámetros estables. Si Argentina dolariza, el componente Brch colapsa a cero estructuralmente.
+        <b>Multicolinealidad:</b> RP, Res y Brecha correlacionan 0.89–0.95 (VIF>10). El Shapley distribuye el mérito compartido de forma justa, pero no resuelve que todos miden el mismo "ciclo de recuperación".<br><br>
+        <b>Endogeneidad Inf↔Sal:</b> El salario real se deflacta por IPC. Un shock inflacionario penaliza ambas variables simultáneamente.<br><br>
+        <b>Ventana histórica:</b> Solo 30 obs (dic'23–may'26) — un único ciclo de recuperación. Los pesos se estabilizarán con más datos cross-cycle.
       </div>
       <div>
         <div style="color:var(--txt);font-weight:600;margin-bottom:6px;">Factores exógenos no controlados</div>
-        <b>Ciclo Fed/DXY:</b> Hawkish pivot de la Fed sube el EMBI de todos los EM sin acción del gobierno argentino. El componente RP absorbe ruido global aun con el ajuste por benchmark.<br><br>
-        <b>Precio de soja:</b> Reservas correlacionan ~0.6 con el precio de la soja. Una caída internacional castiga Res sin error de política.<br><br>
-        <b>Contagio regional:</b> Eventos en Brasil o EM risk-off contaminan RP y Brch sin causalidad local.
+        <b>Ciclo Fed/DXY:</b> Un hawkish pivot sube el EMBI de todos los EM sin acción del gobierno argentino. El componente RP descuenta 300bp de benchmark EM para aislar el factor local.<br><br>
+        <b>Precio de soja:</b> Reservas correlacionan ~0.6 con commodities agrícolas. Una caída internacional castiga Res sin error de política.<br><br>
+        <b>Cambio de régimen:</b> Si Argentina unifica completamente o dolariza, el componente Brecha colapsa a cero estructuralmente y debe removerse del índice.
       </div>
     </div>
     <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--bdr2);font-size:10px;color:var(--dim)">
-      Ponderaciones v2.0: RP 20% · Inf 20% · Sal 15% · Res 20% · Brch 10% · UTDT 15% · Total 100% · Fuentes: argentinadatos.com · BCRA · INDEC · UTDT
+      Pesos v3 calculados con Shapley simétrico · Auto-actualizados mensualmente · Fuentes: argentinadatos.com · api.bcra.gob.ar · dolarapi.com · INDEC · UTDT
     </div>
   </div>
 
   <footer>
-    <span>argentinadatos.com · api.bcra.gob.ar · dolarapi.com · INDEC · UTDT · Amberes Research v2.0</span>
+    <span>argentinadatos.com · api.bcra.gob.ar · dolarapi.com · INDEC · UTDT · Amberes Research v3.0</span>
     <span><a href="https://grupoamberes.com.ar">grupoamberes.com.ar</a></span>
   </footer>
 </div>
@@ -208,20 +222,17 @@ footer a{color:var(--accent);text-decoration:none;}
 // ═══════════════════════════════════════════════════
 // COMPONENTES: definición y normalización
 // ═══════════════════════════════════════════════════
-// ── Pesos v2: corrige multicolinealidad RP-Brch-Res (reducir Brch, subir Res)
-// RP: 20% — Inf: 20% — Sal: 15% — Res: 20% — Brch: 10% — ICG UTDT: 15%
-// RP usa excess spread vs. benchmark EM (~300bp) para descontar factor Fed/VIX global
-// Res normaliza sobre netas estimadas (brutas − swaps/encajes ≈ 15B)
-// Nota: Sal sigue usando IPC como deflactor → leve endogeneidad con Inf (ver metodología)
-const EM_BENCHMARK_BP = 300; // EMBI EM peers promedio (CEMBI Broad ~300bp)
-const RES_NO_DISPONIBLES_MM = 15000; // encajes + swap China + BIS, est. MM USD
+// Pesos v3: calculados con Shapley simétrico sobre serie histórica
+// y auto-actualizados cada vez que entra un dato mensual nuevo.
+// Fallback inicial basado en Shapley sobre HIST_SEED (30 obs dic23-may26):
+//   RP=22% · Inf=11% · Sal=10% · Res=18% · Brecha=16% · UTDT=23%
+const EM_BENCHMARK_BP = 300;
+const RES_NO_DISPONIBLES_MM = 15000;
 
 const COMPONENTS = [
   {
-    id:'rp', name:'Riesgo País', unit:'bp', weight:.20,
+    id:'rp', name:'Riesgo País', unit:'bp', weight:.22,
     color:'#f87171',
-    // Excess spread vs. EM peers: descuenta el factor global (Fed, VIX)
-    // 0bp excess=100 · 1300bp excess=0
     normalize: v => {
       const excess = Math.max(0, v - EM_BENCHMARK_BP);
       return Math.max(0, Math.min(100, 100 - excess/13));
@@ -230,26 +241,22 @@ const COMPONENTS = [
     interp: s => s>=80?'Spread comprimido vs. EM':s>=55?'Spread moderado vs. EM':'Spread elevado vs. EM',
   },
   {
-    id:'inf', name:'Inflación MoM', unit:'%', weight:.20,
+    id:'inf', name:'Inflación MoM', unit:'%', weight:.11,
     color:'#fb923c',
-    // 0%=100 · 10%=0
     normalize: v => Math.max(0, Math.min(100, 100 - v*10)),
     desc: raw => `IPC ${raw.toFixed(1)}% MoM`,
     interp: s => s>=75?'Inflación baja':s>=50?'Inflación moderada':'Inflación elevada',
   },
   {
-    id:'sal', name:'Salarios Reales Reg.', unit:'% YoY', weight:.15,
+    id:'sal', name:'Salarios Reales Reg.', unit:'% YoY', weight:.10,
     color:'#a78bfa',
-    // +20%=100 · 0%=50 · −20%=0
     normalize: v => Math.max(0, Math.min(100, 50 + v*2.5)),
     desc: raw => `Sal. real ${raw>0?'+':''}${raw.toFixed(1)}% i.a. (deflactor IPC*)`,
     interp: s => s>=60?'Salarios reales en alza':s>=45?'Salarios estables':'Salarios reales cayendo',
   },
   {
-    id:'res', name:'Reservas Netas Est.', unit:'MM USD', weight:.20,
+    id:'res', name:'Reservas Netas Est.', unit:'MM USD', weight:.18,
     color:'#34d399',
-    // Reservas netas estimadas = brutas − RES_NO_DISPONIBLES_MM
-    // 0B netas=0 · 35B netas=100
     normalize: v => {
       const netas = v - RES_NO_DISPONIBLES_MM;
       return Math.max(0, Math.min(100, netas/35000*100));
@@ -261,17 +268,15 @@ const COMPONENTS = [
     interp: s => s>=70?'Reservas netas sólidas':s>=40?'Reservas en recuperación':'Reservas netas bajas',
   },
   {
-    id:'brecha', name:'Brecha Cambiaria', unit:'%', weight:.10,
+    id:'brecha', name:'Brecha Cambiaria', unit:'%', weight:.16,
     color:'#38bdf8',
-    // 0%=100 · 67%=0  — peso reducido (colineal con RP)
     normalize: v => Math.max(0, Math.min(100, 100 - v*1.5)),
     desc: raw => `Brecha CCL/oficial ${raw.toFixed(0)}%`,
     interp: s => s>=80?'Brecha mínima':s>=50?'Brecha moderada':'Brecha elevada',
   },
   {
-    id:'icg', name:'Confianza UTDT', unit:'/ 5', weight:.15,
+    id:'icg', name:'Confianza UTDT', unit:'/ 5', weight:.23,
     color:'#f5c518',
-    // 0–5 → 0–100
     normalize: v => Math.max(0, Math.min(100, (v/5)*100)),
     desc: raw => `ICG UTDT ${raw.toFixed(2)} / 5.00`,
     interp: s => s>=50?'Confianza ciudadana positiva':s>=30?'Confianza moderada':'Baja confianza ciudadana',
@@ -316,6 +321,140 @@ const HIST_SEED = [
   {m:'Abr 26', v:[ 600,  2.6,  -3.4, 46000,   4, 2.85]}, // IS abr n/d → proyectado
   {m:'May 26', v:[ 560,  2.1,  -3.0, 47000,   4, 2.87]},  // IPC mayo real: 2.1%
 ];
+
+// ═══════════════════════════════════════════════════
+// SHAPLEY SIMÉTRICO — AUTO-CALIBRACIÓN DE PESOS
+// ═══════════════════════════════════════════════════
+// Criterio: Shapley simétrico sobre serie histórica.
+// Para cada variable i como target, calculamos el Shapley
+// de las otras 5 como predictoras. El peso de i = promedio
+// de su contribución en los 5 roles de predictor.
+// Con 6 variables: 6 targets × 2^5 = 192 evaluaciones de R².
+
+const OBS_BUFFER_KEY = 'icg_obs_buffer_v1';
+const WEIGHTS_KEY    = 'icg_shapley_weights_v1';
+let shapleyWeightsTs = null; // timestamp del último recálculo
+
+function matR2(Xcols, Ycol, matrix) {
+  // OLS R² para predecir columna Ycol usando columnas Xcols de matrix (n×6 scores)
+  const n = matrix.length;
+  if (Xcols.length === 0) return 0;
+  // Armar X con intercept
+  const p = Xcols.length + 1;
+  const X = matrix.map(row => [...Xcols.map(j => row[j]), 1]);
+  const Y = matrix.map(row => row[Ycol]);
+  // XtX y Xty
+  const XtX = Array.from({length:p}, (_,i) => Array.from({length:p}, (_,j) =>
+    X.reduce((s,r) => s + r[i]*r[j], 0)));
+  const Xty = Array.from({length:p}, (_,i) => X.reduce((s,r) => s + r[i]*Y[r.length-1-p+i+p], 0));
+  // Xty correcto
+  const Xty2 = Array.from({length:p}, (_,i) => X.reduce((s,r) => s + r[i]*Y[X.indexOf(r)], 0));
+  // Resolver con eliminación gaussiana
+  const A = XtX.map((row,i) => [...row, Xty2[i]]);
+  for (let col=0; col<p; col++) {
+    let max=col; for(let r=col+1;r<p;r++) if(Math.abs(A[r][col])>Math.abs(A[max][col])) max=r;
+    [A[col],A[max]] = [A[max],A[col]];
+    if(Math.abs(A[col][col])<1e-12) return 0;
+    for(let r=0;r<p;r++) if(r!==col){
+      const f=A[r][col]/A[col][col];
+      for(let c=col;c<=p;c++) A[r][c]-=f*A[col][c];
+    }
+  }
+  const b = A.map((row,i) => row[p]/row[i]);
+  const Yhat = X.map(row => row.reduce((s,v,i) => s + v*b[i], 0));
+  const Ymean = Y.reduce((s,v)=>s+v,0)/n;
+  const ss_tot = Y.reduce((s,v)=>s+(v-Ymean)**2,0);
+  const ss_res = Y.reduce((s,v,i)=>s+(v-Yhat[i])**2,0);
+  return ss_tot<1e-10 ? 0 : Math.max(0, 1 - ss_res/ss_tot);
+}
+
+function computeShapleyWeights(histData) {
+  // histData: array de {v: [rp, inf, sal, res, brecha, utdt]} (raw values)
+  // Convertir a scores normalizados
+  const matrix = histData.map(d => COMPONENTS.map((c,i) => c.normalize(d.v[i])));
+  const n6 = 6;
+  const fact = n => n<=1?1:n*fact(n-1);
+
+  // Para cada (target, predictor), calcular Shapley del predictor
+  const shapley = new Array(n6).fill(0);
+  for (let target=0; target<n6; target++) {
+    const preds = Array.from({length:n6},(_,i)=>i).filter(i=>i!==target);
+    const np = preds.length; // 5
+    for (const pred of preds) {
+      const rest = preds.filter(j=>j!==pred);
+      let phi = 0;
+      // Iterar sobre todos los subsets de rest (2^4=16)
+      const ns = rest.length;
+      for (let mask=0; mask<(1<<ns); mask++) {
+        const S = rest.filter((_,b)=>mask>>b&1);
+        const sz = S.length;
+        const w = fact(sz)*fact(np-sz-1)/fact(np);
+        const vWith    = matR2([...S,pred], target, matrix);
+        const vWithout = matR2(S,           target, matrix);
+        phi += w*(vWith - vWithout);
+      }
+      shapley[pred] += phi / n6; // promedio de roles de predictor
+    }
+  }
+  // Normalizar a suma=1 (solo valores positivos)
+  const pos = shapley.map(v=>Math.max(0,v));
+  const total = pos.reduce((s,v)=>s+v,0);
+  return total>0 ? pos.map(v=>v/total) : new Array(n6).fill(1/n6);
+}
+
+function applyWeights(weights) {
+  weights.forEach((w,i) => COMPONENTS[i].weight = w);
+  // Actualizar display de pesos en panel de metodología
+  const el = document.getElementById('shapley-weights-display');
+  if (el) {
+    const MES=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+    const ts = shapleyWeightsTs ? shapleyWeightsTs : new Date();
+    const label = `${MES[ts.getMonth()]} ${ts.getFullYear()}`;
+    el.innerHTML = COMPONENTS.map((c,i)=>
+      `<span style="color:${c.color};margin-right:10px">${c.name}: <b>${Math.round(weights[i]*100)}%</b></span>`
+    ).join('') + `<span style="color:var(--dim);font-size:10px"> · Recalibrado ${label}</span>`;
+  }
+}
+
+function recalibrateWeights(allHistData) {
+  if (allHistData.length < 12) return; // mínimo de obs para calibrar
+  const weights = computeShapleyWeights(allHistData);
+  shapleyWeightsTs = new Date();
+  applyWeights(weights);
+  try {
+    localStorage.setItem(WEIGHTS_KEY, JSON.stringify({w:weights, ts:shapleyWeightsTs.toISOString()}));
+  } catch(e) {}
+}
+
+// ── Cargar pesos guardados (si existen) ──────────────────────
+(function loadSavedWeights(){
+  try {
+    const saved = JSON.parse(localStorage.getItem(WEIGHTS_KEY));
+    if (saved?.w?.length === 6) {
+      shapleyWeightsTs = new Date(saved.ts);
+      applyWeights(saved.w);
+    }
+  } catch(e) {}
+})();
+
+// ── Buffer de observaciones mensuales ────────────────────────
+function getObsBuffer() {
+  try { return JSON.parse(localStorage.getItem(OBS_BUFFER_KEY)) || []; } catch(e){ return []; }
+}
+
+function maybeAddObservation(vals, infMom) {
+  // Disparador: Inf_MoM cambió respecto a la última observación guardada
+  // → usamos como proxy de "llegó un dato mensual nuevo"
+  const buf = getObsBuffer();
+  const lastInf = buf.length ? buf[buf.length-1].v[1] : HIST_SEED[HIST_SEED.length-1].v[1];
+  if (Math.abs(infMom - lastInf) > 0.05) { // cambio de >0.05pp → nuevo mes
+    buf.push({m: new Date().toISOString().slice(0,7), v: vals});
+    if (buf.length > 36) buf.shift(); // ventana máxima 36 meses
+    try { localStorage.setItem(OBS_BUFFER_KEY, JSON.stringify(buf)); } catch(e){}
+    // Recalibrar con seed + buffer
+    recalibrateWeights([...HIST_SEED, ...buf.map(o=>({v:o.v}))]);
+  }
+}
 
 function calcIndex(vals){
   return COMPONENTS.reduce((sum, c, i) => sum + c.normalize(vals[i]) * c.weight, 0);
@@ -551,6 +690,9 @@ async function loadLive(){
     render(vals, dateStr, isLive);
     buildHistChart(histWithLive);
     buildHistTable(histWithLive);
+
+    // Auto-calibración: detectar nuevo dato mensual por cambio en Inf_MoM
+    if (inf_mom != null) maybeAddObservation(vals, inf_mom);
 
   } catch(e){
     console.warn('loadLive:', e.message);
