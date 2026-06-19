@@ -15,7 +15,7 @@
   --g:var(--pos);--r:var(--neg);--a:var(--warn);--b:var(--info);--p:var(--acc);
   --card-r:10px;
 }
-body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
 
 /* VALUE BAND */
 .value-band{background:#11161e;border-bottom:1px solid rgba(88,166,255,.12);padding:6px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
@@ -104,7 +104,7 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 
 /* DRIVERS */
 .dc{background:var(--s1);border:1px solid var(--s3);border-radius:var(--card-r);margin-bottom:10px;overflow:hidden}
-.dc-hd{padding:12px 14px 10px;display:flex;align-items:flex-start;gap:10px}
+.dc-hd{padding:12px 14px 10px;display:flex;align-items:flex-start;gap:10px;cursor:pointer;user-select:none}
 .dc-num{font-size:9px;font-weight:700;color:var(--t3);min-width:16px;padding-top:2px}
 .dc-meta{flex:1;min-width:0}
 .tag{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:2px 6px;border-radius:3px;margin-bottom:4px;display:inline-block}
@@ -121,7 +121,10 @@ body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSyst
 .sbadge.ro{background:rgba(63,185,80,.15);color:var(--pos);border:1px solid rgba(63,185,80,.3)}
 .sbadge.rf{background:rgba(248,81,73,.15);color:var(--neg);border:1px solid rgba(248,81,73,.3)}
 .sbadge.mx{background:rgba(210,153,34,.15);color:var(--warn);border:1px solid rgba(210,153,34,.3)}
-.dc-body{padding:0 14px 12px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
+.dc-body{padding:0 14px 12px;display:none;grid-template-columns:1fr 1fr 1fr;gap:7px}
+.dc-body.open{display:grid}
+.dc-chevron{font-size:10px;color:var(--t3);margin-left:auto;transition:transform .2s;flex-shrink:0;padding-top:3px}
+.dc-hd.expanded .dc-chevron{transform:rotate(180deg)}
 .dc-sec{background:var(--bg);border:1px solid var(--s3);border-radius:6px;padding:9px 11px}
 .dc-sec h4{font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin-bottom:5px;display:flex;align-items:center;gap:4px}
 .dc-sec h4 .d{width:5px;height:5px;border-radius:50%;display:inline-block;flex-shrink:0}
@@ -210,11 +213,11 @@ footer{text-align:center;padding:20px 24px;font-size:10px;color:var(--t3);border
     <span class="amb-section">Research</span>
   </a>
   <div class="nav-modules">
-    <a class="nav-btn nb-macro" href="https://global-macro.vercel.app/macro.html"><span class="dot"></span>Macro Global</a>
-    <a class="nav-btn nb-tc" href="https://global-macro.vercel.app/tc.html"><span class="dot"></span>Tipo de Cambio</a>
+    <a class="nav-btn nb-macro" href="/macro.html"><span class="dot"></span>Macro Global</a>
+    <a class="nav-btn nb-tc" href="/tc.html"><span class="dot"></span>Tipo de Cambio</a>
     <a class="nav-btn nb-arg" href="/arg.html"><span class="dot"></span>Argentina</a>
     <a class="nav-btn nb-agro" href="/agro.html"><span class="dot"></span>Agro</a>
-    <a class="nav-btn nb-bonos" href="https://calculadora-bonos-five.vercel.app"><span class="dot"></span>Bonos</a>
+    <a class="nav-btn nb-bonos" href="/bonos.html"><span class="dot"></span>Bonos</a>
     <a class="nav-btn nb-conf" href="/confianza.html"><span class="dot"></span>Continuidad</a>
     <a class="nav-btn nb-gest" href="/gestion.html"><span class="dot"></span>Gestión</a>
   </div>
@@ -265,18 +268,18 @@ footer{text-align:center;padding:20px 24px;font-size:10px;color:var(--t3);border
       <h3 id="tension-title">Señales que el mercado puede estar ignorando</h3>
       <span class="sub" id="tension-date"></span>
     </div>
-    <div class="tension-items" id="tension-items"></div>
+    <div class="tension-items" id="tension-items"><div style="color:var(--t3);font-size:11px;padding:8px 0">Cargando tensiones de mercado…</div></div>
   </div>
 
   <!-- CORRELACIONES -->
   <div class="sec-title">🔗 Correlaciones Activas</div>
   <div class="corr-box">
-    <div class="corr-grid" id="corr-grid"></div>
+    <div class="corr-grid" id="corr-grid"><div style="color:var(--t3);font-size:11px;padding:4px 0">Cargando correlaciones…</div></div>
   </div>
 
   <!-- DRIVERS -->
   <div class="sec-title">Catalizadores Clave</div>
-  <div id="drivers-list"></div>
+  <div id="drivers-list"><div style="color:var(--t3);font-size:11px;padding:12px 0">Cargando catalizadores…</div></div>
 
   <!-- BOTTOM LINE -->
   <div class="sec-title">Síntesis Ejecutiva</div>
@@ -294,12 +297,12 @@ footer{text-align:center;padding:20px 24px;font-size:10px;color:var(--t3);border
   <!-- MODULES -->
   <div class="sec-title">Módulos de Análisis</div>
   <div class="mod-grid">
-    <a class="mod-card mc-macro" href="https://global-macro.vercel.app/macro.html">
+    <a class="mod-card mc-macro" href="/macro.html">
       <div class="mc-icon">🌐</div><div class="mc-cat">Global</div>
       <div class="mc-title">Macro Global</div><div class="mc-desc">EE.UU. · Europa · Japón · China · Brasil</div>
       <span class="mc-arrow">→ Abrir</span>
     </a>
-    <a class="mod-card mc-tc" href="https://global-macro.vercel.app/tc.html">
+    <a class="mod-card mc-tc" href="/tc.html">
       <div class="mc-icon">💱</div><div class="mc-cat">Argentina</div>
       <div class="mc-title">Tipo de Cambio</div><div class="mc-desc">Oficial · CCL · MEP · Blue</div>
       <span class="mc-arrow">→ Abrir</span>
@@ -314,7 +317,7 @@ footer{text-align:center;padding:20px 24px;font-size:10px;color:var(--t3);border
       <div class="mc-title">Agro Global &amp; ARG</div><div class="mc-desc">CBOT · COT · WASDE · BCR</div>
       <span class="mc-arrow">→ Abrir</span>
     </a>
-    <a class="mod-card mc-bonos" href="https://calculadora-bonos-five.vercel.app">
+    <a class="mod-card mc-bonos" href="/bonos.html">
       <div class="mc-icon">📈</div><div class="mc-cat">Renta Fija</div>
       <div class="mc-title">Calculadora Bonos</div><div class="mc-desc">Soberanos HD · CER · TIR</div>
       <span class="mc-arrow">→ Abrir</span>
@@ -552,6 +555,7 @@ function renderBriefing(b) {
           ${dr.tldr ? `<div class="dc-brief">${dr.brief}</div>` : ''}
         </div>
         <div class="sbadge ${dr.sentiment}">${dr.sentiment_label}</div>
+        <span class="dc-chevron">▾</span>
       </div>
       <div class="dc-body">
         <div class="dc-sec">
@@ -593,6 +597,16 @@ async function loadAgenda() {
     document.getElementById('agenda-list').innerHTML = '<span style="color:var(--t2)">Agenda no disponible temporalmente</span>';
   }
 }
+
+// ── DC TOGGLE ────────────────────────────────────────────────────
+document.addEventListener('click', e => {
+  const hd = e.target.closest('.dc-hd');
+  if (!hd) return;
+  const body = hd.nextElementSibling;
+  if (!body || !body.classList.contains('dc-body')) return;
+  const open = body.classList.toggle('open');
+  hd.classList.toggle('expanded', open);
+});
 
 // ── INIT ─────────────────────────────────────────────────────────
 loadMarkets();

@@ -54,7 +54,7 @@ header{background:#1e1e22;border-bottom:3px solid var(--accent);padding:0 32px;h
 .chart-box{height:260px;}
 
 /* COMPONENTS GRID */
-.comp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;}
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-bottom:20px;}
 .comp-card{background:var(--s);border:1px solid var(--bdr2);border-radius:10px;padding:18px;position:relative;overflow:hidden;}
 .comp-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--accent);}
 .comp-name{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--mu);margin-bottom:8px;}
@@ -62,11 +62,11 @@ header{background:#1e1e22;border-bottom:3px solid var(--accent);padding:0 32px;h
 .comp-raw{font-size:11px;color:var(--mu);margin-bottom:12px;}
 .comp-bar-wrap{height:4px;background:rgba(226,234,244,.1);border-radius:2px;margin-bottom:6px;}
 .comp-bar{height:100%;border-radius:2px;transition:width .6s;}
-.comp-weight{font-size:9px;color:var(--dim);}
-.comp-source{font-size:9px;color:var(--dim);margin-top:2px;}
+.comp-weight{font-size:10px;color:var(--mu);}
+.comp-source{font-size:10px;color:var(--mu);margin-top:2px;}
 
 /* BOTTOM */
-.bottom-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.bottom-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;}
 .info-card{background:var(--s);border:1px solid var(--bdr2);border-radius:10px;padding:22px;}
 .info-title{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:14px;}
 
@@ -114,7 +114,7 @@ footer a{color:var(--accent);text-decoration:none;}
     
   </div>
 </header>
-<div class="subnav"><span class="subnav-label">Módulos</span><a href="https://amberes-alerts.vercel.app/" class="snav-link">🏠 Inicio</a><a href="https://amberes-alerts.vercel.app/arg.html" class="snav-link">🇦🇷 Argentina</a><a href="https://amberes-alerts.vercel.app/agro.html" class="snav-link">🌾 Agro</a><a href="https://amberes-alerts.vercel.app/gestion.html" class="snav-link active">📊 Gestión</a><a href="https://amberes-alerts.vercel.app/confianza.html" class="snav-link">🔵 Confianza</a><a href="https://global-macro.vercel.app/macro.html" class="snav-link">🌍 Macro Global</a><a href="https://global-macro.vercel.app/tc.html" class="snav-link">💱 Tipo de Cambio</a><a href="https://calculadora-bonos-five.vercel.app" class="snav-link">📈 Bonos</a></div>
+<div class="subnav"><span class="subnav-label">Módulos</span><a href="/" class="snav-link">🏠 Inicio</a><a href="/arg.html" class="snav-link">🇦🇷 Argentina</a><a href="/agro.html" class="snav-link">🌾 Agro</a><a href="/gestion.html" class="snav-link active">📊 Gestión</a><a href="/confianza.html" class="snav-link">🔵 Confianza</a><a href="/macro.html" class="snav-link">🌍 Macro Global</a><a href="/tc.html" class="snav-link">💱 Tipo de Cambio</a><a href="/bonos.html" class="snav-link">📈 Bonos</a></div>
 
 <div class="page">
   <div class="page-eyebrow">Indicador Compuesto · Argentina 2026</div>
@@ -129,6 +129,11 @@ footer a{color:var(--accent);text-decoration:none;}
       <div class="main-label">Índice de Gestión</div>
       <div class="main-num" id="main-num" style="color:var(--yellow)">—</div>
       <div class="main-max">/ 100</div>
+      <div style="display:flex;gap:12px;font-size:10px;color:var(--mu);margin-top:4px;margin-bottom:2px;">
+        <span>Máx. histórico: <strong style="color:var(--txt)">72</strong></span>
+        <span>Mín.: <strong style="color:var(--txt)">21</strong></span>
+        <span>Prom.: <strong style="color:var(--txt)">48</strong></span>
+      </div>
       <div class="main-date" id="main-date">Actualizando…</div>
       <div class="main-desc" id="main-desc">—</div>
     </div>
@@ -154,10 +159,10 @@ footer a{color:var(--accent);text-decoration:none;}
   <!-- BOTTOM -->
   <div class="bottom-row">
 
-    <!-- RADAR CHART -->
+    <!-- COMPONENT BARS -->
     <div class="info-card">
       <div class="info-title">Perfil de componentes — hoy</div>
-      <div class="spider-box"><canvas id="radarChart"></canvas></div>
+      <div id="comp-bars" style="display:flex;flex-direction:column;gap:14px;padding:4px 0"></div>
     </div>
 
     <!-- HIST TABLE -->
@@ -604,32 +609,24 @@ function buildHistChart(data){
   });
 }
 
-// ── Build radar ─────────────────────────────────────────────────────────
-let radarInst=null;
+// ── Build component bars (replaced radar chart) ──────────────────────────
 function buildRadar(scores){
-  if(radarInst) radarInst.destroy();
-  const ctx=document.getElementById('radarChart').getContext('2d');
-  radarInst=new Chart(ctx,{
-    type:'radar',
-    data:{
-      labels:COMPONENTS.map(c=>c.name),
-      datasets:[{label:'Hoy',data:scores.map(s=>Math.round(s)),
-        borderColor:'#00e880',backgroundColor:'rgba(0,232,128,.12)',
-        borderWidth:2,pointBackgroundColor:'#00e880',pointRadius:4}]
-    },
-    options:{
-      responsive:true,maintainAspectRatio:false,
-      plugins:{legend:{display:false},
-        tooltip:{backgroundColor:'#1e242a',borderColor:'rgba(0,232,128,.3)',borderWidth:1,
-          titleColor:'#e8f0f8',bodyColor:'rgba(232,240,248,.6)',padding:8}},
-      scales:{r:{min:0,max:100,
-        grid:{color:'rgba(232,240,248,.06)'},
-        angleLines:{color:'rgba(232,240,248,.06)'},
-        ticks:{display:false},
-        pointLabels:{color:'rgba(232,240,248,.5)',font:{size:10}},
-      }}
-    }
-  });
+  const el=document.getElementById('comp-bars');
+  if(!el) return;
+  el.innerHTML=COMPONENTS.map((c,i)=>{
+    const s=Math.round(scores[i]);
+    return `
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:5px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:${c.color}">${c.name}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:${c.color}">${s}</span>
+        </div>
+        <div style="height:5px;background:rgba(226,234,244,.08);border-radius:3px;overflow:hidden">
+          <div style="height:100%;width:${s}%;background:${c.color};border-radius:3px;transition:width .6s"></div>
+        </div>
+        <div style="font-size:10px;color:var(--mu);margin-top:4px">${c.interp(s)}</div>
+      </div>`;
+  }).join('');
 }
 
 // ── Build hist table ────────────────────────────────────────────────────
