@@ -1,279 +1,123 @@
 {
-  "date": "2026-06-18",
-  "generated": "2026-06-18T09:00:00Z",
+  "date": "2026-06-19",
+  "generated": "2026-06-19T12:00:00Z",
   "sentiment": {
     "overall": "risk-off",
-    "label": "Warsh hawkish shock — Fed activa probabilidad de suba y emergentes ceden",
-    "fg": 33,
+    "label": "MSCI mantiene Argentina como Standalone — el mercado cierra una semana de doble golpe externo",
+    "fg": 31,
     "fg_label": "Miedo",
-    "putcall": 1.07,
-    "aaii_bulls": 29
+    "putcall": 1.09,
+    "aaii_bulls": 28
   },
   "drivers": [
     {
       "id": 1,
-      "tag": "Bancos Centrales · Fed",
-      "tag_class": "tb",
-      "title": "Debut de Warsh: mantiene tasas pero 9 miembros ven suba — el mercado se vende",
-      "brief": "FOMC 17-jun: hold unánime en 3.50–3.75%, pero shock hawkish. Mediana de fin de año sube a 3.8%. 9/18 miembros proyectan suba en 2026. S&P −1.06%, Dow −410pts, 10Y a 4.46%.",
+      "tag": "Argentina · Mercados",
+      "tag_class": "tr",
+      "title": "MSCI no upgradea: Argentina sigue Standalone — ADRs caen hasta 10%",
+      "brief": "MSCI publicó su revisión anual y mantuvo a Argentina en categoría Standalone, sin mejoras. YPF −10,7%, Edenor −8%, ADRs promedio −4,8%, Merval −2%. El upgrade a Frontera queda postergado.",
+      "tldr": "MSCI no mueve a Argentina — el catalizador más esperado del año se postergó.",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "La primera reunión de <strong>Kevin Warsh como presidente de la Fed</strong> entregó el hawkish shock que los mercados temían. Decisión unánime de mantener en <strong>3.50–3.75%</strong> (4ª pausa), pero el dot plot lo cambia todo: <strong>9 de 18 miembros proyectan al menos una suba antes de fin de año</strong>, llevando la mediana a <strong>3.8%</strong> (vs. 3.4% en marzo). El statement fue reescrito — más corto, sin sesgo de recorte.",
-      "contexto": "Warsh fue explícito en conferencia: <strong>&ldquo;la estabilidad de precios es la misión central&rdquo;</strong>. El FedWatch ahora le asigna probabilidad real a una suba en <strong>octubre o diciembre</strong>. La reacción del mercado fue rápida: <strong>S&P −1.06%</strong>, Nasdaq −1%, Dow −410 puntos, y el <strong>10Y subió 3.5bp a 4.463%</strong>. Los activos de duración larga (growth, tech) son los más vulnerables en este régimen.",
+      "evento": "El <strong>MSCI Global Market Accessibility Review 2026</strong> mantuvo a Argentina clasificada como <strong>Standalone</strong>: sin mejoras ni deterioros respecto al año anterior. El mercado esperaba el upgrade a Mercado de Frontera — no ocurrió. <strong>YPF cayó 10,7%</strong>, Edenor −8%, y los ADRs argentinos se desplomaron hasta 4,8% en Wall Street. El Merval cedió ~2%. El próximo hito posible: <strong>consulta formal a partir del 23 de junio</strong>, que podría abrir la puerta a una reclasificación en 2027.",
+      "contexto": "El upgrade a Frontera hubiera implicado la incorporación de acciones argentinas en índices globales, forzando compras mecánicas de fondos pasivos. Sin esa demanda, los ADRs quedan vulnerables al contexto externo (Fed hawkish + DXY fuerte). La <strong>reclasificación sigue siendo el gran catalizador pendiente</strong> — la pregunta ahora es si la consulta del 23/jun acelera los tiempos o los extiende a 2027.",
       "impacto": [
-        {
-          "asset": "UST 10Y",
-          "dir": "↑ 4.46%",
-          "cls": "dn"
-        },
-        {
-          "asset": "S&P 500",
-          "dir": "↓ −1.1%",
-          "cls": "dn"
-        },
-        {
-          "asset": "Nasdaq",
-          "dir": "↓ −1.0%",
-          "cls": "dn"
-        },
-        {
-          "asset": "DXY",
-          "dir": "↑ +0.5%",
-          "cls": "up"
-        },
-        {
-          "asset": "Bancos",
-          "dir": "↑ Margen",
-          "cls": "up"
-        },
-        {
-          "asset": "Growth/Tech",
-          "dir": "↓ Múlt.",
-          "cls": "dn"
-        }
-      ],
-      "tldr": "Fed hawkish: 9 de 18 miembros proyectan suba en 2025 — el mercado priceó 2 recortes y está equivocado."
+        {"asset": "ADRs ARG", "dir": "↓ −5% prom.", "cls": "dn"},
+        {"asset": "YPF", "dir": "↓ −10,7%", "cls": "dn"},
+        {"asset": "Edenor", "dir": "↓ −8,0%", "cls": "dn"},
+        {"asset": "S&P Merval", "dir": "↓ −2,0%", "cls": "dn"},
+        {"asset": "Globales ARG", "dir": "↓ Presión", "cls": "dn"},
+        {"asset": "Reclasif. 2027", "dir": "? Consulta 23/jun", "cls": "neu"}
+      ]
     },
     {
       "id": 2,
-      "tag": "Geopolítica · Energía",
+      "tag": "Argentina · Deuda",
       "tag_class": "tq",
-      "title": "EE.UU.–Irán firman acuerdo interim — WTI cae a US$74, el único contrapeso desinflacionario",
-      "brief": "Acuerdo de paz interim firmado digitalmente: Irán reactiva exportaciones de crudo. WTI −2.9% a US$74.56, mínimo desde marzo. El oro cede −2% post-Fed pero recupera parcialmente. DXY fuerte encarece materias primas para emergentes.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "EE.UU. e Irán <strong>firmaron digitalmente el acuerdo de paz interim</strong>, permitiendo a Teherán reanudar exportaciones de crudo y liberar el Estrecho de Ormuz. El <strong>WTI cayó 2.9% a US$74.56</strong>, tocando mínimos desde principios de marzo. El petróleo barato es el único contrapeso desinflacionario que le da argumentos a Warsh para no acelerar las subas.",
-      "contexto": "El <strong>oro cayó ~2%</strong> el miércoles post-Fed (tasas más altas = menor atractivo del metal) pero recuperó parte el jueves por el alivio geopolítico. La paradoja: el acuerdo con Irán <em>ayuda</em> a la inflación y le da margen a la Fed para no subir en octubre, pero el <strong>DXY +0.5%</strong> (más fuerte) encarece las importaciones en pesos y aprieta a los emergentes. Para Argentina, petróleo bajo es positivo (menos inflación importada, balanza), pero DXY fuerte neutraliza el carry.",
+      "title": "Tesoro canjea TZV26 con 83% de adhesión — despeja vencimiento de fin de mes",
+      "brief": "El Tesoro adjudicó US$2.879M en licitación del Dólar Linked TZV26 (vto. 30-jun), canjeándolo por bonos 2027. Manejo activo de pasivos para despejar el muro de junio sin impacto en reservas.",
+      "tldr": "Canje del TZV26 exitoso — el Tesoro despeja el vencimiento de fin de mes con 83% de adhesión.",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "El gobierno concretó una operación de <strong>manejo de deuda sobre el TZV26</strong> (Bono Dólar Linked con vencimiento 30-jun-2026): adjudicó <strong>US$2.879 millones</strong> sobre ofertas por US$3.456 millones (<strong>83% de adhesión</strong>). Los tenedores canjearon el bono corto por una canasta de <strong>nuevos bonos con vencimientos en 2027</strong>. El BCRA también reestructuró su cartera propia de bonos con el mismo objetivo.",
+      "contexto": "El vencimiento del TZV26 era uno de los focos de atención del mercado para fin de mes. La adhesión del 83% es una señal de <strong>confianza en la capacidad de refinanciamiento del Tesoro</strong>. Este tipo de liability management proactivo — en lugar de enfrentar vencimientos en efectivo — es consistente con la estrategia fiscal y mantiene la presión sobre las reservas acotada.",
       "impacto": [
-        {
-          "asset": "WTI / Brent",
-          "dir": "↓ US$74.5",
-          "cls": "dn"
-        },
-        {
-          "asset": "Oro",
-          "dir": "↓ <$4.300",
-          "cls": "dn"
-        },
-        {
-          "asset": "Breakevens",
-          "dir": "↓ Ceden",
-          "cls": "dn"
-        },
-        {
-          "asset": "Energía (XLE)",
-          "dir": "↓ Presión",
-          "cls": "dn"
-        },
-        {
-          "asset": "Aerolíneas",
-          "dir": "↑ Costos",
-          "cls": "up"
-        },
-        {
-          "asset": "DXY",
-          "dir": "↑ +0.5%",
-          "cls": "up"
-        }
-      ],
-      "tldr": "WTI cae a US$74 por acuerdo EE.UU.–Irán — el único factor que hoy frena la inflación y el hawkishness de la Fed."
+        {"asset": "TZV26", "dir": "✓ Canjeado", "cls": "up"},
+        {"asset": "Reservas BCRA", "dir": "→ Sin impacto", "cls": "neu"},
+        {"asset": "Curva corta", "dir": "↓ Presión", "cls": "up"},
+        {"asset": "Confianza fiscal", "dir": "↑ Señal +", "cls": "up"},
+        {"asset": "Bonos 2027", "dir": "↑ Demanda", "cls": "up"},
+        {"asset": "Riesgo refinanc.", "dir": "↓ Mitiga", "cls": "up"}
+      ]
     },
     {
       "id": 3,
-      "tag": "Argentina · Emergentes",
+      "tag": "Argentina · FX",
       "tag_class": "ta",
-      "title": "Riesgo país sube a 437 — el viento de cola externo se debilita post-Fed",
-      "brief": "El riesgo país ARG rebota de 425 a 437bp. ADRs mixtos: bancos +2%, Globant −5.5%. El upgrade S&P a B− y los fundamentos macro sostienen, pero DXY fuerte + suba Fed esperada cierra la ventana EM ideal que había abierto el rally.",
+      "title": "Brecha CCL-oficial al 1,3% — mínimo histórico mientras el oficial sube por cuarto día",
+      "brief": "Dólar oficial a $1.460 (BNA), cuarto día al alza en línea con el crawling peg. CCL ~$1.479, brecha de apenas 1,3%. El mercado no ve riesgo de salto cambiario pese al contexto adverso.",
+      "tldr": "Brecha en mínimos históricos — el mercado local descuenta estabilidad cambiaria pese al golpe del MSCI.",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>riesgo país argentino sube a ~437bp</strong>, alejándose del mínimo histórico reciente de 425bp (lunes). Los <strong>bonos soberanos ceden hasta −0.56%</strong> y los ADRs operan en forma mixta: los bancarios (<strong>BBAR +2.2%, GGAL +2%</strong>) resisten por su exposición al ciclo local; el tech (<strong>Globant −5.5%</strong>) siente el golpe del régimen de tasas altas.",
-      "contexto": "El golpe del hawkish de Warsh llega en el peor momento: Argentina venía de un rally impresionante sostenido por el <strong>upgrade de S&P a B−</strong> (de CCC+) y el prospecto de ser recategorizada como Mercado de Frontera. El riesgo ahora es que el <strong>DXY fuerte + la suba esperada de la Fed</strong> compriman el apetito por carry EM justo cuando Argentina más necesita que los inversores internacionales estén comprados. Los fundamentos locales siguen sólidos (superávit primario, reservas en ascenso, acuerdo FMI), pero el contexto externo se pone cuesta arriba.",
+      "evento": "El <strong>dólar oficial cotizó a $1.460 para la venta</strong> (BNA), acumulando cuatro subas consecutivas en línea con el crawling peg. El <strong>CCL se ubica en ~$1.479</strong>, apenas $19 por encima del oficial — una <strong>brecha de 1,3%</strong>, nivel históricamente mínimo. Blue y MEP operan también próximos al oficial.",
+      "contexto": "La convergencia de tipos de cambio señala <strong>ausencia de expectativa de salto cambiario</strong>. Sin embargo, en el contexto del golpe del MSCI y la presión Fed hawkish, la dinámica de reservas del BCRA será clave: si las compras netas se desaceleran, la brecha podría ampliarse desde estos mínimos.",
       "impacto": [
-        {
-          "asset": "Globales ARG",
-          "dir": "↓ −0.6%",
-          "cls": "dn"
-        },
-        {
-          "asset": "Riesgo país",
-          "dir": "↑ 437bp",
-          "cls": "dn"
-        },
-        {
-          "asset": "ADRs bancos",
-          "dir": "↑ +2%",
-          "cls": "up"
-        },
-        {
-          "asset": "ADRs tech",
-          "dir": "↓ −5%",
-          "cls": "dn"
-        },
-        {
-          "asset": "Merval USD",
-          "dir": "→ Mixto",
-          "cls": "neu"
-        },
-        {
-          "asset": "Carry ARG",
-          "dir": "↓ Costo ext.",
-          "cls": "dn"
-        }
-      ],
-      "tldr": "Riesgo país sube a 437bp: el upgrade S&P es real, pero el viento externo se revierte — carry ARG en zona de transición."
+        {"asset": "USD Oficial", "dir": "↑ $1.460", "cls": "neu"},
+        {"asset": "CCL", "dir": "→ $1.479", "cls": "neu"},
+        {"asset": "Brecha", "dir": "↓ ~1,3%", "cls": "up"},
+        {"asset": "Carry ARS", "dir": "↑ Atractivo", "cls": "up"},
+        {"asset": "Reservas BCRA", "dir": "→ Monitoreo", "cls": "neu"},
+        {"asset": "Cobertura", "dir": "↓ Sin demanda", "cls": "up"}
+      ]
     },
     {
       "id": 4,
-      "tag": "Bancos Centrales · COPOM",
-      "tag_class": "tb",
-      "title": "Brasil recorta SELIC a 14.25% pero cierra el ciclo — inflación 5.2% supera el techo",
-      "brief": "COPOM recortó 25pb unánime a 14.25% (tercer corte desde 15% en marzo), pero sube su proyección de inflación 2026 a 5.2% (techo 4.5%) y señala que el ciclo de baja puede estar terminando. Double headwind para BRL: Fed hawkish + COPOM cauto.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>COPOM de Brasil recortó la SELIC a 14.25%</strong> en decisión unánime — el tercer corte consecutivo de 25pb desde el máximo de 15% en enero. Pero el comunicado fue <strong>hawkish</strong>: elevó la proyección de inflación 2026 a <strong>5.2%</strong>, muy por encima del techo de la banda (4.5%), y postergó el objetivo de inflación del 3% a <strong>principios de 2028</strong>.",
-      "contexto": "Brasil enfrenta un <strong>dilema complejo</strong>: el ciclo de baja empuja el BRL a la baja (carry menos atractivo), pero la inflación acelerando no le da margen para recortar más. Con la <strong>Fed moviéndose en dirección contraria</strong> (posible suba), el diferencial de tasas se comprime y el BRL queda vulnerable. El Bovespa sufre de doble frente: tasa doméstica alta por inflación + contexto externo desfavorable. Para Argentina, el BRL débil presiona la competitividad.",
-      "impacto": [
-        {
-          "asset": "SELIC",
-          "dir": "↓ 14.25%",
-          "cls": "neu"
-        },
-        {
-          "asset": "BRL / R$",
-          "dir": "↓ Presión",
-          "cls": "dn"
-        },
-        {
-          "asset": "Bovespa",
-          "dir": "↓ Double hdw.",
-          "cls": "dn"
-        },
-        {
-          "asset": "Bonos BRA",
-          "dir": "↓ Inflac.",
-          "cls": "dn"
-        },
-        {
-          "asset": "Carry LATAM",
-          "dir": "↓ Diferenc.",
-          "cls": "dn"
-        },
-        {
-          "asset": "Comp. ARG",
-          "dir": "↑ BRL débil",
-          "cls": "up"
-        }
-      ],
-      "tldr": "Brasil cierra el ciclo de cortes con SELIC a 14.25% — inflación por encima del techo presiona al BRL y al carry LATAM."
-    },
-    {
-      "id": 5,
       "tag": "Macro · EE.UU.",
-      "tag_class": "tg",
-      "title": "'Good news is bad news' — ventas minoristas y pending home sales baten y alimentan la suba",
-      "brief": "Ventas minoristas mayo: beat. Pending home sales mayo: beat. La economía EE.UU. sigue fuerte. Para el mercado accionario en régimen hawkish, cada dato sólido es un argumento más para que la Fed suba y un motivo para vender duración.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "<strong>Ventas minoristas de mayo</strong> superaron las expectativas (datos sólidos del consumo americano). <strong>Pending home sales de mayo</strong> también batieron el consenso. Ambos refuerzan la narrativa de que la economía de EE.UU. sigue creciendo robustamente, sin señales de enfriamiento que justifiquen una pausa de la Fed.",
-      "contexto": "El mercado opera en el régimen de <strong>'good news is bad news'</strong> más claro de 2026: datos fuertes = más probabilidad de suba Fed = venta de activos de duración. El DXY se fortaleció +0.5% apoyado en estos números. El <strong>10Y americano sube</strong> y presiona a todos los activos de larga duración: tech, growth, emergentes, oro y criptos. Warsh tiene los argumentos macroeconómicos para subir en octubre — el único freno es el petróleo cayendo por el acuerdo con Irán.",
+      "tag_class": "tb",
+      "title": "Wall Street cerrado por Juneteenth — el mercado digiere la semana hawkish de Warsh",
+      "brief": "NYSE y Nasdaq cierran hoy por feriado. Último cierre: S&P 500 7.500,58 y Nasdaq 26.517,93 (ambos post-FOMC hawkish del miércoles). El lunes el mercado retoma con el 10Y en 4,46% y WTI en US$74,5.",
+      "tldr": "Wall Street de feriado — el repricing hawkish de la Fed continúa el lunes.",
+      "sentiment": "neu",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "Los mercados de EE.UU. permanecen <strong>cerrados por Juneteenth</strong> (19 de junio, feriado federal). Último cierre: <strong>S&P 500 en 7.500,58</strong> y <strong>Nasdaq en 26.517,93</strong>, tras la caída post-FOMC del miércoles. El <strong>10Y americano opera en torno a 4,46%</strong> y el WTI en ~US$74,56.",
+      "contexto": "La semana estuvo marcada por el <strong>hawkish shock de Warsh</strong>: 9/18 miembros del FOMC proyectan suba antes de fin de año, mediana del dot plot en 3,8%. El único contrapeso fue el <strong>WTI cayendo a US$74,56</strong> por el acuerdo EE.UU.–Irán. El lunes, el mercado retomará la discusión sobre el timing de la suba (octubre vs. diciembre).",
       "impacto": [
-        {
-          "asset": "DXY",
-          "dir": "↑ +0.5%",
-          "cls": "up"
-        },
-        {
-          "asset": "UST 10Y",
-          "dir": "↑ 4.46%",
-          "cls": "dn"
-        },
-        {
-          "asset": "Consumo USA",
-          "dir": "↑ Sólido",
-          "cls": "up"
-        },
-        {
-          "asset": "Growth / Tech",
-          "dir": "↓ Duración",
-          "cls": "dn"
-        },
-        {
-          "asset": "EM / ARG",
-          "dir": "↓ DXY",
-          "cls": "dn"
-        },
-        {
-          "asset": "Rate hike oct.",
-          "dir": "↑ Prob.",
-          "cls": "dn"
-        }
-      ],
-      "tldr": "Economía EE.UU. sigue fuerte: ventas minoristas y pending home sales baten expectativas, el \"good news is bad news\" activo."
+        {"asset": "S&P 500", "dir": "→ 7.500 (cerrado)", "cls": "neu"},
+        {"asset": "Nasdaq", "dir": "→ 26.518 (cerrado)", "cls": "neu"},
+        {"asset": "UST 10Y", "dir": "→ ~4,46%", "cls": "dn"},
+        {"asset": "WTI", "dir": "→ ~US$74,5", "cls": "neu"},
+        {"asset": "DXY", "dir": "→ Fuerte", "cls": "dn"},
+        {"asset": "Fed oct/dic", "dir": "↑ Prob. suba", "cls": "dn"}
+      ]
     }
   ],
   "tensiones": [
     {
-      "label": "Fed hawkish vs. petróleo desinflacionario",
-      "texto": "La <strong>Fed activa probabilidades de suba</strong> porque la inflación no cede al 2%, pero al mismo tiempo el <strong>acuerdo EE.UU.–Irán derrumba el WTI a US$74</strong>. El petróleo barato es el principal contrapeso: si el crudo se sostiene en estos niveles, el componente energético del CPI cede y Warsh puede demorar la suba. La tensión entre ambas fuerzas define el timing de octubre vs. diciembre."
+      "label": "MSCI Standalone vs. fundamentos sólidos",
+      "texto": "Argentina opera con <strong>superávit fiscal y comercial récord</strong>, upgrade S&P a B− y reservas en ascenso — pero el <strong>MSCI no la movió de Standalone</strong>. Los fundamentals mejoran mientras el acceso a capital institucional (fondos indexados) permanece bloqueado. La consulta del 23/jun puede ser el primer paso real hacia la reclasificación en 2027."
     },
     {
-      "label": "Argentina: upgrade S&P vs. DXY fuerte",
-      "texto": "Argentina logró el upgrade a <strong>B− (S&P)</strong> y vio el riesgo país en 425bp — mínimo en 8 años. Pero justo cuando se abría la puerta para la recategorización como Mercado de Frontera, la <strong>Fed se pone hawkish y el DXY se fortalece</strong>. El carry argentino sigue positivo en términos absolutos, pero el viento externo que potenciaba el rally se invierte: menos apetito por EM es el principal riesgo para seguir comprimiendo."
+      "label": "Brecha mínima vs. presión externa",
+      "texto": "La brecha CCL-oficial del 1,3% señala que el mercado local no teme un salto cambiario. Pero el <strong>DXY fuerte + Fed hawkish + MSCI negativo</strong> generan presión sobre los activos argentinos desde afuera. El carry en pesos sigue siendo atractivo en términos absolutos, pero la demanda externa de EM se contrae."
     },
     {
-      "label": "COPOM + Fed: doble freno para LATAM carry",
-      "texto": "Brasil recortó (hawkish statement) y la Fed habla de suba: el diferencial de tasas real entre Brasil/Argentina y EE.UU. se comprime. Para los inversores extranjeros, el carry de la región se vuelve menos atractivo. <strong>BRL + carry LATAM bajo presión</strong> simultánea — el doble headwind que más duele a los activos regionales."
-    },
-    {
-      "label": "ADRs argentinos: bancos vs. tech — el mercado no lee todo igual",
-      "texto": "En la misma rueda, <strong>BBAR y GGAL suben +2%</strong> mientras <strong>Globant cae −5.5%</strong>. Los bancos argentinos son un juego de ciclo local (spread en pesos, crédito creciendo, estabilización macro) y no dependen del régimen de tasas globales. El tech local, como el global, sufre cuando las tasas largas suben. La divergencia es oportunidad y señal al mismo tiempo."
+      "label": "Fed hawkish vs. WTI desinflacionario",
+      "texto": "El petróleo en US$74,5 (acuerdo Irán) es el único contrapeso al hawkishness de Warsh. Si el crudo se sostiene bajo US$75, el componente energético del CPI cede y la Fed puede demorar la suba a diciembre. La tensión entre ambas fuerzas define el timing y el impacto sobre emergentes."
     }
   ],
   "correlaciones": [
     {
-      "par": "Fed hawkish ↔ DXY fuerte",
-      "texto": "Correlación directa activada: el dot plot hawkish llevó al DXY +0.5% inmediatamente. Con el dólar fortaleciéndose, el carry de emergentes pierde atractivo relativo y el riesgo país argentino sube desde los mínimos."
+      "par": "MSCI Standalone ↔ ADRs ARG",
+      "texto": "La negativa del MSCI elimina el catalizador de compras mecánicas de fondos indexados. Sin ese flujo estructural, los ADRs quedan expuestos a la presión del contexto de tasas altas y DXY fuerte — la caída del 5-10% del día refleja el desencanto de posiciones que apostaban al upgrade."
     },
     {
-      "par": "WTI ↓ ↔ Breakevens ↓",
-      "texto": "El acuerdo con Irán derrumba el crudo a US$74, el nivel más bajo desde marzo. Menos presión sobre el componente energético del CPI = menos urgencia para que Warsh suba en octubre. Es la única fuerza que puede moderar el hawkishness."
+      "par": "Fed hawkish ↔ Riesgo país ARG",
+      "texto": "Con el 10Y en 4,46%, el piso del spread ARG sube. El EMBI rebotó de 425bp a 437bp esta semana: la doble presión (MSCI + Fed) puede llevar el riesgo país hacia 450-460bp si el contexto no mejora el lunes."
     },
     {
-      "par": "10Y sube ↔ Growth/Tech cede",
-      "texto": "Cada punto básico que sube el 10Y aprieta los múltiplos de las acciones de alta duración. Con el 10Y en 4.46% post-FOMC, Nasdaq, semiconductores y growth quedan bajo presión estructural hasta que la curva ceda."
-    },
-    {
-      "par": "UST 10Y ↑ ↔ Globales ARG ↓",
-      "texto": "Los bonos soberanos argentinos tienen una correlación negativa con los treasuries: cuando el 10Y sube, el piso del spread ARG sube también. 4.46% en el treasury implica que para que ARG opere al mismo yield total, el spread tiene que abrirse — lo que empuja el riesgo país al alza."
-    },
-    {
-      "par": "SELIC ↓ + inflac. ↑ ↔ BRL débil",
-      "texto": "Brasil baja la tasa pero la inflación le come el diferencial real: con el IPC proyectado en 5.2%, la tasa real baja y el BRL pierde carry atractivo. Situación de stagflation lite que presiona al real y al Bovespa simultáneamente."
-    },
-    {
-      "par": "F&G 33 (Miedo) ↔ Posicionamiento cauto",
-      "texto": "El Fear & Greed cayó a 33 post-hawkish Fed. Con el mercado en zona de Miedo moderado pero el VIX todavía sin explotar (implícita contenida), hay asimetría: si Warsh o los datos sorprenden más al alza, el salto del VIX puede ser brusco."
+      "par": "TZV26 canjeado ↔ Reservas BCRA estables",
+      "texto": "El éxito del canje evita salida de dólares del Tesoro a fin de mes. Las reservas brutas en ~US$45.000M quedan sin impacto negativo por este vencimiento — positivo para el programa con el FMI y la acumulación de activos externos."
     }
   ],
-  "bottom_line": "La primera reunión de Warsh entregó lo que los mercados temían pero no habían plenamente descontado: un <strong>hawkish shock con dot plot que activa probabilidades reales de suba en 2026</strong>. La mediana del FOMC sube a 3.8% para fin de año, nueve miembros ven un incremento, y el statement se reescribió sin sesgo de recorte. El S&P cayó 1.1%, el 10Y tocó 4.46% y el DXY subió 0.5% — el patrón clásico de repricing hawkish.<br><br>El único contrapeso es geopolítico: EE.UU. e Irán firmaron el acuerdo interim y el <strong>WTI derrumbó a US$74.56</strong>. Si el crudo se sostiene en estos niveles, el componente energético del CPI cede y Warsh tiene argumento para demorar la suba hasta diciembre. La tensión entre ambas fuerzas define el timing del mercado.<br><br><strong>Para Argentina</strong>, el contexto externo se pone cuesta arriba justo cuando los fundamentos locales estaban en su mejor momento. El riesgo país rebota de 425 a 437bp, los globales ceden −0.6% y el carry pierde su viento de cola. El <strong>upgrade S&P a B−</strong> y el superávit primario siguen siendo soporte estructural, pero la recategorización como Mercado de Frontera necesita que el contexto EM acompañe — y hoy no acompaña. Brasil suma su propio headwind: COPOM corta pero cierra el ciclo con inflación en 5.2%."
+  "bottom_line": "El viernes llegó con un doble golpe para los activos argentinos: el <strong>MSCI mantuvo a Argentina como Standalone</strong>, postergando el tan esperado upgrade a Mercado de Frontera, y Wall Street cerró por Juneteenth. Los <strong>ADRs cayeron hasta 10%</strong> (YPF −10,7%, Edenor −8%) y el Merval cedió ~2%. La semana queda marcada por el hawkish shock de Warsh del miércoles y la confirmación de que los dos grandes catalizadores de flujos hacia Argentina — recorte Fed y recategorización MSCI — no están disponibles en el corto plazo.<br><br>La contracara positiva existe: el <strong>Tesoro canjeó exitosamente el TZV26</strong> (83% de adhesión), la <strong>brecha cambiaria es de apenas 1,3%</strong> — mínimo histórico — y el <strong>superávit comercial récord de USD 3.504M en mayo</strong> alimenta la acumulación de reservas. Los fundamentos locales son los mejores en años — el problema es que el contexto externo no los está premiando hoy.<br><br>El evento más relevante de la semana que viene: la <strong>posible consulta del MSCI el 23 de junio</strong>, que podría ser el primer paso formal hacia una reclasificación en 2027."
 }
