@@ -5,6 +5,7 @@
     {"date": "2026-06-17", "flag": "🇧🇷", "evento": "COPOM Brasil — decisión SELIC (14.50% → ¿14.25%?)", "time": "18:30 BRT", "star": true,  "source": "manual"},
     {"date": "2026-06-17", "flag": "🇪🇺", "evento": "HICP Final Eurozona mayo (confirma BCE +25pb a 2.50%)", "star": false, "source": "manual"},
     {"date": "2026-06-25", "flag": "🇺🇸", "evento": "GDP EE.UU. Q1 2026 — 3ra estimación", "star": false, "source": "auto"},
+    {"date": "2026-06-26", "flag": "🇺🇸", "evento": "PCE mayo 2026 — inflación preferida de la Fed", "star": true, "source": "auto"},
     {"date": "2026-06-26", "flag": "🇧🇷", "evento": "Desempleo PNAD Brasil mayo", "star": false, "source": "auto"},
     {"date": "2026-06-26", "flag": "🇯🇵", "evento": "CPI Nacional + Balanza Comercial Japón mayo (Tokyo adelantó +1.4%)", "star": false, "source": "manual"},
     {"date": "2026-06-30", "flag": "🇨🇳", "evento": "PMI NBS + Caixin China junio", "star": false, "source": "manual"},
