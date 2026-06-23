@@ -1,5 +1,5 @@
 {
-  "_updated": "2026-06-18",
+  "_updated": "2026-06-23",
   "_note": "Actualizar cuando INDEC publica. EMAE ~día 15, EPH trimestral, ISAC/IPI ~día 20.",
   "_sources": {
     "ica": "ica_cuadros_18_06_26.xls — INDEC, 18 jun 2026 (mayo 2026). Expo récord USD 9.537M +34.4% YoY. Impo USD 6.033M -7.0% YoY. Saldo récord USD 3.504M. 29vo mes superávit consecutivo.",
@@ -96,7 +96,7 @@
     ]
   },
   "eph": {
-    "_fuente": "EPH Q4 2025 — INDEC (Q1 2026 pendiente, sale ~24 jun 2026)",
+    "_fuente": "EPH Q1 2026 — INDEC, publicado 23 jun 2026. Sin cambios significativos vs Q4 25 y vs Q1 25. Subocupación +1,1pp YoY. Informalidad 44,2% (+2,2pp YoY).",
     "l": [
       "Q1 24",
       "Q2 24",
@@ -105,7 +105,8 @@
       "Q1 25",
       "Q2 25",
       "Q3 25",
-      "Q4 25"
+      "Q4 25",
+      "Q1 26"
     ],
     "desempleo": [
       7.7,
@@ -115,7 +116,8 @@
       7.9,
       7.6,
       6.3,
-      7.5
+      7.5,
+      7.8
     ],
     "actividad": [
       47.7,
@@ -125,7 +127,8 @@
       48.2,
       48.1,
       47.8,
-      48.1
+      48.1,
+      48.6
     ],
     "empleo": [
       44.0,
@@ -135,7 +138,8 @@
       44.4,
       44.5,
       44.8,
-      44.5
+      44.5,
+      44.8
     ],
     "subocup": [
       11.1,
@@ -145,7 +149,8 @@
       10.5,
       10.6,
       10.0,
-      10.8
+      10.8,
+      11.1
     ]
   },
   "isac": {
@@ -689,7 +694,7 @@
       ]
     }
   },
-  "icg_utdt": 2.87,
+  "icg_utdt": 2.07,
   "fiscal_primario": 1.04,
   "calendario": {
     "year": 2026,
