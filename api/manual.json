@@ -8,7 +8,9 @@
     "fiscal_q1": "1ertrim26.pdf — Sec. Hacienda, ejecución base caja SPN, Q1 2026",
     "fiscal_icg": "Trailing 12m (jun25-may26) = 1.04% PBI. Calculado desde datos reales mensuales API datos.gob.ar (Sec.Hacienda) + mayo2026 .924.367M.",
     "icc": "icc_06_26E525F0BF75.pdf — INDEC, 17 jun 2026 (mayo 2026). Nivel general +2.7% MoM, +29.0% YoY, +12.8% acum. Materiales +1.6%, Mano de obra +3.5%, Gastos generales +4.0%.",
-    "sipm": "ipm_06_264CAE653E80.pdf — INDEC, 17 jun 2026 (mayo 2026). IPIM +2.5% MoM, +34.5% YoY, +14.4% acum. IPIB +2.7% MoM. IPP +2.7% MoM."
+    "sipm": "ipm_06_264CAE653E80.pdf — INDEC, 17 jun 2026 (mayo 2026). IPIM +2.5% MoM, +34.5% YoY, +14.4% acum. IPIB +2.7% MoM. IPP +2.7% MoM.",
+    "pib": "pib_06_26FAE3FD2BFA.pdf — INDEC, 23 jun 2026 (Q1 2026). PIB +2,3% YoY / +0,7% desest. QoQ. Exportaciones +9,8% ia. Consumo privado +2,7% ia. Sectores líderes: Pesca +27,5%, Agro +18,1%, Minería +12,3%. Caídas: Industria -1,7%, Adm. pública -1,4%.",
+    "salarios": "salarios_06_260C41EBE741.pdf — INDEC, 23 jun 2026 (abril 2026). Total +3,7% MoM / +36,9% YoY / +12,7% acum. 2026. Privado reg. +4,0% MoM / +29,3% YoY. Priv. no reg. +4,7% MoM / +69,6% YoY. Público +2,3% MoM / +29,6% YoY."
   },
   "emae": {
     "_fuente": "Cuadro 1 — EMAE INDEC mar-26. YoY: col. 'Respecto a igual mes año anterior'",
@@ -693,6 +695,23 @@
         3.1
       ]
     }
+  },
+  "pib": {
+    "_fuente": "pib_06_26FAE3FD2BFA.pdf — INDEC, 23 jun 2026. Variación YoY respecto a igual trimestre año anterior.",
+    "l": ["Q1 24", "Q2 24", "Q3 24", "Q4 24", "Q1 25", "Q2 25", "Q3 25", "Q4 25", "Q1 26"],
+    "yoy": [-5.1, -1.7, -0.3, 2.1, 5.8, 6.8, 3.9, 2.7, 2.3],
+    "qoq_desest": [null, null, null, null, null, null, null, null, 0.7],
+    "_nota_q1_26": "PIB Q1 2026: +2.3% YoY / +0.7% desest QoQ. Expo +9.8% ia. Cons.priv +2.7% ia. Líderes: Pesca +27.5%, Agro +18.1%, Minería +12.3%. Caídas: Industria -1.7%, Adm.pública -1.4%."
+  },
+  "salarios": {
+    "_fuente": "salarios_06_260C41EBE741.pdf — INDEC, 23 jun 2026. Índice de Salarios abril 2026. Variación mensual e interanual.",
+    "l": ["May 25", "Jun 25", "Jul 25", "Ago 25", "Sep 25", "Oct 25", "Nov 25", "Dic 25", "Ene 26", "Feb 26", "Mar 26", "Abr 26"],
+    "total_mom": [2.4, 2.7, 2.7, 2.5, 2.4, 2.2, 2.4, 2.9, 3.0, 3.4, 3.6, 3.7],
+    "total_yoy": [null, null, null, null, null, null, null, null, null, null, null, 36.9],
+    "priv_reg_mom": [2.0, 2.8, 2.8, 2.6, 2.3, 2.2, 2.3, 2.9, 2.8, 3.5, 3.8, 4.0],
+    "pub_mom":      [2.4, 2.2, 2.4, 2.2, 2.2, 2.1, 2.4, 2.8, 3.6, 3.0, 2.9, 2.3],
+    "priv_noreg_mom":[5.6, 4.2, 4.0, 3.5, 3.8, 2.9, 3.5, 3.8, 3.2, 4.6, 4.3, 4.7],
+    "_nota_abr26": "Abr 26: total +3.7% MoM / +36.9% YoY / +12.7% acum 2026. Priv.reg +4.0%/+29.3%. Priv.noreg +4.7%/+69.6%. Público +2.3%/+29.6%."
   },
   "icg_utdt": 2.07,
   "fiscal_primario": 1.04,

@@ -272,7 +272,7 @@ footer{border-top:1px solid var(--br);padding:10px 40px;background:var(--nv2);di
 
 <header>
   <div class="hd-l">
-    <a href="https://amberes-alerts.vercel.app/" class="logo-link">
+    <a href="/" class="logo-link">
       <img src="https://grupoamberes.com.ar/frontend/img/logo.svg" alt="Amberes" class="logo-img" onerror="this.style.display='none';document.getElementById('lfb').style.display='flex'">
       <div class="logo-fb" id="lfb">A</div>
     </a>
@@ -319,7 +319,7 @@ footer{border-top:1px solid var(--br);padding:10px 40px;background:var(--nv2);di
     </div>
   </div>
 </header>
-<div class="subnav"><span class="subnav-label">Módulos</span><a href="https://amberes-alerts.vercel.app/" class="snav-link">🏠 Inicio</a><a href="https://amberes-alerts.vercel.app/arg.html" class="snav-link active">🇦🇷 Argentina</a><a href="https://amberes-alerts.vercel.app/agro.html" class="snav-link">🌾 Agro</a><a href="https://amberes-alerts.vercel.app/gestion.html" class="snav-link">📊 Gestión</a><a href="https://amberes-alerts.vercel.app/confianza.html" class="snav-link">🔵 Confianza</a><a href="https://global-macro.vercel.app/macro.html" class="snav-link">🌍 Macro Global</a><a href="https://global-macro.vercel.app/tc.html" class="snav-link">💱 Tipo de Cambio</a><a href="https://calculadora-bonos-five.vercel.app" class="snav-link">📈 Bonos</a></div>
+<div class="subnav"><span class="subnav-label">Módulos</span><a href="/" class="snav-link">🏠 Inicio</a><a href="/arg.html" class="snav-link active">🇦🇷 Argentina</a><a href="/agro.html" class="snav-link">🌾 Agro</a><a href="/gestion.html" class="snav-link">📊 Gestión</a><a href="/confianza.html" class="snav-link">🔵 Confianza</a><a href="/macro.html" class="snav-link">🌍 Macro Global</a><a href="/tc.html" class="snav-link">💱 Tipo de Cambio</a><a href="/bonos.html" class="snav-link">📈 Bonos</a></div>
 
 <div class="kstrip" id="kstrip"></div>
 <div class="tabrow" id="tabrow"></div>
@@ -1661,7 +1661,7 @@ function buildMECON(){
       ],'',undefined,am);
     }
     // Deuda
-    // Nota: Abr 2026 no tiene % PBI calculado aún (se conocerá con PIB Q1)
+    // PIB Q1 2026 publicado 23/jun: +2.3% YoY / +0.7% desest. QoQ (INDEC)
   line('de1',D.deuda.hist.l,[{label:'Deuda % PBI',data:D.deuda.hist.v,borderColor:C.RD,fill:true,backgroundColor:C.RD+'18',tension:0.4,pointRadius:4,pointBackgroundColor:C.RD}],undefined,undefined,am);
     // Vencimientos ME mensuales — A.3.2 capital + A.3.3 intereses (MM USD exacto)
     var vTot=D.vencUSD2026.capital.map(function(v,i){return v+D.vencUSD2026.interes[i];});
@@ -2116,7 +2116,7 @@ function saveCfg(){
 
 function initStatus(){
   if(!ANT_KEY || ANT_KEY.indexOf('sk-ant')<0){
-    setStatus('warn','Configurá tu Anthropic API key para activar actualización','dot-warn',true);
+    setStatus('ok','Datos estáticos · Última actualización manual disponible','dot-ok',false);
     return;
   }
   // Check cache
@@ -2253,7 +2253,7 @@ async function updateAll(){
   var btn = $('btn-upd');
   btn.classList.add('loading');
   btn.disabled = true;
-  setStatus('warn','Actualizando datos desde Anthropic API...','dot-warn',true);
+  setStatus('warn','Actualizando datos...','dot-warn',true);
 
   var allData = {};
   var errors = [];
