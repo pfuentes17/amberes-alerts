@@ -1,10 +1,10 @@
 {
-  "date": "2026-06-23",
-  "generated": "2026-06-23T09:00:00Z",
+  "date": "2026-06-24",
+  "generated": "2026-06-24T09:00:00Z",
   "sentiment": {
     "overall": "risk-off",
-    "label": "Risk-off global con Argentina desacoplada — EMBI en mínimos y MSCI hoy",
-    "fg": 28,
+    "label": "Argentina risk-off post-MSCI — rebote parcial global con petróleo y metales bajo presión",
+    "fg": 35,
     "fg_label": "Miedo",
     "putcall": null,
     "aaii_bulls": null
@@ -12,105 +12,104 @@
   "drivers": [
     {
       "id": 1,
-      "tag": "Argentina · Mercados",
-      "tag_class": "tq",
-      "title": "EMBI comprime a 421bp — mínimo de la era Milei pese al risk-off global",
-      "brief": "El EMBI Global cerró el lunes en 421bp, bajando 8bp desde los 429bp previos. Los globales cerraron al alza en Buenos Aires: GD30D +0,21%, GD35D +0,35%, AL30D +0,06%. Argentina se desacopla positivamente del risk-off emergente.",
-      "tldr": "EMBI 421bp — Argentina en mínimos de la era Milei mientras el mundo cae.",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El <strong>EMBI Global cerró el lunes 22/jun en 421bp</strong>, marcando una compresión de 8bp respecto de los 429bp previos y estableciendo un <strong>nuevo mínimo de la era Milei</strong>. Los globales argentinos cerraron al alza en Buenos Aires: <strong>GD30D +0,21%</strong> (65,79 cents), <strong>GD35D +0,35%</strong> (84,19 cents), AL30D +0,06% (64,46 cents). El diferencial positivo de Argentina frente al riesgo emergente global se amplía.",
-      "contexto": "En un día de risk-off generalizado (Nasdaq −2,5%, Nikkei −3,6%, metales derrumbando), los activos argentinos se mueven en dirección opuesta. La compresión del EMBI refleja la combinación de fundamentos fiscales sólidos, brecha cambiaria en mínimos y el decreto de deuda multilateral que despeja los vencimientos de julio. El <strong>resultado del MSCI se conoce hoy</strong> — podría amplificar este movimiento si hay apertura de consulta.",
+      "tag": "Argentina · MSCI",
+      "tag_class": "tr",
+      "title": "MSCI mantiene Argentina en Standalone — EMBI salta a 433bp y globales cierran en rojo",
+      "brief": "El Annual Market Classification Review del MSCI mantuvo a Argentina en la categoría Standalone, rechazando la apertura de consulta hacia Frontier o Emerging Markets. Los controles cambiarios residuales fueron el principal obstáculo. ADRs cayeron hasta 4,4%, el EMBI saltó 12bp a 433bp y los globales cerraron en baja: GD30D -0,06% (65,75 cts), GD41D -0,54% (78,02 cts), GD46D -0,72% (74,80 cts).",
+      "tldr": "MSCI rechaza a Argentina — EMBI 433bp, globales en rojo, ADRs cayeron hasta 4,4%.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El MSCI publicó los resultados del <strong>Annual Market Classification Review</strong> y mantuvo a Argentina en la categoría <strong>Standalone</strong>, sin apertura de consulta hacia Frontier ni Emerging Markets. La decisión fue atribuida a los controles cambiarios residuales que limitan el acceso de inversores extranjeros. La reacción fue inmediata: los <strong>ADRs cayeron hasta 4,4%</strong>, el <strong>EMBI subió 12bp a 433bp</strong> —alejándose de los 421bp mínimos de la era Milei marcados el lunes— y los globales cerraron a la baja en Buenos Aires: <strong>GD30D -0,06%</strong> (65,75 cts), <strong>AL30D -0,12%</strong> (64,38 cts), GD41D -0,54%, GD46D -0,72%.",
+      "contexto": "El fallo del MSCI era el catalizador más esperado de la semana. La lectura del mercado es que sin flexibilización cambiaria —específicamente la eliminación del acceso diferido de 90 días para inversores extranjeros ('parking')— la reclasificación no es posible. El resultado no cambia los fundamentos macroeconómicos —superávit fiscal, reservas en recuperación, brecha controlada— pero sí pospone el catalizador de flujos que el mercado había incorporado parcialmente en precios. El camino a Frontier o EM sigue abierto pero depende de decisiones de política cambiaria que el gobierno no parece dispuesto a acelerar.",
       "impacto": [
-        {"asset": "EMBI ARG", "dir": "↓ 421bp", "cls": "up"},
-        {"asset": "GD30D", "dir": "↑ +0,21%", "cls": "up"},
-        {"asset": "GD35D", "dir": "↑ +0,35%", "cls": "up"},
-        {"asset": "AL30D", "dir": "↑ +0,06%", "cls": "up"},
-        {"asset": "Spread vs. EM", "dir": "↑ Diferencial", "cls": "up"}
+        {"asset": "EMBI ARG", "dir": "↑ 433bp", "cls": "dn"},
+        {"asset": "GD30D", "dir": "↓ −0,06%", "cls": "dn"},
+        {"asset": "GD46D", "dir": "↓ −0,72%", "cls": "dn"},
+        {"asset": "ADRs ARG", "dir": "↓ −4,4% max", "cls": "dn"},
+        {"asset": "Reclasif.", "dir": "→ Postergada", "cls": "dn"}
       ]
     },
     {
       "id": 2,
-      "tag": "Argentina · Deuda",
-      "tag_class": "tr",
-      "title": "Decreto 478/2026 — Caputo habilita USD 5.000M con garantías del Banco Mundial y BID",
-      "brief": "El Ejecutivo publicó el decreto que autoriza préstamos internacionales con garantía de organismos multilaterales por hasta USD 5.000M (BM: USD 2.000M, BID: USD 550M) a tasas subsidiadas. Objetivo: cubrir vencimientos de ~USD 4.500M de principios de julio.",
-      "tldr": "Caputo asegura el fondeo de julio vía garantías multilaterales — señal de acceso al mercado.",
+      "tag": "Macro · Argentina",
+      "tag_class": "tq",
+      "title": "PIB Q1 +2,3% YoY y salarios +3,7% MoM — macro local sólida pese al golpe MSCI",
+      "brief": "El INDEC publicó ayer el PBI Q1 2026: +2,3% YoY y +0,7% desestacionalizado QoQ. Exportaciones lideran con +9,8% ia; consumo privado +2,7% ia. Sectores líderes: pesca +27,5%, agro +18,1%, minería +12,3%. El Índice de Salarios de abril marcó +3,7% MoM / +36,9% YoY. La EPH Q1 confirmó desempleo en 7,8%.",
+      "tldr": "PIB Q1 +2,3% YoY, salarios +3,7% MoM. Macro subyacente sólida más allá del MSCI.",
       "sentiment": "ro",
       "sentiment_label": "🟢 Risk-On",
-      "evento": "El gobierno publicó el <strong>Decreto 478/2026</strong>, firmado por Milei, Adorni y Caputo, que habilita la toma de deuda con organismos internacionales privados con <strong>garantías del Banco Mundial (USD 2.000M) y del BID (USD 550M)</strong>. El monto total autorizado llega a <strong>USD 5.000M</strong> a tasas subsidiadas y con jurisdicción en tribunales de Nueva York. El objetivo es cubrir los vencimientos de deuda de <strong>principios de julio (~USD 4.500M)</strong> sin impacto sobre las reservas del BCRA.",
-      "contexto": "La operación es un paso de liability management activo: en lugar de enfrentar vencimientos con reservas, el Tesoro accede a financiamiento blando respaldado por multilaterales. El respaldo del BM y del BID actúa como señal de solvencia ante los mercados privados. La jurisdicción en Nueva York (con reserva de inmunidad sobre bienes estratégicos) es estándar en operaciones de este tipo y facilita la colocación con inversores internacionales.",
+      "evento": "El <strong>INDEC publicó el informe de avance del PIB Q1 2026</strong>: crecimiento de <strong>+2,3% YoY</strong> y <strong>+0,7% desestacionalizado QoQ</strong>, confirmando que la economía argentina mantuvo el impulso de recuperación en el arranque del año. Por el lado de la demanda, las <strong>exportaciones lideran con +9,8% ia</strong>; el consumo privado creció +2,7% ia. Por oferta: <strong>Pesca +27,5%</strong>, <strong>Agro +18,1%</strong>, <strong>Minería +12,3%</strong>. Caídas acotadas: industria manufacturera -1,7%, administración pública -1,4%. En simultáneo, el <strong>Índice de Salarios de abril 2026</strong> marcó <strong>+3,7% MoM / +36,9% YoY / +12,7% acumulado 2026</strong>. Privado registrado +4,0% MoM (+29,3% YoY), sector público +2,3% MoM (+29,6% YoY).",
+      "contexto": "Los datos publicados ayer presentan una economía real en expansión, con el agro y la minería como motores. El salario nominal crece por encima del 3,5% mensual, aunque en términos reales sigue levemente negativo respecto a la inflación (IPC YoY ~39-40% vs. salarios +36,9%). El cuadro macro subyacente —superávit fiscal, crecimiento positivo, reservas en recuperación— no cambió con el fallo del MSCI. Lo que el fallo ajusta es el timing del catalizador de flujos de portfolio, no la trayectoria de la economía real.",
       "impacto": [
-        {"asset": "Reservas BCRA", "dir": "→ Sin impacto", "cls": "up"},
-        {"asset": "Vencimientos jul.", "dir": "✓ Cubiertos", "cls": "up"},
-        {"asset": "Riesgo refinanc.", "dir": "↓ Mitiga", "cls": "up"},
-        {"asset": "Señal mercado", "dir": "↑ Positiva", "cls": "up"}
+        {"asset": "PIB Q1 26", "dir": "↑ +2,3% YoY", "cls": "up"},
+        {"asset": "Exportaciones", "dir": "↑ +9,8% ia", "cls": "up"},
+        {"asset": "Salarios", "dir": "↑ +3,7% MoM", "cls": "up"},
+        {"asset": "Desempleo", "dir": "→ 7,8% Q1", "cls": "neu"},
+        {"asset": "Sal. real", "dir": "↓ ~−2% YoY", "cls": "dn"}
       ]
     },
     {
       "id": 3,
       "tag": "Macro · EE.UU.",
       "tag_class": "tb",
-      "title": "Warsh propone eliminar el dot-plot — Nasdaq cae 2,5% y VIX salta a 19,9",
-      "brief": "La propuesta de Warsh de eliminar la guía de tasas (dot-plot) es leída por el mercado como mayor opacidad hawkish. Nasdaq fut. −2,55% (29.872), S&P −1,32% (7.441), VIX +15% a 19,87. UST 10Y en 4,485% (−2,2bp). WTI cae a US$73,38 tras el levantamiento de sanciones a Irán por 60 días.",
-      "tldr": "Sin dot-plot = incertidumbre hawkish. Nasdaq −2,5%, VIX +15%.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "La propuesta del presidente de la Fed, <strong>Kevin Warsh, de eliminar el dot-plot</strong> — la proyección trimestral de tasas de cada miembro del FOMC — genera una reacción violenta en los mercados. El mercado interpreta la arquitectura monetaria más opaca como un sesgo hawkish prolongado sin señales claras de recorte. <strong>Nasdaq futuros caen 2,55%</strong>, el S&P cede 1,32% y el <strong>VIX salta a 19,87 (+14,99%)</strong>. En paralelo, EE.UU. levanta las sanciones al petróleo iraní por 60 días → WTI cae a US$73,38.",
-      "contexto": "La eliminación del dot-plot removería uno de los principales instrumentos de forward guidance de la Fed. Sin esa señal, el mercado no puede anticipar el timing de movimientos y exige una prima de incertidumbre mayor. Para los activos de riesgo — especialmente tech — la combinación de tasas altas por más tiempo + menos visibilidad es el escenario más adverso. La curva 2s10s se empina a 29,7bp (+2bp): el tramo corto baja más que el largo, señal de que el mercado empieza a descontar eventual alivio pero no lo anticipa.",
+      "title": "VIX cede a 19,27 y tech rebota parcialmente — petróleo -1,9% y metales siguen cayendo",
+      "brief": "Futuros divergentes: Nasdaq +0,36% (29.772), S&P +0,06% (7.442), Dow -0,19% (51.982). VIX baja 1,13% a 19,27. UST 10Y cede 1bp a 4,483%. DXY sube 0,21% a 101,62. WTI cae 1,86% a $71,85; Brent -1,80% a $75,69. Oro -1,57% a $4.084. Nikkei cerró -0,88%. Hoy: permisos de construcción, ventas de vivienda nueva, EIA crudo y pruebas de estrés bancario Fed.",
+      "tldr": "Rebote parcial tech, VIX cede. Petróleo -1,9% bajo presión de oferta iraní y DXY al alza.",
+      "sentiment": "neu",
+      "sentiment_label": "⚪ Neutro",
+      "evento": "Los futuros de Wall Street abren con señales divergentes: el <strong>Nasdaq sube 0,36%</strong> a 29.772, el S&P avanza 0,06% a 7.442, pero el Dow cae 0,19% a 51.982. El <strong>VIX cede 1,13% a 19,27</strong>, alivio moderado tras el pico de la víspera. En renta fija, el <strong>UST 10Y baja 1bp a 4,483%</strong> y el 2Y cae 0,1bp a 4,199%. El <strong>DXY sube 0,21% a 101,62</strong>, fortaleza que arrastra a monedas emergentes (peso chileno -0,79%, won coreano -1,07%). Los metales ceden: <strong>oro -1,57% a $4.084</strong>, plata -1,45%, cobre -0,63%. <strong>WTI -1,86% a $71,85</strong>. Nikkei cerró -0,88%.",
+      "contexto": "El rebote parcial en tecnología contrasta con la presión sostenida sobre el petróleo y los metales. El driver del crudo es la mayor oferta de Oriente Medio (Irán reactivando ventas, Qatar anunciando reanudación plena de GNL) combinada con demanda asiática más moderada. El calendario concentra hoy los datos más relevantes de la semana en EEUU: permisos de construcción (08:30 ET), cuenta corriente Q1 (consenso déficit USD 220B), ventas de vivienda nueva (10:00 ET), inventarios EIA (10:30 ET), subasta Treasuries 5 años (13:00 ET) y —al cierre— resultados de pruebas de estrés bancario de la Fed.",
       "impacto": [
-        {"asset": "Nasdaq fut.", "dir": "↓ −2,55%", "cls": "dn"},
-        {"asset": "S&P 500 fut.", "dir": "↓ −1,32%", "cls": "dn"},
-        {"asset": "VIX", "dir": "↑ 19,87", "cls": "dn"},
-        {"asset": "UST 10Y", "dir": "↓ 4,485%", "cls": "neu"},
-        {"asset": "WTI", "dir": "↓ US$73,38", "cls": "up"},
-        {"asset": "DXY", "dir": "↑ 101,15", "cls": "dn"}
+        {"asset": "Nasdaq fut.", "dir": "↑ +0,36%", "cls": "up"},
+        {"asset": "VIX", "dir": "↓ 19,27", "cls": "up"},
+        {"asset": "WTI", "dir": "↓ $71,85", "cls": "neu"},
+        {"asset": "DXY", "dir": "↑ 101,62", "cls": "dn"},
+        {"asset": "UST 10Y", "dir": "↓ 4,483%", "cls": "up"},
+        {"asset": "Oro", "dir": "↓ $4.084", "cls": "dn"}
       ]
     },
     {
       "id": 4,
-      "tag": "Internacional",
+      "tag": "Geopolítica · Irán",
       "tag_class": "ta",
-      "title": "China restringe tierras raras — Nikkei −3,6% y metales derrumban",
-      "brief": "Beijing impone controles de exportación sobre dos productores de tierras raras de EE.UU. y agrega 46 empresas americanas a su lista negra. Nikkei −3,55%, CSI 300 −2,81%. Oro −1,6% (US$4.135), Plata −4,8%, Cobre −3%. Brasil 10Y baja 14,5bp a 14,675%.",
-      "tldr": "China escala con tierras raras — risk-off global en metales y Asia.",
+      "title": "Irán consolida posición — USD 12.000M desbloqueados y control efectivo del Golfo",
+      "brief": "Teherán confirmó el desbloqueo de USD 12.000M de activos congelados. Gerecht y Takeyh en el WSJ argumentan que el régimen obtuvo reconocimiento formal de soberanía sin compromisos nucleares vinculantes. El Estrecho de Ormuz tiene 1.200 barcos varados con carga por USD 125.000M; Omán habilitó rutas alternativas. El petróleo cae ante perspectiva de mayor oferta iraní.",
+      "tldr": "Irán desbloqueó USD 12B y consolidó control del Golfo. Petróleo cae ante mayor oferta.",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "Beijing <strong>impone controles de exportación sobre dos productores estadounidenses de tierras raras</strong> y agrega <strong>46 empresas americanas</strong> a su lista de restricciones de adquisición gubernamental. La medida escala la tensión comercial y golpea el sector tecnológico (las tierras raras son insumo crítico en semiconductores, EVs y defensa). <strong>Nikkei −3,55%</strong>, CSI 300 −2,81%, DAX a la baja. Metales industriales derrumban: Oro −1,6% (US$4.135), Plata −4,8%, Cobre −3,0%.",
-      "contexto": "Los controles chinos sobre tierras raras son una palanca geopolítica de alto impacto: China controla ~85% de la producción mundial. La medida se suma al risk-off global generado por Warsh y amplifica la aversión al riesgo tecnológico. Para Argentina, la caída del cobre −3% es relevante por el impacto en precios de exportación de la región andina, aunque el efecto directo es moderado. La baja del petróleo (WTI −0,65%) modera parcialmente la presión inflacionaria global.",
+      "evento": "Teherán confirmó el <strong>desbloqueo parcial de USD 12.000 millones</strong> de activos congelados, con uso restringido a alimentos y medicamentos. El memorando de entendimiento incluye el reconocimiento mutuo de soberanía —el tipo de concesión que todos los regímenes autoritarios buscan de las democracias occidentales. Gerecht y Takeyh en el WSJ argumentan que Irán logró <strong>control efectivo del Golfo Pérsico</strong>, reconocimiento de soberanía y fondos desbloqueados sin acuerdo nuclear vinculante. En el Estrecho de Ormuz hay <strong>1.200 barcos varados con carga por USD 125.000M</strong>; Omán habilitó rutas temporarias. Trump contradice a Irán sistemáticamente en los detalles de las negociaciones, sumando incertidumbre al proceso.",
+      "contexto": "La caída del petróleo refleja la lectura de menor tensión geopolítica y mayor oferta esperada. Pero el análisis de fondo es más matizado: lo que terminó no es la amenaza, sino la fase activa del conflicto. Bessent anticipó que los precios de combustible bajarán y acercarán la inflación americana al 2%, lo que sería una señal favorable para la Fed y para emergentes. Para Argentina, la caída del petróleo tiene efecto neto positivo vía menor inflación importada.",
       "impacto": [
-        {"asset": "Nikkei", "dir": "↓ −3,55%", "cls": "dn"},
-        {"asset": "CSI 300", "dir": "↓ −2,81%", "cls": "dn"},
-        {"asset": "Oro", "dir": "↓ US$4.135", "cls": "dn"},
-        {"asset": "Cobre", "dir": "↓ −3,0%", "cls": "dn"},
-        {"asset": "Tech global", "dir": "↓ Presión", "cls": "dn"},
-        {"asset": "BRL 10Y", "dir": "↓ 14,675%", "cls": "up"}
+        {"asset": "WTI", "dir": "↓ −1,86%", "cls": "up"},
+        {"asset": "Oferta Irán", "dir": "↑ En expansión", "cls": "neu"},
+        {"asset": "Inflación EEUU", "dir": "↓ Presión menor", "cls": "up"},
+        {"asset": "Riesgo regional", "dir": "→ Latente", "cls": "dn"}
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Argentina desacoplada vs. risk-off global",
-      "texto": "El EMBI Argentina comprime a 421bp mientras el Nasdaq cae 2,5% y el VIX sube 15%. La divergencia refleja que el mercado está premiando los fundamentos locales (superávit fiscal, brecha en mínimos, deuda multilateral asegurada) sobre el ruido externo. La pregunta es si este desacople se sostiene si el risk-off global se profundiza."
+      "label": "EMBI 433bp vs. fundamentos macro intactos",
+      "texto": "El fallo del MSCI empujó el EMBI 12bp arriba a 433bp, pero los fundamentos que llevaron al mínimo de la era Milei (421bp el lunes) no cambiaron: superávit fiscal, reservas en recuperación, brecha controlada, PIB Q1 +2,3%. La tensión es entre el timing del catalizador de flujos (postergado) y la trayectoria macroeconómica (sin cambios). La pregunta para las próximas semanas es si el mercado consolida la corrección o la profundiza."
     },
     {
-      "label": "Warsh hawkish opaco vs. curva que se empina",
-      "texto": "La eliminación del dot-plot sube la incertidumbre sobre el timing de la Fed. Pero la curva 2s10s se empina (+2bp a 29,7bp) con el tramo corto bajando más que el largo — señal de que el mercado empieza a descontar eventual alivio futuro aunque no lo anticipa. La tensión entre hawkishness declarado y expectativas de largo plazo define el próximo movimiento del S&P."
+      "label": "VIX cede pero DXY sube — dólar fuerte presiona a emergentes",
+      "texto": "El VIX bajando a 19,27 señala menos miedo en Wall Street, pero el DXY subiendo a 101,62 es la otra cara: el fortalecimiento del dólar encarece el crédito en dólares para economías emergentes y presiona sus monedas. El peso chileno cede 0,79%, el won coreano -1,07%. La trayectoria del DXY esta semana es clave para el apetito por activos de la región."
     },
     {
-      "label": "MSCI hoy: catalizador pendiente",
-      "texto": "El resultado del MSCI Annual Review se conoce durante la sesión. Un resultado positivo (apertura de consulta) en el contexto de risk-off global podría generar un movimiento asimétrico en los activos argentinos — el mercado está posicionado short en riesgo global pero potencialmente largo en Argentina específicamente."
+      "label": "Warsh/Fed: credibilidad y el dilema Greenspan-IA",
+      "texto": "Wessel en el NYT argumenta que el problema no es si la conclusión de Warsh sobre la IA es correcta, sino que llegó a ella antes de revisar los datos. Un presidente de la Fed que predetermina posiciones tiene un problema de credibilidad que se transmite a través de la curva. La subasta de Treasuries a 5 años de hoy (13:00 ET) y los pruebas de estrés bancario al cierre darán señales sobre el estado del mercado de renta fija americana."
     }
   ],
   "correlaciones": [
     {
-      "par": "VIX ↑ ↔ EMBI ARG ↓",
-      "texto": "El movimiento del martes muestra una correlación inversa inusual: el VIX sube 15% mientras el EMBI Argentina comprime 8bp. Históricamente ambos se mueven en la misma dirección (risk-off global = mayor riesgo país). El desacople actual refleja un factor idiosincrático argentino muy fuerte — el mercado diferencia entre riesgo emergente genérico y riesgo Argentina específico."
+      "par": "MSCI Standalone ↔ EMBI 433bp",
+      "texto": "El rechazo del MSCI activó una toma de ganancias en un mercado que había incorporado parcialmente el escenario positivo. Sin reclasificación no hay flujos de índices pasivos, y el mercado que había comprado en anticipación vende. El nivel de 433bp es coherente con el ajuste post-evento: no es pánico, pero sí una corrección de la prima de esperanza."
     },
     {
-      "par": "Tierras raras ↔ Nasdaq tech",
-      "texto": "Los controles chinos sobre tierras raras amplifican la caída del Nasdaq: las restricciones al suministro de insumos críticos elevan los costos de producción de semiconductores y hardware. La combinación de Fed hawkish + supply chain tech deteriorado es el peor escenario para el sector tecnológico de corto plazo."
+      "par": "Petróleo −1,9% ↔ DXY +0,2%",
+      "texto": "La caída del petróleo y el fortalecimiento del dólar se retroalimentan: el crudo se cotiza en USD, por lo que un dólar más fuerte encarece el petróleo para compradores no-dólar y modera la demanda. La caída de WTI a $71,85 y el DXY en 101,62 son dos caras del mismo fenómeno: menor tensión geopolítica en Oriente Medio + mayor oferta esperada de Irán + desaceleración de demanda asiática."
     }
   ],
-  "bottom_line": "Jornada de <strong>risk-off global marcado</strong>: Nasdaq −2,5%, VIX en 19,9%, Nikkei −3,6%, metales derrumbando. Los drivers son dos: la propuesta de Warsh de eliminar el dot-plot (más opacidad hawkish) y los controles chinos sobre tierras raras que escalan la tensión tecnológica.<br><br>La contracara positiva está en Argentina: el <strong>EMBI comprime a 421bp</strong> (mínimo de la era Milei), los globales subieron ayer en Buenos Aires y Caputo aseguró el fondeo para los vencimientos de julio vía <strong>Decreto 478/2026</strong> (USD 5.000M con garantías BM/BID). El país se desacopla positivamente del risk-off emergente.<br><br><strong>El catalizador del día es el MSCI</strong>: el Annual Market Classification Review se publica durante la sesión de hoy. Un resultado positivo (apertura de consulta hacia Frontera o Emergentes) en este contexto de risk-off podría generar una reacción asimétrica y muy fuerte en los activos argentinos."
+  "bottom_line": "La semana tuvo dos drivers dominantes que se compensaron parcialmente: el <strong>fallo negativo del MSCI</strong> —que empujó el EMBI a 433bp y hundió los ADRs hasta 4,4%— y la publicación de datos macroeconómicos sólidos (<strong>PIB Q1 +2,3% YoY</strong>, <strong>salarios +3,7% MoM</strong>) que muestran una economía real sin grandes sobresaltos.<br><br>El mercado global abre hoy con un <strong>rebote técnico moderado</strong>: VIX cede a 19,27, futuros tech en leve positivo, pero el petróleo sigue cediendo (-1,9%) ante mayor oferta iraní y el DXY se fortalece (+0,2%), sumando presión sobre las monedas emergentes.<br><br>Para Argentina, el MSCI no cambia la trayectoria macro pero sí el timing de los catalizadores: el mercado necesita re-anclar expectativas sin el driver de reclasificación. El foco local se desplaza hacia la política cambiaria —¿eliminará el gobierno el 'parking' para abrir el camino al MSCI en 2027?— mientras el foco global está en los datos de EEUU de hoy: cuenta corriente Q1, ventas de vivienda nueva y las <strong>pruebas de estrés bancario de la Fed al cierre</strong>."
 }
