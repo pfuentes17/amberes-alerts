@@ -550,18 +550,18 @@ var D={
   },
   // ── BCRA ───────────────────────────────
   reservas:{l:["Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],
-            brutas:[39800,40900,42052,44600,48511,48200],
-            compras:[1200,800,900,2770,2596,55]},
+            brutas:[39800,40900,42052,44516,48193,48200],
+            compras:[1200,800,900,2770,2601,55]},
   // Base Monetaria desde Dic 2023 (MM ARS) — fuente: IMD BCRA
   baseMonLargo:{
     l:["Dic 23","Ene 24","Feb 24","Mar 24","Abr 24","May 24","Jun 24","Jul 24","Ago 24",
        "Sep 24","Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25",
        "Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25",
-       "Ene 26","Feb 26","Mar 26","Abr 26"],
+       "Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
     v:[9580,10200,10800,11400,12100,12900,13200,14100,15200,
        16800,18400,20100,22100,24200,26800,29400,31200,33300,
        34800,36200,37900,38400,39100,40200,41000,
-       40921,41785,41026,41165]
+       40921,41785,41026,41165,41399]
   },
   // Serie larga desde Dic 2023 (hardcoded, se extenderá con API)
   reservasLargo:{
@@ -572,13 +572,13 @@ var D={
     v:[23073,26200,27100,28300,27900,29500,40500,27800,27900,
        27400,28300,29100,29640,30900,46900,43000,38700,37200,
        40000,35800,42800,34100,35500,38600,41167,
-       39800,40900,42052,44516,48224]
+       39800,40900,42052,44516,48193]
   },
   // Compras BCRA 2026 mensuales verificadas (MM USD)
   comprasMes2026:{
     l:["Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26*"],
-    v:[3337, 1058, 1671, 2770, 2596, 55],
-    acum:[3337, 4395, 6066, 8836, 9432, 9487]
+    v:[3337, 1058, 1671, 2770, 2601, 55],
+    acum:[3337, 4395, 6066, 8836, 9756, 9811]
   },
   tc:{oficial:1408,mep:1434,ccl:1485,blue:1430,turista:1859,mayorista:1410,
       bandaSup:1762,bandaInf:1232},
@@ -1016,8 +1016,8 @@ var D_BAL_CAM = {
   cc_ingr_primario: -949,     // MM USD (intereses + utilidades/dividendos)
   cc_ingr_secundario: 10,     // MM USD remesas
   // Reservas
-  reservas_fin_mes: 44516,    // MM USD fin de abril
-  compras_bcra_mes: 2770,     // MM USD compras BCRA en el mes
+  reservas_fin_mes: 48193,    // MM USD fin de mayo
+  compras_bcra_mes: 2601,     // MM USD compras BCRA en el mes
   // Histórico compras personas humanas (billetes, MM USD)
   hist_labels: ['Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26'],
   hist_ph_billetes: [1450, 2145, 1350, 1420, 1954, 2100, 2292],
@@ -1278,7 +1278,7 @@ async function buildBCRA(){
       shdr('Reservas Internacionales','BCRA \u2014 Acumulaci\u00f3n de divisas','...','Cargando... (API BCRA)','g')+
       src('BCRA \u00b7 API Oficial api.bcra.gob.ar \u00b7 idVariable=1 \u00b7 Sin autenticaci\u00f3n')+
       '<div id="bcra-api-status" style="font-size:9px;letter-spacing:1px;margin-bottom:12px;color:var(--or);">Conectando a API BCRA...</div>'+
-      sr4([{l:'Reservas Brutas',v:'...',c:'g',n:'Cargando API BCRA',x:'bcra'},{l:'Var. Mensual',v:'...',c:'g',n:'Cargando...',x:'bcra'},{l:'Acum. 2026',v:'$9.8B',c:'g',n:'96% meta FMI anual',x:'bcra'},{l:'Reservas Netas',v:'~-$4B',c:'r',n:'Estimado',x:'bcra'}])+
+      sr4([{l:'Reservas Brutas',v:'...',c:'g',n:'Cargando API BCRA',x:'bcra'},{l:'Var. Mensual',v:'...',c:'g',n:'Cargando...',x:'bcra'},{l:'Acum. 2026',v:'$9.8B',c:'g',n:'98% meta FMI anual',x:'bcra'},{l:'Reservas Netas',v:'~-$4B',c:'r',n:'Estimado',x:'bcra'}])+
       bx1('rv1','h240','Reservas Brutas BCRA \u2014 MM USD \u00b7 Dato diario BCRA API','c-bcra')+
       bx2(['rv2','rv3'],['Compra Neta BCRA \u2014 Mensual 2026 (M USD)','Acumulado Compras 2026 vs Meta FMI $10.000M (MM USD)'],'h190',['c-bcra','']),
       cal)+
@@ -1303,7 +1303,7 @@ async function buildBCRA(){
     panel2col('p4',
       shdr('Base Monetaria','BCRA \u2014 Evoluci\u00f3n desde Dic 2023 \u00b7 MM ARS','...','Cargando... (API BCRA)','a')+
       src('BCRA \u00b7 idVariable=15 (Base Monetaria)')+
-      sr4([{l:'Base Mon. (live)',v:'...',c:'a',n:'MM ARS \u00b7 BCRA API id=71',x:'bcra'},{l:'Var. Mensual Real s.e.',v:'-3.0%',c:'r',n:'Abr 26 \u00b7 IMM BCRA',x:'bcra'},{l:'Base / PBI',v:'4.1%',c:'a',n:'Abr 26 \u00b7 Mínimo hist.',x:'bcra'},{l:'Var. YoY nominal',v:'+23.5%',c:'g',n:'Abr 26 \u00b7 IMM BCRA',x:'bcra'}])+
+      sr4([{l:'Base Mon. (live)',v:'...',c:'a',n:'MM ARS \u00b7 BCRA API id=71',x:'bcra'},{l:'Var. Mensual Real s.e.',v:'-2.8%',c:'r',n:'May 26 \u00b7 IMM BCRA',x:'bcra'},{l:'Base / PBI',v:'3.9%',c:'a',n:'May 26 \u00b7 Mínimo hist.',x:'bcra'},{l:'Var. YoY nominal',v:'+20.8%',c:'g',n:'May 26 \u00b7 IMM BCRA',x:'bcra'}])+
       bx1('bm_hist','h240','Base Monetaria \u2014 MM ARS \u00b7 Desde Dic 2023 \u00b7 BCRA API id=71','c-bcra')+
       bx2(['bm_var','bm_fact'],['Variaci\u00f3n Mensual Base Monetaria %','Factores de Variaci\u00f3n (API id=46)'],'h190',['c-bcra','c-bcra']),
       cal)+
