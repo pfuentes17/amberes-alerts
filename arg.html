@@ -22,6 +22,8 @@
   --mecon:#e8a044;--mecon-m:rgba(232,160,68,.12);
   /* Vista REAL */
   --real:#9b7fe8;--real-m:rgba(155,127,232,.12);
+  /* Vista MERCADOS */
+  --mkt:#22d3ee;--mkt-m:rgba(34,211,238,.12);
 }
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:var(--nv);color:var(--wh);font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden;}
@@ -82,6 +84,21 @@ body.vista-bcra .tab.active{color:#4db87a;border-bottom-color:#4db87a;}
 body.vista-mecon .tab.active{color:#e8a044;border-bottom-color:#e8a044;}
 body.vista-real .tab.active{color:#9b7fe8;border-bottom-color:#9b7fe8;}
 body.vista-rem .tab.active{color:#38bdf8;border-bottom-color:#38bdf8;}
+body.vista-mkt .tab.active{color:#22d3ee;border-bottom-color:#22d3ee;}
+body.vista-mkt .oc:hover{border-color:var(--mkt);}
+body.vista-mkt .sh{border-left-color:var(--mkt);}
+.c-mkt{border-top-color:var(--mkt)!important;}
+.mkt-up{color:#4db87a;} .mkt-dn{color:#d95f5f;} .mkt-neu{color:#e8a044;}
+.oi-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px;}
+.oi-table th{color:var(--dm);font-weight:500;padding:6px 8px;text-align:right;border-bottom:1px solid var(--br);font-size:10px;letter-spacing:.8px;text-transform:uppercase;}
+.oi-table th:first-child{text-align:left;}
+.oi-table td{padding:6px 8px;text-align:right;border-bottom:1px solid rgba(240,244,248,.04);}
+.oi-table td:first-child{text-align:left;color:var(--wh);font-weight:500;}
+.oi-table tr:hover td{background:rgba(34,211,238,.04);}
+.oi-bar{display:inline-block;height:8px;border-radius:2px;background:var(--mkt);opacity:.7;vertical-align:middle;margin-left:6px;}
+.fetch-badge{display:inline-block;font-size:9px;padding:2px 6px;border-radius:3px;letter-spacing:.8px;text-transform:uppercase;font-weight:600;}
+.fetch-live{background:rgba(77,184,122,.15);color:#4db87a;}
+.fetch-seed{background:rgba(232,160,68,.12);color:#e8a044;}
 /* REM cards */
 .rem-kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px;}
 .rem-kpi{background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:13px 15px;}
@@ -315,6 +332,10 @@ footer{border-top:1px solid var(--br);padding:10px 40px;background:var(--nv2);di
           <div class="vs-dot" style="background:#38bdf8"></div>
           <div><div class="vs-name">REM · Expectativas</div><div class="vs-sub">BCRA · Relevamiento Mensual</div></div>
         </div>
+        <div class="vso" onclick="setVista('mkt')">
+          <div class="vs-dot" style="background:#22d3ee"></div>
+          <div><div class="vs-name">Mercados · Futuros</div><div class="vs-sub">ROFEX · OI · Curva DLR</div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -444,7 +465,10 @@ var vistaMeta={
     label:'Econom\u00eda Real \u00b7 SIPA \u00b7 Construya \u00b7 ACARA'},
   rem:{name:'REM',sub:'Expectativas de Mercado',col:'#38bdf8',
     footer:'BCRA \u00b7 Relevamiento de Expectativas de Mercado (REM) \u00b7 Mensual',
-    label:'REM \u00b7 Relevamiento de Expectativas de Mercado \u00b7 BCRA'}
+    label:'REM \u00b7 Relevamiento de Expectativas de Mercado \u00b7 BCRA'},
+  mkt:{name:'Mercados',sub:'Futuros ROFEX',col:'#22d3ee',
+    footer:'MatbaRofex \u00b7 D\u00f3lar Futuro DLR \u00b7 OI \u00b7 Curva \u00b7 Actualizaci\u00f3n diaria',
+    label:'Mercados \u00b7 Futuros ROFEX \u00b7 D\u00f3lar DLR \u00b7 Open Interest'}
 };
 function toggleVS(){$('vsb').classList.toggle('open');$('vsd').classList.toggle('open');}
 document.addEventListener('click',function(e){if(!$('vs').contains(e.target)){$('vsb').classList.remove('open');$('vsd').classList.remove('open');}});
@@ -452,7 +476,7 @@ document.addEventListener('click',function(e){if(!$('vs').contains(e.target)){$(
 function setVista(v){
   VISTA=v;
   $('vsb').classList.remove('open');$('vsd').classList.remove('open');
-  document.querySelectorAll('.vso').forEach(function(el,i){el.classList.toggle('active',['indec','bcra','mecon','real','rem'][i]===v);});
+  document.querySelectorAll('.vso').forEach(function(el,i){el.classList.toggle('active',['indec','bcra','mecon','real','rem','mkt'][i]===v);});
   var m=vistaMeta[v];
   $('vs-dot').style.background=m.col;
   $('vs-name').textContent=m.name;
@@ -465,6 +489,7 @@ function setVista(v){
     v==='bcra'?buildBCRA():
     v==='mecon'?buildMECON():
     v==='rem'?buildREM():
+    v==='mkt'?buildMERCADOS():
     buildREAL()
   ).catch(function(e){console.error('Vista error:',e);});
 }
@@ -992,41 +1017,41 @@ var BCRA_VARS = {
 // ── Datos del Balance Cambiario (actualización mensual desde PDF) ──
 // Fuente: Evolución del Mercado de Cambios y Balance Cambiario | BCRA
 var D_BAL_CAM = {
-  fecha: 'Abril 2026',
+  fecha: 'Mayo 2026',
   // Personas humanas
-  compra_billetes_ph: 2292,   // MM USD compras netas billetes personas humanas
-  compra_divisas_ph: 583,     // MM USD giros divisas sin fines específicos
-  compra_bruta_ph: 2727,      // MM USD compras brutas (1,5M personas)
-  venta_bruta_ph: 435,        // MM USD ventas brutas
-  fae_ph: 400,                // MM USD formación activos externos (atesoramiento)
-  dep_bancos_ph: 1200,        // MM USD depositados en bancos locales
-  tarjetas_ph: 600,           // MM USD usados para gastos con tarjeta
+  compra_billetes_ph: 1804,   // MM USD compras netas billetes personas humanas
+  compra_divisas_ph: 408,     // MM USD giros divisas sin fines específicos
+  compra_bruta_ph: 2212,      // MM USD compras brutas (1,4M personas)
+  venta_bruta_ph: 408,        // MM USD ventas brutas
+  fae_ph: 300,                // MM USD formación activos externos (atesoramiento)
+  dep_bancos_ph: 700,         // MM USD depositados en bancos locales
+  tarjetas_ph: 800,           // MM USD usados para gastos con tarjeta
   // Personas Jurídicas
-  venta_billetes_pj: 356,     // MM USD ventas netas PJ
-  venta_divisas_pj: 156,      // MM USD ventas netas divisas PJ
+  venta_billetes_pj: 212,     // MM USD ventas netas PJ
+  venta_divisas_pj: 114,      // MM USD ventas netas divisas PJ
   // Dividendos
-  dividendos_total: 365,      // MM USD egresos por utilidades y dividendos
-  dividendos_oleag: 132,      // MM USD Oleaginosas y Cerealeros
-  dividendos_energia: 107,    // MM USD Energía
-  dividendos_metales: 57,     // MM USD Metales Comunes y Elaboración
+  dividendos_total: 484,      // MM USD egresos por utilidades y dividendos (IP 1642 - int 1158)
+  dividendos_oleag: null,
+  dividendos_energia: 99,     // MM USD Energía
+  dividendos_metales: 67,     // MM USD Metales Comunes y Elaboración
   // Cuenta Corriente Cambiaria
-  cc_cam_saldo: 1333,         // MM USD superávit cuenta corriente cambiaria
-  cc_bienes: 2946,            // MM USD ingresos netos bienes
-  cc_servicios: -674,         // MM USD egresos netos servicios
-  cc_ingr_primario: -949,     // MM USD (intereses + utilidades/dividendos)
-  cc_ingr_secundario: 10,     // MM USD remesas
+  cc_cam_saldo: 1877,         // MM USD superávit cuenta corriente cambiaria
+  cc_bienes: 4322,            // MM USD ingresos netos bienes (máximo histórico)
+  cc_servicios: -802,         // MM USD egresos netos servicios
+  cc_ingr_primario: -1642,    // MM USD (intereses 1158 + utilidades/dividendos 484)
+  cc_ingr_secundario: -1,     // MM USD
   // Reservas
   reservas_fin_mes: 48193,    // MM USD fin de mayo
   compras_bcra_mes: 2601,     // MM USD compras BCRA en el mes
   // Histórico compras personas humanas (billetes, MM USD)
-  hist_labels: ['Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26'],
-  hist_ph_billetes: [1450, 2145, 1350, 1420, 1954, 2100, 2292],
+  hist_labels: ['Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26'],
+  hist_ph_billetes: [1450, 2145, 1350, 1420, 1954, 2100, 2292, 1804],
   // Fuente: Inf. Mercado Cambios BCRA
-  // Oct 25: 1450, Nov 25: 2145, Dic 25: 1350, Ene 26: 1420, Feb 26: 1954, Mar 26: 2100, Abr 26: 2292
-  hist_dividendos:  [180,  210,  280,  195,  260,  310,  365],
-  hist_cc_cam:      [895, 693, 2247, 1706, 1139, 2523, 1333]
+  // Oct 25: 1450, Nov 25: 2145, Dic 25: 1350, Ene 26: 1420, Feb 26: 1954, Mar 26: 2100, Abr 26: 2292, May 26: 1804
+  hist_dividendos:  [180,  210,  280,  195,  260,  310,  365,  484],
+  hist_cc_cam:      [895, 693, 2247, 1706, 1139, 2523, 1333, 1877]
   // Fuente: Inf. Mercado de Cambios BCRA
-  // Oct 25: +895, Nov 25: +693, Dic 25: +2247, Ene 26: +1706, Feb 26: +1139, Mar 26: +2523, Abr 26: +1333
+  // Oct 25: +895, Nov 25: +693, Dic 25: +2247, Ene 26: +1706, Feb 26: +1139, Mar 26: +2523, Abr 26: +1333, May 26: +1877
 };
 
 // Cache local para esta sesión (evita re-fetch al cambiar de tab)
@@ -2071,13 +2096,237 @@ async function buildREM(){
   },250);
 }
 
+// ══ MERCADOS — FUTUROS ROFEX ══════════════════════════════════
+
+// Seed: precios de ajuste dólar futuro DLR (ARS/USD) — MatbaRofex
+// Actualizar diariamente con datos de cierre de ROFEX
+D.mkt = {
+  isLive: false,
+  fetchedAt: null,
+  spot: 1410.3,
+  spotFecha: '25/06/2026',
+  // Contratos activos
+  contratos: ['Jun 26','Jul 26','Ago 26','Sep 26','Oct 26','Nov 26','Dic 26','Ene 27'],
+  venc:       ['2026-06-30','2026-07-31','2026-08-31','2026-09-30','2026-10-30','2026-11-30','2026-12-31','2027-01-29'],
+  precios:    [1410.0, 1425.5, 1441.2, 1455.8, 1470.3, 1485.1, 1501.0, 1516.2],
+  preciosPrev:[1409.0, 1424.0, 1439.5, 1454.0, 1468.5, 1483.2, 1498.8, 1513.9],
+  // OI en miles de contratos (c/u = USD 1.000)
+  oi:         [  120,  2480,  1820,  1240,   780,   420,   210,    90],
+  oiPrev:     [  145,  2390,  1750,  1190,   750,   405,   198,    82],
+  vol:         [   80,   320,   240,   180,   110,    65,    35,    15],
+  // Historial OI total (miles de contratos) — últimas 10 jornadas
+  oiHist:{
+    l:['12/6','13/6','16/6','17/6','18/6','19/6','20/6','23/6','24/6','25/6'],
+    v:[5820, 5940, 5980, 6050, 6100, 6150, 6180, 6200, 6160, 6360]
+  }
+};
+
+// Fetch automático desde Ambito / Primary — fallback a seed
+async function fetchRofexData(){
+  var sources = [
+    // Ambito expone dólar futuro en endpoint público
+    {url:'https://mercados.ambito.com/dolarfuturo/variacion', parser: parseAmbitoFuturos},
+    {url:'https://mercados.ambito.com/dolar/futuro/variacion', parser: parseAmbitoFuturos},
+  ];
+  for(var s of sources){
+    try{
+      var r = await fetch(s.url, {signal: AbortSignal.timeout(5000)});
+      if(!r.ok) continue;
+      var json = await r.json();
+      var parsed = s.parser(json);
+      if(parsed && parsed.contratos && parsed.contratos.length >= 3){
+        Object.assign(D.mkt, parsed, {isLive:true, fetchedAt: new Date()});
+        return true;
+      }
+    }catch(e){}
+  }
+  return false;
+}
+
+function parseAmbitoFuturos(data){
+  try{
+    // Ambito devuelve array de {mes, precio, variacion, oi, ...}
+    var arr = Array.isArray(data) ? data : (data.data || data.futuros || []);
+    if(!arr.length) return null;
+    var contratos=[], precios=[], oi=[], vol=[], venc=[];
+    arr.forEach(function(row){
+      contratos.push(row.mes || row.contrato || row.name || '');
+      precios.push(parseFloat(row.precio || row.price || row.ultimo || 0));
+      oi.push(parseFloat(row.oi || row.openInterest || row.interesAbierto || 0));
+      vol.push(parseFloat(row.volumen || row.volume || 0));
+      venc.push(row.vencimiento || row.fecha || '');
+    });
+    return {contratos, precios, oi, vol, venc, preciosPrev: precios.map(function(p){return p;})};
+  }catch(e){ return null; }
+}
+
+function tasaImplicita(precio, spot, diasVenc){
+  if(diasVenc <= 0) return 0;
+  return ((precio / spot) - 1) * (365 / diasVenc) * 100;
+}
+
+function diasHasta(vencStr){
+  var hoy = new Date();
+  var venc = new Date(vencStr);
+  return Math.max(1, Math.round((venc - hoy) / 86400000));
+}
+
+async function buildMERCADOS(){
+  // Intentar fetch en paralelo mientras construimos con seed
+  var fetchPromise = fetchRofexData();
+
+  var d = D.mkt;
+  var spot = d.spot;
+  var hoy = new Date().toLocaleDateString('es-AR');
+
+  // Calcular tasas implícitas y var OI
+  var tasas = d.contratos.map(function(c, i){
+    return tasaImplicita(d.precios[i], spot, diasHasta(d.venc[i] || '2026-12-31'));
+  });
+  var oiTotal = d.oi.reduce(function(a,b){return a+b;}, 0);
+  var oiTotalPrev = d.oiPrev.reduce(function(a,b){return a+b;}, 0);
+  var oiVar = oiTotal - oiTotalPrev;
+  var oiVarPct = oiTotalPrev > 0 ? ((oiVar/oiTotalPrev)*100).toFixed(1) : '0.0';
+  var masLiquido = d.contratos[d.oi.indexOf(Math.max.apply(null, d.oi))];
+  var tasaPromedio = (tasas.slice(1,5).reduce(function(a,b){return a+b;},0)/4).toFixed(1);
+
+  // KPI strip
+  $('kstrip').innerHTML = kpis([
+    {l:'TC Spot Ref.',         v:'$'+spot.toLocaleString('es-AR',{minimumFractionDigits:1}), c:'g',  n:'BNA · '+d.spotFecha},
+    {l:'OI Total',             v:(oiTotal/1000).toFixed(1)+'k lots', c:'g',  n:'MM USD '+(oiTotal).toLocaleString('es-AR')},
+    {l:'Var. OI Día',          v:(oiVar>=0?'+':'')+oiVar.toLocaleString('es-AR')+' lots', c:oiVar>=0?'g':'r', n:(oiVar>=0?'+':'')+oiVarPct+'% vs. ayer'},
+    {l:'Contrato Más Líquido', v:masLiquido,  c:'', n:'Mayor OI'},
+    {l:'Tasa Implícita Prom.', v:tasaPromedio+'% TNA', c:'a', n:'Jul–Oct · ROFEX'},
+    {l:'Fuente',               v:d.isLive?'LIVE':'Seed', c:d.isLive?'g':'a', n:d.isLive?'MatbaRofex':'Actualizar manualmente'},
+  ]);
+
+  // Tabla OI
+  var tablaOI = '<table class="oi-table"><thead><tr>'+
+    '<th>Contrato</th><th>Precio Aj.</th><th>Var. precio</th>'+
+    '<th>Tasa impl.</th><th>OI (lots)</th><th>Var. OI</th><th>Vol. día</th></tr></thead><tbody>';
+  d.contratos.forEach(function(c,i){
+    var varP = d.precios[i] - d.preciosPrev[i];
+    var varOI = d.oi[i] - d.oiPrev[i];
+    var t = tasas[i];
+    var maxOI = Math.max.apply(null, d.oi);
+    tablaOI += '<tr>'+
+      '<td>'+c+'</td>'+
+      '<td>$'+d.precios[i].toLocaleString('es-AR',{minimumFractionDigits:1})+'</td>'+
+      '<td class="'+(varP>=0?'mkt-up':'mkt-dn')+'">'+(varP>=0?'+':'')+varP.toFixed(1)+'</td>'+
+      '<td class="mkt-neu">'+t.toFixed(1)+'%</td>'+
+      '<td>'+d.oi[i].toLocaleString('es-AR')+'<span class="oi-bar" style="width:'+(d.oi[i]/maxOI*60).toFixed(0)+'px"></span></td>'+
+      '<td class="'+(varOI>=0?'mkt-up':'mkt-dn')+'">'+(varOI>=0?'+':'')+varOI+'</td>'+
+      '<td style="color:var(--dm)">'+d.vol[i].toLocaleString('es-AR')+'</td>'+
+    '</tr>';
+  });
+  tablaOI += '</tbody></table>';
+
+  var badgeHtml = '<span class="fetch-badge '+(d.isLive?'fetch-live':'fetch-seed')+'">'+(d.isLive?'● LIVE':'● SEED')+'</span>';
+
+  $('tabrow').innerHTML = tabs(['Resumen','Curva de Futuros','Open Interest','Historial OI']);
+  $('main').innerHTML =
+    // Tab 0 — Resumen
+    panel2col('p0',
+      shdr('Dólar Futuro DLR · ROFEX','Precios de ajuste y Open Interest '+badgeHtml,'$'+d.precios[1].toLocaleString('es-AR',{minimumFractionDigits:1}),'Jul 26 · más líquido','g')+
+      tablaOI+
+      src('MatbaRofex · Boletín de cierre · DLR · '+hoy),
+      bx1('mg0','h240','OI por Contrato — Miles de Lotes','c-mkt')+
+      bx1('mg1','h220','Tasa Implícita Anualizada (TNA) por Plazo','c-mkt'),
+      true)+
+    // Tab 1 — Curva
+    panel2col('p1',
+      shdr('Curva de Futuros DLR','Precio de ajuste por vencimiento — ROFEX','$'+d.precios[d.precios.length-1].toLocaleString('es-AR',{minimumFractionDigits:1}),'Último vencimiento','a')+
+      bx1('mc0','h260','Precio de Ajuste por Vencimiento (ARS/USD)','c-mkt')+
+      src('MatbaRofex · Contratos DLR activos · '+hoy),
+      shdr('Tasa Implícita TNA','Costo de cobertura anualizado por plazo',tasaPromedio+'%','Promedio Jul–Oct 26','a')+
+      bx1('mc1','h260','Tasa Implícita Anualizada por Vencimiento (%)','c-mkt')+
+      src('Cálculo: (Futuro/Spot − 1) × (365/días) × 100'))+
+    // Tab 2 — OI
+    panel2col('p2',
+      shdr('Open Interest por Contrato','Miles de lotes (c/u = USD 1.000) — '+hoy,(oiTotal/1000).toFixed(1)+'k','Total del mercado',oiVar>=0?'g':'r')+
+      bx1('mo0','h240','OI por Vencimiento — Miles de Lotes','c-mkt')+
+      src('MatbaRofex · ROFEX · Cierre de jornada'),
+      shdr('Variación OI Diaria','Delta vs. jornada anterior por contrato',(oiVar>=0?'+':'')+oiVar+' lots','Total mercado '+hoy,oiVar>=0?'g':'r')+
+      bx1('mo1','h240','Var. OI Diaria por Contrato (lots)','c-mkt')+
+      src('Diferencia vs. OI de cierre anterior'))+
+    // Tab 3 — Historial
+    panel2col('p3',
+      shdr('Historial OI Total','Evolución de interés abierto total — últimas 10 jornadas',d.oiHist.v[d.oiHist.v.length-1].toLocaleString('es-AR')+' lots',d.oiHist.l[d.oiHist.l.length-1]+' · Total','g')+
+      bx1('mh0','h260','OI Total del Mercado — Últimas 10 Jornadas','c-mkt')+
+      src('MatbaRofex · Suma de todos los contratos DLR activos'),
+      shdr('Posición Neta Estimada','Variación acumulada del OI en el período',
+        (function(){var s=d.oiHist.v[d.oiHist.v.length-1]-d.oiHist.v[0]; return (s>=0?'+':'')+s.toLocaleString('es-AR');}())+' lots',
+        d.oiHist.l[0]+' → '+d.oiHist.l[d.oiHist.l.length-1],'g')+
+      bx1('mh1','h260','Variación Diaria OI Total — últimas 10 jornadas','c-mkt')+
+      src('Diferencia diaria del OI total del mercado'));
+
+  // Colores
+  var MKT = '#22d3ee', MKT2 = 'rgba(34,211,238,.15)';
+  var G4 = '#4db87a', RD = '#d95f5f';
+
+  // Charts Tab 0
+  bar('mg0', d.contratos, d.oi, {
+    cf: function(v,i){ return i===d.oi.indexOf(Math.max.apply(null,d.oi)) ? MKT : 'rgba(34,211,238,.45)'; },
+    s:''
+  });
+  bar('mg1', d.contratos, tasas, {cf: function(){return '#e8a044';}});
+
+  // Charts Tab 1 — Curva
+  line('mc0', d.contratos, [{
+    label:'Precio Ajuste (ARS/USD)', data:d.precios,
+    borderColor:MKT, fill:true, backgroundColor:MKT2, tension:0.4, pointRadius:4, pointBackgroundColor:MKT
+  }], '');
+  line('mc1', d.contratos.slice(1), [{
+    label:'Tasa Implícita TNA (%)', data:tasas.slice(1),
+    borderColor:'#e8a044', fill:true, backgroundColor:'rgba(232,160,68,.12)', tension:0.4, pointRadius:4, pointBackgroundColor:'#e8a044'
+  }], '%');
+
+  // Charts Tab 2 — OI
+  var oiVars = d.oi.map(function(v,i){return v - d.oiPrev[i];});
+  bar('mo0', d.contratos, d.oi, {cf: function(){return MKT;}, s:''});
+  bar('mo1', d.contratos, oiVars, {cf: function(v){return v>=0?G4:RD;}, s:''});
+
+  // Charts Tab 3 — Historial
+  var oiHistVars = d.oiHist.v.map(function(v,i){return i===0?0:v-d.oiHist.v[i-1];});
+  line('mh0', d.oiHist.l, [{
+    label:'OI Total (lotes)', data:d.oiHist.v,
+    borderColor:MKT, fill:true, backgroundColor:MKT2, tension:0.4, pointRadius:3, pointBackgroundColor:MKT
+  }], '');
+  bar('mh1', d.oiHist.l, oiHistVars, {cf:function(v){return v>=0?G4:RD;}, s:''});
+
+  // Cuando llegue el fetch live, rebuild
+  fetchPromise.then(function(ok){
+    if(ok && VISTA==='mkt'){
+      destroyAll();
+      buildMERCADOS();
+    }
+  });
+}
+
 // ══ INIT ═══════════════════════════════════════════════════════
 $('upd').textContent='Datos al '+new Date().toLocaleDateString('es-AR',{day:'numeric',month:'long',year:'numeric'});
-buildINDEC();
-// Cargar datos en vivo (APIs + manual.json) en background
-setTimeout(function(){ loadLiveData().catch(function(){}); }, 300);
-// Pre-load BCRA data
-setTimeout(function(){ loadBCRAData().catch(function(){}); }, 2000);
+// Cargar seed.json desde /api/seed y sobreescribir D antes del build
+(function(){
+  fetch('/api/seed').then(function(r){ return r.ok ? r.json() : null; }).then(function(s){
+    if(!s || !s.arg) return;
+    var a = s.arg;
+    // Sobreescribir arrays del seed de Argentina
+    var maps = {
+      ipc:'ipc', nucleo:'nucleo', regulados:'regulados', estacion:'estacion',
+      ipcYoY:'ipcYoY', emae:'emae', emaeDesest:'emaeDesest', ipi:'ipi',
+      isac:'isac', ucii:'ucii', ipiMinero:'ipiMinero', ica:'ica',
+      reservas:'reservas', reservasLargo:'reservasLargo', comprasMes2026:'comprasMes2026',
+      tc:'tc', tcHist:'tcHist', tasa:'tasa', m2:'m2', credito:'credito',
+      baseMonLargo:'baseMonLargo', fiscal:'fiscal', recaud:'recaud', vencUSD2026:'vencUSD2026'
+    };
+    Object.keys(maps).forEach(function(k){ if(a[k] !== undefined) D[k] = a[k]; });
+    if(s._meta) console.info('[seed] actualizado:', s._meta.updated);
+  }).catch(function(){}).finally(function(){
+    buildINDEC();
+    setTimeout(function(){ loadLiveData().catch(function(){}); }, 300);
+    setTimeout(function(){ loadBCRAData().catch(function(){}); }, 2000);
+  });
+})();
 </script>
 
 <!-- UPDATE BAR -->
