@@ -361,15 +361,15 @@ const D = {
       sorgo:  {usd:108.0, ars:153900},
     },
 
-    // Campana 25/26  --  BCR / BCBA  --  12-Jun-2026
+    // Campana 25/26  --  BCR / BCBA  --  29-Jun-2026
     campania:{
-      soja:   {bcr:51.5,bcba:51.8,has:16.2,rinde:31.8,cosechado:96, estado:'Cosechando'},
-      maiz:   {bcr:68.0,bcba:68.5,has:10.2,rinde:66.7,cosechado:55, estado:'Cosechando'},
-      trigo:  {bcr:20.0,bcba:20.2,has:6.8, rinde:null, cosechado:34, estado:'Siembra'},
+      soja:   {bcr:51.5,bcba:51.8,has:16.2,rinde:31.8,cosechado:99, estado:'Finalizado'},
+      maiz:   {bcr:68.0,bcba:70.0,has:10.2,rinde:79.7,cosechado:82, estado:'Cosechando'},
+      trigo:  {bcr:20.0,bcba:21.0,has:6.8, rinde:null, cosechado:40, estado:'Siembra'},
       girasol:{bcr:3.9, bcba:4.0, has:1.5, rinde:26.0, cosechado:100,estado:'Finalizado'},
       cebada: {bcr:5.4, bcba:5.5, has:1.1, rinde:49.1, cosechado:100,estado:'Finalizado'},
     },
-    campanaNota:'Maiz 25/26: 68 Mt es RECORD HISTORICO absoluto, supera en 36%% la campana anterior y +15.5 Mt vs previo record de 52.5 Mt. Soja: ajustada al alza por rindes superiores a lo previsto en cosecha final.',
+    campanaNota:'Maiz 25/26: BCR mantiene 68 Mt (RECORD HISTORICO, +36%% vs campana anterior); BCCBA y SAGyP elevan a 70 Mt. Divergencia por rindes tardios aun en proceso. Soja finalizada en ~99%% con 51.5 Mt. Trigo 26/27: BCR 20 Mt / BCCBA 21 Mt — siembra en curso.',
 
     // Precios Matba-Rofex / Rosario (ARS/tn)
     // Matba-Rofex / Rosario (ARS/tn) — consistente con TC $1,425
@@ -395,18 +395,20 @@ const D = {
     // CIARA-CEC  --  verificado con fuentes periodisticas
     // May-26: $2,677M (Perfil / Decamponoticias / CIARA oficial)
     // Abr-26: ~$2,498M  |  Acum ene-may: $10,343M (-12%% vs 2025)
+    // Jun-26: dato oficial pendiente (se publica en julio). Promedio diario ~$136M/dia sugiere ~$2,900M.
     ciara:{
       l:['Jun 25','Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26'],
       vals:[2950,2280,1750,2050,2580,1420,1050,1650,1680,1838,2498,2677],
       mayo:2677, acum2026:10343, acum2025:11753,
-      notas:'May-26: $2,677M (+7%% vs abr). Acum ene-may: $10,343M (-12%% vs 2025). Campana record de maiz compensa parcialmente menor liquidacion de soja.',
+      notas:'May-26: $2,677M (+7%% vs abr). Acum ene-may: $10,343M (-12%% vs 2025). Jun-26: pendiente cierre oficial (est. ~$2,900M segun promedio diario de $136M). Campana record de maiz compensa parcialmente menor liquidacion de soja.',
     },
 
     // BCRA compras MULC (USD M)
+    // Jun-26 parcial: ~$1,410M al 25-Jun (Ambito). Acum 2026 supera US$11,000M.
     bcra:{
-      l:['Jun 25','Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26'],
-      compras:[1950,1520,1020,1380,1820,920,520,1250,1680,2350,2480,2200],
-      acum2026:9960,
+      l:['Jun 25','Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26*'],
+      compras:[1950,1520,1020,1380,1820,920,520,1250,1680,2350,2480,2200,1410],
+      acum2026:11370,
     },
   },
 };
