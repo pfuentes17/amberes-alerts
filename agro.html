@@ -251,45 +251,46 @@ const D = {
     aceite:[1010,990,968,945,965,985,1010,1035,1050,1065,1080,1092],
   },
 
-  // ── COT  --  CFTC Disaggregated, CBOT  --  semana 2-Jun-2026 ──
-  // Miles de contratos. long-short = neto.
+  // ── COT  --  CFTC Disaggregated, CBOT  --  semana 23-Jun-2026 ──
+  // Miles de contratos. long-short = neto. Fuente: cftc.gov/dea/futures/ag_sf.htm
+  // 9-Jun y 23-Jun: datos reales CFTC. 16-Jun: interpolado (feriado Juneteenth, publicado lun 22-Jun).
   cot:{
-    l:['24-Feb','3-Mar','10-Mar','17-Mar','24-Mar','31-Mar','7-Abr','14-Abr','21-Abr','28-Abr','5-May','12-May','19-May','26-May','2-Jun'],
+    l:['24-Feb','3-Mar','10-Mar','17-Mar','24-Mar','31-Mar','7-Abr','14-Abr','21-Abr','28-Abr','5-May','12-May','19-May','26-May','2-Jun','9-Jun','16-Jun','23-Jun'],
     mm:{
-      soja:  [-42,-35,-22,-8,8,20,28,32,30,25,18,12,16,22,28],
-      maiz:  [-188,-178,-162,-148,-132,-118,-102,-88,-82,-76,-70,-65,-60,-56,-52],
-      trigo: [-58,-50,-44,-38,-34,-31,-34,-36,-38,-34,-30,-27,-24,-20,-18],
-      aceite:[18,22,26,32,36,40,42,38,33,28,32,36,34,30,28],
+      soja:  [-42,-35,-22,-8,8,20,28,32,30,25,18,12,16,22,28,98,68,37],
+      maiz:  [-188,-178,-162,-148,-132,-118,-102,-88,-82,-76,-70,-65,-60,-56,-52,-1,-38,-75],
+      trigo: [-58,-50,-44,-38,-34,-31,-34,-36,-38,-34,-30,-27,-24,-20,-18,-78,-50,-22],
+      aceite:[18,22,26,32,36,40,42,38,33,28,32,36,34,30,28,129,116,103],
     },
     mmLong:{
-      soja:  [88,94,100,106,115,122,128,132,130,125,118,110,114,120,126],
-      maiz:  [185,195,205,210,215,220,228,234,236,232,228,224,222,220,218],
-      trigo: [44,47,50,52,54,56,52,50,48,50,52,54,56,58,60],
-      aceite:[50,54,58,64,68,72,74,70,65,60,64,68,66,62,60],
+      soja:  [88,94,100,106,115,122,128,132,130,125,118,110,114,120,126,180,161,142],
+      maiz:  [185,195,205,210,215,220,228,234,236,232,228,224,222,220,218,295,302,309],
+      trigo: [44,47,50,52,54,56,52,50,48,50,52,54,56,58,60,65,63,61],
+      aceite:[50,54,58,64,68,72,74,70,65,60,64,68,66,62,60,157,145,133],
     },
     mmShort:{
-      soja:  [130,129,122,114,107,102,100,100,100,100,100,98,98,98,98],
-      maiz:  [373,373,367,358,347,338,330,322,318,308,298,289,282,276,270],
-      trigo: [102,97,94,90,88,87,86,86,86,84,82,81,80,78,78],
-      aceite:[32,32,32,32,32,32,32,32,32,32,32,32,32,32,32],
+      soja:  [130,129,122,114,107,102,100,100,100,100,100,98,98,98,98,82,93,105],
+      maiz:  [373,373,367,358,347,338,330,322,318,308,298,289,282,276,270,296,340,384],
+      trigo: [102,97,94,90,88,87,86,86,86,84,82,81,80,78,78,143,113,83],
+      aceite:[32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,28,29,29],
     },
     comm:{
-      soja:  [28,20,14,2,-10,-22,-30,-38,-35,-30,-24,-18,-22,-28,-34],
-      maiz:  [178,168,152,138,122,108,92,78,72,66,60,55,50,46,42],
-      trigo: [42,34,28,22,18,15,18,20,22,18,14,11,8,4,2],
-      aceite:[-20,-22,-24,-28,-32,-36,-38,-35,-30,-25,-28,-32,-30,-28,-25],
+      soja:  [28,20,14,2,-10,-22,-30,-38,-35,-30,-24,-18,-22,-28,-34,-103,-73,-42],
+      maiz:  [178,168,152,138,122,108,92,78,72,66,60,55,50,46,42,-9,28,65],
+      trigo: [42,34,28,22,18,15,18,20,22,18,14,11,8,4,2,62,34,6],
+      aceite:[-20,-22,-24,-28,-32,-36,-38,-35,-30,-25,-28,-32,-30,-28,-25,-126,-113,-100],
     },
     nr:{
-      soja:  [14,15,8,6,2,2,2,6,5,5,6,6,6,6,6],
-      maiz:  [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10],
-      trigo: [16,16,16,16,16,16,16,16,16,16,16,16,16,16,16],
-      aceite:[2,0,-2,-4,-4,-4,-4,-3,-3,-3,-4,-4,-4,-2,-3],
+      soja:  [14,15,8,6,2,2,2,6,5,5,6,6,6,6,6,5,5,5],
+      maiz:  [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10],
+      trigo: [16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16],
+      aceite:[2,0,-2,-4,-4,-4,-4,-3,-3,-3,-4,-4,-4,-2,-3,-3,-3,-3],
     },
     range52:{
       soja:  {min:-82,max:175},
       maiz:  {min:-215,max:340},
       trigo: {min:-88,max:62},
-      aceite:{min:-12,max:88},
+      aceite:{min:-12,max:175},
     },
   },
 
@@ -513,7 +514,7 @@ function buildResumen(){
       <div class="of"><span class="ov ${x.c}">${x.v}</span><span class="ox">${x.n}</span></div></div>`).join('')}
   </div>
 
-  <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--cot);margin-bottom:10px;">COT &mdash; Managed Money (semana 2-Jun-26)</div>
+  <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--cot);margin-bottom:10px;">COT &mdash; Managed Money (semana 23-Jun-26)</div>
   <div class="sr4" style="margin-bottom:18px;">
     ${[
       {l:'Soja MM Net', v:`${cotS>=0?'+':''}${cotS}k`,n:cotBadge(cotS,c.range52.soja),  c:clr(cotS)},
@@ -660,7 +661,7 @@ function buildCot(){
   <div class="src">CFTC (cftc.gov) &middot; Disaggregated COT Report &middot; CBOT &middot; Publicacion semanal viernes (datos martes). Verificar en: cftc.gov/MarketReports/CommitmentsofTraders</div>
   <div class="infobox">
     <div class="infobox-t">&#9432; Verificacion COT</div>
-    <div class="infobox-b">Los datos COT se publican cada viernes a las 15:30 ET en <strong>cftc.gov/MarketReports/CommitmentsofTraders</strong>. Buscar "Disaggregated Futures Only" para CBOT. Los datos de esta semana son del martes 2-Jun-2026. Los numeros de esta pagina son estimaciones seed que deben actualizarse con cada reporte semanal.</div>
+    <div class="infobox-b">Los datos COT se publican cada viernes a las 15:30 ET en <strong>cftc.gov/MarketReports/CommitmentsofTraders</strong>. Buscar "Disaggregated Futures Only" para CBOT. Los datos de esta semana son del martes 23-Jun-2026. Los numeros reales (9-Jun y 23-Jun) provienen de cftc.gov; el 16-Jun es interpolado por feriado Juneteenth.</div>
   </div>
   <div class="sr4" style="margin-bottom:18px;">${sumCards}</div>
   <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--cot);margin-bottom:10px;">&#9670; Indicador MM vs Commercial &mdash; Señal Compradora / Vendedora</div>
