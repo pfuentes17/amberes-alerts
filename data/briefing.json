@@ -1,115 +1,150 @@
 {
-  "date": "2026-06-24",
-  "generated": "2026-06-24T09:00:00Z",
+  "date": "2026-06-29",
+  "generated": "2026-06-29T09:00:00Z",
   "sentiment": {
-    "overall": "risk-off",
-    "label": "Argentina risk-off post-MSCI — rebote parcial global con petróleo y metales bajo presión",
-    "fg": 35,
-    "fg_label": "Miedo",
+    "overall": "risk-on",
+    "label": "Futuros de EE.UU. suben tras acuerdo de distensión EE.UU.–Irán — Fed hawkish y NFP el jueves",
+    "fg": 53,
+    "fg_label": "Neutral",
     "putcall": null,
     "aaii_bulls": null
   },
   "drivers": [
     {
       "id": 1,
-      "tag": "Argentina · MSCI",
-      "tag_class": "tr",
-      "title": "MSCI mantiene Argentina en Standalone — EMBI salta a 433bp y globales cierran en rojo",
-      "brief": "El Annual Market Classification Review del MSCI mantuvo a Argentina en la categoría Standalone, rechazando la apertura de consulta hacia Frontier o Emerging Markets. Los controles cambiarios residuales fueron el principal obstáculo. ADRs cayeron hasta 4,4%, el EMBI saltó 12bp a 433bp y los globales cerraron en baja: GD30D -0,06% (65,75 cts), GD41D -0,54% (78,02 cts), GD46D -0,72% (74,80 cts).",
-      "tldr": "MSCI rechaza a Argentina — EMBI 433bp, globales en rojo, ADRs cayeron hasta 4,4%.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El MSCI publicó los resultados del <strong>Annual Market Classification Review</strong> y mantuvo a Argentina en la categoría <strong>Standalone</strong>, sin apertura de consulta hacia Frontier ni Emerging Markets. La decisión fue atribuida a los controles cambiarios residuales que limitan el acceso de inversores extranjeros. La reacción fue inmediata: los <strong>ADRs cayeron hasta 4,4%</strong>, el <strong>EMBI subió 12bp a 433bp</strong> —alejándose de los 421bp mínimos de la era Milei marcados el lunes— y los globales cerraron a la baja en Buenos Aires: <strong>GD30D -0,06%</strong> (65,75 cts), <strong>AL30D -0,12%</strong> (64,38 cts), GD41D -0,54%, GD46D -0,72%.",
-      "contexto": "El fallo del MSCI era el catalizador más esperado de la semana. La lectura del mercado es que sin flexibilización cambiaria —específicamente la eliminación del acceso diferido de 90 días para inversores extranjeros ('parking')— la reclasificación no es posible. El resultado no cambia los fundamentos macroeconómicos —superávit fiscal, reservas en recuperación, brecha controlada— pero sí pospone el catalizador de flujos que el mercado había incorporado parcialmente en precios. El camino a Frontier o EM sigue abierto pero depende de decisiones de política cambiaria que el gobierno no parece dispuesto a acelerar.",
+      "tag": "Acciones · Global",
+      "tag_class": "tg",
+      "title": "Futuros alcistas liderados por el Nasdaq; VIX cerró arriba — tono comprador con cautela",
+      "brief": "El acuerdo de distensión EE.UU.–Irán empuja los futuros: Nasdaq +1,12% a 29.697, S&P +0,76% a 7.458 y Dow +0,32% a 52.378. El Dow es la referencia más rezagada. Nikkei cerró +0,15% y bolsas europeas operan mixtas. El VIX cerró en 18,44 (+0,16%): el alivio geopolítico no eliminó toda la incertidumbre.",
+      "tldr": "Nasdaq +1,12% · S&P +0,76% · Dow +0,32% · VIX 18,44 — rally con cautela.",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "El <strong>acuerdo de distensión entre EE.UU. e Irán</strong> antes de la apertura neoyorquina es el catalizador de la jornada. Los futuros suben: <strong>Nasdaq +1,12% a 29.697</strong>, <strong>S&P 500 +0,76% a 7.458</strong> y <strong>Dow +0,32% a 52.378</strong>. El Dow rezagado refleja su mayor peso en industriales y energía versus el sesgo tech del Nasdaq. El <strong>Nikkei cerró +0,15%</strong> y las bolsas europeas operan mixtas. El <strong>VIX cerró en 18,44 (+0,16%)</strong>: el mercado celebra el acuerdo pero no terminó de descontar el riesgo residual. En emergentes: Hang Seng +1,57%, CSI 300 +1,18% y Nifty 50 −0,44%.",
+      "contexto": "El tono comprador convive con yields más altas y un VIX que cerró al alza, la combinación clásica de un rally sobre noticias geopolíticas que el mercado no termina de validar con fundamentos. La señal a monitorear es si el Nasdaq puede sostener el rally cuando arranque la sesión de NY: un dato de empleo del jueves por encima del consenso (110K) podría relanzar las apuestas hawkish y revertir parte del movimiento de hoy.",
       "impacto": [
-        {"asset": "EMBI ARG", "dir": "↑ 433bp", "cls": "dn"},
-        {"asset": "GD30D", "dir": "↓ −0,06%", "cls": "dn"},
-        {"asset": "GD46D", "dir": "↓ −0,72%", "cls": "dn"},
-        {"asset": "ADRs ARG", "dir": "↓ −4,4% max", "cls": "dn"},
-        {"asset": "Reclasif.", "dir": "→ Postergada", "cls": "dn"}
+        {"asset": "Nasdaq fut.", "dir": "↑ +1,12%", "cls": "up"},
+        {"asset": "S&P 500 fut.", "dir": "↑ +0,76%", "cls": "up"},
+        {"asset": "Dow fut.", "dir": "↑ +0,32%", "cls": "up"},
+        {"asset": "VIX", "dir": "↑ 18,44", "cls": "dn"},
+        {"asset": "Nikkei", "dir": "↑ +0,15%", "cls": "up"}
       ]
     },
     {
       "id": 2,
-      "tag": "Macro · Argentina",
-      "tag_class": "tq",
-      "title": "PIB Q1 +2,3% YoY y salarios +3,7% MoM — macro local sólida pese al golpe MSCI",
-      "brief": "El INDEC publicó ayer el PBI Q1 2026: +2,3% YoY y +0,7% desestacionalizado QoQ. Exportaciones lideran con +9,8% ia; consumo privado +2,7% ia. Sectores líderes: pesca +27,5%, agro +18,1%, minería +12,3%. El Índice de Salarios de abril marcó +3,7% MoM / +36,9% YoY. La EPH Q1 confirmó desempleo en 7,8%.",
-      "tldr": "PIB Q1 +2,3% YoY, salarios +3,7% MoM. Macro subyacente sólida más allá del MSCI.",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El <strong>INDEC publicó el informe de avance del PIB Q1 2026</strong>: crecimiento de <strong>+2,3% YoY</strong> y <strong>+0,7% desestacionalizado QoQ</strong>, confirmando que la economía argentina mantuvo el impulso de recuperación en el arranque del año. Por el lado de la demanda, las <strong>exportaciones lideran con +9,8% ia</strong>; el consumo privado creció +2,7% ia. Por oferta: <strong>Pesca +27,5%</strong>, <strong>Agro +18,1%</strong>, <strong>Minería +12,3%</strong>. Caídas acotadas: industria manufacturera -1,7%, administración pública -1,4%. En simultáneo, el <strong>Índice de Salarios de abril 2026</strong> marcó <strong>+3,7% MoM / +36,9% YoY / +12,7% acumulado 2026</strong>. Privado registrado +4,0% MoM (+29,3% YoY), sector público +2,3% MoM (+29,6% YoY).",
-      "contexto": "Los datos publicados ayer presentan una economía real en expansión, con el agro y la minería como motores. El salario nominal crece por encima del 3,5% mensual, aunque en términos reales sigue levemente negativo respecto a la inflación (IPC YoY ~39-40% vs. salarios +36,9%). El cuadro macro subyacente —superávit fiscal, crecimiento positivo, reservas en recuperación— no cambió con el fallo del MSCI. Lo que el fallo ajusta es el timing del catalizador de flujos de portfolio, no la trayectoria de la economía real.",
+      "tag": "Bonos · EE.UU.",
+      "tag_class": "tb",
+      "title": "Yields suben en ambos tramos; curva 2s10s se aplana a 27,5pb — mercado descuenta Fed más hawkish",
+      "brief": "UST 10Y sube 1,0pb a 4,382% y el 2Y avanza 1,9pb a 4,107%. La curva 2s10s se aplana a 27,5pb (−0,9pb) y la 10s30s a 48,4pb (−0,9pb). El tramo corto mueve más, señal de que el mercado cotiza subas de tasas. Soberanos core europeos suben, con el Gilt a la cabeza.",
+      "tldr": "UST 10Y 4,382% · 2Y 4,107% · 2s10s aplana a 27,5pb.",
+      "sentiment": "neu",
+      "sentiment_label": "⚪ Neutro",
+      "evento": "El <strong>UST 10Y sube 1,0pb a 4,382%</strong> y el <strong>UST 2Y avanza 1,9pb a 4,107%</strong>, con el tramo corto moviendo más — la firma clásica de expectativas de subas de tasas. La curva <strong>2s10s se aplana a 27,5pb (−0,9pb)</strong> y la 10s30s a 48,4pb (−0,9pb). Los soberanos core europeos suben, con el Gilt liderando. La combinación de futuros equity al alza y yields más altas refleja un mercado que puede tener ambas cosas simultáneamente: optimismo geopolítico de corto plazo y expectativas hawkish de más largo plazo.",
+      "contexto": "La señal más relevante no es el nivel de las yields sino el diferencial entre tramos: el 2Y sube el doble que el 10Y, lo que significa que el mercado descuenta que la Fed mantendrá las tasas altas (o las sube) más tiempo de lo que el consenso anticipaba a principios de año. El discurso de Warsh del miércoles será el primer test real de si esta lectura está bien calibrada.",
       "impacto": [
-        {"asset": "PIB Q1 26", "dir": "↑ +2,3% YoY", "cls": "up"},
-        {"asset": "Exportaciones", "dir": "↑ +9,8% ia", "cls": "up"},
-        {"asset": "Salarios", "dir": "↑ +3,7% MoM", "cls": "up"},
-        {"asset": "Desempleo", "dir": "→ 7,8% Q1", "cls": "neu"},
-        {"asset": "Sal. real", "dir": "↓ ~−2% YoY", "cls": "dn"}
+        {"asset": "UST 10Y", "dir": "↑ 4,382% (+1,0pb)", "cls": "dn"},
+        {"asset": "UST 2Y", "dir": "↑ 4,107% (+1,9pb)", "cls": "dn"},
+        {"asset": "2s10s", "dir": "↓ 27,5pb (−0,9pb)", "cls": "neu"},
+        {"asset": "Gilt 10Y", "dir": "↑ al alza", "cls": "dn"}
       ]
     },
     {
       "id": 3,
-      "tag": "Macro · EE.UU.",
-      "tag_class": "tb",
-      "title": "VIX cede a 19,27 y tech rebota parcialmente — petróleo -1,9% y metales siguen cayendo",
-      "brief": "Futuros divergentes: Nasdaq +0,36% (29.772), S&P +0,06% (7.442), Dow -0,19% (51.982). VIX baja 1,13% a 19,27. UST 10Y cede 1bp a 4,483%. DXY sube 0,21% a 101,62. WTI cae 1,86% a $71,85; Brent -1,80% a $75,69. Oro -1,57% a $4.084. Nikkei cerró -0,88%. Hoy: permisos de construcción, ventas de vivienda nueva, EIA crudo y pruebas de estrés bancario Fed.",
-      "tldr": "Rebote parcial tech, VIX cede. Petróleo -1,9% bajo presión de oferta iraní y DXY al alza.",
+      "tag": "FX · Commodities",
+      "tag_class": "ta",
+      "title": "Dólar cede; crudo sube con Ormuz abierto; metales preciosos e industriales retroceden",
+      "brief": "DXY 101,25 (−0,10%): EUR/USD 1,1400 (+0,16%), GBP/USD 1,3200 (+0,14%), USD/JPY 161,88 (+0,09%). WTI +1,72% a 70,42 y Brent +1,35% a 73,58 con el alivio en el Golfo. Oro −1,25% a 4.045, plata −2,64% a 58,10, cobre −0,43% a 6,18. Bitcoin +1,07% a 60.136.",
+      "tldr": "DXY 101,25 · WTI 70,42 · Brent 73,58 · Oro 4.045 · BTC 60.136.",
       "sentiment": "neu",
       "sentiment_label": "⚪ Neutro",
-      "evento": "Los futuros de Wall Street abren con señales divergentes: el <strong>Nasdaq sube 0,36%</strong> a 29.772, el S&P avanza 0,06% a 7.442, pero el Dow cae 0,19% a 51.982. El <strong>VIX cede 1,13% a 19,27</strong>, alivio moderado tras el pico de la víspera. En renta fija, el <strong>UST 10Y baja 1bp a 4,483%</strong> y el 2Y cae 0,1bp a 4,199%. El <strong>DXY sube 0,21% a 101,62</strong>, fortaleza que arrastra a monedas emergentes (peso chileno -0,79%, won coreano -1,07%). Los metales ceden: <strong>oro -1,57% a $4.084</strong>, plata -1,45%, cobre -0,63%. <strong>WTI -1,86% a $71,85</strong>. Nikkei cerró -0,88%.",
-      "contexto": "El rebote parcial en tecnología contrasta con la presión sostenida sobre el petróleo y los metales. El driver del crudo es la mayor oferta de Oriente Medio (Irán reactivando ventas, Qatar anunciando reanudación plena de GNL) combinada con demanda asiática más moderada. El calendario concentra hoy los datos más relevantes de la semana en EEUU: permisos de construcción (08:30 ET), cuenta corriente Q1 (consenso déficit USD 220B), ventas de vivienda nueva (10:00 ET), inventarios EIA (10:30 ET), subasta Treasuries 5 años (13:00 ET) y —al cierre— resultados de pruebas de estrés bancario de la Fed.",
+      "evento": "El <strong>DXY cotiza en 101,25 (−0,10%)</strong>: EUR/USD en <strong>1,1400 (+0,16%)</strong>, GBP/USD en 1,3200 (+0,14%) y USD/JPY en 161,88 (+0,09%). La leve debilidad del dólar convive con el alivio geopolítico. El petróleo avanza: <strong>WTI +1,72% a 70,42</strong> y <strong>Brent +1,35% a 73,58</strong>. En sentido opuesto, los metales retroceden: <strong>oro −1,25% a 4.045</strong>, <strong>plata −2,64% a 58,10</strong> y <strong>cobre −0,43% a 6,18</strong>. <strong>Bitcoin +1,07% a 60.136</strong>. La rotación desde activos refugio (oro) hacia riesgo (equities, cripto) confirma que el acuerdo geopolítico redujo la demanda de cobertura en el margen.",
+      "contexto": "El Brent de agosto cotizó en contango por primera vez desde el inicio del conflicto, anticipando que si la tregua se sostiene y Irán recupera producción, habrá un mini exceso de oferta. La IEA proyecta un superávit cercano a 5M bpd en 2027 si Irán sube a 3,3M bpd. Eso abriría una ventana desinflacionaria que los bancos centrales podrían aprovechar — pero solo si la tregua es duradera.",
       "impacto": [
-        {"asset": "Nasdaq fut.", "dir": "↑ +0,36%", "cls": "up"},
-        {"asset": "VIX", "dir": "↓ 19,27", "cls": "up"},
-        {"asset": "WTI", "dir": "↓ $71,85", "cls": "neu"},
-        {"asset": "DXY", "dir": "↑ 101,62", "cls": "dn"},
-        {"asset": "UST 10Y", "dir": "↓ 4,483%", "cls": "up"},
-        {"asset": "Oro", "dir": "↓ $4.084", "cls": "dn"}
+        {"asset": "WTI", "dir": "↑ +1,72% (70,42)", "cls": "up"},
+        {"asset": "Brent", "dir": "↑ +1,35% (73,58)", "cls": "up"},
+        {"asset": "Oro", "dir": "↓ −1,25% (4.045)", "cls": "dn"},
+        {"asset": "DXY", "dir": "↓ 101,25", "cls": "up"},
+        {"asset": "Bitcoin", "dir": "↑ +1,07% (60.136)", "cls": "up"}
       ]
     },
     {
       "id": 4,
-      "tag": "Geopolítica · Irán",
-      "tag_class": "ta",
-      "title": "Irán consolida posición — USD 12.000M desbloqueados y control efectivo del Golfo",
-      "brief": "Teherán confirmó el desbloqueo de USD 12.000M de activos congelados. Gerecht y Takeyh en el WSJ argumentan que el régimen obtuvo reconocimiento formal de soberanía sin compromisos nucleares vinculantes. El Estrecho de Ormuz tiene 1.200 barcos varados con carga por USD 125.000M; Omán habilitó rutas alternativas. El petróleo cae ante perspectiva de mayor oferta iraní.",
-      "tldr": "Irán desbloqueó USD 12B y consolidó control del Golfo. Petróleo cae ante mayor oferta.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "Teherán confirmó el <strong>desbloqueo parcial de USD 12.000 millones</strong> de activos congelados, con uso restringido a alimentos y medicamentos. El memorando de entendimiento incluye el reconocimiento mutuo de soberanía —el tipo de concesión que todos los regímenes autoritarios buscan de las democracias occidentales. Gerecht y Takeyh en el WSJ argumentan que Irán logró <strong>control efectivo del Golfo Pérsico</strong>, reconocimiento de soberanía y fondos desbloqueados sin acuerdo nuclear vinculante. En el Estrecho de Ormuz hay <strong>1.200 barcos varados con carga por USD 125.000M</strong>; Omán habilitó rutas temporarias. Trump contradice a Irán sistemáticamente en los detalles de las negociaciones, sumando incertidumbre al proceso.",
-      "contexto": "La caída del petróleo refleja la lectura de menor tensión geopolítica y mayor oferta esperada. Pero el análisis de fondo es más matizado: lo que terminó no es la amenaza, sino la fase activa del conflicto. Bessent anticipó que los precios de combustible bajarán y acercarán la inflación americana al 2%, lo que sería una señal favorable para la Fed y para emergentes. Para Argentina, la caída del petróleo tiene efecto neto positivo vía menor inflación importada.",
+      "tag": "Bancos Centrales · Fed",
+      "tag_class": "tb",
+      "title": "Warsh adopta opacidad estilo Greenspan — mercado lo lee hawkish y BIS alerta sobre riesgos sistémicos de IA",
+      "brief": "Warsh eliminó el forward guidance y creó 5 grupos de trabajo; el mercado lo interpreta como sesgo de suba de tasas este verano. El dólar tocó máximos de trece meses. El BIS advirtió en su informe anual que deuda creciente, auge de IA y fragilidades financieras elevan el riesgo sistémico global. El BCE (Kazaks) pide gradualismo; crédito corporativo europeo creció al ritmo más rápido en 3 años.",
+      "tldr": "Warsh hawkish · BIS alerta sistémica · BCE gradualista · Warsh habla el miércoles.",
+      "sentiment": "neu",
+      "sentiment_label": "⚪ Neutro",
+      "evento": "El presidente de la Fed, <strong>Kevin Warsh</strong>, eliminó el forward guidance y pulverizó la función de reacción explícita, creando cinco grupos de trabajo en un retorno declarado al estilo oracular del primer Greenspan. Nombrado por un presidente que exigía política laxa y confirmado por el margen más estrecho de la historia moderna, <strong>el mercado lo lee más propenso a subir tasas</strong>. En paralelo, el <strong>BIS advirtió en su informe anual</strong> que la deuda creciente, el boom de IA y las fragilidades financieras elevan los riesgos sistémicos globales. El miembro del BCE <strong>Kazaks pidió gradualismo</strong>; el crédito corporativo europeo creció en mayo al ritmo más veloz en tres años.",
+      "contexto": "La señal central de Warsh no es estilística sino sustantiva: sin una regla que ancle la función de reacción, la opacidad gana margen discrecional a costa de mayor volatilidad en la curva. La pregunta que el mercado tiene que responder esta semana es si Warsh confirma el sesgo restrictivo en el discurso del miércoles. Si lo hace, la revaluación de probabilidades podría detonar salidas en los créditos EM más sobreposicionados.",
       "impacto": [
-        {"asset": "WTI", "dir": "↓ −1,86%", "cls": "up"},
-        {"asset": "Oferta Irán", "dir": "↑ En expansión", "cls": "neu"},
-        {"asset": "Inflación EEUU", "dir": "↓ Presión menor", "cls": "up"},
-        {"asset": "Riesgo regional", "dir": "→ Latente", "cls": "dn"}
+        {"asset": "DXY", "dir": "↑ máx 13 meses", "cls": "dn"},
+        {"asset": "Apuestas suba Fed", "dir": "↑ verano 2026", "cls": "dn"},
+        {"asset": "Warsh discurso", "dir": "→ miércoles", "cls": "neu"},
+        {"asset": "BIS alerta", "dir": "⚠ riesgo IA+deuda", "cls": "dn"}
+      ]
+    },
+    {
+      "id": 5,
+      "tag": "Argentina · Deuda y Mercados",
+      "tag_class": "tr",
+      "title": "Santilli reemplaza a Adorni; globales mixtos al cierre; muro de vencimientos 2027 en foco",
+      "brief": "Milei designó a Diego Santilli como jefe de Gabinete tras la renuncia de Adorni en medio de denuncias por presunto enriquecimiento ilícito. Globales al cierre en Buenos Aires: GD30D 65,09 (−1,51%), GD35D 84,63 (+0,09%), AL30D 64,23 (−0,29%). EMBI cerró el 26/06 en 437pb, sin cambios. El foco de fondo: más de US$23.000M de vencimientos en 2027, con REPOs del BCRA por US$6.000M como primer test.",
+      "tldr": "Santilli nuevo JGM · GD30D 65,09 (−1,51%) · EMBI 437pb · Venc. 2027 US$23.000M.",
+      "sentiment": "neu",
+      "sentiment_label": "⚪ Neutro",
+      "evento": "Milei designó a <strong>Diego Santilli como jefe de Gabinete</strong> tras la renuncia de Guillermo Adorni, en medio de denuncias por presunto enriquecimiento ilícito. Los <strong>globales cerraron mixtos</strong> en Buenos Aires: <strong>GD30D 65,09 (−1,51%)</strong>, GD35D 84,63 (+0,09%), AL30D 64,23 (−0,29%). El <strong>EMBI cerró el 26/06 en 437pb, sin cambios</strong>. El foco de fondo es el <strong>muro de vencimientos 2027: más de US$23.000M</strong>, con los REPOs del BCRA por US$6.000M como primer test. La misión de Bausili en Basilea y Londres busca asegurar financiamiento; la señal clave es si se logra una colocación internacional <strong>debajo del 9% anual</strong> — ese nivel operaría como validación del mercado.",
+      "contexto": "El cambio en el JGM en el segundo año de gobierno es una señal política relevante, pero el mercado lo procesará en el contexto del cuadro externo: dólar fuerte, Fed hawkish y alta beta EM argentina. Sin colocación internacional que despeje el horizonte, la acumulación de reservas y los swaps con EE.UU. y China serían las únicas defensas ante una eventual corrida en año electoral.",
+      "impacto": [
+        {"asset": "GD30D", "dir": "↓ 65,09 (−1,51%)", "cls": "dn"},
+        {"asset": "GD35D", "dir": "↑ 84,63 (+0,09%)", "cls": "up"},
+        {"asset": "EMBI ARG", "dir": "→ 437pb", "cls": "neu"},
+        {"asset": "Venc. 2027", "dir": "⚠ US$23.000M", "cls": "dn"},
+        {"asset": "JGM", "dir": "→ Santilli", "cls": "neu"}
+      ]
+    },
+    {
+      "id": 6,
+      "tag": "Geopolítica · Energía",
+      "tag_class": "ta",
+      "title": "EE.UU. e Irán acuerdan frenar ataques mutuos; tregua frágil con Ormuz en contango",
+      "brief": "Ambos países acordaron detener ataques antes de retomar negociaciones; Omán como canal paralelo. El alivio empujó el crudo y los futuros. El Brent de agosto cotizó en contango por primera vez desde el inicio del conflicto. Putin rechazó frenar hostilidades en Ucrania; Kiev atacó dos refinerías rusas. Europa podría arrancar el invierno con reservas de gas en mínimos de 15 años.",
+      "tldr": "EE.UU.–Irán frenan ataques · Brent en contango · Europa sin gas · Ucrania golpea refinerías rusas.",
+      "sentiment": "neu",
+      "sentiment_label": "⚪ Neutro",
+      "evento": "EE.UU. e Irán <strong>acordaron detener los ataques mutuos</strong> antes de retomar negociaciones, con el vicecanciller iraní confirmando una reunión de un comité conjunto con Omán sobre el Estrecho de Hormuz. El alivio empujó el crudo y los futuros equity, pero el <strong>Brent de agosto cotizó en contango por primera vez desde el inicio del conflicto</strong>, anticipando un mini exceso de oferta si la tregua se sostiene. <strong>Putin rechazó una nueva propuesta de Kiev</strong> para frenar las hostilidades y reafirmó el objetivo de conquistar cuatro regiones ucranianas. <strong>Kiev atacó con drones dos refinerías rusas</strong> en Krasnodar y Yaroslavl. El FT advierte que las <strong>instalaciones de gas de la UE se rellenan lentamente</strong> y el continente podría arrancar el invierno con reservas en mínimos de quince años.",
+      "contexto": "El riesgo de cola es la reversibilidad de la tregua. El editorial del WSJ sostiene que Irán quiere convertir Ormuz en una caseta de cobro, y el presidente del Parlamento libanés (aliado de Hezbollah) ya advirtió que el acuerdo mediado por EE.UU. con Israel no se implementará. Cualquier incidente puede reintroducir la prima de riesgo sobre el crudo y el apetito por riesgo durante la sesión de Nueva York.",
+      "impacto": [
+        {"asset": "Brent ago.", "dir": "→ contango (1ª vez)", "cls": "neu"},
+        {"asset": "WTI", "dir": "↑ +1,72% (70,42)", "cls": "up"},
+        {"asset": "Gas EU", "dir": "⚠ reservas bajas", "cls": "dn"},
+        {"asset": "Ref. rusas", "dir": "↓ atacadas", "cls": "neu"}
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "EMBI 433bp vs. fundamentos macro intactos",
-      "texto": "El fallo del MSCI empujó el EMBI 12bp arriba a 433bp, pero los fundamentos que llevaron al mínimo de la era Milei (421bp el lunes) no cambiaron: superávit fiscal, reservas en recuperación, brecha controlada, PIB Q1 +2,3%. La tensión es entre el timing del catalizador de flujos (postergado) y la trayectoria macroeconómica (sin cambios). La pregunta para las próximas semanas es si el mercado consolida la corrección o la profundiza."
+      "label": "Dólar en máximos de 13 meses vs. carry emergente — Argentina entre los más expuestos",
+      "texto": "El DXY en máximos de trece meses y el sesgo hawkish de Warsh comprimen el diferencial que sostuvo el flujo hacia bonos emergentes durante el semestre. El EEM cerró el viernes en baja (−1,13% a 67,19), el won se debilita 0,53%, el peso chileno 0,19% y el rand 0,16%. El EMBI argentino se mantiene en 437pb por inercia, pero con una beta alta ante cualquier salida abrupta de EM. Si Warsh confirma sesgo restrictivo el miércoles, la revaluación de probabilidades podría detonar salidas en los créditos más sobreposicionados, con Argentina como uno de los más expuestos."
     },
     {
-      "label": "VIX cede pero DXY sube — dólar fuerte presiona a emergentes",
-      "texto": "El VIX bajando a 19,27 señala menos miedo en Wall Street, pero el DXY subiendo a 101,62 es la otra cara: el fortalecimiento del dólar encarece el crédito en dólares para economías emergentes y presiona sus monedas. El peso chileno cede 0,79%, el won coreano -1,07%. La trayectoria del DXY esta semana es clave para el apetito por activos de la región."
+      "label": "Tregua de Ormuz: el alivio modera la prima pero no la elimina",
+      "texto": "El acuerdo EE.UU.–Irán es el catalizador de la sesión, pero la señal más honesta del mercado es el contango del Brent agosto/septiembre: anticipa exceso de oferta en el corto plazo, no un shock alcista. El canal iraní-omaní está activo en paralelo, el presidente del Parlamento libanés rechazó el acuerdo regional, y el WSJ sostiene que Irán busca el control unilateral de Ormuz como objetivo de largo plazo. La tregua es reversible y cualquier incidente puede reintroducir la prima de golpe."
     },
     {
-      "label": "Warsh/Fed: credibilidad y el dilema Greenspan-IA",
-      "texto": "Wessel en el NYT argumenta que el problema no es si la conclusión de Warsh sobre la IA es correcta, sino que llegó a ella antes de revisar los datos. Un presidente de la Fed que predetermina posiciones tiene un problema de credibilidad que se transmite a través de la curva. La subasta de Treasuries a 5 años de hoy (13:00 ET) y los pruebas de estrés bancario al cierre darán señales sobre el estado del mercado de renta fija americana."
+      "label": "Exuberancia de IA vs. estabilidad financiera — el BIS enciende la alarma",
+      "texto": "Kunlunxin (filial de Baidu) apunta a US$50.000M en su IPO en Hong Kong, diecisiete veces su valuación de seis meses atrás. El PPI de electrónicos saltó 27% interanual; Apple subió MacBooks ~20% y Microsoft encareció la Xbox. El BIS advierte que la deuda corporativa atada a IA y las fragilidades asociadas elevan el riesgo sistémico global. Si la visibilidad de esas marcas contagia expectativas inflacionarias, el relato de la IA como fuerza desinflacionaria — que defiende Warsh — se postergaría justo cuando la última milla inflacionaria ya resiste."
     }
   ],
   "correlaciones": [
     {
-      "par": "MSCI Standalone ↔ EMBI 433bp",
-      "texto": "El rechazo del MSCI activó una toma de ganancias en un mercado que había incorporado parcialmente el escenario positivo. Sin reclasificación no hay flujos de índices pasivos, y el mercado que había comprado en anticipación vende. El nivel de 433bp es coherente con el ajuste post-evento: no es pánico, pero sí una corrección de la prima de esperanza."
+      "par": "Futuros rally ↔ yields suben — el mismo driver hawkish subyacente",
+      "texto": "La aparente contradicción entre futuros equity al alza y yields más altas no es paradoja: ambos movimientos reflejan el mismo driver — la expectativa de que la economía es lo suficientemente sólida para sostener tasas altas sin entrar en recesión. El mercado no está comprando riesgo a pesar del sesgo hawkish; está comprando riesgo porque lo lee como señal de fortaleza macro. El test llegará cuando los NFP del jueves actualicen esa lectura."
     },
     {
-      "par": "Petróleo −1,9% ↔ DXY +0,2%",
-      "texto": "La caída del petróleo y el fortalecimiento del dólar se retroalimentan: el crudo se cotiza en USD, por lo que un dólar más fuerte encarece el petróleo para compradores no-dólar y modera la demanda. La caída de WTI a $71,85 y el DXY en 101,62 son dos caras del mismo fenómeno: menor tensión geopolítica en Oriente Medio + mayor oferta esperada de Irán + desaceleración de demanda asiática."
+      "par": "Crudo sube ↔ metales preciosos bajan — rotación desde refugio a riesgo",
+      "texto": "El WTI sube por el factor geopolítico-oferta (Ormuz más abierto) mientras el oro cae porque la reducción del riesgo de cola reduce la demanda de cobertura. Son dos drivers distintos. La clave es que la correlación crudo/oro que dominó en el pico del conflicto se está rompiendo: el crudo vuelve a ser un commodity de demanda/oferta, no solo un activo de refugio. Si la tregua se sostiene, esa divergencia se profundizará."
     }
   ],
-  "bottom_line": "La semana tuvo dos drivers dominantes que se compensaron parcialmente: el <strong>fallo negativo del MSCI</strong> —que empujó el EMBI a 433bp y hundió los ADRs hasta 4,4%— y la publicación de datos macroeconómicos sólidos (<strong>PIB Q1 +2,3% YoY</strong>, <strong>salarios +3,7% MoM</strong>) que muestran una economía real sin grandes sobresaltos.<br><br>El mercado global abre hoy con un <strong>rebote técnico moderado</strong>: VIX cede a 19,27, futuros tech en leve positivo, pero el petróleo sigue cediendo (-1,9%) ante mayor oferta iraní y el DXY se fortalece (+0,2%), sumando presión sobre las monedas emergentes.<br><br>Para Argentina, el MSCI no cambia la trayectoria macro pero sí el timing de los catalizadores: el mercado necesita re-anclar expectativas sin el driver de reclasificación. El foco local se desplaza hacia la política cambiaria —¿eliminará el gobierno el 'parking' para abrir el camino al MSCI en 2027?— mientras el foco global está en los datos de EEUU de hoy: cuenta corriente Q1, ventas de vivienda nueva y las <strong>pruebas de estrés bancario de la Fed al cierre</strong>."
+  "bottom_line": "La apertura del lunes está dominada por el alivio del acuerdo <strong>EE.UU.–Irán</strong>, que empuja futuros al alza y modera la prima sobre el crudo. Pero la tregua luce frágil: el <strong>Brent de agosto ya cotiza en contango</strong>, señalando que el mercado anticipa exceso de oferta en el corto plazo, no un cambio estructural.<br><br>El riesgo dominante de la semana no es Ormuz sino <strong>la Fed</strong>. El sesgo hawkish de Warsh y el dólar en máximos de trece meses reconfiguran el mapa global: tasas altas por más tiempo comprimen el carry que sostuvo a la deuda emergente durante el semestre. Para Argentina, con alta beta EM y un <strong>muro de vencimientos de US$23.000M en 2027</strong>, cada señal sobre reservas y acceso al mercado internacional pesa el doble. El cambio de JGM (Santilli reemplaza a Adorni) agrega ruido político en un momento de vulnerabilidad externa.<br><br>El plato fuerte llega el <strong>jueves con los Non Farm Payrolls de junio</strong> (consenso 110K vs. previo 172K): una sorpresa al alza relanzaría las apuestas de suba y podría deshacer parte del alivio de hoy. Semana corta por el feriado del 4 de julio — el calendario liviano amplifica la volatilidad de cualquier dato."
 }
