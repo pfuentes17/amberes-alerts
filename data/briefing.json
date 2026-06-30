@@ -1,10 +1,10 @@
 {
-  "date": "2026-06-29",
-  "generated": "2026-06-29T09:00:00Z",
+  "date": "2026-06-30",
+  "generated": "2026-06-30T09:00:00Z",
   "sentiment": {
-    "overall": "risk-on",
-    "label": "Futuros de EE.UU. suben tras acuerdo de distensión EE.UU.–Irán — Fed hawkish y NFP el jueves",
-    "fg": 53,
+    "overall": "risk-on-cautious",
+    "label": "Futuros al alza con el S&P rezagado — conversaciones Doha y rotación de Mag7 condicionan la apertura",
+    "fg": 48,
     "fg_label": "Neutral",
     "putcall": null,
     "aaii_bulls": null
@@ -14,137 +14,114 @@
       "id": 1,
       "tag": "Acciones · Global",
       "tag_class": "tg",
-      "title": "Futuros alcistas liderados por el Nasdaq; VIX cerró arriba — tono comprador con cautela",
-      "brief": "El acuerdo de distensión EE.UU.–Irán empuja los futuros: Nasdaq +1,12% a 29.697, S&P +0,76% a 7.458 y Dow +0,32% a 52.378. El Dow es la referencia más rezagada. Nikkei cerró +0,15% y bolsas europeas operan mixtas. El VIX cerró en 18,44 (+0,16%): el alivio geopolítico no eliminó toda la incertidumbre.",
-      "tldr": "Nasdaq +1,12% · S&P +0,76% · Dow +0,32% · VIX 18,44 — rally con cautela.",
+      "title": "Futuros al alza con el S&P rezagado; las Mag7 pierden US$2,3 billones en rotación",
+      "brief": "El futuro del Nasdaq sube 0,08% a 30.077, el del S&P 500 sube 0,07% a 7.505 y el del Dow sube 0,16% a 52.655. Las &ldquo;Siete Magníficas&rdquo; perdieron US$2,3 billones en una rotación que reaviva el debate de burbuja de IA. Bolsas europeas al alza con el DAX a la cabeza. Nikkei +0,86%. CSI 300 +1,04%, Hang Seng −0,63%, Nifty 50 −0,41%.",
+      "tldr": "Nasdaq +0,08% · S&P +0,07% · Dow +0,16% · Mag7 −US$2,3T · DAX al alza · Nikkei +0,86%",
       "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El <strong>acuerdo de distensión entre EE.UU. e Irán</strong> antes de la apertura neoyorquina es el catalizador de la jornada. Los futuros suben: <strong>Nasdaq +1,12% a 29.697</strong>, <strong>S&P 500 +0,76% a 7.458</strong> y <strong>Dow +0,32% a 52.378</strong>. El Dow rezagado refleja su mayor peso en industriales y energía versus el sesgo tech del Nasdaq. El <strong>Nikkei cerró +0,15%</strong> y las bolsas europeas operan mixtas. El <strong>VIX cerró en 18,44 (+0,16%)</strong>: el mercado celebra el acuerdo pero no terminó de descontar el riesgo residual. En emergentes: Hang Seng +1,57%, CSI 300 +1,18% y Nifty 50 −0,44%.",
-      "contexto": "El tono comprador convive con yields más altas y un VIX que cerró al alza, la combinación clásica de un rally sobre noticias geopolíticas que el mercado no termina de validar con fundamentos. La señal a monitorear es si el Nasdaq puede sostener el rally cuando arranque la sesión de NY: un dato de empleo del jueves por encima del consenso (110K) podría relanzar las apuestas hawkish y revertir parte del movimiento de hoy.",
+      "sentiment_label": "🟢 Risk-On (selectivo)",
+      "evento": "El futuro del <strong>Nasdaq sube 0,08%</strong> a 30.077, el del <strong>S&P 500 sube 0,07%</strong> a 7.505 y el del <strong>Dow sube 0,16%</strong> a 52.655. El S&amp;P es el más rezagado — reflejo de la corrección acumulada de las megacaps: las <strong>&ldquo;Siete Magníficas&rdquo; perdieron US$2,3 billones</strong> en una rotación que reaviva el debate de burbuja de IA. Las bolsas europeas operan al alza con el <strong>DAX a la cabeza</strong>. El <strong>Nikkei cerró +0,86%</strong>. En emergentes: <strong>CSI 300 +1,04%</strong>, Hang Seng −0,63% y Nifty 50 −0,41%.",
+      "contexto": "La rotación no es corrección aleatoria: el mercado está separando semiconductores con flujos reales (TSMC, Micron, Broadcom con P/E contenidos) de hyperscalers con payoffs inciertos. El STOXX 600 europeo encamina su mejor trimestre en más de cinco años. La sesión llega condicionada por las posibles conversaciones EE.UU.–Irán en Doha, cuyos niveles del Flash son previos a cualquier señal de esa mesa.",
       "impacto": [
-        {"asset": "Nasdaq fut.", "dir": "↑ +1,12%", "cls": "up"},
-        {"asset": "S&P 500 fut.", "dir": "↑ +0,76%", "cls": "up"},
-        {"asset": "Dow fut.", "dir": "↑ +0,32%", "cls": "up"},
-        {"asset": "VIX", "dir": "↑ 18,44", "cls": "dn"},
-        {"asset": "Nikkei", "dir": "↑ +0,15%", "cls": "up"}
+        {"asset": "Nasdaq fut.", "dir": "↑ +0,08% (30.077)", "cls": "up"},
+        {"asset": "S&P 500 fut.", "dir": "↑ +0,07% (7.505)", "cls": "up"},
+        {"asset": "Dow fut.", "dir": "↑ +0,16% (52.655)", "cls": "up"},
+        {"asset": "DAX", "dir": "↑ al alza", "cls": "up"},
+        {"asset": "Nikkei", "dir": "↑ +0,86%", "cls": "up"}
       ]
     },
     {
       "id": 2,
       "tag": "Bonos · EE.UU.",
       "tag_class": "tb",
-      "title": "Yields suben en ambos tramos; curva 2s10s se aplana a 27,5pb — mercado descuenta Fed más hawkish",
-      "brief": "UST 10Y sube 1,0pb a 4,382% y el 2Y avanza 1,9pb a 4,107%. La curva 2s10s se aplana a 27,5pb (−0,9pb) y la 10s30s a 48,4pb (−0,9pb). El tramo corto mueve más, señal de que el mercado cotiza subas de tasas. Soberanos core europeos suben, con el Gilt a la cabeza.",
-      "tldr": "UST 10Y 4,382% · 2Y 4,107% · 2s10s aplana a 27,5pb.",
+      "title": "Yields bajan en ambos tramos; curva 2s10s se aplana — JGB único al alza por riesgo fiscal",
+      "brief": "UST 10Y baja 0,7pb a 4,367% y el UST 2Y baja 0,5pb a 4,104%. La curva 2s10s se aplana a 26,3pb (−0,2pb) y la 10s30s se empina a 48,8pb (+0,2pb). Soberanos core bajan salvo el JGB, único al alza por los planes de gasto fiscal de Takaichi. El VIX estable en 17,65.",
+      "tldr": "UST 10Y 4,367% (−0,7pb) · UST 2Y 4,104% (−0,5pb) · 2s10s 26,3pb · JGB ↑ único al alza",
       "sentiment": "neu",
       "sentiment_label": "⚪ Neutro",
-      "evento": "El <strong>UST 10Y sube 1,0pb a 4,382%</strong> y el <strong>UST 2Y avanza 1,9pb a 4,107%</strong>, con el tramo corto moviendo más — la firma clásica de expectativas de subas de tasas. La curva <strong>2s10s se aplana a 27,5pb (−0,9pb)</strong> y la 10s30s a 48,4pb (−0,9pb). Los soberanos core europeos suben, con el Gilt liderando. La combinación de futuros equity al alza y yields más altas refleja un mercado que puede tener ambas cosas simultáneamente: optimismo geopolítico de corto plazo y expectativas hawkish de más largo plazo.",
-      "contexto": "La señal más relevante no es el nivel de las yields sino el diferencial entre tramos: el 2Y sube el doble que el 10Y, lo que significa que el mercado descuenta que la Fed mantendrá las tasas altas (o las sube) más tiempo de lo que el consenso anticipaba a principios de año. El discurso de Warsh del miércoles será el primer test real de si esta lectura está bien calibrada.",
+      "evento": "El <strong>UST 10Y baja 0,7pb a 4,367%</strong> y el <strong>UST 2Y baja 0,5pb a 4,104%</strong>. La curva <strong>2s10s se aplana a 26,3pb (−0,2pb)</strong> y la 10s30s se empina levemente a 48,8pb (+0,2pb). Los soberanos core bajan en toda la curva con excepción del <strong>JGB al alza</strong>, presionado por los planes de gasto fiscal de Takaichi que profundizan la inquietud sobre mayor oferta de papeles largos. El <strong>VIX se ubica en 17,65 (+0,00%)</strong> — el mercado absorbe la jornada sin demandar cobertura.",
+      "contexto": "La combinación de yields a la baja y dólar fuerte es inusual y probablemente transitoria: refleja una compresión de la prima de riesgo geopolítica por la expectativa de Doha. La señal más relevante es que el tramo corto baja menos que el largo — consistente con pausa de la Fed en el corto plazo, sin expectativas de recorte inminente.",
       "impacto": [
-        {"asset": "UST 10Y", "dir": "↑ 4,382% (+1,0pb)", "cls": "dn"},
-        {"asset": "UST 2Y", "dir": "↑ 4,107% (+1,9pb)", "cls": "dn"},
-        {"asset": "2s10s", "dir": "↓ 27,5pb (−0,9pb)", "cls": "neu"},
-        {"asset": "Gilt 10Y", "dir": "↑ al alza", "cls": "dn"}
+        {"asset": "UST 10Y", "dir": "↓ 4,367% (−0,7pb)", "cls": "up"},
+        {"asset": "UST 2Y", "dir": "↓ 4,104% (−0,5pb)", "cls": "up"},
+        {"asset": "2s10s", "dir": "↓ 26,3pb (−0,2pb)", "cls": "neu"},
+        {"asset": "VIX", "dir": "→ 17,65", "cls": "neu"},
+        {"asset": "JGB", "dir": "↑ único al alza", "cls": "dn"}
       ]
     },
     {
       "id": 3,
       "tag": "FX · Commodities",
       "tag_class": "ta",
-      "title": "Dólar cede; crudo sube con Ormuz abierto; metales preciosos e industriales retroceden",
-      "brief": "DXY 101,25 (−0,10%): EUR/USD 1,1400 (+0,16%), GBP/USD 1,3200 (+0,14%), USD/JPY 161,88 (+0,09%). WTI +1,72% a 70,42 y Brent +1,35% a 73,58 con el alivio en el Golfo. Oro −1,25% a 4.045, plata −2,64% a 58,10, cobre −0,43% a 6,18. Bitcoin +1,07% a 60.136.",
-      "tldr": "DXY 101,25 · WTI 70,42 · Brent 73,58 · Oro 4.045 · BTC 60.136.",
+      "title": "Dólar se fortalece; yen en mínimo de 40 años; crudo cede por expectativa Doha",
+      "brief": "DXY +0,26% a 101,37: EUR/USD en 1,1400 (−0,28%), USD/JPY en 162,29 — mínimo del yen en 40 años. WTI −0,01% a 70,74 y Brent +0,07% a 73,96. Oro −0,19% a 4.031. Plata +0,83%, cobre +1,20%. Bitcoin −1,40% a 59.307.",
+      "tldr": "DXY 101,37 (+0,26%) · USD/JPY 162,29 (mín. 40 años) · WTI 70,74 · Brent 73,96 · BTC −1,40%",
       "sentiment": "neu",
       "sentiment_label": "⚪ Neutro",
-      "evento": "El <strong>DXY cotiza en 101,25 (−0,10%)</strong>: EUR/USD en <strong>1,1400 (+0,16%)</strong>, GBP/USD en 1,3200 (+0,14%) y USD/JPY en 161,88 (+0,09%). La leve debilidad del dólar convive con el alivio geopolítico. El petróleo avanza: <strong>WTI +1,72% a 70,42</strong> y <strong>Brent +1,35% a 73,58</strong>. En sentido opuesto, los metales retroceden: <strong>oro −1,25% a 4.045</strong>, <strong>plata −2,64% a 58,10</strong> y <strong>cobre −0,43% a 6,18</strong>. <strong>Bitcoin +1,07% a 60.136</strong>. La rotación desde activos refugio (oro) hacia riesgo (equities, cripto) confirma que el acuerdo geopolítico redujo la demanda de cobertura en el margen.",
-      "contexto": "El Brent de agosto cotizó en contango por primera vez desde el inicio del conflicto, anticipando que si la tregua se sostiene y Irán recupera producción, habrá un mini exceso de oferta. La IEA proyecta un superávit cercano a 5M bpd en 2027 si Irán sube a 3,3M bpd. Eso abriría una ventana desinflacionaria que los bancos centrales podrían aprovechar — pero solo si la tregua es duradera.",
+      "evento": "El <strong>DXY sube 0,26% a 101,37</strong>: EUR/USD en <strong>1,1400 (−0,28%)</strong>, GBP/USD en 1,3200 (−0,17%) y <strong>USD/JPY en 162,29 (+0,24%)</strong> — el yen toca su <strong>mínimo en 40 años</strong>, reavivando la alerta de intervención del BoJ. El crudo cede levemente: <strong>WTI −0,01% a 70,74</strong> y <strong>Brent +0,07% a 73,96</strong> con la expectativa de las conversaciones en Doha. <strong>Oro −0,19% a US$4.031</strong>, plata +0,83% a 59,12 y cobre +1,20% a 6,24. <strong>Bitcoin cae 1,40% a 59.307</strong>.",
+      "contexto": "El yen en mínimo de 40 años es la señal más relevante de la jornada en FX: el giro dovish de Takaichi sostiene el carry trade global, pero cualquier intervención o suba forzada del BoJ arriesga detonar su desarme con réplicas en toda la estructura de tasas global. Morgan Stanley recortó su pronóstico de Brent y ve superávit en 2027 si Ormuz se reabre — el crudo cede pero el SPR (325,7M bbl, mínimo de 1983) deja poco margen ante un shock.",
       "impacto": [
-        {"asset": "WTI", "dir": "↑ +1,72% (70,42)", "cls": "up"},
-        {"asset": "Brent", "dir": "↑ +1,35% (73,58)", "cls": "up"},
-        {"asset": "Oro", "dir": "↓ −1,25% (4.045)", "cls": "dn"},
-        {"asset": "DXY", "dir": "↓ 101,25", "cls": "up"},
-        {"asset": "Bitcoin", "dir": "↑ +1,07% (60.136)", "cls": "up"}
+        {"asset": "DXY", "dir": "↑ 101,37 (+0,26%)", "cls": "dn"},
+        {"asset": "USD/JPY", "dir": "↑ 162,29 (mín. 40 años)", "cls": "neu"},
+        {"asset": "WTI", "dir": "↓ 70,74 (−0,01%)", "cls": "dn"},
+        {"asset": "Brent", "dir": "↑ 73,96 (+0,07%)", "cls": "up"},
+        {"asset": "Bitcoin", "dir": "↓ 59.307 (−1,40%)", "cls": "dn"}
       ]
     },
     {
       "id": 4,
-      "tag": "Bancos Centrales · Fed",
+      "tag": "Bancos Centrales · G7",
       "tag_class": "tb",
-      "title": "Warsh adopta opacidad estilo Greenspan — mercado lo lee hawkish y BIS alerta sobre riesgos sistémicos de IA",
-      "brief": "Warsh eliminó el forward guidance y creó 5 grupos de trabajo; el mercado lo interpreta como sesgo de suba de tasas este verano. El dólar tocó máximos de trece meses. El BIS advirtió en su informe anual que deuda creciente, auge de IA y fragilidades financieras elevan el riesgo sistémico global. El BCE (Kazaks) pide gradualismo; crédito corporativo europeo creció al ritmo más rápido en 3 años.",
-      "tldr": "Warsh hawkish · BIS alerta sistémica · BCE gradualista · Warsh habla el miércoles.",
+      "title": "Divergencia dentro del G7: BCE sube, BoJ presionado, Fed de Warsh aún sin internalizarse",
+      "brief": "BCE sube con sesgo a más alzas; Lagarde dice no fue un &ldquo;hike de seguro&rdquo;. Yen en mínimo de 40 años, BoJ bajo presión política dovish. La Corte Suprema blindó a la Fed (5-4) pero habilitó remoción en FTC y SEC. El mercado aún no internalizó el cambio de régimen de Warsh (5 task forces, sin forward guidance).",
+      "tldr": "BCE al alza · BoJ sin subas · yen mín. 40 años · Fed blindada · FTC/SEC bajo Ejecutivo",
       "sentiment": "neu",
       "sentiment_label": "⚪ Neutro",
-      "evento": "El presidente de la Fed, <strong>Kevin Warsh</strong>, eliminó el forward guidance y pulverizó la función de reacción explícita, creando cinco grupos de trabajo en un retorno declarado al estilo oracular del primer Greenspan. Nombrado por un presidente que exigía política laxa y confirmado por el margen más estrecho de la historia moderna, <strong>el mercado lo lee más propenso a subir tasas</strong>. En paralelo, el <strong>BIS advirtió en su informe anual</strong> que la deuda creciente, el boom de IA y las fragilidades financieras elevan los riesgos sistémicos globales. El miembro del BCE <strong>Kazaks pidió gradualismo</strong>; el crédito corporativo europeo creció en mayo al ritmo más veloz en tres años.",
-      "contexto": "La señal central de Warsh no es estilística sino sustantiva: sin una regla que ancle la función de reacción, la opacidad gana margen discrecional a costa de mayor volatilidad en la curva. La pregunta que el mercado tiene que responder esta semana es si Warsh confirma el sesgo restrictivo en el discurso del miércoles. Si lo hace, la revaluación de probabilidades podría detonar salidas en los créditos EM más sobreposicionados.",
+      "evento": "Mismo shock, respuestas dispares dentro del <strong>G7</strong>. El <strong>BCE subió</strong> con sesgo a más alzas; Lagarde sostuvo que no fue un &ldquo;hike de seguro&rdquo;. El <strong>BoJ</strong> convive con presión política para no subir tasas mientras el <strong>yen toca mínimo de 40 años</strong>, elevando la probabilidad de intervención. La <strong>Corte Suprema de EE.UU. blindó a la Fed</strong> (5-4) pero en el mismo día habilitó la remoción de comisionados de la <strong>FTC y la SEC</strong> sin causa, ampliando la volatilidad regulatoria sobre sectores sensibles a compliance.",
+      "contexto": "La independencia de la Fed sobrevivió por un voto y eso es lo que debería inquietar: el mercado la descuenta como dato pero es contingente y judicialmente disputada. El riesgo migró del frente monetario al regulatorio. Para el inversor: la divergencia dentro del G7 es una fábrica de valor relativo en tasas y divisas — el yen carry y los soberanos europeos son el centro del tablero.",
       "impacto": [
-        {"asset": "DXY", "dir": "↑ máx 13 meses", "cls": "dn"},
-        {"asset": "Apuestas suba Fed", "dir": "↑ verano 2026", "cls": "dn"},
-        {"asset": "Warsh discurso", "dir": "→ miércoles", "cls": "neu"},
-        {"asset": "BIS alerta", "dir": "⚠ riesgo IA+deuda", "cls": "dn"}
+        {"asset": "BCE", "dir": "↑ sube, sesgo alcista", "cls": "dn"},
+        {"asset": "Yen", "dir": "↓ mín. 40 años (162,29)", "cls": "dn"},
+        {"asset": "Fed", "dir": "→ blindada, en pausa", "cls": "neu"},
+        {"asset": "FTC/SEC", "dir": "⚠ bajo control Ejecutivo", "cls": "dn"}
       ]
     },
     {
       "id": 5,
       "tag": "Argentina · Deuda y Mercados",
-      "tag_class": "tr",
-      "title": "Santilli reemplaza a Adorni; globales mixtos al cierre; muro de vencimientos 2027 en foco",
-      "brief": "Milei designó a Diego Santilli como jefe de Gabinete tras la renuncia de Adorni en medio de denuncias por presunto enriquecimiento ilícito. Globales al cierre en Buenos Aires: GD30D 65,09 (−1,51%), GD35D 84,63 (+0,09%), AL30D 64,23 (−0,29%). EMBI cerró el 26/06 en 437pb, sin cambios. El foco de fondo: más de US$23.000M de vencimientos en 2027, con REPOs del BCRA por US$6.000M como primer test.",
-      "tldr": "Santilli nuevo JGM · GD30D 65,09 (−1,51%) · EMBI 437pb · Venc. 2027 US$23.000M.",
-      "sentiment": "neu",
-      "sentiment_label": "⚪ Neutro",
-      "evento": "Milei designó a <strong>Diego Santilli como jefe de Gabinete</strong> tras la renuncia de Guillermo Adorni, en medio de denuncias por presunto enriquecimiento ilícito. Los <strong>globales cerraron mixtos</strong> en Buenos Aires: <strong>GD30D 65,09 (−1,51%)</strong>, GD35D 84,63 (+0,09%), AL30D 64,23 (−0,29%). El <strong>EMBI cerró el 26/06 en 437pb, sin cambios</strong>. El foco de fondo es el <strong>muro de vencimientos 2027: más de US$23.000M</strong>, con los REPOs del BCRA por US$6.000M como primer test. La misión de Bausili en Basilea y Londres busca asegurar financiamiento; la señal clave es si se logra una colocación internacional <strong>debajo del 9% anual</strong> — ese nivel operaría como validación del mercado.",
-      "contexto": "El cambio en el JGM en el segundo año de gobierno es una señal política relevante, pero el mercado lo procesará en el contexto del cuadro externo: dólar fuerte, Fed hawkish y alta beta EM argentina. Sin colocación internacional que despeje el horizonte, la acumulación de reservas y los swaps con EE.UU. y China serían las únicas defensas ante una eventual corrida en año electoral.",
-      "impacto": [
-        {"asset": "GD30D", "dir": "↓ 65,09 (−1,51%)", "cls": "dn"},
-        {"asset": "GD35D", "dir": "↑ 84,63 (+0,09%)", "cls": "up"},
-        {"asset": "EMBI ARG", "dir": "→ 437pb", "cls": "neu"},
-        {"asset": "Venc. 2027", "dir": "⚠ US$23.000M", "cls": "dn"},
-        {"asset": "JGM", "dir": "→ Santilli", "cls": "neu"}
-      ]
-    },
-    {
-      "id": 6,
-      "tag": "Geopolítica · Energía",
       "tag_class": "ta",
-      "title": "EE.UU. e Irán acuerdan frenar ataques mutuos; tregua frágil con Ormuz en contango",
-      "brief": "Ambos países acordaron detener ataques antes de retomar negociaciones; Omán como canal paralelo. El alivio empujó el crudo y los futuros. El Brent de agosto cotizó en contango por primera vez desde el inicio del conflicto. Putin rechazó frenar hostilidades en Ucrania; Kiev atacó dos refinerías rusas. Europa podría arrancar el invierno con reservas de gas en mínimos de 15 años.",
-      "tldr": "EE.UU.–Irán frenan ataques · Brent en contango · Europa sin gas · Ucrania golpea refinerías rusas.",
+      "title": "Reservas perforan US$47.000M; EMAE en serrucho; Bonar 2028 completa US$2.000M para el 9-jul",
+      "brief": "Las reservas brutas cayeron US$415M debajo de US$47.000M. Dólar mayorista en máximo de 8 meses ($1.481,50). EMBI 431pb (−6pb). GD30D +1,71% a 66,20 cents. El EMAE cayó 1,5% MoM en abril (+1,6% interanual). Bonar 2028 completa US$2.000M a 7,83%, cubriendo ~90% del vencimiento del 9 de julio.",
+      "tldr": "Reservas &lt;US$47B · EMBI 431pb · GD30D +1,71% · EMAE −1,5% MoM · Bonar 2028 completo",
       "sentiment": "neu",
       "sentiment_label": "⚪ Neutro",
-      "evento": "EE.UU. e Irán <strong>acordaron detener los ataques mutuos</strong> antes de retomar negociaciones, con el vicecanciller iraní confirmando una reunión de un comité conjunto con Omán sobre el Estrecho de Hormuz. El alivio empujó el crudo y los futuros equity, pero el <strong>Brent de agosto cotizó en contango por primera vez desde el inicio del conflicto</strong>, anticipando un mini exceso de oferta si la tregua se sostiene. <strong>Putin rechazó una nueva propuesta de Kiev</strong> para frenar las hostilidades y reafirmó el objetivo de conquistar cuatro regiones ucranianas. <strong>Kiev atacó con drones dos refinerías rusas</strong> en Krasnodar y Yaroslavl. El FT advierte que las <strong>instalaciones de gas de la UE se rellenan lentamente</strong> y el continente podría arrancar el invierno con reservas en mínimos de quince años.",
-      "contexto": "El riesgo de cola es la reversibilidad de la tregua. El editorial del WSJ sostiene que Irán quiere convertir Ormuz en una caseta de cobro, y el presidente del Parlamento libanés (aliado de Hezbollah) ya advirtió que el acuerdo mediado por EE.UU. con Israel no se implementará. Cualquier incidente puede reintroducir la prima de riesgo sobre el crudo y el apetito por riesgo durante la sesión de Nueva York.",
+      "evento": "Las <strong>reservas brutas cayeron US$415M debajo de US$47.000M</strong> (afectadas por la baja del oro), con el BCRA comprando apenas <strong>US$25M</strong>. El <strong>dólar mayorista tocó su máximo en 8 meses</strong> ($1.481,50), con más de US$800M operados. El <strong>EMBI bajó a 431pb (−6pb)</strong>: <strong>GD30D +1,71% a 66,20 cents</strong>, GD35D +0,31% a 84,89 cents, AL30D +0,12% a 64,31 cents. El <strong>EMAE cayó 1,5% mensual sin estacionalidad en abril</strong> (+1,6% interanual) — patrón serrucho. Economía completó la colocación del <strong>Bonar 2028 en US$2.000M a 7,83%</strong>, cubriendo ~90% del vencimiento del 9 de julio.",
+      "contexto": "El mercado sigue creyendo en el programa (EMBI a la baja, globales al alza) pero el stock de reservas es el riesgo subyacente: acumulación insuficiente antes de las elecciones de octubre. Milei afirmó que el financiamiento está garantizado hasta fin del mandato y que &ldquo;el riesgo país real es de 60 puntos&rdquo;. La paritaria aceitera al 29,5% para todo 2026 y los dividendos al exterior (US$2.600M en el semestre, máximo desde 2016) son señales de normalización parcial.",
       "impacto": [
-        {"asset": "Brent ago.", "dir": "→ contango (1ª vez)", "cls": "neu"},
-        {"asset": "WTI", "dir": "↑ +1,72% (70,42)", "cls": "up"},
-        {"asset": "Gas EU", "dir": "⚠ reservas bajas", "cls": "dn"},
-        {"asset": "Ref. rusas", "dir": "↓ atacadas", "cls": "neu"}
+        {"asset": "Reservas BCRA", "dir": "↓ &lt;US$47.000M", "cls": "dn"},
+        {"asset": "EMBI", "dir": "↓ 431pb (−6pb)", "cls": "up"},
+        {"asset": "GD30D", "dir": "↑ 66,20 cents (+1,71%)", "cls": "up"},
+        {"asset": "EMAE", "dir": "↓ −1,5% MoM abril", "cls": "dn"},
+        {"asset": "Bonar 2028", "dir": "✓ US$2.000M 7,83%", "cls": "up"}
       ]
     }
   ],
-  "tensiones": [
+  "tensions": [
     {
-      "label": "Dólar en máximos de 13 meses vs. carry emergente — Argentina entre los más expuestos",
-      "texto": "El DXY en máximos de trece meses y el sesgo hawkish de Warsh comprimen el diferencial que sostuvo el flujo hacia bonos emergentes durante el semestre. El EEM cerró el viernes en baja (−1,13% a 67,19), el won se debilita 0,53%, el peso chileno 0,19% y el rand 0,16%. El EMBI argentino se mantiene en 437pb por inercia, pero con una beta alta ante cualquier salida abrupta de EM. Si Warsh confirma sesgo restrictivo el miércoles, la revaluación de probabilidades podría detonar salidas en los créditos más sobreposicionados, con Argentina como uno de los más expuestos."
+      "id": 1,
+      "title": "La IA mutó de evento de equity a evento de crédito",
+      "body": "Los hyperscalers colocaron ~US$60.000M en bonos multidivisa este año — ya el 15% de la emisión investment grade. El BIS alertó sobre sobreinversión y compresión de la masa salarial. La tensión: las Mag7 entran en corrección (−US$2,3B) mientras el mercado de crédito todavía no descuenta un shock de refinanciación. Si los yields giran, el carry de los data centers se reprecia de golpe y convierte un evento de equity en uno sistémico."
     },
     {
-      "label": "Tregua de Ormuz: el alivio modera la prima pero no la elimina",
-      "texto": "El acuerdo EE.UU.–Irán es el catalizador de la sesión, pero la señal más honesta del mercado es el contango del Brent agosto/septiembre: anticipa exceso de oferta en el corto plazo, no un shock alcista. El canal iraní-omaní está activo en paralelo, el presidente del Parlamento libanés rechazó el acuerdo regional, y el WSJ sostiene que Irán busca el control unilateral de Ormuz como objetivo de largo plazo. La tregua es reversible y cualquier incidente puede reintroducir la prima de golpe."
+      "id": 2,
+      "title": "El privilegio del dólar no es una vulnerabilidad a corregir",
+      "body": "Bessent quiere reducir el déficit comercial y mantener la primacía del dólar. Imposible: el déficit es el precio del señoreaje. Un sondeo del OMFIF muestra bancos centrales planeando reducir asignaciones al dólar en la próxima década. Si la política trata el privilegio como herida a corregir, erosiona la demanda estructural de Treasuries y eleva la prima por plazo. No es un trade de hoy — es la pregunta de fondo de la década."
     },
     {
-      "label": "Exuberancia de IA vs. estabilidad financiera — el BIS enciende la alarma",
-      "texto": "Kunlunxin (filial de Baidu) apunta a US$50.000M en su IPO en Hong Kong, diecisiete veces su valuación de seis meses atrás. El PPI de electrónicos saltó 27% interanual; Apple subió MacBooks ~20% y Microsoft encareció la Xbox. El BIS advierte que la deuda corporativa atada a IA y las fragilidades asociadas elevan el riesgo sistémico global. Si la visibilidad de esas marcas contagia expectativas inflacionarias, el relato de la IA como fuerza desinflacionaria — que defiende Warsh — se postergaría justo cuando la última milla inflacionaria ya resiste."
+      "id": 3,
+      "title": "Hormuz &ldquo;half-open&rdquo;: el spot pricea normalidad, el colchón no existe",
+      "body": "Los tankers regresan vacíos al Golfo apostando a la reapertura. Pero la Reserva Estratégica de EE.UU. cayó a 325,7M de barriles — mínimo desde 1983 — y Shell prevé GNL plano en 2026. La distensión reduce la prima pero no repone inventarios ni capacidad ociosa. El cuello de botella ya no es físico sino de confianza: seguros de guerra altos, ambigüedad regulatoria. Cualquier recaída en Ormuz se reprecia de forma violenta, no gradual."
     }
   ],
-  "correlaciones": [
-    {
-      "par": "Futuros rally ↔ yields suben — el mismo driver hawkish subyacente",
-      "texto": "La aparente contradicción entre futuros equity al alza y yields más altas no es paradoja: ambos movimientos reflejan el mismo driver — la expectativa de que la economía es lo suficientemente sólida para sostener tasas altas sin entrar en recesión. El mercado no está comprando riesgo a pesar del sesgo hawkish; está comprando riesgo porque lo lee como señal de fortaleza macro. El test llegará cuando los NFP del jueves actualicen esa lectura."
-    },
-    {
-      "par": "Crudo sube ↔ metales preciosos bajan — rotación desde refugio a riesgo",
-      "texto": "El WTI sube por el factor geopolítico-oferta (Ormuz más abierto) mientras el oro cae porque la reducción del riesgo de cola reduce la demanda de cobertura. Son dos drivers distintos. La clave es que la correlación crudo/oro que dominó en el pico del conflicto se está rompiendo: el crudo vuelve a ser un commodity de demanda/oferta, no solo un activo de refugio. Si la tregua se sostiene, esa divergencia se profundizará."
-    }
-  ],
-  "bottom_line": "La apertura del lunes está dominada por el alivio del acuerdo <strong>EE.UU.–Irán</strong>, que empuja futuros al alza y modera la prima sobre el crudo. Pero la tregua luce frágil: el <strong>Brent de agosto ya cotiza en contango</strong>, señalando que el mercado anticipa exceso de oferta en el corto plazo, no un cambio estructural.<br><br>El riesgo dominante de la semana no es Ormuz sino <strong>la Fed</strong>. El sesgo hawkish de Warsh y el dólar en máximos de trece meses reconfiguran el mapa global: tasas altas por más tiempo comprimen el carry que sostuvo a la deuda emergente durante el semestre. Para Argentina, con alta beta EM y un <strong>muro de vencimientos de US$23.000M en 2027</strong>, cada señal sobre reservas y acceso al mercado internacional pesa el doble. El cambio de JGM (Santilli reemplaza a Adorni) agrega ruido político en un momento de vulnerabilidad externa.<br><br>El plato fuerte llega el <strong>jueves con los Non Farm Payrolls de junio</strong> (consenso 110K vs. previo 172K): una sorpresa al alza relanzaría las apuestas de suba y podría deshacer parte del alivio de hoy. Semana corta por el feriado del 4 de julio — el calendario liviano amplifica la volatilidad de cualquier dato."
+  "bottom_line": "La jornada llega condicionada por las posibles conversaciones EE.UU.–Irán en Doha, cuyos niveles son previos a cualquier señal de esa mesa. El tono de fondo es riesgo selectivo: futuros al alza pero con el S&P rezagado, yields a la baja y dólar fuerte — combinación que no suele durar. La rotación de las Mag7 no es corrección aleatoria sino el mercado separando semiconductores con flujos reales de hyperscalers con payoffs inciertos. Argentina termina junio cubriendo el 90% del vencimiento del 9 de julio pero con reservas bajo US$47.000M: el riesgo no es de default sino de acumulación insuficiente antes de octubre.",
+  "agenda": []
 }
