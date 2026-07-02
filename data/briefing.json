@@ -2,10 +2,10 @@
   "date": "2026-07-02",
   "generated": "2026-07-02T09:00:00Z",
   "sentiment": {
-    "overall": "neutral",
-    "label": "Sesión de cautela con NFP como evento central: futuros mixtos, yields al alza y DXY cediendo terreno en combinación atípica",
-    "fg": 42,
-    "fg_label": "Neutral",
+    "overall": "risk-off",
+    "label": "NFP junio +57K — miss masivo vs 114K esperados, revisiones −74K combinadas; mercado reprecia recortes de la Fed con urgencia",
+    "fg": 32,
+    "fg_label": "Fear",
     "putcall": null,
     "aaii_bulls": null
   },
@@ -34,18 +34,19 @@
       "id": 2,
       "tag": "Empleo · EE.UU.",
       "tag_class": "tg-us",
-      "title": "NFP de junio a las 08:30 ET: consenso 114K, ADP ya falló con 98K; mercado en modo espera",
-      "brief": "El informe de empleo de junio se publica hoy a las 08:30 ET junto con desempleo (exp. 4,3%), ganancias por hora y jobless claims. El consenso anticipa 114K nóminas vs 172K en mayo. El ADP de ayer marcó 98K frente a 118K esperados, con el previo revisado a 122K. Las ventas de vehículos de junio llegaron a 16,5M anualizado, superando el consenso de 16,1M — señal mixta.",
-      "tldr": "NFP consensus 114K · ADP 98K (miss) · Desempleo exp. 4,3% · Jobless claims · Vehículos 16,5M (beat)",
+      "title": "NFP junio +57K: miss masivo vs 114K esperados, revisiones −74K; desempleo 4,2% por salida de la fuerza laboral",
+      "brief": "Las nóminas no agrícolas de junio llegaron a +57K, menos de la mitad del consenso de 114K. La tasa de desempleo bajó a 4,2% pero la participación laboral cayó 0,3pp a 61,5%. Revisiones de abril (−31K a 148K) y mayo (−43K a 129K) suman −74K adicionales. Leisure & hospitality colapsó −61K por debilidad estacional inusual. Hourly earnings: +0,3% MoM y +3,5% YoY — moderado, sin presión inflacionaria.",
+      "tldr": "NFP +57K (miss masivo vs 114K) · Desempleo 4,2% · LFPR −0,3pp · Revisiones −74K · Leisure −61K · HE +3,5% YoY",
       "sentiment": "ro-neg",
-      "sentiment_label": "🔴 Riesgo a la baja",
-      "evento": "El <strong>informe de empleo de junio</strong> se publica hoy a las <strong>08:30 ET</strong> con el mercado anticipando <strong>114K nóminas no agrícolas</strong> frente a 172K en mayo. El <strong>ADP de junio marcó 98K</strong> (vs 118K esperados), el segundo miss consecutivo y el dato más bajo desde inicio de 2025. <strong>Warsh opera sin forward guidance</strong>: nueve de doce miembros del FOMC ya proyectan al menos una suba de tasas en 2026. Un NFP por debajo de 100K podría tensionar el mercado a la baja; por encima de 140K reactivaría el repricing hawkish.",
-      "contexto": "El ADP falla con frecuencia como predictor del NFP, pero dos misses consecutivos elevan el riesgo de una sorpresa negativa. Las ventas de vehículos en 16,5M son una señal de demanda resiliente que va en sentido contrario. El mercado laboral en 2026 muestra heterogeneidad sectorial marcada: servicios de salud y gobierno compensan la debilidad en manufactura y tech. La reacción del mercado dependerá más de las ganancias por hora — que alimentan la inflación de servicios — que del titular de nóminas.",
+      "sentiment_label": "🔴 Miss masivo",
+      "evento": "Las <strong>nóminas no agrícolas de junio llegaron a +57.000</strong>, menos de la mitad del consenso de 114K y la peor lectura en lo que va de 2026. La <strong>tasa de desempleo bajó a 4,2%</strong> (vs 4,3% esperado), pero es una mejora engañosa: la <strong>participación laboral cayó 0,3pp a 61,5%</strong> — más gente dejó de buscar trabajo. Las <strong>revisiones suman −74K</strong>: abril bajó de +179K a <strong>+148K</strong> (−31K) y mayo de +172K a <strong>+129K</strong> (−43K). El sector de <strong>leisure &amp; hospitality cayó 61K</strong> por menor contratación estacional — explica casi todo el miss. Profesionales y servicios empresariales +36K, salud +22K. <strong>Hourly earnings: +0,3% MoM y +3,5% YoY</strong> — el único dato constructivo: los salarios se moderan y no alimentan la inflación de servicios. Semana laboral: 34,3h (sin cambio).",
+      "contexto": "El promedio de los últimos 3 meses queda en +111K, todavía manejable, pero la combinación de 57K + 74K de revisiones negativas + caída de participación pinta un mercado laboral que se enfría más rápido de lo esperado. Leisure & hospitality no es un sector estructural de deterioro — la debilidad es estacional — pero la acumulación de señales débiles (ADP 98K, GDPNow Q2 1,2%, NFP 57K, revisiones sistemáticamente negativas) apunta a que el equilibrio de riesgos para la Fed cambió. Los salarios moderados en +3,5% YoY le dan a Warsh margen para reconocer la debilidad sin que la inflación de servicios lo bloquee. El mercado repriceará recortes con urgencia.",
       "impacto": [
-        {"asset": "NFP consensus", "dir": "114K (vs 172K previo)", "cls": "dn"},
-        {"asset": "ADP junio", "dir": "↓ 98K (miss vs 118K est.)", "cls": "dn"},
-        {"asset": "Vehículos jun.", "dir": "↑ 16,5M (beat 16,1M)", "cls": "up"},
-        {"asset": "FOMC hikes 2026", "dir": "9/12 miembros proyectan ≥1", "cls": "dn"}
+        {"asset": "NFP junio", "dir": "+57K (vs 114K cons.)", "cls": "dn"},
+        {"asset": "Desempleo", "dir": "4,2% (LFPR 61,5% −0,3pp)", "cls": "dn"},
+        {"asset": "Revisiones abr+may", "dir": "−74K combinado", "cls": "dn"},
+        {"asset": "Leisure & hosp.", "dir": "−61K", "cls": "dn"},
+        {"asset": "Hourly earnings", "dir": "+0,3% MoM · +3,5% YoY", "cls": "up"}
       ]
     },
     {
@@ -143,6 +144,6 @@
       "body": "La recaudación de ARCA acumula cinco meses cayendo en términos reales frente a la inflación (~33% YoY). La baja de junio (−7,1% real) tiene un componente discrecional — la reducción de alícuotas de retenciones — pero el IVA y la Seguridad Social también crecen por debajo del ritmo de precios. Si el gasto primario sigue indexado mientras los ingresos reales caen, el superávit primario que ancla el programa FMI queda bajo presión. La reforma del BCRA aporta credibilidad institucional pero no resuelve la brecha ingresos-gasto en el corto plazo."
     }
   ],
-  "bottom_line": "El evento del día es el NFP de junio a las 08:30 ET, y el mercado llega con señales mixtas: el ADP de 98K (miss) alerta sobre debilidad, pero las ventas de vehículos en 16,5M anualizados van en sentido contrario. Warsh no va a dar alivio: opera sin forward guidance y con nueve de doce miembros del FOMC ya proyectando subas. Un número por debajo de 100K abre la puerta a una corrección de tasas; por encima de 140K reactiva el repricing hawkish antes del cierre semanal.\n\nEl segundo tema del día es la divergencia DXY débil + yields al alza — una combinación atípica que puede responder a flujos de recomposición internacional hacia activos europeos. La corrección de semiconductores (SOXX −5%) es toma de ganancias técnica dentro de una tendencia alcista intacta, no un cambio de tesis sobre IA.\n\nEn Argentina, el quiebre de $1.500 en el oficial con el BCRA vendiendo FX y futuros es el dato de flujo más relevante de la jornada local. La recaudación cayendo 7,1% real en junio suma presión fiscal. La reforma de la Carta Orgánica del BCRA — si avanza — sería el cambio institucional más significativo del gobierno, con lectura de mediano plazo claramente positiva para la credibilidad del esquema macroeconómico.",
+  "bottom_line": "El NFP de junio llegó a +57K — menos de la mitad del consenso de 114K, con revisiones de −74K en los dos meses previos y una participación laboral que cayó 0,3pp a 61,5%. La tasa de desempleo bajó a 4,2%, pero por las razones equivocadas: más gente dejó de buscar trabajo. Es el dato de empleo más débil del año y cambia el equilibrio de riesgos para la Fed de manera inmediata. El mercado repriceará recortes de tasas con urgencia — la curva de bonos debería comprarse con fuerza.\n\nEl único dato constructivo del reporte son los salarios: hourly earnings +3,5% YoY, que se moderan y no alimentan la inflación de servicios. Eso le da a Warsh margen para reconocer la debilidad sin que la inflación lo bloquee. La tensión con su postura hawkish de ayer en Sintra es real: dijo que los precios están demasiado altos, pero el empleo ya está demasiado bajo. El mercado laboral no puede esperar seis semanas hasta la reunión de julio sin una señal.\n\nEn Argentina, el NFP débil + caída de yields implica un dólar más débil en el mundo — un alivio marginal para la presión cambiaria que llevó al oficial a superar $1.500. La recaudación cayendo 7,1% real en junio suma presión fiscal local. La reforma de la Carta Orgánica del BCRA, si avanza, sería el cambio institucional más relevante del gobierno con lectura positiva de mediano plazo — pero el corto plazo lo domina la dinámica FX.",
   "agenda": "08:30 ET — NFP junio (cons. 114K) + Desempleo (cons. 4,3%) + Jobless Claims + Ganancias por hora · Cierre de mercados USA (4 de julio viernes — adelantado al jueves)"
 }
