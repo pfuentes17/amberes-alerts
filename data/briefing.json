@@ -1,149 +1,114 @@
 {
-  "date": "2026-07-02",
-  "generated": "2026-07-02T09:00:00Z",
+  "date": "2026-07-03",
+  "generated": "2026-07-03T12:00:00Z",
   "sentiment": {
-    "overall": "risk-off",
-    "label": "NFP junio +57K — miss masivo vs 114K esperados, revisiones −74K combinadas; mercado reprecia recortes de la Fed con urgencia",
-    "fg": 32,
-    "fg_label": "Fear",
-    "putcall": null,
-    "aaii_bulls": null
+    "overall": "neutral",
+    "label": "Datos EE.UU. débiles; Argentina desacopla al alza",
+    "fg": 42,
+    "fg_label": "Miedo",
+    "putcall": 0.93,
+    "aaii_bulls": 31
   },
   "drivers": [
     {
       "id": 1,
-      "tag": "Acciones · Global",
-      "tag_class": "tg",
-      "title": "Futuros mixtos: Nasdaq lidera la baja mientras Meta +9% sostiene el Dow; Nikkei cae 2,47%",
-      "brief": "El futuro del Nasdaq cae 0,39% a 29.976, el del S&P 500 retrocede 0,05% a 7.539,50 y el del Dow avanza 0,14% a 52.743. Las bolsas europeas operan al alza con el MIB liderando. El Nikkei cerró −2,47%. En emergentes: CSI 300 −2,96%, EEM −2,82% a 66,48. Meta subió 9% ayer por el lanzamiento de Meta Compute, arrastrando al MSFT +3% y AAPL +2%.",
-      "tldr": "Nasdaq fut. −0,39% · S&P fut. −0,05% · Dow fut. +0,14% · Nikkei −2,47% · EEM −2,82% · Meta +9% ayer",
-      "sentiment": "neutral",
-      "sentiment_label": "⚪ Neutro",
-      "evento": "El <strong>futuro del Nasdaq cae 0,39% a 29.976</strong>, el del <strong>S&P 500 retrocede 0,05% a 7.539,50</strong> y el del <strong>Dow avanza 0,14% a 52.743</strong>. Las <strong>bolsas europeas operan al alza</strong>, con el MIB liderando. El <strong>Nikkei cerró −2,47%</strong>, la peor referencia asiática. En emergentes, el <strong>CSI 300 cae 2,96%</strong> y el <strong>EEM retrocede 2,82% a 66,48</strong>. El sesgo divergente del Dow refleja el efecto arrastre de <strong>Meta +9%</strong> tras su anuncio de Meta Compute — unidad cloud para competir con AWS, Azure y Google Cloud.",
-      "contexto": "La debilidad del Nasdaq contrasta con el mejor desempeño del Dow y las europeas, en una jornada donde la selección de nombres importa más que el beta de índice. La corrección de semiconductores (SOXX −5%, MU −7%) es una toma de ganancias ordenada tras un primer semestre con retornos superiores al 80% — no un cambio de tesis sobre IA. El catalizador del día es el NFP de junio a las 08:30 ET: cualquier desvío relevante del consenso de 114K reconfigurará la apuesta de tasas antes del cierre semanal.",
+      "tag": "macro · empleo EE.UU.",
+      "tag_class": "tb",
+      "title": "Payrolls junio: 57K empleos vs 115K esperados",
+      "brief": "Dato de empleo muy por debajo de lo estimado. Revisiones a la baja en meses previos suman -74K adicionales. Desempleo baja a 4.2%.",
+      "tldr": "El mercado laboral se frena; Fed sin hoja de ruta clara",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "EE.UU. sumó <strong>57.000 empleos netos en junio</strong>, menos de la mitad de los <strong>115.000</strong> que esperaba el mercado. La tasa de desempleo bajó a <strong>4.2%</strong>. Revisiones negativas: abril <strong>-31.000</strong> y mayo <strong>-43.000</strong>, sumando <strong>-74.000 empleos</strong> por debajo de lo reportado inicialmente. Salario promedio: US$37.64, +3.5% interanual.",
+      "contexto": "Con la Fed manteniendo tasas en <strong>3.50–3.75%</strong> (decisión del 17 de junio), el dato agrava el dilema de política monetaria: el mercado laboral se enfría pero la inflación persiste. Los swaps descuentan un recorte hacia fin de año; la probabilidad de un hike adicional cayó. EE.UU. mercados <strong>cerrados hoy</strong> por el feriado del Día de la Independencia (July 4 cae sábado → feriado observado el viernes 3/7).",
       "impacto": [
-        {"asset": "Nasdaq fut.", "dir": "↓ −0,39% (29.976)", "cls": "dn"},
-        {"asset": "S&P fut.", "dir": "↓ −0,05% (7.539)", "cls": "dn"},
-        {"asset": "Dow fut.", "dir": "↑ +0,14% (52.743)", "cls": "up"},
-        {"asset": "Nikkei", "dir": "↓ −2,47%", "cls": "dn"},
-        {"asset": "EEM", "dir": "↓ −2,82% (66,48)", "cls": "dn"},
-        {"asset": "Meta", "dir": "↑ +9,0% (ayer)", "cls": "up"}
+        {"asset": "QQQ (cierre jue)", "dir": "↓ -1.73%", "cls": "dn"},
+        {"asset": "SPY (cierre jue)", "dir": "↓ -0.13%", "cls": "dn"},
+        {"asset": "UST 10Y", "dir": "↓ 4.48%", "cls": "dn"},
+        {"asset": "USD (vs EUR/BRL/JPY)", "dir": "↓ presión bajista", "cls": "dn"}
       ]
     },
     {
       "id": 2,
-      "tag": "Empleo · EE.UU.",
-      "tag_class": "tg-us",
-      "title": "NFP junio +57K: miss masivo vs 114K esperados, revisiones −74K; desempleo 4,2% por salida de la fuerza laboral",
-      "brief": "Las nóminas no agrícolas de junio llegaron a +57K, menos de la mitad del consenso de 114K. La tasa de desempleo bajó a 4,2% pero la participación laboral cayó 0,3pp a 61,5%. Revisiones de abril (−31K a 148K) y mayo (−43K a 129K) suman −74K adicionales. Leisure & hospitality colapsó −61K por debilidad estacional inusual. Hourly earnings: +0,3% MoM y +3,5% YoY — moderado, sin presión inflacionaria.",
-      "tldr": "NFP +57K (miss masivo vs 114K) · Desempleo 4,2% · LFPR −0,3pp · Revisiones −74K · Leisure −61K · HE +3,5% YoY",
-      "sentiment": "ro-neg",
-      "sentiment_label": "🔴 Miss masivo",
-      "evento": "Las <strong>nóminas no agrícolas de junio llegaron a +57.000</strong>, menos de la mitad del consenso de 114K y la peor lectura en lo que va de 2026. La <strong>tasa de desempleo bajó a 4,2%</strong> (vs 4,3% esperado), pero es una mejora engañosa: la <strong>participación laboral cayó 0,3pp a 61,5%</strong> — más gente dejó de buscar trabajo. Las <strong>revisiones suman −74K</strong>: abril bajó de +179K a <strong>+148K</strong> (−31K) y mayo de +172K a <strong>+129K</strong> (−43K). El sector de <strong>leisure &amp; hospitality cayó 61K</strong> por menor contratación estacional — explica casi todo el miss. Profesionales y servicios empresariales +36K, salud +22K. <strong>Hourly earnings: +0,3% MoM y +3,5% YoY</strong> — el único dato constructivo: los salarios se moderan y no alimentan la inflación de servicios. Semana laboral: 34,3h (sin cambio).",
-      "contexto": "El promedio de los últimos 3 meses queda en +111K, todavía manejable, pero la combinación de 57K + 74K de revisiones negativas + caída de participación pinta un mercado laboral que se enfría más rápido de lo esperado. Leisure & hospitality no es un sector estructural de deterioro — la debilidad es estacional — pero la acumulación de señales débiles (ADP 98K, GDPNow Q2 1,2%, NFP 57K, revisiones sistemáticamente negativas) apunta a que el equilibrio de riesgos para la Fed cambió. Los salarios moderados en +3,5% YoY le dan a Warsh margen para reconocer la debilidad sin que la inflación de servicios lo bloquee. El mercado repriceará recortes con urgencia.",
+      "tag": "commodities · oro",
+      "tag_class": "tg",
+      "title": "Oro sube +2% impulsado por debilidad del empleo en EE.UU.",
+      "brief": "GLD subió 2.03% el jueves. El dato laboral débil redujo expectativas de hike y disparó la demanda de refugio. Petróleo también al alza.",
+      "tldr": "Correlación inversa oro/tech activada con fuerza",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "El ETF GLD cerró el jueves en <strong>US$378.13 (+2.03%)</strong>, su mayor alza diaria en semanas. Petróleo (USO) también positivo: <strong>+0.69%</strong> en US$103.98. FX: EUR/USD implícito ~1.14, <strong>BRL/USD 5.20</strong>, JPY/USD 161.58 (todos al 2/7). El dato laboral débil debilitó al dólar y reactivó el apetito por activos de refugio y materias primas.",
+      "contexto": "El oro mantiene su tendencia alcista estructural en 2026, apoyada en compras de bancos centrales y en la incertidumbre sobre el ciclo de la Fed. JP Morgan proyecta US$6.000/oz para Q4-2026. La debilidad del dólar post-payroll beneficia indirectamente a emergentes vía términos de intercambio y compresión de spreads.",
       "impacto": [
-        {"asset": "NFP junio", "dir": "+57K (vs 114K cons.)", "cls": "dn"},
-        {"asset": "Desempleo", "dir": "4,2% (LFPR 61,5% −0,3pp)", "cls": "dn"},
-        {"asset": "Revisiones abr+may", "dir": "−74K combinado", "cls": "dn"},
-        {"asset": "Leisure & hosp.", "dir": "−61K", "cls": "dn"},
-        {"asset": "Hourly earnings", "dir": "+0,3% MoM · +3,5% YoY", "cls": "up"}
+        {"asset": "GLD (oro ETF)", "dir": "↑ +2.03% US$378.13", "cls": "up"},
+        {"asset": "USO (petróleo)", "dir": "↑ +0.69% US$103.98", "cls": "up"},
+        {"asset": "USD Index", "dir": "↓ debilitado", "cls": "dn"}
       ]
     },
     {
       "id": 3,
-      "tag": "Bancos Centrales · Fed · BOJ · BCE",
-      "tag_class": "tg-fed",
-      "title": "Warsh en Sintra: &ldquo;los precios están demasiado altos&rdquo;, sin señales para julio; yen en mínimos de 40 años",
-      "brief": "Warsh participó del Foro del BCE en Sintra y reafirmó la prioridad antiinflacionaria sin dar señales sobre julio, declinando cualquier forward guidance. El mercado de bonos reaccionó con ventas. El USD/JPY perfora 161,35, mínimo de 40 años; el BOJ pide subas moderadas de tasas pero sin señales de intervención. El BCE mostró divisiones internas sobre el próximo movimiento.",
-      "tldr": "Warsh hawkish Sintra · Sin guidance julio · USD/JPY 161,35 mín. 40 años · BOJ sin intervención · BCE dividido",
-      "sentiment": "ro-neg",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "<strong>Kevin Warsh en el Foro del BCE (Sintra)</strong> reafirmó que <strong>&ldquo;los precios están demasiado altos&rdquo;</strong> y declinó dar señales sobre la reunión de julio. Nueve de doce miembros del FOMC proyectan al menos una suba de tasas en 2026 — seis apuntan a dos de 25pb, un giro marcado frente al mapa de marzo. El <strong>USD/JPY perforó 161,35</strong>, mínimo de cuarenta años, sin señales de intervención japonesa; un miembro del panel BOJ pidió <strong>subas moderadas</strong> para corregir la depreciación, reconociendo que la intervención requiere coordinación con Washington — umbral hoy muy alto.",
-      "contexto": "Warsh opera deliberadamente sin forward guidance, amplificando la sensibilidad del mercado a cada dato. La combinación de yields al alza y DXY débil es atípica y refleja flujos hacia activos no-dólar (EUR, GBP) más que una señal de alivio monetario. Para el yen, la lección de 1998 ya no aplica: el mercado FX mueve US$9,6 billones diarios vs US$1,5B en aquel entonces — la escala de fuego en contra de cualquier intervención unilateral es incomparablemente mayor.",
+      "tag": "argentina · deuda soberana",
+      "tag_class": "tb",
+      "title": "Riesgo país en 417pb: mínimo desde abril 2018",
+      "brief": "El EMBI+ Argentina encadena cuatro caídas consecutivas y se acerca a los 400 puntos. Bonos soberanos en verde generalizado.",
+      "tldr": "Quiebre de 400pb sería gatillo de nuevos flujos institucionales",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "El riesgo país cayó <strong>5 unidades</strong> hasta <strong>417 puntos básicos</strong>, nivel mínimo desde el <strong>24 de abril de 2018</strong>. Los bonos soberanos en dólares suben en promedio +0.3%: <strong>GD30 US$66.14 (+0.16%)</strong>, <strong>GD35 US$85.20 (+0.29%)</strong>, <strong>AL30 US$64.33 (+0.23%)</strong>, <strong>AL35 US$81.58 (+0.34%)</strong>. El riesgo país acumula una caída del <strong>~27%</strong> desde los 571pb del inicio de 2026.",
+      "contexto": "El descenso refleja: upgrade de S&amp;P a <strong>B-</strong> en junio (en línea con Fitch), sobrecumplimiento de metas de reservas con el FMI (US$11.800M de metas perdonadas en la segunda revisión), y consolidación fiscal. Un quiebre sostenido de los <strong>400pb</strong> habilitaría el acceso a fondos de bonos &ldquo;high yield&rdquo; globales, potenciando flujos hacia soberanos ARG.",
       "impacto": [
-        {"asset": "UST 10Y", "dir": "↑ +1,6pb (4,491%)", "cls": "dn"},
-        {"asset": "UST 2Y", "dir": "↑ +0,6pb (4,170%)", "cls": "dn"},
-        {"asset": "2s10s", "dir": "32,1pb (+1,0pb)", "cls": "up"},
-        {"asset": "USD/JPY", "dir": "161,35 (mín. 40 años)", "cls": "dn"},
-        {"asset": "VIX", "dir": "16,69 (+0,60%)", "cls": "dn"}
+        {"asset": "Riesgo País (EMBI+)", "dir": "↓ 417pb", "cls": "up"},
+        {"asset": "GD30", "dir": "↑ US$66.14", "cls": "up"},
+        {"asset": "GD35", "dir": "↑ US$85.20", "cls": "up"},
+        {"asset": "AL30", "dir": "↑ US$64.33", "cls": "up"}
       ]
     },
     {
       "id": 4,
-      "tag": "FX · Commodities",
-      "tag_class": "tg",
-      "title": "DXY cede pese a yields al alza; petróleo a mínimos de cuatro meses por negociaciones con Irán",
-      "brief": "El DXY cae 0,31% a 101,08, con EUR/USD en 1,1400 (+0,24%), GBP/USD en 1,3300 (+0,37%) y USD/CNH en 6,79 estable. Metales preciosos en baja leve: oro −0,16% a 4.075,90 y plata −0,39% a 60,27. WTI −1,43% a 67,60 y Brent −1,26% a 70,67, en mínimos de cuatro meses por señales de progreso en las negociaciones EE.UU.–Irán en Doha. Bitcoin +1,98% a 61.151.",
-      "tldr": "DXY −0,31% (101,08) · EUR/USD 1,1400 · WTI −1,43% (67,60) · Oro −0,16% (4.075) · BTC +1,98% (61.151)",
-      "sentiment": "neutral",
-      "sentiment_label": "⚪ Mixto",
-      "evento": "El <strong>DXY cae 0,31% a 101,08</strong> pese a la firmeza de los rendimientos del Tesoro — una divergencia que no sigue el patrón habitual. El <strong>EUR/USD avanza a 1,1400</strong> (+0,24%) y el <strong>GBP/USD a 1,3300</strong> (+0,37%). El <strong>WTI baja 1,43% a US$67,60</strong> y el <strong>Brent retrocede 1,26% a US$70,67</strong>, en mínimos de cuatro meses tras señales de progreso en las negociaciones entre EE.UU. e Irán sobre el Estrecho de Ormuz en Doha. Arabia Saudita aceleró exportaciones desde Ras Tanura y pasó a precios spot en Asia, normalizando el flujo de crudo.",
-      "contexto": "La caída del petróleo reduce la presión inflacionaria de corto plazo, lo que en el margen juega a favor de un tono más dovish en el NFP de hoy. La combinación DXY débil + yields al alza sugiere flujos de recomposición de carteras internacionales hacia activos no-dólar — posiblemente Europa y Japón — más que un movimiento coordinado de riesgo. El cobre −0,66% a 6,14 confirma que la lectura de demanda global sigue moderada.",
+      "tag": "argentina · reservas y FX",
+      "tag_class": "tb",
+      "title": "Reservas BCRA superan US$48.000M: récord en la era Milei",
+      "brief": "Las reservas tocan su nivel más alto desde 2019. La brecha blue/mayorista se mantiene en 2.49%. El BCRA acumula US$9.102M de compras en 2026.",
+      "tldr": "Ancla cambiaria sólida; programa al 91% de meta anual de acumulación",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "Las reservas brutas del BCRA superaron <strong>US$48.000 millones</strong>, récord de la era Milei y nivel no visto desde 2019. El Banco Central compró <strong>US$25M</strong> en el MULC el jueves, acumulando <strong>US$9.102M</strong> en lo que va de 2026 (91% de la meta anual). Dólar oficial: <strong>$1.460/$1.510</strong>. Blue: <strong>$1.505/$1.525</strong>. CCL: <strong>$1.573–$1.576</strong>. Brecha blue/mayorista: <strong>2.49%</strong>.",
+      "contexto": "La brecha casi nula valida la efectividad del crawling peg y la confianza en el programa. El FMI reconoció el sobrecumplimiento con un ajuste de metas en la segunda revisión. Las LECAPs cortas (S31G6 en 122.7, S31L6 en 115.8) mantienen demanda como vehículo de carry de corto plazo.",
       "impacto": [
-        {"asset": "DXY", "dir": "↓ −0,31% (101,08)", "cls": "dn"},
-        {"asset": "EUR/USD", "dir": "↑ 1,1400 (+0,24%)", "cls": "up"},
-        {"asset": "WTI", "dir": "↓ −1,43% (67,60)", "cls": "dn"},
-        {"asset": "Brent", "dir": "↓ −1,26% (70,67)", "cls": "dn"},
-        {"asset": "Oro", "dir": "↓ −0,16% (4.075)", "cls": "dn"},
-        {"asset": "BTC", "dir": "↑ +1,98% (61.151)", "cls": "up"}
+        {"asset": "Reservas BCRA", "dir": "↑ US$48.000M+", "cls": "up"},
+        {"asset": "Brecha cambiaria", "dir": "↓ 2.49%", "cls": "up"},
+        {"asset": "Dólar blue", "dir": "→ $1.525 (venta)", "cls": "neu"},
+        {"asset": "CCL", "dir": "→ $1.574", "cls": "neu"}
       ]
     },
     {
       "id": 5,
-      "tag": "Tech · Mercados",
-      "tag_class": "tg-us",
-      "title": "Meta +9% con Meta Compute; semiconductores corrigen 5%+ tras acumular 80% en H1",
-      "brief": "Meta lanzó Meta Compute — unidad cloud para competir con AWS, Azure y Google Cloud — con inversión prevista de US$125.000–145.000 millones en infraestructura IA en 2026. Las acciones subieron 9%, arrastrando MSFT +3% y AAPL +2%. En sentido opuesto, los semiconductores sufrieron la mayor caída sectorial: SOXX −5%, MU −7%, AMD e Intel también en negativo, en toma de ganancias tras un H1 con retornos superiores al 80%. Bending Spoons (BSP) debutó en Nasdaq +40% desde su precio de IPO de $29, valuando la compañía italiana en US$25.200 millones.",
-      "tldr": "Meta +9% (Meta Compute cloud) · SOXX −5% · MU −7% · BSP IPO +40% · M&A global récord US$2,8B H1",
-      "sentiment": "neutral",
-      "sentiment_label": "⚪ Rotación sectorial",
-      "evento": "<strong>Meta Platforms</strong> anunció <strong>Meta Compute</strong>, nueva unidad de cloud para monetizar su infraestructura de IA compitiendo directamente con AWS, Azure y Google Cloud. La compañía planea invertir <strong>US$125.000–145.000 millones en IA en 2026</strong>; la lógica es monetizar la capacidad ociosa tanto en modelos (estilo Bedrock) como en cómputo crudo (estilo CoreWeave). Las acciones subieron <strong>9%</strong>, arrastrando al Dow. En sentido opuesto, <strong>SOXX cayó más del 5% y Micron cedió 7%</strong> — toma de ganancias ordenada sin cambio de tesis, después de que el sector acumulara retornos superiores al 80% en el primer semestre.",
-      "contexto": "La rotación fue explícita: el capital salió de semiconductores y fue hacia comunicaciones y financieras. El salto de las exportaciones de chips surcoreanos de junio (+199,5% interanual en semiconductores) confirma que el ciclo de capex en IA sigue acelerando — el ajuste de semis es técnico, no fundamental. Meta pasa de ser el mayor comprador de infraestructura a aspirar al rol de proveedor: un cambio de modelo que amplía el potencial de ingresos y reduce la dependencia publicitaria.",
+      "tag": "argentina · renta variable",
+      "tag_class": "tg",
+      "title": "Merval +1.8% con Wall Street de feriado: IRSA lidera con +4.1%",
+      "brief": "La bolsa porteña opera con agenda propia ante el feriado en EE.UU. Predominan las subas con financieras y energéticas al frente.",
+      "tldr": "Merval en modo desacople positivo; sube en USD y en pesos",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "El <strong>S&amp;P Merval sube +1.8%</strong> hasta ~3.180.000 puntos. Wall Street está <strong>cerrado hoy por el feriado de Independencia</strong> (July 4 cae sábado; NYSE observa el viernes 3/7). Entre las acciones: <strong>IRSA +4.1%</strong> lidera la suba. Los bonos soberanos acompañan con +0.3% en promedio.",
+      "contexto": "La plaza local opera con sesgo propio y positivo. El contexto macro favorable (inflación en baja, convergencia cambiaria, upgrade crediticio S&amp;P) sostiene la valuación. El Merval acumula cierto retraso relativo respecto a los bonos; la compresión del riesgo país debería seguir traccionando al equity. El próximo catalizador será la reapertura de ADRs el lunes, cuando el mercado estadounidense descuente el payroll ya publicado.",
       "impacto": [
-        {"asset": "Meta", "dir": "↑ +9,0%", "cls": "up"},
-        {"asset": "SOXX", "dir": "↓ −5,0%+", "cls": "dn"},
-        {"asset": "Micron (MU)", "dir": "↓ −7,0%", "cls": "dn"},
-        {"asset": "BSP (IPO)", "dir": "↑ +40% debut", "cls": "up"},
-        {"asset": "M&A global H1", "dir": "Récord US$2,8B", "cls": "up"}
-      ]
-    },
-    {
-      "id": 6,
-      "tag": "Argentina · Macro",
-      "tag_class": "tg-arg",
-      "title": "Dólar supera $1.500, BCRA vende; recaudación cae 7,1% real en junio; reforma de Carta Orgánica en análisis",
-      "brief": "El dólar oficial superó los $1.500 con el BCRA vendiendo letras y futuros para contener la escalada. La recaudación de ARCA en junio totalizó $20,0 billones (+23,7% YoY nominal), una caída del 7,1% real — retenciones cayeron 27,8% por baja de alícuotas agro. Milei anunció una reforma de la Carta Orgánica del BCRA que reforzaría su independencia, eliminaría adelantos al Tesoro y restringiría el uso de reservas para pagar deuda — alineado con las recomendaciones del FMI de mayo. Vaca Muerta alcanzó récord de 2.760 etapas de fractura en junio.",
-      "tldr": "USD oficial +$1.500 · BCRA vende FX+futuros · Recaudación −7,1% real · Retenciones −27,8% · Reforma BCRA · Vaca Muerta récord",
-      "sentiment": "neutral",
-      "sentiment_label": "⚪ Señales mixtas",
-      "evento": "El <strong>dólar oficial superó los $1.500</strong>, con el BCRA vendiendo letras y futuros para contener la suba. La <strong>recaudación de junio totalizó $20,0 billones</strong> (+23,7% nominal vs jun-25), pero cayó <strong>7,1% real</strong> — el driver principal fue el derrumbe de las <strong>retenciones (−27,8%)</strong> por la baja de alícuotas a las exportaciones agro. IVA (+28,2%) y Seguridad Social (+29,6%) crecieron en línea con consumo y salarios pero no compensaron. <strong>Milei anunció una reforma de la Carta Orgánica del BCRA</strong>: mayor independencia institucional, eliminación de adelantos al Tesoro y restricción del uso de reservas para deuda soberana — alineado con las recomendaciones del FMI de mayo.",
-      "contexto": "La caída real de recaudación por quinto mes consecutivo bajo el ritmo de inflación suma presión sobre el ancla fiscal, aunque el dato de retenciones tiene un componente de política discrecional (la baja de alícuotas fue una decisión de política) y no solo de actividad. El quiebre de $1.500 en el oficial es un nivel psicológico relevante. La reforma del BCRA, si avanza, sería el cambio institucional más significativo desde el plan de estabilización — clave para la credibilidad del esquema de mediano plazo. Vaca Muerta en récord (2.760 etapas jun., 14.958 en H1) provee la narrativa de largo plazo que sostiene el interés inversor en Argentina.",
-      "impacto": [
-        {"asset": "USD oficial", "dir": ">$1.500 (BCRA vende)", "cls": "dn"},
-        {"asset": "Recaudación jun.", "dir": "$20,0B (+23,7% nom. / −7,1% real)", "cls": "dn"},
-        {"asset": "Retenciones", "dir": "↓ −27,8% YoY", "cls": "dn"},
-        {"asset": "IVA jun.", "dir": "$6,55B (+28,2%)", "cls": "up"},
-        {"asset": "Vaca Muerta", "dir": "Récord 2.760 etapas jun.", "cls": "up"}
+        {"asset": "S&P Merval", "dir": "↑ +1.8%", "cls": "up"},
+        {"asset": "IRSA", "dir": "↑ +4.1%", "cls": "up"},
+        {"asset": "NYSE / Nasdaq", "dir": "— CERRADO (feriado)", "cls": "neu"}
       ]
     }
   ],
-  "tensions": [
-    {
-      "id": 1,
-      "title": "Yields al alza + DXY débil: la correlación que no cierra",
-      "body": "Cuando los rendimientos del Tesoro suben, el dólar habitualmente se fortalece — ese es el patrón de manual. Hoy la combinación es la inversa: UST 10Y +1,6pb a 4,491% con DXY −0,31% a 101,08. La ruptura sugiere que los flujos internacionales están recomponiendo posiciones en activos no-dólar (EUR, GBP) independientemente de la dinámica de tasas. Si esa divergencia persiste, añade una capa de incertidumbre para quien opere carry o cobertura cambiaria con dólar como ancla."
-    },
-    {
-      "id": 2,
-      "title": "NFP con señales contradictorias: ¿cuál leer?",
-      "body": "El ADP de 98K es el más bajo desde 2025 y sugiere desaceleración laboral. Pero las ventas de vehículos de junio llegaron a 16,5M anualizados, superando el consenso en 400K unidades — señal de demanda sólida. El Atlanta Fed GDPNow recortó el Q2 a 1,2%, mientras los recortes de empleo de Challenger cayeron 4,5% interanual. El mercado entra al NFP sin una narrativa clara: el número de hoy será el árbitro, y Warsh tampoco va a suavizar la reacción sea cual fuera el resultado."
-    },
-    {
-      "id": 3,
-      "title": "Recaudación real argentina: cinco meses bajo inflación mientras el gasto sigue indexado",
-      "body": "La recaudación de ARCA acumula cinco meses cayendo en términos reales frente a la inflación (~33% YoY). La baja de junio (−7,1% real) tiene un componente discrecional — la reducción de alícuotas de retenciones — pero el IVA y la Seguridad Social también crecen por debajo del ritmo de precios. Si el gasto primario sigue indexado mientras los ingresos reales caen, el superávit primario que ancla el programa FMI queda bajo presión. La reforma del BCRA aporta credibilidad institucional pero no resuelve la brecha ingresos-gasto en el corto plazo."
-    }
+  "tensiones": [
+    "Fed en espera forzada: empleo se enfría pero inflación sigue por encima del target",
+    "Tech en corrección: QQQ -1.73% el jueves; segunda jornada bajista de la semana para growth",
+    "Riesgo país testea los 400pb: quiebre o rebote define el flujo institucional de julio",
+    "Reapertura de ADRs el lunes: primeras reacciones con mercado EE.UU. abierto"
   ],
-  "bottom_line": "El NFP de junio llegó a +57K — menos de la mitad del consenso de 114K, con revisiones de −74K en los dos meses previos y una participación laboral que cayó 0,3pp a 61,5%. La tasa de desempleo bajó a 4,2%, pero por las razones equivocadas: más gente dejó de buscar trabajo. Es el dato de empleo más débil del año y cambia el equilibrio de riesgos para la Fed de manera inmediata. El mercado repriceará recortes de tasas con urgencia — la curva de bonos debería comprarse con fuerza.\n\nEl único dato constructivo del reporte son los salarios: hourly earnings +3,5% YoY, que se moderan y no alimentan la inflación de servicios. Eso le da a Warsh margen para reconocer la debilidad sin que la inflación lo bloquee. La tensión con su postura hawkish de ayer en Sintra es real: dijo que los precios están demasiado altos, pero el empleo ya está demasiado bajo. El mercado laboral no puede esperar seis semanas hasta la reunión de julio sin una señal.\n\nEn Argentina, el NFP débil + caída de yields implica un dólar más débil en el mundo — un alivio marginal para la presión cambiaria que llevó al oficial a superar $1.500. La recaudación cayendo 7,1% real en junio suma presión fiscal local. La reforma de la Carta Orgánica del BCRA, si avanza, sería el cambio institucional más relevante del gobierno con lectura positiva de mediano plazo — pero el corto plazo lo domina la dinámica FX.",
-  "agenda": "08:30 ET — NFP junio (cons. 114K) + Desempleo (cons. 4,3%) + Jobless Claims + Ganancias por hora · Cierre de mercados USA (4 de julio viernes — adelantado al jueves)"
+  "correlaciones": [
+    "Payrolls débiles → Gold +2% / QQQ -1.7%: correlación negativa clásica activada",
+    "Fed en espera + USD débil → spreads EM comprimen → Argentina beneficiada (riesgo país -5pb hoy)",
+    "Reservas BCRA récord + brecha ~0% → credibilidad del programa → compresión de bonos soberanos"
+  ],
+  "bottom_line": "<strong>El dato de empleo de junio en EE.UU. (57K vs 115K esperados)</strong> generó una jornada de risk-off global el jueves: tech en rojo (QQQ -1.7%), oro fuerte (+2%), y la Fed sin señales claras de movimiento. <strong>Con Wall Street de feriado hoy, Argentina opera en modo desacople positivo</strong>: el riesgo país tocó 417pb (mínimo en 8 años), las reservas del BCRA superaron US$48.000M récord, y el Merval sube +1.8% liderado por IRSA. La brecha cambiaria en 2.5% y el sobrecumplimiento del programa FMI consolidan el ancla nominal. El próximo umbral clave es el <strong>quiebre de los 400pb en riesgo país</strong>: de concretarse, habilitaría flujos institucionales que hoy permanecen al margen. Para portfolios locales, la sesión refuerza la convicción en <strong>bonos soberanos en dólares (GD35, AL35)</strong> y el carry en <strong>LECAPs cortas</strong> mientras se mantenga el esquema cambiario."
 }
