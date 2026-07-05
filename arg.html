@@ -351,7 +351,7 @@ footer{border-top:1px solid var(--br);padding:10px 40px;background:var(--nv2);di
     <img src="https://grupoamberes.com.ar/frontend/img/logo.svg" alt="Amberes" style="height:19px;filter:brightness(0) invert(1);opacity:.5;" onerror="this.style.display='none'">
     <span class="fb-t">Amberes &middot; Grupo Financiero</span>
   </div>
-  <div class="fn" id="footer-src">INDEC &middot; BCRA &middot; Mecon &middot; AFIP &middot; Finanzas &middot; SIPA &middot; ACARA &middot; Junio 2026</div>
+  <div class="fn" id="footer-src">INDEC &middot; BCRA &middot; Mecon &middot; AFIP &middot; Finanzas &middot; SIPA &middot; ACARA &middot; Julio 2026</div>
 </footer>
 
 <script>
@@ -410,7 +410,7 @@ function makeCal(year,month,events){
   var fd=(new Date(year,month,1).getDay()+6)%7;
   var tn=new Date();var tod=(tn.getFullYear()===year&&tn.getMonth()===month)?tn.getDate():0;
   var em={};(events||[]).forEach(function(e){em[e.day]=e;});
-  var h='<div class="cal"><div class="cal-ttl">Calendario junio 2026</div>';
+  var h='<div class="cal"><div class="cal-ttl">Calendario '+mN[month]+' '+year+'</div>';
   h+='<div class="cal-month">'+mN[month]+' '+year+'</div>';
   h+='<div class="cal-grid">';
   dN.forEach(function(d){h+='<div class="cdow">'+d+'</div>';});
@@ -452,16 +452,16 @@ function showTab(i){
 var VISTA='indec';
 var vistaMeta={
   indec:{name:'INDEC',sub:'Estad\u00edsticas Oficiales',col:C.INDEC,
-    footer:'INDEC \u00b7 IPC \u00b7 EMAE \u00b7 EPH \u00b7 ICA \u00b7 ISAC \u00b7 IPI \u00b7 Junio 2026',
+    footer:'INDEC \u00b7 IPC \u00b7 EMAE \u00b7 EPH \u00b7 ICA \u00b7 ISAC \u00b7 IPI \u00b7 Julio 2026',
     label:'INDEC \u00b7 Estad\u00edsticas Oficiales'},
   bcra:{name:'BCRA',sub:'Banco Central',col:C.BCRA,
-    footer:'BCRA \u00b7 Reservas \u00b7 Tipos de cambio \u00b7 Tasas \u00b7 Agregados monetarios \u00b7 Junio 2026',
+    footer:'BCRA \u00b7 Reservas \u00b7 Tipos de cambio \u00b7 Tasas \u00b7 Agregados monetarios \u00b7 Julio 2026',
     label:'BCRA \u00b7 Banco Central de la Rep\u00fablica Argentina'},
   mecon:{name:'MECON',sub:'Ministerio de Econom\u00eda',col:C.MECON,
-    footer:'Mecon \u00b7 Finanzas \u00b7 AFIP \u00b7 Resultado fiscal \u00b7 Deuda \u00b7 Junio 2026',
+    footer:'Mecon \u00b7 Finanzas \u00b7 AFIP \u00b7 Resultado fiscal \u00b7 Deuda \u00b7 Julio 2026',
     label:'Ministerio de Econom\u00eda \u00b7 Hacienda \u00b7 Finanzas'},
   real:{name:'Econom\u00eda Real',sub:'SIPA \u00b7 Construya \u00b7 ACARA',col:C.REAL,
-    footer:'SIPA \u00b7 \u00cdndice Construya \u00b7 ACARA patentamientos \u00b7 Junio 2026',
+    footer:'SIPA \u00b7 \u00cdndice Construya \u00b7 ACARA patentamientos \u00b7 Julio 2026',
     label:'Econom\u00eda Real \u00b7 SIPA \u00b7 Construya \u00b7 ACARA'},
   rem:{name:'REM',sub:'Expectativas de Mercado',col:'#38bdf8',
     footer:'BCRA \u00b7 Relevamiento de Expectativas de Mercado (REM) \u00b7 Mensual',
@@ -822,7 +822,7 @@ async function loadLiveData() {
       var el = document.getElementById('status-msg');
       if (el) el.textContent = '✓ Datos actualizados — ' + new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'});
       var dot = document.getElementById('status-dot');
-      if (dot) { dot.classList.remove('dot-warn'); dot.classList.add('dot-live'); }
+      if (dot) { dot.classList.remove('dot-warn'); dot.classList.add('dot-ok'); }
     }
   } catch(e) {
     console.warn('loadLiveData:', e.message);
@@ -846,7 +846,7 @@ function buildINDEC(){
   var cal=makeCal(D.cal.year,D.cal.month,D.cal.events);
   $('main').innerHTML=
     panel2col('p0',
-      shdr('INDEC &mdash; Estad\u00edsticas Oficiales','Todos los indicadores publicados por el INDEC &middot; Junio 2026','')+
+      shdr('INDEC &mdash; Estad\u00edsticas Oficiales','Todos los indicadores publicados por el INDEC &middot; Julio 2026','')+
       '<div class="og">'+
         ocard('om0','IPC \u00b7 Precios','&Iacute;ndice Precios Consumidor','MoM / YoY / Categor\u00edas','2.1%','r','May 2026','N\u00facleo 1.9%<br>Reg. 2.4%',1)+
         ocard('om1','EMAE \u00b7 Actividad','Est. Mensual Actividad Ec.','YoY / Desestacionalizado','+5.5%','g','Mar 2026','Desest. +3.5%<br>M\u00e1x. hist.',2)+
@@ -858,10 +858,10 @@ function buildINDEC(){
       cal,true)+
     panel2col('p1',
       shdr('IPC \u00b7 &Iacute;ndice de Precios al Consumidor','INDEC &mdash; Nivel general y categor\u00edas MoM','2.1%','May 2026 \u00b7 MoM','r')+
-      src('INDEC \u00b7 Informe IPC Abr 2026 (ipc_05_2680B692D2F5.pdf)')+
+      src('INDEC \u00b7 Informe IPC May 2026')+
       sr4([{l:'General May 26',v:'2.1%',c:'r',n:'Desaceleraci\u00f3n vs 2.6% Abr',x:'indec'},{l:'N\u00facleo May 26',v:'1.9%',c:'r',n:'Ex regulados y estacionales',x:'indec'},{l:'Regulados May 26',v:'2.4%',c:'r',n:'Combustibles \u00b7 tarifas',x:'indec'},{l:'Estacionales May 26',v:'2.1%',c:'r',n:'Indumentaria y turismo',x:'indec'}])+
       bx1('ci1','h240','IPC: Nivel General vs N\u00facleo vs Regulados vs Estacionales \u2014 MoM','c-indec')+
-      bx2(['ci2','ci3'],['IPC General YoY \u2014 Desaceleraci\u00f3n desde 120% (May 25) a 32.4%','Contribuci\u00f3n por categor\u00eda \u2014 Abr 2026'],'h190',['c-indec','c-rd']),
+      bx2(['ci2','ci3'],['IPC General YoY \u2014 Desaceleraci\u00f3n desde 120% (May 25) a 32.4%','Contribuci\u00f3n por categor\u00eda \u2014 May 2026'],'h190',['c-indec','c-rd']),
       cal)+
     panel2col('p2',
       shdr('EMAE \u00b7 Actividad Econ\u00f3mica','INDEC \u2014 Var. interanual y desestacionalizada','+5.5%','Mar 2026 \u00b7 YoY','g')+
@@ -1289,7 +1289,7 @@ async function buildBCRA(){
 
   $('main').innerHTML=
     panel2col('p0',
-      shdr('BCRA \u2014 Banco Central','Pol\u00edtica monetaria y cambiaria \u00b7 Junio 2026','')+
+      shdr('BCRA \u2014 Banco Central','Pol\u00edtica monetaria y cambiaria \u00b7 Julio 2026','')+
       '<div id="bcra-loading" style="text-align:center;padding:40px 20px;color:var(--dm);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;">'+'<div class="spin" style="margin:0 auto 14px;width:20px;height:20px;border:2px solid rgba(77,184,122,.2);border-top-color:var(--g4);border-radius:50%;animation:rot .8s linear infinite;"></div>'+'Conectando a API BCRA oficial...'+'</div>'+
       '<div id="bcra-og" style="display:none;" class="og">'+
         ocard('bm0','Reservas','Reservas Internacionales BCRA','MM USD \u00b7 Dato oficial diario','...' ,'g','Cargando...','API BCRA live',1)+
@@ -1341,12 +1341,12 @@ async function buildBCRA(){
       bx2(['cr2','cr3'],['Var. Mensual Pr\u00e9stamos Privados %','Hip. \u00b7 Personales \u00b7 Tarjetas (id=112/114/115)'],'h190',['c-bcra','c-bcra']),
       cal)+
     panel2col('p6',
-      shdr('Balance Cambiario \u00b7 Mercado de Cambios','BCRA \u2014 PDF mensual \u00b7 \u00daltimo dato: '+D_BAL_CAM.fecha,'$'+D_BAL_CAM.cc_cam_saldo+'M','CC Cambiaria Abr 2026','g')+
+      shdr('Balance Cambiario \u00b7 Mercado de Cambios','BCRA \u2014 PDF mensual \u00b7 \u00daltimo dato: '+D_BAL_CAM.fecha,'$'+D_BAL_CAM.cc_cam_saldo+'M','CC Cambiaria Mayo 2026','g')+
       src('BCRA \u00b7 Evoluci\u00f3n del Mercado de Cambios y Balance Cambiario \u00b7 '+D_BAL_CAM.fecha)+
       '<div class="sr4">'+
         '<div class="sc"><div class="sl">Compra billetes PH</div><div class="sv r">$'+D_BAL_CAM.compra_billetes_ph+'M</div><div class="sn">'+D_BAL_CAM.fecha+' \u00b7 1,5M personas</div></div>'+
         '<div class="sc"><div class="sl">FAE (atesoramiento)</div><div class="sv r">$'+D_BAL_CAM.fae_ph+'M</div><div class="sn">De billetes sin fines espec.</div></div>'+
-        '<div class="sc"><div class="sl">Dividendos remitidos</div><div class="sv r">$'+D_BAL_CAM.dividendos_total+'M</div><div class="sn">Oleag. $'+D_BAL_CAM.dividendos_oleag+'M</div></div>'+
+        '<div class="sc"><div class="sl">Dividendos remitidos</div><div class="sv r">$'+D_BAL_CAM.dividendos_total+'M</div><div class="sn">Oleag. '+(D_BAL_CAM.dividendos_oleag!=null?'$'+D_BAL_CAM.dividendos_oleag+'M':'—')+'</div></div>'+
         '<div class="sc"><div class="sl">CC Cambiaria saldo</div><div class="sv g">$'+D_BAL_CAM.cc_cam_saldo+'M</div><div class="sn">Super\u00e1vit '+D_BAL_CAM.fecha+'</div></div>'+
       '</div>'+
       bx2(['ph1','ph2'],['Compra Billetes Personas Humanas \u2014 MM USD (fuente: PDF BCRA mensual)','Egresos por Utilidades y Dividendos \u2014 MM USD'],'h190',['c-rd','c-rd'])+
@@ -1753,7 +1753,7 @@ function buildREAL(){
   var cal=makeCal(D.cal.year,D.cal.month,D.cal.events);
   $('main').innerHTML=
     panel2col('p0',
-      shdr('Econom\u00eda Real \u2014 Actividad e Industria','SIPA \u00b7 \u00cdndice Construya \u00b7 ACARA \u00b7 Junio 2026','')+
+      shdr('Econom\u00eda Real \u2014 Actividad e Industria','SIPA \u00b7 \u00cdndice Construya \u00b7 ACARA \u00b7 Julio 2026','')+
       '<div class="og">'+
         ocard('rm0','SIPA \u00b7 Empleo','Empleo Registrado Privado','Variaci\u00f3n mensual s/e','-0.1%','r','Mar 2026','YoY: -1.4%<br>12 meses ca\u00edda',1)+
         ocard('rm1','\u00cdndice Construya','Construcci\u00f3n Privada','Despachos insumos sectoriales','+5.0%','g','Abr 2026 MoM','YoY: -4.7%<br>Acum: +0.6%',2)+

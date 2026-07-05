@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard Renta Fija ARS</title>
+<title>Bonos | Amberes</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#080c12;--s:#0d1420;--s2:#111827;--bdr:#1f2d40;--bdr2:#2d4060;--txt:#c9d8e8;--mu:#4a6080;--dim:#2a3f55;--accent:#f59e0b;--accent-dim:rgba(245,158,11,.1);--cy:#06b6d4;--up:#22d3a0;--am:#f59e0b;--pk:#ec4899;--pu:#8b5cf6;--rd:#f87171;--or:#fb923c;--te:#14b8a6;}
+:root{--bg:#080c12;--s:#0d1420;--s2:#111827;--bdr:#1f2d40;--bdr2:#2d4060;--txt:#c9d8e8;--mu:#4a6080;--dim:#2a3f55;--accent:#f59e0b;--accent-dim:rgba(245,158,11,.1);--cy:#06b6d4;--up:#22d3a0;--gr:#22d3a0;--am:#f59e0b;--pk:#ec4899;--pu:#8b5cf6;--rd:#f87171;--or:#fb923c;--te:#14b8a6;}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--txt);font-family:'IBM Plex Sans',sans-serif;font-size:13px;min-height:100vh;}
 body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(245,158,11,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,.015) 1px,transparent 1px);background-size:48px 48px;}
 /* TOP NAV BAR */
-.top-nav{position:sticky;top:0;z-index:200;background:#1e1e22;border-bottom:3px solid var(--accent);display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:54px;}
+.top-nav{position:sticky;top:0;z-index:200;background:#1e1e22;border-bottom:3px solid var(--accent);display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:58px;}
 .amb-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
 .amb-wordmark{font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;}
 .amb-divider{width:1px;height:16px;background:rgba(255,255,255,.2);margin:0 6px;}
 .amb-section{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);}
 /* ── subnav inter-módulos ── */
-.subnav{background:#1e1e22;border-bottom:1px solid rgba(255,255,255,.08);padding:0 24px;display:flex;align-items:center;gap:5px;height:36px;position:sticky;top:54px;z-index:190;overflow-x:auto;scrollbar-width:none;}
+.subnav{background:#1e1e22;border-bottom:1px solid rgba(255,255,255,.08);padding:0 24px;display:flex;align-items:center;gap:5px;height:36px;position:sticky;top:58px;z-index:190;overflow-x:auto;scrollbar-width:none;}
 .subnav::-webkit-scrollbar{display:none;}
 .subnav-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-right:6px;white-space:nowrap;flex-shrink:0;}
 .snav-link{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.03em;color:rgba(255,255,255,.55);text-decoration:none;padding:4px 10px;border-radius:4px;white-space:nowrap;transition:all .15s;flex-shrink:0;}

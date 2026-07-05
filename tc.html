@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TC Implícito — Argentina</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#080c14;--s:#0d1823;--s2:#111f2e;--bdr:rgba(45,64,96,.6);--bdr2:rgba(45,64,96,.35);
+  --accent:#10d48e;--accent-dim:rgba(16,212,142,.1);
+  --txt:#dce8f8;--mu:#5a7a9a;--dim:#2d4060;--up:#22d3a0;--rd:#f87171;
+  --am:#f59e0b;--cy:#06b6d4;--pu:#8b5cf6;--or:#fb923c;--lm:#a3e635;
+  --mep:#34d399;--ccl:#38bdf8;--blue:#f472b6;--cripto:#a78bfa;--oficial:#64748b;
+}
+html,body{background:var(--bg);color:var(--txt);font-family:'IBM Plex Sans',sans-serif;min-height:100%;overflow-x:hidden;}
+body{padding:0 0 40px;max-width:1440px;margin:0 auto;}
+.body-inner{padding:0 20px;}
+
+/* HEADER */
+.header{display:flex;justify-content:space-between;align-items:center;padding:0 24px;height:58px;background:#1e1e22;border-bottom:3px solid var(--accent);position:sticky;top:0;z-index:100;gap:12px;margin-bottom:22px;}
+.amb-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.amb-wordmark{font-family:'IBM Plex Sans',sans-serif;font-size:15px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;}
+.amb-divider{width:1px;height:18px;background:rgba(255,255,255,.2);margin:0 6px;}
+.amb-section{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);}
+.hdr-subtitle{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--mu);margin-top:2px;}
+.hdr-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--mu);margin-bottom:4px;}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--am);display:inline-block;margin-right:5px;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+.status-dot.live{background:var(--accent);}
+.hdr-back{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.4);text-decoration:none;border:1px solid rgba(255,255,255,.12);border-radius:5px;padding:4px 10px;white-space:nowrap;transition:all .15s;}
+.hdr-back:hover{color:var(--txt);border-color:rgba(255,255,255,.3);}
+.upd-btn{font-family:'IBM Plex Mono',monospace;font-size:10px;padding:4px 12px;background:rgba(16,212,142,.1);border:1px solid rgba(16,212,142,.3);color:var(--accent);border-radius:5px;cursor:pointer;}
+.upd-btn:hover{background:rgba(16,212,142,.2);}
+
+/* KPI STRIP */
+.kpi-strip{display:flex;gap:10px;margin-bottom:20px;overflow-x:auto;padding-bottom:4px;}
+.kpi-card{flex:0 0 auto;background:var(--s);border:1px solid var(--bdr);border-radius:9px;padding:12px 16px;min-width:140px;}
+.kpi-card .label{font-family:'IBM Plex Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:5px;}
+.kpi-card .val{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;}
+.kpi-card .sub{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);margin-top:3px;}
+.kpi-card .chg{font-family:'IBM Plex Mono',monospace;font-size:9px;margin-top:2px;}
+
+/* LAYOUT */
+.main{display:grid;grid-template-columns:1fr 400px;gap:16px;align-items:start;}
+@media(max-width:1100px){.main{grid-template-columns:1fr;}}
+
+/* TABLES */
+.section{background:var(--s);border:1px solid var(--bdr);border-radius:10px;overflow:hidden;margin-bottom:14px;}
+.sec-hdr{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--bdr2);background:var(--s2);}
+.sec-hdr .title{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;}
+.sec-hdr .badge{font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 7px;border-radius:10px;border:1px solid;opacity:.8;}
+.tbl-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;}
+th{font-family:'IBM Plex Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:.08em;color:var(--mu);padding:7px 10px;text-align:left;border-bottom:1px solid var(--bdr2);white-space:nowrap;}
+td{font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 10px;border-bottom:1px solid rgba(45,64,96,.2);}
+tr:hover td{background:rgba(45,64,96,.15);}
+tr:last-child td{border-bottom:none;}
+.ct{text-align:center;}
+.cr{text-align:right;}
+.best-row td{background:rgba(52,211,153,.05)!important;}
+.best-row td:first-child{border-left:2px solid var(--mep);}
+
+/* BEST badge */
+.best-badge{font-size:8px;padding:1px 5px;border-radius:3px;background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.3);color:var(--mep);margin-left:4px;vertical-align:middle;}
+
+/* TYPE PILL */
+.pill{font-size:8px;padding:1px 6px;border-radius:3px;border:1px solid;margin-left:3px;}
+.pill-mep{background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.3);color:var(--mep);}
+.pill-ccl{background:rgba(56,189,248,.1);border-color:rgba(56,189,248,.3);color:var(--ccl);}
+.pill-blue{background:rgba(244,114,182,.1);border-color:rgba(244,114,182,.3);color:var(--blue);}
+.pill-cripto{background:rgba(167,139,250,.1);border-color:rgba(167,139,250,.3);color:var(--cripto);}
+.pill-of{background:rgba(100,116,139,.1);border-color:rgba(100,116,139,.3);color:var(--mu);}
+
+/* CHART PANEL */
+.chart-panel{background:var(--s);border:1px solid var(--bdr);border-radius:10px;padding:14px;}
+.chart-title{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--cy);margin-bottom:4px;}
+.chart-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);margin-bottom:12px;}
+.chart-box{height:280px;position:relative;}
+
+/* COMPARISON BAR */
+.comp-bar-wrap{position:relative;height:12px;background:var(--s2);border-radius:6px;overflow:hidden;}
+.comp-bar{height:100%;border-radius:6px;transition:width .4s;}
+.ref-line{position:absolute;top:0;height:100%;width:2px;background:rgba(255,255,255,.25);}
+
+/* SPREAD TABLE */
+.spread-row{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid var(--bdr2);}
+.spread-row:last-child{border-bottom:none;}
+
+/* FOOTER */
+.footer{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim);margin-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+
+/* ── subnav inter-módulos ── */
+.subnav{background:#0e1520;border-bottom:1px solid rgba(255,255,255,.08);padding:0 24px;display:flex;align-items:center;gap:5px;height:36px;position:sticky;top:58px;z-index:190;overflow-x:auto;scrollbar-width:none;}
+.subnav::-webkit-scrollbar{display:none;}
+.subnav-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-right:6px;white-space:nowrap;flex-shrink:0;}
+.snav-link{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.03em;color:rgba(255,255,255,.55);text-decoration:none;padding:4px 10px;border-radius:4px;white-space:nowrap;transition:all .15s;flex-shrink:0;}
+.snav-link:hover{color:#fff;background:rgba(255,255,255,.1);}
+.snav-link.active{color:#fff;background:rgba(255,255,255,.13);border-bottom:2px solid rgba(255,255,255,.7);}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <a href="/" class="amb-logo">
+    <svg height="26" viewBox="0 0 46 43" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+      <path fill="#fff" d="M44.93,0l-10.52.78c-1.94,1.36-13.74,14.44-18.16,35.03.06.18,6.86,6.41,6.86,6.41,0,0,4.34-13.39,9.6-23.33C37.92,9.05,44.82.15,44.93,0"/>
+      <path fill="#fff" d="M28.97,2.62l-10.16,1.83c-.84,1.05-8.14,10.48-10.88,25.38l5.68,4.74c.03-.13,2.31-9.57,6.14-17.24,3.82-7.64,9.12-14.57,9.23-14.71"/>
+      <path fill="#fff" d="M13.83,7.31l-8,.99C2.06,12.05,0,22.83,0,22.83l5.66,5.06c.02-.1,1.64-6.8,3.61-11.41,1.95-4.6,4.5-9.08,4.56-9.18"/>
+    </svg>
+    <span class="amb-wordmark">Amberes</span>
+    <div class="amb-divider"></div>
+    <span class="amb-section">Tipo de Cambio</span>
+  </a>
+  <div class="hdr-right">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu)" id="last-upd">—</div>
+    <span class="hdr-subtitle"><span class="status-dot" id="status-dot"></span><span id="status-txt">Actualizando…</span></span>
+    <button class="upd-btn" onclick="refresh()">↻ Actualizar</button>
+    <a href="/" class="hdr-back">← Inicio</a>
+  </div>
+</div>
+<div class="subnav"><span class="subnav-label">Módulos</span><a href="/" class="snav-link">🏠 Inicio</a><a href="/arg.html" class="snav-link">🇦🇷 Argentina</a><a href="/agro.html" class="snav-link">🌾 Agro</a><a href="/gestion.html" class="snav-link">📊 Gestión</a><a href="/confianza.html" class="snav-link">🔵 Confianza</a><a href="/macro.html" class="snav-link">🌍 Macro Global</a><a href="/tc.html" class="snav-link active">💱 Tipo de Cambio</a><a href="/bonos.html" class="snav-link">📈 Bonos</a></div>
+<div class="body-inner">
+
+<!-- KPI STRIP -->
+<div class="kpi-strip" id="kpi-strip">
+  <div class="kpi-card"><div class="label">Oficial BNA</div><div class="val" id="k-of" style="color:var(--mu)">—</div><div class="sub">venta minorista</div></div>
+  <div class="kpi-card"><div class="label">Mayorista A3500</div><div class="val" id="k-may" style="color:var(--lm)">—</div><div class="sub">BCRA referencia</div></div>
+  <div class="kpi-card"><div class="label">Blue</div><div class="val" id="k-blue" style="color:var(--blue)">—</div><div class="sub" id="k-blue-sub">informal · venta</div></div>
+  <div class="kpi-card"><div class="label">MEP (mejor bono)</div><div class="val" id="k-mep" style="color:var(--mep)">—</div><div class="sub" id="k-mep-sub">—</div></div>
+  <div class="kpi-card"><div class="label">CCL (mejor bono)</div><div class="val" id="k-ccl" style="color:var(--ccl)">—</div><div class="sub" id="k-ccl-sub">—</div></div>
+  <div class="kpi-card"><div class="label">Cripto (USDT)</div><div class="val" id="k-cryp" style="color:var(--cripto)">—</div><div class="sub">mercado crypto</div></div>
+  <div class="kpi-card"><div class="label">Tarjeta</div><div class="val" id="k-tarj" style="color:var(--am)">—</div><div class="sub">oficial + impuestos</div></div>
+  <div class="kpi-card"><div class="label">Spread CCL−MEP</div><div class="val" id="k-spread" style="color:var(--or)">—</div><div class="sub">diferencia promedio</div></div>
+</div>
+
+<div class="main">
+  <!-- LEFT COLUMN -->
+  <div>
+
+    <!-- MEP por bono -->
+    <div class="section">
+      <div class="sec-hdr">
+        <div class="title" style="color:var(--mep)">⬤ Dólar MEP por bono</div>
+        <div class="badge" style="border-color:rgba(52,211,153,.3);color:var(--mep)">Liquidación en USD (bolsa local)</div>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr>
+            <th>Bono</th><th>Precio ARS</th><th>Precio USD</th>
+            <th>TC MEP</th><th>vs Mejor MEP</th><th>Volumen ARS</th><th>Volumen USD</th>
+          </tr></thead>
+          <tbody id="tbl-mep"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- CCL por bono -->
+    <div class="section">
+      <div class="sec-hdr">
+        <div class="title" style="color:var(--ccl)">⬤ Dólar CCL (Cable) por bono</div>
+        <div class="badge" style="border-color:rgba(56,189,248,.3);color:var(--ccl)">Liquidación en USD exterior</div>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr>
+            <th>Bono</th><th>Precio ARS</th><th>Precio USD Cable</th>
+            <th>TC CCL</th><th>vs Mejor CCL</th><th>Volumen USD</th>
+          </tr></thead>
+          <tbody id="tbl-ccl"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- TC vía CEDEARs -->
+    <div class="section">
+      <div class="sec-hdr">
+        <div class="title" style="color:var(--am)">⬤ TC Implícito vía CEDEARs</div>
+        <div class="badge" style="border-color:rgba(245,158,11,.3);color:var(--am)">precio_ARS / precio_USD_cedear · D=MEP · C=CCL</div>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr>
+            <th>CEDEAR</th><th>Empresa</th><th>Precio ARS</th>
+            <th>TC MEP</th><th>TC CCL</th><th>Spread CCL−MEP</th><th>Var%</th><th>Vol.</th>
+          </tr></thead>
+          <tbody id="tbl-ced"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Otros tipos de cambio -->
+    <div class="section">
+      <div class="sec-hdr">
+        <div class="title" style="color:var(--am)">⬤ Otras referencias de tipo de cambio</div>
+        <div class="badge" style="border-color:rgba(245,158,11,.3);color:var(--am)">Fuente: dolarapi.com + BCRA</div>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr>
+            <th>Modalidad</th><th>Tipo</th><th>Compra</th><th>Venta</th><th>Spread</th><th>vs MEP</th>
+          </tr></thead>
+          <tbody id="tbl-otros"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div>
+
+    <!-- Chart comparativo -->
+    <div class="chart-panel" style="margin-bottom:14px">
+      <div class="chart-title">Comparativo de TC</div>
+      <div class="chart-sub">Venta / valor de referencia · ordenado de menor a mayor</div>
+      <div class="chart-box"><canvas id="tcChart"></canvas></div>
+    </div>
+
+    <!-- Spread MEP−CCL por bono -->
+    <div class="section">
+      <div class="sec-hdr">
+        <div class="title" style="color:var(--or)">Spread CCL − MEP por bono</div>
+        <div class="badge" style="border-color:rgba(251,146,60,.3);color:var(--or)">Prima de cable sobre bolsa</div>
+      </div>
+      <div style="padding:12px 14px" id="spread-list"></div>
+    </div>
+
+    <!-- Mejor TC según objetivo -->
+    <div class="section" style="margin-top:0">
+      <div class="sec-hdr">
+        <div class="title" style="color:var(--pu)">¿Con qué operás?</div>
+      </div>
+      <div style="padding:12px 14px">
+        <div style="display:flex;flex-direction:column;gap:8px" id="rec-list"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="footer">
+  <span>Fuentes: data912.com/live/arg_bonds · dolarapi.com/v1/dolares · rendimientos.co/api</span>
+  <span id="footer-upd">—</span>
+</div>
+
+<script>
+const API_ROUTES = {
+  'https://data912.com/live/arg_bonds':   '/api/proxy?src=bonds',
+  'https://data912.com/live/arg_cedears': '/api/proxy?src=cedears',
+  'https://dolarapi.com/v1/dolares':      '/api/proxy?src=dolar',
+};
+async function fetchProxy(url){
+  const localUrl = API_ROUTES[url] || url;
+  const r = await fetch(localUrl, { signal: AbortSignal.timeout(10000) });
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  return r.json();
+}
+
+const pr=(v)=>v!=null?'$'+Number(v).toLocaleString('es-AR',{minimumFractionDigits:0,maximumFractionDigits:0}):'—';
+const prd=(v,d=2)=>v!=null?'$'+Number(v).toLocaleString('es-AR',{minimumFractionDigits:d,maximumFractionDigits:d}):'—';
+const now8=()=>new Date().toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+
+// ── CEDEARs conocidos ─────────────────────────────────────────
+// data912 usa mismo esquema que bonos: D=MEP, C=CCL
+// TC = precio_ARS / precio_USD (sin ratio — ya está implícito en precio USD)
+const CEDEAR_META = {
+  AAPL:{name:'Apple',sector:'Tech'},
+  MSFT:{name:'Microsoft',sector:'Tech'},
+  AMZN:{name:'Amazon',sector:'Tech'},
+  GOOGL:{name:'Alphabet',sector:'Tech'},
+  META:{name:'Meta',sector:'Tech'},
+  NVDA:{name:'NVIDIA',sector:'Tech'},
+  KO:  {name:'Coca-Cola',sector:'Consumo'},
+  WMT: {name:'Walmart',sector:'Retail'},
+  JPM: {name:'JPMorgan',sector:'Finanzas'},
+  XOM: {name:'ExxonMobil',sector:'Energía'},
+  DIS: {name:'Disney',sector:'Entretenimiento'},
+  PBR: {name:'Petrobras',sector:'Energía'},
+  MELI:{name:'MercadoLibre',sector:'Tech'},
+  GLOB:{name:'Globant',sector:'Tech'},
+  ABT: {name:'Abbott',sector:'Salud'},
+  AAL: {name:'American Airlines',sector:'Transporte'},
+  ABNB:{name:'Airbnb',sector:'Turismo'},
+};
+
+// Seed 08/06/2026 — precios observados en tcimplicito.netlify.app (BYMA ~15min delay)
+const SEED_BONDS=[
+  {sym:'AL29',ars:93800,mep:61.74,ccl:61.74,volMep:228000, volCcl:0},
+  {sym:'AL30',ars:93980,mep:61.88,ccl:61.88,volMep:36200000,volCcl:0},
+  {sym:'AL35',ars:115250,mep:75.93,ccl:75.93,volMep:93000,volCcl:0},
+  {sym:'AL41',ars:108410,mep:71.45,ccl:71.45,volMep:132000,volCcl:0},
+  {sym:'GD29',ars:95950,mep:63.14,ccl:63.14,volMep:29000, volCcl:0},
+  {sym:'GD30',ars:95600,mep:62.98,ccl:62.98,volMep:949000,volCcl:0},
+  {sym:'GD35',ars:119030,mep:78.37,ccl:78.37,volMep:1200000,volCcl:0},
+  {sym:'GD38',ars:124560,mep:82.03,ccl:82.03,volMep:153000,volCcl:0},
+  {sym:'GD41',ars:110840,mep:73.00,ccl:73.00,volMep:501000,volCcl:0},
+];
+const SEED_CEDEARS=[
+  {sym:'AAPL', ars:23680,mepP:16.33,cclP:15.98,vol:2100000,pct:-0.52},
+  {sym:'MSFT', ars:54200,mepP:37.50,cclP:36.68,vol:980000, pct:0.31},
+  {sym:'AMZN', ars:27300,mepP:18.87,cclP:18.44,vol:760000, pct:-1.12},
+  {sym:'NVDA', ars:37800,mepP:26.13,cclP:25.55,vol:890000, pct:2.10},
+  {sym:'META', ars:82400,mepP:57.00,cclP:55.70,vol:310000, pct:0.44},
+  {sym:'GOOGL',ars:6340, mepP:4.38, cclP:4.28, vol:430000, pct:-0.78},
+  {sym:'KO',   ars:9520, mepP:6.58, cclP:6.43, vol:540000, pct:0.08},
+  {sym:'WMT',  ars:38900,mepP:26.90,cclP:26.30,vol:280000, pct:0.52},
+  {sym:'JPM',  ars:36200,mepP:25.03,cclP:24.47,vol:195000, pct:-0.21},
+  {sym:'XOM',  ars:17100,mepP:11.82,cclP:11.56,vol:167000, pct:0.14},
+  {sym:'DIS',  ars:14200,mepP:9.82, cclP:9.60, vol:124000, pct:-0.33},
+  {sym:'PBR',  ars:2280, mepP:1.577,cclP:1.541,vol:680000, pct:1.20},
+  {sym:'MELI', ars:20940,mepP:14.48,cclP:14.15,vol:369000, pct:-2.74},
+  {sym:'GLOB', ars:3515, mepP:2.43, cclP:2.37, vol:647000, pct:-4.80},
+  {sym:'ABT',  ars:32700,mepP:22.60,cclP:22.10,vol:98000,  pct:0.61},
+  {sym:'AAL',  ars:10430,mepP:7.24, cclP:7.08, vol:87000,  pct:-1.44},
+  {sym:'ABNB', ars:13440,mepP:9.30, cclP:9.09, vol:54000,  pct:0.22},
+];
+const SEED_OTROS=[
+  {nombre:'Oficial BNA',    tipo:'oficial',        compra:1415,venta:1465},
+  {nombre:'Mayorista A3500',tipo:'mayorista',       compra:1437,venta:1446},
+  {nombre:'Blue',           tipo:'blue',            compra:1425,venta:1445},
+  {nombre:'Bolsa / MEP',    tipo:'bolsa',           compra:1461,venta:1463},
+  {nombre:'Cont. con Liq.', tipo:'contadoconliqui', compra:1517,venta:1517},
+  {nombre:'Cripto (USDT)',  tipo:'cripto',          compra:1518,venta:1518},
+  {nombre:'Tarjeta',        tipo:'tarjeta',         compra:1840,venta:1905},
+];
+
+let tcChart=null;
+
+function calcBondTc(b){ return {sym:b.sym,ars:b.ars,mep:b.mep,ccl:b.ccl,tcMep:b.ars/b.mep,tcCcl:b.ccl>0?b.ars/b.ccl:null,volMep:b.volMep,volCcl:b.volCcl,spread:b.ccl>0?b.ars/b.ccl-b.ars/b.mep:null}; }
+
+function calcCedTc(c){ return {sym:c.sym,name:CEDEAR_META[c.sym]?.name||c.sym,sector:CEDEAR_META[c.sym]?.sector||'—',ars:c.ars,mepP:c.mepP,cclP:c.cclP,tcMep:c.mepP?c.ars/c.mepP:null,tcCcl:c.cclP?c.ars/c.cclP:null,vol:c.vol,pct:c.pct}; }
+
+function render(bonds, cedears, otros){
+  const bCalcs  = bonds.map(calcBondTc);
+  const cCalcs  = cedears.map(calcCedTc);
+  const mepAll  = [...bCalcs.filter(c=>c.tcMep>0),...cCalcs.filter(c=>c.tcMep>0)];
+  const cclAll  = [...bCalcs.filter(c=>c.tcCcl>0),...cCalcs.filter(c=>c.tcCcl>0)];
+  const bestMep = Math.max(...mepAll.map(c=>c.tcMep));
+  const bestCcl = Math.max(...cclAll.map(c=>c.tcCcl));
+  const bestMepItem = mepAll.reduce((a,b)=>b.tcMep>a.tcMep?b:a, mepAll[0]||{});
+  const bestCclItem = cclAll.reduce((a,b)=>b.tcCcl>a.tcCcl?b:a, cclAll[0]||{});
+
+  // ── Tabla bonos MEP ───────────────────────────────────────────
+  const mepB = bCalcs.filter(c=>c.tcMep>0).sort((a,b)=>b.tcMep-a.tcMep);
+  document.getElementById('tbl-mep').innerHTML=mepB.map((c,i)=>{
+    const best=c.sym===bestMepItem.sym&&bestMepItem.sym?.length<=5;
+    const diff=c.tcMep-bestMep; const volStr=fmtVol(c.volMep);
+    return `<tr class="${best?'best-row':''}">
+      <td><strong>${c.sym}</strong>${best?'<span class="best-badge">✓ MEJOR</span>':''}</td>
+      <td>${pr(c.ars)}</td><td style="color:var(--mep)">${c.mep.toFixed(2)}</td>
+      <td style="color:var(--mep);font-weight:700">${prd(c.tcMep)}</td>
+      <td style="color:${diff===0?'var(--mu)':'var(--rd)'}">${diff===0?'—':(diff>=0?'+':'')+diff.toFixed(2)}</td>
+      <td style="color:var(--dim)">${volStr}</td>
+      <td style="color:var(--dim)">${(()=>{const v=c.volMep/c.tcMep/1e3;return v>=0.5?'$'+v.toFixed(0)+'K USD':'N/D';})()}</td>
+    </tr>`;
+  }).join('');
+
+  // ── Tabla bonos CCL ───────────────────────────────────────────
+  const cclB = bCalcs.filter(c=>c.tcCcl>0).sort((a,b)=>b.tcCcl-a.tcCcl);
+  document.getElementById('tbl-ccl').innerHTML=cclB.map((c,i)=>{
+    const best=c.sym===bestCclItem.sym&&bestCclItem.sym?.length<=5;
+    const diff=c.tcCcl-bestCcl; const volStr=fmtVol(c.volCcl);
+    return `<tr class="${best?'best-row':''}">
+      <td><strong>${c.sym}</strong>${best?'<span class="best-badge">✓ MEJOR</span>':''}</td>
+      <td>${pr(c.ars)}</td><td style="color:var(--ccl)">${c.ccl.toFixed(2)}</td>
+      <td style="color:var(--ccl);font-weight:700">${prd(c.tcCcl)}</td>
+      <td style="color:${diff===0?'var(--mu)':'var(--rd)'}">${diff===0?'—':(diff>=0?'+':'')+diff.toFixed(2)}</td>
+      <td style="color:var(--dim)">${volStr}</td>
+    </tr>`;
+  }).join('');
+
+  // ── Tabla CEDEARs ──────────────────────────────────────────────
+  const cedS = cCalcs.filter(c=>c.tcMep||c.tcCcl).sort((a,b)=>(b.vol||0)-(a.vol||0));
+  document.getElementById('tbl-ced').innerHTML=cedS.map(c=>{
+    const spread=c.tcMep&&c.tcCcl?c.tcCcl-c.tcMep:null;
+    const mepBest=c.tcMep&&c.tcMep>=bestMep-5;
+    const cclBest=c.tcCcl&&c.tcCcl>=bestCcl-5;
+    const pchCls=(c.pct||0)>=0?'color:var(--up)':'color:var(--rd)';
+    return `<tr>
+      <td><strong>${c.sym}</strong>${mepBest?'<span class="best-badge">✓ MEP</span>':''}${cclBest?'<span class="best-badge" style="background:rgba(56,189,248,.15);border-color:rgba(56,189,248,.3);color:var(--ccl)">✓ CCL</span>':''}</td>
+      <td style="color:var(--mu);font-size:10px">${c.name}</td>
+      <td>${pr(c.ars)}</td>
+      <td style="color:var(--mep);font-weight:${mepBest?700:500}">${c.tcMep?prd(c.tcMep):'—'}</td>
+      <td style="color:var(--ccl);font-weight:${cclBest?700:500}">${c.tcCcl?prd(c.tcCcl):'—'}</td>
+      <td style="color:var(--or)">${spread?prd(spread)+' ('+((spread/c.tcMep)*100).toFixed(1)+'%)':'—'}</td>
+      <td style="${pchCls}">${(c.pct||0)>=0?'+':''}${(c.pct||0).toFixed(2)}%</td>
+      <td style="color:var(--dim)">${fmtVol(c.vol)}</td>
+    </tr>`;
+  }).join('');
+
+  // ── Tabla otros ────────────────────────────────────────────────
+  const mepRef=bestMep||1451;
+  document.getElementById('tbl-otros').innerHTML=otros.map(o=>{
+    const diff=o.venta-mepRef;
+    const col=colorByTipo(o.tipo);
+    const pillCls={oficial:'pill-of',mayorista:'pill-of',blue:'pill-blue',bolsa:'pill-mep',contadoconliqui:'pill-ccl',cripto:'pill-cripto',tarjeta:'pill-of'}[o.tipo]||'pill-of';
+    const spread=o.compra>0?((o.venta/o.compra-1)*100).toFixed(2)+'%':'—';
+    return `<tr>
+      <td><strong>${o.nombre}</strong></td>
+      <td><span class="pill ${pillCls}">${o.tipo}</span></td>
+      <td style="color:var(--mu)">${pr(o.compra)}</td>
+      <td style="${col};font-weight:600">${pr(o.venta)}</td>
+      <td style="color:var(--dim)">${spread}</td>
+      <td style="color:${diff>0?'var(--rd)':diff<0?'var(--up)':'var(--mu)'}">${diff>=0?'+':''}${diff.toFixed(0)}</td>
+    </tr>`;
+  }).join('');
+
+  // ── KPIs ──────────────────────────────────────────────────────
+  const of=otros.find(o=>o.tipo==='oficial'), may=otros.find(o=>o.tipo==='mayorista');
+  const blue=otros.find(o=>o.tipo==='blue'), cryp=otros.find(o=>o.tipo==='cripto'), tarj=otros.find(o=>o.tipo==='tarjeta');
+  if(of)document.getElementById('k-of').textContent=pr(of.venta);
+  if(may)document.getElementById('k-may').textContent=pr(may.venta);
+  if(blue)document.getElementById('k-blue').textContent=pr(blue.venta);
+  document.getElementById('k-mep').textContent=prd(bestMep);
+  document.getElementById('k-mep-sub').textContent=bestMepItem.sym+' · mejor TC MEP';
+  document.getElementById('k-ccl').textContent=prd(bestCcl);
+  document.getElementById('k-ccl-sub').textContent=bestCclItem.sym+' · mejor TC CCL';
+  if(cryp)document.getElementById('k-cryp').textContent=pr(cryp.venta);
+  if(tarj)document.getElementById('k-tarj').textContent=pr(tarj.venta);
+  const avgSpr=cclAll.filter(c=>c.spread>0).reduce((s,c)=>s+(c.spread||c.tcCcl-c.tcMep),0)/(cclAll.filter(c=>c.spread>0).length||1);
+  document.getElementById('k-spread').textContent=avgSpr<0.5?'≈$0':'$'+avgSpr.toFixed(0);
+
+  // ── Spread list (bonos) ────────────────────────────────────────
+  document.getElementById('spread-list').innerHTML=bCalcs.filter(c=>c.spread>0).sort((a,b)=>b.spread-a.spread).map(c=>`
+    <div class="spread-row">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600">${c.sym}</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--or)">${prd(c.spread)}</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu)">+${(c.spread/c.tcMep*100).toFixed(2)}%</div>
+    </div>`).join('');
+
+  // ── Recomendaciones ───────────────────────────────────────────
+  const recs=[
+    {caso:'Comprás USD para ahorrar',rec:`MEP · ${bestMepItem.sym}`,tc:bestMep,color:'var(--mep)',motivo:'Mejor TC MEP disponible · acreditación inmediata'},
+    {caso:'Remitís al exterior (cable)',rec:`CCL · ${bestCclItem.sym}`,tc:bestCcl,color:'var(--ccl)',motivo:'Mejor TC cable · USD en cuenta exterior'},
+    {caso:'Operación urgente (24/7)',rec:'Cripto — USDT/USDC',tc:cryp?.venta,color:'var(--cripto)',motivo:'Sin horario · P2P o exchange regulado'},
+    {caso:'Monitoreo de referencia',rec:'Mayorista A3500',tc:may?.venta,color:'var(--lm)',motivo:'TC oficial de referencia BCRA'},
+  ];
+  document.getElementById('rec-list').innerHTML=recs.map(r=>`
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--bdr2)">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu)">${r.caso}</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;margin-top:2px">${r.rec}</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim);margin-top:1px">${r.motivo}</div>
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:${r.color}">${r.tc?prd(r.tc):'—'}</div>
+    </div>`).join('');
+
+  // ── Chart comparativo (todos los activos) ─────────────────────
+  const chartEntries=[
+    ...otros.filter(o=>!['bolsa','contadoconliqui'].includes(o.tipo))
+      .map(o=>({label:o.nombre,val:o.venta,color:colorByTipo(o.tipo,true),cat:'Otros'})),
+    ...mepB.map(c=>({label:c.sym+' MEP',val:c.tcMep,color:'rgba(52,211,153,.7)',cat:'MEP Bonos'})),
+    ...cclB.map(c=>({label:c.sym+' CCL',val:c.tcCcl,color:'rgba(56,189,248,.7)',cat:'CCL Bonos'})),
+    ...cedS.filter(c=>c.tcMep).map(c=>({label:c.sym+' MEP',val:c.tcMep,color:'rgba(245,158,11,.7)',cat:'CEDEARs MEP'})),
+    ...cedS.filter(c=>c.tcCcl).map(c=>({label:c.sym+' CCL',val:c.tcCcl,color:'rgba(251,146,60,.5)',cat:'CEDEARs CCL'})),
+  ].filter(d=>d.val>0).sort((a,b)=>a.val-b.val);
+
+  if(tcChart)tcChart.destroy();
+  const ctx=document.getElementById('tcChart').getContext('2d');
+  tcChart=new Chart(ctx,{
+    type:'bar',
+    data:{labels:chartEntries.map(d=>d.label),datasets:[{
+      data:chartEntries.map(d=>d.val),
+      backgroundColor:chartEntries.map(d=>d.color),
+      borderRadius:3,borderWidth:0
+    }]},
+    options:{
+      indexAxis:'y',responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},
+        tooltip:{backgroundColor:'#111827',borderColor:'#2d4060',borderWidth:1,
+          titleColor:'#e8f0f8',bodyColor:'#94adc8',padding:8,
+          callbacks:{label:i=>['  TC: $'+i.parsed.x.toLocaleString('es-AR',{maximumFractionDigits:0})]}}},
+      scales:{
+        x:{grid:{color:'rgba(31,45,64,.4)'},ticks:{color:'#5a7a9a',font:{family:'IBM Plex Mono',size:9},callback:v=>'$'+v.toLocaleString('es-AR',{maximumFractionDigits:0})}},
+        y:{grid:{display:false},ticks:{color:'#94adc8',font:{family:'IBM Plex Mono',size:8}}}
+      }
+    }
+  });
+
+  document.getElementById('last-upd').textContent='Actualizado '+now8();
+  document.getElementById('footer-upd').textContent='Fuentes: data912 (~15min delay BYMA) · dolarapi.com · '+new Date().toLocaleString('es-AR');
+}
+
+function fmtVol(v){return v>1e8?'$'+(v/1e6).toFixed(0)+'M':v>1e6?'$'+(v/1e6).toFixed(1)+'M':v>1e3?'$'+(v/1e3).toFixed(0)+'K':v>0?'$'+v:'—';}
+function colorByTipo(tipo,rgba){
+  const m={oficial:'rgba(100,116,139,.7)',mayorista:'rgba(163,230,53,.7)',blue:'rgba(244,114,182,.7)',cripto:'rgba(167,139,250,.7)',tarjeta:'rgba(245,158,11,.7)'};
+  return m[tipo]||'rgba(94,114,149,.5)';
+}
+
+async function refresh(){
+  document.getElementById('status-dot').className='status-dot';
+  document.getElementById('status-txt').textContent='Actualizando…';
+  try{
+    const [bondsRaw, cedsRaw, dolarRaw] = await Promise.all([
+      fetchProxy('https://data912.com/live/arg_bonds'),
+      fetchProxy('https://data912.com/live/arg_cedears'),
+      fetchProxy('https://dolarapi.com/v1/dolares'),
+    ]);
+
+    // ── Procesar bonos ──────────────────────────────────────────
+    const allBonds=Array.isArray(bondsRaw)?bondsRaw:(bondsRaw.data||[]);
+    const bMap={};
+    allBonds.forEach(b=>{
+      const m=b.symbol?.match(/^(AL|GD)(\d{2})(C|D)?$/);
+      if(!m)return;
+      const base=m[1]+m[2],suf=m[3]||'ARS';
+      if(!bMap[base])bMap[base]={sym:base};
+      const price=b.c||(b.px_bid&&b.px_ask?(b.px_bid+b.px_ask)/2:null);
+      if(!price)return;
+      if(suf==='ARS'){bMap[base].ars=price;bMap[base].volMep=bMap[base].volMep||0;}
+      else if(suf==='D'){bMap[base].mep=price;bMap[base].volMep=(b.v||0);}
+      else if(suf==='C'){bMap[base].ccl=price;bMap[base].volCcl=(b.v||0);}
+    });
+    const bonds=Object.values(bMap).filter(b=>b.ars&&(b.mep||b.ccl));
+
+    // ── Procesar CEDEARs ────────────────────────────────────────
+    const allCeds=Array.isArray(cedsRaw)?cedsRaw:(cedsRaw.data||[]);
+    const cMap={};
+    allCeds.forEach(d=>{
+      const m=d.symbol?.match(/^([A-Z0-9]{2,8}?)(C|D)?$/);
+      if(!m||!CEDEAR_META[m[1]])return;
+      const base=m[1],suf=m[2]||'ARS';
+      if(!cMap[base])cMap[base]={sym:base,vol:0,pct:0};
+      const price=d.c;
+      if(!price)return;
+      if(suf==='ARS'){cMap[base].ars=price;cMap[base].vol=d.v||0;cMap[base].pct=d.pct_change||0;}
+      else if(suf==='D')cMap[base].mepP=price;
+      else if(suf==='C')cMap[base].cclP=price;
+    });
+    const cedears=Object.values(cMap).filter(c=>c.ars&&(c.mepP||c.cclP));
+
+    // ── Procesar otros TC ───────────────────────────────────────
+    const otros=(Array.isArray(dolarRaw)?dolarRaw:[]).map(d=>({nombre:d.nombre,tipo:d.casa,compra:d.compra,venta:d.venta}));
+
+    render(bonds.length?bonds:SEED_BONDS, cedears.length?cedears:SEED_CEDEARS, otros.length?otros:SEED_OTROS);
+    document.getElementById('status-dot').className='status-dot live';
+    document.getElementById('status-txt').textContent='En vivo (BYMA ~15min delay) · '+now8();
+  }catch(e){
+    render(SEED_BONDS,SEED_CEDEARS,SEED_OTROS);
+    document.getElementById('status-dot').style.background='var(--am)';
+    document.getElementById('status-txt').textContent='Seed 08/06 · '+e.message;
+  }
+}
+
+// Init
+render(SEED_BONDS,SEED_CEDEARS,SEED_OTROS);
+refresh();
+setInterval(refresh,5*60*1000);
+</script>
+</div><!-- /body-inner -->
+</body>
+</html>

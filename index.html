@@ -547,7 +547,7 @@ function renderBriefing(b) {
   document.getElementById('drivers-list').innerHTML = b.drivers.map(dr => `
     <div class="dc">
       <div class="dc-hd">
-        <div class="dc-num">0${dr.id}</div>
+        <div class="dc-num">${dr.id<10?'0':''}${dr.id}</div>
         <div class="dc-meta">
           <div class="tag ${dr.tag_class}">${dr.tag}</div>
           <div class="dc-title">${dr.title}</div>

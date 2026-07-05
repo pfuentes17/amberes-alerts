@@ -160,7 +160,7 @@ footer{border-top:1px solid var(--br);padding:12px 44px;background:var(--nv2);di
 <div class="main" id="main"></div>
 <footer>
   <div class="fb">Amberes &middot; Grupo Financiero</div>
-  <div class="fn">Fuentes: BEA &middot; BLS &middot; BCB &middot; NBS &middot; Eurostat &middot; BOJ &middot; Junio 2026</div>
+  <div class="fn">Fuentes: BEA &middot; BLS &middot; BCB &middot; NBS &middot; Eurostat &middot; BOJ &middot; Julio 2026</div>
 </footer>
 <script>
 var $=function(id){return document.getElementById(id);};
@@ -386,12 +386,12 @@ us:{
   // Fed: ciclo de recortes 2024-2025. Target upper bound: 3.75% desde dic 2025
   fed:{l:["Ene 22","Jun 22","Dic 22","Mar 23","Jun 23","Dic 23","Sep 24","Nov 24","Dic 24","Oct 25","Nov 25","Dic 25"],v:[0.25,1.5,4.25,4.75,5.25,5.5,5.0,4.75,4.5,4.25,4.0,3.75]},
   claims:{l:["Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],v:[217,228,224,227,235,240,238,245,250,242,237,226,220,218,225,210]},
-  cal:{year:2026,month:5,events:[
-    {day:4,name:'NFP / Jobs Report',val:'May 26: +172K &middot; Desempleo 4.3%',col:'g'},
-    {day:11,name:'CPI May 2026',val:'+4.2% YoY &middot; Core +2.9% &middot; MoM +0.5%',col:'r'},
-    {day:11,name:'PPI May 2026',val:'+6.5% YoY &middot; Core +5.1% &middot; MoM +1.1%',col:'r'},
-    {day:18,name:'FOMC &ndash; Decisión Fed',val:'Se espera pausa en 3.75%',col:'a'},
-    {day:27,name:'PCE / Core PCE May 2026',val:'Dato pendiente',col:'a'}
+  cal:{year:2026,month:6,events:[
+    {day:2,name:'NFP / Jobs Report',val:'Jun 26: dato pendiente',col:'a'},
+    {day:14,name:'CPI Jun 2026',val:'Dato pendiente &middot; BLS',col:'a'},
+    {day:15,name:'PPI Jun 2026',val:'Dato pendiente &middot; BLS',col:'a'},
+    {day:29,name:'FOMC &ndash; Decisión Fed',val:'Se espera pausa en 3.75%',col:'a'},
+    {day:31,name:'PCE / Core PCE Jun 2026',val:'Dato pendiente',col:'a'}
   ]}
 },
 br:{
@@ -409,7 +409,7 @@ br:{
     yoy:[0.2,-0.7,4.4,2.7,0.2],
     idx:[95.2,92.8,104.3,102.0,107.3]
   },
-  cal:{year:2026,month:7,events:[
+  cal:{year:2026,month:6,events:[
     {day:3,name:'PIM-PF May 2026 &mdash; IBGE',val:'YoY +0.2% &middot; MoM dessaz &minus;0.2% &middot; idx 107.3',col:'a'},
     {day:9,name:'IPCA Jun 2026',val:'Dato pendiente',col:'a'},
     {day:5,name:'COPOM &ndash; Decisi&#243;n SELIC',val:'Resultado 18:30 BRT &middot; 14.50% actual',col:'a'},
@@ -441,11 +441,11 @@ eu:{
   ur:{l:["Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],v:[6.2,6.1,6.1,6.2,6.1]},
   gdp:{l:["Q1 25","Q2 25","Q3 25","Q4 25","Q1 26"],v:[0.3,0.3,0.4,0.2,0.4]},
   trade:{l:["Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25"],v:[4770,4696,5117,5071,6988,5567]},
-  cal:{year:2026,month:5,events:[
-    {day:3,name:'HICP May 2026 (Flash)',val:'Dato pendiente',col:'a'},
-    {day:5,name:'PIB Q1 2026 (Conf. Eurostat)',val:'+0.4% QoQ confirmado',col:'g'},
-    {day:6,name:'Desempleo Abr 2026',val:'Dato pendiente',col:'a'},
-    {day:11,name:'BCE &ndash; Decisi&#243;n de tasas',val:'&#8593; +25pb a 2.50% &middot; Primer hike desde 2023',col:'r'}
+  cal:{year:2026,month:6,events:[
+    {day:3,name:'HICP Jun 2026 (Flash)',val:'Dato pendiente',col:'a'},
+    {day:6,name:'Desempleo May 2026',val:'Dato pendiente',col:'a'},
+    {day:9,name:'BCE &ndash; Decisi&#243;n de tasas',val:'2.50% actual &middot; pr&#243;xima decisi&#243;n',col:'a'},
+    {day:16,name:'PIB Q2 2026 (Flash)',val:'Pr&#243;ximo release',col:'a'}
   ]}
 },
 jp:{
@@ -469,11 +469,11 @@ jp:{
 function buildUS(){
   var d=D.us;
   $('kstrip').innerHTML=kpis([
-    {l:'GDP Q1 2026 (2da est.)',v:pct(L(d.gdp.v)),c:sgn(L(d.gdp.v))},
-    {l:'CPI Abr 2026 YoY',v:L(d.cpi.v)+'%',c:'r'},
+    {l:'GDP Q1 2026 (3ra est.)',v:pct(L(d.gdp.v)),c:sgn(L(d.gdp.v))},
+    {l:'CPI May 2026 YoY',v:L(d.cpi.v)+'%',c:'r'},
     {l:'Core CPI',v:L(d.cpiCore)+'%',c:'r'},
-    {l:'PCE Abr 2026',v:L(d.pce.v)+'%',c:'r'},
-    {l:'PPI Abr 2026',v:L(d.ppi.v)+'%',c:'r'},
+    {l:'PCE May 2026',v:L(d.pce.v)+'%',c:'r'},
+    {l:'PPI May 2026',v:L(d.ppi.v)+'%',c:'r'},
     {l:'NFP May 2026',v:'+172K',c:'g'},
     {l:'Desempleo May 26',v:'4.3%',c:'a'},
     {l:'Fed Funds Rate',v:'3.50-3.75%',c:'a'}
@@ -484,7 +484,7 @@ function buildUS(){
     ocard('om1','GDP &middot; PBI','Producto Bruto Interno','Var. trimestral anualizada',pct(L(d.gdp.v)),sgn(L(d.gdp.v)),L(d.gdp.l),'Q4 25: +0.5%<br>3ra est. BEA',"showTab(1,'us')")+
     ocard('om2','CPI &middot; Inflaci&#243;n','&Iacute;ndice Precios Consumidor','Variaci&#243;n interanual',L(d.cpi.v)+'%','r',L(d.cpi.l),'Core: '+L(d.cpiCore)+'%<br>Energ&#237;a +17.9%',"showTab(2,'us')")+
     ocard('om3','PCE &middot; Fed','Consumo Personal','Medida preferida de la Fed',L(d.pce.v)+'%','r',L(d.pce.l),'Core PCE: '+L(d.pceCore)+'%<br>May 26 &middot; Target: 2.0%',"showTab(3,'us')")+
-    ocard('om4','PPI &middot; Mayorista','&Iacute;ndice Precios Productor','Presi&#243;n en pipeline',L(d.ppi.v)+'%','r',L(d.ppi.l),'Core PPI: '+L(d.ppiCore)+'%<br>Abr 2026 &middot; BLS',"showTab(4,'us')")+
+    ocard('om4','PPI &middot; Mayorista','&Iacute;ndice Precios Productor','Presi&#243;n en pipeline',L(d.ppi.v)+'%','r',L(d.ppi.l),'Core PPI: '+L(d.ppiCore)+'%<br>May 2026 &middot; BLS',"showTab(4,'us')")+
     ocard('om5','Mercado Laboral','NFP &middot; Desempleo','N&#243;minas no agr&#237;colas','+172K','g','May 2026','Desempleo 4.3%<br>AHE +3.6% YoY',"showTab(5,'us')")+
     ocard('om6','Balanza Comercial','Saldo Comercio Exterior','D&#233;ficit mensual B USD','$'+L(d.trade.v)+'B','r',L(d.trade.l),'Peor: -$136B<br>Mar 2025',"showTab(6,'us')")+
   '</div>';
@@ -498,22 +498,22 @@ function buildUS(){
       cal
     )+
     panel('us-p2',
-      shdr('CPI &middot; &Iacute;ndice de Precios al Consumidor','BLS &mdash; Abr 2026: +3.9% YoY (mayor desde May 2023)',L(d.cpi.v)+'%','Abr 2026 &middot; YoY','r')+
-      sr4([{l:'CPI General',v:L(d.cpi.v)+'%',c:'r',n:'Abr 2026'},{l:'Core CPI',v:L(d.cpiCore)+'%',c:'r',n:'Ex alim. y energ&#237;a'},{l:'MoM',v:'+'+L(d.cpiMoM)+'%',c:'r',n:'Abr 2026 (Mar: +0.9%)'},{l:'Energ&#237;a YoY',v:'+17.9%',c:'r',n:'Gasolina +28.4%'}])+
+      shdr('CPI &middot; &Iacute;ndice de Precios al Consumidor','BLS &mdash; May 2026: +4.2% YoY',L(d.cpi.v)+'%','May 2026 &middot; YoY','r')+
+      sr4([{l:'CPI General',v:L(d.cpi.v)+'%',c:'r',n:'May 2026'},{l:'Core CPI',v:L(d.cpiCore)+'%',c:'r',n:'Ex alim. y energ&#237;a'},{l:'MoM',v:'+'+L(d.cpiMoM)+'%',c:'r',n:'May 2026'},{l:'Energ&#237;a YoY',v:'+17.9%',c:'r',n:'Gasolina +28.4%'}])+
       box1('cc1','h240','CPI General YoY &mdash; 2025&ndash;2026')+
       box2(['cc2','cc3'],['CPI vs Core CPI vs Target (2%)','CPI MoM &mdash; &Iacute;mpetu mensual']),
       cal
     )+
     panel('us-p3',
-      shdr('PCE &middot; Consumo Personal','BEA &mdash; Inflaci&#243;n preferida de la Fed',L(d.pce.v)+'%','Abr 2026 &middot; YoY','r')+
-      sr4([{l:'PCE YoY',v:L(d.pce.v)+'%',c:'r',n:'Abr 2026'},{l:'Core PCE',v:L(d.pceCore)+'%',c:'r',n:'Ex alim. y energ&#237;a'},{l:'MoM',v:'+'+L(d.pceMoM)+'%',c:'r',n:'Abr 2026'},{l:'Target Fed',v:'2.0%',c:'a',n:'Meta inflaci&#243;n'}])+
+      shdr('PCE &middot; Consumo Personal','BEA &mdash; Inflaci&#243;n preferida de la Fed',L(d.pce.v)+'%','May 2026 &middot; YoY','r')+
+      sr4([{l:'PCE YoY',v:L(d.pce.v)+'%',c:'r',n:'May 2026'},{l:'Core PCE',v:L(d.pceCore)+'%',c:'r',n:'Ex alim. y energ&#237;a'},{l:'MoM',v:'+'+L(d.pceMoM)+'%',c:'r',n:'May 2026'},{l:'Target Fed',v:'2.0%',c:'a',n:'Meta inflaci&#243;n'}])+
       box1('cp1','h240','PCE YoY &mdash; &Uacute;ltimo a&#241;o vs Target (2%)')+
       box2(['cp2','cp3'],['PCE vs Core PCE vs Target','PCE MoM']),
       cal
     )+
     panel('us-p4',
-      shdr('PPI &middot; &Iacute;ndice de Precios al Productor','BLS &mdash; Presi&#243;n mayorista inflacionaria',L(d.ppi.v)+'%','Abr 2026 &middot; YoY','r')+
-      sr4([{l:'PPI YoY',v:L(d.ppi.v)+'%',c:'r',n:'Abr 2026'},{l:'Core PPI',v:L(d.ppiCore)+'%',c:'r',n:'Ex alim. y energ&#237;a'},{l:'MoM',v:'+'+L(d.ppiMoM)+'%',c:'r',n:'Abr 2026'},{l:'vs CPI',v:'+'+(L(d.ppi.v)-L(d.cpi.v)).toFixed(1)+'pp',c:'r',n:'Pipeline arriba de CPI'}])+
+      shdr('PPI &middot; &Iacute;ndice de Precios al Productor','BLS &mdash; Presi&#243;n mayorista inflacionaria',L(d.ppi.v)+'%','May 2026 &middot; YoY','r')+
+      sr4([{l:'PPI YoY',v:L(d.ppi.v)+'%',c:'r',n:'May 2026'},{l:'Core PPI',v:L(d.ppiCore)+'%',c:'r',n:'Ex alim. y energ&#237;a'},{l:'MoM',v:'+'+L(d.ppiMoM)+'%',c:'r',n:'May 2026'},{l:'vs CPI',v:'+'+(L(d.ppi.v)-L(d.cpi.v)).toFixed(1)+'pp',c:'r',n:'Pipeline arriba de CPI'}])+
       box1('pp1','h240','PPI General YoY &mdash; 2025&ndash;2026')+
       box2(['pp2','pp3'],['PPI vs Core PPI','PPI MoM &mdash; Presi&#243;n mensual']),
       cal
@@ -597,7 +597,7 @@ function buildBR(){
   $('main').innerHTML=
     panelFull('br-p0','<div class="og">'+
       ocard('bm1','IPCA &middot; Inflaci&#243;n','&#205;ndice Precios Consumidor','Variaci&#243;n interanual',L(d.cpi.v)+'%','r',L(d.cpi.l),'Meta: 3.0%<br>Tol: &plusmn;1.5pp',"showTab(1,'br')")+
-      ocard('bm2','SELIC &middot; Tasa','Tasa Pol&#237;tica Monetaria','Banco Central do Brasil',L(d.selic.v)+'%','r',L(d.selic.l),'COPOM 17 jun<br>&#8595; baja esperada',"showTab(2,'br')")+
+      ocard('bm2','SELIC &middot; Tasa','Tasa Pol&#237;tica Monetaria','Banco Central do Brasil',L(d.selic.v)+'%','r',L(d.selic.l),'COPOM 5 jul<br>&#8595; baja esperada',"showTab(2,'br')")+
       ocard('bm3','Mercado Laboral','Tasa de Desempleo','PNAD Cont&#237;nua &mdash; IBGE',L(d.ur.v)+'%',L(d.ur.v)<6?'g':'a',L(d.ur.l),'Cerca m&#237;nimo<br>hist&#243;rico',"showTab(3,'br')")+
       ocard('bm4','Balanza Comercial','Saldo Exportaciones','MM USD','+$7.1B','g','Mar 2026','Super&#225;vit<br>sostenido',"showTab(4,'br')")+
       ocard('bm5','PIB','Producto Interno Bruto','Variaci&#243;n interanual','+'+L(d.gdp.v)+'%','g',L(d.gdp.l),'4 trim. al alza<br>Moderaci&#243;n 2026',"showTab(5,'br')")+
@@ -611,8 +611,8 @@ function buildBR(){
       cal
     )+
     panel('br-p2',
-      shdr('SELIC &middot; Tasa de Inter&#233;s','Pol&#237;tica monetaria &mdash; BCB',L(d.selic.v)+'%','Abr 2026 &middot; COPOM 17 jun pendiente','r')+
-      sr4([{l:'SELIC actual',v:L(d.selic.v)+'%',c:'r',n:'Abr 2026 (-25bp)'},{l:'Pico del ciclo',v:'15.0%',c:'r',n:'Jun 25&ndash;Mar 26'},{l:'COPOM Jun 17',v:'14.25% esperado',c:'a',n:'Mercado dividido &middot; 18:30 BRT'},{l:'Tasa real',v:'+'+(L(d.selic.v)-L(d.cpi.v)).toFixed(1)+'pp',c:'g',n:'Mayor desde 2006'}])+
+      shdr('SELIC &middot; Tasa de Inter&#233;s','Pol&#237;tica monetaria &mdash; BCB',L(d.selic.v)+'%','May 2026 &middot; COPOM en curso','r')+
+      sr4([{l:'SELIC actual',v:L(d.selic.v)+'%',c:'r',n:'May 2026 (-25bp)'},{l:'Pico del ciclo',v:'15.0%',c:'r',n:'Jun 25&ndash;Mar 26'},{l:'COPOM Jul 5',v:'Decisi&#243;n hoy',c:'a',n:'&#8595; baja esperada'},{l:'Tasa real',v:'+'+(L(d.selic.v)-L(d.cpi.v)).toFixed(1)+'pp',c:'g',n:'Mayor desde 2006'}])+
       box1('bs1','h240','SELIC &mdash; Evoluci&#243;n Oct 2024&ndash;May 2026')+
       box2(['bs2','bs3'],['SELIC vs IPCA &mdash; Tasa real','SELIC proyecci&#243;n mercado']),
       cal
@@ -749,7 +749,7 @@ function buildCN(){
 function buildEU(){
   var d=D.eu;
   $('kstrip').innerHTML=kpis([
-    {l:'HICP Abr 2026',v:L(d.cpi.v)+'%',c:'r'},
+    {l:'HICP May 2026',v:L(d.cpi.v)+'%',c:'r'},
     {l:'Core HICP',v:L(d.cpiCore)+'%',c:'a'},
     {l:'Energ&#237;a YoY',v:'+10.8%',c:'r'},
     {l:'BCE Rate',v:L(d.bce.v)+'%',c:'g'},
@@ -770,8 +770,8 @@ function buildEU(){
       ocard('em6','PPI &middot; Mayorista','Precios al Productor','Var. interanual',L(d.ppi.v)+'%',L(d.ppi.v)>0?'r':'g',L(d.ppi.l),'Pasando<br>a positivo',null)+
     '</div>')+
     panel('eu-p1',
-      shdr('HICP &middot; Inflaci&#243;n Eurozona','Eurostat &mdash; Abr 2026: 3.0% (mayor desde Sep 2023)',L(d.cpi.v)+'%',L(d.cpi.l)+' &middot; YoY','r')+
-      sr4([{l:'HICP YoY',v:L(d.cpi.v)+'%',c:'r',n:'Abr 2026'},{l:'Core HICP',v:L(d.cpiCore)+'%',c:'a',n:'Ex energ&#237;a y alim.'},{l:'Energ&#237;a YoY',v:'+10.8%',c:'r',n:'Mayor desde Feb 23'},{l:'MoM',v:'+1.3%',c:'r',n:'Mayor desde Oct 22'}])+
+      shdr('HICP &middot; Inflaci&#243;n Eurozona','Eurostat &mdash; May 2026: 3.0% (mayor desde Sep 2023)',L(d.cpi.v)+'%',L(d.cpi.l)+' &middot; YoY','r')+
+      sr4([{l:'HICP YoY',v:L(d.cpi.v)+'%',c:'r',n:'May 2026'},{l:'Core HICP',v:L(d.cpiCore)+'%',c:'a',n:'Ex energ&#237;a y alim.'},{l:'Energ&#237;a YoY',v:'+10.8%',c:'r',n:'Mayor desde Feb 23'},{l:'MoM',v:'+1.3%',c:'r',n:'Mayor desde Oct 22'}])+
       box1('ec1','h240','HICP Eurozona YoY &mdash; Nov 2025&ndash;May 2026')+
       box2(['ec2','ec3'],['HICP vs Core HICP vs Target (2%)','PPI Eurozona YoY']),
       cal
@@ -821,9 +821,9 @@ function buildEU(){
 function buildJP(){
   var d=D.jp;
   $('kstrip').innerHTML=kpis([
-    {l:'CPI Abr 2026 YoY',v:L(d.cpi.v)+'%',c:'a'},
-    {l:'Core CPI Abr 26',v:L(d.cpiCore)+'%',c:'a'},
-    {l:'PPI Abr 2026',v:L(d.ppi.v)+'%',c:'r'},
+    {l:'CPI May 2026 YoY',v:L(d.cpi.v)+'%',c:'a'},
+    {l:'Core CPI May 26',v:L(d.cpiCore)+'%',c:'a'},
+    {l:'PPI May 2026',v:L(d.ppi.v)+'%',c:'r'},
     {l:'BOJ Rate Jun 26',v:L(d.boj.v)+'%',c:'r'},
     {l:'Desempleo '+L(d.ur.l),v:L(d.ur.v)+'%',c:'g'},
     {l:'PIB '+L(d.gdp.l),v:pct(L(d.gdp.v)),c:sgn(L(d.gdp.v))},
@@ -1010,20 +1010,20 @@ function buildCAL(){
 
   $('kstrip').innerHTML=kpis([
     {l:'Próximo evento',v:nextLabel,c:'a'},
-    {l:'Eventos jun 2026',v:CAL_EVENTS.filter(function(e){return e.d.startsWith('2026-06');}).length,c:'a'},
     {l:'Eventos jul 2026',v:CAL_EVENTS.filter(function(e){return e.d.startsWith('2026-07');}).length,c:'a'},
+    {l:'Eventos ago 2026',v:CAL_EVENTS.filter(function(e){return e.d.startsWith('2026-08');}).length,c:'a'},
     {l:'Auto-actualizan',v:CAL_EVENTS.filter(function(e){return e.auto;}).length,c:'g'},
     {l:'Update manual',v:CAL_EVENTS.filter(function(e){return !e.auto;}).length,c:'r'},
     {l:'Reuniones tasas',v:CAL_EVENTS.filter(function(e){return e.col==='g';}).length,c:'a'},
     {l:'Total eventos',v:CAL_EVENTS.length,c:'a'},
-    {l:'Período',v:'Jun–Dic',c:'a'}
+    {l:'Período',v:'Jul–Dic',c:'a'}
   ]);
   $('tabrow').innerHTML='';
 
   // Construir grillas por mes
   var months=[
-    {y:2026,m:5},{y:2026,m:6},{y:2026,m:7},
-    {y:2026,m:8},{y:2026,m:9},{y:2026,m:10},{y:2026,m:11}
+    {y:2026,m:6},{y:2026,m:7},{y:2026,m:8},
+    {y:2026,m:9},{y:2026,m:10},{y:2026,m:11},{y:2026,m:12}
   ];
 
   var html='<div style="max-width:980px;margin:0 auto">';
