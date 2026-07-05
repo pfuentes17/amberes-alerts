@@ -709,8 +709,9 @@ var D={
   deuda:{total:496676,total_dic25:455077,pib_pct:78.4,ext:65,int:35,me:53,pesos:47,
          // Abr 2026: ML 47%, ME 53% (distinto a Dic 2025 que era 68/32)
          hist:{l:['2019','2020','2021','2022','2023','2024','2025','Abr 26'],v:[89.4,102.8,80.8,84.7,91.5,82.6,78.4,null]},
-         // Vencimientos 2026 mensual (A.3.1 del xlsx dic 2025, datos ilustrativos)
-         venc:[{l:'2026 (pend.)',v:25},{l:'2027',v:18},{l:'2028',v:22},{l:'2029',v:15},{l:'2030+',v:30}],
+         // Vencimientos anuales USD — fuente amberes_data.xlsx · Vencimientos USD · Jul 2026
+         // 2028 incluye USD 6.000M REPO BCRA refinanciado (SOFR+4%, vto sep-2028)
+         venc:[{l:'2026',v:27.1},{l:'2027',v:26.5},{l:'2028',v:33.0},{l:'2029',v:28.3},{l:'2030+',v:115.8}],
          finan:{l:["Ene 26","Feb 26","Mar 26","Abr 26"],letes:[3200,2800,3500,2900],bonos:[1800,2100,1600,2200]}},
   // ── ECONOMIA REAL ──────────────────────
   sipa:{l:["Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],
@@ -1588,7 +1589,7 @@ function buildMECON(){
     {l:'Recaud. IVA Abr 26',v:'$4.1B',c:'m',n:'30.6% del total'},
     {l:'Recaud. Real YoY May 26',v:'+1.45%',c:'g',n:'1er mes positivo 2026'},
     {l:'Deuda Abr 26',v:'$496.7B',c:'r',n:'USD &middot; vs $455B Dic 25'},
-    {l:'Venc. 2026 (pend.)',v:'~$25B',c:'a',n:'USD pendientes'},
+    {l:'Venc. 2026 total',v:'$27.1B',c:'a',n:'USD · fuente Vencimientos USD'},
     {l:'Financ. Tesoro Abr',v:'$5.1B',c:'m',n:'Letes + Bonos'}
   ]);
   $('tabrow').innerHTML=tabs(['Resumen','Resultado Fiscal','Recaudaci\u00f3n AFIP','Deuda P\u00fablica','Financiamiento Tesoro','Balanza de Pagos']);
@@ -1621,7 +1622,7 @@ function buildMECON(){
     panel2col('p3',
       shdr('Deuda P\u00fablica','Secretar\u00eda de Finanzas \u2014 Dic 2025 (dato oficial)','78.4%','del PBI \u2014 $455B USD','r')+
       src('Secretar\u00eda de Finanzas \u00b7 Informe Trimestral Deuda P\u00fablica Dic 2025')+
-      sr4([{l:'Deuda Total Dic 25',v:'$455B',c:'r',n:'USD \u2014 78.4% del PBI',x:'mecon'},{l:'Deuda Externa',v:'65%',c:'r',n:'Del stock total',x:'mecon'},{l:'En Moneda Ext.',v:'68%',c:'r',n:'Exposici\u00f3n cambiaria',x:'mecon'},{l:'Venc. 2026 (pend.)',v:'~$25B',c:'a',n:'USD pendientes',x:'mecon'}])+
+      sr4([{l:'Deuda Total Dic 25',v:'$455B',c:'r',n:'USD \u2014 78.4% del PBI',x:'mecon'},{l:'Deuda Externa',v:'65%',c:'r',n:'Del stock total',x:'mecon'},{l:'En Moneda Ext.',v:'68%',c:'r',n:'Exposici\u00f3n cambiaria',x:'mecon'},{l:'Venc. 2026 total',v:'$27.1B',c:'a',n:'USD · fuente Vencimientos USD',x:'mecon'}])+
       '<div style="background:var(--nv3);border:1px solid var(--br);padding:13px 15px;margin-bottom:11px;">'+
         '<div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--rd);margin-bottom:10px;padding-left:8px;border-left:2px solid var(--rd);">Estructura de la Deuda \u2014 Dic 2025</div>'+
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">'+
