@@ -436,7 +436,7 @@ cn:{
 eu:{
   cpi:{l:["Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],v:[2.3,2.4,1.7,1.9,2.6,3.0]},
   cpiCore:[2.7,2.7,2.2,2.4,2.3,2.2],
-  ppi:{l:["Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],v:[-3.2,-2.9,-1.8,-0.9,0.2,0.8]},
+  ppi:{l:["Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[-3.2,-2.9,-1.8,-0.9,0.2,0.8,5.0,5.9]},
   bce:{l:["Jun 24","Sep 24","Oct 24","Dic 24","Ene 25","Mar 25","Abr 25","Jun 25","Sep 25","Dic 25","Mar 26","Jun 26"],v:[3.75,3.5,3.25,3.0,2.75,2.5,2.25,2.25,2.25,2.25,2.25,2.50]},
   ur:{l:["Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],v:[6.2,6.1,6.1,6.2,6.1]},
   gdp:{l:["Q1 25","Q2 25","Q3 25","Q4 25","Q1 26"],v:[0.3,0.3,0.4,0.2,0.4]},
@@ -767,7 +767,7 @@ function buildEU(){
       ocard('em3','Mercado Laboral','Tasa de Desempleo','Eurostat &mdash; EA',L(d.ur.v)+'%','a',L(d.ur.l),'M&#237;nimos<br>hist&#243;ricos 2023',"showTab(3,'eu')")+
       ocard('em4','Balanza Comercial','Saldo Comercial EA','Eurostat','&#8364;5,567M','g','Ago 2025','Super&#225;vit<br>sostenido',"showTab(4,'eu')")+
       ocard('em5','PIB &middot; Crecimiento','Producto Bruto EA','Var. trimestral QoQ','+'+L(d.gdp.v)+'%','g',L(d.gdp.l),'Mejor que<br>EE.UU. Q4 25',"showTab(5,'eu')")+
-      ocard('em6','PPI &middot; Mayorista','Precios al Productor','Var. interanual',L(d.ppi.v)+'%',L(d.ppi.v)>0?'r':'g',L(d.ppi.l),'Pasando<br>a positivo',null)+
+      ocard('em6','PPI &middot; Mayorista','Precios al Productor','Var. interanual',L(d.ppi.v)+'%',L(d.ppi.v)>0?'r':'g',L(d.ppi.l),'M&#225;x desde<br>Mar 2023',null)+
     '</div>')+
     panel('eu-p1',
       shdr('HICP &middot; Inflaci&#243;n Eurozona','Eurostat &mdash; May 2026: 3.0% (mayor desde Sep 2023)',L(d.cpi.v)+'%',L(d.cpi.l)+' &middot; YoY','r')+
