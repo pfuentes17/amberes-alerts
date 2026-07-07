@@ -1,133 +1,203 @@
 {
-  "date": "2026-07-06",
-  "generated": "2026-07-06T09:00:00Z",
+  "date": "2026-07-07",
+  "generated": "2026-07-07T14:10:00Z",
   "sentiment": {
     "overall": "neutral",
-    "label": "Futuros al alza con VIX más alto; optimismo cauteloso en la reapertura post-feriado",
-    "fg": 46,
+    "label": "Riesgo país argentino en mínimos de 8 años, pero el selloff de chips en Asia y la escalada en Ormuz agitan a los mercados globales",
+    "fg": 47,
     "fg_label": "Neutral",
-    "putcall": 0.96,
-    "aaii_bulls": 32
+    "putcall": 0.88,
+    "aaii_bulls": 36
   },
   "drivers": [
     {
       "id": 1,
       "tag": "argentina · deuda y tesoro",
       "tag_class": "tb",
-      "title": "Caputo presenta hoy el plan de deuda hasta 2027; el vencimiento de US$4.400M del 9-J ya está cubierto",
-      "brief": "El Tesoro tiene los fondos propios para el pago del miércoles: US$3.588M en depósitos en moneda extranjera + US$800M de cuenta en pesos. Sin uso de reservas del BCRA.",
-      "tldr": "Test de credibilidad soberano esta semana; mercado descuenta pago sin sorpresas",
+      "title": "El riesgo país cae a 408pb, mínimo en 8 años, tras el programa financiero 2026-2027 de Caputo",
+      "brief": "El EMBI Global cerró el 6/7 en 408pb (-7pb). El Tesoro proyecta un excedente de financiamiento de US$3.700M para 2026, sin aumentar deuda neta, con la mira en el grado de inversión hacia 2031.",
+      "tldr": "Menor costo de fondeo soberano en 8 años, con blindaje financiero armado para 2027",
       "sentiment": "ro",
       "sentiment_label": "🟢 Risk-On",
-      "evento": "El ministro Caputo expone hoy el esquema de financiamiento hasta fin de mandato, incluyendo garantías del <strong>BM y el BID</strong> para refinanciar los <strong>US$9.000M</strong> que vencen en 2027. Para el <strong>miércoles 9 de julio</strong>, el Tesoro tiene cubierto el vencimiento de <strong>US$4.400M</strong> a bonistas privados con fondos propios: <strong>US$3.588M</strong> en depósitos en moneda extranjera y <strong>US$800M</strong> adicionales de su cuenta en pesos. Sin usar reservas del BCRA. El mercado de capitales local marcó un récord histórico de <strong>US$12.000M diarios</strong> operados en BYMA, con más de 24 millones de cuentas de inversores minoristas.",
-      "contexto": "Los globales cerraron estables: <strong>GD30D en 66,09 ctv (-0,08%)</strong>, GD35D en 85,32 ctv (+0,14%), AL30D en 64,40 ctv (+0,11%). El EMBI Argentina cerró el 03/07 en <strong>415 pb</strong> sin cambios, mínimo desde 2018. La CNV aprobó una reforma del mercado de capitales que permite a pymes fijar sus propios plazos de emisión. El crédito en pesos al sector privado repuntó en junio impulsado por préstamos comerciales.",
+      "evento": "El <strong>EMBI Global cerró el 6/7 en 408pb</strong>, con una baja de <strong>7pb</strong>, el nivel más bajo desde 2018. Los globales argentinos cerraron mixtos en Buenos Aires: <strong>GD30D en 66,19 ctv (+0,15%)</strong>, GD35D en 85,50 ctv (+0,21%) y AL30D en 64,38 ctv (-0,03%). El Ministerio de Economía presentó formalmente el <strong>programa financiero 2026-2027</strong>: refinanciamiento exclusivo del capital de deuda, pago de intereses con recursos corrientes y sin incrementar el endeudamiento neto, con la meta de alcanzar el <strong>grado de inversión hacia 2031</strong>.",
+      "contexto": "Para 2026, el Tesoro proyecta necesidades por <strong>US$19.200M</strong> (US$9.300M de amortizaciones, US$8.900M de intereses y US$1.000M para capitalizar al BCRA) contra fuentes por <strong>US$22.900M</strong> (US$6.700M de compra de divisas al BCRA, US$6.000M de emisiones locales, US$4.000M de organismos internacionales, US$2.800M de otros multilaterales y US$1.900M del FMI), dejando un <strong>excedente de US$3.700M</strong> que se destinaría a reforzar 2027 (necesidades de US$24.900M). En paralelo, el dólar blue cerró en <strong>$1.515</strong> y acumula <strong>diez ruedas sobre $1.500</strong>, mientras el BCRA compró US$81M hoy y US$303M en julio, y realizó un canje con el Tesoro por US$2.000M (bono CER a cambio de Lelinks) para reforzar su poder de fuego.",
       "impacto": [
-        {"asset": "GD30D", "dir": "→ 66,09 ctv (-0,08%)", "cls": "neu"},
-        {"asset": "GD35D", "dir": "↑ 85,32 ctv (+0,14%)", "cls": "up"},
-        {"asset": "AL30D", "dir": "↑ 64,40 ctv (+0,11%)", "cls": "up"},
-        {"asset": "EMBI Argentina", "dir": "→ 415pb (sin cambios)", "cls": "up"}
+        {
+          "asset": "EMBI Argentina",
+          "dir": "↓ 408pb (-7pb, mín. 8 años)",
+          "cls": "up"
+        },
+        {
+          "asset": "GD30D",
+          "dir": "↑ 66,19 ctv (+0,15%)",
+          "cls": "up"
+        },
+        {
+          "asset": "GD35D",
+          "dir": "↑ 85,50 ctv (+0,21%)",
+          "cls": "up"
+        },
+        {
+          "asset": "Dólar blue",
+          "dir": "→ $1.515 (10ª rueda sobre $1.500)",
+          "cls": "neu"
+        }
       ]
     },
     {
       "id": 2,
-      "tag": "macro · ee.uu.",
+      "tag": "macro · mercados globales",
       "tag_class": "tb",
-      "title": "Nasdaq futuro +1,06% a 29.869 en la reapertura; ISM No-Manufacturero y Waller hoy",
-      "brief": "Mercados reabren tras el feriado del 4 de julio con futuros al alza. Hoy se publican el ISM de Servicios (consensus ~54) y el PMI Compuesto; a las 12:00 hs BsAs habla el gobernador Waller.",
-      "tldr": "Minutas FOMC el miércoles como catalizador principal de la semana",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "Los futuros de EE.UU. abren la semana al alza: <strong>Nasdaq +1,06% a 29.869,50</strong>, S&amp;P 500 +0,45% a 7.562,00 y Dow +0,01% a 53.189,00. Hoy se publican el <strong>ISM No-Manufacturero de junio</strong> (consensus ~54) y el <strong>PMI Servicios S&amp;P Global final</strong> — el mercado prestará atención al componente de precios pagados como indicador adelantado de inflación. A las <strong>12:00 hs BsAs</strong> habla el gobernador de la Fed <strong>Waller</strong>. Las bolsas europeas operan al alza con el <strong>DAX liderando</strong>; el Nikkei cerró sin grandes cambios.",
-      "contexto": "La semana trae: balanza comercial de mayo el martes (consensus: déficit US$80.000M) y <strong>minutas del FOMC el miércoles a las 14:00 ET</strong>. El CPI de mayo se ubicó en <strong>+4,2% interanual</strong>, mayor desde abril 2023. Los tesoreros corporativos de EE.UU. ya rotan hacia renta fija de mayor duración ante el riesgo de que la Fed de <strong>Warsh suba tasas</strong> en vez de recortarlas, según la encuesta de Duke/Richmond Fed/Atlanta Fed.",
+      "title": "Futuros mixtos con el Nasdaq como peor referencia; selloff de chips golpea a Asia y sube el VIX",
+      "brief": "Nasdaq futuro -0,97%, Dow futuro +0,21%. El Nikkei cerró -2,12% y el KOSPI casi -5% con circuit breakers por dudas sobre la sostenibilidad del rally de IA. El VIX sube a 15,86.",
+      "tldr": "El rally de IA del lunes se enfría en Asia por dudas sobre la demanda de chips",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El futuro del <strong>Nasdaq cae 0,97% a 29.649,25</strong>, el del <strong>S&amp;P 500 retrocede 0,14% a 7.581,25</strong> y el del <strong>Dow sube 0,21% a 53.486,00</strong>. Las bolsas europeas operan mixtas a la espera de definiciones sobre gasto de defensa en la cumbre de la OTAN en Ankara. En Asia, el <strong>Nikkei cerró -2,12%</strong> y el <strong>KOSPI se desplomó casi 5%</strong> activando &ldquo;circuit breakers&rdquo;, arrastrado por los fabricantes de chips ante dudas sobre la sostenibilidad de las ganancias récord ligadas a la IA. El <strong>VIX se ubica en 15,86 (+1,86%)</strong>.",
+      "contexto": "El movimiento contrasta con el cierre del lunes, cuando el <strong>Nasdaq Composite subió 1,12% a 26.121,16</strong> y el <strong>Dow superó por primera vez los 53.000 puntos</strong> (53.056,74), impulsados por el lanzamiento de los &ldquo;Trump Accounts&rdquo; —cuentas de inversión con depósito inicial de US$1.000 del Tesoro para menores, con 6 millones de cuentas ya abiertas— y un dato de <strong>Hon Hai (ensamblador de Nvidia)</strong> que reactivó el apetito por el trade de IA (el índice Philadelphia Semiconductor acumula +47% en el año). En bonos, el <strong>UST 10Y sube 1,0pb a 4,489%</strong> y el <strong>UST 2Y avanza 1,2pb a 4,137%</strong>, con la curva 2s10s aplanándose a 35,2pb y la 10s30s a 51,0pb; los rendimientos soberanos core suben, salvo el JGB japonés.",
       "impacto": [
-        {"asset": "Nasdaq futuro", "dir": "↑ +1,06% — 29.869,50", "cls": "up"},
-        {"asset": "S&P 500 futuro", "dir": "↑ +0,45% — 7.562,00", "cls": "up"},
-        {"asset": "Dow futuro", "dir": "↑ +0,01% — 53.189,00", "cls": "up"},
-        {"asset": "VIX", "dir": "↑ +2,97% — 16,28", "cls": "dn"}
+        {
+          "asset": "Nasdaq futuro",
+          "dir": "↓ -0,97% — 29.649,25",
+          "cls": "dn"
+        },
+        {
+          "asset": "KOSPI",
+          "dir": "↓ -5% (circuit breaker)",
+          "cls": "dn"
+        },
+        {
+          "asset": "VIX",
+          "dir": "↑ 15,86 (+1,86%)",
+          "cls": "dn"
+        },
+        {
+          "asset": "UST 10Y",
+          "dir": "↑ 4,489% (+1,0pb)",
+          "cls": "dn"
+        }
       ]
     },
     {
       "id": 3,
-      "tag": "bonos · curva ust",
-      "tag_class": "tb",
-      "title": "UST 10Y baja a 4,461% y la curva 2s10s se empina a 35,3pb; el JGB, único soberano al alza",
-      "brief": "Caída simultánea de tasas cortas y largas con empinamiento en ambos tramos. El belly (3-5-7Y) muestra outperformance. Soberanos core en baja generalizada, excepto Japón.",
-      "tldr": "Curva empinándose: el mercado descuenta recortes en el corto plazo pero inflación persistente en el largo",
-      "sentiment": "neu",
-      "sentiment_label": "🟡 Neutral",
-      "evento": "El <strong>UST 10Y baja 1,8 pb a 4,461%</strong> y el UST 2Y cede 2,3 pb a <strong>4,108%</strong>. La curva <strong>2s10s se empina a 35,3 pb (+0,5 pb)</strong> y la 10s30s a 51,4 pb (+1,2 pb). El belly (tramos 3-5-7 años) muestra <strong>outperformance de 0,4 pb</strong> frente a las alas. Los rendimientos soberanos core bajan de forma generalizada; el <strong>JGB japonés</strong> es la única excepción, al alza, consecuente con el sesgo hawkish del BOJ.",
-      "contexto": "En soberanos emergentes: <strong>Brasil -12,2 pb a 14,540%</strong> y Turquía -6,0 pb a 30,910%. El empinamiento simultáneo en los dos tramos — con tasas bajando en el corto y largo plazo — refleja expectativas de recortes de la Fed en el corto plazo, pero inflación estructuralmente más alta en el largo. Las minutas del FOMC del miércoles serán clave para calibrar si el sesgo de Warsh es genuinamente hawkish.",
+      "tag": "geopolítica · energía",
+      "tag_class": "tq",
+      "title": "Misiles iraníes impactan buques en Ormuz con la SPR de EE.UU. en mínimos desde 1983",
+      "brief": "El WTI sube 1,04% y el Brent 1,21% tras el ataque, que pone a prueba el cese el fuego con Washington. La reserva estratégica de EE.UU. cayó a 319,5M de barriles, el menor colchón físico en más de 40 años.",
+      "tldr": "Poco colchón físico de EE.UU. justo cuando escala la tensión en Ormuz",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "Misiles iraníes habrían impactado <strong>dos buques comerciales</strong> en el Estrecho de Ormuz, según funcionarios de EE.UU., poniendo a prueba el cese el fuego negociado con Washington a fines de junio. El <strong>WTI sube 1,04% a US$69,26</strong> y el <strong>Brent avanza 1,21% a US$72,86</strong>. Cancilleres de la OTAN se reúnen con contrapartes del Golfo en la cumbre de Ankara, incluida una propuesta franco-británica de misión marítima multinacional que Irán rechaza.",
+      "contexto": "El dato más preocupante es estructural: las <strong>reservas estratégicas de petróleo de EE.UU. cayeron a 319,5 millones de barriles</strong>, el nivel más bajo desde 1983, justo cuando el mercado había empezado a descontar una tregua duradera en Ormuz. A diferencia de episodios previos, Washington tendría muy poco colchón físico para amortiguar un shock de oferta si la escalada iraní se profundiza. En paralelo, Arabia Saudita recortó precios de crudo para Asia y la OPEP+ sumó más producción, aunque el mercado empieza a dudar de que exista demanda real para esos barriles adicionales. Del lado ruso, los ingresos petroleros y gasíferos cayeron <strong>45% interanual</strong> y el colchón del fondo soberano pasó de 6,5% a 1,8% del PBI, un desgaste fiscal que podría ser lo que finalmente empuje a Moscú hacia una tregua negociable.",
       "impacto": [
-        {"asset": "UST 10Y", "dir": "↓ 4,461% (-1,8pb)", "cls": "up"},
-        {"asset": "UST 2Y", "dir": "↓ 4,108% (-2,3pb)", "cls": "up"},
-        {"asset": "Curva 2s10s", "dir": "↑ 35,3pb (empina)", "cls": "neu"},
-        {"asset": "Brasil 10Y", "dir": "↓ 14,54% (-12,2pb)", "cls": "up"}
+        {
+          "asset": "WTI (futuro)",
+          "dir": "↑ US$69,26 (+1,04%)",
+          "cls": "dn"
+        },
+        {
+          "asset": "Brent (futuro)",
+          "dir": "↑ US$72,86 (+1,21%)",
+          "cls": "dn"
+        },
+        {
+          "asset": "SPR EE.UU.",
+          "dir": "↓ 319,5M barriles (mín. desde 1983)",
+          "cls": "dn"
+        }
       ]
     },
     {
       "id": 4,
-      "tag": "fx · dólar global",
+      "tag": "bancos centrales · fed",
       "tag_class": "tb",
-      "title": "DXY en 101,14 (+0,28%) y el yen en mínimo de 40 años (162,28): riesgo creciente de intervención japonesa",
-      "brief": "El dólar se fortalece globalmente. El USD/JPY toca 162,28; ex-funcionarios japoneses advierten que el Ministerio de Finanzas ya superó la etapa de advertencia verbal. Un short squeeze del yen impactaría al carry trade global.",
-      "tldr": "Intervención japonesa: el riesgo sistémico más subestimado del momento",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>DXY avanza 0,28% a 101,14</strong>. El EUR/USD retrocede a <strong>1,1400 (-0,19%)</strong>, GBP/USD a 1,3300 (-0,07%). El <strong>USD/JPY alcanza 162,28 (+0,59%)</strong>, mínimo del yen en cuatro décadas. El ex viceministro de Finanzas de Japón, Yamasaki, sostiene que el yen &ldquo;debería&rdquo; cotizar cerca de 130 y que el Ministerio está dispuesto a intervenir para forzar el cierre de posiciones cortas. El oro sube 0,72% a <strong>US$4.155,60</strong>, la plata +2,05% a 62,31 y el cobre +0,69% a 6,21. Bitcoin opera en <strong>62.784 (-1,27%)</strong>.",
-      "contexto": "Una intervención abrupta del Ministerio de Finanzas japonés no generaría solo una corrección cambiaria: podría detonar un <strong>desarme masivo del yen carry trade global</strong>, con impacto en activos emergentes y de riesgo. En FX emergente: el peso chileno se fortalece 0,59% a 919,75 y el peso mexicano se debilita 0,10% a 17,4733. Goldman Sachs recortó su objetivo para el USD/JPY a 165 por dólar.",
+      "title": "Trump avanza sobre la Fed de Warsh: en juego el control indirecto de 6 de los 12 votos del FOMC",
+      "brief": "La Casa Blanca busca desplazar a Cook y Powell del board y presiona la elección del próximo presidente de la Fed de Atlanta. Waller, en tanto, ve a la inflación como el principal riesgo.",
+      "tldr": "La independencia de la Fed se erosiona justo cuando el mercado más la necesita como ancla",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "Trump y su entorno no abandonan el plan de debilitar la independencia de la Fed, pese a que la Corte Suprema frenó por ahora la remoción de la gobernadora <strong>Lisa Cook</strong>. La Casa Blanca busca desplazar a Cook y a <strong>Powell</strong> del board, y presiona además el proceso de selección del próximo presidente de la Fed de Atlanta, votante desde 2027. Si la ofensiva prospera, Trump controlaría indirectamente <strong>seis de los doce votos del FOMC</strong>. El gobernador <strong>Waller</strong> afirmó que el principal riesgo para EE.UU. sigue siendo una inflación elevada, dado que el mercado laboral se mantiene estable.",
+      "contexto": "Las nóminas no agrícolas de junio crecieron apenas <strong>57.000</strong>, muy por debajo de las 110.000 esperadas, con revisiones a la baja de 74.000 en abril y mayo combinados —lo que movió las apuestas hacia septiembre sin un giro discursivo de la Fed—. El ISM de servicios de junio se ubicó en <strong>54,0</strong> (vs. 54,5 en mayo) y el PMI compuesto de S&amp;P Global en 51,9 (esperado 52,2). Más allá del resultado legal del caso Cook, el hostigamiento erosiona la confianza pública en el compromiso antiinflacionario de la Fed; si Warsh no marca distancia pública de la Casa Blanca, el mercado exigiría una prima de riesgo inflacionaria en la curva larga.",
       "impacto": [
-        {"asset": "DXY", "dir": "↑ 101,14 (+0,28%)", "cls": "dn"},
-        {"asset": "USD/JPY", "dir": "↑ 162,28 (+0,59%) — mín. 40 años", "cls": "dn"},
-        {"asset": "Oro (futuro)", "dir": "↑ US$4.155,60 (+0,72%)", "cls": "up"},
-        {"asset": "Bitcoin", "dir": "↓ 62.784 (-1,27%)", "cls": "dn"}
+        {
+          "asset": "Payrolls (jun.)",
+          "dir": "↓ 57.000 (vs. 110.000 esp.)",
+          "cls": "dn"
+        },
+        {
+          "asset": "ISM Servicios",
+          "dir": "↓ 54,0 (vs. 54,5 may.)",
+          "cls": "neu"
+        },
+        {
+          "asset": "UST 2Y",
+          "dir": "↑ 4,137% (+1,2pb)",
+          "cls": "dn"
+        }
       ]
     },
     {
       "id": 5,
-      "tag": "energía · opep+",
+      "tag": "fx · commodities",
       "tag_class": "tb",
-      "title": "OPEP+ aprueba quinto aumento mensual consecutivo (+188.000 b/d desde agosto), pero el WTI cede a US$68,33",
-      "brief": "La OPEP+ apuesta a la normalización de Ormuz, pero las importaciones chinas de crudo están en mínimos de más de una década. El GNL sigue tenso: Pakistán paga US$17,37/MMBtu spot, casi el doble de los contratos de largo plazo.",
-      "tldr": "El mercado descuenta una normalización que los datos físicos no confirman",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "La OPEP+ acordó elevar la producción en <strong>188.000 b/d desde agosto</strong>, acumulando ~<strong>800.000 b/d</strong> de incremento desde abril. Pese a ello, el <strong>WTI retrocede 0,52% a US$68,33</strong> y el <strong>Brent -0,13% a US$71,71</strong>: el mercado no descuenta que la demanda absorba el incremento fácilmente. Las exportaciones de crudo de Medio Oriente en junio fueron solo <strong>9,62 mm b/d</strong>, cerca de la mitad del promedio pre-guerra de Irán. Las importaciones marítimas de China cayeron a <strong>mínimos de más de una década</strong>.",
-      "contexto": "La asimetría de la normalización de Ormuz es notable: el crudo se recupera más rápido que el GNL. Pakistán pagó <strong>US$17,37/MMBtu</strong> en el mercado spot (TotalEnergies), casi el doble de los contratos de largo plazo con Qatar. Si China no vuelve al ritmo de compras esperado, el exceso de oferta presionaría a la baja los precios, afectando ingresos fiscales de exportadores, incluyendo la Argentina vía <strong>Vaca Muerta</strong>.",
+      "title": "El dólar global se fortalece y el oro cede, mientras el yen persiste cerca de mínimos de 40 años",
+      "brief": "El DXY sube a 100,97, el oro retrocede 0,65% y Bitcoin cae 0,97% a 63.376. El EEM sube 2,85% pese a la debilidad del real, el peso mexicano y el rand frente al dólar.",
+      "tldr": "Emergentes resisten en bloque (EEM +2,85%) pese a la fortaleza generalizada del dólar",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El <strong>DXY se ubica en 100,97 (+0,12%)</strong>, con <strong>EUR/USD en 1,1400 (-0,16%)</strong>, GBP/USD en 1,3400 (-0,10%), <strong>USD/JPY en 161,93 (-0,08%)</strong> y USD/CNH en 6,8000 (+0,07%). El oro cae 0,65% a <strong>US$4.140,40</strong> y la plata retrocede 1,69% a US$61,27. <strong>Bitcoin</strong> opera en 63.376 (-0,97%) y el cobre sube 0,18% a US$6,24. El <strong>EEM sube 2,85% a 67,57</strong> (cierre previo de NY), con el won coreano fortaleciéndose 0,70% mientras el rand sudafricano (-0,25%) y el peso mexicano (-0,20%) se debilitan frente al dólar.",
+      "contexto": "El yen se mantiene cerca de <strong>mínimos de 40 años</strong> mientras el gobierno japonés niega estar presionando al BOJ para mantener tasas bajas. La contradicción entre esa negativa oficial y la demanda récord registrada en la última subasta de bonos a 30 años —la más fuerte desde 2019— sugiere que el mercado ya empezó a exigir una prima por plazo más alta, anticipando que el ajuste de política del BOJ llegará más tarde de lo que espera el consenso.",
       "impacto": [
-        {"asset": "WTI (futuro)", "dir": "↓ US$68,33 (-0,52%)", "cls": "dn"},
-        {"asset": "Brent (futuro)", "dir": "↓ US$71,71 (-0,13%)", "cls": "dn"},
-        {"asset": "OPEP+ acumulado", "dir": "↑ +800.000 b/d desde abril", "cls": "neu"},
-        {"asset": "GNL spot (Pakistán)", "dir": "↑ US$17,37/MMBtu", "cls": "dn"}
-      ]
-    },
-    {
-      "id": 6,
-      "tag": "geopolítica · otan · china",
-      "tag_class": "tb",
-      "title": "Cumbre OTAN en Ankara, misil chino desde submarino nuclear y erosión gradual de la independencia de la Fed",
-      "brief": "Trump se reúne con Zelenski en la cumbre de Ankara. China dispara un misil balístico desde un submarino nuclear, alarmando a Japón y Australia. WaPo revela la inserción de Stephen Miran en el board de la Fed como segunda amenaza a su independencia.",
-      "tldr": "Múltiples focos de riesgo geopolítico e institucional simultáneos",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "La <strong>cumbre de la OTAN en Ankara</strong> arranca hoy con Trump reuniéndose con Zelenski y el presidente sirio al margen. China disparó un <strong>misil balístico desde un submarino nuclear</strong> hacia el Pacífico, alarmando a Japón, Australia y Nueva Zelanda. Un editorial del Washington Post revela que Trump colocó a <strong>Stephen Miran</strong> —asesor de la Casa Blanca que ocultó sus visiones sobre aranceles mientras litigaba el caso Cook— dentro del board de la Fed.",
-      "contexto": "El caso Miran muestra que la erosión de la independencia de la Fed no requiere un despido dramático: alcanza con insertar personal leal al Ejecutivo dentro del board. La prima de riesgo institucional sobre activos en dólares se construye gradualmente. En Europa, Francia y Alemania no lograron acordar un caza conjunto, mostrando el patrón crónico de descoordinación industrial que limita el upside de la tesis de &ldquo;rearme europeo&rdquo; en activos de defensa no alemanes.",
-      "impacto": [
-        {"asset": "Risk-off geopolítico", "dir": "↑ presión sobre EM", "cls": "dn"},
-        {"asset": "Independencia Fed", "dir": "↓ riesgo institucional acumulando", "cls": "dn"},
-        {"asset": "Defensa europea (no-DE)", "dir": "→ upside limitado por descoordinación", "cls": "neu"},
-        {"asset": "JPY / activos refugio", "dir": "↑ demanda de cobertura", "cls": "up"}
+        {
+          "asset": "DXY",
+          "dir": "↑ 100,97 (+0,12%)",
+          "cls": "dn"
+        },
+        {
+          "asset": "Oro (futuro)",
+          "dir": "↓ US$4.140,40 (-0,65%)",
+          "cls": "dn"
+        },
+        {
+          "asset": "EEM",
+          "dir": "↑ 67,57 (+2,85%)",
+          "cls": "up"
+        },
+        {
+          "asset": "Bitcoin",
+          "dir": "↓ 63.376 (-0,97%)",
+          "cls": "dn"
+        }
       ]
     }
   ],
   "tensiones": [
-    {"label": "OPEP+ sube oferta, China no compra", "texto": "El Brent en US$71,72 refleja una normalización de flujos que todavía no ocurre en los datos físicos. Si China no vuelve al ritmo de compras esperado, el exceso de oferta será mayor y más persistente, presionando a la baja los ingresos fiscales de exportadores de crudo, incluida Argentina vía Vaca Muerta."},
-    {"label": "Yen en mínimos de 40 años: riesgo de short squeeze global", "texto": "La brecha entre fundamentos (~130 USD/JPY) y mercado (162) acumula riesgo de intervención japonesa abrupta. Un short squeeze inducido por el Ministerio de Finanzas japonés no sería una corrección cambiaria gradual: detonaría un desarme más amplio del yen carry trade global, con impacto en bonos emergentes y activos de riesgo."},
-    {"label": "Futuros al alza pero VIX también sube: cautela de fondo", "texto": "El Nasdaq lidera con +1,06% pero el VIX sube 2,97% a 16,28. Esa combinación indica que hay cobertura comprándose en paralelo a la suba. El sesgo hawkish de Warsh, los tesoreros corporativos rotando a duración larga y las minutas del FOMC del miércoles mantienen abierta la incertidumbre sobre la trayectoria de tasas."}
+    {
+      "label": "SPR en mínimos de 1983 justo cuando escala la tensión en Ormuz",
+      "texto": "Las reservas estratégicas de petróleo de EE.UU. cayeron a 319,5 millones de barriles, el nivel más bajo desde 1983, precisamente cuando el mercado había empezado a descontar una tregua duradera en el Estrecho de Ormuz. Si la escalada iraní contra buques comerciales se profundiza, Washington tendría muy poco colchón físico para amortiguar un shock de oferta, a diferencia de episodios previos donde la SPR actuó como variable de ajuste."
+    },
+    {
+      "label": "La independencia de la Fed se erosiona justo cuando el mercado más la necesita",
+      "texto": "Trump avanza sobre el board de la Fed —Cook, Powell y la próxima presidencia de la Fed de Atlanta— en un momento en que las nóminas de junio (57.000 vs. 110.000 esperados) ya generan dudas sobre el rumbo de la política monetaria. Si Warsh no marca distancia pública de la Casa Blanca, el riesgo no es solo legal: el mercado podría empezar a exigir una prima de riesgo inflacionaria en la curva larga, más allá de dónde fije la tasa el FOMC."
+    },
+    {
+      "label": "Riesgo país en mínimos, pero el desdoblamiento bonaerense puede testear el blindaje de Caputo",
+      "texto": "El programa financiero 2026-2027 construye un buffer de liquidez con el riesgo país en su nivel más bajo desde 2018, pero convive con una interna peronista sin resolver —Cristina Kirchner condiciona su apoyo a la no competencia interna— y una negociación de Milei con catorce gobernadores para sincronizar calendarios electorales. Un triunfo kirchnerista temprano en la provincia de Buenos Aires podría poner a prueba antes de lo previsto el blindaje financiero armado para 2027."
+    }
   ],
   "correlaciones": [
-    {"par": "Yen débil + Fed hawkish → Carry trade EM", "texto": "El carry trade financiado en yenes sigue rindiendo (26% desde abril 2025), pero Invesco y AllianceBernstein ya migran parte del fondeo a euro y dólar canadiense. El riesgo dejó de ser geopolítico y pasó a ser la trayectoria de la política monetaria de la Fed misma."},
-    {"par": "OPEP+ + China comprando poco → Vaca Muerta", "texto": "Un exceso de oferta persistente que presione el WTI por debajo de US$65 afectaría los ingresos fiscales del esquema de regalías de Vaca Muerta (12% sobre crudo en boca de pozo, distribuido entre 8 provincias), en un contexto donde el mercado ya empieza a descontar una recuperación sostenida del volumen exportado."},
-    {"par": "VIX sube + FOMC minutas miércoles → Bonos ARG", "texto": "Los globales argentinos están estables (EMBI 415pb), pero un sesgo más hawkish de lo esperado en las minutas del FOMC podría reabrir presión sobre spreads emergentes. El vencimiento del 9-J actúa como ancla positiva de corto plazo; el foco institucional se desplaza a los refinanciamientos de 2027."}
+    {
+      "par": "Desgaste fiscal ruso → probabilidad de tregua en Ucrania",
+      "texto": "Los ingresos petroleros y gasíferos rusos cayeron 45% interanual y el colchón del fondo soberano pasó de 6,5% a 1,8% del PBI desde el inicio de la guerra. Ese deterioro fiscal, más que el frente militar, podría ser lo que finalmente empuje a Moscú hacia una tregua negociable en los próximos meses, algo que el mercado de energía y granos europeos recién empieza a descontar parcialmente."
+    },
+    {
+      "par": "Selloff de chips en Asia + Fed hawkish → apetito por emergentes",
+      "texto": "El derrumbe del KOSPI (-5%) y el Nikkei (-2,12%) por dudas sobre el trade de IA, combinado con una Fed bajo presión política que Waller intenta anclar con un discurso de cautela inflacionaria, es el tipo de combinación que típicamente presiona a los activos emergentes. Sin embargo, el EEM sube 2,85% hoy, señal de que el apetito por emergentes todavía resiste pese al ruido en tecnología y bancos centrales."
+    },
+    {
+      "par": "Riesgo país en mínimos + programa financiero → menor dependencia de mercados externos",
+      "texto": "El EMBI en 408pb y el excedente de financiamiento de US$3.700M proyectado para 2026 son la misma historia contada desde dos ángulos: la mejora de solvencia percibida le permite al Tesoro cubrir sus vencimientos sin salir a emitir deuda nueva en el corto plazo, reduciendo la exposición de Argentina a la volatilidad global que hoy golpea a otros activos de riesgo."
+    }
   ],
-  "bottom_line": "<strong>El lunes 6 de julio arranca con una combinación inusual: futuros al alza liderados por el Nasdaq (+1,06%) pero con VIX más alto (+3%) y dólar firme.</strong> No es una señal de risk-off, pero sí de posicionamiento no unánimemente constructivo. Para Argentina, la semana tiene dos eventos predecibles: Caputo presenta hoy el plan de deuda y el <strong>miércoles 9 de julio</strong> se paga el vencimiento de US$4.400M con fondos propios — los globales estables y el EMBI en 415pb confirman que el mercado no descuenta sorpresas. El mayor riesgo global de la semana no es el vencimiento argentino sino la acumulación de tensiones sistémicas: el <strong>yen en mínimos de 40 años</strong> con riesgo de un short squeeze japonés que podría arrastrar al carry trade global; la <strong>OPEP+ elevando oferta</strong> en un mercado donde China no compra al ritmo esperado; y la <strong>erosión gradual de la independencia de la Fed</strong> a través del caso Miran. Las <strong>minutas del FOMC del miércoles</strong> son la referencia más importante de la semana para calibrar el sesgo real de Warsh. El tono general es de optimismo cauteloso: la macro argentina sigue mejorando en los márgenes (reservas, inflación, riesgo país), pero el contexto global acumula más riesgos de cola de lo que sugieren los precios de superficie."
+  "bottom_line": "<strong>El martes 7 de julio combina una de las mejores noticias locales del año con un cóctel global más volátil de lo que sugiere la superficie.</strong> En Argentina, el EMBI Global cerró el 6/7 en 408pb (-7pb), su nivel más bajo desde 2018, un día después de que Caputo presentara el programa financiero 2026-2027: un excedente de financiamiento de US$3.700M para este año, sin aumentar la deuda neta, con la mira puesta en el grado de inversión hacia 2031. Los globales acompañan (GD30D +0,15%, GD35D +0,21%) y el dólar blue completa su décima rueda sobre los $1.500 con el BCRA comprando reservas de forma sostenida. A nivel global, en cambio, el optimismo del lunes —Nasdaq Composite +1,12%, Dow superando por primera vez los 53.000 puntos con el lanzamiento de los &ldquo;Trump Accounts&rdquo;— se enfrió este martes: el Nasdaq futuro cae 0,97%, el Nikkei y el KOSPI se desploman en Asia por dudas sobre la sostenibilidad del rally de IA, el VIX sube a 15,86 y misiles iraníes impactaron buques comerciales cerca de Ormuz justo cuando la reserva estratégica de petróleo de EE.UU. está en su nivel más bajo desde 1983. A eso se suma la erosión gradual de la independencia de la Fed, con Trump presionando por el control indirecto de seis de los doce votos del FOMC. Para Argentina, el mensaje es doble: la mejora de riesgo país y el blindaje financiero para 2027 le dan un colchón cada vez más sólido frente a shocks externos, pero ese blindaje todavía depende de que la macro global no se deteriore de golpe —y, en el plano local, de que el desdoblamiento electoral bonaerense no lo ponga a prueba antes de tiempo."
 }
