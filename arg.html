@@ -530,10 +530,10 @@ var D={
   // UCII — Utilización Capacidad Instalada Industria — INDEC capacidad_06_26EA3331AEEE.pdf (publicado 16/06/2026)
   ucii:{l:["Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
         v:[55.0,58.6,54.4,58.6,58.9,59.0,58.2,59.4,61.1,61.0,57.7,53.8,53.6,54.6,59.8,59.9]},
-  // IPI Minero — INDEC · Abril 2026 (publicado 08/06/2026)
+  // IPI Minero — INDEC · Mayo 2026 (publicado 07/07/2026)
   ipiMinero:{
-    l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
-    v:[0.2,6.8,7.8,4.0,2.0,4.1,2.2,5.0,5.5,3.4,10.8,9.5]  // YoY %
+    l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
+    v:[0.2,6.8,7.8,4.0,2.0,4.1,2.2,5.0,5.7,3.5,10.7,9.6,9.2]  // YoY %
   },
   // ICC — Índice Costo Construcción GBA — INDEC · Mayo 2026 (publicado 17/06/2026)
   icc:{
@@ -891,13 +891,13 @@ function buildINDEC(){
       bx2(['is1','is2'],['ISAC \u2014 Construcci\u00f3n MoM Desestacionalizado','IPI \u2014 Industria Manufacturera MoM'],'h240',['c-indec','c-indec'])+
       bx1('is3','h190','ISAC vs IPI vs EMAE \u2014 Comparativa sectorial 2025\u20132026','')+
       bx1('is3b','h220','UCII \u2014 Utilizaci\u00f3n Capacidad Instalada Industria (%) \u00b7 Ene 2025\u2013Abr 2026','c-indec')+
-      shdr('IPI Minero \u00b7 Energ\u00eda y Recursos','INDEC \u2014 Petr\u00f3leo \u00b7 Gas Natural \u00b7 Litio','+9.5%','IPI Minero Abr 2026 \u00b7 YoY','g')+
-      src('INDEC \u00b7 ipi_minero_06_26 \u00b7 Abril 2026')+
+      shdr('IPI Minero \u00b7 Energ\u00eda y Recursos','INDEC \u2014 Petr\u00f3leo \u00b7 Gas Natural \u00b7 Litio','+9.2%','IPI Minero May 2026 \u00b7 YoY','g')+
+      src('INDEC \u00b7 ipi_minero_07_26 \u00b7 Mayo 2026')+
       sr4([
-        {l:'IPI Minero YoY',v:'+9.5%',c:'g',n:'Abr 2026 \u00b7 acum +7.4%',x:'indec'},
-        {l:'Petr\u00f3leo crudo',v:'+19.1%',c:'g',n:'No conv +39.2% (Vaca Muerta)',x:'indec'},
-        {l:'Gas natural',v:'+2.8%',c:'g',n:'No conv +12.2% \u00b7 conv -12.1%',x:'indec'},
-        {l:'Litio carbonato',v:'+79.0%',c:'g',n:'11.466 tons \u00b7 +60.4% YoY tons',x:'indec'}
+        {l:'IPI Minero YoY',v:'+9.2%',c:'g',n:'May 2026 \u00b7 acum +7.8%',x:'indec'},
+        {l:'Petr\u00f3leo crudo',v:'+19.2%',c:'g',n:'May 26 \u00b7 gas natural +5.5%',x:'indec'},
+        {l:'IPI Pesquero YoY',v:'-24.3%',c:'r',n:'May 2026 \u00b7 acum +9.7%',x:'indec'},
+        {l:'Litio carbonato',v:'+57.3%',c:'g',n:'11.562 tons \u00b7 \u00edndice 539.7',x:'indec'}
       ])+
       bx2(['is4','is5'],['IPI Minero \u2014 Nivel General YoY %','Petr\u00f3leo \u2014 Convencional vs No Convencional (miles m\u00b3)'],'h240',['c-indec','c-indec'])+
       bx2(['is6','is7'],['Gas Natural \u2014 Conv vs No Conv (mill. m\u00b3)','Litio \u2014 Carbonato de litio (toneladas)'],'h200',['c-indec','c-indec'])+
