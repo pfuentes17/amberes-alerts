@@ -1881,14 +1881,14 @@ function buildREAL(){
 // ══ REM — Relevamiento de Expectativas de Mercado ════════════════
 // Datos seed Mayo 2026 (del PDF BCRA publicado 05-jun-2026)
 var REM_SEED = {
-  informe:'2026-05', fecha:'2026-06-05',
-  ipc_mes:2.6,       ipc_mes_top10:2.7,   ipc_12m:24.2,  ipc_anual:30.5,
-  tc_mes:1422,       tc_diciembre:1658,    tc_top10:1596,
-  tamar_mes:22.75,   tamar_diciembre:22.0, tamar_top10_dic:21.7,
-  pib_anual:2.9,     pib_top10:2.8,
-  desempleo_q4:7.4,  desempleo_q1:7.7,
-  expo_anual:98547,  impo_anual:78363,     saldo_comercial:20185,
-  fiscal_anual:16.0,
+  informe:'2026-06', fecha:'2026-07-06',
+  ipc_mes:2.0,       ipc_mes_top10:1.9,   ipc_12m:24.2,  ipc_anual:30.5,
+  tc_mes:1482,       tc_diciembre:1673,    tc_top10:1621,
+  tamar_mes:22.50,   tamar_diciembre:22.0, tamar_top10_dic:23.1,
+  pib_anual:3.0,     pib_top10:3.0,
+  desempleo_q4:7.5,  desempleo_q1:7.7,
+  expo_anual:100000, impo_anual:76400,     saldo_comercial:23600,
+  fiscal_anual:15.7,
 };
 // Histórico mensual para gráficos (mediana IPC mensual esperado vs real)
 var REM_HIST = [
@@ -1907,8 +1907,9 @@ var REM_HIST = [
   {m:'Ene 26',ipc_esp:2.5,ipc_real:2.9,tc_esp:1460,tc_real:1409,pib:2.8},
   {m:'Feb 26',ipc_esp:2.5,ipc_real:2.9,tc_esp:1470,tc_real:1410,pib:2.8},
   {m:'Mar 26',ipc_esp:2.6,ipc_real:3.4,tc_esp:1480,tc_real:1412,pib:2.8},
-  {m:'Abr 26',ipc_esp:2.6,ipc_real:2.6,tc_esp:1410,tc_real:1413,pib:2.8},
+  {m:'Abr 26',ipc_esp:2.6,ipc_real:2.6,tc_esp:1410,tc_real:1413,pib:2.9},
   {m:'May 26',ipc_esp:2.6,ipc_real:null,tc_esp:1422,tc_real:null,pib:2.9},
+  {m:'Jun 26',ipc_esp:2.0,ipc_real:null,tc_esp:1482,tc_real:null,pib:3.0},
 ];
 
 var remChart1=null, remChart2=null, remChart3=null;
@@ -1970,16 +1971,16 @@ async function buildREM(){
 
   // ── TABLA RESUMEN ─────────────────────────────────────────────
   var rows=[
-    {ind:'IPC General',periodo:'Próximo mes',val:(D2.ipc_mes||REM_SEED.ipc_mes).toFixed(1)+'%',top10:(REM_SEED.ipc_mes_top10).toFixed(1)+'%',nota:'Mediana · sin cambios vs REM anterior'},
+    {ind:'IPC General',periodo:'Próximo mes',val:(D2.ipc_mes||REM_SEED.ipc_mes).toFixed(1)+'%',top10:(REM_SEED.ipc_mes_top10).toFixed(1)+'%',nota:'Mediana · −0.1pp vs REM anterior'},
     {ind:'IPC General',periodo:'Próximos 12 meses',val:(D2.ipc_12m||REM_SEED.ipc_12m).toFixed(1)+'%',top10:'—',nota:'Interanual esperado'},
     {ind:'IPC General',periodo:'2026 (acum.)',val:(D2.ipc_anual||REM_SEED.ipc_anual).toFixed(1)+'%',top10:'—',nota:'Variación dic-dic'},
     {ind:'Tipo de cambio',periodo:'Próximo mes (prom.)',val:'$'+(D2.tc_mes||REM_SEED.tc_mes).toFixed(0),top10:'—',nota:'$/USD promedio'},
     {ind:'Tipo de cambio',periodo:'Diciembre 2026',val:'$'+(D2.tc_diciembre||REM_SEED.tc_diciembre).toFixed(0),top10:'$'+REM_SEED.tc_top10.toFixed(0),nota:'Var. i.a. esperada ~'+Math.round((REM_SEED.tc_diciembre/1408-1)*100)+'%'},
     {ind:'TAMAR',periodo:'Próximo mes (TNA)',val:(D2.tamar_mes||REM_SEED.tamar_mes).toFixed(2)+'%',top10:REM_SEED.tamar_top10_dic.toFixed(1)+'% (dic)',nota:'Tasa de política monetaria'},
     {ind:'TAMAR',periodo:'Diciembre 2026 (TNA)',val:(D2.tamar_diciembre||REM_SEED.tamar_diciembre).toFixed(1)+'%',top10:'—',nota:'Fin de ciclo baja'},
-    {ind:'PIB real',periodo:'2026 (var. anual)',val:'+'+(D2.pib_anual||REM_SEED.pib_anual).toFixed(1)+'%',top10:'+'+REM_SEED.pib_top10.toFixed(1)+'%',nota:'+0.1pp vs REM anterior'},
+    {ind:'PIB real',periodo:'2026 (var. anual)',val:'+'+(D2.pib_anual||REM_SEED.pib_anual).toFixed(1)+'%',top10:'+'+REM_SEED.pib_top10.toFixed(1)+'%',nota:'+0.1pp vs REM anterior · Top10 igual'},
     {ind:'Desocupación',periodo:'Q4 2026',val:(D2.desempleo_q4||REM_SEED.desempleo_q4).toFixed(1)+'%',top10:'—',nota:'Sin cambios'},
-    {ind:'Superávit comercial',periodo:'2026 (MM USD)',val:'USD '+REM_SEED.saldo_comercial.toFixed(0)+'M',top10:'—',nota:'+USD 3.679M vs anterior'},
+    {ind:'Superávit comercial',periodo:'2026 (MM USD)',val:'USD '+REM_SEED.saldo_comercial.toFixed(0)+'M',top10:'—',nota:'+USD 3.415M vs anterior'},
     {ind:'Resultado primario',periodo:'2026 (B ARS)',val:'$'+(REM_SEED.fiscal_anual).toFixed(0)+'B',top10:'—',nota:'Superávit fiscal'},
   ];
 
