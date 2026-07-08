@@ -1,203 +1,89 @@
 {
-  "date": "2026-07-07",
-  "generated": "2026-07-07T14:10:00Z",
+  "date": "2026-07-08",
+  "generated": "2026-07-08T13:00:00Z",
   "sentiment": {
-    "overall": "neutral",
-    "label": "Riesgo país argentino en mínimos de 8 años, pero el selloff de chips en Asia y la escalada en Ormuz agitan a los mercados globales",
-    "fg": 47,
-    "fg_label": "Neutral",
-    "putcall": 0.88,
-    "aaii_bulls": 36
+    "overall": "risk-off",
+    "label": "EE.UU. ataca a Irán tras la agresión a petroleros en Ormuz: el petróleo salta casi 6% y los futuros de Wall Street caen a mínimos de 4 semanas, mientras Argentina sostiene reservas récord y riesgo país en nuevo mínimo",
+    "fg": 43,
+    "fg_label": "Miedo",
+    "putcall": 1.33,
+    "aaii_bulls": 31
   },
   "drivers": [
     {
       "id": 1,
-      "tag": "argentina · deuda y tesoro",
-      "tag_class": "tb",
-      "title": "El riesgo país cae a 408pb, mínimo en 8 años, tras el programa financiero 2026-2027 de Caputo",
-      "brief": "El EMBI Global cerró el 6/7 en 408pb (-7pb). El Tesoro proyecta un excedente de financiamiento de US$3.700M para 2026, sin aumentar deuda neta, con la mira en el grado de inversión hacia 2031.",
-      "tldr": "Menor costo de fondeo soberano en 8 años, con blindaje financiero armado para 2027",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El <strong>EMBI Global cerró el 6/7 en 408pb</strong>, con una baja de <strong>7pb</strong>, el nivel más bajo desde 2018. Los globales argentinos cerraron mixtos en Buenos Aires: <strong>GD30D en 66,19 ctv (+0,15%)</strong>, GD35D en 85,50 ctv (+0,21%) y AL30D en 64,38 ctv (-0,03%). El Ministerio de Economía presentó formalmente el <strong>programa financiero 2026-2027</strong>: refinanciamiento exclusivo del capital de deuda, pago de intereses con recursos corrientes y sin incrementar el endeudamiento neto, con la meta de alcanzar el <strong>grado de inversión hacia 2031</strong>.",
-      "contexto": "Para 2026, el Tesoro proyecta necesidades por <strong>US$19.200M</strong> (US$9.300M de amortizaciones, US$8.900M de intereses y US$1.000M para capitalizar al BCRA) contra fuentes por <strong>US$22.900M</strong> (US$6.700M de compra de divisas al BCRA, US$6.000M de emisiones locales, US$4.000M de organismos internacionales, US$2.800M de otros multilaterales y US$1.900M del FMI), dejando un <strong>excedente de US$3.700M</strong> que se destinaría a reforzar 2027 (necesidades de US$24.900M). En paralelo, el dólar blue cerró en <strong>$1.515</strong> y acumula <strong>diez ruedas sobre $1.500</strong>, mientras el BCRA compró US$81M hoy y US$303M en julio, y realizó un canje con el Tesoro por US$2.000M (bono CER a cambio de Lelinks) para reforzar su poder de fuego.",
+      "tag": "geopolítica · energía",
+      "tag_class": "tq",
+      "title": "EE.UU. ataca a Irán tras agresiones a petroleros en Ormuz; el petróleo salta casi 6%",
+      "brief": "El Comando Central de EE.UU. confirmó ataques militares en represalia por agresiones iraníes contra tres buques comerciales en el estrecho de Ormuz. Trump declaró terminado el acuerdo con Irán y el Tesoro revocó la exención para la venta de crudo iraní.",
+      "tldr": "La escalada militar EE.UU.-Irán es la mayor en meses y golpea a todos los activos de riesgo",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El <strong>Comando Central de EE.UU.</strong> confirmó una serie de ataques militares contra Irán en represalia por agresiones iraníes contra <strong>tres buques comerciales</strong> en el estrecho de Ormuz. <strong>Trump declaró terminado el acuerdo con Irán</strong>, hundiendo los futuros del Nasdaq a un mínimo de cuatro semanas, y el <strong>Tesoro de EE.UU. revocó la exención</strong> que permitía la venta de crudo iraní. El <strong>WTI saltó 5,95% a US$74,63</strong> y el <strong>Brent avanzó 5,99% a US$78,60</strong>.",
+      "contexto": "El ataque a un <strong>petrolero de bandera catarí</strong> cerca de Ormuz pone en jaque el rol de Catar como uno de los principales mediadores entre Washington y Teherán: si Doha pierde margen para mediar, el conflicto pierde su válvula de escape diplomática justo cuando escala militarmente. La clave a monitorear en los próximos días es si Catar reduce o suspende su rol de intermediario, lo que eliminaría el mecanismo que hasta ahora contuvo una guerra más amplia.",
       "impacto": [
-        {
-          "asset": "EMBI Argentina",
-          "dir": "↓ 408pb (-7pb, mín. 8 años)",
-          "cls": "up"
-        },
-        {
-          "asset": "GD30D",
-          "dir": "↑ 66,19 ctv (+0,15%)",
-          "cls": "up"
-        },
-        {
-          "asset": "GD35D",
-          "dir": "↑ 85,50 ctv (+0,21%)",
-          "cls": "up"
-        },
-        {
-          "asset": "Dólar blue",
-          "dir": "→ $1.515 (10ª rueda sobre $1.500)",
-          "cls": "neu"
-        }
+        {"asset": "WTI", "dir": "↑ US$74,63 (+5,95%)", "cls": "dn"},
+        {"asset": "Brent", "dir": "↑ US$78,60 (+5,99%)", "cls": "dn"},
+        {"asset": "Nasdaq futuro", "dir": "↓ -1,35% (mín. 4 semanas)", "cls": "dn"},
+        {"asset": "VIX", "dir": "↑ 18,62 (+15,44%)", "cls": "dn"}
       ]
     },
     {
       "id": 2,
       "tag": "macro · mercados globales",
       "tag_class": "tb",
-      "title": "Futuros mixtos con el Nasdaq como peor referencia; selloff de chips golpea a Asia y sube el VIX",
-      "brief": "Nasdaq futuro -0,97%, Dow futuro +0,21%. El Nikkei cerró -2,12% y el KOSPI casi -5% con circuit breakers por dudas sobre la sostenibilidad del rally de IA. El VIX sube a 15,86.",
-      "tldr": "El rally de IA del lunes se enfría en Asia por dudas sobre la demanda de chips",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El futuro del <strong>Nasdaq cae 0,97% a 29.649,25</strong>, el del <strong>S&amp;P 500 retrocede 0,14% a 7.581,25</strong> y el del <strong>Dow sube 0,21% a 53.486,00</strong>. Las bolsas europeas operan mixtas a la espera de definiciones sobre gasto de defensa en la cumbre de la OTAN en Ankara. En Asia, el <strong>Nikkei cerró -2,12%</strong> y el <strong>KOSPI se desplomó casi 5%</strong> activando &ldquo;circuit breakers&rdquo;, arrastrado por los fabricantes de chips ante dudas sobre la sostenibilidad de las ganancias récord ligadas a la IA. El <strong>VIX se ubica en 15,86 (+1,86%)</strong>.",
-      "contexto": "El movimiento contrasta con el cierre del lunes, cuando el <strong>Nasdaq Composite subió 1,12% a 26.121,16</strong> y el <strong>Dow superó por primera vez los 53.000 puntos</strong> (53.056,74), impulsados por el lanzamiento de los &ldquo;Trump Accounts&rdquo; —cuentas de inversión con depósito inicial de US$1.000 del Tesoro para menores, con 6 millones de cuentas ya abiertas— y un dato de <strong>Hon Hai (ensamblador de Nvidia)</strong> que reactivó el apetito por el trade de IA (el índice Philadelphia Semiconductor acumula +47% en el año). En bonos, el <strong>UST 10Y sube 1,0pb a 4,489%</strong> y el <strong>UST 2Y avanza 1,2pb a 4,137%</strong>, con la curva 2s10s aplanándose a 35,2pb y la 10s30s a 51,0pb; los rendimientos soberanos core suben, salvo el JGB japonés.",
+      "title": "Los futuros de Wall Street caen a un mínimo de 4 semanas y el VIX salta más de 15%",
+      "brief": "El futuro del Nasdaq cae 1,35% a 28.993,75, el S&P 500 retrocede 0,96% y el Dow 1,26%. El UST 10Y sube a 4,577% y el DXY se firma en 101,11, mientras oro, plata, cobre y Bitcoin retroceden pese al contexto de aversión al riesgo.",
+      "tldr": "El repunte del petróleo empuja a los rendimientos y golpea a acciones y metales por igual",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El futuro del <strong>Nasdaq cae 1,35% a 28.993,75</strong>, el del <strong>S&amp;P 500 retrocede 0,96% a 7.478,50</strong> y el del <strong>Dow baja 1,26% a 52.526,00</strong>. Las bolsas europeas operan a la baja con el DAX liderando la caída y el <strong>Nikkei cerró -2,11%</strong>. El <strong>VIX salta a 18,62 (+15,44%)</strong>. El <strong>UST 10Y sube 4,8pb a 4,577%</strong> y el <strong>UST 2Y avanza 6,0pb a 4,222%</strong>, con la curva 2s10s aplanándose a 35,5pb. El <strong>DXY se ubica en 101,11 (+0,08%)</strong>.",
+      "contexto": "Pese al contexto de aversión al riesgo, el <strong>oro cae 2,38% a US$4.058,60</strong> y la <strong>plata retrocede 4,00% a US$58,88</strong>: la suba de rendimientos reales le está ganando por ahora a la demanda de refugio. El <strong>cobre cede 2,11%</strong> y <strong>Bitcoin retrocede 2,18% a US$61.936</strong>. En un dato institucional relevante, la <strong>Corte Suprema de EE.UU. blindó la independencia de la Fed</strong> (fallo Trump v. Cook), aunque habilitó mayor control presidencial sobre el resto de las agencias federales.",
       "impacto": [
-        {
-          "asset": "Nasdaq futuro",
-          "dir": "↓ -0,97% — 29.649,25",
-          "cls": "dn"
-        },
-        {
-          "asset": "KOSPI",
-          "dir": "↓ -5% (circuit breaker)",
-          "cls": "dn"
-        },
-        {
-          "asset": "VIX",
-          "dir": "↑ 15,86 (+1,86%)",
-          "cls": "dn"
-        },
-        {
-          "asset": "UST 10Y",
-          "dir": "↑ 4,489% (+1,0pb)",
-          "cls": "dn"
-        }
+        {"asset": "Nasdaq futuro", "dir": "↓ -1,35%", "cls": "dn"},
+        {"asset": "VIX", "dir": "↑ 18,62 (+15,44%)", "cls": "dn"},
+        {"asset": "Oro", "dir": "↓ -2,38%", "cls": "dn"},
+        {"asset": "UST 10Y", "dir": "↑ 4,577% (+4,8pb)", "cls": "dn"}
       ]
     },
     {
       "id": 3,
-      "tag": "geopolítica · energía",
-      "tag_class": "tq",
-      "title": "Misiles iraníes impactan buques en Ormuz con la SPR de EE.UU. en mínimos desde 1983",
-      "brief": "El WTI sube 1,04% y el Brent 1,21% tras el ataque, que pone a prueba el cese el fuego con Washington. La reserva estratégica de EE.UU. cayó a 319,5M de barriles, el menor colchón físico en más de 40 años.",
-      "tldr": "Poco colchón físico de EE.UU. justo cuando escala la tensión en Ormuz",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "Misiles iraníes habrían impactado <strong>dos buques comerciales</strong> en el Estrecho de Ormuz, según funcionarios de EE.UU., poniendo a prueba el cese el fuego negociado con Washington a fines de junio. El <strong>WTI sube 1,04% a US$69,26</strong> y el <strong>Brent avanza 1,21% a US$72,86</strong>. Cancilleres de la OTAN se reúnen con contrapartes del Golfo en la cumbre de Ankara, incluida una propuesta franco-británica de misión marítima multinacional que Irán rechaza.",
-      "contexto": "El dato más preocupante es estructural: las <strong>reservas estratégicas de petróleo de EE.UU. cayeron a 319,5 millones de barriles</strong>, el nivel más bajo desde 1983, justo cuando el mercado había empezado a descontar una tregua duradera en Ormuz. A diferencia de episodios previos, Washington tendría muy poco colchón físico para amortiguar un shock de oferta si la escalada iraní se profundiza. En paralelo, Arabia Saudita recortó precios de crudo para Asia y la OPEP+ sumó más producción, aunque el mercado empieza a dudar de que exista demanda real para esos barriles adicionales. Del lado ruso, los ingresos petroleros y gasíferos cayeron <strong>45% interanual</strong> y el colchón del fondo soberano pasó de 6,5% a 1,8% del PBI, un desgaste fiscal que podría ser lo que finalmente empuje a Moscú hacia una tregua negociable.",
+      "tag": "argentina · deuda y tesoro",
+      "tag_class": "tg",
+      "title": "Las reservas del BCRA tocan un máximo de casi 7 años y el riesgo país cae a 405pb",
+      "brief": "Las reservas brutas treparon a unos US$49.500M en la previa del pago de Bonares y Globales de mañana por US$4.400M. El EMBI Global cerró el 7/7 en 405pb (-3pb) y el dólar blue cerró en $1.515, con la brecha más baja en cuatro semanas.",
+      "tldr": "Argentina llega con reservas récord y riesgo país en mínimos al pago de mañana",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "Las <strong>reservas brutas del BCRA treparon a unos US$49.500M</strong>, un máximo de casi siete años, impulsadas por un crédito garantizado del BID de US$1.200M que ingresó antes del pago de <strong>Bonares y Globales del 9/7 por unos US$4.400M</strong>. El <strong>EMBI Global cerró el 7/7 en 405pb (-3pb)</strong>, y los globales argentinos cerraron mixtos en Buenos Aires: <strong>GD30D en 66,12 (-0,10%)</strong>, <strong>GD35D en 85,29 (-0,24%)</strong>, <strong>AL30D en 64,40 (+0,03%)</strong> y <strong>AL35D en 81,90 (+0,66%)</strong>. El <strong>dólar oficial minorista cerró en $1.515</strong> y el <strong>blue también en $1.515</strong>, con una brecha de apenas 1,5% respecto del mayorista, la más baja en cuatro semanas.",
+      "contexto": "El dato ocurre en simultáneo con anuncios políticos relevantes: <strong>Milei confirmó un mecanismo de &ldquo;shutdown&rdquo; fiscal</strong> al estilo de EE.UU. para frenar el gasto público una vez agotado el presupuesto, y avanza con la <strong>reforma de la Carta Orgánica del BCRA</strong>. La compresión del riesgo país y el récord de reservas ocurren justo cuando el contexto global se vuelve más volátil por la escalada EE.UU.-Irán, un test de cuánto puede sostenerse el desacople de los activos argentinos frente al deterioro del apetito global por riesgo.",
       "impacto": [
-        {
-          "asset": "WTI (futuro)",
-          "dir": "↑ US$69,26 (+1,04%)",
-          "cls": "dn"
-        },
-        {
-          "asset": "Brent (futuro)",
-          "dir": "↑ US$72,86 (+1,21%)",
-          "cls": "dn"
-        },
-        {
-          "asset": "SPR EE.UU.",
-          "dir": "↓ 319,5M barriles (mín. desde 1983)",
-          "cls": "dn"
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "tag": "bancos centrales · fed",
-      "tag_class": "tb",
-      "title": "Trump avanza sobre la Fed de Warsh: en juego el control indirecto de 6 de los 12 votos del FOMC",
-      "brief": "La Casa Blanca busca desplazar a Cook y Powell del board y presiona la elección del próximo presidente de la Fed de Atlanta. Waller, en tanto, ve a la inflación como el principal riesgo.",
-      "tldr": "La independencia de la Fed se erosiona justo cuando el mercado más la necesita como ancla",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Trump y su entorno no abandonan el plan de debilitar la independencia de la Fed, pese a que la Corte Suprema frenó por ahora la remoción de la gobernadora <strong>Lisa Cook</strong>. La Casa Blanca busca desplazar a Cook y a <strong>Powell</strong> del board, y presiona además el proceso de selección del próximo presidente de la Fed de Atlanta, votante desde 2027. Si la ofensiva prospera, Trump controlaría indirectamente <strong>seis de los doce votos del FOMC</strong>. El gobernador <strong>Waller</strong> afirmó que el principal riesgo para EE.UU. sigue siendo una inflación elevada, dado que el mercado laboral se mantiene estable.",
-      "contexto": "Las nóminas no agrícolas de junio crecieron apenas <strong>57.000</strong>, muy por debajo de las 110.000 esperadas, con revisiones a la baja de 74.000 en abril y mayo combinados —lo que movió las apuestas hacia septiembre sin un giro discursivo de la Fed—. El ISM de servicios de junio se ubicó en <strong>54,0</strong> (vs. 54,5 en mayo) y el PMI compuesto de S&amp;P Global en 51,9 (esperado 52,2). Más allá del resultado legal del caso Cook, el hostigamiento erosiona la confianza pública en el compromiso antiinflacionario de la Fed; si Warsh no marca distancia pública de la Casa Blanca, el mercado exigiría una prima de riesgo inflacionaria en la curva larga.",
-      "impacto": [
-        {
-          "asset": "Payrolls (jun.)",
-          "dir": "↓ 57.000 (vs. 110.000 esp.)",
-          "cls": "dn"
-        },
-        {
-          "asset": "ISM Servicios",
-          "dir": "↓ 54,0 (vs. 54,5 may.)",
-          "cls": "neu"
-        },
-        {
-          "asset": "UST 2Y",
-          "dir": "↑ 4,137% (+1,2pb)",
-          "cls": "dn"
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "tag": "fx · commodities",
-      "tag_class": "tb",
-      "title": "El dólar global se fortalece y el oro cede, mientras el yen persiste cerca de mínimos de 40 años",
-      "brief": "El DXY sube a 100,97, el oro retrocede 0,65% y Bitcoin cae 0,97% a 63.376. El EEM sube 2,85% pese a la debilidad del real, el peso mexicano y el rand frente al dólar.",
-      "tldr": "Emergentes resisten en bloque (EEM +2,85%) pese a la fortaleza generalizada del dólar",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>DXY se ubica en 100,97 (+0,12%)</strong>, con <strong>EUR/USD en 1,1400 (-0,16%)</strong>, GBP/USD en 1,3400 (-0,10%), <strong>USD/JPY en 161,93 (-0,08%)</strong> y USD/CNH en 6,8000 (+0,07%). El oro cae 0,65% a <strong>US$4.140,40</strong> y la plata retrocede 1,69% a US$61,27. <strong>Bitcoin</strong> opera en 63.376 (-0,97%) y el cobre sube 0,18% a US$6,24. El <strong>EEM sube 2,85% a 67,57</strong> (cierre previo de NY), con el won coreano fortaleciéndose 0,70% mientras el rand sudafricano (-0,25%) y el peso mexicano (-0,20%) se debilitan frente al dólar.",
-      "contexto": "El yen se mantiene cerca de <strong>mínimos de 40 años</strong> mientras el gobierno japonés niega estar presionando al BOJ para mantener tasas bajas. La contradicción entre esa negativa oficial y la demanda récord registrada en la última subasta de bonos a 30 años —la más fuerte desde 2019— sugiere que el mercado ya empezó a exigir una prima por plazo más alta, anticipando que el ajuste de política del BOJ llegará más tarde de lo que espera el consenso.",
-      "impacto": [
-        {
-          "asset": "DXY",
-          "dir": "↑ 100,97 (+0,12%)",
-          "cls": "dn"
-        },
-        {
-          "asset": "Oro (futuro)",
-          "dir": "↓ US$4.140,40 (-0,65%)",
-          "cls": "dn"
-        },
-        {
-          "asset": "EEM",
-          "dir": "↑ 67,57 (+2,85%)",
-          "cls": "up"
-        },
-        {
-          "asset": "Bitcoin",
-          "dir": "↓ 63.376 (-0,97%)",
-          "cls": "dn"
-        }
+        {"asset": "EMBI Argentina", "dir": "↓ 405pb (-3pb)", "cls": "up"},
+        {"asset": "Reservas BCRA", "dir": "↑ ~US$49.500M (máx. ~7 años)", "cls": "up"},
+        {"asset": "Dólar oficial/blue", "dir": "→ $1.515 (brecha 1,5%)", "cls": "neu"},
+        {"asset": "AL35D", "dir": "↑ 81,90 (+0,66%)", "cls": "up"}
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "SPR en mínimos de 1983 justo cuando escala la tensión en Ormuz",
-      "texto": "Las reservas estratégicas de petróleo de EE.UU. cayeron a 319,5 millones de barriles, el nivel más bajo desde 1983, precisamente cuando el mercado había empezado a descontar una tregua duradera en el Estrecho de Ormuz. Si la escalada iraní contra buques comerciales se profundiza, Washington tendría muy poco colchón físico para amortiguar un shock de oferta, a diferencia de episodios previos donde la SPR actuó como variable de ajuste."
+      "label": "Catar como mediador en jaque: el ataque a su petrolero pone en riesgo el único canal diplomático creíble entre EE.UU. e Irán",
+      "texto": "El ataque a un petrolero de bandera catarí cerca de Ormuz no es solo un dato de riesgo naviero: compromete el rol de Doha como intermediario entre Washington y Teherán. Si Catar reduce o suspende esa mediación en las próximas semanas, el conflicto pierde su válvula de escape diplomática justo cuando la escalada militar ya es la mayor en meses."
     },
     {
-      "label": "La independencia de la Fed se erosiona justo cuando el mercado más la necesita",
-      "texto": "Trump avanza sobre el board de la Fed —Cook, Powell y la próxima presidencia de la Fed de Atlanta— en un momento en que las nóminas de junio (57.000 vs. 110.000 esperados) ya generan dudas sobre el rumbo de la política monetaria. Si Warsh no marca distancia pública de la Casa Blanca, el riesgo no es solo legal: el mercado podría empezar a exigir una prima de riesgo inflacionaria en la curva larga, más allá de dónde fije la tasa el FOMC."
-    },
-    {
-      "label": "Riesgo país en mínimos, pero el desdoblamiento bonaerense puede testear el blindaje de Caputo",
-      "texto": "El programa financiero 2026-2027 construye un buffer de liquidez con el riesgo país en su nivel más bajo desde 2018, pero convive con una interna peronista sin resolver —Cristina Kirchner condiciona su apoyo a la no competencia interna— y una negociación de Milei con catorce gobernadores para sincronizar calendarios electorales. Un triunfo kirchnerista temprano en la provincia de Buenos Aires podría poner a prueba antes de lo previsto el blindaje financiero armado para 2027."
+      "label": "Riesgo país en mínimos y reservas récord conviven con la mayor escalada bélica global en meses",
+      "texto": "El EMBI Argentino cerrando en 405pb y las reservas del BCRA en un máximo de casi siete años construyen una historia local sólida, pero ocurren el mismo día en que EE.UU. e Irán protagonizan su escalada militar más seria en meses. Un deterioro más profundo del apetito global por riesgo —vía petróleo más caro, tasas más altas o un dólar más fuerte— podría eventualmente testear el desacople de los activos argentinos."
     }
   ],
   "correlaciones": [
     {
-      "par": "Desgaste fiscal ruso → probabilidad de tregua en Ucrania",
-      "texto": "Los ingresos petroleros y gasíferos rusos cayeron 45% interanual y el colchón del fondo soberano pasó de 6,5% a 1,8% del PBI desde el inicio de la guerra. Ese deterioro fiscal, más que el frente militar, podría ser lo que finalmente empuje a Moscú hacia una tregua negociable en los próximos meses, algo que el mercado de energía y granos europeos recién empieza a descontar parcialmente."
+      "par": "Petróleo +6% + reservas récord del BCRA → Argentina hoy más resiliente a un shock energético que en ciclos anteriores",
+      "texto": "A diferencia de otros episodios de suba abrupta del crudo, Argentina llega con reservas en un máximo de casi siete años y superávit energético creciente gracias a Vaca Muerta, lo que reduce el impacto negativo tradicional de un petróleo más caro sobre la cuenta corriente y las reservas del BCRA."
     },
     {
-      "par": "Selloff de chips en Asia + Fed hawkish → apetito por emergentes",
-      "texto": "El derrumbe del KOSPI (-5%) y el Nikkei (-2,12%) por dudas sobre el trade de IA, combinado con una Fed bajo presión política que Waller intenta anclar con un discurso de cautela inflacionaria, es el tipo de combinación que típicamente presiona a los activos emergentes. Sin embargo, el EEM sube 2,85% hoy, señal de que el apetito por emergentes todavía resiste pese al ruido en tecnología y bancos centrales."
-    },
-    {
-      "par": "Riesgo país en mínimos + programa financiero → menor dependencia de mercados externos",
-      "texto": "El EMBI en 408pb y el excedente de financiamiento de US$3.700M proyectado para 2026 son la misma historia contada desde dos ángulos: la mejora de solvencia percibida le permite al Tesoro cubrir sus vencimientos sin salir a emitir deuda nueva en el corto plazo, reduciendo la exposición de Argentina a la volatilidad global que hoy golpea a otros activos de riesgo."
+      "par": "Suba de tasas reales (UST 10Y +4,8pb) le gana al refugio en oro pese a la escalada bélica",
+      "texto": "En un día de aversión al riesgo generalizada, lo esperable sería una demanda de refugio hacia el oro. Sin embargo, el metal cae 2,38% y la plata 4,00%, señal de que la suba de rendimientos reales del Tesoro de EE.UU. está pesando más que el temor geopolítico en el pricing de los metales preciosos, al menos por ahora."
     }
   ],
-  "bottom_line": "<strong>El martes 7 de julio combina una de las mejores noticias locales del año con un cóctel global más volátil de lo que sugiere la superficie.</strong> En Argentina, el EMBI Global cerró el 6/7 en 408pb (-7pb), su nivel más bajo desde 2018, un día después de que Caputo presentara el programa financiero 2026-2027: un excedente de financiamiento de US$3.700M para este año, sin aumentar la deuda neta, con la mira puesta en el grado de inversión hacia 2031. Los globales acompañan (GD30D +0,15%, GD35D +0,21%) y el dólar blue completa su décima rueda sobre los $1.500 con el BCRA comprando reservas de forma sostenida. A nivel global, en cambio, el optimismo del lunes —Nasdaq Composite +1,12%, Dow superando por primera vez los 53.000 puntos con el lanzamiento de los &ldquo;Trump Accounts&rdquo;— se enfrió este martes: el Nasdaq futuro cae 0,97%, el Nikkei y el KOSPI se desploman en Asia por dudas sobre la sostenibilidad del rally de IA, el VIX sube a 15,86 y misiles iraníes impactaron buques comerciales cerca de Ormuz justo cuando la reserva estratégica de petróleo de EE.UU. está en su nivel más bajo desde 1983. A eso se suma la erosión gradual de la independencia de la Fed, con Trump presionando por el control indirecto de seis de los doce votos del FOMC. Para Argentina, el mensaje es doble: la mejora de riesgo país y el blindaje financiero para 2027 le dan un colchón cada vez más sólido frente a shocks externos, pero ese blindaje todavía depende de que la macro global no se deteriore de golpe —y, en el plano local, de que el desdoblamiento electoral bonaerense no lo ponga a prueba antes de tiempo."
+  "bottom_line": "<strong>El miércoles 8 de julio quedó marcado por la mayor escalada militar entre EE.UU. e Irán en meses.</strong> Tras agresiones iraníes contra tres buques comerciales en el estrecho de Ormuz, el Comando Central de EE.UU. atacó a Irán, Trump declaró terminado el acuerdo bilateral y el Tesoro revocó la exención para la venta de crudo iraní, disparando al petróleo (WTI +5,95% a US$74,63, Brent +5,99% a US$78,60) y hundiendo a los futuros de Wall Street (Nasdaq -1,35%, mínimo de 4 semanas) con el VIX saltando 15,44% a 18,62. El UST 10Y subió a 4,577% y hasta el oro y la plata cayeron pese al contexto de aversión al riesgo, señal de que la suba de tasas reales pesa más que el refugio geopolítico. Para Argentina, la jornada llega con fundamentals locales sólidos: las reservas del BCRA tocaron un máximo de casi siete años (~US$49.500M) en la previa del pago de Bonares y Globales de mañana por US$4.400M, y el riesgo país comprimió a 405pb, su nuevo mínimo. El desafío de los próximos días es si ese desacople local resiste un contexto global que se volvió mucho más volátil de un día para el otro, con Catar —mediador clave entre Washington y Teherán— también bajo presión tras el ataque a uno de sus petroleros."
 }
