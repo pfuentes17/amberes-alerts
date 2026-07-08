@@ -1063,44 +1063,42 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
 
 <script>
 // ═══════════════════════════════════════════════════════════════
-//  DATOS EMBEBIDOS — 29/05/2026 09:15 hs — rendimientos.co
+//  DATOS EMBEBIDOS — 08/07/2026 09:15 hs — rendimientos.co
 // ═══════════════════════════════════════════════════════════════
-const SEED_TS = '29/05/2026 09:15';
+const SEED_TS = '08/07/2026 09:15';
 const SEED_TF = [
-  {symbol:'S12J6',price:102.107,tem:2.27,tna:27.4,tea:31.4,dtm:11,type:'LECAP'},
-  {symbol:'S17L6',price:104.80, tem:1.93,tna:23.6,tea:26.2,dtm:46,type:'LECAP'},
-  {symbol:'S31L6',price:113.30, tem:1.91,tna:23.5,tea:25.9,dtm:60,type:'LECAP'},
-  {symbol:'S14G6',price:103.00, tem:1.95,tna:24.1,tea:26.5,dtm:74,type:'LECAP'},
-  {symbol:'S31G6',price:120.01, tem:1.90,tna:23.6,tea:25.7,dtm:91,type:'LECAP'},
-  {symbol:'S30S6',price:108.74, tem:1.95,tna:24.4,tea:26.4,dtm:121,type:'LECAP'},
-  {symbol:'S30O6',price:122.95, tem:1.92,tna:24.2,tea:26.0,dtm:151,type:'LECAP'},
-  {symbol:'S30N6',price:116.00, tem:1.88,tna:24.0,tea:25.5,dtm:182,type:'LECAP'},
-  {symbol:'T30J6',price:142.16, tem:1.99,tna:24.2,tea:27.1,dtm:29, type:'BONCAP'},
-  {symbol:'T15E7',price:139.54, tem:1.91,tna:24.7,tea:25.9,dtm:228,type:'BONCAP'},
-  {symbol:'T30A7',price:126.30, tem:2.00,tna:26.9,tea:27.2,dtm:333,type:'BONCAP'},
-  {symbol:'T31Y7',price:119.19, tem:2.00,tna:27.2,tea:27.2,dtm:364,type:'BONCAP'},
-  {symbol:'T30J7',price:122.631,tem:1.85,tna:25.2,tea:24.9,dtm:394,type:'BONCAP'},
+  {symbol:'S17L6',price:107.32, tem:1.87,tna:22.8,tea:24.8,dtm:9,  type:'LECAP'},
+  {symbol:'S31L6',price:116.04, tem:1.85,tna:22.9,tea:24.7,dtm:23, type:'LECAP'},
+  {symbol:'S14G6',price:105.65, tem:1.82,tna:22.5,tea:24.1,dtm:37, type:'LECAP'},
+  {symbol:'S31G6',price:122.94, tem:1.83,tna:22.7,tea:24.3,dtm:54, type:'LECAP'},
+  {symbol:'S30S6',price:111.63, tem:1.84,tna:22.8,tea:24.4,dtm:84, type:'LECAP'},
+  {symbol:'S30O6',price:126.11, tem:1.82,tna:22.6,tea:24.2,dtm:114,type:'LECAP'},
+  {symbol:'S30N6',price:118.94, tem:1.82,tna:22.6,tea:24.2,dtm:145,type:'LECAP'},
+  {symbol:'S13N6',price:104.60, tem:1.82,tna:22.6,tea:24.2,dtm:128,type:'LECAP'},
+  {symbol:'T15E7',price:143.12, tem:1.82,tna:22.6,tea:24.2,dtm:191,type:'BONCAP'},
+  {symbol:'T30A7',price:131.16, tem:1.80,tna:22.4,tea:23.9,dtm:296,type:'BONCAP'},
+  {symbol:'T31Y7',price:123.73, tem:1.80,tna:22.4,tea:23.9,dtm:327,type:'BONCAP'},
+  {symbol:'T30J7',price:124.86, tem:1.80,tna:22.4,tea:23.9,dtm:357,type:'BONCAP'},
 ];
-const VF_MAP={S12J6:102.9542,S17L6:107.916,S31L6:117.6737,S14G6:108.0311,S31G6:127.0575,S30S6:117.5482,S30O6:135.2593,S30N6:129.9035,T30J6:144.8965,T15E7:161.0457,T30A7:157.3155,T31Y7:151.4979,T30J7:156.0009};
-const TF_VTO  = {S12J6:'2026-06-12',S17L6:'2026-07-17',S31L6:'2026-07-31',S14G6:'2026-08-14',S31G6:'2026-08-31',S30S6:'2026-09-30',S30O6:'2026-10-30',S30N6:'2026-11-30',T30J6:'2026-06-30',T15E7:'2027-01-15',T30A7:'2027-04-30',T31Y7:'2027-05-31',T30J7:'2027-06-30'};
-const TF_VTO_D= {S12J6:'12/06/26',S17L6:'17/07/26',S31L6:'31/07/26',S14G6:'14/08/26',S31G6:'31/08/26',S30S6:'30/09/26',S30O6:'30/10/26',S30N6:'30/11/26',T30J6:'30/06/26',T15E7:'15/01/27',T30A7:'30/04/27',T31Y7:'31/05/27',T30J7:'30/06/27'};
+const VF_MAP={S17L6:107.916,S31L6:117.6737,S14G6:108.0311,S31G6:127.0575,S30S6:117.5482,S30O6:135.2593,S30N6:129.9035,S13N6:113.00,T15E7:161.0457,T30A7:157.3155,T31Y7:151.4979,T30J7:156.0009};
+const TF_VTO  = {S17L6:'2026-07-17',S31L6:'2026-07-31',S14G6:'2026-08-14',S31G6:'2026-08-31',S30S6:'2026-09-30',S30O6:'2026-10-30',S30N6:'2026-11-30',S13N6:'2026-11-13',T15E7:'2027-01-15',T30A7:'2027-04-30',T31Y7:'2027-05-31',T30J7:'2027-06-30'};
+const TF_VTO_D= {S17L6:'17/07/26',S31L6:'31/07/26',S14G6:'14/08/26',S31G6:'31/08/26',S30S6:'30/09/26',S30O6:'30/10/26',S30N6:'30/11/26',S13N6:'13/11/26',T15E7:'15/01/27',T30A7:'30/04/27',T31Y7:'31/05/27',T30J7:'30/06/27'};
 
 const SEED_CER_PRECIOS=[
-  {symbol:'TZX26',c:387.2, bid:387.1, ask:387.2, pct:0.09},
-  {symbol:'X31L6',c:113.8, bid:113.7, ask:113.8, pct:0.26},
-  {symbol:'X30S6',c:109.0, bid:109.0, ask:109.05,pct:0.04},
-  {symbol:'TZXO6',c:161.55,bid:161.45,ask:161.55,pct:0.03},
-  {symbol:'TX26', c:700.0, bid:699.5, ask:700.5, pct:0.0},   // resid 20%: amort solo en nov
-  {symbol:'X30N6',c:117.295,bid:117.15,ask:117.3,pct:0.03},
-  {symbol:'TZXD6',c:284.55,bid:284.4, ask:284.55,pct:0.01},
-  {symbol:'TZXM7',c:209.9, bid:209.85,ask:209.9, pct:-0.09},
-  {symbol:'TZX27',c:373.8, bid:373.8, ask:373.95,pct:0.04},
-  {symbol:'TZXD7',c:261.1, bid:261.0, ask:261.2, pct:0.23},
-  {symbol:'TZX28',c:332.4, bid:332.3, ask:332.7, pct:0.28},
-  {symbol:'TX28', c:1370.0,bid:1368.0,ask:1372.0,pct:0.0},   // post pago may-26: resid 50%
-  {symbol:'TX31', c:1425.0,bid:1424.5,ask:1425.0,pct:-0.62},
-  {symbol:'DICP', c:51940, bid:51850, ask:51940, pct:0.27},
-  {symbol:'PARP', c:33570, bid:33565, ask:33570, pct:-0.02},
+  {symbol:'X31L6',c:116.4, bid:116.3, ask:116.4, pct:0.10},
+  {symbol:'X30S6',c:111.4, bid:111.3, ask:111.4, pct:0.09},
+  {symbol:'TZXO6',c:165.2, bid:165.1, ask:165.3, pct:0.10},
+  {symbol:'TX26', c:709.0, bid:708.5, ask:709.5, pct:0.0},   // resid 20%: amort solo en nov
+  {symbol:'X30N6',c:119.6, bid:119.5, ask:119.7, pct:0.05},
+  {symbol:'TZXD6',c:290.45,bid:290.3, ask:290.5, pct:0.05},
+  {symbol:'TZXM7',c:214.7, bid:214.6, ask:214.8, pct:0.05},
+  {symbol:'TZX27',c:383.3, bid:383.2, ask:383.5, pct:0.05},
+  {symbol:'TZXD7',c:268.85,bid:268.7, ask:269.0, pct:0.10},
+  {symbol:'TZX28',c:342.5, bid:342.3, ask:342.7, pct:0.10},
+  {symbol:'TX28', c:1688.0,bid:1686.0,ask:1690.0,pct:0.0},   // post pago may-26: resid 50%
+  {symbol:'TX31', c:1452.0,bid:1451.5,ask:1452.5,pct:0.10},
+  {symbol:'DICP', c:48430, bid:48350, ask:48430, pct:0.15},
+  {symbol:'PARP', c:37120, bid:37110, ask:37130, pct:0.05},
   // Duales CER/TAMAR — precios seed estimados (actualizar con datos de mercado)
   {symbol:'TXMJ8', c:103.0,  bid:102.5,  ask:103.5,  pct:0.0},
   {symbol:'TXMD8', c:102.0,  bid:101.5,  ask:102.5,  pct:0.0},
@@ -1108,11 +1106,10 @@ const SEED_CER_PRECIOS=[
   {symbol:'TXMD9', c:103.5,  bid:103.0,  ask:104.0,  pct:0.0},
   {symbol:'TXMJ0', c:106.0,  bid:105.5,  ask:106.5,  pct:0.0},
 ];
-const SEED_CER_IDX={cer:771.5368,fecha:'2026-05-16'};
+const SEED_CER_IDX={cer:796.43986,fecha:'2026-06-25'};
 window._cerIdx = SEED_CER_IDX.cer; // actualizado por cerRefresh()
 
 const CER_INSTR=[
-  {sym:'TZX26',tipo:'ZC', cer0:200.388,  vto:'30/06/26',vtoi:'2026-06-30',dur:0.09, resid:100,coupon:0},
   {sym:'X31L6',tipo:'ZC', cer0:685.5506, vto:'31/07/26',vtoi:'2026-07-31',dur:0.17, resid:100,coupon:0},
   {sym:'X30S6',tipo:'ZC', cer0:714.9849, vto:'30/09/26',vtoi:'2026-09-30',dur:0.34, resid:100,coupon:0},
   {sym:'TZXO6',tipo:'ZC', cer0:480.1526, vto:'30/10/26',vtoi:'2026-10-30',dur:0.42, resid:100,coupon:0},
@@ -1145,8 +1142,8 @@ const CER_INSTR=[
 // IPC abril-2026 = 2.6% → aplica a junio-2026
 const BANDA = {
   ipc_t2:   2.6 / 100,
-  piso_hoy: 792.0,
-  techo_hoy: 1760.0,
+  piso_hoy: 1232.0,
+  techo_hoy: 1762.0,
 };
 function bandaAlVto(dtm) {
   const meses = dtm / 30.4;
@@ -2941,11 +2938,11 @@ const HD_CONFIG = {
   GD35:{tipo:'GD',ley:'NY',  vto:'2035-07-09',vtod:'Jul 35',cpn:'4.13%'},
   GD38:{tipo:'GD',ley:'NY',  vto:'2038-01-09',vtod:'Ene 38',cpn:'5.00%'},
   GD41:{tipo:'GD',ley:'NY',  vto:'2041-07-09',vtod:'Jul 41',cpn:'3.13%'},
+  GD46:{tipo:'GD',ley:'NY',  vto:'2046-07-09',vtod:'Jul 46',cpn:'3.63%'},
   // Bonares (ley Argentina)
   AL29:{tipo:'AL',ley:'Arg', vto:'2029-07-09',vtod:'Jul 29',cpn:'20.70%'},
   AL30:{tipo:'AL',ley:'Arg', vto:'2030-07-09',vtod:'Jul 30',cpn:'16.54%'},
   AL35:{tipo:'AL',ley:'Arg', vto:'2035-07-09',vtod:'Jul 35',cpn:'4.13%'},
-  AL38:{tipo:'AL',ley:'Arg', vto:'2038-01-09',vtod:'Ene 38',cpn:'5.00%'},
   AL41:{tipo:'AL',ley:'Arg', vto:'2041-07-09',vtod:'Jul 41',cpn:'3.13%'},
   // Otros ley Argentina (también van en curva AL)
   AO27:{tipo:'AL',ley:'Arg', vto:'2027-10-30',vtod:'Oct 27',cpn:'1.13%'},
@@ -3005,20 +3002,21 @@ const SEED_HD_BP = [
 ];
 
 const SEED_HD_SOB = [
-  {symbol:'GD29',price_usd:65.67,bid:65.02,ask:65.67,pct_change:0.01, ytm:'5.46%',duration:'1.55',volume:214462},
-  {symbol:'GD30',price_usd:65.25,bid:65.12,ask:65.25,pct_change:-0.19,ytm:'6.47%',duration:'2.00',volume:979948},
-  {symbol:'GD35',price_usd:81.50,bid:81.23,ask:81.50,pct_change:0.18, ytm:'8.97%',duration:'5.63',volume:4621322},
-  {symbol:'GD38',price_usd:85.30,bid:85.15,ask:85.30,pct_change:0.18, ytm:'8.83%',duration:'4.88',volume:235993},
-  {symbol:'GD41',price_usd:75.70,bid:72.00,ask:75.70,pct_change:0.46, ytm:'8.24%',duration:'6.33',volume:0},
-  {symbol:'AL29',price_usd:64.00,bid:63.75,ask:64.00,pct_change:-0.59,ytm:'7.25%',duration:'1.53',volume:379408},
-  {symbol:'AL30',price_usd:64.02,bid:63.94,ask:64.02,pct_change:-0.23,ytm:'7.49%',duration:'1.98',volume:72979785},
-  {symbol:'AL35',price_usd:78.77,bid:78.56,ask:78.77,pct_change:0.79, ytm:'9.64%',duration:'5.59',volume:2455806},
-  {symbol:'AL41',price_usd:73.95,bid:73.50,ask:73.95,pct_change:-0.09,ytm:'8.64%',duration:'6.27',volume:765495},
-  {symbol:'AO27',price_usd:101.60,bid:101.55,ask:101.60,pct_change:0,  ytm:'4.95%',duration:'1.36',volume:9789161},
-  {symbol:'AO28',price_usd:95.35, bid:95.30, ask:95.35, pct_change:0.01,ytm:'8.44%',duration:'2.25',volume:9534152},
-  {symbol:'AN29',price_usd:93.75, bid:93.23, ask:93.75, pct_change:0.35,ytm:'9.92%',duration:'3.07',volume:922106},
-  {symbol:'AE38',price_usd:81.43, bid:81.30, ask:81.43, pct_change:0.01,ytm:'9.88%',duration:'4.79',volume:2014527},
-  {symbol:'BPD7',price_usd:100.75,bid:100.50,ask:100.75,pct_change:0.04,ytm:'4.75%',duration:'1.14',volume:953051},
+  {symbol:'GD29',price_usd:66.33,bid:66.20,ask:66.40,pct_change:0.0,  ytm:'5.10%',duration:'1.55',volume:214462},
+  {symbol:'GD30',price_usd:66.12,bid:66.00,ask:66.20,pct_change:0.0,  ytm:'6.20%',duration:'2.00',volume:979948},
+  {symbol:'GD35',price_usd:85.29,bid:85.10,ask:85.35,pct_change:0.0,  ytm:'8.50%',duration:'5.63',volume:4621322},
+  {symbol:'GD38',price_usd:88.56,bid:88.40,ask:88.65,pct_change:0.0,  ytm:'8.40%',duration:'4.88',volume:235993},
+  {symbol:'GD41',price_usd:79.75,bid:79.60,ask:79.85,pct_change:0.0,  ytm:'7.90%',duration:'6.33',volume:500000},
+  {symbol:'GD46',price_usd:76.00,bid:75.80,ask:76.20,pct_change:0.0,  ytm:'8.15%',duration:'7.50',volume:300000},
+  {symbol:'AL29',price_usd:65.47,bid:65.30,ask:65.55,pct_change:0.0,  ytm:'7.00%',duration:'1.53',volume:379408},
+  {symbol:'AL30',price_usd:64.40,bid:64.30,ask:64.50,pct_change:0.0,  ytm:'7.30%',duration:'1.98',volume:72979785},
+  {symbol:'AL35',price_usd:81.90,bid:81.75,ask:82.00,pct_change:0.0,  ytm:'9.25%',duration:'5.59',volume:2455806},
+  {symbol:'AL41',price_usd:79.00,bid:78.80,ask:79.10,pct_change:0.0,  ytm:'8.35%',duration:'6.27',volume:765495},
+  {symbol:'AO27',price_usd:102.55,bid:102.45,ask:102.60,pct_change:0.0,ytm:'4.50%',duration:'1.36',volume:9789161},
+  {symbol:'AO28',price_usd:97.31, bid:97.20, ask:97.40, pct_change:0.0,ytm:'8.96%',duration:'2.25',volume:9534152},
+  {symbol:'AN29',price_usd:95.40, bid:95.20, ask:95.50, pct_change:0.0,ytm:'9.60%',duration:'3.07',volume:922106},
+  {symbol:'AE38',price_usd:85.00, bid:84.85, ask:85.10, pct_change:0.0,ytm:'9.40%',duration:'4.79',volume:2014527},
+  {symbol:'BPD7',price_usd:100.75,bid:100.50,ask:100.75,pct_change:0.0,ytm:'4.75%',duration:'1.14',volume:953051},
 ];
 
 let hdChart = null;
@@ -3411,30 +3409,30 @@ function dlBench(dtm) {
 const DL_CONFIG = {
   // Letras DL (D prefix) — ZC, lotes de 100 USD VN
   D31L6: {tipo:'Letra DL', vto:'2026-07-31', vtod:'Jul 26', vn_usd:100, emision:'2026-01-31'},
+  D31G6: {tipo:'Letra DL', vto:'2026-08-31', vtod:'Ago 26', vn_usd:100, emision:'2026-02-28'},
   D30S6: {tipo:'Letra DL', vto:'2026-09-30', vtod:'Sep 26', vn_usd:100, emision:'2026-03-31'},
   D31M7: {tipo:'Letra DL', vto:'2027-03-31', vtod:'Mar 27', vn_usd:100, emision:'2026-05-29'},
   // Bonos DL (TZV prefix) — ZC, vto 30 de junio, ley Argentina
   // TC aplicable al pago: A3500 del T-1 hábil previo al vencimiento
-  TZV26: {tipo:'Bono DL',  vto:'2026-06-30', vtod:'Jun 26', vn_usd:100, emision:'2024-02-28'},
   TZV27: {tipo:'Bono DL',  vto:'2027-06-30', vtod:'Jun 27', vn_usd:100, emision:'2024-02-28'},
   TZV28: {tipo:'Bono DL',  vto:'2028-06-30', vtod:'Jun 28', vn_usd:100, emision:'2026-04-28'},
 };
 
 const SEED_DL_TC = {
-  valor: 1412.99,        // TC A3500 mayorista BCRA — licitación abr-2026
-  valorAnterior: 1410.00,
-  fecha: '2026-05-29',
+  valor: 1491.55,        // TC A3500 mayorista BCRA — jul-2026
+  valorAnterior: 1488.00,
+  fecha: '2026-07-07',
   fuente: 'BCRA A3500'
 };
 const SEED_DL_NOTES = [
-  // TZV — Bonos DL vto 30 de junio (mayor volumen, más líquidos)
-  {symbol:'TZV26', c:140780, bid:140610, ask:140780, pct_change:0.39,  vol:48308286},
-  {symbol:'TZV27', c:135000, bid:134950, ask:135000, pct_change:-0.04, vol:756236},
-  {symbol:'TZV28', c:122700, bid:122350, ask:122700, pct_change:0.41,  vol:237801},
+  // TZV — Bonos DL vto 30 de junio
+  {symbol:'TZV27', c:142500, bid:142400, ask:142600, pct_change:0.0,   vol:756236},
+  {symbol:'TZV28', c:129400, bid:129200, ask:129500, pct_change:0.0,   vol:237801},
   // D series — Letras DL
-  {symbol:'D31L6', c:140250, bid:140250, ask:140350, pct_change:0,     vol:28020170},
-  {symbol:'D30S6', c:139950, bid:139930, ask:139950, pct_change:0.21,  vol:13683974},
-  {symbol:'D31M7', c:135800, bid:135550, ask:137500, pct_change:0,     vol:3009522},
+  {symbol:'D31L6', c:148000, bid:147950, ask:148100, pct_change:0,     vol:28020170},
+  {symbol:'D31G6', c:155000, bid:154900, ask:155100, pct_change:0,     vol:5000000},
+  {symbol:'D30S6', c:147600, bid:147550, ask:147650, pct_change:0.0,   vol:13683974},
+  {symbol:'D31M7', c:143200, bid:143000, ask:143500, pct_change:0,     vol:3009522},
 ];
 
 let dlChart = null;
