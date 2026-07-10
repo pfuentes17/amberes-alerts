@@ -525,8 +525,8 @@ var D={
        expo:[7553,7127,8128,7630,8156,7448,6705,5930,8645,8900,9537],
        impo:[6626,6451,7207,7023,7012,5556,5440,4791,6122,6204,6033],
        saldo:[927,676,921,607,1144,1892,1265,1139,2523,2696,3504]},
-  isac:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],v:[1.2,0.0,-3.9,2.9,-0.1,-1.4,5.1,-4.0]},
-  ipi:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],v:[-0.1,-0.9,-1.1,0.4,2.4,-3.0,3.7,-2.1]},
+  isac:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[1.2,0.0,-3.9,2.9,-0.1,-1.4,5.1,-4.0,6.3]},
+  ipi:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[-0.1,-0.9,-1.1,0.4,2.4,-3.0,3.7,-2.1,0.4]},
   // UCII — Utilización Capacidad Instalada Industria — INDEC capacidad_06_26EA3331AEEE.pdf (publicado 16/06/2026)
   ucii:{l:["Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
         v:[55.0,58.6,54.4,58.6,58.9,59.0,58.2,59.4,61.1,61.0,57.7,53.8,53.6,54.6,59.8,59.9]},
@@ -839,7 +839,7 @@ function buildINDEC(){
     {l:'Desempleo Q4 25',v:'7.5%',c:'r',n:'EPH \u00b7 31 aglomerados'},
     {l:'ICA May 26 Super\u00e1vit',v:'$3.504M',c:'g',n:'29vo mes positivo'},
     {l:'Expo May 26 (r\u00e9cord hist.)',v:'$9.537M',c:'g',n:'R\u00e9cord hist\u00f3rico INDEC \u00b7 +34.4% YoY'},
-    {l:'ISAC Abr 26 MoM',v:'-4.0%',c:'r',n:'Construcci\u00f3n INDEC \u00b7 YoY -2.8%'},
+    {l:'ISAC May 26 MoM',v:'+6.3%',c:'g',n:'Construcci\u00f3n INDEC \u00b7 YoY +4.1%'},
     {l:'UCII Abr 26',v:'59.9%',c:'g',n:'+1.3pp YoY \u00b7 Cap. instalada industria'}
   ]);
   $('tabrow').innerHTML=tabs(['Resumen','IPC \u00b7 Precios','EMAE \u00b7 Actividad','EPH \u00b7 Laboral','ICA \u00b7 Comercio','ISAC \u00b7 IPI \u00b7 Sectorial']);
@@ -852,8 +852,8 @@ function buildINDEC(){
         ocard('om1','EMAE \u00b7 Actividad','Est. Mensual Actividad Ec.','YoY / Desestacionalizado','+5.5%','g','Mar 2026','Desest. +3.5%<br>M\u00e1x. hist.',2)+
         ocard('om2','EPH \u00b7 Laboral','Encuesta Perm. Hogares','Desempleo / Actividad / Empleo','7.5%','r','Q4 2025','Actividad 48.1%<br>Subocup. 10.8%',3)+
         ocard('om3','ICA \u00b7 Comercio','Intercambio Comercial','Bienes: Expo / Impo / Saldo','$3.504M','g','May 2026','Expo $9.537M<br>+34.4% YoY',4)+
-        ocard('om4','ISAC \u00b7 Construcci\u00f3n','Ind. Sintético Activ. Constr.','Variaci\u00f3n YoY INDEC','-2.8%','r','Abr 2026','MoM -4.0% \u00b7 acum +2.1%',5)+
-        ocard('om5','IPI \u00b7 Industria','&Iacute;ndice Prod. Industrial','Variaci\u00f3n mensual INDEC','+3.8%','g','Mar 2026','Manufactura<br>en recuperaci\u00f3n',5)+
+        ocard('om4','ISAC · Construcción','Ind. Sintético Activ. Constr.','Variación YoY INDEC','+4.1%','g','May 2026','MoM +6.3% · acum +2.5%',5)+
+        ocard('om5','IPI · Industria','&Iacute;ndice Prod. Industrial','Variación YoY INDEC','-5.7%','r','May 2026','MoM desest +0.4%<br>acum -3.1%',5)+
       '</div>',
       cal,true)+
     panel2col('p1',
@@ -885,9 +885,9 @@ function buildINDEC(){
       bx2(['bc2','bc3'],['Super\u00e1vit Comercial Mensual \u2014 29 meses positivos','Exportaciones por Grandes Rubros \u2014 PP / MOA / MOI / CyE'],'h190',['c-indec','']),
       cal)+
     panel2col('p5',
-      shdr('ISAC \u00b7 IPI \u00b7 UCII \u00b7 Sectorial','INDEC \u2014 Construcci\u00f3n \u00b7 Industria \u00b7 Capacidad Instalada','-2.8%','ISAC Abr 2026 \u00b7 YoY','r')+
-      src('INDEC \u00b7 ISAC \u00b7 IPI Manufacturero \u00b7 UCII \u00b7 Abril 2026')+
-      sr4([{l:'ISAC YoY Abr 26',v:'-2.8%',c:'r',n:'MoM desest -4.0% \u00b7 acum +2.1%',x:'indec'},{l:'IPI Mfg YoY Abr 26',v:'-2.8%',c:'r',n:'MoM desest -2.1% \u00b7 acum -2.4%',x:'indec'},{l:'UCII Abr 26',v:'59.9%',c:'g',n:'+1.3pp YoY \u00b7 vs 58.6% abr 25',x:'indec'},{l:'UCII Mar 26',v:'59.8%',c:'g',n:'+5.4pp YoY \u00b7 vs 54.4% mar 25',x:'indec'}])+
+      shdr('ISAC · IPI · UCII · Sectorial','INDEC — Construcción · Industria · Capacidad Instalada','+4.1%','ISAC May 2026 · YoY','g')+
+      src('INDEC · ISAC · IPI Manufacturero · UCII · Mayo 2026')+
+      sr4([{l:'ISAC YoY May 26',v:'+4.1%',c:'g',n:'MoM desest +6.3% · acum +2.5%',x:'indec'},{l:'IPI Mfg YoY May 26',v:'-5.7%',c:'r',n:'MoM desest +0.4% · acum -3.1%',x:'indec'},{l:'UCII Abr 26',v:'59.9%',c:'g',n:'+1.3pp YoY · vs 58.6% abr 25',x:'indec'},{l:'UCII Mar 26',v:'59.8%',c:'g',n:'+5.4pp YoY · vs 54.4% mar 25',x:'indec'}])+
       bx2(['is1','is2'],['ISAC \u2014 Construcci\u00f3n MoM Desestacionalizado','IPI \u2014 Industria Manufacturera MoM'],'h240',['c-indec','c-indec'])+
       bx1('is3','h190','ISAC vs IPI vs EMAE \u2014 Comparativa sectorial 2025\u20132026','')+
       bx1('is3b','h220','UCII \u2014 Utilizaci\u00f3n Capacidad Instalada Industria (%) \u00b7 Ene 2025\u2013Abr 2026','c-indec')+
