@@ -395,8 +395,8 @@ us:{
   ]}
 },
 br:{
-  cpi:{l:["Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[4.76,4.87,4.83,4.56,5.06,5.48,5.53,5.32,5.35,5.23,5.13,5.17,4.68,4.46,4.26,4.44,3.81,4.14,4.39,4.72]},
-  cpiMoM:[0.56,0.39,0.52,0.16,1.31,0.56,0.43,0.26,0.24,0.26,-0.11,0.48,0.09,0.18,0.33,0.33,0.70,0.88,0.67,0.58],
+  cpi:{l:["Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],v:[4.76,4.87,4.83,4.56,5.06,5.48,5.53,5.32,5.35,5.23,5.13,5.17,4.68,4.46,4.26,4.44,3.81,4.14,4.39,4.72,4.64]},
+  cpiMoM:[0.56,0.39,0.52,0.16,1.31,0.56,0.43,0.26,0.24,0.26,-0.11,0.48,0.09,0.18,0.33,0.33,0.70,0.88,0.67,0.58,0.16],
   selic:{l:["Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],v:[10.75,11.25,12.25,13.25,13.25,14.25,14.25,14.75,15.0,15.0,15.0,15.0,15.0,15.0,15.0,15.0,15.0,14.75,14.50]},
   ur:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],v:[7.2,7.0,6.9,6.6,6.2,6.1,5.8,5.6,5.6,5.4,6.1,5.8]},
   gdp:{l:["Q1 25","Q2 25","Q3 25","Q4 25","Q1 26"],v:[1.47,2.04,2.48,2.99,1.8]},
@@ -411,7 +411,7 @@ br:{
   },
   cal:{year:2026,month:6,events:[
     {day:3,name:'PIM-PF May 2026 &mdash; IBGE',val:'YoY +0.2% &middot; MoM dessaz &minus;0.2% &middot; idx 107.3',col:'a'},
-    {day:9,name:'IPCA Jun 2026',val:'Dato pendiente',col:'a'},
+    {day:9,name:'IPCA Jun 2026',val:'0.16% MoM &middot; 4.64% YoY &middot; Acum. 12m: 4.64%',col:'r'},
     {day:5,name:'COPOM &ndash; Decisi&#243;n SELIC',val:'Resultado 18:30 BRT &middot; 14.50% actual',col:'a'},
     {day:24,name:'IPCA-15 Jul 2026',val:'Pr&#243;ximo release',col:'a'}
   ]}
@@ -586,8 +586,8 @@ function buildUS(){
 function buildBR(){
   var d=D.br;
   $('kstrip').innerHTML=kpis([
-    {l:'IPCA May 2026 YoY',v:L(d.cpi.v)+'%',c:'r'},
-    {l:'IPCA MoM',v:'+0.58%',c:'a'},
+    {l:'IPCA Jun 2026 YoY',v:L(d.cpi.v)+'%',c:'r'},
+    {l:'IPCA MoM',v:'+0.16%',c:'a'},
     {l:'SELIC',v:L(d.selic.v)+'%',c:'r'},
     {l:'Desempleo Abr 26',v:L(d.ur.v)+'%',c:'a'},
     {l:'PIB Q1 2026 YoY',v:'+'+L(d.gdp.v)+'%',c:'g'},
@@ -607,9 +607,9 @@ function buildBR(){
       ocard('bm6','PIM &middot; Industria','Prod. Industrial F&#237;sica','YoY &middot; IBGE Mayo 2026',(L(d.pim.yoy)>0?'+':'')+L(d.pim.yoy)+'%',L(d.pim.yoy)>0?'g':'a','May 2026','MoM dessaz<br>'+L(d.pim.mom)+'%',"showTab(6,'br')")+
     '</div>')+
     panel('br-p1',
-      shdr('IPCA &middot; Inflaci&#243;n Brasil','IBGE &mdash; May 2026: 4.72% YoY',L(d.cpi.v)+'%',L(d.cpi.l)+' &middot; YoY','r')+
-      sr4([{l:'IPCA YoY',v:L(d.cpi.v)+'%',c:'r',n:L(d.cpi.l)},{l:'MoM',v:'+0.58%',c:'a',n:'May 2026 · desacelera vs abr (+0.67%)'},{l:'Meta BCB',v:'3.0%',c:'a',n:'&plusmn;1.5pp tolerancia'},{l:'Focus 2026',v:'5.30%',c:'r',n:'Expectativas mercado'}])+
-      box1('bi1','h240','IPCA YoY &mdash; Oct 2024 a May 2026')+
+      shdr('IPCA &middot; Inflaci&#243;n Brasil','IBGE &mdash; Jun 2026: 4.64% YoY',L(d.cpi.v)+'%',L(d.cpi.l)+' &middot; YoY','r')+
+      sr4([{l:'IPCA YoY',v:L(d.cpi.v)+'%',c:'r',n:L(d.cpi.l)},{l:'MoM',v:'+0.16%',c:'a',n:'Jun 2026 &middot; baja vs may (+0.58%)'},{l:'Meta BCB',v:'3.0%',c:'a',n:'&plusmn;1.5pp tolerancia'},{l:'Focus 2026',v:'5.30%',c:'r',n:'Expectativas mercado'}])+
+      box1('bi1','h240','IPCA YoY &mdash; Oct 2024 a Jun 2026')+
       box2(['bi2','bi3'],['IPCA vs Meta BCB (3%) &mdash; Techo 4.5%','IPCA MoM']),
       cal
     )+
