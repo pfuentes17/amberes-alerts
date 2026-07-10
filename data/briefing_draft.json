@@ -1,114 +1,107 @@
 {
-  "date": "2026-07-03",
-  "generated": "2026-07-03T12:00:00Z",
+  "date": "2026-07-10",
+  "generated": "2026-07-10T12:09:26Z",
   "sentiment": {
     "overall": "neutral",
-    "label": "Datos EE.UU. débiles; Argentina desacopla al alza",
-    "fg": 42,
-    "fg_label": "Miedo",
-    "putcall": 0.93,
-    "aaii_bulls": 31
+    "label": "El petróleo cae pese a la escalada retórica entre Trump e Irán, Wall Street extiende su rally de semiconductores y el riesgo país argentino roza mínimos de 2018 en la previa de la licitación del 15/7",
+    "fg": 47,
+    "fg_label": "Neutral",
+    "putcall": 0.69,
+    "aaii_bulls": 36.3
   },
   "drivers": [
     {
       "id": 1,
-      "tag": "macro · empleo EE.UU.",
-      "tag_class": "tb",
-      "title": "Payrolls junio: 57K empleos vs 115K esperados",
-      "brief": "Dato de empleo muy por debajo de lo estimado. Revisiones a la baja en meses previos suman -74K adicionales. Desempleo baja a 4.2%.",
-      "tldr": "El mercado laboral se frena; Fed sin hoja de ruta clara",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "EE.UU. sumó <strong>57.000 empleos netos en junio</strong>, menos de la mitad de los <strong>115.000</strong> que esperaba el mercado. La tasa de desempleo bajó a <strong>4.2%</strong>. Revisiones negativas: abril <strong>-31.000</strong> y mayo <strong>-43.000</strong>, sumando <strong>-74.000 empleos</strong> por debajo de lo reportado inicialmente. Salario promedio: US$37.64, +3.5% interanual.",
-      "contexto": "Con la Fed manteniendo tasas en <strong>3.50–3.75%</strong> (decisión del 17 de junio), el dato agrava el dilema de política monetaria: el mercado laboral se enfría pero la inflación persiste. Los swaps descuentan un recorte hacia fin de año; la probabilidad de un hike adicional cayó. EE.UU. mercados <strong>cerrados hoy</strong> por el feriado del Día de la Independencia (July 4 cae sábado → feriado observado el viernes 3/7).",
+      "tag": "geopolítica · energía",
+      "tag_class": "tq",
+      "title": "El petróleo cae pese a la escalada entre Trump e Irán, que declaró terminado el cese el fuego",
+      "brief": "Trump declaró terminado el cese el fuego con Irán y advirtió sobre un eventual bloqueo del estrecho de Ormuz, pero el Brent cedió a unos US$76 y el WTI perforó los US$72, con el USO retrocediendo 2,85%.",
+      "tldr": "El mercado no está pricing todavía una disrupción física del flujo de crudo",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El presidente <strong>Trump declaró &ldquo;terminado&rdquo;</strong> el cese el fuego con Irán y advirtió sobre nuevas acciones militares, incluido un eventual <strong>bloqueo del estrecho de Ormuz</strong>, en un contexto de caída del tráfico naviero en la zona. Pese a la escalada retórica, el <strong>Brent cedió a unos US$76/barril</strong> y el <strong>WTI perforó los US$72</strong>, con el <strong>USO retrocediendo 2,85%</strong> el jueves.",
+      "contexto": "El desacople entre la escalada geopolítica y el precio del crudo sugiere que el mercado está asignando baja probabilidad a una disrupción física del flujo por Ormuz, o que la sobreoferta global le está ganando por ahora al riesgo geopolítico. La clave a monitorear el fin de semana es si Trump concreta las amenazas de bloqueo, lo que revertiría de golpe la tendencia bajista del crudo.",
       "impacto": [
-        {"asset": "QQQ (cierre jue)", "dir": "↓ -1.73%", "cls": "dn"},
-        {"asset": "SPY (cierre jue)", "dir": "↓ -0.13%", "cls": "dn"},
-        {"asset": "UST 10Y", "dir": "↓ 4.48%", "cls": "dn"},
-        {"asset": "USD (vs EUR/BRL/JPY)", "dir": "↓ presión bajista", "cls": "dn"}
+        {"asset": "USO", "dir": "↓ US$109,01 (-2,85%)", "cls": "dn"},
+        {"asset": "WTI", "dir": "↓ debajo de US$72", "cls": "dn"},
+        {"asset": "Brent", "dir": "↓ ~US$76", "cls": "dn"},
+        {"asset": "GLD", "dir": "↑ US$378,18 (+1,00%)", "cls": "up"}
       ]
     },
     {
       "id": 2,
-      "tag": "commodities · oro",
-      "tag_class": "tg",
-      "title": "Oro sube +2% impulsado por debilidad del empleo en EE.UU.",
-      "brief": "GLD subió 2.03% el jueves. El dato laboral débil redujo expectativas de hike y disparó la demanda de refugio. Petróleo también al alza.",
-      "tldr": "Correlación inversa oro/tech activada con fuerza",
+      "tag": "macro · mercados globales",
+      "tag_class": "tb",
+      "title": "Wall Street extiende ganancias impulsado por semiconductores pese a la tensión geopolítica",
+      "brief": "El QQQ subió 1,66% y el SPY 0,85% el jueves, apoyados en semiconductores. El Fear & Greed Index de CNN está en 47 (Neutral), el put/call del CBOE cayó a 0,69 y el AAII Bulls saltó a 36,3%.",
+      "tldr": "El mercado compró la escalada geopolítica sin pánico, apostando al rally de IA/semiconductores",
       "sentiment": "ro",
       "sentiment_label": "🟢 Risk-On",
-      "evento": "El ETF GLD cerró el jueves en <strong>US$378.13 (+2.03%)</strong>, su mayor alza diaria en semanas. Petróleo (USO) también positivo: <strong>+0.69%</strong> en US$103.98. FX: EUR/USD implícito ~1.14, <strong>BRL/USD 5.20</strong>, JPY/USD 161.58 (todos al 2/7). El dato laboral débil debilitó al dólar y reactivó el apetito por activos de refugio y materias primas.",
-      "contexto": "El oro mantiene su tendencia alcista estructural en 2026, apoyada en compras de bancos centrales y en la incertidumbre sobre el ciclo de la Fed. JP Morgan proyecta US$6.000/oz para Q4-2026. La debilidad del dólar post-payroll beneficia indirectamente a emergentes vía términos de intercambio y compresión de spreads.",
+      "evento": "Wall Street cerró el jueves en alza apoyado en la <strong>suba de las empresas de semiconductores</strong>, pese a la escalada militar entre EE.UU. e Irán como telón de fondo. El <strong>QQQ subió 1,66% a US$723,28</strong> y el <strong>SPY avanzó 0,85% a US$751,71</strong>. El <strong>Fear &amp; Greed Index de CNN se ubica en 47 (Neutral)</strong>, el <strong>put/call ratio del CBOE cayó a 0,69</strong> (desde 1,33 el 3/7) y el <strong>AAII Bulls saltó a 36,3%</strong> (+4,9pp), aunque todavía por debajo del promedio histórico de 37,5%. El <strong>UST 10Y se mantiene en 4,56%</strong>.",
+      "contexto": "La combinación de un put/call en zona de complacencia con un Fear &amp; Greed apenas neutral describe un mercado que absorbió la escalada geopolítica sin pánico, apostando a que el rally de semiconductores/IA sigue siendo el driver dominante. Vale monitorear si el CPI de junio, que se publica el martes 14/7, reintroduce volatilidad en tasas y le quita margen a este optimismo.",
       "impacto": [
-        {"asset": "GLD (oro ETF)", "dir": "↑ +2.03% US$378.13", "cls": "up"},
-        {"asset": "USO (petróleo)", "dir": "↑ +0.69% US$103.98", "cls": "up"},
-        {"asset": "USD Index", "dir": "↓ debilitado", "cls": "dn"}
+        {"asset": "QQQ", "dir": "↑ US$723,28 (+1,66%)", "cls": "up"},
+        {"asset": "SPY", "dir": "↑ US$751,71 (+0,85%)", "cls": "up"},
+        {"asset": "Put/Call CBOE", "dir": "↓ 0,69", "cls": "neu"},
+        {"asset": "UST 10Y", "dir": "→ 4,56%", "cls": "neu"}
       ]
     },
     {
       "id": 3,
-      "tag": "argentina · deuda soberana",
-      "tag_class": "tb",
-      "title": "Riesgo país en 417pb: mínimo desde abril 2018",
-      "brief": "El EMBI+ Argentina encadena cuatro caídas consecutivas y se acerca a los 400 puntos. Bonos soberanos en verde generalizado.",
-      "tldr": "Quiebre de 400pb sería gatillo de nuevos flujos institucionales",
+      "tag": "argentina · deuda y tesoro",
+      "tag_class": "tg",
+      "title": "El riesgo país argentino roza mínimos de 2018 tras el pago de deuda del 9/7",
+      "brief": "El EMBI+ Argentina cerró el jueves en 404 puntos, mínimo desde abril 2018, y amenaza con perforar los 400pb en el fin de semana largo. El Gobierno presentó su programa financiero 2026-2027 con licitación clave el 15/7.",
+      "tldr": "Argentina se acerca a niveles de riesgo país que habilitarían el regreso a mercados voluntarios",
       "sentiment": "ro",
       "sentiment_label": "🟢 Risk-On",
-      "evento": "El riesgo país cayó <strong>5 unidades</strong> hasta <strong>417 puntos básicos</strong>, nivel mínimo desde el <strong>24 de abril de 2018</strong>. Los bonos soberanos en dólares suben en promedio +0.3%: <strong>GD30 US$66.14 (+0.16%)</strong>, <strong>GD35 US$85.20 (+0.29%)</strong>, <strong>AL30 US$64.33 (+0.23%)</strong>, <strong>AL35 US$81.58 (+0.34%)</strong>. El riesgo país acumula una caída del <strong>~27%</strong> desde los 571pb del inicio de 2026.",
-      "contexto": "El descenso refleja: upgrade de S&amp;P a <strong>B-</strong> en junio (en línea con Fitch), sobrecumplimiento de metas de reservas con el FMI (US$11.800M de metas perdonadas en la segunda revisión), y consolidación fiscal. Un quiebre sostenido de los <strong>400pb</strong> habilitaría el acceso a fondos de bonos &ldquo;high yield&rdquo; globales, potenciando flujos hacia soberanos ARG.",
+      "evento": "El <strong>EMBI+ Argentina cerró el jueves 9/7 en 404 puntos (-1%, -4 unidades)</strong>, su nivel más bajo desde abril de 2018, y amenaza con perforar el piso de los <strong>400 puntos</strong> durante el fin de semana largo por el feriado del Día de la Independencia. Ese mismo día el Gobierno afrontó un vencimiento de <strong>USD4.300M</strong> con fondos del Tesoro en el BCRA más garantías del <strong>Banco Mundial y el BID</strong>.",
+      "contexto": "El Gobierno presentó el programa financiero 2026-2027: vencimientos por <strong>USD19.200M</strong> para lo que resta de 2026, a cubrir con colocación de bonos en el mercado local (<strong>USD6.000M</strong>) y desembolsos del FMI (<strong>USD1.900M</strong>). La próxima prueba es la licitación del <strong>15/7</strong>, que incluirá el nuevo <strong>Bonar 2029 (AO29)</strong>. Perforar los 400pb reabriría la discusión sobre el eventual regreso de Argentina a los mercados voluntarios de deuda.",
       "impacto": [
-        {"asset": "Riesgo País (EMBI+)", "dir": "↓ 417pb", "cls": "up"},
-        {"asset": "GD30", "dir": "↑ US$66.14", "cls": "up"},
-        {"asset": "GD35", "dir": "↑ US$85.20", "cls": "up"},
-        {"asset": "AL30", "dir": "↑ US$64.33", "cls": "up"}
+        {"asset": "Riesgo país", "dir": "↓ 404pb (-1%)", "cls": "up"},
+        {"asset": "GD35", "dir": "↓ 82,95 (-0,26%)", "cls": "dn"},
+        {"asset": "AL35", "dir": "↑ 79,98 (+0,17%)", "cls": "up"},
+        {"asset": "GD38", "dir": "↑ 86,78 (+0,92%)", "cls": "up"}
       ]
     },
     {
       "id": 4,
-      "tag": "argentina · reservas y FX",
-      "tag_class": "tb",
-      "title": "Reservas BCRA superan US$48.000M: récord en la era Milei",
-      "brief": "Las reservas tocan su nivel más alto desde 2019. La brecha blue/mayorista se mantiene en 2.49%. El BCRA acumula US$9.102M de compras en 2026.",
-      "tldr": "Ancla cambiaria sólida; programa al 91% de meta anual de acumulación",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "Las reservas brutas del BCRA superaron <strong>US$48.000 millones</strong>, récord de la era Milei y nivel no visto desde 2019. El Banco Central compró <strong>US$25M</strong> en el MULC el jueves, acumulando <strong>US$9.102M</strong> en lo que va de 2026 (91% de la meta anual). Dólar oficial: <strong>$1.460/$1.510</strong>. Blue: <strong>$1.505/$1.525</strong>. CCL: <strong>$1.573–$1.576</strong>. Brecha blue/mayorista: <strong>2.49%</strong>.",
-      "contexto": "La brecha casi nula valida la efectividad del crawling peg y la confianza en el programa. El FMI reconoció el sobrecumplimiento con un ajuste de metas en la segunda revisión. Las LECAPs cortas (S31G6 en 122.7, S31L6 en 115.8) mantienen demanda como vehículo de carry de corto plazo.",
+      "tag": "argentina · tipo de cambio",
+      "tag_class": "ta",
+      "title": "El dólar opera estable en la reapertura post feriado, con la brecha cambiaria acotada",
+      "brief": "El oficial mayorista cotiza en $1.467/$1.507 y el blue en $1.500/$1.520, con una brecha de pocos puntos. El MEP opera en $1.525,2 y el CCL en $1.562,9.",
+      "tldr": "La brecha cambiaria se mantiene contenida en la previa de la licitación del 15/7",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "Tras el feriado del 9/7 por el Día de la Independencia, el <strong>dólar oficial mayorista cotiza en $1.467/$1.507</strong> y el <strong>oficial minorista (BNA) en $1.460/$1.510</strong>. El <strong>blue se mantiene en $1.500/$1.520</strong>, con una brecha frente al mayorista de apenas unos pocos puntos porcentuales. El <strong>MEP opera en $1.525,2/$1.531,6</strong> y el <strong>CCL en $1.562,9/$1.565,9</strong>.",
+      "contexto": "La brecha cambiaria acotada, sostenida durante varias semanas, es una de las señales que el mercado sigue de cerca para evaluar la sostenibilidad del esquema cambiario en la previa de la licitación del 15/7. Las LECAPs de corto plazo (S13N6 en 101,55) siguen validando la curva de tasas en pesos como ancla de expectativas cambiarias.",
       "impacto": [
-        {"asset": "Reservas BCRA", "dir": "↑ US$48.000M+", "cls": "up"},
-        {"asset": "Brecha cambiaria", "dir": "↓ 2.49%", "cls": "up"},
-        {"asset": "Dólar blue", "dir": "→ $1.525 (venta)", "cls": "neu"},
-        {"asset": "CCL", "dir": "→ $1.574", "cls": "neu"}
-      ]
-    },
-    {
-      "id": 5,
-      "tag": "argentina · renta variable",
-      "tag_class": "tg",
-      "title": "Merval +1.8% con Wall Street de feriado: IRSA lidera con +4.1%",
-      "brief": "La bolsa porteña opera con agenda propia ante el feriado en EE.UU. Predominan las subas con financieras y energéticas al frente.",
-      "tldr": "Merval en modo desacople positivo; sube en USD y en pesos",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El <strong>S&amp;P Merval sube +1.8%</strong> hasta ~3.180.000 puntos. Wall Street está <strong>cerrado hoy por el feriado de Independencia</strong> (July 4 cae sábado; NYSE observa el viernes 3/7). Entre las acciones: <strong>IRSA +4.1%</strong> lidera la suba. Los bonos soberanos acompañan con +0.3% en promedio.",
-      "contexto": "La plaza local opera con sesgo propio y positivo. El contexto macro favorable (inflación en baja, convergencia cambiaria, upgrade crediticio S&amp;P) sostiene la valuación. El Merval acumula cierto retraso relativo respecto a los bonos; la compresión del riesgo país debería seguir traccionando al equity. El próximo catalizador será la reapertura de ADRs el lunes, cuando el mercado estadounidense descuente el payroll ya publicado.",
-      "impacto": [
-        {"asset": "S&P Merval", "dir": "↑ +1.8%", "cls": "up"},
-        {"asset": "IRSA", "dir": "↑ +4.1%", "cls": "up"},
-        {"asset": "NYSE / Nasdaq", "dir": "— CERRADO (feriado)", "cls": "neu"}
+        {"asset": "Dólar oficial", "dir": "→ $1.460/$1.510", "cls": "neu"},
+        {"asset": "Dólar blue", "dir": "→ $1.500/$1.520", "cls": "neu"},
+        {"asset": "MEP", "dir": "→ $1.525,2", "cls": "neu"},
+        {"asset": "CCL", "dir": "→ $1.562,9", "cls": "neu"}
       ]
     }
   ],
   "tensiones": [
-    {"label": "Fed en espera forzada", "texto": "El empleo se frena (57K vs 115K esperados) pero la inflación sigue por encima del target. La Fed no puede cortar sin arriesgar credibilidad, ni puede subir con el mercado laboral enfriándose."},
-    {"label": "Tech en corrección", "texto": "QQQ cayó -1.73% el jueves — segunda jornada bajista de la semana para growth. Las revisiones a la baja del empleo y las tasas sin recortar presionan los múltiplos del segmento."},
-    {"label": "Riesgo país en testeo de 400pb", "texto": "El quiebre o rebote en los 400pb definirá el flujo institucional hacia Argentina en julio. El próximo catalizador: reapertura de ADRs el lunes con el payroll ya descontado."},
-    {"label": "Wall Street cerrado hoy", "texto": "NYSE y Nasdaq no operan (feriado del 4 de julio observado el viernes 3/7). Los datos de ETFs corresponden al cierre del jueves 2/7."}
+    {
+      "label": "El desacople petróleo-geopolítica puede revertirse de golpe si Trump concreta el bloqueo de Ormuz",
+      "texto": "Que Trump declare terminado el cese el fuego con Irán y amenace con bloquear Ormuz debería, en teoría, sostener al petróleo en alza. Sin embargo el crudo cayó y las acciones subieron. El riesgo es que esa complacencia se revierta bruscamente si aparece un evento que sí amenace el flujo físico de crudo por el estrecho."
+    },
+    {
+      "label": "El riesgo país roza mínimos de 2018 justo cuando el mercado local queda cerrado por el fin de semana largo",
+      "texto": "El EMBI+ Argentino cerrando en 404pb, al borde de perforar los 400 puntos, construye una historia local muy sólida, pero el feriado del 9/7 y el fin de semana dejan al mercado local sin poder procesar noticias hasta el lunes. Un titular negativo durante el fin de semana —geopolítico o local— quedaría sin poder tradearse hasta la reapertura."
+    }
   ],
   "correlaciones": [
-    {"par": "Payrolls débiles → Gold / QQQ", "texto": "Gold +2.03% / QQQ -1.73%: correlación inversa clásica activada. Dato laboral flojo = menor probabilidad de hike = dólar débil = refugio en oro."},
-    {"par": "Fed en espera + USD débil → EM", "texto": "La pausa de la Fed comprime spreads emergentes. Argentina beneficiada directamente: riesgo país -5pb hoy, acercándose a mínimos desde 2018."},
-    {"par": "Reservas BCRA + brecha → bonos", "texto": "Reservas en US$48.000M+ y brecha en 2.5% refuerzan la credibilidad del programa. Resultado: compresión de bonos soberanos (+0.3% promedio en la jornada)."}
+    {
+      "par": "Complacencia en Wall Street (put/call 0,69) + escalada geopolítica sin pricing → riesgo de reversión brusca si el petróleo vuelve a saltar",
+      "texto": "Un put/call ratio de 0,69 señala más calls que puts, es decir, sesgo alcista/complacencia, justo en un momento de escalada retórica entre EE.UU. e Irán. Si el conflicto deriva en una disrupción real del flujo de crudo, ese posicionamiento complaciente podría amplificar una corrección en lugar de amortiguarla."
+    },
+    {
+      "par": "Riesgo país en mínimos de 2018 + programa financiero con roll en el mercado local → la licitación del 15/7 es el próximo testeo real de la demanda de deuda argentina",
+      "texto": "Con el EMBI+ al borde de los 400pb y un programa financiero que depende de colocar USD6.000M en el mercado local durante 2026, la licitación del 15/7 —que incluirá el nuevo Bonar 2029 (AO29)— funcionará como termómetro de si la compresión del riesgo país se traduce en demanda real de papel argentino."
+    }
   ],
-  "bottom_line": "<strong>El dato de empleo de junio en EE.UU. (57K vs 115K esperados)</strong> generó una jornada de risk-off global el jueves: tech en rojo (QQQ -1.7%), oro fuerte (+2%), y la Fed sin señales claras de movimiento. <strong>Con Wall Street de feriado hoy, Argentina opera en modo desacople positivo</strong>: el riesgo país tocó 417pb (mínimo en 8 años), las reservas del BCRA superaron US$48.000M récord, y el Merval sube +1.8% liderado por IRSA. La brecha cambiaria en 2.5% y el sobrecumplimiento del programa FMI consolidan el ancla nominal. El próximo umbral clave es el <strong>quiebre de los 400pb en riesgo país</strong>: de concretarse, habilitaría flujos institucionales que hoy permanecen al margen. Para portfolios locales, la sesión refuerza la convicción en <strong>bonos soberanos en dólares (GD35, AL35)</strong> y el carry en <strong>LECAPs cortas</strong> mientras se mantenga el esquema cambiario."
+  "bottom_line": "<strong>El viernes 10 de julio cierra una semana marcada por señales contradictorias entre geopolítica y mercados.</strong> Trump declaró &ldquo;terminado&rdquo; el cese el fuego con Irán y advirtió sobre un eventual bloqueo del estrecho de Ormuz, pero el petróleo cayó (USO -2,85%, WTI debajo de US$72) y Wall Street extendió su rally apoyado en semiconductores (QQQ +1,66%, SPY +0,85%), con el Fear &amp; Greed Index de CNN en zona Neutral (47) y un put/call ratio de 0,69 que refleja complacencia. Para Argentina, la jornada llega con fundamentals locales muy sólidos: el riesgo país cerró el jueves en 404 puntos, su nivel más bajo desde abril de 2018, tras el pago de un vencimiento de USD4.300M el 9/7, y el Gobierno presentó un programa financiero 2026-2027 que depende de colocar USD6.000M en el mercado local, con la licitación del 15/7 (incluyendo el nuevo Bonar 2029) como próxima prueba. El dólar se mantiene estable con brecha acotada tras el feriado. El desafío del fin de semana largo es si el desacople local resiste un contexto global donde la escalada retórica EE.UU.-Irán todavía no está siendo pricing por el mercado del petróleo ni de acciones."
 }
