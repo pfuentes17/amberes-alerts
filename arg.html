@@ -702,6 +702,18 @@ var D={
     interes:[1901, 864, 301, 245,1005, 175, 1868, 855, 292, 243,1025, 169],
     // Ene: BONCAP30/BONCAP13 + Letras CP · Jul: GD30/AL30 (amort) + GD35/AL35 cupón
     // May/Nov: FMI cuota semestral · Dic: BONCER 15-12-2026 ($22.5B equiv.)
+    // Jul 9 financiado: BBVA+Santander $2.0B (BIRF/MIGA) + Deutsche Bank $1.2B (BID $550M) = $3.2B nuevos préstamos garantizados
+    // Decreto 549/2026 (29-jun) + Resolución Conjunta 40/2026 (3-jul, mod. 8-jul)
+  },
+  // Préstamos garantizados Jul 2026 — fuente Boletín Oficial 8-jul-2026
+  prestGarantizados:{
+    total: 3200,  // MM USD
+    detalle:[
+      {banco:'BBVA + Santander',monto:2000,garantia:'BIRF/MIGA (Banco Mundial)',comision:0.50},
+      {banco:'Deutsche Bank (London)',monto:1200,garantia:'BID — garantía parcial $550M',comision:0.50}
+    ],
+    fecha:'9 jul 2026',
+    objeto:'Pago GD30/AL30 (capital) + cupones (GD35/AL35) — vencimiento 9-jul-2026'
   },
   // Deuda: fuente Secretaría de Finanzas
   // Dic 2025: USD 455.077M (deuda_publica_31-12-2025.xlsx)
@@ -747,16 +759,14 @@ var D={
            yoy: [-5.7,-5.8,11.1,-13.2,-1.5]},       // vs mismo mes 2025 (AFCP)
   came:{l:["May 26"],
         yoy:[-1.2], mom:[1.2], acum:[-3.1]},          // ventas minoristas pyme CAME
-  // ── CALENDARIO JUNIO 2026 ──────────────
-  cal:{year:2026,month:6,events:[
-    {day:10,name:'Licitaci\u00f3n Tesoro',val:'CER/TAMAR (TXMD8/9/J0) \u00b7 DL (D31G6/TZVD8) \u00b7 Hard USD (AO28) \u00b7 Conversi\u00f3n TZX26/TTJ26',col:'m'},
-    {day:11,name:'IPC Mayo 2026 &mdash; INDEC',val:'Inflaci\u00f3n mensual \u2014 8:00 AM',col:'a'},
-    {day:12,name:'EMAE Abril 2026 &mdash; INDEC',val:'Actividad econ\u00f3mica',col:'a'},
-    {day:16,name:'Recaudaci\u00f3n Jun &mdash; AFIP',val:'Dato mensual tributario',col:'m'},
-    {day:19,name:'Resultado Fiscal Jun',val:'Super\u00e1vit primario &mdash; Mecon',col:'m'},
-    {day:26,name:'Licitaci\u00f3n Tesoro',val:'Secretar\u00eda de Finanzas',col:'m'},
-    {day:24,name:'EPH Q1 2026 &mdash; INDEC',val:'Mercado laboral primer trimestre',col:'a'},
-    {day:30,name:'IPC Jun 2026 &mdash; INDEC',val:'Inflaci\u00f3n mensual \u2014 8:00 AM',col:'a'}
+  // ── CALENDARIO JULIO 2026 ──────────────
+  cal:{year:2026,month:7,events:[
+    {day:9,name:'Vto. GD30/AL30 &mdash; Pagado',val:'Capital $3.046B + Inter\u00e9s $1.868B = $4.914B USD \u00b7 Financiado: BBVA/Santander $2B + Deutsche Bank $1.2B (garant\u00eda BIRF/BID)',col:'r'},
+    {day:11,name:'IPC Jun 2026 &mdash; INDEC',val:'Inflaci\u00f3n mensual \u2014 8:00 AM',col:'a'},
+    {day:15,name:'Recaudaci\u00f3n Jul &mdash; AFIP',val:'Dato mensual tributario \u2014 estimado',col:'m'},
+    {day:17,name:'EMAE Mayo 2026 &mdash; INDEC',val:'Actividad econ\u00f3mica',col:'a'},
+    {day:25,name:'Resultado Fiscal Jul',val:'Super\u00e1vit primario &mdash; Mecon',col:'m'},
+    {day:28,name:'Licitaci\u00f3n Tesoro',val:'Secretar\u00eda de Finanzas',col:'m'}
   ]}
 };
 
@@ -1622,7 +1632,7 @@ function buildMECON(){
     panel2col('p3',
       shdr('Deuda P\u00fablica','Secretar\u00eda de Finanzas \u2014 Dic 2025 (dato oficial)','78.4%','del PBI \u2014 $455B USD','r')+
       src('Secretar\u00eda de Finanzas \u00b7 Informe Trimestral Deuda P\u00fablica Dic 2025')+
-      sr4([{l:'Deuda Total Dic 25',v:'$455B',c:'r',n:'USD \u2014 78.4% del PBI',x:'mecon'},{l:'Deuda Externa',v:'65%',c:'r',n:'Del stock total',x:'mecon'},{l:'En Moneda Ext.',v:'68%',c:'r',n:'Exposici\u00f3n cambiaria',x:'mecon'},{l:'Venc. 2026 total',v:'$27.1B',c:'a',n:'USD · fuente Vencimientos USD',x:'mecon'}])+
+      sr4([{l:'Deuda Total Dic 25',v:'$455B',c:'r',n:'USD \u2014 78.4% del PBI',x:'mecon'},{l:'Venc. Jul 9 pagado',v:'$4.9B',c:'g',n:'GD30/AL30 · capital + cup\u00f3n',x:'mecon'},{l:'Financiado Jul 9',v:'$3.2B',c:'a',n:'BBVA $2B + Deutsche $1.2B (BIRF/BID)',x:'mecon'},{l:'Venc. 2026 total',v:'$27.1B',c:'a',n:'USD · fuente Vencimientos USD',x:'mecon'}])+
       '<div style="background:var(--nv3);border:1px solid var(--br);padding:13px 15px;margin-bottom:11px;">'+
         '<div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--rd);margin-bottom:10px;padding-left:8px;border-left:2px solid var(--rd);">Estructura de la Deuda \u2014 Dic 2025</div>'+
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">'+
@@ -1634,7 +1644,7 @@ function buildMECON(){
             '<div><div style="font-size:9.5px;color:var(--wh);margin-bottom:2px;">Pesos <span class="g">32%</span></div><div class="dbar"><div class="dfill" style="width:32%;background:linear-gradient(90deg,var(--g4),var(--cel));"></div></div></div></div>'+
         '</div>'+
       '</div>'+
-      bx2(['de1','de2'],['Deuda Bruta % PBI \u2014 Serie mensual 2019\u20132026 (Finanzas)','Vencimientos ME 2026 Mensual \u2014 A.3.2+A.3.3 \u00b7 MM USD (Ene=Letras CP, Jul=GD30/AL30)'],'h190',['c-rd','c-mecon']),
+      bx2(['de1','de2'],['Deuda Bruta % PBI \u2014 Serie mensual 2019\u20132026 (Finanzas)','Vencimientos ME 2026 Mensual \u2014 A.3.2+A.3.3 \u00b7 MM USD (Jul 9: $4.9B pagado \u00b7 financiado $3.2B BBVA/DB)'],'h190',['c-rd','c-mecon']),
       cal)+
     panel2col('p4',
       shdr('Licitaciones del Tesoro','Vida promedio \u00b7 Rollover \u00b7 Perfil vencimientos \u00b7 Ene\u2013Jun 2026','120%','Rollover 10-Jun \u00b7 $6.12B adj.','g')+
