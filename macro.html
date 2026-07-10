@@ -419,6 +419,9 @@ br:{
 cn:{
   cpi:{l:["Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],v:[-0.99,-0.70,-0.10,0.50,0.80,0.50,-0.70,-0.10,1.2,1.2,1.0]},
   ppi:{l:["Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],v:[-2.8,-2.5,-2.3,-2.5,-2.3,-2.1,-2.2,-2.4,2.8,3.9,4.1]},
+  cpiCore:{l:["Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],v:[0.8,0.9,1.0,1.2,1.2,0.9,1.0,1.1,1.2,1.1,1.0]},
+  cpiMom:{l:["Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],v:[0.0,0.1,0.2,-0.1,0.2,0.2,1.0,-0.7,0.3,-0.1,-0.3]},
+  ppiMom:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],v:[0.0,0.1,0.1,0.2,0.4,0.4,1.0,1.7,0.5,-0.3]},
   trade:{l:["Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],v:[990,910,1048,982,1023,905,960,1020,980,880,920,970]},
   pmiNbs:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[49.8,50.1,50.3,49.2,50.1,49.0,50.4,50.3,49.5]},
   pmiSvc:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[50.3,50.8,51.5,52.2,52.5,50.4,50.1,49.4,49.8]},
@@ -692,9 +695,9 @@ function buildCN(){
     '</div>')+
     panel('cn-p1',
       shdr('CPI &middot; PPI &mdash; China','NBS &mdash; Presi&#243;n de precios',L(d.cpi.v)+'%',L(d.cpi.l)+' &middot; CPI YoY',L(d.cpi.v)<0?'r':'a')+
-      sr4([{l:'CPI YoY',v:L(d.cpi.v)+'%',c:L(d.cpi.v)<0?'r':'a',n:L(d.cpi.l)},{l:'PPI YoY',v:L(d.ppi.v)+'%',c:'r',n:L(d.ppi.l)},{l:'PPI Tendencia',v:'&#8593; Acelerando',c:'r',n:'Iran + boom IA'},{l:'Diferencial',v:'+'+(L(d.ppi.v)-L(d.cpi.v)).toFixed(1)+'pp',c:'r',n:'PPI no se traslada al CPI'}])+
-      box1('nc1','h240','CPI y PPI China YoY &mdash; Ago 2025&ndash;Jun 2026')+
-      box2(['nc2','nc3'],['CPI vs PPI &mdash; Comparativa','Evoluci&#243;n CPI 2025&ndash;2026']),
+      sr4([{l:'CPI YoY',v:L(d.cpi.v)+'%',c:L(d.cpi.v)<0?'r':'a',n:L(d.cpi.l)},{l:'Core CPI YoY',v:L(d.cpiCore.v)+'%',c:'a',n:'Ex alim. y energ.'},{l:'CPI MoM',v:L(d.cpiMom.v)+'%',c:L(d.cpiMom.v)>=0?'a':'r',n:L(d.cpiMom.l)},{l:'PPI MoM',v:L(d.ppiMom.v)+'%',c:L(d.ppiMom.v)>=0?'a':'r',n:L(d.ppiMom.l)}])+
+      box1('nc1','h240','CPI &middot; Core CPI &middot; PPI China YoY &mdash; Ago 2025&ndash;Jun 2026')+
+      box2(['nc2','nc3'],['CPI MoM &mdash; &Iacute;mpetu mensual','PPI MoM &mdash; Precios productor mensual']),
       cal
     )+
     panel('cn-p2',
@@ -728,9 +731,9 @@ function buildCN(){
   setTimeout(function(){
     mini('nm1',d.cpi.v,L(d.cpi.v)>=0?C.G4:C.RD);mini('nm2',d.pmiNbs.v,L(d.pmiNbs.v)>=50?C.G4:C.RD);
     mini('nm3',d.trade.v,C.G3);mini('nm4',d.ip.v,C.G4);mini('nm5',d.ret.v,C.G4);mini('nm6',d.rate.v,C.GD);
-    line('nc1',d.cpi.l,[{label:'CPI',data:d.cpi.v,borderColor:C.G4,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4},{label:'PPI',data:d.ppi.v,borderColor:C.RD,tension:0.3,pointRadius:3,pointBackgroundColor:C.RD},{label:'0%',data:Array(d.cpi.l.length).fill(0),borderColor:C.GD,borderDash:[5,3],pointRadius:0,tension:0}]);
-    bar('nc2',d.cpi.l,d.cpi.v.map(function(v,i){return v-d.ppi.v[i];}),{cf:function(v){return v>=0?C.G4:C.RD;}});
-    bar('nc3',d.cpi.l,d.cpi.v,{cf:function(v){return v>=0?C.G4:C.RD;}});
+    line('nc1',d.cpi.l,[{label:'CPI',data:d.cpi.v,borderColor:C.G4,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4},{label:'Core CPI',data:d.cpiCore.v,borderColor:C.BL,tension:0.3,pointRadius:3,pointBackgroundColor:C.BL},{label:'PPI',data:d.ppi.v,borderColor:C.RD,tension:0.3,pointRadius:3,pointBackgroundColor:C.RD},{label:'0%',data:Array(d.cpi.l.length).fill(0),borderColor:C.GD,borderDash:[5,3],pointRadius:0,tension:0}]);
+    bar('nc2',d.cpiMom.l,d.cpiMom.v,{cf:function(v){return v>=0?C.G4:C.RD;}});
+    bar('nc3',d.ppiMom.l,d.ppiMom.v,{cf:function(v){return v>=0?C.G4:C.RD;}});
     line('np1',d.pmiNbs.l,[{label:'PMI NBS Mfg',data:d.pmiNbs.v,borderColor:C.G4,fill:true,backgroundColor:C.G4+'18',tension:0.3,pointRadius:4,pointBackgroundColor:C.G4},{label:'PMI NBS Svc',data:d.pmiSvc.v,borderColor:C.BL,tension:0.3,pointRadius:4,pointBackgroundColor:C.BL},{label:'L&#237;nea 50',data:Array(d.pmiNbs.l.length).fill(50),borderColor:C.RD,borderDash:[6,3],pointRadius:0,tension:0}],'');
     line('np2',d.pmiNbs.l,[{label:'NBS Mfg',data:d.pmiNbs.v,borderColor:C.G4,tension:0.3,pointRadius:4,pointBackgroundColor:C.G4},{label:'Caixin',data:d.pmiCai.v,borderColor:C.OR,tension:0.3,pointRadius:4,pointBackgroundColor:C.OR},{label:'50',data:Array(d.pmiNbs.l.length).fill(50),borderColor:C.RD,borderDash:[5,3],pointRadius:0,tension:0}],'');
     bar('np3',d.pmiSvc.l,d.pmiSvc.v,{cf:function(v){return v>=50?C.G4:C.RD;},s:''});
