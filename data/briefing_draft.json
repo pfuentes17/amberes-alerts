@@ -1,12 +1,12 @@
 {
-  "date": "2026-07-10",
-  "generated": "2026-07-10T12:09:26Z",
+  "date": "2026-07-13",
+  "generated": "2026-07-13T13:45:00Z",
   "sentiment": {
-    "overall": "neutral",
-    "label": "El petróleo cae pese a la escalada retórica entre Trump e Irán, Wall Street extiende su rally de semiconductores y el riesgo país argentino roza mínimos de 2018 en la previa de la licitación del 15/7",
-    "fg": 47,
+    "overall": "risk-off",
+    "label": "El WTI y el Brent suben 2% tras la escalada Irán-Ormuz y el VIX salta a 16,14, mientras el mercado repricea a la Fed hacia una suba de tasas; Argentina resiste con el riesgo país en 402pb y los globales al alza",
+    "fg": 49,
     "fg_label": "Neutral",
-    "putcall": 0.69,
+    "putcall": 0.55,
     "aaii_bulls": 36.3
   },
   "drivers": [
@@ -14,94 +14,107 @@
       "id": 1,
       "tag": "geopolítica · energía",
       "tag_class": "tq",
-      "title": "El petróleo cae pese a la escalada entre Trump e Irán, que declaró terminado el cese el fuego",
-      "brief": "Trump declaró terminado el cese el fuego con Irán y advirtió sobre un eventual bloqueo del estrecho de Ormuz, pero el Brent cedió a unos US$76 y el WTI perforó los US$72, con el USO retrocediendo 2,85%.",
-      "tldr": "El mercado no está pricing todavía una disrupción física del flujo de crudo",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El presidente <strong>Trump declaró &ldquo;terminado&rdquo;</strong> el cese el fuego con Irán y advirtió sobre nuevas acciones militares, incluido un eventual <strong>bloqueo del estrecho de Ormuz</strong>, en un contexto de caída del tráfico naviero en la zona. Pese a la escalada retórica, el <strong>Brent cedió a unos US$76/barril</strong> y el <strong>WTI perforó los US$72</strong>, con el <strong>USO retrocediendo 2,85%</strong> el jueves.",
-      "contexto": "El desacople entre la escalada geopolítica y el precio del crudo sugiere que el mercado está asignando baja probabilidad a una disrupción física del flujo por Ormuz, o que la sobreoferta global le está ganando por ahora al riesgo geopolítico. La clave a monitorear el fin de semana es si Trump concreta las amenazas de bloqueo, lo que revertiría de golpe la tendencia bajista del crudo.",
+      "title": "Escala el conflicto EEUU-Irán: Ormuz \"cerrado\" y el verdadero cuello de botella es la refinación",
+      "brief": "EEUU e Irán intercambiaron nuevos ataques y Teherán declaró cerrado el Estrecho de Ormuz. El WTI sube 2,00% a US$72,84 y el Brent 2,00% a US$77,53, mientras el VIX salta 7,39% a 16,14 y las bolsas asiáticas y emergentes caen.",
+      "tldr": "El cuello de botella real no es el precio del crudo sino la capacidad de refinación offline",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "Estados Unidos e Irán intercambiaron nuevos ataques durante el fin de semana y Teherán declaró <strong>cerrado el Estrecho de Ormuz</strong>. El <strong>WTI sube 2,00% a US$72,84</strong> y el <strong>Brent 2,00% a US$77,53</strong>, mientras el <strong>VIX cerró en 16,14 puntos (+7,39%)</strong>. En Asia el <strong>Nikkei cerró -1,92%</strong> y en emergentes el <strong>CSI 300 cae 1,80%</strong> y el <strong>BIST 100 cae 1,68%</strong>. Los futuros de EE.UU. abren mixtos: Nasdaq -0,92%, S&amp;P 500 -0,26%, Dow +0,07%.",
+      "contexto": "El verdadero cuello de botella no es el precio del crudo sino la <strong>capacidad de refinación</strong>: cerca del 10% de la capacidad mundial (~8 millones de barriles diarios) está fuera de servicio entre Rusia, Medio Oriente y Asia, en parte por los ataques ucranianos a refinerías rusas (19 golpeadas en dos meses, recortando un tercio de la capacidad de diésel rusa). El <strong>crack spread 3-2-1 escaló a US$60/barril</strong> frente a un promedio histórico de apenas US$10,50 (1985-2021), por lo que la inflación en surtidor puede seguir alta incluso si el crudo cede.",
       "impacto": [
-        {"asset": "USO", "dir": "↓ US$109,01 (-2,85%)", "cls": "dn"},
-        {"asset": "WTI", "dir": "↓ debajo de US$72", "cls": "dn"},
-        {"asset": "Brent", "dir": "↓ ~US$76", "cls": "dn"},
-        {"asset": "GLD", "dir": "↑ US$378,18 (+1,00%)", "cls": "up"}
+        {"asset": "WTI", "dir": "↑ US$72,84 (+2,00%)", "cls": "up"},
+        {"asset": "Brent", "dir": "↑ US$77,53 (+2,00%)", "cls": "up"},
+        {"asset": "VIX", "dir": "↑ 16,14 (+7,39%)", "cls": "up"},
+        {"asset": "Nikkei", "dir": "↓ -1,92%", "cls": "dn"}
       ]
     },
     {
       "id": 2,
-      "tag": "macro · mercados globales",
+      "tag": "macro · bancos centrales",
       "tag_class": "tb",
-      "title": "Wall Street extiende ganancias impulsado por semiconductores pese a la tensión geopolítica",
-      "brief": "El QQQ subió 1,66% y el SPY 0,85% el jueves, apoyados en semiconductores. El Fear & Greed Index de CNN está en 47 (Neutral), el put/call del CBOE cayó a 0,69 y el AAII Bulls saltó a 36,3%.",
-      "tldr": "El mercado compró la escalada geopolítica sin pánico, apostando al rally de IA/semiconductores",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "Wall Street cerró el jueves en alza apoyado en la <strong>suba de las empresas de semiconductores</strong>, pese a la escalada militar entre EE.UU. e Irán como telón de fondo. El <strong>QQQ subió 1,66% a US$723,28</strong> y el <strong>SPY avanzó 0,85% a US$751,71</strong>. El <strong>Fear &amp; Greed Index de CNN se ubica en 47 (Neutral)</strong>, el <strong>put/call ratio del CBOE cayó a 0,69</strong> (desde 1,33 el 3/7) y el <strong>AAII Bulls saltó a 36,3%</strong> (+4,9pp), aunque todavía por debajo del promedio histórico de 37,5%. El <strong>UST 10Y se mantiene en 4,56%</strong>.",
-      "contexto": "La combinación de un put/call en zona de complacencia con un Fear &amp; Greed apenas neutral describe un mercado que absorbió la escalada geopolítica sin pánico, apostando a que el rally de semiconductores/IA sigue siendo el driver dominante. Vale monitorear si el CPI de junio, que se publica el martes 14/7, reintroduce volatilidad en tasas y le quita margen a este optimismo.",
+      "title": "El mercado repricea a la Fed hacia una suba de tasas; sube toda la curva del Tesoro",
+      "brief": "El consenso saltó de esperar recortes a descontar hasta dos subas de tasas en pocas semanas. El UST 10Y sube a 4,573% y el 2Y a 4,218%. Esta semana testifica Kevin Warsh ante el Congreso y se publican CPI y PCE.",
+      "tldr": "Un error de política monetaria de la Fed, no el petróleo en sí, es el riesgo de cola real",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El <strong>UST 10Y sube 0,4pb a 4,573%</strong> y el <strong>UST 2Y avanza 1,0pb a 4,218%</strong>; la curva <strong>2s10s se aplana a 35,5pb</strong> y la <strong>10s30s se empina a 50,4pb</strong>. El consenso de mercado pasó de esperar recortes de tasas a fin de año a descontar hasta <strong>dos subas</strong>, un giro de un punto porcentual en pocas semanas, justo cuando el petróleo repunta por Ormuz.",
+      "contexto": "Esta semana es clave: se publican el <strong>CPI y el PCE</strong>, y <strong>Kevin Warsh</strong> testifica ante el Congreso en su informe semestral de política monetaria. Si la inflación sorprende al alza, la Fed podría verse forzada a validar el pricing agresivo que ya adoptó el mercado. Los traders acumulan más de <strong>US$40.000 millones</strong> en posiciones largas en dólares, el nivel más alcista desde 2015 según la CFTC, y el mercado de swaps ya descuenta casi 40pb de ajuste de la Fed a diciembre (vs. 15pb a principios de junio).",
       "impacto": [
-        {"asset": "QQQ", "dir": "↑ US$723,28 (+1,66%)", "cls": "up"},
-        {"asset": "SPY", "dir": "↑ US$751,71 (+0,85%)", "cls": "up"},
-        {"asset": "Put/Call CBOE", "dir": "↓ 0,69", "cls": "neu"},
-        {"asset": "UST 10Y", "dir": "→ 4,56%", "cls": "neu"}
+        {"asset": "UST 10Y", "dir": "↑ 4,573% (+0,4pb)", "cls": "up"},
+        {"asset": "UST 2Y", "dir": "↑ 4,218% (+1,0pb)", "cls": "up"},
+        {"asset": "2s10s", "dir": "↓ 35,5pb (-0,6pb)", "cls": "dn"}
       ]
     },
     {
       "id": 3,
-      "tag": "argentina · deuda y tesoro",
-      "tag_class": "tg",
-      "title": "El riesgo país argentino roza mínimos de 2018 tras el pago de deuda del 9/7",
-      "brief": "El EMBI+ Argentina cerró el jueves en 404 puntos, mínimo desde abril 2018, y amenaza con perforar los 400pb en el fin de semana largo. El Gobierno presentó su programa financiero 2026-2027 con licitación clave el 15/7.",
-      "tldr": "Argentina se acerca a niveles de riesgo país que habilitarían el regreso a mercados voluntarios",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El <strong>EMBI+ Argentina cerró el jueves 9/7 en 404 puntos (-1%, -4 unidades)</strong>, su nivel más bajo desde abril de 2018, y amenaza con perforar el piso de los <strong>400 puntos</strong> durante el fin de semana largo por el feriado del Día de la Independencia. Ese mismo día el Gobierno afrontó un vencimiento de <strong>USD4.300M</strong> con fondos del Tesoro en el BCRA más garantías del <strong>Banco Mundial y el BID</strong>.",
-      "contexto": "El Gobierno presentó el programa financiero 2026-2027: vencimientos por <strong>USD19.200M</strong> para lo que resta de 2026, a cubrir con colocación de bonos en el mercado local (<strong>USD6.000M</strong>) y desembolsos del FMI (<strong>USD1.900M</strong>). La próxima prueba es la licitación del <strong>15/7</strong>, que incluirá el nuevo <strong>Bonar 2029 (AO29)</strong>. Perforar los 400pb reabriría la discusión sobre el eventual regreso de Argentina a los mercados voluntarios de deuda.",
+      "tag": "argentina · política monetaria",
+      "tag_class": "ta",
+      "title": "El BCRA busca anclar el dólar en $1.500 y Milei acelera la reforma de su Carta Orgánica",
+      "brief": "Con la inflación proyectada a la baja, el Central apunta a un ancla cambiaria en torno a $1.500 mientras Milei se reúne hoy con legisladores de LLA para acelerar la reforma del BCRA. El FMI ya palpa el terreno antes de la primera visita de Georgieva en 8 años.",
+      "tldr": "Ancla cambiaria y reforma institucional como ejes de la estrategia oficial de la semana",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El <strong>BCRA busca anclar el dólar en torno a $1.500</strong>, con la inflación proyectada a la baja, lo que devuelve atractivo a las inversiones en pesos bajo las tasas actuales. En paralelo, <strong>Javier Milei</strong> se reúne hoy a las 15hs con legisladores de <strong>La Libertad Avanza</strong> para definir la estrategia legislativa de la reforma de la Carta Orgánica del BCRA, que reemplaza los cinco objetivos actuales por un mandato único: preservar el valor de la moneda.",
+      "contexto": "Representantes del <strong>FMI</strong> ya mantuvieron reuniones con empresarios previo a la primera visita de una directora gerente del organismo en <strong>8 años</strong> (Kristalina Georgieva). Entre los temas sensibles, tanto el FMI como el Consejo de Mayo sugieren equiparar impositivamente o reducir con transición el <strong>Monotributo</strong>. Las consultoras privadas ven a la inflación de julio en niveles similares a junio, con presión de transporte, regulados y turismo invernal, aunque el proceso de moderación continúa.",
       "impacto": [
-        {"asset": "Riesgo país", "dir": "↓ 404pb (-1%)", "cls": "up"},
-        {"asset": "GD35", "dir": "↓ 82,95 (-0,26%)", "cls": "dn"},
-        {"asset": "AL35", "dir": "↑ 79,98 (+0,17%)", "cls": "up"},
-        {"asset": "GD38", "dir": "↑ 86,78 (+0,92%)", "cls": "up"}
+        {"asset": "Dólar oficial", "dir": "→ ~$1.500 (objetivo BCRA)", "cls": "neu"},
+        {"asset": "Riesgo país", "dir": "402pb (-2pb)", "cls": "up"}
       ]
     },
     {
       "id": 4,
-      "tag": "argentina · tipo de cambio",
-      "tag_class": "ta",
-      "title": "El dólar opera estable en la reapertura post feriado, con la brecha cambiaria acotada",
-      "brief": "El oficial mayorista cotiza en $1.467/$1.507 y el blue en $1.500/$1.520, con una brecha de pocos puntos. El MEP opera en $1.525,2 y el CCL en $1.562,9.",
-      "tldr": "La brecha cambiaria se mantiene contenida en la previa de la licitación del 15/7",
+      "tag": "argentina · deuda y energía",
+      "tag_class": "tg",
+      "title": "El riesgo país cede a 402pb y los bonos argentinos suben pese al escenario internacional adverso",
+      "brief": "El EMBI Global Argentina cerró en 402 puntos básicos (-2pb) y los globales en Buenos Aires avanzaron: GD30D +0,82%, GD35D +0,35%, AL30D +0,27%. El superávit energético semestral casi iguala el récord de todo 2025, impulsado por Vaca Muerta.",
+      "tldr": "Los fundamentals idiosincráticos siguen sosteniendo a los activos argentinos pese al ruido externo",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "El <strong>EMBI Global Argentina cerró el 10/7 en 402 puntos básicos (-2pb)</strong>. Los globales argentinos cerraron en Buenos Aires con el <strong>GD30D en 57,90 centavos (+0,82%)</strong>, el <strong>GD35D en 83,24 centavos (+0,35%)</strong> y el <strong>AL30D en 56,11 centavos (+0,27%)</strong>.",
+      "contexto": "El <strong>superávit energético</strong> acumulado en el primer semestre casi iguala el récord de todo 2025, superando los <strong>US$6.900 millones</strong>, impulsado por <strong>Vaca Muerta</strong>, que además marcó un récord mensual de fracturas en junio con el primer proyecto upstream bajo el RIGI. Pese a estas señales idiosincráticas positivas, las consultoras advierten que el <strong>colapso del cese el fuego entre EEUU e Irán ensombrece el optimismo</strong> sobre el plan de Caputo, y los operadores mantienen cautela por el calendario electoral de 2027.",
+      "impacto": [
+        {"asset": "EMBI Argentina", "dir": "↓ 402pb (-2pb)", "cls": "up"},
+        {"asset": "GD30D", "dir": "↑ US$57,90 (+0,82%)", "cls": "up"},
+        {"asset": "GD35D", "dir": "↑ US$83,24 (+0,35%)", "cls": "up"},
+        {"asset": "AL30D", "dir": "↑ US$56,11 (+0,27%)", "cls": "up"}
+      ]
+    },
+    {
+      "id": 5,
+      "tag": "argentina · riesgo político",
+      "tag_class": "tr",
+      "title": "El mercado empieza a pricear una carrera a tres bandas en 2027: el spread 2027-2028 llega a 354pb",
+      "brief": "Casi 30% de los argentinos no votaría ni a Milei ni a Kicillof, frente al 11% de 2025. Los bonos con vencimiento post-2027 rinden 354pb más que los que vencen antes, la métrica que el mercado sigue de cerca del riesgo político.",
+      "tldr": "El spread entre bonos por vencimiento, no el EMBI puntual, es el termómetro político real",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "Tras el feriado del 9/7 por el Día de la Independencia, el <strong>dólar oficial mayorista cotiza en $1.467/$1.507</strong> y el <strong>oficial minorista (BNA) en $1.460/$1.510</strong>. El <strong>blue se mantiene en $1.500/$1.520</strong>, con una brecha frente al mayorista de apenas unos pocos puntos porcentuales. El <strong>MEP opera en $1.525,2/$1.531,6</strong> y el <strong>CCL en $1.562,9/$1.565,9</strong>.",
-      "contexto": "La brecha cambiaria acotada, sostenida durante varias semanas, es una de las señales que el mercado sigue de cerca para evaluar la sostenibilidad del esquema cambiario en la previa de la licitación del 15/7. Las LECAPs de corto plazo (S13N6 en 101,55) siguen validando la curva de tasas en pesos como ancla de expectativas cambiarias.",
+      "evento": "Según encuestas relevadas por Bloomberg, casi el <strong>30% de los argentinos</strong> no votaría ni a Milei ni a Kicillof de cara a 2027, frente al 11% de 2025. Un relevamiento de nueve estudios nacionales igual muestra a <strong>Milei con ventaja</strong> tanto en primera vuelta como en un eventual balotaje contra Kicillof.",
+      "contexto": "El mercado ya no mira tanto el riesgo país agregado sino la <strong>curva de vencimientos</strong>: los bonos que vencen después de las elecciones de 2027 cotizan con un spread de <strong>354 puntos básicos</strong> más que los que vencen antes, reflejo de que sigue asignando probabilidad no trivial a un escenario de polarización o retorno kirchnerista. Si esa brecha se achica, el mercado premia una coalición de centro; si se amplía, apuesta a polarización electoral extrema. En paralelo el Gobierno reacomoda piezas: Francos avaló a Santilli como jefe de Gabinete y Bullrich no descarta continuar en su cargo actual.",
       "impacto": [
-        {"asset": "Dólar oficial", "dir": "→ $1.460/$1.510", "cls": "neu"},
-        {"asset": "Dólar blue", "dir": "→ $1.500/$1.520", "cls": "neu"},
-        {"asset": "MEP", "dir": "→ $1.525,2", "cls": "neu"},
-        {"asset": "CCL", "dir": "→ $1.562,9", "cls": "neu"}
+        {"asset": "Spread bonos 2027 vs 2028", "dir": "354pb", "cls": "neu"},
+        {"asset": "Sin Milei/Kicillof (encuestas)", "dir": "~30%", "cls": "neu"}
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "El desacople petróleo-geopolítica puede revertirse de golpe si Trump concreta el bloqueo de Ormuz",
-      "texto": "Que Trump declare terminado el cese el fuego con Irán y amenace con bloquear Ormuz debería, en teoría, sostener al petróleo en alza. Sin embargo el crudo cayó y las acciones subieron. El riesgo es que esa complacencia se revierta bruscamente si aparece un evento que sí amenace el flujo físico de crudo por el estrecho."
+      "label": "Un error de política monetaria de la Fed, no el petróleo en sí, es el riesgo de cola real de la semana",
+      "texto": "El mercado ya repriceó a la Fed hacia una suba de tasas en 2026, un giro de un punto porcentual en pocas semanas. Si el CPI y el PCE de esta semana sorprenden al alza —con el petróleo ya sumando presión por Ormuz—, la Fed podría verse forzada a validar ese pricing agresivo, con impacto directo sobre el apetito por activos emergentes como los argentinos."
     },
     {
-      "label": "El riesgo país roza mínimos de 2018 justo cuando el mercado local queda cerrado por el fin de semana largo",
-      "texto": "El EMBI+ Argentino cerrando en 404pb, al borde de perforar los 400 puntos, construye una historia local muy sólida, pero el feriado del 9/7 y el fin de semana dejan al mercado local sin poder procesar noticias hasta el lunes. Un titular negativo durante el fin de semana —geopolítico o local— quedaría sin poder tradearse hasta la reapertura."
+      "label": "El crack spread de refinación, no el crudo, es el verdadero riesgo inflacionario para Argentina",
+      "texto": "Con cerca del 10% de la capacidad global de refinación fuera de servicio y un crack spread 3-2-1 en US$60/barril (vs. un promedio histórico de US$10,50), los combustibles refinados pueden seguir caros incluso si el WTI y el Brent ceden, complicando la desinflación local vía transporte y regulados justo cuando el BCRA busca anclar el dólar en $1.500."
     }
   ],
   "correlaciones": [
     {
-      "par": "Complacencia en Wall Street (put/call 0,69) + escalada geopolítica sin pricing → riesgo de reversión brusca si el petróleo vuelve a saltar",
-      "texto": "Un put/call ratio de 0,69 señala más calls que puts, es decir, sesgo alcista/complacencia, justo en un momento de escalada retórica entre EE.UU. e Irán. Si el conflicto deriva en una disrupción real del flujo de crudo, ese posicionamiento complaciente podría amplificar una corrección en lugar de amortiguarla."
+      "par": "Concentración tecnológica en emergentes (TSMC + Samsung + SK Hynix >30% del MSCI EM) → un traspié en el capex de IA golpearía desproporcionadamente a los activos emergentes",
+      "texto": "La corrección del 20% en el Kospi desde su máximo de junio mostró cómo una corrección tecnológica en Asia se traslada rápido al resto de emergentes, incluidos los activos argentinos, pese a que la historia idiosincrática local no tenga relación directa con semiconductores."
     },
     {
-      "par": "Riesgo país en mínimos de 2018 + programa financiero con roll en el mercado local → la licitación del 15/7 es el próximo testeo real de la demanda de deuda argentina",
-      "texto": "Con el EMBI+ al borde de los 400pb y un programa financiero que depende de colocar USD6.000M en el mercado local durante 2026, la licitación del 15/7 —que incluirá el nuevo Bonar 2029 (AO29)— funcionará como termómetro de si la compresión del riesgo país se traduce en demanda real de papel argentino."
+      "par": "Riesgo país en 402pb + spread bonos 2027-2028 en 354pb → la compresión de riesgo argentino ya no se mide solo en el EMBI agregado sino en la curva de vencimientos",
+      "texto": "El EMBI cede a 402pb y valida la historia idiosincrática (reservas, reforma BCRA, superávit energético), pero el spread entre bonos que vencen antes y después de las elecciones de 2027 sigue siendo la métrica más fina para calibrar cuánto riesgo político continúa pricing el mercado."
     }
   ],
-  "bottom_line": "<strong>El viernes 10 de julio cierra una semana marcada por señales contradictorias entre geopolítica y mercados.</strong> Trump declaró &ldquo;terminado&rdquo; el cese el fuego con Irán y advirtió sobre un eventual bloqueo del estrecho de Ormuz, pero el petróleo cayó (USO -2,85%, WTI debajo de US$72) y Wall Street extendió su rally apoyado en semiconductores (QQQ +1,66%, SPY +0,85%), con el Fear &amp; Greed Index de CNN en zona Neutral (47) y un put/call ratio de 0,69 que refleja complacencia. Para Argentina, la jornada llega con fundamentals locales muy sólidos: el riesgo país cerró el jueves en 404 puntos, su nivel más bajo desde abril de 2018, tras el pago de un vencimiento de USD4.300M el 9/7, y el Gobierno presentó un programa financiero 2026-2027 que depende de colocar USD6.000M en el mercado local, con la licitación del 15/7 (incluyendo el nuevo Bonar 2029) como próxima prueba. El dólar se mantiene estable con brecha acotada tras el feriado. El desafío del fin de semana largo es si el desacople local resiste un contexto global donde la escalada retórica EE.UU.-Irán todavía no está siendo pricing por el mercado del petróleo ni de acciones."
+  "bottom_line": "<strong>El fin de semana dejó una nueva escalada entre EEUU e Irán, con el Estrecho de Ormuz declarado &ldquo;cerrado&rdquo; por Teherán</strong>, aunque el impacto en el crudo fue más acotado de lo que sugería la retórica: WTI y Brent suben 2,00% (a US$72,84 y US$77,53 respectivamente), mientras el VIX salta a 16,14 (+7,39%) y las bolsas asiáticas y emergentes retroceden (Nikkei -1,92%, CSI 300 -1,80%). El verdadero foco de riesgo para la semana no es el petróleo sino la <strong>capacidad de refinación global</strong> (crack spread en US$60/barril, seis veces su promedio histórico) y un mercado que ya repriceó a la Fed hacia una suba de tasas antes del CPI/PCE y el testimonio de Kevin Warsh.<br><br>Para Argentina, el combo vuelve a ser ambivalente pero con sesgo constructivo en lo local: el <strong>EMBI cede a 402pb (-2pb)</strong> y los globales suben (GD30D +0,82%), el BCRA busca anclar el dólar en <strong>$1.500</strong> con la inflación proyectada a la baja, el superávit energético semestral casi iguala el récord de 2025 gracias a Vaca Muerta, y Milei avanza hoy con la reforma de la Carta Orgánica del BCRA. El contrapeso es que el escenario internacional ensombrece el optimismo sobre el plan de Caputo, y el mercado ya empieza a pricear una carrera electoral a tres bandas en 2027 —el spread de 354pb entre bonos 2027 y 2028 es la métrica a seguir esta semana, más que el EMBI puntual."
 }
