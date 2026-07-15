@@ -1,104 +1,119 @@
 {
-  "date": "2026-07-14",
-  "generated": "2026-07-14T13:20:00Z",
+  "date": "2026-07-15",
+  "generated": "2026-07-15T13:00:00Z",
   "sentiment": {
-    "overall": "risk-off",
-    "label": "El petróleo supera los US$85 tras el mayor ataque hutí a Arabia Saudita en años y ataques a petroleros en Ormuz, el VIX saltó 14,17% a 17,16 y los futuros de EE.UU. operan mixtos con el Dow como peor referencia, mientras el mercado aguarda el CPI de junio como definitorio para la Fed; en Argentina el EMBI subió a 405pb (+3pb) y los globales cerraron mixtos, aunque el BCRA sigue sumando reservas",
+    "overall": "neutral",
+    "label": "El IPC de junio en EE.UU. sorprendió a la baja (3,5% i.a.) y reavivó el rally de Wall Street liderado por tecnología, pero la tensión EE.UU.-Irán mantiene firme al petróleo y al oro; en Argentina el BCRA hizo la mayor compra de dólares de la era Milei y superó la meta de reservas 2026, aunque el riesgo país subió a 410pb",
     "fg": 44,
     "fg_label": "Miedo",
-    "putcall": 0.55,
+    "putcall": 0.67,
     "aaii_bulls": 36.3
   },
   "drivers": [
     {
       "id": 1,
-      "tag": "geopolítica · energía",
-      "tag_class": "tq",
-      "title": "El petróleo supera los US$85 tras el mayor ataque hutí a Arabia Saudita en años y dos petroleros atacados en Ormuz",
-      "brief": "El Brent rompió el umbral de US$85 por primera vez en un mes luego de que los hutíes lanzaran su mayor ataque a Arabia Saudita en años y dos petroleros de EAU fueran atacados (un tripulante murió). El VIX saltó 14,17% a 17,16 en la rueda previa.",
-      "tldr": "La escalada ya no es solo retórica: hay muertos y ataques directos a infraestructura petrolera del Golfo",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "Los <strong>hutíes lanzaron su mayor ataque a Arabia Saudita en años</strong>, con riesgo de arrastrar al grupo yemení al conflicto entre Teherán y Washington. Además, <strong>dos petroleros de EAU fueron atacados</strong> —un tripulante murió, el ataque más grave desde el colapso de la tregua EE.UU.-Irán— elevando el riesgo sobre los flujos de crudo por el <strong>Estrecho de Ormuz</strong>. Irán dice haber atacado una base de EE.UU. en Jordania; Washington da por concluida esa oleada puntual, aunque la Guardia Revolucionaria exige el desmantelamiento de bases estadounidenses en el reino. El <strong>Brent superó los US$85 por primera vez en un mes</strong> (futuro +1,21% a US$84,31) y el <strong>WTI subió 2,38% a US$80,00</strong>. El <strong>VIX cerró el 13/7 en 17,16 puntos (+14,17%)</strong>.",
-      "contexto": "China amortiguó parte del shock reduciendo sus importaciones de crudo a <strong>mínimos de una década</strong> (5,96 millones de barriles diarios en junio) y habilitando más exportaciones de refinados, pero el verdadero cuello de botella pasó a los <strong>combustibles refinados</strong>: Rusia prohibió exportar diésel tras ataques ucranianos a sus refinerías, justo en el pico de demanda del hemisferio norte, y el gasoil de Singapur cotiza <strong>51% por encima</strong> de los niveles previos al conflicto. En el Golfo, Dubái ya construye la respuesta estructural con nueva capacidad portuaria para mover crudo sin depender de Ormuz.",
+      "tag": "macro · EE.UU.",
+      "tag_class": "tb",
+      "title": "El CPI de junio sorprende a la baja: la inflación anual cae a 3,5%",
+      "brief": "El IPC de junio cayó 0,4% mensual, muy por debajo de lo esperado (3,8%), y reabre las apuestas por un recorte de tasas de la Fed.",
+      "tldr": "Inflación más fría reaviva las apuestas por una baja de tasas",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "El <strong>CPI de junio</strong> cayó <strong>0,4% m/m</strong> (vs. +0,5% en mayo), llevando la inflación interanual a <strong>3,5%</strong>, por debajo del <strong>3,8%</strong> esperado por el consenso. Es la mayor caída mensual del índice general desde abril de 2020. El núcleo (sin alimentos ni energía) se mantuvo sin cambios en el mes y quedó en <strong>2,6%</strong> interanual, mientras que el índice de energía se desplomó <strong>5,7%</strong> mensual pese a subir <strong>15,7%</strong> interanual por la nafta.",
+      "contexto": "El dato alimenta las expectativas de que la Fed —que mantuvo el rango en <strong>3,50%-3,75%</strong> en junio— tenga margen para recortar en su próxima reunión del <strong>28-29 de julio</strong>, aunque ese encuentro no incluye actualización del &ldquo;dot plot&rdquo;. El mercado ahora espera el dato mayorista (PPI) como segunda pieza para confirmar la desinflación.",
       "impacto": [
-        {"asset": "Brent (futuro)", "dir": "↑ US$84,31 (+1,21%)", "cls": "up"},
-        {"asset": "WTI (futuro)", "dir": "↑ US$80,00 (+2,38%)", "cls": "up"},
-        {"asset": "VIX", "dir": "↑ 17,16 (+14,17%)", "cls": "up"},
-        {"asset": "EEM (emergentes)", "dir": "↓ US$64,50 (-3,59%)", "cls": "dn"}
+        {"asset": "CPI interanual", "dir": "3,5% (vs 3,8% esperado)", "cls": "dn"},
+        {"asset": "Núcleo CPI i.a.", "dir": "2,6%", "cls": "neu"},
+        {"asset": "S&P 500", "dir": "↑0,38%", "cls": "up"}
       ]
     },
     {
       "id": 2,
-      "tag": "macro · bancos centrales",
-      "tag_class": "tb",
-      "title": "El CPI de junio, hoy a las 08:30 ET, se vuelve definitorio para la Fed tras la advertencia de Waller",
-      "brief": "El mercado espera el CPI de junio (consenso -0,1% mensual, 3,8% interanual general) como el dato clave del día, mientras Waller advierte que la política está &ldquo;en una encrucijada&rdquo;. El UST 10Y sube a 4,622% y hoy reportan resultados los cinco mayores bancos de EE.UU. el mismo día, un &ldquo;Super Tuesday&rdquo; bancario inédito en una década.",
-      "tldr": "Un CPI en línea reforzaría el sesgo actual de la Fed; una sorpresa al alza validaría la advertencia de Waller sobre subir tasas",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El mercado espera hoy el dato más importante de la semana: el <strong>CPI de junio (08:30 ET)</strong>, con consenso de <strong>-0,1% mensual y 3,8% interanual</strong> general, y una suba de <strong>0,2% mensual en el núcleo (2,8% interanual)</strong>. El gobernador <strong>Christopher Waller advirtió</strong> que la política monetaria está &ldquo;en una encrucijada&rdquo; de cara a este dato. El <strong>UST 10Y sube 1,2pb a 4,622%</strong> y el <strong>UST 2Y avanza 1,4pb a 4,277%</strong>, con la curva 2s10s aplanándose a 34,5pb. En paralelo, <strong>JPMorgan, Goldman Sachs, Bank of America, Wells Fargo y Citigroup</strong> —más de US$2 billones de capitalización combinada— reportan resultados el mismo día por primera vez en al menos una década.",
-      "contexto": "El NFIB Small Business Optimism de junio ya sorprendió al alza (97,4 vs. 95,8 esperado). La agenda de hoy todavía incluye el ADP Employment Change (08:15 ET) y discursos de Barr, Goolsbee, Cook y Bowman. Un CPI en línea o por debajo del consenso reforzaría las apuestas de que la Fed mantiene su sesgo actual; una sorpresa al alza —con el petróleo ya sumando presión— validaría la advertencia de Waller sobre la necesidad de subir tasas.",
+      "tag": "mercados · EE.UU.",
+      "tag_class": "tg",
+      "title": "Wall Street extiende el rally tecnológico: ASML dispara el trade de IA",
+      "brief": "El Nasdaq subió 0,9% y el S&P cerró en récord tras el IPC blando; ASML saltó 3,4% con resultados mejores a lo esperado y Morgan Stanley superó estimaciones.",
+      "tldr": "El apetito por riesgo se mantiene firme en EE.UU. de cara a la temporada de balances",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "El <strong>S&P 500</strong> cerró el martes en <strong>7.543,59</strong> (+0,38%) y el <strong>Nasdaq</strong> avanzó <strong>0,9%</strong> a <strong>26.107,01</strong>, mientras el <strong>Dow Jones</strong> subió apenas <strong>9,63 puntos</strong> a <strong>52.508,27</strong>. <strong>ASML</strong> saltó <strong>3,4%</strong> tras resultados mejores a lo esperado, reforzando el trade de inteligencia artificial, y <strong>Morgan Stanley</strong> subió <strong>0,97%</strong> tras superar estimaciones de ganancias y de ingresos.",
+      "contexto": "Los futuros de hoy extienden las ganancias mientras el mercado espera un segundo dato de inflación (mayorista) tras el IPC blando de ayer, en el arranque de una temporada de balances que hasta ahora viene favorable para el sector financiero y tecnológico.",
       "impacto": [
-        {"asset": "UST 10Y", "dir": "↑ 4,622% (+1,2pb)", "cls": "up"},
-        {"asset": "S&P 500 (futuro)", "dir": "↓ 7.546,00 (-0,22%)", "cls": "dn"},
-        {"asset": "Dow (futuro)", "dir": "↓ 52.586,00 (-0,34%)", "cls": "dn"}
+        {"asset": "Nasdaq", "dir": "↑0,9% (26.107,01)", "cls": "up"},
+        {"asset": "QQQ", "dir": "↑1,12% (US$719,69)", "cls": "up"},
+        {"asset": "ASML", "dir": "↑3,4%", "cls": "up"}
       ]
     },
     {
       "id": 3,
-      "tag": "argentina · deuda y política",
-      "tag_class": "ta",
-      "title": "El EMBI argentino sube a 405pb y los globales cierran mixtos, mientras Milei sostiene 10 puntos de ventaja sobre Kicillof",
-      "brief": "El EMBI Global Argentina cerró el 13/7 en 405 puntos básicos (+3pb) y los bonos en Buenos Aires cerraron mixtos: GD30D -0,69%, GD35D -0,29%, AL30D +0,09%. En el plano político, Milei sostiene diez puntos de ventaja sobre Kicillof en las encuestas, mientras el peronismo no logra acordar estrategia de cara a 2027.",
-      "tldr": "El repunte del EMBI es acotado y convive con un BCRA que sigue comprando reservas sin pausa",
+      "tag": "geopolítica · energía",
+      "tag_class": "tq",
+      "title": "La tensión EE.UU.-Irán empuja al petróleo pese al rally bursátil",
+      "brief": "Trump reiteró amenazas de ataques &ldquo;muy duros&rdquo; contra Irán; el crudo y el oro suben en conjunto como cobertura ante la escalada.",
+      "tldr": "El conflicto en Medio Oriente contrapesa el alivio inflacionario",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>EMBI Global Argentina cerró el 13/7 en 405 puntos básicos (+3pb)</strong>. Los globales en Buenos Aires cerraron mixtos: <strong>GD30D en US$57,50 (-0,69%)</strong>, <strong>GD35D en US$83,00 (-0,29%)</strong> y <strong>AL30D en US$56,16 (+0,09%)</strong>. El dólar oficial cotiza <strong>$1.510 (venta)</strong> y el blue <strong>$1.525</strong>, con una brecha de apenas <strong>1,3%</strong>. El <strong>BCRA compró u$s280 millones</strong> el lunes en el MULC y acumula <strong>u$s11.822 millones en 104 ruedas consecutivas</strong> de su programa de acumulación de reservas. En el plano político, <strong>Milei sostiene diez puntos de ventaja sobre Kicillof</strong> en las encuestas, mientras el <strong>peronismo no logra acordar una estrategia</strong> de cara a 2027.",
-      "contexto": "El repunte de 3pb en el EMBI es acotado frente al ruido externo (petróleo al alza, EEM cayendo 3,59%) y convive con un BCRA que no interrumpe su programa de compras. El desafío de fondo sigue siendo el mismo: el Gobierno se acerca a su primera colocación de deuda internacional en 8 años, pero necesita que el contexto global de aversión al riesgo no encarezca esa ventana. En el plano electoral, la falta de una estrategia unificada del peronismo de cara a 2027 es, por ahora, un viento de cola para los activos argentinos.",
+      "evento": "El petróleo (<strong>USO +2,02%</strong>, US$120,17) y el oro (<strong>GLD +1,37%</strong>, US$372,15) subieron en conjunto luego de que <strong>Trump reiterara amenazas de ataques &ldquo;muy duros&rdquo;</strong> contra Irán, en medio de una escalada de ataques estadounidenses que mantiene elevada la prima de riesgo geopolítico.",
+      "contexto": "La suba simultánea de petróleo y oro —activo refugio por excelencia— muestra que, pese al optimismo por la inflación, persiste un riesgo de cola geopolítico que podría filtrarse a los precios si la escalada continúa, complicando el escenario desinflacionario global justo cuando la Fed empieza a ganar margen de maniobra.",
       "impacto": [
-        {"asset": "EMBI Argentina", "dir": "↑ 405pb (+3pb)", "cls": "dn"},
-        {"asset": "GD30D", "dir": "↓ US$57,50 (-0,69%)", "cls": "dn"},
-        {"asset": "AL30D", "dir": "↑ US$56,16 (+0,09%)", "cls": "up"},
-        {"asset": "Brecha blue/oficial", "dir": "1,3%", "cls": "neu"}
+        {"asset": "USO (petróleo)", "dir": "↑2,02% (US$120,17)", "cls": "up"},
+        {"asset": "GLD (oro)", "dir": "↑1,37% (US$372,15)", "cls": "up"}
       ]
     },
     {
       "id": 4,
-      "tag": "mercados · posicionamiento",
-      "tag_class": "tr",
-      "title": "BofA recomienda reducir exposición a acciones justo cuando el consenso todavía habla de &ldquo;muro de preocupación&rdquo;",
-      "brief": "La encuesta de gestores globales de julio de BofA muestra exposición a renta variable en niveles que históricamente preceden correcciones de corto plazo, en un contexto de valuaciones estiradas e incertidumbre en Ormuz. Lo contraintuitivo no es que los inversores compren agresivamente, sino la advertencia del banco justo ahora.",
-      "tldr": "La señal a mirar es si los gestores realmente rotan a efectivo en las próximas dos semanas",
+      "tag": "BCRA · Argentina",
+      "tag_class": "tg",
+      "title": "El BCRA hizo la mayor compra de dólares de la era Milei y superó la meta de reservas 2026",
+      "brief": "Compró US$532M el martes, la cifra más alta desde diciembre de 2022, extendió a 126 ruedas la racha compradora y superó la meta de reservas de 2026.",
+      "tldr": "Las reservas suben con fuerte respaldo del mercado cambiario, aunque el riesgo país no cede",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "El Banco Central compró <strong>US$532 millones</strong> el martes, la cifra más alta desde diciembre de 2022 y la mayor de la era Milei, impulsada por la liquidación de una obligación negociable y mayor oferta en el MLC. Acumuló <strong>126 ruedas consecutivas</strong> con saldo comprador, superando la meta de reservas 2026 (<strong>US$10.000-17.000M</strong>), y llevó las reservas a <strong>US$48.687M</strong> (+US$482M en el día).",
+      "contexto": "El dólar oficial cerró en <strong>$1.495</strong> (venta) y el blue en <strong>$1.520</strong>, con una brecha acotada de apenas <strong>1,3%</strong>. Sin embargo, el riesgo país subió a <strong>410 pb</strong> (+1% en el día), mostrando que el mercado sigue exigiendo una prima alta pese a la fuerte acumulación de reservas.",
+      "impacto": [
+        {"asset": "Reservas BCRA", "dir": "US$48.687M (+US$482M)", "cls": "up"},
+        {"asset": "Dólar oficial", "dir": "$1.495 (venta)", "cls": "neu"},
+        {"asset": "Riesgo país", "dir": "410pb (+1%)", "cls": "dn"}
+      ]
+    },
+    {
+      "id": 5,
+      "tag": "política económica · Argentina",
+      "tag_class": "ta",
+      "title": "Milei avanza con la reforma de la Carta Orgánica del BCRA y el FMI confirma visita de Georgieva",
+      "brief": "El proyecto busca blindar la independencia del Central y limitar el financiamiento al Tesoro; la directora del FMI visitará el país a fines de julio.",
+      "tldr": "Las reformas institucionales ganan tracción con guiño explícito del FMI",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "La <strong>encuesta de gestores globales de julio de BofA</strong> muestra exposición a renta variable en niveles que <strong>históricamente preceden correcciones de corto plazo</strong>, en un contexto de valuaciones estiradas e incertidumbre geopolítica en Ormuz. Lo contraintuitivo no es que los inversores compren agresivamente acciones, sino que BofA les recomienda frenar justo cuando el consenso todavía habla de &ldquo;muro de preocupación&rdquo;.",
-      "contexto": "La señal concreta a monitorear es el <strong>flujo hacia efectivo en las próximas dos semanas</strong>. Si los gestores no reducen exposición pese a la advertencia, el mercado estaría señalando que la narrativa de aterrizaje suave domina sobre el riesgo de cola geopolítico. Esto es relevante para Argentina porque un ajuste de posicionamiento global hacia el efectivo suele ir acompañado de salida de flujos de activos emergentes, incluidos los argentinos, incluso cuando la historia idiosincrática local (BCRA, riesgo país) se mantiene firme.",
+      "evento": "Milei presentó a legisladores de LLA el proyecto de reforma de la <strong>Carta Orgánica del BCRA</strong>, que busca fortalecer la independencia del Central, restringir el financiamiento al Tesoro y endurecer las condiciones para remover a sus autoridades. En paralelo, el FMI confirmó que su directora, <strong>Kristalina Georgieva</strong>, visitará Argentina a fines de julio para reunirse con Milei y Caputo.",
+      "contexto": "El FMI mantuvo su proyección de crecimiento de <strong>3,5%</strong> para 2026 y espera que la inflación converja gradualmente a <strong>25%</strong> hacia fin de año, respaldando el programa económico. Sin embargo, todavía no hay fecha confirmada para el envío del proyecto de reforma al Congreso, lo que deja incertidumbre sobre los tiempos legislativos.",
       "impacto": [
-        {"asset": "EEM (emergentes)", "dir": "↓ US$64,50 (-3,59%)", "cls": "dn"},
-        {"asset": "Nasdaq (futuro)", "dir": "↑ 29.526,50 (+0,17%)", "cls": "up"}
+        {"asset": "GD30", "dir": "↑0,78% (US$57,95)", "cls": "up"},
+        {"asset": "GD35", "dir": "↑0,42% (US$83,35)", "cls": "up"},
+        {"asset": "AL30", "dir": "-0,01% (US$56,15)", "cls": "neu"}
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "El CPI de hoy, no el petróleo, es el verdadero catalizador de la semana para la Fed",
-      "texto": "Waller ya advirtió que la política monetaria está &ldquo;en una encrucijada&rdquo;. Si el dato sorprende al alza, justo cuando el crudo ya presiona precios tras los ataques en el Golfo, la Fed tendría menos margen para matizar el pricing agresivo que ya adoptó el mercado, con impacto directo sobre el apetito por activos emergentes como los argentinos."
+      "label": "La Fed gana margen para recortar en julio, pero el petróleo firme complica la lectura",
+      "texto": "El IPC de junio (3,5% i.a.) sorprendió a la baja y reabre las apuestas por un recorte en la reunión del 28-29 de julio. Pero la escalada EE.UU.-Irán mantiene al crudo firme (USO +2,02%), un factor que podría revertir parte del alivio inflacionario si persiste."
     },
     {
-      "label": "El repunte del EMBI argentino convive con una ventana angosta para volver a los mercados internacionales",
-      "texto": "El EMBI subió 3pb a 405pb en una jornada de aversión al riesgo global (EEM -3,59%, petróleo al alza), mientras el Gobierno se acerca a su primera colocación de deuda internacional en 8 años. Si el ruido externo persiste, esa ventana podría encarecerse antes de concretarse."
+      "label": "El riesgo país argentino sube pese a la mayor compra de dólares de la era Milei",
+      "texto": "El BCRA compró US$532M el martes y superó la meta de reservas 2026, pero el riesgo país subió a 410pb (+1%). El mercado sigue exigiendo una prima alta pese a la mejora en el frente cambiario, algo a monitorear de cara a una eventual vuelta a los mercados internacionales."
     }
   ],
   "correlaciones": [
     {
-      "par": "EEM cae 3,59% pero los globales argentinos cierran mixtos, no todos a la baja",
-      "texto": "Pese al retroceso generalizado en emergentes y el salto del petróleo, el AL30D subió 0,09% y el BCRA no interrumpió su ritmo de compras (u$s280 millones el lunes), lo que sugiere que el mercado sigue diferenciando la historia idiosincrática argentina del ruido global."
+      "par": "Petróleo y oro suben juntos pese al rally de Wall Street",
+      "texto": "La suba conjunta de USO (+2,02%) y GLD (+1,37%) en medio de un mercado accionario en alza sugiere que el flujo hacia coberturas responde más a la tensión geopolítica puntual con Irán que a un giro generalizado hacia el risk-off."
     },
     {
-      "par": "VIX +14,17% y EMBI argentino +3pb muestran una repreciación de riesgo mucho más moderada en Argentina que en el resto de emergentes",
-      "texto": "Mientras el VIX saltó con fuerza y el EEM cayó 3,59%, el EMBI argentino subió apenas 3pb, una desconexión que valida por ahora la narrativa de mejora idiosincrática (reservas, riesgo país en niveles bajos) por sobre el deterioro global de sentimiento."
+      "par": "Bonos argentinos suben pese a que el riesgo país también sube",
+      "texto": "GD30 (+0,78%) y GD35 (+0,42%) avanzaron el mismo día en que el riesgo país subió a 410pb, una aparente desconexión que refleja volatilidad intradía más que una señal direccional clara sobre el crédito soberano."
     }
   ],
-  "bottom_line": "<strong>El petróleo superó los US$85 por primera vez en un mes</strong> tras el mayor ataque hutí a Arabia Saudita en años y el ataque a dos petroleros de EAU (un tripulante murió), mientras el VIX saltó 14,17% a 17,16 y los futuros de EE.UU. operan mixtos con el Dow como peor referencia. El mercado aguarda hoy el <strong>CPI de junio (08:30 ET)</strong> como el dato definitorio para la Fed, después de que Waller advirtiera que la política monetaria está &ldquo;en una encrucijada&rdquo;; el UST 10Y ya subió a 4,622%. En paralelo, los cinco mayores bancos de EE.UU. reportan resultados el mismo día por primera vez en una década.<br><br>Para Argentina, la jornada es mixta: el <strong>EMBI subió a 405pb (+3pb)</strong> y los globales cerraron dispares (GD30D -0,69%, AL30D +0,09%), pero el <strong>BCRA no interrumpió su programa de reservas</strong> (u$s280 millones el lunes, u$s11.822 millones acumulados en 104 ruedas) y la brecha cambiaria se mantiene comprimida en 1,3%. En el plano político, Milei sostiene diez puntos de ventaja sobre Kicillof en las encuestas. El punto a seguir es si la aversión al riesgo global —petróleo al alza, EEM cayendo 3,59%, Fed en vilo por el CPI— empieza a filtrarse con más fuerza a los activos argentinos antes de que el Gobierno concrete su primera colocación de deuda internacional en 8 años."
+  "bottom_line": "<p>La combinación de un IPC de EE.UU. más frío de lo esperado (<strong>3,5% i.a.</strong>) y un mercado que sigue de racha en tecnología (Nasdaq +0,9%, ASML +3,4%) genera un contexto de corto plazo favorable para el apetito por riesgo global, aunque la escalada entre EE.UU. e Irán —que empuja al petróleo y al oro al alza en conjunto— es un recordatorio de que esa ventana puede cerrarse rápido si el conflicto se profundiza.</p><p>Para Argentina, el dato saliente del día es la <strong>mayor compra de dólares de la era Milei</strong> (US$532M el martes), que llevó las reservas a US$48.687M y confirmó que el BCRA ya superó la meta de acumulación fijada para 2026. A esto se suma el respaldo explícito del FMI —con la visita de Georgieva confirmada para fines de julio y la proyección de crecimiento sin cambios en 3,5%— que refuerza la historia de sostenibilidad del programa. Sin embargo, el riesgo país subiendo a 410pb pese a este contexto favorable sugiere que el mercado todavía pide señales concretas, y la reforma de la Carta Orgánica del BCRA —sin fecha firme de envío al Congreso— seguirá siendo el tema institucional a seguir de cerca en las próximas semanas.</p>"
 }
