@@ -1,119 +1,101 @@
 {
-  "date": "2026-07-15",
-  "generated": "2026-07-15T13:00:00Z",
+  "date": "2026-07-16",
+  "generated": "2026-07-16T12:06:09Z",
   "sentiment": {
     "overall": "neutral",
-    "label": "El IPC de junio en EE.UU. sorprendió a la baja (3,5% i.a.) y reavivó el rally de Wall Street liderado por tecnología, pero la tensión EE.UU.-Irán mantiene firme al petróleo y al oro; en Argentina el BCRA hizo la mayor compra de dólares de la era Milei y superó la meta de reservas 2026, aunque el riesgo país subió a 410pb",
-    "fg": 44,
+    "label": "El cierre del Estrecho de Ormuz dispara el petróleo y reintroduce riesgo inflacionario global, pero el consumo de EE.UU. resiste (ventas minoristas +1,0%) y Argentina se desacopla con reservas récord y riesgo país en baja",
+    "fg": 41,
     "fg_label": "Miedo",
-    "putcall": 0.67,
-    "aaii_bulls": 36.3
+    "putcall": 0.71,
+    "aaii_bulls": 34.8
   },
   "drivers": [
     {
       "id": 1,
-      "tag": "macro · EE.UU.",
-      "tag_class": "tb",
-      "title": "El CPI de junio sorprende a la baja: la inflación anual cae a 3,5%",
-      "brief": "El IPC de junio cayó 0,4% mensual, muy por debajo de lo esperado (3,8%), y reabre las apuestas por un recorte de tasas de la Fed.",
-      "tldr": "Inflación más fría reaviva las apuestas por una baja de tasas",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El <strong>CPI de junio</strong> cayó <strong>0,4% m/m</strong> (vs. +0,5% en mayo), llevando la inflación interanual a <strong>3,5%</strong>, por debajo del <strong>3,8%</strong> esperado por el consenso. Es la mayor caída mensual del índice general desde abril de 2020. El núcleo (sin alimentos ni energía) se mantuvo sin cambios en el mes y quedó en <strong>2,6%</strong> interanual, mientras que el índice de energía se desplomó <strong>5,7%</strong> mensual pese a subir <strong>15,7%</strong> interanual por la nafta.",
-      "contexto": "El dato alimenta las expectativas de que la Fed —que mantuvo el rango en <strong>3,50%-3,75%</strong> en junio— tenga margen para recortar en su próxima reunión del <strong>28-29 de julio</strong>, aunque ese encuentro no incluye actualización del &ldquo;dot plot&rdquo;. El mercado ahora espera el dato mayorista (PPI) como segunda pieza para confirmar la desinflación.",
+      "tag": "geopolítica · energía",
+      "tag_class": "tq",
+      "title": "Irán bloquea el Estrecho de Ormuz y el Brent salta 10%",
+      "brief": "El IRGC cerró el estrecho al tráfico de hidrocarburos tras nuevos bombardeos de EE.UU.; el crudo tuvo su mayor salto intradía desde 2020.",
+      "tldr": "El shock de oferta petrolera reintroduce presión inflacionaria justo cuando la Fed evalúa otra suba de tasas",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El Cuerpo de Guardianes de la Revolución Islámica (IRGC) bloqueó el <strong>Estrecho de Ormuz</strong> al tráfico de hidrocarburos, en represalia por bombardeos estadounidenses contra radares costeros y plataformas navales iraníes. El <strong>Brent saltó 10%</strong> en una sola rueda —su mayor suba intradía desde 2020— y superó los <strong>u$s86</strong>, mientras el <strong>WTI</strong> avanzó más de 3% y perforó los <strong>u$s80</strong>. Irán advirtió además que podría sumar a los hutíes de Yemen para cerrar también el Bab el-Mandeb.",
+      "contexto": "La escalada llega en un momento delicado para la Fed, que en su última reunión mantuvo las tasas sin cambios pero dejó margen abierto a una suba adicional ante la persistencia de las presiones inflacionarias. Un shock de oferta petrolera sostenido complica ese cálculo justo cuando el mercado esperaba el dato de ventas minoristas de junio.",
       "impacto": [
-        {"asset": "CPI interanual", "dir": "3,5% (vs 3,8% esperado)", "cls": "dn"},
-        {"asset": "Núcleo CPI i.a.", "dir": "2,6%", "cls": "neu"},
-        {"asset": "S&P 500", "dir": "↑0,38%", "cls": "up"}
+        {"asset": "USO (petróleo)", "dir": "↑ +1,01% (US$121,38)", "cls": "up"},
+        {"asset": "GLD (oro)", "dir": "↑ +0,05% (US$372,35)", "cls": "up"},
+        {"asset": "UST 10Y", "dir": "4,58%", "cls": "neu"}
       ]
     },
     {
       "id": 2,
-      "tag": "mercados · EE.UU.",
-      "tag_class": "tg",
-      "title": "Wall Street extiende el rally tecnológico: ASML dispara el trade de IA",
-      "brief": "El Nasdaq subió 0,9% y el S&P cerró en récord tras el IPC blando; ASML saltó 3,4% con resultados mejores a lo esperado y Morgan Stanley superó estimaciones.",
-      "tldr": "El apetito por riesgo se mantiene firme en EE.UU. de cara a la temporada de balances",
+      "tag": "macro · EE.UU.",
+      "tag_class": "tb",
+      "title": "Las ventas minoristas de junio en EE.UU. sorprenden al alza",
+      "brief": "El reporte de la Oficina del Censo mostró +1,0% mensual y +7,5% interanual, noveno mes consecutivo de expansión del consumo.",
+      "tldr": "El consumidor estadounidense resiste pese al shock petrolero y la incertidumbre por tasas",
       "sentiment": "ro",
       "sentiment_label": "🟢 Risk-On",
-      "evento": "El <strong>S&P 500</strong> cerró el martes en <strong>7.543,59</strong> (+0,38%) y el <strong>Nasdaq</strong> avanzó <strong>0,9%</strong> a <strong>26.107,01</strong>, mientras el <strong>Dow Jones</strong> subió apenas <strong>9,63 puntos</strong> a <strong>52.508,27</strong>. <strong>ASML</strong> saltó <strong>3,4%</strong> tras resultados mejores a lo esperado, reforzando el trade de inteligencia artificial, y <strong>Morgan Stanley</strong> subió <strong>0,97%</strong> tras superar estimaciones de ganancias y de ingresos.",
-      "contexto": "Los futuros de hoy extienden las ganancias mientras el mercado espera un segundo dato de inflación (mayorista) tras el IPC blando de ayer, en el arranque de una temporada de balances que hasta ahora viene favorable para el sector financiero y tecnológico.",
+      "evento": "La Oficina del Censo publicó esta mañana el dato de <strong>ventas minoristas de junio</strong>, con una suba de <strong>1,0% m/m</strong> y <strong>7,5% i.a.</strong>, marcando el noveno mes consecutivo de crecimiento. Las ventas <strong>online</strong> volvieron a liderar el avance frente a los canales físicos.",
+      "contexto": "El dato reduce el temor a una desaceleración abrupta del consumo, pero complica el escenario para la Fed: combinado con el shock petrolero de Ormuz, aumenta la chance de que la inflación se mantenga persistente y posponga cualquier recorte de tasas.",
       "impacto": [
-        {"asset": "Nasdaq", "dir": "↑0,9% (26.107,01)", "cls": "up"},
-        {"asset": "QQQ", "dir": "↑1,12% (US$719,69)", "cls": "up"},
-        {"asset": "ASML", "dir": "↑3,4%", "cls": "up"}
+        {"asset": "SPY", "dir": "↑ +0,40% (US$754,81)", "cls": "up"},
+        {"asset": "QQQ", "dir": "↓ -0,27% (US$717,74)", "cls": "dn"}
       ]
     },
     {
       "id": 3,
-      "tag": "geopolítica · energía",
-      "tag_class": "tq",
-      "title": "La tensión EE.UU.-Irán empuja al petróleo pese al rally bursátil",
-      "brief": "Trump reiteró amenazas de ataques &ldquo;muy duros&rdquo; contra Irán; el crudo y el oro suben en conjunto como cobertura ante la escalada.",
-      "tldr": "El conflicto en Medio Oriente contrapesa el alivio inflacionario",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El petróleo (<strong>USO +2,02%</strong>, US$120,17) y el oro (<strong>GLD +1,37%</strong>, US$372,15) subieron en conjunto luego de que <strong>Trump reiterara amenazas de ataques &ldquo;muy duros&rdquo;</strong> contra Irán, en medio de una escalada de ataques estadounidenses que mantiene elevada la prima de riesgo geopolítico.",
-      "contexto": "La suba simultánea de petróleo y oro —activo refugio por excelencia— muestra que, pese al optimismo por la inflación, persiste un riesgo de cola geopolítico que podría filtrarse a los precios si la escalada continúa, complicando el escenario desinflacionario global justo cuando la Fed empieza a ganar margen de maniobra.",
+      "tag": "BCRA/Tesoro · Argentina",
+      "tag_class": "tg",
+      "title": "El BCRA supera los u$s10.000 M de reservas netas y el riesgo país sigue cediendo",
+      "brief": "Tras el récord de u$s532M el martes, el Central compró u$s73M más y renovó la totalidad de los REPOs 2026-2027 hasta septiembre de 2028; el Tesoro logró un rollover de 183% en su licitación.",
+      "tldr": "Argentina se desacopla del shock petrolero global y sostiene el rally de bonos en pesos y dólares",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "El BCRA cerró con posición compradora y sumó <strong>u$s73 M</strong>, extendiendo a <strong>126 ruedas consecutivas</strong> la racha de compras (<strong>u$s12.267 M</strong> en el año). Las <strong>reservas netas</strong> superaron los <strong>u$s10.000 M</strong>, máximo de la gestión Milei, tras renovar la totalidad de los REPOs 2026 y 2027 (u$s6.000 M), postergándolos hasta septiembre de 2028. La Secretaría de Finanzas adjudicó <strong>$5,44 billones</strong> en la licitación del Tesoro frente a vencimientos de $3 billones, un <strong>rollover de 183%</strong>. El riesgo país continuó cediendo, en la zona de <strong>404-408 pb</strong> según cotizaciones de mercado intradía, cerca del mínimo del año (402 pb, 10/7).",
+      "contexto": "El resultado de la licitación y el ritmo de acumulación de reservas sostienen la demanda por deuda soberana incluso en una jornada global adversa por el shock petrolero. El IPC de junio del INDEC (1,9%, la lectura más baja en diez meses) refuerza la narrativa de desinflación que el mercado viene premiando en la curva en pesos.",
       "impacto": [
-        {"asset": "USO (petróleo)", "dir": "↑2,02% (US$120,17)", "cls": "up"},
-        {"asset": "GLD (oro)", "dir": "↑1,37% (US$372,15)", "cls": "up"}
+        {"asset": "GD30", "dir": "↑ +0,20% (US$58,07)", "cls": "up"},
+        {"asset": "AL30", "dir": "↑ +0,35% (US$56,35)", "cls": "up"},
+        {"asset": "Riesgo país", "dir": "↓ ~404-408pb (últ. cierre API: 410pb, 14/7)", "cls": "dn"}
       ]
     },
     {
       "id": 4,
-      "tag": "BCRA · Argentina",
-      "tag_class": "tg",
-      "title": "El BCRA hizo la mayor compra de dólares de la era Milei y superó la meta de reservas 2026",
-      "brief": "Compró US$532M el martes, la cifra más alta desde diciembre de 2022, extendió a 126 ruedas la racha compradora y superó la meta de reservas de 2026.",
-      "tldr": "Las reservas suben con fuerte respaldo del mercado cambiario, aunque el riesgo país no cede",
+      "tag": "FMI · Argentina",
+      "tag_class": "ta",
+      "title": "El FMI respalda la reforma de la Carta Orgánica del BCRA y confirma la visita de Georgieva para el 27/7",
+      "brief": "La vocera del organismo, Julie Kozack, dijo que el Fondo apoya la reforma que busca reforzar la independencia del Central; Georgieva se reunirá con Milei y visitará Vaca Muerta.",
+      "tldr": "El guiño técnico del FMI despeja dudas sobre el rumbo institucional del programa",
       "sentiment": "ro",
       "sentiment_label": "🟢 Risk-On",
-      "evento": "El Banco Central compró <strong>US$532 millones</strong> el martes, la cifra más alta desde diciembre de 2022 y la mayor de la era Milei, impulsada por la liquidación de una obligación negociable y mayor oferta en el MLC. Acumuló <strong>126 ruedas consecutivas</strong> con saldo comprador, superando la meta de reservas 2026 (<strong>US$10.000-17.000M</strong>), y llevó las reservas a <strong>US$48.687M</strong> (+US$482M en el día).",
-      "contexto": "El dólar oficial cerró en <strong>$1.495</strong> (venta) y el blue en <strong>$1.520</strong>, con una brecha acotada de apenas <strong>1,3%</strong>. Sin embargo, el riesgo país subió a <strong>410 pb</strong> (+1% en el día), mostrando que el mercado sigue exigiendo una prima alta pese a la fuerte acumulación de reservas.",
+      "evento": "La vocera del FMI, <strong>Julie Kozack</strong>, afirmó que el organismo <strong>&ldquo;apoya la intención de las autoridades de reformar la Carta Orgánica del Banco Central&rdquo;</strong>, al considerar que la iniciativa fortalece la independencia de la autoridad monetaria y ayuda a consolidar el proceso de desinflación. Se confirmó además que la directora gerente, <strong>Kristalina Georgieva</strong>, visitará Argentina el <strong>27 de julio</strong>, con agenda que incluye una reunión con Milei, una conferencia de prensa en el Ministerio de Economía, una presentación en el Palacio Libertad y una visita a Vaca Muerta.",
+      "contexto": "El respaldo técnico reduce la incertidumbre sobre el cumplimiento del programa vigente, aunque el Fondo seguiría condicionando el sostenimiento del esquema a avances adicionales que todavía no se detallaron públicamente.",
       "impacto": [
-        {"asset": "Reservas BCRA", "dir": "US$48.687M (+US$482M)", "cls": "up"},
-        {"asset": "Dólar oficial", "dir": "$1.495 (venta)", "cls": "neu"},
-        {"asset": "Riesgo país", "dir": "410pb (+1%)", "cls": "dn"}
-      ]
-    },
-    {
-      "id": 5,
-      "tag": "política económica · Argentina",
-      "tag_class": "ta",
-      "title": "Milei avanza con la reforma de la Carta Orgánica del BCRA y el FMI confirma visita de Georgieva",
-      "brief": "El proyecto busca blindar la independencia del Central y limitar el financiamiento al Tesoro; la directora del FMI visitará el país a fines de julio.",
-      "tldr": "Las reformas institucionales ganan tracción con guiño explícito del FMI",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Milei presentó a legisladores de LLA el proyecto de reforma de la <strong>Carta Orgánica del BCRA</strong>, que busca fortalecer la independencia del Central, restringir el financiamiento al Tesoro y endurecer las condiciones para remover a sus autoridades. En paralelo, el FMI confirmó que su directora, <strong>Kristalina Georgieva</strong>, visitará Argentina a fines de julio para reunirse con Milei y Caputo.",
-      "contexto": "El FMI mantuvo su proyección de crecimiento de <strong>3,5%</strong> para 2026 y espera que la inflación converja gradualmente a <strong>25%</strong> hacia fin de año, respaldando el programa económico. Sin embargo, todavía no hay fecha confirmada para el envío del proyecto de reforma al Congreso, lo que deja incertidumbre sobre los tiempos legislativos.",
-      "impacto": [
-        {"asset": "GD30", "dir": "↑0,78% (US$57,95)", "cls": "up"},
-        {"asset": "GD35", "dir": "↑0,42% (US$83,35)", "cls": "up"},
-        {"asset": "AL30", "dir": "-0,01% (US$56,15)", "cls": "neu"}
+        {"asset": "Riesgo país", "dir": "↓ tendencia", "cls": "dn"},
+        {"asset": "Bonos soberanos", "dir": "↑ firmes", "cls": "up"}
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "La Fed gana margen para recortar en julio, pero el petróleo firme complica la lectura",
-      "texto": "El IPC de junio (3,5% i.a.) sorprendió a la baja y reabre las apuestas por un recorte en la reunión del 28-29 de julio. Pero la escalada EE.UU.-Irán mantiene al crudo firme (USO +2,02%), un factor que podría revertir parte del alivio inflacionario si persiste."
+      "label": "El shock petrolero de Ormuz complica el cálculo de la Fed justo cuando el consumo de EE.UU. sigue firme",
+      "texto": "El Brent saltó 10% tras el cierre iraní del Estrecho de Ormuz, mientras las ventas minoristas de junio sorprendieron al alza (+1,0% m/m). La combinación de consumo resiliente y crudo más caro alimenta el riesgo de que la inflación se mantenga persistente y la Fed posponga cualquier recorte."
     },
     {
-      "label": "El riesgo país argentino sube pese a la mayor compra de dólares de la era Milei",
-      "texto": "El BCRA compró US$532M el martes y superó la meta de reservas 2026, pero el riesgo país subió a 410pb (+1%). El mercado sigue exigiendo una prima alta pese a la mejora en el frente cambiario, algo a monitorear de cara a una eventual vuelta a los mercados internacionales."
+      "label": "Argentina se desacopla del shock global, pero la escalada en Medio Oriente es un riesgo para la inflación importada",
+      "texto": "El BCRA acumula reservas récord y el riesgo país sigue cediendo, en una jornada donde los mercados globales reaccionan al shock petrolero. Si la tensión en Ormuz persiste, el traslado a combustibles y fletes locales podría erosionar parte de la mejora reciente en la desinflación."
     }
   ],
   "correlaciones": [
     {
-      "par": "Petróleo y oro suben juntos pese al rally de Wall Street",
-      "texto": "La suba conjunta de USO (+2,02%) y GLD (+1,37%) en medio de un mercado accionario en alza sugiere que el flujo hacia coberturas responde más a la tensión geopolítica puntual con Irán que a un giro generalizado hacia el risk-off."
+      "par": "Petróleo y oro suben juntos ante la escalada en Ormuz",
+      "texto": "USO (+1,01%) y GLD (+0,05%) avanzaron en conjunto, aunque con una suba mucho más marcada en el crudo, reflejando que el mercado está pricing un shock de oferta puntual más que un giro generalizado hacia el risk-off."
     },
     {
-      "par": "Bonos argentinos suben pese a que el riesgo país también sube",
-      "texto": "GD30 (+0,78%) y GD35 (+0,42%) avanzaron el mismo día en que el riesgo país subió a 410pb, una aparente desconexión que refleja volatilidad intradía más que una señal direccional clara sobre el crédito soberano."
+      "par": "Los bonos argentinos ignoran la volatilidad global",
+      "texto": "GD30 (+0,20%) y AL30 (+0,35%) subieron el mismo día en que el petróleo saltaba por la crisis de Ormuz, mostrando que el flujo de reservas del BCRA y el resultado de la licitación del Tesoro pesan más que el clima internacional en la curva soberana de corto plazo."
     }
   ],
-  "bottom_line": "<p>La combinación de un IPC de EE.UU. más frío de lo esperado (<strong>3,5% i.a.</strong>) y un mercado que sigue de racha en tecnología (Nasdaq +0,9%, ASML +3,4%) genera un contexto de corto plazo favorable para el apetito por riesgo global, aunque la escalada entre EE.UU. e Irán —que empuja al petróleo y al oro al alza en conjunto— es un recordatorio de que esa ventana puede cerrarse rápido si el conflicto se profundiza.</p><p>Para Argentina, el dato saliente del día es la <strong>mayor compra de dólares de la era Milei</strong> (US$532M el martes), que llevó las reservas a US$48.687M y confirmó que el BCRA ya superó la meta de acumulación fijada para 2026. A esto se suma el respaldo explícito del FMI —con la visita de Georgieva confirmada para fines de julio y la proyección de crecimiento sin cambios en 3,5%— que refuerza la historia de sostenibilidad del programa. Sin embargo, el riesgo país subiendo a 410pb pese a este contexto favorable sugiere que el mercado todavía pide señales concretas, y la reforma de la Carta Orgánica del BCRA —sin fecha firme de envío al Congreso— seguirá siendo el tema institucional a seguir de cerca en las próximas semanas.</p>"
+  "bottom_line": "<p>La jornada global está dominada por el <strong>shock petrolero</strong> derivado del cierre del Estrecho de Ormuz: el Brent saltó 10% y el WTI superó los u$s80, reintroduciendo presión inflacionaria justo cuando la Fed no descarta una suba adicional de tasas. El dato de <strong>ventas minoristas de junio</strong> (+1,0% m/m) sostiene el ánimo del consumidor en EE.UU., pero complica la lectura: un consumo firme combinado con crudo más caro reduce el margen para que la Fed recorte en el corto plazo.</p><p><strong>Argentina, en cambio, transita una jornada de contra-tendencia positiva.</strong> El BCRA superó los u$s10.000 M de reservas netas —máximo de la gestión Milei— tras renovar la totalidad de los REPOs hasta 2028, y el Tesoro logró un rollover de 183% en su licitación. El riesgo país continúa cediendo hacia la zona de 404-408 pb, cerca del mínimo del año, con el respaldo adicional del FMI a la reforma de la Carta Orgánica del BCRA y la confirmación de la visita de Georgieva el 27/7. El principal riesgo para el frente local es el traslado del shock petrolero a la inflación importada (combustibles, fletes) si la escalada en Medio Oriente se profundiza, lo que podría poner a prueba la reciente mejora en la desinflación (IPC de junio: 1,9%, el más bajo en diez meses).</p>"
 }
