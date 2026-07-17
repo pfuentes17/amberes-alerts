@@ -1,119 +1,101 @@
 {
-  "date": "2026-07-15",
-  "generated": "2026-07-15T13:00:00Z",
+  "date": "2026-07-17",
+  "generated": "2026-07-17T12:20:25Z",
   "sentiment": {
-    "overall": "neutral",
-    "label": "El IPC de junio en EE.UU. sorprendió a la baja (3,5% i.a.) y reavivó el rally de Wall Street liderado por tecnología, pero la tensión EE.UU.-Irán mantiene firme al petróleo y al oro; en Argentina el BCRA hizo la mayor compra de dólares de la era Milei y superó la meta de reservas 2026, aunque el riesgo país subió a 410pb",
-    "fg": 44,
+    "overall": "risk-off",
+    "label": "La escalada con Irán y un selloff en semiconductores golpean a Wall Street; Argentina rebota en riesgo país por contagio global pero sostiene sus fundamentals (reservas del BCRA, respaldo del FMI)",
+    "fg": 43,
     "fg_label": "Miedo",
-    "putcall": 0.67,
+    "putcall": 1.17,
     "aaii_bulls": 36.3
   },
   "drivers": [
     {
       "id": 1,
-      "tag": "macro · EE.UU.",
-      "tag_class": "tb",
-      "title": "El CPI de junio sorprende a la baja: la inflación anual cae a 3,5%",
-      "brief": "El IPC de junio cayó 0,4% mensual, muy por debajo de lo esperado (3,8%), y reabre las apuestas por un recorte de tasas de la Fed.",
-      "tldr": "Inflación más fría reaviva las apuestas por una baja de tasas",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El <strong>CPI de junio</strong> cayó <strong>0,4% m/m</strong> (vs. +0,5% en mayo), llevando la inflación interanual a <strong>3,5%</strong>, por debajo del <strong>3,8%</strong> esperado por el consenso. Es la mayor caída mensual del índice general desde abril de 2020. El núcleo (sin alimentos ni energía) se mantuvo sin cambios en el mes y quedó en <strong>2,6%</strong> interanual, mientras que el índice de energía se desplomó <strong>5,7%</strong> mensual pese a subir <strong>15,7%</strong> interanual por la nafta.",
-      "contexto": "El dato alimenta las expectativas de que la Fed —que mantuvo el rango en <strong>3,50%-3,75%</strong> en junio— tenga margen para recortar en su próxima reunión del <strong>28-29 de julio</strong>, aunque ese encuentro no incluye actualización del &ldquo;dot plot&rdquo;. El mercado ahora espera el dato mayorista (PPI) como segunda pieza para confirmar la desinflación.",
+      "tag": "geopolítica · energía",
+      "tag_class": "tq",
+      "title": "Escalada con Irán dispara al petróleo y hunde al oro",
+      "brief": "EE.UU. lanzó nuevos ataques contra Irán y Trump amenazó con golpear infraestructura la semana próxima; el oro cae camino a su peor semana en seis y el crudo se mantiene firme.",
+      "tldr": "El shock geopolítico reintroduce presión inflacionaria justo cuando el mercado empieza a descontar una Fed más dura",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "EE.UU. lanzó nuevos ataques contra instalaciones militares de <strong>Irán</strong> esta semana, y el presidente Donald Trump advirtió que podría atacar infraestructura iraní la próxima semana si no hay avances diplomáticos. Irán respondió con ataques contra bases de EE.UU. en países vecinos, alimentando el temor a una escalada prolongada. El <strong>oro</strong> retrocedió hacia los <strong>u$s3.980</strong> la onza y encamina su mayor caída semanal en seis semanas (-3,4% en la semana), mientras el <strong>petróleo</strong> se mantiene firme por el riesgo de disrupción del suministro de Medio Oriente.",
+      "contexto": "La combinación de crudo más caro y expectativa de una Fed más hawkish —el mercado empieza a mirar la reunión del FOMC dentro de 11 días— explica por qué el oro cae pese a la crisis geopolítica: los inversores priorizan la cobertura vía tasas antes que el refugio tradicional. Un shock energético sostenido complica el escenario de desinflación global.",
       "impacto": [
-        {"asset": "CPI interanual", "dir": "3,5% (vs 3,8% esperado)", "cls": "dn"},
-        {"asset": "Núcleo CPI i.a.", "dir": "2,6%", "cls": "neu"},
-        {"asset": "S&P 500", "dir": "↑0,38%", "cls": "up"}
+        {"asset": "USO (petróleo)", "dir": "↓ -1,71% (US$119,30)", "cls": "dn"},
+        {"asset": "GLD (oro)", "dir": "↓ -1,98% (US$364,96)", "cls": "dn"},
+        {"asset": "UST 10Y", "dir": "4,55%", "cls": "neu"}
       ]
     },
     {
       "id": 2,
-      "tag": "mercados · EE.UU.",
-      "tag_class": "tg",
-      "title": "Wall Street extiende el rally tecnológico: ASML dispara el trade de IA",
-      "brief": "El Nasdaq subió 0,9% y el S&P cerró en récord tras el IPC blando; ASML saltó 3,4% con resultados mejores a lo esperado y Morgan Stanley superó estimaciones.",
-      "tldr": "El apetito por riesgo se mantiene firme en EE.UU. de cara a la temporada de balances",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El <strong>S&P 500</strong> cerró el martes en <strong>7.543,59</strong> (+0,38%) y el <strong>Nasdaq</strong> avanzó <strong>0,9%</strong> a <strong>26.107,01</strong>, mientras el <strong>Dow Jones</strong> subió apenas <strong>9,63 puntos</strong> a <strong>52.508,27</strong>. <strong>ASML</strong> saltó <strong>3,4%</strong> tras resultados mejores a lo esperado, reforzando el trade de inteligencia artificial, y <strong>Morgan Stanley</strong> subió <strong>0,97%</strong> tras superar estimaciones de ganancias y de ingresos.",
-      "contexto": "Los futuros de hoy extienden las ganancias mientras el mercado espera un segundo dato de inflación (mayorista) tras el IPC blando de ayer, en el arranque de una temporada de balances que hasta ahora viene favorable para el sector financiero y tecnológico.",
+      "tag": "macro · EE.UU.",
+      "tag_class": "tr",
+      "title": "El selloff en semiconductores arrastra a Wall Street",
+      "brief": "TSMC elevó su guía de capex a u$s60-64bn y encendió dudas sobre el retorno de las inversiones en IA; Alphabet cayó más de 4% tras reportarse la demora de Gemini 3.5 Pro.",
+      "tldr": "El mercado empieza a cuestionar si el gasto de capital en IA se justifica, y el Fear & Greed Index cae a zona de Miedo",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "Un selloff en <strong>semiconductores</strong> arrastró a Wall Street el jueves: el índice de chips cayó 3% después de que <strong>TSMC</strong> elevara su guía de capex 2026 a un rango de <strong>u$s60.000-64.000 M</strong> (desde u$s52.000-56.000 M previos), lo que generó dudas sobre si las inversiones en IA se justifican pese a un reporte trimestral mejor a lo esperado. <strong>Alphabet</strong> cayó más de 4% tras reportarse la demora en el lanzamiento de su modelo <strong>Gemini 3.5 Pro</strong>. El <strong>S&amp;P 500</strong> perdió 0,51% (7.533,77 pts) y el <strong>Nasdaq Composite</strong> retrocedió 1,47% (25.881,95 pts).",
+      "contexto": "El <strong>Fear &amp; Greed Index</strong> de CNN cayó a <strong>43 puntos</strong> (zona de Miedo), y el put/call ratio del S&amp;P 500 subió a <strong>1,17</strong>, reflejando mayor cobertura defensiva. El mercado empieza además a poner el ojo en la próxima reunión del FOMC, en 11 días, con la suba de tasas nuevamente sobre la mesa por el shock petrolero.",
       "impacto": [
-        {"asset": "Nasdaq", "dir": "↑0,9% (26.107,01)", "cls": "up"},
-        {"asset": "QQQ", "dir": "↑1,12% (US$719,69)", "cls": "up"},
-        {"asset": "ASML", "dir": "↑3,4%", "cls": "up"}
+        {"asset": "SPY", "dir": "↓ -0,54% (US$750,72)", "cls": "dn"},
+        {"asset": "QQQ", "dir": "↓ -1,64% (US$705,94)", "cls": "dn"}
       ]
     },
     {
       "id": 3,
-      "tag": "geopolítica · energía",
-      "tag_class": "tq",
-      "title": "La tensión EE.UU.-Irán empuja al petróleo pese al rally bursátil",
-      "brief": "Trump reiteró amenazas de ataques &ldquo;muy duros&rdquo; contra Irán; el crudo y el oro suben en conjunto como cobertura ante la escalada.",
-      "tldr": "El conflicto en Medio Oriente contrapesa el alivio inflacionario",
+      "tag": "BCRA/Tesoro · Argentina",
+      "tag_class": "ta",
+      "title": "El riesgo país rebota mientras el BCRA extiende a 128 ruedas su racha compradora",
+      "brief": "El riesgo país subió a ~409-410 pb (+1,5%) en sintonía con la caída de emergentes, pero el BCRA compró u$s230M el jueves y acumula u$s1.405M en julio; la banda cambiaria tocó un nuevo máximo.",
+      "tldr": "El contagio global le pone un freno transitorio a la mejora de los bonos argentinos, pero los fundamentals de reservas siguen firmes",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El petróleo (<strong>USO +2,02%</strong>, US$120,17) y el oro (<strong>GLD +1,37%</strong>, US$372,15) subieron en conjunto luego de que <strong>Trump reiterara amenazas de ataques &ldquo;muy duros&rdquo;</strong> contra Irán, en medio de una escalada de ataques estadounidenses que mantiene elevada la prima de riesgo geopolítico.",
-      "contexto": "La suba simultánea de petróleo y oro —activo refugio por excelencia— muestra que, pese al optimismo por la inflación, persiste un riesgo de cola geopolítico que podría filtrarse a los precios si la escalada continúa, complicando el escenario desinflacionario global justo cuando la Fed empieza a ganar margen de maniobra.",
+      "evento": "El <strong>riesgo país</strong> argentino subió a la zona de <strong>409-410 pb</strong> (+1,5%) en la rueda de hoy, tras el cierre del miércoles 15/7 en <strong>404 pb</strong>, en sintonía con la caída global de deuda emergente por el shock petrolero y la suba de tasas en EE.UU. El <strong>Merval</strong> retrocedió 3,2% en pesos, golpeado por bancos (hasta -5,3%) y energéticas como YPF (-3,2%). Pese a la volatilidad, el <strong>BCRA</strong> compró <strong>u$s230 M</strong> el jueves y extendió a <strong>128 ruedas consecutivas</strong> su racha compradora (u$s1.405 M en julio, &gt;u$s1.000 M en la semana). Las <strong>reservas</strong> cerraron en <strong>u$s48.531 M</strong>, con una baja diaria de u$s62 M. La banda cambiaria superior tocó un nuevo máximo de <strong>$1.827,63</strong>.",
+      "contexto": "El repunte del riesgo país es más un efecto de contagio global que un cambio de tendencia local: los bonos en dólares vienen de mínimos de ocho años y la mejora de calificación de Fitch y S&amp;P del último mes sigue vigente. El desafío es que la volatilidad externa llega justo cuando el Gobierno se acerca a su primera colocación de deuda internacional en ocho años.",
       "impacto": [
-        {"asset": "USO (petróleo)", "dir": "↑2,02% (US$120,17)", "cls": "up"},
-        {"asset": "GLD (oro)", "dir": "↑1,37% (US$372,15)", "cls": "up"}
+        {"asset": "GD30", "dir": "↓ -0,29% (US$57,90)", "cls": "dn"},
+        {"asset": "AL30", "dir": "↑ +0,14% (US$56,43)", "cls": "up"},
+        {"asset": "Riesgo país", "dir": "↑ ~409-410pb (cierre API 15/7: 404pb)", "cls": "up"}
       ]
     },
     {
       "id": 4,
-      "tag": "BCRA · Argentina",
-      "tag_class": "tg",
-      "title": "El BCRA hizo la mayor compra de dólares de la era Milei y superó la meta de reservas 2026",
-      "brief": "Compró US$532M el martes, la cifra más alta desde diciembre de 2022, extendió a 126 ruedas la racha compradora y superó la meta de reservas de 2026.",
-      "tldr": "Las reservas suben con fuerte respaldo del mercado cambiario, aunque el riesgo país no cede",
+      "tag": "FMI · Argentina",
+      "tag_class": "tb",
+      "title": "El FMI confirma la visita de Georgieva para el 27/7 y sostiene la proyección de crecimiento en 3,5%",
+      "brief": "Caputo anunció la agenda de la directora gerente del FMI, que incluye reunión con Milei y visita a Vaca Muerta; el organismo ratificó su respaldo al programa económico.",
+      "tldr": "El guiño institucional del FMI llega en la previa de la primera colocación de deuda internacional en 8 años",
       "sentiment": "ro",
       "sentiment_label": "🟢 Risk-On",
-      "evento": "El Banco Central compró <strong>US$532 millones</strong> el martes, la cifra más alta desde diciembre de 2022 y la mayor de la era Milei, impulsada por la liquidación de una obligación negociable y mayor oferta en el MLC. Acumuló <strong>126 ruedas consecutivas</strong> con saldo comprador, superando la meta de reservas 2026 (<strong>US$10.000-17.000M</strong>), y llevó las reservas a <strong>US$48.687M</strong> (+US$482M en el día).",
-      "contexto": "El dólar oficial cerró en <strong>$1.495</strong> (venta) y el blue en <strong>$1.520</strong>, con una brecha acotada de apenas <strong>1,3%</strong>. Sin embargo, el riesgo país subió a <strong>410 pb</strong> (+1% en el día), mostrando que el mercado sigue exigiendo una prima alta pese a la fuerte acumulación de reservas.",
+      "evento": "El ministro de Economía, <strong>Luis Caputo</strong>, confirmó que la directora gerente del FMI, <strong>Kristalina Georgieva</strong>, visitará Argentina el <strong>27 de julio</strong>. La agenda incluye una reunión con el presidente <strong>Milei</strong>, una conferencia de prensa junto a Caputo en el Ministerio de Economía, una charla abierta en el Palacio Libertad y una visita a <strong>Vaca Muerta</strong>. El organismo mantuvo su proyección de crecimiento para Argentina en <strong>3,5%</strong> para 2026 y volvió a respaldar el plan financiero del Gobierno y la reforma de la Carta Orgánica del BCRA.",
+      "contexto": "La visita llega en un momento en que el Gobierno se acerca a su primera colocación de deuda internacional en ocho años, con el riesgo país en mínimos de ocho años pese al rebote de hoy. El respaldo técnico del Fondo reduce la incertidumbre institucional, aunque no despeja el riesgo de corto plazo derivado de la volatilidad global.",
       "impacto": [
-        {"asset": "Reservas BCRA", "dir": "US$48.687M (+US$482M)", "cls": "up"},
-        {"asset": "Dólar oficial", "dir": "$1.495 (venta)", "cls": "neu"},
-        {"asset": "Riesgo país", "dir": "410pb (+1%)", "cls": "dn"}
-      ]
-    },
-    {
-      "id": 5,
-      "tag": "política económica · Argentina",
-      "tag_class": "ta",
-      "title": "Milei avanza con la reforma de la Carta Orgánica del BCRA y el FMI confirma visita de Georgieva",
-      "brief": "El proyecto busca blindar la independencia del Central y limitar el financiamiento al Tesoro; la directora del FMI visitará el país a fines de julio.",
-      "tldr": "Las reformas institucionales ganan tracción con guiño explícito del FMI",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Milei presentó a legisladores de LLA el proyecto de reforma de la <strong>Carta Orgánica del BCRA</strong>, que busca fortalecer la independencia del Central, restringir el financiamiento al Tesoro y endurecer las condiciones para remover a sus autoridades. En paralelo, el FMI confirmó que su directora, <strong>Kristalina Georgieva</strong>, visitará Argentina a fines de julio para reunirse con Milei y Caputo.",
-      "contexto": "El FMI mantuvo su proyección de crecimiento de <strong>3,5%</strong> para 2026 y espera que la inflación converja gradualmente a <strong>25%</strong> hacia fin de año, respaldando el programa económico. Sin embargo, todavía no hay fecha confirmada para el envío del proyecto de reforma al Congreso, lo que deja incertidumbre sobre los tiempos legislativos.",
-      "impacto": [
-        {"asset": "GD30", "dir": "↑0,78% (US$57,95)", "cls": "up"},
-        {"asset": "GD35", "dir": "↑0,42% (US$83,35)", "cls": "up"},
-        {"asset": "AL30", "dir": "-0,01% (US$56,15)", "cls": "neu"}
+        {"asset": "Riesgo país", "dir": "→ sin cambio de tendencia de fondo", "cls": "neu"},
+        {"asset": "Bonos soberanos", "dir": "↑ firmes en el año", "cls": "up"}
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "La Fed gana margen para recortar en julio, pero el petróleo firme complica la lectura",
-      "texto": "El IPC de junio (3,5% i.a.) sorprendió a la baja y reabre las apuestas por un recorte en la reunión del 28-29 de julio. Pero la escalada EE.UU.-Irán mantiene al crudo firme (USO +2,02%), un factor que podría revertir parte del alivio inflacionario si persiste."
+      "label": "El shock geopolítico en Medio Oriente le pone un techo a la búsqueda de yield en emergentes",
+      "texto": "La escalada con Irán eleva la posibilidad de que la Fed mantenga tasas altas por más tiempo, lo que le resta atractivo relativo a la deuda emergente —incluida la argentina— pese a la mejora de sus fundamentals locales."
     },
     {
-      "label": "El riesgo país argentino sube pese a la mayor compra de dólares de la era Milei",
-      "texto": "El BCRA compró US$532M el martes y superó la meta de reservas 2026, pero el riesgo país subió a 410pb (+1%). El mercado sigue exigiendo una prima alta pese a la mejora en el frente cambiario, algo a monitorear de cara a una eventual vuelta a los mercados internacionales."
+      "label": "El BCRA sostiene el ritmo comprador, pero las reservas caen por compromisos en dólares",
+      "texto": "Pese a 128 ruedas consecutivas de compras y u$s1.405 M acumulados en julio, las reservas del BCRA cayeron u$s62 M en la última rueda, evidenciando la tensión entre la acumulación de divisas y los pagos de deuda en dólares."
     }
   ],
   "correlaciones": [
     {
-      "par": "Petróleo y oro suben juntos pese al rally de Wall Street",
-      "texto": "La suba conjunta de USO (+2,02%) y GLD (+1,37%) en medio de un mercado accionario en alza sugiere que el flujo hacia coberturas responde más a la tensión geopolítica puntual con Irán que a un giro generalizado hacia el risk-off."
+      "par": "Oro y petróleo se desacoplan pese a la misma noticia geopolítica",
+      "texto": "Mientras el crudo se mantiene firme por el riesgo de corte de oferta en Medio Oriente, el oro cae -1,98% porque el mercado prioriza la expectativa de una Fed más dura sobre la demanda de refugio tradicional."
     },
     {
-      "par": "Bonos argentinos suben pese a que el riesgo país también sube",
-      "texto": "GD30 (+0,78%) y GD35 (+0,42%) avanzaron el mismo día en que el riesgo país subió a 410pb, una aparente desconexión que refleja volatilidad intradía más que una señal direccional clara sobre el crédito soberano."
+      "par": "El selloff tecnológico en EE.UU. contagia al Merval",
+      "texto": "La caída de 1,47% del Nasdaq por el selloff en semiconductores se trasladó al mercado local, con el Merval retrocediendo 3,2% en pesos, liderado por bancos y energéticas."
     }
   ],
-  "bottom_line": "<p>La combinación de un IPC de EE.UU. más frío de lo esperado (<strong>3,5% i.a.</strong>) y un mercado que sigue de racha en tecnología (Nasdaq +0,9%, ASML +3,4%) genera un contexto de corto plazo favorable para el apetito por riesgo global, aunque la escalada entre EE.UU. e Irán —que empuja al petróleo y al oro al alza en conjunto— es un recordatorio de que esa ventana puede cerrarse rápido si el conflicto se profundiza.</p><p>Para Argentina, el dato saliente del día es la <strong>mayor compra de dólares de la era Milei</strong> (US$532M el martes), que llevó las reservas a US$48.687M y confirmó que el BCRA ya superó la meta de acumulación fijada para 2026. A esto se suma el respaldo explícito del FMI —con la visita de Georgieva confirmada para fines de julio y la proyección de crecimiento sin cambios en 3,5%— que refuerza la historia de sostenibilidad del programa. Sin embargo, el riesgo país subiendo a 410pb pese a este contexto favorable sugiere que el mercado todavía pide señales concretas, y la reforma de la Carta Orgánica del BCRA —sin fecha firme de envío al Congreso— seguirá siendo el tema institucional a seguir de cerca en las próximas semanas.</p>"
+  "bottom_line": "<p>La jornada global está marcada por la escalada con <strong>Irán</strong> —nuevos ataques de EE.UU. y advertencia de Trump sobre infraestructura— y por un <strong>selloff en semiconductores</strong> que arrastró al S&amp;P 500 (-0,51%) y al Nasdaq (-1,47%) tras la suba de capex de TSMC y la demora del Gemini 3.5 Pro de Alphabet. El <strong>Fear &amp; Greed Index</strong> cayó a 43 puntos (Miedo) y el oro retrocede pese a la crisis geopolítica, reflejando que el mercado teme una Fed más dura de cara al FOMC de dentro de 11 días.</p><p><strong>Argentina no queda inmune al contagio global.</strong> El riesgo país rebotó a la zona de 409-410 pb (+1,5%) y el Merval cayó 3,2% en pesos, pero los fundamentals locales siguen firmes: el BCRA extendió a 128 ruedas su racha compradora (u$s1.405 M en julio) y el FMI confirmó la visita de Georgieva para el 27/7 junto con su respaldo al programa económico. El principal riesgo de corto plazo es que la volatilidad externa —tasas más altas en EE.UU. y un shock energético prolongado— le ponga un freno a la primera colocación de deuda internacional en ocho años que el Gobierno viene preparando.</p>"
 }
