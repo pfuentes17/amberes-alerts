@@ -1,102 +1,103 @@
 {
-  "date": "2026-07-20",
-  "generated": "2026-07-20T12:30:00Z",
+  "date": "2026-07-21",
+  "generated": "2026-07-21T12:15:00Z",
   "sentiment": {
     "overall": "risk-off",
-    "label": "Irán suspende el acuerdo interino y encara una novena noche de ataques cruzados con EE.UU.; el petróleo salta y el oro busca refugio, mientras los futuros de Wall Street se muestran sorprendentemente calmos a la espera del FOMC del 29/7",
-    "fg": 37,
+    "label": "Los hutíes amenazan bloquear a Arabia Saudita y el petróleo extiende su repunte semanal; la Fed llega dividida al FOMC del 29/7, mientras Argentina sostiene sus bonos gracias a las reservas del BCRA",
+    "fg": 38,
     "fg_label": "Miedo",
-    "putcall": 1.17,
-    "aaii_bulls": 36.3
+    "putcall": 0.66,
+    "aaii_bulls": 31.4
   },
   "drivers": [
     {
       "id": 1,
       "tag": "geopolítica · energía",
       "tag_class": "tq",
-      "title": "Irán suspende el acuerdo interino y el crudo salta en la apertura de la semana",
-      "brief": "EE.UU. lanzó una novena noche consecutiva de ataques contra Irán, con la primera baja militar reportada y el uso de drones navales; Irán respondió contra bases de EE.UU. en el Golfo y dio por terminado el memorándum de paz del 17/6.",
-      "tldr": "El Estrecho de Hormuz vuelve a estar en el centro de la escena justo cuando el mercado esperaba una desescalada",
+      "title": "Los hutíes anuncian un bloqueo a Arabia Saudita y el petróleo extiende su repunte semanal",
+      "brief": "Yemen amenazó con bloquear el comercio saudita en el Mar Rojo mientras EE.UU. e Irán continúan las hostilidades; el crudo acumula una suba de más de 16% en la semana y el Dow cayó más de 300 puntos el lunes.",
+      "tldr": "El Estrecho de Ormuz sigue en el centro de la escena y el mercado empieza a pagar una prima de riesgo más persistente",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "Estados Unidos realizó durante el fin de semana una nueva ronda de ataques contra <strong>Irán</strong> —la novena noche consecutiva de bombardeos— y confirmó la muerte de otro militar estadounidense, además de utilizar por primera vez drones navales de un solo uso contra objetivos iraníes. En respuesta, Irán atacó bases de EE.UU. en <strong>Kuwait, Baréin, Jordania, Omán y Qatar</strong>, y declaró formalmente suspendido el memorándum de entendimiento del 17 de junio que había abierto una tregua interina y la promesa de reabrir el Estrecho de Hormuz. El <strong>petróleo</strong> saltó en la apertura de la semana ante el temor a una nueva disrupción del suministro, mientras el <strong>oro</strong> también opera con sesgo comprador como cobertura.",
-      "contexto": "La escalada llega apenas 9 días antes de la reunión de la Fed (29/7), con el mercado descontando en un 85,6% que la entidad mantenga las tasas sin cambios. Un shock petrolero sostenido complicaría el escenario desinflacionario justo cuando los traders de swaps ya venían recortando las expectativas de baja de tasas para 2026 (de 60 a 56 puntos básicos entre el viernes y hoy).",
+      "evento": "Los militantes hutíes de Yemen anunciaron hoy un bloqueo al comercio de <strong>Arabia Saudita</strong> en el Mar Rojo, en una nueva escalada mientras Estados Unidos e Irán continúan con hostilidades cruzadas en Oriente Medio —Teherán afirmó que enfrenta una <strong>&ldquo;guerra total&rdquo;</strong> con Washington—. El <strong>Estrecho de Ormuz</strong>, por donde transita cerca de una <strong>quinta parte del suministro mundial de petróleo</strong>, permanece en el centro de la escalada. El <strong>Brent</strong> subió a <strong>US$89,22 (+1,27%)</strong> y el <strong>WTI</strong> a <strong>US$83,23 (+0,90%)</strong>, acumulando una suba superior al <strong>16% desde la semana pasada</strong>.",
+      "contexto": "El lunes, el <strong>Dow Jones</strong> cerró con una caída de más de <strong>300 puntos</strong> arrastrado por el nuevo salto del crudo, la segunda sesión consecutiva en rojo tras la baja de más de 400 puntos del viernes. El índice <strong>Fear &amp; Greed</strong> de CNN se mantiene en zona de <strong>&ldquo;Miedo&rdquo; (38 puntos)</strong>, y el <strong>ratio put/call de CBOE</strong> se ubicó en <strong>0,66</strong> el lunes.",
       "impacto": [
-        {"asset": "USO (petróleo, cierre viernes)", "dir": "↑ +3,91% (US$123,96)", "cls": "up"},
-        {"asset": "GLD (oro, cierre viernes)", "dir": "↑ +0,95% (US$368,41)", "cls": "up"},
-        {"asset": "UST 10Y (16/7)", "dir": "4,57%", "cls": "neu"}
+        {"asset": "USO (ETF petróleo, cierre lunes)", "dir": "↑ +1,25% (US$125,51)", "cls": "up"},
+        {"asset": "Dow Jones (lunes)", "dir": "↓ -300pb", "cls": "dn"},
+        {"asset": "Fear & Greed", "dir": "38 (Miedo)", "cls": "dn"}
       ]
     },
     {
       "id": 2,
-      "tag": "macro · EE.UU.",
-      "tag_class": "tr",
-      "title": "Wall Street cerró la semana en baja, pero los futuros de hoy se muestran calmos pese a la escalada",
-      "brief": "El Dow perdió más de 400 puntos el viernes y el S&P 500 y el Nasdaq registraron su peor semana en varias (-1,6% y -2,9% respectivamente); sin embargo, los futuros de este lunes cotizan prácticamente planos.",
-      "tldr": "El mercado parece \"fatigado\" de la escalada con Irán y mira más a los balances de la semana que a los titulares geopolíticos",
+      "tag": "bancos centrales · Fed",
+      "tag_class": "tb",
+      "title": "La Fed llega dividida a la reunión del 29 de julio, a ocho días de distancia",
+      "brief": "Las minutas de junio mostraron que varios funcionarios evaluaron subir tasas por la inflación persistente; la presidenta de la Fed de Dallas insinuó la semana pasada que un aumento sería apropiado.",
+      "tldr": "El riesgo de un giro hawkish de la Fed sigue siendo la principal amenaza para los activos emergentes esta semana",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "Wall Street cerró el viernes con el <strong>Dow Jones</strong> cayendo más de 400 puntos, mientras el <strong>S&amp;P 500</strong> (-0,99% a 743,29 en el ETF SPY) y el <strong>Nasdaq</strong> (-1,50% a 695,33 en el ETF QQQ) acumularon en la semana caídas de <strong>-1,6%</strong> y <strong>-2,9%</strong> respectivamente, arrastrados por el selloff en semiconductores y el avance del petróleo. El <strong>Fear &amp; Greed Index</strong> de CNN cerró la semana en <strong>37 puntos</strong> (zona de Miedo). Pese a la novena noche de ataques a Irán, los futuros de este lunes cotizan prácticamente sin cambios: S&amp;P 500 futuro plano en 7.531,75 puntos y Nasdaq 100 futuro apenas +0,2%.",
-      "contexto": "Esta semana arranca la temporada de balances con pesos pesados como <strong>Tesla, Alphabet e Intel</strong> reportando, lo que podría reactivar la volatilidad más allá de la geopolítica. El mercado sigue mirando de reojo el FOMC del 29/7 (85,6% de probabilidad de mantener tasas) y el IPC de julio como próximos catalizadores.",
+      "evento": "Las minutas de la reunión del FOMC del 16-17 de junio —difundidas el 8 de julio— mostraron que el comité, pese a mantener la tasa sin cambios en <strong>3,50%-3,75%</strong>, está internamente dividido: varios funcionarios llegaron a evaluar una suba de tasas ante una inflación que sigue alta por los precios de la energía, los aranceles y la demanda ligada a la inversión en IA. El 17 de julio, la presidenta de la Fed de Dallas, <strong>Lorie Logan</strong>, señaló que &ldquo;unas tasas ligeramente más altas equilibrarían mejor&rdquo; las perspectivas económicas, lo que los inversores leyeron como una señal de posible suba en la reunión que cierra el <strong>29 de julio</strong> —a ocho días de hoy—.",
+      "contexto": "Ese mismo día los mercados emergentes retrocedieron 2,1% y el riesgo país argentino subió 5 puntos básicos a 410, evidenciando la sensibilidad de los activos emergentes a cualquier señal hawkish de la Fed. Hoy la tasa a <strong>10 años del Tesoro de EE.UU.</strong> se ubica en <strong>4,55%</strong>, mientras la encuesta semanal de <strong>AAII</strong> mostró un salto del pesimismo: el sentimiento bajista trepó a <strong>42,3%</strong> y el alcista cayó a <strong>31,4%</strong>, muy por debajo de su promedio histórico.",
       "impacto": [
-        {"asset": "SPY (cierre viernes)", "dir": "↓ -0,99% (US$743,29)", "cls": "dn"},
-        {"asset": "QQQ (cierre viernes)", "dir": "↓ -1,50% (US$695,33)", "cls": "dn"},
-        {"asset": "Futuros S&P/Nasdaq (hoy)", "dir": "→ prácticamente planos", "cls": "neu"}
+        {"asset": "UST 10Y", "dir": "4,55%", "cls": "neu"},
+        {"asset": "AAII bulls", "dir": "31,4% (bajo el promedio)", "cls": "dn"},
+        {"asset": "Riesgo país ARG", "dir": "419pb", "cls": "neu"}
       ]
     },
     {
       "id": 3,
       "tag": "Argentina · deuda y mercados",
       "tag_class": "ta",
-      "title": "El riesgo país cerró la semana en 419pb mientras el dólar arranca la semana estable",
-      "brief": "El riesgo país argentino cerró el viernes en 419 puntos básicos; el dólar oficial abre el lunes en $1.500 (venta) y el blue en $1.530, sin sobresaltos pese a la volatilidad global del fin de semana.",
-      "tldr": "La city ignora por ahora el ruido geopolítico global y sostiene la calma cambiaria previa a la visita del FMI",
+      "title": "El riesgo país sigue sin actualizarse desde el viernes; el dólar y los bonos operan con leves subas",
+      "brief": "Sin publicación de fin de semana ni de ayer, el riesgo país argentino se mantiene en 419pb; el dólar oficial cotiza $1.450/$1.500 y los bonos soberanos suben levemente en la rueda de hoy.",
+      "tldr": "La calma cambiaria local contrasta con la volatilidad global que trae el petróleo",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>riesgo país</strong> argentino cerró la rueda del viernes 17/7 en <strong>419 puntos básicos</strong>. En el arranque de la semana, el <strong>dólar oficial</strong> cotiza en <strong>$1.500</strong> para la venta en el Banco Nación, el <strong>blue</strong> en <strong>$1.530</strong>, el <strong>MEP</strong> en $1.521,9 y el <strong>CCL</strong> en $1.575,9 — niveles prácticamente sin cambios respecto al cierre de la semana pasada. Entre los bonos soberanos, <strong>GD30</strong> cerró en US$57,99 (+0,15%), <strong>AL30</strong> en US$56,47 (+0,07%) y <strong>GD35</strong> en US$83,57 (-0,08%). El presidente Milei destacó este fin de semana que \"la tasa de inflación sigue cayendo y la economía empieza a expandirse\", tras un semestre con la inflación mensual bajando de 3,4% en marzo a 2,1% en mayo.",
-      "contexto": "La estabilidad cambiaria y de los bonos argentinos contrasta con la volatilidad global del fin de semana por Irán, sugiriendo que los inversores locales siguen mirando más al programa financiero de Caputo para los vencimientos 2026-2027 y a la próxima visita del FMI que a los titulares geopolíticos internacionales.",
+      "evento": "El <strong>riesgo país</strong> argentino continúa en <strong>419 puntos básicos</strong>, el mismo nivel del cierre del viernes 17/7, sin una actualización todavía para la rueda del lunes. El <strong>dólar oficial</strong> cotiza <strong>$1.450/$1.500</strong> (compra/venta), el <strong>blue</strong> <strong>$1.520/$1.540</strong>, el <strong>MEP</strong> <strong>$1.510,4/$1.514,7</strong> y el <strong>CCL</strong> <strong>$1.572,4/$1.572,9</strong>. Entre los soberanos, <strong>GD30</strong> sube a <strong>US$58,15 (+0,27%)</strong>, <strong>GD29</strong> a <strong>US$56,42 (+0,84%)</strong> y <strong>AL30</strong> a <strong>US$56,70 (+0,40%)</strong>, mientras <strong>GD35</strong> retrocede levemente <strong>-0,28%</strong> a US$83,33.",
+      "contexto": "La resiliencia de los bonos en dólares contrasta con la caída de Wall Street y el salto del petróleo, sugiriendo que los inversores locales siguen priorizando las noticias del programa financiero y las reservas del Central por sobre el ruido geopolítico internacional.",
       "impacto": [
-        {"asset": "Riesgo país", "dir": "→ 419pb (cierre viernes)", "cls": "neu"},
-        {"asset": "GD30", "dir": "↑ +0,15% (US$57,99)", "cls": "up"},
-        {"asset": "Dólar blue", "dir": "→ $1.530 (estable)", "cls": "neu"}
+        {"asset": "Riesgo país", "dir": "→ 419pb (sin cambios)", "cls": "neu"},
+        {"asset": "GD30", "dir": "↑ +0,27% (US$58,15)", "cls": "up"},
+        {"asset": "Dólar oficial", "dir": "$1.500 (venta)", "cls": "neu"}
       ]
     },
     {
       "id": 4,
-      "tag": "FMI · Argentina",
-      "tag_class": "tb",
-      "title": "A una semana de la visita de Georgieva, el Gobierno avanza con el programa financiero 2026-2027",
-      "brief": "Faltan 7 días para que la directora gerente del FMI llegue a Buenos Aires (27/7); mientras tanto, Caputo avanza con la ampliación de los bonos AO27, AO28 y un nuevo AO29 para cubrir vencimientos en dólares.",
-      "tldr": "El respaldo institucional del FMI y el programa de vencimientos ordenado son el principal contrapeso local frente al ruido externo",
+      "tag": "Argentina · BCRA",
+      "tag_class": "tg",
+      "title": "El BCRA acumula más de US$11.000 M en reservas en 2026 y cierra un REPO de US$6.000 M",
+      "brief": "El Central despejó vencimientos hasta 2028 con bancos internacionales, mientras Caputo avanza con el proyecto de reforma de la Carta Orgánica que Milei enviaría al Congreso en agosto.",
+      "tldr": "Las noticias locales de reservas y financiamiento son el principal contrapeso al ruido externo",
       "sentiment": "ro",
       "sentiment_label": "🟢 Risk-On",
-      "evento": "A una semana de que la directora gerente del FMI, <strong>Kristalina Georgieva</strong>, visite Argentina (27/7) para reunirse con <strong>Milei</strong> y recorrer <strong>Vaca Muerta</strong>, el ministro <strong>Luis Caputo</strong> avanza con su estrategia de financiamiento: ampliación de los bonos en dólares <strong>AO27</strong> y <strong>AO28</strong>, más la emisión de un nuevo título <strong>AO29</strong> a tres años, para cubrir parte de los <strong>US$19.200 millones</strong> de vencimientos que restan en 2026, incluyendo US$6.000 millones vía colocación en el mercado local.",
-      "contexto": "El capítulo de una eventual emisión internacional sigue abierto pero sin fecha ni monto definido, condicionado a la evolución de los mercados globales — la escalada con Irán de este fin de semana no ayuda a acelerar esa ventana. El respaldo técnico del FMI, sostenido en su proyección de crecimiento de 3,5% para 2026, sigue siendo el ancla institucional de mediano plazo.",
+      "evento": "El <strong>Banco Central</strong> lleva compradas más de <strong>US$11.000 millones</strong> en lo que va de 2026 y cerró un <strong>REPO por US$6.000 millones</strong> con bancos internacionales que despeja vencimientos hasta <strong>2028</strong>. En paralelo, el ministro <strong>Luis Caputo</strong> detalló el proyecto de reforma de la <strong>Carta Orgánica del BCRA</strong>, que el presidente <strong>Milei</strong> anunciaría oficialmente en las próximas semanas antes de enviarlo al Congreso en agosto; la iniciativa buscaría, entre otros puntos, otorgarle al Central la potestad de regular <strong>activos virtuales, stablecoins y tokenización</strong>, siguiendo ejemplos de Chile, Uruguay y Brasil.",
+      "contexto": "El fortalecimiento de reservas y el despeje de vencimientos externos son, junto con el programa financiero de Caputo, el principal ancla que sostiene a los bonos soberanos en terreno positivo pese al contexto internacional adverso por el petróleo y la Fed.",
       "impacto": [
-        {"asset": "Bonos soberanos ARG", "dir": "→ sostenidos en el año", "cls": "neu"},
-        {"asset": "Riesgo país", "dir": "→ sin cambio de tendencia de fondo", "cls": "neu"}
+        {"asset": "Reservas BCRA 2026", "dir": "↑ +US$11.000 M", "cls": "up"},
+        {"asset": "REPO bancos internacionales", "dir": "US$6.000 M a 2028", "cls": "up"},
+        {"asset": "Bonos soberanos ARG", "dir": "→ sostenidos", "cls": "neu"}
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Escalada militar máxima pero reacción de mercado mínima",
-      "texto": "Pese a la novena noche de ataques a Irán, la primera baja militar de EE.UU. reportada y la suspensión formal del acuerdo interino, los futuros de Wall Street cotizan prácticamente planos. La brecha entre la severidad del titular geopolítico y la reacción del mercado sugiere fatiga inversora o que el mercado ya tiene gran parte del riesgo descontado — hasta que algo cambie estructuralmente (cierre efectivo de Hormuz, por ejemplo)."
+      "label": "El petróleo sigue subiendo a solo 8 días del FOMC",
+      "texto": "La escalada de los hutíes y el conflicto Irán-EE.UU. mantienen al crudo en niveles elevados justo cuando la Fed evalúa si necesita un sesgo más duro por la inflación. Un shock de oferta energética sostenido le dejaría menos margen al comité para señalar recortes en lo que resta de 2026."
     },
     {
-      "label": "El petróleo sube justo antes del FOMC, complicando el margen de la Fed",
-      "texto": "El salto del crudo por el riesgo de Hormuz llega 9 días antes de la decisión de tasas, en momentos en que los swaps ya venían recortando expectativas de baja para 2026. Un shock de oferta energética sostenido dejaría a la Fed con menos margen para señalar recortes este año."
+      "label": "El riesgo país no se actualiza hace varias ruedas",
+      "texto": "Sin una publicación desde el viernes 17/7, el mercado no tiene aún una lectura de cómo impactó en el riesgo país argentino la escalada geopolítica del fin de semana ni el salto adicional del petróleo del lunes. Habrá que monitorear la próxima actualización para confirmar si el desacople local se sostiene."
     }
   ],
   "correlaciones": [
     {
-      "par": "Oro y petróleo suben juntos, a diferencia de la semana pasada",
-      "texto": "El viernes pasado el oro cayó mientras el petróleo subía (la Fed hawkish primaba sobre el refugio). Este fin de semana ambos activos operan con sesgo comprador, reflejando que el mercado empieza a priorizar la cobertura ante el riesgo de un shock de oferta más severo en Medio Oriente."
+      "par": "El petróleo sube y el Fear & Greed se mantiene en Miedo",
+      "texto": "La suba sostenida del crudo por el riesgo de Ormuz coincide con un índice Fear & Greed que no logra salir de la zona de miedo (38 puntos), reforzando la lectura de que el mercado global sigue cauto pese a un put/call relativamente bajo (0,66)."
     },
     {
-      "par": "Los activos argentinos se desacoplan de la volatilidad global",
-      "texto": "Mientras el petróleo salta y los futuros de EE.UU. digieren la escalada con Irán, el dólar y los bonos argentinos arrancan la semana prácticamente sin cambios, sosteniendo la calma relativa que viene mostrando la city desde la mejora del riesgo país en junio."
+      "par": "Los bonos argentinos suben pese a la caída de Wall Street",
+      "texto": "Mientras el Dow perdió más de 300 puntos el lunes por el petróleo, los soberanos argentinos (GD30, GD29, AL30) operan hoy con subas, sostenidos por las noticias de reservas y REPO del BCRA — un desacople que viene sosteniéndose desde la semana pasada."
     }
   ],
-  "bottom_line": "<p>La semana arranca con Irán suspendiendo formalmente el acuerdo interino del 17/6 tras una novena noche consecutiva de ataques cruzados con EE.UU. —incluyendo la primera baja militar estadounidense reportada y el uso de drones navales—, lo que empujó al <strong>petróleo</strong> y al <strong>oro</strong> al alza en la apertura. Sin embargo, los futuros de Wall Street cotizan sorprendentemente <strong>planos</strong> (S&amp;P 500 futuro en 7.531,75, Nasdaq 100 +0,2%), en contraste con el cierre de la semana pasada, cuando el Dow perdió más de 400 puntos y el Nasdaq acumuló -2,9% semanal en medio del selloff de semiconductores. El mercado mira ahora al FOMC del 29/7 (85,6% de probabilidad de mantener tasas) y al inicio de la temporada de balances, con Tesla, Alphabet e Intel reportando esta semana.</p><p><strong>Argentina se mantiene, por ahora, al margen de la volatilidad global.</strong> El riesgo país cerró el viernes en 419pb y el dólar arranca la semana estable (oficial $1.500, blue $1.530), mientras el Gobierno avanza con el programa financiero 2026-2027 (ampliación de AO27/AO28 y nuevo AO29) a una semana de la visita de la directora del FMI, Kristalina Georgieva (27/7). El principal riesgo para los activos locales en los próximos días es que la escalada con Irán derive en un shock de petróleo más duradero que reintroduzca presión inflacionaria global y le ponga un techo a la ventana de emisión internacional que el equipo económico viene preparando.</p>"
+  "bottom_line": "<p>La escalada en Oriente Medio se profundiza: los hutíes de Yemen anunciaron hoy un bloqueo al comercio de <strong>Arabia Saudita</strong> en el Mar Rojo, mientras EE.UU. e Irán continúan las hostilidades cruzadas y el <strong>Estrecho de Ormuz</strong> —clave para una quinta parte del suministro mundial de petróleo— sigue en el centro de la escena. El crudo acumula una suba de más de <strong>16% en la semana</strong> (Brent US$89,22, WTI US$83,23) y arrastró al <strong>Dow Jones</strong> a una caída de más de 300 puntos el lunes, la segunda sesión consecutiva en rojo. El <strong>Fear &amp; Greed Index</strong> sigue en zona de <strong>&ldquo;Miedo&rdquo; (38 puntos)</strong> y la encuesta <strong>AAII</strong> mostró un salto del pesimismo (bajista 42,3% vs. alcista 31,4%). A esto se suma el riesgo de una <strong>Fed</strong> más hawkish de cara al FOMC del <strong>29 de julio</strong> —a solo ocho días—, después de que la presidenta de la Fed de Dallas, Lorie Logan, insinuara que una suba de tasas podría ser apropiada.</p><p><strong>Argentina, por ahora, sostiene la calma relativa.</strong> El riesgo país permanece en <strong>419 puntos básicos</strong> sin actualización desde el viernes, el dólar oficial cotiza <strong>$1.500</strong> (venta) y los bonos soberanos (GD30, GD29, AL30) suben levemente en la rueda de hoy, sostenidos por el <strong>BCRA</strong>, que ya compró más de <strong>US$11.000 millones</strong> en reservas en 2026 y cerró un <strong>REPO de US$6.000 millones</strong> con bancos internacionales que despeja vencimientos hasta 2028. A esto se suma el avance del proyecto de reforma de la <strong>Carta Orgánica del BCRA</strong> que el Gobierno enviaría al Congreso en agosto. El principal riesgo a monitorear en los próximos días es que una escalada mayor en Ormuz o una sorpresa hawkish de la Fed reviertan este desacople y vuelvan a presionar al dólar financiero y al riesgo país argentino.</p>"
 }
