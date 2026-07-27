@@ -1,106 +1,109 @@
 {
-  "date": "2026-07-24",
-  "generated": "2026-07-24T12:14:45Z",
+  "date": "2026-07-27",
+  "generated": "2026-07-27T12:07:11Z",
   "sentiment": {
     "overall": "risk-off",
-    "label": "El petróleo cerca de USD 100 por la escalada hutí en el Mar Rojo hunde a Wall Street en su peor sesión del mes, mientras entran en vigencia nuevos aranceles de Trump a 60 países",
-    "fg": 40,
+    "label": "La Fed llega al miércoles con la mayor probabilidad de suba de tasas en meses, el petróleo cede pero Medio Oriente sigue latente, y el riesgo país argentino trepa por contagio externo",
+    "fg": 39,
     "fg_label": "Miedo",
-    "putcall": 1.09,
+    "putcall": 1.6,
     "aaii_bulls": 29.6
   },
   "drivers": [
     {
       "id": 1,
-      "tag": "geopolítica · energía",
-      "tag_class": "tq",
-      "title": "El petróleo saltó a casi USD 100 por ataques hutíes a petroleros sauditas en el Mar Rojo",
-      "brief": "El WTI subió 5,93% el jueves y el Brent llegó a operar sobre US$102 tras ataques hutíes a dos petroleros sauditas y la amenaza de Trump de ampliar los strikes sobre Irán.",
-      "tldr": "El shock de oferta petrolero es hoy el principal riesgo para los mercados globales",
+      "tag": "bancos centrales · fed",
+      "tag_class": "tb",
+      "title": "La Fed llega a su reunión del miércoles con la mayor probabilidad de suba de tasas en meses",
+      "brief": "El mercado de futuros (CME FedWatch) pasó de asignar 10,7% a una suba en julio a 35,8% en dos semanas, tras el salto del petróleo por la escalada en Medio Oriente.",
+      "tldr": "La decisión de tasas del miércoles se volvió la definición más importante de la semana para los mercados",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "Rebeldes <strong>hutíes</strong> respaldados por Irán reivindicaron ataques a <strong>dos petroleros sauditas</strong> en el Mar Rojo tras anunciar un bloqueo naval al reino, mientras <strong>Trump</strong> amenazó con extender los ataques de EE.UU. sobre Irán. <strong>Kazajistán</strong> además suspendió exportaciones por la terminal del CPC (Caspian Pipeline) tras ataques con drones, sumando presión de oferta.",
-      "contexto": "El <strong>Brent</strong> llegó a operar sobre <strong>US$102</strong> el jueves antes de cerrar en torno a <strong>US$100,69 (+7%)</strong>, y esta mañana cotiza cerca de <strong>US$97</strong>, todavía +13% en la semana. Es la mayor escalada del conflicto en Medio Oriente en meses y reabrió un frente de riesgo geopolítico que estaba dormido.",
+      "evento": "El <strong>FOMC</strong> anuncia su decisión de tasas el <strong>miércoles 29/7</strong> a las 14hs (ET), con conferencia de prensa del presidente <strong>Warsh</strong> media hora después. Según el <strong>CME FedWatch Tool</strong>, la probabilidad de una suba de 25 puntos básicos saltó a <strong>35,8%</strong> el 24/7 (desde apenas 10,7% el 15/7), mientras el mercado asigna 64,2% a que la Fed mantenga las tasas sin cambios.",
+      "contexto": "El repricing responde al salto del <strong>petróleo</strong> por encima de <strong>US$100</strong> el jueves por la escalada del conflicto en Medio Oriente, que reavivó los temores inflacionarios justo antes de la reunión. Un giro hawkish de la Fed profundizaría la presión sobre activos de riesgo, ya golpeados por los temores de sobreinversión en IA.",
       "impacto": [
-        {"asset": "WTI (USO)", "dir": "↑ +5,93% (jueves)", "cls": "up"},
-        {"asset": "Brent", "dir": "↑ ~US$97-100", "cls": "up"},
-        {"asset": "Oro (GLD)", "dir": "↓ -2,00% (jueves)", "cls": "dn"}
+        {"asset": "Prob. suba 25pb (Fed jul)", "dir": "↑ 35,8% (vs 10,7% dos semanas atrás)", "cls": "up"},
+        {"asset": "UST 10Y", "dir": "4,71%", "cls": "up"}
       ]
     },
     {
       "id": 2,
-      "tag": "mercados · EE.UU.",
-      "tag_class": "tr",
-      "title": "Wall Street sufrió su peor caída del mes; el Nasdaq se hundió 2,15%",
-      "brief": "El S&P 500 cayó 1,21% y el Nasdaq 2,15% el jueves, golpeado por el salto del petróleo y balances flojos de Alphabet (-7%) y Tesla (-14%) por el gasto en IA.",
-      "tldr": "El combo de shock petrolero y decepción en earnings de tech/IA desató la venta más fuerte en un mes",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>Dow</strong> perdió <strong>506,93 puntos (-0,97%)</strong> y cerró en <strong>51.711,65</strong>; el <strong>S&amp;P 500</strong> cayó <strong>1,21%</strong> a <strong>7.408,30</strong>, su peor caída diaria en un mes; el <strong>Nasdaq Composite</strong> se hundió <strong>2,15%</strong> a <strong>25.137,69</strong>. <strong>Alphabet</strong> cayó 7% y <strong>Tesla</strong> 14% tras sus balances, alimentando temores sobre el gasto en capex de IA.",
-      "contexto": "Los futuros de Wall Street intentan rebotar esta mañana (Dow futuros +0,4%, S&amp;P futuros +0,2%) a medida que el petróleo cede parte de la suba. El índice <strong>CNN Fear &amp; Greed</strong> bajó a <strong>39,7</strong> (zona de Miedo), desde 43,3 el día previo. El <strong>AAII Bullish</strong> se derrumbó a <strong>29,6%</strong> (-15pp en una semana), bien por debajo del promedio histórico de 37,5%. El UST 10Y se mantiene en 4,67%.",
+      "tag": "geopolítica · energía",
+      "tag_class": "tq",
+      "title": "El petróleo cede parte del salto del jueves, pero la escalada en Medio Oriente sigue latente",
+      "brief": "El USO retrocedió 2,0% el viernes tras el fuerte salto previo por encima de US$100, aunque el conflicto que originó el shock de oferta no se resolvió.",
+      "tldr": "El alivio en el petróleo es frágil: un nuevo episodio podría revertirlo de inmediato y reactivar la presión inflacionaria sobre la Fed",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El crudo (<strong>USO</strong>) cerró el viernes en <strong>US$136,69 (-2,01%)</strong>, cediendo parte de la fuerte suba del jueves que había llevado al Brent a operar sobre <strong>US$100</strong> por primera vez en meses, tras ataques y amenazas de una escalada mayor en el conflicto en Medio Oriente.",
+      "contexto": "El retroceso del viernes refleja un alivio táctico, no una resolución del conflicto de fondo. El oro (<strong>GLD</strong>) subió apenas <strong>+0,10%</strong> el viernes, señal de que la demanda de refugio se mantiene contenida frente al fortalecimiento en yields.",
       "impacto": [
-        {"asset": "S&P 500", "dir": "↓ -1,21% (jueves)", "cls": "dn"},
-        {"asset": "Nasdaq", "dir": "↓ -2,15% (jueves)", "cls": "dn"},
-        {"asset": "UST 10Y", "dir": "→ 4,67%", "cls": "neu"}
+        {"asset": "Petróleo (USO)", "dir": "↓ -2,01% (viernes)", "cls": "dn"},
+        {"asset": "Oro (GLD)", "dir": "↑ +0,10%", "cls": "up"}
       ]
     },
     {
       "id": 3,
-      "tag": "comercio · EE.UU.",
-      "tag_class": "ta",
-      "title": "Entraron en vigencia nuevos aranceles de Trump a 60 socios comerciales",
-      "brief": "Aranceles de 10% a 12,5% rigen desde hoy para 60 países (incluye Canadá, México, India y UK), cubriendo el 99,4% de las importaciones de EE.UU.",
-      "tldr": "Nueva ronda arancelaria eleva la incertidumbre comercial justo cuando el mercado ya está nervioso por el petróleo",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Los nuevos aranceles entraron en vigencia a las <strong>00:01 ET de hoy</strong>, invocando la <strong>Sección 301</strong> de la Ley de Comercio de 1974 por incumplimientos en normas de trabajo forzoso. Reemplazan al arancel general del 10% que la Corte Suprema había declarado ilegal.",
-      "contexto": "Es una de las mayores acciones comerciales del segundo mandato de Trump. El mercado todavía está digiriendo el impacto sobre cadenas de suministro globales en simultáneo con el shock petrolero, lo que complica la lectura de cara al FOMC del 28-29/7.",
+      "tag": "acciones · global",
+      "tag_class": "tr",
+      "title": "Wall Street cierra su peor semana en meses arrastrado por los temores de sobreinversión en IA",
+      "brief": "El Nasdaq acumuló una baja semanal de ~2% tras el desplome del jueves (-2,2%), golpeado por el salto en la guía de capex de Alphabet (US$195-205 mil millones para 2026).",
+      "tldr": "La preocupación por el gasto de capital de las Big Tech en IA sigue pesando sobre la renta variable global",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El <strong>QQQ</strong> cerró el viernes con una baja de <strong>-1,12%</strong>, luego de que el <strong>Nasdaq Composite</strong> se hundiera <strong>2,2%</strong> el jueves. <strong>Alphabet</strong> elevó su guía de capex 2026 a <strong>US$195.000-205.000 millones</strong> (desde US$180-190 mil millones previo), intensificando la preocupación por el nivel de gasto de las hyperscalers en infraestructura de IA.",
+      "contexto": "El <strong>SPY</strong> cerró el viernes prácticamente plano (<strong>+0,10%</strong>), mostrando una divergencia entre el Dow/S&amp;P (más estables) y el Nasdaq (más golpeado), reflejo de que el nerviosismo se concentra en el sector tecnológico. El índice <strong>Fear &amp; Greed</strong> de CNN se ubica en <strong>39 (Miedo)</strong>, el <strong>put/call ratio</strong> en <strong>1,6</strong> y el <strong>bullish sentiment de AAII</strong> cayó a <strong>29,6%</strong>, todos en niveles defensivos.",
       "impacto": [
-        {"asset": "Países afectados", "dir": "60 (99,4% de importaciones EE.UU.)", "cls": "neu"},
-        {"asset": "Rango arancelario", "dir": "10% – 12,5%", "cls": "dn"}
+        {"asset": "Nasdaq (QQQ)", "dir": "↓ -1,12% (viernes)", "cls": "dn"},
+        {"asset": "S&P 500 (SPY)", "dir": "↑ +0,10%", "cls": "neu"},
+        {"asset": "Fear & Greed", "dir": "39 (Miedo)", "cls": "dn"}
       ]
     },
     {
       "id": 4,
-      "tag": "argentina · deuda",
-      "tag_class": "tg",
-      "title": "El riesgo país argentino se sostiene cerca de mínimos de 8 años pese al sell-off global",
-      "brief": "El EMBI+ Argentina se mantiene en 410pb (última lectura, 22/7), tras tocar 403pb a comienzos de mes; el FMI destacó la mejora en las condiciones de acceso al mercado.",
-      "tldr": "Argentina sostiene la compresión de spread pese al ruido externo, aunque los soberanos operan con bajas leves hoy",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El <strong>riesgo país</strong> se mantiene en <strong>410 puntos básicos</strong> (última lectura disponible, 22/7, sin actualización nueva), acumulando una baja de ~29% en lo que va de 2026 y en mínimos desde 2018. El <strong>FMI</strong> señaló que \"el sentimiento del mercado hacia Argentina es más favorable\", reflejando mejoras en la calificación crediticia de dos agencias.",
-      "contexto": "<strong>MSCI</strong> mantiene a Argentina en categoría standalone; una eventual reclasificación no se definiría antes de 2027. En el mercado local, los soberanos en dólares operan hoy con bajas leves en línea con el sell-off global: <strong>GD30 US$58,44 (-0,35%)</strong>, <strong>GD35 US$82,44 (-1,03%)</strong>, <strong>AL30 US$56,75 (-0,35%)</strong>. El dólar oficial cotiza <strong>$1.460/$1.510</strong> (compra/venta), el blue <strong>$1.530/$1.550</strong>, el MEP <strong>$1.515,6/$1.521,9</strong> y el CCL <strong>$1.583,4/$1.585</strong>.",
+      "tag": "argentina · deuda y mercados",
+      "tag_class": "tr",
+      "title": "El riesgo país argentino saltó a 437 puntos, contagiado por el clima de aversión al riesgo global",
+      "brief": "El EMBI+ Argentina tocó un máximo intradiario de 445pb el viernes antes de cerrar en 437pb, subiendo desde 410pb apenas cinco días atrás, pese a una mejora reciente en la calificación crediticia.",
+      "tldr": "El salto del riesgo país responde al contagio externo, no a un deterioro de los fundamentals domésticos",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El <strong>riesgo país</strong> cerró el viernes en <strong>437 puntos básicos</strong>, tras tocar un máximo intradiario de <strong>445pb</strong>, subiendo desde <strong>410pb</strong> el 14/7. La suba ocurre pese a que dos agencias calificadoras mejoraron recientemente la nota crediticia de Argentina.",
+      "contexto": "Los soberanos en dólares acompañaron con bajas moderadas el viernes: <strong>GD30 US$58,27 (-0,29%)</strong>, <strong>GD35 US$82,32 (-0,14%)</strong>, <strong>AL30 US$56,70 (-0,08%)</strong>, <strong>AL35 US$80,00 (-0,31%)</strong>. La brecha cambiaria se mantiene estable: dólar oficial <strong>$1.470/$1.520</strong>, blue <strong>$1.525/$1.545</strong>, MEP <strong>$1.529,3/$1.533,5</strong> y CCL <strong>$1.593,4/$1.595,8</strong>.",
       "impacto": [
-        {"asset": "Riesgo país", "dir": "→ 410pb", "cls": "neu"},
-        {"asset": "GD30", "dir": "↓ -0,35% (US$58,44)", "cls": "dn"},
-        {"asset": "Dólar CCL", "dir": "$1.585", "cls": "neu"}
+        {"asset": "Riesgo país", "dir": "↑ 437pb (vs 410pb el 14/7)", "cls": "dn"},
+        {"asset": "GD30", "dir": "↓ -0,29% (US$58,27)", "cls": "dn"},
+        {"asset": "Dólar CCL", "dir": "$1.595,8", "cls": "neu"}
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Wall Street intenta estabilizar el viernes, pero la escalada en Medio Oriente sigue latente",
-      "texto": "Los futuros repuntan y el petróleo cede parte de la suba, pero un nuevo ataque hutí o una represalia de EE.UU. sobre Irán podría revertir el rebote de inmediato. El mercado sigue operando con el índice Fear &amp; Greed en zona de Miedo (39,7)."
+      "label": "La Fed decide en 48 horas con la mayor probabilidad de suba en meses, justo cuando Wall Street ya viene golpeado por la IA",
+      "texto": "Una suba de tasas sorpresiva el miércoles profundizaría la corrección tecnológica que ya lleva al Nasdaq a su peor semana en meses, en un momento en que el mercado tiene poco margen para absorber más malas noticias."
     },
     {
-      "label": "Los nuevos aranceles de Trump se suman a un petróleo más caro, complicando la lectura de inflación de cara al FOMC",
-      "texto": "La entrada en vigencia de aranceles de 10-12,5% a 60 países, justo cuando el crudo sube por el conflicto en Medio Oriente, genera una doble presión inflacionaria que la Fed deberá sopesar en su reunión del 28-29/7."
+      "label": "El petróleo retrocede el viernes, pero la tensión en Medio Oriente sigue sin resolverse",
+      "texto": "El mercado empieza a descontar calma, pero un nuevo episodio en el conflicto podría revertir de inmediato el alivio y reactivar la misma presión inflacionaria que ya llevó las odds de suba de la Fed de 10,7% a 35,8%."
+    },
+    {
+      "label": "El riesgo país argentino sube pese a la mejora reciente en la calificación crediticia",
+      "texto": "Los fundamentals locales vienen mejorando (upgrades de rating, cupones de julio cubiertos), pero el contagio del clima global de aversión al riesgo domina el pricing de mercado en el margen, llevando al EMBI+ a su nivel más alto en semanas."
     }
   ],
   "correlaciones": [
     {
-      "par": "El petróleo sube y las acciones caen: patrón clásico de risk-off por shock de oferta",
-      "texto": "El salto del crudo por el conflicto geopolítico pesó más que cualquier otro driver del jueves, arrastrando a los tres índices de Wall Street a la baja simultáneamente."
+      "par": "El petróleo y la probabilidad de suba de tasas de la Fed se movieron en tándem",
+      "texto": "El salto del crudo por encima de US$100 el jueves fue el catalizador directo que llevó las odds de hike de julio de 10,7% a 35,8% en dos semanas, al reavivar los temores inflacionarios de cara al FOMC."
     },
     {
-      "par": "El oro también cayó pese al escenario de risk-off",
-      "texto": "El GLD retrocedió 2% el jueves pese a la escalada geopolítica, señal de que la suba de yields (UST 10Y en 4,67%) domina por ahora sobre la demanda de refugio típica en estos episodios."
+      "par": "El selloff tecnológico global contagia al riesgo país argentino",
+      "texto": "La aversión al riesgo global —Nasdaq en su peor semana en meses, Fear&amp;Greed en 39 (Miedo), AAII bulls en 29,6%— explica gran parte de la suba del riesgo país a 437pb, más que factores idiosincráticos locales."
     },
     {
-      "par": "Los bonos argentinos siguieron la baja global, pero de forma acotada",
-      "texto": "Los soberanos en dólares cayeron entre 0,3% y 1,3% hoy, muy por debajo de las bajas de 2% en el Nasdaq del jueves, reflejo de que la historia idiosincrática de compresión de riesgo país sigue desacoplando en parte a los activos argentinos del contexto externo."
+      "par": "El put/call ratio elevado y la caída en el sentimiento AAII confirman el giro defensivo",
+      "texto": "Ambos indicadores de posicionamiento —put/call en 1,6, bullish sentiment de AAII en mínimos de varias semanas— muestran que el ajuste defensivo de las últimas dos semanas es generalizado entre inversores minoristas e institucionales."
     }
   ],
-  "bottom_line": "<p>La escalada en Medio Oriente y el salto del petróleo dominan la agenda global: el <strong>WTI</strong> subió <strong>5,93%</strong> el jueves y el <strong>Brent</strong> llegó a operar sobre <strong>US$102</strong> tras ataques hutíes a petroleros sauditas, arrastrando a Wall Street a su peor sesión del mes (<strong>Nasdaq -2,15%</strong>, <strong>S&amp;P 500 -1,21%</strong>). El golpe se sumó a balances flojos de <strong>Alphabet</strong> y <strong>Tesla</strong> por el gasto en IA, y a la entrada en vigencia hoy de nuevos <strong>aranceles de EE.UU.</strong> a 60 países. Los futuros intentan estabilizar esta mañana mientras el petróleo cede parte de la suba, pero el <strong>Fear &amp; Greed</strong> sigue en zona de Miedo (39,7).</p><p><strong>Para Argentina, el combo es mixto.</strong> El <strong>riesgo país</strong> sostiene su tendencia de compresión de mediano plazo (410pb, mínimos de 8 años) y el FMI resalta la mejora en el sentimiento de mercado, pero en el margen los soberanos en dólares no son inmunes al sell-off externo, con bajas de hasta 1,3% hoy. <strong>Un petróleo sostenido en niveles altos es un riesgo directo para la cuenta corriente y la acumulación de reservas del BCRA</strong>, mientras que el apetito de riesgo global más débil podría demorar la ventana para que el Tesoro vuelva a emitir deuda en dólares.</p>"
+  "bottom_line": "<p>Semana clave para los mercados: la <strong>Fed</strong> decide tasas el <strong>miércoles 29/7</strong> en un contexto en que la probabilidad de una suba saltó a <strong>35,8%</strong> (desde 10,7% dos semanas atrás), impulsada por un petróleo que tocó más de <strong>US$100</strong> por la escalada en Medio Oriente antes de ceder el viernes (<strong>-2,01%</strong>). Wall Street viene de una semana floja —el <strong>Nasdaq</strong> cae cerca de 2% en la semana, arrastrado por los temores de sobreinversión en IA tras el salto en la guía de capex de <strong>Alphabet</strong>— y el sentimiento se mantiene en zona de <strong>Miedo</strong> (Fear&amp;Greed 39, AAII bulls 29,6%, put/call 1,6).</p><p><strong>Para Argentina, el combo externo pesa en el margen.</strong> El <strong>riesgo país</strong> saltó a <strong>437pb</strong> (vs. 410pb hace apenas cinco días), reflejo del contagio del clima global de aversión al riesgo más que de un deterioro doméstico —de hecho la suba se da pese a una mejora reciente en la calificación crediticia del país—. Los soberanos en dólares acompañan con bajas moderadas (<strong>GD30 -0,29%</strong>, <strong>AL35 -0,31%</strong>) y la brecha cambiaria se mantiene estable (blue $1.545, MEP $1.533,5, CCL $1.595,8). <strong>Si la Fed sorprende el miércoles con una suba de tasas, el fortalecimiento del dólar global y el ajuste en activos emergentes podrían presionar aún más sobre el riesgo país</strong> justo cuando la tensión en Medio Oriente sigue latente — un combo a monitorear de cerca esta semana.</p>"
 }
