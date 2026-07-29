@@ -1,10 +1,10 @@
 {
-  "date": "2026-07-28",
-  "generated": "2026-07-28T12:04:06Z",
+  "date": "2026-07-29",
+  "generated": "2026-07-29T12:25:44Z",
   "sentiment": {
     "overall": "risk-off",
-    "label": "Selloff global de semiconductores golpea a Wall Street y Asia mientras el petróleo se derrumba por la distensión Irán-EE.UU. y la Fed define tasas el miércoles con el mercado escéptico de una suba",
-    "fg": 41,
+    "label": "Irán lanzó un ataque sorpresa con misiles contra fuerzas de EE.UU. que quebró la tregua petrolera, el selloff de semiconductores completa su cuarto día, y la Fed anuncia hoy su decisión de tasas",
+    "fg": 40,
     "fg_label": "Miedo",
     "putcall": 1.6,
     "aaii_bulls": 29.6
@@ -14,114 +14,97 @@
       "id": 1,
       "tag": "bancos centrales · fed",
       "tag_class": "tb",
-      "title": "El mercado le asigna solo un tercio de probabilidad a una suba de la Fed pese al discurso hawkish de Warsh",
-      "brief": "El BOJ y el BOE también deciden esta semana; Trump insiste en que la Fed debería bajar tasas, mientras los swaps apenas asignan ~33% de probabilidad a un hike el miércoles.",
-      "tldr": "La brecha entre la retórica dura de Warsh y lo que el mercado realmente descuenta es la señal a mirar esta semana",
+      "title": "La Fed anuncia hoy su decisión de tasas; el consenso espera el quinto hold consecutivo pese al tono hawkish de Warsh",
+      "brief": "El comunicado se conoce a las 14hs ET con conferencia de prensa de Kevin Warsh media hora después; el consenso de economistas (FactSet) espera que la Fed sostenga la tasa en 3,50%-3,75%, aunque los swaps de mercado siguen asignando cerca de un tercio de probabilidad a una suba.",
+      "tldr": "La decisión de esta tarde es el evento central de la semana; una sorpresa hawkish endurecería las condiciones financieras globales de inmediato",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>FOMC</strong> anuncia su decisión de tasas el <strong>miércoles</strong>, con el <strong>BOJ</strong> y el <strong>BOE</strong> decidiendo la misma semana. Pese al tono hawkish del nuevo presidente <strong>Kevin Warsh</strong>, los swaps de mercado asignan apenas <strong>un tercio de probabilidad</strong> a una suba de tasas, mientras <strong>Trump</strong> insiste públicamente en que la Fed debería tener la tasa más baja del mundo.",
-      "contexto": "El oro y el bitcoin cayeron antes del anuncio y las bolsas del Golfo operan en rojo, señal de que el mercado no termina de convalidar el discurso duro de Warsh. Si la Fed no sube el miércoles pese a la retórica, el mercado leerá que sigue tan expuesta a la presión política como antes de su llegada. El spread entre la tasa a 2 años y la de política se amplió a 70 puntos básicos, el más alto desde noviembre de 2022.",
+      "evento": "El <strong>FOMC</strong> da a conocer su decisión de tasas hoy a las <strong>14hs (ET)</strong>, con conferencia de prensa del presidente <strong>Kevin Warsh</strong> media hora después. El consenso de economistas relevado por <strong>FactSet</strong> espera que la Fed sostenga la tasa en <strong>3,50%-3,75%</strong> por quinta reunión consecutiva, pese al tono hawkish de Warsh; los swaps de mercado, sin embargo, siguen asignando cerca de <strong>un tercio de probabilidad</strong> a una suba sorpresiva.",
+      "contexto": "El <strong>BOJ</strong> y el <strong>BOE</strong> también definen política monetaria esta semana. El <strong>UST 10Y</strong> cerró el martes en <strong>4,62%</strong>, sin grandes cambios de cara al anuncio. Si la Fed mantiene la tasa sin cambios pese a la retórica dura, el mercado podría leerlo como que la nueva conducción sigue expuesta a la presión política de Trump, que insiste en pedir tasas más bajas.",
       "impacto": [
-        {"asset": "Prob. suba Fed (miércoles)", "dir": "~33% (swaps)", "cls": "neu"},
-        {"asset": "UST 10Y", "dir": "↓ -2,3pb a 4,618%", "cls": "dn"},
-        {"asset": "UST 2Y", "dir": "↓ -2,4pb a 4,299%", "cls": "dn"}
+        {"asset": "Tasa objetivo Fed", "dir": "3,50%-3,75% (esperado sin cambios)", "cls": "neu"},
+        {"asset": "UST 10Y", "dir": "4,62% (martes)", "cls": "neu"}
       ]
     },
     {
       "id": 2,
       "tag": "acciones · semiconductores",
       "tag_class": "tr",
-      "title": "Selloff global de semiconductores golpea a Wall Street y Asia; el Nikkei se hunde 3,95%",
-      "brief": "Las dudas sobre el retorno del gasto masivo en IA dispararon una liquidación mundial de chips; Corea suspendió cotizaciones y el futuro del Nasdaq cae 0,83% previo a la apertura.",
-      "tldr": "La corrección tecnológica dejó de ser un problema sectorial y empieza a filtrarse al resto del portafolio global",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>Nikkei</strong> cerró con una caída de <strong>3,95%</strong> y las acciones surcoreanas sufrieron <strong>suspensiones de cotización</strong> tras una fuerte liquidación de fabricantes de chips como <strong>Samsung</strong> y <strong>SK Hynix</strong>. Los futuros de Wall Street arrancan mixtos: <strong>Nasdaq -0,83%</strong> (27.956,50), <strong>S&amp;P 500 -0,10%</strong> (7.440,75), <strong>Dow +0,30%</strong> (52.538,00). El <strong>VIX</strong> opera en <strong>18,86 (+1,02%)</strong>.",
-      "contexto": "El <strong>bono taiwanés a 5 años</strong> tocó su nivel más alto desde 2008 y el índice de acciones emergentes (<strong>EEM</strong>) cae a mínimos de tres meses, arrastrado por la caída de tecnológicas asiáticas. <strong>Carlyle</strong> advirtió que los bonos tradicionales pierden su rol de amortiguador porque su correlación con las acciones aumentó, una combinación que históricamente obliga a fondos multiactivo a vender de los dos lados a la vez.",
+      "title": "El selloff de semiconductores completa su cuarto día mientras Apple llega a los US$5 billones de valor de mercado",
+      "brief": "El SMH cayó más de 3% el martes por cuarta rueda consecutiva (Micron y AMD -8%+), arrastrando al Nasdaq 100 cerca de una corrección, mientras el Dow subió 1,03% por balances sólidos y la baja del petróleo.",
+      "tldr": "El mercado rota de semiconductores hacia otros sectores; Apple se benefició al convertirse en la primera empresa en tocar los US$5 billones de valor",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El <strong>Dow Jones</strong> subió <strong>1,03%</strong> el martes a <strong>52.747,32</strong> por balances sólidos y la baja del petróleo, mientras el <strong>S&amp;P 500</strong> avanzó <strong>0,21%</strong> a <strong>7.428,78</strong> y el <strong>Nasdaq Composite</strong> cedió <strong>0,22%</strong> a <strong>24.876,91</strong>. El <strong>SMH</strong> (ETF de semiconductores) cayó más de <strong>3%</strong> por cuarto día consecutivo; <strong>Micron</strong> y <strong>AMD</strong> se hundieron más de <strong>8%</strong>, <strong>Nvidia</strong> cedió ~1,2%. El <strong>Nasdaq 100</strong> se acerca a una corrección técnica por las dudas sobre el retorno del gasto en IA.",
+      "contexto": "En medio de la corrección tecnológica, <strong>Apple</strong> tocó brevemente una capitalización de mercado de <strong>US$5 billones</strong>, un día después de superar a Nvidia como la empresa más valiosa del mundo — señal de que el capital rota hacia nombres percibidos como más seguros dentro del propio sector tecnológico.",
       "impacto": [
-        {"asset": "Nikkei", "dir": "↓ -3,95%", "cls": "dn"},
-        {"asset": "Nasdaq (futuro)", "dir": "↓ -0,83% a 27.956,50", "cls": "dn"},
-        {"asset": "VIX", "dir": "↑ 18,86 (+1,02%)", "cls": "up"}
+        {"asset": "Nasdaq Composite", "dir": "↓ -0,22% (martes, 24.876,91)", "cls": "dn"},
+        {"asset": "Dow Jones", "dir": "↑ +1,03% (martes, 52.747,32)", "cls": "up"},
+        {"asset": "SMH (semis)", "dir": "↓ -3%+ (4º día consecutivo)", "cls": "dn"}
       ]
     },
     {
       "id": 3,
       "tag": "geopolítica · energía",
       "tag_class": "tq",
-      "title": "El petróleo se derrumba tras señales de distensión entre Irán y EE.UU.",
-      "brief": "El WTI cayó 7,5% y el Brent 9% el lunes ante expectativas de reapertura del Estrecho de Ormuz; los futuros extienden la baja hoy (WTI -2,53%, Brent -2,63%).",
-      "tldr": "El alivio petrolero reduce la presión inflacionaria justo antes de la decisión de la Fed, pero el mercado de bonos largos todavía no confía en que sea duradero",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El <strong>WTI</strong> cayó <strong>7,5%</strong> y el <strong>Brent</strong> <strong>9%</strong> el lunes, perforando los <strong>US$90</strong>, tras señales de diálogo entre <strong>Irán</strong> y <strong>Estados Unidos</strong> y avances entre Irán y Omán para reabrir el tráfico por el <strong>Estrecho de Ormuz</strong>. Los futuros de hoy extienden la baja: <strong>WTI -2,53% a US$80,52</strong>, <strong>Brent -2,63% a US$86,04</strong>, cuatro días después de haber operado por encima de US$100.",
-      "contexto": "Pese al desplome del crudo, la tasa a 10 años solo bajó <strong>7 puntos básicos</strong> el lunes, señal de que el mercado todavía no confía en que la distensión sea duradera; la tasa a 30 años sostiene su racha más larga por encima de 5% desde 2007. El oro (futuro) cae <strong>1,20%</strong> y la plata <strong>2,05%</strong> hoy, acompañando el alivio en commodities.",
+      "title": "Irán lanzó un ataque sorpresa con misiles contra fuerzas de EE.UU., quebrando la tregua y agitando al petróleo",
+      "brief": "Fuerzas iraníes dispararon misiles balísticos contra una base de EE.UU. en Jordania el martes a las 17:45 ET; todos fueron interceptados, pero el WTI saltó 4,4% en la reacción inmediata tras haber caído a su peor racha de tres días en más de seis años.",
+      "tldr": "La escalada muestra lo frágil que sigue siendo la calma en Medio Oriente, horas antes de la decisión de la Fed",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "Fuerzas de la <strong>Guardia Revolucionaria iraní</strong> lanzaron múltiples misiles balísticos contra una base de <strong>EE.UU.</strong> en <strong>Jordania</strong> el martes a las <strong>17:45 ET</strong>, en un intento de ataque sorpresa; según <strong>CENTCOM</strong>, todos los misiles fueron interceptados. En respuesta, aviones de combate de <strong>EE.UU.</strong> y <strong>Arabia Saudita</strong> atacaron múltiples sitios logísticos y de armamento en el este de <strong>Irak</strong>.",
+      "contexto": "El ataque quebró una breve pausa en los combates mientras mediadores intentaban reactivar las negociaciones. Antes del ataque, el petróleo acumulaba su <strong>peor racha de tres días en más de seis años</strong> (Brent -3,9% a US$84,91, WTI -3,3% a US$79,87 el martes) por señales de distensión; tras el ataque, el <strong>WTI</strong> saltó <strong>4,4% a US$82,73</strong> en la reacción inmediata. El futuro del crudo (USO) cerró el martes en <strong>US$120,49 (-3,42%)</strong>.",
       "impacto": [
-        {"asset": "WTI", "dir": "↓ US$80,52 (-2,53%)", "cls": "dn"},
-        {"asset": "Brent", "dir": "↓ US$86,04 (-2,63%)", "cls": "dn"},
-        {"asset": "Oro (futuro)", "dir": "↓ -1,20% a US$4.028,10", "cls": "dn"}
+        {"asset": "WTI (post-ataque)", "dir": "↑ +4,4% a US$82,73", "cls": "up"},
+        {"asset": "Petróleo (USO)", "dir": "↓ -3,42% (martes, US$120,49)", "cls": "dn"},
+        {"asset": "Oro (GLD)", "dir": "↓ -1,40% (martes)", "cls": "dn"}
       ]
     },
     {
       "id": 4,
       "tag": "argentina · mercados",
-      "tag_class": "tr",
-      "title": "El riesgo país argentino sube a 442 puntos y el dólar blue marca un nuevo récord histórico",
-      "brief": "El EMBI+ cerró el lunes en 442pb (+5pb) pese a que los globales en dólares subieron; el blue saltó 15 pesos a un máximo histórico y el BCRA compró USD 27 millones.",
-      "tldr": "Los mercados reaccionan más a la volatilidad global de semiconductores que a la tregua petrolera en Medio Oriente",
+      "tag_class": "ta",
+      "title": "El riesgo país tocó máximos de siete semanas pero descomprimió tras la aprobación del FMI; el dólar blue marca otro récord",
+      "brief": "El EMBI+ llegó a 450pb intradiario el martes, su nivel más alto desde junio, pero cerró en 441pb luego de que el FMI aprobara la quinta revisión del programa; el dólar blue tocó un nuevo máximo histórico ($1.570).",
+      "tldr": "El respaldo explícito del FMI sigue siendo el principal amortiguador del riesgo país frente a la volatilidad global",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>riesgo país</strong> cerró el lunes en <strong>442 puntos básicos (+5pb)</strong>, pese a que los globales en dólares subieron: <strong>GD30D US$58,40 (+0,22%)</strong>, <strong>GD35D US$82,48 (+0,19%)</strong>, <strong>AL30D US$56,90 (+0,35%)</strong>. El <strong>dólar blue</strong> sumó <strong>15 pesos</strong> y tocó un nuevo máximo histórico (<strong>$1.540/$1.560</strong>), mientras el resto de las cotizaciones se mantuvo casi sin cambios y el <strong>BCRA</strong> compró <strong>USD 27 millones</strong>.",
-      "contexto": "El dólar oficial cotiza <strong>$1.470/$1.520</strong>, el MEP <strong>$1.527,9/$1.535,8</strong> y el CCL <strong>$1.597,9/$1.599,2</strong>. Los mercados reaccionaron más a la volatilidad de las acciones de IA que a la tregua en Medio Oriente; el Brent perforó los US$90. En el plano industrial, la UIA estimó una nueva contracción de la actividad en junio (golpeada por autos y metalmecánica) y el turismo emisivo cayó 22% interanual pese al Mundial.",
+      "evento": "El <strong>riesgo país</strong> tocó un máximo intradiario de <strong>450 puntos básicos</strong> el martes —su nivel más alto desde el 10 de junio— antes de descomprimir y cerrar en <strong>441pb</strong>, tras la aprobación del <strong>FMI</strong> de la <strong>quinta revisión</strong> del programa de facilidades extendidas, en la semana de la visita de <strong>Kristalina Georgieva</strong> a Buenos Aires. El <strong>dólar blue</strong> tocó un nuevo récord histórico de <strong>$1.550/$1.570</strong>.",
+      "contexto": "El dólar oficial se mantiene en <strong>$1.470/$1.520</strong>, el MEP en <strong>$1.529,3/$1.532,5</strong> y el CCL en <strong>$1.593,2/$1.595,9</strong>. Los soberanos en dólares operan esta mañana con bajas leves: <strong>GD30 US$58,23 (-0,29%)</strong>, <strong>GD35 US$82,34 (-0,16%)</strong>, <strong>AL30 US$56,72 (-0,31%)</strong>, en línea con la cautela global previa a la decisión de la Fed.",
       "impacto": [
-        {"asset": "Riesgo país", "dir": "↑ 442pb (+5pb)", "cls": "dn"},
-        {"asset": "Dólar blue", "dir": "↑ récord histórico $1.560 (venta)", "cls": "up"},
-        {"asset": "GD30D", "dir": "↑ +0,22% (US$58,40)", "cls": "up"}
-      ]
-    },
-    {
-      "id": 5,
-      "tag": "argentina · política",
-      "tag_class": "ta",
-      "title": "La confianza en el Gobierno cae a mínimos de la era Milei y ATE convoca un paro nacional",
-      "brief": "El índice de confianza de la Di Tella retrocedió 6,5% en julio (-21% interanual); ATE anunció un paro nacional para el 3 de agosto en reclamo salarial.",
-      "tldr": "La brecha entre un mercado financiero que valida el programa y una economía real rezagada puede angostar el margen político del Gobierno antes de octubre",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>índice de confianza en el Gobierno</strong> de la Universidad Di Tella cayó <strong>6,5%</strong> en julio a <strong>1,94 puntos</strong>, por debajo del nivel de Macri en el mismo mes de gestión y con una baja interanual de <strong>21%</strong>. <strong>ATE</strong> convocó un <strong>paro nacional para el 3 de agosto</strong> con movilización al Ministerio de Economía en reclamo de mejoras salariales para los trabajadores públicos.",
-      "contexto": "Se suma el conflicto diplomático entre <strong>Milei</strong> y <strong>Lula</strong>, que escaló tras declaraciones cruzadas; el presidente argentino viaja hoy a <strong>Perú</strong> para la asunción de <strong>Keiko Fujimori</strong>. En el plano económico, Argentina mantuvo su nivel arancelario con EE.UU. mientras Brasil y otros competidores sufrieron subas, mejorando la posición exportadora relativa del país.",
-      "impacto": [
-        {"asset": "Confianza Di Tella", "dir": "↓ -6,5% (jul, -21% i.a.)", "cls": "dn"},
-        {"asset": "Paro ATE", "dir": "3 de agosto", "cls": "neu"}
+        {"asset": "Riesgo país", "dir": "441pb (cierre) / 450pb (máx. intradiario)", "cls": "neu"},
+        {"asset": "Dólar blue", "dir": "↑ récord histórico $1.570 (venta)", "cls": "up"},
+        {"asset": "GD30", "dir": "↓ -0,29% (US$58,23)", "cls": "dn"}
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Warsh necesita convalidar su discurso hawkish, pero el mercado solo le asigna un tercio de probabilidad a una suba",
-      "texto": "Si la Fed no sube el miércoles pese al tono duro, el mercado leerá que la nueva conducción sigue expuesta a la presión política de Trump, que insiste públicamente en pedir una baja de tasas."
+      "label": "El ataque de Irán quiebra la narrativa de distensión justo cuando el petróleo tocaba su peor racha en seis años",
+      "texto": "La calma que llevó al crudo a acumular su peor racha de tres días en más de seis años se rompió en cuestión de horas con un ataque real, recordatorio de lo frágil que sigue siendo cualquier tregua en Medio Oriente."
     },
     {
-      "label": "El petróleo se derrumba, pero los bonos largos no terminan de confiar en la calma",
-      "texto": "La tasa a 10 años solo bajó 7 puntos básicos pese al desplome de 7,5%/9% en WTI/Brent, y la tasa a 30 años sostiene su racha más larga por encima de 5% desde 2007 — señal de que el mercado descuenta el riesgo de una disrupción permanente en Ormuz y el Mar Rojo."
+      "label": "El selloff de semiconductores se profundiza mientras los índices generales suben",
+      "texto": "El Nasdaq 100 se acerca a una corrección técnica por dudas sobre el gasto en IA, pero el Dow marca nuevos máximos por rotación sectorial — el mercado está cada vez más dividido entre nombres expuestos a IA y el resto."
     },
     {
-      "label": "El mercado financiero argentino valida el programa mientras la economía real se rezaga",
-      "texto": "Los bonos en dólares suben y el FMI muestra interés en Vaca Muerta, pero la industria y el turismo emisivo profundizan su caída y la confianza en el Gobierno toca mínimos de la gestión — una brecha que puede angostar el margen político antes de octubre."
+      "label": "El riesgo país argentino se sostiene por el respaldo del FMI, pero la Fed puede reintroducir volatilidad esta tarde",
+      "texto": "La decisión de tasas de hoy es la variable que puede revertir la reciente descompresión, especialmente si la Fed sorprende con un tono más duro de lo esperado."
     }
   ],
   "correlaciones": [
     {
-      "par": "El petróleo en baja reduce la presión inflacionaria justo antes de la decisión de la Fed",
-      "texto": "Pero el mercado sigue escéptico de una suba mañana pese a la retórica hawkish de Warsh, reflejo de que el canal de transmisión entre commodities y política monetaria no es automático."
+      "par": "El petróleo y el apetito por riesgo se movieron en direcciones opuestas en cuestión de horas",
+      "texto": "La caída inicial del crudo por la distensión ayudó al Dow, pero el ataque iraní revirtió el humor de mercado casi de inmediato, mostrando la sensibilidad extrema de los precios a los titulares geopolíticos."
     },
     {
-      "par": "El selloff de semiconductores contagia a los mercados emergentes",
-      "texto": "El EEM cae a mínimos de tres meses y el CSI 300 pierde 2,81%, pese a que el petróleo más barato debería aliviar a importadores netos como China."
+      "par": "La rotación sectorial en Wall Street beneficia a Apple mientras castiga a los semiconductores",
+      "texto": "El capital que sale de Nvidia, Micron y AMD encontró refugio en Apple, que tocó los US$5 billones de valor de mercado, más que en una salida generalizada de la renta variable."
     },
     {
-      "par": "El riesgo país argentino sube pese a que los bonos en dólares suben",
-      "texto": "Una desconexión momentánea entre el spread EMBI y el precio de los globales, más vinculada a la volatilidad global de acciones de IA que a un deterioro de los fundamentals locales."
+      "par": "El respaldo del FMI descomprime el riesgo país argentino más que el contexto global",
+      "texto": "Pese a la cautela previa a la Fed y la volatilidad en semiconductores, la aprobación de la quinta revisión del programa fue suficiente para cortar la suba del EMBI+ el martes."
     }
   ],
-  "bottom_line": "<p>La semana quedó definida por tres frentes: la <strong>Fed</strong> decide tasas el <strong>miércoles</strong> con el mercado asignando apenas <strong>un tercio de probabilidad</strong> a una suba pese al tono hawkish de <strong>Kevin Warsh</strong> —<strong>Trump</strong> sigue pidiendo una baja—; un <strong>selloff global de semiconductores</strong> golpea a Wall Street y Asia (<strong>Nikkei -3,95%</strong>, Corea con suspensiones de cotización) por dudas sobre el retorno del gasto en IA; y el <strong>petróleo se derrumba</strong> tras señales de distensión entre Irán y EE.UU. (<strong>WTI US$80,52</strong>, <strong>Brent US$86,04</strong>, tras haber operado sobre US$100 hace apenas cuatro días). El alivio petrolero reduce la presión inflacionaria, pero el mercado de bonos largos todavía no confía en que la calma sea duradera (UST 10Y bajó apenas 2,3pb).</p><p><strong>Para Argentina, el combo es mixto.</strong> El <strong>riesgo país</strong> cerró en <strong>442pb (+5pb)</strong> pese a que los globales en dólares subieron, y el <strong>dólar blue</strong> marcó un nuevo récord histórico ($1.560), con el BCRA comprando USD 27 millones. En paralelo, la <strong>confianza en el Gobierno</strong> (Di Tella) cayó a mínimos de la era Milei (-21% interanual) y <strong>ATE</strong> convocó un paro nacional para el 3 de agosto, mientras la industria y el turismo emisivo profundizan su caída. <strong>La brecha entre un mercado financiero que sigue validando el programa y una economía real que no despega</strong> es la tensión de fondo a monitorear de cara a octubre, justo cuando la Fed podría agregar volatilidad adicional el miércoles.</p>"
+  "bottom_line": "<p>Hoy es el día de la decisión de la <strong>Fed</strong> (14hs ET), con el consenso de economistas esperando que sostenga la tasa en <strong>3,50%-3,75%</strong> por quinta reunión consecutiva, pese al tono hawkish de <strong>Kevin Warsh</strong> y a que los swaps de mercado siguen asignando cerca de un tercio de probabilidad a una suba sorpresiva. La sesión llega tras un martes volátil: Wall Street cerró mixto —el <strong>Dow +1,03%</strong> por balances y la baja del petróleo, pero el <strong>Nasdaq -0,22%</strong> mientras el selloff de semiconductores completó su cuarto día y <strong>Apple</strong> tocó brevemente los <strong>US$5 billones</strong> de valor de mercado—. El petróleo protagonizó un vaivén brusco: tras acumular su <strong>peor racha de tres días en más de seis años</strong>, <strong>Irán</strong> lanzó un ataque sorpresa con misiles contra fuerzas de EE.UU. en Jordania, interceptado por CENTCOM, que hizo saltar al WTI 4,4% en la reacción inmediata.</p><p><strong>Para Argentina, el respaldo del FMI sigue siendo la variable clave.</strong> El <strong>riesgo país</strong> tocó un máximo intradiario de <strong>450pb</strong> el martes —su nivel más alto desde junio— antes de descomprimir a <strong>441pb</strong> tras la aprobación de la quinta revisión del programa, en la semana de la visita de <strong>Georgieva</strong> a Buenos Aires. El <strong>dólar blue</strong> marcó otro récord histórico ($1.570). <strong>La decisión de la Fed esta tarde es el próximo test</strong>: una sorpresa hawkish endurecería las condiciones financieras globales justo cuando Argentina depende del apetito por deuda emergente para sostener la compresión de riesgo país lograda en parte gracias al respaldo del FMI.</p>"
 }
