@@ -1,10 +1,10 @@
 {
-  "date": "2026-07-29",
-  "generated": "2026-07-29T12:25:44Z",
+  "date": "2026-07-30",
+  "generated": "2026-07-30T12:20:57Z",
   "sentiment": {
     "overall": "risk-off",
-    "label": "Irán lanzó un ataque sorpresa con misiles contra fuerzas de EE.UU. que quebró la tregua petrolera, el selloff de semiconductores completa su cuarto día, y la Fed anuncia hoy su decisión de tasas",
-    "fg": 40,
+    "label": "La Fed dejó más preguntas que certezas tras su decisión, Irán y los hutíes reescalaron el conflicto empujando al Brent hacia US$90, y el selloff de semiconductores llevó al Nasdaq 100 a zona de corrección",
+    "fg": 34,
     "fg_label": "Miedo",
     "putcall": 1.6,
     "aaii_bulls": 29.6
@@ -14,97 +14,98 @@
       "id": 1,
       "tag": "bancos centrales · fed",
       "tag_class": "tb",
-      "title": "La Fed anuncia hoy su decisión de tasas; el consenso espera el quinto hold consecutivo pese al tono hawkish de Warsh",
-      "brief": "El comunicado se conoce a las 14hs ET con conferencia de prensa de Kevin Warsh media hora después; el consenso de economistas (FactSet) espera que la Fed sostenga la tasa en 3,50%-3,75%, aunque los swaps de mercado siguen asignando cerca de un tercio de probabilidad a una suba.",
-      "tldr": "La decisión de esta tarde es el evento central de la semana; una sorpresa hawkish endurecería las condiciones financieras globales de inmediato",
+      "title": "Warsh confunde al mercado: la Fed sostuvo la tasa con tres disidencias y sin guía clara sobre el rumbo",
+      "brief": "El FOMC mantuvo la tasa (rango que incluye 3,75%) por quinta reunión consecutiva, pero tres miembros votaron por subirla; la probabilidad de una suba en septiembre cayó de 100% a 69% tras una conferencia de prensa que el mercado no logró descifrar.",
+      "tldr": "La ambigüedad deliberada de Warsh sobre el rumbo futuro divide a la curva de tasas entre lecturas de corto y largo plazo",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>FOMC</strong> da a conocer su decisión de tasas hoy a las <strong>14hs (ET)</strong>, con conferencia de prensa del presidente <strong>Kevin Warsh</strong> media hora después. El consenso de economistas relevado por <strong>FactSet</strong> espera que la Fed sostenga la tasa en <strong>3,50%-3,75%</strong> por quinta reunión consecutiva, pese al tono hawkish de Warsh; los swaps de mercado, sin embargo, siguen asignando cerca de <strong>un tercio de probabilidad</strong> a una suba sorpresiva.",
-      "contexto": "El <strong>BOJ</strong> y el <strong>BOE</strong> también definen política monetaria esta semana. El <strong>UST 10Y</strong> cerró el martes en <strong>4,62%</strong>, sin grandes cambios de cara al anuncio. Si la Fed mantiene la tasa sin cambios pese a la retórica dura, el mercado podría leerlo como que la nueva conducción sigue expuesta a la presión política de Trump, que insiste en pedir tasas más bajas.",
+      "evento": "El <strong>FOMC</strong> mantuvo la tasa sin cambios (rango que incluye <strong>3,75%</strong>) por quinta reunión consecutiva, pero <strong>tres miembros</strong> votaron a favor de una suba, evidenciando una interna que el presidente <strong>Kevin Warsh</strong> no logró despejar en su conferencia de prensa. La probabilidad de una suba en <strong>septiembre</strong> cayó de <strong>100% a 69%</strong> tras la comunicación ambigua.",
+      "contexto": "La curva reaccionó de forma dividida: la nota a <strong>2 años</strong> cayó y la de <strong>30 años</strong> subió, reflejo de lecturas opuestas sobre el corto y el largo plazo. Según Robert Armstrong (FT), Warsh prefiere que las tasas largas ajusten solas las condiciones financieras en lugar de que la Fed lo haga explícitamente, una estrategia que puede aflojar la política si el mercado no acompaña. El <strong>UST 10Y</strong> sube <strong>7,0pb a 4,692%</strong> esta mañana y el <strong>UST 2Y</strong> avanza <strong>2,4pb a 4,260%</strong>, empinando la curva 2s10s a <strong>43,2pb</strong>.",
       "impacto": [
-        {"asset": "Tasa objetivo Fed", "dir": "3,50%-3,75% (esperado sin cambios)", "cls": "neu"},
-        {"asset": "UST 10Y", "dir": "4,62% (martes)", "cls": "neu"}
+        {"asset": "Prob. suba Fed (sept.)", "dir": "↓ 69% (desde 100%)", "cls": "dn"},
+        {"asset": "UST 10Y", "dir": "↑ +7,0pb a 4,692%", "cls": "up"},
+        {"asset": "Curva 2s10s", "dir": "↑ 43,2pb (+4,6pb)", "cls": "up"}
       ]
     },
     {
       "id": 2,
-      "tag": "acciones · semiconductores",
-      "tag_class": "tr",
-      "title": "El selloff de semiconductores completa su cuarto día mientras Apple llega a los US$5 billones de valor de mercado",
-      "brief": "El SMH cayó más de 3% el martes por cuarta rueda consecutiva (Micron y AMD -8%+), arrastrando al Nasdaq 100 cerca de una corrección, mientras el Dow subió 1,03% por balances sólidos y la baja del petróleo.",
-      "tldr": "El mercado rota de semiconductores hacia otros sectores; Apple se benefició al convertirse en la primera empresa en tocar los US$5 billones de valor",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>Dow Jones</strong> subió <strong>1,03%</strong> el martes a <strong>52.747,32</strong> por balances sólidos y la baja del petróleo, mientras el <strong>S&amp;P 500</strong> avanzó <strong>0,21%</strong> a <strong>7.428,78</strong> y el <strong>Nasdaq Composite</strong> cedió <strong>0,22%</strong> a <strong>24.876,91</strong>. El <strong>SMH</strong> (ETF de semiconductores) cayó más de <strong>3%</strong> por cuarto día consecutivo; <strong>Micron</strong> y <strong>AMD</strong> se hundieron más de <strong>8%</strong>, <strong>Nvidia</strong> cedió ~1,2%. El <strong>Nasdaq 100</strong> se acerca a una corrección técnica por las dudas sobre el retorno del gasto en IA.",
-      "contexto": "En medio de la corrección tecnológica, <strong>Apple</strong> tocó brevemente una capitalización de mercado de <strong>US$5 billones</strong>, un día después de superar a Nvidia como la empresa más valiosa del mundo — señal de que el capital rota hacia nombres percibidos como más seguros dentro del propio sector tecnológico.",
+      "tag": "geopolítica · energía",
+      "tag_class": "tq",
+      "title": "Irán y los hutíes reescalan el conflicto; el Brent saltó 7,9% hacia los US$90",
+      "brief": "El CGRI lanzó misiles balísticos contra fuerzas de EE.UU. (todos interceptados) y los hutíes atacaron infraestructura de oleoductos en Arabia Saudita, sumando presión sobre Ormuz y el Mar Rojo; Trump prometió represalias contundentes.",
+      "tldr": "La prima de riesgo geopolítico vuelve a ampliarse tras una breve pausa, con el Brent otra vez cerca de los US$90",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "Las Fuerzas de la <strong>Guardia Revolucionaria Islámica</strong> de Irán lanzaron misiles balísticos contra posiciones de fuerzas de <strong>EE.UU.</strong> en la región —todos interceptados—, mientras los <strong>hutíes</strong> atacaron infraestructura de oleoductos en <strong>Arabia Saudita</strong>, sumando presión sobre los dos principales cuellos de botella del flujo de crudo: el <strong>Estrecho de Ormuz</strong> y el sur del <strong>Mar Rojo</strong>. <strong>Trump</strong> respondió prometiendo represalias contundentes. El <strong>Brent</strong> saltó <strong>7,9% a US$90,74</strong> y el <strong>WTI</strong> subió <strong>6,6% a US$84,46</strong>.",
+      "contexto": "El episodio rompe la breve pausa en las hostilidades que había llevado los precios a la baja días atrás. Esta mañana los futuros ceden apenas: <strong>WTI -0,95% a US$83,66</strong>, <strong>Brent -0,18% a US$90,58</strong>. Según Reuters (Ron Bousso), aun con un eventual acuerdo diplomático, el riesgo geopolítico quedaría incorporado de forma permanente al precio del crudo del Golfo, ya que compradores como India ya piden a sus proveedores evitar Ormuz y el Mar Rojo.",
       "impacto": [
-        {"asset": "Nasdaq Composite", "dir": "↓ -0,22% (martes, 24.876,91)", "cls": "dn"},
-        {"asset": "Dow Jones", "dir": "↑ +1,03% (martes, 52.747,32)", "cls": "up"},
-        {"asset": "SMH (semis)", "dir": "↓ -3%+ (4º día consecutivo)", "cls": "dn"}
+        {"asset": "Brent", "dir": "↑ +7,9% a US$90,74 (máx.) / US$90,58 (hoy)", "cls": "up"},
+        {"asset": "WTI", "dir": "↑ +6,6% a US$84,46 (máx.) / US$83,66 (hoy)", "cls": "up"},
+        {"asset": "Oro (futuro)", "dir": "↑ +1,02% a US$4.138,80", "cls": "up"}
       ]
     },
     {
       "id": 3,
-      "tag": "geopolítica · energía",
-      "tag_class": "tq",
-      "title": "Irán lanzó un ataque sorpresa con misiles contra fuerzas de EE.UU., quebrando la tregua y agitando al petróleo",
-      "brief": "Fuerzas iraníes dispararon misiles balísticos contra una base de EE.UU. en Jordania el martes a las 17:45 ET; todos fueron interceptados, pero el WTI saltó 4,4% en la reacción inmediata tras haber caído a su peor racha de tres días en más de seis años.",
-      "tldr": "La escalada muestra lo frágil que sigue siendo la calma en Medio Oriente, horas antes de la decisión de la Fed",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "Fuerzas de la <strong>Guardia Revolucionaria iraní</strong> lanzaron múltiples misiles balísticos contra una base de <strong>EE.UU.</strong> en <strong>Jordania</strong> el martes a las <strong>17:45 ET</strong>, en un intento de ataque sorpresa; según <strong>CENTCOM</strong>, todos los misiles fueron interceptados. En respuesta, aviones de combate de <strong>EE.UU.</strong> y <strong>Arabia Saudita</strong> atacaron múltiples sitios logísticos y de armamento en el este de <strong>Irak</strong>.",
-      "contexto": "El ataque quebró una breve pausa en los combates mientras mediadores intentaban reactivar las negociaciones. Antes del ataque, el petróleo acumulaba su <strong>peor racha de tres días en más de seis años</strong> (Brent -3,9% a US$84,91, WTI -3,3% a US$79,87 el martes) por señales de distensión; tras el ataque, el <strong>WTI</strong> saltó <strong>4,4% a US$82,73</strong> en la reacción inmediata. El futuro del crudo (USO) cerró el martes en <strong>US$120,49 (-3,42%)</strong>.",
+      "tag": "acciones · semiconductores",
+      "tag_class": "tr",
+      "title": "El selloff de semiconductores borra más de US$1 billón mientras el Nasdaq 100 entra en corrección",
+      "brief": "SK Hynix reportó ganancias récord pero por debajo del consenso, gatillando una liquidación generalizada en el sector; Microsoft superó expectativas por Azure mientras Meta decepcionó y cayó más de 7% en after-hours.",
+      "tldr": "El mercado exige confirmaciones más amplias sobre el retorno del gasto en IA antes de retomar el optimismo",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "<strong>SK Hynix</strong> reportó ganancias y revenues récord del trimestre, pero por debajo de las estimaciones del consenso, detonando un selloff generalizado: <strong>Samsung</strong>, <strong>Micron</strong>, <strong>AMD</strong> e <strong>Intel</strong> extendieron pérdidas y el sector de semiconductores resignó más de <strong>US$1 billón</strong> en capitalización de mercado. El <strong>Nasdaq 100</strong> entró en zona de corrección técnica, con una caída acumulada de ~<strong>11%</strong> desde su máximo. En resultados, <strong>Microsoft</strong> superó ampliamente al consenso (EPS US$4,74 vs. US$4,24; Azure +43%), mientras <strong>Meta</strong> decepcionó (EPS US$6,18 vs. US$7,22 esperado, guía de Q3 débil) y cayó más de <strong>7%</strong> en after-hours.",
+      "contexto": "Las ADRs de <strong>SK Hynix</strong> (SKHY) cerraron en <strong>US$126,79</strong>, con una baja acumulada de <strong>24,53%</strong> desde su debut en Nasdaq el 10 de julio, y el short interest ya supera el <strong>13%</strong> del float. La divergencia entre Microsoft y Meta profundiza el debate sobre qué modelos de negocio justifican la inversión masiva en IA: la nube de Microsoft capura demanda empresarial verificable, mientras Meta enfrenta escepticismo sobre la monetización de su gasto en IA generativa. Quedan pendientes los balances de <strong>Amazon</strong> y <strong>Apple</strong>.",
       "impacto": [
-        {"asset": "WTI (post-ataque)", "dir": "↑ +4,4% a US$82,73", "cls": "up"},
-        {"asset": "Petróleo (USO)", "dir": "↓ -3,42% (martes, US$120,49)", "cls": "dn"},
-        {"asset": "Oro (GLD)", "dir": "↓ -1,40% (martes)", "cls": "dn"}
+        {"asset": "Nasdaq 100", "dir": "↓ ~-11% desde máximos (corrección)", "cls": "dn"},
+        {"asset": "Sector semiconductores", "dir": "↓ -US$1 billón (cap. mercado)", "cls": "dn"},
+        {"asset": "Meta (after-hours)", "dir": "↓ -7%+", "cls": "dn"}
       ]
     },
     {
       "id": 4,
-      "tag": "argentina · mercados",
+      "tag": "argentina · mercados y política",
       "tag_class": "ta",
-      "title": "El riesgo país tocó máximos de siete semanas pero descomprimió tras la aprobación del FMI; el dólar blue marca otro récord",
-      "brief": "El EMBI+ llegó a 450pb intradiario el martes, su nivel más alto desde junio, pero cerró en 441pb luego de que el FMI aprobara la quinta revisión del programa; el dólar blue tocó un nuevo máximo histórico ($1.570).",
-      "tldr": "El respaldo explícito del FMI sigue siendo el principal amortiguador del riesgo país frente a la volatilidad global",
+      "title": "El dólar blue se despega y la brecha toca su máximo de 2026, pese al buen rollover del Tesoro",
+      "brief": "El riesgo país cerró el miércoles en 445pb (+4pb); el BCRA compró USD 36 millones y el Tesoro logró un rollover de 144,5% en la licitación, pero el blue no acompañó la baja del oficial y los financieros, ampliando la brecha cambiaria.",
+      "tldr": "La brecha cambiaria vuelve a ser la señal a monitorear, incluso con el respaldo del FMI y una licitación exitosa de por medio",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>riesgo país</strong> tocó un máximo intradiario de <strong>450 puntos básicos</strong> el martes —su nivel más alto desde el 10 de junio— antes de descomprimir y cerrar en <strong>441pb</strong>, tras la aprobación del <strong>FMI</strong> de la <strong>quinta revisión</strong> del programa de facilidades extendidas, en la semana de la visita de <strong>Kristalina Georgieva</strong> a Buenos Aires. El <strong>dólar blue</strong> tocó un nuevo récord histórico de <strong>$1.550/$1.570</strong>.",
-      "contexto": "El dólar oficial se mantiene en <strong>$1.470/$1.520</strong>, el MEP en <strong>$1.529,3/$1.532,5</strong> y el CCL en <strong>$1.593,2/$1.595,9</strong>. Los soberanos en dólares operan esta mañana con bajas leves: <strong>GD30 US$58,23 (-0,29%)</strong>, <strong>GD35 US$82,34 (-0,16%)</strong>, <strong>AL30 US$56,72 (-0,31%)</strong>, en línea con la cautela global previa a la decisión de la Fed.",
+      "evento": "El <strong>riesgo país</strong> cerró el miércoles en <strong>445 puntos básicos (+4pb)</strong>. El <strong>BCRA</strong> compró <strong>USD 36 millones</strong> en el mercado oficial, con las reservas brutas subiendo a <strong>USD 49.200 millones</strong>. La Secretaría de Finanzas adjudicó <strong>$12,21 billones</strong> en la licitación de ayer sobre ofertas por $13,98 billones, con un <strong>rollover de 144,5%</strong>; la mayor demanda se concentró en la nueva LECAP S16O6 (37,8%) y el dual TAMAR/Dollar Linked TMVE8 (38,7%). Pese a estas señales favorables, el <strong>dólar blue</strong> ($1.550/$1.570) no acompañó la baja del oficial ($1.465/$1.515) y los financieros, llevando la <strong>brecha cambiaria</strong> a su máximo de 2026.",
+      "contexto": "Los globales en dólares cerraron el miércoles en baja: <strong>GD30D US$58,10 (-0,22%)</strong>, <strong>GD35D US$82,16 (-0,22%)</strong>, <strong>AL30D US$56,52 (-0,35%)</strong>. El salto del petróleo internacional amenaza con trasladar hasta medio punto de inflación a los surtidores locales. <strong>Milei</strong> anuncia hoy por cadena nacional una reforma del <strong>Banco Central</strong> (mandato único, prohibición de financiar al Tesoro), en un clima de desescalada parcial con Brasil tras las tensiones con Lula.",
       "impacto": [
-        {"asset": "Riesgo país", "dir": "441pb (cierre) / 450pb (máx. intradiario)", "cls": "neu"},
-        {"asset": "Dólar blue", "dir": "↑ récord histórico $1.570 (venta)", "cls": "up"},
-        {"asset": "GD30", "dir": "↓ -0,29% (US$58,23)", "cls": "dn"}
+        {"asset": "Riesgo país", "dir": "445pb (+4pb, miércoles)", "cls": "dn"},
+        {"asset": "Brecha cambiaria", "dir": "↑ máximo de 2026", "cls": "dn"},
+        {"asset": "Rollover Tesoro", "dir": "144,5%", "cls": "up"}
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "El ataque de Irán quiebra la narrativa de distensión justo cuando el petróleo tocaba su peor racha en seis años",
-      "texto": "La calma que llevó al crudo a acumular su peor racha de tres días en más de seis años se rompió en cuestión de horas con un ataque real, recordatorio de lo frágil que sigue siendo cualquier tregua en Medio Oriente."
+      "label": "La ambigüedad de Warsh no resuelve nada: la Fed puede terminar desanclando expectativas en lugar de calmarlas",
+      "texto": "Con tres disidencias internas y una probabilidad de suba en septiembre que pasó de 100% a 69% en un solo comunicado, el mercado queda sin una guía clara justo cuando más la necesita."
     },
     {
-      "label": "El selloff de semiconductores se profundiza mientras los índices generales suben",
-      "texto": "El Nasdaq 100 se acerca a una corrección técnica por dudas sobre el gasto en IA, pero el Dow marca nuevos máximos por rotación sectorial — el mercado está cada vez más dividido entre nombres expuestos a IA y el resto."
+      "label": "El petróleo vuelve a escalar por segundo episodio consecutivo, erosionando la narrativa de distensión",
+      "texto": "Los ataques de Irán y los hutíes muestran que la calma de los últimos días fue una pausa táctica, no una resolución de fondo — el riesgo geopolítico empieza a quedar incorporado de forma más permanente al precio del crudo."
     },
     {
-      "label": "El riesgo país argentino se sostiene por el respaldo del FMI, pero la Fed puede reintroducir volatilidad esta tarde",
-      "texto": "La decisión de tasas de hoy es la variable que puede revertir la reciente descompresión, especialmente si la Fed sorprende con un tono más duro de lo esperado."
+      "label": "La brecha cambiaria argentina se amplía pese a señales financieras favorables",
+      "texto": "El BCRA compra reservas y el Tesoro logra un rollover del 144,5%, pero el dólar blue se despega igual — una divergencia que sugiere que la demanda de cobertura no está siendo capturada por el resto de las cotizaciones."
     }
   ],
   "correlaciones": [
     {
-      "par": "El petróleo y el apetito por riesgo se movieron en direcciones opuestas en cuestión de horas",
-      "texto": "La caída inicial del crudo por la distensión ayudó al Dow, pero el ataque iraní revirtió el humor de mercado casi de inmediato, mostrando la sensibilidad extrema de los precios a los titulares geopolíticos."
+      "par": "El selloff de un solo papel (SK Hynix) arrastra a todo el índice Nasdaq 100 a corrección",
+      "texto": "La alta concentración del índice en nombres ligados a IA amplifica el impacto de un solo resultado por debajo de expectativas, borrando más de US$1 billón de capitalización en el sector."
     },
     {
-      "par": "La rotación sectorial en Wall Street beneficia a Apple mientras castiga a los semiconductores",
-      "texto": "El capital que sale de Nvidia, Micron y AMD encontró refugio en Apple, que tocó los US$5 billones de valor de mercado, más que en una salida generalizada de la renta variable."
+      "par": "La curva de tasas se divide tras la Fed: 2 años a la baja, 30 años al alza",
+      "texto": "Es un patrón de bear-steepening que refleja confusión sobre la función de reacción de la Fed más que una lectura direccional clara sobre el rumbo de la política monetaria."
     },
     {
-      "par": "El respaldo del FMI descomprime el riesgo país argentino más que el contexto global",
-      "texto": "Pese a la cautela previa a la Fed y la volatilidad en semiconductores, la aprobación de la quinta revisión del programa fue suficiente para cortar la suba del EMBI+ el martes."
+      "par": "El dólar blue argentino se desacopla del resto de las cotizaciones financieras",
+      "texto": "Mientras el oficial, el MEP y el CCL bajan levemente, el blue se mantiene firme en $1.570, ampliando la brecha pese a que los indicadores de riesgo (rollover, compras del BCRA) mejoraron en la misma rueda."
     }
   ],
-  "bottom_line": "<p>Hoy es el día de la decisión de la <strong>Fed</strong> (14hs ET), con el consenso de economistas esperando que sostenga la tasa en <strong>3,50%-3,75%</strong> por quinta reunión consecutiva, pese al tono hawkish de <strong>Kevin Warsh</strong> y a que los swaps de mercado siguen asignando cerca de un tercio de probabilidad a una suba sorpresiva. La sesión llega tras un martes volátil: Wall Street cerró mixto —el <strong>Dow +1,03%</strong> por balances y la baja del petróleo, pero el <strong>Nasdaq -0,22%</strong> mientras el selloff de semiconductores completó su cuarto día y <strong>Apple</strong> tocó brevemente los <strong>US$5 billones</strong> de valor de mercado—. El petróleo protagonizó un vaivén brusco: tras acumular su <strong>peor racha de tres días en más de seis años</strong>, <strong>Irán</strong> lanzó un ataque sorpresa con misiles contra fuerzas de EE.UU. en Jordania, interceptado por CENTCOM, que hizo saltar al WTI 4,4% en la reacción inmediata.</p><p><strong>Para Argentina, el respaldo del FMI sigue siendo la variable clave.</strong> El <strong>riesgo país</strong> tocó un máximo intradiario de <strong>450pb</strong> el martes —su nivel más alto desde junio— antes de descomprimir a <strong>441pb</strong> tras la aprobación de la quinta revisión del programa, en la semana de la visita de <strong>Georgieva</strong> a Buenos Aires. El <strong>dólar blue</strong> marcó otro récord histórico ($1.570). <strong>La decisión de la Fed esta tarde es el próximo test</strong>: una sorpresa hawkish endurecería las condiciones financieras globales justo cuando Argentina depende del apetito por deuda emergente para sostener la compresión de riesgo país lograda en parte gracias al respaldo del FMI.</p>"
+  "bottom_line": "<p>La <strong>Fed</strong> dejó ayer más preguntas que certezas: sostuvo la tasa (en el rango que incluye 3,75%) por quinta vez consecutiva, pero con <strong>tres disidencias</strong> a favor de una suba, y <strong>Kevin Warsh</strong> no dio una guía clara sobre el rumbo — la probabilidad de una suba en <strong>septiembre</strong> cayó de <strong>100% a 69%</strong> tras la conferencia, y la curva reaccionó de forma dividida (2Y a la baja, 30Y al alza). En paralelo, la escalada en Medio Oriente se profundizó: <strong>Irán</strong> relanzó ataques con misiles contra fuerzas de EE.UU. y los <strong>hutíes</strong> atacaron infraestructura petrolera saudita, llevando al <strong>Brent</strong> a un salto de <strong>7,9%</strong> hasta cerca de <strong>US$90</strong> — Trump prometió represalias. El selloff de semiconductores, gatillado por resultados de <strong>SK Hynix</strong> por debajo de lo esperado pese a ser récord, borró más de <strong>US$1 billón</strong> de capitalización del sector y empujó al <strong>Nasdaq 100</strong> a zona de corrección técnica (~11% desde máximos), mientras <strong>Microsoft</strong> (Azure +43%) y <strong>Meta</strong> (guía débil, -7% en after-hours) marcaron la divergencia dentro de la propia narrativa de IA.</p><p><strong>Para Argentina, la brecha cambiaria es la señal a monitorear.</strong> El <strong>riesgo país</strong> cerró en <strong>445pb (+4pb)</strong>, el <strong>BCRA</strong> compró USD 36 millones (reservas a USD 49.200M) y el Tesoro logró un <strong>rollover de 144,5%</strong> en la licitación de ayer, pero el <strong>dólar blue</strong> se despegó del resto de las cotizaciones y la brecha cambiaria tocó su <strong>máximo de 2026</strong>. <strong>Milei</strong> anuncia hoy por cadena nacional una reforma del Banco Central (mandato único, prohibición de financiar al Tesoro), en un clima de desescalada parcial con Brasil. Con el petróleo otra vez cerca de US$90, la variable a seguir es el traslado a la inflación local —hasta medio punto porcentual estimado en los surtidores— justo cuando el Gobierno define si mantiene o recorta la bonificación al gas para agosto.</p>"
 }
