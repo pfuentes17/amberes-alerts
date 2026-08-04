@@ -1,10 +1,10 @@
 {
-  "date": "2026-08-03",
-  "generated": "2026-08-03T12:24:46Z",
+  "date": "2026-08-04",
+  "generated": "2026-08-04T12:22:29Z",
   "sentiment": {
-    "overall": "risk-on",
-    "label": "Trump suspendió el ataque a Irán y el petróleo se desplomó más de 5%, Japón y EE.UU. intervinieron para sostener al yen, y el riesgo país argentino comprimió con fuerza a 430pb en la semana de la reforma del BCRA",
-    "fg": 45,
+    "overall": "neutral",
+    "label": "Trump le dio a Irán una \"última oportunidad\" para cerrar un acuerdo sobre Ormuz y el petróleo repunta, la economía de EE.UU. muestra señales de sobrecalentamiento con el JOLTS de hoy como primer test, y el riesgo país argentino encadena su cuarta compresión consecutiva a 411pb",
+    "fg": 51,
     "fg_label": "Neutral",
     "putcall": 1.6,
     "aaii_bulls": 29.6
@@ -14,114 +14,114 @@
       "id": 1,
       "tag": "geopolítica · energía",
       "tag_class": "tq",
-      "title": "Trump suspende el ataque a Irán y el petróleo se desploma más de 5%",
-      "brief": "El presidente canceló un ataque planeado tras el pedido de Arabia Saudita (MBS) de frenar la escalada; las negociaciones arrancan hoy lunes, aunque Irán niega diálogo directo con EE.UU. y solo reconoce contactos con Omán por una ruta segura temporal en Ormuz.",
-      "tldr": "El mercado lee distensión, pero el VIX cerró en su nivel más alto de la sesión — una señal de que la calma todavía no es total",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "<strong>Trump</strong> canceló un ataque a <strong>Irán</strong> tras no lograr una victoria militar clara, luego de que el príncipe heredero saudita <strong>MBS</strong> expresara su preocupación en un llamado el sábado, según Axios. Las negociaciones arrancan hoy lunes, con la incógnita de si reabrirán el <strong>Estrecho de Ormuz</strong>. El <strong>petróleo</strong> se desplomó: <strong>WTI -5,55% a US$79,97</strong>, <strong>Brent -4,50% a US$83,97</strong>, al reducirse la prima de riesgo geopolítico.",
-      "contexto": "<strong>Irán</strong> dijo no estar dialogando con EE.UU. por ahora, pero sí con <strong>Omán</strong> por una ruta segura temporal a través de Ormuz. Según Javier Blas (Bloomberg), el drenaje real de inventarios petroleros fue menor al anticipado —el colchón de reservas estratégicas chinas (más de 1.400 millones de barriles, de los cuales solo se usaron ~100 millones) sigue prácticamente intacto—, por lo que la narrativa de \"fondo del tanque\" exagera la escasez. El <strong>VIX</strong> cerró en <strong>16,06 (+0,44%)</strong>, su nivel más alto de la sesión, matiz que sugiere que el mercado no descarta del todo un revés.",
+      "title": "Trump le da a Irán una \"última oportunidad\" para cerrar un acuerdo sobre Ormuz",
+      "brief": "El presidente advirtió que negocie esta semana o enfrente ataques \"devastadores\", en el quinto mes de guerra; Teherán niega estar negociando y el petróleo repunta tras el desplome del lunes.",
+      "tldr": "El respiro del lunes fue parcial: la retórica se endurece de nuevo y el crudo vuelve a subir",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "<strong>Trump</strong> advirtió que la negociación con <strong>Irán</strong> es la \"última oportunidad\" para cerrar un acuerdo sobre el <strong>Estrecho de Ormuz</strong> esta semana, posiblemente hoy martes con <strong>Omán</strong> como intermediario, o enfrentar ataques \"devastadores\". <strong>Teherán</strong> niega estar negociando actualmente. El <strong>petróleo</strong> repunta: <strong>WTI +1,54% a US$81,58</strong>, <strong>Brent +2,08% a US$85,51</strong>, revirtiendo parte del desplome del lunes.",
+      "contexto": "<strong>BP</strong> más que duplicó sus ganancias trimestrales (<strong>US$5.730M</strong>) y <strong>Aramco</strong> reportó un salto de <strong>44%</strong>, ambas impulsadas por los precios elevados del crudo durante la guerra. <strong>Goldman Sachs</strong> ve al Brent operando entre <strong>US$80 y US$90</strong> hasta que haya confirmación de un nuevo acuerdo nuclear o una escalada significativa. Según Clyde Russell (Reuters), la recuperación de las importaciones asiáticas de crudo en julio esconde en parte el desagote de buques varados durante el cierre de Ormuz, no una normalización genuina — agosto será el mes bisagra.",
       "impacto": [
-        {"asset": "WTI", "dir": "↓ -5,55% a US$79,97", "cls": "dn"},
-        {"asset": "Brent", "dir": "↓ -4,50% a US$83,97", "cls": "dn"},
-        {"asset": "UST 10Y", "dir": "↓ -5,9pb a 4,686%", "cls": "dn"}
+        {"asset": "Brent", "dir": "↑ +2,08% a US$85,51", "cls": "up"},
+        {"asset": "WTI", "dir": "↑ +1,54% a US$81,58", "cls": "up"},
+        {"asset": "VIX", "dir": "↓ 15,71 (-0,95%)", "cls": "dn"}
       ]
     },
     {
       "id": 2,
       "tag": "bancos centrales · fx",
       "tag_class": "tb",
-      "title": "Japón y EE.UU. intervienen conjuntamente para sostener al yen tras tocar mínimos de cuatro décadas",
-      "brief": "La acción coordinada durante el fin de semana es la primera de este tipo en años; analistas advierten que su impacto podría ser más de corto plazo que estructural, dado que la política fiscal japonesa sigue siendo contraria a un yen más fuerte.",
-      "tldr": "La intervención puede aliviar el yen en el margen, pero el verdadero riesgo es el desarme de carry trades financiados en yenes que hoy sostienen a buena parte de los emergentes",
+      "title": "La intervención por el yen se revela como algo más que diplomacia: Bessent busca evitar que Japón venda Treasuries",
+      "brief": "El secretario del Tesoro llamó \"gesto de amistad\" a la intervención conjunta del fin de semana, pero el trasfondo real es evitar que Japón tenga que liquidar parte de su stock de USD 1,1 billones en bonos del Tesoro para sostener al yen.",
+      "tldr": "El parche cambiario esconde la verdadera preocupación de Washington: la fragilidad de su propio mercado de Treasuries",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "<strong>Japón</strong> y <strong>Estados Unidos</strong> intervinieron conjuntamente durante el fin de semana para sostener al <strong>yen</strong>, que había tocado mínimos de <strong>cuatro décadas</strong> antes de la acción coordinada — la primera de este tipo en años. El <strong>USD/JPY</strong> cotiza esta mañana en <strong>156,94 (-0,29%)</strong>. El <strong>BOJ</strong> advirtió además que la demanda global vinculada a IA podría generar presión inflacionaria persistente, reforzando el argumento a favor de una suba de tasas.",
-      "contexto": "Según Hudson Lockett (Reuters Breakingviews), este tipo de coordinación cambiaria —como el Acuerdo Plaza de 1985— suele mover más los flujos de corto plazo que la tendencia estructural, salvo que venga acompañada de un cambio real en el diferencial de tasas; la política fiscal japonesa sigue siendo \"anatema\" a un yen más fuerte. El verdadero riesgo es que la intervención presione al BOJ a coordinar con Washington, socavando la creencia en su independencia, con el correlato directo en el desarme de carry trades financiados en yenes que hoy sostienen a buena parte de los emergentes.",
+      "evento": "<strong>Bessent</strong> defendió la intervención conjunta Japón-EE.UU. por el <strong>yen</strong> como un \"gesto de amistad\". Según Jonathan Levin (Bloomberg Opinion), el motivo real es la incomodidad de EE.UU. con sus propios costos de financiamiento: sin la ayuda estadounidense, <strong>Japón</strong> habría tenido que vender parte de su stock de <strong>USD 1,1 billones</strong> en Treasuries para sostener su moneda. El <strong>USD/JPY</strong> cotiza hoy en <strong>157,91 (+0,46%)</strong>, revirtiendo parte de la mejora del lunes; datos del BOJ sugieren que Japón no habría intervenido ayer pese al salto esperado.",
+      "contexto": "<strong>Bessent</strong> busca además ampliar una facilidad de repo de la Fed para que Japón pueda usar Treasuries como colateral en lugar de venderlos. El <strong>BOJ</strong> sigue sin subir tasas pese a que el mercado lo exige para frenar la devaluación, con tasas reales aún negativas. Japón podría terminar debiéndole un favor a Trump: el respaldo cambiario podría derivar en mayor presión de EE.UU. para que Tokio pague más por las bases militares estadounidenses en su territorio.",
       "impacto": [
-        {"asset": "USD/JPY", "dir": "↓ 156,94 (-0,29%)", "cls": "up"},
-        {"asset": "DXY", "dir": "→ 99,85 (-0,06%)", "cls": "neu"},
-        {"asset": "Oro (futuro)", "dir": "↑ +0,11% a US$4.111,60", "cls": "up"}
+        {"asset": "USD/JPY", "dir": "↑ 157,91 (+0,46%)", "cls": "dn"},
+        {"asset": "DXY", "dir": "↑ 100,00 (+0,10%)", "cls": "up"},
+        {"asset": "UST 10Y", "dir": "↑ +2,0pb a 4,704%", "cls": "up"}
       ]
     },
     {
       "id": 3,
-      "tag": "acciones · ia y apalancamiento",
-      "tag_class": "tr",
-      "title": "El apalancamiento detrás de la narrativa de IA sigue desarmándose: Citadel rescata a un fondo que reportó 439% de retorno semestral",
-      "brief": "El fondo Situational Awareness de Leopold Aschenbrenner colapsó tras apostar de forma apalancada en IA; Citadel compró parte de la cartera por unos USD 16.000 millones, mientras las acciones surcoreanas de chips revirtieron parte del salto del viernes.",
-      "tldr": "La convicción sin estructura de riesgo real detrás es la misma apuesta apalancada en Seúl que en Manhattan, solo que con otro nombre",
+      "tag": "bancos centrales · sobrecalentamiento",
+      "tag_class": "tb",
+      "title": "La economía de EE.UU. muestra señales de sobrecalentamiento; el JOLTS de hoy es el primer test duro",
+      "brief": "Las ganancias corporativas crecen casi 50% interanual y el PBI nominal corre cerca del 8%, muy por encima del promedio de 25 años; con Warsh sin forward guidance, el mercado quedó sin ancla para interpretar el dato de vacantes de hoy.",
+      "tldr": "Si el JOLTS sorprende al alza, la curva larga —con el término premium cerca de máximos de una década— puede reaccionar sin que la Fed diga una palabra",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El fondo <strong>Situational Awareness</strong> de <strong>Leopold Aschenbrenner</strong> había reportado un retorno de <strong>439%</strong> en seis meses apostando de forma apalancada a la infraestructura de IA; seis días después de la carta a inversores, <strong>Citadel</strong> adquirió una porción de la cartera por unos <strong>USD 16.000 millones</strong>, una de las transacciones de emergencia más grandes de Wall Street. En paralelo, las acciones de mercados emergentes cayeron por primera vez en tres días, arrastradas por fabricantes surcoreanos de chips que revirtieron parte de las ganancias récord del viernes.",
-      "contexto": "Los préstamos margen en Corea del Sur habían tocado un récord de <strong>USD 26.400 millones</strong> en junio, concentrados en Samsung y SK Hynix, antes de que el Kospi perdiera un tercio de su valor en el episodio previo. Con solo veinte empleados, el fondo de Aschenbrenner no tenía a nadie cuya función fuera decir cuánto apalancamiento era demasiado. Se suma la fusión farmacéutica entre <strong>AstraZeneca</strong> y <strong>Bristol Myers Squibb</strong> (~USD 400.000 millones), con la acción británica cayendo <strong>7%</strong> tras conocerse las negociaciones.",
+      "evento": "El <strong>JOLTS</strong> de junio (10hs ET, consenso 7,44M vacantes) es el primer dato duro tras una temporada de balances que mostró <strong>ganancias corporativas</strong> creciendo casi <strong>50%</strong> interanual y un <strong>PBI nominal</strong> a un ritmo cercano al <strong>8%</strong>. El consumo saltó <strong>3,2%</strong> y la inversión en equipamiento empresarial <strong>15%</strong> en el segundo trimestre, muy por encima del promedio de los últimos 25 años. Ayer el <strong>ISM Manufacturero</strong> sorprendió al alza (55,6 vs. 54,0 esperado), con el subíndice de empleo saltando a 52,8.",
+      "contexto": "Según Mike Dolan (Reuters), más de <strong>USD 1 billón</strong> de gasto de capital de los hiperescaladores en IA explica buena parte del salto en ganancias, y un déficit fiscal de más de <strong>USD 2 billones</strong> anuales —no los salarios— sostiene el poder de fijación de precios de las empresas. Con <strong>Kevin Warsh</strong> habiendo cortado el forward guidance que ofrecía Powell, el mercado quedó sin ancla: si ni la Fed ni la Casa Blanca actúan para enfriar la expansión, será el propio mercado de bonos el que termine haciendo el ajuste vía rendimientos más altos.",
       "impacto": [
-        {"asset": "Nasdaq (futuro)", "dir": "↑ +0,55% a 28.561,00", "cls": "up"},
-        {"asset": "EEM (cierre NY previo)", "dir": "↑ +0,79% a 64,09", "cls": "up"},
-        {"asset": "AstraZeneca", "dir": "↓ -7%", "cls": "dn"}
+        {"asset": "UST 2Y", "dir": "↑ +0,8pb a 4,264%", "cls": "up"},
+        {"asset": "Curva 2s10s", "dir": "↑ 44,0pb (+1,2pb)", "cls": "up"},
+        {"asset": "Nasdaq (futuro)", "dir": "↑ +0,74% a 29.106,75", "cls": "up"}
       ]
     },
     {
       "id": 4,
       "tag": "argentina · mercados",
       "tag_class": "tg",
-      "title": "El riesgo país comprime con fuerza a 430pb; el BCRA acumula 135 ruedas consecutivas de compras de reservas",
-      "brief": "El EMBI+ cerró el viernes en 430pb (-11pb vs 441pb), la mayor compresión diaria en semanas, con los globales en alza en Buenos Aires; el BCRA lleva la tercera racha de compras netas más larga desde 2003 (USD 13.128 millones acumulados).",
-      "tldr": "La compresión del riesgo país acompaña el clima de distensión global y el envión de la agenda de reformas locales",
+      "title": "El riesgo país encadena su cuarta compresión consecutiva y perfora los 411pb",
+      "brief": "El EMBI+ cerró el lunes en 411pb (-19pb vs 430pb), la baja diaria más pronunciada de la racha (445→441→430→411 en cuatro ruedas); las reservas del BCRA volvieron a superar los USD 49.000 millones.",
+      "tldr": "La velocidad de la compresión es tan llamativa como su magnitud acumulada en apenas una semana",
       "sentiment": "ro",
       "sentiment_label": "🟢 Risk-On",
-      "evento": "El <strong>riesgo país</strong> cerró el viernes en <strong>430 puntos básicos</strong>, con una baja de <strong>11pb</strong> respecto de los 441pb previos. Los globales en dólares cerraron al alza en Buenos Aires: <strong>GD30D US$58,10 (+1,13%)</strong>, <strong>GD35D US$82,59 (+0,94%)</strong>, <strong>AL30D US$56,60 (+0,44%)</strong>. El <strong>BCRA</strong> acumuló compras netas por <strong>USD 13.128 millones</strong> en <strong>135 ruedas consecutivas</strong> al 28 de julio, la tercera racha más larga desde 2003, con Caputo apuntando a recuperar el investment grade para 2031.",
-      "contexto": "El dólar oficial cotiza <strong>$1.460/$1.510</strong>, el blue <strong>$1.540/$1.560</strong>, el MEP <strong>$1.516,8/$1.522,1</strong> y el CCL <strong>$1.572,2/$1.575,7</strong>. Consultoras advierten que persiste una elevada cobertura cambiaria entre inversores, pese a que bajaron los temores por riesgo electoral. Caputo amplió la devolución de IVA a $50.000 millones para pymes y familias, a pedido del FMI.",
+      "evento": "El <strong>riesgo país</strong> cerró el lunes en <strong>411 puntos básicos</strong>, con una baja de <strong>19pb</strong> respecto de los 430pb previos —la cuarta rueda consecutiva de compresión—. Los globales en dólares cerraron al alza en Buenos Aires: <strong>GD30D US$58,48 (+0,65%)</strong>, <strong>GD35D US$83,30 (+0,86%)</strong>, <strong>AL30D US$56,87 (+0,48%)</strong>. Las <strong>reservas del BCRA</strong> volvieron a superar los <strong>USD 49.000 millones</strong>, tras comprar apenas USD 18 millones a inicios de agosto pero sostener su presencia en el mercado.",
+      "contexto": "El <strong>FAL</strong> (Fondo de Asistencia Laboral) inyectaría <strong>ARS 300.000 millones</strong>, generando un flujo neto permanente de demanda de activos argentinos que debería seguir comprimiendo el riesgo país. <strong>YPF</strong> es desde hoy más líquida tras su split, ampliando el acceso para inversores minoristas. El dólar oficial cotiza <strong>$1.465/$1.515</strong>, el blue <strong>$1.535/$1.555</strong>, el MEP <strong>$1.522,6/$1.529</strong> y el CCL <strong>$1.579,4/$1.580,4</strong>.",
       "impacto": [
-        {"asset": "Riesgo país", "dir": "↓ 430pb (-11pb)", "cls": "up"},
-        {"asset": "GD30D", "dir": "↑ +1,13% (US$58,10)", "cls": "up"},
-        {"asset": "BCRA compras netas", "dir": "135 ruedas consecutivas (USD 13.128M)", "cls": "up"}
+        {"asset": "Riesgo país", "dir": "↓ 411pb (-19pb)", "cls": "up"},
+        {"asset": "GD30D", "dir": "↑ +0,65% (US$58,48)", "cls": "up"},
+        {"asset": "Reservas BCRA", "dir": "↑ superan USD 49.000M", "cls": "up"}
       ]
     },
     {
       "id": 5,
       "tag": "argentina · política",
       "tag_class": "ta",
-      "title": "El Gobierno corre contra el reloj para aprobar tres reformas estructurales en una sola semana legislativa",
-      "brief": "Avanza en el Congreso la reforma de la Carta Orgánica del BCRA, la ley de inviolabilidad de la propiedad (con el polémico Capítulo III sobre tierras) y el Super RIGI, mientras el swap con China (~40% de las reservas) vence el jueves.",
-      "tldr": "Concentrar tres reformas estructurales en una semana, con la oposición organizando marchas, eleva el riesgo de que alguna quede a mitad de camino",
+      "title": "El Gobierno cede para destrabar la Ley de Tierras mientras arranca el juicio Cuadernos por Vialidad",
+      "brief": "El Ejecutivo hizo concesiones para conseguir la ley de inviolabilidad de la propiedad; en paralelo, Javier Iguacel declara hoy como primer testigo en el juicio por sobreprecios en Vialidad, justo cuando el Gobierno negocia nuevas concesiones de infraestructura.",
+      "tldr": "La mejora financiera todavía no se traduce en la calle: la pobreza subió al 30% y el 87% dice que su salario no le gana a la inflación",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "Esta semana el Gobierno busca aprobar en el Congreso la <strong>ley de inviolabilidad de la propiedad</strong> —con el polémico Capítulo III que reforma el régimen de tierras—, avanzar con el <strong>Super RIGI</strong> y destrabar la reforma de la <strong>Carta Orgánica del BCRA</strong>, que elimina los mandatos múltiples de 2012 y restringe el financiamiento al Tesoro. El <strong>swap con China</strong>, vigente desde 2009, vence el jueves; el BCRA busca extenderlo hasta agosto de 2029, un acuerdo que representa cerca del 40% de las reservas brutas.",
-      "contexto": "Según Mariano Gorodisch (El Cronista), la reforma amplía a la vez las facultades del BCRA para intervenir en los mercados financieros, lo que podría derivar en sostener artificialmente el precio de los bonos en año electoral — un riesgo de reemplazar un mecanismo de dominancia fiscal por otro más sutil. El propio <strong>Redrado</strong> respalda la reforma pero advierte que omite la estabilidad financiera como objetivo explícito. La oposición organiza marchas esta semana contra la ley de tierras, elevando el riesgo de que alguna de las tres reformas quede a mitad de camino.",
+      "evento": "El <strong>Gobierno</strong> cedió para destrabar la <strong>Ley de Tierras</strong> (inviolabilidad de la propiedad) y busca acuerdos con la oposición de cara a las negociaciones legislativas de 2027. Arranca el <strong>juicio Cuadernos</strong> por Vialidad: <strong>Javier Iguacel</strong> será el primer ex funcionario en declarar sobre sobreprecios y coimas, en momentos en que el Ejecutivo negocia el esquema de concesiones de infraestructura de cara a 2027. Según el INDEC, la <strong>pobreza</strong> subió al <strong>30%</strong> en el primer trimestre y la indigencia al <strong>6,5%</strong>, cortando meses de mejora; el consumo cayó <strong>1,6%</strong> en junio.",
+      "contexto": "Según una encuesta de Zentrix citada por El Cronista, el <strong>86,6%</strong> de los argentinos cree necesitar dos o más empleos para llegar a fin de mes y el <strong>87,4%</strong> afirma que su salario no le gana a la inflación. El economista Broda descarta una corrida cambiaria inminente, aunque advierte que la demanda de dólares (USD 2.000-2.300M mensuales) sigue firme. Crecen los pedidos de renuncia a <strong>Villarruel</strong> como vice, mientras <strong>Bullrich</strong> admite públicamente que buscará competir por la Presidencia en 2027.",
       "impacto": [
-        {"asset": "Swap con China", "dir": "Vence el jueves (~40% reservas)", "cls": "neu"},
-        {"asset": "Confianza en el Gobierno", "dir": "59% dice \"pasándola mal\"", "cls": "dn"}
+        {"asset": "Pobreza (INDEC, T1)", "dir": "↑ 30% (corta meses de mejora)", "cls": "dn"},
+        {"asset": "Consumo (jun.)", "dir": "↓ -1,6% mensual", "cls": "dn"}
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "El petróleo se desploma más de 5%, pero el VIX cerró en su nivel más alto de la sesión",
-      "texto": "El mercado festeja la distensión con Irán, pero Teherán niega diálogo directo con EE.UU. y solo reconoce contactos con Omán por una ruta temporal — la calma podría ser más frágil de lo que sugiere el rally de acciones."
+      "label": "Trump le da a Irán una \"última oportunidad\", pero Teherán niega estar negociando",
+      "texto": "El ultimátum eleva el riesgo de una escalada real esta semana, justo cuando el mercado había empezado a relajarse tras el desplome del petróleo del lunes."
     },
     {
-      "label": "La intervención conjunta Japón-EE.UU. para sostener al yen puede ser un parche de corto plazo, no una corrección estructural",
-      "texto": "La política fiscal japonesa sigue siendo contraria a un yen más fuerte; si el mercado lee la intervención como preludio de una suba más agresiva del BOJ, el desarme de carry trades financiados en yenes golpearía a buena parte de los emergentes."
+      "label": "La intervención por el yen se vende como diplomacia, pero esconde la fragilidad del propio mercado de Treasuries de EE.UU.",
+      "texto": "El gesto de \"amistad\" de Bessent evita que Japón venda parte de su stock de USD 1,1 billones en bonos del Tesoro — el parche no resuelve la falta de disciplina fiscal en EE.UU. ni la ausencia de suba de tasas en Japón."
     },
     {
-      "label": "Argentina concentra tres reformas estructurales en una sola semana legislativa, con la oposición movilizada",
-      "texto": "El mercado viene premiando la agenda reformista (riesgo país en 430pb), pero una demora en la Carta Orgánica del BCRA, la ley de tierras o el Super RIGI podría testear rápido esa paciencia."
+      "label": "El riesgo país argentino comprime a ritmo histórico mientras la pobreza sube y el consumo cae",
+      "texto": "La brecha entre el mercado financiero y la economía real se profundiza en la misma semana que el Gobierno negocia el Super RIGI y la ley de tierras, con el 87% de los argentinos diciendo que su salario no le gana a la inflación."
     }
   ],
   "correlaciones": [
     {
-      "par": "El desplome del petróleo coincide con la baja de las tasas del Tesoro",
-      "texto": "El UST 10Y cedió 5,9pb el mismo día en que el WTI cayó 5,55%, reflejo de que el mercado interpreta la distensión geopolítica como una reducción genuina de la presión inflacionaria."
+      "par": "El petróleo rebota junto con el endurecimiento retórico de Trump hacia Irán",
+      "texto": "El Brent sube 2,08% el mismo día en que la retórica geopolítica se endurece, mostrando la sensibilidad inmediata del crudo a los titulares de Medio Oriente."
     },
     {
-      "par": "El apalancamiento de la narrativa de IA se desarma en simultáneo en Seúl y Manhattan",
-      "texto": "El quiebre del fondo Situational Awareness (rescatado por Citadel) y la reversión de las acciones surcoreanas de chips —que habían saltado 18% el viernes— muestran que la apuesta unidireccional en semiconductores dejó de ser unidireccional."
+      "par": "Las tasas del Tesoro suben junto con las acciones, sin ancla clara de la Fed",
+      "texto": "El mercado sigue sin guía tras el corte del forward guidance de Warsh; si el JOLTS de hoy sorprende al alza, la curva larga podría reaccionar con fuerza sin que la Fed haya dicho una palabra."
     },
     {
-      "par": "El riesgo país argentino comprime con fuerza el mismo día en que la racha de compras del BCRA alcanza un récord histórico",
-      "texto": "La baja de 11pb en el EMBI+ coincide con la 135ª rueda consecutiva de compras netas de reservas, sugiriendo que el mercado lee con optimismo tanto la acumulación de reservas como el avance de la reforma del BCRA."
+      "par": "La compresión del riesgo país argentino coincide con el regreso de las reservas del BCRA por encima de USD 49.000 millones",
+      "texto": "El mercado sigue premiando la acumulación de reservas y el avance de la agenda de reformas, pese al deterioro de los indicadores sociales en el mismo período."
     }
   ],
-  "bottom_line": "<p>Wall Street arranca la semana con optimismo tras el giro diplomático de <strong>Trump</strong>: el presidente suspendió el ataque planeado a Irán luego de que <strong>Arabia Saudita</strong> (MBS) le pidiera frenar la escalada, y las negociaciones arrancan hoy lunes. El <strong>petróleo</strong> se desplomó más de <strong>5%</strong> (WTI a US$79,97, Brent a US$83,97) y las tasas del Tesoro cedieron, aunque el <strong>VIX</strong> cerró en su nivel más alto de la sesión — un matiz que sugiere que el mercado no descarta del todo un revés. En paralelo, <strong>Japón</strong> y <strong>EE.UU.</strong> intervinieron conjuntamente durante el fin de semana para sostener al <strong>yen</strong>, que había tocado mínimos de cuatro décadas. El apalancamiento detrás de la narrativa de IA sigue desarmándose: el fondo <strong>Situational Awareness</strong> de Leopold Aschenbrenner, que había reportado un retorno semestral de 439%, colapsó y fue rescatado por <strong>Citadel</strong> por unos USD 16.000 millones, mientras las acciones surcoreanas de chips revirtieron parte del salto del viernes.</p><p><strong>Para Argentina, la semana viene cargada.</strong> El <strong>riesgo país</strong> comprimió con fuerza a <strong>430pb (-11pb)</strong>, el <strong>BCRA</strong> acumula <strong>135 ruedas consecutivas</strong> de compras netas de reservas (la tercera racha más larga desde 2003) y el Gobierno avanza en el Congreso con la reforma de la <strong>Carta Orgánica del BCRA</strong>, en la misma semana en que también busca aprobar la ley de inviolabilidad de la propiedad y el Super RIGI. Concentrar tres reformas estructurales en una sola semana legislativa —con la oposición organizando marchas— eleva el riesgo de que alguna quede a mitad de camino; el mercado viene premiando la agenda reformista, pero una demora podría testear esa paciencia rápido. En paralelo, el <strong>swap con China</strong> (~40% de las reservas) vence el jueves y el BCRA busca extenderlo hasta 2029.</p>"
+  "bottom_line": "<p><strong>Trump</strong> le dio a <strong>Irán</strong> una \"última oportunidad\" para cerrar un acuerdo sobre el <strong>Estrecho de Ormuz</strong> esta semana, amenazando con ataques \"devastadores\" si no hay avances — Teherán niega estar negociando, y el petróleo repunta (<strong>Brent +2,08% a US$85,51</strong>, <strong>WTI +1,54% a US$81,58</strong>) tras el desplome del lunes. <strong>BP</strong> y <strong>Aramco</strong> reportaron ganancias trimestrales muy superiores gracias a los precios elevados del crudo durante la guerra. En bancos centrales, la intervención conjunta por el yen se revela como algo más que diplomacia: según Bloomberg Opinion, el verdadero motivo es evitar que Japón tenga que vender parte de su stock de <strong>USD 1,1 billones</strong> en Treasuries, mientras la economía de EE.UU. muestra señales de sobrecalentamiento (ganancias corporativas +47% i.a., PBI nominal cerca de 8%) que hoy enfrentan su primer test duro con el dato de <strong>JOLTS</strong>.</p><p><strong>Para Argentina, la semana arrancó con una compresión histórica del riesgo país.</strong> Cerró en <strong>411pb (-19pb)</strong>, la cuarta baja consecutiva en otras tantas ruedas, mientras el <strong>BCRA</strong> recuperó reservas por encima de <strong>USD 49.000 millones</strong> y el Gobierno cedió para destrabar la <strong>Ley de Tierras</strong>. Sin embargo, el arranque del <strong>juicio Cuadernos</strong> por sobreprecios en Vialidad reabre el expediente de riesgo regulatorio justo cuando el Ejecutivo negocia nuevas concesiones de infraestructura, y los datos sociales (<strong>pobreza al 30%</strong>, consumo -1,6% en junio) muestran que la mejora financiera todavía no se traduce en bienestar cotidiano — la brecha entre el mercado y la calle sigue siendo la variable política de fondo de cara a 2027.</p>"
 }
