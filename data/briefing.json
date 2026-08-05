@@ -1,127 +1,127 @@
 {
-  "date": "2026-08-04",
-  "generated": "2026-08-04T12:22:29Z",
+  "date": "2026-08-05",
+  "generated": "2026-08-05T12:26:21Z",
   "sentiment": {
-    "overall": "neutral",
-    "label": "Trump le dio a Irán una \"última oportunidad\" para cerrar un acuerdo sobre Ormuz y el petróleo repunta, la economía de EE.UU. muestra señales de sobrecalentamiento con el JOLTS de hoy como primer test, y el riesgo país argentino encadena su cuarta compresión consecutiva a 411pb",
-    "fg": 51,
-    "fg_label": "Neutral",
+    "overall": "risk-on",
+    "label": "Wall Street cierra en máximos históricos impulsada por la nube mientras los hiperescaladores comprometen USD 1,09 billones en leasing de data centers, Warsh convoca task forces en la Fed tras un JOLTS flojo, y el riesgo país argentino revierte su compresión pese a reservas en máximos de siete años",
+    "fg": 59,
+    "fg_label": "Codicia",
     "putcall": 1.6,
     "aaii_bulls": 29.6
   },
   "drivers": [
     {
       "id": 1,
-      "tag": "geopolítica · energía",
-      "tag_class": "tq",
-      "title": "Trump le da a Irán una \"última oportunidad\" para cerrar un acuerdo sobre Ormuz",
-      "brief": "El presidente advirtió que negocie esta semana o enfrente ataques \"devastadores\", en el quinto mes de guerra; Teherán niega estar negociando y el petróleo repunta tras el desplome del lunes.",
-      "tldr": "El respiro del lunes fue parcial: la retórica se endurece de nuevo y el crudo vuelve a subir",
+      "tag": "acciones · récords y leasing de ia",
+      "tag_class": "tg",
+      "title": "Wall Street en máximos históricos, pero los hiperescaladores atan USD 1,09 billones en leasing de data centers aún no construidos",
+      "brief": "Dow y S&P 500 marcan récords impulsados por optimismo en IA y la caída del petróleo; Microsoft, Meta, Oracle, Amazon y Alphabet convirtieron gasto de capital variable en compromisos contractuales fijos de largo plazo.",
+      "tldr": "Una eventual corrección del ciclo de IA se volvería un problema de balance, no solo de márgenes",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "<strong>Trump</strong> advirtió que la negociación con <strong>Irán</strong> es la \"última oportunidad\" para cerrar un acuerdo sobre el <strong>Estrecho de Ormuz</strong> esta semana, posiblemente hoy martes con <strong>Omán</strong> como intermediario, o enfrentar ataques \"devastadores\". <strong>Teherán</strong> niega estar negociando actualmente. El <strong>petróleo</strong> repunta: <strong>WTI +1,54% a US$81,58</strong>, <strong>Brent +2,08% a US$85,51</strong>, revirtiendo parte del desplome del lunes.",
-      "contexto": "<strong>BP</strong> más que duplicó sus ganancias trimestrales (<strong>US$5.730M</strong>) y <strong>Aramco</strong> reportó un salto de <strong>44%</strong>, ambas impulsadas por los precios elevados del crudo durante la guerra. <strong>Goldman Sachs</strong> ve al Brent operando entre <strong>US$80 y US$90</strong> hasta que haya confirmación de un nuevo acuerdo nuclear o una escalada significativa. Según Clyde Russell (Reuters), la recuperación de las importaciones asiáticas de crudo en julio esconde en parte el desagote de buques varados durante el cierre de Ormuz, no una normalización genuina — agosto será el mes bisagra.",
+      "evento": "<strong>Wall Street</strong> opera cerca de récords: el <strong>Dow</strong> y el <strong>S&amp;P 500</strong> marcaron máximos históricos impulsados por el optimismo en IA y la caída del petróleo, con el <strong>Nikkei</strong> saltando <strong>3,66%</strong>. Los cinco grandes hiperescaladores —<strong>Microsoft, Meta, Oracle, Amazon y Alphabet</strong>— acumularon compromisos de arrendamiento por <strong>USD 1,09 billones</strong> para centros de datos aún no construidos. <strong>AMD</strong> cayó pese a superar previsiones de ingresos, porque los inversores buscan señales más claras de que el gasto en IA se traduzca en crecimiento más rápido.",
+      "contexto": "A diferencia del capex tradicional, que se puede frenar, estos contratos de leasing son compromisos que no desaparecen si la demanda de IA se enfría, transformando una eventual corrección en un problema de balance. <strong>Wells Fargo</strong> sostiene que el gasto en IA ya se \"derrama\" hacia el resto de la economía, favoreciendo a industriales tradicionales. Texas pausó nuevas aprobaciones de centros de datos por riesgos de confiabilidad de red, y un análisis del BIS documentó que más de la mitad de los ingresos de hiperescaladores en 2025 provino de financiamiento circular entre sí.",
       "impacto": [
-        {"asset": "Brent", "dir": "↑ +2,08% a US$85,51", "cls": "up"},
-        {"asset": "WTI", "dir": "↑ +1,54% a US$81,58", "cls": "up"},
-        {"asset": "VIX", "dir": "↓ 15,71 (-0,95%)", "cls": "dn"}
+        {"asset": "Nasdaq (futuro)", "dir": "→ +0,02% a 29.868,50", "cls": "neu"},
+        {"asset": "Nikkei", "dir": "↑ +3,66%", "cls": "up"},
+        {"asset": "VIX", "dir": "↓ 16,32 (-1,09%)", "cls": "dn"}
       ]
     },
     {
       "id": 2,
-      "tag": "bancos centrales · fx",
+      "tag": "bancos centrales · fed",
       "tag_class": "tb",
-      "title": "La intervención por el yen se revela como algo más que diplomacia: Bessent busca evitar que Japón venda Treasuries",
-      "brief": "El secretario del Tesoro llamó \"gesto de amistad\" a la intervención conjunta del fin de semana, pero el trasfondo real es evitar que Japón tenga que liquidar parte de su stock de USD 1,1 billones en bonos del Tesoro para sostener al yen.",
-      "tldr": "El parche cambiario esconde la verdadera preocupación de Washington: la fragilidad de su propio mercado de Treasuries",
+      "title": "Warsh convoca cinco task forces en la Fed mientras el JOLTS decepciona",
+      "brief": "El presidente de la Fed sumó a William White —quien anticipó la crisis de 2008— al grupo de estudio sobre inflación, mientras Jeff Schmid (Kansas City) pide más restricción monetaria; las vacantes de junio cayeron a 7,359M frente a 7,44M esperado.",
+      "tldr": "La Fed se inclina hacia un enfoque de estabilidad financiera justo cuando el propio dato de empleo sugiere enfriamiento, no sobrecalentamiento",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "<strong>Bessent</strong> defendió la intervención conjunta Japón-EE.UU. por el <strong>yen</strong> como un \"gesto de amistad\". Según Jonathan Levin (Bloomberg Opinion), el motivo real es la incomodidad de EE.UU. con sus propios costos de financiamiento: sin la ayuda estadounidense, <strong>Japón</strong> habría tenido que vender parte de su stock de <strong>USD 1,1 billones</strong> en Treasuries para sostener su moneda. El <strong>USD/JPY</strong> cotiza hoy en <strong>157,91 (+0,46%)</strong>, revirtiendo parte de la mejora del lunes; datos del BOJ sugieren que Japón no habría intervenido ayer pese al salto esperado.",
-      "contexto": "<strong>Bessent</strong> busca además ampliar una facilidad de repo de la Fed para que Japón pueda usar Treasuries como colateral en lugar de venderlos. El <strong>BOJ</strong> sigue sin subir tasas pese a que el mercado lo exige para frenar la devaluación, con tasas reales aún negativas. Japón podría terminar debiéndole un favor a Trump: el respaldo cambiario podría derivar en mayor presión de EE.UU. para que Tokio pague más por las bases militares estadounidenses en su territorio.",
+      "evento": "A seis semanas de la próxima reunión, <strong>Kevin Warsh</strong> convocó <strong>cinco task forces</strong> sobre comunicación, balance, datos, productividad y marcos de inflación. <strong>William White</strong>, el economista que advirtió sobre 2008, se sumó al grupo de inflación. <strong>Jeff Schmid</strong>, presidente de la Fed de Kansas City, pidió mayor endurecimiento monetario ante una inflación \"demasiado alta\" excluyendo energía. Sin embargo, el <strong>JOLTS</strong> de junio decepcionó: <strong>7,359 millones</strong> de vacantes frente a 7,44M esperado, sugiriendo un enfriamiento del mercado laboral.",
+      "contexto": "<strong>Bessent</strong> respaldó a Warsh, diciendo que los mercados atraviesan una \"desintoxicación\" del exceso de guidance de la Fed. Según Morgan Stanley, el desempleo en ocupaciones muy expuestas a IA corre 0,5 punto por encima de lo normal, el doble que en abril. El simposio de <strong>Jackson Hole</strong> será clave para anticipar hacia dónde apuntan las reformas de Warsh sobre política monetaria y comunicación.",
       "impacto": [
-        {"asset": "USD/JPY", "dir": "↑ 157,91 (+0,46%)", "cls": "dn"},
-        {"asset": "DXY", "dir": "↑ 100,00 (+0,10%)", "cls": "up"},
-        {"asset": "UST 10Y", "dir": "↑ +2,0pb a 4,704%", "cls": "up"}
+        {"asset": "UST 10Y", "dir": "↓ -1,2pb a 4,615%", "cls": "dn"},
+        {"asset": "JOLTS (jun.)", "dir": "↓ 7,359M (vs 7,44M esperado)", "cls": "dn"},
+        {"asset": "Oro (futuro)", "dir": "↑ +1,49% a US$4.214,30", "cls": "up"}
       ]
     },
     {
       "id": 3,
-      "tag": "bancos centrales · sobrecalentamiento",
-      "tag_class": "tb",
-      "title": "La economía de EE.UU. muestra señales de sobrecalentamiento; el JOLTS de hoy es el primer test duro",
-      "brief": "Las ganancias corporativas crecen casi 50% interanual y el PBI nominal corre cerca del 8%, muy por encima del promedio de 25 años; con Warsh sin forward guidance, el mercado quedó sin ancla para interpretar el dato de vacantes de hoy.",
-      "tldr": "Si el JOLTS sorprende al alza, la curva larga —con el término premium cerca de máximos de una década— puede reaccionar sin que la Fed diga una palabra",
+      "tag": "geopolítica · energía",
+      "tag_class": "tq",
+      "title": "Bessent dice que un acuerdo sobre Ormuz podría cerrarse \"hoy o mañana\"",
+      "brief": "El secretario del Tesoro señaló que las negociaciones avanzan, mientras el petróleo rebotó tras un ataque hutí a un petrolero saudita; analistas advierten que el patrón de Trump de amenazar y retroceder sugiere un parche temporal, no una resolución de fondo.",
+      "tldr": "El mercado debería descontar cada vez menos prima de riesgo geopolítico genuino y más teatro de negociación",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>JOLTS</strong> de junio (10hs ET, consenso 7,44M vacantes) es el primer dato duro tras una temporada de balances que mostró <strong>ganancias corporativas</strong> creciendo casi <strong>50%</strong> interanual y un <strong>PBI nominal</strong> a un ritmo cercano al <strong>8%</strong>. El consumo saltó <strong>3,2%</strong> y la inversión en equipamiento empresarial <strong>15%</strong> en el segundo trimestre, muy por encima del promedio de los últimos 25 años. Ayer el <strong>ISM Manufacturero</strong> sorprendió al alza (55,6 vs. 54,0 esperado), con el subíndice de empleo saltando a 52,8.",
-      "contexto": "Según Mike Dolan (Reuters), más de <strong>USD 1 billón</strong> de gasto de capital de los hiperescaladores en IA explica buena parte del salto en ganancias, y un déficit fiscal de más de <strong>USD 2 billones</strong> anuales —no los salarios— sostiene el poder de fijación de precios de las empresas. Con <strong>Kevin Warsh</strong> habiendo cortado el forward guidance que ofrecía Powell, el mercado quedó sin ancla: si ni la Fed ni la Casa Blanca actúan para enfriar la expansión, será el propio mercado de bonos el que termine haciendo el ajuste vía rendimientos más altos.",
+      "evento": "<strong>Bessent</strong> dijo que un acuerdo para reabrir el <strong>Estrecho de Ormuz</strong> podría cerrarse \"hoy o mañana\". El <strong>petróleo</strong> rebotó tras un ataque hutí a un petrolero saudita en el Mar Rojo: <strong>WTI +0,92% a US$76,47</strong>, <strong>Brent +1,70% a US$80,71</strong>. <strong>Trump</strong> dijo que EE.UU. e Irán mantienen \"muy buenas conversaciones\". <strong>Arabia Saudita</strong> lidera además una coalición naval de 14 países para romper el bloqueo hutí en el Mar Rojo, aunque sin Emiratos ni Omán.",
+      "contexto": "Según Lazar Berman (Times of Israel), el acuerdo en danza sería apenas una extensión de 60 días del memorando vigente, sin tocar el programa nuclear iraní — el patrón de Trump de amenazar y luego retroceder sugiere que el mercado debería descontar cada vez menos prima de riesgo genuina. <strong>China</strong> respondió a EE.UU. con controles más estrictos a la exportación de drones y nuevas sanciones, en una escalada tecnológica paralela.",
       "impacto": [
-        {"asset": "UST 2Y", "dir": "↑ +0,8pb a 4,264%", "cls": "up"},
-        {"asset": "Curva 2s10s", "dir": "↑ 44,0pb (+1,2pb)", "cls": "up"},
-        {"asset": "Nasdaq (futuro)", "dir": "↑ +0,74% a 29.106,75", "cls": "up"}
+        {"asset": "Brent", "dir": "↑ +1,70% a US$80,71", "cls": "up"},
+        {"asset": "WTI", "dir": "↑ +0,92% a US$76,47", "cls": "up"},
+        {"asset": "Plata (futuro)", "dir": "↑ +2,29% a US$61,62", "cls": "up"}
       ]
     },
     {
       "id": 4,
       "tag": "argentina · mercados",
-      "tag_class": "tg",
-      "title": "El riesgo país encadena su cuarta compresión consecutiva y perfora los 411pb",
-      "brief": "El EMBI+ cerró el lunes en 411pb (-19pb vs 430pb), la baja diaria más pronunciada de la racha (445→441→430→411 en cuatro ruedas); las reservas del BCRA volvieron a superar los USD 49.000 millones.",
-      "tldr": "La velocidad de la compresión es tan llamativa como su magnitud acumulada en apenas una semana",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El <strong>riesgo país</strong> cerró el lunes en <strong>411 puntos básicos</strong>, con una baja de <strong>19pb</strong> respecto de los 430pb previos —la cuarta rueda consecutiva de compresión—. Los globales en dólares cerraron al alza en Buenos Aires: <strong>GD30D US$58,48 (+0,65%)</strong>, <strong>GD35D US$83,30 (+0,86%)</strong>, <strong>AL30D US$56,87 (+0,48%)</strong>. Las <strong>reservas del BCRA</strong> volvieron a superar los <strong>USD 49.000 millones</strong>, tras comprar apenas USD 18 millones a inicios de agosto pero sostener su presencia en el mercado.",
-      "contexto": "El <strong>FAL</strong> (Fondo de Asistencia Laboral) inyectaría <strong>ARS 300.000 millones</strong>, generando un flujo neto permanente de demanda de activos argentinos que debería seguir comprimiendo el riesgo país. <strong>YPF</strong> es desde hoy más líquida tras su split, ampliando el acceso para inversores minoristas. El dólar oficial cotiza <strong>$1.465/$1.515</strong>, el blue <strong>$1.535/$1.555</strong>, el MEP <strong>$1.522,6/$1.529</strong> y el CCL <strong>$1.579,4/$1.580,4</strong>.",
+      "tag_class": "ta",
+      "title": "El riesgo país revierte su compresión y sube a 421pb pese a reservas en máximos de siete años",
+      "brief": "El EMBI+ cerró el martes en 421pb (+10pb vs 411pb), cortando la racha de cuatro bajas consecutivas, mientras las reservas del BCRA treparon a USD 49.642 millones, el nivel más alto en siete años.",
+      "tldr": "El desacople entre un contexto externo casi ideal y un riesgo país que no logra perforar los 400 puntos es la señal más elocuente del momento",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El <strong>riesgo país</strong> cerró el martes en <strong>421 puntos básicos</strong>, con una suba de <strong>10pb</strong> respecto de los 411pb previos, cortando la racha de cuatro compresiones consecutivas. Las <strong>reservas del BCRA</strong> treparon a <strong>USD 49.642 millones</strong>, el nivel más alto en siete años, impulsadas por compras oficiales y la revaluación del oro. Los globales en dólares cerraron mixtos en Buenos Aires: <strong>GD30D US$58,53 (+0,09%)</strong>, <strong>GD35D US$83,14 (-0,19%)</strong>, <strong>AL30D US$57,07 (+0,35%)</strong>.",
+      "contexto": "Según Pablo Wende (Infobae), pese al clima externo favorable —UST 10Y en 4,615%, reservas en su techo—, el riesgo país no logra perforar los 400 puntos: el mercado ya convalidó el ancla fiscal y monetaria, pero exige certeza política que ni el oro ni Wall Street logran comprar. Se destrabó el conflicto portuario con una baja del 20% en tarifas tras pérdidas estimadas de USD 20 millones diarios. <strong>Pampa Energía</strong> reportó una ganancia bruta 75% superior a la del año pasado tras la suba del petróleo por la guerra en Medio Oriente.",
       "impacto": [
-        {"asset": "Riesgo país", "dir": "↓ 411pb (-19pb)", "cls": "up"},
-        {"asset": "GD30D", "dir": "↑ +0,65% (US$58,48)", "cls": "up"},
-        {"asset": "Reservas BCRA", "dir": "↑ superan USD 49.000M", "cls": "up"}
+        {"asset": "Riesgo país", "dir": "↑ 421pb (+10pb)", "cls": "dn"},
+        {"asset": "Reservas BCRA", "dir": "↑ USD 49.642M (máx. 7 años)", "cls": "up"},
+        {"asset": "GD30D", "dir": "↑ +0,09% (US$58,53)", "cls": "up"}
       ]
     },
     {
       "id": 5,
       "tag": "argentina · política",
-      "tag_class": "ta",
-      "title": "El Gobierno cede para destrabar la Ley de Tierras mientras arranca el juicio Cuadernos por Vialidad",
-      "brief": "El Ejecutivo hizo concesiones para conseguir la ley de inviolabilidad de la propiedad; en paralelo, Javier Iguacel declara hoy como primer testigo en el juicio por sobreprecios en Vialidad, justo cuando el Gobierno negocia nuevas concesiones de infraestructura.",
-      "tldr": "La mejora financiera todavía no se traduce en la calle: la pobreza subió al 30% y el 87% dice que su salario no le gana a la inflación",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>Gobierno</strong> cedió para destrabar la <strong>Ley de Tierras</strong> (inviolabilidad de la propiedad) y busca acuerdos con la oposición de cara a las negociaciones legislativas de 2027. Arranca el <strong>juicio Cuadernos</strong> por Vialidad: <strong>Javier Iguacel</strong> será el primer ex funcionario en declarar sobre sobreprecios y coimas, en momentos en que el Ejecutivo negocia el esquema de concesiones de infraestructura de cara a 2027. Según el INDEC, la <strong>pobreza</strong> subió al <strong>30%</strong> en el primer trimestre y la indigencia al <strong>6,5%</strong>, cortando meses de mejora; el consumo cayó <strong>1,6%</strong> en junio.",
-      "contexto": "Según una encuesta de Zentrix citada por El Cronista, el <strong>86,6%</strong> de los argentinos cree necesitar dos o más empleos para llegar a fin de mes y el <strong>87,4%</strong> afirma que su salario no le gana a la inflación. El economista Broda descarta una corrida cambiaria inminente, aunque advierte que la demanda de dólares (USD 2.000-2.300M mensuales) sigue firme. Crecen los pedidos de renuncia a <strong>Villarruel</strong> como vice, mientras <strong>Bullrich</strong> admite públicamente que buscará competir por la Presidencia en 2027.",
+      "tag_class": "tr",
+      "title": "Escala el conflicto diplomático con Brasil justo cuando crece la tensión legislativa por la Ley de Tierras",
+      "brief": "Brasil bajó el vínculo bilateral a \"encargado de negocios\" y no repuso a su embajador en Buenos Aires; en paralelo, Iguacel confirmó como testigo sobreprecios de hasta 40% en el juicio Cuadernos, y la sesión por la Ley de Tierras llega el jueves.",
+      "tldr": "El ruido diplomático con el principal socio comercial de Argentina llega justo cuando el Gobierno necesita previsibilidad de cara a octubre",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "<strong>Milei</strong> profundizó el cruce con <strong>Lula</strong> después de que Brasil decidiera no reponer a su embajador en Buenos Aires y bajar el vínculo a \"encargado de negocios\". Crece la tensión legislativa de cara a la sesión de la <strong>Ley de Tierras</strong> del jueves. En el <strong>juicio Cuadernos</strong>, <strong>Javier Iguacel</strong> confirmó como testigo el direccionamiento de licitaciones y sobreprecios de \"hasta el 40%\" en obra pública durante el gobierno de Cristina Kirchner, usados para pagar coimas. Según el INDEC, la <strong>pobreza</strong> se interrumpió en su baja: llegó al 30% de la población, sumando 600.000 personas en el primer trimestre.",
+      "contexto": "El oficialismo acordó llevar al recinto el <strong>19 de agosto</strong> la ampliación de la ley de \"inocencia fiscal\" y la reforma de la <strong>Carta Orgánica del BCRA</strong>. Brasil es el principal socio comercial de Argentina; la escalada no interrumpe el comercio bilateral de inmediato, pero eleva el riesgo de fricciones informales en agro e industria automotriz, muy integrados vía Mercosur, justo cuando el mercado exige certeza política para comprimir el riesgo país. Según la encuesta EMEC, el dólar oficial se proyecta en $1.681 y el blue en $1.700 hacia fin de 2026.",
       "impacto": [
-        {"asset": "Pobreza (INDEC, T1)", "dir": "↑ 30% (corta meses de mejora)", "cls": "dn"},
-        {"asset": "Consumo (jun.)", "dir": "↓ -1,6% mensual", "cls": "dn"}
+        {"asset": "Vínculo diplomático Argentina-Brasil", "dir": "↓ bajado a \"encargado de negocios\"", "cls": "dn"},
+        {"asset": "Pobreza (INDEC, T1)", "dir": "↑ 30% (+600.000 personas)", "cls": "dn"}
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Trump le da a Irán una \"última oportunidad\", pero Teherán niega estar negociando",
-      "texto": "El ultimátum eleva el riesgo de una escalada real esta semana, justo cuando el mercado había empezado a relajarse tras el desplome del petróleo del lunes."
+      "label": "Warsh convoca a William White (quien predijo 2008) justo cuando el JOLTS decepciona",
+      "texto": "La Fed se inclina hacia un enfoque de estabilidad financiera mientras el propio dato de empleo sugiere que la economía se enfría, no se recalienta como sugería el discurso de ayer sobre ganancias corporativas y PBI nominal."
     },
     {
-      "label": "La intervención por el yen se vende como diplomacia, pero esconde la fragilidad del propio mercado de Treasuries de EE.UU.",
-      "texto": "El gesto de \"amistad\" de Bessent evita que Japón venda parte de su stock de USD 1,1 billones en bonos del Tesoro — el parche no resuelve la falta de disciplina fiscal en EE.UU. ni la ausencia de suba de tasas en Japón."
+      "label": "Bessent dice que el acuerdo sobre Ormuz podría cerrarse \"hoy o mañana\", pero el patrón de Trump es amenazar y retroceder",
+      "texto": "Según Lazar Berman, lo que está en danza es apenas una extensión de 60 días del memorando vigente, no una resolución de fondo del programa nuclear iraní — el mercado debería descontar cada vez menos prima de riesgo genuina en cada nuevo anuncio."
     },
     {
-      "label": "El riesgo país argentino comprime a ritmo histórico mientras la pobreza sube y el consumo cae",
-      "texto": "La brecha entre el mercado financiero y la economía real se profundiza en la misma semana que el Gobierno negocia el Super RIGI y la ley de tierras, con el 87% de los argentinos diciendo que su salario no le gana a la inflación."
+      "label": "El riesgo país argentino sube pese a reservas en máximos de siete años",
+      "texto": "El mercado ya convalidó el ancla fiscal y monetaria, pero exige certeza política que ni el oro ni Wall Street logran comprar, justo cuando escala el conflicto diplomático con Brasil."
     }
   ],
   "correlaciones": [
     {
-      "par": "El petróleo rebota junto con el endurecimiento retórico de Trump hacia Irán",
-      "texto": "El Brent sube 2,08% el mismo día en que la retórica geopolítica se endurece, mostrando la sensibilidad inmediata del crudo a los titulares de Medio Oriente."
+      "par": "Wall Street marca récords mientras el Nikkei salta 3,66%",
+      "texto": "El optimismo por IA y la caída relativa del petróleo se retroalimentan globalmente, aunque el leasing de USD 1,09 billones de los hiperescaladores convierte ese optimismo en pasivo fijo de largo plazo."
     },
     {
-      "par": "Las tasas del Tesoro suben junto con las acciones, sin ancla clara de la Fed",
-      "texto": "El mercado sigue sin guía tras el corte del forward guidance de Warsh; si el JOLTS de hoy sorprende al alza, la curva larga podría reaccionar con fuerza sin que la Fed haya dicho una palabra."
+      "par": "El oro y la plata suben junto con las acciones, una combinación inusual",
+      "texto": "Sugiere que parte de la demanda de cobertura persiste pese al rally accionario, reflejo de la incertidumbre residual sobre Irán y sobre el rumbo real de la Fed."
     },
     {
-      "par": "La compresión del riesgo país argentino coincide con el regreso de las reservas del BCRA por encima de USD 49.000 millones",
-      "texto": "El mercado sigue premiando la acumulación de reservas y el avance de la agenda de reformas, pese al deterioro de los indicadores sociales en el mismo período."
+      "par": "El riesgo país argentino revierte su compresión el mismo día en que escala el conflicto diplomático con Brasil",
+      "texto": "El mercado parece premiar más la previsibilidad política regional que los datos duros de reservas, que treparon a un máximo de siete años en la misma rueda."
     }
   ],
-  "bottom_line": "<p><strong>Trump</strong> le dio a <strong>Irán</strong> una \"última oportunidad\" para cerrar un acuerdo sobre el <strong>Estrecho de Ormuz</strong> esta semana, amenazando con ataques \"devastadores\" si no hay avances — Teherán niega estar negociando, y el petróleo repunta (<strong>Brent +2,08% a US$85,51</strong>, <strong>WTI +1,54% a US$81,58</strong>) tras el desplome del lunes. <strong>BP</strong> y <strong>Aramco</strong> reportaron ganancias trimestrales muy superiores gracias a los precios elevados del crudo durante la guerra. En bancos centrales, la intervención conjunta por el yen se revela como algo más que diplomacia: según Bloomberg Opinion, el verdadero motivo es evitar que Japón tenga que vender parte de su stock de <strong>USD 1,1 billones</strong> en Treasuries, mientras la economía de EE.UU. muestra señales de sobrecalentamiento (ganancias corporativas +47% i.a., PBI nominal cerca de 8%) que hoy enfrentan su primer test duro con el dato de <strong>JOLTS</strong>.</p><p><strong>Para Argentina, la semana arrancó con una compresión histórica del riesgo país.</strong> Cerró en <strong>411pb (-19pb)</strong>, la cuarta baja consecutiva en otras tantas ruedas, mientras el <strong>BCRA</strong> recuperó reservas por encima de <strong>USD 49.000 millones</strong> y el Gobierno cedió para destrabar la <strong>Ley de Tierras</strong>. Sin embargo, el arranque del <strong>juicio Cuadernos</strong> por sobreprecios en Vialidad reabre el expediente de riesgo regulatorio justo cuando el Ejecutivo negocia nuevas concesiones de infraestructura, y los datos sociales (<strong>pobreza al 30%</strong>, consumo -1,6% en junio) muestran que la mejora financiera todavía no se traduce en bienestar cotidiano — la brecha entre el mercado y la calle sigue siendo la variable política de fondo de cara a 2027.</p>"
+  "bottom_line": "<p>Wall Street cierra en máximos históricos (<strong>Dow</strong>, <strong>S&amp;P 500</strong>) impulsado por el optimismo en IA y una caída relativa del petróleo, con el <strong>Nikkei</strong> saltando 3,66%. Pero detrás del festejo hay una señal estructural: los hiperescaladores (<strong>Microsoft, Meta, Oracle, Amazon y Alphabet</strong>) comprometieron <strong>USD 1,09 billones</strong> en leasing de centros de datos aún no construidos, transformando gasto variable en pasivo fijo — un problema de balance más que de márgenes si el ciclo de IA se enfría. En la Fed, <strong>Warsh</strong> convocó cinco task forces, incluyendo a <strong>William White</strong> (quien anticipó la crisis de 2008) en el de inflación, mientras <strong>Schmid</strong> pide más restricción — aunque el <strong>JOLTS</strong> de junio decepcionó (7,359M vs 7,44M esperado), sugiriendo que el mercado laboral se enfría. En Medio Oriente, <strong>Bessent</strong> dijo que un acuerdo para reabrir <strong>Ormuz</strong> podría cerrarse \"hoy o mañana\" tras un ataque hutí que hizo rebotar al petróleo, aunque el patrón de Trump de amenazar y retroceder sugiere que sería apenas una extensión de 60 días.</p><p><strong>Para Argentina, el desacople entre el contexto externo y el riesgo país es la señal del día.</strong> El <strong>riesgo país</strong> revirtió su racha de compresión y subió a <strong>421pb (+10pb)</strong>, pese a que las reservas del BCRA treparon a un máximo de siete años (<strong>USD 49.642 millones</strong>). El mercado exige certeza política que ni el oro ni Wall Street logran comprar, justo cuando escala el conflicto diplomático con <strong>Brasil</strong> (bajado a \"encargado de negocios\") y crece la tensión legislativa por la <strong>Ley de Tierras</strong> de cara a la sesión del jueves. Se destrabó el conflicto portuario con una baja del 20% en tarifas, y el juicio <strong>Cuadernos</strong> avanza con el testimonio de Iguacel sobre sobreprecios de hasta 40% en obra pública.</p>"
 }
