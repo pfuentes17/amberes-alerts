@@ -1,110 +1,109 @@
 {
-  "date": "2026-08-08",
-  "generated": "2026-08-08T14:50:00Z",
+  "date": "2026-08-10",
+  "generated": "2026-08-10T12:15:00Z",
   "sentiment": {
     "overall": "neutral",
-    "label": "Fin de semana sin rueda: repasamos el cierre del viernes, en el que Wall Street festejó el dato débil de empleo de julio y alcanzó récords ante la apuesta a un recorte de tasas de la Fed, mientras Argentina cerró con señales mixtas: el riesgo país subió a 446 puntos y las reservas del BCRA volvieron a caer debajo de los USD 50.000 millones, incluso con Milei enviando al Congreso la reforma de la Carta Orgánica del Central",
-    "fg": 63,
-    "fg_label": "Codicia",
-    "putcall": 0.55,
-    "aaii_bulls": 37.0
+    "label": "Wall Street sube de cara a la apertura y el petróleo repunta por el acuerdo Irán-Omán sobre el Estrecho de Ormuz, mientras Argentina arrastra la presión del riesgo país en máximos de dos meses y el Merval acumula seis ruedas de baja",
+    "fg": 64,
+    "fg_label": "Codicia"
   },
   "drivers": [
     {
       "id": 1,
       "tag": "bancos centrales · fed",
       "tag_class": "tb",
-      "title": "Wall Street cerró el viernes en récords tras el shock de empleo de julio, mientras la Fed profundiza su división interna",
-      "brief": "El informe de julio mostró una pérdida inesperada de 23.000 empleos, con el desempleo estable en 4,1%; el S&P 500 saltó a un récord de 7.758 puntos ante la apuesta a un recorte de tasas, mientras la Fed encara su quinto año consecutivo de inflación alta con una brecha interna cada vez más profunda.",
-      "tldr": "El mercado lee la debilidad laboral como preludio de un recorte, pero la inflación persistente mantiene a la Fed dividida",
+      "title": "Los futuros de Wall Street suben este lunes ante la apuesta a que la Fed se mantendrá flexible por más tiempo",
+      "brief": "El S&P 500 opera con futuros +0,6% tras el dato de empleo de julio (-23.000 puestos); no hay reunión de la Fed en agosto y la atención se traslada a Jackson Hole.",
+      "tldr": "El mercado extiende la lectura dovish del dato de empleo mientras espera señales en Jackson Hole",
       "sentiment": "ro",
       "sentiment_label": "🟢 Risk-On",
-      "evento": "La economía de <strong>EE.UU.</strong> perdió <strong>23.000 empleos</strong> en julio —una contracción inesperada— mientras la tasa de desempleo se mantuvo estable en <strong>4,1%</strong>. Wall Street interpretó el dato como una señal de que la <strong>Reserva Federal</strong> podría no necesitar subir tasas en el corto plazo: el <strong>S&amp;P 500</strong> avanzó <strong>0,62%</strong> hasta un récord de <strong>7.758 puntos</strong>, el <strong>Nasdaq</strong> saltó <strong>1,30%</strong> a <strong>26.691</strong> y el <strong>Dow Jones</strong> sumó <strong>0,28%</strong> a <strong>54.037</strong>. Puertas adentro de la Fed, la división se profundiza: tras mantener la tasa en el rango de <strong>3,50%-3,75%</strong> el 29 de julio con tres disidencias, un grupo cada vez mayor de funcionarios plantea la necesidad de subir tasas pronto ante cinco años consecutivos de inflación elevada.",
-      "contexto": "Hoy sábado los mercados de EE.UU. permanecen cerrados; los valores corresponden al cierre del viernes 07/08. El <strong>UST 10Y</strong> cerró esa rueda en <strong>4,69%</strong>. El mercado enfrenta una lectura compleja: el crecimiento podría estar acelerando incluso mientras reaparecen presiones inflacionarias, en gran medida ligadas a restricciones de oferta más que a un mercado laboral recalentado. La atención ahora se traslada a los próximos datos de inflación para determinar si la Fed inclina la balanza hacia una baja de tasas o una suba.",
+      "evento": "Los futuros del <strong>S&amp;P 500</strong> suben cerca de <strong>0,6%</strong> este lunes previo a la apertura, tras el informe de julio que mostró una pérdida de <strong>23.000 empleos</strong> y salarios más débiles de lo esperado, conocido el viernes. Wall Street cerró la semana pasada con su mejor performance desde abril, acumulando dos semanas consecutivas de ganancias.",
+      "contexto": "No hay reunión del FOMC programada para agosto; el próximo evento relevante es el simposio anual de Jackson Hole, donde el mercado espera señales sobre el rumbo de la política monetaria hacia fin de año. La <strong>UST 10Y</strong> opera en <strong>4,69%</strong> (cierre del 06/08) y el Fear &amp; Greed Index se ubica en <strong>64 puntos</strong>, en zona de Codicia.",
       "impacto": [
-        {"asset": "S&P 500", "dir": "↑ +0,62% a 7.758 (récord)", "cls": "up"},
-        {"asset": "Nasdaq", "dir": "↑ +1,30% a 26.691", "cls": "up"},
-        {"asset": "UST 10Y", "dir": "4,69% (rueda previa)", "cls": "neu"}
+        {"asset": "S&P 500 (SPY)", "dir": "↑ +0,61% (viernes)", "cls": "up"},
+        {"asset": "Nasdaq (QQQ)", "dir": "↑ +1,17% (viernes)", "cls": "up"},
+        {"asset": "UST 10Y", "dir": "4,69%", "cls": "neu"}
       ]
     },
     {
       "id": 2,
-      "tag": "argentina · mercados",
-      "tag_class": "ta",
-      "title": "El riesgo país argentino cerró la semana en 446 puntos y las reservas del BCRA volvieron a caer debajo de los USD 50.000 millones",
-      "brief": "El EMBI+ subió 18pb hasta 446 puntos en medio de una toma de ganancias global, mientras las reservas del Central cayeron USD 1.224 millones tras un pago de intereses al FMI hecho por el Tesoro.",
-      "tldr": "El mercado vuelve a exigir señales adicionales apenas se diluye el efecto de las reservas",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>riesgo país</strong> argentino escaló a <strong>446 puntos básicos</strong> (+18pb) en la rueda del jueves, en medio de una toma de ganancias a nivel global, revirtiendo parte de la mejora reciente que lo había llevado a mínimos de ocho años en abril. El mismo día, las <strong>reservas brutas del BCRA</strong> cayeron <strong>USD 1.224 millones</strong> y volvieron a ubicarse por debajo del umbral de <strong>USD 50.000 millones</strong> que habían superado por primera vez apenas 48 horas antes, tras un pago de intereses al <strong>FMI</strong> realizado por el Tesoro.",
-      "contexto": "Hoy sábado no hay rueda local; los valores corresponden al cierre del viernes 07/08. En el mercado local, los bonos soberanos en dólares mostraron un comportamiento dispar: <strong>GD30</strong> saltó <strong>3,57%</strong> a US$58,00 mientras <strong>AL41</strong> cedió <strong>1,21%</strong> a US$73,39, reflejo de una jornada con alta volatilidad idiosincrática. El dólar oficial cotiza <strong>$1.470/$1.520</strong>, el mayorista <strong>$1.489,5/$1.498,5</strong>, el MEP <strong>$1.520,3/$1.528,1</strong> y el CCL <strong>$1.578,4/$1.580,7</strong>. Analistas coinciden en que el umbral de 650-700pb sigue siendo la referencia para que Argentina retome el financiamiento voluntario en dólares, un objetivo que el nivel actual de 446pb ya deja relativamente cerca, pese al retroceso del día.",
+      "tag": "geopolítica · energía",
+      "tag_class": "tq",
+      "title": "Irán y Omán confirman la etapa final de un acuerdo por el Estrecho de Ormuz y el petróleo sube esta mañana",
+      "brief": "El acuerdo daría a Teherán mayor control sobre el tráfico entrante y una tasa de 5-7% sobre la carga; Irán aclaró que la reapertura total aún depende de condiciones adicionales a EE.UU.",
+      "tldr": "El mercado petrolero premia el avance diplomático pero Irán frena las expectativas de una reapertura inmediata",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "<strong>Irán</strong> y <strong>Omán</strong> confirmaron estar en la etapa final de un acuerdo sobre el tránsito comercial por el <strong>Estrecho de Ormuz</strong>, que le daría a Teherán mayor control sobre el tráfico entrante y el cobro de una tasa de entre <strong>5% y 7%</strong> sobre el valor de la carga. Irán aclaró que la reapertura total del paso todavía depende de que <strong>EE.UU.</strong> cumpla condiciones adicionales.",
+      "contexto": "El acuerdo se interpreta como un paso clave hacia el fin del conflicto iniciado en febrero, que había llevado a un cierre efectivo de la vía marítima. Esta mañana el petróleo sube: <strong>Brent</strong> +1,04% a <strong>US$84,42</strong> y <strong>WTI</strong> +0,83% a <strong>US$78,83</strong>, aunque el ETF <strong>USO</strong> había cerrado el viernes con una baja de 0,75% a US$117,98, reflejo del rezago entre el crudo físico y los instrumentos que replican futuros.",
       "impacto": [
-        {"asset": "Riesgo país", "dir": "↑ 446pb (+18pb)", "cls": "dn"},
-        {"asset": "Reservas BCRA", "dir": "↓ -USD 1.224M (bajo USD 50.000M)", "cls": "dn"},
-        {"asset": "GD30", "dir": "↑ +3,57% (US$58,00)", "cls": "up"}
+        {"asset": "Brent", "dir": "↑ +1,04% a US$84,42", "cls": "up"},
+        {"asset": "WTI", "dir": "↑ +0,83% a US$78,83", "cls": "up"},
+        {"asset": "Petróleo (USO)", "dir": "↓ -0,75% (cierre viernes)", "cls": "dn"}
       ]
     },
     {
       "id": 3,
-      "tag": "argentina · bcra",
+      "tag": "argentina · mercados",
       "tag_class": "ta",
-      "title": "Milei envía al Congreso la reforma de la Carta Orgánica del BCRA que elimina la asistencia al Tesoro",
-      "brief": "El proyecto elimina los mecanismos de financiamiento monetario al Tesoro pero mantiene la capacidad del Central de intervenir en el mercado secundario de bonos soberanos; Bausili descartó bajar encajes y un rescate a familias endeudadas.",
-      "tldr": "El blindaje institucional al BCRA no resigna su munición para intervenir en el mercado de deuda",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El Gobierno de <strong>Javier Milei</strong> presentó ante el Congreso el proyecto de reforma de la <strong>Carta Orgánica del BCRA</strong>, cuyo eje central es la eliminación de los mecanismos de financiamiento monetario al Tesoro. Sin embargo, el proyecto conserva la capacidad del Central para intervenir en el mercado secundario de títulos públicos. El presidente del <strong>BCRA</strong>, <strong>Santiago Bausili</strong>, rechazó de forma explícita los pedidos de bajar los encajes bancarios y ratificó que la prioridad sigue siendo la acumulación de reservas para anclar al peso.",
-      "contexto": "Bausili calificó la suba de la morosidad bancaria como una &ldquo;lenta digestión&rdquo; que demandará unos nueve meses en normalizarse, y descartó categóricamente un rescate del Gobierno para los hogares endeudados. La reforma llega en un contexto de reservas volátiles —cayeron por debajo de los USD 50.000 millones el mismo día tras el pago al FMI— y busca dar una señal institucional de cara a los próximos meses, aunque el mercado todavía no la premia en el corto plazo: el riesgo país subió pese al anuncio.",
+      "title": "El riesgo país argentino cerró el viernes en 451 puntos, su nivel más alto desde junio, y el Merval acumuló su sexta baja consecutiva",
+      "brief": "El EMBI+ subió 3% en la rueda hasta 451pb tras las declaraciones del titular del BCRA descartando un rescate a hogares endeudados.",
+      "tldr": "La presión sobre la deuda soberana se profundiza pese al buen clima internacional",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El <strong>riesgo país</strong> argentino cerró la rueda del viernes en <strong>451 puntos básicos</strong> (+3% en el día), su nivel más elevado desde el <strong>10 de junio</strong>. El <strong>S&amp;P Merval</strong> acumuló su sexta baja consecutiva, decoplándose de un contexto internacional favorable para emergentes.",
+      "contexto": "La presión se intensificó después de que el titular del <strong>BCRA</strong> descartara un rescate estatal para los hogares con problemas de pago de créditos bancarios, calificando la suba de la morosidad como una &ldquo;lenta digestión&rdquo; que demandará unos nueve meses en normalizarse — señal que el mercado interpretó como indicio de que el ajuste se prolongará. Los valores corresponden al cierre del viernes 07/08, último disponible antes de la apertura de hoy. El dólar oficial cotiza <strong>$1.470/$1.520</strong>, el MEP <strong>$1.520,3/$1.528,1</strong> y el CCL <strong>$1.578,4/$1.580,7</strong>.",
       "impacto": [
-        {"asset": "Reservas BCRA", "dir": "< USD 50.000M", "cls": "dn"},
-        {"asset": "Riesgo país", "dir": "446pb", "cls": "dn"}
+        {"asset": "Riesgo país", "dir": "↑ 451pb (+3% d/d)", "cls": "dn"},
+        {"asset": "S&P Merval", "dir": "↓ 6ª rueda consecutiva a la baja", "cls": "dn"},
+        {"asset": "GD30", "dir": "↑ +3,57% (viernes, US$58,00)", "cls": "up"}
       ]
     },
     {
       "id": 4,
-      "tag": "mercados · fx",
+      "tag": "argentina · bcra",
       "tag_class": "tg",
-      "title": "El oro saltó más de 2% el viernes ante la apuesta a un recorte de tasas de la Fed, mientras el yen se depreció a 158,3",
-      "brief": "GLD avanzó 2,26% a US$398,47 impulsado por la búsqueda de cobertura, el petróleo (USO) cedió 0,75% y el yen se depreció hasta 158,34 por dólar; el real brasileño cotiza en 5,10.",
-      "tldr": "La cobertura vía oro convive con un dólar que se debilita de forma dispareja en el mundo emergente",
+      "title": "El BCRA extiende su racha compradora de dólares pese a la presión sobre el riesgo país",
+      "brief": "El Central compró USD 111 millones y ya suma más de USD 2.800 millones adquiridos en lo que va de 2026.",
+      "tldr": "La acumulación de reservas convive con la exigencia del mercado de señales adicionales en el frente de deuda",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>oro</strong> (GLD) saltó <strong>2,26%</strong> hasta <strong>US$398,47</strong>, su mayor avance diario en semanas, impulsado por la búsqueda de cobertura ante la creciente apuesta a un recorte de tasas de la <strong>Fed</strong> tras el dato de empleo. En el otro extremo, el <strong>petróleo</strong> (USO) cedió <strong>0,75%</strong> a <strong>US$117,98</strong>. En el frente cambiario, el <strong>yen</strong> se depreció hasta <strong>158,34</strong> por dólar y el <strong>real brasileño</strong> cotiza en <strong>5,10</strong>, mientras el euro se ubica en <strong>0,867</strong> por dólar.",
-      "contexto": "Datos correspondientes al cierre del viernes 07/08, último disponible antes del fin de semana. El movimiento combinado —oro al alza, petróleo a la baja y monedas emergentes dispares— retrata un mercado que cubre el riesgo de una Fed más laxa sin abandonar del todo la cautela sobre el crecimiento global. Para Argentina, un dólar más débil a nivel global es, en general, una noticia favorable para las materias primas que exporta el país, aunque el efecto directo sobre el tipo de cambio local sigue dominado por la dinámica interna de reservas y riesgo país.",
+      "evento": "El <strong>Banco Central</strong> compró <strong>USD 111 millones</strong> en el mercado de cambios, prolongando la racha compradora y sumando más de <strong>USD 2.800 millones</strong> adquiridos en lo que va de 2026.",
+      "contexto": "La acumulación sostenida de reservas contrasta con la presión que persiste sobre los activos argentinos en dólares: el riesgo país tocó máximos de dos meses en la misma semana, reflejo de que el mercado sigue exigiendo señales adicionales más allá del frente cambiario para descomprimir el costo de financiamiento soberano.",
       "impacto": [
-        {"asset": "Oro (GLD)", "dir": "↑ +2,26% a US$398,47", "cls": "up"},
-        {"asset": "Petróleo (USO)", "dir": "↓ -0,75% a US$117,98", "cls": "dn"},
-        {"asset": "USD/JPY", "dir": "158,34 (yen débil)", "cls": "neu"}
+        {"asset": "Compras BCRA (hoy)", "dir": "↑ +USD 111M", "cls": "up"},
+        {"asset": "Compras BCRA (2026)", "dir": "↑ +USD 2.800M", "cls": "up"},
+        {"asset": "Riesgo país", "dir": "451pb", "cls": "dn"}
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Wall Street festeja el dato débil de empleo como preludio de un recorte, pero la Fed profundiza su división interna",
-      "texto": "La pérdida de 23.000 empleos en julio impulsó a los índices a récords ante la apuesta a una Fed más laxa, pero puertas adentro un número creciente de funcionarios plantea la necesidad de subir tasas tras cinco años de inflación elevada."
+      "label": "Wall Street opera en modo risk-on de cara a la apertura mientras Argentina arrastra seis ruedas consecutivas de caída en el Merval",
+      "texto": "La divergencia entre el humor global —futuros en alza, Fear &amp; Greed en zona de Codicia— y la presión local sobre el riesgo país (451pb, máximo desde junio) sigue sin resolverse."
     },
     {
-      "label": "Las reservas del BCRA caen debajo de los USD 50.000 millones apenas 48 horas después de haberlos superado por primera vez",
-      "texto": "El pago de intereses al FMI hecho por el Tesoro le restó USD 1.224 millones al Central, mostrando la volatilidad de un umbral que el mercado había celebrado como un hito apenas dos días antes."
+      "label": "El BCRA extiende su racha compradora de reservas mientras el riesgo país sube a máximos de dos meses",
+      "texto": "La acumulación de más de USD 2.800 millones en el año no alcanza, por ahora, para compensar la exigencia de señales adicionales por parte del mercado de deuda soberana."
     },
     {
-      "label": "El riesgo país sube a 446 puntos el mismo día en que Milei envía al Congreso la reforma que blinda al BCRA de la asistencia al Tesoro",
-      "texto": "La señal institucional de largo plazo convive con una toma de ganancias global que el mercado, en el corto plazo, pesa más que el anuncio regulatorio."
+      "label": "El acuerdo Irán-Omán por Ormuz avanza, pero Irán condiciona la reapertura total a exigencias adicionales a EE.UU.",
+      "texto": "El mercado petrolero sube en la expectativa de una resolución, pero el propio Irán advierte que el acuerdo con Omán no garantiza por sí solo la reapertura plena del paso."
     }
   ],
   "correlaciones": [
     {
-      "par": "El salto del oro coincide con la apuesta del mercado a que la Fed recortará tasas tras el dato de empleo de julio",
-      "texto": "GLD avanzó 2,26% el mismo día en que Wall Street festejó la pérdida de 23.000 empleos como señal de una Fed más laxa, un patrón típico de cobertura ante expectativas de tasas más bajas."
+      "par": "El repunte de los futuros de Wall Street coincide con una UST 10Y contenida en 4,69%",
+      "texto": "SPY y QQQ suben en las primeras ruedas de la semana mientras el rendimiento a 10 años se mantiene estable, reflejo de la apuesta consistente a una Fed más laxa tras el dato de empleo de julio."
     },
     {
-      "par": "La suba de GD30 (+3,57%) contrasta con el salto del riesgo país el mismo día",
-      "texto": "La divergencia entre un bono puntual en alza y el índice EMBI+ en suba sugiere que el movimiento del riesgo país responde más a la toma de ganancias global que a un deterioro específico de la curva soberana argentina."
+      "par": "La suba del petróleo por el acuerdo de Ormuz todavía no se refleja en el cierre previo de USO",
+      "texto": "El salto intradía de Brent y WTI esta mañana contrasta con el cierre bajista del viernes en el ETF USO, mostrando el rezago típico entre el crudo físico y los instrumentos que replican futuros."
     },
     {
-      "par": "La caída de reservas tras el pago al FMI coincide con la negativa de Bausili a bajar encajes bancarios",
-      "texto": "Ambas señales apuntan en la misma dirección: el BCRA prioriza la acumulación y protección de reservas por sobre medidas que podrían aliviar en el corto plazo la morosidad bancaria."
+      "par": "El BCRA compra dólares mientras el riesgo país sube, una combinación inusual",
+      "texto": "Normalmente la acumulación de reservas alivia la percepción de riesgo soberano, pero acá conviven en simultáneo, señal de que el mercado está mirando más allá del frente cambiario."
     }
   ],
-  "bottom_line": "<p>Sin rueda hoy sábado, repasamos el cierre del viernes: Wall Street terminó la semana en modo <strong>risk-on</strong>: el <strong>S&amp;P 500</strong> tocó un récord de <strong>7.758 puntos</strong> (+0,62%) y el <strong>Nasdaq</strong> saltó <strong>1,30%</strong> después de que el informe de julio mostrara una pérdida inesperada de <strong>23.000 empleos</strong>, leída por el mercado como un freno a la necesidad de que la <strong>Fed</strong> suba tasas. Puertas adentro del banco central estadounidense, sin embargo, la división se profundiza entre quienes piden paciencia y un grupo creciente que plantea subir tasas ante cinco años consecutivos de inflación elevada. El apetito por cobertura también impulsó al <strong>oro</strong> (+2,26%), mientras el <strong>yen</strong> se deprecia hasta <strong>158,34</strong> por dólar y el petróleo (USO) retrocede.</p><p><strong>Para Argentina, el humor global positivo no alcanza a compensar señales locales mixtas.</strong> El <strong>riesgo país</strong> trepó a <strong>446 puntos</strong> (+18pb) en medio de una toma de ganancias global, y las <strong>reservas del BCRA</strong> volvieron a caer debajo de los <strong>USD 50.000 millones</strong> apenas 48 horas después de haberlos superado por primera vez, tras un pago de intereses al <strong>FMI</strong>. El Gobierno avanza en paralelo con la reforma de la <strong>Carta Orgánica del BCRA</strong> que elimina el financiamiento al Tesoro pero conserva la capacidad de intervención en el mercado de bonos, mientras <strong>Bausili</strong> descarta bajar encajes o rescatar a los hogares endeudados. La agenda de la próxima semana estará marcada por la evolución del riesgo país y por si el mercado empieza a premiar la señal institucional del proyecto de reforma.</p>"
+  "bottom_line": "<p>Los futuros de Wall Street suben este lunes (S&amp;P 500 ~+0,6%) de cara a la apertura, con el mercado apostando a que la <strong>Fed</strong> se mantendrá con una postura flexible tras el dato de empleo de julio (pérdida de 23.000 puestos). No hay reunión del FOMC en agosto —el próximo hito es el simposio de <strong>Jackson Hole</strong>— y la <strong>UST 10Y</strong> opera en 4,69% con el Fear &amp; Greed Index en 64 puntos (Codicia). En el frente geopolítico, <strong>Irán</strong> y <strong>Omán</strong> confirmaron estar en la etapa final de un acuerdo sobre el <strong>Estrecho de Ormuz</strong>, lo que impulsa al petróleo esta mañana (Brent +1,04% a US$84,42, WTI +0,83% a US$78,83), aunque Teherán aclaró que la reapertura plena todavía depende de condiciones adicionales a EE.UU.</p><p><strong>Para Argentina, el humor global positivo todavía no alcanza a compensar la presión local.</strong> El <strong>riesgo país</strong> cerró el viernes en <strong>451 puntos</strong>, su nivel más alto desde el 10 de junio, mientras el <strong>S&amp;P Merval</strong> acumuló su sexta baja consecutiva. La suba se profundizó después de que el titular del <strong>BCRA</strong> descartara un rescate estatal para los hogares endeudados y advirtiera que la limpieza de la cartera irregular demandará nueve meses. En paralelo, el Central extendió su racha compradora de dólares (+USD 111M hoy, +USD 2.800M en el año), una señal positiva en el frente cambiario que todavía no logra descomprimir el riesgo soberano. Con el dólar oficial en $1.470/$1.520, el MEP en $1.520,3/$1.528,1 y el CCL en $1.578,4/$1.580,7, la atención de la semana estará puesta en si la rueda de hoy logra cortar la racha bajista del Merval y en la evolución del riesgo país tras tocar máximos de dos meses.</p>"
 }
