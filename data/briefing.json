@@ -1,109 +1,110 @@
 {
-  "date": "2026-08-10",
-  "generated": "2026-08-10T12:15:00Z",
+  "date": "2026-08-11",
+  "generated": "2026-08-11T12:20:00Z",
   "sentiment": {
-    "overall": "neutral",
-    "label": "Wall Street sube de cara a la apertura y el petróleo repunta por el acuerdo Irán-Omán sobre el Estrecho de Ormuz, mientras Argentina arrastra la presión del riesgo país en máximos de dos meses y el Merval acumula seis ruedas de baja",
+    "overall": "risk-off",
+    "label": "El petróleo se dispara y el oro busca refugio ante la escalada entre EE.UU. e Irán por el Estrecho de Ormuz, Wall Street opera mixto a la espera del IPC de mañana, y en Argentina el riesgo país trepó a 463 puntos, su nivel más alto en dos meses",
     "fg": 64,
-    "fg_label": "Codicia"
+    "fg_label": "Codicia",
+    "putcall": 0.54,
+    "aaii_bulls": 37.0
   },
   "drivers": [
     {
       "id": 1,
-      "tag": "bancos centrales · fed",
-      "tag_class": "tb",
-      "title": "Los futuros de Wall Street suben este lunes ante la apuesta a que la Fed se mantendrá flexible por más tiempo",
-      "brief": "El S&P 500 opera con futuros +0,6% tras el dato de empleo de julio (-23.000 puestos); no hay reunión de la Fed en agosto y la atención se traslada a Jackson Hole.",
-      "tldr": "El mercado extiende la lectura dovish del dato de empleo mientras espera señales en Jackson Hole",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "Los futuros del <strong>S&amp;P 500</strong> suben cerca de <strong>0,6%</strong> este lunes previo a la apertura, tras el informe de julio que mostró una pérdida de <strong>23.000 empleos</strong> y salarios más débiles de lo esperado, conocido el viernes. Wall Street cerró la semana pasada con su mejor performance desde abril, acumulando dos semanas consecutivas de ganancias.",
-      "contexto": "No hay reunión del FOMC programada para agosto; el próximo evento relevante es el simposio anual de Jackson Hole, donde el mercado espera señales sobre el rumbo de la política monetaria hacia fin de año. La <strong>UST 10Y</strong> opera en <strong>4,69%</strong> (cierre del 06/08) y el Fear &amp; Greed Index se ubica en <strong>64 puntos</strong>, en zona de Codicia.",
+      "tag": "geopolítica · energía",
+      "tag_class": "tq",
+      "title": "El petróleo se dispara ante el freno en las negociaciones EE.UU.-Irán por el Estrecho de Ormuz",
+      "brief": "Trump endureció el tono con Irán por las compensaciones de guerra exigidas para reabrir Ormuz; hutíes atacaron un buque comercial en el Mar Rojo.",
+      "tldr": "Ormuz en vilo: el petróleo salta y el oro opera como cobertura",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El petróleo saltó con fuerza (ETF <strong>USO</strong> +6,7%) luego de que se enfriaran las esperanzas de un acuerdo diplomático para reabrir el <strong>Estrecho de Ormuz</strong>. El presidente <strong>Trump</strong> endureció sus exigencias a Irán por compensaciones de guerra, mientras Teherán insiste en que EE.UU. debe levantar el bloqueo antes de aceptar la reapertura plena. En paralelo, milicias hutíes atacaron un buque comercial en el estrecho de Bab al-Mandeb, en el Mar Rojo.",
+      "contexto": "El mercado empieza a descontar una prima de riesgo geopolítico más persistente. El oro (<strong>GLD</strong>) subió <strong>+1,02%</strong> como cobertura, mientras Wall Street opera cauteloso a la espera de la definición del conflicto y de los datos de inflación de esta semana.",
       "impacto": [
-        {"asset": "S&P 500 (SPY)", "dir": "↑ +0,61% (viernes)", "cls": "up"},
-        {"asset": "Nasdaq (QQQ)", "dir": "↑ +1,17% (viernes)", "cls": "up"},
-        {"asset": "UST 10Y", "dir": "4,69%", "cls": "neu"}
+        {"asset": "Petróleo (USO)", "dir": "↑ +6,73%", "cls": "up"},
+        {"asset": "Oro (GLD)", "dir": "↑ +1,02%", "cls": "up"}
       ]
     },
     {
       "id": 2,
-      "tag": "geopolítica · energía",
-      "tag_class": "tq",
-      "title": "Irán y Omán confirman la etapa final de un acuerdo por el Estrecho de Ormuz y el petróleo sube esta mañana",
-      "brief": "El acuerdo daría a Teherán mayor control sobre el tráfico entrante y una tasa de 5-7% sobre la carga; Irán aclaró que la reapertura total aún depende de condiciones adicionales a EE.UU.",
-      "tldr": "El mercado petrolero premia el avance diplomático pero Irán frena las expectativas de una reapertura inmediata",
+      "tag": "bancos centrales · fed",
+      "tag_class": "tb",
+      "title": "Wall Street opera mixto con la Fed en pausa y el IPC de julio como próximo test",
+      "brief": "La Fed mantuvo la tasa en 3,50%-3,75% en julio y no vuelve a reunirse hasta septiembre; el mercado espera el CPI del miércoles y el PPI del jueves.",
+      "tldr": "Sin sorpresas de la Fed; el dato clave llega mañana",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "<strong>Irán</strong> y <strong>Omán</strong> confirmaron estar en la etapa final de un acuerdo sobre el tránsito comercial por el <strong>Estrecho de Ormuz</strong>, que le daría a Teherán mayor control sobre el tráfico entrante y el cobro de una tasa de entre <strong>5% y 7%</strong> sobre el valor de la carga. Irán aclaró que la reapertura total del paso todavía depende de que <strong>EE.UU.</strong> cumpla condiciones adicionales.",
-      "contexto": "El acuerdo se interpreta como un paso clave hacia el fin del conflicto iniciado en febrero, que había llevado a un cierre efectivo de la vía marítima. Esta mañana el petróleo sube: <strong>Brent</strong> +1,04% a <strong>US$84,42</strong> y <strong>WTI</strong> +0,83% a <strong>US$78,83</strong>, aunque el ETF <strong>USO</strong> había cerrado el viernes con una baja de 0,75% a US$117,98, reflejo del rezago entre el crudo físico y los instrumentos que replican futuros.",
+      "evento": "Tras mantener el rango de tasas en <strong>3,50%-3,75%</strong> en la reunión del 28-29 de julio, la Fed no vuelve a reunirse hasta septiembre. Los principales índices operan mixtos y sin dirección clara mientras el mercado espera el <strong>IPC de julio</strong> de EE.UU. mañana miércoles y el <strong>PPI</strong> el jueves, datos que podrían definir el rumbo de la tasa en la próxima reunión.",
+      "contexto": "La <strong>UST 10Y</strong> cerró en <strong>4,65%</strong> (cierre del 07/08, último dato disponible). Un IPC en línea o por debajo de lo esperado reforzaría las apuestas de un recorte en septiembre; una sorpresa al alza, sumada al shock de petróleo, complicaría el escenario para la Fed.",
       "impacto": [
-        {"asset": "Brent", "dir": "↑ +1,04% a US$84,42", "cls": "up"},
-        {"asset": "WTI", "dir": "↑ +0,83% a US$78,83", "cls": "up"},
-        {"asset": "Petróleo (USO)", "dir": "↓ -0,75% (cierre viernes)", "cls": "dn"}
+        {"asset": "S&P 500 (SPY)", "dir": "↓ -0,03%", "cls": "dn"},
+        {"asset": "Nasdaq (QQQ)", "dir": "↓ -0,30%", "cls": "dn"},
+        {"asset": "UST 10Y", "dir": "4,65%", "cls": "neu"}
       ]
     },
     {
       "id": 3,
-      "tag": "argentina · mercados",
-      "tag_class": "ta",
-      "title": "El riesgo país argentino cerró el viernes en 451 puntos, su nivel más alto desde junio, y el Merval acumuló su sexta baja consecutiva",
-      "brief": "El EMBI+ subió 3% en la rueda hasta 451pb tras las declaraciones del titular del BCRA descartando un rescate a hogares endeudados.",
-      "tldr": "La presión sobre la deuda soberana se profundiza pese al buen clima internacional",
+      "tag": "argentina · riesgo soberano",
+      "tag_class": "tr",
+      "title": "El riesgo país argentino trepó a 463 puntos, su nivel más alto en dos meses",
+      "brief": "Subió +12 unidades y acumula cinco ruedas consecutivas al alza, presionado por la volatilidad internacional y el deterioro del humor social local.",
+      "tldr": "El riesgo país se aleja de los 400 puntos por quinto día seguido",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>riesgo país</strong> argentino cerró la rueda del viernes en <strong>451 puntos básicos</strong> (+3% en el día), su nivel más elevado desde el <strong>10 de junio</strong>. El <strong>S&amp;P Merval</strong> acumuló su sexta baja consecutiva, decoplándose de un contexto internacional favorable para emergentes.",
-      "contexto": "La presión se intensificó después de que el titular del <strong>BCRA</strong> descartara un rescate estatal para los hogares con problemas de pago de créditos bancarios, calificando la suba de la morosidad como una &ldquo;lenta digestión&rdquo; que demandará unos nueve meses en normalizarse — señal que el mercado interpretó como indicio de que el ajuste se prolongará. Los valores corresponden al cierre del viernes 07/08, último disponible antes de la apertura de hoy. El dólar oficial cotiza <strong>$1.470/$1.520</strong>, el MEP <strong>$1.520,3/$1.528,1</strong> y el CCL <strong>$1.578,4/$1.580,7</strong>.",
+      "evento": "El <strong>riesgo país</strong> argentino subió <strong>+12 puntos</strong> hasta <strong>463 puntos básicos</strong>, su nivel más alto en dos meses, extendiendo a cinco la racha de ruedas consecutivas al alza. La suba responde tanto a la volatilidad internacional —guerra en Medio Oriente, suba de tasas globales— como al deterioro del humor social local.",
+      "contexto": "El mercado también mira el <strong>IPC de julio</strong>, que el INDEC publica el <strong>jueves 13/8</strong> a las 16hs: el REM proyecta 2,0% mensual, con privados en un rango de 1,8% a 2,1%, tras conocerse que la inflación de CABA trepó a 2,9% en julio. Los bonos soberanos operan mixtos/negativos: <strong>AL30</strong> -0,28%, <strong>GD30</strong> -0,17%, <strong>GD35</strong> -0,45%, <strong>GD41</strong> -0,64%.",
       "impacto": [
-        {"asset": "Riesgo país", "dir": "↑ 451pb (+3% d/d)", "cls": "dn"},
-        {"asset": "S&P Merval", "dir": "↓ 6ª rueda consecutiva a la baja", "cls": "dn"},
-        {"asset": "GD30", "dir": "↑ +3,57% (viernes, US$58,00)", "cls": "up"}
+        {"asset": "Riesgo país", "dir": "↑ 463 pb (+12u)", "cls": "up"},
+        {"asset": "GD30", "dir": "↓ -0,17%", "cls": "dn"},
+        {"asset": "GD35", "dir": "↓ -0,45%", "cls": "dn"}
       ]
     },
     {
       "id": 4,
-      "tag": "argentina · bcra",
-      "tag_class": "tg",
-      "title": "El BCRA extiende su racha compradora de dólares pese a la presión sobre el riesgo país",
-      "brief": "El Central compró USD 111 millones y ya suma más de USD 2.800 millones adquiridos en lo que va de 2026.",
-      "tldr": "La acumulación de reservas convive con la exigencia del mercado de señales adicionales en el frente de deuda",
+      "tag": "argentina · cambiario",
+      "tag_class": "ta",
+      "title": "El dólar oficial sostenido en $1.520 y la brecha con el CCL ronda 4%",
+      "brief": "El mayorista cerró en $1.496, el blue en $1.535 y el CCL en $1.583, sin sobresaltos pese a la volatilidad internacional.",
+      "tldr": "Brecha cambiaria estable a la espera del IPC de julio",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>Banco Central</strong> compró <strong>USD 111 millones</strong> en el mercado de cambios, prolongando la racha compradora y sumando más de <strong>USD 2.800 millones</strong> adquiridos en lo que va de 2026.",
-      "contexto": "La acumulación sostenida de reservas contrasta con la presión que persiste sobre los activos argentinos en dólares: el riesgo país tocó máximos de dos meses en la misma semana, reflejo de que el mercado sigue exigiendo señales adicionales más allá del frente cambiario para descomprimir el costo de financiamiento soberano.",
+      "evento": "El dólar oficial cerró en <strong>$1.520</strong> (venta), el mayorista en <strong>$1.496</strong> y el blue en <strong>$1.535</strong>. El <strong>MEP</strong> se ubicó en <strong>$1.526,1</strong> y el <strong>CCL</strong> en <strong>$1.583,2</strong>, dejando una brecha de aproximadamente 4% con el oficial.",
+      "contexto": "Las LECAPs de plazo más corto (<strong>S14G6</strong>, vencimiento 14/8) siguen firmes, reflejo de la demanda de cobertura de tasa en pesos de cara al dato de inflación del jueves. La brecha cambiaria se mantiene contenida pese al shock de petróleo y la suba del riesgo país.",
       "impacto": [
-        {"asset": "Compras BCRA (hoy)", "dir": "↑ +USD 111M", "cls": "up"},
-        {"asset": "Compras BCRA (2026)", "dir": "↑ +USD 2.800M", "cls": "up"},
-        {"asset": "Riesgo país", "dir": "451pb", "cls": "dn"}
+        {"asset": "Dólar Oficial", "dir": "$1.520", "cls": "neu"},
+        {"asset": "Dólar CCL", "dir": "$1.583", "cls": "neu"},
+        {"asset": "Dólar Blue", "dir": "$1.535", "cls": "neu"}
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Wall Street opera en modo risk-on de cara a la apertura mientras Argentina arrastra seis ruedas consecutivas de caída en el Merval",
-      "texto": "La divergencia entre el humor global —futuros en alza, Fear &amp; Greed en zona de Codicia— y la presión local sobre el riesgo país (451pb, máximo desde junio) sigue sin resolverse."
+      "label": "El petróleo se dispara por la tensión EE.UU.-Irán mientras Wall Street opera mixto a la espera del IPC",
+      "texto": "El shock de oferta energético convive con índices bursátiles prácticamente sin cambios, en un mercado que prefiere esperar la definición del conflicto y el dato de inflación del miércoles antes de tomar posición."
     },
     {
-      "label": "El BCRA extiende su racha compradora de reservas mientras el riesgo país sube a máximos de dos meses",
-      "texto": "La acumulación de más de USD 2.800 millones en el año no alcanza, por ahora, para compensar la exigencia de señales adicionales por parte del mercado de deuda soberana."
+      "label": "El riesgo país argentino sube por quinto día consecutivo pese a que el Merval había cortado su racha bajista el lunes",
+      "texto": "La mejora puntual en renta variable no logró contagiarse a la deuda soberana, que sigue presionada por el humor social local y la volatilidad internacional."
     },
     {
-      "label": "El acuerdo Irán-Omán por Ormuz avanza, pero Irán condiciona la reapertura total a exigencias adicionales a EE.UU.",
-      "texto": "El mercado petrolero sube en la expectativa de una resolución, pero el propio Irán advierte que el acuerdo con Omán no garantiza por sí solo la reapertura plena del paso."
+      "label": "El mercado local espera el IPC de julio del jueves con la brecha cambiaria contenida",
+      "texto": "Pese al salto del petróleo y la suba del riesgo país, el dólar oficial, el MEP y el CCL se mantienen relativamente estables, a la espera de la definición del dato de inflación."
     }
   ],
   "correlaciones": [
     {
-      "par": "El repunte de los futuros de Wall Street coincide con una UST 10Y contenida en 4,69%",
-      "texto": "SPY y QQQ suben en las primeras ruedas de la semana mientras el rendimiento a 10 años se mantiene estable, reflejo de la apuesta consistente a una Fed más laxa tras el dato de empleo de julio."
+      "par": "La suba del petróleo por la tensión en Medio Oriente empuja al oro como cobertura",
+      "texto": "USO +6,73% y GLD +1,02% se mueven en la misma dirección, reflejo clásico de un shock geopolítico que dispara simultáneamente la prima de riesgo energético y la demanda de refugio."
     },
     {
-      "par": "La suba del petróleo por el acuerdo de Ormuz todavía no se refleja en el cierre previo de USO",
-      "texto": "El salto intradía de Brent y WTI esta mañana contrasta con el cierre bajista del viernes en el ETF USO, mostrando el rezago típico entre el crudo físico y los instrumentos que replican futuros."
+      "par": "El riesgo país sube mientras los bonos soberanos en dólares ceden en toda la curva",
+      "texto": "AL30, GD30, GD35 y GD41 operan todos en baja, consistente con la suba de 12 puntos del riesgo país y la mayor cautela sobre la deuda argentina."
     },
     {
-      "par": "El BCRA compra dólares mientras el riesgo país sube, una combinación inusual",
-      "texto": "Normalmente la acumulación de reservas alivia la percepción de riesgo soberano, pero acá conviven en simultáneo, señal de que el mercado está mirando más allá del frente cambiario."
+      "par": "La brecha cambiaria se mantiene estable pese a la mayor volatilidad internacional",
+      "texto": "A diferencia de la deuda soberana, el dólar oficial, el MEP y el CCL no reflejan todavía la tensión externa, señal de que el mercado cambiario espera la definición del IPC antes de moverse."
     }
   ],
-  "bottom_line": "<p>Los futuros de Wall Street suben este lunes (S&amp;P 500 ~+0,6%) de cara a la apertura, con el mercado apostando a que la <strong>Fed</strong> se mantendrá con una postura flexible tras el dato de empleo de julio (pérdida de 23.000 puestos). No hay reunión del FOMC en agosto —el próximo hito es el simposio de <strong>Jackson Hole</strong>— y la <strong>UST 10Y</strong> opera en 4,69% con el Fear &amp; Greed Index en 64 puntos (Codicia). En el frente geopolítico, <strong>Irán</strong> y <strong>Omán</strong> confirmaron estar en la etapa final de un acuerdo sobre el <strong>Estrecho de Ormuz</strong>, lo que impulsa al petróleo esta mañana (Brent +1,04% a US$84,42, WTI +0,83% a US$78,83), aunque Teherán aclaró que la reapertura plena todavía depende de condiciones adicionales a EE.UU.</p><p><strong>Para Argentina, el humor global positivo todavía no alcanza a compensar la presión local.</strong> El <strong>riesgo país</strong> cerró el viernes en <strong>451 puntos</strong>, su nivel más alto desde el 10 de junio, mientras el <strong>S&amp;P Merval</strong> acumuló su sexta baja consecutiva. La suba se profundizó después de que el titular del <strong>BCRA</strong> descartara un rescate estatal para los hogares endeudados y advirtiera que la limpieza de la cartera irregular demandará nueve meses. En paralelo, el Central extendió su racha compradora de dólares (+USD 111M hoy, +USD 2.800M en el año), una señal positiva en el frente cambiario que todavía no logra descomprimir el riesgo soberano. Con el dólar oficial en $1.470/$1.520, el MEP en $1.520,3/$1.528,1 y el CCL en $1.578,4/$1.580,7, la atención de la semana estará puesta en si la rueda de hoy logra cortar la racha bajista del Merval y en la evolución del riesgo país tras tocar máximos de dos meses.</p>"
+  "bottom_line": "<p>El humor de mercado global está condicionado por la escalada entre <strong>EE.UU.</strong> e <strong>Irán</strong>: el petróleo saltó con fuerza (USO +6,73%) ante el freno en las negociaciones para reabrir el <strong>Estrecho de Ormuz</strong>, y el oro operó como cobertura (+1,02%), mientras Wall Street cotiza prácticamente sin cambios (S&amp;P 500 -0,03%, Nasdaq -0,30%) a la espera del <strong>IPC de julio</strong> de EE.UU. que se conoce mañana miércoles, seguido del PPI el jueves. La Fed, que mantuvo la tasa en 3,50%-3,75% en julio, no vuelve a reunirse hasta septiembre.</p><p><strong>Para Argentina, la combinación de mayor tensión internacional y el deterioro del humor social empujó al riesgo país a 463 puntos</strong>, su nivel más alto en dos meses, con toda la curva de bonos soberanos en baja (AL30, GD30, GD35, GD41). La atención local se traslada ahora al jueves 13/8, cuando el INDEC difunda el IPC de julio (REM: 2,0%; privados: 1,8%-2,1%, tras un dato de CABA de 2,9%). Por ahora el frente cambiario se mantiene relativamente estable —oficial en $1.520, CCL en $1.583, brecha ~4%— pero un IPC por encima de lo esperado, combinado con el shock de petróleo, sumaría presión tanto sobre el tipo de cambio como sobre las tasas en pesos de corto plazo.</p>"
 }
