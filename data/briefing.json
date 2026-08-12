@@ -1,10 +1,10 @@
 {
-  "date": "2026-08-11",
-  "generated": "2026-08-11T12:20:00Z",
+  "date": "2026-08-12",
+  "generated": "2026-08-12T12:10:00Z",
   "sentiment": {
-    "overall": "risk-off",
-    "label": "El petróleo se dispara y el oro busca refugio ante la escalada entre EE.UU. e Irán por el Estrecho de Ormuz, Wall Street opera mixto a la espera del IPC de mañana, y en Argentina el riesgo país trepó a 463 puntos, su nivel más alto en dos meses",
-    "fg": 64,
+    "overall": "neutral",
+    "label": "Wall Street cerró con bajas moderadas y el petróleo subió en la previa del IPC de julio de EE.UU., que se conoce hoy a las 8:30hs (ET), mientras en Argentina el riesgo país extendió su escalada a 465 puntos y la brecha cambiaria se mantiene contenida",
+    "fg": 61,
     "fg_label": "Codicia",
     "putcall": 0.54,
     "aaii_bulls": 37.0
@@ -12,99 +12,100 @@
   "drivers": [
     {
       "id": 1,
-      "tag": "geopolítica · energía",
-      "tag_class": "tq",
-      "title": "El petróleo se dispara ante el freno en las negociaciones EE.UU.-Irán por el Estrecho de Ormuz",
-      "brief": "Trump endureció el tono con Irán por las compensaciones de guerra exigidas para reabrir Ormuz; hutíes atacaron un buque comercial en el Mar Rojo.",
-      "tldr": "Ormuz en vilo: el petróleo salta y el oro opera como cobertura",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El petróleo saltó con fuerza (ETF <strong>USO</strong> +6,7%) luego de que se enfriaran las esperanzas de un acuerdo diplomático para reabrir el <strong>Estrecho de Ormuz</strong>. El presidente <strong>Trump</strong> endureció sus exigencias a Irán por compensaciones de guerra, mientras Teherán insiste en que EE.UU. debe levantar el bloqueo antes de aceptar la reapertura plena. En paralelo, milicias hutíes atacaron un buque comercial en el estrecho de Bab al-Mandeb, en el Mar Rojo.",
-      "contexto": "El mercado empieza a descontar una prima de riesgo geopolítico más persistente. El oro (<strong>GLD</strong>) subió <strong>+1,02%</strong> como cobertura, mientras Wall Street opera cauteloso a la espera de la definición del conflicto y de los datos de inflación de esta semana.",
+      "tag": "bancos centrales · fed",
+      "tag_class": "tb",
+      "title": "El mercado global contiene la respiración: hoy se conoce el IPC de julio de EE.UU., clave para la Fed en septiembre",
+      "brief": "El BLS publica hoy a las 8:30hs (ET) el dato de inflación de julio; el consenso privado proyecta 3,4% i.a. headline y 2,5% i.a. núcleo, ambos en baja frente a junio.",
+      "tldr": "El dato del día llega horas después de este briefing",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "Hoy miércoles <strong>12/8</strong> a las 8:30hs (ET) la Oficina de Estadísticas Laborales (BLS) publica el <strong>IPC de julio</strong> de EE.UU. El consenso de mercado proyecta una suba de <strong>0,2% mensual</strong> en el núcleo y una desaceleración interanual a <strong>2,5%</strong> (desde 2,6% en junio), con el índice general esperado en <strong>3,4% i.a.</strong> (desde 3,5%). Wall Street cerró ayer con bajas moderadas y sin definición clara: <strong>S&amp;P 500 (SPY)</strong> -0,32%, <strong>Nasdaq (QQQ)</strong> -0,34%.",
+      "contexto": "Nota: al momento de redactar este briefing el dato aún no fue publicado. Un IPC en línea o por debajo de lo esperado reforzaría las apuestas de un recorte de tasas en la reunión de septiembre; una sorpresa al alza complicaría el escenario para la Fed. La <strong>UST 10Y</strong> cerró en <strong>4,72%</strong> (cierre del 10/08, último dato disponible).",
       "impacto": [
-        {"asset": "Petróleo (USO)", "dir": "↑ +6,73%", "cls": "up"},
-        {"asset": "Oro (GLD)", "dir": "↑ +1,02%", "cls": "up"}
+        {"asset": "S&P 500 (SPY)", "dir": "↓ -0,32%", "cls": "dn"},
+        {"asset": "Nasdaq (QQQ)", "dir": "↓ -0,34%", "cls": "dn"},
+        {"asset": "UST 10Y", "dir": "4,72%", "cls": "neu"}
       ]
     },
     {
       "id": 2,
-      "tag": "bancos centrales · fed",
-      "tag_class": "tb",
-      "title": "Wall Street opera mixto con la Fed en pausa y el IPC de julio como próximo test",
-      "brief": "La Fed mantuvo la tasa en 3,50%-3,75% en julio y no vuelve a reunirse hasta septiembre; el mercado espera el CPI del miércoles y el PPI del jueves.",
-      "tldr": "Sin sorpresas de la Fed; el dato clave llega mañana",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Tras mantener el rango de tasas en <strong>3,50%-3,75%</strong> en la reunión del 28-29 de julio, la Fed no vuelve a reunirse hasta septiembre. Los principales índices operan mixtos y sin dirección clara mientras el mercado espera el <strong>IPC de julio</strong> de EE.UU. mañana miércoles y el <strong>PPI</strong> el jueves, datos que podrían definir el rumbo de la tasa en la próxima reunión.",
-      "contexto": "La <strong>UST 10Y</strong> cerró en <strong>4,65%</strong> (cierre del 07/08, último dato disponible). Un IPC en línea o por debajo de lo esperado reforzaría las apuestas de un recorte en septiembre; una sorpresa al alza, sumada al shock de petróleo, complicaría el escenario para la Fed.",
+      "tag": "argentina · riesgo soberano",
+      "tag_class": "tr",
+      "title": "El riesgo país argentino extiende su escalada y llega a 465 puntos, el nivel más alto en más de dos semanas",
+      "brief": "El índice acumula +54 puntos desde el piso de 411 registrado el 3/8, aunque los bonos soberanos en dólares operan con signo positivo.",
+      "tldr": "El riesgo país sube pero la deuda en dólares no acompaña",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El <strong>riesgo país</strong> argentino se ubicó en <strong>465 puntos básicos</strong> (dato del 10/08, último disponible en la serie oficial), acumulando una suba de <strong>+54 unidades</strong> desde el piso de 411 puntos del 3 de agosto y encadenando cinco ruedas consecutivas al alza. Pese a la escalada del índice, los bonos soberanos en dólares operan con signo positivo: <strong>GD30</strong> +0,17%, <strong>GD35</strong> +0,41%, <strong>AL30</strong> +0,12%, <strong>GD41</strong> +0,66%.",
+      "contexto": "La divergencia entre la suba del riesgo país y la firmeza de los bonos sugiere un posible rezago en la actualización del índice frente al precio de mercado de la deuda. De todas formas, la tendencia de las últimas dos semanas es claramente ascendente, en un contexto de mayor cautela internacional previo al IPC de EE.UU.",
       "impacto": [
-        {"asset": "S&P 500 (SPY)", "dir": "↓ -0,03%", "cls": "dn"},
-        {"asset": "Nasdaq (QQQ)", "dir": "↓ -0,30%", "cls": "dn"},
-        {"asset": "UST 10Y", "dir": "4,65%", "cls": "neu"}
+        {"asset": "Riesgo país", "dir": "↑ 465 pb (10/08)", "cls": "up"},
+        {"asset": "GD30", "dir": "↑ +0,17%", "cls": "up"},
+        {"asset": "GD35", "dir": "↑ +0,41%", "cls": "up"}
       ]
     },
     {
       "id": 3,
-      "tag": "argentina · riesgo soberano",
-      "tag_class": "tr",
-      "title": "El riesgo país argentino trepó a 463 puntos, su nivel más alto en dos meses",
-      "brief": "Subió +12 unidades y acumula cinco ruedas consecutivas al alza, presionado por la volatilidad internacional y el deterioro del humor social local.",
-      "tldr": "El riesgo país se aleja de los 400 puntos por quinto día seguido",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>riesgo país</strong> argentino subió <strong>+12 puntos</strong> hasta <strong>463 puntos básicos</strong>, su nivel más alto en dos meses, extendiendo a cinco la racha de ruedas consecutivas al alza. La suba responde tanto a la volatilidad internacional —guerra en Medio Oriente, suba de tasas globales— como al deterioro del humor social local.",
-      "contexto": "El mercado también mira el <strong>IPC de julio</strong>, que el INDEC publica el <strong>jueves 13/8</strong> a las 16hs: el REM proyecta 2,0% mensual, con privados en un rango de 1,8% a 2,1%, tras conocerse que la inflación de CABA trepó a 2,9% en julio. Los bonos soberanos operan mixtos/negativos: <strong>AL30</strong> -0,28%, <strong>GD30</strong> -0,17%, <strong>GD35</strong> -0,45%, <strong>GD41</strong> -0,64%.",
+      "tag": "mercados · commodities",
+      "tag_class": "tq",
+      "title": "Wall Street cerró en baja y el petróleo subió, mientras el oro cede en la previa del dato de inflación",
+      "brief": "USO +1,34% y GLD -0,39% se movieron en direcciones opuestas ayer; el Fear & Greed Index se mantiene en zona de Codicia (61).",
+      "tldr": "Combinación atípica de commodities antes del IPC",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El petróleo (<strong>USO</strong>) subió <strong>+1,34%</strong> ayer, mientras el oro (<strong>GLD</strong>) retrocedió <strong>-0,39%</strong>, un movimiento poco habitual en la previa de un dato de inflación clave, donde ambos activos suelen moverse en la misma dirección como cobertura. El <strong>Fear &amp; Greed Index</strong> se ubica en <strong>61 (Codicia)</strong>, y el ratio put/call en <strong>0,54</strong>, señal de un posicionamiento inversor relativamente optimista pese a la espera del dato.",
+      "contexto": "La encuesta semanal de AAII mostró <strong>37,0%</strong> de inversores bajistas-alcistas netos en la última lectura disponible (6/8), aún por debajo del promedio histórico. El mercado parece descontar un IPC benigno, lo que deja más espacio para sorpresas negativas si el dato de hoy sorprende al alza.",
       "impacto": [
-        {"asset": "Riesgo país", "dir": "↑ 463 pb (+12u)", "cls": "up"},
-        {"asset": "GD30", "dir": "↓ -0,17%", "cls": "dn"},
-        {"asset": "GD35", "dir": "↓ -0,45%", "cls": "dn"}
+        {"asset": "Petróleo (USO)", "dir": "↑ +1,34%", "cls": "up"},
+        {"asset": "Oro (GLD)", "dir": "↓ -0,39%", "cls": "dn"},
+        {"asset": "Fear & Greed", "dir": "61 (Codicia)", "cls": "neu"}
       ]
     },
     {
       "id": 4,
       "tag": "argentina · cambiario",
       "tag_class": "ta",
-      "title": "El dólar oficial sostenido en $1.520 y la brecha con el CCL ronda 4%",
-      "brief": "El mayorista cerró en $1.496, el blue en $1.535 y el CCL en $1.583, sin sobresaltos pese a la volatilidad internacional.",
-      "tldr": "Brecha cambiaria estable a la espera del IPC de julio",
+      "title": "El dólar oficial cerró en $1.515 y la brecha con el CCL se mantiene contenida en torno al 4,6%",
+      "brief": "El mayorista cerró en $1.490,5, el blue en $1.550 y el CCL en $1.584,9, sin sobresaltos pese a la suba del riesgo país.",
+      "tldr": "La brecha cambiaria no refleja todavía la tensión de la deuda soberana",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El dólar oficial cerró en <strong>$1.520</strong> (venta), el mayorista en <strong>$1.496</strong> y el blue en <strong>$1.535</strong>. El <strong>MEP</strong> se ubicó en <strong>$1.526,1</strong> y el <strong>CCL</strong> en <strong>$1.583,2</strong>, dejando una brecha de aproximadamente 4% con el oficial.",
-      "contexto": "Las LECAPs de plazo más corto (<strong>S14G6</strong>, vencimiento 14/8) siguen firmes, reflejo de la demanda de cobertura de tasa en pesos de cara al dato de inflación del jueves. La brecha cambiaria se mantiene contenida pese al shock de petróleo y la suba del riesgo país.",
+      "evento": "El dólar oficial cerró en <strong>$1.515</strong> (venta), el mayorista en <strong>$1.490,5</strong> y el blue en <strong>$1.550</strong>. El <strong>MEP</strong> se ubicó en <strong>$1.526,3</strong> y el <strong>CCL</strong> en <strong>$1.584,9</strong>, dejando una brecha de aproximadamente <strong>4,6%</strong> con el oficial.",
+      "contexto": "La LECAP más corta (<strong>S14G6</strong>, vencimiento 14/8, en dos ruedas) cotiza firme en 107,9, reflejo de la demanda de cobertura de tasa en pesos de cara al IPC de EE.UU. de hoy y al IPC local de julio que el INDEC publica mañana jueves 13/8. La brecha cambiaria se mantiene estable pese a la escalada del riesgo país.",
       "impacto": [
-        {"asset": "Dólar Oficial", "dir": "$1.520", "cls": "neu"},
-        {"asset": "Dólar CCL", "dir": "$1.583", "cls": "neu"},
-        {"asset": "Dólar Blue", "dir": "$1.535", "cls": "neu"}
+        {"asset": "Dólar Oficial", "dir": "$1.515", "cls": "neu"},
+        {"asset": "Dólar CCL", "dir": "$1.584,9", "cls": "neu"},
+        {"asset": "Dólar Blue", "dir": "$1.550", "cls": "neu"}
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "El petróleo se dispara por la tensión EE.UU.-Irán mientras Wall Street opera mixto a la espera del IPC",
-      "texto": "El shock de oferta energético convive con índices bursátiles prácticamente sin cambios, en un mercado que prefiere esperar la definición del conflicto y el dato de inflación del miércoles antes de tomar posición."
+      "label": "El mercado global entra en modo de espera absoluta previo al IPC de julio de EE.UU.",
+      "texto": "Los índices cerraron ayer con bajas moderadas y sin una dirección clara, en una jornada donde los inversores prefirieron no tomar posiciones fuertes antes del dato de inflación de hoy."
     },
     {
-      "label": "El riesgo país argentino sube por quinto día consecutivo pese a que el Merval había cortado su racha bajista el lunes",
-      "texto": "La mejora puntual en renta variable no logró contagiarse a la deuda soberana, que sigue presionada por el humor social local y la volatilidad internacional."
+      "label": "El riesgo país argentino sigue en alza pese a que los bonos soberanos en dólares operan con signo positivo",
+      "texto": "La divergencia entre el indicador de riesgo y el precio de la deuda es atípica y podría reflejar un rezago de varias ruedas en la actualización del índice oficial."
     },
     {
-      "label": "El mercado local espera el IPC de julio del jueves con la brecha cambiaria contenida",
-      "texto": "Pese al salto del petróleo y la suba del riesgo país, el dólar oficial, el MEP y el CCL se mantienen relativamente estables, a la espera de la definición del dato de inflación."
+      "label": "La brecha cambiaria se mantiene contenida pese a la escalada del riesgo país",
+      "texto": "El dólar oficial, el MEP y el CCL muestran estabilidad, sin un contagio inmediato de la tensión que sí se observa en el indicador de riesgo soberano."
     }
   ],
   "correlaciones": [
     {
-      "par": "La suba del petróleo por la tensión en Medio Oriente empuja al oro como cobertura",
-      "texto": "USO +6,73% y GLD +1,02% se mueven en la misma dirección, reflejo clásico de un shock geopolítico que dispara simultáneamente la prima de riesgo energético y la demanda de refugio."
+      "par": "El petróleo sube y el oro cede, un combo atípico en la previa de un dato de inflación clave",
+      "texto": "USO +1,34% y GLD -0,39% se movieron en direcciones opuestas, cuando ambos activos suelen operar como cobertura conjunta ante la incertidumbre previa a datos macro relevantes."
     },
     {
-      "par": "El riesgo país sube mientras los bonos soberanos en dólares ceden en toda la curva",
-      "texto": "AL30, GD30, GD35 y GD41 operan todos en baja, consistente con la suba de 12 puntos del riesgo país y la mayor cautela sobre la deuda argentina."
+      "par": "Wall Street cae en simultáneo con el ajuste del oro",
+      "texto": "SPY, QQQ y GLD retrocedieron en conjunto ayer, un movimiento consistente con un posicionamiento moderadamente defensivo antes del IPC de hoy."
     },
     {
-      "par": "La brecha cambiaria se mantiene estable pese a la mayor volatilidad internacional",
-      "texto": "A diferencia de la deuda soberana, el dólar oficial, el MEP y el CCL no reflejan todavía la tensión externa, señal de que el mercado cambiario espera la definición del IPC antes de moverse."
+      "par": "El riesgo país sube pero los bonos soberanos en dólares no acompañan la suba",
+      "texto": "El desacople entre ambos indicadores sugiere que el salto del riesgo país incorpora un rezago frente al precio actual de la deuda argentina, que hoy opera con signo positivo en toda la curva."
     }
   ],
-  "bottom_line": "<p>El humor de mercado global está condicionado por la escalada entre <strong>EE.UU.</strong> e <strong>Irán</strong>: el petróleo saltó con fuerza (USO +6,73%) ante el freno en las negociaciones para reabrir el <strong>Estrecho de Ormuz</strong>, y el oro operó como cobertura (+1,02%), mientras Wall Street cotiza prácticamente sin cambios (S&amp;P 500 -0,03%, Nasdaq -0,30%) a la espera del <strong>IPC de julio</strong> de EE.UU. que se conoce mañana miércoles, seguido del PPI el jueves. La Fed, que mantuvo la tasa en 3,50%-3,75% en julio, no vuelve a reunirse hasta septiembre.</p><p><strong>Para Argentina, la combinación de mayor tensión internacional y el deterioro del humor social empujó al riesgo país a 463 puntos</strong>, su nivel más alto en dos meses, con toda la curva de bonos soberanos en baja (AL30, GD30, GD35, GD41). La atención local se traslada ahora al jueves 13/8, cuando el INDEC difunda el IPC de julio (REM: 2,0%; privados: 1,8%-2,1%, tras un dato de CABA de 2,9%). Por ahora el frente cambiario se mantiene relativamente estable —oficial en $1.520, CCL en $1.583, brecha ~4%— pero un IPC por encima de lo esperado, combinado con el shock de petróleo, sumaría presión tanto sobre el tipo de cambio como sobre las tasas en pesos de corto plazo.</p>"
+  "bottom_line": "<p>El humor de mercado global está condicionado por la espera del <strong>IPC de julio</strong> de EE.UU., que el BLS publica hoy a las 8:30hs (ET): el consenso proyecta una desaceleración a 3,4% i.a. headline y 2,5% i.a. núcleo. Wall Street cerró ayer con bajas moderadas (S&amp;P 500 -0,32%, Nasdaq -0,34%) y una combinación atípica en commodities, con el petróleo subiendo (USO +1,34%) y el oro cediendo (GLD -0,39%). El Fear &amp; Greed Index se mantiene en zona de Codicia (61), reflejo de un mercado que no descuenta grandes sorpresas negativas del dato de hoy.</p><p><strong>Para Argentina, el riesgo país extendió su escalada a 465 puntos</strong>, acumulando +54 unidades desde el piso del 3 de agosto, aunque los bonos soberanos en dólares (GD30, GD35, AL30, GD41) operan hoy con signo positivo, una divergencia que amerita seguimiento. El frente cambiario se mantiene estable —oficial en $1.515, CCL en $1.584,9, brecha ~4,6%— con la atención puesta en el IPC de EE.UU. de hoy y en el IPC local de julio que el INDEC publica mañana jueves 13/8. Una sorpresa al alza en cualquiera de los dos datos añadiría presión sobre el tipo de cambio y las tasas en pesos de corto plazo.</p>"
 }
