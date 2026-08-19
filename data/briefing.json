@@ -1,111 +1,188 @@
 {
-  "date": "2026-08-14",
-  "generated": "2026-08-14T12:25:00Z",
+  "date": "2026-08-19",
+  "generated": "2026-08-19T12:10:00Z",
   "sentiment": {
-    "overall": "neutral",
-    "label": "Wall Street extiende sus récords a la espera de las ventas minoristas de julio de EE.UU. que se conocen hoy, mientras en Argentina el Gobierno flexibiliza el crédito en dólares para empresas y el riesgo país sube a 471 puntos",
-    "fg": 61,
+    "overall": "risk-off",
+    "label": "Wall Street encadena tres ruedas a la baja y la UST 10Y toca máximos desde 2007 por la tensión en Ormuz, mientras en Argentina el riesgo país escala a 489 pb y el BCRA frena el ritmo de compras para sostener el ancla cambiaria",
+    "fg": 59,
     "fg_label": "Codicia",
     "putcall": 0.54,
-    "aaii_bulls": 37.0
+    "aaii_bulls": 34.7
   },
   "drivers": [
     {
       "id": 1,
-      "tag": "bancos centrales · macro",
+      "tag": "eeuu · mercados",
       "tag_class": "tb",
-      "title": "Wall Street llega a las ventas minoristas de julio de EE.UU. tras cerrar ayer en récord por el IPC que sorprendió a la baja",
-      "brief": "El Census Bureau publica hoy antes de la apertura las ventas minoristas de julio, un día después de que el S&P 500 superara los 7.800 puntos impulsado por un IPC de julio que marcó 3,4% i.a., su ritmo más lento en dos meses.",
-      "tldr": "El mercado espera el dato clave del día tras el rally post-IPC",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Hoy viernes <strong>14/8</strong>, el Census Bureau publica antes de la apertura (8:30hs ET) las <strong>ventas minoristas de julio</strong> de EE.UU., dato que el mercado sigue de cerca tras la desaceleración del gasto de los consumidores en junio. La publicación llega después de que el <strong>IPC de julio</strong> (conocido el 12/8) marcara <strong>3,4% i.a.</strong> headline, desde 3,5% previo, y <strong>2,5% i.a.</strong> en el núcleo —el ritmo más lento desde marzo de 2021—, impulsando ayer al <strong>S&amp;P 500 (SPY)</strong> a un cierre récord de <strong>+0,70%</strong>, superando por primera vez los 7.800 puntos del índice. El <strong>Nasdaq (QQQ)</strong> acompañó con <strong>+1,16%</strong>.",
-      "contexto": "Nota: al momento de redactar este briefing el dato de ventas minoristas aún no fue publicado. La <strong>UST 10Y</strong> se ubicó en <strong>4,68%</strong> (dato del 12/08, último disponible), y los futuros operan mixtos de cara al dato ante la ausencia de reunión de la Fed en agosto —el próximo evento relevante es el retiro anual de Jackson Hole (27-29/8) bajo la conducción de Kevin Warsh.",
+      "title": "Wall Street acumula tres ruedas a la baja con la UST 10Y en máximos desde 2007",
+      "brief": "Nasdaq lidera la caída con los chips desplomándose (SK Hynix, SanDisk -9%). El Treasury a 10 años superó 4,72%, su nivel más alto desde 2007, mientras el mercado espera señales en Jackson Hole.",
+      "tldr": "Los rendimientos largos vuelven a pesar más que los balances corporativos",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "Wall Street suma su <strong>tercera rueda consecutiva</strong> en baja: <strong>QQQ</strong> -1,69% y <strong>SPY</strong> -0,68% hoy, con el sector de semiconductores desplomándose (SK Hynix y SanDisk cayeron más de 9%). El <strong>Treasury a 10 años</strong> superó el <strong>4,72%</strong>, el nivel más alto desde 2007, en medio de una liquidación global de bonos soberanos.",
+      "contexto": "La combinación de tasas largas en máximos históricos y petróleo firme por Ormuz castiga especialmente a las acciones de mayor duración (tecnología). El mercado mira ahora a la reunión anual de banqueros centrales en <strong>Jackson Hole</strong> en busca de señales sobre el rumbo de la política monetaria.",
       "impacto": [
-        {"asset": "S&P 500 (SPY)", "dir": "↑ +0,70% (cierre 13/8, récord)", "cls": "up"},
-        {"asset": "Nasdaq (QQQ)", "dir": "↑ +1,16% (cierre 13/8)", "cls": "up"},
-        {"asset": "UST 10Y", "dir": "4,68% (12/08)", "cls": "neu"}
+        {
+          "asset": "Nasdaq (QQQ)",
+          "dir": "↓ -1,69%",
+          "cls": "dn"
+        },
+        {
+          "asset": "S&P 500 (SPY)",
+          "dir": "↓ -0,68%",
+          "cls": "dn"
+        },
+        {
+          "asset": "UST 10Y",
+          "dir": "4,72% (máx. desde 2007)",
+          "cls": "neu"
+        }
       ]
     },
     {
       "id": 2,
-      "tag": "argentina · financiero",
-      "tag_class": "ta",
-      "title": "El Gobierno flexibiliza los créditos en dólares para que los bancos puedan prestarle a más empresas",
-      "brief": "Caputo anunció ayer un DNU que amplía el universo de empresas elegibles para tomar deuda en dólares, incluso sin ingresos en moneda extranjera, permitiendo a los bancos prestar hasta el 15% de sus depósitos en esa moneda.",
-      "tldr": "Más empresas podrán acceder a crédito en dólares",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El ministro <strong>Luis Caputo</strong> anunció ayer 13/8 una <strong>flexibilización parcial</strong> de los créditos en dólares para personas jurídicas: los bancos podrán prestar en moneda estadounidense hasta el <strong>15% de sus depósitos en dólares</strong> a todas las empresas, incluidas las que no generan ingresos en divisas. El Gobierno avanza con un <strong>Decreto de Necesidad y Urgencia (DNU)</strong> para modificar el régimen vigente, respondiendo a un pedido del sector industrial que buscaba mayor acceso al financiamiento en dólares para bajar tasas y reactivar el empleo.",
-      "contexto": "El propio <strong>BCRA</strong> exige un tratamiento prudencial más exigente para este nuevo universo de financiamiento: capital mínimo equivalente al <strong>125%</strong> de financiaciones comparables, con una ponderación de <strong>1,25x</strong> sobre la exposición normal, y la obligación de evaluar la capacidad de repago de los tomadores bajo distintos escenarios de variación cambiaria —una señal de que la autoridad monetaria reconoce el riesgo de descalce que implica la medida.",
+      "tag": "geopolítica · energía",
+      "tag_class": "tq",
+      "title": "Trump amenaza con bombardear Omán por el acuerdo sobre Ormuz con Irán",
+      "brief": "Trump advirtió que bombardeará Omán si \"se interpone\" en un acuerdo con Irán sobre Ormuz, mientras Teherán mantiene el control del tráfico marítimo. El petróleo se sostiene firme ante la tensión.",
+      "tldr": "La escalada verbal con Omán mantiene la prima de riesgo geopolítico en el petróleo",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El presidente <strong>Trump</strong> amenazó con bombardear <strong>Omán</strong> si &ldquo;se interpone&rdquo; en un acuerdo de EE.UU. con Irán sobre la administración del <strong>Estrecho de Ormuz</strong>, e insistió en llamarlo &ldquo;nuevo territorio estadounidense&rdquo;. Irán reiteró que mantendrá el control del tráfico marítimo hasta que Washington cumpla sus condiciones.",
+      "contexto": "Por Ormuz circula cerca del <strong>20% del petróleo y gas</strong> consumidos a nivel mundial. El <strong>Brent</strong> ronda los US$91,4, presionando las expectativas inflacionarias globales justo antes de Jackson Hole y complicando el margen de los bancos centrales.",
       "impacto": [
-        {"asset": "Créditos en USD elegibles", "dir": "Ampliado a empresas sin ingresos en dólares", "cls": "neu"},
-        {"asset": "Límite de fondeo bancario", "dir": "Hasta 15% de depósitos en USD", "cls": "neu"},
-        {"asset": "Capital mínimo exigido", "dir": "125% de financiaciones comparables", "cls": "neu"}
+        {
+          "asset": "Petróleo (USO)",
+          "dir": "↑ +0,28% (130,66)",
+          "cls": "up"
+        },
+        {
+          "asset": "Brent",
+          "dir": "~US$91,4",
+          "cls": "neu"
+        },
+        {
+          "asset": "Oro (GLD)",
+          "dir": "↓ -1,71% (398,55)",
+          "cls": "dn"
+        }
       ]
     },
     {
       "id": 3,
-      "tag": "mercados · commodities",
-      "tag_class": "tq",
-      "title": "El oro y el petróleo retroceden mientras Wall Street extiende sus récords; Globant se desploma 12,6% por un balance débil",
-      "brief": "GLD cedió 1,47% y USO 1,78% ayer pese al rally accionario; la argentina Globant (GLOB) se hundió 12,6% tras un segundo trimestre decepcionante, mientras Reddit (RDDT) subió 10,4% por su próximo ingreso al S&P 500.",
-      "tldr": "Los commodities se despegan del rally accionario",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Pese al cierre récord de Wall Street, el oro (<strong>GLD</strong>) cayó <strong>1,47%</strong> y el petróleo (<strong>USO</strong>) retrocedió <strong>1,78%</strong> ayer, despegándose del rally accionario. Entre los nombres puntuales, <strong>Reddit (RDDT)</strong> saltó <strong>10,4%</strong> tras confirmarse su ingreso al S&amp;P 500 el 18/8, mientras la argentina <strong>Globant (GLOB)</strong> se hundió <strong>12,6%</strong> luego de un reporte de resultados del segundo trimestre por debajo de lo esperado.",
-      "contexto": "El <strong>Fear &amp; Greed Index</strong> se mantiene en <strong>61 (Codicia)</strong> y el ratio put/call en <strong>0,54</strong> (dato del 7/8, último disponible), sin señales de estrés pese a la toma de ganancias en commodities. La caída de Globant es un dato a seguir para el ecosistema tech argentino, dado su peso como una de las principales empresas de software fundadas en el país que cotiza en EE.UU.",
+      "tag": "argentina · riesgo soberano",
+      "tag_class": "tr",
+      "title": "El riesgo país argentino escala a 489 pb por la liquidación global de bonos",
+      "brief": "El EMBI+ cerró en 489 pb (17/8), encadenando una suba desde el mínimo de 402 pb de julio. La curva soberana en dólares opera hoy en baja generalizada: GD38 -2,37%, AL35 -2,34%, GD35 -1,84%.",
+      "tldr": "El riesgo país no logra desacoplarse del deterioro global de la renta fija",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El <strong>riesgo país</strong> argentino cerró en <strong>489 puntos básicos</strong> (17/08, último dato disponible), lejos ya del mínimo de <strong>402 pb</strong> marcado en julio. Hoy la curva soberana en dólares opera con caídas generalizadas: <strong>GD38</strong> -2,37%, <strong>AL35</strong> -2,34%, <strong>GD35</strong> -1,84%, <strong>GD30</strong> -1,03% y <strong>AL30</strong> -1,36%.",
+      "contexto": "El deterioro combina un factor externo —la renta fija emergente se resiente a escala global por la suba de tasas largas en EE.UU.— con dos factores locales: el PBI del segundo trimestre revisado a una contracción de <strong>0,4%</strong> y el creciente peso del calendario electoral de 2027 en las valuaciones.",
       "impacto": [
-        {"asset": "Oro (GLD)", "dir": "↓ -1,47%", "cls": "dn"},
-        {"asset": "Petróleo (USO)", "dir": "↓ -1,78%", "cls": "dn"},
-        {"asset": "Globant (GLOB)", "dir": "↓ -12,6%", "cls": "dn"}
+        {
+          "asset": "Riesgo país",
+          "dir": "489 pb (17/08)",
+          "cls": "neu"
+        },
+        {
+          "asset": "GD38",
+          "dir": "↓ -2,37%",
+          "cls": "dn"
+        },
+        {
+          "asset": "AL35",
+          "dir": "↓ -2,34%",
+          "cls": "dn"
+        }
       ]
     },
     {
       "id": 4,
-      "tag": "argentina · riesgo soberano",
-      "tag_class": "tr",
-      "title": "El riesgo país sube a 471 puntos y hoy se liquida la licitación del Tesoro con rollover de 100,26%",
-      "brief": "El índice acumula +20 unidades desde el piso de 451 del 7/8; el Tesoro colocó $4.491.700 millones en la licitación de ayer (VNA $3.949.600 M), logrando refinanciar el 100,26% de los vencimientos, con liquidación hoy 14/8 (T+2).",
-      "tldr": "El riesgo país sostiene su quinta suba consecutiva",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>riesgo país</strong> argentino se ubicó en <strong>471 puntos básicos</strong> (dato del 12/08, último disponible en la serie oficial), +5 unidades respecto de los 466 del día previo y acumulando <strong>+20 puntos</strong> desde el piso de 451 del 7 de agosto —su quinta suba consecutiva. En paralelo, el Tesoro captó ayer <strong>$4.491.700 millones</strong> en efectivo (valor nominal adjudicado de <strong>$3.949.600 millones</strong>) en la primera licitación de deuda de agosto, logrando un <strong>rollover del 100,26%</strong>, con liquidación de todas las ofertas hoy viernes 14/8 (T+2).",
-      "contexto": "La curva soberana en dólares opera mixta: <strong>GD35</strong> +0,25% y <strong>GD41</strong> +0,18% suben, mientras <strong>GD30</strong> -0,29%, <strong>GD29</strong> -0,16% y <strong>AL41</strong> -0,89% ceden, sin una señal direccional única. La LECAP más corta en plaza (<strong>S31G6</strong>, vencimiento 31/8) cotiza en 125,76, reflejo de la demanda de cobertura de tasa en pesos de cara al cierre de mes.",
+      "tag": "argentina · bcra",
+      "tag_class": "tg",
+      "title": "El BCRA reduce al mínimo del año sus compras para sostener el mayorista",
+      "brief": "El Central compró un promedio de apenas US$28 M diarios en la primera quincena de agosto, muy por debajo de los US$103 M de julio, priorizando contener el tipo de cambio sobre acumular reservas.",
+      "tldr": "El Tesoro prioriza el ancla cambiaria por sobre el ritmo de acumulación de reservas",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El <strong>BCRA</strong> desaceleró sus compras de divisas al ritmo más bajo de todo 2026: de promediar <strong>US$137 M</strong> diarios en mayo y <strong>US$103 M</strong> en julio, el ritmo cayó a apenas <strong>US$28 M</strong> por jornada en la primera quincena de agosto. El objetivo declarado es contener la cotización del mayorista en torno a <strong>$1.500</strong>.",
+      "contexto": "Las reservas brutas se mantienen en torno a <strong>US$49.500 M</strong>, condicionadas tanto por las menores compras como por las fluctuaciones del oro. Hoy el dólar oficial cotiza $1.465/$1.515, el blue $1.535/$1.555 y el CCL $1.574,5/$1.575,5 —una brecha con el CCL de aproximadamente 4%.",
       "impacto": [
-        {"asset": "Riesgo país", "dir": "↑ 471 pb (12/08)", "cls": "up"},
-        {"asset": "GD30", "dir": "↓ -0,29%", "cls": "dn"},
-        {"asset": "GD35", "dir": "↑ +0,25%", "cls": "up"}
+        {
+          "asset": "Dólar oficial (venta)",
+          "dir": "$1.515",
+          "cls": "neu"
+        },
+        {
+          "asset": "Dólar blue (venta)",
+          "dir": "$1.555",
+          "cls": "neu"
+        },
+        {
+          "asset": "Dólar CCL (venta)",
+          "dir": "$1.575,5",
+          "cls": "neu"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "tag": "argentina · deuda",
+      "tag_class": "ta",
+      "title": "Caputo gira la deuda al corto plazo ante dudas sobre la reelección de Milei",
+      "brief": "Por primera vez desde noviembre de 2025, el Tesoro no ofreció instrumentos con vencimiento posterior a 2027 en su última licitación, abandonando la extensión de plazos que venía impulsando.",
+      "tldr": "El mercado le exige al Tesoro acortar duración en un año con calendario electoral de por medio",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El equipo de <strong>Caputo</strong> giró su estrategia de emisión hacia el corto plazo: en la licitación de mediados de agosto no ofreció instrumentos con vencimiento posterior a <strong>2027</strong> por primera vez desde noviembre de 2025, priorizando Lecaps, un bono CER a enero de 2027 y dollar-linked de corto plazo.",
+      "contexto": "El cambio de estrategia coincide con la saturación del mercado de deuda larga y las dudas sobre la reelección de Milei que empiezan a pesar en las valuaciones. Las tasas cortas de referencia (BONCAP T15E7 en 144,65, LECAP S31G6 en 126,04) reflejan la cautela con la que opera hoy la curva en pesos.",
+      "impacto": [
+        {
+          "asset": "BONCAP T15E7",
+          "dir": "144,65",
+          "cls": "neu"
+        },
+        {
+          "asset": "LECAP S31G6",
+          "dir": "126,04",
+          "cls": "neu"
+        },
+        {
+          "asset": "Plazo máximo ofrecido",
+          "dir": "Enero 2027",
+          "cls": "neu"
+        }
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "El mercado global espera hoy las ventas minoristas de EE.UU. tras el rally post-IPC",
-      "texto": "Wall Street cerró ayer en récord tras un IPC de julio benigno, pero el dato de ventas minoristas de hoy puede confirmar o cuestionar la narrativa de un consumidor resiliente que sostiene las valuaciones actuales."
+      "label": "Fear & Greed en Codicia (59) vs. tres ruedas consecutivas de pérdidas en Wall Street",
+      "texto": "El índice de sentimiento de CNN se mantiene en zona de codicia pese al deterioro de tres días en los principales índices, una divergencia que suele resolverse con una corrección del propio índice si la baja continúa."
     },
     {
-      "label": "El riesgo país acumula cinco subas consecutivas mientras la curva soberana en dólares no confirma la tendencia",
-      "texto": "El índice pasó de 451 a 471 puntos en menos de dos semanas, pero los bonos largos (GD35, GD41) suben y los cortos (GD30, GD29) ceden, una divergencia que amerita seguimiento antes de hablar de una tendencia consolidada."
+      "label": "BCRA reduce compras de dólares vs. riesgo país en zona de máximos de dos meses",
+      "texto": "El Central prioriza contener el mayorista en $1.500 en lugar de acumular reservas al ritmo de meses previos, justo cuando el mercado de deuda soberana exige una prima cada vez mayor."
     },
     {
-      "label": "La flexibilización de créditos en dólares choca con la cautela regulatoria del propio BCRA",
-      "texto": "El Gobierno amplía el acceso al crédito en dólares para reactivar la demanda, pero el BCRA exige capital mínimo del 125% para estas financiaciones, reconociendo el riesgo de descalce cambiario que la medida introduce en empresas sin ingresos en divisas."
+      "label": "Petróleo firme por Ormuz vs. oro en baja pese al escenario de riesgo global",
+      "texto": "El USO sube por la tensión geopolítica mientras el oro cede -1,71%, una combinación atípica en un día de risk-off que sugiere que la suba de tasas largas pesa más que la búsqueda de cobertura."
     }
   ],
   "correlaciones": [
     {
-      "par": "Wall Street sube en conjunto pero el oro y el petróleo se despegan a la baja",
-      "texto": "SPY +0,70% y QQQ +1,16% cerraron en récord ayer, mientras GLD -1,47% y USO -1,78% retrocedieron, rompiendo la correlación habitual entre acciones y commodities como cobertura conjunta en un día de apetito por riesgo."
+      "par": "La UST 10Y en máximos desde 2007 arrastra tanto a Wall Street como al riesgo país argentino",
+      "texto": "La liquidación global de bonos soberanos no distingue entre desarrollados y emergentes: mientras el Nasdaq cae 1,69%, la curva soberana argentina en dólares pierde entre 1% y 2,4%."
     },
     {
-      "par": "Reddit sube 10,4% por su ingreso al S&P 500 mientras Globant se hunde 12,6% por su balance",
-      "texto": "El mercado sigue premiando eventos estructurales (inclusión en índices) por encima de fundamentals, mientras castiga con dureza las sorpresas negativas de resultados, incluso en una rueda de máximos históricos."
+      "par": "El petróleo (USO +0,28%) sube mientras el oro (GLD -1,71%) cae en la misma rueda de risk-off",
+      "texto": "La tensión en Ormuz sostiene el crudo por oferta, pero la suba de tasas largas encarece el costo de oportunidad de sostener oro, invirtiendo la correlación habitual entre ambos activos en jornadas de aversión al riesgo."
     },
     {
-      "par": "El riesgo país sube en paralelo a una curva soberana en dólares que no acompaña de forma pareja",
-      "texto": "La suba sostenida del índice de riesgo país convive con una curva mixta —cortos en baja, largos en alza—, sin una señal direccional única de cara a la liquidación de la licitación del Tesoro de hoy."
+      "par": "El BCRA frena sus compras de dólares justo cuando el Tesoro acorta la duración de su deuda en pesos",
+      "texto": "Ambas decisiones reflejan la misma cautela de cara al año electoral: priorizar el ancla cambiaria de corto plazo y reducir la exposición a instrumentos de mayor plazo hasta tener mayor visibilidad post-2027."
     }
   ],
-  "bottom_line": "<p>La jornada global está marcada por la espera de las <strong>ventas minoristas de julio</strong> de EE.UU., que el Census Bureau publica hoy antes de la apertura. El dato llega un día después de que el <strong>IPC de julio</strong> (3,4% i.a., el ritmo más lento en dos meses) impulsara a Wall Street a cerrar en récord —el S&amp;P 500 superó los 7.800 puntos por primera vez (+0,70%) y el Nasdaq sumó +1,16%—, mientras el oro y el petróleo se despegaron del rally con caídas de 1,47% y 1,78% respectivamente. El Fear &amp; Greed Index se mantiene en zona de Codicia (61), y entre los nombres puntuales se destaca el desplome de 12,6% de la argentina Globant tras un balance decepcionante, frente al salto de 10,4% de Reddit por su próximo ingreso al índice.</p><p><strong>Para Argentina, el riesgo país subió a 471 puntos</strong>, acumulando su quinta suba consecutiva y +20 unidades desde el piso del 7 de agosto, con una curva soberana en dólares mixta. El Tesoro logró ayer un rollover del 100,26% en su primera licitación de deuda de agosto, con liquidación hoy por $4.491.700 millones, mientras el Gobierno anunció una flexibilización de los créditos en dólares para empresas mediante un DNU que busca reactivar el financiamiento privado —aunque el propio BCRA exige mayores resguardos de capital por el riesgo cambiario que la medida introduce. La combinación de un Tesoro que sigue renovando vencimientos con comodidad y un riesgo país en alza sostenida sugiere que el mercado diferencia entre la solvencia de corto plazo y las dudas de mediano plazo, un balance a monitorear de cara a las próximas licitaciones.</p>"
+  "bottom_line": "<p>La jornada global está marcada por una <strong>liquidación de bonos soberanos</strong> que llevó a la <strong>UST 10Y</strong> a superar el <strong>4,72%</strong>, su nivel más alto desde 2007, mientras Wall Street acumula <strong>tres ruedas consecutivas</strong> a la baja (QQQ -1,69%, SPY -0,68%) con los semiconductores liderando las pérdidas. A la presión de tasas se suma la tensión geopolítica en el <strong>Estrecho de Ormuz</strong>, luego de que Trump amenazara con bombardear Omán, lo que mantiene firme al petróleo de cara a la reunión de <strong>Jackson Hole</strong>.</p><p>Para <strong>Argentina</strong>, el <strong>riesgo país</strong> escaló a <strong>489 puntos</strong> arrastrado por el deterioro global de la renta fija, con la curva soberana en dólares operando en baja generalizada hoy. El <strong>BCRA</strong> respondió reduciendo al mínimo del año sus compras de dólares (US$28 M diarios) para sostener el mayorista en <strong>$1.500</strong>, mientras el equipo de <strong>Caputo</strong> giró su estrategia de deuda hacia el corto plazo ante las dudas sobre la reelección de Milei. La combinación de un contexto externo más hostil y una cautela creciente de cara al calendario electoral de 2027 sugiere que la prima de riesgo local seguirá firme en el corto plazo, incluso si el BCRA logra sostener el ancla cambiaria.</p>"
 }
