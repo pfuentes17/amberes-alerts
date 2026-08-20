@@ -1,188 +1,111 @@
 {
-  "date": "2026-08-19",
-  "generated": "2026-08-19T12:10:00Z",
+  "date": "2026-08-20",
+  "generated": "2026-08-20T12:10:00Z",
   "sentiment": {
     "overall": "risk-off",
-    "label": "Wall Street encadena tres ruedas a la baja y la UST 10Y toca máximos desde 2007 por la tensión en Ormuz, mientras en Argentina el riesgo país escala a 489 pb y el BCRA frena el ritmo de compras para sostener el ancla cambiaria",
-    "fg": 59,
+    "label": "El riesgo país argentino perfora los 500 puntos y llega a 511 pb, máximo en tres meses, mientras vence la tregua EE.UU.-Irán y los yields largos tocan máximos de casi 20 años, impulsando al oro a su mejor suba diaria en meses",
+    "fg": 56,
     "fg_label": "Codicia",
-    "putcall": 0.54,
-    "aaii_bulls": 34.7
+    "putcall": 0.65,
+    "aaii_bulls": 37.0
   },
   "drivers": [
     {
       "id": 1,
-      "tag": "eeuu · mercados",
-      "tag_class": "tb",
-      "title": "Wall Street acumula tres ruedas a la baja con la UST 10Y en máximos desde 2007",
-      "brief": "Nasdaq lidera la caída con los chips desplomándose (SK Hynix, SanDisk -9%). El Treasury a 10 años superó 4,72%, su nivel más alto desde 2007, mientras el mercado espera señales en Jackson Hole.",
-      "tldr": "Los rendimientos largos vuelven a pesar más que los balances corporativos",
+      "tag": "argentina · riesgo soberano",
+      "tag_class": "tr",
+      "title": "El riesgo país argentino perfora los 500 puntos y toca 511 pb, máximo en tres meses",
+      "brief": "El EMBI+ escaló a 511 pb (18/08), +108 pb desde el mínimo de julio y +18,8% en lo que va de agosto. La curva soberana opera mixta hoy: GD30 -0,59%, AL35 -0,53%, GD38 +0,24%.",
+      "tldr": "Argentina se desacopla de sus pares emergentes en la suba de riesgo",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "Wall Street suma su <strong>tercera rueda consecutiva</strong> en baja: <strong>QQQ</strong> -1,69% y <strong>SPY</strong> -0,68% hoy, con el sector de semiconductores desplomándose (SK Hynix y SanDisk cayeron más de 9%). El <strong>Treasury a 10 años</strong> superó el <strong>4,72%</strong>, el nivel más alto desde 2007, en medio de una liquidación global de bonos soberanos.",
-      "contexto": "La combinación de tasas largas en máximos históricos y petróleo firme por Ormuz castiga especialmente a las acciones de mayor duración (tecnología). El mercado mira ahora a la reunión anual de banqueros centrales en <strong>Jackson Hole</strong> en busca de señales sobre el rumbo de la política monetaria.",
+      "evento": "El <strong>riesgo país</strong> argentino escaló a <strong>511 puntos básicos</strong> (18/08, último dato de JP Morgan), su nivel más alto en tres meses. En lo que va de agosto el índice subió <strong>108 puntos</strong> desde el mínimo de <strong>403 pb</strong> del 7/7, un salto de <strong>18,8%</strong>, con una aceleración marcada desde el 3/8 (+98 pb) que contrasta con una suba de apenas 6 pb en el promedio de sus pares emergentes.",
+      "contexto": "El deterioro combina inflación de julio en <strong>33,8%</strong> i.a. —la más alta en un año—, ruido político, reservas todavía escasas y un esquema monetario cada vez más difícil de leer para los inversores, a lo que se suma el deterioro del contexto internacional por el conflicto en Medio Oriente. El BCRA, además, redujo el ritmo de compra de dólares a apenas <strong>US$28 M</strong> diarios en la primera quincena de agosto, el más bajo del año.",
       "impacto": [
-        {
-          "asset": "Nasdaq (QQQ)",
-          "dir": "↓ -1,69%",
-          "cls": "dn"
-        },
-        {
-          "asset": "S&P 500 (SPY)",
-          "dir": "↓ -0,68%",
-          "cls": "dn"
-        },
-        {
-          "asset": "UST 10Y",
-          "dir": "4,72% (máx. desde 2007)",
-          "cls": "neu"
-        }
+        { "asset": "GD30", "dir": "↓ -0,59% (57,22)", "cls": "dn" },
+        { "asset": "AL35", "dir": "↓ -0,53% (74,70)", "cls": "dn" },
+        { "asset": "GD38", "dir": "↑ +0,24% (82,50)", "cls": "up" }
       ]
     },
     {
       "id": 2,
-      "tag": "geopolítica · energía",
+      "tag": "geopolítica · tasas",
       "tag_class": "tq",
-      "title": "Trump amenaza con bombardear Omán por el acuerdo sobre Ormuz con Irán",
-      "brief": "Trump advirtió que bombardeará Omán si \"se interpone\" en un acuerdo con Irán sobre Ormuz, mientras Teherán mantiene el control del tráfico marítimo. El petróleo se sostiene firme ante la tensión.",
-      "tldr": "La escalada verbal con Omán mantiene la prima de riesgo geopolítico en el petróleo",
+      "title": "Expira la tregua entre EE.UU. e Irán y los yields largos tocan máximos de casi 20 años",
+      "brief": "Venció la tregua y Teherán amenazó con una postura 'totalmente ofensiva'. El Treasury a 30 años tocó 5,33% intradía el 18/8 y el 10Y cerró en 4,71%.",
+      "tldr": "La escalada en Medio Oriente vuelve a empujar la prima de riesgo global",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "El presidente <strong>Trump</strong> amenazó con bombardear <strong>Omán</strong> si &ldquo;se interpone&rdquo; en un acuerdo de EE.UU. con Irán sobre la administración del <strong>Estrecho de Ormuz</strong>, e insistió en llamarlo &ldquo;nuevo territorio estadounidense&rdquo;. Irán reiteró que mantendrá el control del tráfico marítimo hasta que Washington cumpla sus condiciones.",
-      "contexto": "Por Ormuz circula cerca del <strong>20% del petróleo y gas</strong> consumidos a nivel mundial. El <strong>Brent</strong> ronda los US$91,4, presionando las expectativas inflacionarias globales justo antes de Jackson Hole y complicando el margen de los bancos centrales.",
+      "evento": "Venció la tregua entre <strong>EE.UU.</strong> e <strong>Irán</strong> y Teherán amenazó con adoptar una postura &ldquo;totalmente ofensiva&rdquo;, mientras la Casa Blanca mostró reticencia a extender el memorando vigente. El <strong>Treasury a 30 años</strong> tocó un máximo intradía de <strong>5,33%</strong> el 18/8 —el nivel más alto en casi 20 años— y el <strong>10 años</strong> cerró en <strong>4,71%</strong>.",
+      "contexto": "La escalada bélica alimenta el temor a un rebote inflacionario vía petróleo, complicando la lectura de la Fed de cara a septiembre. Anuncios de mayor recompra de bonos largos por parte del Tesoro de EE.UU. ayudaron a moderar la suba de yields en las últimas ruedas, pero la tensión de fondo con Irán sigue sin resolverse.",
       "impacto": [
-        {
-          "asset": "Petróleo (USO)",
-          "dir": "↑ +0,28% (130,66)",
-          "cls": "up"
-        },
-        {
-          "asset": "Brent",
-          "dir": "~US$91,4",
-          "cls": "neu"
-        },
-        {
-          "asset": "Oro (GLD)",
-          "dir": "↓ -1,71% (398,55)",
-          "cls": "dn"
-        }
+        { "asset": "UST 10Y", "dir": "4,71%", "cls": "neu" },
+        { "asset": "UST 30Y", "dir": "5,33% (máx. ~20 años)", "cls": "neu" },
+        { "asset": "Petróleo (USO)", "dir": "↑ +0,19% (130,91)", "cls": "up" }
       ]
     },
     {
       "id": 3,
-      "tag": "argentina · riesgo soberano",
-      "tag_class": "tr",
-      "title": "El riesgo país argentino escala a 489 pb por la liquidación global de bonos",
-      "brief": "El EMBI+ cerró en 489 pb (17/8), encadenando una suba desde el mínimo de 402 pb de julio. La curva soberana en dólares opera hoy en baja generalizada: GD38 -2,37%, AL35 -2,34%, GD35 -1,84%.",
-      "tldr": "El riesgo país no logra desacoplarse del deterioro global de la renta fija",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>riesgo país</strong> argentino cerró en <strong>489 puntos básicos</strong> (17/08, último dato disponible), lejos ya del mínimo de <strong>402 pb</strong> marcado en julio. Hoy la curva soberana en dólares opera con caídas generalizadas: <strong>GD38</strong> -2,37%, <strong>AL35</strong> -2,34%, <strong>GD35</strong> -1,84%, <strong>GD30</strong> -1,03% y <strong>AL30</strong> -1,36%.",
-      "contexto": "El deterioro combina un factor externo —la renta fija emergente se resiente a escala global por la suba de tasas largas en EE.UU.— con dos factores locales: el PBI del segundo trimestre revisado a una contracción de <strong>0,4%</strong> y el creciente peso del calendario electoral de 2027 en las valuaciones.",
+      "tag": "commodities · refugio",
+      "tag_class": "ta",
+      "title": "El oro pega su mejor salto diario en meses y acumula 10% en agosto",
+      "brief": "GLD sube 3,84% hoy tras el salto de 4,1% del miércoles a US$4.512/oz, el mejor mes desde enero, impulsado por la caída de yields largos y la búsqueda de cobertura.",
+      "tldr": "El apetito por refugio se impone pese al retroceso desde el récord de enero",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El <strong>oro</strong> saltó <strong>4,1%</strong> el miércoles a <strong>US$4.512</strong> la onza, su mejor suba diaria en meses, y acumula un alza de <strong>10% en agosto</strong> —el mejor mes desde enero—, impulsado por la caída de los yields largos y la búsqueda de cobertura ante la tensión en Medio Oriente. El <strong>ETF GLD</strong> sube <strong>3,84%</strong> en la misma sintonía.",
+      "contexto": "El movimiento contrasta con el retroceso del metal desde el récord de enero (US$5.318) y confirma que, pese a la firmeza de Wall Street, el mercado sigue construyendo cobertura mientras la renta fija global muestra estrés en el tramo largo.",
       "impacto": [
-        {
-          "asset": "Riesgo país",
-          "dir": "489 pb (17/08)",
-          "cls": "neu"
-        },
-        {
-          "asset": "GD38",
-          "dir": "↓ -2,37%",
-          "cls": "dn"
-        },
-        {
-          "asset": "AL35",
-          "dir": "↓ -2,34%",
-          "cls": "dn"
-        }
+        { "asset": "Oro (GLD)", "dir": "↑ +3,84% (413,84)", "cls": "up" },
+        { "asset": "Oro spot", "dir": "US$4.512 (+4,1% miércoles)", "cls": "up" },
+        { "asset": "UST 10Y", "dir": "4,71%", "cls": "neu" }
       ]
     },
     {
       "id": 4,
-      "tag": "argentina · bcra",
-      "tag_class": "tg",
-      "title": "El BCRA reduce al mínimo del año sus compras para sostener el mayorista",
-      "brief": "El Central compró un promedio de apenas US$28 M diarios en la primera quincena de agosto, muy por debajo de los US$103 M de julio, priorizando contener el tipo de cambio sobre acumular reservas.",
-      "tldr": "El Tesoro prioriza el ancla cambiaria por sobre el ritmo de acumulación de reservas",
+      "tag": "eeuu · mercados",
+      "tag_class": "tb",
+      "title": "Wall Street sostiene la codicia pese al estrés en el tramo largo de la curva",
+      "brief": "El Fear & Greed de CNN se ubica en 56 (codicia) y el put/call de CBOE en 0,65 muestra posicionamiento complaciente, con SPY +0,21% y QQQ -0,20%.",
+      "tldr": "La renta variable no convalida todavía el estrés del mercado de bonos",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>BCRA</strong> desaceleró sus compras de divisas al ritmo más bajo de todo 2026: de promediar <strong>US$137 M</strong> diarios en mayo y <strong>US$103 M</strong> en julio, el ritmo cayó a apenas <strong>US$28 M</strong> por jornada en la primera quincena de agosto. El objetivo declarado es contener la cotización del mayorista en torno a <strong>$1.500</strong>.",
-      "contexto": "Las reservas brutas se mantienen en torno a <strong>US$49.500 M</strong>, condicionadas tanto por las menores compras como por las fluctuaciones del oro. Hoy el dólar oficial cotiza $1.465/$1.515, el blue $1.535/$1.555 y el CCL $1.574,5/$1.575,5 —una brecha con el CCL de aproximadamente 4%.",
+      "evento": "El <strong>Fear & Greed Index</strong> de CNN se ubica en <strong>56 (codicia)</strong> y el <strong>put/call ratio</strong> de CBOE cerró en <strong>0,65</strong> —zona de relativa complacencia—, mientras <strong>SPY</strong> sube <strong>0,21%</strong> y <strong>QQQ</strong> cede <strong>0,20%</strong>. La encuesta de AAII mostró en la primera semana de agosto un salto del sentimiento bullish a <strong>37%</strong>.",
+      "contexto": "El posicionamiento optimista en acciones convive con yields largos en máximos de casi 20 años y un riesgo geopolítico latente en Medio Oriente, una divergencia que —de sostenerse la tensión en bonos— suele resolverse con una corrección del propio sentimiento accionario.",
       "impacto": [
-        {
-          "asset": "Dólar oficial (venta)",
-          "dir": "$1.515",
-          "cls": "neu"
-        },
-        {
-          "asset": "Dólar blue (venta)",
-          "dir": "$1.555",
-          "cls": "neu"
-        },
-        {
-          "asset": "Dólar CCL (venta)",
-          "dir": "$1.575,5",
-          "cls": "neu"
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "tag": "argentina · deuda",
-      "tag_class": "ta",
-      "title": "Caputo gira la deuda al corto plazo ante dudas sobre la reelección de Milei",
-      "brief": "Por primera vez desde noviembre de 2025, el Tesoro no ofreció instrumentos con vencimiento posterior a 2027 en su última licitación, abandonando la extensión de plazos que venía impulsando.",
-      "tldr": "El mercado le exige al Tesoro acortar duración en un año con calendario electoral de por medio",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El equipo de <strong>Caputo</strong> giró su estrategia de emisión hacia el corto plazo: en la licitación de mediados de agosto no ofreció instrumentos con vencimiento posterior a <strong>2027</strong> por primera vez desde noviembre de 2025, priorizando Lecaps, un bono CER a enero de 2027 y dollar-linked de corto plazo.",
-      "contexto": "El cambio de estrategia coincide con la saturación del mercado de deuda larga y las dudas sobre la reelección de Milei que empiezan a pesar en las valuaciones. Las tasas cortas de referencia (BONCAP T15E7 en 144,65, LECAP S31G6 en 126,04) reflejan la cautela con la que opera hoy la curva en pesos.",
-      "impacto": [
-        {
-          "asset": "BONCAP T15E7",
-          "dir": "144,65",
-          "cls": "neu"
-        },
-        {
-          "asset": "LECAP S31G6",
-          "dir": "126,04",
-          "cls": "neu"
-        },
-        {
-          "asset": "Plazo máximo ofrecido",
-          "dir": "Enero 2027",
-          "cls": "neu"
-        }
+        { "asset": "S&P 500 (SPY)", "dir": "↑ +0,21%", "cls": "up" },
+        { "asset": "Nasdaq (QQQ)", "dir": "↓ -0,20%", "cls": "dn" },
+        { "asset": "Fear & Greed", "dir": "56 (Codicia)", "cls": "neu" }
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Fear & Greed en Codicia (59) vs. tres ruedas consecutivas de pérdidas en Wall Street",
-      "texto": "El índice de sentimiento de CNN se mantiene en zona de codicia pese al deterioro de tres días en los principales índices, una divergencia que suele resolverse con una corrección del propio índice si la baja continúa."
+      "label": "Fear & Greed en Codicia (56) vs. UST 30Y en máximos de casi 20 años",
+      "texto": "El índice de sentimiento de CNN se mantiene en zona de codicia pese al salto de los yields largos a niveles no vistos en dos décadas, una divergencia que históricamente se resuelve con una corrección del propio índice si la tensión en bonos persiste."
     },
     {
-      "label": "BCRA reduce compras de dólares vs. riesgo país en zona de máximos de dos meses",
-      "texto": "El Central prioriza contener el mayorista en $1.500 en lugar de acumular reservas al ritmo de meses previos, justo cuando el mercado de deuda soberana exige una prima cada vez mayor."
+      "label": "Argentina se desacopla de sus pares emergentes en la suba del riesgo país",
+      "texto": "Desde el 3/8, el riesgo país argentino subió 98 pb mientras el promedio de emergentes comparables apenas se movió 6 pb, evidenciando que el mercado le exige una prima idiosincrática adicional más allá del contexto global."
     },
     {
-      "label": "Petróleo firme por Ormuz vs. oro en baja pese al escenario de riesgo global",
-      "texto": "El USO sube por la tensión geopolítica mientras el oro cede -1,71%, una combinación atípica en un día de risk-off que sugiere que la suba de tasas largas pesa más que la búsqueda de cobertura."
+      "label": "Oro y petróleo suben juntos pese a ser activos de lógica opuesta en escenarios de risk-off",
+      "texto": "El USO avanza 0,19% por la tensión en Medio Oriente mientras el oro salta 3,84%, una combinación que sugiere que el mercado está priceando a la vez el riesgo geopolítico (vía crudo) y la cobertura financiera (vía oro)."
     }
   ],
   "correlaciones": [
     {
-      "par": "La UST 10Y en máximos desde 2007 arrastra tanto a Wall Street como al riesgo país argentino",
-      "texto": "La liquidación global de bonos soberanos no distingue entre desarrollados y emergentes: mientras el Nasdaq cae 1,69%, la curva soberana argentina en dólares pierde entre 1% y 2,4%."
+      "par": "La escalada EE.UU.-Irán empuja a la vez al petróleo, al oro y al riesgo país argentino",
+      "texto": "El vencimiento de la tregua con Irán eleva la prima de riesgo global: sube el crudo (USO +0,19%), sube el oro como cobertura (GLD +3,84%) y también castiga a la renta fija emergente, con el riesgo país argentino sumando 108 puntos en agosto."
     },
     {
-      "par": "El petróleo (USO +0,28%) sube mientras el oro (GLD -1,71%) cae en la misma rueda de risk-off",
-      "texto": "La tensión en Ormuz sostiene el crudo por oferta, pero la suba de tasas largas encarece el costo de oportunidad de sostener oro, invirtiendo la correlación habitual entre ambos activos en jornadas de aversión al riesgo."
+      "par": "Los yields largos en máximos de 20 años presionan tanto a la deuda argentina como al costo de fondeo del Tesoro de EE.UU.",
+      "texto": "El mismo movimiento de tasas que le exigiría a Caputo pagar tasas de dos dígitos si quisiera emitir deuda en dólares está detrás de los anuncios de mayor recompra de bonos largos por parte del Tesoro estadounidense."
     },
     {
-      "par": "El BCRA frena sus compras de dólares justo cuando el Tesoro acorta la duración de su deuda en pesos",
-      "texto": "Ambas decisiones reflejan la misma cautela de cara al año electoral: priorizar el ancla cambiaria de corto plazo y reducir la exposición a instrumentos de mayor plazo hasta tener mayor visibilidad post-2027."
+      "par": "El BCRA reduce sus compras de dólares justo cuando el riesgo país acelera su suba",
+      "texto": "El Central prioriza contener el mayorista en torno a $1.500 antes que acumular reservas al ritmo de meses previos, justo cuando el mercado de deuda soberana le exige a la Argentina una prima cada vez mayor."
     }
   ],
-  "bottom_line": "<p>La jornada global está marcada por una <strong>liquidación de bonos soberanos</strong> que llevó a la <strong>UST 10Y</strong> a superar el <strong>4,72%</strong>, su nivel más alto desde 2007, mientras Wall Street acumula <strong>tres ruedas consecutivas</strong> a la baja (QQQ -1,69%, SPY -0,68%) con los semiconductores liderando las pérdidas. A la presión de tasas se suma la tensión geopolítica en el <strong>Estrecho de Ormuz</strong>, luego de que Trump amenazara con bombardear Omán, lo que mantiene firme al petróleo de cara a la reunión de <strong>Jackson Hole</strong>.</p><p>Para <strong>Argentina</strong>, el <strong>riesgo país</strong> escaló a <strong>489 puntos</strong> arrastrado por el deterioro global de la renta fija, con la curva soberana en dólares operando en baja generalizada hoy. El <strong>BCRA</strong> respondió reduciendo al mínimo del año sus compras de dólares (US$28 M diarios) para sostener el mayorista en <strong>$1.500</strong>, mientras el equipo de <strong>Caputo</strong> giró su estrategia de deuda hacia el corto plazo ante las dudas sobre la reelección de Milei. La combinación de un contexto externo más hostil y una cautela creciente de cara al calendario electoral de 2027 sugiere que la prima de riesgo local seguirá firme en el corto plazo, incluso si el BCRA logra sostener el ancla cambiaria.</p>"
+  "bottom_line": "<p>La jornada global vuelve a estar marcada por la tensión geopolítica: venció la tregua entre <strong>EE.UU.</strong> e <strong>Irán</strong> y los yields largos treparon a máximos de casi 20 años (<strong>UST 30Y</strong> en 5,33% intradía, <strong>10Y</strong> en 4,71%), lo que a su vez impulsó al <strong>oro</strong> a su mejor suba diaria en meses (+4,1%) como cobertura, mientras Wall Street sostiene un tono de <strong>codicia</strong> (Fear & Greed en 56) pese al estrés en el tramo largo de la curva.</p><p>Para <strong>Argentina</strong>, el <strong>riesgo país</strong> perforó los 500 puntos y llegó a <strong>511 pb</strong>, su nivel más alto en tres meses, desacoplándose de sus pares emergentes por una combinación de inflación de julio en <strong>33,8%</strong> i.a., ruido político y un esquema monetario cada vez más difícil de leer, a lo que se suma el deterioro del contexto internacional. El <strong>BCRA</strong> mantiene sus compras de dólares en el ritmo más bajo del año (US$28 M diarios) para sostener el mayorista, una estrategia que empieza a mostrar sus límites si la prima de riesgo local sigue firme mientras el mundo se vuelve más hostil.</p>"
 }
