@@ -1,9 +1,9 @@
 {
-  "date": "2026-08-25",
-  "generated": "2026-08-25T12:15:00Z",
+  "date": "2026-08-26",
+  "generated": "2026-08-26T12:15:00Z",
   "sentiment": {
     "overall": "neutral",
-    "label": "Wall Street cerró en baja el lunes a la espera de Jackson Hole, pero Argentina sigue mostrando resiliencia local: el riesgo país retrocede a 502 pb y los bonos soberanos extienden la mejora",
+    "label": "El petróleo se derrumba y Wall Street sube por la distensión entre EE.UU. e Irán, pero en Argentina el riesgo país rebota a 514 pb y el Tesoro afronta vencimientos por $12,6 billones",
     "fg": 55,
     "fg_label": "Codicia",
     "putcall": 0.80,
@@ -13,99 +13,99 @@
     {
       "id": 1,
       "tag": "argentina · riesgo soberano",
-      "tag_class": "tg",
-      "title": "El riesgo país argentino retrocede a 502 puntos y los bonos soberanos extienden la mejora de la semana pasada",
-      "brief": "El EMBI+ cotiza hoy en torno a 502 pb (-0,6%), por debajo de los 505 pb del viernes. La curva larga en dólares lidera las subas: AL41 +0,41% y GD41 +0,28%, mientras GD35 cede levemente -0,28%.",
-      "tldr": "La mejora del riesgo país se consolida tras el fuerte deterioro que había sufrido en agosto",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El <strong>riesgo país</strong> argentino opera hoy en torno a los <strong>502 puntos básicos</strong> (-0,6% intradía), por debajo del cierre de 505 pb del viernes, en una jornada de recuperación de los bonos soberanos en dólares que en algunos tramos suben hasta 1%. En la curva, <strong>AL41</strong> avanza <strong>0,41%</strong> y <strong>GD41</strong> <strong>0,28%</strong>, mientras <strong>GD35</strong> retrocede levemente <strong>-0,28%</strong> y <strong>AL30</strong> suma <strong>0,25%</strong>.",
-      "contexto": "El nivel actual sigue muy por debajo del pico de 532 pb que había tocado el índice a mediados de agosto, cuando llegó a deteriorarse cerca de 19% en el mes. La mejora de las últimas ruedas acompaña el máximo de siete años en las reservas del BCRA, aunque el financiamiento voluntario en dólares para el Tesoro continúa prácticamente cerrado.",
+      "tag_class": "tr",
+      "title": "El riesgo país argentino rebota a 514 puntos y se aleja de los 500 pb",
+      "brief": "El EMBI+ cerró ayer en 514 pb, tras rebotar desde el mínimo de 402 pb tocado en julio. La curva larga en dólares lidera las bajas: GD41 -0,79% y AL41 -0,35%, mientras GD30 resiste con +0,64%.",
+      "tldr": "El riesgo país se aleja de los 500 puntos justo cuando el Tesoro enfrenta vencimientos exigentes",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El <strong>riesgo país</strong> argentino cerró ayer martes en <strong>514 puntos básicos</strong>, luego de rebotar desde el mínimo de <strong>402 pb</strong> tocado en julio pasado tras la mayor compresión del año, que había seguido al acuerdo con el FMI y la confirmación de los pagos de deuda. En la curva soberana en dólares, <strong>GD41</strong> retrocede <strong>0,79%</strong> y <strong>AL41</strong> <strong>0,35%</strong>, mientras <strong>GD30</strong> resiste mejor con una suba de <strong>0,64%</strong> y <strong>AL30</strong> cede apenas <strong>0,09%</strong>.",
+      "contexto": "El mercado financiero argentino atraviesa el &ldquo;agotamiento de los catalizadores positivos locales&rdquo; tras haberse concretado los principales hitos del año (plan financiero 2026-2027, metas con el FMI, mejora de calificaciones), por lo que la atención se desplaza hacia la volatilidad global y la demanda de cobertura cambiaria preelectoral, que el Tesoro ya viene convalidando con más instrumentos dólar linked.",
       "impacto": [
-        { "asset": "Riesgo país", "dir": "↓ -0,6% (502 pb)", "cls": "dn" },
-        { "asset": "AL41", "dir": "↑ +0,41% (70,25)", "cls": "up" },
-        { "asset": "GD41", "dir": "↑ +0,28% (74,41)", "cls": "up" }
+        { "asset": "Riesgo país", "dir": "↑ 514 pb", "cls": "dn" },
+        { "asset": "GD41", "dir": "↓ -0,79% (73,82)", "cls": "dn" },
+        { "asset": "GD30", "dir": "↑ +0,64% (57,47)", "cls": "up" }
       ]
     },
     {
       "id": 2,
-      "tag": "eeuu · mercados",
-      "tag_class": "tb",
-      "title": "Wall Street cerró en baja el lunes ante la previa de Jackson Hole; el oro extiende su repunte y el petróleo se hunde",
-      "brief": "El S&P 500 (SPY) cayó 0,29% y el Nasdaq (QQQ) 1,00% en la rueda del lunes. El oro (GLD) sumó 0,79%, mientras el petróleo (USO) se desplomó 1,80%. El Treasury a 10 años se mantiene estable en 4,74%.",
-      "tldr": "Las tecnológicas lideran la baja mientras el oro sigue funcionando como cobertura",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Wall Street cerró en baja el lunes: el <strong>S&amp;P 500</strong> (ETF SPY) retrocedió <strong>0,29%</strong> a <strong>US$763,47</strong> y el <strong>Nasdaq</strong> (ETF QQQ) cedió <strong>1,00%</strong> a <strong>US$706,32</strong>, liderado por las tecnológicas. En contraste, el <strong>oro</strong> (ETF GLD) sumó <strong>0,79%</strong> hasta <strong>US$426,69</strong>, mientras el <strong>petróleo</strong> (ETF USO) se hundió <strong>1,80%</strong> a <strong>US$132,21</strong>.",
-      "contexto": "El <strong>Treasury a 10 años</strong> se mantiene estable en <strong>4,74%</strong>, sin cambios respecto del viernes, cerca de su máximo en 20 meses. La combinación de caída en acciones, suba del oro y derrumbe del petróleo sugiere un mercado cauteloso que prioriza cobertura de cara al simposio de Jackson Hole, que arranca el jueves 27/8.",
+      "tag": "global · energía/geopolítica",
+      "tag_class": "tq",
+      "title": "El petróleo se hunde más de 4% por señales de distensión entre EE.UU. e Irán",
+      "brief": "El Brent cayó 6,33% a US$86,33 y el WTI 4,55% a US$81,11, arrastrando al ETF USO -4,58%. El mercado descuenta un menor riesgo de escalada militar tras la mediación de Qatar y Pakistán.",
+      "tldr": "La desescalada en Medio Oriente desinfla la prima de riesgo geopolítico en el crudo",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "El <strong>petróleo</strong> se derrumbó en la rueda del martes: el <strong>Brent</strong> cayó <strong>6,33%</strong> hasta <strong>US$86,33</strong> por barril y el <strong>WTI</strong> retrocedió <strong>4,55%</strong> a <strong>US$81,11</strong>, arrastrando al ETF <strong>USO</strong> un <strong>4,58%</strong> abajo. El movimiento responde a señales de menor tensión entre <strong>EE.UU. e Irán</strong>: el jefe del Ejército de Pakistán visitó Teherán para apoyar la diplomacia, Qatar confirmó que continúa mediando, y trascendió que Washington podría devolver a la región a diplomáticos evacuados.",
+      "contexto": "A esto se sumó que las últimas medidas de presión económica de EE.UU. sobre Irán resultaron menos severas de lo que anticipaba el mercado, lo que aceleró el desarme de la prima de riesgo geopolítico que venía sosteniendo al crudo en las últimas semanas.",
       "impacto": [
-        { "asset": "S&P 500 (SPY)", "dir": "↓ -0,29% (763,47)", "cls": "dn" },
-        { "asset": "Nasdaq (QQQ)", "dir": "↓ -1,00% (706,32)", "cls": "dn" },
-        { "asset": "Oro (GLD)", "dir": "↑ +0,79% (426,69)", "cls": "up" }
+        { "asset": "Brent", "dir": "↓ -6,33% (US$86,33)", "cls": "dn" },
+        { "asset": "WTI", "dir": "↓ -4,55% (US$81,11)", "cls": "dn" },
+        { "asset": "Petróleo (USO)", "dir": "↓ -4,58% (126,15)", "cls": "dn" }
       ]
     },
     {
       "id": 3,
-      "tag": "argentina · bcra",
-      "tag_class": "tg",
-      "title": "El BCRA desacelera el ritmo de compra de reservas para sostener el ancla cambiaria",
-      "brief": "Las compras diarias promedio del BCRA cayeron a US$28 M en agosto, frente a US$103 M en julio, en el mes con menor ritmo de acumulación de 2026. Las reservas brutas rondan los US$49.600 M, cerca del máximo de siete años.",
-      "tldr": "El Central prioriza estabilidad cambiaria por sobre la velocidad de acumulación de reservas",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>BCRA</strong> redujo el ritmo de compra de dólares a un promedio de <strong>US$28 millones</strong> diarios en agosto, muy por debajo de los <strong>US$103 millones</strong> de julio, lo que convertiría a agosto en el mes con menor acumulación de reservas desde que arrancó el programa en 2026. Aun así, las <strong>reservas internacionales brutas</strong> rondan los <strong>US$49.600 M</strong>, cerca del máximo de siete años alcanzado la semana pasada.",
-      "contexto": "El dólar <strong>mayorista</strong> cotiza en <strong>$1.501/$1.510</strong> y el <strong>oficial</strong> en <strong>$1.480/$1.530</strong>, mientras el <strong>MEP</strong> se ubica en <strong>$1.534,7/$1.543,4</strong> y el <strong>CCL</strong> superó los <strong>$1.600</strong> ($1.598,7/$1.600,6). Desde el Tesoro y el BCRA priorizan consolidar la estabilidad nominal y el ancla cambiaria por sobre la velocidad de acumulación de reservas, para evitar recalentar al mercado financiero.",
+      "tag": "eeuu · mercados",
+      "tag_class": "tb",
+      "title": "Wall Street cerró en alza el martes, impulsado por el petróleo más barato y la baja del Treasury a 10 años",
+      "brief": "El S&P 500 (SPY) subió 0,32% y el Nasdaq (QQQ) 0,62%. El Treasury a 10 años cedió a 4,70% desde 4,74%, mientras el oro (GLD) sumó 0,32%.",
+      "tldr": "El combo de petróleo más barato y yields más bajos calmó a los inversores a dos días de Jackson Hole",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "Wall Street cerró en alza el martes: el <strong>S&amp;P 500</strong> (ETF SPY) sumó <strong>0,32%</strong> a <strong>US$765,91</strong> y el <strong>Nasdaq</strong> (ETF QQQ) avanzó <strong>0,62%</strong> a <strong>US$710,72</strong>, en línea con la suba de 0,30% del Dow y 0,66% del Nasdaq reportada por la prensa financiera. El <strong>oro</strong> (ETF GLD) también sumó <strong>0,32%</strong> hasta <strong>US$428,07</strong>, pese al mejor humor de riesgo.",
+      "contexto": "El <strong>Treasury a 10 años</strong> cedió a <strong>4,70%</strong>, desde 4,74% el lunes, ayudado por el desplome del petróleo. Faltan dos días para el inicio del simposio de <strong>Jackson Hole</strong> (27-29/8), donde el viernes <strong>Kevin Warsh</strong> dará su primer discurso como chair de la Fed. El <strong>Fear &amp; Greed</strong> de CNN se mantiene en <strong>55</strong> (codicia), la encuesta de <strong>AAII</strong> mostró alcistas en <strong>35,5%</strong> frente a bajistas de <strong>39,9%</strong> en la semana del 19/8, y el put/call de CBOE está en <strong>0,80</strong>.",
       "impacto": [
-        { "asset": "Oficial", "dir": "$1.480/$1.530", "cls": "neu" },
-        { "asset": "MEP", "dir": "$1.534,7/$1.543,4", "cls": "neu" },
-        { "asset": "CCL", "dir": "$1.598,7/$1.600,6", "cls": "neu" }
+        { "asset": "S&P 500 (SPY)", "dir": "↑ +0,32% (765,91)", "cls": "up" },
+        { "asset": "Nasdaq (QQQ)", "dir": "↑ +0,62% (710,72)", "cls": "up" },
+        { "asset": "UST 10Y", "dir": "↓ 4,70%", "cls": "dn" }
       ]
     },
     {
       "id": 4,
-      "tag": "eeuu · fed",
-      "tag_class": "tb",
-      "title": "Cuenta regresiva a Jackson Hole: el viernes, Kevin Warsh da su primer discurso como chair de la Fed",
-      "brief": "El simposio de Jackson Hole se realiza del 27 al 29/8, con el discurso central de Kevin Warsh el viernes 28/8. Morgan Stanley y Citigroup esperan recortes de tasas en 2026, con foco en septiembre.",
-      "tldr": "El mercado espera señales sobre el sendero de tasas bajo la nueva conducción de la Fed",
+      "tag": "argentina · bcra",
+      "tag_class": "tg",
+      "title": "El BCRA alcanza un récord de reservas de US$50.655 M mientras Diputados debate la reforma de su Carta Orgánica",
+      "brief": "17 ruedas consecutivas de saldo comprador llevaron las reservas a un máximo histórico. El dólar oficial subió a $1.480/$1.530 y el mayorista a $1.502,5/$1.511,5, con la city atenta a vencimientos del Tesoro por $12,6 billones esta semana.",
+      "tldr": "Reservas récord conviven con presión cambiaria y una agenda legislativa clave para el Central",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "Faltan solo dos días para el simposio de <strong>Jackson Hole</strong> (27 al 29 de agosto), cuyo eje este año es &ldquo;Innovación financiera: implicancias para los pagos y la política monetaria&rdquo;. El viernes 28/8, <strong>Kevin Warsh</strong> dará su primer discurso como <strong>chair de la Fed</strong> desde que asumió el cargo en mayo, el evento que más está mirando el mercado esta semana.",
-      "contexto": "No hay reunión de la Fed programada para agosto, pero <strong>Morgan Stanley</strong> y <strong>Citigroup</strong> anticipan al menos dos recortes de tasas de 25 puntos básicos en 2026, con foco en septiembre. El <strong>Fear &amp; Greed</strong> de CNN se ubica en <strong>55</strong> (codicia), mientras la encuesta de <strong>AAII</strong> mostró alcistas en <strong>35,5%</strong> frente a bajistas de <strong>39,9%</strong> en la semana del 19/8, y el put/call de CBOE se ubica en <strong>0,80</strong>.",
+      "evento": "El <strong>BCRA</strong> llevó las <strong>reservas internacionales</strong> a un récord de <strong>US$50.655 millones</strong>, impulsado por <strong>17 jornadas consecutivas</strong> con saldo comprador en el Mercado Libre de Cambios. Sin embargo, la intervención oficial del martes —tanto en coberturas para desincentivar la demanda en el spot como en el propio MLC— dejó un magro saldo positivo de apenas <strong>US$9 millones</strong>, en una jornada en que el dólar <strong>mayorista</strong> subió a <strong>$1.502,5/$1.511,5</strong> y el <strong>oficial</strong> a <strong>$1.480/$1.530</strong>.",
+      "contexto": "El <strong>Tesoro</strong> afronta esta semana vencimientos por <strong>$12,6 billones</strong>, en paralelo al debate en la Cámara de Diputados sobre la reforma de la <strong>Carta Orgánica del BCRA</strong>, que busca prohibir el financiamiento directo o indirecto al Tesoro para reforzar la independencia del Central. El <strong>MEP</strong> cotiza en <strong>$1.537,3/$1.543,6</strong> y el <strong>CCL</strong> en <strong>$1.599,5/$1.600,9</strong>, ambos por encima de los niveles de ayer.",
       "impacto": [
-        { "asset": "UST 10Y", "dir": "~4,74%", "cls": "neu" },
-        { "asset": "Fear & Greed", "dir": "55 (Codicia)", "cls": "neu" },
-        { "asset": "AAII alcistas", "dir": "35,5%", "cls": "neu" }
+        { "asset": "Reservas BCRA", "dir": "récord US$50.655 M", "cls": "up" },
+        { "asset": "Oficial", "dir": "$1.480/$1.530", "cls": "neu" },
+        { "asset": "CCL", "dir": "$1.599,5/$1.600,9", "cls": "neu" }
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "El riesgo país argentino mejora mientras Wall Street cierra en baja",
-      "texto": "Mientras el S&P 500 y el Nasdaq retrocedieron el lunes ante la previa de Jackson Hole, el riesgo país argentino siguió cediendo hasta 502 pb, con la curva larga en dólares liderando las subas. La desconexión sugiere que la mejora local responde más a factores idiosincráticos (reservas, expectativas de reformas) que al humor global."
+      "label": "El riesgo país sube a 514 pb mientras el BCRA acumula reservas récord",
+      "texto": "Pese a 17 ruedas consecutivas de compras y un máximo de US$50.655 M en reservas, el riesgo país rebotó a 514 pb, alejándose de los 500 puntos, en medio de la demanda de cobertura cambiaria preelectoral y la espera por la reforma de la Carta Orgánica del BCRA."
     },
     {
-      "label": "El BCRA frena la compra de reservas justo cuando el dólar financiero supera los $1.600",
-      "texto": "El Central redujo las compras diarias a US$28 M en agosto (vs. US$103 M en julio) para contener el tipo de cambio, pero el CCL igual perforó los $1.600. Si la brecha sigue ampliándose, el trade-off entre sostener el ancla nominal y acumular reservas podría volverse más visible."
+      "label": "El petróleo se derrumba y Wall Street sube en la misma rueda",
+      "texto": "El USO cayó 4,58% por la distensión entre EE.UU. e Irán, mientras el S&P 500 y el Nasdaq treparon apoyados en yields más bajos. A diferencia de ruedas anteriores, ambos activos se movieron en línea sin el patrón de cobertura (oro arriba, crudo abajo) que venía marcando la previa a Jackson Hole."
     },
     {
-      "label": "El oro sube y el petróleo se hunde en la misma rueda, un patrón típico de cobertura previa a un evento de riesgo",
-      "texto": "El USO cayó 1,80% mientras el GLD sumó 0,79%, una combinación que no refleja temor a una disrupción de oferta sino más bien un posicionamiento defensivo de cara al discurso de Kevin Warsh en Jackson Hole el viernes."
+      "label": "El Tesoro enfrenta vencimientos de $12,6 billones con apenas US$9 M de saldo comprador oficial",
+      "texto": "La intervención en el MLC y en coberturas dejó un resultado magro, lo que anticipa una licitación exigente esta semana, justo cuando el oficialismo debate en Diputados la reforma de la Carta Orgánica del BCRA."
     }
   ],
   "correlaciones": [
     {
-      "par": "El máximo de reservas del BCRA y la mejora del riesgo país se retroalimentan, incluso con menor ritmo de compras",
-      "texto": "Aunque el Central bajó el ritmo de compras a US$28 M diarios, las reservas brutas siguen cerca del máximo de siete años, y eso alcanza para sostener la mejora del EMBI+ a 502 pb y las subas en la curva larga en dólares (AL41, GD41)."
+      "par": "La caída del petróleo y la baja del Treasury a 10 años impulsan a Wall Street",
+      "texto": "El USO se hundió 4,58% mientras el UST10Y retrocedió a 4,70% desde 4,74%, una combinación que despejó el camino para que el S&P 500 (+0,32%) y el Nasdaq (+0,62%) cerraran en alza el martes, a dos días de Jackson Hole."
     },
     {
-      "par": "La caída de Wall Street del lunes y la firmeza del Treasury a 10 años anticipan un mercado a la expectativa de Jackson Hole",
-      "texto": "El Nasdaq cedió 1,00% y el S&P 500 0,29%, mientras el UST 10Y se mantuvo sin cambios en 4,74%, cerca de máximos de 20 meses. Esa combinación de acciones a la baja y yields firmes suele preceder a eventos de alta sensibilidad para la política monetaria, como el discurso de Warsh del viernes."
+      "par": "Reservas récord del BCRA conviven con la suba del dólar oficial y financiero",
+      "texto": "Pese a las 17 ruedas consecutivas de compras y el máximo de US$50.655 M, el mayorista subió a $1.511,5 y el CCL superó los $1.600, reflejo de que la demanda de cobertura sigue firme pese a la acumulación de divisas."
     },
     {
-      "par": "El oro en alza y el petróleo en baja reflejan cobertura financiera, no temor por la oferta física",
-      "texto": "El GLD subió 0,79% mientras el USO cayó 1,80% en la misma rueda, la misma divergencia que se viene observando en las últimas semanas y que apunta a un posicionamiento defensivo de los inversores antes de Jackson Hole, más que a una lectura sobre fundamentals de energía."
+      "par": "El rebote del riesgo país a 514 pb coincide con el retroceso de los bonos largos en dólares",
+      "texto": "GD41 cae 0,79% y AL41 0,35% en la rueda, mientras GD30 (+0,64%) resiste mejor gracias a mayor liquidez, la misma dispersión que viene marcando la curva desde el mínimo de 402 pb de julio."
     }
   ],
-  "bottom_line": "<p>Wall Street cerró en baja el lunes, con el <strong>S&amp;P 500</strong> cediendo 0,29% y el <strong>Nasdaq</strong> 1,00%, en una rueda cautelosa a solo dos días del inicio del simposio de <strong>Jackson Hole</strong> (27-29/8), donde el viernes <strong>Kevin Warsh</strong> dará su primer discurso como chair de la Fed. El <strong>Treasury a 10 años</strong> se mantiene firme en 4,74%, cerca de máximos de 20 meses, mientras el oro extiende su repunte como cobertura (+0,79%) y el petróleo se hunde 1,80%. Morgan Stanley y Citigroup siguen anticipando recortes de tasas hacia septiembre, pero el mercado prefiere esperar señales concretas de la nueva conducción de la Fed antes de posicionarse.</p><p>Para <strong>Argentina</strong>, la fotografía local sigue mejorando pese al contexto externo más cauteloso: el <strong>riesgo país</strong> retrocedió a <strong>502 puntos básicos</strong>, por debajo de los 505 pb del viernes y bien lejos del pico de 532 pb de mediados de agosto, con la curva larga en dólares (AL41, GD41) liderando las subas. El <strong>BCRA</strong> desaceleró su ritmo de compra de reservas a US$28 M diarios en agosto (vs. US$103 M en julio) para sostener el ancla cambiaria, aunque el dólar financiero igual perforó los <strong>$1.600</strong> (CCL) y el mayorista subió a <strong>$1.510</strong>. El desafío para la city esta semana será sostener esta mejora local si Jackson Hole convalida un tono más hawkish de lo esperado.</p>"
+  "bottom_line": "<p>El <strong>petróleo</strong> se derrumbó el martes &mdash;Brent -6,33% y WTI -4,55%&mdash; ante señales de distensión entre <strong>EE.UU. e Irán</strong>, lo que junto a la baja del <strong>Treasury a 10 años</strong> a 4,70% impulsó a Wall Street: el <strong>S&amp;P 500</strong> sumó 0,32% y el <strong>Nasdaq</strong> 0,62%. El mercado global luce más calmo a dos días del inicio de <strong>Jackson Hole</strong> (27-29/8), donde el viernes <strong>Kevin Warsh</strong> dará su primer discurso como chair de la Fed, con el <strong>Fear &amp; Greed</strong> en 55 (codicia) y el put/call de CBOE en 0,80.</p><p>Para <strong>Argentina</strong>, el cuadro es más mixto: el <strong>BCRA</strong> llevó las reservas a un récord de <strong>US$50.655 millones</strong> tras 17 ruedas consecutivas de compras, pero el <strong>riesgo país</strong> rebotó a <strong>514 puntos básicos</strong>, alejándose de los 500 pb, mientras el dólar oficial subió a <strong>$1.480/$1.530</strong> y el CCL superó los <strong>$1.600</strong>. El <strong>Tesoro</strong> afronta esta semana vencimientos por <strong>$12,6 billones</strong> con apenas US$9 M de saldo comprador oficial, justo cuando Diputados debate la reforma de la Carta Orgánica del BCRA: la city seguirá de cerca si el mejor clima externo alcanza para descomprimir la presión cambiaria y de tasas local.</p>"
 }
