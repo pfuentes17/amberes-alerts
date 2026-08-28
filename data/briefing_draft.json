@@ -1,102 +1,103 @@
 {
-  "date": "2026-08-27",
-  "generated": "2026-08-27T12:20:00Z",
-  "sentiment": {
-    "overall": "risk-on",
-    "label": "Nvidia vuelve a superar expectativas y arranca Jackson Hole con la city local celebrando la reforma del BCRA y reservas en récord",
-    "fg": 55,
-    "fg_label": "Codicia",
-    "putcall": 0.80,
-    "aaii_bulls": 39.8
-  },
-  "drivers": [
-    {
-      "id": 1,
-      "tag": "eeuu · resultados corporativos",
-      "tag_class": "tb",
-      "title": "Nvidia vuelve a superar expectativas y dispara al Nasdaq antes de la apertura",
-      "brief": "Ingresos de US$96.220 M vs. US$92.170 M esperados, con el negocio de centros de datos como motor. La acción llegó a saltar 7% en el after-market.",
-      "tldr": "El líder de la IA sostiene el apetito por el riesgo tecnológico global",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "<strong>Nvidia</strong> reportó ayer miércoles, tras el cierre, ingresos trimestrales de <strong>US$96.220 millones</strong>, por encima del consenso de <strong>US$92.170 M</strong>, impulsados por el negocio de centros de datos. La acción llegó a subir hasta <strong>7%</strong> en operaciones fuera de horario, aunque en cinco de sus últimos seis balances terminó cayendo en la rueda siguiente a la presentación.",
-      "contexto": "El resultado confirma que la demanda de infraestructura de IA sigue firme pese a las dudas sobre valuaciones tecnológicas de las últimas semanas. Los futuros del Nasdaq lideran las compras previas a la apertura, en una jornada en la que además arranca el simposio de <strong>Jackson Hole</strong>.",
-      "impacto": [
-        { "asset": "Nasdaq (futuros)", "dir": "↑", "cls": "up" },
-        { "asset": "QQQ", "dir": "↑ +0,09% (711,37)", "cls": "up" },
-        { "asset": "VIX", "dir": "↓ 15,21", "cls": "dn" }
-      ]
+    "date": "2026-08-28",
+    "generated": "2026-08-28T12:10:00Z",
+    "sentiment": {
+        "overall": "neutral",
+        "label": "El mercado global se frena a la espera del debut de Warsh en Jackson Hole, con sesgo risk-on de fondo y el frente local sólido",
+        "fg": 58,
+        "fg_label": "Codicia",
+        "putcall": 0.92,
+        "aaii_bulls": 37.0
     },
-    {
-      "id": 2,
-      "tag": "bancos centrales · fed",
-      "tag_class": "tb",
-      "title": "Arranca Jackson Hole: el mercado espera el debut de Kevin Warsh como chair de la Fed",
-      "brief": "El simposio corre del 27 al 29/8; Warsh da su primer discurso como presidente de la Fed el viernes. La Fed de Boston (Collins) insistió en que las tasas deben subir si la inflación no cede en forma sostenida.",
-      "tldr": "El mercado no se inquieta pese al tono duro, a la espera de las señales de Warsh",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Comenzó el simposio de <strong>Jackson Hole</strong> (27-29/8), donde el viernes <strong>Kevin Warsh</strong> dará su primer discurso como chair de la Fed. En paralelo, la presidenta de la Fed de Boston, <strong>Susan Collins</strong>, dijo que las tasas deberían subir pronto salvo que los datos muestren una caída sostenida de la inflación, tras el dato de PCE núcleo de julio que se mantuvo sin cambios en <strong>3,3% i.a.</strong>",
-      "contexto": "El mercado no muestra estrés: el <strong>UST10Y</strong> cerró en <strong>4,64%</strong> y el VIX sigue en zona baja (15,21). La próxima decisión de tasas recién es el 16 de septiembre, por lo que la city tiene margen para digerir el mensaje antes de reposicionarse.",
-      "impacto": [
-        { "asset": "UST 10Y", "dir": "4,64%", "cls": "neu" },
-        { "asset": "GLD", "dir": "↓ -1,58% (421,32)", "cls": "dn" }
-      ]
-    },
-    {
-      "id": 3,
-      "tag": "argentina · bcra",
-      "tag_class": "tg",
-      "title": "Diputados aprobó la reforma de la Carta Orgánica del BCRA y las reservas llegan a US$50.783 M",
-      "brief": "El proyecto blinda al directorio y prohíbe el financiamiento monetario al Tesoro; pasa al Senado. El BCRA compró US$61 M el miércoles (US$547 M en agosto).",
-      "tldr": "Señal institucional positiva que coincide con la acumulación récord de reservas",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "La Cámara de Diputados aprobó el miércoles el proyecto de reforma de la <strong>Carta Orgánica del BCRA</strong>, que blinda al directorio de la entidad y prohíbe la emisión monetaria para financiar al Tesoro; ahora resta la aprobación en el Senado. El mismo día, el <strong>BCRA</strong> compró <strong>US$61 millones</strong> en el MULC, acumulando <strong>US$547 M</strong> en lo que va de agosto, con reservas internacionales que ya suman <strong>US$50.783 millones</strong>.",
-      "contexto": "Es una señal institucional a favor de la independencia del Banco Central, en línea con el programa acordado con el FMI. El dólar mayorista ($1.514 venta) sigue muy por debajo del techo de la banda cambiaria ($1.874,22), lo que le da margen al BCRA para seguir comprando.",
-      "impacto": [
-        { "asset": "Reservas BCRA", "dir": "↑ US$50.783 M", "cls": "up" },
-        { "asset": "Oficial", "dir": "$1.485/$1.535", "cls": "neu" },
-        { "asset": "MEP", "dir": "$1.540,7/$1.548,3", "cls": "neu" }
-      ]
-    },
-    {
-      "id": 4,
-      "tag": "argentina · riesgo soberano",
-      "tag_class": "tr",
-      "title": "El riesgo país opera en torno a 512 pb mientras el Tesoro licita deuda en pesos y dólares",
-      "brief": "El EMBI+ cotiza cerca de 512 pb (+0,60%), todavía en la zona de 500 puntos. Hoy el Tesoro llama a licitación de instrumentos en pesos y dólares, con liquidación el 31/8.",
-      "tldr": "El mercado sigue de cerca el rollover de deuda de corto plazo justo antes de Jackson Hole",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>riesgo país</strong> argentino opera hoy en torno a <strong>512 puntos básicos</strong> (+0,60%), sosteniéndose cerca de la zona de <strong>500 pb</strong> que había perforado la semana pasada. En la curva soberana en dólares, <strong>GD30</strong> cotiza en <strong>57,48</strong> (+0,01%) y <strong>AL30</strong> en <strong>55,05</strong> (-0,10%), mientras <strong>GD35</strong> cede <strong>-0,05%</strong> a <strong>79,57</strong>. Además, hoy el <strong>Tesoro</strong> llama a licitación de instrumentos en pesos y dólares, con liquidación el 31/8.",
-      "contexto": "La licitación de hoy es clave para el rollover de vencimientos de corto plazo (LECAPs como S13N6 y S30N6, que cotizan en torno a 103,9 y 121,5 respectivamente). El resultado se conocerá más tarde en la jornada y definirá si el Tesoro logra renovar sin convalidar tasas más altas.",
-      "impacto": [
-        { "asset": "Riesgo país", "dir": "≈512 pb", "cls": "neu" },
-        { "asset": "GD30", "dir": "+0,01% (57,48)", "cls": "up" },
-        { "asset": "AL30", "dir": "-0,10% (55,05)", "cls": "dn" }
-      ]
-    }
-  ],
-  "tensiones": [
-    {
-      "label": "Nvidia dispara al Nasdaq justo cuando arranca Jackson Hole con la Fed en tono duro",
-      "texto": "El rally tecnológico post-balance de Nvidia convive con las advertencias de la Fed de Boston sobre la necesidad de subir tasas, en la previa al debut de Kevin Warsh como chair el viernes. El mercado, con VIX en 15,21, todavía no muestra señales de nerviosismo."
-    },
-    {
-      "label": "La reforma del BCRA avanza en Diputados mientras el riesgo país no logra perforar los 500 pb",
-      "texto": "Pese a la señal institucional positiva de la reforma de la Carta Orgánica y las reservas récord de US$50.783 M, el riesgo país se mantiene pegado a los 512 pb, reflejo de que el mercado todavía pondera el ruido preelectoral y la licitación del Tesoro de hoy."
-    }
-  ],
-  "correlaciones": [
-    {
-      "par": "La suba de Nvidia arrastra a las tecnológicas globales y sostiene el apetito por activos de riesgo",
-      "texto": "El salto de Nvidia en el after-market impulsa a los futuros del Nasdaq (QQQ +0,09%) mientras el VIX se mantiene bajo (15,21), un combo que en jornadas anteriores también favoreció la compresión de spreads emergentes."
-    },
-    {
-      "par": "Reservas del BCRA en alza y brecha cambiaria acotada siguen conteniendo al riesgo país",
-      "texto": "Con la brecha entre el oficial ($1.535) y el blue ($1.555) en apenas 1,3%, y reservas que ya superan los US$50.780 M, el riesgo país logra mantenerse cerca de la zona de 500 pb pese al ruido político en torno a la reforma del BCRA."
-    }
-  ],
-  "bottom_line": "<p>El día combina un fuerte impulso tecnológico global &mdash;de la mano de <strong>Nvidia</strong>, que superó expectativas y llegó a saltar 7% en el after-market&mdash; con el arranque del simposio de <strong>Jackson Hole</strong>, donde el viernes <strong>Kevin Warsh</strong> dará su primer discurso como chair de la Fed. La Fed de Boston mantiene el tono duro, pero el mercado no muestra estrés: el <strong>VIX</strong> sigue en 15,21 y el <strong>Fear &amp; Greed</strong> en 55 (codicia).</p><p>Para <strong>Argentina</strong>, la agenda local vuelve a ser protagonista: la aprobación en Diputados de la reforma de la <strong>Carta Orgánica del BCRA</strong> y la continuidad en la compra de reservas (US$50.783 M, +US$547 M en agosto) refuerzan la lectura institucional positiva, mientras el <strong>riesgo país</strong> se sostiene cerca de los <strong>512 pb</strong> a la espera del resultado de la licitación del Tesoro de hoy. Con el dólar mayorista lejos del techo de la banda cambiaria, el clima de mercado local se mantiene favorable, aunque atento a que el tono hawkish de la Fed en Jackson Hole no derive en una corrección global que golpee a los emergentes.</p>"
+    "drivers": [
+        {
+            "id": 1,
+            "tag": "bancos centrales · fed",
+            "tag_class": "tb",
+            "title": "Wall Street espera hoy el discurso debut de Kevin Warsh en Jackson Hole",
+            "brief": "El presidente de la Fed da su primer gran discurso desde que asumió, hoy a las 10am ET. Los futuros cotizan mixtos: Dow y S&P planos, Nasdaq 100 cae 0,3%.",
+            "tldr": "El mercado busca señales sobre si la suba de tasas largas ya alcanza como ajuste monetario",
+            "sentiment": "mx",
+            "sentiment_label": "🟡 Mixto",
+            "evento": "<strong>Kevin Warsh</strong>, presidente de la Fed desde mayo, pronuncia hoy a las <strong>10:00 ET</strong> su discurso inaugural en el Symposium de Jackson Hole (Wyoming), bajo el lema &ldquo;Innovación Financiera: Implicancias para Pagos y Política&rdquo;. Es la primera gran exposición pública de su gestión.",
+            "contexto": "Los futuros de EE.UU. cotizan mixtos previo al discurso &mdash;Dow y S&amp;P 500 prácticamente planos, Nasdaq 100 cae 0,3%&mdash; tras el cierre alcista del jueves. El mercado busca saber si Warsh interpreta la reciente suba de los rendimientos largos como un ajuste monetario suficiente, o si sostiene la necesidad de otra suba de tasas. Analistas de Sevens Report advierten que un tono hawkish &ldquo;podría generar un retroceso marcado&rdquo; en acciones.",
+            "impacto": [
+                {"asset": "UST 10Y", "dir": "4,66%", "cls": "neu"},
+                {"asset": "Futuros Nasdaq 100", "dir": "↓ 0,3%", "cls": "dn"},
+                {"asset": "Futuros S&P 500", "dir": "≈ plano", "cls": "neu"}
+            ]
+        },
+        {
+            "id": 2,
+            "tag": "argentina · bcra",
+            "tag_class": "tg",
+            "title": "El BCRA hizo la mayor compra de dólares del mes y las reservas rozan los US$51.000 M",
+            "brief": "Compró US$93 M el jueves, con 21 ruedas consecutivas de saldo comprador. Reservas en US$50.860 M (+US$77 M); dólar oficial/blue con brecha de apenas 1,3%.",
+            "tldr": "Racha compradora sostenida pese al menor ritmo general de agosto",
+            "sentiment": "ro",
+            "sentiment_label": "🟢 Risk-On",
+            "evento": "El <strong>BCRA</strong> concretó el jueves su mayor compra de dólares del mes: <strong>US$93 millones</strong>, la 21ª rueda consecutiva con saldo comprador positivo. Las reservas internacionales subieron <strong>US$77 M</strong> hasta <strong>US$50.860 millones</strong>, cerca de máximos de casi siete años. En el año acumula cerca de <strong>US$14.000 M</strong>, y en agosto suma <strong>US$640 M</strong>.",
+            "contexto": "Hoy el dólar oficial cotiza a <strong>$1.485/$1.535</strong> y el blue a <strong>$1.535/$1.555</strong>, con una brecha de apenas <strong>1,3%</strong>. El oficial acumula una suba de $25 en agosto, concentrada en las últimas tres ruedas. El objetivo de acumulación de reservas para 2026 (US$10.000-17.000 M) ya fue superado desde junio.",
+            "impacto": [
+                {"asset": "Reservas BCRA", "dir": "↑ US$50.860 M", "cls": "up"},
+                {"asset": "Oficial", "dir": "$1.535 (venta)", "cls": "neu"},
+                {"asset": "Brecha blue/oficial", "dir": "1,3%", "cls": "neu"}
+            ]
+        },
+        {
+            "id": 3,
+            "tag": "argentina · riesgo soberano",
+            "tag_class": "tr",
+            "title": "El riesgo país se sostiene en 512 pb mientras la reforma del BCRA pasa al debate en el Senado",
+            "brief": "Los bonos soberanos suben hasta 1% con el EMBI+ en 512 pb. La Carta Orgánica del BCRA, aprobada el miércoles en Diputados (144-102-9), ahora debe tratarse en la Cámara alta.",
+            "tldr": "Señal institucional positiva que todavía no logra perforar la zona de 500 pb",
+            "sentiment": "mx",
+            "sentiment_label": "🟡 Mixto",
+            "evento": "El <strong>riesgo país</strong> argentino opera en torno a <strong>512 puntos básicos</strong>, con los bonos soberanos en dólares subiendo hasta <strong>1%</strong>. La suba se da luego de que Diputados aprobara el miércoles la reforma de la <strong>Carta Orgánica del BCRA</strong> (144 votos a favor, 102 en contra, 9 abstenciones), que deroga las &ldquo;reservas de libre disponibilidad&rdquo; y profundiza la prohibición de financiamiento monetario al Tesoro. El proyecto ahora pasa al Senado.",
+            "contexto": "Milei celebró la aprobación como &ldquo;un paso fundamental para erradicar la inflación&rdquo;. Pese a la señal institucional y las reservas en máximos de siete años, el riesgo país no logra romper la barrera de los 500 pb, reflejo de que el mercado sigue ponderando el trámite legislativo en el Senado y el horizonte electoral de 2027.",
+            "impacto": [
+                {"asset": "Riesgo país", "dir": "≈512 pb", "cls": "neu"},
+                {"asset": "Bonos soberanos ARG", "dir": "↑ hasta 1%", "cls": "up"},
+                {"asset": "GD30", "dir": "57,71 (+0,40%)", "cls": "up"}
+            ]
+        },
+        {
+            "id": 4,
+            "tag": "global · mercados",
+            "tag_class": "tq",
+            "title": "Wall Street cerró en alza el jueves y el petróleo saltó 2% previo a Jackson Hole",
+            "brief": "S&P 500 (+0,66%), Nasdaq 100 (+1,37%) y oro (+0,30%) avanzaron en la rueda del jueves; el crudo (USO) trepó 2,09%.",
+            "tldr": "El apetito por riesgo se sostuvo, pero el mercado frena antes del discurso de Warsh",
+            "sentiment": "ro",
+            "sentiment_label": "🟢 Risk-On",
+            "evento": "En la rueda del jueves, el <strong>SPY</strong> cerró en <strong>US$771,10</strong> (+0,66%) y el <strong>QQQ</strong> en <strong>US$721,11</strong> (+1,37%), impulsados por tecnología y resultados corporativos. El oro (<strong>GLD</strong>) sumó <strong>0,30%</strong> y el crudo (<strong>USO</strong>) saltó <strong>2,09%</strong>.",
+            "contexto": "El rendimiento del Treasury a 10 años se ubica en <strong>4,66%</strong>, reflejando cierta cautela previo al discurso de Warsh. El índice de Miedo y Codicia de CNN marca <strong>58 puntos</strong> (codicia), consistente con un mercado que no descarta sorpresas pero mantiene el sesgo comprador de fondo.",
+            "impacto": [
+                {"asset": "S&P 500 (SPY)", "dir": "↑ 0,66%", "cls": "up"},
+                {"asset": "Nasdaq 100 (QQQ)", "dir": "↑ 1,37%", "cls": "up"},
+                {"asset": "Petróleo (USO)", "dir": "↑ 2,09%", "cls": "up"}
+            ]
+        }
+    ],
+    "tensiones": [
+        {
+            "label": "El mundo se frena a la espera de Warsh mientras Argentina sigue sumando reservas",
+            "texto": "Los futuros de EE.UU. cotizan mixtos y cautelosos previo al discurso de Jackson Hole, mientras el BCRA extiende a 21 ruedas su racha compradora y las reservas rozan los US$51.000 M. Si Warsh sorprende con un tono hawkish, esa cautela global podría contagiar a los emergentes pese a la solidez del frente local."
+        },
+        {
+            "label": "Señales institucionales positivas conviven con un riesgo país que no perfora los 500 pb",
+            "texto": "La media sanción de la reforma de la Carta Orgánica del BCRA y las reservas en máximos de siete años no alcanzan todavía para que el riesgo país rompa la barrera psicológica de los 500 pb, en una city que sigue de cerca el trámite en el Senado y el horizonte electoral de 2027."
+        }
+    ],
+    "correlaciones": [
+        {
+            "par": "El apetito por riesgo global del jueves sostiene a los bonos soberanos argentinos",
+            "texto": "El rally de Wall Street (SPY +0,66%, QQQ +1,37%) coincidió con una suba de hasta 1% en los bonos soberanos en dólares, en línea con la correlación habitual entre el apetito global por riesgo y la compresión de spreads emergentes."
+        },
+        {
+            "par": "Brecha cambiaria mínima y reservas en alza siguen conteniendo al riesgo país",
+            "texto": "Con la brecha entre el oficial ($1.535) y el blue ($1.555) en apenas 1,3%, y reservas que ya rozan los US$51.000 M, el mercado local mantiene el riesgo país anclado cerca de la zona de 500 pb pese al ruido del trámite legislativo."
+        }
+    ],
+    "bottom_line": "<p>La city global entra en modo pausa a la espera del discurso debut de <strong>Kevin Warsh</strong> en Jackson Hole (10am ET), tras un jueves de fuerte apetito por riesgo &mdash;<strong>S&amp;P 500</strong> (+0,66%), <strong>Nasdaq 100</strong> (+1,37%) y petróleo (+2,09%)&mdash; que hoy se frena con futuros mixtos. El mercado busca definir si Warsh convalida la reciente suba de rendimientos largos como ajuste suficiente o insiste en la necesidad de otra suba de tasas, algo que podría generar volatilidad en los próximos días.</p><p>Para <strong>Argentina</strong>, el frente local sigue firme: el <strong>BCRA</strong> hizo ayer su mayor compra de dólares del mes (US$93 M, 21ª rueda consecutiva compradora) y las reservas rozan los <strong>US$51.000 millones</strong>, con la brecha cambiaria en mínimos (1,3%). La reforma de la <strong>Carta Orgánica del BCRA</strong>, ya aprobada en Diputados, pasa ahora al Senado como próximo test institucional. Con ese colchón, el mercado local está mejor posicionado para absorber un eventual mensaje hawkish de Warsh que en meses anteriores, aunque el <strong>riesgo país</strong> seguirá de cerca cualquier salto en las tasas largas de EE.UU.</p>"
 }
