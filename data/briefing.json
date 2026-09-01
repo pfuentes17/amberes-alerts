@@ -1,92 +1,92 @@
 {
-  "date": "2026-08-31",
-  "generated": "2026-08-31T12:20:00Z",
+  "date": "2026-09-01",
+  "generated": "2026-09-01T12:30:00Z",
   "sentiment": {
     "overall": "risk-off",
-    "label": "Warsh hawkish en Jackson Hole y escalada militar en Hormuz empañan el arranque de semana",
-    "fg": 54,
+    "label": "Dos superpetroleros alcanzados en Ormuz, tasas globales en máximos y VIX +7%: arranca septiembre con aversión al riesgo",
+    "fg": 50,
     "fg_label": "Neutral",
-    "putcall": 0.80,
-    "aaii_bulls": 35.5
+    "putcall": 0.55,
+    "aaii_bulls": 32.9
   },
   "drivers": [
     {
       "id": 1,
-      "tag": "bancos centrales · fed",
-      "tag_class": "tb",
-      "title": "Warsh sorprendió con un tono hawkish en Jackson Hole y subieron las chances de suba de tasas",
-      "brief": "El presidente de la Fed dijo que la inflación subyacente no mejora lo suficiente y que \"hay trabajo por hacer\". La probabilidad de suba en septiembre saltó a 60,4%.",
-      "tldr": "El mercado pasó de esperar una pausa a pricear una suba de tasas en septiembre",
+      "tag": "geopolítica · energía",
+      "tag_class": "tq",
+      "title": "Dos superpetroleros fueron alcanzados en Ormuz y el crudo se dispara",
+      "brief": "Ambos buques transitaban el Golfo Pérsico cuando fueron impactados por proyectiles, según la consultora de seguridad marítima Marisks. El Brent sube 1,9% y el WTI 2,5%.",
+      "tldr": "Reanudación de combates EE.UU.-Irán reaviva el temor a un cierre más severo del estrecho",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "El presidente de la Fed, <strong>Kevin Warsh</strong>, advirtió el viernes en el Symposium de Jackson Hole que las tendencias subyacentes de inflación &ldquo;no han mejorado&rdquo; y que la Fed &ldquo;tiene trabajo por hacer&rdquo; si los precios no convergen con suficiente velocidad al objetivo. El discurso fue más hawkish de lo esperado por el mercado.",
-      "contexto": "Los futuros de fed funds elevaron la probabilidad de una suba de tasas en septiembre a <strong>60,4%</strong>, desde 56% el jueves. Analistas señalan que la postura de Warsh &mdash;que además reafirmó su negativa a dar forward guidance&mdash; podría generar fricción con el Tesoro de EE.UU., que preferiría tasas más bajas para aliviar el costo de financiamiento de la deuda. El S&amp;P 500 cerró el viernes con una baja de 0,3% tras el discurso.",
+      "evento": "<strong>Dos superpetroleros</strong> fueron alcanzados por proyectiles mientras transitaban el Golfo Pérsico rumbo al Estrecho de Ormuz, según la consultora de seguridad marítima Marisks, en el marco de la reanudación de combates entre EE.UU. e Irán. El WTI sube <strong>2,52% a u$s87,92</strong> y el Brent <strong>1,88% a u$s92,19</strong>.",
+      "contexto": "El estrecho permanece en gran medida bloqueado desde la ofensiva aérea de EE.UU. e Israel contra Irán a fines de febrero. El nuevo ataque eleva el temor a un cierre más severo de la vía, justo cuando los rendimientos soberanos globales ya tocan máximos plurianuales. Persiste, sin embargo, resiliencia industrial global: los PMI manufactureros de la eurozona, China (Caixin) y Japón aceleraron pese al shock energético.",
       "impacto": [
-        {"asset": "UST 10Y", "dir": "4,67%", "cls": "up"},
-        {"asset": "S&P 500 (cierre viernes)", "dir": "↓ 0,23%", "cls": "dn"},
-        {"asset": "Nasdaq 100 (cierre viernes)", "dir": "↓ 0,65%", "cls": "dn"}
+        {"asset": "WTI", "dir": "↑ 2,52% (u$s87,92)", "cls": "up"},
+        {"asset": "Brent", "dir": "↑ 1,88% (u$s92,19)", "cls": "up"},
+        {"asset": "VIX", "dir": "↑ 6,84% (15,94)", "cls": "up"}
       ]
     },
     {
       "id": 2,
-      "tag": "geopolítica · energía",
-      "tag_class": "tq",
-      "title": "EE.UU. atacó posiciones iraníes en el Estrecho de Hormuz y el petróleo saltó en Asia",
-      "brief": "Fuerzas de EE.UU. atacaron el domingo lanzadores iraníes en la isla de Larak, primer ataque en semanas. Irán prometió represalias; el Brent superó los u$s90.",
-      "tldr": "Vuelve a escalar el conflicto que viene interrumpiendo el tránsito de crudo por Hormuz desde febrero",
+      "tag": "bancos centrales · datos",
+      "tag_class": "tb",
+      "title": "Selloff global de bonos: el UST 10Y perforó el 4,75% y hoy se conoce el ISM manufacturero",
+      "brief": "El UST 10Y sube 3,0 pb a 4,788% (primera vez sobre 4,75% desde enero de 2025). Hoy 10:00 ET sale el ISM de agosto (consenso 55,2 vs. 55,6 previo) y a las 10:00 ET los JOLTS de julio (consenso 7,33 M).",
+      "tldr": "Tasas más altas y petróleo en alza reavivan el temor a una inflación más persistente antes de la Fed del 15-16/9",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "El Comando Central de EE.UU. confirmó que sus fuerzas atacaron el domingo <strong>dos lanzadores iraníes en la isla de Larak</strong>, en el Estrecho de Hormuz, tras detectar preparativos para lanzar cohetes con minas marinas hacia la vía navegable. Es el primer ataque reconocido públicamente en más de un mes. Irán reportó víctimas entre sus fuerzas y prometió represalias.",
-      "contexto": "El Brent superó los <strong>u$s90</strong> por barril y el WTI se acercó a <strong>u$s86</strong> en la apertura asiática. El conflicto, activo desde fines de febrero, ya generó &mdash;según analistas&mdash; la mayor disrupción energética registrada, aunque persisten flujos de 6 a 8 millones de barriles diarios por el estrecho pese a la ausencia de un acuerdo de paz.",
+      "evento": "El <strong>UST 10Y</strong> sube 3,0 pb a <strong>4,788%</strong>, perforando el 4,75% por primera vez desde enero de 2025, y el UST 2Y avanza a 4,356% (curva 2s10s en 43,2 pb). Los futuros de EE.UU. caen antes de la apertura: <strong>Nasdaq -0,99%</strong>, <strong>S&amp;P 500 -0,58%</strong>, <strong>Dow -0,63%</strong>. Hoy se conoce el <strong>ISM Manufacturero</strong> de agosto (10:00 ET, consenso 55,2 desde 55,6) y los JOLTS de julio (consenso 7,33 M vs. 7,359 M previo).",
+      "contexto": "Ayer el Chicago PMI de agosto sorprendió muy a la baja (47,1 vs. consenso 57,8), mientras el Dallas Fed mejoró a 11,6 desde 1,3 —señales mixtas de la actividad regional—. El mercado debate si el repunte de tasas responde a temor inflacionario por el petróleo, dudas sobre sostenibilidad fiscal, o un boom de inversión en IA que compite por crédito. El Atlanta Fed GDPNow para el 3T se ubica en 4,6%.",
       "impacto": [
-        {"asset": "Brent", "dir": "↑ >u$s90", "cls": "up"},
-        {"asset": "WTI", "dir": "↑ ~u$s86", "cls": "up"},
-        {"asset": "USO (cierre viernes, previo al ataque)", "dir": "↓ 0,24%", "cls": "dn"}
+        {"asset": "UST 10Y", "dir": "↑ 3,0 pb (4,788%)", "cls": "up"},
+        {"asset": "Nasdaq (fut.)", "dir": "↓ 0,99%", "cls": "dn"},
+        {"asset": "S&P 500 (fut.)", "dir": "↓ 0,58%", "cls": "dn"}
       ]
     },
     {
       "id": 3,
-      "tag": "argentina · bcra",
-      "tag_class": "tb",
-      "title": "El BCRA desaceleró la compra de dólares al ritmo más bajo del año para frenar la inflación",
-      "brief": "Compró apenas u$s722 M en lo que va de agosto, el ritmo más bajo de 2026. Reservas en u$s49.791 M. El oficial cotiza $1.485/$1.535.",
-      "tldr": "El BCRA prioriza contener el tipo de cambio antes que seguir acumulando reservas",
+      "tag": "argentina · riesgo soberano",
+      "tag_class": "tg",
+      "title": "El riesgo país cerró sin cambios en 512 pb, pero acumuló +80 pb en agosto",
+      "brief": "El EMBI argentino cerró el 31/08 estable en 512 pb, aunque escaló 80 puntos en el mes, el mayor salto desde febrero. El Merval en dólares se hundió 12% en agosto.",
+      "tldr": "La foto de un día resiliente convive con la película de un mes muy castigado para los activos argentinos",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>BCRA</strong> recalibró su estrategia cambiaria: en la primera quincena de agosto redujo el ritmo de compras de divisas al nivel más bajo de todo 2026, acumulando <strong>u$s722 millones</strong> en el mes. Las reservas internacionales totales se ubican en <strong>u$s49.791 millones</strong>.",
-      "contexto": "La entidad prioriza frenar la inflación por sobre la acumulación acelerada de reservas, buscando quitarle presión al tipo de cambio. El dólar oficial cotiza <strong>$1.485/$1.535</strong> y el blue <strong>$1.535/$1.555</strong>. El REM proyecta una suba interanual del oficial de 14,1% hacia diciembre, hasta $1.652.",
+      "evento": "El <strong>EMBI Argentina</strong> cerró el 31/08 sin cambios en <strong>512 pb</strong>. Los Globales en dólares cerraron mixtos en Buenos Aires: <strong>GD30D -0,33% (57,61 centavos)</strong>, <strong>GD35D -0,48% (79,48 centavos)</strong> y <strong>AL30D +0,20% (55,46 centavos)</strong>. En el mes, sin embargo, el riesgo país escaló <strong>80 puntos</strong> —el mayor salto desde febrero— y el <strong>Merval en dólares se hundió 12%</strong>.",
+      "contexto": "El BCRA hizo en agosto su menor compra mensual de reservas del año (u$s768 M, -64,5% vs. julio), mientras el dólar oficial se consolidó sobre los $1.500 por quinto mes consecutivo. La brecha entre la resiliencia del cierre diario y el deterioro mensual refleja que los activos argentinos vienen absorbiendo, con rezago, el ruido externo (tasas globales, petróleo) y ya no aíslan del todo al riesgo local.",
       "impacto": [
-        {"asset": "Reservas BCRA", "dir": "u$s49.791 M", "cls": "neu"},
-        {"asset": "Oficial", "dir": "$1.535 (venta)", "cls": "neu"},
-        {"asset": "MEP", "dir": "$1.544,1", "cls": "neu"}
+        {"asset": "Riesgo país (mes)", "dir": "↑ 80 pb en agosto", "cls": "dn"},
+        {"asset": "Merval (USD, mes)", "dir": "↓ 12% en agosto", "cls": "dn"},
+        {"asset": "GD30D", "dir": "↓ 0,33%", "cls": "dn"}
       ]
     },
     {
       "id": 4,
-      "tag": "argentina · riesgo soberano",
-      "tag_class": "tr",
-      "title": "El riesgo país sigue lejos de los mínimos de julio en medio de tasas de EE.UU. más altas",
-      "brief": "Cerró el viernes en 512 puntos, +27% desde el mínimo de 403 del 10 de julio (el más bajo desde 2018).",
-      "tldr": "El repunte global de tasas y la tensión geopolítica le suman presión al riesgo argentino",
+      "tag": "mercados · global",
+      "tag_class": "ta",
+      "title": "El dólar se fortalece y castiga parejo a emergentes, metales y cripto",
+      "brief": "El DXY sube a 99,55 y presiona a monedas emergentes (won, peso chileno, rand), metales (oro -1,36%, plata -2,36%) y Bitcoin (-0,81%), en una jornada de cautela previa a datos de empleo de EE.UU.",
+      "tldr": "Selloff parejo en activos de riesgo mientras se fortalece el dólar y suben las tasas",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "El riesgo país argentino cerró el viernes en <strong>512 puntos</strong>, acumulando una suba de más de 100 puntos (<strong>+27%</strong>) desde el mínimo de <strong>403 puntos</strong> tocado el 10 de julio, el nivel más bajo desde 2018.",
-      "contexto": "El repunte refleja condiciones financieras globales más restrictivas &mdash;tasas de EE.UU. en alza y tensión geopolítica en Medio Oriente&mdash; sumadas a la incertidumbre política de cara a las elecciones presidenciales de 2027. El FMI mantiene su respaldo al programa económico pero advierte que los riesgos de corto plazo &ldquo;siguen siendo elevados&rdquo;.",
+      "evento": "El <strong>DXY</strong> se ubica en 99,55 (+0,12%), con el euro en 1,1600 (-0,20%) y el yen en 160,01 (+0,18% USD/JPY). El oro cae <strong>1,36% a u$s4.420,70</strong> y la plata <strong>2,36% a u$s65,41</strong>. Bitcoin retrocede 0,81% a u$s77.926. En emergentes, el won coreano, el peso chileno y el rand sudafricano se debilitan entre 0,3% y 0,4%, y los rendimientos a 10 años de Sudáfrica (+9,5 pb) y Corea (+5,8 pb) suben con fuerza.",
+      "contexto": "La combinación de tasas más altas y petróleo en alza reaviva el temor a una inflación más persistente, justo cuando el mercado espera señales de la Fed sobre septiembre. El fortalecimiento del dólar castiga de forma pareja a los emergentes, con la notable excepción del sol peruano. Wall Street cerró agosto a la baja tras el discurso hawkish de Warsh en Jackson Hole y el salto del petróleo.",
       "impacto": [
-        {"asset": "Riesgo país", "dir": "512 pb", "cls": "dn"},
-        {"asset": "GD30", "dir": "↑ 0,15%", "cls": "up"},
-        {"asset": "AL30", "dir": "↓ 0,18%", "cls": "dn"}
+        {"asset": "DXY", "dir": "↑ 0,12% (99,55)", "cls": "up"},
+        {"asset": "Oro", "dir": "↓ 1,36% (u$s4.420,70)", "cls": "dn"},
+        {"asset": "Bitcoin", "dir": "↓ 0,81% (u$s77.926)", "cls": "dn"}
       ]
     }
   ],
   "tensiones": [
-    "Fed hawkish vs. Tesoro de EE.UU.: la postura de Warsh podría chocar con el interés del Tesoro en tasas más bajas para financiar el déficit.",
-    "Escalada en Hormuz vs. oferta global: pese al ataque, siguen fluyendo 6-8 millones de barriles/día por el estrecho, lo que modera el impacto en precios frente a episodios previos.",
-    "BCRA entre inflación y reservas: prioriza frenar el tipo de cambio pero desacelera la acumulación que el mercado sigue de cerca de cara a los próximos vencimientos de deuda."
+    "Tasas y petróleo al alza vs. resiliencia industrial: el UST 10Y perforó 4,75% y el crudo sube por Ormuz, pero los PMI manufactureros de eurozona, China y Japón aceleraron pese al shock — la pregunta es si esa desconexión sobrevive a un petróleo sostenido arriba de u$s90 por más de un trimestre.",
+    "Foto diaria vs. película mensual en Argentina: el EMBI cerró el 31/08 sin cambios en 512 pb, pero acumuló +80 pb en agosto (el mayor salto desde febrero) y el Merval en dólares cayó 12% en el mes.",
+    "BCRA entre el esquema cambiario y las reservas: compró apenas u$s768 M en agosto (-64,5% vs. julio) mientras el oficial se sostiene sobre $1.500 por quinto mes consecutivo, de cara al año electoral 2027."
   ],
   "correlaciones": [
-    "Suba de tasas UST (4,67%) + escalada geopolítica → mayor costo de financiamiento para emergentes, presión adicional sobre el riesgo país argentino (512 pb, +27% desde julio).",
-    "Petróleo al alza → favorece la balanza energética de Vaca Muerta en el margen, pero encarece la factura de importación de combustibles en lo inmediato."
+    "Dólar fuerte (DXY 99,55) + tasas globales en alza → presión pareja sobre monedas emergentes (won, peso chileno, rand), metales (oro -1,36%) y cripto (BTC -0,81%), con la brecha diaria argentina (CCL ~$1.598) moviéndose en la misma dirección.",
+    "Petróleo más caro (WTI +2,52%, Brent +1,88%) favorece en el margen la balanza energética de Vaca Muerta —que ya explica un tercio de la masa salarial privada de Neuquén— pero encarece la factura de importación de combustibles de corto plazo."
   ],
-  "bottom_line": "La semana arranca con un cóctel de riesgo: un discurso de <strong>Kevin Warsh</strong> más hawkish de lo esperado en Jackson Hole y una nueva escalada militar en el <strong>Estrecho de Hormuz</strong> elevan la aversión al riesgo global justo cuando el riesgo país argentino viene subiendo desde los mínimos de julio. Para Argentina, tasas de EE.UU. más altas y petróleo más caro son un viento de frente: encarecen el financiamiento externo en un momento en que el BCRA ya desaceleró la compra de reservas para priorizar la desinflación, y presionan los costos de importación energética pese a que Vaca Muerta atenúa parte del impacto. La atención de la semana estará puesta en si la escalada con Irán se profundiza y en cómo reacciona el REM ante el nuevo escenario de tasas globales."
+  "bottom_line": "La jornada combina tasas más altas y petróleo en alza: el <strong>UST 10Y</strong> perforó el 4,75% por primera vez desde enero de 2025 y el crudo se dispara tras el ataque a dos superpetroleros en <strong>Ormuz</strong>, mientras el VIX sube 7% y el dólar se fortalece castigando parejo a emergentes, metales y cripto. Todo esto antes de un <strong>ISM manufacturero</strong> clave hoy a las 10 ET (consenso 55,2) y de los datos de empleo de EE.UU. de esta semana. Para <strong>Argentina</strong>, el combo es un viento de frente justo cuando el <strong>BCRA</strong> ya redujo al mínimo del año sus compras de reservas (u$s768 M en agosto) y el dólar oficial se sostiene sobre $1.500: el riesgo país cerró el 31/08 sin cambios en 512 pb, pero acumuló +80 pb en el mes —el mayor salto desde febrero— y el Merval en dólares se hundió 12%, señal de que los activos locales ya no están tan aislados del nerviosismo internacional como en jornadas anteriores."
 }
