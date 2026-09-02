@@ -97,13 +97,28 @@
     }
   ],
   "tensiones": [
-    "Selloff de bonos con tasas reales en alza (JGB >3% por primera vez en 30 años, UST 10Y en 4,808%) vs. riesgo país argentino en mínimos de más de dos semanas (501 pb): el desacople depende de que el mercado siga diferenciando el orden fiscal local del ruido global de renta fija.",
-    "Escalada en Ormuz —con diésel en máximos desde abril— empuja al petróleo por tercera rueda consecutiva, mientras las reservas del BCRA volvieron a superar los USD 50.000 M: un crudo sostenido en alza presiona la inflación global, pero favorece en el margen a la cuenta energética de Vaca Muerta.",
-    "Tono hawkish de la Fed (Warsh, 70% de probabilidad de suba el 15-16/9) vs. apetito por activos argentinos: los ADR saltan hasta 7% pese al contexto global de aversión al riesgo, señal de que el mercado empieza a diferenciar a Argentina de sus pares emergentes de cara a 2027."
+    {
+      "label": "Bonos globales vs. riesgo país",
+      "texto": "El JGB superó 3% por primera vez en 30 años y el UST 10Y sube a 4,808%, pero el riesgo país argentino cerró en mínimos de más de dos semanas (501 pb): el desacople depende de que el mercado siga diferenciando el orden fiscal local del ruido global de renta fija."
+    },
+    {
+      "label": "Petróleo en alza vs. reservas BCRA",
+      "texto": "La escalada en Ormuz —con diésel en máximos desde abril— empuja al petróleo por tercera rueda consecutiva, mientras las reservas del BCRA volvieron a superar los USD 50.000 M: un crudo sostenido en alza presiona la inflación global, pero favorece en el margen a la cuenta energética de Vaca Muerta."
+    },
+    {
+      "label": "Fed hawkish vs. apetito por Argentina",
+      "texto": "Con Warsh reconociendo una probabilidad del 70% de suba el 15-16/9, los ADR argentinos saltan hasta 7% pese al contexto global de aversión al riesgo, señal de que el mercado empieza a diferenciar a Argentina de sus pares emergentes de cara a 2027."
+    }
   ],
   "correlaciones": [
-    "Dólar fuerte (DXY 99,79) y tasas reales globales en alza castigan parejo al oro (-0,92%), la plata (-1,73%), el cobre (-1,00%) y Bitcoin (-1,07%), mientras los emergentes muestran comportamiento mixto (BIST -2,06%, CSI 300 -1,38%, won coreano fortaleciéndose).",
-    "El petróleo en su tercera suba consecutiva (WTI u$s90,49, Brent u$s94,99) presiona al alza el diésel en EE.UU. (máximo desde abril) y sostiene la narrativa de tasas reales estructuralmente más altas, la misma dinámica detrás del salto del JGB por sobre el 3%."
+    {
+      "par": "DXY vs. Oro / Plata / Cobre / Bitcoin",
+      "texto": "Dólar fuerte (DXY 99,79) y tasas reales globales en alza castigan parejo al oro (-0,92%), la plata (-1,73%), el cobre (-1,00%) y Bitcoin (-1,07%), mientras los emergentes muestran comportamiento mixto (BIST -2,06%, CSI 300 -1,38%, won coreano fortaleciéndose)."
+    },
+    {
+      "par": "WTI/Brent vs. Diésel EE.UU. / JGB",
+      "texto": "El petróleo en su tercera suba consecutiva (WTI u$s90,49, Brent u$s94,99) presiona al alza el diésel en EE.UU. (máximo desde abril) y sostiene la narrativa de tasas reales estructuralmente más altas, la misma dinámica detrás del salto del JGB por sobre el 3%."
+    }
   ],
   "bottom_line": "La rueda combina un selloff global de bonos impulsado por tasas reales —el <strong>JGB</strong> japonés superó el 3% por primera vez en 30 años y el <strong>UST 10Y</strong> subió a 4,808%— con una nueva escalada en <strong>Ormuz</strong> que empuja al petróleo por tercera rueda consecutiva (WTI u$s90,49, Brent u$s94,99) y encarece el diésel en EE.UU. a máximos desde abril. La Fed sumó presión: <strong>Warsh</strong> admitió que la política actual no es restrictiva y el mercado elevó a 70% la probabilidad de una suba en la reunión del 15-16/9, lo que llevó a los futuros de EE.UU. a la baja (Nasdaq -0,60%), al VIX a 16,73 y al dólar a fortalecerse parejo contra el resto del mundo. Para <strong>Argentina</strong>, la jornada es una notable excepción a ese tono global: los <strong>ADR</strong> saltaron hasta 7% en Wall Street, el <strong>riesgo país</strong> cerró en 501 pb (mínimo en más de dos semanas) y las <strong>reservas del BCRA</strong> volvieron a superar los USD 50.000 M, aunque el Central compró apenas USD 15 M hoy en el MLC y el dólar subió a $1.535. La atención de las próximas semanas estará en la evolución del conflicto EE.UU.-Irán y en la reunión de la Fed del 15-16/9, con la pregunta de fondo de si Argentina puede sostener su desacople frente a un contexto global cada vez más adverso para la renta fija."
 }
