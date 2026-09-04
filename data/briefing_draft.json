@@ -1,90 +1,106 @@
 {
-  "date": "2026-09-03",
-  "generated": "2026-09-03T12:15:00Z",
+  "date": "2026-09-04",
+  "generated": "2026-09-04T12:20:00Z",
   "sentiment": {
     "overall": "neutral",
-    "label": "Empleo US se enfría, oro en récord por temor a devaluación; Argentina firme con riesgo país en mínimos",
-    "fg": 33,
+    "label": "Día de payrolls: el mercado espera el dato de agosto para confirmar si la Fed sube tasas en septiembre",
+    "fg": 45,
     "fg_label": "Miedo",
-    "putcall": 1.11,
-    "aaii_bulls": 29
+    "putcall": 0.95,
+    "aaii_bulls": 39.7
   },
   "drivers": [
     {
       "id": 1,
       "tag": "EE.UU. · Empleo",
       "tag_class": "tb",
-      "title": "ADP: el sector privado sumó solo 38.000 empleos en agosto, muy por debajo de lo esperado",
-      "brief": "El dato más débil desde enero alimenta la cautela previa al informe oficial de empleo de mañana.",
-      "tldr": "Mercado laboral se enfría; ojo al NFP de mañana",
+      "title": "Hoy se conoce el informe oficial de empleo (NFP) de agosto en EE.UU.",
+      "brief": "El consenso espera entre 50.000 y 55.000 nóminas nuevas y desempleo estable en 4,1%, tras el dato negativo de julio (-23.000).",
+      "tldr": "El dato que puede confirmar o frenar la suba de tasas de la Fed en septiembre",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El informe ADP de agosto mostró que el sector privado en EE.UU. sumó <strong>38.000</strong> empleos, por debajo del consenso de <strong>47.000</strong> y del dato de julio revisado a <strong>46.000</strong>. Es el ritmo más débil desde enero.",
-      "contexto": "El enfriamiento laboral alimenta la incertidumbre sobre la próxima reunión de la Fed: el mercado le asigna hoy una probabilidad mayoritaria (~66%) a que mantenga la tasa sin cambios, aunque persiste ruido sobre una eventual suba. Mañana se publica el informe oficial de empleo (NFP) de agosto, el dato que puede inclinar la balanza.",
+      "evento": "El Bureau of Labor Statistics publica hoy a las 8:30am ET el reporte de empleo de agosto, con el mercado esperando entre <strong>+50.000 y +55.000</strong> nóminas no agrícolas y desempleo sin cambios en <strong>4,1%</strong>. El antecedente es preocupante: julio sorprendió con <strong>-23.000</strong> empleos (vs. +79.000 esperado) y revisiones a la baja de <strong>103.000</strong> puestos entre mayo y junio.",
+      "contexto": "Es el último dato duro antes de la reunión de la Fed del 15-16 de septiembre, donde el mercado ya asigna entre <strong>60% y 66%</strong> de probabilidad a una suba de 25pb tras el discurso hawkish de Kevin Warsh en Jackson Hole. Un dato débil reabriría el debate sobre el rumbo de la política monetaria; uno fuerte reforzaría la apuesta por el hike.",
       "impacto": [
         {"asset": "UST 10Y", "dir": "4,79%", "cls": "neu"},
-        {"asset": "S&P 500 (SPY)", "dir": "↑ 0,44%", "cls": "up"},
-        {"asset": "Nasdaq (QQQ)", "dir": "↑ 0,23%", "cls": "up"}
+        {"asset": "S&P 500 (SPY)", "dir": "↑ 1,05% (ayer)", "cls": "up"},
+        {"asset": "Nasdaq (QQQ)", "dir": "↑ 1,19% (ayer)", "cls": "up"}
       ]
     },
     {
       "id": 2,
       "tag": "Global · Commodities",
       "tag_class": "ta",
-      "title": "El oro extiende su rally y sube otro 1,5% hoy, con ganancia mensual cercana al 10%",
-      "brief": "La suba responde al anuncio del Tesoro de EE.UU. de duplicar las recompras de deuda de largo plazo, que reavivó temores de devaluación monetaria.",
-      "tldr": "Cobertura contra devaluación impulsa al oro a máximos",
+      "title": "El oro perfora los USD 4.400 y marca nuevos máximos históricos",
+      "brief": "Una corrección del dólar y de los rendimientos del Tesoro impulsó al oro, que acumula +9,8% en el mes y +26,2% interanual.",
+      "tldr": "El oro no para de hacer récords en la previa a la Fed",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "El oro (GLD) sube <strong>1,52%</strong> hoy y acumula un alza cercana al <strong>10%</strong> en lo que va de septiembre, su mejor mes desde enero. El impulso llegó después de que el Tesoro de EE.UU. anunciara que duplicará las recompras de bonos de mayor plazo para sostener la liquidez del mercado.",
-      "contexto": "El movimiento refleja preocupación de los inversores por una eventual devaluación de la moneda ante mayor emisión/recompra de deuda, sumado a la búsqueda de cobertura frente a la incertidumbre sobre la política de tasas de la Fed.",
+      "evento": "El oro cerró el jueves por encima de <strong>USD 4.400</strong> la onza y los futuros cotizan hoy cerca de <strong>USD 4.528</strong>, extendiendo el rebote de la sesión anterior. El fondo GLD subió <strong>1,85%</strong> en la rueda, con una ganancia mensual del <strong>9,8%</strong> y del <strong>26,2%</strong> en doce meses.",
+      "contexto": "El impulso responde a una corrección del dólar y de los rendimientos del Tesoro, en un contexto de incertidumbre sobre si la Fed sube o mantiene la tasa en septiembre. La suba convive, de forma inusual, con acciones también en alza (SPY +1,05%, QQQ +1,19% ayer).",
       "impacto": [
-        {"asset": "Oro (GLD)", "dir": "↑ 1,52%", "cls": "up"},
-        {"asset": "Petróleo (USO)", "dir": "↑ 0,11%", "cls": "up"}
+        {"asset": "Oro (GLD)", "dir": "↑ 1,85%", "cls": "up"},
+        {"asset": "Oro spot", "dir": "≈USD 4.528/oz", "cls": "up"}
       ]
     },
     {
       "id": 3,
-      "tag": "Argentina · BCRA/Tesoro",
-      "tag_class": "tg",
-      "title": "El riesgo país argentino cae a 500 puntos, mínimo de las últimas semanas",
-      "brief": "El BCRA continúa comprando reservas y el mercado local opera con relativa calma en la previa a la licitación del Tesoro.",
-      "tldr": "Riesgo país perfora los 500 pb",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El riesgo país (EMBI+ Argentina) cerró en <strong>500 puntos básicos</strong> el 2 de septiembre, retrocediendo desde los <strong>512 pb</strong> de fin de agosto. El dólar oficial cotiza en <strong>$1.485/$1.535</strong> y el BCRA sumó reservas al MULC; las reservas internacionales totales se ubican en torno a <strong>USD 50.485 millones</strong>.",
-      "contexto": "La compresión de spreads coincide con la previa de una nueva licitación de deuda del Tesoro por más de $12,6 billones, donde el mercado buscará un rollover superior al 100% para sostener el círculo virtuoso entre política monetaria y financiamiento en pesos.",
+      "tag": "Global · Bancos Centrales",
+      "tag_class": "tb",
+      "title": "Sube a 60%-66% la probabilidad de que la Fed suba la tasa el 16 de septiembre",
+      "brief": "El discurso hawkish de Kevin Warsh en Jackson Hole reavivó las apuestas por un hike, revirtiendo la expectativa previa de mantener sin cambios.",
+      "tldr": "De recortes a debatir una suba: giro inusual de la Fed",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "Tras el discurso de Kevin Warsh en Jackson Hole (31/8), la probabilidad de una suba de 25pb en la reunión del 15-16 de septiembre saltó a un rango de <strong>60%-66%</strong> según CME FedWatch, revirtiendo la expectativa previa de mantener la tasa sin cambios (~70%).",
+      "contexto": "El mercado venía descontando una fase de recortes tras tres bajas consecutivas hasta el rango de 3,50%-3,75%. El giro hawkish presiona al alza los rendimientos largos, con la UST 10Y en <strong>4,79%</strong>, y podría chocar con el interés del Tesoro de EE.UU. en tasas más bajas para el costo de financiamiento del déficit.",
       "impacto": [
-        {"asset": "GD30", "dir": "↓ 0,75%", "cls": "dn"},
-        {"asset": "GD35", "dir": "↑ 0,20%", "cls": "up"},
-        {"asset": "AL30", "dir": "↑ 0,07%", "cls": "up"},
-        {"asset": "Dólar CCL", "dir": "$1.594", "cls": "neu"}
+        {"asset": "UST 10Y", "dir": "4,79%", "cls": "up"},
+        {"asset": "Prob. hike Fed sep.", "dir": "60%-66%", "cls": "neu"}
       ]
     },
     {
       "id": 4,
-      "tag": "Global · Energía/Geopolítica",
-      "tag_class": "tq",
-      "title": "La OPEP+ suma otros 188.000 barriles diarios de producción desde septiembre",
-      "brief": "La alianza liderada por Arabia Saudita y Rusia completa así el desarme del recorte de 1,65 millones de barriles diarios pactado en 2023; se reúne de nuevo el 6 de septiembre.",
-      "tldr": "Más oferta OPEP+, pero el crudo se mantiene firme",
+      "tag": "Argentina · Deuda",
+      "tag_class": "tg",
+      "title": "El riesgo país argentino cerró en 494 puntos, la primera vez debajo de 500 desde julio",
+      "brief": "El EMBI+ bajó 18 puntos en la semana, aunque Argentina sigue entre los más altos de la región.",
+      "tldr": "Compresión sostenida, pero todavía lejos de sus pares regionales",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "El riesgo país (EMBI+ Argentina) cerró el miércoles en <strong>494 puntos básicos</strong>, encadenando bajas desde los <strong>512 pb</strong> del lunes. Desde el balotaje de noviembre de 2023 el índice cayó más de <strong>1.900 puntos (-80%)</strong>. El dólar oficial cotiza en <strong>$1.480/$1.530</strong> y el CCL en <strong>$1.588/$1.590</strong>.",
+      "contexto": "Pese a la mejora, Argentina sigue por encima de Bolivia (424 pb), Ecuador (419 pb) y El Salvador (271 pb) en la región, y solo detrás de Venezuela (6.145 pb). Los soberanos largos acompañaron la baja del riesgo país: GD35 subió 0,26% y AL35 0,59% en la rueda.",
+      "impacto": [
+        {"asset": "Riesgo país", "dir": "↓ 494 pb", "cls": "dn"},
+        {"asset": "GD30", "dir": "↑ 0,43%", "cls": "up"},
+        {"asset": "AL35", "dir": "↑ 0,59%", "cls": "up"}
+      ]
+    },
+    {
+      "id": 5,
+      "tag": "Argentina · BCRA",
+      "tag_class": "tb",
+      "title": "El BCRA postergó la licitación de fondos ANSES para créditos hipotecarios",
+      "brief": "Los bancos pidieron más tiempo para analizar la normativa; la subasta pasa de hoy a lunes y martes.",
+      "tldr": "Demora operativa, sin cambios en el objetivo de fondeo hipotecario",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "La OPEP+ confirmó un incremento de <strong>188.000 barriles diarios</strong> en su producción a partir de septiembre, completando el desarme del recorte de <strong>1,65 millones de b/d</strong> acordado en 2023. El grupo se reunirá nuevamente el <strong>6 de septiembre</strong> para revisar la situación del mercado.",
-      "contexto": "Pese al aumento de oferta, el crudo (USO) se mantiene estable hoy, sostenido por la tensión geopolítica en Medio Oriente que sigue limitando la logística de exportación.",
+      "evento": "El Banco Central iba a licitar hoy los fondos del FGS de ANSES destinados a créditos hipotecarios a tasa fija, pero la subasta se postergó a <strong>lunes y martes</strong> tras el pedido de los bancos de contar con más tiempo para revisar la normativa.",
+      "contexto": "La medida forma parte del esquema para canalizar fondos del FGS hacia el crédito hipotecario en pesos. Se trata de una demora operativa, sin impacto directo en el objetivo de política del BCRA, pero a monitorear la semana próxima.",
       "impacto": [
-        {"asset": "Petróleo (USO)", "dir": "↑ 0,11%", "cls": "up"}
+        {"asset": "Tasa hipotecaria fija", "dir": "sin definir", "cls": "neu"}
       ]
     }
   ],
   "tensiones": [
-    {"label": "Fed: mantener vs. subir", "texto": "El mercado se debate entre una Fed que mantiene la tasa sin cambios (probabilidad ~66% según CME FedWatch) y un escenario minoritario pero no descartado de suba en septiembre, en medio de señales de enfriamiento laboral (ADP) que chocan con presiones inflacionarias por la debilidad del dólar."},
-    {"label": "Devaluación vs. recompras del Tesoro", "texto": "El anuncio de recompras más agresivas de deuda de largo plazo por parte del Tesoro de EE.UU. dispara al oro por temor a devaluación monetaria, mientras la renta fija de corto plazo no logra reflejar la misma preocupación."},
-    {"label": "Riesgo país vs. licitación", "texto": "La compresión del riesgo país a 500 pb convive con la incertidumbre de la próxima licitación de deuda en pesos por $12,6 billones, donde un rollover débil podría revertir la tendencia reciente."}
+    {"label": "Fed hawkish vs. costo de financiamiento del Tesoro", "texto": "El giro de Warsh hacia una eventual suba de tasas choca con el interés del Tesoro de EE.UU. en tasas más bajas para aliviar el costo de financiamiento del déficit fiscal — una tensión inusual entre la Fed y la administración."},
+    {"label": "Payrolls débil vs. oro en récord", "texto": "Un mercado laboral que se enfría (julio -23K, revisiones a la baja) convive con un oro en máximos históricos que anticipa presiones inflacionarias o de devaluación, complicando la lectura de la Fed sobre si cortar, mantener o subir."},
+    {"label": "Riesgo país en baja vs. exclusión de MSCI", "texto": "La compresión del EMBI+ a 494 pb contrasta con la decisión de MSCI de mantener a Argentina en la categoría 'standalone' hasta al menos 2028, lo que sigue privando al mercado local de flujos pasivos de fondos emergentes."}
   ],
   "correlaciones": [
-    {"par": "Oro vs. Tasas reales EE.UU.", "texto": "El rally del oro se da pese a una UST 10Y elevada (4,79%), rompiendo momentáneamente la correlación inversa habitual — señal de que el mercado prioriza la cobertura por devaluación por sobre el costo de oportunidad de las tasas."},
-    {"par": "Riesgo país vs. bonos soberanos ARG", "texto": "La baja del riesgo país no se trasladó de forma pareja a toda la curva: GD30 retrocedió 0,75% mientras GD35 y AL30 avanzaron, reflejando cierta preferencia por tramos más largos."}
+    {"par": "Oro vs. dólar y tasas largas EE.UU.", "texto": "El rally del oro por encima de USD 4.400 se explica en gran parte por la corrección del dólar (DXY) y de los rendimientos del Tesoro en las últimas ruedas, más que por un clásico movimiento de refugio ante caídas bursátiles."},
+    {"par": "Riesgo país ARG vs. soberanos largos", "texto": "La baja del EMBI+ a 494 pb acompañó subas en GD35 (+0,26%) y AL35 (+0,59%), consistente con la compresión de spreads en el tramo largo de la curva soberana."},
+    {"par": "UST 10Y vs. probabilidad de hike Fed", "texto": "El rendimiento a 10 años en 4,79% refleja el repricing hacia una Fed más hawkish, con las apuestas de suba en septiembre saltando a 60%-66% tras el discurso de Warsh en Jackson Hole."}
   ],
-  "bottom_line": "La sesión combina un mercado laboral estadounidense que se enfría (ADP en mínimos desde enero) con un oro en niveles récord que anticipa mayor cautela sobre la política monetaria y fiscal de EE.UU. de cara al informe de empleo de mañana. Para Argentina, la señal es mixta pero favorable en el margen: el riesgo país perforó los 500 pb y el BCRA sigue sumando reservas, pero la prueba de fuego llega con la licitación del Tesoro por $12,6 billones — un rollover débil podría cortar la racha de compresión de spreads justo cuando el <em>carry</em> en pesos sigue siendo el ancla de la estrategia oficial."
+  "bottom_line": "Hoy es una rueda bisagra: el <strong>payroll de agosto</strong> (8:30am ET) definirá si el mercado sostiene la apuesta por una suba de tasas de la Fed en septiembre (60%-66% de probabilidad) o si reabre el debate por el enfriamiento laboral. Para Argentina, el trasfondo sigue siendo favorable: el <strong>riesgo país en 494 pb</strong> —el nivel más bajo desde julio— y los soberanos largos en alza reflejan una compresión de spreads que continúa pese al ruido externo. Las dos variables a seguir de cerca son el <em>oro en récords</em> (+26% i.a.), que anticipa cautela sobre la política monetaria global, y una eventual suba de tasas en EE.UU., que le pondría un piso más alto al dólar y podría frenar el apetito por activos emergentes justo cuando Argentina intenta consolidar su compresión de riesgo."
 }
