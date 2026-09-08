@@ -1,188 +1,130 @@
 {
-  "date": "2026-09-07",
-  "generated": "2026-09-07T12:30:00Z",
+  "date": "2026-09-08",
+  "generated": "2026-09-08T12:15:00Z",
   "sentiment": {
     "overall": "risk-off",
-    "label": "Feriado en Wall Street: la escalada en Ormuz y el terremoto electoral alemán opacan un dato de empleo de agosto sólido en EE.UU.",
+    "label": "El petróleo salta por ataques hutíes a Aramco y el selloff en bonos soberanos europeos golpea el apetito por riesgo, con la Fed y el BCE en el centro de la semana.",
     "fg": 42,
     "fg_label": "Miedo",
-    "putcall": 0.95,
-    "aaii_bulls": 31.4
+    "putcall": 0.85,
+    "aaii_bulls": 39.7
   },
   "drivers": [
     {
       "id": 1,
       "tag": "Geopolítica · Energía",
       "tag_class": "tq",
-      "title": "Nuevos ataques cruzados entre EE.UU. e Irán en el Estrecho de Ormuz disparan al petróleo",
-      "brief": "Goldman Sachs advierte que el crudo podría llegar a USD 120 si la escalada persiste; las bolsas europeas ceden mientras el Nikkei se despega al alza.",
-      "tldr": "La prima de riesgo geopolítico vuelve a ponerle un piso al petróleo",
+      "title": "Ataques hutíes a instalaciones de Aramco y expectativas de un acuerdo Irán-Omán reactivan la prima de riesgo del petróleo",
+      "brief": "El WTI sube 2,74% a USD 93,99 y el Brent 2,48% a USD 98,67; Goldman Sachs había advertido sobre un petróleo a USD 120 si se intensifican los ataques a buques en Medio Oriente.",
+      "tldr": "Ormuz vuelve a ponerle un piso al crudo",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "Nuevos ataques cruzados entre EE.UU. e Irán contra buques en el Estrecho de Ormuz reavivaron la escalada militar en Medio Oriente. Goldman Sachs advirtió que el crudo podría escalar hasta <strong>USD 120</strong> por barril si el conflicto se profundiza.",
-      "contexto": "El fondo USO cerró la última rueda en <strong>USD 141,96</strong>, pero el petróleo extiende ganancias hoy con los futuros operando con mayor cautela. La suba del crudo presiona a las bolsas europeas &mdash;lideradas a la baja por el DAX&mdash; mientras el Nikkei cerró con una suba de <strong>2,12%</strong> impulsado por las tecnológicas.",
+      "evento": "Una ola de ataques hutíes obligó a detener operaciones en varias plantas del sur de Arabia Saudita, cerca de la frontera con Yemen, abriendo un nuevo frente energético justo cuando el mercado empieza a descontar expectativas de un acuerdo entre Irán y Omán para destrabar el tránsito por el Estrecho de Ormuz. El <strong>WTI</strong> sube <strong>2,74%</strong> a <strong>USD 93,99</strong> y el <strong>Brent</strong> avanza <strong>2,48%</strong> a <strong>USD 98,67</strong>.",
+      "contexto": "Goldman Sachs había advertido que el crudo podría escalar hasta <strong>USD 120</strong> por barril si el conflicto se profundiza, y recomienda posiciones en gas natural y diésel como cobertura. La escalada se suma a la guerra híbrida rusa sobre infraestructura energética europea, con los inventarios de gas del continente en su nivel más bajo para esta época en 15 años.",
       "impacto": [
-        {
-          "asset": "Petróleo (USO)",
-          "dir": "↑ extiende ganancias",
-          "cls": "up"
-        },
-        {
-          "asset": "DAX",
-          "dir": "↓",
-          "cls": "dn"
-        },
-        {
-          "asset": "Nikkei",
-          "dir": "↑ 2,12%",
-          "cls": "up"
-        }
+        {"asset": "WTI", "dir": "↑ 2,74% a USD 93,99", "cls": "up"},
+        {"asset": "Brent", "dir": "↑ 2,48% a USD 98,67", "cls": "up"},
+        {"asset": "Gas natural europeo", "dir": "presionado al alza", "cls": "up"}
       ]
     },
     {
       "id": 2,
-      "tag": "EE.UU. · Feriado y Empleo",
-      "tag_class": "tb",
-      "title": "Wall Street cierra por Labor Day tras un dato de empleo de agosto que reaviva las apuestas por una Fed más dura",
-      "brief": "Bolsas y mercado de Tesoro cerrados hoy; el informe de agosto (+162.000 nóminas) reforzó las apuestas por una postura más restrictiva de la Fed pese a la presión de Trump por bajar tasas.",
-      "tldr": "Feriado con la city ya mirando el CPI del viernes",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Hoy es feriado en EE.UU. por Labor Day: las bolsas y el mercado de bonos del Tesoro permanecen cerrados, aunque los futuros accionarios operan con menor liquidez que en una rueda normal (Nasdaq, S&amp;P 500 y Dow estables). El informe de empleo de agosto sorprendió con <strong>+162.000</strong> puestos nuevos, reavivando las apuestas por una Fed más restrictiva pese a la presión de Trump por bajar las tasas.",
-      "contexto": "Los niveles de referencia muestran a la UST 10Y en <strong>4,784%</strong> (+2,2pb) y a la UST 2Y en <strong>4,374%</strong> (+4,0pb), con el VIX cerrando más alto en <strong>15,06</strong> (+3,65%). La semana trae el CPI de agosto el viernes como dato más esperado.",
+      "tag": "EE.UU. · Mercados",
+      "tag_class": "tr",
+      "title": "Los futuros de Wall Street retroceden y el VIX sube al reabrir tras el feriado, con Europa y el Nikkei también en rojo",
+      "brief": "El futuro del Dow cae 0,75% a 53.037, el S&P 500 retrocede 0,25% a 7.702,50 y el Nasdaq se mantiene estable; el VIX sube a 15,71 y el Nikkei cerró con una baja de 1,70%.",
+      "tldr": "Wall Street reabre con cautela y el selloff se contagia a Europa y Asia",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "Wall Street retoma actividad tras el feriado del Día del Trabajo con los futuros en rojo: el <strong>Dow</strong> cae <strong>0,75%</strong> a <strong>53.037,00</strong>, el <strong>S&amp;P 500</strong> retrocede <strong>0,25%</strong> a <strong>7.702,50</strong> y el <strong>Nasdaq</strong> se mantiene estable en <strong>29.566,25</strong>. El <strong>VIX</strong> opera en <strong>15,71</strong> (+2,68%).",
+      "contexto": "Las bolsas europeas operan a la baja con el <strong>MIB</strong> liderando la caída, y el <strong>Nikkei</strong> cerró con un retroceso de <strong>1,70%</strong>. El <strong>DXY</strong> cede a <strong>98,97</strong> (-0,21%) pese al tono cauteloso, con el <strong>EUR/USD</strong> en <strong>1,1600</strong> y el <strong>USD/JPY</strong> en <strong>153,96</strong>. En emergentes el <strong>EEM</strong> sube <strong>1,82%</strong>, aunque el peso mexicano y el rand sudafricano se debilitan frente al dólar mientras el won coreano se fortalece.",
       "impacto": [
-        {
-          "asset": "UST 10Y",
-          "dir": "4,784% (+2,2pb)",
-          "cls": "up"
-        },
-        {
-          "asset": "VIX",
-          "dir": "15,06 (+3,65%)",
-          "cls": "up"
-        },
-        {
-          "asset": "Futuros S&P500/Nasdaq/Dow",
-          "dir": "estables",
-          "cls": "neu"
-        }
+        {"asset": "Futuro Dow", "dir": "↓ 0,75% a 53.037,00", "cls": "dn"},
+        {"asset": "Futuro S&P 500", "dir": "↓ 0,25% a 7.702,50", "cls": "dn"},
+        {"asset": "VIX", "dir": "15,71 (+2,68%)", "cls": "up"},
+        {"asset": "Nikkei", "dir": "↓ 1,70% (cierre)", "cls": "dn"}
       ]
     },
     {
       "id": 3,
-      "tag": "Europa · Política",
-      "tag_class": "tr",
-      "title": "El AfD logra su mejor resultado histórico (44%) en las elecciones de Sajonia-Anhalt",
-      "brief": "La CDU de Merz se derrumba a menos de 18% con participación récord del 78%; el mercado empieza a poner precio al riesgo político alemán.",
-      "tldr": "El malestar populista europeo golpea el corazón industrial de la eurozona",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El partido de ultraderecha AfD obtuvo el <strong>44%</strong> de los votos en las elecciones regionales de Sajonia-Anhalt, su mejor resultado histórico, con una participación récord del <strong>78%</strong>. La CDU del canciller Merz se derrumbó a menos del <strong>18%</strong>, junto con el SPD y los Verdes.",
-      "contexto": "El resultado anticipa lo que podría ocurrir en Francia con Le Pen en 2027 y añade presión sobre el euro y el spread bund-OAT, justo cuando el mercado ya descuenta una suba de tasas del BCE &ldquo;por las dudas&rdquo; el jueves ante la presión inflacionaria que genera la guerra en Irán sobre el crudo.",
+      "tag": "Bancos Centrales · Renta Fija",
+      "tag_class": "tb",
+      "title": "El UST 10Y sube y el bono a 30 años lleva dos meses sobre 5%, mientras la Fed enfrenta presión política a días de decidir y el BCE se apresta a subir tasas el jueves",
+      "brief": "El UST 10Y avanza 1,6pb a 4,800% y la curva 2s10s se empina a 42,5pb; Claudia Sahm advierte que ceder al calendario electoral de Trump erosionaría la credibilidad de la Fed, mientras el BCE definiría una suba de 25pb el jueves 10/9.",
+      "tldr": "La deuda larga vuelve a ser el termómetro de la prima de riesgo fiscal global",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El <strong>UST 10Y</strong> sube <strong>1,6pb</strong> a <strong>4,800%</strong> y el <strong>UST 2Y</strong> cede <strong>0,4pb</strong> a <strong>4,375%</strong>, empinando la curva 2s10s a <strong>42,5pb</strong>. El bono a 30 años lleva dos meses consecutivos por encima del <strong>5%</strong>, la racha más prolongada desde 2006. A días de la decisión de la Fed (15-16/9), Claudia Sahm advirtió que ceder al calendario electoral de Trump erosionaría la credibilidad de la Reserva Federal.",
+      "contexto": "El mercado descuenta que el BCE subirá <strong>25pb</strong> el jueves 10/9, hasta el <strong>2,50%</strong> de tasa de depósito, en medio de presión política creciente de Mélenchon y la AfD en Alemania. Los rendimientos soberanos core europeos suben, con el <strong>Gilt</strong> liderando: el Reino Unido paga el costo de financiamiento más alto desde 1998 y Francia acumula rendimientos en máximos desde 2008.",
       "impacto": [
-        {
-          "asset": "Euro",
-          "dir": "bajo presión",
-          "cls": "dn"
-        },
-        {
-          "asset": "Spread Bund-OAT",
-          "dir": "a vigilar",
-          "cls": "neu"
-        },
-        {
-          "asset": "Bolsas europeas",
-          "dir": "↓ lideradas por DAX",
-          "cls": "dn"
-        }
+        {"asset": "UST 10Y", "dir": "↑ 1,6pb a 4,800%", "cls": "up"},
+        {"asset": "UST 30Y", "dir": "&gt;5% (2do mes consecutivo)", "cls": "up"},
+        {"asset": "Gilt/OAT/BTP", "dir": "↑ (lideran selloff soberano)", "cls": "up"}
       ]
     },
     {
       "id": 4,
-      "tag": "China · Sistema Financiero",
-      "tag_class": "tg",
-      "title": "China inyecta USD 53.000 millones en bancos y aseguradoras estatales",
-      "brief": "Es la segunda ronda de recapitalización en menos de dos años, mientras las importaciones de crudo chinas siguen 40% por debajo del promedio pre-Ormuz.",
-      "tldr": "Beijing refuerza sus bancos mientras rota hacia crudo ruso",
+      "tag": "Argentina · FX y BCRA",
+      "tag_class": "ta",
+      "title": "El BCRA corta su racha de compras y el mayorista sube a $1.511, mientras el Tesoro le da al Central USD 2.000M en letras dólar-linked y escala la tensión por Malvinas",
+      "brief": "Tras 27 jornadas consecutivas comprando divisas, el BCRA no intervino por tercera vez en el año; el mayorista trepó a $1.511 (oficial $1.480/$1.530). El Gobierno denunció penalmente a Navitas Petroleum por operar en Malvinas sin autorización.",
+      "tldr": "Pausa compradora del BCRA justo cuando escala la tensión por Malvinas",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "Beijing inyectó <strong>USD 53.000 millones</strong> en bancos y aseguradoras estatales, la segunda ronda de recapitalización en menos de dos años.",
-      "contexto": "En paralelo, las importaciones marítimas de crudo de China se mantienen <strong>40%</strong> por debajo del promedio previo al conflicto en Ormuz, pese a que el Brent cedió desde los USD 126 de abril; el país rotó hacia crudo ruso, en su nivel más alto desde marzo.",
+      "evento": "El dólar mayorista subió a <strong>$1.511</strong> (oficial: compra $1.480 / venta $1.530) en una rueda sin intervención del BCRA, la tercera vez en el año, tras <strong>27 jornadas consecutivas</strong> comprando divisas. El blue cotiza <strong>$1.525/$1.545</strong>, el MEP <strong>$1.519/$1.534</strong> y el CCL <strong>$1.582/$1.583</strong>. El riesgo país cerró estable en <strong>490pb</strong>.",
+      "contexto": "El Tesoro le dio al BCRA <strong>USD 2.000 millones</strong> en letras mediante el canje de una Lecap en pesos por instrumentos atados al dólar, dándole al Central herramientas para intervenir sin vender reservas propias. En paralelo, el Gobierno denunció penalmente a Navitas Petroleum y otras firmas por operar hidrocarburos en la Cuenca Malvinas Norte sin autorización, y Milei encabezó su tercera reunión de Gabinete consecutiva para definir el envío del proyecto de ley de Malvinas a Diputados. Los globales cerraron mixtos: GD30 <strong>+0,37%</strong>, AL30 <strong>+0,14%</strong>, GD35 <strong>-0,13%</strong>.",
       "impacto": [
-        {
-          "asset": "Bancos estatales chinos",
-          "dir": "recapitalizados",
-          "cls": "neu"
-        },
-        {
-          "asset": "Importaciones crudo China",
-          "dir": "↓ 40% vs. promedio",
-          "cls": "dn"
-        }
+        {"asset": "Dólar mayorista", "dir": "$1.502,5/$1.511,5", "cls": "neu"},
+        {"asset": "Riesgo país", "dir": "490pb (estable)", "cls": "neu"},
+        {"asset": "GD30", "dir": "↑ 0,37%", "cls": "up"},
+        {"asset": "GD35", "dir": "↓ 0,13%", "cls": "dn"}
       ]
     },
     {
       "id": 5,
-      "tag": "Argentina · FX y Riesgo País",
-      "tag_class": "tb",
-      "title": "El riesgo país argentino ronda los 500 puntos pese a un REM que proyecta inflación de agosto por debajo del 2%",
-      "brief": "El dólar mayorista se sostiene con un mecanismo de 'escalones' cerca de $1.500/$1.510, mientras el REM ubica la inflación de agosto en 1,7%, uno de los registros más bajos del año.",
-      "tldr": "Buenos fundamentos, pero el mercado exige más prima por el calendario electoral",
+      "tag": "Commodities · Reservas",
+      "tag_class": "tg",
+      "title": "El oro cede pese a que el PBOC extiende a 22 meses su racha de compras, mientras Bitcoin también retrocede",
+      "brief": "El oro cae 0,80% a USD 4.440,90 y la plata 0,29% a USD 66,56 en una toma de ganancias táctica, aunque el PBOC sumó en agosto 650.000 onzas a sus reservas —el mayor incremento mensual desde 2023—; Bitcoin retrocede 0,44% a USD 78.742.",
+      "tldr": "La demanda estructural de oro no se inmuta ante la baja diaria",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El dólar mayorista cerró la semana en <strong>$1.508</strong> (compra $1.499) tras un mecanismo que los analistas describen como &ldquo;escalones&rdquo;: el Gobierno tolera saltos puntuales hasta cerca de <strong>$1.510</strong> y luego defiende el nuevo nivel, en lugar de dejarlo flotar libremente. El blue cotiza en <strong>$1.520/$1.540</strong>, el MEP en <strong>$1.517/$1.525</strong> y el CCL en <strong>$1.582/$1.583</strong>. El REM proyecta que la inflación de agosto perforaría el <strong>2%</strong> (1,7%), uno de los registros más bajos del año.",
-      "contexto": "El riesgo país cerró el viernes en <strong>490 puntos</strong>, pero viene de superar los 500pb tras haber tocado 400 hace mes y medio, con la tasa forward a 2028 saltando a <strong>15,4%</strong> anual desde 11%. El intento de sostener el techo cambiario restringió liquidez y empujó la caución del 20% al 30%, encareciendo el fondeo del Tesoro. El frente externo sigue firme: superávit comercial proyectado en USD 26.000 millones para 2026 y casi USD 14.000 millones de compras del BCRA desde el inicio del programa.",
+      "evento": "El oro retrocede <strong>0,80%</strong> a <strong>USD 4.440,90</strong> y la plata cede <strong>0,29%</strong> a <strong>USD 66,56</strong>, en una pausa después de la fuerte suba reciente. Bitcoin también opera a la baja, <strong>-0,44%</strong> en <strong>USD 78.742</strong>.",
+      "contexto": "El PBOC sumó en agosto <strong>650.000 onzas</strong> (~20,2 toneladas) a sus reservas, el mayor incremento mensual desde 2023 y el vigésimo segundo mes consecutivo de compras, pese al salto de casi 10% en el precio del oro este año. El patrón se replica en otros bancos centrales emergentes desde la congelación de activos rusos en 2022, lo que sugiere un motivo estratégico-geopolítico &mdash;no oportunista&mdash; detrás de la demanda estructural de reservas alternativas al dólar.",
       "impacto": [
-        {
-          "asset": "Riesgo país",
-          "dir": "490pb (cierre viernes)",
-          "cls": "neu"
-        },
-        {
-          "asset": "Dólar mayorista",
-          "dir": "$1.499/$1.508",
-          "cls": "neu"
-        },
-        {
-          "asset": "GD30",
-          "dir": "↑ 0,60%",
-          "cls": "up"
-        },
-        {
-          "asset": "AL35",
-          "dir": "↑ 0,17%",
-          "cls": "up"
-        }
+        {"asset": "Oro", "dir": "↓ 0,80% a USD 4.440,90", "cls": "dn"},
+        {"asset": "Plata", "dir": "↓ 0,29% a USD 66,56", "cls": "dn"},
+        {"asset": "Bitcoin", "dir": "↓ 0,44% a USD 78.742", "cls": "dn"}
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Fed: empleo fuerte vs. presión de Trump",
-      "texto": "El informe de agosto (+162.000 empleos) reforzó las apuestas por una Fed más dura, mientras Trump insiste en bajar las tasas &mdash; la independencia de la Fed vuelve a estar en el centro del debate de cara al CPI del viernes."
+      "label": "Fed: presión política vs. independencia institucional",
+      "texto": "A días de la decisión del 15-16/9, Claudia Sahm advierte que ceder al calendario electoral de Trump erosionaría la credibilidad de la Fed, mientras la Corte Suprema ya bloqueó en 2026 el intento de remover a la gobernadora Lisa Cook."
     },
     {
-      "label": "BCE: inflación bélica vs. actividad débil",
-      "texto": "El mercado descuenta una suba de tasas &ldquo;por las dudas&rdquo; del BCE el jueves ante la presión inflacionaria que genera la guerra en Irán sobre el petróleo, aun con el crecimiento europeo golpeado por el ruido político alemán."
+      "label": "BCE: inflación bélica vs. presión política",
+      "texto": "El mercado da por descontada una suba de 25pb el jueves 10/9 ante una inflación headline que sube a 3,3% por la guerra en Ormuz, mientras Mélenchon y el avance de la AfD en Sajonia-Anhalt tensionan la independencia del banco central."
     },
     {
-      "label": "Argentina: REM a la baja vs. riesgo país al alza",
-      "texto": "La inflación de agosto perforaría el 2% según el REM (1,7%), pero el riesgo país ronda los 500pb &mdash;desde 400 hace mes y medio&mdash; reflejando que el mercado le exige más prima al calendario electoral, no a los fundamentos de corto plazo."
+      "label": "Argentina: pausa compradora del BCRA vs. blindaje vía Tesoro",
+      "texto": "El Central cortó su racha de 27 jornadas comprando divisas, pero el Tesoro le giró USD 2.000 millones en letras dólar-linked que le dan margen para intervenir sin vender reservas propias &mdash;el riesgo país se mantuvo estable en 490pb pese a la pausa."
     }
   ],
   "correlaciones": [
     {
-      "par": "Petróleo (Ormuz) vs. rendimientos globales",
-      "texto": "La escalada Irán-EE.UU. en el Estrecho de Ormuz empuja al crudo y, con él, a la inflación esperada y a los rendimientos largos &mdash;UST 10Y en 4,784%&mdash; justo cuando Argentina intenta sostener la compresión de su riesgo país."
+      "par": "Petróleo (Ormuz) vs. UST largo",
+      "texto": "La escalada hutí sobre instalaciones sauditas empuja al crudo y, con él, a la inflación esperada, contribuyendo a que el UST 30Y complete su segundo mes consecutivo por encima del 5%, la racha más prolongada desde 2006."
     },
     {
-      "par": "VIX vs. riesgo político europeo",
-      "texto": "El salto del VIX a 15,06 (+3,65%) coincide con el resultado electoral del AfD en Alemania, mientras activos de duración emergente &mdash;como los bonos malasios, con flujos récord en agosto&mdash; muestran que el apetito por riesgo ya no depende solo de la Fed."
+      "par": "VIX vs. bonos soberanos europeos",
+      "texto": "El salto del VIX a 15,71 coincide con el selloff en Gilts, OATs y BTPs, castigados a la vez por el shock energético post-Ormuz y el riesgo político en Francia y Alemania &mdash;una combinación inusual que ya empieza a pricearse."
     },
     {
-      "par": "Dólar mayorista ARG vs. caución",
-      "texto": "El intento de sostener el techo cambiario cerca de $1.500/$1.510 restringió liquidez y empujó la tasa de caución del 20% al 30%, encareciendo el fondeo del Tesoro y trasladándose a la mora de las familias."
+      "par": "Dólar mayorista ARG vs. riesgo país",
+      "texto": "Pese a que el BCRA cortó su racha compradora, el riesgo país se mantuvo estable en 490pb y los globales cerraron mixtos, señal de que el mercado distingue el ritmo de intervención diaria de la trayectoria de mediano plazo de las reservas."
     }
   ],
-  "bottom_line": "Hoy Wall Street está cerrada por Labor Day, pero el fondo del día es de cautela: la escalada entre EE.UU. e Irán en Ormuz (con Goldman advirtiendo un petróleo a USD 120) y el terremoto electoral alemán (AfD al 44% en Sajonia-Anhalt) empujan al VIX a 15,06 y presionan a las bolsas europeas, mientras el Nikkei se despega gracias a las tecnológicas. Para Argentina, el frente externo sigue siendo un colchón real &mdash;superávit comercial proyectado en USD 26.000 millones y casi USD 14.000 millones de compras del BCRA&mdash; y el REM confirma que la inflación de agosto perforaría el 2% (1,7%), uno de los registros más bajos del año. Pero el riesgo país ronda los 500pb, la caución trepó del 20% al 30% y el mecanismo de &ldquo;escalones&rdquo; cambiarios (mayorista en $1.499/$1.508) muestra que el Gobierno defiende competitividad, no un número redondo: la clave hacia adelante es si ese ajuste se maneja de forma ordenada o como reacción de urgencia cuando las tasas globales &mdash;hoy presionadas por el petróleo y el ruido político europeo&mdash; vuelvan a tensionar el fondeo en pesos."
+  "bottom_line": "El tono del día es de cautela: los ataques hutíes a instalaciones de Aramco empujan al petróleo (WTI +2,74%, Brent +2,48%) justo cuando el UST 30Y completa su segundo mes sobre el 5% y el selloff soberano europeo &mdash;liderado por el Gilt&mdash; se combina con el riesgo político en Francia y Alemania. Los futuros de Wall Street caen, el VIX sube a 15,71 y el Nikkei cerró en baja, mientras la Fed llega presionada políticamente a su decisión del 15-16/9 y el BCE se apresta a subir tasas el jueves. Para Argentina, el dato saliente es que el BCRA cortó su racha de 27 jornadas comprando divisas justo cuando el Tesoro le giró USD 2.000 millones en letras dólar-linked para poder intervenir sin vender reservas propias &mdash;una señal de prudencia, no de debilidad, ya que el riesgo país se mantuvo estable en 490pb pese a la pausa. La escalada por Malvinas (denuncia penal a Navitas Petroleum, proyecto de ley camino a Diputados) se suma como un frente a monitorear de cara a un contexto global donde la prima de riesgo geopolítico &mdash;en petróleo, en bonos largos y en el tablero de Medio Oriente&mdash; vuelve a marcar la agenda antes de dos decisiones de tasas clave esta semana."
 }
