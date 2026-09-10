@@ -1,113 +1,109 @@
 {
-  "date": "2026-09-09",
-  "generated": "2026-09-09T14:32:45Z",
+  "date": "2026-09-10",
+  "generated": "2026-09-10T12:30:00Z",
   "sentiment": {
-    "overall": "risk-off",
-    "label": "El Brent toca máximos desde julio por ataques a petroleros iraníes y hutíes en Arabia Saudita, el VIX sube y Wall Street abre en rojo con el Dow como peor referencia.",
+    "overall": "neutral",
+    "label": "Cautela previa al PPI de EE.UU. y la decisión de tasas del BCE, con el petróleo sobre US$100 presionando a los emergentes y al oro.",
     "fg": 39,
     "fg_label": "Miedo",
-    "putcall": 0.88,
-    "aaii_bulls": 38.5
+    "putcall": 0.67,
+    "aaii_bulls": 38.0
   },
   "drivers": [
     {
       "id": 1,
       "tag": "Geopolítica · Energía",
       "tag_class": "tq",
-      "title": "Petróleo en máximos desde julio: ataques a petroleros iraníes y hutíes en Arabia Saudita empujan al Brent cerca de USD 100",
-      "brief": "El WTI sube 2,74% a USD 93,99 y el Brent 2,48% a USD 98,67, tras la destrucción de cinco petroleros iraníes cerca de Kharg y ataques hutíes que hirieron a más de 70 personas en instalaciones sauditas.",
-      "tldr": "Ormuz vuelve a ponerle una prima al crudo",
+      "title": "Brent supera los US$100 por primera vez en 6 semanas por escalada EE.UU.-Irán",
+      "brief": "WTI sube 1,62% a US$97,61 y Brent 1,21% a US$102,43 tras un nuevo ataque de EE.UU. a petroleros iraníes en el Estrecho de Ormuz.",
+      "tldr": "Séptima suba consecutiva del crudo; riesgo de crisis energética prolongada",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "Una nueva escalada en Medio Oriente golpea al mercado de energía: EE.UU. destruyó cinco petroleros iraníes cerca de la isla de Kharg y ataques hutíes hirieron a más de <strong>70 personas</strong> en instalaciones petroleras sauditas. El <strong>WTI</strong> sube <strong>2,74%</strong> a <strong>USD 93,99</strong> y el <strong>Brent</strong> avanza <strong>2,48%</strong> a <strong>USD 98,67</strong>, tocando máximos desde julio.",
-      "contexto": "La Reserva Estratégica de Petróleo de EE.UU. cayó a <strong>285,4 millones de barriles</strong>, el nivel más bajo desde 1982, justo cuando nadie puede precisar con certeza cuánto crudo cruza hoy el Estrecho de Ormuz &mdash;las estimaciones oficiales y privadas difieren por más de 10 millones de barriles diarios. Washington ya no cuenta con el colchón que usó en 2022 para contener shocks de oferta con ventas de la SPR, por lo que la prima de incertidumbre podría quedar incrustada en el precio del crudo durante meses.",
+      "evento": "El <strong>Brent</strong> superó ayer los <strong>US$100</strong> por primera vez en seis semanas, tras un nuevo ataque de EE.UU. a petroleros iraníes en represalia por un ataque a un buque de guerra. El WTI sube <strong>1,62%</strong> a <strong>US$97,61</strong> y el Brent <strong>1,21%</strong> a <strong>US$102,43</strong>.",
+      "contexto": "La EIA elevó sus proyecciones de precios ante la caída de inventarios globales, mientras un tercio del petróleo del Golfo navega sin poder rastrearse por los &ldquo;cruces oscuros&rdquo; que evitan el Estrecho de Ormuz. El gas natural europeo superó los €80/MWh por primera vez desde 2023, sumando presión inflacionaria a la eurozona justo antes de la decisión del BCE.",
       "impacto": [
-        {"asset": "WTI", "dir": "↑ 2,74% a USD 93,99", "cls": "up"},
-        {"asset": "Brent", "dir": "↑ 2,48% a USD 98,67", "cls": "up"},
-        {"asset": "Oro", "dir": "↓ 0,80% a USD 4.440,90", "cls": "dn"}
+        {"asset": "WTI", "dir": "↑ 1,62%", "cls": "up"},
+        {"asset": "Brent", "dir": "↑ 1,21%", "cls": "up"},
+        {"asset": "Gas natural EU", "dir": "↑ >€80/MWh", "cls": "up"}
       ]
     },
     {
       "id": 2,
-      "tag": "EE.UU. · Mercados",
-      "tag_class": "tr",
-      "title": "Wall Street abre en rojo con el Dow como peor referencia y el VIX sube; el Nikkei cae 1,70% por el desarme del carry trade en yenes",
-      "brief": "El futuro del Dow retrocede 0,75% a 53.037, el S&P 500 cae 0,25% y el VIX sube 2,68% a 15,71; Europa opera a la baja liderada por el MIB y el Nikkei cerró con una baja de 1,70%.",
-      "tldr": "El apetito por riesgo se enfría antes de la apertura",
+      "tag": "Bancos Centrales · Fed",
+      "tag_class": "tb",
+      "title": "UST 10Y toca máximos desde 2023 en la previa al PPI de agosto",
+      "brief": "El rendimiento a 10 años sube a 4,861% pese a que el Tesoro amplió sus recompras de bonos largos; hoy se publican PPI y Core PPI.",
+      "tldr": "El mercado deja de creer en gestos de liquidez y pide disciplina fiscal",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "Los futuros de EE.UU. caen antes de la apertura: el <strong>Dow</strong> retrocede <strong>0,75%</strong> a <strong>53.037</strong> puntos, el <strong>S&amp;P 500</strong> baja <strong>0,25%</strong> a <strong>7.702,50</strong> y el <strong>Nasdaq</strong> se mantiene estable en <strong>29.566,25</strong>. El <strong>VIX</strong> sube <strong>2,68%</strong> a <strong>15,71</strong>. Las bolsas europeas operan a la baja con el MIB liderando la caída, y el <strong>Nikkei</strong> cerró con una baja de <strong>1,70%</strong>.",
-      "contexto": "El PBI japonés revisado al alza y el mayor aumento salarial real en cinco años refuerzan la expectativa de que el BOJ suba su tasa a <strong>1,25%</strong> este mes. El yen toca máximos de siete meses y el desarme de posiciones de carry trade financiadas en yenes baratos &mdash;que sostuvo buena parte del rally en activos emergentes de los últimos años&mdash; explica gran parte de la caída del Nikkei y podría convertirse en un test de liquidez más amplio si se acelera.",
+      "evento": "El <strong>UST 10Y</strong> sube 2,1 pb a <strong>4,861%</strong> y el <strong>UST 2Y</strong> avanza a <strong>4,445%</strong>, tocando máximos desde 2023 pese a que el Tesoro triplicó a <strong>US$6.000 millones</strong> el tamaño de su próxima recompra de bonos largos. Hoy se conocen el <strong>PPI</strong> (consenso 0,4% m/m) y el <strong>Core PPI</strong> (consenso 0,3% m/m) de agosto, antesala del IPC del viernes.",
+      "contexto": "Una encuesta de Reuters muestra que la mayoría de economistas espera que la Fed sostenga tasas en la reunión del 15-16/9, pese a que el mercado sigue pronosticando algún recorte. Un PPI/Core PPI por encima de lo esperado, en un contexto de aranceles y petróleo en alza, puede inclinar el mensaje de Powell hacia un tono más hawkish.",
       "impacto": [
-        {"asset": "Dow (fut.)", "dir": "↓ 0,75% a 53.037", "cls": "dn"},
-        {"asset": "S&P 500 (fut.)", "dir": "↓ 0,25% a 7.702,50", "cls": "dn"},
-        {"asset": "VIX", "dir": "↑ 2,68% a 15,71", "cls": "up"},
-        {"asset": "Nikkei", "dir": "↓ 1,70%", "cls": "dn"}
+        {"asset": "UST 10Y", "dir": "↑ 4,861%", "cls": "up"},
+        {"asset": "UST 2Y", "dir": "↑ 4,445%", "cls": "up"},
+        {"asset": "Curva 2s10s", "dir": "41,6 pb", "cls": "neu"}
       ]
     },
     {
       "id": 3,
-      "tag": "Bancos Centrales · Renta Fija",
+      "tag": "Bancos Centrales · BCE",
       "tag_class": "tb",
-      "title": "El BCE encara una suba con populismo en ascenso mientras Warsh enfrenta su primer test de independencia frente a Trump",
-      "brief": "El mercado descuenta dos alzas más del BCE este año pese al avance de la AfD y Mélenchon; Trump exigió por Truth Social que la Fed baje tasas 'o dejo de comerciar' con países con déficit.",
-      "tldr": "La independencia de los bancos centrales, bajo presión política",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El mercado descuenta <strong>dos subas más</strong> de tasa del BCE este año, con la tasa de depósito vista en <strong>3%</strong> para fines de 2027, pese al avance de la AfD tras ganar en Sajonia-Anhalt y al reclamo de Mélenchon de cancelar deuda francesa en manos del organismo. En paralelo, Trump exigió por Truth Social que la Fed baje tasas &ldquo;o dejo de comerciar&rdquo; con países con déficit, en lo que se perfila como el primer test de independencia para el presidente de la Fed, Kevin Warsh.",
-      "contexto": "Los rendimientos de deuda de la eurozona rondan máximos plurianuales antes de la reunión del BCE, con Francia en la mira por la caída del crecimiento nominal y bonos en máximos desde 2008. En EE.UU., el <strong>UST 10Y</strong> sube a <strong>4,80%</strong> y el <strong>UST 2Y</strong> baja a <strong>4,375%</strong>, empinando la curva 2s10 a <strong>42,5 pb</strong>, en momentos en que el mercado de bonos absorbe una deuda de más de USD 40 billones y un déficit fiscal del 6% del PBI.",
+      "title": "El BCE definiría hoy su segunda suba de tasas del año",
+      "brief": "Lagarde enfrenta una inflación impulsada por la energía en medio de la guerra Irán-EE.UU.; operadores apuestan a hasta 4 subas combinadas BCE+BOE.",
+      "tldr": "El petróleo sobre US$100 obliga a Europa a endurecer la política monetaria",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El <strong>Banco Central Europeo</strong> se apresta a subir tasas este jueves, la segunda vez en el año, para contener una inflación impulsada por la energía. Las bolsas europeas operan <strong>mixtas</strong> a la espera de la decisión y la conferencia de <strong>Lagarde</strong>.",
+      "contexto": "Los operadores ya apuestan a hasta cuatro subas de tasas combinadas del BCE y el BOE por la escalada del petróleo. La decisión definirá si Europa valida ese escenario más agresivo o intenta moderar expectativas, con impacto directo en el euro (EUR/USD 1,1600) y en la curva de bonos soberanos del bloque, donde el Gilt lidera la suba de rendimientos.",
       "impacto": [
-        {"asset": "UST 10Y", "dir": "↑ 1,6 pb a 4,800%", "cls": "up"},
-        {"asset": "UST 2Y", "dir": "↓ 0,4 pb a 4,375%", "cls": "dn"},
-        {"asset": "Curva 2s10s", "dir": "↑ a 42,5 pb", "cls": "up"},
-        {"asset": "DXY", "dir": "↓ 0,21% a 98,97", "cls": "dn"}
+        {"asset": "EUR/USD", "dir": "1,1600", "cls": "neu"},
+        {"asset": "DXY", "dir": "98,82 (+0,01%)", "cls": "neu"},
+        {"asset": "Gilt 10Y", "dir": "↑", "cls": "up"}
       ]
     },
     {
       "id": 4,
-      "tag": "Argentina · Actividad y FX",
+      "tag": "Argentina · Inflación",
       "tag_class": "ta",
-      "title": "INDEC reporta la peor caída industrial en 16 meses mientras el dólar blue toca mínimos de dos meses",
-      "brief": "La industria manufacturera cayó 5% y la construcción 4,6% en julio, la baja más profunda en 16 meses; en paralelo, la brecha cambiaria se achica a mínimos de dos meses y el BCRA retoma compras.",
-      "tldr": "Los sectores reales sufren mientras el dólar se calma",
+      "title": "INDEC publica hoy el IPC de agosto; el mercado espera perforar el 2% mensual",
+      "brief": "Consultoras privadas proyectan entre 1,4% y 1,9%; el dólar mayorista sube por tercer día consecutivo a $1.513.",
+      "tldr": "Desinflación a prueba en medio de un dólar mayorista más firme",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>INDEC</strong> informó una caída de <strong>5%</strong> interanual en la industria manufacturera y de <strong>4,6%</strong> en la construcción durante julio, el retroceso más profundo en <strong>16 meses</strong>, con un repunte de la morosidad empresaria en el sector industrial. En paralelo, el dólar blue y la brecha cambiaria tocan mínimos de dos meses, con el BCRA acumulando compras por <strong>USD 101 millones</strong> en los primeros seis días de septiembre.",
-      "contexto": "El ministro Caputo descartó en la Di Tella un &ldquo;plan platita&rdquo; de cara a 2027, ratificó el rumbo fiscal y proyectó una desinflación futura apoyada en ganancias de productividad vía inteligencia artificial &mdash;el mismo día en que el propio INDEC confirmaba la peor caída sectorial en más de un año. El riesgo país se mantuvo estable en <strong>490 pb</strong> pese al dato negativo, señal de que el mercado por ahora distingue el frente fiscal-cambiario del productivo.",
+      "evento": "El <strong>INDEC</strong> publica hoy a las 16hs la inflación de agosto, con consultoras privadas proyectando entre <strong>1,4%</strong> y <strong>1,9%</strong> —perforando el 2% mensual por segundo mes consecutivo—, mientras el dato precursor de CABA marcó <strong>1,7%</strong>. En paralelo, el <strong>dólar mayorista</strong> sube por tercer día consecutivo y cerró ayer en <strong>$1.513</strong> (máximo intradía $1.517), con más de US$600M negociados.",
+      "contexto": "El dato llega en un contexto de actividad industrial débil (-2,6% i.a. en 7 meses, 12% por debajo de 2023) y con Jorge Brito (Banco Macro) advirtiendo que la mora crediticia &ldquo;pasó del semáforo rojo al amarillo&rdquo;, afectando a 3 millones de argentinos. Un IPC en línea con lo esperado consolidaría la desinflación de cara al año electoral; una sorpresa al alza reavivaría dudas sobre el ancla cambiaria. El riesgo país (EMBI) cerró ayer en <strong>491 pb (-3 pb)</strong>.",
       "impacto": [
-        {"asset": "Dólar oficial", "dir": "$1.480 / $1.530", "cls": "neu"},
-        {"asset": "Dólar blue", "dir": "$1.525 / $1.545 (brecha mín. 2 meses)", "cls": "neu"},
-        {"asset": "Riesgo país", "dir": "490 pb, sin cambios", "cls": "neu"},
-        {"asset": "Industria (INDEC, jul.)", "dir": "↓ 5% i.a.", "cls": "dn"}
+        {"asset": "Dólar mayorista", "dir": "$1.513 (↑ 3er día)", "cls": "up"},
+        {"asset": "Riesgo país", "dir": "491 pb (-3pb)", "cls": "dn"},
+        {"asset": "IPC agosto (est.)", "dir": "1,4%-1,9%", "cls": "neu"}
       ]
     },
     {
       "id": 5,
-      "tag": "Argentina · Geopolítica",
+      "tag": "Mercados · Sentimiento",
       "tag_class": "tr",
-      "title": "Argentina denunciará penalmente a Navitas Petroleum por la explotación del yacimiento Sea Lion en Malvinas",
-      "brief": "El Gobierno amplió las denuncias por explotación petrolera en las islas y calificó el proyecto como 'peligro claro e inminente'; las acciones de Navitas y Rockhopper cayeron hasta 11,5% en tres ruedas.",
-      "tldr": "La disputa por Malvinas suma un frente petrolero",
+      "title": "Emergentes bajo presión y oro retrocede pese a futuros mixtos en EE.UU.",
+      "brief": "Hang Seng -1,27%, EEM -0,51%; oro cae 0,58% y Bitcoin -0,38%, mientras el VIX sube a 16,55.",
+      "tldr": "El capital rota hacia cautela con el foco puesto en la Fed y el BCE",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "El Gobierno argentino denunciará penalmente a <strong>Navitas Petroleum</strong> por la explotación del yacimiento <strong>Sea Lion</strong> en Malvinas; el presidente Milei calificó el proyecto como un &ldquo;peligro claro e inminente&rdquo; y describió al Reino Unido como una nación &ldquo;en declive&rdquo;. Las acciones de Navitas y Rockhopper cayeron hasta <strong>11,5%</strong> en tres ruedas.",
-      "contexto": "El vocero presidencial rechazó el paralelismo con la guerra de 1982 y no confirmó un eventual viaje de Milei al Reino Unido. La escalada se suma como un frente político-diplomático a monitorear, con impacto directo en las petroleras involucradas pero por ahora acotado en los activos soberanos argentinos.",
+      "evento": "Los futuros de EE.UU. operan mixtos: Nasdaq -0,22% a 29.385, S&amp;P +0,08% a 7.649,50 y Dow +0,15% a 52.504. El <strong>VIX</strong> sube a <strong>16,55</strong> y los emergentes retroceden: <strong>Hang Seng -1,27%</strong>, CSI 300 -0,58%, <strong>EEM -0,51%</strong> a US$68,48. El <strong>oro</strong> cae <strong>0,58%</strong> a US$4.434,80 y el <strong>Bitcoin</strong> opera en US$77.995 (-0,38%).",
+      "contexto": "El peso chileno, el rand sudafricano y el won coreano se debilitan, mientras Turquía y Corea ven subir sus rendimientos 10Y locales. El Fear &amp; Greed Index de CNN se ubica en 39 puntos (miedo) y el AAII muestra sentimiento bajista levemente por encima del alcista (39,3% vs. 38,0%), reflejando la cautela previa a los datos clave de la semana.",
       "impacto": [
-        {"asset": "Navitas Petroleum", "dir": "↓ hasta 11,5% (3 ruedas)", "cls": "dn"},
-        {"asset": "Rockhopper", "dir": "↓ hasta 11,5% (3 ruedas)", "cls": "dn"},
-        {"asset": "Riesgo soberano ARG", "dir": "sin impacto directo por ahora", "cls": "neu"}
+        {"asset": "VIX", "dir": "16,55 (+0,55%)", "cls": "up"},
+        {"asset": "Oro", "dir": "↓ 0,58%", "cls": "dn"},
+        {"asset": "EEM", "dir": "↓ 0,51%", "cls": "dn"}
       ]
     }
   ],
   "tensiones": [
-    {"label": "SPR de EE.UU. en mínimos desde 1982", "texto": "La Reserva Estratégica de Petróleo cayó a 285,4 millones de barriles justo cuando la escalada con Irán en el Estrecho de Ormuz deja a Washington sin el colchón que usó en 2022 para contener shocks de oferta con ventas de la reserva."},
-    {"label": "Carry trade en yenes se desarma", "texto": "El BOJ subiría su tasa a 1,25% este mes tras revisar al alza el PBI y los salarios reales de Japón; el yen toca máximos de siete meses y el desarme de posiciones financiadas en yenes baratos ya golpea al Nikkei y podría extenderse a activos emergentes apalancados."},
-    {"label": "Argentina: recesión sectorial vs. relato de desinflación", "texto": "Caputo proyectó una desinflación futura apoyada en productividad vía IA el mismo día en que el INDEC confirmó la peor caída industrial y de la construcción en 16 meses, con un repunte de la morosidad empresaria."}
+    {"label": "BCE vs. inflación energética", "texto": "El BCE debe subir tasas para contener una inflación impulsada por el petróleo y el gas, justo cuando la economía europea muestra una solidez inesperada — el riesgo es sobre-endurecer en medio de una crisis energética que aún no toca piso."},
+    {"label": "Tesoro de EE.UU. vs. mercado de bonos", "texto": "Bessent amplió las recompras de bonos largos para sostener la liquidez, pero el mercado lo interpretó como un gesto cosmético: los rendimientos subieron igual, dejando en evidencia que el problema de fondo es el déficit fiscal, no la falta de demanda técnica."},
+    {"label": "Desinflación argentina vs. dólar mayorista firme", "texto": "El IPC de agosto podría perforar el 2% mensual por segundo mes consecutivo, pero el dólar mayorista sube por tercer día consecutivo — la sostenibilidad del ancla cambiaria empieza a tensionar la narrativa de desinflación de cara al año electoral."}
   ],
   "correlaciones": [
-    {"par": "Petróleo (WTI/Brent) vs. expectativas de inflación", "texto": "La escalada con Irán y el salto del crudo presionan al alza las expectativas de inflación en EE.UU. justo cuando Warsh enfrenta presión política de Trump para bajar tasas, complicando el balance entre precios y crecimiento."},
-    {"par": "Yen vs. Nikkei y activos emergentes", "texto": "La expectativa de suba del BOJ fortalece al yen a máximos de siete meses y presiona al Nikkei (-1,70%) por el desarme del carry trade, un fondeo que históricamente sostuvo parte del rally en emergentes."},
-    {"par": "Riesgo país Argentina vs. globales soberanos", "texto": "El EMBI Argentina se mantuvo estable en 490 pb y los globales (GD30D, GD35D, AL30D) cerraron mixtos en Buenos Aires, señal de que el mercado por ahora distingue el ruido político (Malvinas) y el dato industrial negativo de la trayectoria fiscal-cambiaria de mediano plazo."}
+    {"par": "Petróleo (Brent/WTI) vs. UST 10Y y DXY", "texto": "La escalada Irán-EE.UU. empuja al petróleo por encima de US$100, lo que presiona al alza tanto los rendimientos largos de EE.UU. (por expectativas de inflación) como al dólar (DXY 98,82), un combo que históricamente castiga a emergentes y commodities no energéticos."},
+    {"par": "Riesgo país Argentina vs. bonos soberanos en dólares", "texto": "El EMBI Argentina bajó a 491 pb (-3pb) en simultáneo con bonos mixtos al cierre (GD30D 58,25, GD35D 80,00, AL30D 56,07) — la correlación inversa habitual entre spread y precios se mantiene, aunque con movimientos acotados a la espera del IPC de hoy."}
   ],
-  "bottom_line": "El tono del día es de cautela: el Brent toca máximos desde julio (WTI +2,74%, Brent +2,48%) tras ataques a petroleros iraníes y a instalaciones sauditas, mientras el VIX sube a 15,71 y Wall Street abre en rojo con el Dow como peor referencia. El desarme del carry trade en yenes golpea al Nikkei (-1,70%) ante la expectativa de que el BOJ suba tasas, y en Europa el BCE encara una suba con populismo en ascenso (AfD, Mélenchon) mientras Warsh enfrenta su primer test de independencia frente a la presión de Trump por Truth Social. Para Argentina, el frente cambiario sigue firme &mdash;dólar blue y brecha en mínimos de dos meses, BCRA comprando USD 101 millones en lo que va de septiembre y riesgo país estable en 490 pb&mdash; pero convive con dos frentes de fricción: el dato real, con la peor caída industrial y de la construcción en 16 meses pese al discurso oficial de desinflación vía productividad, y el político-diplomático, con la denuncia penal a Navitas Petroleum por la explotación de Sea Lion en Malvinas. En un contexto global donde la prima de riesgo geopolítico &mdash;en petróleo, en el yen y en el tablero de bancos centrales&mdash; vuelve a marcar la agenda, los activos argentinos muestran por ahora una desconexión saludable entre el ruido de corto plazo y la trayectoria de mediano plazo de las reservas y el riesgo soberano."
+  "bottom_line": "La sesión de hoy está dominada por dos definiciones clave fuera de Argentina —el <strong>PPI de EE.UU.</strong> y la <strong>decisión de tasas del BCE</strong>— en un contexto de petróleo por encima de US$100 que presiona a la vez a los rendimientos largos, al dólar global y a los activos emergentes. Para Argentina, el dato saliente es el <strong>IPC de agosto del INDEC</strong> (16hs), que el mercado espera entre 1,4% y 1,9%: un resultado en línea consolidaría la narrativa de desinflación de cara al año electoral, pero llega con un dólar mayorista firme por tercer día consecutivo y una industria que sigue 12% por debajo de 2023. El riesgo país en 491 pb y los bonos soberanos relativamente estables sugieren que el mercado local, por ahora, no está pricing una sorpresa negativa — pero un petróleo sostenido sobre US$100 y una Fed más hawkish de lo esperado son los principales riesgos externos a monitorear para el crawling peg y el frente cambiario."
 }
