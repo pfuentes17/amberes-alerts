@@ -306,28 +306,28 @@ const D = {
   // ── WASDE  --  USDA WASDE-674, 12-Ago-2026 ───────────────────────
   // Fuente: usda.gov/oce/commodity/wasde/wasde0826.pdf (oficial, tablas mundiales verificadas)
   wasde:{
-    fecha:'Agosto 2026', fechaOf:'12-Ago-2026', proximo:'09-Sep-2026 (est.)',
-    comentario:`El WASDE de agosto (WASDE-674) es el primer informe con <strong>datos de campo de la nueva cosecha de EE.UU.</strong> En maiz, USDA recorta el rinde promedio nacional a <strong>180,7 bushels/acre</strong> (vs 183 bpa en julio), aunque mayor area sembrada compensa y la produccion mundial sube levemente a 1.298,9 Mt (+1,8 Mt); el uso total sube mas que la produccion, por lo que <strong>los stocks mundiales caen a 274,7 Mt</strong> (-0,6 Mt vs julio, y -24,2 Mt interanual). En soja, el rinde de EE.UU. tambien se recorta a <strong>52,7 bushels/acre</strong> (vs 53 bpa), pero la mayor area cosechada eleva la produccion de EE.UU. y mundial a 442,3 Mt (+0,6 Mt), con <strong>stocks mundiales practicamente estables en 124,2 Mt</strong>. El trigo mundial reduce produccion a 819,3 Mt (-0,7 Mt) por menor cosecha en la UE, y los <strong>stocks mundiales de EE.UU. caen a 717 M bushels (-5 M bushels, -22% interanual)</strong>, el nivel mas ajustado en varias campanas. El aceite de soja mundial sube stocks a 6,9 Mt (+0,14 Mt) por mayor produccion global.`,
+    fecha:'Septiembre 2026 (datos USDA PSD, campaña 2026/27)', fechaOf:'sync automático 14-Sep-2026', proximo:'próxima corrida de update_granos.py',
+    comentario:`Datos sincronizados automáticamente desde USDA FAS PSD Online (campaña 2026/27, actualizado 14-Sep-2026) — no reemplaza la lectura cualitativa del WASDE real, solo refleja las cifras de producción/consumo/stocks más recientes disponibles. <strong>Maíz</strong>: producción mundial 1290.95 Mt, stocks 272.10 Mt (S/U 20.7%). <strong>Soja</strong>: producción mundial 442.35 Mt, stocks 124.02 Mt (S/U 28.0%). <strong>Trigo</strong>: producción mundial 822.43 Mt, stocks 276.29 Mt (S/U 33.6%). Aceite de soja: sin actualizar en este panel todavía (pendiente de integrar desde la hoja Excel, ver docstring de update_agro_wasde_html.py).`,
     soja:{
-      prod:  {mundo:442.25,arg:50.0,bra:186.0,usa:122.99,chgMes:+0.55,chgAnual:+14.14},
-      cons:  {mundo:384.76,chgMes:+0.59},
-      stocks:{mundo:124.21,arg:24.22,bra:36.89,usa:8.71,chgMes:+0.04,chgAnual:-1.74},
-      exp:   {mundo:190.41,arg:6.45,bra:118.0,usa:45.18},
-      sxu:32.3,sxuPrev:32.3,
+      prod:  {mundo:442.35,arg:50.00,bra:186.00,usa:123.42},
+      cons:  {mundo:442.44},
+      stocks:{mundo:124.02,arg:null,bra:null,usa:null},
+      exp:   {mundo:191.58,arg:null,bra:null,usa:null},
+      sxu:28.0,sxuPrev:28.0,
     },
     maiz:{
-      prod:  {mundo:1298.88,arg:55.0,bra:139.0,usa:406.75,chgMes:+1.79,chgAnual:-31.03},
-      cons:  {mundo:1323.05,chgMes:+2.56},
-      stocks:{mundo:274.66,arg:4.01,bra:10.10,usa:41.98,chgMes:-0.60,chgAnual:-24.17},
-      exp:   {mundo:210.48,arg:38.0,bra:44.0,usa:83.19},
-      sxu:20.8,sxuPrev:20.8,
+      prod:  {mundo:1290.95,arg:55.00,bra:139.00,usa:401.33},
+      cons:  {mundo:1313.25},
+      stocks:{mundo:272.10,arg:null,bra:null,usa:null},
+      exp:   {mundo:210.08},
+      sxu:20.7,sxuPrev:20.7,
     },
     trigo:{
-      prod:  {mundo:819.30,ue:134.20,rus:88.5,chi:141.0,usa:41.66,chgMes:-0.67,chgAnual:-24.05},
-      cons:  {mundo:826.27,chgMes:+0.11},
-      stocks:{mundo:273.25,chi:120.20,ind:29.50,rus:13.59,usa:19.51,chgMes:+0.41,chgAnual:-6.97},
-      exp:   {mundo:212.71,rus:46.0,ue:31.0,aus:22.0,usa:21.09},
-      sxu:33.1,sxuPrev:33.0,
+      prod:  {mundo:822.43,ue:133.80,rus:88.00,chi:141.00,usa:41.66},
+      cons:  {mundo:822.46},
+      stocks:{mundo:276.29,chi:null,ind:null,rus:null,usa:null},
+      exp:   {mundo:211.77,rus:null,ue:null,aus:null,usa:null},
+      sxu:33.6,sxuPrev:33.6,
     },
     aceite:{
       prod:  {mundo:75.03,arg:8.58,bra:13.26,sea:21.56,chgMes:+0.13},
@@ -903,11 +903,11 @@ function buildWasde(){
   </div>
   <div class="cg2">
     <div>
-      ${tbl('Soja',w.soja.prod,w.soja.cons,w.soja.stocks,w.soja.sxu,w.soja.sxuPrev,`ARG ${w.soja.prod.arg} &middot; BRA ${w.soja.prod.bra} &middot; USA ${w.soja.prod.usa}`,`ARG ${w.soja.stocks.arg} &middot; BRA ${w.soja.stocks.bra} &middot; USA ${w.soja.stocks.usa}`)}
-      ${tbl('Maiz',w.maiz.prod,w.maiz.cons,w.maiz.stocks,w.maiz.sxu,w.maiz.sxuPrev,`ARG ${w.maiz.prod.arg} &middot; BRA ${w.maiz.prod.bra} &middot; USA ${w.maiz.prod.usa}`,`ARG ${w.maiz.stocks.arg} &middot; BRA ${w.maiz.stocks.bra} &middot; USA ${w.maiz.stocks.usa}`)}
+      ${tbl('Soja',w.soja.prod,w.soja.cons,w.soja.stocks,w.soja.sxu,w.soja.sxuPrev,`ARG ${w.soja.prod.arg} &middot; BRA ${w.soja.prod.bra} &middot; USA ${w.soja.prod.usa}`,'')}
+      ${tbl('Maiz',w.maiz.prod,w.maiz.cons,w.maiz.stocks,w.maiz.sxu,w.maiz.sxuPrev,`ARG ${w.maiz.prod.arg} &middot; BRA ${w.maiz.prod.bra} &middot; USA ${w.maiz.prod.usa}`,'')}
     </div>
     <div>
-      ${tbl('Trigo',w.trigo.prod,w.trigo.cons,w.trigo.stocks,w.trigo.sxu,w.trigo.sxuPrev,`UE ${w.trigo.prod.ue} &middot; RUS ${w.trigo.prod.rus} &middot; CHI ${w.trigo.prod.chi}`,`CHI ${w.trigo.stocks.chi} &middot; IND ${w.trigo.stocks.ind} &middot; RUS ${w.trigo.stocks.rus}`)}
+      ${tbl('Trigo',w.trigo.prod,w.trigo.cons,w.trigo.stocks,w.trigo.sxu,w.trigo.sxuPrev,`UE ${w.trigo.prod.ue} &middot; RUS ${w.trigo.prod.rus} &middot; CHI ${w.trigo.prod.chi}`,'')}
       ${tbl('Aceite vegetal',w.aceite.prod,w.aceite.cons,w.aceite.stocks,w.aceite.sxu,w.aceite.sxuPrev,'','') }
     </div>
   </div>
