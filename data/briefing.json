@@ -1,109 +1,92 @@
 {
-  "date": "2026-09-11",
-  "generated": "2026-09-11T12:30:00Z",
+  "date": "2026-09-14",
+  "generated": "2026-09-14T12:30:00Z",
   "sentiment": {
-    "overall": "neutral",
-    "label": "Apetito por riesgo en acciones globales y una inflación de agosto que sorprende a la baja en Argentina conviven con un mercado de bonos tensionado y un doble frente de riesgo energético en Medio Oriente.",
-    "fg": 35,
+    "overall": "risk-off",
+    "label": "La semana arranca con futuros de EE.UU. en baja, el VIX saltando con fuerza y el petróleo por encima de US$100 en la previa de la decisión de la Fed del miércoles.",
+    "fg": 30,
     "fg_label": "Miedo",
-    "putcall": 0.67,
-    "aaii_bulls": 38.0
+    "putcall": 0.75,
+    "aaii_bulls": 36.0
   },
   "drivers": [
     {
       "id": 1,
-      "tag": "Argentina · Inflación",
-      "tag_class": "tg",
-      "title": "La inflación de agosto fue 1,7%, la más baja en 14 meses",
-      "brief": "El INDEC reportó una desaceleración desde el 2,1% de julio; acumula 21,3% en el año y 33,5% interanual, la primera vez en 9 años que todos los rubros suben menos de 3% mensual.",
-      "tldr": "Buena noticia nominal que todavía no se traduce en actividad ni empleo",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El INDEC informó que el <strong>IPC de agosto</strong> subió <strong>1,7%</strong> mensual, la cifra más baja en 14 meses y por debajo del <strong>2,1%</strong> de julio. En el año acumula <strong>21,3%</strong> y <strong>33,5%</strong> interanual. Es la primera vez en nueve años que todos los rubros del índice suben menos de <strong>3%</strong> mensual.",
-      "contexto": "Con el dato ya confirmado, el mercado puede calcular el nuevo techo de la banda cambiaria para octubre. Sin embargo, la canasta básica se aceleró a <strong>2,6%</strong> en agosto (una familia tipo necesitó <strong>$1.605.497</strong> para no caer en la pobreza) y el empleo formal privado cayó por <strong>13º mes consecutivo</strong>, ubicándose en el mismo nivel que en 2014.",
+      "tag": "Bancos Centrales · Fed",
+      "tag_class": "tb",
+      "title": "El mercado descuenta 87% de probabilidad de una suba de 25 pb de la Fed el miércoles",
+      "brief": "La inflación núcleo de agosto sorprendió al alza (0,3% m/m, supernúcleo 0,5%) y Warsh llega bajo presión tras haber bloqueado una suba en julio.",
+      "tldr": "Un board dividido podría convalidar la suba con 10 votos a favor y 2 en contra",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El mercado descuenta <strong>~87%</strong> de probabilidad de una suba de <strong>25 pb</strong> en la reunión de la Fed del miércoles, después de que la inflación núcleo de agosto sorprendiera al alza (<strong>0,3% m/m</strong>, supernúcleo <strong>0,5%</strong>). Warsh llega bajo presión tras haber bloqueado una suba en julio.",
+      "contexto": "El UST 10Y opera en <strong>4,957%</strong> (-1,8 pb) y el UST 2Y en <strong>4,630%</strong> (-1,4 pb), con la curva 2s10s aplanándose a <strong>32,7 pb</strong>. Los futuros de EE.UU. caen con fuerza &mdash;Nasdaq -1,78%, S&amp;P 500 -0,79%, Dow -0,27%&mdash; y el VIX salta <strong>+14,02%</strong> a 18,06.",
       "impacto": [
-        {"asset": "Dólar Oficial", "dir": "$1.535", "cls": "neu"},
-        {"asset": "Riesgo País", "dir": "491 pb", "cls": "neu"},
-        {"asset": "Canasta Básica", "dir": "↑ 2,6%", "cls": "up"}
+        {"asset": "Nasdaq fut.", "dir": "↓ 1,78%", "cls": "dn"},
+        {"asset": "VIX", "dir": "↑ 14,02%", "cls": "up"},
+        {"asset": "UST 10Y", "dir": "4,957%", "cls": "neu"}
       ]
     },
     {
       "id": 2,
-      "tag": "Bancos Centrales · Macro EE.UU.",
-      "tag_class": "tb",
-      "title": "El IPC de agosto en EE.UU. se conoce hoy y podría inclinar a la Fed hacia una suba",
-      "brief": "El consenso espera +0,4% m/m (3,4% i.a.) general y +0,2% m/m (2,4% i.a.) núcleo; los traders de tasas ya asignan 65% de probabilidad a una suba el 16/9.",
-      "tldr": "Un IPC caliente reforzaría la tesis de suba en la reunión de la semana próxima",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Hoy a las 8:30am ET se conoce el <strong>IPC de agosto</strong> en EE.UU. El consenso espera <strong>+0,4% m/m</strong> (<strong>3,4% i.a.</strong>) en el índice general y <strong>+0,2% m/m</strong> (<strong>2,4% i.a.</strong>) en el núcleo. Los traders de tasas ya asignan una probabilidad del <strong>65%</strong> a una suba de tasas en la reunión del <strong>16 de septiembre</strong>, un giro respecto del hold 9-3 de julio.",
-      "contexto": "El gobernador Waller condicionó su voto a que la inflación &ldquo;venga caliente&rdquo; sin definir el umbral, generando ruido interpretativo. El UST 10Y opera en <strong>4,94%</strong> y el 2Y en <strong>4,56%</strong>, con la curva 2s10s aplanándose a 38,2 pb.",
+      "tag": "Geopolítica · Energía",
+      "tag_class": "tq",
+      "title": "El petróleo supera los US$100 por el cierre del oleoducto saudita y el avance hutí sobre Mokha",
+      "brief": "El oleoducto Este-Oeste saudita, atacado con drones, amenaza el 4% de la oferta global; el diésel en EE.UU. superó los US$6/galón por primera vez en la historia.",
+      "tldr": "Ormuz y Bab el-Mandeb quedan bajo presión simultánea de Irán y sus aliados",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El oleoducto Este-Oeste saudita, cerrado por ataques con drones, amenaza el <strong>4%</strong> de la oferta global de petróleo, mientras los hutíes ocuparon el puerto de <strong>Mokha</strong> en Yemen y avanzan hacia Bab el-Mandeb. El <strong>WTI</strong> sube <strong>2,76%</strong> a US$102,81 y el <strong>Brent</strong> <strong>2,73%</strong> a US$107,47.",
+      "contexto": "El diésel minorista en EE.UU. superó los <strong>US$6/galón</strong> por primera vez, con el crack spread 3-2-1 en <strong>US$65/barril</strong> (promedio histórico: US$10,50). Los inventarios globales cayeron 507 millones de barriles desde el inicio del conflicto y las exportaciones de diésel de Medio Oriente están casi 60% por debajo de niveles previos a la guerra.",
       "impacto": [
-        {"asset": "UST 10Y", "dir": "4,94%", "cls": "neu"},
-        {"asset": "S&P 500 fut.", "dir": "↑ 0,53%", "cls": "up"},
-        {"asset": "VIX", "dir": "↓ 3,48%", "cls": "dn"}
+        {"asset": "WTI", "dir": "↑ 2,76%", "cls": "up"},
+        {"asset": "Brent", "dir": "↑ 2,73%", "cls": "up"},
+        {"asset": "Oro", "dir": "↓ 1,87%", "cls": "dn"}
       ]
     },
     {
       "id": 3,
-      "tag": "Geopolítica · Energía",
-      "tag_class": "tq",
-      "title": "Segundo frente energético: los hutíes estrechan el control sobre Bab al-Mandeb",
-      "brief": "Tras tomar el puerto de Mocha y llegar a la isla Perim, el grupo yemenita abre un segundo canal de disrupción marítima junto a Ormuz; el crudo corrige hoy tras saltar más de 6% en la semana.",
-      "tldr": "La prima de riesgo geopolítico del petróleo ahora tiene dos frentes",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "Los hutíes llegaron a la <strong>isla de Perim</strong> y tomaron el puerto de <strong>Mocha</strong>, a solo 50 km del estrecho de <strong>Bab al-Mandeb</strong>, mientras las fuerzas respaldadas por Arabia Saudita se repliegan. El crudo había saltado más de <strong>6%</strong> en la semana por esta escalada sumada a la de Ormuz; hoy corrige, con el futuro de <strong>WTI</strong> cayendo <strong>2,63%</strong> a <strong>US$99,78</strong> y el de <strong>Brent</strong> <strong>3,22%</strong> a <strong>US$104,16</strong>.",
-      "contexto": "Irán y los estados del Golfo se reunirán el lunes en Salalah, Omán, buscando un esquema temporal para Ormuz. Un cese del fuego que consolide las ganancias hutíes podría enviarle a Irán la señal de que la escalada rinde resultados, sosteniendo la prima de riesgo del crudo más allá de este shock puntual.",
+      "tag": "Mercados · Tecnología",
+      "tag_class": "ta",
+      "title": "Los CEOs de Anthropic, OpenAI, xAI y Google DeepMind piden desacelerar el desarrollo de IA",
+      "brief": "El pedido conjunto, liderado por Dario Amodei, cita riesgos de \"misalignment\"; las acciones tech asiáticas y de semiconductores cayeron con fuerza el lunes.",
+      "tldr": "Presión regulatoria creciente sobre la industria de IA justo antes de una eventual salida a bolsa de Anthropic",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "Los CEOs de <strong>Anthropic</strong>, <strong>OpenAI</strong>, <strong>xAI</strong> y <strong>Google DeepMind</strong> pidieron simultáneamente desacelerar el desarrollo de IA, citando episodios de agentes que se desvían de instrucciones humanas. Las acciones de semiconductores y tech asiáticas cayeron con fuerza el lunes; el <strong>Nikkei</strong> cerró <strong>-0,81%</strong>.",
+      "contexto": "El gesto es inusual entre competidores directos y llega en la previa de una eventual salida a bolsa de Anthropic en Nasdaq. El mercado empieza a descontar una prima de riesgo regulatorio en las valuaciones de IA generativa, mientras crece la presión política contra los centros de datos.",
       "impacto": [
-        {"asset": "WTI", "dir": "↓ 2,63%", "cls": "dn"},
-        {"asset": "Brent", "dir": "↓ 3,22%", "cls": "dn"},
-        {"asset": "Oro (fut.)", "dir": "↓ 0,50%", "cls": "dn"}
+        {"asset": "Nikkei", "dir": "↓ 0,81%", "cls": "dn"},
+        {"asset": "Nasdaq fut.", "dir": "↓ 1,78%", "cls": "dn"}
       ]
     },
     {
       "id": 4,
-      "tag": "Argentina · Cambiario",
-      "tag_class": "ta",
-      "title": "El BCRA compró apenas 1% del volumen operado y las reservas cayeron US$111 millones",
-      "brief": "La autoridad monetaria cerró la rueda comprando solo US$6 millones, mientras el Tesoro licita hoy 8 instrumentos con vencimientos entre octubre 2026 y julio 2027.",
-      "tldr": "La acumulación de reservas pierde ritmo justo cuando se recalcula el techo de banda",
+      "tag": "Argentina · Macro",
+      "tag_class": "tg",
+      "title": "La inflación de agosto cayó a 1,7% y el Tesoro logró un rollover de 103%",
+      "brief": "El INDEC reportó el nivel más bajo en 14 meses, pero la intervención cambiaria que lo sostiene enfría la actividad: mora en créditos a familias del 18% e industria -5% m/m.",
+      "tldr": "Buenas noticias nominales que conviven con un costo de actividad y empleo cada vez más visible",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El BCRA compró apenas <strong>1%</strong> del volumen operado en la última rueda (<strong>US$6 millones</strong>) y las reservas internacionales cayeron <strong>US$111 millones</strong>. En paralelo, el Tesoro recibe hoy ofertas (10 a 15hs) por <strong>8 instrumentos</strong> con vencimientos entre <strong>octubre de 2026 y julio de 2027</strong>, incluyendo la LECAP <strong>S30O6</strong> ($131,17) y el BONCAP <strong>T15E7</strong> ($148,04).",
-      "contexto": "El dólar oficial cierra en <strong>$1.535</strong> (venta) y el mayorista en <strong>$1.512</strong>, lejos del techo de banda vigente de <strong>$1.891,68</strong>. Con el IPC de agosto confirmado, ya puede calcularse el nuevo límite superior para octubre; la pregunta es si el equipo económico sostiene el ritmo de acumulación con una demanda de dólares que no cede.",
+      "evento": "El <strong>Tesoro</strong> logró un rollover del <strong>103%</strong>, adjudicando <strong>$8,41 billones</strong> frente a ofertas por $14,17 billones. La <strong>inflación de agosto</strong> cayó a <strong>1,7%</strong>, el nivel más bajo en 14 meses, aunque Argentina sigue segunda en el ranking regional de inflación, solo detrás de Venezuela.",
+      "contexto": "Barclays sostiene que el <strong>BCRA</strong> mantiene &ldquo;un fuerte grado de intervención&rdquo; cambiaria: la mora en créditos a familias llegó a <strong>18%</strong> en julio (21 meses consecutivos de subas) y la industria retrocedió <strong>5%</strong> mensual, su nivel más bajo desde junio de 2024. Desde diciembre desaparecieron 46.000 empleos privados registrados. El riesgo país cerró el viernes en <strong>485 pb</strong> (-6 pb).",
       "impacto": [
-        {"asset": "Dólar Oficial", "dir": "$1.535", "cls": "neu"},
-        {"asset": "Dólar CCL", "dir": "$1.598,3", "cls": "neu"},
-        {"asset": "Reservas", "dir": "↓ US$111M", "cls": "dn"}
-      ]
-    },
-    {
-      "id": 5,
-      "tag": "Mercados Globales",
-      "tag_class": "tg",
-      "title": "Los futuros de EE.UU. suben y el VIX cede pese al selloff de bonos",
-      "brief": "Nasdaq +0,59%, S&P +0,53% y Dow +0,54% en los futuros, con el VIX en 17,22 (-3,48%); en Brasil el Ibovespa sube 1,4% tras una encuesta que muestra un empate técnico rumbo a octubre.",
-      "tldr": "Apetito por riesgo en acciones pese a rendimientos largos cerca de máximos",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "Los futuros de EE.UU. suben (<strong>Nasdaq +0,59%</strong>, <strong>S&amp;P 500 +0,53%</strong>, <strong>Dow +0,54%</strong>) y el <strong>VIX</strong> cae <strong>3,48%</strong> a <strong>17,22</strong>, mientras las bolsas europeas acompañan al alza y el Nikkei cierra en baja (<strong>-1,93%</strong>). En Brasil, el <strong>Ibovespa</strong> sube <strong>1,4%</strong> tras una encuesta que muestra a Flávio Bolsonaro con <strong>46,4%</strong> frente a <strong>46,2%</strong> de Lula en un eventual balotaje.",
-      "contexto": "El apetito por riesgo convive con un mercado de bonos bajo presión: el UST 10Y opera en <strong>4,94%</strong> y el dólar global se fortalece (DXY <strong>99,13</strong>). Los globales argentinos cerraron a la baja en Buenos Aires (GD30D 58,09; GD35D 79,55; AL30D 55,78) pese a que el EMBI se mantuvo sin cambios en <strong>491 pb</strong>.",
-      "impacto": [
-        {"asset": "Nasdaq (fut.)", "dir": "↑ 0,59%", "cls": "up"},
-        {"asset": "Ibovespa", "dir": "↑ 1,4%", "cls": "up"},
-        {"asset": "GD30D", "dir": "↓ 0,27%", "cls": "dn"}
+        {"asset": "Riesgo País", "dir": "485 pb", "cls": "neu"},
+        {"asset": "Dólar Oficial", "dir": "$1.530", "cls": "neu"},
+        {"asset": "Rollover Tesoro", "dir": "103%", "cls": "up"}
       ]
     }
   ],
   "tensiones": [
-    {"label": "IPC bueno, actividad floja", "texto": "La inflación de agosto tocó su nivel más bajo en 14 meses (1,7%), pero el empleo formal privado cae por 13º mes consecutivo y la canasta básica se aceleró a 2,6% — la desinflación todavía no se traduce en actividad ni en bienestar."},
-    {"label": "Fed sin ancla clara", "texto": "Los traders de tasas asignan 65% de probabilidad a una suba el 16/9, pese a que en julio la Fed sostuvo el rango 3,50%-3,75%; Waller condicionó su voto a que la inflación 'venga caliente' sin definir el umbral, dejando al mercado a la deriva antes del IPC de hoy."},
-    {"label": "Doble frente energético", "texto": "Además de Hormuz, los hutíes ahora controlan accesos clave a Bab al-Mandeb tras tomar Mocha y la isla Perim, abriendo un segundo canal de disrupción al petróleo justo cuando el crudo ya había saltado más de 6% en la semana."}
+    {"label": "Fed vs. independencia institucional", "texto": "El mercado descuenta ~87% de probabilidad de suba de 25 pb el miércoles, pero el WSJ advierte que bajar tasas ahora sería leído como pérdida de independencia de Warsh frente a Trump; la curva larga (30 años cerca de 5,25%) ya exige prima por esa incertidumbre institucional."},
+    {"label": "Doble estrecho bajo presión", "texto": "El cierre del oleoducto saudita Este-Oeste y el avance hutí sobre Mokha amenazan con dejar Ormuz y Bab el-Mandeb bajo control simultáneo de Irán y sus aliados, con inventarios globales de petróleo cayendo 507 millones de barriles desde el inicio del conflicto."},
+    {"label": "Desinflación vs. actividad en Argentina", "texto": "La inflación de agosto cayó a 1,7% (mínimo en 14 meses) gracias en parte a la intervención cambiaria del BCRA, pero esa misma intervención enfría la actividad: el crédito a familias cae con mora del 18% y la industria retrocede 5% mensual, su nivel más bajo desde junio de 2024."}
   ],
   "correlaciones": [
-    {"par": "Futuros de EE.UU. vs. petróleo", "texto": "Las acciones estadounidenses suben en los futuros y el VIX cae a 17,22, mientras el petróleo corrige (WTI -2,63%, Brent -3,22%) tras el salto semanal por Hormuz y Bab al-Mandeb — un alivio de corto plazo antes del IPC de la tarde."},
-    {"par": "Riesgo país ARG vs. bonos globales", "texto": "El EMBI argentino cerró sin cambios en 491 pb pese a que los globales (GD30D, GD35D, AL30D) bajaron en la rueda de Buenos Aires, señal de que el mercado local separa el riesgo soberano de los movimientos de precio de corto plazo."}
+    {"par": "Oro vs. expectativa de suba de la Fed", "texto": "El oro cae 1,87% pese al contexto de tensión geopolítica, reflejando que la expectativa de suba de tasas del miércoles (87% de probabilidad) pesa más que la demanda de refugio de corto plazo."},
+    {"par": "WTI/Brent vs. crack spread de diésel", "texto": "El crudo sube más de 2,7% mientras el crack spread 3-2-1 llegó a US$65/barril (vs. promedio histórico de US$10,50), evidenciando que la escasez de capacidad de refino de diésel, no solo la oferta de crudo, es el driver central del rally energético."},
+    {"par": "DXY vs. monedas emergentes y EEM", "texto": "El dólar se fortalece (DXY +0,42%) frente al real, el peso mexicano, el peso chileno y el sol peruano, mientras el EEM sube 1,25%: una divergencia entre el FX emergente débil y el equity emergente resiliente."}
   ],
-  "bottom_line": "El día pasa por el <strong>IPC de agosto en EE.UU.</strong> (8:30am ET), que los traders de tasas ya leen con 65% de probabilidad de una suba de la Fed el 16/9, en un contexto donde el petróleo corrige hoy tras saltar más de 6% en la semana por la escalada simultánea en Ormuz y Bab al-Mandeb. Para Argentina, la <strong>inflación de agosto (1,7%)</strong> &mdash;la más baja en 14 meses&mdash; permite calcular el nuevo techo de la banda cambiaria para octubre, pero llega con el <strong>BCRA comprando apenas 1%</strong> del volumen operado (reservas -US$111M) y el <strong>empleo formal privado</strong> cayendo por 13º mes consecutivo. El riesgo país se mantiene estable en <strong>491 pb</strong> y la licitación del Tesoro de hoy buscará testear el apetito por pesos hasta julio de 2027; un IPC de EE.UU. más caliente de lo esperado podría, sin embargo, presionar aún más los rendimientos largos (UST 10Y en 4,94%) y encarecer el financiamiento externo justo cuando el equipo económico necesita sostener el nuevo techo de banda con reservas ajustadas."
+  "bottom_line": "El mercado global entra en la semana de la Fed (decisión miércoles) con futuros en baja &mdash;Nasdaq -1,78%&mdash;, el VIX saltando 14% a 18,06 y el petróleo por encima de US$100 por la escalada simultánea en Ormuz y Bab el-Mandeb. En Argentina, la inflación de agosto (1,7%, mínimo en 14 meses) y el rollover del Tesoro (103%) son buenas noticias nominales, pero conviven con una intervención cambiaria que enfría la actividad &mdash;mora en crédito a familias del 18%, industria -5% m/m&mdash; y un riesgo país que cerró el viernes en 485 pb. Con la Fed subiendo tasas esta semana y el petróleo presionando la inflación importada global, el margen del BCRA para sostener la banda cambiaria sin más costo de actividad y empleo se estrecha de cara a 2027."
 }
