@@ -435,23 +435,42 @@ const D = {
   },
 
   // ── ORO vs TREASURIES — Bancos Centrales (WGC + U.S. Treasury TIC) ─
+  // Top 15: 5 compradores de oro más activos + 10 mayores tenedores actuales de Treasuries
   oro:{
     l:[2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026],
     pctReservas:{
-      china: [1.63,1.59,1.66,1.05,1.05,1.76,2.19,2.36,2.40,2.94,3.52,3.30,3.55,4.33,5.53,8.64,8.02],
-      russia:[7.44,8.74,9.49,7.87,12.13,13.10,15.78,17.65,18.55,19.94,23.38,21.17,23.38,26.05,32.17,null,null],
-      india: [8.39,9.19,9.90,7.25,6.65,5.38,5.68,5.62,6.19,6.67,6.96,6.86,8.09,8.55,11.43,17.66,16.76],
-      turkey:[6.10,6.80,5.83,3.90,4.04,4.08,4.49,9.07,12.51,19.03,32.37,23.95,27.60,28.03,35.17,54.64,56.37],
-      poland:[4.98,5.18,5.04,3.75,3.97,3.70,3.32,3.77,4.52,8.68,9.00,8.08,8.00,12.36,16.85,28.43,27.87],
+      china:      [1.63,1.59,1.66,1.05,1.05,1.76,2.19,2.36,2.40,2.94,3.52,3.30,3.55,4.33,5.53,8.64,8.02],
+      russia:     [7.44,8.74,9.49,7.87,12.13,13.10,15.78,17.65,18.55,19.94,23.38,21.17,23.38,26.05,32.17,null,null],
+      india:      [8.39,9.19,9.90,7.25,6.65,5.38,5.68,5.62,6.19,6.67,6.96,6.86,8.09,8.55,11.43,17.66,16.76],
+      turkey:     [6.10,6.80,5.83,3.90,4.04,4.08,4.49,9.07,12.51,19.03,32.37,23.95,27.60,28.03,35.17,54.64,56.37],
+      poland:     [4.98,5.18,5.04,3.75,3.97,3.70,3.32,3.77,4.52,8.68,9.00,8.08,8.00,12.36,16.85,28.43,27.87],
+      japan:      [3.13,2.91,3.22,2.34,2.35,2.11,2.32,2.51,2.48,2.82,3.34,3.49,4.02,4.37,5.77,8.66,8.51],
+      uk:         [14.30,13.92,14.12,10.12,9.66,7.14,8.47,8.54,7.39,8.71,10.46,9.28,10.26,11.64,14.91,20.33,18.62],
+      belgium:    [38.39,38.46,39.46,32.68,34.66,32.15,35.68,36.15,34.84,38.31,41.48,31.35,31.49,36.36,45.06,56.63,54.99],
+      canada:     [0.27,0.25,0.26,0.16,0.15,0.07,0,0,0,0,0,0,0,0,0,0,0],
+      luxembourg: [11.93,10.91,12.05,9.00,10.05,9.90,8.48,10.59,9.81,10.34,12.32,4.45,4.54,5.02,6.74,10.29,null],
+      france:     [66.36,71.15,70.53,64.97,65.59,60.06,61.52,64.86,60.24,62.98,66.01,58.18,58.59,67.28,72.27,79.92,null],
+      ireland:    [12.83,17.43,18.75,14.21,13.31,9.29,6.16,5.65,4.73,5.10,4.88,4.17,5.38,6.23,7.95,12.37,null],
+      taiwan:     [4.77,5.12,5.30,3.79,3.77,3.28,3.47,3.75,3.64,4.12,4.63,4.29,4.26,4.71,5.81,8.99,null],
+      switzerland:[17.38,15.49,10.44,7.51,7.39,5.88,5.64,5.32,5.43,5.93,5.83,5.44,6.57,8.04,9.59,13.58,12.38],
     },
     treasuries:{ // USD bn
-      china: [1160.1,1151.9,1220.4,1270.1,1244.3,1246.1,1058.4,1184.9,1124.3,1069.9,1072.3,1040.3,867.1,816.3,759.0,684.4,633.4],
-      russia:[151.0,149.5,161.5,138.6,86.0,92.1,86.1,102.5,13.2,null,6.0,3.9,0.6,0.2,0.04,0.03,0.03],
-      india: [40.5,43.5,59.5,68.5,83.0,116.8,118.2,144.7,141.3,162.0,216.2,198.9,224.1,233.7,219.1,182.9,186.4],
-      turkey:[28.9,32.0,57.6,52.2,77.0,64.6,59.1,52.6,null,null,1.9,1.9,2.0,2.2,12.9,14.0,2.7],
-      poland:[25.5,28.5,31.5,30.9,27.7,30.2,34.0,40.0,39.6,38.8,50.5,42.2,37.7,44.9,52.7,60.5,null],
+      china:      [1160.10,1151.90,1220.40,1270.10,1244.30,1246.10,1058.40,1184.90,1124.30,1069.90,1072.28,1040.33,867.09,816.30,759.02,684.40,633.38],
+      russia:     [151.00,149.50,161.50,138.60,86.00,92.10,86.10,102.50,13.20,null,6.01,3.91,0.63,0.22,0.04,0.03,0.03],
+      india:      [40.50,43.50,59.50,68.50,83.00,116.80,118.20,144.70,141.30,162.00,216.18,198.89,224.07,233.71,219.07,182.88,186.39],
+      turkey:     [28.90,32.00,57.60,52.20,77.00,64.60,59.10,52.60,null,null,1.95,1.90,2.03,2.17,12.85,14.00,2.73],
+      poland:     [25.50,28.50,31.50,30.90,27.70,30.20,34.00,40.00,39.60,38.80,50.50,42.20,37.70,44.90,52.70,60.50,null],
+      japan:      [882.30,1058.10,1111.20,1182.50,1230.90,1122.40,1090.80,1061.60,1039.70,1155.20,1251.31,1300.79,1075.05,1115.27,1061.51,1185.53,1116.68],
+      uk:         [null,null,123.00,152.20,179.70,207.10,217.20,249.90,288.00,392.10,440.62,649.34,573.69,688.55,722.78,863.12,939.86],
+      belgium:    [33.20,135.20,138.80,256.80,335.40,121.70,120.40,119.20,185.10,207.40,253.46,271.63,351.18,314.42,374.61,477.29,482.47],
+      canada:     [74.70,45.10,66.20,55.90,69.00,72.40,82.90,86.10,96.20,143.30,119.91,219.68,215.05,348.46,378.76,468.28,459.58],
+      luxembourg: [83.50,147.50,154.70,134.60,171.80,199.60,224.30,217.60,230.50,254.60,287.67,327.82,329.31,339.93,423.90,434.02,434.18],
+      france:     [15.00,44.70,51.40,53.80,79.20,59.60,61.40,80.90,110.80,127.70,111.27,223.92,180.29,236.69,332.34,368.90,389.94],
+      ireland:    [45.70,95.20,103.10,179.60,202.00,264.40,288.20,326.60,279.90,281.90,318.15,334.50,241.73,349.65,339.42,341.04,353.50],
+      taiwan:     [155.20,177.30,195.40,182.20,174.40,178.70,189.30,180.90,157.30,193.10,235.42,249.49,225.41,253.96,292.30,310.55,302.45],
+      switzerland:[105.40,142.40,195.40,176.70,190.10,231.70,230.00,249.60,229.90,237.50,255.55,284.05,269.52,287.38,298.75,294.09,284.94],
     },
-    nota:'Rusia deja de reportar Treasuries "major holder" desde 2019 (post-sanciones 2022, colapso a prácticamente cero) y su % de reservas en oro no se pudo obtener 2025-26 (WGC dejó de reportar su Total Reserves). Turquía y Polonia muestran el salto más extremo: de ~5-6% a 56% y 28% de sus reservas en oro respectivamente.',
+    nota:'Rusia deja de reportar Treasuries "major holder" desde 2019 (post-sanciones 2022, colapso a prácticamente cero) y su % de reservas en oro no se pudo obtener 2025-26 (WGC dejó de reportar su Total Reserves). Turquía y Polonia muestran el salto más extremo: de ~5-6% a 56% y 28% de sus reservas en oro respectivamente. De los 10 mayores tenedores de Treasuries, Bélgica y Francia ya tenían proporciones altas de oro desde 2010 (>60%); Canadá es el único caso en 0% (vendió todas sus reservas de oro hace años); Islas Caimán no tiene banco central que reporte oro al IMF/WGC, se excluye del gráfico.',
   },
 
   // ── COBRE — ICSG (International Copper Study Group) ─────────────
@@ -1042,33 +1061,49 @@ function initPetroleoCharts(){
 // ================================================================
 function buildOro(){
   const o=D.oro;
-  const cLast={china:o.pctReservas.china.at(-1),turkey:o.pctReservas.turkey.at(-1),poland:o.pctReservas.poland.at(-1),india:o.pctReservas.india.at(-1)};
+  const cLast={china:o.pctReservas.china.at(-1),turkey:o.pctReservas.turkey.at(-1),poland:o.pctReservas.poland.at(-1),india:o.pctReservas.india.at(-1),belgium:o.pctReservas.belgium.at(-1),canada:o.pctReservas.canada.at(-1)};
   return `
   <div class="sh">
     <div><div class="st">Oro vs Treasuries &mdash; Bancos Centrales</div>
-    <div class="ss">World Gold Council &middot; U.S. Treasury TIC System &middot; % de reservas en oro &middot; 2010-2026</div></div>
+    <div class="ss">World Gold Council &middot; U.S. Treasury TIC System &middot; % de reservas en oro &middot; 2010-2026 &middot; Top 15 tenedores de Treasuries</div></div>
     <div><div class="ln g">${fmt(cLast.turkey,1)}%</div><div class="ll">Turqu&iacute;a &middot; oro / reservas totales</div></div>
   </div>
   <div class="src">World Gold Council (Quarterly Gold &amp; FX Reserves, gratuito con cuenta) &middot; U.S. Treasury TIC System (ticdata.treasury.gov, sin key)</div>
-  <div class="note">China, Rusia, India, Turqu&iacute;a y Polonia: los compradores de oro m&aacute;s activos de la &uacute;ltima d&eacute;cada. El eje muestra qu&eacute; % de las reservas totales de cada banco central est&aacute; en oro (vs. d&oacute;lares/Treasuries).</div>
-  <div class="sr5" style="margin-bottom:18px;">
+  <div class="note">15 pa&iacute;ses: los 5 compradores de oro m&aacute;s activos de la &uacute;ltima d&eacute;cada (China, Rusia, India, Turqu&iacute;a, Polonia) + los 10 mayores tenedores actuales de Treasuries que faltaban (Jap&oacute;n, Reino Unido, B&eacute;lgica, Canad&aacute;, Islas Caim&aacute;n, Luxemburgo, Francia, Irlanda, Taiw&aacute;n, Suiza). El eje muestra qu&eacute; % de las reservas totales de cada banco central est&aacute; en oro.</div>
+  <div class="sr5" style="margin-bottom:12px;">
     <div class="sc arg"><div class="sl">China</div><div class="sv g">${fmt(cLast.china,1)}%</div><div class="sn">vs 1.6% en 2010</div></div>
     <div class="sc arg"><div class="sl">Rusia</div><div class="sv">32.2%</div><div class="sn">pico 2024, sin dato 25-26</div></div>
     <div class="sc arg"><div class="sl">India</div><div class="sv g">${fmt(cLast.india,1)}%</div><div class="sn">vs 8.4% en 2010</div></div>
     <div class="sc arg"><div class="sl">Turqu&iacute;a</div><div class="sv g">${fmt(cLast.turkey,1)}%</div><div class="sn">vs 6.1% en 2010</div></div>
     <div class="sc arg"><div class="sl">Polonia</div><div class="sv g">${fmt(cLast.poland,1)}%</div><div class="sn">vs 5.0% en 2010</div></div>
   </div>
+  <div class="sr5" style="margin-bottom:18px;">
+    <div class="sc wasde"><div class="sl">B&eacute;lgica</div><div class="sv">${fmt(cLast.belgium,1)}%</div><div class="sn">el m&aacute;s alto del top 15</div></div>
+    <div class="sc wasde"><div class="sl">Canad&aacute;</div><div class="sv r">${fmt(cLast.canada,1)}%</div><div class="sn">vendi&oacute; todo su oro hace a&ntilde;os</div></div>
+    <div class="sc wasde"><div class="sl">Jap&oacute;n</div><div class="sv">${fmt(o.pctReservas.japan.at(-1),1)}%</div><div class="sn">mayor tenedor de Treasuries</div></div>
+    <div class="sc wasde"><div class="sl">Reino Unido</div><div class="sv">${fmt(o.pctReservas.uk.at(-1),1)}%</div><div class="sn">vs 14.3% en 2010</div></div>
+    <div class="sc wasde"><div class="sl">Suiza</div><div class="sv">${fmt(o.pctReservas.switzerland.at(-1),1)}%</div><div class="sn">vs 17.4% en 2010</div></div>
+  </div>
   <div class="comment">
     <div class="comment-t">&#9432; Lectura</div>
     <div class="comment-b">${o.nota}</div>
   </div>
-  <div class="card c-arg"><div class="ct">Oro como % de Reservas Totales &mdash; 5 Bancos Centrales</div><div class="ch h240"><canvas id="ch-oro-pct"></canvas></div></div>`;
+  <div class="card c-arg" style="margin-bottom:11px;"><div class="ct">Oro como % de Reservas &mdash; Compradores Activos (China/Rusia/India/Turqu&iacute;a/Polonia)</div><div class="ch h240"><canvas id="ch-oro-pct"></canvas></div></div>
+  <div class="card c-wasde"><div class="ct">Oro como % de Reservas &mdash; Otros Grandes Tenedores de Treasuries</div><div class="ch h240"><canvas id="ch-oro-pct2"></canvas></div></div>`;
 }
 function initOroCharts(){
   const o=D.oro;
   const cfgs=[['china',C.CEL],['russia',C.RD],['india',C.CBOT],['turkey',C.AGRO],['poland',C.COT]];
-  const names={china:'China',russia:'Rusia',india:'India',turkey:'Turquía',poland:'Polonia'};
+  const names={china:'China',russia:'Rusia',india:'India',turkey:'Turquía',poland:'Polonia',
+    japan:'Japón',uk:'Reino Unido',belgium:'Bélgica',canada:'Canadá',luxembourg:'Luxemburgo',
+    france:'Francia',ireland:'Irlanda',taiwan:'Taiwán',switzerland:'Suiza'};
   mkChart('ch-oro-pct',{type:'line',data:{labels:o.l,datasets:cfgs.map(([k,col])=>({label:names[k],data:o.pctReservas[k],borderColor:col,backgroundColor:'transparent',tension:.3,pointRadius:2,spanGaps:true}))},
+    options:{...chartBase,plugins:{...chartBase.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}}},
+      scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}%`}}}}});
+
+  const cfgs2=[['japan','#e67e22'],['uk','#1abc9c'],['belgium','#e74c3c'],['canada','#95a5a6'],
+    ['luxembourg','#2ecc71'],['france','#3498db'],['ireland','#f39c12'],['taiwan','#8e44ad'],['switzerland','#d35400']];
+  mkChart('ch-oro-pct2',{type:'line',data:{labels:o.l,datasets:cfgs2.map(([k,col])=>({label:names[k],data:o.pctReservas[k],borderColor:col,backgroundColor:'transparent',tension:.3,pointRadius:2,spanGaps:true}))},
     options:{...chartBase,plugins:{...chartBase.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}}},
       scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}%`}}}}});
 }
