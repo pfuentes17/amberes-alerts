@@ -83,7 +83,7 @@ header{position:sticky;top:0;z-index:200;background:rgba(7,17,29,.97);backdrop-f
 .ct{font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--agro);margin-bottom:11px;padding-left:8px;}
 .c-cbot .ct{color:var(--cbot);}.c-cot .ct{color:var(--cot);}.c-wasde .ct{color:var(--wasde);}.c-arg .ct{color:var(--arg);}
 .ch{position:relative;}
-.h240{height:240px;}.h200{height:200px;}.h165{height:165px;}
+.h240{height:240px;}.h200{height:200px;}.h165{height:165px;}.h280{height:280px;}.h340{height:340px;}
 /* Overview cards */
 .oc{background:var(--nv3);border:1px solid var(--br);padding:13px 15px;cursor:pointer;transition:border-color .2s,background .2s;}
 .oc:hover{border-color:var(--agro);background:var(--agro-m);}
@@ -486,6 +486,14 @@ const D = {
     balMensual:[114,131,-1,-147,15,-60],
     unidad:'Miles de toneladas métricas',
     fuente:'ICSG Press Release, 21-ago-2026 (comunicado mensual gratuito, icsg.org/press-releases)',
+    // Producción minera por país 2025e, miles de TM — USGS Mineral Commodity Summaries feb-2026
+    paises:[
+      {n:'Chile',v:5300},{n:'Congo (RDC)',v:3200},{n:'Perú',v:2700},{n:'Rusia',v:1300},
+      {n:'China',v:1800},{n:'Zambia',v:940},{n:'Indonesia',v:710},{n:'Australia',v:730},
+      {n:'Kazajistán',v:710},{n:'México',v:690},{n:'EE.UU.',v:1000},{n:'Canadá',v:500},
+      {n:'Polonia',v:410},{n:'India',v:23},{n:'Otros',v:3000},
+    ],
+    paisesNota:'Chile sigue siendo el mayor productor por lejos, pero el Congo (RDC) superó a Perú y ya es el 2° productor mundial — creció de la nada a >3.000kt en una década.',
   },
 
   // ── PLATA — The Silver Institute / Metals Focus ──────────────────
@@ -500,6 +508,22 @@ const D = {
     unidad:'Toneladas',
     fuente:'The Silver Institute / Metals Focus, World Silver Survey 2026 (silverinstitute.org, PDF gratuito)',
     nota:'6 años consecutivos de déficit de mercado (2020-2025): la demanda industrial (impulsada por fotovoltaica) crece mucho más rápido que la oferta minera, prácticamente estancada.',
+    // Demanda por categoría, toneladas — muestra qué empuja el déficit
+    demanda:{
+      fotovoltaica:[3088,2706,2330,2575,2766,3672,5993,6143,5804,4698],
+      industrialExPV:[16421-3088,16355-2706,16342-2330,15921-2575,17547-2766,18422-3672,20440-5993,21120-6143,20446-5804,19894-4698],
+      fotografia:[1009,977,956,836,862,860,851,792,751,701],
+      joyeria:[6067,6280,6231,4671,5629,7254,6274,6379,5889,4957],
+      plateria:[1848,2086,1906,969,1267,2287,1715,1664,1310,1042],
+      monedasBarras:[4836,5167,5851,6499,8875,10558,7595,5937,6770,8013],
+    },
+    // Producción minera por país 2025, toneladas — World Silver Survey 2026, Apéndice 2
+    paises:[
+      {n:'México',v:5633},{n:'Perú',v:3783},{n:'China',v:3413},{n:'Bolivia',v:1486},
+      {n:'Rusia',v:1414},{n:'Polonia',v:1322},{n:'Chile',v:1224},{n:'EE.UU.',v:1058},
+      {n:'Australia',v:1045},{n:'Argentina',v:727},{n:'India',v:700},{n:'Kazajistán',v:527},
+    ],
+    paisesNota:'México es el mayor productor de plata del mundo hace décadas, casi el doble que el 2° (Perú). Entre los 4 primeros concentran más del 55% de la producción mundial.',
   },
 };
 
@@ -1047,7 +1071,7 @@ function buildPetroleo(){
 function initPetroleoCharts(){
   const p=D.petroleo;
   mkChart('ch-pet-prodcons',{type:'line',data:{labels:p.l,datasets:[
-    {label:'Producci&oacute;n',data:p.prod,borderColor:C.CEL,backgroundColor:'transparent',tension:.25,pointRadius:2},
+    {label:'Producción',data:p.prod,borderColor:C.CEL,backgroundColor:'transparent',tension:.25,pointRadius:2},
     {label:'Consumo',data:p.cons,borderColor:C.ARG,backgroundColor:'transparent',tension:.25,pointRadius:2,borderDash:[5,3]},
   ]},options:{...chartBase,plugins:{...chartBase.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}}},
     scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}`}}}}});
@@ -1127,18 +1151,25 @@ function buildCobre(){
     <div class="sc cbot"><div class="sl">Balance 2025</div><div class="sv ${clr(c.balance.at(-1))}">${chgStr(c.balance.at(-1),0)}</div><div class="sn">primer super&aacute;vit anual desde 2022</div></div>
   </div>
   <div class="card c-cbot" style="margin-bottom:11px;"><div class="ct">Producci&oacute;n Refinada vs Uso Refinado (anual)</div><div class="ch h240"><canvas id="ch-cu-anual"></canvas></div></div>
-  <div class="card c-cbot"><div class="ct">Balance Mensual 2025-2026</div><div class="ch h200"><canvas id="ch-cu-bal"></canvas></div></div>`;
+  <div class="card c-cbot" style="margin-bottom:11px;"><div class="ct">Balance Mensual 2025-2026</div><div class="ch h200"><canvas id="ch-cu-bal"></canvas></div></div>
+  <div class="note">${c.paisesNota}</div>
+  <div class="card c-cbot"><div class="ct">Producci&oacute;n Minera por Pa&iacute;s &mdash; 2025e (${c.unidad.toLowerCase()})</div><div class="ch h340"><canvas id="ch-cu-paises"></canvas></div></div>`;
 }
 function initCobreCharts(){
   const c=D.cobre;
   mkChart('ch-cu-anual',{type:'line',data:{labels:c.lAnual,datasets:[
-    {label:'Producci&oacute;n Refinada',data:c.prodRefinada,borderColor:C.CBOT,backgroundColor:'transparent',tension:.3,pointRadius:4},
+    {label:'Producción Refinada',data:c.prodRefinada,borderColor:C.CBOT,backgroundColor:'transparent',tension:.3,pointRadius:4},
     {label:'Uso Refinado',data:c.usoRefinado,borderColor:C.CEL,backgroundColor:'transparent',tension:.3,pointRadius:4,borderDash:[5,3]},
   ]},options:{...chartBase,plugins:{...chartBase.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}}},
     scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}`}}}}});
   mkChart('ch-cu-bal',{type:'bar',data:{labels:c.lMensual,datasets:[{label:'Balance',data:c.balMensual,
     backgroundColor:c.balMensual.map(v=>v>=0?'rgba(77,184,122,.65)':'rgba(217,95,95,.65)'),borderColor:c.balMensual.map(v=>v>=0?C.AGRO:C.RD),borderWidth:1}]},
     options:{...chartBase,scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}`}}}}});
+  const ps=[...c.paises].sort((a,b)=>b.v-a.v);
+  mkChart('ch-cu-paises',{type:'bar',data:{labels:ps.map(x=>x.n),datasets:[{label:'Producción Minera',data:ps.map(x=>x.v),
+    backgroundColor:ps.map((x,i)=>i<2?'rgba(232,200,74,.85)':'rgba(232,200,74,.4)'),borderColor:C.CBOT,borderWidth:1}]},
+    options:{...chartBase,indexAxis:'y',plugins:{...chartBase.plugins,tooltip:{...chartBase.plugins.tooltip,callbacks:{label:i=>`${fmt(i.raw,0)} kt`}}},
+      scales:{x:{...chartBase.scales.x,ticks:{...chartBase.scales.x.ticks,callback:v=>`${v}`}},y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,autoSkip:false}}}}});
 }
 
 // ================================================================
@@ -1164,7 +1195,14 @@ function buildPlata(){
     <div class="sc cot"><div class="sl">Balance ${p.lLbl.at(-1)}</div><div class="sv r">${chgStr(lastBal,0)}</div><div class="sn">d&eacute;ficit</div></div>
   </div>
   <div class="card c-cot" style="margin-bottom:11px;"><div class="ct">Oferta vs Demanda Industrial (anual)</div><div class="ch h240"><canvas id="ch-ag-ofdem"></canvas></div></div>
-  <div class="card c-cot"><div class="ct">Balance de Mercado (anual)</div><div class="ch h200"><canvas id="ch-ag-bal"></canvas></div></div>`;
+  <div class="card c-cot" style="margin-bottom:11px;"><div class="ct">Balance de Mercado (anual)</div><div class="ch h200"><canvas id="ch-ag-bal"></canvas></div></div>
+  <div class="comment">
+    <div class="comment-t">&#9432; Qu&eacute; empuja el d&eacute;ficit</div>
+    <div class="comment-b">La demanda <strong>Fotovoltaica</strong> (parte de la industrial) casi se duplic&oacute; desde 2020 y es el principal motor del d&eacute;ficit &mdash; mientras el resto de las categor&iacute;as (joyer&iacute;a, monedas, industrial ex-fotovoltaica) se mueven mucho menos. La oferta minera, en cambio, est&aacute; casi estancada.</div>
+  </div>
+  <div class="card c-cot" style="margin-bottom:11px;"><div class="ct">Demanda Mundial por Categor&iacute;a &mdash; qu&eacute; empuja el d&eacute;ficit (toneladas)</div><div class="ch h280"><canvas id="ch-ag-demanda"></canvas></div></div>
+  <div class="note">${p.paisesNota}</div>
+  <div class="card c-cot"><div class="ct">Producci&oacute;n Minera por Pa&iacute;s &mdash; 2025 (${p.unidad.toLowerCase()})</div><div class="ch h340"><canvas id="ch-ag-paises"></canvas></div></div>`;
 }
 function initPlataCharts(){
   const p=D.plata;
@@ -1176,6 +1214,25 @@ function initPlataCharts(){
   mkChart('ch-ag-bal',{type:'bar',data:{labels:p.lLbl,datasets:[{label:'Balance',data:p.balance,
     backgroundColor:p.balance.map(v=>v>=0?'rgba(77,184,122,.65)':'rgba(217,95,95,.65)'),borderColor:p.balance.map(v=>v>=0?C.AGRO:C.RD),borderWidth:1}]},
     options:{...chartBase,scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}`}}}}});
+
+  const d=p.demanda;
+  const stackCfg=(label,data,color)=>({label,data,backgroundColor:color,borderColor:'#0a1622',borderWidth:1,stack:'s'});
+  mkChart('ch-ag-demanda',{type:'bar',data:{labels:p.lLbl,datasets:[
+    stackCfg('Fotovoltaica',d.fotovoltaica,'#4db87a'),
+    stackCfg('Industrial (ex-Fotovoltaica)',d.industrialExPV,'#4a9fd4'),
+    stackCfg('Joyería',d.joyeria,'#e8a044'),
+    stackCfg('Monedas y Barras',d.monedasBarras,'#9b7fe8'),
+    stackCfg('Fotografía',d.fotografia,'#e8c84a'),
+    stackCfg('Platería',d.plateria,'#d95f5f'),
+  ]},
+    options:{...chartBase,plugins:{...chartBase.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:8.5},boxWidth:10}}},
+      scales:{x:{...chartBase.scales.x,stacked:true},y:{...chartBase.scales.y,stacked:true,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}`}}}}});
+
+  const ps=[...p.paises].sort((a,b)=>b.v-a.v);
+  mkChart('ch-ag-paises',{type:'bar',data:{labels:ps.map(x=>x.n),datasets:[{label:'Producción Minera',data:ps.map(x=>x.v),
+    backgroundColor:ps.map((x,i)=>i===0?'rgba(155,127,232,.85)':'rgba(155,127,232,.4)'),borderColor:C.COT,borderWidth:1}]},
+    options:{...chartBase,indexAxis:'y',plugins:{...chartBase.plugins,tooltip:{...chartBase.plugins.tooltip,callbacks:{label:i=>`${fmt(i.raw,0)} t`}}},
+      scales:{x:{...chartBase.scales.x,ticks:{...chartBase.scales.x.ticks,callback:v=>`${v}`}},y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,autoSkip:false}}}}});
 }
 
 // ================================================================
