@@ -154,7 +154,7 @@ footer{border-top:1px solid var(--br);padding:12px 44px;background:var(--nv2);di
     </div>
   </div>
 </header>
-<div class="subnav"><span class="subnav-label">Módulos</span><a href="/" class="snav-link">🏠 Inicio</a><a href="/arg.html" class="snav-link">🇦🇷 Argentina</a><a href="/agro.html" class="snav-link">🌾 Agro</a><a href="/gestion.html" class="snav-link">📊 Gestión</a><a href="/confianza.html" class="snav-link">🔵 Confianza</a><a href="/macro.html" class="snav-link active">🌍 Macro Global</a><a href="/tc.html" class="snav-link">💱 Tipo de Cambio</a><a href="/bonos.html" class="snav-link">📈 Bonos</a></div>
+<div class="subnav"><span class="subnav-label">Módulos</span><a href="/" class="snav-link">🏠 Inicio</a><a href="/arg.html" class="snav-link">🇦🇷 Argentina</a><a href="/agro.html" class="snav-link">📦 Commodities</a><a href="/gestion.html" class="snav-link">📊 Gestión</a><a href="/confianza.html" class="snav-link">🔵 Confianza</a><a href="/macro.html" class="snav-link active">🌍 Macro Global</a><a href="/tc.html" class="snav-link">💱 Tipo de Cambio</a><a href="/bonos.html" class="snav-link">📈 Bonos</a></div>
 <div class="kstrip" id="kstrip"></div>
 <div class="tabrow" id="tabrow"></div>
 <div class="main" id="main"></div>
@@ -371,15 +371,27 @@ var D={
 us:{
   // Fuente: FRED API — datos verificados jun 2026
   gdp:{l:["Q1 24","Q2 24","Q3 24","Q4 24","Q1 25","Q2 25","Q3 25","Q4 25","Q1 26"],v:[0.8,3.6,3.3,1.9,-0.6,3.8,4.4,0.5,2.1]},
-  cpi:{l:["Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[2.6,2.7,2.9,3.0,2.9,2.7,3.0,2.8,2.7,3.3,3.8,4.2]},
-  cpiCore:[2.6,2.7,2.8,2.8,2.7,2.7,2.8,2.9,2.7,2.7,2.8,2.9],
-  cpiMoM:[0.3,0.2,0.4,0.3,0.2,0.1,0.2,0.2,0.2,0.9,0.6,0.5],
+  // CPI: BLS informe Ago26 (USDL-26-1496, publicado 11-sep-2026) trae YoY oficial solo de Ago26
+  // (headline +3.4% NSA, Core +2.4%). Jun26/Jul26 YoY NO son oficiales -- interpolados linealmente
+  // entre May26 (4.2%, oficial) y Ago26 (3.4%, oficial), igual metodo usado para el PPI de EE.UU.
+  // el 10-sep-2026. MoM de Jun/Jul/Ago SI son oficiales (Table A del informe, SA): Jun -0.4%,
+  // Jul +0.1%, Ago +0.4% (headline); Core Jun 0.0%, Jul +0.2%, Ago +0.3%.
+  cpi:{l:["Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26*","Jul 26*","Ago 26"],v:[2.6,2.7,2.9,3.0,2.9,2.7,3.0,2.8,2.7,3.3,3.8,4.2,3.9,3.7,3.4]},
+  cpiCore:[2.6,2.7,2.8,2.8,2.7,2.7,2.8,2.9,2.7,2.7,2.8,2.9,2.7,2.6,2.4],
+  cpiMoM:[0.3,0.2,0.4,0.3,0.2,0.1,0.2,0.2,0.2,0.9,0.6,0.5,-0.4,0.1,0.4],
   pce:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[2.3,2.6,2.6,2.7,2.8,2.7,2.8,2.9,2.9,2.9,3.5,3.8,4.1]},
   pceCore:[2.5,2.5,2.6,2.7,2.7,2.6,2.7,3.0,3.1,3.0,3.2,3.3,3.4],
   pceMoM:[0.1,0.2,0.2,0.2,0.2,0.2,0.2,0.3,0.2,0.2,0.4,0.4,0.4],
-  ppi:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[2.6,2.4,3.2,2.7,3.0,2.8,3.1,3.1,2.4,4.0,6.9,9.8,6.5]},
-  ppiCore:[2.5,2.3,3.1,2.7,3.0,2.8,3.0,3.0,3.0,3.3,4.1,3.9,5.1],
-  ppiMoM:[0.2,0.3,0.5,0.2,0.3,0.2,0.3,0.3,0.4,0.7,1.4,1.1,1.1],
+  // PPI: BLS informe Ago26 (publicado 10-sep-2026, USDL 26-1495) trae YoY oficial solo del mes
+  // reportado (Ago26: Final demand +5.4% NSA, Core +4.7%). Jun26/Jul26 NO tienen YoY oficial en
+  // este release (BLS solo publica el YoY del mes corriente por informe) — se interpolaron
+  // LINEALMENTE entre May26 (6.5%, oficial) y Ago26 (5.4%, oficial), NO son datos oficiales.
+  // ppiMoM de Jun26/Jul26 SI son oficiales (Tabla 1 de este mismo informe: May->Jun -0.1%,
+  // Jun->Jul +0.1%, Jul->Ago +0.4%, SA). Si se consigue el YoY real de Jun/Jul, reemplazar el
+  // interpolado por el dato oficial.
+  ppi:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26*","Jul 26*","Ago 26"],v:[2.6,2.4,3.2,2.7,3.0,2.8,3.1,3.1,2.4,4.0,6.9,9.8,6.5,6.1,5.8,5.4]},
+  ppiCore:[2.5,2.3,3.1,2.7,3.0,2.8,3.0,3.0,3.0,3.3,4.1,3.9,5.1,5.0,4.8,4.7],
+  ppiMoM:[0.2,0.3,0.5,0.2,0.3,0.2,0.3,0.3,0.4,0.7,1.4,1.1,1.1,-0.1,0.1,0.4],
   ur:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[4.2,4.1,4.3,4.3,4.4,4.4,4.5,4.4,4.3,4.4,4.3,4.3,4.3]},
   nfp:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[19,-13,72,-26,108,-173,56,-17,160,-156,214,179,172]},
   trade:{l:["Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[-74,-56,-49,-31,-56,-73,-55,-58,-60,-55,-78]},
@@ -440,7 +452,12 @@ eu:{
   cpi:{l:["Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],v:[2.3,2.4,1.7,1.9,2.6,3.0]},
   cpiCore:[2.7,2.7,2.2,2.4,2.3,2.2],
   ppi:{l:["Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[-3.2,-2.9,-1.8,-0.9,0.2,0.8,5.0,5.9]},
-  bce:{l:["Jun 24","Sep 24","Oct 24","Dic 24","Ene 25","Mar 25","Abr 25","Jun 25","Sep 25","Dic 25","Mar 26","Jun 26"],v:[3.75,3.5,3.25,3.0,2.75,2.5,2.25,2.25,2.25,2.25,2.25,2.50]},
+  // Tasa de Depositos (DFR) del BCE — corregida 10-Sep-2026: la serie tenia un escalon de +0.25pp
+  // pegado desde Jun25 (mostraba 2.25 en vez de 2.00 para Jun25-Mar26, y 2.50 en vez de 2.25 para
+  // Jun26). Fuente: hoja "BCE - Tasas" (Internacional.xlsx), que sigue el historial oficial ECB Data
+  // Portal. Jun26=2.25 (decision 11-jun, vigente 17-jun). Sep26=2.50 (decision 10-sep-2026, vigente
+  // 16-sep-2026, +25pb por presion inflacionaria del conflicto en Oriente Proximo).
+  bce:{l:["Jun 24","Sep 24","Oct 24","Dic 24","Ene 25","Mar 25","Abr 25","Jun 25","Sep 25","Dic 25","Mar 26","Jun 26","Sep 26"],v:[3.75,3.5,3.25,3.0,2.75,2.5,2.25,2.0,2.0,2.0,2.0,2.25,2.50]},
   ur:{l:["Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],v:[6.2,6.1,6.1,6.2,6.1]},
   gdp:{l:["Q1 25","Q2 25","Q3 25","Q4 25","Q1 26"],v:[0.3,0.3,0.4,0.2,0.4]},
   trade:{l:["Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25"],v:[4770,4696,5117,5071,6988,5567]},
@@ -473,10 +490,10 @@ function buildUS(){
   var d=D.us;
   $('kstrip').innerHTML=kpis([
     {l:'GDP Q1 2026 (3ra est.)',v:pct(L(d.gdp.v)),c:sgn(L(d.gdp.v))},
-    {l:'CPI May 2026 YoY',v:L(d.cpi.v)+'%',c:'r'},
+    {l:'CPI Ago 2026 YoY',v:L(d.cpi.v)+'%',c:'r'},
     {l:'Core CPI',v:L(d.cpiCore)+'%',c:'r'},
     {l:'PCE May 2026',v:L(d.pce.v)+'%',c:'r'},
-    {l:'PPI May 2026',v:L(d.ppi.v)+'%',c:'r'},
+    {l:'PPI Ago 2026',v:L(d.ppi.v)+'%',c:'r'},
     {l:'NFP May 2026',v:'+172K',c:'g'},
     {l:'Desempleo May 26',v:'4.3%',c:'a'},
     {l:'Fed Funds Rate',v:'3.50-3.75%',c:'a'}
@@ -485,7 +502,7 @@ function buildUS(){
   var cal=makeCalendar(d.cal.year,d.cal.month,d.cal.events);
   var overviewHtml='<div class="og">'+
     ocard('om1','GDP &middot; PBI','Producto Bruto Interno','Var. trimestral anualizada',pct(L(d.gdp.v)),sgn(L(d.gdp.v)),L(d.gdp.l),'Q4 25: +0.5%<br>3ra est. BEA',"showTab(1,'us')")+
-    ocard('om2','CPI &middot; Inflaci&#243;n','&Iacute;ndice Precios Consumidor','Variaci&#243;n interanual',L(d.cpi.v)+'%','r',L(d.cpi.l),'Core: '+L(d.cpiCore)+'%<br>Energ&#237;a +17.9%',"showTab(2,'us')")+
+    ocard('om2','CPI &middot; Inflaci&#243;n','&Iacute;ndice Precios Consumidor','Variaci&#243;n interanual',L(d.cpi.v)+'%','r',L(d.cpi.l),'Core: '+L(d.cpiCore)+'%<br>Energ&#237;a +16.3%',"showTab(2,'us')")+
     ocard('om3','PCE &middot; Fed','Consumo Personal','Medida preferida de la Fed',L(d.pce.v)+'%','r',L(d.pce.l),'Core PCE: '+L(d.pceCore)+'%<br>May 26 &middot; Target: 2.0%',"showTab(3,'us')")+
     ocard('om4','PPI &middot; Mayorista','&Iacute;ndice Precios Productor','Presi&#243;n en pipeline',L(d.ppi.v)+'%','r',L(d.ppi.l),'Core PPI: '+L(d.ppiCore)+'%<br>May 2026 &middot; BLS',"showTab(4,'us')")+
     ocard('om5','Mercado Laboral','NFP &middot; Desempleo','N&#243;minas no agr&#237;colas','+172K','g','May 2026','Desempleo 4.3%<br>AHE +3.6% YoY',"showTab(5,'us')")+
@@ -501,8 +518,8 @@ function buildUS(){
       cal
     )+
     panel('us-p2',
-      shdr('CPI &middot; &Iacute;ndice de Precios al Consumidor','BLS &mdash; May 2026: +4.2% YoY',L(d.cpi.v)+'%','May 2026 &middot; YoY','r')+
-      sr4([{l:'CPI General',v:L(d.cpi.v)+'%',c:'r',n:'May 2026'},{l:'Core CPI',v:L(d.cpiCore)+'%',c:'r',n:'Ex alim. y energ&#237;a'},{l:'MoM',v:'+'+L(d.cpiMoM)+'%',c:'r',n:'May 2026'},{l:'Energ&#237;a YoY',v:'+17.9%',c:'r',n:'Gasolina +28.4%'}])+
+      shdr('CPI &middot; &Iacute;ndice de Precios al Consumidor','BLS &mdash; Ago 2026: +3.4% YoY',L(d.cpi.v)+'%','Ago 2026 &middot; YoY','r')+
+      sr4([{l:'CPI General',v:L(d.cpi.v)+'%',c:'r',n:'Ago 2026'},{l:'Core CPI',v:L(d.cpiCore)+'%',c:'r',n:'Ex alim. y energ&#237;a'},{l:'MoM',v:'+'+L(d.cpiMoM)+'%',c:'r',n:'Ago 2026'},{l:'Energ&#237;a YoY',v:'+16.3%',c:'r',n:'Gasolina +27.4%'}])+
       box1('cc1','h240','CPI General YoY &mdash; 2025&ndash;2026')+
       box2(['cc2','cc3'],['CPI vs Core CPI vs Target (2%)','CPI MoM &mdash; &Iacute;mpetu mensual']),
       cal
@@ -515,8 +532,8 @@ function buildUS(){
       cal
     )+
     panel('us-p4',
-      shdr('PPI &middot; &Iacute;ndice de Precios al Productor','BLS &mdash; Presi&#243;n mayorista inflacionaria',L(d.ppi.v)+'%','May 2026 &middot; YoY','r')+
-      sr4([{l:'PPI YoY',v:L(d.ppi.v)+'%',c:'r',n:'May 2026'},{l:'Core PPI',v:L(d.ppiCore)+'%',c:'r',n:'Ex alim. y energ&#237;a'},{l:'MoM',v:'+'+L(d.ppiMoM)+'%',c:'r',n:'May 2026'},{l:'vs CPI',v:'+'+(L(d.ppi.v)-L(d.cpi.v)).toFixed(1)+'pp',c:'r',n:'Pipeline arriba de CPI'}])+
+      shdr('PPI &middot; &Iacute;ndice de Precios al Productor','BLS &mdash; Presi&#243;n mayorista inflacionaria',L(d.ppi.v)+'%','Ago 2026 &middot; YoY','r')+
+      sr4([{l:'PPI YoY',v:L(d.ppi.v)+'%',c:'r',n:'Ago 2026'},{l:'Core PPI',v:L(d.ppiCore)+'%',c:'r',n:'Ex alim., energ&#237;a y trade'},{l:'MoM',v:'+'+L(d.ppiMoM)+'%',c:'r',n:'Ago 2026'},{l:'vs CPI',v:'+'+(L(d.ppi.v)-L(d.cpi.v)).toFixed(1)+'pp',c:'r',n:'Pipeline arriba de CPI'}])+
       box1('pp1','h240','PPI General YoY &mdash; 2025&ndash;2026')+
       box2(['pp2','pp3'],['PPI vs Core PPI','PPI MoM &mdash; Presi&#243;n mensual']),
       cal
@@ -766,7 +783,7 @@ function buildEU(){
   $('main').innerHTML=
     panelFull('eu-p0','<div class="og">'+
       ocard('em1','HICP &middot; Inflaci&#243;n','Inflaci&#243;n Armonizada EA','Mayor desde Sep 2023',L(d.cpi.v)+'%','r',L(d.cpi.l),'Core: '+L(d.cpiCore)+'%<br>Energ&#237;a: +10.8%',"showTab(1,'eu')")+
-      ocard('em2','BCE &middot; Pol&#237;tica','Tasa de Dep&#243;sitos BCE','European Central Bank',L(d.bce.v)+'%','g',L(d.bce.l),'Sin cambio<br>desde Abr 25',"showTab(2,'eu')")+
+      ocard('em2','BCE &middot; Pol&#237;tica','Tasa de Dep&#243;sitos BCE','European Central Bank',L(d.bce.v)+'%','r',L(d.bce.l),'Suba +25pb<br>vigente 16-Sep',"showTab(2,'eu')")+
       ocard('em3','Mercado Laboral','Tasa de Desempleo','Eurostat &mdash; EA',L(d.ur.v)+'%','a',L(d.ur.l),'M&#237;nimos<br>hist&#243;ricos 2023',"showTab(3,'eu')")+
       ocard('em4','Balanza Comercial','Saldo Comercial EA','Eurostat','&#8364;5,567M','g','Ago 2025','Super&#225;vit<br>sostenido',"showTab(4,'eu')")+
       ocard('em5','PIB &middot; Crecimiento','Producto Bruto EA','Var. trimestral QoQ','+'+L(d.gdp.v)+'%','g',L(d.gdp.l),'Mejor que<br>EE.UU. Q4 25',"showTab(5,'eu')")+

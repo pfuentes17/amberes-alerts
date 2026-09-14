@@ -340,7 +340,7 @@ footer{border-top:1px solid var(--br);padding:10px 40px;background:var(--nv2);di
     </div>
   </div>
 </header>
-<div class="subnav"><span class="subnav-label">Módulos</span><a href="/" class="snav-link">🏠 Inicio</a><a href="/arg.html" class="snav-link active">🇦🇷 Argentina</a><a href="/agro.html" class="snav-link">🌾 Agro</a><a href="/gestion.html" class="snav-link">📊 Gestión</a><a href="/confianza.html" class="snav-link">🔵 Confianza</a><a href="/macro.html" class="snav-link">🌍 Macro Global</a><a href="/tc.html" class="snav-link">💱 Tipo de Cambio</a><a href="/bonos.html" class="snav-link">📈 Bonos</a></div>
+<div class="subnav"><span class="subnav-label">Módulos</span><a href="/" class="snav-link">🏠 Inicio</a><a href="/arg.html" class="snav-link active">🇦🇷 Argentina</a><a href="/agro.html" class="snav-link">📦 Commodities</a><a href="/gestion.html" class="snav-link">📊 Gestión</a><a href="/confianza.html" class="snav-link">🔵 Confianza</a><a href="/macro.html" class="snav-link">🌍 Macro Global</a><a href="/tc.html" class="snav-link">💱 Tipo de Cambio</a><a href="/bonos.html" class="snav-link">📈 Bonos</a></div>
 
 <div class="kstrip" id="kstrip"></div>
 <div class="tabrow" id="tabrow"></div>
@@ -351,7 +351,7 @@ footer{border-top:1px solid var(--br);padding:10px 40px;background:var(--nv2);di
     <img src="https://grupoamberes.com.ar/frontend/img/logo.svg" alt="Amberes" style="height:19px;filter:brightness(0) invert(1);opacity:.5;" onerror="this.style.display='none'">
     <span class="fb-t">Amberes &middot; Grupo Financiero</span>
   </div>
-  <div class="fn" id="footer-src">INDEC &middot; BCRA &middot; Mecon &middot; AFIP &middot; Finanzas &middot; SIPA &middot; ACARA &middot; Julio 2026</div>
+  <div class="fn" id="footer-src">INDEC &middot; BCRA &middot; Mecon &middot; AFIP &middot; Finanzas &middot; SIPA &middot; ACARA &middot; Agosto 2026</div>
 </footer>
 
 <script>
@@ -452,7 +452,7 @@ function showTab(i){
 var VISTA='indec';
 var vistaMeta={
   indec:{name:'INDEC',sub:'Estad\u00edsticas Oficiales',col:C.INDEC,
-    footer:'INDEC \u00b7 IPC \u00b7 EMAE \u00b7 EPH \u00b7 ICA \u00b7 ISAC \u00b7 IPI \u00b7 Julio 2026',
+    footer:'INDEC \u00b7 IPC \u00b7 EMAE \u00b7 EPH \u00b7 ICA \u00b7 ISAC \u00b7 IPI \u00b7 Agosto 2026',
     label:'INDEC \u00b7 Estad\u00edsticas Oficiales'},
   bcra:{name:'BCRA',sub:'Banco Central',col:C.BCRA,
     footer:'BCRA \u00b7 Reservas \u00b7 Tipos de cambio \u00b7 Tasas \u00b7 Agregados monetarios \u00b7 Julio 2026',
@@ -501,53 +501,130 @@ var D={
   // ── INDEC ──────────────────────────────
   // IPC: datos verificados del PDF INDEC ipc_05_2680B692D2F5-2.pdf + mayo 2026 INDEC
   // Cuadro 13 (categorías) + serie mensual del gráfico
-  ipc:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
-       v:[1.5,1.6,1.9,1.9,2.1,2.3,2.5,2.8,2.9,2.9,3.4,2.6,2.1]},
-  nucleo:   [1.4,1.5,1.7,1.8,1.9,2.0,2.3,2.6,2.6,3.1,3.2,2.3,1.9],
-  regulados:[1.0,2.0,2.4,2.2,2.1,2.9,3.5,3.4,2.4,4.3,5.1,4.7,2.4],
-  estacion: [5.8,-0.5,0.8,1.0,2.4,2.4,0.4,2.2,5.7,-1.3,1.0,0.0,2.1],
+  ipc:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26"],
+       v:[1.5,1.6,1.9,1.9,2.1,2.3,2.5,2.8,2.9,2.9,3.4,2.6,2.1,1.9,2.1,1.7]},
+  // Nucleo/Regulados/Estacional: corregidos 10-Sep-2026 contra la fuente oficial
+  // (serie_ipc_divisiones.csv, Region=Nacional, Clasificador=Categorias) -- los valores previos de
+  // May25-Dic25 no coincidian con INDEC (probable error de carga anterior o revision de INDEC).
+  nucleo:   [2.2,1.7,1.5,2.0,1.9,2.2,2.6,3.0,2.6,3.1,3.2,2.3,1.9,1.6,1.8,1.8],
+  regulados:[1.3,2.2,2.3,2.7,2.6,2.6,2.9,3.3,2.4,4.3,5.1,4.7,2.4,2.3,2.1,2.2],
+  estacion: [-2.7,-0.2,4.1,-0.8,2.2,2.8,0.4,0.6,5.7,-1.3,1.0,0.0,3.5,3.4,4.5,-0.9],
   // IPC YoY: "43,5 39,4 36,6 33,6 31,8 31,3 31,4 31,5 32,4 33,1 32,6 32,4 33,2"
-  ipcYoY:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
-           v:[43.5,39.4,36.6,33.6,31.8,31.3,31.4,31.5,32.4,33.1,32.6,32.4,33.2]},
-  emae:{l:["Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],
-        v:[7.8,5.2,6.3,2.8,2.2,4.8,3.1,-0.3,3.3,1.5,-2.0,5.5]},
-  emaeDesest:{l:["Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],
-              v:[0.2,1.1,-2.3,1.6,-0.1,-0.3,0.0,0.6,0.6,-0.4,0.0,1.9,-0.2,-2.7,3.5]},
+  ipcYoY:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26"],
+           v:[43.5,39.4,36.6,33.6,31.8,31.3,31.4,31.5,32.4,33.1,32.6,32.4,33.2,33.5,33.8,33.5]},
+  // Carnes y derivados / Combustibles y lubricantes: INDEC NO publica nivel Nacional para estas
+  // "aperturas" finas (solo por region) -- indice ponderado por Amberes usando los ponderadores
+  // oficiales del Cuadro 6, Metodologia IPC Nacional 2019 INDEC (GBA 44.7% / Pampeana 34.2% /
+  // Noroeste 6.9% / Cuyo 5.2% / Patagonia 4.6% / Noreste 4.5%). Fuente de los indices regionales:
+  // indec.gob.ar/ftp/cuadros/economia/serie_ipc_aperturas.csv. Ver hoja "IPC - Carnes y
+  // Combustibles" en Actividad y Precios ARG.xlsx para la serie completa desde dic-2016.
+  carnes:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26"],
+          v:[0.91,2.34,6.25,7.86,4.47,6.59,7.00,0.69,0.29,0.05,0.14,0.27]},
+  combustibles:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26"],
+          v:[3.90,3.13,3.60,5.68,0.73,1.62,7.07,11.24,1.67,1.32,0.64,0.87]},
+  // IPC "ex-Carnes" -- inflacion subyacente sacando el efecto de Carnes y derivados. Calculo propio
+  // Amberes (INDEC no publica esta serie): g_ex = (g_general - peso_carnes*g_carnes)/(1-peso_carnes),
+  // peso_carnes ~8.92% (ponderado nacional, Cuadro 6+7 Metodologia IPC Nacional 2019 INDEC).
+  // Ver hoja "IPC - Carnes y Combustibles" (columnas I/J) para la serie completa desde ene-2017.
+  ipcExCarnes:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26"],
+          v:[2.22,2.30,2.13,2.30,2.75,2.54,3.05,2.79,2.28,2.08,2.29,1.84]},
+  // Nucleo "ex-Carnes": mismo metodo pero con el peso de Carnes DENTRO de Nucleo (~13.13%, ya que
+  // Carnes y derivados esta clasificada como Nucleo por INDEC, no Regulado ni Estacional).
+  nucleoExCarnes:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26"],
+          v:[2.05,2.18,2.05,2.27,2.32,2.57,2.63,2.54,2.14,1.83,2.05,2.03]},
+  emae:{l:["Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],
+        v:[7.8,5.2,6.3,2.8,2.2,4.8,3.1,-0.3,3.3,1.5,-2.0,5.5,1.6,0.2,2.7]},
+  emaeDesest:{l:["Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],
+              v:[0.2,1.1,-2.3,1.6,-0.1,-0.3,0.0,0.6,0.6,-0.4,0.0,1.9,-0.2,-2.7,3.5,-1.5,-0.5,0.8]},
   sectEne26:{n:["Agro","Miner\u00eda","Pesca","Fin.","Construc.","Industria","Comercio"],v:[25.1,9.6,50.8,5.2,1.1,-2.6,-3.2]},
   sectMar26:{n:["Pesca","Agro","Miner\u00eda","Industria","Construc."],v:[30.9,17.9,16.3,4.6,7.6]},
+  sectMay26:{n:["Miner\u00eda","Electr./Gas","Agro","Industria","Comercio","Pesca"],v:[15.7,8.0,4.6,-5.6,-4.3,-29.3]},
+  sectJun26:{n:["Pesca","Miner\u00eda","Agro","Construcci\u00f3n","Industria","Adm. P\u00fablica"],v:[247.6,15.6,4.6,2.8,1.9,-1.5]},
+  // Colch\u00f3n de Liquidez BCRA en Rueda REPO (ARS billones) \u2014 A3/MAE (volumen/tasas, live) + BCRA API id=198 "Otros" (rezago).
+  // D\u00edas sin dato oficial a\u00fan ("est" en estado[]): estimados por regresi\u00f3n en ventana m\u00f3vil de 10 d\u00edas h\u00e1biles (MAPE backtest \u224817.5%).
+  repoColchon:{
+    l: ["05/05", "06/05", "07/05", "08/05", "11/05", "12/05", "13/05", "14/05", "15/05", "18/05", "19/05", "20/05", "21/05", "22/05", "26/05", "27/05", "28/05", "29/05", "01/06", "02/06", "03/06", "04/06", "05/06", "08/06", "09/06", "10/06", "11/06", "12/06", "16/06", "17/06", "18/06", "19/06", "22/06", "23/06", "24/06", "25/06", "26/06", "29/06", "30/06", "01/07", "02/07", "03/07", "06/07", "07/07", "08/07", "13/07", "14/07", "15/07", "16/07", "17/07", "20/07", "21/07", "22/07", "23/07", "24/07", "27/07", "28/07", "29/07", "30/07", "31/07", "03/08", "04/08", "05/08", "06/08", "07/08", "10/08", "11/08", "12/08", "13/08", "14/08", "18/08", "19/08", "20/08", "21/08", "24/08", "25/08", "26/08", "27/08", "28/08", "31/08", "01/09", "02/09", "03/09", "04/09", "07/09", "08/09", "09/09", "10/09", "11/09"],
+    partes: [1.37, 0.94, 1.003, 1.248, 1.109, 0.873, 1.076, 1.31, 1.939, 1.773, 1.729, 1.251, 1.218, 0.915, 0.673, 0.659, 0.514, 0.921, 1.23, 1.481, 1.078, 1.219, 1.284, 1.401, 1.452, 1.339, 1.459, 1.924, 2.022, 2.29, 1.904, 1.799, 1.474, 1.413, 1.862, 1.791, 1.686, 1.49, 1.761, 1.72, 1.655, 1.82, 1.716, 1.684, 1.976, 2.193, 1.739, 1.826, 1.753, 1.644, 1.87, 1.92, 1.778, 1.991, 1.977, 1.761, 1.471, 1.778, 1.545, 2.215, 2.408, 1.97, 1.748, 1.82, 2.122, 2.31, 2.524, 2.864, 3.22, 2.897, 2.136, 3.075, 3.72, 3.138, 3.45, 3.599, 3.452, 3.148, 2.19, 2.233, 1.469, 1.538, 1.826, 1.775, 1.827, 1.725, 1.578, 1.93, 1.858],
+    bcra: [1.782, 2.34, 1.953, 2.566, 3.491, 4.64, 4.22, 3.917, 2.888, 3.767, 3.641, 4.402, 4.353, 4.889, 4.247, 4.346, 4.815, 3.485, 2.646, 2.951, 3.709, 3.187, 3.081, 2.945, 3.432, 3.343, 2.753, 2.381, 1.969, 1.937, 2.546, 2.708, 2.433, 2.437, 1.681, 1.419, 1.346, 1.668, 3.557, 2.957, 3.434, 3.282, 3.197, 2.981, 2.417, 1.644, 3.932, 4.14, 3.662, 2.217, 1.661, 2.067, 1.572, 1.547, 1.781, 1.573, 2.566, 2.993, 1.754, 1.602, 1.433, 0.88, 0.815, 1.086, 1.085, 1.203, 1.106, 0.827, 0.718, 0.971, 0.979, 0.875, 0.65, 2.117, 1.273, 2.345, 2.291, 2.203, 2.163, 1.001, 1.262, 2.13, 1.222, 1.283, 1.708, 2.983, 2.8, 2.482, 2.518],
+    estado: ["real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "est"]
+  },
   eph:{l:["Q1 24","Q2 24","Q3 24","Q4 24","Q1 25","Q2 25","Q3 25","Q4 25"],
        desempleo:[7.7,6.9,6.9,6.4,7.9,7.6,6.3,7.5],
        actividad:[47.7,48.0,47.9,47.4,48.2,48.1,47.8,48.1],
        empleo:[44.0,44.7,44.6,44.4,44.4,44.5,44.8,44.5],
        subocup:[11.1,10.3,10.5,10.2,10.5,10.6,10.0,10.8]},
-  // ICA — INDEC · Mayo 2026 (publicado 18/06/2026). Expo récord histórico USD 9.537M +34.4% YoY. Saldo récord USD 3.504M.
-  ica:{l:["Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
-       expo:[7553,7127,8128,7630,8156,7448,6705,5930,8645,8900,9537],
-       impo:[6626,6451,7207,7023,7012,5556,5440,4791,6122,6204,6033],
-       saldo:[927,676,921,607,1144,1892,1265,1139,2523,2696,3504]},
-  isac:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[1.2,0.0,-3.9,2.9,-0.1,-1.4,5.1,-4.0,6.3]},
-  ipi:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[-0.1,-0.9,-1.1,0.4,2.4,-3.0,3.7,-2.1,0.4]},
-  // UCII — Utilización Capacidad Instalada Industria — INDEC capacidad_06_26EA3331AEEE.pdf (publicado 16/06/2026)
-  ucii:{l:["Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
-        v:[55.0,58.6,54.4,58.6,58.9,59.0,58.2,59.4,61.1,61.0,57.7,53.8,53.6,54.6,59.8,59.9]},
-  // IPI Minero — INDEC · Mayo 2026 (publicado 07/07/2026)
+  // ICA — INDEC · Julio 2026 (publicado 20/08/2026). Expo USD 8.854M +14.1% YoY. Saldo USD 2.115M (+USD1.208M YoY).
+  ica:{l:["Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26"],
+       expo:[7553,7127,8128,7630,8156,7448,6705,5930,8645,8916,9537,9055,8854],
+       impo:[6626,6451,7207,7023,7012,5556,5440,4791,6122,6203,6033,6861,6739],
+       saldo:[927,676,921,607,1144,1892,1265,1139,2523,2713,3504,2194,2115]},
+  // ICA desagregado — Exportaciones por grandes rubros e Importaciones por usos económicos, USD MM
+  // Fuente: INDEC, anexos ica_anexo_cuadros_20_01_25.xls (nov-dic 2023 + año 2024) e ica_anexo_cuadros_20_08_26.xls (año 2025 + año 2026)
+  // Cobertura: Nov-2023 (inicio de gestión) a Jul-2026
+  icaRubros:{
+    l:["Nov 23","Dic 23","Ene 24","Feb 24","Mar 24","Abr 24","May 24","Jun 24","Jul 24","Ago 24","Sep 24","Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26"],
+    expo:{
+      pp:  [687.7,1022.8,1610.5,1428.0,1745.3,1536.1,2019.8,1784.1,1700.9,1471.6,1414.8,1163.2,1077.0,1355.9,1518.8,1617.4,1504.3,1702.0,1992.6,1820.3,2122.8,2018.6,2036.9,1903.1,2024.9,1890.0,2088.6,1740.7,2349.6,2123.4,2442.7,1894.3,2110.1],
+      moa: [1765.4,1778.1,1857.8,1950.6,2186.7,2382.9,2800.8,2549.4,2788.3,2402.6,2679.8,2882.5,2762.3,2431.3,2071.7,2041.2,2236.3,2371.6,2484.0,2542.2,2925.8,2829.8,2993.2,2790.6,2765.1,2412.7,2274.7,1815.9,2678.7,2708.5,2997.2,3367.5,3068.1],
+      moi: [1757.0,1753.6,1218.1,1399.1,1680.4,1661.8,1920.1,1644.1,1883.7,2162.4,2080.6,2172.3,2023.1,2216.0,1415.0,1609.4,1899.4,1765.0,1965.3,1840.2,1950.6,1996.8,2156.3,2375.0,2323.8,2098.4,1950.0,1736.3,2403.4,2514.4,2362.5,2417.0,2170.0],
+      cye: [713.2,718.9,711.2,752.7,866.8,946.4,910.9,612.3,848.0,756.7,772.6,807.8,659.2,1032.1,909.4,871.7,1002.4,835.7,653.3,1072.6,761.3,1057.9,941.8,894.0,1018.9,1081.3,931.9,670.4,1265.3,1569.6,1775.4,1433.1,1505.7]
+    },
+    impo:{
+      bk:   [851.7,584.1,776.2,723.9,675.1,700.6,740.0,606.4,832.9,722.7,1067.3,1116.9,937.1,1080.0,1186.1,1287.7,1174.3,1214.1,1247.2,1216.9,1265.0,1270.5,1576.7,1340.1,1053.7,1240.2,1087.9,1061.2,1226.7,1141.9,1162.4,1119.2,1167.2],
+      bi:   [2153.5,1785.5,1764.6,1636.4,1861.9,1969.4,2047.5,1794.3,2204.9,1696.5,2217.9,2249.7,1864.9,1738.9,1951.8,1856.0,1975.0,2158.1,2067.9,2140.2,2082.5,1970.9,2253.2,2371.9,1788.7,1684.2,1495.3,1779.3,2176.6,2246.8,2246.5,2343.6,2425.9],
+      cyl:  [393.6,314.6,298.3,188.8,131.8,242.3,437.7,782.2,723.9,500.8,188.2,198.9,136.3,179.7,206.0,230.1,235.6,278.0,301.6,351.1,662.2,307.0,175.2,200.9,149.4,174.0,149.1,137.7,138.9,151.5,297.4,810.0,613.6],
+      pya:  [1313.0,902.9,1018.3,888.5,966.2,1088.7,1060.1,880.5,1066.3,1123.4,1319.0,1408.5,1242.8,1153.6,1318.1,1226.4,1322.7,1357.5,1408.9,1207.5,1272.9,1271.4,1301.6,1400.3,1081.0,944.4,891.1,920.6,1082.7,1120.9,1034.8,1094.3,1082.8],
+      bc:   [665.8,511.3,548.2,466.0,494.1,546.2,514.0,468.0,650.0,599.5,794.4,802.6,739.5,782.0,808.5,827.0,868.0,970.6,899.9,893.5,959.1,991.9,1157.3,1194.1,916.0,915.5,855.4,801.8,925.0,978.3,878.9,922.8,889.1],
+      va:   [61.5,118.7,186.0,201.6,189.0,140.1,190.2,146.1,218.3,216.8,366.4,322.0,303.3,392.9,234.1,392.8,391.4,426.7,494.6,509.3,513.6,554.3,617.8,544.9,510.0,488.2,483.7,370.2,459.2,439.6,389.5,455.4,448.0],
+      resto:[42.8,38.3,21.6,16.1,17.1,20.4,22.4,22.4,23.2,26.5,22.9,29.3,29.5,42.2,48.1,44.3,51.9,54.9,67.8,77.4,98.4,96.7,109.3,97.9,99.2,109.4,94.2,95.7,106.8,124.2,118.5,131.4,112.2]
+    }
+  },
+  // Importaciones Courier — INDEC comex.indec.gob.ar NCM 99980400 · Dic 2020-Jun 2026 (verificado 21/07/2026)
+  courier:{l:["Dic 20","Ene 21","Feb 21","Mar 21","Abr 21","May 21","Jun 21","Jul 21","Ago 21","Sep 21","Oct 21","Nov 21","Dic 21",
+              "Ene 22","Feb 22","Mar 22","Abr 22","May 22","Jun 22","Jul 22","Ago 22","Sep 22","Oct 22","Nov 22","Dic 22",
+              "Ene 23","Feb 23","Mar 23","Abr 23","May 23","Jun 23","Jul 23","Ago 23","Sep 23","Oct 23","Nov 23","Dic 23",
+              "Ene 24","Feb 24","Mar 24","Abr 24","May 24","Jun 24","Jul 24","Ago 24","Sep 24","Oct 24","Nov 24","Dic 24",
+              "Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25",
+              "Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],
+    v:[33.18,30.46,33.24,43.61,42.53,49.68,53.06,49.18,54.17,54.9,54.25,52.21,45.72,
+       47.95,46.12,55.99,56.41,62.81,57.19,49.64,66.36,56.22,32.3,25.56,30.5,
+       32.5,32.71,39.49,37.51,38.96,40.09,41.19,41.4,39.57,39.87,39.44,32.87,
+       16.81,13.01,13.86,16.62,17.71,16.87,19.15,20.89,18.45,23.7,24.25,37.55,
+       43.97,40.01,46.07,50.17,62.47,71.94,93.74,91.48,101.96,92.43,94.6,105.0,
+       90.41,90.82,102.78,118.33,115.17,125.07]},
+  // Consumos con Tarjeta en el Exterior — BCRA, anexo Balance Cambiario (memorándum) · Dic 2020-Jun 2026 (agregado 12/08/2026)
+  tarjetas:{v:[84.39, 108.86, 85.45, 98.43, 69.47, 75.14, 83.61, 114.91, 114.90, 94.39, 138.73, 144.74, 207.55,
+              198.74, 202.95, 314.06, 236.92, 282.44, 249.03, 367.55, 343.05, 378.64, 358.60, 262.13, 244.00, 228.49,
+              237.85, 290.00, 215.13, 237.33, 287.57, 270.63, 248.23, 282.09, 356.75, 318.96, 293.22, 144.31, 147.14,
+              126.23, 119.77, 128.94, 120.29, 148.10, 173.90, 152.20, 148.59, 165.19, 156.33, 178.16, 248.33, 245.38,
+              224.16, 219.68, 213.19, 200.95, 229.75, 202.75, 209.63, 176.44, 187.86, 209.92, 222.97, 228.79, 198.27,
+              215.06, 204.30]},
+  isac:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26"],v:[1.2,0.0,-3.9,2.9,-0.1,-1.4,5.1,-4.0,6.3,-4.3,-4.6]},
+  // Puestos de trabajo registrados en la construcción (sector privado) — INDEC Cuadro 3, informe ISAC ago-2026. Var% i.a.
+  isacEmpleo:{l:["Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
+              v:[1.2,0.5,0.4,0.5,0.0,0.1,0.1,0.1,1.7,1.3,0.8]},
+  ipi:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26"],v:[-0.1,-0.9,-1.1,0.4,2.4,-3.0,3.7,-2.1,0.4,0.9,-5.0]},
+  // UCII — Utilización Capacidad Instalada Industria — INDEC capacidad_08_26EE16AEA30D.pdf (publicado 14/08/2026)
+  ucii:{l:["Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],
+        v:[55.0,58.6,54.4,58.6,58.8,58.9,58.2,59.3,61.1,60.9,57.7,53.8,53.9,54.6,59.8,59.9,58.3,59.1]},
+  // IPI Minero — INDEC · Julio 2026 (publicado 10/09/2026)
   ipiMinero:{
-    l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
-    v:[0.2,6.8,7.8,4.0,2.0,4.1,2.2,5.0,5.7,3.5,10.7,9.6,9.2]  // YoY %
+    l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26"],
+    v:[0.2,6.8,7.8,4.0,2.0,4.1,2.2,5.0,5.7,3.5,10.7,9.6,9.5,11.4,3.7]  // YoY %
   },
-  // ICC — Índice Costo Construcción GBA — INDEC · Mayo 2026 (publicado 17/06/2026)
+  // ICC — Índice Costo Construcción GBA — INDEC · Julio 2026 (publicado 18/08/2026)
   icc:{
-    l:["Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
-    multi:[1.4,2.7,0.3,0.8,2.0,1.0,1.2,1.5,2.7,1.4,2.6,1.6,1.1,1.6,2.2,2.8,2.3],
-    uni:[1.5,2.5,-0.3,-0.2,3.3,1.1,2.1,2.1,2.8,1.8,3.0,1.4,2.1,2.2,2.8,3.1,3.6],
-    mom:2.7,yoy:29.0,acum:12.8,
-    materiales:1.6,manoDeObra:3.5,gastos:4.0
+    l:["Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26"],
+    multi:[1.4,2.7,0.3,0.8,2.0,1.0,1.2,1.5,2.7,1.4,2.6,1.6,1.1,1.6,2.2,2.8,2.3,2.6,1.8],
+    uni:[1.5,2.5,-0.3,-0.2,3.3,1.1,2.1,2.1,2.8,1.8,3.0,1.4,2.1,2.2,2.8,3.1,3.6,2.0,1.6],
+    mom:2.1,yoy:32.5,acum:19.2,
+    materiales:1.6,manoDeObra:2.5,gastos:2.5
   },
-  // SIPM — Sistema Índices Precios Mayoristas — INDEC · Mayo 2026 (publicado 17/06/2026)
+  // SIPM — Sistema Índices Precios Mayoristas — INDEC · Julio 2026 (publicado 18/08/2026)
   sipm:{
-    ipim_mom:2.5,ipim_yoy:34.5,ipim_acum:14.4,
-    ipib_mom:2.7,ipib_yoy:33.5,
-    ipp_mom:2.7,ipp_yoy:34.6
+    ipim_mom:0.8,ipim_yoy:31.1,ipim_acum:16.6,
+    ipib_mom:0.8,ipib_yoy:30.2,
+    ipp_mom:0.9,ipp_yoy:31.3
   },
   petroleo:{
     // Abril 2026 · miles de m3
@@ -618,28 +695,39 @@ var D={
   credito:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
            v:[185.4,198.2,210.6,224.8,215.3,218.9,228.4,241.6]},
   // ── MECON ──────────────────────────────
-  fiscal:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
-          primario:[1420,1180,1350,1680,980,860,930,633,1924],
-          financiero:[680,420,590,920,280,160,485,268,479]},
+  fiscal:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26"],
+          primario:[1420,1180,1350,1680,980,860,930,633,1924,-697,2960],
+          financiero:[680,420,590,920,280,160,485,268,479,-1025,245]},
+          // Jun 26: déficit (postergación pagos impuestos + aguinaldos). Fuente: Secretaría de Hacienda, Ejecución Provisoria jul-2026 (julio_26.xlsx)
+  // Stock DLK (Dólar Linked) en circulación + Ratio Cobertura (Interés Abierto ROFEX + Stock DLK) / M2 Privado
+  // Fuente: Deuda y Cambiario ARG.xlsx · hojas "DLK Stock Histórico" y "Ratio Cobertura-M2 Diario" (LOCF por instrumento, ROFEX diario, TC Mayorista)
+  // Refleja licitación 12-ago (D30S6/D30O6 nuevos, USD 1.882M/221M) y canje 18-ago (D31G6→D30S6+D30O6, USD1.344M rescatados)
+  dlkCobertura:{
+    l:["22-Jul","23-Jul","24-Jul","27-Jul","28-Jul","29-Jul","30-Jul","31-Jul","3-Ago","4-Ago","5-Ago","6-Ago","7-Ago","10-Ago","11-Ago","12-Ago","13-Ago","14-Ago","18-Ago"],
+    stock:[10897.9,10897.9,10897.9,10897.9,10897.9,11808.9,11808.9,9562,9562,9562,9562,9562,9562,9562,9562,10394,10394,10394,10404],
+    ratio:[34.73,34.95,35.28,35.44,35.47,37.59,37.74,30.54,30.81,31.00,31.03,31.18,31.30,31.31,31.03,33.09,33.13,33.21,33.29]
+  },
   // Recaudación: fuente RECA.xlsx (Drive/MECON) — valores en MM ARS
   // Serie nominal exacta del archivo + deflactada por índice BASE (Dic99=100)
   recaud:{
-    l:["Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
-    total:  [16184,16999,15359,15445,16166,15598,16527,18338,16232,16071,17401,21514],
-    iva:    [5110, 5139, 5327, 5486, 5773, 5462, 5436, 6213, 5406, 5620, 6050, 5380],
-    ganancias:[2886,3103,2140,2923,3278,3356,3681,3404,3432,2610,3137,8023],
-    ss:     [3540, 3624, 3665, 3673, 3760, 3826, 3899, 4321, 3394, 3465, 3597, 4613],
-    dga:    [1699, 1745, 974,  1278, 1058, 839,  916,  998,  878,  1005, 1163, 1057],
+    l:["Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26"],
+    total:  [16184,16999,15359,15445,16166,15598,16527,18338,16232,16071,17401,21514,20017,22965,20509],
+    iva:    [5110, 5139, 5327, 5486, 5773, 5462, 5436, 6213, 5406, 5620, 6050, 5380, 6549, 6826, 6675],
+    ganancias:[2886,3103,2140,2923,3278,3356,3681,3404,3432,2610,3137,8023,3212,5111,4637],
+    ss:     [3540, 3624, 3665, 3673, 3760, 3826, 3899, 4321, 3394, 3465, 3597, 4613, 4589, 6301, 4984],
+    dga:    [1699, 1745, 974,  1278, 1058, 839,  916,  998,  878,  1005, 1163, 1057, 1427, 1768, 1636],
     // Real deflactada: Nominal/BASE*100 (base Dic99=100) — RECA.xlsx exacto
-    real:   [27348,28189,24995,24617,25187,23710,24438,26351,22667,21705,22928,27628],
-    base:   [59180,60304,61450,62740,64183,65788,67630,69591,71609,74044,75895,77868],
+    // Ago 26: IPC todavía no publicado por INDEC (al 01/09/2026) — real/base/var. real quedan null hasta que salga
+    real:   [27348,28189,24995,24617,25187,23710,24438,26351,22667,21705,22928,27628,25326,28514,null],
+    base:   [59180,60304,61450,62740,64183,65788,67630,69591,71609,74044,75895,77868,79038,80540,null],
     // Variación YoY real (vs mismo mes año anterior)
-    yoyReal:[2.79, 4.52, -2.23,-8.72,-3.61,-8.84,-3.42,-7.84,-9.75,-4.85,-3.83,1.45],
+    yoyReal:[2.79, 4.52, -2.23,-8.72,-3.61,-8.84,-3.42,-7.84,-9.75,-4.85,-3.83,1.45,-7.39,1.15,null],
     // Variación MoM real
-    momReal:[0.42, 3.07,-11.33,-1.51,2.31,-5.86,3.07, 7.83,-13.98,-4.25,5.63,20.50]
+    momReal:[0.42, 3.07,-11.33,-1.51,2.31,-5.86,3.07, 7.83,-13.98,-4.25,5.63,20.50,-8.33,12.59,null]
   },
   // Nota: May 26 Ganancias $8.0B alto por cuotas Bienes Personales
-  // Crecimiento real YoY May 26: +1.45% (primer mes positivo en 2026)
+  // Jul 26 SS alto ($6.3B) — impacto de la recomposición salarial/aportes
+  // Crecimiento real YoY Jul 26: +1.15%
 
   // Superávit/Déficit primario % PBI — Serie histórica + estimado 2026
   // Fuente: MECON 1.2.1 resultado fiscal + meta FMI 2026
@@ -647,16 +735,17 @@ var D={
   fiscalHistPBI:{
     l:['2004','2005','2006','2007','2008','2009','2010','2011',
        '2012','2013','2014','2015','2016','2017','2018','2019',
-       '2020','2021','2022','2023','2024','2025','2026 (meta)'],
+       '2020','2021','2022','2023','2024','2025','2026 (e)'],
     primario:[ 3.9, 3.7, 3.5, 3.2, 3.1, 0.6, 1.7, 2.6,
               -0.2,-0.8,-1.7,-3.8,-3.8,-3.8,-2.4,-0.4,
-              -6.4,-3.0,-2.4,-5.0, 1.8, 1.6, 1.4],
+              -6.4,-3.0,-2.4,-5.0, 1.8, 1.6, 0.39],
     financiero:[ 2.7, 2.6, 2.4, 1.9, 1.9,-0.3, 0.3, 1.2,
                -1.2,-1.9,-3.1,-5.2,-5.8,-6.0,-5.2,-3.8,
-               -8.5,-4.2,-4.2,-6.8, 0.3, 0.5, 0.9],
-    // 2026 est.: Ene-Abr superávit primario ~$1.6B USD acumulado
-    // Meta FMI: primario 1.4% PBI; financiero 0.9% (intereses caen vs 2025)
-    nota2026:'Meta FMI 2026: superávit primario 1.4% PBI'
+               -8.5,-4.2,-4.2,-6.8, 0.3, 0.5,-0.11],
+    // 2026: superávit primario REAL acumulado ene-jul ($10,29 billones, anualizado x12/7) / PBI nominal
+    // estimado (INDEC Q1-2026 $973.876bn + crecimiento EMAE i.a. + inflación IPC i.a. hasta jun-2026)
+    // Reemplaza la meta FMI (1,4%) que estaba cargada antes — el real corre bastante por debajo (07/09/2026)
+    nota2026:'2026 (estimado, 07/09/2026): superávit primario real ≈0,39% PBI — bien por debajo de la meta FMI (1,4%)'
   },
   // Licitaciones del Tesoro 2026 — Ene a May 26
   // Fuente: colocaciones_30-4-26.xlsx (Drive) + argentina.gob.ar (May)
@@ -667,14 +756,18 @@ var D={
        '10-Jun','26-Jun','15-Jul','29-Jul','12-Ago','27-Ago','9-Sep','28-Sep',
        '14-Oct','28-Oct','11-Nov','26-Nov','11-Dic'],
     // Vida promedio ponderada por VNO (años) — null = pendiente
+    // 12-Ago: calculada ponderando VNO Adjudicado de cada instrumento (S30N6/X29E7/D30S6/D30O6/AO29,
+    // DLK y AO29 convertidos a ARS al TC Ref. "A"3500 del 11-ago-2026) por plazo hasta vencimiento
+    // 27-Ago: S30N6 (VNO $5,00B post-prorrateo)/S29E7 ($2,38B, nuevo)/T31Y7 ($1,97B)/X29E7 ($0,85B)/D30O6 (USD279M a TC $1.514,16) por plazo hasta vencimiento
     vidaPromedio:[0.41, 0.52, 0.44, 0.87, 0.95, 1.56, 1.46, 2.09, 1.58, 1.11,
-                  2.57,null,null,null,null,null,null,null,null,null,null,null,null],
-    // Monto VE total (B ARS)
+                  2.57,null,null,null,0.36,0.40,null,null,null,null,null,null,null],
+    // Monto VE total (B ARS) — 12-Ago: $4,49B, Total Valor Efectivo Adjudicado oficial (pesos+USD equiv.)
+    // 27-Ago: $12,16B adjudicado sobre $13,18B ofertado (rollover 95,96%) — fuente: comunicado Sec. Finanzas
     montoEfectivo:[9.31, 10.31, 8.69, 6.95, 10.18, 11.40, 10.28, 8.90, 10.7, 12.6,
-                   6.12,null,null,null,null,null,null,null,null,null,null,null,null],
-    // Rollover % — 10-Jun: 120% | 26-Jun en adelante: pendiente
+                   6.12,null,null,null,4.49,12.16,null,null,null,null,null,null,null],
+    // Rollover % — 10-Jun: 120% | 12-Ago: 100.3% | 27-Ago: 95.96% (oficial Secretaría de Finanzas)
     rollover:[109, 121, 113, 111, 118, 132, 122, 115, 110, 114,
-              120,null,null,null,null,null,null,null,null,null,null,null,null],
+              120,null,null,null,100.3,95.96,null,null,null,null,null,null,null],
     // Perfil mensual de vencimientos — VNO Opción A, acum Ene-May 26
     // Por mes de vencimiento (ARS equiv., incluyendo DL y USD al TC de colocación)
     perfilVencMensual:{
@@ -717,37 +810,38 @@ var D={
   },
   // Deuda: fuente Secretaría de Finanzas
   // Dic 2025: USD 455.077M (deuda_publica_31-12-2025.xlsx)
-  // Abr 2026: USD 496.676M (informe_mensual_abril-2026_1.pdf)
-  deuda:{total:496676,total_dic25:455077,pib_pct:78.4,ext:65,int:35,me:53,pesos:47,
-         // Abr 2026: ML 47%, ME 53% (distinto a Dic 2025 que era 68/32)
-         hist:{l:['2019','2020','2021','2022','2023','2024','2025','Abr 26'],v:[89.4,102.8,80.8,84.7,91.5,82.6,78.4,null]},
-         // Vencimientos anuales USD — fuente amberes_data.xlsx · Vencimientos USD · Jul 2026
-         // 2027: Bop $2.915M (sin REPO) · 2028: +$6.000M REPO BCRA rolleado (SOFR+4%, vto sep-2028)
-         venc:[{l:'2026',v:27.1},{l:'2027',v:26.5},{l:'2028',v:33.0},{l:'2029',v:28.3},{l:'2030+',v:115.8}],
+  // Jun 2026: USD 474.192M total (A- Deuda Bruta I+II+III), boletin_mensual_30_06_2026.xlsx
+  deuda:{total:474192,total_dic25:455077,pib_pct:78.4,ext:65,int:35,me:53,pesos:47,
+         // Situación de pago normal jun-26: pesos $223.111,8M (47%) / me $248.572,2M (53%) — Hoja A.3
+         hist:{l:['2019','2020','2021','2022','2023','2024','2025','Jun 26'],v:[89.4,102.8,80.8,84.7,91.5,82.6,78.4,null]},
+         // Vencimientos anuales USD — fuente amberes_data.xlsx · Vencimientos USD · resync 16/07/2026
+         // 2027: Bop $2.915M (sin REPO) · 2028: +$6.000M REPO BCRA rolleado (SOFR+4%, vto sep-2028) · 2029: +AO29 $470M
+         // 2030+ no se sincronizaba desde jul-05 (era $115.8B, quedó stale ~5 semanas)
+         venc:[{l:'2026',v:27.1},{l:'2027',v:26.5},{l:'2028',v:33.0},{l:'2029',v:29.1},{l:'2030+',v:155.5}],
          finan:{l:["Ene 26","Feb 26","Mar 26","Abr 26"],letes:[3200,2800,3500,2900],bonos:[1800,2100,1600,2200]}},
   // ── ECONOMIA REAL ──────────────────────
-  sipa:{l:["Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],
-        privado:[0.4,-0.2,0.3,0.1,0.6,-0.2,0.0,-0.2,-0.1],  // Fuente: EIL Secretaría de Trabajo
-        yoy:   [null,null,null,null,null,-1.1,-1.3,-1.4,-1.4], // YoY mensual EIL
-        salReal:[0.27,0.34,-0.71,-0.22,-0.36,-0.26,-0.75,-1.30,-1.30]}, // IS INDEC priv.reg (id:149.1_SOR_PRIADO_OCTU_0_25) MoM nominal / IPC MoM — datos.gob.ar
-  // ── SIPA COMPLETO — Fuente: "Situación y evolución del trabajo registrado" MCyH Feb 2026
+  sipa:{l:["Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],
+        privado:[0.4,-0.2,0.3,0.1,0.6,-0.2,0.0,-0.2,-0.1,-0.2,null,null],  // Fuente: EIL Secretaría de Trabajo / SIPA abr-26
+        yoy:   [null,null,null,null,null,-1.1,-1.3,-1.4,-1.4,-2.1,null,null], // YoY mensual
+        salReal:[0.27,0.34,-0.71,-0.22,-0.36,-0.26,-0.75,-1.30,-1.30,1.36,-0.10,0.0]}, // IS INDEC priv.reg (id:149.1_SOR_PRIADO_OCTU_0_25) MoM nominal / IPC MoM — datos.gob.ar. Jun26: INDEC salarios_08_26 (nom priv.reg +1.9%) / IPC Jun26 (+1.9%)
+  // ── SIPA COMPLETO — Fuente: "Situación y evolución del trabajo registrado" MCyH Abr 2026 (trabajoregistrado_2604_informe.pdf)
   sipaFull:{
-    // Snapshot Feb 2026 (en miles de trabajadores) — Tabla 1 informe SIPA feb 2026
+    // Snapshot Abr 2026 (en miles de trabajadores) — Tabla 1 informe SIPA abr 2026
     cats:['Asal. Privados','Monotributistas','Asal. Públicos','Casas Part.','Autónomos','M. Social'],
-    feb26:[6198.9,2210.4,3372.2,451.6,398.8,247.0],
-    feb25:[6299.0,2119.7,3386.0,443.9,399.8,241.7],
-    varAbs:[-100.1,90.7,-13.8,7.7,-1.0,5.3],   // variación absoluta en miles (YoY Feb26 vs Feb25)
-    varPct:[-1.6,4.3,-0.4,1.7,-0.3,2.2],        // variación % YoY
+    feb26:[6130.1,2187.9,3377.6,443.3,389.3,236.7],
+    feb25:[6258.7,2138.4,3392.0,442.6,394.1,231.2],
+    varAbs:[-128.6,49.5,-14.4,0.7,-4.8,5.5],   // variación absoluta en miles (YoY Abr26 vs Abr25)
+    varPct:[-2.1,2.3,-0.4,0.2,-1.2,2.4],        // variación % YoY
     // Serie mensual nominales asalariados privados (en miles) — Tabla 5 informe SIPA
-    lPriv:["Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26"],
-    privNom:[6216.8,6204.5,6198.5,6196.1,6190.7,6193.5,6195.9,6198.9]
+    lPriv:["Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
+    privNom:[6216.8,6204.5,6198.5,6196.1,6190.7,6193.5,6195.9,6198.9,6181.7,6130.1]
   },
-  construya:{l:["Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],
-             mom:[3.2,-4.1,8.6,-6.2,3.8,2.1,4.98],
-             yoy:[-8.2,-11.3,2.4,-9.1,-6.3,-3.7,-4.7]},
-  acara:{l:["Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
-         unidades:[66454,42026,48972,47735,41921],
-         yoy:[12.4,-5.7,1.2,-3.3,-25.6]},
+  construya:{l:["Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],
+             mom:[3.2,-4.1,8.6,-6.2,3.8,2.1,4.98,1.95,-1.98],
+             yoy:[-8.2,-11.3,2.4,-9.1,-6.3,-3.7,-4.7,1.58,-0.57]},
+  acara:{l:["Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26"],
+         unidades:[66454,42026,48972,47735,41921,47415,43758],
+         yoy:[12.4,-5.7,1.2,-3.3,-25.6,-12.8,-30.3]},
   adefa:{l:["Ene 26","Feb 26","Mar 26","Abr 26","May 26"],
          prod:   [20998,29632,41716,37521,37762],
          expo:   [9759, 15991,26646,26887,25237],
@@ -842,43 +936,46 @@ async function loadLiveData() {
 // ══ BUILD INDEC ══════════════════════════════════════════════════
 function buildINDEC(){
   $('kstrip').innerHTML=kpis([
-    {l:'IPC May 26 MoM',v:'2.1%',c:'r',n:'N\u00facleo 1.9% \u00b7 Reg. 2.4%'},
-    {l:'IPC May 26 YoY',v:'33.2%',c:'r',n:'Acum. 2026: 14.8%'},
-    {l:'EMAE Mar 26 YoY',v:'+5.5%',c:'g',n:'Desest. MoM +3.5%'},
-    {l:'EMAE Desest. Feb 26',v:'-2.7%',c:'r',n:'MoM sin estacionalidad'},
+    {l:'IPC Ago 26 MoM',v:'1.7%',c:'r',n:'N\u00facleo 1.8% \u00b7 Reg. 2.2%'},
+    {l:'IPC Ago 26 YoY',v:'33.5%',c:'r',n:'Acum. 2026: 21.3%'},
+    {l:'EMAE Jun 26 YoY',v:'+2.7%',c:'g',n:'Desest. MoM +0.8%'},
+    {l:'EMAE Desest. Jun 26',v:'+0.8%',c:'g',n:'MoM sin estacionalidad'},
     {l:'Desempleo Q4 25',v:'7.5%',c:'r',n:'EPH \u00b7 31 aglomerados'},
-    {l:'ICA May 26 Super\u00e1vit',v:'$3.504M',c:'g',n:'29vo mes positivo'},
-    {l:'Expo May 26 (r\u00e9cord hist.)',v:'$9.537M',c:'g',n:'R\u00e9cord hist\u00f3rico INDEC \u00b7 +34.4% YoY'},
-    {l:'ISAC May 26 MoM',v:'+6.3%',c:'g',n:'Construcci\u00f3n INDEC \u00b7 YoY +4.1%'},
-    {l:'UCII Abr 26',v:'59.9%',c:'g',n:'+1.3pp YoY \u00b7 Cap. instalada industria'}
+    {l:'ICA Jul 26 Super\u00e1vit',v:'$2.115M',c:'g',n:'+$1.208M vs jul-25'},
+    {l:'Expo Jul 26',v:'$8.854M',c:'g',n:'+14.1% YoY \u00b7 precios +12.4%'},
+    {l:'ISAC Jul 26 MoM',v:'-4.6%',c:'r',n:'Construcci\u00f3n INDEC \u00b7 YoY -4.5%'},
+    {l:'UCII Jun 26',v:'59.1%',c:'g',n:'+0.2pp YoY \u00b7 Cap. instalada industria'}
   ]);
   $('tabrow').innerHTML=tabs(['Resumen','IPC \u00b7 Precios','EMAE \u00b7 Actividad','EPH \u00b7 Laboral','ICA \u00b7 Comercio','ISAC \u00b7 IPI \u00b7 Sectorial']);
   var cal=makeCal(D.cal.year,D.cal.month,D.cal.events);
   $('main').innerHTML=
     panel2col('p0',
-      shdr('INDEC &mdash; Estad\u00edsticas Oficiales','Todos los indicadores publicados por el INDEC &middot; Julio 2026','')+
+      shdr('INDEC &mdash; Estad\u00edsticas Oficiales','Todos los indicadores publicados por el INDEC &middot; Agosto 2026','')+
       '<div class="og">'+
-        ocard('om0','IPC \u00b7 Precios','&Iacute;ndice Precios Consumidor','MoM / YoY / Categor\u00edas','2.1%','r','May 2026','N\u00facleo 1.9%<br>Reg. 2.4%',1)+
-        ocard('om1','EMAE \u00b7 Actividad','Est. Mensual Actividad Ec.','YoY / Desestacionalizado','+5.5%','g','Mar 2026','Desest. +3.5%<br>M\u00e1x. hist.',2)+
+        ocard('om0','IPC \u00b7 Precios','&Iacute;ndice Precios Consumidor','MoM / YoY / Categor\u00edas','1.7%','r','Ago 2026','N\u00facleo 1.8%<br>Reg. 2.2%',1)+
+        ocard('om1','EMAE \u00b7 Actividad','Est. Mensual Actividad Ec.','YoY / Desestacionalizado','+2.7%','g','Jun 2026','Desest. +0.8%<br>Tend-ciclo +0.2%',2)+
         ocard('om2','EPH \u00b7 Laboral','Encuesta Perm. Hogares','Desempleo / Actividad / Empleo','7.5%','r','Q4 2025','Actividad 48.1%<br>Subocup. 10.8%',3)+
-        ocard('om3','ICA \u00b7 Comercio','Intercambio Comercial','Bienes: Expo / Impo / Saldo','$3.504M','g','May 2026','Expo $9.537M<br>+34.4% YoY',4)+
-        ocard('om4','ISAC · Construcción','Ind. Sintético Activ. Constr.','Variación YoY INDEC','+4.1%','g','May 2026','MoM +6.3% · acum +2.5%',5)+
-        ocard('om5','IPI · Industria','&Iacute;ndice Prod. Industrial','Variación YoY INDEC','-5.7%','r','May 2026','MoM desest +0.4%<br>acum -3.1%',5)+
+        ocard('om3','ICA \u00b7 Comercio','Intercambio Comercial','Bienes: Expo / Impo / Saldo','$2.115M','g','Jul 2026','Expo $8.854M<br>+14.1% YoY',4)+
+        ocard('om4','ISAC · Construcción','Ind. Sintético Activ. Constr.','Variación YoY INDEC','-4.5%','r','Jul 2026','MoM desest -4.6% · acum +1.7%',5)+
+        ocard('om5','IPI · Industria','&Iacute;ndice Prod. Industrial','Variación YoY INDEC','-4.9%','r','Jul 2026','MoM desest -5.0%<br>acum -2.6%',5)+
       '</div>',
       cal,true)+
     panel2col('p1',
-      shdr('IPC \u00b7 &Iacute;ndice de Precios al Consumidor','INDEC &mdash; Nivel general y categor\u00edas MoM','2.1%','May 2026 \u00b7 MoM','r')+
-      src('INDEC \u00b7 Informe IPC May 2026')+
-      sr4([{l:'General May 26',v:'2.1%',c:'r',n:'Desaceleraci\u00f3n vs 2.6% Abr',x:'indec'},{l:'N\u00facleo May 26',v:'1.9%',c:'r',n:'Ex regulados y estacionales',x:'indec'},{l:'Regulados May 26',v:'2.4%',c:'r',n:'Combustibles \u00b7 tarifas',x:'indec'},{l:'Estacionales May 26',v:'2.1%',c:'r',n:'Indumentaria y turismo',x:'indec'}])+
+      shdr('IPC \u00b7 &Iacute;ndice de Precios al Consumidor','INDEC &mdash; Nivel general y categor\u00edas MoM','1.7%','Ago 2026 \u00b7 MoM','r')+
+      src('INDEC \u00b7 Informe IPC Ago 2026 \u00b7 Carnes/Combustibles: \u00edndice nacional ponderado por Amberes (INDEC solo publica estas aperturas por regi\u00f3n)')+
+      sr4([{l:'General Ago 26',v:'1.7%',c:'r',n:'Desaceleraci\u00f3n vs 2.1% Jul',x:'indec'},{l:'N\u00facleo Ago 26',v:'1.8%',c:'r',n:'Ex regulados y estacionales',x:'indec'},{l:'Regulados Ago 26',v:'2.2%',c:'r',n:'Electricidad \u00b7 gas \u00b7 transporte',x:'indec'},{l:'Estacionales Ago 26',v:'-0.9%',c:'g',n:'Turismo y prendas de vestir',x:'indec'}])+
       bx1('ci1','h240','IPC: Nivel General vs N\u00facleo vs Regulados vs Estacionales \u2014 MoM','c-indec')+
-      bx2(['ci2','ci3'],['IPC General YoY \u2014 Desaceleraci\u00f3n desde 120% (May 25) a 32.4%','Contribuci\u00f3n por categor\u00eda \u2014 May 2026'],'h190',['c-indec','c-rd']),
+      bx2(['ci2','ci3'],['IPC General YoY \u2014 Desaceleraci\u00f3n desde 43.5% (May 25) a 33.5%','Contribuci\u00f3n por categor\u00eda \u2014 Ago 2026'],'h190',['c-indec','c-rd'])+
+      bx2(['ci4','ci5'],['Carnes y derivados \u2014 MoM % (\u00edndice nacional ponderado Amberes)','Combustibles y lubricantes uso hogar \u2014 MoM % (\u00edndice nacional ponderado Amberes)'],'h190',['c-indec','c-or'])+
+      bx1('ci6','h220','IPC General vs IPC \u201cex-Carnes\u201d \u2014 inflaci\u00f3n subyacente sin el efecto de Carnes y derivados (c\u00e1lculo Amberes)','c-indec')+
+      bx1('ci7','h220','IPC N\u00facleo vs N\u00facleo \u201cex-Carnes\u201d \u2014 Carnes pesa ~13.1% dentro de N\u00facleo (c\u00e1lculo Amberes)','c-indec'),
       cal)+
     panel2col('p2',
-      shdr('EMAE \u00b7 Actividad Econ\u00f3mica','INDEC \u2014 Var. interanual y desestacionalizada','+5.5%','Mar 2026 \u00b7 YoY','g')+
-      src('INDEC \u00b7 emae_05_262127B26EA4.pdf \u00b7 Marzo 2026')+
-      sr4([{l:'EMAE YoY Mar 26',v:'+5.5%',c:'g',n:'14/15 sectores en alza',x:'indec'},{l:'Desest. MoM Mar 26',v:'+3.5%',c:'g',n:'M\u00e1ximo hist\u00f3rico',x:'indec'},{l:'EMAE YoY Feb 26',v:'-2.0%',c:'r',n:'Desest. MoM -2.7%',x:'indec'},{l:'EMAE YoY Ene 26',v:'+1.5%',c:'g',n:'Desest. MoM -0.2%',x:'indec'}])+
+      shdr('EMAE \u00b7 Actividad Econ\u00f3mica','INDEC \u2014 Var. interanual y desestacionalizada','+2.7%','Jun 2026 \u00b7 YoY','g')+
+      src('INDEC \u00b7 emae_08_26AADBE275B1.pdf \u00b7 Junio 2026 (publicado 20/08/2026)')+
+      sr4([{l:'EMAE YoY Jun 26',v:'+2.7%',c:'g',n:'12/15 sectores en alza \u00b7 Pesca +247.6%',x:'indec'},{l:'Desest. MoM Jun 26',v:'+0.8%',c:'g',n:'Tend-ciclo +0.2%',x:'indec'},{l:'EMAE YoY May 26',v:'+0.4%',c:'g',n:'Desest. MoM -0.6%',x:'indec'},{l:'EMAE YoY Abr 26',v:'+1.7%',c:'g',n:'Desest. MoM -1.6%',x:'indec'}])+
       bx1('ea1','h240','EMAE Desestacionalizado MoM \u2014 Sin efecto estacionalidad','c-indec')+
-      bx2(['ea2','ea3'],['EMAE YoY \u2014 Crecimiento interanual mensual','Din\u00e1mica Sectorial YoY \u2014 Mar 2026 (principales)'],'h190',['c-indec','']),
+      bx2(['ea2','ea3'],['EMAE YoY \u2014 Crecimiento interanual mensual','Din\u00e1mica Sectorial YoY \u2014 Jun 2026 (principales)'],'h190',['c-indec','']),
       cal)+
     panel2col('p3',
       shdr('EPH \u00b7 Mercado de Trabajo','INDEC \u2014 31 aglomerados urbanos \u00b7 EPH Continua','7.5%','Q4 2025 \u00b7 Desempleo','r')+
@@ -888,45 +985,47 @@ function buildINDEC(){
       bx2(['lb2','lb3'],['EPH \u2014 Tasa Actividad vs Tasa Empleo','EPH \u2014 Desempleo vs Subocupaci\u00f3n'],'h190',['c-indec','']),
       cal)+
     panel2col('p4',
-      shdr('ICA \u00b7 Intercambio Comercial Argentino','INDEC \u2014 Bienes: Exportaciones e Importaciones','$3.504M','Super\u00e1vit May 2026 \u00b7 R\u00c9CORD','g')+
-      src('INDEC \u00b7 ica_cuadros_18_06_26.xls \u00b7 Mayo 2026 (publicado 18/06/2026)')+
-      sr4([{l:'Expo May 26 (r\u00e9cord)',v:'$9.537M',c:'g',n:'+34.4% YoY \u00b7 r\u00e9cord hist\u00f3rico',x:'indec'},{l:'Impo May 26',v:'$6.033M',c:'a',n:'-7.0% YoY \u00b7 cantidades -13.6%',x:'indec'},{l:'Super\u00e1vit May 26',v:'$3.504M',c:'g',n:'29vo mes positivo \u00b7 r\u00e9cord',x:'indec'},{l:'T\u00e9rminos intercambio',v:'+5.8%',c:'g',n:'Precios expo > precios impo',x:'indec'}])+
-      bx1('bc1','h240','Exportaciones vs Importaciones \u2014 ICA INDEC \u2014 Jul 2025\u2013May 2026','c-indec')+
-      bx2(['bc2','bc3'],['Super\u00e1vit Comercial Mensual \u2014 29 meses positivos','Exportaciones por Grandes Rubros \u2014 PP / MOA / MOI / CyE'],'h190',['c-indec','']),
+      shdr('ICA \u00b7 Intercambio Comercial Argentino','INDEC \u2014 Bienes: Exportaciones e Importaciones','$2.115M','Super\u00e1vit Jul 2026','g')+
+      src('INDEC \u00b7 ica_08_26E158B1D119.pdf \u00b7 Julio 2026 (publicado 20/08/2026)')+
+      sr4([{l:'Expo Jul 26',v:'$8.854M',c:'g',n:'+14.1% YoY \u00b7 cantidades +1.5% \u00b7 precios +12.4%',x:'indec'},{l:'Impo Jul 26',v:'$6.739M',c:'a',n:'-1.7% YoY \u00b7 precios +8.4% \u00b7 cantidades -9.2%',x:'indec'},{l:'Super\u00e1vit Jul 26',v:'$2.115M',c:'g',n:'+$1.208M vs jul-25',x:'indec'},{l:'T\u00e9rminos intercambio',v:'+3.7%',c:'g',n:'Precios expo > precios impo',x:'indec'}])+
+      bx1('bc1','h240','Exportaciones vs Importaciones \u2014 ICA INDEC \u2014 Ago 2025\u2013Jul 2026','c-indec')+
+      bx2(['bc2','bc3'],['Super\u00e1vit Comercial Mensual','Exportaciones por Grandes Rubros \u2014 PP / MOA / MOI / CyE'],'h190',['c-indec',''])+
+      bx1('bc4','h220','Compras al Exterior: Courier (barras) vs. Consumos con Tarjeta (l\u00ednea) \u2014 USD millones \u2014 Dic 2020\u2013Jun 2026','c-indec')+
+      bx2(['bc5','bc6'],['Exportaciones por Grandes Rubros \u2014 Evoluci\u00f3n Mensual (USD MM)','Importaciones por Usos Econ\u00f3micos \u2014 Evoluci\u00f3n Mensual (USD MM)'],'h240',['c-indec','c-indec']),
       cal)+
     panel2col('p5',
-      shdr('ISAC · IPI · UCII · Sectorial','INDEC — Construcción · Industria · Capacidad Instalada','+4.1%','ISAC May 2026 · YoY','g')+
-      src('INDEC · ISAC · IPI Manufacturero · UCII · Mayo 2026')+
-      sr4([{l:'ISAC YoY May 26',v:'+4.1%',c:'g',n:'MoM desest +6.3% · acum +2.5%',x:'indec'},{l:'IPI Mfg YoY May 26',v:'-5.7%',c:'r',n:'MoM desest +0.4% · acum -3.1%',x:'indec'},{l:'UCII Abr 26',v:'59.9%',c:'g',n:'+1.3pp YoY · vs 58.6% abr 25',x:'indec'},{l:'UCII Mar 26',v:'59.8%',c:'g',n:'+5.4pp YoY · vs 54.4% mar 25',x:'indec'}])+
+      shdr('ISAC · IPI · UCII · Sectorial','INDEC — Construcción · Industria · Capacidad Instalada','-4.5%','ISAC Jul 2026 · YoY','r')+
+      src('INDEC · ISAC Julio 2026 · IPI Manufacturero Julio 2026 · UCII Junio 2026')+
+      sr4([{l:'ISAC YoY Jul 26',v:'-4.5%',c:'r',n:'MoM desest -4.6% · acum +1.7%',x:'indec'},{l:'IPI Mfg YoY Jul 26',v:'-4.9%',c:'r',n:'MoM desest -5.0% · acum -2.6%',x:'indec'},{l:'UCII Jun 26',v:'59.1%',c:'g',n:'+0.2pp YoY · vs 58.9% jun 25',x:'indec'},{l:'UCII May 26',v:'58.3%',c:'r',n:'-0.5pp YoY · vs 58.8% may 25',x:'indec'}])+
       bx2(['is1','is2'],['ISAC \u2014 Construcci\u00f3n MoM Desestacionalizado','IPI \u2014 Industria Manufacturera MoM'],'h240',['c-indec','c-indec'])+
       bx1('is3','h190','ISAC vs IPI vs EMAE \u2014 Comparativa sectorial 2025\u20132026','')+
-      bx1('is3b','h220','UCII \u2014 Utilizaci\u00f3n Capacidad Instalada Industria (%) \u00b7 Ene 2025\u2013Abr 2026','c-indec')+
-      shdr('IPI Minero \u00b7 Energ\u00eda y Recursos','INDEC \u2014 Petr\u00f3leo \u00b7 Gas Natural \u00b7 Litio','+9.2%','IPI Minero May 2026 \u00b7 YoY','g')+
-      src('INDEC \u00b7 ipi_minero_07_26 \u00b7 Mayo 2026')+
+      bx1('is3b','h220','UCII \u2014 Utilizaci\u00f3n Capacidad Instalada Industria (%) \u00b7 Ene 2025\u2013Jun 2026','c-indec')+
+      shdr('IPI Minero \u00b7 Energ\u00eda y Recursos','INDEC \u2014 Petr\u00f3leo \u00b7 Gas Natural \u00b7 Litio','+3.7%','IPI Minero Jul 2026 \u00b7 YoY','g')+
+      src('INDEC \u00b7 ipi_minero_08_26 \u00b7 Junio 2026')+
       sr4([
-        {l:'IPI Minero YoY',v:'+9.2%',c:'g',n:'May 2026 \u00b7 acum +7.8%',x:'indec'},
-        {l:'Petr\u00f3leo crudo',v:'+19.2%',c:'g',n:'May 26 \u00b7 gas natural +5.5%',x:'indec'},
+        {l:'IPI Minero YoY',v:'+3.7%',c:'g',n:'Jul 2026 \u00b7 acum +7.7%',x:'indec'},
+        {l:'Petr\u00f3leo crudo',v:'+16.3%',c:'g',n:'Jun 26 \u00b7 gas natural +0.2%',x:'indec'},
         {l:'IPI Pesquero YoY',v:'-24.3%',c:'r',n:'May 2026 \u00b7 acum +9.7%',x:'indec'},
-        {l:'Litio carbonato',v:'+57.3%',c:'g',n:'11.562 tons \u00b7 \u00edndice 539.7',x:'indec'}
+        {l:'Litio carbonato',v:'+61.5%',c:'g',n:'\u00edndice 522.3 \u00b7 acum +57.1%',x:'indec'}
       ])+
       bx2(['is4','is5'],['IPI Minero \u2014 Nivel General YoY %','Petr\u00f3leo \u2014 Convencional vs No Convencional (miles m\u00b3)'],'h240',['c-indec','c-indec'])+
       bx2(['is6','is7'],['Gas Natural \u2014 Conv vs No Conv (mill. m\u00b3)','Litio \u2014 Carbonato de litio (toneladas)'],'h200',['c-indec','c-indec'])+
-      shdr('ICC \u00b7 Costo de la Construcci\u00f3n','INDEC \u2014 Gran Buenos Aires \u00b7 Nivel General y modelos','+2.7%','Mayo 2026 \u00b7 MoM','a')+
-      src('INDEC \u00b7 icc_06_26E525F0BF75.pdf \u00b7 Mayo 2026')+
+      shdr('ICC \u00b7 Costo de la Construcci\u00f3n','INDEC \u2014 Gran Buenos Aires \u00b7 Nivel General y modelos','+2.1%','Julio 2026 \u00b7 MoM','a')+
+      src('INDEC \u00b7 icc_08_261DF284E37A.pdf \u00b7 Julio 2026')+
       sr4([
-        {l:'ICC Nivel General May 26',v:'+2.7%',c:'a',n:'Interanual +29.0% \u00b7 acum +12.8%',x:'indec'},
-        {l:'Materiales May 26',v:'+1.6%',c:'g',n:'Incidencia 0.66 pp',x:'indec'},
-        {l:'Mano de Obra May 26',v:'+3.5%',c:'r',n:'Asalariada +3.8% \u00b7 Subcontr. +1.9%',x:'indec'},
-        {l:'Gastos Generales May 26',v:'+4.0%',c:'r',n:'Energ\u00eda+Alquileres+UOCRA',x:'indec'}
+        {l:'ICC Nivel General Jul 26',v:'+2.1%',c:'a',n:'Interanual +32.5% \u00b7 acum +19.2%',x:'indec'},
+        {l:'Materiales Jul 26',v:'+1.6%',c:'g',n:'Incidencia 0.65 pp',x:'indec'},
+        {l:'Mano de Obra Jul 26',v:'+2.5%',c:'r',n:'Asalariada +2.6% \u00b7 Subcontr. +1.8% (UOCRA)',x:'indec'},
+        {l:'Gastos Generales Jul 26',v:'+2.5%',c:'r',n:'Tarifas el\u00e9ctricas Edenor/Edesur+conexi\u00f3n gas/agua',x:'indec'}
       ])+
       bx2(['is8','is9'],['ICC \u2014 Vivienda Multifamiliar MoM %','ICC \u2014 Vivienda Unifamiliar MoM %'],'h220',['c-indec','c-indec'])+
-      shdr('SIPM \u00b7 Precios Mayoristas','INDEC \u2014 IPIM \u00b7 IPIB \u00b7 IPP \u00b7 Mayo 2026','+2.5%','IPIM Mayo 2026 \u00b7 MoM','a')+
-      src('INDEC \u00b7 ipm_06_264CAE653E80.pdf \u00b7 Mayo 2026')+
+      shdr('SIPM \u00b7 Precios Mayoristas','INDEC \u2014 IPIM \u00b7 IPIB \u00b7 IPP \u00b7 Julio 2026','+0.8%','IPIM Julio 2026 \u00b7 MoM','a')+
+      src('INDEC \u00b7 ipm_08_261C33BA0391.pdf \u00b7 Julio 2026')+
       sr4([
-        {l:'IPIM May 26 MoM',v:'+2.5%',c:'a',n:'Interanual +34.5% \u00b7 acum +14.4%',x:'indec'},
-        {l:'IPIM May 26 YoY',v:'+34.5%',c:'r',n:'Prod. nacionales +35.1%',x:'indec'},
-        {l:'IPIB May 26 MoM',v:'+2.7%',c:'a',n:'YoY +33.5% (ex-impuestos)',x:'indec'},
-        {l:'IPP May 26 MoM',v:'+2.7%',c:'a',n:'YoY +34.6% (precios productor)',x:'indec'}
+        {l:'IPIM Jul 26 MoM',v:'+0.8%',c:'a',n:'Interanual +31.1% \u00b7 acum +16.6%',x:'indec'},
+        {l:'IPIM Jul 26 YoY',v:'+31.1%',c:'r',n:'Prod. nacionales +31.8%',x:'indec'},
+        {l:'IPIB Jul 26 MoM',v:'+0.8%',c:'a',n:'YoY +30.2% (ex-impuestos)',x:'indec'},
+        {l:'IPP Jul 26 MoM',v:'+0.9%',c:'a',n:'YoY +31.3% (precios productor)',x:'indec'}
       ]),
       cal);
 
@@ -942,11 +1041,21 @@ function buildINDEC(){
       {label:'Estacionales',data:D.estacion,borderColor:C.G4,tension:0.4,pointRadius:3,pointBackgroundColor:C.G4}
     ],'%',undefined,ai);
     line('ci2',D.ipcYoY.l,[{label:'IPC YoY %',data:D.ipcYoY.v,borderColor:C.RD,fill:true,backgroundColor:C.RD+'15',tension:0.4,pointRadius:3,pointBackgroundColor:C.RD}],'%',undefined,ai);
-    bar('ci3',['N\u00facleo','Regulados','Estac.','General'],[2.3,4.7,0.0,2.6],{cf:function(v,i){return [C.CELL,C.OR,C.G4,C.RD][i];},s:'%',ac:ai});
+    bar('ci3',['N\u00facleo','Regulados','Estac.','General'],[1.8,2.2,-0.9,1.7],{cf:function(v,i){return [C.CELL,C.OR,C.G4,C.RD][i];},s:'%',ac:ai});
+    bar('ci4',D.carnes.l,D.carnes.v,{cf:function(v){return v>=0?C.RD:C.G4;},s:'%',ac:ai});
+    bar('ci5',D.combustibles.l,D.combustibles.v,{cf:function(v){return v>=0?C.OR:C.G4;},s:'%',ac:ai});
+    line('ci6',D.ipcExCarnes.l,[
+      {label:'IPC General',data:D.ipc.v.slice(-D.ipcExCarnes.l.length),borderColor:C.RD,tension:0.4,pointRadius:3,pointBackgroundColor:C.RD},
+      {label:'IPC ex-Carnes',data:D.ipcExCarnes.v,borderColor:C.CELL,borderDash:[6,3],tension:0.4,pointRadius:3,pointBackgroundColor:C.CELL}
+    ],'%',undefined,ai);
+    line('ci7',D.nucleoExCarnes.l,[
+      {label:'IPC N\u00facleo',data:D.nucleo.slice(-D.nucleoExCarnes.l.length),borderColor:C.CELL,tension:0.4,pointRadius:3,pointBackgroundColor:C.CELL},
+      {label:'N\u00facleo ex-Carnes',data:D.nucleoExCarnes.v,borderColor:C.OR,borderDash:[6,3],tension:0.4,pointRadius:3,pointBackgroundColor:C.OR}
+    ],'%',undefined,ai);
     // EMAE
     bar('ea1',D.emaeDesest.l,D.emaeDesest.v,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ai});
     line('ea2',D.emae.l,[{label:'EMAE YoY',data:D.emae.v,borderColor:ai,fill:true,backgroundColor:ai+'18',tension:0.4,pointRadius:3,pointBackgroundColor:ai}],'%',undefined,ai);
-    bar('ea3',D.sectMar26.n,D.sectMar26.v,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ai});
+    bar('ea3',D.sectJun26.n,D.sectJun26.v,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ai});
     // EPH
     bar('lb1',D.eph.l,D.eph.desempleo,{cf:function(v){return v>8?C.RD:v>7?C.OR:C.G4;},ac:ai});
     line('lb2',D.eph.l,[
@@ -963,7 +1072,49 @@ function buildINDEC(){
       {label:'Impo',data:D.ica.impo,borderColor:C.RD,tension:0.3,pointRadius:3,pointBackgroundColor:C.RD}
     ],'M',undefined,ai);
     bar('bc2',D.ica.l,D.ica.saldo,{cf:function(v){return v>=0?C.G4:C.RD;},s:'M',ac:ai});
-    mkDoughnut('bc3',['PP (P. Primarios)','MOA','MOI','CyE'],[30,30,25,15],[C.G4,ai,C.OR,C.CELL]);
+    mkDoughnut('bc3',['PP (P. Primarios)','MOA','MOI','CyE'],[23.8,34.7,24.5,17.0],[C.G4,ai,C.OR,C.CELL]);
+    (function(){
+      var el=$('bc4'); if(!el) return;
+      new Chart(el,{data:{labels:D.courier.l,datasets:[
+        {type:'bar',label:'Courier',data:D.courier.v,backgroundColor:ai,borderWidth:0,borderRadius:2,yAxisID:'y'},
+        {type:'line',label:'Tarjeta exterior',data:D.tarjetas.v,borderColor:C.OR,backgroundColor:C.OR,borderWidth:2,pointRadius:2,tension:0.3,yAxisID:'y'}
+      ]},options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:true,labels:{color:C.DM,font:{size:10},boxWidth:12,padding:8}},tooltip:{...tip(ai),callbacks:{label:function(c){return c.dataset.label+': $'+parseFloat(c.parsed.y.toFixed(1))+'M';}}}},
+        scales:{x:{ticks:{color:C.DM,font:{size:9}},grid:{display:false},border:{color:'transparent'}},
+                y:{ticks:{color:C.DM,font:{size:10},callback:function(v){return '$'+v+'M';}},grid:{color:'rgba(255,255,255,.04)'},border:{color:'transparent'}}}}});
+    })();
+    // ICA desagregado — evolución mensual por rubro (expo) y uso (impo), stacked bars
+    (function(){
+      var el=$('bc5'); if(!el) return;
+      var r=D.icaRubros;
+      new Chart(el,{data:{labels:r.l,datasets:[
+        {label:'Productos primarios',data:r.expo.pp,backgroundColor:C.G4,stack:'s'},
+        {label:'MOA',data:r.expo.moa,backgroundColor:ai,stack:'s'},
+        {label:'MOI',data:r.expo.moi,backgroundColor:C.OR,stack:'s'},
+        {label:'Combustibles y energía',data:r.expo.cye,backgroundColor:C.CELL,stack:'s'}
+      ]},type:'bar',options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:true,position:'bottom',labels:{color:C.DM,font:{size:9},boxWidth:10,padding:6}},
+          tooltip:{...tip(ai),callbacks:{label:function(c){return c.dataset.label+': $'+parseFloat(c.parsed.y.toFixed(0))+'M';}}}},
+        scales:{x:{stacked:true,ticks:{color:C.DM,font:{size:8}},grid:{display:false},border:{color:'transparent'}},
+                y:{stacked:true,ticks:{color:C.DM,font:{size:10},callback:function(v){return '$'+v+'M';}},grid:{color:'rgba(255,255,255,.04)'},border:{color:'transparent'}}}}});
+    })();
+    (function(){
+      var el=$('bc6'); if(!el) return;
+      var r=D.icaRubros;
+      new Chart(el,{data:{labels:r.l,datasets:[
+        {label:'Bienes de capital',data:r.impo.bk,backgroundColor:C.G4,stack:'s'},
+        {label:'Bienes intermedios',data:r.impo.bi,backgroundColor:ai,stack:'s'},
+        {label:'Combustibles y lubricantes',data:r.impo.cyl,backgroundColor:C.RD,stack:'s'},
+        {label:'Piezas y accesorios',data:r.impo.pya,backgroundColor:C.OR,stack:'s'},
+        {label:'Bienes de consumo',data:r.impo.bc,backgroundColor:C.CELL,stack:'s'},
+        {label:'Vehículos',data:r.impo.va,backgroundColor:C.CEL,stack:'s'},
+        {label:'Resto',data:r.impo.resto,backgroundColor:C.DM,stack:'s'}
+      ]},type:'bar',options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:true,position:'bottom',labels:{color:C.DM,font:{size:9},boxWidth:10,padding:6}},
+          tooltip:{...tip(ai),callbacks:{label:function(c){return c.dataset.label+': $'+parseFloat(c.parsed.y.toFixed(0))+'M';}}}},
+        scales:{x:{stacked:true,ticks:{color:C.DM,font:{size:8}},grid:{display:false},border:{color:'transparent'}},
+                y:{stacked:true,ticks:{color:C.DM,font:{size:10},callback:function(v){return '$'+v+'M';}},grid:{color:'rgba(255,255,255,.04)'},border:{color:'transparent'}}}}});
+    })();
     // ISAC / IPI Manufacturero
     bar('is1',D.isac.l,D.isac.v,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ai});
     bar('is2',D.ipi.l,D.ipi.v,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ai});
@@ -1028,41 +1179,44 @@ var BCRA_VARS = {
 // ── Datos del Balance Cambiario (actualización mensual desde PDF) ──
 // Fuente: Evolución del Mercado de Cambios y Balance Cambiario | BCRA
 var D_BAL_CAM = {
-  fecha: 'Mayo 2026',
+  fecha: 'Julio 2026',
   // Personas humanas
-  compra_billetes_ph: 1804,   // MM USD compras netas billetes personas humanas
-  compra_divisas_ph: 408,     // MM USD giros divisas sin fines específicos
-  compra_bruta_ph: 2212,      // MM USD compras brutas (1,4M personas)
-  venta_bruta_ph: 408,        // MM USD ventas brutas
-  fae_ph: 300,                // MM USD formación activos externos (atesoramiento)
-  dep_bancos_ph: 700,         // MM USD depositados en bancos locales
-  tarjetas_ph: 800,           // MM USD usados para gastos con tarjeta
+  compra_billetes_ph: 2916,   // MM USD compras netas billetes personas humanas
+  compra_divisas_ph: 546,     // MM USD giros divisas sin fines específicos
+  compra_bruta_ph: 4124,      // MM USD compras netas totales
+  venta_bruta_ph: null,       // PH fue comprador neto en julio, sin ventas brutas relevantes
+  fae_ph: 1000,                // MM USD formación activos externos (atesoramiento)
+  dep_bancos_ph: 1000,         // MM USD depositados en bancos locales
+  tarjetas_ph: 900,           // MM USD usados para gastos con tarjeta
   // Personas Jurídicas
-  venta_billetes_pj: 212,     // MM USD ventas netas PJ
-  venta_divisas_pj: 114,      // MM USD ventas netas divisas PJ
+  venta_billetes_pj: null,    // no informado explícitamente en el resumen ejecutivo de julio
+  venta_divisas_pj: null,
   // Dividendos
-  dividendos_total: 484,      // MM USD egresos por utilidades y dividendos (IP 1642 - int 1158)
+  dividendos_total: 463,      // MM USD egresos netos por utilidades/dividendos y otras rentas (IP 2772 - int 2309)
   dividendos_oleag: null,
-  dividendos_energia: 99,     // MM USD Energía
-  dividendos_metales: 67,     // MM USD Metales Comunes y Elaboración
+  dividendos_energia: 149,    // MM USD Energía
+  dividendos_metales: null,
+  dividendos_alimentos: null, // no está entre los top sectores de julio
+  dividendos_entfin: 119,     // MM USD Entidades Financieras
+  dividendos_quimica: 91,     // MM USD Industria Química, Caucho y Plástico
   // Cuenta Corriente Cambiaria
-  cc_cam_saldo: 1877,         // MM USD superávit cuenta corriente cambiaria
-  cc_bienes: 4322,            // MM USD ingresos netos bienes (máximo histórico)
-  cc_servicios: -802,         // MM USD egresos netos servicios
-  cc_ingr_primario: -1642,    // MM USD (intereses 1158 + utilidades/dividendos 484)
-  cc_ingr_secundario: -1,     // MM USD
+  cc_cam_saldo: 413,           // MM USD superávit cuenta corriente cambiaria
+  cc_bienes: 4077,             // MM USD ingresos netos bienes
+  cc_servicios: -900,          // MM USD egresos netos servicios
+  cc_ingr_primario: -2772,     // MM USD (intereses 2309 + utilidades/dividendos 463)
+  cc_ingr_secundario: 8,       // MM USD
   // Reservas
-  reservas_fin_mes: 48193,    // MM USD fin de mayo
-  compras_bcra_mes: 2601,     // MM USD compras BCRA en el mes
+  reservas_fin_mes: 47599,    // MM USD fin de julio
+  compras_bcra_mes: 2163,     // MM USD compras BCRA en el mes
   // Histórico compras personas humanas (billetes, MM USD)
-  hist_labels: ['Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26'],
-  hist_ph_billetes: [1450, 2145, 1350, 1420, 1954, 2100, 2292, 1804],
+  hist_labels: ['Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26'],
+  hist_ph_billetes: [1350, 1420, 1954, 2100, 2292, 1804, 2015, 2916],
   // Fuente: Inf. Mercado Cambios BCRA
-  // Oct 25: 1450, Nov 25: 2145, Dic 25: 1350, Ene 26: 1420, Feb 26: 1954, Mar 26: 2100, Abr 26: 2292, May 26: 1804
-  hist_dividendos:  [180,  210,  280,  195,  260,  310,  365,  484],
-  hist_cc_cam:      [895, 693, 2247, 1706, 1139, 2523, 1333, 1877]
+  // Dic 25: 1350, Ene 26: 1420, Feb 26: 1954, Mar 26: 2100, Abr 26: 2292, May 26: 1804, Jun 26: 2015, Jul 26: 2916
+  hist_dividendos:  [280,  195,  260,  310,  365,  484,  1023, 463],
+  hist_cc_cam:      [2247, 1706, 1139, 2523, 1333, 1877, 857, 413]
   // Fuente: Inf. Mercado de Cambios BCRA
-  // Oct 25: +895, Nov 25: +693, Dic 25: +2247, Ene 26: +1706, Feb 26: +1139, Mar 26: +2523, Abr 26: +1333, May 26: +1877
+  // Dic 25: +2247, Ene 26: +1706, Feb 26: +1139, Mar 26: +2523, Abr 26: +1333, May 26: +1877, Jun 26: +857, Jul 26: +413
 };
 
 // Cache local para esta sesión (evita re-fetch al cambiar de tab)
@@ -1341,7 +1495,9 @@ async function buildBCRA(){
       src('BCRA \u00b7 idVariable=15 (Base Monetaria)')+
       sr4([{l:'Base Mon. (live)',v:'...',c:'a',n:'MM ARS \u00b7 BCRA API id=71',x:'bcra'},{l:'Var. Mensual Real s.e.',v:'-2.8%',c:'r',n:'May 26 \u00b7 IMM BCRA',x:'bcra'},{l:'Base / PBI',v:'3.9%',c:'a',n:'May 26 \u00b7 Mínimo hist.',x:'bcra'},{l:'Var. YoY nominal',v:'+20.8%',c:'g',n:'May 26 \u00b7 IMM BCRA',x:'bcra'}])+
       bx1('bm_hist','h240','Base Monetaria \u2014 MM ARS \u00b7 Desde Dic 2023 \u00b7 BCRA API id=71','c-bcra')+
-      bx2(['bm_var','bm_fact'],['Variaci\u00f3n Mensual Base Monetaria %','Factores de Variaci\u00f3n (API id=46)'],'h190',['c-bcra','c-bcra']),
+      bx2(['bm_var','bm_fact'],['Variaci\u00f3n Mensual Base Monetaria %','Factores de Variaci\u00f3n (API id=46)'],'h190',['c-bcra','c-bcra'])+
+      src('A3/MAE (Rueda REPO, live) + BCRA API id=198 \u201cOtros\u201d (rezago ~1-2 d\u00edas h\u00e1biles). D\u00edas sin dato oficial a\u00fan: estimaci\u00f3n por regresi\u00f3n en ventana m\u00f3vil de 10 d\u00edas (MAPE backtest \u2248 17,5%).')+
+      bx1('repo_colchon','h240','Colch\u00f3n de Liquidez BCRA en Rueda REPO \u2014 ARS billones \u00b7 4-May a 21-Ago 2026 (\u00faltimo dato: estimado)','c-bcra'),
       cal)+
     panel2col('p5',
       shdr('Cr\u00e9dito y Dep\u00f3sitos','BCRA \u2014 Sector Privado \u00b7 Evoluci\u00f3n mensual','...','Cargando... (API BCRA)','g')+
@@ -1351,7 +1507,7 @@ async function buildBCRA(){
       bx2(['cr2','cr3'],['Var. Mensual Pr\u00e9stamos Privados %','Hip. \u00b7 Personales \u00b7 Tarjetas (id=112/114/115)'],'h190',['c-bcra','c-bcra']),
       cal)+
     panel2col('p6',
-      shdr('Balance Cambiario \u00b7 Mercado de Cambios','BCRA \u2014 PDF mensual \u00b7 \u00daltimo dato: '+D_BAL_CAM.fecha,'$'+D_BAL_CAM.cc_cam_saldo+'M','CC Cambiaria Mayo 2026','g')+
+      shdr('Balance Cambiario \u00b7 Mercado de Cambios','BCRA \u2014 PDF mensual \u00b7 \u00daltimo dato: '+D_BAL_CAM.fecha,'$'+D_BAL_CAM.cc_cam_saldo+'M','CC Cambiaria '+D_BAL_CAM.fecha,'g')+
       src('BCRA \u00b7 Evoluci\u00f3n del Mercado de Cambios y Balance Cambiario \u00b7 '+D_BAL_CAM.fecha)+
       '<div class="sr4">'+
         '<div class="sc"><div class="sl">Compra billetes PH</div><div class="sv r">$'+D_BAL_CAM.compra_billetes_ph+'M</div><div class="sn">'+D_BAL_CAM.fecha+' \u00b7 1,5M personas</div></div>'+
@@ -1543,6 +1699,22 @@ function _updateBCRADOM(ab){
     {label:'Tesoro Nacional',data:factTes,borderColor:C.RD,tension:0.3,pointRadius:3,pointBackgroundColor:C.RD},
     {label:'Otros BCRA',data:factOtr,borderColor:C.OR,tension:0.3,pointRadius:3,pointBackgroundColor:C.OR}
   ],'MM',undefined,ab);
+  // Colchón de Liquidez BCRA en Rueda REPO — barras apiladas (Partes vs BCRA), último punto estimado
+  if(D.repoColchon){
+    var rc=D.repoColchon;
+    var rcEl=$('repo_colchon');
+    if(rcEl){
+      new Chart(rcEl,{type:'bar',data:{labels:rc.l,datasets:[
+        {label:'REPO entre Partes',data:rc.partes,backgroundColor:C.CEL,stack:'s1'},
+        {label:'REPO al BCRA'+(rc.estado[rc.estado.length-1]==='est'?' (últ. dato: estimado)':''),data:rc.bcra,backgroundColor:function(ctx){return rc.estado[ctx.dataIndex]==='est'?C.OR:ab;},stack:'s1'}
+      ]},options:{responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{labels:{color:'#9fb0ad',boxWidth:10,font:{size:9}}},
+          tooltip:{callbacks:{footer:function(items){var i=items[0].dataIndex;return rc.estado[i]==='est'?'Último día: sin dato oficial BCRA aún, valor estimado':'';}}}},
+        scales:{x:{stacked:true,ticks:{color:'#8a9a97',font:{size:8},maxRotation:60,minRotation:60}},
+                y:{stacked:true,ticks:{color:'#8a9a97',callback:function(v){return v+'B';}},title:{display:true,text:'ARS billones',color:'#8a9a97',font:{size:9}}}}
+      }});
+    }
+  }
 
     if(D.credito.v.length){
     line('cr1',D.credito.l,[
@@ -1620,7 +1792,7 @@ function buildMECON(){
       src('Secretar\u00eda de Hacienda \u00b7 May26.pdf \u00b7 Drive/MECON \u00b7 Base caja SPN')+
       sr4([{l:'Sup. Primario May 26',v:'$1.924B',c:'g',n:'vs $633B Abr 26',x:'mecon'},{l:'Sup. Financiero May 26',v:'$479B',c:'g',n:'Incl. intereses',x:'mecon'},{l:'Racha super\u00e1vit',v:'27/29',c:'g',n:'Meses positivos',x:'mecon'},{l:'Acum. Ene\u2013May 26',v:'0.7% PBI',c:'g',n:'Primario \u00b7 0.2% fin.',x:'mecon'}])+
       bx1('fi1','h240','Super\u00e1vit/D\u00e9ficit Primario % PBI \u2014 2004\u20132025 \u00b7 Fuente: MECON','c-mecon')+
-      bx2(['fi2','fi3'],['Resultado Primario y Financiero % PBI \u2014 2004\u20132026 (\u00faltimo: meta FMI)','Ejecuci\u00f3n Mensual SPN 2026 \u2014 Res. Primario B ARS (Hacienda base caja)'],'h190',['c-mecon','']),
+      bx2(['fi2','fi3'],['Resultado Primario y Financiero % PBI \u2014 2004\u20132026 (\u00faltimo: estimado real)','Ejecuci\u00f3n Mensual SPN 2026 \u2014 Res. Primario B ARS (Hacienda base caja)'],'h190',['c-mecon','']),
       cal)+
     panel2col('p2',
       shdr('Recaudaci\u00f3n AFIP','AFIP \u2014 Ingresos tributarios y aduaneros','$13.4B','Abr 2026','m')+
@@ -1644,7 +1816,10 @@ function buildMECON(){
             '<div><div style="font-size:9.5px;color:var(--wh);margin-bottom:2px;">Pesos <span class="g">32%</span></div><div class="dbar"><div class="dfill" style="width:32%;background:linear-gradient(90deg,var(--g4),var(--cel));"></div></div></div></div>'+
         '</div>'+
       '</div>'+
-      bx2(['de1','de2'],['Deuda Bruta % PBI \u2014 Serie mensual 2019\u20132026 (Finanzas)','Vencimientos ME 2026 Mensual \u2014 A.3.2+A.3.3 \u00b7 MM USD (Jul 9: $4.9B pagado \u00b7 financiado $3.2B BBVA/DB)'],'h190',['c-rd','c-mecon']),
+      bx2(['de1','de2'],['Deuda Bruta % PBI \u2014 Serie mensual 2019\u20132026 (Finanzas)','Vencimientos ME 2026 Mensual \u2014 A.3.2+A.3.3 \u00b7 MM USD (Jul 9: $4.9B pagado \u00b7 financiado $3.2B BBVA/DB)'],'h190',['c-rd','c-mecon'])+
+      shdr('D\u00f3lar Linked \u2014 Stock y Cobertura','Outstanding DLK + Inter\u00e9s Abierto ROFEX vs. M2 Privado','10,404',L(D.dlkCobertura.l)+' \u00b7 USD MM','a')+
+      src('Vencimientos - Detalle DLK \u00b7 Ratio Cobertura-M2 Diario \u2014 lic. 12-Ago + canje D31G6 18-Ago')+
+      bx2(['dc1','dc2'],['Stock DLK en Circulaci\u00f3n \u2014 USD MM','Ratio Cobertura (ROFEX+DLK) / M2 Privado \u2014 %'],'h190',['c-mecon','c-mecon']),
       cal)+
     panel2col('p4',
       shdr('Licitaciones del Tesoro','Vida promedio \u00b7 Rollover \u00b7 Perfil vencimientos \u00b7 Ene\u2013Jun 2026','120%','Rollover 10-Jun \u00b7 $6.12B adj.','g')+
@@ -1656,10 +1831,10 @@ function buildMECON(){
       shdr('Balanza de Pagos','Cuenta corriente \u00b7 Comercio \u00b7 Capital','$2.977B','Super\u00e1vit Com. Bimestre 2026','g')+
       src('Canciller\u00eda \u00b7 INDEC \u00b7 BCRA \u00b7 Balanza de Pagos')+
       sr4([
-    {l:'Prim. Abr 26 (base caja)',v:'$633B',c:'g',n:'ARS \u00b7 SPN Hacienda',x:'mecon'},
-    {l:'Fin. Abr 26 (base caja)',v:'$268B',c:'g',n:'Neto intereses $365B',x:'mecon'},
-    {l:'Acum. prim. Ene\u2013Abr 26',v:'$6.1T',c:'g',n:'\u22480.5% PBI \u00b7 meta FMI 1.4%',x:'mecon'},
-    {l:'Acum. fin. Ene\u2013Abr 26',v:'$2.0T',c:'g',n:'\u22480.2% PBI \u00b7 SPN',x:'mecon'}
+    {l:'Prim. Jul 26 (base caja)',v:'$2.960T',c:'g',n:'ARS \u00b7 SPN Hacienda',x:'mecon'},
+    {l:'Fin. Jul 26 (base caja)',v:'$244.9B',c:'g',n:'ARS \u00b7 SPN Hacienda',x:'mecon'},
+    {l:'Acum. prim. Ene\u2013Jul 26',v:'$10.3T',c:'g',n:'\u22480.39% PBI (real, act. 07/09/2026) \u00b7 vs. meta FMI 1.4%',x:'mecon'},
+    {l:'Acum. fin. Ene\u2013Jul 26',v:'$1.7T',c:'g',n:'\u22480.06% PBI \u00b7 SPN',x:'mecon'}
   ])+
       bx1('bp1','h240','Balanza Comercial de Bienes \u2014 ICA INDEC \u2014 2025\u20132026','c-mecon')+
       bx2(['bp2','bp3'],['Balance Energ\u00e9tico Hist\u00f3rico 2015\u20132025 \u2014 MM USD (Vaca Muerta)','Exportaciones por Rubro \u2014 PP / MOA / MOI / CyE'],'h190',['c-mecon','']),
@@ -1677,8 +1852,8 @@ function buildMECON(){
     ],undefined,undefined,am);
     // fi3: Ejecución mensual SPN 2026 — B ARS (Hacienda base caja)
     // Ene-Mar: distribución estimada del Q1 ($5.467T acum); Abr: exacto
-    var exec26L=['Ene 26','Feb 26','Mar 26','Abr 26','May 26'];
-    var exec26P=[1640,1203,2624,633,1924];  // primario B ARS
+    var exec26L=['Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26'];
+    var exec26P=[1640,1203,2624,633,1924,-697,2960];  // primario B ARS
     bar('fi3',exec26L,exec26P,{cf:function(v){return v>=0?C.G4:C.RD;},s:'B',ac:am});
     // Recaud
     bar('rc1',D.recaud.l,D.recaud.total,{c:am,s:'B',ac:am});
@@ -1708,6 +1883,9 @@ function buildMECON(){
       {label:'Intereses ME (MM USD)',data:D.vencUSD2026.interes,
        borderColor:C.OR,fill:true,backgroundColor:C.OR+'11',tension:0.2,pointRadius:4,pointBackgroundColor:C.OR}
     ],'M',undefined,am);
+    // Stock DLK y Ratio de Cobertura
+    line('dc1',D.dlkCobertura.l,[{label:'Stock DLK (USD MM)',data:D.dlkCobertura.stock,borderColor:am,fill:true,backgroundColor:am+'18',tension:0.2,pointRadius:3,pointBackgroundColor:am}],'M',undefined,am);
+    line('dc2',D.dlkCobertura.l,[{label:'Ratio Cobertura/M2 (%)',data:D.dlkCobertura.ratio,borderColor:C.OR,fill:true,backgroundColor:C.OR+'18',tension:0.2,pointRadius:3,pointBackgroundColor:C.OR}],'%',undefined,am);
     // Financiamiento
     // fn1: Vida promedio ponderada por licitación individual
     bar('fn1',D.licitaciones.l,D.licitaciones.vidaPromedio,{
@@ -1746,11 +1924,11 @@ function buildREAL(){
   $('kstrip').innerHTML=kpis([
     {l:'SIPA Priv. Mar 26 MoM',v:'-0.1%',c:'r',n:'EIL · 12 meses caída'},
     {l:'SIPA Priv. YoY Mar 26',v:'-1.4%',c:'r',n:'vs marzo 2025'},
-    {l:'\u00cdndice Construya Abr',v:'+5.0%',c:'g',n:'MoM desestacionalizado'},
-    {l:'Construya YoY Abr 26',v:'-4.7%',c:'r',n:'Bajo mismo mes 2025'},
-    {l:'Patentamientos May 26',v:'41.921',c:'r',n:'-25.6% YoY \u00b7 ACARA'},
-    {l:'Acum. Patent. 2026',v:'247.187',c:'r',n:'-9.7% vs 2025'},
-    {l:'ISAC Abr 26 YoY',v:'-2.8%',c:'r',n:'INDEC \u00b7 MoM -4.0%'},
+    {l:'\u00cdndice Construya Jun',v:'-2.0%',c:'r',n:'MoM desestacionalizado'},
+    {l:'Construya YoY Jun 26',v:'-0.6%',c:'r',n:'Casi plano vs 2025'},
+    {l:'Patentamientos Jul 26',v:'43.758',c:'r',n:'-30.3% YoY \u00b7 ACARA'},
+    {l:'Acum. Patent. 2026',v:'339.359',c:'r',n:'-12.8% vs 2025'},
+    {l:'ISAC Jul 26 YoY',v:'-4.5%',c:'r',n:'INDEC \u00b7 MoM -4.6%'},
     {l:'Sal. Real Mar 26 (IS)',v:'-1.3%',c:'r',n:'7 meses negativos consecutivos'},
     {l:'Monot. YoY Feb 26',v:'+90.700',c:'g',n:'SIPA · compensa priv. formal'},
     {l:'Asal.Priv. YoY Feb 26',v:'−100.100',c:'r',n:'SIPA · destrucción formal'},
@@ -1759,17 +1937,17 @@ function buildREAL(){
     {l:'Ventas Pyme May 26',v:'-1.2%',c:'r',n:'YoY \u00b7 CAME'},
     {l:'Prod. ADEFA May 26',v:'37.762 u',c:'r',n:'-21.5% YoY \u00b7 ADEFA'}
   ]);
-  $('tabrow').innerHTML=tabs(['Resumen','SIPA \u00b7 Empleo Registrado','\u00cdndice Construya','ACARA \u00b7 Patentamientos','Cemento \u00b7 CAME \u00b7 ADEFA','Comparativa Sectorial']);
+  $('tabrow').innerHTML=tabs(['Resumen','SIPA \u00b7 Empleo Registrado','\u00cdndice Construya','ACARA \u00b7 Patentamientos','Cemento \u00b7 CAME \u00b7 ADEFA','Comparativa Sectorial','Paritarias \u00b7 Convenios']);
   var cal=makeCal(D.cal.year,D.cal.month,D.cal.events);
   $('main').innerHTML=
     panel2col('p0',
       shdr('Econom\u00eda Real \u2014 Actividad e Industria','SIPA \u00b7 \u00cdndice Construya \u00b7 ACARA \u00b7 Julio 2026','')+
       '<div class="og">'+
         ocard('rm0','SIPA \u00b7 Empleo','Empleo Registrado Privado','Variaci\u00f3n mensual s/e','-0.1%','r','Mar 2026','YoY: -1.4%<br>12 meses ca\u00edda',1)+
-        ocard('rm1','\u00cdndice Construya','Construcci\u00f3n Privada','Despachos insumos sectoriales','+5.0%','g','Abr 2026 MoM','YoY: -4.7%<br>Acum: +0.6%',2)+
-        ocard('rm2','ACARA \u00b7 Patentamientos','Autos 0km \u2014 ACARA','Unidades patentadas mensuales','41.921','r','May 2026','-25.6% YoY<br>Peor mes 2026',3)+
-        ocard('rm3','ISAC \u00b7 INDEC','Ind. Sint. Construcci\u00f3n','Variaci\u00f3n YoY INDEC','-2.8%','r','Abr 2026','MoM -4.0% \u00b7 acum +2.1%',4)+
-        ocard('rm4','Sal. Real \u00b7 IS','Salario Real Priv. Reg.','Variaci\u00f3n mensual real IS INDEC','-1.3%','r','Mar 2026','7 meses<br>consecutivos en rojo',1)+
+        ocard('rm1','\u00cdndice Construya','Construcci\u00f3n Privada','Despachos insumos sectoriales','-2.0%','r','Jun 2026 MoM','YoY: -0.6%<br>Acum: +0.5%',2)+
+        ocard('rm2','ACARA \u00b7 Patentamientos','Autos 0km \u2014 ACARA','Unidades patentadas mensuales','43.758','r','Jul 2026','-30.3% YoY<br>Peor ca\u00edda YoY 2026',3)+
+        ocard('rm3','ISAC \u00b7 INDEC','Ind. Sint. Construcci\u00f3n','Variaci\u00f3n YoY INDEC','-4.5%','r','Jul 2026','MoM -4.6% \u00b7 acum +1.7%',4)+
+        ocard('rm4','Sal. Real \u00b7 IS','Salario Real Priv. Reg.','Variaci\u00f3n mensual real IS INDEC','-0.1%','r','May 2026','Abr26 +1.4%<br>cort\u00f3 racha roja',1)+
         ocard('rm5','Cemento \u00b7 AFCP','Despacho mensual nacional','Variaci\u00f3n interanual YoY','-1.5%','r','May 2026','809.983 t<br>MoM: +10.4%',2)+
         ocard('rm6','Ventas Pyme \u00b7 CAME','\u00cdndice Ventas Minoristas','Variaci\u00f3n interanual real','-1.2%','r','May 2026','MoM: +1.2%<br>Acum: -3.1%',2)+
         ocard('rm7','ADEFA \u00b7 Producci\u00f3n','Autom\u00f3viles y com. livianos','Unidades producidas','37.762','r','May 2026','-21.5% YoY<br>Acum: -19.3%',3)+
@@ -1781,7 +1959,7 @@ function buildREAL(){
       src('Encuesta de Indicadores Laborales (EIL) \u00b7 Secretar\u00eda de Trabajo, Empleo y Seguridad Social \u00b7 Mayo 2026')+
       sr4([{l:'MoM Mar 26 (privado)',v:'-0.1%',c:'r',n:'12 meses consecutivos',x:'real'},{l:'YoY Mar 26 (priv.)',v:'-1.4%',c:'r',n:'Construc. -4.6% \u00b7 Ind. -2.5%',x:'real'},{l:'MoM Feb 26',v:'-0.2%',c:'r',n:'Expectativas negativas',x:'real'},{l:'MoM Ene 26',v:'0.0%',c:'a',n:'YoY: -1.3%',x:'real'}])+
       bx1('sp1','h240','SIPA \u2014 Empleo Registrado Privado MoM \u2014 Jul 2025\u2013Ene 2026','c-real')+
-      bx2(['sp2','sp3'],['IS INDEC \u2014 Salario Real Priv. Registrado MoM (Jul 25\u2013Mar 26)','SIPA \u2014 Variaci\u00f3n YoY por Sector \u00b7 Feb 2026 (SIPA)'],'h320',['c-real',''])+
+      bx2(['sp2','sp3'],['IS INDEC \u2014 Salario Real Priv. Registrado MoM (Jul 25\u2013May 26)','SIPA \u2014 Variaci\u00f3n YoY por Sector \u00b7 Feb 2026 (SIPA)'],'h320',['c-real',''])+
       src('SIPA \u00b7 Min. Capital Humano \u2014 \u201cSituaci\u00f3n y evoluci\u00f3n del trabajo registrado\u201d \u00b7 Datos Feb 2026')+
       sr4([
         {l:'Asal. Priv. YoY Feb 26',v:'\u2212100.100',c:'r',n:'6.198.900 registrados',x:'real'},
@@ -1792,17 +1970,17 @@ function buildREAL(){
       bx2(['sp4','sp5'],['SIPA \u2014 Variaci\u00f3n Absoluta YoY por Categor\u00eda (miles \u00b7 Feb26 vs Feb25)','SIPA \u2014 Asalariados Privados Nominales en miles \u00b7 Jul 25\u2013Feb 26'],'h230',['c-real','c-real']),
       cal)+
     panel2col('p2',
-      shdr('\u00cdndice Construya','Despachos de insumos para la construcci\u00f3n privada','+5.0%','Abr 2026 \u00b7 MoM Desest.','g')+
-      src('Grupo Construya \u00b7 \u00cdndice Construya Abr 2026 (publicado 11 May 2026)')+
-      sr4([{l:'IC MoM Desest. Abr 26',v:'+5.0%',c:'g',n:'Desestacionalizado',x:'real'},{l:'IC YoY Abr 26',c:'r',v:'-4.7%',n:'Bajo Abr 2025',x:'real'},{l:'IC Acum. Ene-Abr 26',v:'+0.6%',c:'g',n:'vs Ene-Abr 2025',x:'real'},{l:'IC MoM Nov 25',v:'-4.1%',c:'r',n:'Peor mes 2025',x:'real'}])+
-      bx1('ib1','h240','\u00cdndice Construya \u2014 Variaci\u00f3n MoM Desestacionalizada \u2014 Oct 2025\u2013Abr 2026','c-real')+
+      shdr('\u00cdndice Construya','Despachos de insumos para la construcci\u00f3n privada','-2.0%','Jun 2026 \u00b7 MoM Desest.','r')+
+      src('Grupo Construya \u00b7 \u00cdndice Construya Jun 2026')+
+      sr4([{l:'IC MoM Desest. Jun 26',v:'-2.0%',c:'r',n:'Desestacionalizado',x:'real'},{l:'IC YoY Jun 26',c:'r',v:'-0.6%',n:'Casi plano vs Jun 2025',x:'real'},{l:'IC Acum. Ene-Jun 26',v:'+0.5%',c:'g',n:'vs Ene-Jun 2025',x:'real'},{l:'IC MoM Nov 25',v:'-4.1%',c:'r',n:'Peor mes de la serie reciente',x:'real'}])+
+      bx1('ib1','h240','\u00cdndice Construya \u2014 Variaci\u00f3n MoM Desestacionalizada \u2014 Oct 2025\u2013Jun 2026','c-real')+
       bx2(['ib2','ib3'],['\u00cdndice Construya YoY \u2014 Variaci\u00f3n Interanual','ISAC vs Construya \u2014 Comparativa construcci\u00f3n'],'h190',['c-real','']),
       cal)+
     panel2col('p3',
-      shdr('ACARA \u00b7 Patentamientos Automotores','Autos 0km \u2014 ACARA \u00b7 Datos mensuales y acumulados','41.921','Unidades May 2026','r')+
+      shdr('ACARA \u00b7 Patentamientos Automotores','Autos 0km \u2014 ACARA \u00b7 Datos mensuales y acumulados','43.758','Unidades Jul 2026','r')+
       src('ACARA \u00b7 Asociaci\u00f3n de Concesionarios de Automotores de la Rep. Argentina')+
-      sr4([{l:'Patentamientos May 26',v:'41.921',c:'r',n:'-25.6% YoY',x:'real'},{l:'Acum. Ene-May 26',v:'247.187',c:'r',n:'-9.7% vs 2025',x:'real'},{l:'Mejor mes 2026',v:'66.454',c:'g',n:'Enero 2026',x:'real'},{l:'Peor mes 2026',v:'41.921',c:'r',n:'Mayo 2026',x:'real'}])+
-      bx1('ac1','h240','Patentamientos Mensuales \u2014 Unidades \u2014 Ene\u2013May 2026','c-real')+
+      sr4([{l:'Patentamientos Jul 26',v:'43.758',c:'r',n:'-30.3% YoY',x:'real'},{l:'Acum. Ene-Jul 26',v:'339.359',c:'r',n:'-12.8% vs 2025',x:'real'},{l:'Mejor mes 2026',v:'66.454',c:'g',n:'Enero 2026',x:'real'},{l:'Peor mes 2026',v:'41.921',c:'r',n:'Mayo 2026',x:'real'}])+
+      bx1('ac1','h240','Patentamientos Mensuales \u2014 Unidades \u2014 Ene\u2013Jul 2026','c-real')+
       bx2(['ac2','ac3'],['Variaci\u00f3n YoY \u2014 Patentamientos vs Mismo Mes 2025','Participaci\u00f3n por Marca \u2014 Acum. 2026'],'h190',['c-rd','']),
       cal)+
     panel2col('p4',
@@ -1828,6 +2006,70 @@ function buildREAL(){
       src('Fuentes combinadas \u00b7 Ver solapas individuales para detalle')+
       bx3(['cp1','cp2','cp3'],['Empleo SIPA vs ISAC \u2014 Construcci\u00f3n','Patentamientos vs EMAE \u2014 Actividad general','Construya vs ISAC \u2014 Dos visiones del sector'],'h220',['c-real','','c-real'])+
       bx2(['cp4','cp5'],['Cemento YoY vs ISAC \u2014 Construcci\u00f3n','ADEFA Producci\u00f3n vs Patentamientos ACARA'],'h220',['c-real','']),
+      cal)+
+    panel2col('p6',
+      shdr('Paritarias \u00b7 Convenios Colectivos','Aumentos homologados por gremio \u2014 \u00daltimo tramo y acumulado 2026','')+
+      src('Notas de prensa especializadas (El Cronista, iProfesional, El Destape, \u00c1mbito, Ignacio Online, MundoGremial, Calcular Sueldo, servidos.ar) sobre acuerdos/homologaciones oficiales \u00b7 detalle completo por tramo en Excel \u201cActividad y Precios ARG.xlsx\u201d, hoja \u201cParitarias - Convenios\u201d \u00b7 Sep 2026')+
+      '<div class="og">'+
+        ocard('pt0','UOCRA','Construcci\u00f3n \u00b7 CCT 76/75','\u00daltimo tramo homologado','+1,9%','g','Ago 2026','Acum. ene-ago 2026: +16,6%',1)+
+        ocard('pt1','Comercio (FAECYS)','CCT 130/75','\u00daltimo tramo homologado','+1,9%','g','Sep 2026','Acum. ene-sep 2026: +11,2%',2)+
+        ocard('pt2','UOM (Metal\u00fargicos)','CCT 260/75','\u00daltimo tramo homologado (no remun.)','+6,0%','a','Oct 2026','Acum. ene-oct 2026: +24,1% (con hueco feb-jul real)',3)+
+        ocard('pt3','Camioneros','CCT 40/89','\u00daltimo tramo homologado','+1,5%','g','Ago 2026','Acum. ene-ago 2026: +16,9%',4)+
+        ocard('pt4','Bancarios','Asoc. Bancaria','\u00daltimo tramo homologado','+2,1%','g','Jul 2026','Acum. ene-jul 2026: +19,2% (IPC: +19,3%)',1)+
+        ocard('pt5','SMATA (FAATRA)','Talleres \u00b7 CCT 27/88','Tramo trimestral','+6,9%','g','Jul-Sep 2026','Acum. abr-sep 2026: +16,7% \u00b7 solo rama talleres, acta oficial',2)+
+        ocard('pt6','Sanidad (FATSA)','CCT 108/75 y 122/75','\u00daltimo tramo homologado','+1,6%','g','Ago 2026','Acum. ene-ago 2026: +14,7%',3)+
+        ocard('pt7','Estatales (UPCN)','Convenio SINEP','Tramo homologado (adelante)','+1,9%','a','Sep 2026','Acum. sep-dic 7,0% + bono $80.000 \u00b7 ATE rechaz\u00f3',4)+
+        ocard('pt8','Aceiteros','SOEA \u00b7 Fed. Aceitera','\u00daltimo tramo homologado','+5,5%','g','Sep 2026','Acuerdo anual 2026: +29,5% (jul+sep identificados)',1)+
+        ocard('pt9','Textiles','Confecci\u00f3n \u00b7 CCT 614/10','\u00daltimo tramo homologado','+2,0%','g','Sep 2026','Acum. jul-oct 2026: +11,9%',2)+
+        ocard('pt10','UTHGRA','Gastron\u00f3micos \u00b7 CCT 389/04','\u00daltimo tramo (Nivel 1)','+1,6%','g','Mar 2026','Escala oficial \u00b7 acum. ene-abr +4,5%',3)+
+      '</div>'+
+      '<table class="tc-t"><thead><tr><th>Gremio / Convenio</th><th>CCT</th><th>\u00daltimo tramo</th><th>%</th><th>Tipo</th><th>Acumulado 2026</th></tr></thead><tbody>'+
+        '<tr><td>UOCRA (Construcci\u00f3n)</td><td>76/75</td><td>Ago 2026</td><td>+1,9%</td><td>Remunerativo</td><td>+16,6% acum. ene-ago</td></tr>'+
+        '<tr><td>Comercio (FAECYS)</td><td>130/75</td><td>Sep 2026</td><td>+1,9%</td><td>Remunerativo</td><td>+11,2% acum. ene-sep + bono $50.000 (jul-sep)</td></tr>'+
+        '<tr><td>UOM (Metal\u00fargicos)</td><td>260/75</td><td>Oct 2026</td><td>+6,0%</td><td>No remunerativo</td><td>+24,1% acum. ene-oct (hueco real feb-jul)</td></tr>'+
+        '<tr><td>Camioneros</td><td>40/89</td><td>Ago 2026</td><td>+1,5%</td><td>Remunerativo</td><td>+16,9% acum. ene-ago</td></tr>'+
+        '<tr><td>Bancarios (Asoc. Bancaria)</td><td>18/75</td><td>Jul 2026</td><td>+2,1%</td><td>Remunerativo</td><td>+19,2% acum. ene-jul (IPC: +19,3%)</td></tr>'+
+        '<tr><td>SMATA-FAATRA (Talleres)</td><td>27/88</td><td>Jul-Sep 2026</td><td>+6,9%</td><td>Remun.+no remun.</td><td>+16,7% acum. abr-sep (trimestre a trimestre, acta oficial, solo talleres)</td></tr>'+
+        '<tr><td>Sanidad (FATSA)</td><td>108/75 \u00b7 122/75</td><td>Ago 2026</td><td>+1,6%</td><td>Remunerativo</td><td>+14,7% acum. ene-ago (sin dato may)</td></tr>'+
+        '<tr><td>Estatales (UPCN)</td><td>SINEP</td><td>Sep 2026</td><td>+1,9%</td><td>Remunerativo</td><td>+7,0% acum. sep-dic (homologado a futuro)</td></tr>'+
+        '<tr><td>Aceiteros (SOEA)</td><td>Fed. Aceitera</td><td>Sep 2026</td><td>+5,5%</td><td>Remunerativo</td><td>+16,0% con jul+sep (acuerdo anual: +29,5%)</td></tr>'+
+        '<tr><td>Textiles - Confecci\u00f3n</td><td>614/10</td><td>Oct 2026</td><td>+1,5%</td><td>Remunerativo</td><td>+11,9% acum. jul-oct</td></tr>'+
+        '<tr><td>UTHGRA (Nivel 1)</td><td>389/04</td><td>Mar 2026</td><td>+1,6%</td><td>Remun.+no remun.</td><td>+4,5% acum. ene-abr, escala oficial mensual</td></tr>'+
+      '</tbody></table>'+
+      '<div style="font-size:10.5px;color:var(--dm);margin:6px 0 16px">Cobertura de 11 gremios (08/09/2026) \u2014 sin API/fuente \u00fanica estructurada, se actualiza con notas de prensa sobre homologaciones o cuando Pedro pasa el acuerdo directamente. Revisi\u00f3n semanal.</div>'+
+      shdr('Paritarias vs. Inflaci\u00f3n','Sem\u00e1foro mensual \u2014 verde = le gana a la inflaci\u00f3n, rojo = pierde, \u00e1mbar = empata','')+
+      src('IPC real: hoja "IPC" (INDEC), ene-jul 2026 \u00b7 IPC ago-dic 2026: estimaci\u00f3n REM-BCRA (Relevamiento de Expectativas de Mercado, informe agosto 2026, marcado "(e)") \u00b7 Paritarias: ver tabla de arriba')+
+      '<div style="display:flex;gap:16px;margin:4px 0 10px;font-size:10.5px;color:var(--dm)">'+
+        '<span>&#9679; <span style="color:var(--g4)">verde</span> = aumento &gt; inflaci\u00f3n ese mes</span>'+
+        '<span>&#9679; <span style="color:var(--rd)">rojo</span> = aumento &lt; inflaci\u00f3n ese mes</span>'+
+        '<span>&#9679; <span style="color:var(--or)">\u00e1mbar</span> = empata con inflaci\u00f3n</span>'+
+        '<span style="color:var(--dm)">"-" = sin tramo ese mes</span>'+
+      '</div>'+
+      '<div style="overflow-x:auto"><table class="tc-t" style="min-width:1020px"><thead><tr>'+
+        '<th>Mes</th><th>IPC MoM</th><th>UOCRA</th><th>Comercio</th><th>UOM</th><th>Camioneros</th><th>Bancarios</th><th>SMATA</th><th>Sanidad</th><th>Estatales</th><th>Aceiteros</th><th>Textiles</th><th>UTHGRA</th>'+
+      '</tr></thead><tbody>'+
+        '<tr><td>Ene-26</td><td>2,9%</td><td style="color:var(--rd);font-weight:600">&#9679; 2%</td><td style="color:var(--rd);font-weight:600">&#9679; 0%</td><td style="color:var(--g4);font-weight:600">&#9679; 4,2%</td><td style="color:var(--g4);font-weight:600">&#9679; 4,7%</td><td style="color:var(--rd);font-weight:600">&#9679; 2,8%</td><td style="color:var(--dm)">-</td><td style="color:var(--rd);font-weight:600">&#9679; 1,5%</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--rd);font-weight:600">&#9679; 1,9%</td></tr>'+
+        '<tr><td>Feb-26</td><td>2,9%</td><td style="color:var(--rd);font-weight:600">&#9679; 1,8%</td><td style="color:var(--rd);font-weight:600">&#9679; 0%</td><td style="color:var(--dm)">-</td><td style="color:var(--rd);font-weight:600">&#9679; 1%</td><td style="color:var(--or);font-weight:600">&#9679; 2,9%</td><td style="color:var(--dm)">-</td><td style="color:var(--rd);font-weight:600">&#9679; 1,8%</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--rd);font-weight:600">&#9679; 1,0%</td></tr>'+
+        '<tr><td>Mar-26</td><td>3,4%</td><td style="color:var(--rd);font-weight:600">&#9679; 2%</td><td style="color:var(--rd);font-weight:600">&#9679; 0%</td><td style="color:var(--dm)">-</td><td style="color:var(--rd);font-weight:600">&#9679; 2%</td><td style="color:var(--or);font-weight:600">&#9679; 3,4%</td><td style="color:var(--dm)">-</td><td style="color:var(--rd);font-weight:600">&#9679; 1,7%</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--rd);font-weight:600">&#9679; 1,6%</td></tr>'+
+        '<tr><td>Abr-26</td><td>2,6%</td><td style="color:var(--rd);font-weight:600">&#9679; 1,9%</td><td style="color:var(--rd);font-weight:600">&#9679; 2%</td><td style="color:var(--dm)">-</td><td style="color:var(--rd);font-weight:600">&#9679; 1,8%</td><td style="color:var(--or);font-weight:600">&#9679; 2,6%</td><td style="color:var(--g4);font-weight:600">&#9679; 9,2%*</td><td style="color:var(--rd);font-weight:600">&#9679; 1,6%</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--rd);font-weight:600">&#9679; 0%</td></tr>'+
+        '<tr><td>May-26</td><td>2,1%</td><td style="color:var(--rd);font-weight:600">&#9679; 1,8%</td><td style="color:var(--rd);font-weight:600">&#9679; 1,5%</td><td style="color:var(--dm)">-</td><td style="color:var(--rd);font-weight:600">&#9679; 1,7%</td><td style="color:var(--or);font-weight:600">&#9679; 2,1%</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td></tr>'+
+        '<tr><td>Jun-26</td><td>1,9%</td><td style="color:var(--g4);font-weight:600">&#9679; 2,1%</td><td style="color:var(--rd);font-weight:600">&#9679; 1,5%</td><td style="color:var(--dm)">-</td><td style="color:var(--rd);font-weight:600">&#9679; 1,6%</td><td style="color:var(--or);font-weight:600">&#9679; 1,9%</td><td style="color:var(--dm)">-</td><td style="color:var(--g4);font-weight:600">&#9679; 3,7%</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td></tr>'+
+        '<tr><td>Jul-26</td><td>2,1%</td><td style="color:var(--rd);font-weight:600">&#9679; 2%</td><td style="color:var(--rd);font-weight:600">&#9679; 1,9%</td><td style="color:var(--dm)">-</td><td style="color:var(--rd);font-weight:600">&#9679; 1,5%</td><td style="color:var(--or);font-weight:600">&#9679; 2,1%</td><td style="color:var(--g4);font-weight:600">&#9679; 6,9%</td><td style="color:var(--rd);font-weight:600">&#9679; 2%</td><td style="color:var(--dm)">-</td><td style="color:var(--g4);font-weight:600">&#9679; 10%</td><td style="color:var(--g4);font-weight:600">&#9679; 6%</td><td style="color:var(--dm)">-</td></tr>'+
+        '<tr><td>Ago-26</td><td>1,7% (e)</td><td style="color:var(--g4);font-weight:600">&#9679; 1,9%</td><td style="color:var(--g4);font-weight:600">&#9679; 1,9%</td><td style="color:var(--g4);font-weight:600">&#9679; 6%</td><td style="color:var(--rd);font-weight:600">&#9679; 1,5%</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--rd);font-weight:600">&#9679; 1,6%</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--g4);font-weight:600">&#9679; 2%</td><td style="color:var(--dm)">-</td></tr>'+
+        '<tr><td>Sep-26</td><td>1,8% (e)</td><td style="color:var(--dm)">-</td><td style="color:var(--g4);font-weight:600">&#9679; 1,9%</td><td style="color:var(--g4);font-weight:600">&#9679; 6%</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--g4);font-weight:600">&#9679; 1,9%</td><td style="color:var(--g4);font-weight:600">&#9679; 5,5%</td><td style="color:var(--g4);font-weight:600">&#9679; 2%</td><td style="color:var(--dm)">-</td></tr>'+
+        '<tr><td>Oct-26</td><td>1,7% (e)</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--g4);font-weight:600">&#9679; 6%</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--g4);font-weight:600">&#9679; 1,8%</td><td style="color:var(--dm)">-</td><td style="color:var(--rd);font-weight:600">&#9679; 1,5%</td><td style="color:var(--dm)">-</td></tr>'+
+        '<tr><td>Nov-26</td><td>1,6% (e)</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--or);font-weight:600">&#9679; 1,6%</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td></tr>'+
+        '<tr><td>Dic-26</td><td>1,8% (e)</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--rd);font-weight:600">&#9679; 1,5%</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td><td style="color:var(--dm)">-</td></tr>'+
+        '<tr style="font-weight:700;background:rgba(255,255,255,.03)"><td>Acum. (tramos cargados)</td><td>19,3% / ~30% (e)</td><td>16,6%</td><td>11,2%</td><td>24,1%</td><td>16,9%</td><td>19,2%</td><td>16,7%*</td><td>14,7%</td><td>7,0%</td><td>16,0%</td><td>11,9%</td><td>4,5%</td></tr>'+
+      '</tbody></table></div>'+
+      '<div style="font-size:10.5px;color:var(--dm);margin-top:6px;line-height:1.5">'+
+        '"-" = sin tramo homologado ese mes para ese gremio (normal, cada uno negocia en calendario propio) o dato no publicado en las fuentes. "0%" = confirmado que no hubo aumento ese mes (caso real, no un dato faltante). '+
+        'IPC: real ene-jul 19,3% acumulado; ago-dic 2026 estimado por el REM-BCRA (informe agosto 2026: 1,7% ago, 1,8% sep, 1,7% oct, 1,6% nov, 1,8% dic), proyectando ~30% acumulado para todo 2026 (consistente con el ~30% de inflaci\u00f3n anual que el propio REM proyecta para el a\u00f1o). UOM y Estatales incluyen tramos ya homologados a futuro (oct-dic 2026) \u2014 no comparar directo contra el acumulado de IPC (ventana temporal distinta). '+
+        '*SMATA (rama FAATRA/talleres, CCT 27/88) son datos trimestrales (abr-jun y jul-sep 2026) cargados en las columnas de abril y julio para referencia \u2014 no son directamente comparables contra el IPC de un solo mes, aunque el color los compara igual contra el mes de carga a modo ilustrativo. Jul-sep resuelto el 11/09/2026 (antes pendiente por falta de acceso al PDF con cifras): b\u00e1sico se mantuvo en $1.558.811,36 + nueva suma no remun. $107.246,22 = +6,9% vs. el trimestre anterior. '+
+        'Comercio ene-mar: acuerdo solo con sumas no remunerativas, sin aumento sobre el b\u00e1sico ese trimestre. UOM feb-jul: sin paritaria cerrada en ese per\u00edodo (intervenci\u00f3n judicial + negociaci\u00f3n estancada) \u2014 hueco real. '+
+        'Aceiteros: el acuerdo anual total es +29,5%, este acumulado solo suma los tramos de jul y sep que se identificaron en las fuentes \u2014 no representa el a\u00f1o completo. '+
+        'SMATA y UTHGRA (corregido 08/09/2026): ambos agrupan varias ramas/anexos que negocian por separado \u2014 se resolvi\u00f3 tomando UNA sola rama verificable con acta/escala oficial en cada caso: SMATA usa solo Talleres/FAATRA (CCT 27/88, se descartaron Concesionarias/ACARA, ACA y Motos); UTHGRA usa solo el Nivel 1 de la Escala B (CCT 389/04, categor\u00edas m\u00e1s bajas: frutero, lavacopas, pe\u00f3n general). Antes ambos mezclaban ramas/categor\u00edas distintas sin identificar cu\u00e1l era cu\u00e1l.'+
+      '</div>',
       cal);
 
   setTimeout(function(){
@@ -1861,7 +2103,7 @@ function buildREAL(){
     // Comparativa sectorial
     line('cp1',D.sipa.l,[
       {label:'Empleo SIPA Priv.',data:D.sipa.privado,borderColor:ar,tension:0.3,pointRadius:3,pointBackgroundColor:ar},
-      {label:'ISAC Construc.',data:D.isac.v.slice(-7),borderColor:C.CEL,tension:0.3,pointRadius:3,pointBackgroundColor:C.CEL}
+      {label:'Empleo Construc. (INDEC)',data:D.isacEmpleo.v,borderColor:C.CEL,tension:0.3,pointRadius:3,pointBackgroundColor:C.CEL}
     ],'%',undefined,ar);
     line('cp2',D.acara.l,[
       {label:'Patentamientos YoY',data:D.acara.yoy,borderColor:C.RD,tension:0.3,pointRadius:3,pointBackgroundColor:C.RD},
@@ -2056,7 +2298,7 @@ async function buildREM(){
         {l:'Exportaciones 2026',v:'USD '+(REM_SEED.expo_anual/1000).toFixed(0)+'M',c:'g',n:'+USD 2.491M vs anterior'},
         {l:'Importaciones 2026',v:'USD '+(REM_SEED.impo_anual/1000).toFixed(0)+'M',c:'a',n:'-USD 1.187M vs anterior'},
         {l:'Superávit comercial',v:'USD '+(REM_SEED.saldo_comercial/1000).toFixed(1)+'B',c:'g',n:'+USD 3.679M vs anterior'},
-        {l:'Resultado primario',v:'$'+REM_SEED.fiscal_anual.toFixed(0)+'B ARS',c:'g',n:'Meta FMI cumplida'},
+        {l:'Resultado primario',v:'$'+REM_SEED.fiscal_anual.toFixed(0)+'B ARS',c:'a',n:'≈0.39% PBI real (ene-jul anualizado) · debajo de meta FMI 1.4%'},
       ])+'</div>',true);
 
   // ── Charts ────────────────────────────────────────────────────

@@ -132,14 +132,14 @@ footer a{color:var(--accent);text-decoration:none;}
     
   </div>
 </header>
-<div class="subnav"><span class="subnav-label">Módulos</span><a href="https://amberes-alerts.vercel.app/" class="snav-link">🏠 Inicio</a><a href="https://amberes-alerts.vercel.app/arg.html" class="snav-link">🇦🇷 Argentina</a><a href="https://amberes-alerts.vercel.app/agro.html" class="snav-link">🌾 Agro</a><a href="https://amberes-alerts.vercel.app/gestion.html" class="snav-link">📊 Gestión</a><a href="https://amberes-alerts.vercel.app/confianza.html" class="snav-link active">🔵 Confianza</a><a href="https://global-macro.vercel.app/macro.html" class="snav-link">🌍 Macro Global</a><a href="https://global-macro.vercel.app/tc.html" class="snav-link">💱 Tipo de Cambio</a><a href="https://calculadora-bonos-five.vercel.app" class="snav-link">📈 Bonos</a></div>
+<div class="subnav"><span class="subnav-label">Módulos</span><a href="/" class="snav-link">🏠 Inicio</a><a href="/arg.html" class="snav-link">🇦🇷 Argentina</a><a href="/agro.html" class="snav-link">📦 Commodities</a><a href="/gestion.html" class="snav-link">📊 Gestión</a><a href="/confianza.html" class="snav-link active">🔵 Confianza</a><a href="/macro.html" class="snav-link">🌍 Macro Global</a><a href="/tc.html" class="snav-link">💱 Tipo de Cambio</a><a href="/bonos.html" class="snav-link">📈 Bonos</a></div>
 
 <div class="page">
 
   <div class="page-title">
     <div class="page-eyebrow">Indicador de Mercado · Argentina 2026</div>
     <h1 class="page-h1">Índice de <span>Confianza en la</span><br>Continuidad</h1>
-    <p class="page-sub">Mide el spread entre AO27 (Bonar 2027, ley local, vence dentro del mandato actual) y los bonos que pagan capital íntegramente en la próxima gestión: AO28 (oct 2028) y AN29 (nov 2029). Todos son Tesoro Nacional, ley local — el spread captura puro riesgo político, sin distorsión de jurisdicción.</p>
+    <p class="page-sub">Mide el spread entre AO27 (Bonar 2027, ley local, vence dentro del mandato actual) y los bonos que pagan capital íntegramente en la próxima gestión: AO28 (oct 2028) y AO29 (oct 2029). Todos son Tesoro Nacional, ley local — el spread captura puro riesgo político, sin distorsión de jurisdicción.</p>
   </div>
 
   <!-- MAIN GRID -->
@@ -156,6 +156,11 @@ footer a{color:var(--accent);text-decoration:none;}
         </div>
       </div>
       <div class="index-date" id="idx-date">Actualizando…</div>
+      <div style="display:flex;justify-content:space-between;font-size:9px;margin:8px 0 4px;padding:6px 8px;background:rgba(255,255,255,.04);border-radius:6px;">
+        <span style="color:#f87171;">▼ 0–50 Baja</span>
+        <span style="color:#f5c518;">◆ 50–75 Moderada</span>
+        <span style="color:#00e880;">▲ 75–100 Alta</span>
+      </div>
 
       <div class="comp-title">Componentes</div>
 
@@ -173,7 +178,7 @@ footer a{color:var(--accent);text-decoration:none;}
 
       <!-- Próxima gestión -->
       <div>
-        <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#f87171;margin-bottom:6px;text-align:left">Próxima gestión (AO28 + AN29)</div>
+        <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:#f87171;margin-bottom:6px;text-align:left">Próxima gestión (AO28 + AO29)</div>
         <div class="comp-row">
           <div><span class="comp-name">AO28</span> <span style="font-size:9px;color:var(--mu)">Oct 2028 · ley local</span></div>
           <div style="display:flex;align-items:center;gap:8px">
@@ -182,9 +187,9 @@ footer a{color:var(--accent);text-decoration:none;}
           </div>
         </div>
         <div class="comp-row">
-          <div><span class="comp-name">AN29</span> <span style="font-size:9px;color:var(--mu)">Nov 2029 · ley local</span></div>
+          <div><span class="comp-name">AO29</span> <span style="font-size:9px;color:var(--mu)">Oct 2029 · ley local</span></div>
           <div style="display:flex;align-items:center;gap:8px">
-            <span class="comp-ytm" id="ytm-an29">—</span>
+            <span class="comp-ytm" id="ytm-ao29">—</span>
             <span class="comp-tag tag-next">PROX.</span>
           </div>
         </div>
@@ -196,7 +201,7 @@ footer a{color:var(--accent);text-decoration:none;}
           <span class="spread-val" id="ytm-current" style="color:var(--accent)">—</span>
         </div>
         <div class="spread-row">
-          <span class="spread-lbl">YTM avg(AO28+AN29) (próxima)</span>
+          <span class="spread-lbl">YTM avg(AO28+AO29) (próxima)</span>
           <span class="spread-val" id="ytm-next" style="color:#f87171">—</span>
         </div>
         <div class="spread-row" style="border-top:1px solid var(--bdr2);padding-top:6px;margin-top:4px">
@@ -219,7 +224,7 @@ footer a{color:var(--accent);text-decoration:none;}
       <div class="chart-header">
         <div>
           <div class="chart-title">Evolución histórica</div>
-          <div class="chart-sub">Índice mensual · Nov 2024–hoy (desde emisión AO27) · AO27 vs avg(AO28+AN29) · todos ley local</div>
+          <div class="chart-sub">Índice mensual · Nov 2024–hoy (desde emisión AO27) · AO27 vs avg(AO28+AO29) · todos ley local</div>
         </div>
         <div style="display:flex;gap:16px;font-size:10px;align-items:center">
           <span style="color:var(--green)">━ Índice</span>
@@ -256,13 +261,13 @@ footer a{color:var(--accent);text-decoration:none;}
       <div class="info-title">Metodología</div>
       <div class="info-item">
         <div class="info-item-title">¿Qué mide?</div>
-        <div class="info-item-desc">El spread entre AO27 (vence dentro del mandato actual) y el promedio de AO28+AN29 (vencen en la próxima gestión). Todos son Tesoro Nacional, ley local — el diferencial captura exclusivamente la prima de riesgo político por transición de gobierno, sin distorsión por jurisdicción.</div>
+        <div class="info-item-desc">El spread entre AO27 (vence dentro del mandato actual) y el promedio de AO28+AO29 (vencen en la próxima gestión). Todos son Tesoro Nacional, ley local — el diferencial captura exclusivamente la prima de riesgo político por transición de gobierno, sin distorsión por jurisdicción.</div>
       </div>
       <div class="info-item">
         <div class="info-item-title">Fórmula (v3 — todos ley local)</div>
         <div class="formula-box">
           <strong>YTM_actual</strong> = AO27 (Bonar 2027, ley local, oct 2027)<br>
-          <strong>YTM_próximo</strong> = avg(AO28, AN29) — bonos ley local próxima gestión<br>
+          <strong>YTM_próximo</strong> = avg(AO28, AO29) — bonos ley local próxima gestión<br>
           <strong>Spread_bruto</strong> = YTM_próximo − YTM_actual<br>
           <strong>Baseline_curva</strong> = 150bp (spread esperado por diferencia de plazo sin prima política)<br>
           <strong>Prima_política</strong> = Spread_bruto − 150bp<br>
@@ -270,8 +275,8 @@ footer a{color:var(--accent);text-decoration:none;}
         </div>
       </div>
       <div class="info-item">
-        <div class="info-item-title">¿Por qué AO28 y AN29?</div>
-        <div class="info-item-desc">AO28 (oct 2028) y AN29 (nov 2029) pagan el capital íntegramente en la próxima gestión (post dic 2027). Son bonos del Tesoro Nacional, misma ley local que AO27 — la única diferencia es el período de gobierno en que vencen. Esto elimina el ruido de jurisdicción y aísla la prima de transición política.</div>
+        <div class="info-item-title">¿Por qué AO28 y AO29?</div>
+        <div class="info-item-desc">AO28 (oct 2028) y AO29 (oct 2029) pagan el capital íntegramente en la próxima gestión (post dic 2027). Son bonos del Tesoro Nacional, misma ley local que AO27 — la única diferencia es el período de gobierno en que vencen. Esto elimina el ruido de jurisdicción y aísla la prima de transición política.</div>
       </div>
       <div class="info-item">
         <div class="info-item-title">Interpretación</div>
@@ -304,11 +309,17 @@ footer a{color:var(--accent);text-decoration:none;}
 // YTM por flujos exactos, precios en USD. Arranca mar-2024 (emisión BOPREAL).
 const HIST = [
   // ─────────────────────────────────────────────────────────────────────────────
-  // Metodología v3: AO27 (esta gestión) vs avg(AO28, AN29) (próxima gestión)
+  // Metodología v3: AO27 (esta gestión) vs avg(AO28, AO29) (próxima gestión)
   // Todos bonos Tesoro Nacional, ley local → spread = puro riesgo político
   // Calibración: rendimientos.co 17-jun-2026
   // Fórmula: idx = max(0, min(100, 100 − (sp − 150) / 6))
-  // ya = YTM AO27 · yn = avg(YTM AO28, YTM AN29) · sp = yn−ya en bp
+  // ya = YTM AO27 · yn = avg(YTM AO28, YTM AO29) · sp = yn−ya en bp
+  // ⚠️ SWAP 07/09/2026: se reemplazó AN29 por AO29 en esta ronda. Las filas de HIST
+  // de ANTES de esta fecha siguen calculadas con AN29 (no se recalcularon), solo el
+  // dato en vivo de hoy en adelante usa AO29. Si se necesita la serie histórica
+  // consistente con AO29 desde el inicio, hay que rehacerla con precios históricos
+  // de AO29 (analisistecnico.com.ar u otra fuente) — pendiente, no crítico porque
+  // el nivel de AO29 y AN29 históricamente fue similar (mismo perfil de riesgo).
   // ─────────────────────────────────────────────────────────────────────────────
   {m:'Nov 24', ya:11.2, yn:15.8, sp:460, idx:48},
   {m:'Dic 24', ya:9.5,  yn:13.2, sp:370, idx:63},
@@ -334,7 +345,7 @@ const HIST = [
 
 // ── Helpers ─────────────────────────────────────────────────────
 function p2(v){ return v!=null ? v.toFixed(2)+'%' : '—'; }
-// Baseline curva neutral: 150bp (spread esperado AO27 vs avg(AO28,AN29) sin prima política)
+// Baseline curva neutral: 150bp (spread esperado AO27 vs avg(AO28,AO29) sin prima política)
 const BASELINE_BP = 150;
 function calcIndex(sp_bp){ return Math.max(0, Math.min(100, 100 - (sp_bp - BASELINE_BP)/6)); }
 function indexColor(idx){
@@ -472,7 +483,7 @@ function buildHistTable(data){
 const BOND_SPECS = {
   AO27: { mat:'2027-10-30', cpn:1.13 },  // coupon % anual sobre VNO
   AO28: { mat:'2028-10-31', cpn:1.00 },
-  AN29: { mat:'2029-11-30', cpn:6.07 },
+  AO29: { mat:'2029-10-31', cpn:6.00 },  // fuente: bonos.html BOND_SPECS/curva soberana
 };
 
 // ── Calibración de precio/yield de referencia ────────────────────────────────
@@ -481,7 +492,7 @@ const BOND_SPECS = {
 let CAL = {
   AO27:{ p0:102.90, y0:4.13 },
   AO28:{ p0:96.90,  y0:7.84 },
-  AN29:{ p0:94.65,  y0:8.60 },
+  AO29:{ p0:90.59,  y0:9.95 },  // recalibrado 07/09/2026 tras swap AN29->AO29
 };
 try{ const s=JSON.parse(localStorage.getItem('amberes_conf_cal')); if(s) CAL=s; }catch(e){}
 
@@ -522,21 +533,21 @@ async function loadLive(){
 
     const ao27 = sob.find(d=>d.symbol==='AO27');
     const ao28 = sob.find(d=>d.symbol==='AO28');
-    const an29 = sob.find(d=>d.symbol==='AN29');
+    const ao29 = sob.find(d=>d.symbol==='AO29');
 
     const ytmAO27 = ytmLive('AO27', ao27?.price_usd);
     const ytmAO28 = ytmLive('AO28', ao28?.price_usd);
-    const ytmAN29 = ytmLive('AN29', an29?.price_usd);
+    const ytmAO29 = ytmLive('AO29', ao29?.price_usd);
 
-    if(!ytmAO27 || !ytmAO28 || !ytmAN29) throw new Error('datos insuficientes');
+    if(!ytmAO27 || !ytmAO28 || !ytmAO29) throw new Error('datos insuficientes');
 
     // Auto-actualizar calibración con los precios y yields de esta ronda
     // → la ModDur del próximo cálculo usa el YTM más reciente (converge en 2-3 ciclos)
-    CAL = { AO27:{p0:ao27.price_usd,y0:ytmAO27}, AO28:{p0:ao28.price_usd,y0:ytmAO28}, AN29:{p0:an29.price_usd,y0:ytmAN29} };
+    CAL = { AO27:{p0:ao27.price_usd,y0:ytmAO27}, AO28:{p0:ao28.price_usd,y0:ytmAO28}, AO29:{p0:ao29.price_usd,y0:ytmAO29} };
     try{ localStorage.setItem('amberes_conf_cal', JSON.stringify(CAL)); }catch(e){}
 
     const ytmCurrent = ytmAO27;
-    const ytmNext    = (ytmAO28 + ytmAN29) / 2;
+    const ytmNext    = (ytmAO28 + ytmAO29) / 2;
 
     const spread_bp  = Math.round((ytmNext - ytmCurrent) * 100);
     const prima_pol  = spread_bp - BASELINE_BP;
@@ -545,7 +556,7 @@ async function loadLive(){
     // Update UI
     document.getElementById('ytm-bp').textContent      = ytmCurrent.toFixed(2)+'%';
     document.getElementById('ytm-ao28').textContent    = ytmAO28.toFixed(2)+'%';
-    document.getElementById('ytm-an29').textContent    = ytmAN29.toFixed(2)+'%';
+    document.getElementById('ytm-ao29').textContent    = ytmAO29.toFixed(2)+'%';
     document.getElementById('ytm-current').textContent = ytmCurrent.toFixed(2)+'%';
     document.getElementById('ytm-next').textContent    = ytmNext.toFixed(2)+'%';
     document.getElementById('spread-val').textContent  = spread_bp+'bp';
@@ -571,11 +582,14 @@ async function loadLive(){
     console.warn('loadLive:', e.message);
     const last = HIST[HIST.length-1];
     drawGauge(last.idx);
+    document.getElementById('ytm-bp').textContent      = CAL.AO27.y0.toFixed(2)+'%';
+    document.getElementById('ytm-ao28').textContent    = CAL.AO28.y0.toFixed(2)+'%';
+    document.getElementById('ytm-ao29').textContent    = CAL.AO29.y0.toFixed(2)+'%';
     document.getElementById('ytm-current').textContent = last.ya.toFixed(2)+'%';
     document.getElementById('ytm-next').textContent    = last.yn.toFixed(2)+'%';
     document.getElementById('spread-val').textContent  = last.sp+'bp';
     document.getElementById('spread-adj').textContent  = (last.sp - BASELINE_BP)+'bp';
-    document.getElementById('idx-date').textContent    = 'Último dato · '+last.m;
+    document.getElementById('idx-date').textContent    = 'Ref. ' + last.m + ' · sin conexión';
     document.getElementById('ldot').style.background  ='#f5c518';
     document.getElementById('lstat').textContent      ='Datos de referencia';
     buildHistChart(HIST);
@@ -583,10 +597,19 @@ async function loadLive(){
   }
 }
 
-// Init
+// Init — mostrar seed inmediatamente, sin esperar API
+const seedLast = HIST[HIST.length-1];
+document.getElementById('ytm-bp').textContent      = CAL.AO27.y0.toFixed(2)+'%';
+document.getElementById('ytm-ao28').textContent    = CAL.AO28.y0.toFixed(2)+'%';
+document.getElementById('ytm-ao29').textContent    = CAL.AO29.y0.toFixed(2)+'%';
+document.getElementById('ytm-current').textContent = seedLast.ya.toFixed(2)+'%';
+document.getElementById('ytm-next').textContent    = seedLast.yn.toFixed(2)+'%';
+document.getElementById('spread-val').textContent  = seedLast.sp+'bp';
+document.getElementById('spread-adj').textContent  = (seedLast.sp - BASELINE_BP)+'bp';
+document.getElementById('idx-date').textContent    = 'Ref. ' + seedLast.m + ' · actualizando…';
 buildHistChart(HIST);
 buildHistTable(HIST);
-drawGauge(HIST[HIST.length-1].idx);
+drawGauge(seedLast.idx);
 loadLive();
 setInterval(loadLive, 5*60*1000);
 </script>

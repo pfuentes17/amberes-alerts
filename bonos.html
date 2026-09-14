@@ -48,6 +48,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;bac
 .mod-pill{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;padding:5px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.12);color:var(--mu);cursor:pointer;transition:all .15s;background:transparent;white-space:nowrap;}
 .mod-pill:hover{border-color:rgba(255,255,255,.3);color:var(--txt);background:rgba(255,255,255,.05);}
 .tab.dl:hover:not(.active){color:#a3e635;}
+.tab.active.dual{color:#34d399;background:var(--s);border-color:var(--bdr);border-bottom-color:var(--s);}
+.tab.dual:hover:not(.active){color:#34d399;}
 .tab-status{margin-left:auto;display:flex;align-items:center;gap:8px;padding-bottom:4px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);}
 .dot{width:7px;height:7px;border-radius:50%;display:inline-block;}
 .dot.live{background:var(--gr);box-shadow:0 0 8px var(--gr);animation:blink 2s infinite;}
@@ -180,7 +182,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   </a>
   <a href="/" class="nav-back">← Inicio</a>
 </nav>
-<div class="subnav"><span class="subnav-label">Módulos</span><a href="/" class="snav-link">🏠 Inicio</a><a href="/arg.html" class="snav-link">🇦🇷 Argentina</a><a href="/agro.html" class="snav-link">🌾 Agro</a><a href="/gestion.html" class="snav-link">📊 Gestión</a><a href="/confianza.html" class="snav-link">🔵 Confianza</a><a href="/macro.html" class="snav-link">🌍 Macro Global</a><a href="/tc.html" class="snav-link">💱 Tipo de Cambio</a><a href="/bonos.html" class="snav-link active">📈 Bonos</a></div>
+<div class="subnav"><span class="subnav-label">Módulos</span><a href="/" class="snav-link">🏠 Inicio</a><a href="/arg.html" class="snav-link">🇦🇷 Argentina</a><a href="/agro.html" class="snav-link">📦 Commodities</a><a href="/gestion.html" class="snav-link">📊 Gestión</a><a href="/confianza.html" class="snav-link">🔵 Confianza</a><a href="/macro.html" class="snav-link">🌍 Macro Global</a><a href="/tc.html" class="snav-link">💱 Tipo de Cambio</a><a href="/bonos.html" class="snav-link active">📈 Bonos</a></div>
 <div class="page">
 
 <!-- TABS -->
@@ -194,6 +196,8 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   <div class="tab hd"        id="btn-hd"   onclick="sw('hd')"   style="color:var(--mu)">💵 Soberanos HD</div>
   <div class="tab dl"        id="btn-dl"   onclick="sw('dl')"   style="color:var(--mu)">🔗 Dólar Linked</div>
   <div class="tab"           id="btn-on"   onclick="sw('on')"   style="color:var(--mu)">🏢 ONs Corporativas</div>
+  <div class="tab dual"      id="btn-dual" onclick="sw('dual')" style="color:var(--mu)">🎲 Duales</div>
+  <div class="tab pvd"       id="btn-pvd"  onclick="sw('pvd')"  style="color:var(--mu)">💱 Pesos vs USD</div>
   <div class="tab-status"><span class="dot seed" id="sdot"></span><span id="stxt">Cargando…</span><span style="color:var(--dim)" id="stime"></span></div>
 </div>
 
@@ -360,8 +364,12 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
           <option value="TZX26">TZX26 — vto 30/06/26</option><option value="X31L6">X31L6 — vto 31/07/26</option>
           <option value="X30S6">X30S6 — vto 30/09/26</option><option value="TZXO6">TZXO6 — vto 30/10/26</option>
           <option value="X30N6">X30N6 — vto 30/11/26</option><option value="TZXD6">TZXD6 — vto 15/12/26</option>
-          <option value="TZXM7">TZXM7 — vto 31/03/27</option><option value="TZX27">TZX27 — vto 30/06/27</option>
-          <option value="TZXD7">TZXD7 — vto 15/12/27</option><option value="TZX28">TZX28 — vto 30/06/28</option>
+          <option value="X29E7">X29E7 — vto 29/01/27</option>
+          <option value="TZXM7">TZXM7 — vto 31/03/27</option><option value="TZXY7">TZXY7 — vto 31/05/27</option>
+          <option value="TZX27">TZX27 — vto 30/06/27</option><option value="TZXS7">TZXS7 — vto 30/09/27</option>
+          <option value="TZXD7">TZXD7 — vto 15/12/27</option><option value="TZXM8">TZXM8 — vto 31/03/28</option>
+          <option value="TZX28">TZX28 — vto 30/06/28</option><option value="TZXS8">TZXS8 — vto 29/09/28</option>
+          <option value="TZXD8">TZXD8 — vto 15/12/28</option>
         </optgroup>
         <optgroup label="Con Cupón CER">
           <option value="TX26">TX26 — vto 09/11/26 (resid. 20%)</option><option value="TX28">TX28 — vto 09/11/28 (resid. 50%)</option>
@@ -470,7 +478,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
 
     <!-- BONO TAMAR -->
     <div class="tw">
-      <div class="tw-hdr" style="color:var(--am)">Bonos TAMAR · TMF27, TMG27, TMG28</div>
+      <div class="tw-hdr" style="color:var(--am)">Bonos TAMAR · TMF27, TML27, TMG27, TMF28, TMG28</div>
       <div class="tbl-wrap"><table><thead><tr>
         <th>Ticker</th><th class="ct">Vto.</th><th>Precio</th><th>Bid</th><th>Ask</th>
         <th>Días</th><th>Ret. Directo</th><th>TEM equiv.</th><th>TNA equiv.</th><th>Spread TAMAR</th><th>Var%</th>
@@ -497,6 +505,17 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
       </tr></thead><tbody id="tmr-duales-cer"></tbody></table></div>
     </div>
 
+    <!-- DUAL TAMAR/USD -->
+    <div class="tw">
+      <div class="tw-hdr" style="color:#38bdf8">Dual TAMAR/Dólar · max(A3500 acum. +6,64%, TAMAR acum.) al vencimiento
+        <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:10px">Estreno jul-2026 · TMVE8</span>
+      </div>
+      <div class="tbl-wrap"><table><thead><tr>
+        <th>Ticker</th><th class="ct">Vto.</th><th>Precio</th><th>Bid</th><th>Ask</th><th>Días</th>
+        <th>Ret. si gana TAMAR</th><th>TNA equiv.</th><th>TIR impl. si gana USD</th><th class="ct">Escenario actual</th><th>Var%</th>
+      </tr></thead><tbody id="tmr-duales-usd"></tbody></table></div>
+    </div>
+
   </div>
 
   <div class="ftr">
@@ -505,6 +524,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
       <div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:var(--am);display:inline-block"></span>Bono TAMAR</div>
       <div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:var(--pu);display:inline-block"></span>Dual piso fijo</div>
       <div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:#34d399;display:inline-block"></span>Dual CER/TAMAR</div>
+      <div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:#38bdf8;display:inline-block"></span>Dual TAMAR/USD</div>
       <div class="fml-tag">Ret.Directo = VT_vto/P−1 · TNA equiv. ≈ TEM×12 · TIR CER = (VT_CER/P)^(365/DTM)−1 · Escenario: gana el índice que crece más rápido</div>
     </div>
     <div class="fnote">Precios: data912.com/live/arg_notes + arg_bonds · TAMAR: api.argentinadatos.com · CER: BCRA · TXM CER₀: actualizar con datos de licitación</div>
@@ -540,7 +560,9 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
         </optgroup>
         <optgroup label="Bonos TAMAR (cero cupón ajustado)">
           <option value="TMF27">TMF27 — Bono TAMAR vto 28/02/27</option>
+          <option value="TML27">TML27 — Bono TAMAR vto 30/07/27</option>
           <option value="TMG27">TMG27 — Bono TAMAR vto 31/08/27</option>
+          <option value="TMF28">TMF28 — Bono TAMAR vto 25/02/28</option>
           <option value="TMG28">TMG28 — Bono TAMAR vto 31/08/28</option>
         </optgroup>
         <optgroup label="Bonos Duales (max TAMAR vs piso fijo)">
@@ -554,6 +576,9 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
           <option value="TXMJ9">TXMJ9 — Dual CER/TAMAR vto 29/06/29</option>
           <option value="TXMD9">TXMD9 — Dual CER/TAMAR vto 14/12/29</option>
           <option value="TXMJ0">TXMJ0 — Dual CER/TAMAR vto 28/06/30</option>
+        </optgroup>
+        <optgroup label="Dual TAMAR/Dólar · max(A3500+6,64%, TAMAR)">
+          <option value="TMVE8">TMVE8 — Dual TAMAR/USD vto 31/01/28</option>
         </optgroup>
       </select>
       <div class="sim-pb" id="tsim-pb" style="display:none">
@@ -666,8 +691,8 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   <div style="background:var(--s);border:1px solid var(--bdr2);border-left:3px solid #34d399;border-radius:8px;padding:12px 16px;margin-bottom:18px;display:flex;gap:24px;align-items:center;flex-wrap:wrap">
     <div>
       <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--mu);margin-bottom:3px">Último IPC publicado</div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:var(--or)" id="bk-ipc">2.6% / mes</div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim)">Abril 2026 (INDEC)</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:var(--or)" id="bk-ipc">1.7% / mes</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim)">Agosto 2026 (INDEC)</div>
     </div>
     <div style="width:1px;height:38px;background:var(--bdr)"></div>
     <div>
@@ -941,6 +966,16 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
           <th>TC impl. vs banda al vto.</th><th>Señal</th>
         </tr></thead><tbody id="dl-bk-body"></tbody></table></div>
       </div>
+
+      <!-- Duales TAMAR/DL — no son DL puro, van aparte y etiquetados (mismo criterio que Duales CER/TAMAR en el tab CER) -->
+      <div class="tw">
+        <div class="tw-hdr" style="color:#a3e635">Duales TAMAR / Dólar Linked
+          <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">max(TAMAR acum., devaluación acum.) — no es DL puro, ver tab Duales</span>
+        </div>
+        <div class="tbl-wrap"><table><thead><tr><th>Ticker</th><th class="ct">Vto.</th><th>VNO Circulación</th><th>Fecha del Dato</th><th>Nota</th></tr></thead><tbody id="dual-tamardl-body-dl">
+          <tr><td>TMVE8<span style="font-size:8px;margin-left:4px;padding:1px 4px;border-radius:3px;background:rgba(163,230,53,.12);border:1px solid rgba(163,230,53,.3);color:#a3e635">TAM/DL</span></td><td class="ct">31/01/2028</td><td>USD 3.467 M</td><td>29/07/2026</td><td style="color:var(--mu);font-size:11px">Primera emisión — licitación 29/07/2026, precio de corte USD 908,10, TIREA pata DL 6,64%</td></tr>
+        </tbody></table></div>
+      </div>
     </div>
 
     <!-- CHART -->
@@ -1061,6 +1096,112 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   </div>
 </div><!-- /tab-on -->
 
+<!-- ════ TAB DUALES ════ -->
+<div class="tab-content" id="tab-dual">
+  <div class="hdr">
+    <div>
+      <div class="eyebrow" style="color:#34d399">⬤ Duales · dos familias de instrumentos</div>
+      <h1>Bonos Duales del Tesoro</h1>
+    </div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);text-align:right">Fuente: rendimientos.co · Secretaría de Finanzas (licitaciones)</div>
+  </div>
+
+  <div class="tw"><div class="tw-hdr" style="color:#34d399">Duales CER/TAMAR (TXM)
+    <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">max(CER acum., TAMAR acum.) · TIR real si gana CER</span>
+  </div><div class="tbl-wrap"><table><thead><tr><th>Ticker</th><th class="ct">Vto.</th><th>Precio</th><th>Bid</th><th>Ask</th><th>VT si gana CER</th><th>Paridad CER</th><th>Días</th><th>DUR</th><th>TIR real CER</th><th class="ct">CER₀</th><th>Var%</th></tr></thead><tbody id="dual-cer-body2"></tbody></table></div></div>
+
+  <div class="tw" style="margin-top:18px"><div class="tw-hdr" style="color:#a3e635">Duales TAMAR / Dólar Linked
+    <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">max(TAMAR acum., devaluación acum.) — familia nueva, primera emisión 29/07/2026</span>
+  </div><div class="tbl-wrap"><table><thead><tr><th>Ticker</th><th class="ct">Vto.</th><th>VNO Circulación</th><th>Fecha del Dato</th><th>Nota</th></tr></thead><tbody id="dual-tamardl-body">
+    <tr><td>TMVE8<span style="font-size:8px;margin-left:4px;padding:1px 4px;border-radius:3px;background:rgba(163,230,53,.12);border:1px solid rgba(163,230,53,.3);color:#a3e635">TAM/DL</span></td><td class="ct">31/01/2028</td><td>USD 3.467 M</td><td>29/07/2026</td><td style="color:var(--mu);font-size:11px">Primera emisión — licitación 29/07/2026, precio de corte USD 908,10, TIREA pata DL 6,64%</td></tr>
+  </tbody></table></div></div>
+
+  <div class="mod-nav">
+    <div class="mod-nav-label">Ir a módulo →</div>
+    <div class="mod-pill" style="color:var(--or);border-color:var(--or)33" onclick="sw('cer')">📊 Bonos CER</div>
+    <div class="mod-pill" style="color:#f472b6;border-color:#f472b633" onclick="sw('tmr')">⚡ TAMAR</div>
+    <div class="mod-pill" style="color:#a3e635;border-color:#a3e63533" onclick="sw('dl')">🔗 Dólar Linked</div>
+  </div>
+</div><!-- /tab-dual -->
+
+<div class="tab-content" id="tab-pvd">
+  <div class="hdr">
+    <div>
+      <div class="eyebrow" style="color:#38bdf8">⬤ Pesos vs. Dólares · costo y plazo de la deuda</div>
+      <h1>Composición de Deuda y Costo de Refinanciación</h1>
+    </div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);text-align:right">Fuente: Secretaría de Finanzas (Deuda Bruta Adm. Central) · rendimientos.co/data912 · bonistas.com<br>Foto puntual — no se auto-actualiza, ver fecha en cada bloque</div>
+  </div>
+
+  <div class="tw" style="border:1px solid rgba(248,113,113,.35)"><div class="tw-hdr" style="color:#f87171;font-size:13px">★ TASA DE SUSTENTABILIDAD DE LA DEUDA — HOY
+    <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">¿A qué tasa podría endeudarse el Gobierno sin ampliar Deuda/PBI? · r* = g + pb×(1+g)/d · 07/09/2026</span>
+  </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;padding:16px">
+      <div style="padding-right:16px;border-right:1px solid var(--bdr2)">
+        <div style="font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em">Pesos (nominal)</div>
+        <div style="font-size:32px;font-weight:700;color:var(--gr);margin:4px 0">34,26%</div>
+        <div style="font-size:11px;color:var(--mu)">vs. LECAP actual: <strong style="color:var(--txt)">22,6%</strong> → margen <strong style="color:var(--gr)">+11,7pp</strong></div>
+        <div style="font-size:11px;color:var(--gr);font-weight:600;margin-top:6px">✓ SUSTENTABLE — margen amplio</div>
+      </div>
+      <div style="padding-left:16px">
+        <div style="font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em">Dólares</div>
+        <div style="font-size:32px;font-weight:700;color:#f87171;margin:4px 0">3,84%</div>
+        <div style="font-size:11px;color:var(--mu)">vs. curva de bonos: <strong style="color:var(--txt)">3,58% a 9,95%</strong> → margen <strong style="color:#f87171">-0,3 a -6,1pp</strong></div>
+        <div style="font-size:11px;color:#f87171;font-weight:600;margin-top:6px">✗ INSUSTENTABLE — salvo AO27, apenas debajo del límite</div>
+      </div>
+    </div>
+    <div style="padding:0 16px 14px;font-size:11px;color:var(--mu);line-height:1.5">g(pesos)=+33,5% nominal (INDEC) · g(USD)=+0,60% (Q1-26 vs Q1-25) · pesos: d=Deuda/PBI 68,2% (FMI/FRED 2026e), pb=superávit primario real 0,39% PBI (ene-jul anualizado) · dólares [corregido 07/09/2026, todo en USD y mismo trimestre]: d=69,76% (Deuda USD jun-26/PBI USD anualizado Q1-26, propio), pb=2,25% (superávit primario Q1-26 convertido a USD mes a mes, anualizado). En pesos el Gobierno paga bien por debajo de lo que podría sin ampliar el ratio; en dólares, <strong style="color:var(--txt)">el AO27 queda justo debajo del límite, el resto de la curva lo amplía</strong>.</div>
+  </div>
+
+  <div class="tw" style="margin-top:18px"><div class="tw-hdr" style="color:#38bdf8">% Deuda en Pesos vs. % Moneda Extranjera — 2019-2026
+    <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">Deuda Bruta Adm. Central, USD MM · dato mensual hasta jun-2026</span>
+  </div><div class="cbox-cer" style="height:280px"><canvas id="pvdChart"></canvas></div></div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px">
+    <div class="tw"><div class="tw-hdr" style="color:var(--cy)">Pesos — Curva LECAP/BONCAP (tasa fija)
+      <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">TEM Real vs. inflación jul-2026 (2,1%)</span>
+    </div><div class="tbl-wrap"><table><thead><tr><th>Ticker</th><th class="ct">Días</th><th>TNA</th><th>TEM</th><th>TEM Real</th></tr></thead><tbody id="pvd-pesos-body"></tbody></table></div></div>
+
+    <div class="tw"><div class="tw-hdr" style="color:#facc15">Dólares — Curva de Bonos Soberanos (TIR de mercado)
+      <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">TIR Real vs. inflación EE.UU. (~3%) · 06/09/2026</span>
+    </div><div class="tbl-wrap"><table><thead><tr><th>Ticker</th><th class="ct">Vto.</th><th>MD (años)</th><th>TIR USD</th><th>TIR Real</th><th>Brecha r-g(USD)</th></tr></thead><tbody id="pvd-usd-body"></tbody></table></div></div>
+  </div>
+
+  <div class="tw" style="margin-top:18px"><div class="tw-hdr" style="color:var(--pk)">Plazo Promedio Ponderado — Deuda en Pesos
+    <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">VNO por instrumento (Tasa Fija + CER + TAMAR + Duales, excluye Dólar Linked) · 06/09/2026</span>
+  </div>
+    <div style="display:flex;gap:24px;padding:16px;flex-wrap:wrap">
+      <div><div style="font-size:28px;font-weight:700;color:var(--pk)">1,21 años</div><div style="font-size:10px;color:var(--mu)">442 días · VNO ponderado $146.249 bn</div></div>
+      <div style="border-left:1px solid var(--bdr2);padding-left:24px"><div style="font-size:16px;color:var(--mu)">vs. MD Deuda USD: <strong style="color:#facc15">1,10 a 5,75 años</strong></div><div style="font-size:10px;color:var(--mu);max-width:420px;margin-top:4px">A pesar de incluir BONCER/TAMAR/Duales con vencimiento hasta 2028-2030, el promedio ponderado sigue siendo corto — dominado por las LECAP de meses.</div></div>
+    </div>
+  </div>
+
+  <div class="tw" style="margin-top:18px"><div class="tw-hdr" style="color:#a3e635">Laddering — Concentración de Vencimientos por Trimestre
+    <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">Deuda en pesos · actual vs. objetivo parejo · 07/09/2026</span>
+  </div>
+    <div class="cbox-cer" style="height:260px"><canvas id="ladderChart"></canvas></div>
+    <div style="padding:0 16px 14px;font-size:11px;color:var(--mu);line-height:1.5">
+      Índice de concentración (HHI): <strong style="color:var(--txt)">0,1022 actual</strong> vs. <strong style="color:var(--gr)">0,0769 si estuviera perfectamente laddeado</strong> (más bajo = más parejo = menor riesgo de refinanciación puntual).
+      El trimestre más sobrecargado es <strong style="color:#f87171">2027 T2 (16,7% del stock)</strong> — redirigir ahí menos emisión nueva y priorizar los trimestres hoy vacíos (2029 T2, 2030 T2, 2028 T4) permitiría bajar la concentración <strong style="color:var(--txt)">sin cambiar de moneda</strong>, solo reordenando el calendario de licitaciones.
+    </div>
+  </div>
+
+  <div class="tw" style="margin-top:18px"><div class="tw-hdr" style="color:var(--gr)">Síntesis · ¿Vale la pena estirar plazos pagando más?</div>
+    <div style="padding:14px 16px;font-size:12px;line-height:1.6;color:var(--mu)">
+      <p style="margin:0 0 10px"><strong style="color:var(--cy)">Pesos (~1,2 años en promedio):</strong> tasa REAL negativa (~-0,3% mensual) — financiamiento muy barato en términos reales, PERO exige refinanciar (rollover) buena parte del stock varias veces por año. Cada vencimiento es una "prueba de mercado": si cae la demanda en algún momento, el Tesoro puede verse forzado a convalidar tasas mucho más altas de golpe, o a emitir pesos (riesgo inflacionario) — el clásico "riesgo de bola de nieve" de la deuda corta.</p>
+      <p style="margin:0 0 10px"><strong style="color:#facc15">Dólares (1 a 6+ años):</strong> tasa nominal notablemente más alta (3,6%-9,9% según plazo) y en dólares "duros" (no se licúa con inflación local) — un costo real efectivo mucho mayor que el de la deuda en pesos hoy. A cambio, fija ese costo por años: sin vencimientos que enfrentar ni tasa que renegociar hasta el vencimiento — elimina el riesgo de refinanciación en ese horizonte.</p>
+      <p style="margin:0 0 10px"><strong style="color:var(--gr)">Conclusión (confirmada con datos):</strong> no es una comparación de "cuál es más barata" sino de costo vs. riesgo. La suba de la porción en pesos de 22% (2019) a 47% (2026) mejoró el costo real, pero el plazo promedio de esa deuda (1,21 años) sigue siendo sensiblemente más corto que la curva en dólares — confirma que la "pesificación" resolvió el problema de MONEDA pero no el de PLAZO: el riesgo de refinanciación de corto plazo sigue siendo alto en la porción peso de la deuda.</p>
+      <p style="margin:0"><strong style="color:var(--rd)">Sustentabilidad en USD:</strong> con el PBI en dólares creciendo apenas +0,60% (Q1-26 vs Q1-25 — casi todo el +33,5% nominal en pesos se lo comió la devaluación del +32,7%), la brecha entre el costo de la deuda en USD y el crecimiento de la economía en USD es <strong style="color:var(--rd)">positiva en casi toda la curva (+3pp a +6,1pp, salvo el AO27 con -0,3pp)</strong>: la deuda en dólares crece bastante más rápido que la capacidad de la economía de generar dólares — a diferencia de la deuda en pesos, cuya brecha nominal es negativa. Tomando la tasa de sustentabilidad r* (todo en USD, mismo trimestre: d=69,76%, pb=2,25%, g=0,60%) da <strong style="color:var(--txt)">3,84%</strong> — el AO27 (TIR 3,58%) queda apenas por debajo, el resto de la curva la supera.</p>
+    </div>
+  </div>
+
+  <div class="mod-nav">
+    <div class="mod-nav-label">Ir a módulo →</div>
+    <div class="mod-pill" style="color:var(--cy);border-color:var(--cy)33" onclick="sw('tf')">📈 Tasa Fija</div>
+    <div class="mod-pill" style="color:var(--am);border-color:var(--am)33" onclick="sw('hd')">💵 Soberanos HD</div>
+  </div>
+</div><!-- /tab-pvd -->
+
 <script>
 // ═══════════════════════════════════════════════════════════════
 //  DATOS EMBEBIDOS — 08/07/2026 09:15 hs — rendimientos.co
@@ -1080,7 +1221,7 @@ const SEED_TF = [
   {symbol:'T31Y7',price:123.73, tem:1.80,tna:22.4,tea:23.9,dtm:327,type:'BONCAP'},
   {symbol:'T30J7',price:124.86, tem:1.80,tna:22.4,tea:23.9,dtm:357,type:'BONCAP'},
 ];
-const VF_MAP={S17L6:107.916,S31L6:117.6737,S14G6:108.0311,S31G6:127.0575,S30S6:117.5482,S30O6:135.2593,S30N6:129.9035,S13N6:113.00,T15E7:161.0457,T30A7:157.3155,T31Y7:151.4979,T30J7:156.0009};
+const VF_MAP={S17L6:107.916,S31L6:117.6737,S14G6:108.0311,S31G6:127.0575,S30S6:117.5482,S30O6:135.2593,S30N6:129.9035,S13N6:109.651,T15E7:161.0457,T30A7:157.3155,T31Y7:151.4979,T30J7:156.0009};
 const TF_VTO  = {S17L6:'2026-07-17',S31L6:'2026-07-31',S14G6:'2026-08-14',S31G6:'2026-08-31',S30S6:'2026-09-30',S30O6:'2026-10-30',S30N6:'2026-11-30',S13N6:'2026-11-13',T15E7:'2027-01-15',T30A7:'2027-04-30',T31Y7:'2027-05-31',T30J7:'2027-06-30'};
 const TF_VTO_D= {S17L6:'17/07/26',S31L6:'31/07/26',S14G6:'14/08/26',S31G6:'31/08/26',S30S6:'30/09/26',S30O6:'30/10/26',S30N6:'30/11/26',S13N6:'13/11/26',T15E7:'15/01/27',T30A7:'30/04/27',T31Y7:'31/05/27',T30J7:'30/06/27'};
 
@@ -1099,6 +1240,13 @@ const SEED_CER_PRECIOS=[
   {symbol:'TX31', c:1452.0,bid:1451.5,ask:1452.5,pct:0.10},
   {symbol:'DICP', c:48430, bid:48350, ask:48430, pct:0.15},
   {symbol:'PARP', c:37120, bid:37110, ask:37130, pct:0.05},
+  // Agregados 01/09/2026 — faltaban en el listado (ver memoria bonos-dashboard-cer-audit). Precios: data912.com/live/arg_bonds+arg_notes
+  {symbol:'X29E7', c:98.75,  bid:98.73,  ask:98.75,  pct:0.20},
+  {symbol:'TZXY7', c:120.35, bid:119.05, ask:120.35, pct:1.13},
+  {symbol:'TZXS7', c:105.30, bid:105.20, ask:105.30, pct:0.14},
+  {symbol:'TZXM8', c:98.50,  bid:98.26,  ask:98.50,  pct:0.05},
+  {symbol:'TZXS8', c:94.25,  bid:94.10,  ask:94.25,  pct:0.26},
+  {symbol:'TZXD8', c:84.39,  bid:84.10,  ask:84.39,  pct:0.28},
   // Duales CER/TAMAR — precios seed estimados (actualizar con datos de mercado)
   {symbol:'TXMJ8', c:103.0,  bid:102.5,  ask:103.5,  pct:0.0},
   {symbol:'TXMD8', c:102.0,  bid:101.5,  ask:102.5,  pct:0.0},
@@ -1115,10 +1263,18 @@ const CER_INSTR=[
   {sym:'TZXO6',tipo:'ZC', cer0:480.1526, vto:'30/10/26',vtoi:'2026-10-30',dur:0.42, resid:100,coupon:0},
   {sym:'X30N6',tipo:'ZC', cer0:661.1807, vto:'30/11/26',vtoi:'2026-11-30',dur:0.51, resid:100,coupon:0},
   {sym:'TZXD6',tipo:'ZC', cer0:271.0476, vto:'15/12/26',vtoi:'2026-12-15',dur:0.55, resid:100,coupon:0},
+  // Agregados 01/09/2026 (ver memoria bonos-dashboard-cer-audit): cer0 = CER BCRA a T-10 hábiles antes de la fecha de emisión
+  // (misma convención de prospecto ya usada para los Duales), fecha de emisión tomada de bonistas.com, CER histórico de api.bcra.gob.ar (id 30)
+  {sym:'X29E7',tipo:'ZC', cer0:823.99892290981, vto:'29/01/27',vtoi:'2027-01-29',dur:0.41, resid:100,coupon:0}, // emisión 31/08/26 (LECER)
   {sym:'TZXM7',tipo:'ZC', cer0:362.5767, vto:'31/03/27',vtoi:'2027-03-31',dur:0.84, resid:100,coupon:0},
+  {sym:'TZXY7',tipo:'ZC', cer0:661.18067847314, vto:'31/05/27',vtoi:'2027-05-31',dur:0.74, resid:100,coupon:0}, // emisión 15/12/25
   {sym:'TZX27',tipo:'ZC', cer0:200.388,  vto:'30/06/27',vtoi:'2027-06-30',dur:1.09, resid:100,coupon:0},
+  {sym:'TZXS7',tipo:'ZC', cer0:725.875485635, vto:'30/09/27',vtoi:'2027-09-30',dur:1.08, resid:100,coupon:0}, // emisión 31/03/26
   {sym:'TZXD7',tipo:'ZC', cer0:271.0476, vto:'15/12/27',vtoi:'2027-12-15',dur:1.55, resid:100,coupon:0},
+  {sym:'TZXM8',tipo:'ZC', cer0:725.875485635, vto:'31/03/28',vtoi:'2028-03-31',dur:1.58, resid:100,coupon:0}, // emisión 31/03/26
   {sym:'TZX28',tipo:'ZC', cer0:200.388,  vto:'30/06/28',vtoi:'2028-06-30',dur:2.09, resid:100,coupon:0},
+  {sym:'TZXS8',tipo:'ZC', cer0:725.875485635, vto:'29/09/28',vtoi:'2028-09-29',dur:2.08, resid:100,coupon:0}, // emisión 31/03/26
+  {sym:'TZXD8',tipo:'ZC', cer0:791.48970450621, vto:'15/12/28',vtoi:'2028-12-15',dur:2.29, resid:100,coupon:0}, // emisión 30/06/26
   {sym:'TX26', tipo:'CPN',cer0:22.544,   vto:'09/11/26',vtoi:'2026-11-09',dur:0.12, resid:10, coupon:0.020},
   {sym:'TX28', tipo:'CPN',cer0:22.544,   vto:'09/11/28',vtoi:'2028-11-09',dur:2.37, resid:50, coupon:0.0225},
   {sym:'TX31', tipo:'CPN',cer0:47.2937,  vto:'30/11/31',vtoi:'2031-11-30',dur:5.51, resid:100,coupon:0.025},
@@ -1349,6 +1505,7 @@ function sw(tab){
   if(tab==='hd')   { if(hdChart)   hdChart.resize();   }
   if(tab==='dl')   { if(dlChart)   dlChart.resize();   }
   if(tab==='on')   { onRefresh(); }
+  if(tab==='pvd')  { if(pvdChart) pvdChart.resize(); if(ladderChart) ladderChart.resize(); }
 }
 
 function setStatus(s,txt){
@@ -1847,7 +2004,7 @@ function cerRender(priceMap,cer){
 
   // Dual CER/TAMAR rows
   const dualCT = CER_INSTR.filter(i=>i.tipo==='DUAL CER/TAMAR');
-  document.getElementById('dual-cer-body').innerHTML=dualCT.map(i=>{
+  const dualCTHtml=dualCT.map(i=>{
     const p=priceMap[i.sym]; if(!p) return '';
     const precio=p.c;
     const pch=p.pct||0; const pchCol=pch>=0?'color:var(--gr)':'color:var(--rd)';
@@ -1880,6 +2037,9 @@ function cerRender(priceMap,cer){
       <td style="${pchCol}">${(pch>=0?'+':'')+pch.toFixed(2)+'%'}</td>
     </tr>`;
   }).join('');
+  document.getElementById('dual-cer-body').innerHTML=dualCTHtml;
+  const dualCerBody2=document.getElementById('dual-cer-body2');
+  if(dualCerBody2) dualCerBody2.innerHTML=dualCTHtml;
 
   // Val table
   document.getElementById('cer-val').innerHTML=zcCalc.filter(d=>d.dtm>0&&d.tir!=null).sort((a,b)=>a.dtm-b.dtm).map(d=>{
@@ -1992,10 +2152,16 @@ const SIM_SCHED={
   TZXO6:[{d:'2026-10-30',a:100,vr:100,cr:0}],
   X30N6:[{d:'2026-11-30',a:100,vr:100,cr:0}],
   TZXD6:[{d:'2026-12-15',a:100,vr:100,cr:0}],
+  X29E7:[{d:'2027-01-29',a:100,vr:100,cr:0}],
   TZXM7:[{d:'2027-03-31',a:100,vr:100,cr:0}],
+  TZXY7:[{d:'2027-05-31',a:100,vr:100,cr:0}],
   TZX27:[{d:'2027-06-30',a:100,vr:100,cr:0}],
+  TZXS7:[{d:'2027-09-30',a:100,vr:100,cr:0}],
   TZXD7:[{d:'2027-12-15',a:100,vr:100,cr:0}],
+  TZXM8:[{d:'2028-03-31',a:100,vr:100,cr:0}],
   TZX28:[{d:'2028-06-30',a:100,vr:100,cr:0}],
+  TZXS8:[{d:'2028-09-29',a:100,vr:100,cr:0}],
+  TZXD8:[{d:'2028-12-15',a:100,vr:100,cr:0}],
   TX26:[{d:'2026-11-09',a:20,vr:20,cr:0.020}],
   TX28:[{d:'2026-11-09',a:10,vr:50,cr:0.0225},{d:'2027-05-09',a:10,vr:40,cr:0.0225},{d:'2027-11-09',a:10,vr:30,cr:0.0225},{d:'2028-05-09',a:10,vr:20,cr:0.0225},{d:'2028-11-09',a:10,vr:10,cr:0.0225}],
   TX31:[{d:'2026-11-30',a:0,vr:100,cr:0.025},{d:'2027-05-30',a:10,vr:100,cr:0.025},{d:'2027-11-30',a:10,vr:90,cr:0.025},{d:'2028-05-30',a:10,vr:80,cr:0.025},{d:'2028-11-30',a:10,vr:70,cr:0.025},{d:'2029-05-30',a:10,vr:60,cr:0.025},{d:'2029-11-30',a:10,vr:50,cr:0.025},{d:'2030-05-30',a:10,vr:40,cr:0.025},{d:'2030-11-30',a:10,vr:30,cr:0.025},{d:'2031-05-30',a:10,vr:20,cr:0.025},{d:'2031-11-30',a:10,vr:10,cr:0.025}],
@@ -2003,6 +2169,8 @@ const SIM_SCHED={
   PARP:[{d:'2026-09-30',a:0,vr:100,cr:0.0177},{d:'2027-03-31',a:0,vr:100,cr:0.0177},{d:'2027-09-30',a:0,vr:100,cr:0.0177},{d:'2028-03-31',a:0,vr:100,cr:0.0177},{d:'2028-09-30',a:0,vr:100,cr:0.0177},{d:'2029-03-31',a:0,vr:100,cr:0.0177},{d:'2029-09-30',a:5,vr:100,cr:0.0177},{d:'2030-03-31',a:5,vr:95,cr:0.0177},{d:'2030-09-30',a:5,vr:90,cr:0.0177},{d:'2031-03-31',a:5,vr:85,cr:0.0177},{d:'2031-09-30',a:5,vr:80,cr:0.0177},{d:'2032-03-31',a:5,vr:75,cr:0.0177},{d:'2032-09-30',a:5,vr:70,cr:0.0177},{d:'2033-03-31',a:5,vr:65,cr:0.0177},{d:'2033-09-30',a:5,vr:60,cr:0.0177},{d:'2034-03-31',a:5,vr:55,cr:0.0177},{d:'2034-09-30',a:5,vr:50,cr:0.0177},{d:'2035-03-31',a:5,vr:45,cr:0.0177},{d:'2035-09-30',a:5,vr:40,cr:0.0177},{d:'2036-03-31',a:5,vr:35,cr:0.0177},{d:'2036-09-30',a:5,vr:30,cr:0.0177},{d:'2037-03-31',a:5,vr:25,cr:0.0177},{d:'2037-09-30',a:5,vr:20,cr:0.0177},{d:'2038-03-31',a:5,vr:15,cr:0.0177},{d:'2038-09-30',a:5,vr:10,cr:0.0177},{d:'2038-12-31',a:5,vr:5,cr:0.0177}],
 };
 const SIM_CER0={TZX26:200.388,X31L6:685.5506,X30S6:714.9849,TZXO6:480.1526,X30N6:661.1807,TZXD6:271.0476,TZXM7:362.5767,TZX27:200.388,TZXD7:271.0476,TZX28:200.388,TX26:22.544,TX28:22.544,TX31:47.2937,DICP:1.4552,PARP:1.4552,
+  // Agregados 01/09/2026 (ver memoria bonos-dashboard-cer-audit)
+  X29E7:823.99892290981,TZXY7:661.18067847314,TZXS7:725.875485635,TZXM8:725.875485635,TZXS8:725.875485635,TZXD8:791.48970450621,
   // TXM CER0 pendiente — completar con datos de prospecto de licitación
   TXMJ8:758.1180,TXMD8:779.2409,TXMJ9:746.3809,TXMD9:779.2409,TXMJ0:779.2409};
 
@@ -2151,7 +2319,9 @@ const SEED_TMR_NOTES = [
 ];
 const SEED_TMR_BONDS = [
   {symbol:'TMF27', c:115.9,   bid:114.35,  ask:115.7,  pct:1.17},
+  {symbol:'TML27', c:106.85,  bid:106.55,  ask:106.85, pct:0.05},
   {symbol:'TMG27', c:108.9,   bid:108.9,   ask:110.0,  pct:0.00},
+  {symbol:'TMF28', c:107.80,  bid:107.10,  ask:107.80, pct:-0.05},
   {symbol:'TMG28', c:101.2,   bid:100.0,   ask:100.7,  pct:1.09},
   {symbol:'TTD26', c:158.75,  bid:158.70,  ask:158.75, pct:0.15},
   {symbol:'TTJ26', c:159.65,  bid:159.60,  ask:159.65, pct:0.25},
@@ -2162,6 +2332,8 @@ const SEED_TMR_BONDS = [
   {symbol:'TXMJ9', c:104.5,   bid:104.0,   ask:105.0,  pct:0.0},
   {symbol:'TXMD9', c:103.5,   bid:103.0,   ask:104.0,  pct:0.0},
   {symbol:'TXMJ0', c:106.0,   bid:105.5,   ask:106.5,  pct:0.0},
+  // Agregado 01/09/2026 (ver memoria bonos-dashboard-cer-audit)
+  {symbol:'TMVE8', c:138440,  bid:136800,  ask:138700, pct:0.43},
 ];
 
 // TAMAR oficial BCRA 27/05/2026 — TNA 22.8125%
@@ -2189,7 +2361,10 @@ const SEED_TAMAR_RATE = calcTamarTEM(22.8125); // ≈ 1.9001% (fórmula oficial 
 const TMR_INSTR = {
   M31G6: {tipo:'LETAMAR',    vtod:'31/08/26', vtoi:'2026-08-31', emision:'2025-08-29', piso_tem:null},
   TMF27: {tipo:'BONO TAMAR', vtod:'28/02/27', vtoi:'2027-02-28', emision:'2025-02-28', piso_tem:null},
+  // Agregados 01/09/2026 (ver memoria bonos-dashboard-cer-audit): faltaban, cotizan en vivo (data912) con volumen alto
+  TML27: {tipo:'BONO TAMAR', vtod:'30/07/27', vtoi:'2027-07-30', emision:'2026-06-30', piso_tem:null},
   TMG27: {tipo:'BONO TAMAR', vtod:'31/08/27', vtoi:'2027-08-31', emision:'2025-08-29', piso_tem:null},
+  TMF28: {tipo:'BONO TAMAR', vtod:'25/02/28', vtoi:'2028-02-25', emision:'2026-04-15', piso_tem:null},
   TMG28: {tipo:'BONO TAMAR', vtod:'31/08/28', vtoi:'2028-08-31', emision:'2026-05-28', piso_tem:null},
   // Duales TAMAR/piso — emitidos 24/01/2025, piso TEM confirmado por prospecto
   TTJ26: {tipo:'DUAL',         vtod:'30/06/26', vtoi:'2026-06-30', emision:'2025-01-24', piso_tem:2.19/100, cer0:null},
@@ -2201,6 +2376,10 @@ const TMR_INSTR = {
   TXMJ9: {tipo:'DUAL CER/TAMAR', vtod:'29/06/29', vtoi:'2029-06-29', emision:'2026-04-30', piso_tem:null, cer0:746.3809},
   TXMD9: {tipo:'DUAL CER/TAMAR', vtod:'14/12/29', vtoi:'2029-12-14', emision:'2026-06-11', piso_tem:null, cer0:779.2409},
   TXMJ0: {tipo:'DUAL CER/TAMAR', vtod:'28/06/30', vtoi:'2030-06-28', emision:'2026-06-11', piso_tem:null, cer0:779.2409},
+  // Agregado 01/09/2026 (ver memoria bonos-dashboard-cer-audit): dual TAMAR/Dólar, estreno licitación 29/07/2026
+  // Paga MAX(TAMAR acumulada, devaluación A3500 acumulada desde emisión + spread 6,64% anual) — spread sobre TAMAR = 0%
+  // TC0 y spread: Secretaría de Finanzas (resultado licitación 29-jul-2026) + prensa (Ámbito/Cronista); TC0 = A3500 BCRA del 31/07/2026
+  TMVE8: {tipo:'DUAL TAMAR/USD', vtod:'31/01/28', vtoi:'2028-01-31', emision:'2026-07-31', piso_tem:null, tc0:1488.4531, spread_usd:0.0664},
 };
 
 let tmrTamarTEM = SEED_TAMAR_RATE; // TEM mensual TAMAR actual
@@ -2281,6 +2460,59 @@ function tmrRow(d, tamarTEM) {
     </tr>`;
   }
 
+  if (instr.tipo === 'DUAL TAMAR/USD') {
+    const precio    = d.c;
+    const pchCls    = d.pct >= 0 ? 'color:var(--gr)' : 'color:var(--rd)';
+    const pCls      = 'color:#94adc8';
+    const today     = new Date(); today.setHours(0,0,0,0);
+    const vtoDate   = new Date(instr.vtoi+'T00:00:00-03:00');
+    const diasRest30360 = days30360(today, vtoDate);
+    if (diasRest30360 <= 0) return '';
+    const mesesRest = diasRest30360 / 30;
+
+    // Escenario TAMAR: precio × (1 + TAMAR_TEM)^meses_rest
+    const vtTamar   = precio * Math.pow(1 + tamarTEM, mesesRest);
+    const retTamar  = vtTamar / precio - 1;
+    const tnaEquiv  = tamarTEM * 12 * 100;
+
+    // Escenario USD: VN=100 USD (no pesos, a diferencia de los duales CER/TAMAR) → VT_hoy(ARS) = 100 × TC_hoy × (1+spread_usd)^(años desde emisión)
+    // TC0 no aparece en la fórmula: el valor en pesos de "100 USD + spread acumulado" depende solo del TC de HOY, no del TC de emisión
+    // (mismo criterio que el leg CER: usa TC de HOY como proxy del TC al vto, no proyecta devaluación futura)
+    let tirUsd = null, usdGana = null;
+    // dlTcData se declara más abajo en el script (sección Dollar Linked) — en el primer render con datos
+    // semilla todavía puede no estar inicializada (TDZ de `let`), de ahí el try/catch con fallback
+    let tcHoy;
+    try { tcHoy = dlTcData && dlTcData.valor; } catch(e) { tcHoy = 1512.7304; }
+    if (tcHoy) {
+      const emisDate   = new Date(instr.emision+'T00:00:00-03:00');
+      const diasDesdeEmis = days30360(emisDate, today);
+      const aniosDesdeEmis = Math.max(diasDesdeEmis, 0) / 360;
+      const vtUsd = 100 * tcHoy * Math.pow(1 + instr.spread_usd, aniosDesdeEmis);
+      tirUsd = (Math.pow(vtUsd / precio, 365 / diasRest30360) - 1) * 100;
+      usdGana = vtUsd > vtTamar;
+    }
+
+    const escTag = usdGana === null
+      ? '<span style="color:var(--mu);font-size:9px">necesita A3500</span>'
+      : usdGana
+        ? '<span style="color:#38bdf8;font-size:9px;font-weight:700">💵 USD</span>'
+        : '<span style="color:#f472b6;font-size:9px;font-weight:700">⚡ TAMAR</span>';
+
+    return `<tr>
+      <td>${d.symbol}<span style="font-size:8px;margin-left:4px;padding:1px 5px;border-radius:3px;background:rgba(56,189,248,.12);border:1px solid rgba(56,189,248,.3);color:#38bdf8">TAM/USD</span></td>
+      <td class="ct"><span class="vto">${instr.vtod}</span></td>
+      <td style="${pCls};font-weight:600">${pr(precio)}</td>
+      <td style="color:var(--mu)">${pr(d.bid)}</td>
+      <td style="color:var(--mu)">${pr(d.ask)}</td>
+      <td style="color:var(--mu)">${diasRest30360}d</td>
+      <td style="color:var(--gr);font-weight:600">${p2(retTamar*100)}</td>
+      <td style="color:var(--am)">${p2(tnaEquiv)}</td>
+      <td style="color:#38bdf8">${tirUsd !== null ? p2(tirUsd) : '<span style="color:var(--mu);font-size:9px">—&nbsp;(A3500 pendiente)</span>'}</td>
+      <td class="ct">${escTag}</td>
+      <td style="${pchCls}">${d.pct!=null?(d.pct>=0?'+':'')+d.pct.toFixed(2)+'%':'—'}</td>
+    </tr>`;
+  }
+
   if (instr.tipo === 'DUAL') {
     // PISO: VNO=100 × (1+piso_TEM)^(DÍAS_30_360_desde_emisión/30)
     const emisDate    = new Date(instr.emision+'T00:00:00-03:00');
@@ -2324,20 +2556,26 @@ function tmrRender(notes, bonds, tamarTEM) {
   const bTamar    = bonds.filter(d=>TMR_INSTR[d.symbol]?.tipo==='BONO TAMAR');
   const duales    = bonds.filter(d=>TMR_INSTR[d.symbol]?.tipo==='DUAL');
   const dualesCT  = bonds.filter(d=>TMR_INSTR[d.symbol]?.tipo==='DUAL CER/TAMAR');
+  const dualesUSD = bonds.filter(d=>TMR_INSTR[d.symbol]?.tipo==='DUAL TAMAR/USD');
 
   document.getElementById('tmr-letamar').innerHTML    = letamar.map(d=>tmrRow(d,tamarTEM)).join('');
   document.getElementById('tmr-bonos').innerHTML      = bTamar.map(d=>tmrRow(d,tamarTEM)).join('');
   document.getElementById('tmr-duales').innerHTML     = duales.map(d=>tmrRow(d,tamarTEM)).join('');
   document.getElementById('tmr-duales-cer').innerHTML = dualesCT.map(d=>tmrRow(d,tamarTEM)).join('');
+  document.getElementById('tmr-duales-usd').innerHTML = dualesUSD.map(d=>tmrRow(d,tamarTEM)).join('');
 
-  // fallback seed para duales CER/TAMAR si la API no los devuelve
+  // fallback seed para duales CER/TAMAR y TAMAR/USD si la API no los devuelve
   if (!dualesCT.length) {
     const seedCT = SEED_TMR_BONDS.filter(d=>TMR_INSTR[d.symbol]?.tipo==='DUAL CER/TAMAR');
     document.getElementById('tmr-duales-cer').innerHTML = seedCT.map(d=>tmrRow(d,tamarTEM)).join('');
   }
+  if (!dualesUSD.length) {
+    const seedUSD = SEED_TMR_BONDS.filter(d=>TMR_INSTR[d.symbol]?.tipo==='DUAL TAMAR/USD');
+    document.getElementById('tmr-duales-usd').innerHTML = seedUSD.map(d=>tmrRow(d,tamarTEM)).join('');
+  }
 
   // KPIs
-  const allInstr = [...letamar,...bTamar,...duales,...dualesCT];
+  const allInstr = [...letamar,...bTamar,...duales,...dualesCT,...dualesUSD];
   document.getElementById('tmr-k4').textContent = allInstr.length;
   const avgPct = allInstr.reduce((s,d)=>s+(d.pct||0),0)/Math.max(allInstr.length,1);
   document.getElementById('tmr-k5').textContent = (avgPct>=0?'+':'')+avgPct.toFixed(2)+'%';
@@ -2420,7 +2658,9 @@ async function tmrRefresh(){
 const TSIM_INSTR = {
   M31G6: {tipo:'LETAMAR',    vtoi:'2026-08-31', vtod:'31/08/26', emision:'2025-08-01', piso_tem:null, vn_emision:100},
   TMF27: {tipo:'BONO TAMAR', vtoi:'2027-02-28', vtod:'28/02/27', emision:'2025-02-01', piso_tem:null, vn_emision:100},
+  TML27: {tipo:'BONO TAMAR', vtoi:'2027-07-30', vtod:'30/07/27', emision:'2026-06-30', piso_tem:null, vn_emision:100},
   TMG27: {tipo:'BONO TAMAR', vtoi:'2027-08-31', vtod:'31/08/27', emision:'2025-02-01', piso_tem:null, vn_emision:100},
+  TMF28: {tipo:'BONO TAMAR', vtoi:'2028-02-25', vtod:'25/02/28', emision:'2026-04-15', piso_tem:null, vn_emision:100},
   TMG28: {tipo:'BONO TAMAR', vtoi:'2028-08-31', vtod:'31/08/28', emision:'2026-05-28', piso_tem:null, vn_emision:100},
   TTJ26: {tipo:'DUAL',       vtoi:'2026-06-30', vtod:'30/06/26', emision:'2025-01-24', piso_tem:2.19/100, vn_emision:100},
   TTS26: {tipo:'DUAL',       vtoi:'2026-09-30', vtod:'30/09/26', emision:'2025-01-24', piso_tem:2.17/100, vn_emision:100},
@@ -2431,6 +2671,8 @@ const TSIM_INSTR = {
   TXMJ9: {tipo:'DUAL CER/TAMAR', vtoi:'2029-06-29', vtod:'29/06/29', emision:'2026-04-30', piso_tem:null, vn_emision:100, cer0:746.3809},
   TXMD9: {tipo:'DUAL CER/TAMAR', vtoi:'2029-12-14', vtod:'14/12/29', emision:'2026-06-11', piso_tem:null, vn_emision:100, cer0:779.2409},
   TXMJ0: {tipo:'DUAL CER/TAMAR', vtoi:'2030-06-28', vtod:'28/06/30', emision:'2026-06-11', piso_tem:null, vn_emision:100, cer0:779.2409},
+  // Agregado 01/09/2026: el simulador muestra el camino TAMAR puro (no compara vs leg USD, esa comparación completa está en la tabla principal del tab TAMAR)
+  TMVE8: {tipo:'DUAL TAMAR/USD', vtoi:'2028-01-31', vtod:'31/01/28', emision:'2026-07-31', piso_tem:null, vn_emision:100, tc0:1488.4531, spread_usd:0.0664},
 };
 
 const MN_ES = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
@@ -2688,7 +2930,7 @@ function tsimRun(){
 // ═══════════════════════════════════════════════════════════════
 //  BREAKEVEN INFLATION — Nominal vs CER
 // ═══════════════════════════════════════════════════════════════
-const IPC_ULTIMO = 2.6;
+const IPC_ULTIMO = 1.7; // Ago-2026 (INDEC), actualizado 10/09/2026
 let bkevChart = null;
 
 function bkevRender() {
@@ -2933,21 +3175,23 @@ const HD_BOND_API = '/api/proxy?src=bonds';
 // Configuración de instrumentos
 const HD_CONFIG = {
   // Globales (ley NY)
-  GD29:{tipo:'GD',ley:'NY',  vto:'2029-07-09',vtod:'Jul 29',cpn:'20.70%'},
-  GD30:{tipo:'GD',ley:'NY',  vto:'2030-07-09',vtod:'Jul 30',cpn:'16.54%'},
+  GD29:{tipo:'GD',ley:'NY',  vto:'2029-07-09',vtod:'Jul 29',cpn:'1.00%'},
+  GD30:{tipo:'GD',ley:'NY',  vto:'2030-07-09',vtod:'Jul 30',cpn:'0.75%'},
   GD35:{tipo:'GD',ley:'NY',  vto:'2035-07-09',vtod:'Jul 35',cpn:'4.13%'},
   GD38:{tipo:'GD',ley:'NY',  vto:'2038-01-09',vtod:'Ene 38',cpn:'5.00%'},
-  GD41:{tipo:'GD',ley:'NY',  vto:'2041-07-09',vtod:'Jul 41',cpn:'3.13%'},
-  GD46:{tipo:'GD',ley:'NY',  vto:'2046-07-09',vtod:'Jul 46',cpn:'3.63%'},
+  GD41:{tipo:'GD',ley:'NY',  vto:'2041-07-09',vtod:'Jul 41',cpn:'3.50%'},
+  GD46:{tipo:'GD',ley:'NY',  vto:'2046-07-09',vtod:'Jul 46',cpn:'4.13%'},
   // Bonares (ley Argentina)
-  AL29:{tipo:'AL',ley:'Arg', vto:'2029-07-09',vtod:'Jul 29',cpn:'20.70%'},
-  AL30:{tipo:'AL',ley:'Arg', vto:'2030-07-09',vtod:'Jul 30',cpn:'16.54%'},
+  AL29:{tipo:'AL',ley:'Arg', vto:'2029-07-09',vtod:'Jul 29',cpn:'1.00%'},
+  AL30:{tipo:'AL',ley:'Arg', vto:'2030-07-09',vtod:'Jul 30',cpn:'0.75%'},
   AL35:{tipo:'AL',ley:'Arg', vto:'2035-07-09',vtod:'Jul 35',cpn:'4.13%'},
-  AL41:{tipo:'AL',ley:'Arg', vto:'2041-07-09',vtod:'Jul 41',cpn:'3.13%'},
+  AL41:{tipo:'AL',ley:'Arg', vto:'2041-07-09',vtod:'Jul 41',cpn:'3.50%'},
   // Otros ley Argentina (también van en curva AL)
-  AO27:{tipo:'AL',ley:'Arg', vto:'2027-10-30',vtod:'Oct 27',cpn:'1.13%'},
-  AO28:{tipo:'AL',ley:'Arg', vto:'2028-10-31',vtod:'Oct 28',cpn:'1.00%'},
-  AN29:{tipo:'AL',ley:'Arg', vto:'2029-11-30',vtod:'Nov 29',cpn:'6.07%'},
+  AO27:{tipo:'AL',ley:'Arg', vto:'2027-10-30',vtod:'Oct 27',cpn:'6.00%'},
+  AO28:{tipo:'AL',ley:'Arg', vto:'2028-10-31',vtod:'Oct 28',cpn:'6.00%'},
+  // Agregado 01/09/2026 (ver memoria bonos-dashboard-cer-audit): cotiza en la fuente en vivo (rendimientos.co/api/soberanos) pero faltaba acá, se descartaba en silencio
+  AO29:{tipo:'AL',ley:'Arg', vto:'2029-10-31',vtod:'Oct 29',cpn:'6.00%'},
+  AN29:{tipo:'AL',ley:'Arg', vto:'2029-11-30',vtod:'Nov 29',cpn:'6.50%'},
   AE38:{tipo:'AL',ley:'Arg', vto:'2038-01-09',vtod:'Ene 38',cpn:'5.00%'},
   // Ley NY — otros
   BPD7:{tipo:'OT',ley:'NY',  vto:'2027-11-01',vtod:'Nov 27',cpn:'5.00%'},
@@ -2971,7 +3215,10 @@ const BP_CONFIG = {
   BPD7C:{serie:'1D (NY)',vto:'Oct 2027',liq:'MEP (bolsa)',cpn:'5.00%',dur:'1.09'},
   // Ext. 2028 — amort 50% abr-28 + 50% oct-28 (estimado)
   BPA8D:{serie:'1A ext.',vto:'2028',liq:'Cable (CCL)',cpn:'5.00%',dur:'1.21'},
+  // Agregados 01/09/2026 (ver memoria bonos-dashboard-cer-audit): faltaba la variante MEP de las extensiones 2028 (ya teníamos solo Cable)
+  BPA8C:{serie:'1A ext.',vto:'2028',liq:'MEP (bolsa)',cpn:'5.00%',dur:'1.21'},
   BPB8D:{serie:'1B ext.',vto:'2028',liq:'Cable (CCL)',cpn:'5.00%',dur:'1.20'},
+  BPB8C:{serie:'1B ext.',vto:'2028',liq:'MEP (bolsa)',cpn:'5.00%',dur:'1.20'},
 };
 
 // Cashflows BOPREAL para cálculo de TIR en vivo
@@ -2998,7 +3245,9 @@ const SEED_HD_BP = [
   {symbol:'BPD7D', c:100.55,bid:100.50,ask:100.75,pct_change:0.04, vol:953051},
   {symbol:'BPD7C', c:97.12, bid:96.85, ask:97.12, pct_change:-0.04,vol:24483},
   {symbol:'BPA8D', c:91.22, bid:90.56, ask:91.09, pct_change:0.90, vol:43586},
+  {symbol:'BPA8C', c:88.32, bid:88.30, ask:89.00, pct_change:-0.28,vol:3799},
   {symbol:'BPB8D', c:90.32, bid:90.32, ask:90.95, pct_change:-0.35,vol:332987},
+  {symbol:'BPB8C', c:88.55, bid:88.18, ask:88.55, pct_change:1.21, vol:2229},
 ];
 
 const SEED_HD_SOB = [
@@ -3014,6 +3263,7 @@ const SEED_HD_SOB = [
   {symbol:'AL41',price_usd:79.00,bid:78.80,ask:79.10,pct_change:0.0,  ytm:'8.35%',duration:'6.27',volume:765495},
   {symbol:'AO27',price_usd:102.55,bid:102.45,ask:102.60,pct_change:0.0,ytm:'4.50%',duration:'1.36',volume:9789161},
   {symbol:'AO28',price_usd:97.31, bid:97.20, ask:97.40, pct_change:0.0,ytm:'8.96%',duration:'2.25',volume:9534152},
+  {symbol:'AO29',price_usd:90.54, bid:90.46, ask:90.54, pct_change:0.37,ytm:'9.50%',duration:'3.05',volume:4479631},
   {symbol:'AN29',price_usd:95.40, bid:95.20, ask:95.50, pct_change:0.0,ytm:'9.60%',duration:'3.07',volume:922106},
   {symbol:'AE38',price_usd:85.00, bid:84.85, ask:85.10, pct_change:0.0,ytm:'9.40%',duration:'4.79',volume:2014527},
   {symbol:'BPD7',price_usd:100.75,bid:100.50,ask:100.75,pct_change:0.0,ytm:'4.75%',duration:'1.14',volume:953051},
@@ -3412,26 +3662,33 @@ const DL_CONFIG = {
   D31G6: {tipo:'Letra DL', vto:'2026-08-31', vtod:'Ago 26', vn_usd:100, emision:'2026-02-28'},
   D30S6: {tipo:'Letra DL', vto:'2026-09-30', vtod:'Sep 26', vn_usd:100, emision:'2026-03-31'},
   D31M7: {tipo:'Letra DL', vto:'2027-03-31', vtod:'Mar 27', vn_usd:100, emision:'2026-05-29'},
+  // Agregados 01/09/2026 (ver memoria bonos-dashboard-cer-audit): faltaban, cotizan en vivo con volumen real
+  D30O6: {tipo:'Letra DL', vto:'2026-10-30', vtod:'Oct 26', vn_usd:100, emision:'2026-08-31'},
+  D15E7: {tipo:'Letra DL', vto:'2027-01-15', vtod:'Ene 27', vn_usd:100, emision:'2026-07-31'},
   // Bonos DL (TZV prefix) — ZC, vto 30 de junio, ley Argentina
   // TC aplicable al pago: A3500 del T-1 hábil previo al vencimiento
   TZV27: {tipo:'Bono DL',  vto:'2027-06-30', vtod:'Jun 27', vn_usd:100, emision:'2024-02-28'},
   TZV28: {tipo:'Bono DL',  vto:'2028-06-30', vtod:'Jun 28', vn_usd:100, emision:'2026-04-28'},
+  TZVD8: {tipo:'Bono DL',  vto:'2028-12-15', vtod:'Dic 28', vn_usd:100, emision:'2026-06-12'},
 };
 
 const SEED_DL_TC = {
-  valor: 1491.55,        // TC A3500 mayorista BCRA — jul-2026
-  valorAnterior: 1488.00,
-  fecha: '2026-07-07',
+  valor: 1512.7304,      // TC A3500 mayorista BCRA — actualizado 01/09/2026
+  valorAnterior: 1509.4686,
+  fecha: '2026-09-01',
   fuente: 'BCRA A3500'
 };
 const SEED_DL_NOTES = [
   // TZV — Bonos DL vto 30 de junio
   {symbol:'TZV27', c:142500, bid:142400, ask:142600, pct_change:0.0,   vol:756236},
   {symbol:'TZV28', c:129400, bid:129200, ask:129500, pct_change:0.0,   vol:237801},
+  {symbol:'TZVD8', c:119170, bid:119000, ask:119500, pct_change:0.19,  vol:202543},
   // D series — Letras DL
   {symbol:'D31L6', c:148000, bid:147950, ask:148100, pct_change:0,     vol:28020170},
   {symbol:'D31G6', c:155000, bid:154900, ask:155100, pct_change:0,     vol:5000000},
   {symbol:'D30S6', c:147600, bid:147550, ask:147650, pct_change:0.0,   vol:13683974},
+  {symbol:'D30O6', c:150050, bid:149950, ask:150150, pct_change:0,     vol:5404273},
+  {symbol:'D15E7', c:149000, bid:148900, ask:149100, pct_change:0,     vol:191568},
   {symbol:'D31M7', c:143200, bid:143000, ask:143500, pct_change:0,     vol:3009522},
 ];
 
@@ -3850,6 +4107,94 @@ setTimeout(async()=>{
 
 // 3. Auto-refresh cada 20 min
 setInterval(async()=>{await Promise.allSettled([tfRefresh(),cerRefresh(),tmrRefresh(),hdRefresh(),dlRefresh()]);},20*60*1000);
+
+// ═══════════════════════════════════════════════════════════════
+//  PESOS VS USD — Composición de deuda y costo de refinanciación
+//  Datos: foto puntual 06/09/2026 (ver hojas "Deuda - Composición Moneda"
+//  y "Deuda - Costo Refinanciación" en Deuda y Cambiario ARG.xlsx)
+// ═══════════════════════════════════════════════════════════════
+const PVD_COMPOSICION = {
+  l:['Dic 19','Dic 20','Dic 21','Dic 22','Dic 23','Dic 24','Dic 25','Jun 26'],
+  pesos:[22.3,23.7,29.9,33.3,28.2,45.0,42.2,47.3],
+  usd:[77.7,76.3,70.1,66.7,71.8,55.0,57.8,52.7]
+};
+const PVD_PESOS = [
+  {sym:'S17L6',dtm:9,  tna:22.8,tem:1.87},{sym:'S31L6',dtm:23, tna:22.9,tem:1.85},
+  {sym:'S14G6',dtm:37, tna:22.5,tem:1.82},{sym:'S31G6',dtm:54, tna:22.7,tem:1.83},
+  {sym:'S30S6',dtm:84, tna:22.8,tem:1.84},{sym:'S30O6',dtm:114,tna:22.6,tem:1.82},
+  {sym:'S30N6',dtm:145,tna:22.6,tem:1.82},{sym:'T15E7',dtm:191,tna:22.6,tem:1.82},
+  {sym:'T30A7',dtm:296,tna:22.4,tem:1.80},{sym:'T31Y7',dtm:327,tna:22.4,tem:1.80},
+  {sym:'T30J7',dtm:357,tna:22.4,tem:1.80},
+];
+const PVD_INFL_MENSUAL = 2.1; // IPC jul-2026
+const PVD_USD = [
+  {sym:'AO27',vto:'29/10/2027',md:1.10,tir:3.58},{sym:'GD30',vto:'09/07/2030',md:1.94,tir:6.38},
+  {sym:'AO28',vto:'31/10/2028',md:2.00,tir:9.10},{sym:'AO29',vto:'31/10/2029',md:2.83,tir:9.95},
+  {sym:'GD41',vto:'09/07/2041',md:5.75,tir:9.40},
+];
+const PVD_INFL_US = 3.0;
+// g(USD) = crecimiento del PBI en dólares, Q1-2026 vs Q1-2025: PBI nominal ARS (INDEC, +33,5%)
+// deflactado por la devaluación del TC oficial en el mismo período (+32,7%) — evita depender
+// del nivel absoluto de PBI en USD (sensible al TC), solo usa tasas de variación. Calculado 07/09/2026.
+const PVD_G_USD = 0.60;
+
+function pvdRender(){
+  document.getElementById('pvd-pesos-body').innerHTML = PVD_PESOS.map(d=>{
+    const temReal = ((1+d.tem/100)/(1+PVD_INFL_MENSUAL/100)-1)*100;
+    const cls = temReal<0 ? 'color:var(--rd)' : 'color:var(--gr)';
+    return `<tr><td>${d.sym}</td><td class="ct">${d.dtm}d</td><td>${d.tna.toFixed(1)}%</td><td>${d.tem.toFixed(2)}%</td><td style="${cls};font-weight:600">${temReal>=0?'+':''}${temReal.toFixed(2)}%</td></tr>`;
+  }).join('');
+  document.getElementById('pvd-usd-body').innerHTML = PVD_USD.map(d=>{
+    const tirReal = ((1+d.tir/100)/(1+PVD_INFL_US/100)-1)*100;
+    const gapUsd = d.tir - PVD_G_USD;
+    return `<tr><td>${d.sym}</td><td class="ct">${d.vto}</td><td>${d.md.toFixed(2)}</td><td>${d.tir.toFixed(2)}%</td><td style="color:var(--am);font-weight:600">${tirReal.toFixed(2)}%</td><td style="color:var(--rd);font-weight:600">+${gapUsd.toFixed(2)}pp</td></tr>`;
+  }).join('');
+}
+// Laddering — vencimientos por trimestre, deuda en pesos (Tasa Fija+CER+TAMAR+Duales)
+const LADDER_L = ['2026 T3','2026 T4','2027 T1','2027 T2','2027 T3','2027 T4','2028 T1','2028 T2','2028 T3','2028 T4','2029 T2','2029 T4','2030 T2'];
+const LADDER_ACTUAL = [9748.3,20294.9,15240.4,24372.3,7635.4,11154.3,17968.8,6613.1,14302.4,5284.9,4095.8,6832.8,2705.5];
+const LADDER_TARGET = 11249.9;
+let ladderChart=null;
+function ladderInit(){
+  const el = document.getElementById('ladderChart');
+  if(!el) return;
+  ladderChart = new Chart(el, {
+    data:{ labels:LADDER_L, datasets:[
+      {type:'bar', label:'VNO Actual (ARS bn)', data:LADDER_ACTUAL,
+       backgroundColor:LADDER_ACTUAL.map(v=>v>LADDER_TARGET*1.15?'#f87171':(v<LADDER_TARGET*0.85?'#22d3a0':'#a3e635'))},
+      {type:'line', label:'Objetivo parejo', data:LADDER_L.map(()=>LADDER_TARGET), borderColor:'#4a6080', borderDash:[6,3], pointRadius:0, tension:0}
+    ]},
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ labels:{ color:'#4a6080', font:{size:10}, boxWidth:12, padding:8 } },
+        tooltip:{ backgroundColor:'#111827', borderColor:'#2d4060', borderWidth:1, titleColor:'#fbbf24', bodyColor:'#e8f0f8', cornerRadius:0, padding:10,
+          callbacks:{ label:c=>c.dataset.label+': $'+c.parsed.y.toLocaleString('es-AR',{maximumFractionDigits:0})+' bn' } } },
+      scales:{ x:{ grid:{color:'#1f2d40'}, ticks:{color:'#4a6080',font:{size:9}}, border:{color:'transparent'} },
+                y:{ grid:{color:'#1f2d40'}, ticks:{color:'#4a6080',font:{size:10},callback:v=>'$'+(v/1000).toFixed(0)+'K'}, border:{color:'transparent'} } }
+    }
+  });
+}
+let pvdChart=null;
+function pvdInit(){
+  pvdRender();
+  const el = document.getElementById('pvdChart');
+  if(!el) return;
+  pvdChart = new Chart(el, {
+    type:'line',
+    data:{ labels:PVD_COMPOSICION.l, datasets:[
+      {label:'% Pesos', data:PVD_COMPOSICION.pesos, borderColor:'#06b6d4', backgroundColor:'#06b6d433', fill:true, tension:0.3, pointRadius:3},
+      {label:'% Moneda Extranjera', data:PVD_COMPOSICION.usd, borderColor:'#f59e0b', backgroundColor:'#f59e0b33', fill:true, tension:0.3, pointRadius:3},
+    ]},
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ labels:{ color:'#4a6080', font:{size:10}, boxWidth:12, padding:8 } },
+        tooltip:{ backgroundColor:'#111827', borderColor:'#2d4060', borderWidth:1, titleColor:'#fbbf24', bodyColor:'#e8f0f8', cornerRadius:0, padding:10,
+          callbacks:{ label:c=>c.dataset.label+': '+c.parsed.y.toFixed(1)+'%' } } },
+      scales:{ x:{ grid:{color:'#1f2d40'}, ticks:{color:'#4a6080',font:{size:9}}, border:{color:'transparent'} },
+                y:{ grid:{color:'#1f2d40'}, ticks:{color:'#4a6080',font:{size:10},callback:v=>v+'%'}, border:{color:'transparent'} } }
+    }
+  });
+}
+pvdInit();
+ladderInit();
 </script>
 </body>
 </html>
