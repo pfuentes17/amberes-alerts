@@ -990,10 +990,8 @@ function buildArg(){
   <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--cel);margin-bottom:10px;">Tipo de Cambio Exportador</div>
   <div class="sr4" style="margin-bottom:4px;">
     <div class="sc agro"><div class="sl">TC Oficial</div><div class="sv a">$${fmt(a.tcOficial,0)}</div><div class="sn">Tipo A3500 BCRA</div></div>
-    <div class="sc agro"><div class="sl">TC CCL</div><div class="sv a">$${fmt(a.tcCCL,0)}</div><div class="sn">Contado con liqui</div></div>
-    <div class="sc agro" style="grid-column:span 2"><div class="sl">Nota regimen exportador</div><div class="sv" style="font-size:11px;color:var(--dm);margin-top:4px">${a.tcNota}</div></div>
+    <div class="sc agro" style="grid-column:span 3"><div class="sl">Nota regimen exportador</div><div class="sv" style="font-size:11px;color:var(--dm);margin-top:4px">${a.tcNota}</div></div>
   </div>
-  <div class="note or" style="margin-bottom:18px;">TC Blend (80/20 oficial/CCL) eliminado. Para calcular FAS se usa el TC oficial.</div>
 
   <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--or);margin-bottom:10px;">FAS Teorico &mdash; Secretaria de Agricultura</div>
   <div class="infobox" style="border-left-color:var(--or);background:rgba(232,160,68,.04);">
