@@ -1,92 +1,93 @@
 {
-  "date": "2026-09-14",
-  "generated": "2026-09-14T12:30:00Z",
+  "date": "2026-09-15",
+  "generated": "2026-09-15T12:20:00Z",
   "sentiment": {
     "overall": "risk-off",
-    "label": "La semana arranca con futuros de EE.UU. en baja, el VIX saltando con fuerza y el petróleo por encima de US$100 en la previa de la decisión de la Fed del miércoles.",
+    "label": "Selloff de bonos y suba del petróleo por la escalada en Medio Oriente golpean el apetito por riesgo en la antesala de la decisión de la Fed de mañana.",
     "fg": 30,
     "fg_label": "Miedo",
-    "putcall": 0.75,
-    "aaii_bulls": 36.0
+    "putcall": 0.84,
+    "aaii_bulls": 38.0
   },
   "drivers": [
     {
       "id": 1,
       "tag": "Bancos Centrales · Fed",
       "tag_class": "tb",
-      "title": "El mercado descuenta 87% de probabilidad de una suba de 25 pb de la Fed el miércoles",
-      "brief": "La inflación núcleo de agosto sorprendió al alza (0,3% m/m, supernúcleo 0,5%) y Warsh llega bajo presión tras haber bloqueado una suba en julio.",
-      "tldr": "Un board dividido podría convalidar la suba con 10 votos a favor y 2 en contra",
+      "title": "El Treasury a 10 años tocó 5,022%, el nivel más alto en años, en la previa de la suba de la Fed",
+      "brief": "El mercado asigna 90% de probabilidad a una suba de 25 pb mañana miércoles, la primera en tres años, tras un IPC de agosto de 3,4% interanual.",
+      "tldr": "Warsh enfrenta la prueba más dura de su gestión con Trump presionando por bajar tasas",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "El mercado descuenta <strong>~87%</strong> de probabilidad de una suba de <strong>25 pb</strong> en la reunión de la Fed del miércoles, después de que la inflación núcleo de agosto sorprendiera al alza (<strong>0,3% m/m</strong>, supernúcleo <strong>0,5%</strong>). Warsh llega bajo presión tras haber bloqueado una suba en julio.",
-      "contexto": "El UST 10Y opera en <strong>4,957%</strong> (-1,8 pb) y el UST 2Y en <strong>4,630%</strong> (-1,4 pb), con la curva 2s10s aplanándose a <strong>32,7 pb</strong>. Los futuros de EE.UU. caen con fuerza &mdash;Nasdaq -1,78%, S&amp;P 500 -0,79%, Dow -0,27%&mdash; y el VIX salta <strong>+14,02%</strong> a 18,06.",
+      "evento": "El Treasury a 10 años subió a <strong>5,022%</strong> (+6,1 pb), el nivel más alto en varios años, con el spread 2s/10s ampliándose a <strong>35,5 pb</strong>. El FOMC anuncia mañana miércoles su decisión con el mercado asignando <strong>90% de probabilidad</strong> a una suba de <strong>25 pb</strong> (a 4,00%), la primera en tres años.",
+      "contexto": "El IPC de agosto marcó <strong>3,4%</strong> interanual, con un disenso interno inusual en julio (3 de 12 miembros del FOMC a favor de subir). Trump presiona públicamente por bajar tasas antes de las elecciones de medio término, mientras Warsh insiste en que la política monetaria &ldquo;no será fijada por la Casa Blanca&rdquo;. El VIX sube <strong>+3,45%</strong> a 17,69 y los futuros de EE.UU. anticipan apertura negativa (S&amp;P -0,45%, Nasdaq -0,51%, Dow -0,55%).",
       "impacto": [
-        {"asset": "Nasdaq fut.", "dir": "↓ 1,78%", "cls": "dn"},
-        {"asset": "VIX", "dir": "↑ 14,02%", "cls": "up"},
-        {"asset": "UST 10Y", "dir": "4,957%", "cls": "neu"}
+        {"asset": "UST 10Y", "dir": "5,022%", "cls": "neu"},
+        {"asset": "VIX", "dir": "↑ 3,45%", "cls": "up"},
+        {"asset": "S&P fut.", "dir": "↓ 0,45%", "cls": "dn"}
       ]
     },
     {
       "id": 2,
       "tag": "Geopolítica · Energía",
       "tag_class": "tq",
-      "title": "El petróleo supera los US$100 por el cierre del oleoducto saudita y el avance hutí sobre Mokha",
-      "brief": "El oleoducto Este-Oeste saudita, atacado con drones, amenaza el 4% de la oferta global; el diésel en EE.UU. superó los US$6/galón por primera vez en la historia.",
-      "tldr": "Ormuz y Bab el-Mandeb quedan bajo presión simultánea de Irán y sus aliados",
+      "title": "El petróleo sube más de 2% por nuevos ataques hutíes al oleoducto saudita",
+      "brief": "El oleoducto Este-Oeste saudita fue forzado a cerrar tras ataques hutíes; imágenes satelitales sugieren daño mayor al informado y hasta 5 semanas fuera de servicio.",
+      "tldr": "El cuello de botella se traslada a Ormuz, con fletes petroleros ya sobre el millón de dólares diarios",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "El oleoducto Este-Oeste saudita, cerrado por ataques con drones, amenaza el <strong>4%</strong> de la oferta global de petróleo, mientras los hutíes ocuparon el puerto de <strong>Mokha</strong> en Yemen y avanzan hacia Bab el-Mandeb. El <strong>WTI</strong> sube <strong>2,76%</strong> a US$102,81 y el <strong>Brent</strong> <strong>2,73%</strong> a US$107,47.",
-      "contexto": "El diésel minorista en EE.UU. superó los <strong>US$6/galón</strong> por primera vez, con el crack spread 3-2-1 en <strong>US$65/barril</strong> (promedio histórico: US$10,50). Los inventarios globales cayeron 507 millones de barriles desde el inicio del conflicto y las exportaciones de diésel de Medio Oriente están casi 60% por debajo de niveles previos a la guerra.",
+      "evento": "El <strong>WTI</strong> sube <strong>2,53%</strong> a US$103,96 y el <strong>Brent</strong> <strong>1,74%</strong> a US$102,75 tras nuevos ataques hutíes que forzaron el cierre del oleoducto Este-Oeste saudita y redujeron el tráfico por Ormuz. El oro spot cae <strong>0,92%</strong> a US$4.312 pese al contexto de tensión.",
+      "contexto": "Imágenes satelitales (no confirmadas aún por fuente oficial) sugieren daño severo en la Pump Station 9 del oleoducto, lo que podría dejarlo inoperativo entre 3 y 5 semanas. El flete de petroleros ya supera el millón de dólares diarios en la ruta de referencia y China usa sus reservas estratégicas para amortiguar el impacto. Los emergentes sienten la presión: EEM cae <strong>2,73%</strong>.",
       "impacto": [
-        {"asset": "WTI", "dir": "↑ 2,76%", "cls": "up"},
-        {"asset": "Brent", "dir": "↑ 2,73%", "cls": "up"},
-        {"asset": "Oro", "dir": "↓ 1,87%", "cls": "dn"}
+        {"asset": "WTI", "dir": "↑ 2,53%", "cls": "up"},
+        {"asset": "Brent", "dir": "↑ 1,74%", "cls": "up"},
+        {"asset": "EEM", "dir": "↓ 2,73%", "cls": "dn"}
       ]
     },
     {
       "id": 3,
       "tag": "Mercados · Tecnología",
       "tag_class": "ta",
-      "title": "Los CEOs de Anthropic, OpenAI, xAI y Google DeepMind piden desacelerar el desarrollo de IA",
-      "brief": "El pedido conjunto, liderado por Dario Amodei, cita riesgos de \"misalignment\"; las acciones tech asiáticas y de semiconductores cayeron con fuerza el lunes.",
-      "tldr": "Presión regulatoria creciente sobre la industria de IA justo antes de una eventual salida a bolsa de Anthropic",
+      "title": "Ejecutivos de Anthropic, OpenAI, SpaceX y Apple piden frenar el desarrollo de IA; se posterga la IPO de OpenAI",
+      "brief": "Altman confirmó que la salida a bolsa de OpenAI se posterga, hundiendo a SoftBank 13% en Tokio; Trump rechazó las advertencias calificándolas de \"conspiración enferma\".",
+      "tldr": "Washington y Beijing coinciden en que ningún gobierno frenará unilateralmente el desarrollo de IA",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "Los CEOs de <strong>Anthropic</strong>, <strong>OpenAI</strong>, <strong>xAI</strong> y <strong>Google DeepMind</strong> pidieron simultáneamente desacelerar el desarrollo de IA, citando episodios de agentes que se desvían de instrucciones humanas. Las acciones de semiconductores y tech asiáticas cayeron con fuerza el lunes; el <strong>Nikkei</strong> cerró <strong>-0,81%</strong>.",
-      "contexto": "El gesto es inusual entre competidores directos y llega en la previa de una eventual salida a bolsa de Anthropic en Nasdaq. El mercado empieza a descontar una prima de riesgo regulatorio en las valuaciones de IA generativa, mientras crece la presión política contra los centros de datos.",
+      "evento": "Ejecutivos de <strong>Anthropic</strong>, <strong>OpenAI</strong>, <strong>SpaceX</strong> y <strong>Apple</strong> pidieron frenar el desarrollo de IA citando riesgos existenciales. Sam Altman confirmó que la <strong>IPO de OpenAI</strong> se posterga, hundiendo a <strong>SoftBank 13%</strong> en Tokio.",
+      "contexto": "Trump calificó las advertencias de &ldquo;conspiración enferma&rdquo; y medios estatales chinos acusaron a Anthropic de usar un libreto de Guerra Fría. Goldman Sachs proyecta que el capex global en IA podría llegar a <strong>5% del PBI mundial</strong> hacia fin de década.",
       "impacto": [
-        {"asset": "Nikkei", "dir": "↓ 0,81%", "cls": "dn"},
-        {"asset": "Nasdaq fut.", "dir": "↓ 1,78%", "cls": "dn"}
+        {"asset": "Nasdaq fut.", "dir": "↓ 0,51%", "cls": "dn"},
+        {"asset": "QQQ", "dir": "↓ 0,80%", "cls": "dn"}
       ]
     },
     {
       "id": 4,
-      "tag": "Argentina · Macro",
+      "tag": "Argentina · Fiscal",
       "tag_class": "tg",
-      "title": "La inflación de agosto cayó a 1,7% y el Tesoro logró un rollover de 103%",
-      "brief": "El INDEC reportó el nivel más bajo en 14 meses, pero la intervención cambiaria que lo sostiene enfría la actividad: mora en créditos a familias del 18% e industria -5% m/m.",
-      "tldr": "Buenas noticias nominales que conviven con un costo de actividad y empleo cada vez más visible",
+      "title": "Milei presenta el Presupuesto 2027 mientras el riesgo país sube y el BCRA compra menos reservas",
+      "brief": "El riesgo país subió 5 puntos a 490 pb en la previa de la Fed; el BCRA compró apenas USD 12 millones, un 60% menos que en agosto.",
+      "tldr": "La brecha entre el mayorista y el techo de la banda cambiaria es la más amplia en 16 meses",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>Tesoro</strong> logró un rollover del <strong>103%</strong>, adjudicando <strong>$8,41 billones</strong> frente a ofertas por $14,17 billones. La <strong>inflación de agosto</strong> cayó a <strong>1,7%</strong>, el nivel más bajo en 14 meses, aunque Argentina sigue segunda en el ranking regional de inflación, solo detrás de Venezuela.",
-      "contexto": "Barclays sostiene que el <strong>BCRA</strong> mantiene &ldquo;un fuerte grado de intervención&rdquo; cambiaria: la mora en créditos a familias llegó a <strong>18%</strong> en julio (21 meses consecutivos de subas) y la industria retrocedió <strong>5%</strong> mensual, su nivel más bajo desde junio de 2024. Desde diciembre desaparecieron 46.000 empleos privados registrados. El riesgo país cerró el viernes en <strong>485 pb</strong> (-6 pb).",
+      "evento": "Milei envía hoy al Congreso el proyecto de <strong>Presupuesto 2027</strong>, el mismo día en que el riesgo país argentino sube <strong>5 puntos (+1,03%)</strong> a <strong>490 pb</strong> y el BCRA compra reservas a un ritmo <strong>60% menor</strong> que en agosto (apenas USD 12 millones).",
+      "contexto": "La brecha entre el mayorista (<strong>$1.507,50</strong>) y el techo de la banda cambiaria es la más amplia en 16 meses, mientras la pobreza repuntó a <strong>13,4 millones</strong> de personas. El mercado seguirá de cerca los supuestos de inflación y tipo de cambio del proyecto, justo cuando la suba de tasas de la Fed encarece el financiamiento externo que Argentina necesita para sostener el esquema cambiario.",
       "impacto": [
-        {"asset": "Riesgo País", "dir": "485 pb", "cls": "neu"},
-        {"asset": "Dólar Oficial", "dir": "$1.530", "cls": "neu"},
-        {"asset": "Rollover Tesoro", "dir": "103%", "cls": "up"}
+        {"asset": "Riesgo País", "dir": "↑ 490 pb", "cls": "up"},
+        {"asset": "Mayorista", "dir": "$1.507,50", "cls": "neu"},
+        {"asset": "GD30", "dir": "↓ 0,29%", "cls": "dn"}
       ]
     }
   ],
   "tensiones": [
-    {"label": "Fed vs. independencia institucional", "texto": "El mercado descuenta ~87% de probabilidad de suba de 25 pb el miércoles, pero el WSJ advierte que bajar tasas ahora sería leído como pérdida de independencia de Warsh frente a Trump; la curva larga (30 años cerca de 5,25%) ya exige prima por esa incertidumbre institucional."},
-    {"label": "Doble estrecho bajo presión", "texto": "El cierre del oleoducto saudita Este-Oeste y el avance hutí sobre Mokha amenazan con dejar Ormuz y Bab el-Mandeb bajo control simultáneo de Irán y sus aliados, con inventarios globales de petróleo cayendo 507 millones de barriles desde el inicio del conflicto."},
-    {"label": "Desinflación vs. actividad en Argentina", "texto": "La inflación de agosto cayó a 1,7% (mínimo en 14 meses) gracias en parte a la intervención cambiaria del BCRA, pero esa misma intervención enfría la actividad: el crédito a familias cae con mora del 18% y la industria retrocede 5% mensual, su nivel más bajo desde junio de 2024."}
+    {"label": "Fed vs. Casa Blanca", "texto": "Trump presiona públicamente por bajar tasas antes de las elecciones de medio término, mientras Warsh insiste en que la política monetaria no será fijada por la Casa Blanca; el mercado igual espera una suba de 25 pb mañana."},
+    {"label": "Shock petrolero estructural", "texto": "Los ataques hutíes al oleoducto saudita y el cierre parcial de Ormuz podrían dejar el tramo inoperativo entre 3 y 5 semanas, extendiendo la escasez de diésel más allá de un eventual alto el fuego puntual."},
+    {"label": "Argentina: banda cambiaria bajo presión", "texto": "La brecha entre el mayorista ($1.507,50) y el techo de la banda cambiaria es la más amplia en 16 meses, mientras el BCRA compra reservas a un ritmo 60% menor que en agosto, justo cuando la Fed encarece el financiamiento externo."},
+    {"label": "IA: freno regulatorio vs. carrera geopolítica", "texto": "Pese a las advertencias existenciales de ejecutivos de Anthropic, OpenAI, SpaceX y Apple, Washington y Beijing coinciden en que ningún gobierno frenará unilateralmente el desarrollo de IA por temor a quedar rezagado."}
   ],
   "correlaciones": [
-    {"par": "Oro vs. expectativa de suba de la Fed", "texto": "El oro cae 1,87% pese al contexto de tensión geopolítica, reflejando que la expectativa de suba de tasas del miércoles (87% de probabilidad) pesa más que la demanda de refugio de corto plazo."},
-    {"par": "WTI/Brent vs. crack spread de diésel", "texto": "El crudo sube más de 2,7% mientras el crack spread 3-2-1 llegó a US$65/barril (vs. promedio histórico de US$10,50), evidenciando que la escasez de capacidad de refino de diésel, no solo la oferta de crudo, es el driver central del rally energético."},
-    {"par": "DXY vs. monedas emergentes y EEM", "texto": "El dólar se fortalece (DXY +0,42%) frente al real, el peso mexicano, el peso chileno y el sol peruano, mientras el EEM sube 1,25%: una divergencia entre el FX emergente débil y el equity emergente resiliente."}
+    {"par": "UST 10Y vs. acciones globales", "texto": "El salto del Treasury a 10 años a 5,022% (+6,1 pb) coincide con futuros negativos en EE.UU. (S&P -0,45%, Nasdaq -0,51%) y caídas generalizadas en Europa y Asia, reflejando la repreciación hawkish previa a la Fed."},
+    {"par": "Petróleo vs. emergentes", "texto": "El salto del WTI (+2,53%) y Brent (+1,74%) por la escalada en Medio Oriente presiona a los emergentes (EEM -2,73%), aunque Argentina por ahora queda relativamente al margen con el riesgo país en 490 pb."},
+    {"par": "Dólar (DXY) vs. oro y cripto", "texto": "El fortalecimiento del DXY (99,63, +0,24%) ante la expectativa de suba de tasas de la Fed presiona al oro (-0,92%) y a Bitcoin (-1,53%), activos que suelen beneficiarse de una Fed más dovish."}
   ],
-  "bottom_line": "El mercado global entra en la semana de la Fed (decisión miércoles) con futuros en baja &mdash;Nasdaq -1,78%&mdash;, el VIX saltando 14% a 18,06 y el petróleo por encima de US$100 por la escalada simultánea en Ormuz y Bab el-Mandeb. En Argentina, la inflación de agosto (1,7%, mínimo en 14 meses) y el rollover del Tesoro (103%) son buenas noticias nominales, pero conviven con una intervención cambiaria que enfría la actividad &mdash;mora en crédito a familias del 18%, industria -5% m/m&mdash; y un riesgo país que cerró el viernes en 485 pb. Con la Fed subiendo tasas esta semana y el petróleo presionando la inflación importada global, el margen del BCRA para sostener la banda cambiaria sin más costo de actividad y empleo se estrecha de cara a 2027."
+  "bottom_line": "La víspera de la decisión de la Fed profundiza el tono cauteloso global: rendimientos del Tesoro en máximos de varios años, petróleo en alza por la escalada en el Golfo y un VIX en <strong>17,69 (+3,45%)</strong> resumen un mercado que descuenta con alta convicción una suba de 25 pb mañana. Argentina, con el riesgo país en <strong>490 pb (+1,03%)</strong> y el tipo de cambio mayorista estable en <strong>$1.507,50</strong>, queda por ahora relativamente al margen del contagio directo a emergentes &mdash;pero la ventana de diferenciación es frágil: el mismo día en que Milei envía el Presupuesto 2027 al Congreso, el BCRA compra reservas a un ritmo 60% menor que en agosto y la brecha con el techo de la banda cambiaria es la más amplia en 16 meses. Un endurecimiento adicional de la Fed, sumado a ruido político o electoral, podría cerrar esa ventana antes de lo previsto."
 }
