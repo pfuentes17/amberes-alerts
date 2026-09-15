@@ -414,12 +414,11 @@ ciara:{
       notas:'Ago 26: $2,751M oficial (-5.7% vs mes anterior). Acum ene-ago: $19,020M (-10.9% vs 2025). Fuente: MAGyP (espejo CIARA-CEC), sync automático.',
     },
 
-    // BCRA compras MULC (USD M)
-    // Jun-26 parcial: ~$1,410M al 25-Jun (Ambito). Acum 2026 supera US$11,000M.
+    // BCRA compras MULC (USD M) — sector Oleaginosos y Cerealeros, neto. Fuente: BCRA anexo Mercado de Cambios y Balance Cambiario, hoja MC por sector. Última: Jul 26 ($3,504M). Sync: update_agro_bcra_html.py
     bcra:{
-      l:['Jun 25','Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26*'],
-      compras:[1950,1520,1020,1380,1820,920,520,1250,1680,2350,2480,2200,1410],
-      acum2026:11370,
+      l:['Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26'],
+      compras:[4632,1804,7567,316,540,1139,2121,1408,2166,2481,2951,2914,3504],
+      acum2026:17545,
     },
   },
 
@@ -1049,7 +1048,7 @@ function buildArg(){
     <div class="sc agro"><div class="sl">Liquidación Ago 26</div><div class="sv g">$${fmt(a.ciara.mayo,0)}M</div><div class="sn">verificado &middot; sync automático</div></div>
     <div class="sc agro"><div class="sl">Acum Ene&ndash;Ago 2026</div><div class="sv r">$${fmt(a.ciara.acum2026/1000,1)}B</div><div class="sn">-10.9% vs mismo periodo 2025</div></div>
     <div class="sc agro"><div class="sl">Acum Ene&ndash;Ago 2025</div><div class="sv m">$${fmt(a.ciara.acum2025/1000,1)}B</div><div class="sn">Base de comparacion</div></div>
-    <div class="sc agro"><div class="sl">BCRA Compras 2026</div><div class="sv g">$${fmt(a.bcra.acum2026/1000,1)}B</div><div class="sn">Ene&ndash;May 2026 &middot; MULC</div></div>
+    <div class="sc agro"><div class="sl">BCRA Compras 2026</div><div class="sv g">$${fmt(a.bcra.acum2026/1000,1)}B</div><div class="sn">Ene&ndash;Jul 2026 &middot; MULC</div></div>
   </div>
   <div class="note" style="margin-bottom:18px;">${a.ciara.notas}</div>
 
