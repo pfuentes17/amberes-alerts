@@ -402,12 +402,12 @@ const D = {
     },
 
     // CIARA-CEC  --  fuente Fiscal y Sectorial ARG.xlsx hoja "Liq. Agro" (CIARA-CEC via espejo MAGyP), actualizado 09/09/2026
-    // Jul-26: $2,918M oficial | Jun-26: $3,008M oficial | Acum ene-jul: $16,270M (-16.7% vs 2025)
-    ciara:{
-      l:['Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26'],
-      vals:[1750,2050,2580,1420,1050,1851,1289,2033,2495,2677,3008,2918],
-      mayo:2918, acum2026:16270, acum2025:19521,
-      notas:'Jul-26: $2,918M oficial (-3%% vs jun). Acum ene-jul: $16,270M (-16.7%% vs 2025). Actualizado con dato oficial de cierre, ya no es estimacion por promedio diario.',
+    // Jul-26: $2,918M oficial | Jun-26: $3,008M oficial | Acum ene-jul: $16,270M (-10.9% vs 2025)
+ciara:{
+      l:['Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26','Ago 26'],
+      vals:[7107,1117,760,1015,1851,1289,2032,2494,2677,3008,2918,2751],
+      mayo:2751, acum2026:19020, acum2025:21338,
+      notas:'Ago 26: $2,751M oficial (-5.7% vs mes anterior). Acum ene-ago: $19,020M (-10.9% vs 2025). Fuente: MAGyP (espejo CIARA-CEC), sync automático.',
     },
 
     // BCRA compras MULC (USD M)
@@ -604,7 +604,7 @@ function buildKstrip(){
     {l:'COT Maiz MM',v:`${c.mm.maiz.at(-1)>=0?'+':''}${c.mm.maiz.at(-1)}k`,n:`${fmt(pctMaiz,0)}%ile vs 52 semanas`,c:clr(c.mm.maiz.at(-1))},
     {l:'FAS Soja',   v:`$${fmt(a.fas.soja.usd)}`,n:`Ret. ${a.ret.soja}% &middot; Sec. Agric.`,c:'m'},
     {l:'Ret. Soja',  v:`${a.ret.soja}%`,         n:`Decreto jun-26 &middot; baja a 15%`,c:'r'},
-    {l:'CIARA Jul-26',v:`$${fmt(a.ciara.mayo,0)}M`,n:`Acum ene-jul $${fmt(a.ciara.acum2026/1000,1)}B`,c:'r'},
+    {l:'CIARA Ago 26',v:`$${fmt(a.ciara.mayo,0)}M`,n:`Acum ene-ago $${fmt(a.ciara.acum2026/1000,1)}B`,c:'r'},
     {l:'Maiz BCR 25/26',v:`${a.campania.maiz.bcr} Mt`,n:`RECORD &middot; ${a.campania.maiz.cosechado}% cosechado`,c:'g'},
     {l:'Soja BCR 25/26',v:`${a.campania.soja.bcr} Mt`,n:`${a.campania.soja.cosechado}% cosechado`,c:'g'},
   ];
@@ -680,8 +680,8 @@ function buildResumen(){
       <div class="of"><span class="ov g">${a.campania.maiz.bcr} Mt</span><span class="ox">${a.campania.maiz.cosechado}% cosechado<br>Ret. ${a.ret.maiz}% &middot; FAS $${a.fas.maiz.usd}</span></div></div>
     <div class="oc" onclick="showTab(4)"><div class="ot">Soja 25/26 &middot; BCR</div><div class="on">Soja</div>
       <div class="of"><span class="ov g">${a.campania.soja.bcr} Mt</span><span class="ox">${a.campania.soja.cosechado}% cosechado<br>Ret. ${a.ret.soja}% &middot; FAS $${a.fas.soja.usd}</span></div></div>
-    <div class="oc" onclick="showTab(4)"><div class="ot">CIARA-CEC &middot; May-26</div><div class="on">Liquidaciones</div>
-      <div class="of"><span class="ov g">$${fmt(a.ciara.mayo,0)}M</span><span class="ox">Acum ene-jul $${fmt(a.ciara.acum2026/1000,1)}B<br>-16.7% vs 2025</span></div></div>
+    <div class="oc" onclick="showTab(4)"><div class="ot">CIARA-CEC &middot; Ago-26</div><div class="on">Liquidaciones</div>
+      <div class="of"><span class="ov g">$${fmt(a.ciara.mayo,0)}M</span><span class="ox">Acum ene-ago $${fmt(a.ciara.acum2026/1000,1)}B<br>-10.9% vs 2025</span></div></div>
   </div>`;
 }
 
@@ -1025,9 +1025,9 @@ function buildArg(){
 
   <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--agro);margin-bottom:10px;">CIARA-CEC &mdash; Liquidaciones Exportadoras</div>
   <div class="sr4" style="margin-bottom:6px;">
-    <div class="sc agro"><div class="sl">Liquidacion May-26</div><div class="sv g">$${fmt(a.ciara.mayo,0)}M</div><div class="sn">+7% vs abr &middot; verificado</div></div>
-    <div class="sc agro"><div class="sl">Acum Ene&ndash;Jul 2026</div><div class="sv r">$${fmt(a.ciara.acum2026/1000,1)}B</div><div class="sn">-16.7% vs mismo periodo 2025</div></div>
-    <div class="sc agro"><div class="sl">Acum Ene&ndash;May 2025</div><div class="sv m">$${fmt(a.ciara.acum2025/1000,1)}B</div><div class="sn">Base de comparacion</div></div>
+    <div class="sc agro"><div class="sl">Liquidación Ago 26</div><div class="sv g">$${fmt(a.ciara.mayo,0)}M</div><div class="sn">verificado &middot; sync automático</div></div>
+    <div class="sc agro"><div class="sl">Acum Ene&ndash;Ago 2026</div><div class="sv r">$${fmt(a.ciara.acum2026/1000,1)}B</div><div class="sn">-10.9% vs mismo periodo 2025</div></div>
+    <div class="sc agro"><div class="sl">Acum Ene&ndash;Ago 2025</div><div class="sv m">$${fmt(a.ciara.acum2025/1000,1)}B</div><div class="sn">Base de comparacion</div></div>
     <div class="sc agro"><div class="sl">BCRA Compras 2026</div><div class="sv g">$${fmt(a.bcra.acum2026/1000,1)}B</div><div class="sn">Ene&ndash;May 2026 &middot; MULC</div></div>
   </div>
   <div class="note" style="margin-bottom:18px;">${a.ciara.notas}</div>
