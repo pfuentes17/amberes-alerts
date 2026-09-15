@@ -372,13 +372,13 @@ const D = {
 
     // Campana 25/26  --  BCR / BCBA  --  29-Jun-2026
     campania:{
-      soja:   {bcr:51.5,bcba:51.8,has:16.2,rinde:31.8,cosechado:99, estado:'Finalizado'},
-      maiz:   {bcr:68.0,bcba:70.0,has:10.2,rinde:79.7,cosechado:82, estado:'Cosechando'},
-      trigo:  {bcr:20.0,bcba:21.0,has:6.8, rinde:null, cosechado:40, estado:'Siembra'},
+      soja:   {bcr:51.5, bcba:51.8, has:16.4, rinde:32.1, cosechado:100, estado:'Finalizado'},
+      maiz:   {bcr:70.5, bcba:70.0, has:11, rinde:76.6, cosechado:100, estado:'Finalizado'},
+      trigo:  {bcr:20.0, bcba:21.0, has:6.95, rinde:null, cosechado:0, estado:'Creciendo'},
       girasol:{bcr:3.9, bcba:4.0, has:1.5, rinde:26.0, cosechado:100,estado:'Finalizado'},
       cebada: {bcr:5.4, bcba:5.5, has:1.1, rinde:49.1, cosechado:100,estado:'Finalizado'},
     },
-    campanaNota:'Maiz 25/26: BCR mantiene 68 Mt (RECORD HISTORICO, +36%% vs campana anterior); BCCBA y SAGyP elevan a 70 Mt. Divergencia por rindes tardios aun en proceso. Soja finalizada en ~99%% con 51.5 Mt. Trigo 26/27: BCR 20 Mt / BCCBA 21 Mt — siembra en curso.',
+    campanaNota:'Trigo 2026/2027: BCR 20.0 Mt, 6.95 M ha, rinde null | Maíz 2025/2026: BCR 70.5 Mt, 11 M ha, rinde 76.6 | Soja 2025/2026: BCR 51.5 Mt, 16.4 M ha, rinde 32.1 — BCR (bcr.com.ar/es/mercados/gea), sync automático. BCBA sin automatizar (Cloudflare), valor manual anterior preservado.',
 
     // Precios Matba-Rofex / Rosario (ARS/tn)
     // Matba-Rofex / Rosario (ARS/tn) — consistente con TC $1,425
@@ -979,7 +979,7 @@ function buildArg(){
   <div class="sh">
     <div><div class="st">Argentina &mdash; Campana &amp; Exportaciones</div>
     <div class="ss">BCR &middot; BCBA &middot; INDEC &middot; CIARA-CEC &middot; BCRA &middot; Sec. Agricultura &middot; Jun 2026</div></div>
-    <div><div class="ln g">68 Mt</div><div class="ll">Maiz 25/26 &middot; Record historico BCR</div></div>
+    <div><div class="ln g">${a.campania.maiz.bcr} Mt</div><div class="ll">Maiz 25/26 &middot; Record historico BCR</div></div>
   </div>
   <div class="src">BCR (bcr.com.ar/gea) &middot; BCBA (bolsadecereales.com) &middot; INDEC &middot; CIARA-CEC &middot; BCRA &middot; Sec. Agricultura</div>
 
