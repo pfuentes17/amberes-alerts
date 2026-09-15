@@ -380,14 +380,17 @@ const D = {
     },
     campanaNota:'Trigo 2026/2027: BCR 20.0 Mt, 6.95 M ha, rinde null | Maíz 2025/2026: BCR 70.5 Mt, 11 M ha, rinde 76.6 | Soja 2025/2026: BCR 51.5 Mt, 16.4 M ha, rinde 32.1 — BCR (bcr.com.ar/es/mercados/gea), sync automático. BCBA sin automatizar (Cloudflare), valor manual anterior preservado.',
 
-    // Precios Matba-Rofex / Rosario (ARS/tn)
-    // Matba-Rofex / Rosario (ARS/tn) — consistente con TC $1,425
+    // Precios Matba-Rofex / Rosario (ARS/tn) — Disponible en pesos MATba + 2
+    // forwards mas cercanos del contrato en dolares MATba (convertido a ARS
+    // con el TC oficial del dia). Fuente: apicem.matbarofex.com.ar (API
+    // publica, sin key), sync via update_agro_matba_html.py.
     precios:{
-      soja:   {disp:540000,jul26:545000,nov26:528000},
-      maiz:   {disp:228000,jul26:232000,dic26:236000},
-      trigo:  {disp:null,  dic26:252000,mar27:258000},
-      girasol:{disp:568000},
+      soja:    {disp:560000, sep26:568400, nov26:574820},
+      maiz:    {disp:302000, sep26:307530, nov26:311360},
+      trigo:   {disp:348000, sep26:351900, nov26:345020},
+      girasol: {disp:760000},
     },
+    preciosNota:'Disponible = contrato Pesos MATba spot (ARS/tn). Forwards = contrato Dolar MATba mas liquido, convertido a ARS con el TC oficial del dia ($1530). Girasol sin forward liquido en Dolar MATba hoy, solo disponible. Fuente: MATba-Rofex (apicem.matbarofex.com.ar), 14/09/2026, sync automático.',
 
     // Exportaciones INDEC (acum ene-abr 2026, USD M)
     expo:{
@@ -975,6 +978,18 @@ function buildArg(){
     <td style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--wh)">$${fmt(a.fas[x.k].ars/1000,0)}k</td>
   </tr>`).join('');
 
+  const precioHtml=[
+    {k:'soja',l:'Soja'},{k:'maiz',l:'Maiz'},{k:'trigo',l:'Trigo'},{k:'girasol',l:'Girasol'},
+  ].map(x=>{
+    const p=a.precios[x.k];
+    const fwd=Object.keys(p).filter(k=>k!=='disp');
+    return `<tr><td>${x.l}</td>
+    <td style="font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--wh)">${p.disp?`$${fmt(p.disp/1000,0)}k`:'&mdash;'}</td>
+    <td class="p-usd">${fwd[0]?`$${fmt(p[fwd[0]]/1000,0)}k <span style="color:var(--dm);font-size:10px">${fwd[0]}</span>`:'&mdash;'}</td>
+    <td class="p-usd">${fwd[1]?`$${fmt(p[fwd[1]]/1000,0)}k <span style="color:var(--dm);font-size:10px">${fwd[1]}</span>`:'&mdash;'}</td>
+  </tr>`;
+  }).join('');
+
   return `
   <div class="sh">
     <div><div class="st">Argentina &mdash; Campana &amp; Exportaciones</div>
@@ -1002,6 +1017,13 @@ function buildArg(){
     <thead><tr><th>Cultivo</th><th>FAS (USD/tn)</th><th>Retencion</th><th>FAS (ARS/tn)</th></tr></thead>
     <tbody>${fasHtml}</tbody>
   </table>
+
+  <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--cbot);margin-bottom:10px;">Precios Matba-Rofex &mdash; Rosario (ARS/tn)</div>
+  <table class="p-tbl" style="margin-bottom:6px;">
+    <thead><tr><th>Cultivo</th><th>Disponible</th><th>Forward 1</th><th>Forward 2</th></tr></thead>
+    <tbody>${precioHtml}</tbody>
+  </table>
+  <div class="note" style="margin-bottom:18px;">${a.preciosNota}</div>
 
   <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--agro);margin-bottom:10px;">Avance Siembra / Cosecha &mdash; Campana 25/26 &middot; BCR</div>
   <div class="card c-agro" style="margin-bottom:6px;">
