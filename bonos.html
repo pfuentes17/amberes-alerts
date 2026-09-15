@@ -2338,19 +2338,19 @@ const TAMAR_NOTES_API = '/api/proxy?src=notes';
 const TAMAR_BONDS_API = '/api/proxy?src=bonds';
 const TAMAR_BCRA_API  = '/api/proxy?src=bcra';
 
-// Seed data 29/05/2026 11:00 hs
-const SEED_TMR_NOTES = [
-  {symbol:'M31G6', c:123.297, bid:122.501, ask:123.297, pct:0.69},
-];
+// Seed data 29/05/2026 11:00 hs — M31G6 venció 31/08/2026, removido 15/09/2026 (audit)
+const SEED_TMR_NOTES = [];
 const SEED_TMR_BONDS = [
-  {symbol:'TMF27', c:115.9,   bid:114.35,  ask:115.7,  pct:1.17},
-  {symbol:'TML27', c:106.85,  bid:106.55,  ask:106.85, pct:0.05},
-  {symbol:'TMG27', c:108.9,   bid:108.9,   ask:110.0,  pct:0.00},
-  {symbol:'TMF28', c:107.80,  bid:107.10,  ask:107.80, pct:-0.05},
-  {symbol:'TMG28', c:101.2,   bid:100.0,   ask:100.7,  pct:1.09},
-  {symbol:'TTD26', c:158.75,  bid:158.70,  ask:158.75, pct:0.15},
-  {symbol:'TTJ26', c:159.65,  bid:159.60,  ask:159.65, pct:0.25},
-  {symbol:'TTS26', c:159.15,  bid:159.10,  ask:159.15, pct:0.34},
+  // Precios actualizados 15/09/2026, data912.com/live/arg_bonds
+  {symbol:'TMF27', c:122.40,  bid:122.35,  ask:122.45, pct:0.00},
+  {symbol:'TML27', c:108.25,  bid:108.00,  ask:108.25, pct:0.23},
+  // Precios actualizados 15/09/2026, data912.com/live/arg_bonds (reemplazan seeds ~6-8% stale)
+  {symbol:'TMG27', c:117.30,  bid:117.05,  ask:117.45, pct:0.04},
+  {symbol:'TMF28', c:110.00,  bid:109.50,  ask:110.25, pct:0.00},
+  {symbol:'TMG28', c:107.80,  bid:107.70,  ask:107.85, pct:0.09},
+  {symbol:'TTD26', c:170.02,  bid:170.02,  ask:170.05, pct:-0.04},
+  // TTJ26 venció 30/06/2026 y TTS26 vence hoy 15/09/2026 (vto corregido en TMR_INSTR, era
+  // 30/09/26) — ambos removidos del seed, ya no cotizan / están por dejar de cotizar
   // Duales CER/TAMAR — precios reales 15/09/2026, data912.com/live/arg_bonds
   {symbol:'TXMJ8', c:100.75, bid:100.40, ask:100.75, pct:0.14},
   {symbol:'TXMD8', c:94.59,  bid:94.50,  ask:94.59,  pct:0.20},
@@ -2393,7 +2393,7 @@ const TMR_INSTR = {
   TMG28: {tipo:'BONO TAMAR', vtod:'31/08/28', vtoi:'2028-08-31', emision:'2026-05-28', piso_tem:null},
   // Duales TAMAR/piso — emitidos 24/01/2025, piso TEM confirmado por prospecto
   TTJ26: {tipo:'DUAL',         vtod:'30/06/26', vtoi:'2026-06-30', emision:'2025-01-24', piso_tem:2.19/100, cer0:null},
-  TTS26: {tipo:'DUAL',         vtod:'30/09/26', vtoi:'2026-09-30', emision:'2025-01-24', piso_tem:2.17/100, cer0:null},
+  TTS26: {tipo:'DUAL',         vtod:'15/09/26', vtoi:'2026-09-15', emision:'2025-01-24', piso_tem:2.17/100, cer0:null}, // vto corregido 15/09/2026 (era 30/09/26, fecha real via bonistas/cohen/docta)
   TTD26: {tipo:'DUAL',         vtod:'15/12/26', vtoi:'2026-12-15', emision:'2025-01-24', piso_tem:2.14/100, cer0:null},
   // Duales CER/TAMAR — Gestión Milei · CER₀ pendiente de datos de licitación
   TXMJ8: {tipo:'DUAL CER/TAMAR', vtod:'30/06/28', vtoi:'2028-06-30', emision:'2026-05-15', piso_tem:null, cer0:758.1180},
@@ -2688,7 +2688,7 @@ const TSIM_INSTR = {
   TMF28: {tipo:'BONO TAMAR', vtoi:'2028-02-25', vtod:'25/02/28', emision:'2026-04-15', piso_tem:null, vn_emision:100},
   TMG28: {tipo:'BONO TAMAR', vtoi:'2028-08-31', vtod:'31/08/28', emision:'2026-05-28', piso_tem:null, vn_emision:100},
   TTJ26: {tipo:'DUAL',       vtoi:'2026-06-30', vtod:'30/06/26', emision:'2025-01-24', piso_tem:2.19/100, vn_emision:100},
-  TTS26: {tipo:'DUAL',       vtoi:'2026-09-30', vtod:'30/09/26', emision:'2025-01-24', piso_tem:2.17/100, vn_emision:100},
+  TTS26: {tipo:'DUAL',       vtoi:'2026-09-15', vtod:'15/09/26', emision:'2025-01-24', piso_tem:2.17/100, vn_emision:100}, // vto corregido 15/09/2026
   TTD26: {tipo:'DUAL',       vtoi:'2026-12-15', vtod:'15/12/26', emision:'2025-01-24', piso_tem:2.14/100, vn_emision:100},
   // Duales CER/TAMAR — CER₀ null hasta datos de licitación
   TXMJ8: {tipo:'DUAL CER/TAMAR', vtoi:'2028-06-30', vtod:'30/06/28', emision:'2026-05-15', piso_tem:null, vn_emision:100, cer0:758.1180},
