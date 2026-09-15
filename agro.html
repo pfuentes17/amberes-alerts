@@ -392,12 +392,13 @@ const D = {
     },
     preciosNota:'Disponible = contrato Pesos MATba spot (ARS/tn). Forwards = contrato Dolar MATba mas liquido, convertido a ARS con el TC oficial del dia ($1530). Girasol sin forward liquido en Dolar MATba hoy, solo disponible. Fuente: MATba-Rofex (apicem.matbarofex.com.ar), 14/09/2026, sync automático.',
 
-    // Exportaciones INDEC (acum ene-abr 2026, USD M)
+    // Exportaciones INDEC por grandes rubros (USD M mensual) — INDEC ICA
+    // cuadro 12, via hoja "ICA - Desagregado". Sync: update_agro_expo_html.py
     expo:{
-      l:['Ene 26','Feb 26','Mar 26','Abr 26'],
-      moa:[1680,1850,2150,1980],
-      pp: [1020,1150,1420,1260],
-      acumMOA:7660,acumPP:4850,acumTotal:12510,
+      l:['Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26'],
+      moa:[2830,2993,2791,2765,2413,2275,1816,2679,2708,2997,3368,3068],
+      pp: [2019,2037,1903,2025,1890,2089,1741,2350,2123,2443,1894,2110],
+      acumMOA:18911,acumPP:14749,acumTotal:33660,
     },
     expoProducto:{
       items:['Harina soja','Aceite soja','Grano soja','Maiz','Trigo','Girasol','Carne','Otros'],
