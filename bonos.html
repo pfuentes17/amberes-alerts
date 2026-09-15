@@ -361,15 +361,18 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
       <select class="sim-sel" id="sim-sel" onchange="simOnChange()">
         <option value="">-- Elegí un instrumento --</option>
         <optgroup label="Cero Cupón (TZX / LECER)">
-          <option value="TZX26">TZX26 — vto 30/06/26</option><option value="X31L6">X31L6 — vto 31/07/26</option>
+          <option value="TZX26">TZX26 — vto 30/06/26</option>
           <option value="X30S6">X30S6 — vto 30/09/26</option><option value="TZXO6">TZXO6 — vto 30/10/26</option>
           <option value="X30N6">X30N6 — vto 30/11/26</option><option value="TZXD6">TZXD6 — vto 15/12/26</option>
           <option value="X29E7">X29E7 — vto 29/01/27</option>
-          <option value="TZXM7">TZXM7 — vto 31/03/27</option><option value="TZXY7">TZXY7 — vto 31/05/27</option>
+          <option value="TZXM7">TZXM7 — vto 31/03/27</option><option value="TZXA7">TZXA7 — vto 30/04/27</option>
+          <option value="TZXY7">TZXY7 — vto 31/05/27</option>
           <option value="TZX27">TZX27 — vto 30/06/27</option><option value="TZXS7">TZXS7 — vto 30/09/27</option>
+          <option value="TZXO7">TZXO7 — vto 29/10/27</option>
           <option value="TZXD7">TZXD7 — vto 15/12/27</option><option value="TZXM8">TZXM8 — vto 31/03/28</option>
           <option value="TZX28">TZX28 — vto 30/06/28</option><option value="TZXS8">TZXS8 — vto 29/09/28</option>
           <option value="TZXD8">TZXD8 — vto 15/12/28</option>
+          <option value="TZXM9">TZXM9 — vto 28/03/29</option>
         </optgroup>
         <optgroup label="Con Cupón CER">
           <option value="TX26">TX26 — vto 09/11/26 (resid. 20%)</option><option value="TX28">TX28 — vto 09/11/28 (resid. 50%)</option>
@@ -1134,7 +1137,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   </div>
 
   <div class="tw" style="border:1px solid rgba(248,113,113,.35)"><div class="tw-hdr" style="color:#f87171;font-size:13px">★ TASA DE SUSTENTABILIDAD DE LA DEUDA — HOY
-    <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">¿A qué tasa podría endeudarse el Gobierno sin ampliar Deuda/PBI? · r* = g + pb×(1+g)/d · 07/09/2026</span>
+    <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">¿A qué tasa podría endeudarse el Gobierno sin ampliar Deuda/PBI? · r* = g + pb×(1+g)/d · 14/09/2026</span>
   </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;padding:16px">
       <div style="padding-right:16px;border-right:1px solid var(--bdr2)">
@@ -1146,11 +1149,11 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
       <div style="padding-left:16px">
         <div style="font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em">Dólares</div>
         <div style="font-size:32px;font-weight:700;color:#f87171;margin:4px 0">3,84%</div>
-        <div style="font-size:11px;color:var(--mu)">vs. curva de bonos: <strong style="color:var(--txt)">3,58% a 9,95%</strong> → margen <strong style="color:#f87171">-0,3 a -6,1pp</strong></div>
-        <div style="font-size:11px;color:#f87171;font-weight:600;margin-top:6px">✗ INSUSTENTABLE — salvo AO27, apenas debajo del límite</div>
+        <div style="font-size:11px;color:var(--mu)">vs. curva de bonos: <strong style="color:var(--txt)">4,0% a 10,2%</strong> → margen <strong style="color:#f87171">-0,2 a -6,4pp</strong></div>
+        <div style="font-size:11px;color:#f87171;font-weight:600;margin-top:6px">✗ INSUSTENTABLE — toda la curva, incluido el AO27</div>
       </div>
     </div>
-    <div style="padding:0 16px 14px;font-size:11px;color:var(--mu);line-height:1.5">g(pesos)=+33,5% nominal (INDEC) · g(USD)=+0,60% (Q1-26 vs Q1-25) · pesos: d=Deuda/PBI 68,2% (FMI/FRED 2026e), pb=superávit primario real 0,39% PBI (ene-jul anualizado) · dólares [corregido 07/09/2026, todo en USD y mismo trimestre]: d=69,76% (Deuda USD jun-26/PBI USD anualizado Q1-26, propio), pb=2,25% (superávit primario Q1-26 convertido a USD mes a mes, anualizado). En pesos el Gobierno paga bien por debajo de lo que podría sin ampliar el ratio; en dólares, <strong style="color:var(--txt)">el AO27 queda justo debajo del límite, el resto de la curva lo amplía</strong>.</div>
+    <div style="padding:0 16px 14px;font-size:11px;color:var(--mu);line-height:1.5">g(pesos)=+33,5% nominal (INDEC) · g(USD)=+0,60% (Q1-26 vs Q1-25) · pesos: d=Deuda/PBI 68,2% (FMI/FRED 2026e), pb=superávit primario real 0,39% PBI (ene-jul anualizado) · dólares [corregido 07/09/2026, todo en USD y mismo trimestre]: d=69,76% (Deuda USD jun-26/PBI USD anualizado Q1-26, propio), pb=2,25% (superávit primario Q1-26 convertido a USD mes a mes, anualizado). En pesos el Gobierno paga bien por debajo de lo que podría sin ampliar el ratio; en dólares, <strong style="color:var(--txt)">el AO27 cruzó el límite el 14/09/2026 (TIR subió de 3,58% a 4,0%) — ya no queda ningún punto sustentable en la curva</strong>.</div>
   </div>
 
   <div class="tw" style="margin-top:18px"><div class="tw-hdr" style="color:#38bdf8">% Deuda en Pesos vs. % Moneda Extranjera — 2019-2026
@@ -1163,7 +1166,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     </div><div class="tbl-wrap"><table><thead><tr><th>Ticker</th><th class="ct">Días</th><th>TNA</th><th>TEM</th><th>TEM Real</th></tr></thead><tbody id="pvd-pesos-body"></tbody></table></div></div>
 
     <div class="tw"><div class="tw-hdr" style="color:#facc15">Dólares — Curva de Bonos Soberanos (TIR de mercado)
-      <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">TIR Real vs. inflación EE.UU. (~3%) · 06/09/2026</span>
+      <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">TIR Real vs. inflación EE.UU. (~3%) · 14/09/2026</span>
     </div><div class="tbl-wrap"><table><thead><tr><th>Ticker</th><th class="ct">Vto.</th><th>MD (años)</th><th>TIR USD</th><th>TIR Real</th><th>Brecha r-g(USD)</th></tr></thead><tbody id="pvd-usd-body"></tbody></table></div></div>
   </div>
 
@@ -1191,7 +1194,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
       <p style="margin:0 0 10px"><strong style="color:var(--cy)">Pesos (~1,2 años en promedio):</strong> tasa REAL negativa (~-0,3% mensual) — financiamiento muy barato en términos reales, PERO exige refinanciar (rollover) buena parte del stock varias veces por año. Cada vencimiento es una "prueba de mercado": si cae la demanda en algún momento, el Tesoro puede verse forzado a convalidar tasas mucho más altas de golpe, o a emitir pesos (riesgo inflacionario) — el clásico "riesgo de bola de nieve" de la deuda corta.</p>
       <p style="margin:0 0 10px"><strong style="color:#facc15">Dólares (1 a 6+ años):</strong> tasa nominal notablemente más alta (3,6%-9,9% según plazo) y en dólares "duros" (no se licúa con inflación local) — un costo real efectivo mucho mayor que el de la deuda en pesos hoy. A cambio, fija ese costo por años: sin vencimientos que enfrentar ni tasa que renegociar hasta el vencimiento — elimina el riesgo de refinanciación en ese horizonte.</p>
       <p style="margin:0 0 10px"><strong style="color:var(--gr)">Conclusión (confirmada con datos):</strong> no es una comparación de "cuál es más barata" sino de costo vs. riesgo. La suba de la porción en pesos de 22% (2019) a 47% (2026) mejoró el costo real, pero el plazo promedio de esa deuda (1,21 años) sigue siendo sensiblemente más corto que la curva en dólares — confirma que la "pesificación" resolvió el problema de MONEDA pero no el de PLAZO: el riesgo de refinanciación de corto plazo sigue siendo alto en la porción peso de la deuda.</p>
-      <p style="margin:0"><strong style="color:var(--rd)">Sustentabilidad en USD:</strong> con el PBI en dólares creciendo apenas +0,60% (Q1-26 vs Q1-25 — casi todo el +33,5% nominal en pesos se lo comió la devaluación del +32,7%), la brecha entre el costo de la deuda en USD y el crecimiento de la economía en USD es <strong style="color:var(--rd)">positiva en casi toda la curva (+3pp a +6,1pp, salvo el AO27 con -0,3pp)</strong>: la deuda en dólares crece bastante más rápido que la capacidad de la economía de generar dólares — a diferencia de la deuda en pesos, cuya brecha nominal es negativa. Tomando la tasa de sustentabilidad r* (todo en USD, mismo trimestre: d=69,76%, pb=2,25%, g=0,60%) da <strong style="color:var(--txt)">3,84%</strong> — el AO27 (TIR 3,58%) queda apenas por debajo, el resto de la curva la supera.</p>
+      <p style="margin:0"><strong style="color:var(--rd)">Sustentabilidad en USD:</strong> con el PBI en dólares creciendo apenas +0,60% (Q1-26 vs Q1-25 — casi todo el +33,5% nominal en pesos se lo comió la devaluación del +32,7%), la brecha entre el costo de la deuda en USD y el crecimiento de la economía en USD es <strong style="color:var(--rd)">positiva en TODA la curva (+3,4pp a +9,6pp)</strong>: la deuda en dólares crece bastante más rápido que la capacidad de la economía de generar dólares — a diferencia de la deuda en pesos, cuya brecha nominal es negativa. Tomando la tasa de sustentabilidad r* (todo en USD, mismo trimestre: d=69,76%, pb=2,25%, g=0,60%) da <strong style="color:var(--txt)">3,84%</strong> — <strong style="color:var(--rd)">actualizado 14/09/2026:</strong> el AO27 (TIR subió de 3,58% a 4,0%) cruzó ese límite, sumándose al resto de la curva que ya lo superaba.</p>
     </div>
   </div>
 
@@ -1208,10 +1211,9 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
 // ═══════════════════════════════════════════════════════════════
 const SEED_TS = '08/07/2026 09:15';
 const SEED_TF = [
-  {symbol:'S17L6',price:107.32, tem:1.87,tna:22.8,tea:24.8,dtm:9,  type:'LECAP'},
-  {symbol:'S31L6',price:116.04, tem:1.85,tna:22.9,tea:24.7,dtm:23, type:'LECAP'},
-  {symbol:'S14G6',price:105.65, tem:1.82,tna:22.5,tea:24.1,dtm:37, type:'LECAP'},
-  {symbol:'S31G6',price:122.94, tem:1.83,tna:22.7,tea:24.3,dtm:54, type:'LECAP'},
+  // S17L6/S31L6/S14G6/S31G6 vencieron (jul-ago 2026), removidos 15/09/2026 (audit bonos.html).
+  // S16O6 (vto ~16/10/26) y S29E7 (vto ~29/01/27) están vivos y cotizando pero PENDIENTES de
+  // agregar acá — falta confirmar su VF (valor final) oficial en VF_MAP, ver comentario ahí.
   {symbol:'S30S6',price:111.63, tem:1.84,tna:22.8,tea:24.4,dtm:84, type:'LECAP'},
   {symbol:'S30O6',price:126.11, tem:1.82,tna:22.6,tea:24.2,dtm:114,type:'LECAP'},
   {symbol:'S30N6',price:118.94, tem:1.82,tna:22.6,tea:24.2,dtm:145,type:'LECAP'},
@@ -1221,12 +1223,15 @@ const SEED_TF = [
   {symbol:'T31Y7',price:123.73, tem:1.80,tna:22.4,tea:23.9,dtm:327,type:'BONCAP'},
   {symbol:'T30J7',price:124.86, tem:1.80,tna:22.4,tea:23.9,dtm:357,type:'BONCAP'},
 ];
-const VF_MAP={S17L6:107.916,S31L6:117.6737,S14G6:108.0311,S31G6:127.0575,S30S6:117.5482,S30O6:135.2593,S30N6:129.9035,S13N6:109.651,T15E7:161.0457,T30A7:157.3155,T31Y7:151.4979,T30J7:156.0009};
-const TF_VTO  = {S17L6:'2026-07-17',S31L6:'2026-07-31',S14G6:'2026-08-14',S31G6:'2026-08-31',S30S6:'2026-09-30',S30O6:'2026-10-30',S30N6:'2026-11-30',S13N6:'2026-11-13',T15E7:'2027-01-15',T30A7:'2027-04-30',T31Y7:'2027-05-31',T30J7:'2027-06-30'};
-const TF_VTO_D= {S17L6:'17/07/26',S31L6:'31/07/26',S14G6:'14/08/26',S31G6:'31/08/26',S30S6:'30/09/26',S30O6:'30/10/26',S30N6:'30/11/26',S13N6:'13/11/26',T15E7:'15/01/27',T30A7:'30/04/27',T31Y7:'31/05/27',T30J7:'30/06/27'};
+// S16O6 (vto 16/10/26, TEM auction 2,05%) y S29E7 (vto ~29/01/27) faltan acá — no se pudo confirmar
+// su VF oficial (valor final) en esta pasada (15/09/2026); bonistas.com no tiene página para ninguno
+// de los dos y Rava no expone "valor técnico" en HTML plano. Pendiente: fuente oficial de licitación/
+// prospecto (BYMA) antes de agregarlos — no adivinar el VF.
+const VF_MAP={S30S6:117.5482,S30O6:135.2593,S30N6:129.9035,S13N6:109.651,T15E7:161.0457,T30A7:157.3155,T31Y7:151.4979,T30J7:156.0009};
+const TF_VTO  = {S30S6:'2026-09-30',S30O6:'2026-10-30',S30N6:'2026-11-30',S13N6:'2026-11-13',T15E7:'2027-01-15',T30A7:'2027-04-30',T31Y7:'2027-05-31',T30J7:'2027-06-30'};
+const TF_VTO_D= {S30S6:'30/09/26',S30O6:'30/10/26',S30N6:'30/11/26',S13N6:'13/11/26',T15E7:'15/01/27',T30A7:'30/04/27',T31Y7:'31/05/27',T30J7:'30/06/27'};
 
 const SEED_CER_PRECIOS=[
-  {symbol:'X31L6',c:116.4, bid:116.3, ask:116.4, pct:0.10},
   {symbol:'X30S6',c:111.4, bid:111.3, ask:111.4, pct:0.09},
   {symbol:'TZXO6',c:165.2, bid:165.1, ask:165.3, pct:0.10},
   {symbol:'TX26', c:709.0, bid:708.5, ask:709.5, pct:0.0},   // resid 20%: amort solo en nov
@@ -1247,6 +1252,10 @@ const SEED_CER_PRECIOS=[
   {symbol:'TZXM8', c:98.50,  bid:98.26,  ask:98.50,  pct:0.05},
   {symbol:'TZXS8', c:94.25,  bid:94.10,  ask:94.25,  pct:0.26},
   {symbol:'TZXD8', c:84.39,  bid:84.10,  ask:84.39,  pct:0.28},
+  // Agregados 15/09/2026 (audit bonos.html) — precios data912.com/live/arg_bonds
+  {symbol:'TZXA7', c:124.75, bid:124.65, ask:124.75, pct:0.0},
+  {symbol:'TZXO7', c:98.17,  bid:98.10,  ask:98.24,  pct:0.0},
+  {symbol:'TZXM9', c:90.60,  bid:90.25,  ask:91.00,  pct:0.0},
   // Duales CER/TAMAR — precios seed estimados (actualizar con datos de mercado)
   {symbol:'TXMJ8', c:103.0,  bid:102.5,  ask:103.5,  pct:0.0},
   {symbol:'TXMD8', c:102.0,  bid:101.5,  ask:102.5,  pct:0.0},
@@ -1258,7 +1267,6 @@ const SEED_CER_IDX={cer:796.43986,fecha:'2026-06-25'};
 window._cerIdx = SEED_CER_IDX.cer; // actualizado por cerRefresh()
 
 const CER_INSTR=[
-  {sym:'X31L6',tipo:'ZC', cer0:685.5506, vto:'31/07/26',vtoi:'2026-07-31',dur:0.17, resid:100,coupon:0},
   {sym:'X30S6',tipo:'ZC', cer0:714.9849, vto:'30/09/26',vtoi:'2026-09-30',dur:0.34, resid:100,coupon:0},
   {sym:'TZXO6',tipo:'ZC', cer0:480.1526, vto:'30/10/26',vtoi:'2026-10-30',dur:0.42, resid:100,coupon:0},
   {sym:'X30N6',tipo:'ZC', cer0:661.1807, vto:'30/11/26',vtoi:'2026-11-30',dur:0.51, resid:100,coupon:0},
@@ -1275,6 +1283,11 @@ const CER_INSTR=[
   {sym:'TZX28',tipo:'ZC', cer0:200.388,  vto:'30/06/28',vtoi:'2028-06-30',dur:2.09, resid:100,coupon:0},
   {sym:'TZXS8',tipo:'ZC', cer0:725.875485635, vto:'29/09/28',vtoi:'2028-09-29',dur:2.08, resid:100,coupon:0}, // emisión 31/03/26
   {sym:'TZXD8',tipo:'ZC', cer0:791.48970450621, vto:'15/12/28',vtoi:'2028-12-15',dur:2.29, resid:100,coupon:0}, // emisión 30/06/26
+  // Agregados 15/09/2026 (audit bonos.html): faltaban en el listado. cer0 = CER BCRA a T-10 hábiles
+  // antes de la emisión (api.bcra.gob.ar id 30), emisión/vto de bonistas.com
+  {sym:'TZXA7',tipo:'ZC', cer0:652.77271946175, vto:'30/04/27',vtoi:'2027-04-30',dur:0.62, resid:100,coupon:0}, // emisión 28/11/25
+  {sym:'TZXO7',tipo:'ZC', cer0:791.48970450621, vto:'29/10/27',vtoi:'2027-10-29',dur:1.12, resid:100,coupon:0}, // emisión 30/06/26
+  {sym:'TZXM9',tipo:'ZC', cer0:725.875485635,   vto:'28/03/29',vtoi:'2029-03-28',dur:2.53, resid:100,coupon:0}, // emisión 31/03/26
   {sym:'TX26', tipo:'CPN',cer0:22.544,   vto:'09/11/26',vtoi:'2026-11-09',dur:0.12, resid:10, coupon:0.020},
   {sym:'TX28', tipo:'CPN',cer0:22.544,   vto:'09/11/28',vtoi:'2028-11-09',dur:2.37, resid:50, coupon:0.0225},
   {sym:'TX31', tipo:'CPN',cer0:47.2937,  vto:'30/11/31',vtoi:'2031-11-30',dur:5.51, resid:100,coupon:0.025},
@@ -2147,7 +2160,6 @@ const KNOWN_IPC={'2025-11':2.4,'2025-12':2.7,'2026-01':2.9,'2026-02':2.4,'2026-0
 const MN=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
 const SIM_SCHED={
   TZX26:[{d:'2026-06-30',a:100,vr:100,cr:0}],
-  X31L6:[{d:'2026-07-31',a:100,vr:100,cr:0}],
   X30S6:[{d:'2026-09-30',a:100,vr:100,cr:0}],
   TZXO6:[{d:'2026-10-30',a:100,vr:100,cr:0}],
   X30N6:[{d:'2026-11-30',a:100,vr:100,cr:0}],
@@ -2162,15 +2174,20 @@ const SIM_SCHED={
   TZX28:[{d:'2028-06-30',a:100,vr:100,cr:0}],
   TZXS8:[{d:'2028-09-29',a:100,vr:100,cr:0}],
   TZXD8:[{d:'2028-12-15',a:100,vr:100,cr:0}],
+  TZXA7:[{d:'2027-04-30',a:100,vr:100,cr:0}],
+  TZXO7:[{d:'2027-10-29',a:100,vr:100,cr:0}],
+  TZXM9:[{d:'2029-03-28',a:100,vr:100,cr:0}],
   TX26:[{d:'2026-11-09',a:20,vr:20,cr:0.020}],
   TX28:[{d:'2026-11-09',a:10,vr:50,cr:0.0225},{d:'2027-05-09',a:10,vr:40,cr:0.0225},{d:'2027-11-09',a:10,vr:30,cr:0.0225},{d:'2028-05-09',a:10,vr:20,cr:0.0225},{d:'2028-11-09',a:10,vr:10,cr:0.0225}],
   TX31:[{d:'2026-11-30',a:0,vr:100,cr:0.025},{d:'2027-05-30',a:10,vr:100,cr:0.025},{d:'2027-11-30',a:10,vr:90,cr:0.025},{d:'2028-05-30',a:10,vr:80,cr:0.025},{d:'2028-11-30',a:10,vr:70,cr:0.025},{d:'2029-05-30',a:10,vr:60,cr:0.025},{d:'2029-11-30',a:10,vr:50,cr:0.025},{d:'2030-05-30',a:10,vr:40,cr:0.025},{d:'2030-11-30',a:10,vr:30,cr:0.025},{d:'2031-05-30',a:10,vr:20,cr:0.025},{d:'2031-11-30',a:10,vr:10,cr:0.025}],
   DICP:[{d:'2026-06-30',a:5,vr:80,cr:0.0583},{d:'2026-12-31',a:5,vr:75,cr:0.0583},{d:'2027-06-30',a:5,vr:70,cr:0.0583},{d:'2027-12-31',a:5,vr:65,cr:0.0583},{d:'2028-06-30',a:5,vr:60,cr:0.0583},{d:'2028-12-31',a:5,vr:55,cr:0.0583},{d:'2029-06-30',a:5,vr:50,cr:0.0583},{d:'2029-12-31',a:5,vr:45,cr:0.0583},{d:'2030-06-30',a:5,vr:40,cr:0.0583},{d:'2030-12-31',a:5,vr:35,cr:0.0583},{d:'2031-06-30',a:5,vr:30,cr:0.0583},{d:'2031-12-31',a:5,vr:25,cr:0.0583},{d:'2032-06-30',a:5,vr:20,cr:0.0583},{d:'2032-12-31',a:5,vr:15,cr:0.0583},{d:'2033-06-30',a:5,vr:10,cr:0.0583},{d:'2033-12-31',a:5,vr:5,cr:0.0583}],
   PARP:[{d:'2026-09-30',a:0,vr:100,cr:0.0177},{d:'2027-03-31',a:0,vr:100,cr:0.0177},{d:'2027-09-30',a:0,vr:100,cr:0.0177},{d:'2028-03-31',a:0,vr:100,cr:0.0177},{d:'2028-09-30',a:0,vr:100,cr:0.0177},{d:'2029-03-31',a:0,vr:100,cr:0.0177},{d:'2029-09-30',a:5,vr:100,cr:0.0177},{d:'2030-03-31',a:5,vr:95,cr:0.0177},{d:'2030-09-30',a:5,vr:90,cr:0.0177},{d:'2031-03-31',a:5,vr:85,cr:0.0177},{d:'2031-09-30',a:5,vr:80,cr:0.0177},{d:'2032-03-31',a:5,vr:75,cr:0.0177},{d:'2032-09-30',a:5,vr:70,cr:0.0177},{d:'2033-03-31',a:5,vr:65,cr:0.0177},{d:'2033-09-30',a:5,vr:60,cr:0.0177},{d:'2034-03-31',a:5,vr:55,cr:0.0177},{d:'2034-09-30',a:5,vr:50,cr:0.0177},{d:'2035-03-31',a:5,vr:45,cr:0.0177},{d:'2035-09-30',a:5,vr:40,cr:0.0177},{d:'2036-03-31',a:5,vr:35,cr:0.0177},{d:'2036-09-30',a:5,vr:30,cr:0.0177},{d:'2037-03-31',a:5,vr:25,cr:0.0177},{d:'2037-09-30',a:5,vr:20,cr:0.0177},{d:'2038-03-31',a:5,vr:15,cr:0.0177},{d:'2038-09-30',a:5,vr:10,cr:0.0177},{d:'2038-12-31',a:5,vr:5,cr:0.0177}],
 };
-const SIM_CER0={TZX26:200.388,X31L6:685.5506,X30S6:714.9849,TZXO6:480.1526,X30N6:661.1807,TZXD6:271.0476,TZXM7:362.5767,TZX27:200.388,TZXD7:271.0476,TZX28:200.388,TX26:22.544,TX28:22.544,TX31:47.2937,DICP:1.4552,PARP:1.4552,
+const SIM_CER0={TZX26:200.388,X30S6:714.9849,TZXO6:480.1526,X30N6:661.1807,TZXD6:271.0476,TZXM7:362.5767,TZX27:200.388,TZXD7:271.0476,TZX28:200.388,TX26:22.544,TX28:22.544,TX31:47.2937,DICP:1.4552,PARP:1.4552,
   // Agregados 01/09/2026 (ver memoria bonos-dashboard-cer-audit)
   X29E7:823.99892290981,TZXY7:661.18067847314,TZXS7:725.875485635,TZXM8:725.875485635,TZXS8:725.875485635,TZXD8:791.48970450621,
+  // Agregados 15/09/2026 (audit bonos.html)
+  TZXA7:652.77271946175,TZXO7:791.48970450621,TZXM9:725.875485635,
   // TXM CER0 pendiente — completar con datos de prospecto de licitación
   TXMJ8:758.1180,TXMD8:779.2409,TXMJ9:746.3809,TXMD9:779.2409,TXMJ0:779.2409};
 
@@ -4119,8 +4136,6 @@ const PVD_COMPOSICION = {
   usd:[77.7,76.3,70.1,66.7,71.8,55.0,57.8,52.7]
 };
 const PVD_PESOS = [
-  {sym:'S17L6',dtm:9,  tna:22.8,tem:1.87},{sym:'S31L6',dtm:23, tna:22.9,tem:1.85},
-  {sym:'S14G6',dtm:37, tna:22.5,tem:1.82},{sym:'S31G6',dtm:54, tna:22.7,tem:1.83},
   {sym:'S30S6',dtm:84, tna:22.8,tem:1.84},{sym:'S30O6',dtm:114,tna:22.6,tem:1.82},
   {sym:'S30N6',dtm:145,tna:22.6,tem:1.82},{sym:'T15E7',dtm:191,tna:22.6,tem:1.82},
   {sym:'T30A7',dtm:296,tna:22.4,tem:1.80},{sym:'T31Y7',dtm:327,tna:22.4,tem:1.80},
@@ -4128,9 +4143,9 @@ const PVD_PESOS = [
 ];
 const PVD_INFL_MENSUAL = 2.1; // IPC jul-2026
 const PVD_USD = [
-  {sym:'AO27',vto:'29/10/2027',md:1.10,tir:3.58},{sym:'GD30',vto:'09/07/2030',md:1.94,tir:6.38},
-  {sym:'AO28',vto:'31/10/2028',md:2.00,tir:9.10},{sym:'AO29',vto:'31/10/2029',md:2.83,tir:9.95},
-  {sym:'GD41',vto:'09/07/2041',md:5.75,tir:9.40},
+  {sym:'AO27',vto:'29/10/2027',md:1.08,tir:4.00},{sym:'GD30',vto:'09/07/2030',md:1.92,tir:6.50},
+  {sym:'AO28',vto:'31/10/2028',md:1.98,tir:9.30},{sym:'AO29',vto:'31/10/2029',md:2.81,tir:10.20},
+  {sym:'GD41',vto:'09/07/2041',md:5.69,tir:9.60},
 ];
 const PVD_INFL_US = 3.0;
 // g(USD) = crecimiento del PBI en dólares, Q1-2026 vs Q1-2025: PBI nominal ARS (INDEC, +33,5%)
