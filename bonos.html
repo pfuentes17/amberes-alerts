@@ -300,7 +300,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
 <div class="tab-content" id="tab-cer">
   <div class="hdr">
     <div><div class="eyebrow" style="color:var(--or)">⬤ Bonos CER · TIR Real sobre inflación</div><h1>Bonos CER — Rendimiento Real</h1></div>
-    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);text-align:right">Fuente: rendimientos.co · CER: BCRA<br>Auto-refresh cada 20 min · <button onclick="cerRefresh()" style="background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.25);color:var(--or);border-radius:4px;padding:2px 9px;font-family:'IBM Plex Mono',monospace;font-size:10px;cursor:pointer">↻ Actualizar</button></div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);text-align:right">Fuente: data912.com · CER: BCRA<br>Auto-refresh cada 20 min · <button onclick="cerRefresh()" style="background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.25);color:var(--or);border-radius:4px;padding:2px 9px;font-family:'IBM Plex Mono',monospace;font-size:10px;cursor:pointer">↻ Actualizar</button></div>
   </div>
   <div class="cer-box">
     <div class="cer-item"><div class="cl">CER Oficial (BCRA)</div><div class="cv" id="cer-of" style="color:var(--or)">—</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim)" id="cer-fecha">—</div></div>
@@ -334,7 +334,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
       <div class="cleg"><div class="cli"><div class="cld" style="background:var(--gr)"></div>Barato</div><div class="cli"><div class="cld" style="background:var(--rd)"></div>Caro</div><div class="cli"><div class="cld" style="background:#94a3b8"></div>En curva</div><div class="cli"><div class="cldash" style="border-color:rgba(251,146,60,.5)"></div>Curva ref.</div></div></div>
       <hr class="dv">
       
-      <div class="ftr"><div style="display:flex;gap:10px;flex-wrap:wrap"><div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:var(--gr);display:inline-block"></span>Barato</div><div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:var(--rd);display:inline-block"></span>Caro</div><div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:var(--or);display:inline-block"></span>ZC · círculo (en curva=gris, barato=verde, caro=rojo)</div><div class="fl"><span style="width:7px;height:7px;border-radius:2px;background:#38bdf8;display:inline-block;transform:rotate(0deg)"></span>CPN · triángulo</div><div class="fl"><span style="width:7px;height:7px;background:#34d399;display:inline-block;transform:rotate(45deg)"></span>Dual CER/TAMAR · rombo</div></div><div class="fnote">rendimientos.co/api/proxy?src=cer-precios · CER: rendimientos.co/api/cer (BCRA T-10) · TXM CER₀: pendiente de datos de licitación</div></div>
+      <div class="ftr"><div style="display:flex;gap:10px;flex-wrap:wrap"><div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:var(--gr);display:inline-block"></span>Barato</div><div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:var(--rd);display:inline-block"></span>Caro</div><div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:var(--or);display:inline-block"></span>ZC · círculo (en curva=gris, barato=verde, caro=rojo)</div><div class="fl"><span style="width:7px;height:7px;border-radius:2px;background:#38bdf8;display:inline-block;transform:rotate(0deg)"></span>CPN · triángulo</div><div class="fl"><span style="width:7px;height:7px;background:#34d399;display:inline-block;transform:rotate(45deg)"></span>Dual CER/TAMAR · rombo</div></div><div class="fnote">Precios: data912.com/live/arg_bonds+arg_notes · CER: BCRA (id 30, T-10, directo)</div></div>
 
   <div class="mod-nav">
     <div class="mod-nav-label">Ir a módulo →</div>
@@ -2128,9 +2128,14 @@ function cerRender(priceMap,cer){
 
 async function cerRefresh(){
   try{
-    const[ci,cp]=await Promise.all([
+    // cer-precios (rendimientos.co) sólo cubre 13/22 instrumentos CER (dejó de sumar los
+    // agregados desde 01/09/2026) — se usa data912 (bonds+notes) como fuente de precios,
+    // que sí cubre el listado completo de CER_INSTR (mismo esquema de campos c/px_bid/
+    // px_ask/pct_change, detectado 15/09/2026 tras ver que sólo 8/17 ZC renderizaban).
+    const[ci,bondsRes,notesRes]=await Promise.all([
       fetch('/api/proxy?src=cer-index').then(r=>r.json()),
-      fetch('/api/proxy?src=cer-precios').then(r=>r.json())
+      fetch('/api/proxy?src=bonds').then(r=>r.json()),
+      fetch('/api/proxy?src=notes').then(r=>r.json()),
     ]);
     if(!ci.cer) throw new Error('cer vacío');
     const cer=ci.cer;
@@ -2138,7 +2143,7 @@ async function cerRefresh(){
     const today=new Date();today.setHours(0,0,0,0);
     const pub=new Date(ci.fecha+'T00:00:00-03:00');
     document.getElementById('cer-lag').textContent=Math.round((today-pub)/86400000);
-    const raw=cp.data||cp;
+    const raw=[...(bondsRes.data||bondsRes||[]),...(notesRes.data||notesRes||[])];
     if(!raw||!raw.length) throw new Error('precios vacíos');
     const pm={};raw.forEach(d=>pm[d.symbol]={c:d.c,bid:d.px_bid,ask:d.px_ask,pct:d.pct_change});
     cerRender(pm,cer);
@@ -4083,10 +4088,9 @@ setStatus('seed','Seed 29/05 (precios ref.) · actualizando…');
 // 2. Intenta actualizar via proxy en segundo plano
 setTimeout(async()=>{
   try{
-    const[tfRes,cerRes,cpRes,notesRes,bondsRes,bcraRes]=await Promise.all([
+    const[tfRes,cerRes,notesRes,bondsRes,bcraRes]=await Promise.all([
       fetch('/api/proxy?src=lecaps').then(r=>r.json()),
       fetch('/api/proxy?src=cer-index').then(r=>r.json()),
-      fetch('/api/proxy?src=cer-precios').then(r=>r.json()),
       fetch('/api/proxy?src=notes').then(r=>r.json()),
       fetch('/api/proxy?src=bonds').then(r=>r.json()),
       fetch('/api/proxy?src=bcra').then(r=>r.json()),
@@ -4103,8 +4107,10 @@ setTimeout(async()=>{
       return{...d,dtm,tem,tna,tea};
     });
     tfRender(tfRaw);
-    // CER
-    const pm={};(cpRes.data||cpRes).forEach(d=>pm[d.symbol]={c:d.c,bid:d.px_bid,ask:d.px_ask,pct:d.pct_change});
+    // CER — precios via data912 (bonds+notes), no cer-precios (sólo cubre 13/22 instrumentos,
+    // ver comentario en cerRefresh())
+    const cerRaw=[...(bondsRes.data||bondsRes||[]),...(notesRes.data||notesRes||[])];
+    const pm={};cerRaw.forEach(d=>pm[d.symbol]={c:d.c,bid:d.px_bid,ask:d.px_ask,pct:d.pct_change});
     document.getElementById('cer-fecha').textContent='BCRA: '+cerRes.fecha;
     document.getElementById('sim-cer-f').textContent=cerRes.fecha;
     cerRender(pm,cerRes.cer);
