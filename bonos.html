@@ -1258,12 +1258,13 @@ const SEED_CER_PRECIOS=[
   {symbol:'TZXA7', c:124.75, bid:124.65, ask:124.75, pct:0.0},
   {symbol:'TZXO7', c:98.17,  bid:98.10,  ask:98.24,  pct:0.0},
   {symbol:'TZXM9', c:90.60,  bid:90.25,  ask:91.00,  pct:0.0},
-  // Duales CER/TAMAR — precios seed estimados (actualizar con datos de mercado)
-  {symbol:'TXMJ8', c:103.0,  bid:102.5,  ask:103.5,  pct:0.0},
-  {symbol:'TXMD8', c:102.0,  bid:101.5,  ask:102.5,  pct:0.0},
-  {symbol:'TXMJ9', c:104.5,  bid:104.0,  ask:105.0,  pct:0.0},
-  {symbol:'TXMD9', c:103.5,  bid:103.0,  ask:104.0,  pct:0.0},
-  {symbol:'TXMJ0', c:106.0,  bid:105.5,  ask:106.5,  pct:0.0},
+  // Duales CER/TAMAR — precios reales 15/09/2026, data912.com/live/arg_bonds (reemplazan
+  // los seed estimados anteriores, que habían quedado ~8-21% desalineados del mercado real)
+  {symbol:'TXMJ8', c:100.75, bid:100.40, ask:100.75, pct:0.14},
+  {symbol:'TXMD8', c:94.59,  bid:94.50,  ask:94.59,  pct:0.20},
+  {symbol:'TXMJ9', c:93.25,  bid:93.23,  ask:93.25,  pct:0.01},
+  {symbol:'TXMD9', c:87.15,  bid:86.96,  ask:87.05,  pct:0.25},
+  {symbol:'TXMJ0', c:83.85,  bid:83.85,  ask:83.88,  pct:0.11},
 ];
 const SEED_CER_IDX={cer:796.43986,fecha:'2026-06-25'};
 window._cerIdx = SEED_CER_IDX.cer; // actualizado por cerRefresh()
@@ -2345,14 +2346,14 @@ const SEED_TMR_BONDS = [
   {symbol:'TTD26', c:158.75,  bid:158.70,  ask:158.75, pct:0.15},
   {symbol:'TTJ26', c:159.65,  bid:159.60,  ask:159.65, pct:0.25},
   {symbol:'TTS26', c:159.15,  bid:159.10,  ask:159.15, pct:0.34},
-  // Duales CER/TAMAR — precios seed estimados (actualizar con datos de mercado)
-  {symbol:'TXMJ8', c:103.0,   bid:102.5,   ask:103.5,  pct:0.0},
-  {symbol:'TXMD8', c:102.0,   bid:101.5,   ask:102.5,  pct:0.0},
-  {symbol:'TXMJ9', c:104.5,   bid:104.0,   ask:105.0,  pct:0.0},
-  {symbol:'TXMD9', c:103.5,   bid:103.0,   ask:104.0,  pct:0.0},
-  {symbol:'TXMJ0', c:106.0,   bid:105.5,   ask:106.5,  pct:0.0},
-  // Agregado 01/09/2026 (ver memoria bonos-dashboard-cer-audit)
-  {symbol:'TMVE8', c:138440,  bid:136800,  ask:138700, pct:0.43},
+  // Duales CER/TAMAR — precios reales 15/09/2026, data912.com/live/arg_bonds
+  {symbol:'TXMJ8', c:100.75, bid:100.40, ask:100.75, pct:0.14},
+  {symbol:'TXMD8', c:94.59,  bid:94.50,  ask:94.59,  pct:0.20},
+  {symbol:'TXMJ9', c:93.25,  bid:93.23,  ask:93.25,  pct:0.01},
+  {symbol:'TXMD9', c:87.15,  bid:86.96,  ask:87.05,  pct:0.25},
+  {symbol:'TXMJ0', c:83.85,  bid:83.85,  ask:83.88,  pct:0.11},
+  // Agregado 01/09/2026 (ver memoria bonos-dashboard-cer-audit); precio actualizado 15/09/2026
+  {symbol:'TMVE8', c:140710, bid:140700, ask:140710, pct:0.05},
 ];
 
 // TAMAR oficial BCRA 27/05/2026 — TNA 22.8125%
@@ -4082,12 +4083,13 @@ setStatus('seed','Seed 29/05 (precios ref.) · actualizando…');
 // 2. Intenta actualizar via proxy en segundo plano
 setTimeout(async()=>{
   try{
-    const[tfRes,cerRes,cpRes,notesRes,bondsRes]=await Promise.all([
+    const[tfRes,cerRes,cpRes,notesRes,bondsRes,bcraRes]=await Promise.all([
       fetch('/api/proxy?src=lecaps').then(r=>r.json()),
       fetch('/api/proxy?src=cer-index').then(r=>r.json()),
       fetch('/api/proxy?src=cer-precios').then(r=>r.json()),
       fetch('/api/proxy?src=notes').then(r=>r.json()),
       fetch('/api/proxy?src=bonds').then(r=>r.json()),
+      fetch('/api/proxy?src=bcra').then(r=>r.json()),
     ]);
     // TF — recalcular TEM desde precio y VF para que la regresión funcione
     const tfRaw=(tfRes.data||tfRes).filter(d=>TF_VTO[d.symbol]).map(d=>{
@@ -4109,14 +4111,24 @@ setTimeout(async()=>{
     try{ bkevRender(); }catch(e){}   // recalcular breakeven con curva fresca
     // HD en background
     try{ hdRefresh(); }catch(e){}
-    // TAMAR
+    // TAMAR — tasa oficial BCRA en vivo (antes quedaba pisada en SEED_TAMAR_RATE en esta
+    // carga inicial; solo se corregía tras 20min de auto-refresh o click manual en "Actualizar")
+    let tamarTNA=SEED_TAMAR_TNA, tamarFecha='—';
+    try{
+      const bcraData = bcraRes.data || bcraRes;
+      const tv = Array.isArray(bcraData) ? bcraData.find(d=>d.key==='tamar_tna') : null;
+      if(tv){ tamarTNA = tv.valor; tamarFecha = tv.fecha; }
+    }catch{}
+    const tamarTEM = calcTamarTEM(tamarTNA);
+    tmrUpdateRateBox(tamarTEM, tamarTNA, tamarFecha);
+
     const notes=Array.isArray(notesRes)?notesRes:(notesRes.data||[]);
     const bonds=Array.isArray(bondsRes)?bondsRes:(bondsRes.data||[]);
     const myNotes=notes.filter(d=>TMR_INSTR[d.symbol]);
     const myBonds=bonds.filter(d=>TMR_INSTR[d.symbol]);
     if(myNotes.length||myBonds.length) {
-      tmrRender(myNotes,myBonds,SEED_TAMAR_RATE);
-      document.getElementById('tsim-tamar-chip').textContent = SEED_TAMAR_TNA.toFixed(4)+'%';
+      tmrRender(myNotes,myBonds,tamarTEM);
+      document.getElementById('tsim-tamar-chip').textContent = tamarTNA.toFixed(4)+'%';
     }
     setStatus('live','En vivo · '+now8());
   }catch(e){
