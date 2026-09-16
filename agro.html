@@ -219,12 +219,12 @@ const D = {
   // Conversiones: 1 bu soja/trigo=27.2155 kg → 36.744 bu/tn
   //               1 bu maiz=25.401 kg → 39.368 bu/tn
   //               aceite: cents/lb × 22.0462 = USD/tn
-  // Fuente: CME Group (cmegroup.com, quotes en vivo) – 09-Sep-2026. Contrato frente rotado a Nov26(soja)/Dic26(maiz,trigo,aceite) por liquidez.
+  // Fuente: Yahoo Finance chart API (query1.finance.yahoo.com, sin key), contratos continuos front-month ZS=F/ZC=F/ZW=F/ZL=F — sync automático via update_agro_cbot_html.py. Última corrida: 16-Sep-26.
   cbot:{
-    soja:  {spot:480.9, chg:-2.8, chgPct:-0.57, sym:'ZSX6', cBu:1308.75},
-    maiz:  {spot:208.0, chg:-2.1, chgPct:-0.99, sym:'ZCZ6', cBu:528.25},
-    trigo: {spot:267.8, chg:-6.7, chgPct:-2.50, sym:'ZWZ6', cBu:728.75},
-    aceite:{spot:1554.9,chg:-3.8, chgPct:-0.24, sym:'ZLZ6', cLb:70.53},
+    soja:   {spot:485.4, chg:0.8, chgPct:0.17, sym:'ZSX6', cBu:1321.0},
+    maiz:   {spot:211.2, chg:0.3, chgPct:0.14, sym:'ZCZ6', cBu:536.5},
+    trigo:  {spot:268.5, chg:0.8, chgPct:0.31, sym:'ZWZ6', cBu:730.75},
+    aceite: {spot:1553.2, chg:2.2, chgPct:0.14, sym:'ZLZ6', cLb:70.45},
     carne: {spot:2340,  chg:-8,   chgPct:-0.34, sym:'GFQ6', cLb:213},
   },
 
@@ -714,7 +714,7 @@ function buildCbot(){
   <div class="src">CME Group / CBOT &middot; 1 bu soja/trigo=27.22 kg &middot; 1 bu maiz=25.40 kg &middot; Aceite: cents/lb x22.05 = USD/tn</div>
   <div class="infobox" style="border-left-color:var(--cbot);background:rgba(232,200,74,.04);">
     <div class="infobox-t" style="color:var(--cbot);">&#9432; Verificacion de precios</div>
-    <div class="infobox-b">Los precios CBOT se pueden verificar en tiempo real en <strong>CME Group (cmegroup.com)</strong>, <strong>Investing.com</strong> o <strong>Agrofy News (news.agrofy.com.ar/granos)</strong>. Los simbolos activos son ZSN6 (soja jul-26), ZCN6 (maiz jul-26), ZWN6 (trigo jul-26). La conversion a USD/tn: soja/trigo = cents/bu / 100 x 36.744; maiz = cents/bu / 100 x 39.368.</div>
+    <div class="infobox-b">Los precios CBOT se pueden verificar en tiempo real en <strong>CME Group (cmegroup.com)</strong>, <strong>Investing.com</strong> o <strong>Agrofy News (news.agrofy.com.ar/granos)</strong>. Los simbolos activos (front-month, rotan solos) son ZSX6 (soja), ZCZ6 (maiz), ZWZ6 (trigo), ZLZ6 (aceite). La conversion a USD/tn: soja/trigo = cents/bu / 100 x 36.744; maiz = cents/bu / 100 x 39.368.</div>
   </div>
   <div class="cg2" style="margin-bottom:11px;">
     <div class="card c-cbot"><div class="ct">Evolucion 12 meses &mdash; Soja (USD/tn)</div><div class="ch h240"><canvas id="ch-c1"></canvas></div></div>
