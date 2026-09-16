@@ -279,6 +279,41 @@ function panelFull(id,cnt){
 // DATOS — seed + carga en vivo
 // ══════════════════════════════
 
+// China — chinadata.live (espejo NO oficial del NBS, sin key, CORS abierto). Cubre
+// PPI/producción industrial/ventas minoristas YoY/PMI manufacturero/PMI no-manufacturero/
+// balanza comercial (cross-validado 16/09/2026: PPI e IP coinciden exacto con los valores
+// manuales previos). NO cubre CPI mensual YoY, LPR (PBOC) ni PMI Caixin — esos quedan en
+// seed manual, no hay fuente gratis encontrada todavía.
+var CN_MES = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+function cnLabel(ym) { // "2026-07" -> "Jul 26"
+  var p = ym.split('-'); return CN_MES[parseInt(p[1],10)-1] + ' ' + p[0].slice(2);
+}
+async function fetchChinaLive() {
+  var slugs = ['china-ppi','china-industrial-output','china-retail-sales-yoy','china-pmi','china-pmi-non-manufacturing','china-trade-monthly'];
+  var results = await Promise.allSettled(slugs.map(function(s){
+    return fetch('https://chinadata.live/api/v2/data/'+s).then(function(r){ return r.ok ? r.json() : null; });
+  }));
+  var out = {};
+  function series(idx, n) {
+    var d = results[idx].status==='fulfilled' && results[idx].value?.success ? results[idx].value.data.data : null;
+    if (!d || !d.length) return null;
+    var last = d.slice(-n);
+    return { l: last.map(function(x){ return cnLabel(x.date); }), v: last.map(function(x){ return typeof x.value==='number'?x.value:parseFloat(x.value); }) };
+  }
+  var ppi = series(0,10), ip = series(1,10), ret = series(2,10), pmi = series(3,10), pmiSvc = series(4,10);
+  if (ppi) out.ppi = ppi;
+  if (ip) out.ip = ip;
+  if (ret) out.ret = ret;
+  if (pmi) out.pmiNbs = pmi;
+  if (pmiSvc) out.pmiSvc = pmiSvc;
+  var tradeRaw = results[5].status==='fulfilled' && results[5].value?.success ? results[5].value.data.data : null;
+  if (tradeRaw && tradeRaw.length) {
+    var last = tradeRaw.slice(-10);
+    out.trade = { l: last.map(function(x){ return cnLabel(x.date); }), v: last.map(function(x){ return Math.round(parseFloat(x.balance)/100); }) }; // USD M -> USD 100M (亿)
+  }
+  return Object.keys(out).length ? out : null;
+}
+
 async function loadLiveData() {
   try {
     var results = await Promise.allSettled([
@@ -286,13 +321,15 @@ async function loadLiveData() {
       fetch('/api/macro-eu').then(function(r){ return r.ok ? r.json() : null; }),
       fetch('/api/macro-jp').then(function(r){ return r.ok ? r.json() : null; }),
       fetch('/api/macro-br').then(function(r){ return r.ok ? r.json() : null; }),
+      fetchChinaLive(),
     ]);
 
     var us     = results[0].status==='fulfilled' && results[0].value?.ok ? results[0].value : null;
     var eu     = results[1].status==='fulfilled' && results[1].value?.ok ? results[1].value : null;
     var jp     = results[2].status==='fulfilled' && results[2].value?.ok ? results[2].value : null;
     var br     = results[3].status==='fulfilled' && results[3].value?.ok ? results[3].value : null;
-    var manual = null; // China usa seed data por ahora
+    var cn     = results[4].status==='fulfilled' ? results[4].value : null;
+    var manual = null; // CPI/LPR/PMI Caixin de China siguen sin fuente gratis, seed manual
 
     var updated = false;
 
@@ -332,23 +369,25 @@ async function loadLiveData() {
       if (br.gdp)   D.br.gdp   = br.gdp;
       updated = true;
     }
-    // Manual data (scheduler-updated) — Brasil CPI/UR fallback + China
+    // Manual data (scheduler-updated) — Brasil CPI/UR fallback
     if (manual) {
-      var mb = manual.brasil, mc = manual.china;
+      var mb = manual.brasil;
       if (mb) {
         if (mb.cpi   && !D.br.cpi?.l?.length)   D.br.cpi    = mb.cpi;
         if (mb.cpiMoM && !br?.cpiMoM)            D.br.cpiMoM = mb.cpiMoM;
         if (mb.selic && !br?.selic)              D.br.selic  = mb.selic;
         if (mb.ur    && !br?.ur)                 D.br.ur     = mb.ur;
       }
-      if (mc) {
-        if (mc.cpi)    D.cn.cpi    = mc.cpi;
-        if (mc.ppi)    D.cn.ppi    = mc.ppi;
-        if (mc.pmiNbs) D.cn.pmiNbs = mc.pmiNbs;
-        if (mc.ip)     D.cn.ip     = mc.ip;
-        if (mc.ret)    D.cn.ret    = mc.ret;
-        if (mc.rate)   D.cn.rate   = mc.rate;
-      }
+      updated = true;
+    }
+    if (cn) {
+      // cpi/rate/pmiCai no tienen fuente gratis todavía, quedan en el seed
+      if (cn.ppi)    D.cn.ppi    = cn.ppi;
+      if (cn.ip)     D.cn.ip     = cn.ip;
+      if (cn.ret)    D.cn.ret    = cn.ret;
+      if (cn.pmiNbs) D.cn.pmiNbs = cn.pmiNbs;
+      if (cn.pmiSvc) D.cn.pmiSvc = cn.pmiSvc;
+      if (cn.trade)  D.cn.trade  = cn.trade;
       updated = true;
     }
 
@@ -690,13 +729,13 @@ function buildBR(){
 function buildCN(){
   var d=D.cn;
   $('kstrip').innerHTML=kpis([
-    {l:'CPI May 2026 YoY',v:L(d.cpi.v)+'%',c:L(d.cpi.v)<0?'r':'a'},
-    {l:'PPI May 2026',v:L(d.ppi.v)+'%',c:'r'},
-    {l:'PMI NBS May 26',v:L(d.pmiNbs.v),c:L(d.pmiNbs.v)>=50?'g':'r'},
-    {l:'PMI Caixin May 26',v:L(d.pmiCai.v),c:L(d.pmiCai.v)>=50?'g':'r'},
-    {l:'IP May 2026',v:'+'+L(d.ip.v)+'%',c:'g'},
-    {l:'Retail May 2026',v:L(d.ret.v)+'%',c:'r'},
-    {l:'Bal. Com. Mar 26',v:'+$970B',c:'g'},
+    {l:'CPI '+L(d.cpi.l)+' YoY',v:L(d.cpi.v)+'%',c:L(d.cpi.v)<0?'r':'a'},
+    {l:'PPI '+L(d.ppi.l),v:L(d.ppi.v)+'%',c:'r'},
+    {l:'PMI NBS '+L(d.pmiNbs.l),v:L(d.pmiNbs.v),c:L(d.pmiNbs.v)>=50?'g':'r'},
+    {l:'PMI Caixin '+L(d.pmiCai.l),v:L(d.pmiCai.v),c:L(d.pmiCai.v)>=50?'g':'r'},
+    {l:'IP '+L(d.ip.l),v:(L(d.ip.v)>=0?'+':'')+L(d.ip.v)+'%',c:'g'},
+    {l:'Retail '+L(d.ret.l),v:L(d.ret.v)+'%',c:'r'},
+    {l:'Bal. Com. '+L(d.trade.l),v:(L(d.trade.v)>=0?'+':'')+'$'+L(d.trade.v)+'亿',c:L(d.trade.v)>=0?'g':'r'},
     {l:'LPR 1Y',v:L(d.rate.v)+'%',c:'a'}
   ]);
   $('tabrow').innerHTML=tabs(['Resumen','CPI &middot; PPI','PMI','Balanza Comercial','Actividad','Pol&#237;tica Mon.'],'cn');
@@ -705,9 +744,9 @@ function buildCN(){
     panelFull('cn-p0','<div class="og">'+
       ocard('nm1','CPI &middot; PPI','Precios al Cons. y Productor','Variaci&#243;n interanual',L(d.cpi.v)+'%',L(d.cpi.v)<0?'r':'a',L(d.cpi.l),'PPI: '+L(d.ppi.v)+'%<br>M&#225;x. casi 4 a&#241;os',"showTab(1,'cn')")+
       ocard('nm2','PMI NBS','Actividad Manufacturera','NBS &mdash; L&#237;nea 50',L(d.pmiNbs.v),L(d.pmiNbs.v)>=50?'g':'r',L(d.pmiNbs.l),'Caixin: '+L(d.pmiCai.v)+'<br>Ambos bajo 50',"showTab(2,'cn')")+
-      ocard('nm3','Balanza Comercial','Saldo Exportaciones Netas','MM RMB','+$970B','g',L(d.trade.l),'Super&#225;vit<br>r&#233;cord 2024',"showTab(3,'cn')")+
-      ocard('nm4','Prod. Industrial','Actividad Econ&#243;mica','Variaci&#243;n interanual','+'+L(d.ip.v)+'%','g',L(d.ip.l),'&#218;nico dato<br>positivo May 26',"showTab(4,'cn')")+
-      ocard('nm5','Ventas Minoristas','Consumo Dom&#233;stico','Variaci&#243;n interanual',L(d.ret.v)+'%','r',L(d.ret.l),'1ra ca&#237;da<br>desde Dic 2022',"showTab(4,'cn')")+
+      ocard('nm3','Balanza Comercial','Saldo Exportaciones Netas','USD 100M',(L(d.trade.v)>=0?'+':'')+'$'+L(d.trade.v)+'亿','g',L(d.trade.l),'Super&#225;vit<br>estructural',"showTab(3,'cn')")+
+      ocard('nm4','Prod. Industrial','Actividad Econ&#243;mica','Variaci&#243;n interanual',(L(d.ip.v)>=0?'+':'')+L(d.ip.v)+'%','g',L(d.ip.l),'vs mismo mes<br>a&#241;o anterior',"showTab(4,'cn')")+
+      ocard('nm5','Ventas Minoristas','Consumo Dom&#233;stico','Variaci&#243;n interanual',(L(d.ret.v)>=0?'+':'')+L(d.ret.v)+'%',L(d.ret.v)>=0?'g':'r',L(d.ret.l),'vs mismo mes<br>a&#241;o anterior',"showTab(4,'cn')")+
       ocard('nm6','LPR &middot; Tasa','Loan Prime Rate','Banco Popular de China',L(d.rate.v)+'%','a',L(d.rate.l),'Est&#237;mulos<br>selectivos 2024',"showTab(5,'cn')")+
     '</div>')+
     panel('cn-p1',
@@ -719,21 +758,21 @@ function buildCN(){
     )+
     panel('cn-p2',
       shdr('PMI &middot; Actividad Manufacturera','NBS y Caixin/S&amp;P Global',L(d.pmiNbs.v),L(d.pmiNbs.l)+' &middot; PMI NBS',L(d.pmiNbs.v)>=50?'g':'r')+
-      sr4([{l:'PMI NBS Mfg',v:L(d.pmiNbs.v),c:L(d.pmiNbs.v)>=50?'g':'r',n:'May 2026'},{l:'PMI NBS Svc',v:L(d.pmiSvc.v),c:L(d.pmiSvc.v)>=50?'g':'r',n:'May 2026 (cay&#243;)'},{l:'PMI Caixin',v:L(d.pmiCai.v),c:L(d.pmiCai.v)>=50?'g':'r',n:'M&#225;x. desde Dic 2020'},{l:'Diferencia NBS-Caix',v:'+'+(L(d.pmiNbs.v)-L(d.pmiCai.v)).toFixed(1),c:'r',n:'Dual economy'}])+
+      sr4([{l:'PMI NBS Mfg',v:L(d.pmiNbs.v),c:L(d.pmiNbs.v)>=50?'g':'r',n:L(d.pmiNbs.l)},{l:'PMI NBS Svc',v:L(d.pmiSvc.v),c:L(d.pmiSvc.v)>=50?'g':'r',n:L(d.pmiSvc.l)},{l:'PMI Caixin',v:L(d.pmiCai.v),c:L(d.pmiCai.v)>=50?'g':'r',n:L(d.pmiCai.l)+' &middot; seed manual'},{l:'Diferencia NBS-Caix',v:(L(d.pmiNbs.v)-L(d.pmiCai.v)>=0?'+':'')+(L(d.pmiNbs.v)-L(d.pmiCai.v)).toFixed(1),c:'r',n:'Dual economy'}])+
       box1('np1','h240','PMI NBS Mfg vs Servicios &mdash; L&#237;nea 50')+
       box2(['np2','np3'],['NBS Mfg vs Caixin PMI','PMI Servicios NBS']),
       cal
     )+
     panel('cn-p3',
-      shdr('Balanza Comercial','General Admin. of Customs','+$970B','Mar 2026 &middot; Super&#225;vit','g')+
-      sr4([{l:'Mar 2026',v:'+$970B',c:'g',n:'MM RMB'},{l:'Pico 2025',v:'+$1,048B',c:'g',n:'Jun 2025'},{l:'Super&#225;vit anual 24',c:'g',v:'~$990B',n:'R&#233;cord hist.'},{l:'Aranceles EE.UU.',v:'47% aprox.',c:'r',n:'Post truce Trump-Xi'}])+
+      shdr('Balanza Comercial','General Admin. of Customs',(L(d.trade.v)>=0?'+':'')+'$'+L(d.trade.v)+'亿',L(d.trade.l)+' &middot; Super&#225;vit','g')+
+      sr4([{l:L(d.trade.l),v:(L(d.trade.v)>=0?'+':'')+'$'+L(d.trade.v)+'亿',c:'g',n:'USD 100M (亿)'},{l:'Pico &#250;ltimos 12m',v:'+$'+Math.max.apply(null,d.trade.v)+'亿',c:'g',n:'M&#225;ximo mensual'},{l:'M&#237;nimo &#250;ltimos 12m',v:'+$'+Math.min.apply(null,d.trade.v)+'亿',c:'a',n:'M&#237;nimo mensual'},{l:'Aranceles EE.UU.',v:'47% aprox.',c:'r',n:'Post truce Trump-Xi'}])+
       box1('nt1','h240','Balanza Comercial China &mdash; MM RMB')+
       box2(['nt2','nt3'],['Tendencia del super&#225;vit','USD/CNY &mdash; Tipo de cambio']),
       cal
     )+
     panel('cn-p4',
-      shdr('Actividad Econ&#243;mica','IP &middot; Retail &middot; Desempleo &mdash; NBS','+'+L(d.ip.v)+'%',L(d.ip.l)+' &middot; IP YoY','g')+
-      sr4([{l:'IP YoY May 26',v:'+'+L(d.ip.v)+'%',c:'g',n:L(d.ip.l)},{l:'Retail YoY May 26',v:L(d.ret.v)+'%',c:'r',n:'1ra ca&#237;da desde Dic 2022'},{l:'Desempleo Feb 26',v:'6.3%',c:'a',n:'Dato disponible'},{l:'PIB 2025 logrado',v:'+5.0%',c:'g',n:'Meta gubernamental'}])+
+      shdr('Actividad Econ&#243;mica','IP &middot; Retail &middot; Desempleo &mdash; NBS',(L(d.ip.v)>=0?'+':'')+L(d.ip.v)+'%',L(d.ip.l)+' &middot; IP YoY','g')+
+      sr4([{l:'IP YoY',v:(L(d.ip.v)>=0?'+':'')+L(d.ip.v)+'%',c:'g',n:L(d.ip.l)},{l:'Retail YoY',v:(L(d.ret.v)>=0?'+':'')+L(d.ret.v)+'%',c:L(d.ret.v)>=0?'g':'r',n:L(d.ret.l)},{l:'Desempleo Feb 26',v:'6.3%',c:'a',n:'Dato disponible'},{l:'PIB 2025 logrado',v:'+5.0%',c:'g',n:'Meta gubernamental'}])+
       box2(['na1','na2'],['Producci&#243;n Industrial YoY','Ventas Minoristas YoY'])+
       box2(['na3','na4'],['Tendencia comparativa','IP vs Retail vs CPI']),
       cal
