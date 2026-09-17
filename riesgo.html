@@ -278,7 +278,7 @@ function c(hex){ return `color:${hex}` }
 /* ─── render ───────────────────────────────────────────────── */
 async function load(){
   try{
-    const r = await fetch('/api/riesgo');
+    const r = await fetch('/api/riesgo', {cache:'no-store'});
     if(!r.ok) throw new Error('HTTP '+r.status);
     render(await r.json());
   }catch(e){
