@@ -412,7 +412,7 @@ async function render(d){
   // Carga histórico para sparklines
   let hist = [];
   try {
-    const hr = await fetch('/api/riesgo-history', {cache:'no-store'});
+    const hr = await fetch('/api/riesgo?history=1', {cache:'no-store'});
     hist = await hr.json();
   } catch(e){}
 
