@@ -84,12 +84,36 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
 .bl-rd{border-left:3px solid var(--rd);}
 .bl-or{border-left:3px solid var(--or);}
 .bl-pu{border-left:3px solid var(--pu);}
-/* stress */
+/* stress legacy (B1 sensibilidad) */
 .stress-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px;}
 .stress-row{background:var(--s2);border:1px solid var(--bdr);border-radius:7px;padding:9px 12px;display:flex;justify-content:space-between;align-items:center;}
 .stress-label{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;}
 .stress-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim);}
 .stress-val{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;}
+/* ═══ B3 STRESS CARDS ════════════════════════════════════════ */
+.stress-section{background:var(--s);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.stress-section-hdr{display:flex;align-items:center;gap:10px;padding:14px 18px 12px;border-bottom:1px solid var(--bdr);}
+.stress-section-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--rd);}
+.stress-section-body{padding:16px 18px 18px;}
+.sc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+.sc-card{background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:12px 14px;}
+.sc-card.warn{border-color:rgba(248,113,113,.35);}
+.sc-card.ok{border-color:rgba(34,211,160,.25);}
+.sc-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:4px;}
+.sc-val{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;margin-bottom:3px;}
+.sc-ctx{font-family:'IBM Plex Sans',sans-serif;font-size:10px;color:var(--mu);line-height:1.4;margin-bottom:7px;}
+.sc-implication{font-family:'IBM Plex Sans',sans-serif;font-size:10px;font-style:italic;line-height:1.4;padding:5px 8px;border-radius:4px;margin-bottom:7px;}
+.sc-implication.neg{background:rgba(248,113,113,.06);color:var(--rd);}
+.sc-implication.pos{background:rgba(34,211,160,.06);color:var(--gr);}
+.sc-implication.neu{background:rgba(74,96,128,.15);color:var(--cy);}
+.sc-spark{margin-top:6px;}
+/* stress tests expandidos */
+.st-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.st-card{background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:12px 14px;}
+.st-scenario{font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:4px;}
+.st-val{font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:700;margin-bottom:3px;}
+.st-usd{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);margin-bottom:6px;}
+.st-desc{font-family:'IBM Plex Sans',sans-serif;font-size:10px;color:var(--mu);line-height:1.4;}
 
 /* ═══ SECCIÓN EQUITY EXPANDIDA ══════════════════════════════ */
 .eq-card{background:var(--s);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;margin-bottom:16px;}
@@ -180,31 +204,33 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
       </div>
     </div>
 
-    <!-- ══ DOS COLUMNAS: RF + TAIL RISK ════════════════════ -->
-    <div class="two-col">
-      <div class="bloque">
-        <div class="bloque-hdr">
-          <span class="bloque-icon">📐</span>
-          <span class="bloque-title" style="color:var(--cy)">B1 — Renta Fija</span>
-          <span class="bloque-badge" id="b1-badge" style="color:var(--cy);border-color:rgba(6,182,212,.3)"></span>
-        </div>
-        <div class="bloque-body">
-          <div class="metrics m4" id="b1-metrics"></div>
-          <div class="section-lbl" style="margin-top:14px">Sensibilidad a tasas</div>
-          <div class="stress-grid" id="b1-stress"></div>
-        </div>
+    <!-- ══ B1 RENTA FIJA ════════════════════════════════════ -->
+    <div class="bloque" style="margin-bottom:16px">
+      <div class="bloque-hdr">
+        <span class="bloque-icon">📐</span>
+        <span class="bloque-title" style="color:var(--cy)">B1 — Renta Fija</span>
+        <span class="bloque-badge" id="b1-badge" style="color:var(--cy);border-color:rgba(6,182,212,.3)"></span>
       </div>
-      <div class="bloque">
-        <div class="bloque-hdr">
-          <span class="bloque-icon">⚠️</span>
-          <span class="bloque-title" style="color:var(--rd)">B3 — Tail Risk & Stress</span>
-          <span class="bloque-badge" id="b3-badge" style="color:var(--rd);border-color:rgba(248,113,113,.3)"></span>
-        </div>
-        <div class="bloque-body">
-          <div class="metrics m4" id="b3-metrics"></div>
-          <div class="section-lbl" style="margin-top:14px">Stress Tests</div>
-          <div class="stress-grid" id="b3-stress"></div>
-        </div>
+      <div class="bloque-body">
+        <div class="metrics m4" id="b1-metrics"></div>
+        <div class="section-lbl" style="margin-top:14px">Sensibilidad a tasas</div>
+        <div class="stress-grid" id="b1-stress"></div>
+      </div>
+    </div>
+
+    <!-- ══ B3 TAIL RISK & STRESS TESTING ════════════════════ -->
+    <div class="stress-section">
+      <div class="stress-section-hdr">
+        <span style="font-size:15px">⚠️</span>
+        <span class="stress-section-title">B3 — Tail Risk & Stress Testing</span>
+        <span class="bloque-badge" id="b3-badge" style="color:var(--rd);border-color:rgba(248,113,113,.3);margin-left:8px"></span>
+        <span style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu)">Modelo paramétrico · Normal multivariada</span>
+      </div>
+      <div class="stress-section-body">
+        <div class="section-lbl">Métricas de riesgo de cola</div>
+        <div class="sc-grid" id="b3-sc-cards"></div>
+        <div class="section-lbl" style="margin-top:4px">Escenarios de stress</div>
+        <div class="st-grid" id="b3-st-cards"></div>
       </div>
     </div>
 
@@ -212,7 +238,7 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
     <div class="eq-card">
       <div class="eq-hdr">
         <span style="font-size:15px">📉</span>
-        <span class="eq-title">B2 — Renta Variable (CEDEARs + Acciones locales)</span>
+        <span class="eq-title">B2 — Renta Variable · Top 15 por incidencia en riesgo</span>
         <span style="margin-left:auto;display:flex;gap:12px;align-items:center">
           <span id="eq-kpi-weight" style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--gr)"></span>
           <span id="eq-kpi-beta"   style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mu)"></span>
@@ -280,7 +306,7 @@ async function load(){
   try{
     const r = await fetch('/api/riesgo', {cache:'no-store'});
     if(!r.ok) throw new Error('HTTP '+r.status);
-    render(await r.json());
+    await render(await r.json());
   }catch(e){
     document.getElementById('loading').style.display='none';
     const el=document.getElementById('err'); el.style.display='block';
@@ -288,7 +314,7 @@ async function load(){
   }
 }
 
-function render(d){
+async function render(d){
   const {meta,b1_renta_fija:b1,b2_estadistico:b2,b3_tail_risk:b3,b4_concentracion:b4,equity_holdings:eqh=[]} = d;
 
   /* header */
@@ -362,36 +388,160 @@ function render(d){
     <div class="stress-val" style="${c(good?'var(--gr)':'var(--rd)')}">${v}</div>
   </div>`).join('');
 
-  /* ── B3 Tail Risk ── */
-  document.getElementById('b3-badge').textContent = 'Paramétrico';
-  const b3m = [
-    ['VaR 95%',pct(b3.var95_param),'1 año','bl-rd',b3.var95_param<0?'var(--rd)':'var(--gr)'],
-    ['VaR 99%',pct(b3.var99_param),'1 año','bl-rd',b3.var99_param<-0.03?'var(--rd)':b3.var99_param<0?'var(--am)':'var(--gr)'],
-    ['CVaR 95%',pct(b3.cvar95),'Exp. Shortfall','bl-rd',b3.cvar95<0?'var(--rd)':'var(--gr)'],
-    ['Sharpe',b2.sharpe.toFixed(2),'Rf ARS 28%','',b2.sharpe>0.8?'var(--gr)':b2.sharpe>0.4?'var(--am)':'var(--rd)'],
+  /* ── B3 Tail Risk (con histórico) ── */
+  document.getElementById('b3-badge').textContent = 'Paramétrico · Normal multivariada';
+
+  function sparkSVG(values, isGood){
+    if(!values || values.length<2) return '';
+    const mn=Math.min(...values), mx=Math.max(...values);
+    const range = mx-mn || 0.001;
+    const W=80,H=22,pts=values.map((v,i)=>{
+      const x=(i/(values.length-1))*W;
+      const y=H-((v-mn)/range)*(H-4)-2;
+      return `${x},${y}`;
+    }).join(' ');
+    const last=values[values.length-1];
+    const lx=W, ly=H-((last-mn)/range)*(H-4)-2;
+    const col=isGood?'#22d3a0':'#f87171';
+    return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" fill="none">
+      <polyline points="${pts}" stroke="${col}55" stroke-width="1.5" fill="none"/>
+      <circle cx="${lx}" cy="${ly}" r="2.5" fill="${col}"/>
+    </svg>`;
+  }
+
+  // Carga histórico para sparklines
+  let hist = [];
+  try {
+    const hr = await fetch('/api/riesgo-history', {cache:'no-store'});
+    hist = await hr.json();
+  } catch(e){}
+
+  function hSeries(key){ return hist.map(h=>h[key]).filter(v=>v!=null); }
+
+  const scCards = [
+    {
+      label: 'VaR 95%', val: b3.var95_param, key: 'var95',
+      ctx: 'Pérdida máxima esperada con 95% de confianza en 1 año, asumiendo distribución normal.',
+      impl: b3.var95_param < 0
+        ? `Con un mercado adverso (95%), el portafolio podría perder hasta ${pct(Math.abs(b3.var95_param))} anual (USD ${(Math.abs(b3.var95_param)*d.meta.total_usd_m/1e6*1e6/1000).toFixed(0)}K).`
+        : `El VaR 95% es positivo — la cartera espera retorno positivo incluso en escenarios negativos moderados.`,
+      cls: b3.var95_param < -0.08 ? 'warn' : b3.var95_param < 0 ? '' : 'ok',
+      col: b3.var95_param < -0.08 ? 'var(--rd)' : b3.var95_param < 0 ? 'var(--am)' : 'var(--gr)',
+      good: b3.var95_param >= 0,
+    },
+    {
+      label: 'VaR 99%', val: b3.var99_param, key: 'var99',
+      ctx: 'Pérdida máxima en el 1% de peores escenarios del año. Mide el riesgo de cola severo.',
+      impl: b3.var99_param < -0.05
+        ? `En el 1% de peores escenarios, la pérdida anual podría superar ${pct(Math.abs(b3.var99_param))} (USD ${(Math.abs(b3.var99_param)*d.meta.total_usd_m).toFixed(2)}M). Nivel de alerta.`
+        : `VaR 99% en ${pct(b3.var99_param)} — riesgo de cola contenido para una cartera con ${pct(b2.equity_pct)} en equity.`,
+      cls: b3.var99_param < -0.05 ? 'warn' : '',
+      col: b3.var99_param < -0.05 ? 'var(--rd)' : b3.var99_param < -0.03 ? 'var(--am)' : 'var(--gr)',
+      good: b3.var99_param > -0.05,
+    },
+    {
+      label: 'CVaR 95%', val: b3.cvar95, key: 'cvar95',
+      ctx: 'Expected Shortfall: promedio de pérdidas en el 5% más extremo. Más conservador que el VaR.',
+      impl: b3.cvar95 < 0
+        ? `Si se cruza el umbral del VaR 95%, la pérdida esperada promedia ${pct(Math.abs(b3.cvar95))} anual. ${Math.abs(b3.cvar95)>Math.abs(b3.var95_param)*1.3?'La cola es pesada.':'Cola bien controlada.'}`
+        : `CVaR positivo — incluso en los peores escenarios extremos la cartera muestra retorno esperado positivo.`,
+      cls: b3.cvar95 < -0.10 ? 'warn' : '',
+      col: b3.cvar95 < -0.10 ? 'var(--rd)' : b3.cvar95 < 0 ? 'var(--am)' : 'var(--gr)',
+      good: b3.cvar95 >= 0,
+    },
+    {
+      label: 'Sharpe', val: b2.sharpe, fmt: v=>v.toFixed(2), key: 'sharpe',
+      ctx: 'Retorno excedente sobre Rf (ARS 28%) por unidad de riesgo total. >1 excelente, >0.5 bueno, <0 destruye valor.',
+      impl: b2.sharpe < 0
+        ? `Sharpe negativo: el portafolio no compensa el riesgo asumido vs la tasa libre de riesgo en ARS. El carry de pesos domina.`
+        : b2.sharpe > 1 ? `Sharpe ${b2.sharpe.toFixed(2)} — excelente relación retorno/riesgo.`
+        : `Sharpe ${b2.sharpe.toFixed(2)} — relación retorno/riesgo moderada.`,
+      cls: b2.sharpe < 0 ? 'warn' : b2.sharpe > 1 ? 'ok' : '',
+      col: b2.sharpe < 0 ? 'var(--rd)' : b2.sharpe > 0.8 ? 'var(--gr)' : 'var(--am)',
+      good: b2.sharpe > 0,
+    },
+    {
+      label: 'Sortino', val: b2.sortino, fmt: v=>v.toFixed(2), key: 'sharpe',
+      ctx: 'Igual al Sharpe pero penaliza solo volatilidad negativa (downside risk). Más relevante para carteras con sesgo positivo.',
+      impl: b2.sortino > b2.sharpe*1.2
+        ? `Sortino (${b2.sortino.toFixed(2)}) > Sharpe (${b2.sharpe.toFixed(2)}): la volatilidad positiva supera la negativa — buen perfil asimétrico.`
+        : `Sortino similar al Sharpe — la cartera tiene volatilidad relativamente simétrica.`,
+      cls: b2.sortino < 0 ? 'warn' : b2.sortino > 1 ? 'ok' : '',
+      col: b2.sortino < 0 ? 'var(--rd)' : b2.sortino > 0.8 ? 'var(--gr)' : 'var(--am)',
+      good: b2.sortino > 0,
+    },
+    {
+      label: 'σ Portfolio', val: b2.vol_portfolio, fmt: v=>pct(v,1), key: 'vol_portfolio',
+      ctx: 'Volatilidad anualizada del portafolio consolidado. Incluye efecto diversificación entre activos.',
+      impl: b2.vol_portfolio > 0.25
+        ? `Volatilidad de ${pct(b2.vol_portfolio,1)} — alta para un fondo balanceado. Refleja el ${pct(b2.equity_pct)} en renta variable.`
+        : `Volatilidad de ${pct(b2.vol_portfolio,1)} — moderada considerando ${pct(b2.equity_pct)} en equity.`,
+      cls: b2.vol_portfolio > 0.30 ? 'warn' : '',
+      col: b2.vol_portfolio > 0.25 ? 'var(--am)' : 'var(--gr)',
+      good: b2.vol_portfolio < 0.20,
+    },
   ];
-  document.getElementById('b3-metrics').innerHTML = b3m.map(([l,v,s,cls,col])=>
-    `<div class="metric ${cls}"><div class="metric-l">${l}</div><div class="metric-v" style="${c(col)}">${v}</div><div class="metric-s">${s}</div></div>`
-  ).join('');
-  document.getElementById('b3-stress').innerHTML = [
-    ['RP +400bp',pct(b3.stress_rp400_pct),'ARS '+Math.round(b3.stress_rp400_ars_m)+'M',b3.stress_rp400_pct>0],
-    ['CCL +20%', pct(b3.stress_ccl20_pct),'ARS +'+Math.round(b3.stress_ccl20_ars_m)+'M',true],
-    ['RV -10%',  pct(b3.stress_rv10_pct), 'ARS '+Math.round(b3.stress_rv10_ars_m)+'M',false],
-    ['Sortino',  b2.sortino.toFixed(2),'vs Rf ARS',b2.sortino>0.7],
-  ].map(([l,v,s,good])=>`<div class="stress-row">
-    <div><div class="stress-label">${l}</div><div class="stress-sub">${s}</div></div>
-    <div class="stress-val" style="${c(good?'var(--gr)':'var(--rd)')}">${v}</div>
-  </div>`).join('');
+
+  document.getElementById('b3-sc-cards').innerHTML = scCards.map(sc=>{
+    const series = hSeries(sc.key);
+    const fmtFn = sc.fmt || (v=>pct(v));
+    const impl_cls = sc.good ? 'pos' : sc.cls==='warn' ? 'neg' : 'neu';
+    return `<div class="sc-card ${sc.cls}">
+      <div class="sc-label">${sc.label}</div>
+      <div class="sc-val" style="color:${sc.col}">${fmtFn(sc.val)}</div>
+      <div class="sc-ctx">${sc.ctx}</div>
+      <div class="sc-implication ${impl_cls}">${sc.impl}</div>
+      ${series.length>1?`<div class="sc-spark">${sparkSVG(series,sc.good)}<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-left:4px">${series.length}w</span></div>`:''}
+    </div>`;
+  }).join('');
+
+  const stCards = [
+    {
+      scenario: 'RP Argentina +400 bp',
+      val: b3.stress_rp400_pct,
+      usd: -b3.stress_rp400_ars_m / (d.meta.ccl||1600),
+      good: b3.stress_rp400_pct > 0,
+      desc: 'Suba brusca del riesgo país argentino en 400 puntos básicos. Impacta directamente a bonos soberanos y corporativos en USD. Escenario: evento de crédito o deterioro macro severo.',
+    },
+    {
+      scenario: 'CCL +20%',
+      val: b3.stress_ccl20_pct,
+      usd: b3.stress_ccl20_ars_m / (d.meta.ccl||1600),
+      good: true,
+      desc: 'Devaluación implícita del 20% en el tipo de cambio contado con liquidación. Beneficia a activos en USD (bonos hard-dollar, CEDEARs). Escenario: corrección cambiaria o corrida.',
+    },
+    {
+      scenario: 'Renta Variable −10%',
+      val: b3.stress_rv10_pct,
+      usd: b3.stress_rv10_ars_m / (d.meta.ccl||1600),
+      good: false,
+      desc: `Caída del 10% en toda la renta variable (CEDEARs + acciones). Con ${pct(b2.equity_pct)} en equity, este escenario es el principal driver de riesgo del portafolio. Escenario: corrección global o local.`,
+    },
+  ];
+
+  document.getElementById('b3-st-cards').innerHTML = stCards.map(st=>{
+    const col = st.good ? 'var(--gr)' : 'var(--rd)';
+    const sign = st.val >= 0 ? '+' : '';
+    const usdSign = st.usd >= 0 ? '+' : '';
+    return `<div class="st-card">
+      <div class="st-scenario">${st.scenario}</div>
+      <div class="st-val" style="color:${col}">${sign}${pct(st.val)}</div>
+      <div class="st-usd" style="color:${st.good?'var(--gr)':'var(--rd)'}44;color:var(--mu)">${usdSign}USD ${Math.abs(st.usd).toFixed(0)}K impacto</div>
+      <div class="st-desc">${st.desc}</div>
+    </div>`;
+  }).join('');
 
   /* ── EQUITY EXPANDIDA ── */
   document.getElementById('eq-kpi-weight').textContent = pct(b2.equity_pct)+' del portafolio';
   document.getElementById('eq-kpi-beta').textContent   = 'β S&P: '+b2.beta_sp500.toFixed(2);
   document.getElementById('eq-kpi-vol').textContent    = 'σ: '+pct(b2.vol_portfolio);
 
-  const maxContrib = eqh.length ? Math.max(...eqh.map(x=>x.contrib_riesgo)) : 1;
-  const maxW       = eqh.length ? Math.max(...eqh.map(x=>x.pct)) : 1;
+  // Top 15 por contribución al riesgo (pct × vol)
+  const eqhTop = [...eqh].sort((a,b)=>b.contrib_riesgo-a.contrib_riesgo).slice(0,15);
+  const maxContrib = eqhTop.length ? Math.max(...eqhTop.map(x=>x.contrib_riesgo)) : 1;
+  const maxW       = eqhTop.length ? Math.max(...eqhTop.map(x=>x.pct)) : 1;
 
-  document.getElementById('eq-tbody').innerHTML = eqh.map(e=>{
+  document.getElementById('eq-tbody').innerHTML = eqhTop.map(e=>{
     const col   = tipoColor(e.tipo);
     const volCol= e.vol>0.45?'var(--rd)':e.vol>0.25?'var(--am)':'var(--gr)';
     const bCol  = Math.abs(e.beta_sp)>1.2?'var(--rd)':Math.abs(e.beta_sp)>0.8?'var(--am)':'#c9d8e8';
@@ -425,12 +575,13 @@ function render(d){
   const wAvgBeta = eqh.reduce((a,e)=>a+(e.beta_sp*e.pct/totalW),0);
   const wAvgVol  = eqh.reduce((a,e)=>a+(e.vol*e.pct/totalW),0);
   const totalContrib = eqh.reduce((a,e)=>a+e.contrib_riesgo,0);
+  const top15Contrib = eqhTop.reduce((a,e)=>a+e.contrib_riesgo,0);
   document.getElementById('eq-totales').innerHTML = [
-    ['Peso total en cartera', pct(totalW), 'var(--gr)'],
-    ['β S&P500 pond.',        wAvgBeta.toFixed(2), 'var(--cy)'],
-    ['σ promedio pond.',      pct(wAvgVol,1), 'var(--am)'],
-    ['Contrib. total al riesgo', pct(totalContrib,2), 'var(--rd)'],
-    ['Tickers', eqh.length+' instrumentos', 'var(--mu)'],
+    ['Peso total equity', pct(totalW), 'var(--gr)'],
+    ['β S&P500 pond.',    wAvgBeta.toFixed(2), 'var(--cy)'],
+    ['σ promedio pond.',  pct(wAvgVol,1), 'var(--am)'],
+    ['Contrib. top 15',  pct(top15Contrib,2)+'  / '+pct(totalContrib,2)+' total', 'var(--rd)'],
+    ['Mostrando', eqhTop.length+' / '+eqh.length+' tickers', 'var(--mu)'],
   ].map(([l,v,col])=>
     `<div style="font-family:'IBM Plex Mono',monospace">
       <div style="font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:3px">${l}</div>
