@@ -1,22 +1,23 @@
 [
   {
     "fecha_iso": "20260917",
-    "var99": -0.22,
+    "var99": -0.2201,
     "var95": -0.1338,
-    "cvar95": -0.1867,
+    "cvar95": -0.1868,
     "var99_hist": 0.1169,
     "var95_hist": 0.1294,
     "stress_rp400": -0.0727,
     "stress_ccl20": 0.1546,
     "stress_rv10": -0.0563,
+    "stress_deval30": -0.0159,
     "ytm": 0.0783,
-    "duration": 1.9,
+    "duration": 1.91,
     "beta_sp500": 0.56,
     "vol_portfolio": 0.1266,
     "hhi": 0.0463,
     "sharpe": 0.27,
     "equity_pct": 0.5628,
-    "ccl": 1596,
-    "total_usd_m": 6.44
+    "ccl": 1594,
+    "total_usd_m": 6.45
   }
 ]
