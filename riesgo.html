@@ -423,10 +423,10 @@ async function render(d){
   /* ── B1 Renta Fija ── */
   document.getElementById('b1-badge').textContent = pct(b1.bonds_pct)+' portafolio';
   const b1m = [
-    ['YTM pond.',pct(b1.ytm_ponderada),'anual','bl-cy','var(--cy)'],
-    ['Duration Mod.',b1.duration_mod.toFixed(2)+' años','modified','','#e8f0f8'],
-    ['DV01','$'+Math.round(b1.dv01_usd).toLocaleString(),'por bp','bl-am','var(--am)'],
-    ['DV01',`USD ${b1.dv01_usd.toLocaleString('es-AR',{maximumFractionDigits:0})}`,'por bp de tasa','','#e8f0f8'],
+    ['YTM pond.',    pct(b1.ytm_ponderada),                                    'anual',       'bl-cy','var(--cy)'],
+    ['Duration Mod.',b1.duration_mod.toFixed(2)+' años',                        'modified',    '','#e8f0f8'],
+    ['DV01',        `USD ${Math.round(b1.dv01_usd).toLocaleString()}`,          'por bp',      'bl-am','var(--am)'],
+    ['PL +100bp',   `USD ${Math.abs(Math.round(b1.pl_100bp_usd)).toLocaleString()}`, 'pérdida estimada','bl-rd','var(--rd)'],
   ];
   document.getElementById('b1-metrics').innerHTML = b1m.map(([l,v,s,cls,col])=>
     `<div class="metric ${cls}"><div class="metric-l">${l}</div><div class="metric-v" style="${c(col)}">${v}</div><div class="metric-s">${s}</div></div>`
@@ -600,7 +600,7 @@ async function render(d){
     {
       scenario: 'RP Argentina +400 bp',
       val: b3.stress_rp400_pct,
-      usdM: -b3.stress_rp400_ars_m / (d.meta.ccl||1600),
+      usdM: b3.stress_rp400_ars_m / (d.meta.ccl||1600),
       good: false,
       desc: 'Suba brusca del riesgo país argentino en 400 puntos básicos. Impacta directamente a bonos soberanos y corporativos en USD. Escenario: evento de crédito o deterioro macro severo.',
     },
@@ -731,7 +731,7 @@ async function render(d){
 }
 
 async function loadBenchmarks(d) {
-  const {b2_estadistico:b2, b3_tail_risk:b3, meta} = d;
+  const {b1_renta_fija:b1, b2_estadistico:b2, b3_tail_risk:b3, meta} = d;
   const PROXY = '/api/proxy';
 
   // Benchmarks desde riesgo.json (actualizados semanalmente por update_cro_risk.py)
