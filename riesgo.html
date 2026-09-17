@@ -115,6 +115,26 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
 .st-usd{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);margin-bottom:6px;}
 .st-desc{font-family:'IBM Plex Sans',sans-serif;font-size:10px;color:var(--mu);line-height:1.4;}
 
+/* ═══ BENCHMARKS ════════════════════════════════════════════ */
+.bm-section{background:var(--s);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.bm-hdr{display:flex;align-items:center;gap:10px;padding:14px 18px 12px;border-bottom:1px solid var(--bdr);}
+.bm-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--pu);}
+.bm-body{padding:16px 18px 18px;}
+.bm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+.bm-card{background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:12px 14px;}
+.bm-card-title{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--bdr);}
+.bm-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
+.bm-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);}
+.bm-val{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;}
+.bm-table{width:100%;border-collapse:collapse;}
+.bm-table th{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--mu);padding:6px 10px;border-bottom:1px solid var(--bdr);text-align:left;white-space:nowrap;}
+.bm-table th.r{text-align:right;}
+.bm-table td{padding:7px 10px;border-bottom:1px solid rgba(31,45,64,.5);font-family:'IBM Plex Mono',monospace;font-size:11px;}
+.bm-table tr:last-child td{border-bottom:none;}
+.bm-table td.r{text-align:right;}
+.bm-badge{display:inline-block;font-size:8px;padding:2px 6px;border-radius:10px;border:1px solid;}
+.bm-bar-wrap{width:100%;background:rgba(255,255,255,.04);border-radius:3px;height:5px;overflow:hidden;margin-top:3px;}
+.bm-bar-fill{height:100%;border-radius:3px;}
 /* ═══ SECCIÓN EQUITY EXPANDIDA ══════════════════════════════ */
 .eq-card{background:var(--s);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;margin-bottom:16px;}
 .eq-hdr{display:flex;align-items:center;gap:10px;padding:14px 18px 12px;border-bottom:1px solid var(--bdr);}
@@ -231,6 +251,36 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
         <div class="sc-grid" id="b3-sc-cards"></div>
         <div class="section-lbl" style="margin-top:4px">Escenarios de stress</div>
         <div class="st-grid" id="b3-st-cards"></div>
+      </div>
+    </div>
+
+    <!-- ══ BENCHMARKS ═══════════════════════════════════════ -->
+    <div class="bm-section">
+      <div class="bm-hdr">
+        <span style="font-size:15px">📊</span>
+        <span class="bm-title">Benchmarks — Portafolio vs S&P 500 vs Merval</span>
+        <span id="bm-badge" style="margin-left:8px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:var(--mu);border:1px solid var(--bdr);border-radius:20px;padding:2px 8px"></span>
+        <span style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu)">Retornos USD · 3 años · 252d rolling</span>
+      </div>
+      <div class="bm-body">
+        <div class="section-lbl">Resumen comparativo</div>
+        <div class="bm-grid" id="bm-cards"></div>
+        <div class="section-lbl" style="margin-top:4px">Métricas detalladas</div>
+        <div style="overflow-x:auto">
+          <table class="bm-table">
+            <thead>
+              <tr>
+                <th>Métrica</th>
+                <th class="r">Portafolio</th>
+                <th class="r">S&amp;P 500</th>
+                <th class="r">Merval USD</th>
+                <th class="r">Port vs S&amp;P</th>
+              </tr>
+            </thead>
+            <tbody id="bm-tbody"></tbody>
+          </table>
+        </div>
+        <div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);line-height:1.8" id="bm-footnote"></div>
       </div>
     </div>
 
@@ -655,6 +705,162 @@ async function render(d){
 
   document.getElementById('loading').style.display='none';
   document.getElementById('main').style.display='block';
+
+  loadBenchmarks(d);
+}
+
+async function loadBenchmarks(d) {
+  const {b2_estadistico:b2, b3_tail_risk:b3, meta} = d;
+  const PROXY = '/api/proxy';
+
+  // Benchmarks desde riesgo.json (actualizados semanalmente por update_cro_risk.py)
+  // Fallback a valores de sept-2026 si el campo no existe aún
+  const bmRaw = d.benchmarks || {};
+  function mergeBM(raw, defaults) {
+    return raw ? { ...defaults, ...raw } : defaults;
+  }
+  const BM = {
+    sp500: mergeBM(bmRaw.sp500, {
+      vol: 0.153, var95_p: -0.048, var99_p: -0.152, cvar95_p: -0.112,
+      var95_h: 0.104, var99_h: 0.048, cvar95_h: 0.067, worst: -0.030,
+      best: 0.436, p25: 0.075, p75: 0.280, sharpe: 1.07,
+    }),
+    merval: mergeBM(bmRaw.merval, {
+      vol: 0.480, var95_p: -0.106, var99_p: -0.433, cvar95_p: -0.306,
+      var95_h: 0.075, var99_h: -0.013, cvar95_h: 0.017, worst: -0.045,
+      best: 2.662, p25: -0.020, p75: 0.650, sharpe: 1.34,
+    }),
+  };
+  BM.sp500.name   = 'S&P 500';   BM.sp500.ticker  = 'SPY';       BM.sp500.color  = 'var(--or)'; BM.sp500.border  = 'rgba(251,146,60,.35)';
+  BM.merval.name  = 'Merval USD'; BM.merval.ticker = '^MERV/CCL'; BM.merval.color = 'var(--gr)'; BM.merval.border = 'rgba(34,211,160,.3)';
+
+  const port = {
+    name: 'Portafolio',
+    ticker: 'Consolidado',
+    vol:      b2.vol_portfolio,
+    var95_p:  b3.var95_param,
+    var99_p:  b3.var99_param,
+    cvar95_p: b3.cvar95,
+    var95_h:  b3.var95_hist,
+    var99_h:  b3.var99_hist,
+    cvar95_h: b3.cvar95_hist,
+    worst:    b3.worst_year,
+    best:     b3.best_year,
+    p25:      b3.p25_year,
+    p75:      b3.p75_year,
+    sharpe:   b2.sharpe,
+    color:   'var(--cy)',
+    border:  'rgba(6,182,212,.3)',
+  };
+
+  const sp = BM.sp500, mv = BM.merval;
+
+  // Badge
+  document.getElementById('bm-badge').textContent = `datos sept-2026 · ${b3.n_windows || 522} ventanas`;
+
+  // ── Cards resumen ────────────────────────────────────────────
+  function summaryCard(bm, isPort) {
+    const sharpeCol = bm.sharpe < 0 ? 'var(--rd)' : bm.sharpe > 1 ? 'var(--gr)' : 'var(--am)';
+    const volCol    = bm.vol > 0.30 ? 'var(--rd)' : bm.vol > 0.18 ? 'var(--am)' : 'var(--gr)';
+    const varCol    = v => v == null ? 'var(--mu)' : v < -0.10 ? 'var(--rd)' : v < -0.04 ? 'var(--am)' : v >= 0 ? 'var(--gr)' : 'var(--cy)';
+    const fmt       = v => v == null ? '—' : (v >= 0 ? '+' : '') + (v*100).toFixed(1) + '%';
+
+    const varHistRow = bm.var95_h != null
+      ? `<div class="bm-row" style="margin-top:8px;padding-top:8px;border-top:1px solid var(--bdr)">
+           <span class="bm-lbl">VaR 95% Hist 3a</span>
+           <span class="bm-val" style="color:${varCol(bm.var95_h)}">${fmt(bm.var95_h)}</span>
+         </div>
+         <div class="bm-row">
+           <span class="bm-lbl">Peor año obs.</span>
+           <span class="bm-val" style="color:${varCol(bm.worst)}">${fmt(bm.worst)}</span>
+         </div>`
+      : '';
+
+    // Mini barra vol comparativa (max merval ~48%)
+    const barW = Math.round(bm.vol / 0.55 * 100);
+    const barCol = bm.vol > 0.30 ? '#f87171' : bm.vol > 0.18 ? '#f59e0b' : '#22d3a0';
+
+    return `<div class="bm-card" style="border-color:${bm.border}">
+      <div class="bm-card-title" style="color:${bm.color}">${bm.name}
+        <span style="font-size:8px;color:var(--mu);margin-left:6px">${bm.ticker}</span>
+      </div>
+      <div class="bm-row">
+        <span class="bm-lbl">σ anualizada</span>
+        <span class="bm-val" style="color:${volCol}">${fmt(bm.vol)}</span>
+      </div>
+      <div class="bm-bar-wrap"><div class="bm-bar-fill" style="width:${barW}%;background:${barCol}"></div></div>
+      <div class="bm-row" style="margin-top:8px">
+        <span class="bm-lbl">VaR 95% Param.</span>
+        <span class="bm-val" style="color:${varCol(bm.var95_p)}">${fmt(bm.var95_p)}</span>
+      </div>
+      <div class="bm-row">
+        <span class="bm-lbl">VaR 99% Param.</span>
+        <span class="bm-val" style="color:${varCol(bm.var99_p)}">${fmt(bm.var99_p)}</span>
+      </div>
+      ${varHistRow}
+      <div class="bm-row" style="margin-top:8px;padding-top:8px;border-top:1px solid var(--bdr)">
+        <span class="bm-lbl">Sharpe (Rf 4%)</span>
+        <span class="bm-val" style="color:${sharpeCol}">${bm.sharpe.toFixed(2)}</span>
+      </div>
+      ${isPort ? `<div class="bm-row"><span class="bm-lbl">Beta S&amp;P500</span><span class="bm-val" style="color:#e8f0f8">${b2.beta_sp500.toFixed(2)}</span></div>
+      <div class="bm-row"><span class="bm-lbl">Equity / Bonos</span><span class="bm-val" style="color:var(--mu)">${(b2.equity_pct*100).toFixed(0)}% / ${((1-b2.equity_pct)*100).toFixed(0)}%</span></div>` : ''}
+    </div>`;
+  }
+
+  document.getElementById('bm-cards').innerHTML =
+    summaryCard(port, true) + summaryCard(sp, false) + summaryCard(mv, false);
+
+  // ── Tabla detallada ──────────────────────────────────────────
+  function diff(pv, bv) {
+    if (pv == null || bv == null) return '<td class="r" style="color:var(--mu)">—</td>';
+    const d = pv - bv;
+    const col = d < 0 ? 'var(--rd)' : d > 0 ? 'var(--gr)' : 'var(--mu)';
+    return `<td class="r" style="color:${col};font-size:10px">${d >= 0 ? '+' : ''}${(d*100).toFixed(1)}pp</td>`;
+  }
+  function fmtV(v, goodIfPos) {
+    if (v == null) return '<span style="color:var(--mu)">—</span>';
+    const col = goodIfPos
+      ? (v > 0 ? 'var(--gr)' : v < -0.05 ? 'var(--rd)' : 'var(--am)')
+      : (v < -0.10 ? 'var(--rd)' : v < -0.04 ? 'var(--am)' : v >= 0 ? 'var(--gr)' : 'var(--cy)');
+    return `<span style="color:${col}">${v >= 0 ? '+' : ''}${(v*100).toFixed(1)}%</span>`;
+  }
+
+  const rows = [
+    { label: 'σ anualizada',        pv: port.vol,      sv: sp.vol,      mv: mv.vol,      goodIfPos: false, note: 'Vol más baja del portafolio refleja 44% en bonos+cash' },
+    { label: 'VaR 95% paramétrico', pv: port.var95_p,  sv: sp.var95_p,  mv: mv.var95_p,  goodIfPos: false, note: 'Asume distribución normal — downside simétrico' },
+    { label: 'VaR 99% paramétrico', pv: port.var99_p,  sv: sp.var99_p,  mv: mv.var99_p,  goodIfPos: false, note: '⚠ Portafolio más "negativo" que S&P por bajo retorno esperado en USD' },
+    { label: 'CVaR 95% paramétrico',pv: port.cvar95_p, sv: sp.cvar95_p, mv: mv.cvar95_p, goodIfPos: false, note: 'Expected Shortfall — cola más pesada en ARS por carry' },
+    { label: 'VaR 95% histórico 3a',pv: port.var95_h,  sv: sp.var95_h,  mv: mv.var95_h,  goodIfPos: true,  note: '2024-2026 alcista para activos AR — percentil 5% aún positivo' },
+    { label: 'VaR 99% histórico 3a',pv: port.var99_h,  sv: sp.var99_h,  mv: mv.var99_h,  goodIfPos: true,  note: 'Portafolio sin pérdida en ninguna ventana de 1 año en 3 años' },
+    { label: 'Peor año observado',  pv: port.worst,    sv: sp.worst,    mv: mv.worst,    goodIfPos: true,  note: 'Mínimo de todas las ventanas rolling 252d' },
+    { label: 'Mejor año observado', pv: port.best,     sv: sp.best,     mv: mv.best,     goodIfPos: true,  note: 'Máximo — Merval outlier por normalización 2023' },
+    { label: 'Sharpe (Rf USD 4%)',  pv: port.sharpe,   sv: sp.sharpe,   mv: mv.sharpe,   goodIfPos: true,  note: 'Portafolio: retorno/riesgo moderado vs benchmarks puros' },
+  ];
+
+  document.getElementById('bm-tbody').innerHTML = rows.map(r => {
+    const pFmt = r.label.includes('Sharpe') ? (v => v == null ? '—' : v.toFixed(2)) : (v => v == null ? '—' : (v>=0?'+':'')+(v*100).toFixed(1)+'%');
+    const spFmt = pFmt;
+    function cell(v, goodIfPos) {
+      if (v == null) return '<td class="r" style="color:var(--mu)">—</td>';
+      const formatted = pFmt(v);
+      const col = r.label.includes('Sharpe')
+        ? (v < 0 ? 'var(--rd)' : v > 1 ? 'var(--gr)' : 'var(--am)')
+        : goodIfPos
+          ? (v > 0.02 ? 'var(--gr)' : v < -0.05 ? 'var(--rd)' : 'var(--am)')
+          : (v < -0.10 ? 'var(--rd)' : v < -0.04 ? 'var(--am)' : v >= 0 ? 'var(--gr)' : 'var(--cy)');
+      return `<td class="r" style="color:${col};font-weight:500">${formatted}</td>`;
+    }
+    return `<tr title="${r.note}">
+      <td style="color:var(--mu)">${r.label}<span style="margin-left:6px;font-size:9px;color:rgba(74,96,128,.5)">${r.note}</span></td>
+      ${cell(r.pv, r.goodIfPos)}
+      ${cell(r.sv, r.goodIfPos)}
+      ${cell(r.mv, r.goodIfPos)}
+      ${diff(r.pv, r.sv)}
+    </tr>`;
+  }).join('');
+
+  document.getElementById('bm-footnote').innerHTML =
+    `Benchmarks calculados con yfinance · 3 años de datos · rolling 252d compuesto · S&P 500 = SPY (ETF, USD) · Merval = ^MERV expresado en USD vía CCL $${meta.ccl || '~1.600'} · Sharpe vs T-Bills 4% · ⚠ Período 2024-2026 alcista para activos AR — VaR histórico del portafolio sobreestimado vs estructural`;
 }
 
 load();
