@@ -451,7 +451,7 @@ async function render(d){
     },
     {
       label: 'Sharpe', val: b2.sharpe, fmt: v=>v.toFixed(2), key: 'sharpe',
-      ctx: 'Retorno excedente sobre Rf (ARS 28%) por unidad de riesgo total. >1 excelente, >0.5 bueno, <0 destruye valor.',
+      ctx: 'Retorno excedente sobre Rf USD (4% T-Bills) por unidad de riesgo total. Calculado en USD. >1 excelente, >0.5 bueno, <0 destruye valor.',
       impl: b2.sharpe < 0
         ? `Sharpe negativo: el portafolio no compensa el riesgo asumido vs la tasa libre de riesgo en ARS. El carry de pesos domina.`
         : b2.sharpe > 1 ? `Sharpe ${b2.sharpe.toFixed(2)} — excelente relación retorno/riesgo.`

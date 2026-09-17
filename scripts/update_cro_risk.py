@@ -339,9 +339,11 @@ def build_report():
     agg['pct']      = agg['monto'] / TOTAL * 100
     agg['monto_usd'] = agg['monto'] / CCL
 
-    # Clasificar cada instrumento
-    BOND_TIPOS = {'Bonos'}
-    EQ_TIPOS   = {'Cedears','Acciones','ETF'}
+    # Clasificar cada instrumento — comparación case-insensitive para tolerar variaciones de Inviu
+    BOND_TIPOS = {'bonos'}
+    EQ_TIPOS   = {'cedears','acciones','etf'}
+
+    agg['_tipo_low'] = agg['Tipo'].str.lower().str.strip()
 
     # Mapeo de clases
     CLASE_MAP = {}
@@ -361,7 +363,7 @@ def build_report():
         return pd.Series({"ytm": ytm or 0.08, "md": md or 2.0})
 
     # Aplicar a bonos
-    bonds = agg[agg['Tipo']=='Bonos'].copy()
+    bonds = agg[agg['_tipo_low']=='bonos'].copy()
     bonds[['ytm','md']] = bonds.apply(get_ytm_md, axis=1)
     bonds['w_bonds'] = bonds['monto'] / bonds['monto'].sum()
     bonds_total = bonds['monto'].sum()
@@ -374,39 +376,78 @@ def build_report():
     dv01_usd = wt_md * bonds_usd * 0.0001
 
     # Equity metrics
-    equity = agg[agg['Tipo'].isin(EQ_TIPOS)].copy()
+    equity = agg[agg['_tipo_low'].isin(EQ_TIPOS)].copy()
     for col in ['vol','beta_sp','beta_mrv']:
         equity[col] = equity['Instrumento'].map(
             {k: v.get(col) for k, v in equity_data.items()}
         )
-    equity['vol']     = equity['vol'].fillna(0.22)
+    # Fallbacks de vol más conservadores por tipo de activo
+    VOL_FALLBACK = {
+        "SLV": 0.55, "SH": 0.45, "GLD": 0.15,  # commodities / inversos conocidos
+    }
+    def vol_fallback(tk, tipo):
+        if tk in VOL_FALLBACK: return VOL_FALLBACK[tk]
+        if tipo.lower() in ('acciones',): return 0.40   # acciones locales más volátiles
+        return 0.22  # CEDEARs / ETFs globales
+    equity['vol'] = equity.apply(
+        lambda r: r['vol'] if pd.notna(r['vol']) else vol_fallback(r['Instrumento'], r['Tipo']),
+        axis=1
+    )
     equity['beta_sp'] = equity['beta_sp'].fillna(0.5)
     equity['beta_mrv']= equity['beta_mrv'].fillna(0.3)
     equity['w_eq'] = equity['monto'] / equity['monto'].sum()
     eq_total    = equity['monto'].sum()
     beta_sp_p   = (equity['beta_sp'] * equity['w_eq']).sum()
     beta_mrv_p  = (equity['beta_mrv'] * equity['w_eq']).sum()
-    vol_eq      = (equity['vol'] * equity['w_eq']).sum() * 0.65
 
-    # Portfolio vol
+    # Vol del subportfolio equity: suma ponderada de vols (correlación promedio ~0.4 entre activos)
+    # σ_p = √(Σ_i Σ_j w_i w_j σ_i σ_j ρ_ij) ≈ √(Σ_i (w_i σ_i)² + 2ρ_avg Σ_{i<j} w_i w_j σ_i σ_j)
+    # Aproximación práctica: σ_equity = (Σ w_i σ_i) × factor_diversificacion
+    # factor ~0.70 para ~20 activos con correlación media 0.40
+    vol_eq_avg = (equity['vol'] * equity['w_eq']).sum()
+    n_eq = max(len(equity), 1)
+    rho_avg_eq = 0.40  # correlación promedio entre activos de equity
+    # Fórmula de Elton-Gruber para N activos con correlación uniforme:
+    # σ_p² = σ_avg² × (rho + (1-rho)/N)  donde σ_avg es la vol media ponderada
+    vol_eq = vol_eq_avg * np.sqrt(rho_avg_eq + (1 - rho_avg_eq) / n_eq)
+
+    # Portfolio vol: equity + bonos con correlación baja
     w_eq   = eq_total / TOTAL
     w_bond = bonds_total / TOTAL
-    vol_bonds = 0.065 * w_bond
-    vol_eq_w  = vol_eq * w_eq
-    port_vol  = max(np.sqrt(vol_eq_w**2 + vol_bonds**2 + 2*0.10*vol_eq_w*vol_bonds), 0.07)
+    w_cash = max(1 - w_eq - w_bond, 0)
+    VOL_BONDS_ASSET = 0.065  # vol anualizada bonos USD duration ~2y
+    rho_eq_bond = 0.10       # correlación equity-bonos (baja, bonos arg. son algo descorrelacionados)
 
-    # VaR
-    Rp_est   = 0.22 * w_eq + (wt_ytm + 0.18) * w_bond + RF_ARS * (1 - w_eq - w_bond)
-    excess   = Rp_est - RF_ARS
-    sharpe_p = excess / port_vol
-    var95    = Rp_est - 1.645 * port_vol
-    var99    = Rp_est - 2.326 * port_vol
-    cvar95   = Rp_est - 2.063 * port_vol
+    port_vol = np.sqrt(
+        (vol_eq * w_eq)**2
+        + (VOL_BONDS_ASSET * w_bond)**2
+        + 2 * rho_eq_bond * vol_eq * w_eq * VOL_BONDS_ASSET * w_bond
+    )
+    port_vol = max(port_vol, 0.05)
 
-    # Stress
-    stress_rp400 = -wt_md * 0.04 * bonds_usd * CCL + (-0.25 * agg[agg['Tipo']=='Acciones']['monto'].sum())
-    stress_ccl20 = (bonds_usd + eq_total/CCL) * 0.20 * CCL
-    stress_rv10  = eq_total * (-0.10)
+    # Retorno esperado en USD: equity 8% real USD, bonos YTM USD, cash 4% RF USD
+    Rp_usd = 0.08 * w_eq + wt_ytm * w_bond + RF_USD * w_cash
+    excess_usd = Rp_usd - RF_USD
+    sharpe_p = excess_usd / port_vol
+
+    # VaR y CVaR en USD (distribución normal, 1 año)
+    var95  = Rp_usd - 1.645 * port_vol
+    var99  = Rp_usd - 2.326 * port_vol
+    cvar95 = Rp_usd - 2.063 * port_vol   # φ(1.645)/Φ(-1.645) ≈ 2.063
+
+    # Stress (en ARS para mantener comparabilidad con el portafolio total)
+    # RP +400bp: pérdida en bonos (sensibilidad MD) + caída de equity local correlacionada
+    equity_local = agg[agg['_tipo_low']=='acciones']['monto'].sum()
+    equity_ced   = agg[agg['_tipo_low']=='cedears']['monto'].sum()
+    # Bonos: -MD × Δy × valor; equity local: -25% (alta correlación con soberano); CEDEARs: -5%
+    stress_rp400 = (-wt_md * 0.04 * bonds_usd * CCL
+                    - 0.25 * equity_local
+                    - 0.05 * equity_ced)
+    # CCL +20%: activos en USD se revalorizan en ARS (bonos hard-dollar + CEDEARs valúan a CCL mayor)
+    usd_assets_ars = bonds_total + equity_ced  # activos que rastrean el dólar
+    stress_ccl20 = usd_assets_ars * 0.20
+    # RV -10%: caída de toda la renta variable
+    stress_rv10 = eq_total * (-0.10)
 
     # HHI
     w_arr  = agg['pct'].values / 100
@@ -652,6 +693,8 @@ def build_report():
         "b2_estadistico": {
             "beta_sp500": round(beta_sp_p,2), "beta_merval": round(beta_mrv_p,2),
             "vol_portfolio": round(port_vol,4), "vol_equity": round(vol_eq,4),
+            # Sortino: usa downside deviation (σ negativa); para dist. normal ~ sharpe × √(π/2) ≈ 1.25
+            # Es una aproximación razonable cuando no se tienen retornos diarios del portfolio completo
             "sharpe": round(sharpe_p,2), "sortino": round(sharpe_p*1.25,2),
             "equity_pct": round(eq_total/TOTAL,4)
         },
@@ -665,7 +708,9 @@ def build_report():
             "hhi": round(hhi,4), "eff_n": round(eff_n,1),
             "top1_ticker": agg.iloc[0]['Instrumento'], "top1_pct": round(agg.iloc[0]['pct']/100,4),
             "liq_a_pct": round(agg.head(int(len(agg)*0.84))['monto'].sum()/TOTAL,3),
-            "usd_exposure_pct": 0.82, "por_tipo": por_tipo_list, "top5": top5,
+            # USD exposure: bonos hard-dollar + CEDEARs (rastrean dólar) + divisas
+            "usd_exposure_pct": round((bonds_total + equity_ced + agg[agg['_tipo_low']=='divisas']['monto'].sum()) / TOTAL, 3),
+            "por_tipo": por_tipo_list, "top5": top5,
             "top15": top15
         },
         "equity_holdings": equity_holdings
