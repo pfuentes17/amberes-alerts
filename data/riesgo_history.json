@@ -13,11 +13,11 @@
     "ytm": 0.0783,
     "duration": 1.91,
     "beta_sp500": 0.56,
-    "vol_portfolio": 0.1266,
+    "vol_portfolio": 0.1267,
     "hhi": 0.0463,
     "sharpe": 0.27,
     "equity_pct": 0.5628,
-    "ccl": 1594,
+    "ccl": 1595,
     "total_usd_m": 6.45
   }
 ]
