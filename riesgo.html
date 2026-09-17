@@ -418,82 +418,132 @@ async function render(d){
 
   function hSeries(key){ return hist.map(h=>h[key]).filter(v=>v!=null); }
 
+  const hasHist = b3.var95_hist != null;
+  const totalUsdM = d.meta.total_usd_m;
+
+  // ── Cards VaR: columna paramétrica + histórica ──
+  function varCompareCard(label, paramVal, histVal, ctx, histCtx, key){
+    const col = v => v < -0.10 ? 'var(--rd)' : v < -0.04 ? 'var(--am)' : v < 0 ? '#e8f0f8' : 'var(--gr)';
+    const border = v => v < -0.10 ? 'warn' : v < 0 ? '' : 'ok';
+    const series = hSeries(key);
+    const histRow = hasHist
+      ? `<div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding-top:6px;border-top:1px solid var(--bdr)">
+           <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em">Histórico 3a</span>
+           <span style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:700;color:${col(histVal)}">${pct(histVal)}</span>
+         </div>
+         <div style="font-family:'IBM Plex Sans',sans-serif;font-size:9.5px;color:var(--mu);margin-top:3px;font-style:italic">${histCtx}</div>`
+      : `<div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);margin-top:8px;font-style:italic">Histórico disponible desde la próxima semana</div>`;
+    return `<div class="sc-card ${border(paramVal)}">
+      <div class="sc-label">${label}</div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${col(paramVal)}">${pct(paramVal)}</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu)">Paramétrico</span>
+      </div>
+      <div class="sc-ctx">${ctx}</div>
+      ${histRow}
+      ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,false)}<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-left:4px">${series.length}w</span></div>`:''}
+    </div>`;
+  }
+
+  const colarCVaR = v => v < -0.15 ? 'var(--rd)' : v < -0.06 ? 'var(--am)' : 'var(--gr)';
+
   const scCards = [
-    {
-      label: 'VaR 95%', val: b3.var95_param, key: 'var95',
-      ctx: 'Pérdida máxima esperada con 95% de confianza en 1 año, asumiendo distribución normal.',
-      impl: b3.var95_param < 0
-        ? `Con un mercado adverso (95%), el portafolio podría perder hasta ${pct(Math.abs(b3.var95_param))} anual (USD ${(Math.abs(b3.var95_param)*d.meta.total_usd_m/1e6*1e6/1000).toFixed(0)}K).`
-        : `El VaR 95% es positivo — la cartera espera retorno positivo incluso en escenarios negativos moderados.`,
-      cls: b3.var95_param < -0.08 ? 'warn' : b3.var95_param < 0 ? '' : 'ok',
-      col: b3.var95_param < -0.08 ? 'var(--rd)' : b3.var95_param < 0 ? 'var(--am)' : 'var(--gr)',
-      good: b3.var95_param >= 0,
+    // VaR 95% — paramétrico vs histórico
+    () => varCompareCard(
+      'VaR 95%  ·  1 año',
+      b3.var95_param, b3.var95_hist,
+      'Pérdida máxima con 95% de confianza (distribución normal). No captura colas gordas.',
+      hasHist
+        ? `Retorno real en el percentil 5% de ${b3.n_windows} ventanas de 1 año. ${Math.abs(b3.var95_hist) > Math.abs(b3.var95_param) ? '⚠ La cola real es más pesada que lo normal.' : 'Cola real en línea con el modelo.'}`
+        : '',
+      'var95'
+    ),
+    // VaR 99% — paramétrico vs histórico
+    () => varCompareCard(
+      'VaR 99%  ·  1 año',
+      b3.var99_param, b3.var99_hist,
+      'Pérdida máxima en el 1% de peores escenarios. Más sensible a las colas de la distribución.',
+      hasHist
+        ? `Percentil 1% real. ${b3.worst_year != null ? 'Peor año observado: ' + pct(b3.worst_year) + '.' : ''}`
+        : '',
+      'var99'
+    ),
+    // CVaR 95%
+    () => {
+      const v = b3.cvar95;
+      const vh = b3.cvar95_hist;
+      const col = colarCVaR(v);
+      const series = hSeries('cvar95');
+      const histRow = hasHist
+        ? `<div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding-top:6px;border-top:1px solid var(--bdr)">
+             <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em">CVaR histórico 3a</span>
+             <span style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:700;color:${colarCVaR(vh)}">${pct(vh)}</span>
+           </div>
+           <div style="font-family:'IBM Plex Sans',sans-serif;font-size:9.5px;color:var(--mu);margin-top:3px;font-style:italic">Promedio de retornos en el 5% más extremo real.</div>`
+        : '';
+      return `<div class="sc-card ${v<-0.12?'warn':''}">
+        <div class="sc-label">CVaR 95%  ·  Expected Shortfall</div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${col}">${pct(v)}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu)">Paramétrico</span>
+        </div>
+        <div class="sc-ctx">Promedio de pérdidas en el 5% más extremo. Siempre mayor (peor) que el VaR. No asume cola truncada.</div>
+        ${histRow}
+        ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,false)}<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-left:4px">${series.length}w</span></div>`:''}
+      </div>`;
     },
-    {
-      label: 'VaR 99%', val: b3.var99_param, key: 'var99',
-      ctx: 'Pérdida máxima en el 1% de peores escenarios del año. Mide el riesgo de cola severo.',
-      impl: b3.var99_param < -0.05
-        ? `En el 1% de peores escenarios, la pérdida anual podría superar ${pct(Math.abs(b3.var99_param))} (USD ${(Math.abs(b3.var99_param)*d.meta.total_usd_m).toFixed(2)}M). Nivel de alerta.`
-        : `VaR 99% en ${pct(b3.var99_param)} — riesgo de cola contenido para una cartera con ${pct(b2.equity_pct)} en equity.`,
-      cls: b3.var99_param < -0.05 ? 'warn' : '',
-      col: b3.var99_param < -0.05 ? 'var(--rd)' : b3.var99_param < -0.03 ? 'var(--am)' : 'var(--gr)',
-      good: b3.var99_param > -0.05,
+    // Sharpe
+    () => {
+      const v = b2.sharpe; const series = hSeries('sharpe');
+      const col = v<0?'var(--rd)':v>0.8?'var(--gr)':'var(--am)';
+      return `<div class="sc-card ${v<0?'warn':v>1?'ok':''}">
+        <div class="sc-label">Sharpe  ·  USD vs T-Bills 4%</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${col};margin-bottom:4px">${v.toFixed(2)}</div>
+        <div class="sc-ctx">Retorno excedente en USD sobre RF 4% por unidad de vol. &gt;1 excelente, &gt;0.5 bueno, &lt;0 destruye valor en USD.</div>
+        <div class="sc-implication ${v<0?'neg':v>0.5?'pos':'neu'}">${v<0?'El portafolio no compensa el riesgo tomado vs T-Bills.':v>1?'Excelente relación retorno/riesgo en USD.':'Ratio moderado — razonable para una cartera con exposición argentina.'}</div>
+        ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,v>0)}<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-left:4px">${series.length}w</span></div>`:''}
+      </div>`;
     },
-    {
-      label: 'CVaR 95%', val: b3.cvar95, key: 'cvar95',
-      ctx: 'Expected Shortfall: promedio de pérdidas en el 5% más extremo. Más conservador que el VaR.',
-      impl: b3.cvar95 < 0
-        ? `Si se cruza el umbral del VaR 95%, la pérdida esperada promedia ${pct(Math.abs(b3.cvar95))} anual. ${Math.abs(b3.cvar95)>Math.abs(b3.var95_param)*1.3?'La cola es pesada.':'Cola bien controlada.'}`
-        : `CVaR positivo — incluso en los peores escenarios extremos la cartera muestra retorno esperado positivo.`,
-      cls: b3.cvar95 < -0.10 ? 'warn' : '',
-      col: b3.cvar95 < -0.10 ? 'var(--rd)' : b3.cvar95 < 0 ? 'var(--am)' : 'var(--gr)',
-      good: b3.cvar95 >= 0,
+    // Distribución histórica de retornos anuales
+    () => {
+      if(!hasHist) return `<div class="sc-card"><div class="sc-label">Distribución anual histórica</div><div class="sc-ctx" style="margin-top:8px">Disponible desde la próxima semana (requiere 3 años de datos + 252d de ventana).</div></div>`;
+      const w = b3.worst_year, B = b3.best_year, p25 = b3.p25_year, p75 = b3.p75_year;
+      const nw = b3.n_windows, hd = b3.hist_days;
+      // Mini bar chart: peor / p25 / mediana / p75 / mejor
+      function barW(v){ return Math.round((v - w)/(B - w)*100); }
+      const items = [
+        {l:'Peor año',  v:w,  col:'#f87171'},
+        {l:'P25',       v:p25,col:'#fb923c'},
+        {l:'P75',       v:p75,col:'#22d3a0'},
+        {l:'Mejor año', v:B,  col:'#4ade80'},
+      ];
+      return `<div class="sc-card ok">
+        <div class="sc-label">Distribución anual histórica</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);margin-bottom:8px">${nw} ventanas · ${hd} días · proxy: equity real + EMB ajustado por duration</div>
+        ${items.map(x=>`<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);width:62px;flex-shrink:0">${x.l}</span>
+          <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:8px;overflow:hidden">
+            <div style="width:${barW(x.v)}%;height:100%;background:${x.col}88;border-radius:3px"></div>
+          </div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:${x.col};width:44px;text-align:right">${pct(x.v)}</span>
+        </div>`).join('')}
+      </div>`;
     },
-    {
-      label: 'Sharpe', val: b2.sharpe, fmt: v=>v.toFixed(2), key: 'sharpe',
-      ctx: 'Retorno excedente sobre Rf USD (4% T-Bills) por unidad de riesgo total. Calculado en USD. >1 excelente, >0.5 bueno, <0 destruye valor.',
-      impl: b2.sharpe < 0
-        ? `Sharpe negativo: el portafolio no compensa el riesgo asumido vs la tasa libre de riesgo en ARS. El carry de pesos domina.`
-        : b2.sharpe > 1 ? `Sharpe ${b2.sharpe.toFixed(2)} — excelente relación retorno/riesgo.`
-        : `Sharpe ${b2.sharpe.toFixed(2)} — relación retorno/riesgo moderada.`,
-      cls: b2.sharpe < 0 ? 'warn' : b2.sharpe > 1 ? 'ok' : '',
-      col: b2.sharpe < 0 ? 'var(--rd)' : b2.sharpe > 0.8 ? 'var(--gr)' : 'var(--am)',
-      good: b2.sharpe > 0,
-    },
-    {
-      label: 'Sortino', val: b2.sortino, fmt: v=>v.toFixed(2), key: 'sharpe',
-      ctx: 'Igual al Sharpe pero penaliza solo volatilidad negativa (downside risk). Más relevante para carteras con sesgo positivo.',
-      impl: b2.sortino > b2.sharpe*1.2
-        ? `Sortino (${b2.sortino.toFixed(2)}) > Sharpe (${b2.sharpe.toFixed(2)}): la volatilidad positiva supera la negativa — buen perfil asimétrico.`
-        : `Sortino similar al Sharpe — la cartera tiene volatilidad relativamente simétrica.`,
-      cls: b2.sortino < 0 ? 'warn' : b2.sortino > 1 ? 'ok' : '',
-      col: b2.sortino < 0 ? 'var(--rd)' : b2.sortino > 0.8 ? 'var(--gr)' : 'var(--am)',
-      good: b2.sortino > 0,
-    },
-    {
-      label: 'σ Portfolio', val: b2.vol_portfolio, fmt: v=>pct(v,1), key: 'vol_portfolio',
-      ctx: 'Volatilidad anualizada del portafolio consolidado. Incluye efecto diversificación entre activos.',
-      impl: b2.vol_portfolio > 0.25
-        ? `Volatilidad de ${pct(b2.vol_portfolio,1)} — alta para un fondo balanceado. Refleja el ${pct(b2.equity_pct)} en renta variable.`
-        : `Volatilidad de ${pct(b2.vol_portfolio,1)} — moderada considerando ${pct(b2.equity_pct)} en equity.`,
-      cls: b2.vol_portfolio > 0.30 ? 'warn' : '',
-      col: b2.vol_portfolio > 0.25 ? 'var(--am)' : 'var(--gr)',
-      good: b2.vol_portfolio < 0.20,
+    // σ Portfolio
+    () => {
+      const v = b2.vol_portfolio; const series = hSeries('vol_portfolio');
+      const col = v>0.25?'var(--am)':'var(--gr)';
+      return `<div class="sc-card ${v>0.30?'warn':''}">
+        <div class="sc-label">σ Portfolio  ·  anualizada</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${col};margin-bottom:4px">${pct(v,1)}</div>
+        <div class="sc-ctx">Volatilidad del portfolio consolidado (Elton-Gruber, ρ≈0.4 entre activos). Incluye bonos con vol ~6.5% y equity con vol ponderada real.</div>
+        <div class="sc-implication ${v>0.25?'neg':'pos'}">Vol de ${pct(v,1)} — ${v>0.25?'alta para fondo balanceado. Refleja el '+pct(b2.equity_pct)+' en RV.':'razonable dado el '+pct(b2.equity_pct)+' en renta variable.'}</div>
+        ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,false)}</div>`:''}
+      </div>`;
     },
   ];
 
-  document.getElementById('b3-sc-cards').innerHTML = scCards.map(sc=>{
-    const series = hSeries(sc.key);
-    const fmtFn = sc.fmt || (v=>pct(v));
-    const impl_cls = sc.good ? 'pos' : sc.cls==='warn' ? 'neg' : 'neu';
-    return `<div class="sc-card ${sc.cls}">
-      <div class="sc-label">${sc.label}</div>
-      <div class="sc-val" style="color:${sc.col}">${fmtFn(sc.val)}</div>
-      <div class="sc-ctx">${sc.ctx}</div>
-      <div class="sc-implication ${impl_cls}">${sc.impl}</div>
-      ${series.length>1?`<div class="sc-spark">${sparkSVG(series,sc.good)}<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-left:4px">${series.length}w</span></div>`:''}
-    </div>`;
-  }).join('');
+  document.getElementById('b3-sc-cards').innerHTML = scCards.map(fn=>fn()).join('');
 
   const stCards = [
     {
