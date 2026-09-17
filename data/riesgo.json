@@ -47,7 +47,9 @@
     "stress_ccl20_pct": 0.1546,
     "stress_ccl20_ars_m": 1591.0,
     "stress_rv10_pct": -0.0563,
-    "stress_rv10_ars_m": -579.0
+    "stress_rv10_ars_m": -579.0,
+    "stress_deval30_pct": -0.0159,
+    "stress_deval30_ars_m": -163.0
   },
   "b4_concentracion": {
     "hhi": 0.0463,

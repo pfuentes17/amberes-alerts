@@ -108,7 +108,7 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
 .sc-implication.neu{background:rgba(74,96,128,.15);color:var(--cy);}
 .sc-spark{margin-top:6px;}
 /* stress tests expandidos */
-.st-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.st-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
 .st-card{background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:12px 14px;}
 .st-scenario{font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:4px;}
 .st-val{font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:700;margin-bottom:3px;}
@@ -618,6 +618,14 @@ async function render(d){
       usdM: b3.stress_rv10_ars_m / (d.meta.ccl||1600),
       good: false,
       desc: `Caída del 10% en toda la renta variable (CEDEARs + acciones). Con ${pct(b2.equity_pct)} en equity, este escenario es el principal driver de riesgo del portafolio. Escenario: corrección global o local.`,
+    },
+    {
+      scenario: 'Devaluación ARS 30%',
+      val: b3.stress_deval30_pct,
+      usdM: b3.stress_deval30_ars_m / (d.meta.ccl||1600),
+      good: false,
+      desc: 'Impacto en USD de una devaluación del 30% del ARS (CCL +30%). Bonos ARS tasa fija y CER pierden ~23% en USD a corto plazo. Acciones locales con pass-through parcial (~33%) pierden ~15% en USD. Bonos hard-dollar, CEDEARs y divisas USD son neutrales. Escenario: salto cambiario discreto.',
+      descExtra: 'El impacto en ARS nominal es positivo (los activos dolarizados se revalúan). Lo relevante es la pérdida en USD: mide cuánto capital real se destruye para el inversor dolarizado.',
     },
   ];
 
