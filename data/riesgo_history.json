@@ -9,14 +9,14 @@
     "stress_rp400": -0.0727,
     "stress_ccl20": 0.1546,
     "stress_rv10": -0.0563,
-    "ytm": 0.0784,
+    "ytm": 0.0783,
     "duration": 1.9,
     "beta_sp500": 0.56,
     "vol_portfolio": 0.1266,
     "hhi": 0.0463,
     "sharpe": 0.27,
     "equity_pct": 0.5628,
-    "ccl": 1589,
-    "total_usd_m": 6.47
+    "ccl": 1598,
+    "total_usd_m": 6.44
   }
 ]
