@@ -1,9 +1,9 @@
 {
-  "date": "2026-09-16",
-  "generated": "2026-09-16T12:45:00Z",
+  "date": "2026-09-17",
+  "generated": "2026-09-17T12:30:00Z",
   "sentiment": {
-    "overall": "neutral",
-    "label": "El mercado opera en modo de espera antes de la decisión de la Fed (14:00 ET): futuros de EE.UU. al alza y VIX en baja, pero el petróleo sigue elevado tras el cierre del oleoducto saudita y el riesgo país argentino volvió a superar los 500 puntos.",
+    "overall": "risk-on",
+    "label": "Alivio post-Fed a nivel global: futuros de EE.UU. y Europa suben, el VIX se desploma 9% y el Brent perdió los US$100. Argentina no acompaña el rally: las acciones cayeron hasta 5% en Wall Street y el riesgo país volvió a subir a 510 puntos.",
     "fg": 30,
     "fg_label": "Miedo",
     "putcall": 0.85,
@@ -14,96 +14,96 @@
       "id": 1,
       "tag": "Bancos Centrales · Fed",
       "tag_class": "tb",
-      "title": "La Fed define hoy su primera suba de tasas en tres años, con 90% de probabilidad de un alza de 25 pb",
-      "brief": "El FOMC anuncia a las 14:00 ET (conferencia de Warsh a las 14:30 ET) una suba a 4,00%; el 10 años ya perforó el 5% y tocó 5,04% el martes, aunque hoy rendimientos y VIX retroceden.",
-      "tldr": "Warsh enfrenta su primera prueba de independencia frente a la presión de Trump por bajar tasas",
+      "title": "La Fed sube 25 pb a 3,75%-4,00% en su primera alza en tres años, voto unánime",
+      "brief": "Warsh logró unanimidad en su primera suba; 16 de 18 funcionarios ven al menos otra alza este año y la tasa neutral estimada saltó a 3,2%, la más alta en una década.",
+      "tldr": "El mercado debate si es un ajuste fino al estilo Greenspan 1997 o el inicio de un ciclo más largo",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El FOMC anuncia hoy a las <strong>14:00 ET</strong> su decisión de tasas, con el mercado asignando <strong>90% de probabilidad</strong> a una suba de <strong>25 pb</strong> (a 3,75%-4,00%), la primera en tres años. La conferencia de prensa del presidente de la Fed, Kevin Warsh, comienza a las <strong>14:30 ET</strong>. El Treasury a 10 años ya perforó el <strong>5%</strong> y tocó <strong>5,04%</strong> el martes —su nivel más alto en 19 años— aunque hoy el UST 2Y retrocede a <strong>4,651%</strong> y el VIX cae a <strong>17,06 (-0,81%)</strong>.",
-      "contexto": "Warsh, de marcada inclinación monetarista, considera el descontrol de la oferta monetaria durante la pandemia &ldquo;el mayor error macroeconómico en 45 años&rdquo; y enfrenta su primera prueba real de independencia frente a la presión de Trump por bajar el costo de financiamiento. Los futuros de EE.UU. operan al alza en la previa (Nasdaq +0,41%, S&amp;P +0,18%, Dow +0,08%), con las bolsas europeas y el Nikkei (+0,69%) también en verde.",
+      "evento": "La Fed subió la tasa <strong>25 pb a 3,75%-4,00%</strong> el miércoles, la primera alza en tres años, con voto <strong>unánime</strong> bajo la primera conferencia de Kevin Warsh. El UST 10Y opera hoy en <strong>4,99%</strong>, retrocediendo apenas desde el <strong>5,02%</strong> del cierre de miércoles (máximo en 19 años); el 2Y está en <strong>4,715%</strong> y el 30Y en <strong>5,336%</strong>.",
+      "contexto": "16 de 18 funcionarios proyectan al menos una suba más este año y la tasa neutral estimada saltó a <strong>3,2%</strong>, la más alta en una década. La inflación subyacente ronda 2,3%-2,7% pero lleva cinco años y medio arriba del objetivo. La reacción de la curva —el 2Y subió más que el 10Y— sugiere que el mercado teme más a la inflación persistente que a un error de política.",
       "impacto": [
-        {"asset": "UST 10Y", "dir": "5,04%", "cls": "neu"},
-        {"asset": "VIX", "dir": "↓ 0,81%", "cls": "dn"},
-        {"asset": "Nasdaq fut.", "dir": "↑ 0,41%", "cls": "up"}
+        {"asset": "UST 10Y", "dir": "4,99%", "cls": "neu"},
+        {"asset": "UST 2Y", "dir": "4,715%", "cls": "neu"},
+        {"asset": "Fed Funds", "dir": "3,75%-4,00%", "cls": "up"}
       ]
     },
     {
       "id": 2,
-      "tag": "Geopolítica · Energía",
-      "tag_class": "tq",
-      "title": "El cierre del oleoducto saudita tras ataques con drones dispara al Brent por encima de US$107",
-      "brief": "Milicias vinculadas a Irán atacaron el oleoducto Este-Oeste saudita y los hutíes avanzan sobre el estrecho de Bab al-Mandab; la Marina de EE.UU. advierte que solo tiene ~6 meses de capacidad de bloqueo naval.",
-      "tldr": "El estrecho de Hormuz vuelve a ser la variable geopolítica más subestimada del mercado petrolero",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El oleoducto Este-Oeste saudita fue cerrado tras ataques con drones de milicias iraquíes aliadas de Irán, y los hutíes capturaron islas clave cerca del estrecho de <strong>Bab al-Mandab</strong>, disparando al <strong>Brent</strong> por encima de <strong>US$107</strong> (hoy en US$107,45, -1,20% tras el salto de ayer). El <strong>WTI</strong> cotiza en <strong>US$103,99</strong> (-1,74%).",
-      "contexto": "La Marina de EE.UU. advierte que solo tiene unos <strong>seis meses</strong> de capacidad de bloqueo naval antes de problemas de mantenimiento, mientras Arabia Saudita redirige más crudo vía Omán y Hormuz. Egipto podría perder hasta 2% de su PBI en tarifas de tránsito por el Mar Rojo. El oro sube <strong>0,98%</strong> a US$4.375 y la plata <strong>1,83%</strong> a US$65,03 como refugio.",
+      "tag": "Mercados Globales · Alivio",
+      "tag_class": "tg",
+      "title": "Alivio post-Fed: futuros suben, VIX cae 9% y el Brent pierde los US$100",
+      "brief": "El futuro del Nasdaq sube 1,06%, el S&P 500 0,80% y el Dow 0,70%; Europa opera al alza en bloque y el Brent cede 0,83% a US$99,92, perdiendo el nivel psicológico de los US$100.",
+      "tldr": "Doble alivio simultáneo: la suba de tasas fue esperada y el petróleo cede al mismo tiempo",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "Los futuros de EE.UU. suben con fuerza: <strong>Nasdaq +1,06%</strong> a 29.568, <strong>S&amp;P 500 +0,80%</strong> a 7.684 y <strong>Dow +0,70%</strong> a 52.278. Europa opera al alza en bloque (EuroStoxx +0,58%, DAX +0,54%, FTSE +0,46%) y el <strong>VIX se desploma 9,03%</strong> a 16,11. El <strong>Brent cae 0,83%</strong> a <strong>US$99,92</strong>, perdiendo los US$100 por primera vez en varias semanas; el WTI cede 1,14% a US$101,26.",
+      "contexto": "El DXY se mantiene firme en <strong>100,20</strong> tras el salto post-decisión, con EUR/USD en 1,15 y USD/JPY en 155,70. El oro cede 0,85% a US$4.350 y la plata 0,73% a US$64,44, arrastrados por el dólar fuerte más que por el alivio en tasas; el cobre sube 1,25% a US$6,59. La atención pasa ahora a si el ciclo de suba de la Fed continúa en octubre y a la carrera de bancos centrales (BOJ, BOE) que sigue esta semana.",
       "impacto": [
-        {"asset": "Brent", "dir": "US$107,45", "cls": "neu"},
-        {"asset": "WTI", "dir": "↓ 1,74%", "cls": "dn"},
-        {"asset": "Oro", "dir": "↑ 0,98%", "cls": "up"}
+        {"asset": "VIX", "dir": "↓ 9,03%", "cls": "dn"},
+        {"asset": "Brent", "dir": "US$99,92", "cls": "dn"},
+        {"asset": "Nasdaq fut.", "dir": "↑ 1,06%", "cls": "up"}
       ]
     },
     {
       "id": 3,
-      "tag": "Argentina · Fiscal",
-      "tag_class": "tg",
-      "title": "El Gobierno presentó el Presupuesto 2027 con dólar a $1.850 e inflación de 18%, mientras el riesgo país superó los 500 puntos",
-      "brief": "El proyecto prevé PBI +4%, superávit fiscal y comercial y suba salarial real de 25,4%; el mismo día el riesgo país saltó 16 pb a 506 y las reservas del BCRA perforaron los US$50.000 millones.",
-      "tldr": "El FMI ya admite que el Gobierno no cumplirá la meta fiscal 2026 y envía una misión el 21/9",
+      "tag": "Argentina · Mercados",
+      "tag_class": "ta",
+      "title": "Acciones argentinas caen hasta 5% en Wall Street pese al rally global post-Fed",
+      "brief": "El Merval cedió 1,7% y los bonos 0,3% tras la suba de tasas; el riesgo país subió a 510 pb (+4pb) y el dólar oficial saltó a $1.535 en el Banco Nación.",
+      "tldr": "La Fed hawkish pega distinto en Argentina: sube el riesgo país mientras el mundo festeja el alivio",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El equipo económico presentó el <strong>Presupuesto 2027</strong>, con dólar oficial proyectado en <strong>$1.850</strong>, inflación de <strong>18%</strong>, crecimiento del PBI de <strong>4%</strong>, superávit fiscal y comercial, y una suba salarial real de <strong>25,4%</strong>. El mismo día, el riesgo país saltó <strong>16 pb (+3,3%)</strong> a <strong>506 puntos</strong> y el stock bruto de reservas del BCRA cayó <strong>US$458 millones</strong> —la mayor baja diaria del mes— a <strong>US$49.953 millones</strong>, perforando los US$50.000 millones.",
-      "contexto": "El FMI ya admite que el Gobierno incumplirá la meta fiscal 2026 y enviará una misión técnica a Buenos Aires la <strong>semana del 21/9</strong> para la tercera revisión del programa. En la city, el Merval cedió <strong>0,2%</strong> y los bonos bajaron <strong>0,3%</strong> en medio de la turbulencia global, aunque el Brent (+3% ayer) impulsó a las energéticas.",
+      "evento": "Las acciones argentinas cayeron hasta <strong>5%</strong> en Wall Street tras la decisión de la Fed: el Merval cedió <strong>1,7%</strong>, los bonos perdieron <strong>0,3%</strong> y el riesgo país subió a <strong>510 puntos (+4pb, +0,79%)</strong>. El dólar oficial saltó a <strong>$1.535</strong> en el Banco Nación; hoy el mayorista opera en $1.504,5/$1.513,5, el MEP en $1.534,1/$1.542,1 y el CCL en $1.597,9/$1.600,2. Los bonos en dólares abren mixtos: GD30 -0,53%, AL30 -0,21%, GD35 -0,13%.",
+      "contexto": "En contrapartida, las reservas del BCRA aumentaron por primera vez en <strong>siete ruedas</strong>, sumando US$47 millones pese al impacto negativo del oro y del dólar global, y se mantienen en torno a los <strong>US$50.000 millones</strong>. Pero el ritmo de compra sigue muy débil: cayó a US$769M en agosto y a menos de US$200M en la primera quincena de septiembre, el más bajo del año. La misión del FMI llega el <strong>21 de septiembre</strong> para la tercera revisión del programa, en un esquema que el propio BCRA describe como flotación &ldquo;administrada&rdquo; dentro de las bandas.",
       "impacto": [
-        {"asset": "Riesgo País", "dir": "↑ 506 pb", "cls": "up"},
-        {"asset": "Reservas BCRA", "dir": "↓ US$458M", "cls": "dn"},
-        {"asset": "GD30D", "dir": "↓ 0,03%", "cls": "dn"}
+        {"asset": "Riesgo País", "dir": "510 pb", "cls": "up"},
+        {"asset": "Dólar oficial", "dir": "$1.535", "cls": "up"},
+        {"asset": "GD30D", "dir": "↓ 0,53%", "cls": "dn"}
       ]
     },
     {
       "id": 4,
-      "tag": "Argentina · Consumo",
-      "tag_class": "tg",
-      "title": "La inflación de alimentos se acelera en septiembre y el consumo masivo cae por noveno mes consecutivo",
-      "brief": "Carnes y panificados impulsan el alza de precios —la avícola saltó 3,3% en la segunda semana— reabriendo la duda sobre si el IPC vuelve al 2% mensual, mientras el consumo sigue cayendo.",
-      "tldr": "La brecha entre el Presupuesto 2027 (inflación 18%) y la dinámica reciente de precios empieza a ampliarse",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "La inflación de alimentos se aceleró en la segunda semana de septiembre, con la avícola saltando <strong>3,3%</strong> y las carnes y panificados como principales motores del alza, reabriendo la duda sobre si el IPC volverá a un ritmo de <strong>2% mensual</strong>. En paralelo, un informe privado marcó una nueva caída del consumo masivo, la <strong>novena consecutiva</strong> en términos interanuales y mensuales.",
-      "contexto": "El dato contrasta con el supuesto de inflación de <strong>18% anual</strong> para 2027 que el Gobierno incluyó en el Presupuesto presentado hoy, y se suma a las dudas sobre el ritmo de la desinflación en momentos en que la actividad ya muestra señales de agotamiento del consumo.",
+      "tag": "Geopolítica · Logística",
+      "tag_class": "tq",
+      "title": "La disrupción en Hormuz dispara la prima de tránsito por Panamá a más de US$5M",
+      "brief": "El conflicto en el estrecho de Hormuz redirige tráfico marítimo hacia Panamá, cuyo Canal reduce tránsitos por sequía justo cuando la demanda previa a fin de año sube ~15%.",
+      "tldr": "Hormuz, Bab el-Mandeb, Suez y Panamá dejaron de ser eventos aislados: es un solo sistema bajo estrés",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "Un carguero pagó más de <strong>US$5 millones</strong> por un solo turno de tránsito en el Canal de Panamá, superando ofertas previas de US$4M. La disrupción en el estrecho de <strong>Hormuz</strong> elevó el tránsito diario por Panamá ~17% desde que empezó el conflicto con Irán.",
+      "contexto": "El Canal reducirá tránsitos diarios a 32-34 buques en septiembre por la sequía del Niño, justo cuando la demanda de contenedores previa a fin de año sube ~15%. El flete de un contenedor de 40 pies de China a la costa oeste de EE.UU. casi se cuadruplicó en un año, a US$7.848. En paralelo, las importaciones asiáticas de GNL caen a un mínimo de 8 años mientras Europa acelera compras antes del invierno, replicando el patrón de la crisis post-invasión rusa de 2022.",
       "impacto": [
-        {"asset": "Avícola", "dir": "↑ 3,3%", "cls": "up"},
-        {"asset": "Consumo masivo", "dir": "↓ (9º mes)", "cls": "dn"}
+        {"asset": "Prima tránsito Panamá", "dir": "US$5M+", "cls": "up"},
+        {"asset": "Flete contenedor (Asia-EE.UU.)", "dir": "US$7.848", "cls": "up"}
       ]
     },
     {
       "id": 5,
-      "tag": "Comercio · Geopolítica",
-      "tag_class": "ta",
-      "title": "Washington y Beijing negocian recortar aranceles a energía y agro antes de la cumbre Trump-Xi del 24/9",
-      "brief": "Bessent se reúne esta semana con el viceprimer ministro chino He Lifeng en Nueva York; el mercado no debería descontar avances sustantivos dada la fragilidad del vínculo bilateral.",
-      "tldr": "Tensiones por Taiwán ya llevaron a Xi a amenazar con cancelar la cumbre",
+      "tag": "LatAm · Bancos Centrales",
+      "tag_class": "tb",
+      "title": "El Copom de Brasil baja la Selic a 13,75% sin dar señales sobre próximos pasos",
+      "brief": "El banco central brasileño recortó 25pb en la misma jornada de la suba de la Fed, sin forward guidance, en medio de riesgos electorales y globales de cara a octubre.",
+      "tldr": "El resultado de la elección de octubre en Brasil es hoy la variable que más pesa sobre la Selic y el real",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "Washington y Beijing negocian recortar aranceles a <strong>energía</strong> y productos <strong>agrícolas</strong> antes de la cumbre de líderes del <strong>24 de septiembre</strong>, con el secretario del Tesoro Bessent reuniéndose esta semana con el viceprimer ministro chino He Lifeng en Nueva York.",
-      "contexto": "El acuerdo de octubre pasado sobre tierras raras ya se diluyó y tensiones recientes por Taiwán llevaron a Xi a amenazar con cancelar el encuentro. El nudo real pasa por si China limita la &ldquo;destilación&rdquo; de modelos de IA estadounidenses a cambio de flexibilizar controles de exportación de semiconductores; el mercado no debería descontar avances sustantivos.",
+      "evento": "El Copom llevó la Selic a <strong>13,75%</strong> el miércoles, recortando 25pb sin dar señales sobre los próximos pasos, en la misma jornada en que la Fed subía su tasa en EE.UU.",
+      "contexto": "El mercado sigue dividido sobre los movimientos de noviembre y diciembre; el resultado electoral de octubre en Brasil es hoy la variable que más pesa sobre la proyección de tasas y del real para 2027. El salto de tasas de la Fed ya golpeó a otras monedas de la región: el peso chileno saltó más de $4 hasta los $961.",
       "impacto": [
-        {"asset": "CSI 300", "dir": "↑ 0,64%", "cls": "up"},
-        {"asset": "BIST 100", "dir": "↓ 3,94%", "cls": "dn"}
+        {"asset": "Selic", "dir": "13,75%", "cls": "dn"},
+        {"asset": "Peso chileno", "dir": "↑ a $961", "cls": "dn"}
       ]
     }
   ],
   "tensiones": [
-    {"label": "Fed hawkish vs. Casa Blanca", "texto": "Warsh enfrenta su primera prueba de independencia: el mercado asigna 90% de probabilidad a una suba de 25 pb hoy, justo cuando Trump presiona públicamente por bajar el costo de financiamiento."},
-    {"label": "Hormuz: ventana de bloqueo naval", "texto": "La Marina de EE.UU. advierte que solo le quedan unos seis meses de capacidad de bloqueo en el estrecho antes de problemas de mantenimiento, mientras los hutíes avanzan sobre puntos clave del Mar Rojo."},
-    {"label": "Presupuesto 2027 vs. inflación real", "texto": "El supuesto oficial de 18% de inflación para 2027 convive con una aceleración de precios de alimentos en septiembre y un consumo masivo que cae por noveno mes consecutivo."},
-    {"label": "Meta fiscal 2026 en duda", "texto": "El propio FMI admite que el Gobierno no cumplirá la meta fiscal 2026, en la previa de la misión técnica que llega a Buenos Aires el 21 de septiembre para la tercera revisión del programa."}
+    {"label": "Fed hawkish de fondo, mercado festeja el alivio", "texto": "El voto unánime y la tasa neutral estimada en 3,2% (máxima en una década) conviven con un rally de alivio en acciones; el mercado ya debate si es un ajuste fino al estilo Greenspan 1997 o el inicio de un ciclo más largo de subas."},
+    {"label": "Argentina no acompaña el rally global", "texto": "Pese al alivio post-Fed en el mundo, las acciones argentinas cayeron hasta 5% en Wall Street y el riesgo país subió a 510 pb, mostrando que el ajuste hawkish de la Fed pega distinto en emergentes con fundamentals más débiles."},
+    {"label": "BCRA: reservas cortan la racha negativa, pero el ritmo de compra sigue en mínimos", "texto": "El stock subió US$47M tras siete ruedas a la baja, pero el ritmo de compras cayó a menos de US$200M en la primera quincena de septiembre —el más bajo del año— justo antes de la misión del FMI del 21/9."},
+    {"label": "Cuellos de botella marítimos interconectados", "texto": "La prima de tránsito por Panamá superó los US$5M por buque por la disrupción en Hormuz, mientras el Canal reduce tránsitos por sequía justo cuando la demanda de fin de año sube ~15%."}
   ],
   "correlaciones": [
-    {"par": "Petróleo (Brent) vs. riesgo país argentino", "texto": "El salto del Brent por encima de US$107 tras el cierre del oleoducto saudita coincidió con el riesgo país argentino subiendo 16 pb a 506, mostrando cómo el shock energético golpea primero a los emergentes."},
-    {"par": "UST 10Y vs. oro y plata", "texto": "Aun con los rendimientos retrocediendo hoy desde el pico de 5,04% del martes, el oro (+0,98%) y la plata (+1,83%) siguen firmes como refugio en la previa de una Fed que podría iniciar un nuevo ciclo de subas."},
-    {"par": "Reservas BCRA vs. riesgo país", "texto": "La mayor caída diaria de reservas del mes (-US$458M, a US$49.953M) coincidió con el riesgo país perforando otra vez los 500 puntos, reflejando la fragilidad del esquema cambiario en la previa de la revisión del FMI."}
+    {"par": "VIX vs. futuros de EE.UU.", "texto": "El desplome del VIX (-9,03%) coincidió con la suba de los futuros del Nasdaq (+1,06%) y el S&P 500 (+0,80%), el patrón típico de alivio post-decisión de tasas cuando el resultado ya estaba descontado."},
+    {"par": "UST 10Y vs. oro", "texto": "Pese a que el 10 años retrocede a 4,99% desde el máximo de 19 años, el oro cae 0,85% a US$4.350, arrastrado por el salto del dólar (DXY en 100,20, máximo de siete semanas) más que por el alivio en tasas."},
+    {"par": "Riesgo país argentino vs. Selic brasileña", "texto": "Mientras el Copom recortó la Selic a 13,75% en la misma jornada de la suba de la Fed, el riesgo país argentino subió a 510 pb, mostrando la divergencia de percepción de riesgo entre los dos mayores mercados de la región."}
   ],
-  "bottom_line": "Hoy es un día bisagra: la Fed define a las 14:00 ET si sube la tasa por primera vez en tres años (90% de probabilidad de +25 pb), con los rendimientos y el VIX ya retrocediendo desde el pico del martes pero el petróleo todavía elevado por el cierre del oleoducto saudita y el avance hutí en el Mar Rojo. Para Argentina, el Gobierno presentó un Presupuesto 2027 con dólar a $1.850 e inflación de 18% el mismo día en que el riesgo país volvió a superar los <strong>500 puntos (506, +16 pb)</strong> y las reservas del BCRA perforaron los <strong>US$50.000 millones</strong> tras su mayor caída diaria del mes. Con el FMI ya anticipando el incumplimiento de la meta fiscal 2026 y su misión llegando el 21/9, el mercado local debería operar con cautela hasta conocerse la decisión de la Fed esta tarde."
+  "bottom_line": "La jornada post-Fed es de alivio generalizado: la suba de tasas, al ser unánime y esperada, despejó la incertidumbre que pesaba sobre acciones y bonos, y el retroceso del petróleo bajo los US$100 suma un segundo alivio simultáneo. Pero el mensaje de fondo sigue siendo hawkish —tasa neutral en máximos de una década y más subas en el horizonte— y ese contraste es justamente lo que golpea a Argentina: las acciones cayeron hasta 5% en Wall Street y el riesgo país volvió a subir a <strong>510 puntos</strong>, incluso con las reservas del BCRA cortando una racha negativa de siete ruedas. Con el ritmo de compra de dólares en mínimos del año y la misión del FMI llegando el <strong>21 de septiembre</strong> para la tercera revisión, el mercado local debería seguir de cerca si la Fed insinúa otra suba en octubre, ya que eso presionaría aún más sobre un esquema cambiario que el propio BCRA describe como &ldquo;pequeño y poco profundo&rdquo;."
 }
