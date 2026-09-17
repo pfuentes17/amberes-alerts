@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riesgo | Amberes</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080c12;--s:#0d1420;--s2:#111827;--bdr:#1f2d40;--bdr2:#2d4060;--txt:#c9d8e8;--mu:#4a6080;--dim:#2a3f55;--accent:#f59e0b;--cy:#06b6d4;--up:#22d3a0;--gr:#22d3a0;--am:#f59e0b;--rd:#f87171;--or:#fb923c;--pu:#8b5cf6;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:'IBM Plex Sans',sans-serif;font-size:13px;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(245,158,11,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,.015) 1px,transparent 1px);background-size:48px 48px;}
+.top-nav{position:sticky;top:0;z-index:200;background:#1e1e22;border-bottom:3px solid var(--accent);display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:58px;}
+.amb-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.amb-wordmark{font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;}
+.amb-divider{width:1px;height:16px;background:rgba(255,255,255,.2);margin:0 6px;}
+.amb-section{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);}
+.subnav{background:#1e1e22;border-bottom:1px solid rgba(255,255,255,.08);padding:0 24px;display:flex;align-items:center;gap:5px;height:36px;position:sticky;top:58px;z-index:190;overflow-x:auto;scrollbar-width:none;}
+.subnav::-webkit-scrollbar{display:none;}
+.subnav-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-right:6px;white-space:nowrap;flex-shrink:0;}
+.snav-link{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.03em;color:rgba(255,255,255,.55);text-decoration:none;padding:4px 10px;border-radius:4px;white-space:nowrap;transition:all .15s;flex-shrink:0;}
+.snav-link:hover{color:#fff;background:rgba(255,255,255,.1);}
+.snav-link.active{color:#fff;background:rgba(255,255,255,.13);border-bottom:2px solid rgba(255,255,255,.7);}
+.nav-back{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.4);text-decoration:none;border:1px solid rgba(255,255,255,.12);border-radius:5px;padding:4px 10px;white-space:nowrap;transition:all .15s;}
+.nav-back:hover{color:#fff;border-color:rgba(255,255,255,.3);}
+.page{position:relative;z-index:1;max-width:1400px;margin:0 auto;padding:22px 28px 80px;}
+/* HEADER */
+.hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:6px;}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.15em;color:var(--mu);margin-bottom:6px;}
+h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
+.hdr-meta{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);text-align:right;line-height:1.7;}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block;vertical-align:middle;margin-right:4px;}
+.dot.live{background:var(--gr);box-shadow:0 0 8px var(--gr);}
+.dot.seed{background:var(--am);}
+/* META BAR */
+.meta-bar{display:flex;gap:8px;margin:14px 0 22px;flex-wrap:wrap;}
+.mbk{background:var(--s);border:1px solid var(--bdr);border-radius:8px;padding:10px 16px;flex:1;min-width:130px;}
+.mbk-l{font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.12em;color:var(--mu);margin-bottom:4px;}
+.mbk-v{font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:#e8f0f8;}
+.mbk-s{font-size:10px;color:var(--mu);margin-top:2px;font-family:'IBM Plex Mono',monospace;}
+/* BLOQUES */
+.bloques{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.bloque{background:var(--s);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;}
+.bloque-hdr{display:flex;align-items:center;gap:10px;padding:14px 18px 12px;border-bottom:1px solid var(--bdr);}
+.bloque-icon{font-size:16px;}
+.bloque-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;}
+.bloque-badge{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:20px;border:1px solid;}
+.bloque-body{padding:16px 18px;}
+/* MÉTRICAS */
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.metrics.m2{grid-template-columns:repeat(2,1fr);}
+.metrics.m4{grid-template-columns:repeat(4,1fr);}
+.metric{background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:10px 12px;}
+.metric-l{font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:4px;}
+.metric-v{font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:600;}
+.metric-s{font-size:10px;color:var(--mu);margin-top:3px;font-family:'IBM Plex Mono',monospace;}
+.metric.accent-cy{border-left:3px solid var(--cy);}
+.metric.accent-gr{border-left:3px solid var(--gr);}
+.metric.accent-am{border-left:3px solid var(--am);}
+.metric.accent-rd{border-left:3px solid var(--rd);}
+.metric.accent-or{border-left:3px solid var(--or);}
+.metric.accent-pu{border-left:3px solid var(--pu);}
+/* STRESS */
+.stress-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;}
+.stress-row{background:var(--s2);border:1px solid var(--bdr);border-radius:7px;padding:9px 12px;display:flex;justify-content:space-between;align-items:center;}
+.stress-label{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;}
+.stress-val{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;}
+.stress-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);}
+/* CONCENTRACIÓN */
+.conc-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--bdr);}
+.conc-row:last-child{border-bottom:none;}
+.conc-ticker{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#e8f0f8;width:58px;flex-shrink:0;}
+.conc-nombre{font-size:11px;color:var(--mu);flex:1;}
+.conc-pct{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:var(--cy);width:42px;text-align:right;flex-shrink:0;}
+.conc-bar-wrap{width:80px;flex-shrink:0;}
+.conc-bar{height:4px;background:rgba(6,182,212,.2);border-radius:2px;overflow:hidden;}
+.conc-bar-fill{height:100%;background:var(--cy);border-radius:2px;}
+/* DONUT */
+.donut-wrap{display:flex;gap:16px;align-items:center;margin-top:12px;}
+.donut-legend{flex:1;display:flex;flex-direction:column;gap:7px;}
+.donut-leg-row{display:flex;align-items:center;gap:7px;}
+.donut-leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.donut-leg-label{font-size:11px;color:var(--txt);flex:1;}
+.donut-leg-pct{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:#e8f0f8;}
+/* SEPARADOR FULL */
+.full-bloque{background:var(--s);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+/* ALERT BADGE */
+.alert-bar{background:rgba(248,113,113,.07);border:1px solid rgba(248,113,113,.3);border-radius:8px;padding:10px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--rd);}
+.ok-bar{background:rgba(34,211,160,.07);border:1px solid rgba(34,211,160,.25);border-radius:8px;padding:10px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gr);}
+.loading{text-align:center;padding:80px 20px;font-family:'IBM Plex Mono',monospace;color:var(--mu);font-size:12px;}
+.error-msg{text-align:center;padding:80px 20px;font-family:'IBM Plex Mono',monospace;color:var(--rd);font-size:12px;}
+@media(max-width:900px){.bloques{grid-template-columns:1fr;}.metrics.m4{grid-template-columns:repeat(2,1fr);}.metrics{grid-template-columns:repeat(2,1fr);}}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="/" class="amb-logo">
+    <span class="amb-wordmark">Amberes</span>
+    <span class="amb-divider"></span>
+    <span class="amb-section">Risk</span>
+  </a>
+  <a href="/" class="nav-back">← Inicio</a>
+</nav>
+
+<div class="subnav">
+  <span class="subnav-label">Módulos</span>
+  <a href="/" class="snav-link">🏠 Inicio</a>
+  <a href="/arg.html" class="snav-link">🇦🇷 Argentina</a>
+  <a href="/agro.html" class="snav-link">📦 Commodities</a>
+  <a href="/gestion.html" class="snav-link">📊 Gestión</a>
+  <a href="/confianza.html" class="snav-link">🔵 Confianza</a>
+  <a href="/macro.html" class="snav-link">🌍 Macro Global</a>
+  <a href="/tc.html" class="snav-link">💱 Tipo de Cambio</a>
+  <a href="/bonos.html" class="snav-link">📈 Bonos</a>
+  <a href="/riesgo.html" class="snav-link active">🛡 Riesgo</a>
+</div>
+
+<div class="page">
+  <div id="loading" class="loading">Cargando auditoría de riesgo...</div>
+  <div id="main" style="display:none">
+    <div class="hdr">
+      <div>
+        <div class="eyebrow">Cartera Consolidada</div>
+        <h1>Auditoría CRO — Riesgo Interno</h1>
+      </div>
+      <div class="hdr-meta" id="hdr-meta"></div>
+    </div>
+
+    <div class="meta-bar" id="meta-bar"></div>
+
+    <div id="alertas"></div>
+
+    <div class="bloques">
+      <!-- B1 Renta Fija -->
+      <div class="bloque">
+        <div class="bloque-hdr">
+          <span class="bloque-icon">📐</span>
+          <span class="bloque-title" style="color:var(--cy)">B1 — Sensibilidad Renta Fija</span>
+          <span class="bloque-badge" id="b1-badge" style="color:var(--cy);border-color:rgba(6,182,212,.3)"></span>
+        </div>
+        <div class="bloque-body">
+          <div class="metrics m4" id="b1-metrics"></div>
+          <div class="stress-grid" id="b1-stress" style="margin-top:12px"></div>
+        </div>
+      </div>
+
+      <!-- B2 Estadístico -->
+      <div class="bloque">
+        <div class="bloque-hdr">
+          <span class="bloque-icon">📉</span>
+          <span class="bloque-title" style="color:var(--gr)">B2 — Riesgo Estadístico</span>
+          <span class="bloque-badge" id="b2-badge" style="color:var(--gr);border-color:rgba(34,211,160,.3)"></span>
+        </div>
+        <div class="bloque-body">
+          <div class="metrics m4" id="b2-metrics"></div>
+        </div>
+      </div>
+
+      <!-- B3 Tail Risk -->
+      <div class="bloque">
+        <div class="bloque-hdr">
+          <span class="bloque-icon">⚠️</span>
+          <span class="bloque-title" style="color:var(--rd)">B3 — Tail Risk & Stress Tests</span>
+          <span class="bloque-badge" id="b3-badge" style="color:var(--rd);border-color:rgba(248,113,113,.3)"></span>
+        </div>
+        <div class="bloque-body">
+          <div class="metrics m4" id="b3-metrics"></div>
+          <div style="margin-top:12px">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:8px;">Stress Tests</div>
+            <div class="stress-grid" id="b3-stress"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- B4 Concentración -->
+      <div class="bloque">
+        <div class="bloque-hdr">
+          <span class="bloque-icon">🧩</span>
+          <span class="bloque-title" style="color:var(--am)">B4 — Concentración & Liquidez</span>
+          <span class="bloque-badge" id="b4-badge" style="color:var(--am);border-color:rgba(245,158,11,.3)"></span>
+        </div>
+        <div class="bloque-body">
+          <div class="metrics m4" id="b4-metrics" style="margin-bottom:14px"></div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:8px;">Top 5 Instrumentos</div>
+          <div id="b4-top5"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Breakdown por tipo -->
+    <div class="full-bloque">
+      <div class="bloque-hdr">
+        <span class="bloque-icon">🗂</span>
+        <span class="bloque-title" style="color:var(--or)">Exposición por Tipo de Activo</span>
+      </div>
+      <div class="bloque-body" style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
+        <canvas id="donut-chart" width="160" height="160" style="flex-shrink:0"></canvas>
+        <div class="donut-legend" id="donut-legend"></div>
+        <div class="metrics" style="flex:1;min-width:250px;margin-top:0" id="tipo-metrics"></div>
+      </div>
+    </div>
+
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);text-align:center;margin-top:24px;line-height:1.9;" id="footnote"></div>
+  </div>
+  <div id="err" class="error-msg" style="display:none"></div>
+</div>
+
+<script>
+const COLORS = ['#06b6d4','#22d3a0','#f59e0b','#8b5cf6','#fb923c','#f87171','#a3e635','#ec4899'];
+
+function pct(v,dec=1){return(v*100).toFixed(dec)+'%'}
+function usd(v){return'$'+Math.round(v).toLocaleString('es-AR')}
+function fmt(v,type){
+  if(type==='pct')  return pct(v);
+  if(type==='pct2') return pct(v,2);
+  if(type==='usd')  return usd(v);
+  if(type==='años') return v.toFixed(2)+' años';
+  if(type==='bn')   return 'ARS '+v.toFixed(3)+' bn';
+  if(type==='m')    return 'USD '+v.toFixed(2)+'M';
+  if(type==='num')  return v.toFixed(2);
+  return v;
+}
+
+function colorFor(v, good='up', bad='rd', warn='am', thr=0){
+  if(v>thr) return good==='up'?'var(--up)':('var(--'+good+')');
+  return 'var(--'+bad+')';
+}
+
+function metric(label, val, sub, accentClass, color){
+  return `<div class="metric ${accentClass||''}">
+    <div class="metric-l">${label}</div>
+    <div class="metric-v" style="color:${color||'#e8f0f8'}">${val}</div>
+    ${sub?`<div class="metric-s">${sub}</div>`:''}
+  </div>`;
+}
+
+function stressRow(label, val, sub, isGood){
+  const col = isGood ? 'var(--gr)' : 'var(--rd)';
+  return `<div class="stress-row">
+    <div><div class="stress-label">${label}</div><div class="stress-sub">${sub||''}</div></div>
+    <div class="stress-val" style="color:${col}">${val}</div>
+  </div>`;
+}
+
+async function load(){
+  try {
+    const r = await fetch('/api/riesgo');
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const d = await r.json();
+    render(d);
+  } catch(e){
+    document.getElementById('loading').style.display='none';
+    document.getElementById('err').style.display='block';
+    document.getElementById('err').textContent='No se pudieron cargar los datos: '+e.message;
+  }
+}
+
+function render(d){
+  const {meta, b1_renta_fija:b1, b2_estadistico:b2, b3_tail_risk:b3, b4_concentracion:b4} = d;
+
+  // Header meta
+  document.getElementById('hdr-meta').innerHTML =
+    `<div><span class="dot ${meta.ccl_fuente?'live':'seed'}"></span>${meta.ccl_fuente||'Seed'}</div>` +
+    `<div>Actualizado: <b>${meta.fecha}</b></div>` +
+    `<div>${meta.clientes} clientes · ${meta.instrumentos} instrumentos</div>`;
+
+  // Meta bar
+  document.getElementById('meta-bar').innerHTML = [
+    ['Total ARS', fmt(meta.total_ars_bn,'bn'), meta.clientes+' clientes'],
+    ['Total USD', fmt(meta.total_usd_m,'m'), 'MEP/Cable'],
+    ['CCL', '$'+meta.ccl.toLocaleString('es-AR'), meta.ccl_fuente||''],
+    ['Renta Fija', pct(b1.bonds_pct), 'del portafolio'],
+    ['Equity', pct(b2.equity_pct), 'del portafolio'],
+  ].map(([l,v,s])=>`<div class="mbk"><div class="mbk-l">${l}</div><div class="mbk-v">${v}</div><div class="mbk-s">${s}</div></div>`).join('');
+
+  // Alertas
+  const alertas = [];
+  if(b4.top1_pct > 0.08) alertas.push({tipo:'rd', txt:`⚠ Concentración: ${b4.top1_ticker} representa ${pct(b4.top1_pct)} del portafolio (umbral 8%)`});
+  if(b2.beta_sp500 > 1.0) alertas.push({tipo:'am', txt:`⚠ Beta S&P500 alta: ${b2.beta_sp500.toFixed(2)} — portafolio amplifica movimientos del mercado global`});
+  if(b3.var99_param < -0.05) alertas.push({tipo:'rd', txt:`⚠ VaR 99% negativo (${pct(b3.var99_param)}) — escenario de pérdida material ante shocks`});
+  if(alertas.length === 0) alertas.push({tipo:'gr', txt:'✓ Sin alertas críticas de concentración ni riesgo de cola en este período'});
+  document.getElementById('alertas').innerHTML = alertas.map(a=>
+    `<div class="${a.tipo==='gr'?'ok-bar':'alert-bar'}">${a.txt}</div>`
+  ).join('');
+
+  // B1 — Renta Fija
+  document.getElementById('b1-badge').textContent = pct(b1.bonds_pct)+' portafolio';
+  document.getElementById('b1-metrics').innerHTML = [
+    metric('YTM pond.',pct(b1.ytm_ponderada),'anualizada','accent-cy','var(--cy)'),
+    metric('Duration Mod.',fmt(b1.duration_mod,'años'),'modified','accent-cy','#e8f0f8'),
+    metric('DV01',usd(b1.dv01_usd),'por bp·USD','accent-am','var(--am)'),
+    metric('WAL',b1.wal.toFixed(1)+' años','vida prom.','accent-cy','#e8f0f8'),
+  ].join('');
+  document.getElementById('b1-stress').innerHTML = [
+    stressRow('+100 bps','USD '+Math.round(Math.abs(b1.pl_100bp_usd)).toLocaleString(),'P&L USD', false),
+    stressRow('+400 bps','USD '+Math.round(Math.abs(b1.pl_400bp_usd)).toLocaleString(),'P&L USD stress', false),
+  ].join('');
+
+  // B2 — Estadístico
+  document.getElementById('b2-badge').textContent = 'Yahoo Finance 252d';
+  const sharpeCol = b2.sharpe>0.8?'var(--gr)':b2.sharpe>0.4?'var(--am)':'var(--rd)';
+  document.getElementById('b2-metrics').innerHTML = [
+    metric('β S&P500',b2.beta_sp500.toFixed(2),'252 días','accent-gr',b2.beta_sp500>1.2?'var(--rd)':b2.beta_sp500>0.8?'var(--am)':'var(--gr)'),
+    metric('β Merval',b2.beta_merval.toFixed(2),'252 días','accent-gr','#e8f0f8'),
+    metric('σ Portfolio',pct(b2.vol_portfolio),'anualizada','accent-or',b2.vol_portfolio>0.2?'var(--rd)':b2.vol_portfolio>0.12?'var(--am)':'var(--gr)'),
+    metric('Sharpe est.',b2.sharpe.toFixed(2),'Rf ARS 28%','accent-gr',sharpeCol),
+  ].join('');
+
+  // B3 — Tail Risk
+  document.getElementById('b3-badge').textContent = 'Paramétrico';
+  const varCol = b3.var99_param < -0.03 ? 'var(--rd)' : b3.var99_param < 0 ? 'var(--am)' : 'var(--gr)';
+  document.getElementById('b3-metrics').innerHTML = [
+    metric('VaR 95%',pct(b3.var95_param),'1 año','accent-rd',b3.var95_param<0?'var(--rd)':'var(--gr)'),
+    metric('VaR 99%',pct(b3.var99_param),'1 año','accent-rd',varCol),
+    metric('CVaR 95%',pct(b3.cvar95),'Expected Shortfall','accent-rd',b3.cvar95<0?'var(--rd)':'var(--gr)'),
+    metric('σ Equity',pct(b2.vol_equity),'anualizada','accent-or','var(--am)'),
+  ].join('');
+  document.getElementById('b3-stress').innerHTML = [
+    stressRow('Riesgo País +400bp', pct(b3.stress_rp400_pct), 'ARS '+(b3.stress_rp400_ars_m<0?'-':'')+Math.abs(b3.stress_rp400_ars_m)+'M', b3.stress_rp400_pct>0),
+    stressRow('CCL +20%',           pct(b3.stress_ccl20_pct), 'ARS +'+Math.abs(b3.stress_ccl20_ars_m)+'M', b3.stress_ccl20_pct>0),
+    stressRow('RV Global -10%',     pct(b3.stress_rv10_pct),  'ARS '+(b3.stress_rv10_ars_m<0?'-':'')+Math.abs(b3.stress_rv10_ars_m)+'M', b3.stress_rv10_pct>0),
+    stressRow('Sortino',            b2.sortino.toFixed(2),     'vs Rf ARS', b2.sortino>0.7),
+  ].join('');
+
+  // B4 — Concentración
+  document.getElementById('b4-badge').textContent = 'HHI · Eff N';
+  const hhiCol = b4.hhi > 0.1 ? 'var(--rd)' : b4.hhi > 0.06 ? 'var(--am)' : 'var(--gr)';
+  document.getElementById('b4-metrics').innerHTML = [
+    metric('HHI', b4.hhi.toFixed(4), b4.hhi<0.1?'Diversificado':'Concentrado', 'accent-am', hhiCol),
+    metric('Eff N', b4.eff_n.toFixed(1)+' apuestas', 'por peso', 'accent-am', '#e8f0f8'),
+    metric('Liq A', pct(b4.liq_a_pct), 'alta liquidez', 'accent-gr', 'var(--gr)'),
+    metric('Exp USD', pct(b4.usd_exposure_pct), 'exposición dólar', 'accent-cy', 'var(--cy)'),
+  ].join('');
+  const maxPct = Math.max(...b4.top5.map(x=>x.pct));
+  document.getElementById('b4-top5').innerHTML = b4.top5.map(x=>`
+    <div class="conc-row">
+      <span class="conc-ticker">${x.ticker}</span>
+      <span class="conc-nombre">${x.nombre}</span>
+      <span class="conc-pct">${pct(x.pct)}</span>
+      <div class="conc-bar-wrap"><div class="conc-bar"><div class="conc-bar-fill" style="width:${(x.pct/maxPct*100).toFixed(0)}%"></div></div></div>
+    </div>`).join('');
+
+  // Donut + leyenda
+  if(d.b4_concentracion.por_tipo){
+    const tipos = d.b4_concentracion.por_tipo;
+    const canvas = document.getElementById('donut-chart');
+    const ctx = canvas.getContext('2d');
+    const total = tipos.reduce((a,t)=>a+t.pct,0);
+    let start = -Math.PI/2;
+    const R=72, r=44, cx=80, cy=80;
+    ctx.clearRect(0,0,160,160);
+    tipos.forEach((t,i)=>{
+      const angle = (t.pct/total)*Math.PI*2;
+      ctx.beginPath(); ctx.moveTo(cx,cy);
+      ctx.arc(cx,cy,R,start,start+angle);
+      ctx.closePath(); ctx.fillStyle=COLORS[i%COLORS.length]; ctx.fill();
+      start+=angle;
+    });
+    ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2);
+    ctx.fillStyle='#0d1420'; ctx.fill();
+    ctx.font='600 13px IBM Plex Mono,monospace'; ctx.fillStyle='#e8f0f8'; ctx.textAlign='center';
+    ctx.fillText(tipos[0]?.tipo?.split(' ')[0]||'', cx, cy-6);
+    ctx.font='400 10px IBM Plex Mono,monospace'; ctx.fillStyle='#4a6080';
+    ctx.fillText(pct(tipos[0]?.pct||0), cx, cy+10);
+
+    document.getElementById('donut-legend').innerHTML = tipos.map((t,i)=>`
+      <div class="donut-leg-row">
+        <div class="donut-leg-dot" style="background:${COLORS[i%COLORS.length]}"></div>
+        <span class="donut-leg-label">${t.tipo}</span>
+        <span class="donut-leg-pct">${pct(t.pct)}</span>
+      </div>`).join('');
+
+    document.getElementById('tipo-metrics').innerHTML = tipos.map((t,i)=>
+      metric(t.tipo, pct(t.pct), 'del portafolio', '', COLORS[i%COLORS.length])
+    ).join('');
+  }
+
+  // Footnote
+  document.getElementById('footnote').textContent =
+    `Fuentes: YTM/MD — amberes-alerts.vercel.app/bonos.html (Playwright) · Vol/Beta — Yahoo Finance 252 días · CCL — ${meta.ccl_fuente||'GGAL'} · Actualización automática: lunes 8:00 AM`;
+
+  document.getElementById('loading').style.display='none';
+  document.getElementById('main').style.display='block';
+}
+
+load();
+</script>
+</body>
+</html>

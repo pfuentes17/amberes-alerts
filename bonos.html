@@ -182,7 +182,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   </a>
   <a href="/" class="nav-back">← Inicio</a>
 </nav>
-<div class="subnav"><span class="subnav-label">Módulos</span><a href="/" class="snav-link">🏠 Inicio</a><a href="/arg.html" class="snav-link">🇦🇷 Argentina</a><a href="/agro.html" class="snav-link">📦 Commodities</a><a href="/gestion.html" class="snav-link">📊 Gestión</a><a href="/confianza.html" class="snav-link">🔵 Confianza</a><a href="/macro.html" class="snav-link">🌍 Macro Global</a><a href="/tc.html" class="snav-link">💱 Tipo de Cambio</a><a href="/bonos.html" class="snav-link active">📈 Bonos</a></div>
+<div class="subnav"><span class="subnav-label">Módulos</span><a href="/" class="snav-link">🏠 Inicio</a><a href="/arg.html" class="snav-link">🇦🇷 Argentina</a><a href="/agro.html" class="snav-link">📦 Commodities</a><a href="/gestion.html" class="snav-link">📊 Gestión</a><a href="/confianza.html" class="snav-link">🔵 Confianza</a><a href="/macro.html" class="snav-link">🌍 Macro Global</a><a href="/tc.html" class="snav-link">💱 Tipo de Cambio</a><a href="/bonos.html" class="snav-link active">📈 Bonos</a><a href="/riesgo.html" class="snav-link">🛡 Riesgo</a></div>
 <div class="page">
 
 <!-- TABS -->
@@ -1207,21 +1207,22 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
 
 <script>
 // ═══════════════════════════════════════════════════════════════
-//  DATOS EMBEBIDOS — 08/07/2026 09:15 hs — rendimientos.co
+//  DATOS EMBEBIDOS (fallback si falla el primer fetch en vivo) — 17/09/2026 12:50 hs — data912
+//  TEM/TNA/TEA recalculados desde VF_MAP + precio, misma fórmula que tfRefresh().
 // ═══════════════════════════════════════════════════════════════
-const SEED_TS = '08/07/2026 09:15';
+const SEED_TS = '17/09/2026 12:50';
 const SEED_TF = [
   // S17L6/S31L6/S14G6/S31G6 vencieron (jul-ago 2026), removidos 15/09/2026 (audit bonos.html).
-  {symbol:'S16O6',price:103.32, tem:1.83,tna:22.3,tea:24.7,dtm:31, type:'LECAP'},
-  {symbol:'S29E7',price:101.95, tem:2.03,tna:25.6,tea:27.7,dtm:136,type:'LECAP'},
-  {symbol:'S30S6',price:111.63, tem:1.84,tna:22.8,tea:24.4,dtm:84, type:'LECAP'},
-  {symbol:'S30O6',price:126.11, tem:1.82,tna:22.6,tea:24.2,dtm:114,type:'LECAP'},
-  {symbol:'S30N6',price:118.94, tem:1.82,tna:22.6,tea:24.2,dtm:145,type:'LECAP'},
-  {symbol:'S13N6',price:104.60, tem:1.82,tna:22.6,tea:24.2,dtm:128,type:'LECAP'},
-  {symbol:'T15E7',price:143.12, tem:1.82,tna:22.6,tea:24.2,dtm:191,type:'BONCAP'},
-  {symbol:'T30A7',price:131.16, tem:1.80,tna:22.4,tea:23.9,dtm:296,type:'BONCAP'},
-  {symbol:'T31Y7',price:123.73, tem:1.80,tna:22.4,tea:23.9,dtm:327,type:'BONCAP'},
-  {symbol:'T30J7',price:124.86, tem:1.80,tna:22.4,tea:23.9,dtm:357,type:'BONCAP'},
+  {symbol:'S16O6',price:103.32, tem:1.96,tna:23.8,tea:26.6,dtm:29, type:'LECAP'},
+  {symbol:'S29E7',price:101.95, tem:2.06,tna:26.0,tea:28.2,dtm:134,type:'LECAP'},
+  {symbol:'S30S6',price:116.70, tem:1.69,tna:20.5,tea:22.6,dtm:13, type:'LECAP'},
+  {symbol:'S30O6',price:132.12, tem:1.65,tna:20.1,tea:22.0,dtm:43, type:'LECAP'},
+  {symbol:'S30N6',price:123.88, tem:1.94,tna:24.0,tea:26.4,dtm:74, type:'LECAP'},
+  {symbol:'S13N6',price:105.76, tem:1.92,tna:23.6,tea:26.1,dtm:57, type:'LECAP'},
+  {symbol:'T15E7',price:149.04, tem:1.96,tna:24.5,tea:26.6,dtm:120,type:'BONCAP'},
+  {symbol:'T30A7',price:134.71, tem:2.09,tna:27.2,tea:28.6,dtm:225,type:'BONCAP'},
+  {symbol:'T31Y7',price:126.70, tem:2.12,tna:27.9,tea:29.0,dtm:256,type:'BONCAP'},
+  {symbol:'T30J7',price:128.00, tem:2.10,tna:27.9,tea:28.7,dtm:286,type:'BONCAP'},
 ];
 // S16O6/S29E7 VF calculado 15/09/2026 con la fórmula OFICIAL de la Secretaría de Finanzas
 // (Resoluciones Conjuntas 46/2026 y 52/2026): VPV = VNO×(1+Tm)^(DIAS/30), DIAS en base 30/360
@@ -1940,7 +1941,7 @@ async function tfRefresh(){
     tfRender(enriched);
     setStatus('live','En vivo · '+now8());
   }catch(e){
-    setStatus('seed','⚠ Sin conexión · mostrando seed 29/05');
+    setStatus('seed','⚠ Sin conexión · mostrando datos de referencia');
   }
 }
 
@@ -2155,7 +2156,7 @@ async function cerRefresh(){
     document.getElementById('cer-lag').textContent='(seed)';
     document.getElementById('sim-cer-f').textContent=SEED_CER_IDX.fecha;
     cerRender(pm,SEED_CER_IDX.cer);
-    setStatus('seed','Seed 29/05');
+    setStatus('seed','Datos de referencia');
   }
 }
 
@@ -2665,7 +2666,7 @@ async function tmrRefresh(){
   }catch(e){
     tmrUpdateRateBox(SEED_TAMAR_RATE, SEED_TAMAR_TNA, '27/05/2026 (seed)');
     tmrRender(SEED_TMR_NOTES, SEED_TMR_BONDS, SEED_TAMAR_RATE);
-    setStatus('seed','Seed 29/05 · sin conexión');
+    setStatus('seed','Sin conexión · datos de referencia');
   }
 }
 
@@ -4098,17 +4099,33 @@ hdRenderAll(SEED_HD_SOB, SEED_HD_BP);
 dlRenderAll(SEED_DL_NOTES, SEED_DL_TC);
 // Se dispara con un pequeño delay para asegurar que cerRender ya corrió
 setTimeout(()=>{ try{ bkevRender(); }catch(e){} }, 200);
-setStatus('seed','Seed 29/05 (precios ref.) · actualizando…');
+setStatus('seed','Cargando datos en vivo…');
+
+// Reintenta una vez si la función serverless tarda en "despertar" (cold start de Vercel)
+// o la primera llamada falla — evita quedar pegado en SEED por más tiempo del necesario.
+async function fetchJsonRetry(url,timeoutMs=4000){
+  for(let attempt=0;attempt<2;attempt++){
+    try{
+      const ctrl=new AbortController();
+      const t=setTimeout(()=>ctrl.abort(),timeoutMs);
+      const r=await fetch(url,{signal:ctrl.signal});
+      clearTimeout(t);
+      return await r.json();
+    }catch(e){
+      if(attempt===1)throw e;
+    }
+  }
+}
 
 // 2. Intenta actualizar via proxy en segundo plano
 setTimeout(async()=>{
   try{
     const[tfRes,cerRes,notesRes,bondsRes,bcraRes]=await Promise.all([
-      fetch('/api/proxy?src=lecaps').then(r=>r.json()),
-      fetch('/api/proxy?src=cer-index').then(r=>r.json()),
-      fetch('/api/proxy?src=notes').then(r=>r.json()),
-      fetch('/api/proxy?src=bonds').then(r=>r.json()),
-      fetch('/api/proxy?src=bcra').then(r=>r.json()),
+      fetchJsonRetry('/api/proxy?src=lecaps'),
+      fetchJsonRetry('/api/proxy?src=cer-index'),
+      fetchJsonRetry('/api/proxy?src=notes'),
+      fetchJsonRetry('/api/proxy?src=bonds'),
+      fetchJsonRetry('/api/proxy?src=bcra'),
     ]);
     // TF — recalcular TEM desde precio y VF para que la regresión funcione
     const tfRaw=(tfRes.data||tfRes).filter(d=>TF_VTO[d.symbol]).map(d=>{
@@ -4153,7 +4170,7 @@ setTimeout(async()=>{
     }
     setStatus('live','En vivo · '+now8());
   }catch(e){
-    setStatus('seed','Seed 29/05 · sin conexión');
+    setStatus('seed','Sin conexión · datos de referencia');
   }
 },800);
 

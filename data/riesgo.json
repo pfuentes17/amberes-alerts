@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "fecha": "17/09/2026",
+    "fecha_iso": "20260917",
+    "clientes": 325,
+    "instrumentos": 177,
+    "total_ars_bn": 10.289,
+    "total_usd_m": 6.45,
+    "ccl": 1595,
+    "ccl_fuente": "GGAL.BA × 10 / GGAL (Yahoo Finance)",
+    "fuente_bonos": "amberes-alerts.vercel.app/bonos.html (Playwright)",
+    "fuente_equity": "Yahoo Finance 252 días"
+  },
+  "b1_renta_fija": {
+    "ytm_ponderada": 0.0785,
+    "duration_mod": 1.90,
+    "dv01_usd": 385,
+    "pl_100bp_usd": -38500,
+    "pl_400bp_usd": -154000,
+    "bonds_pct": 0.314,
+    "wal": 2.1
+  },
+  "b2_estadistico": {
+    "beta_sp500": 0.56,
+    "beta_merval": 0.33,
+    "vol_portfolio": 0.129,
+    "vol_equity": 0.22,
+    "sharpe": 0.48,
+    "sortino": 0.61,
+    "equity_pct": 0.459
+  },
+  "b3_tail_risk": {
+    "var95_param": 0.028,
+    "var99_param": -0.012,
+    "cvar95": -0.022,
+    "stress_rp400_pct": -0.046,
+    "stress_rp400_ars_m": -471,
+    "stress_ccl20_pct": 0.190,
+    "stress_ccl20_ars_m": 1959,
+    "stress_rv10_pct": -0.046,
+    "stress_rv10_ars_m": -473
+  },
+  "b4_concentracion": {
+    "hhi": 0.0463,
+    "eff_n": 21.6,
+    "top1_ticker": "GD30",
+    "top1_pct": 0.054,
+    "liq_a_pct": 0.838,
+    "usd_exposure_pct": 0.821,
+    "por_tipo": [
+      {"tipo": "CEDEARs", "pct": 0.459},
+      {"tipo": "Bonos USD", "pct": 0.235},
+      {"tipo": "Acciones", "pct": 0.103},
+      {"tipo": "Divisas", "pct": 0.099},
+      {"tipo": "Bonos ARS", "pct": 0.079},
+      {"tipo": "Liquidez", "pct": 0.025}
+    ],
+    "top5": [
+      {"ticker": "GD30", "nombre": "Global USD 2030", "pct": 0.054},
+      {"ticker": "AL30", "nombre": "Bono USD LA 2030", "pct": 0.047},
+      {"ticker": "GGAL", "nombre": "Galicia CEDEAR", "pct": 0.038},
+      {"ticker": "GD35", "nombre": "Global USD 2035", "pct": 0.035},
+      {"ticker": "MELI", "nombre": "MercadoLibre CEDEAR", "pct": 0.032}
+    ]
+  }
+}
