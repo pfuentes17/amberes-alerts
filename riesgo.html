@@ -543,15 +543,33 @@ async function render(d){
         ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,false)}<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-left:4px">${series.length}w</span></div>`:''}
       </div>`;
     },
-    // Sharpe
+    // Sharpe + Sortino
     () => {
-      const v = b2.sharpe; const series = hSeries('sharpe');
-      const col = v<0?'var(--rd)':v>0.8?'var(--gr)':'var(--am)';
+      const v = b2.sharpe;
+      const so = b2.sortino;
+      const series = hSeries('sharpe');
+      const col  = v<0?'var(--rd)':v>0.8?'var(--gr)':'var(--am)';
+      const soCol = so==null?'var(--mu)':so<0?'var(--rd)':so>1?'var(--gr)':'var(--am)';
+      // Sortino > Sharpe → más retornos positivos que negativos (downside vol < total vol)
+      const sortinoNote = so!=null && v>0
+        ? (so > v*1.15
+            ? `Sortino &gt; Sharpe: la volatilidad proviene mayoritariamente de días positivos.`
+            : `Sortino ≈ Sharpe: distribución de retornos relativamente simétrica.`)
+        : '';
       return `<div class="sc-card ${v<0?'warn':v>1?'ok':''}">
-        <div class="sc-label">Sharpe  ·  USD vs T-Bills 4%</div>
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${col};margin-bottom:4px">${v.toFixed(2)}</div>
-        <div class="sc-ctx">Retorno excedente en USD sobre RF 4% por unidad de vol. &gt;1 excelente, &gt;0.5 bueno, &lt;0 destruye valor en USD.</div>
-        <div class="sc-implication ${v<0?'neg':v>0.5?'pos':'neu'}">${v<0?'El portafolio no compensa el riesgo tomado vs T-Bills.':v>1?'Excelente relación retorno/riesgo en USD.':'Ratio moderado — razonable para una cartera con exposición argentina.'}</div>
+        <div class="sc-label">Sharpe / Sortino  ·  USD vs T-Bills 4%</div>
+        <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:4px">
+          <div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-bottom:1px">SHARPE</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${col}">${v.toFixed(2)}</div>
+          </div>
+          ${so!=null?`<div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-bottom:1px">SORTINO</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${soCol}">${so.toFixed(2)}</div>
+          </div>`:''}
+        </div>
+        <div class="sc-ctx">Sharpe: excedente sobre Rf 4% / vol total. Sortino: ídem usando solo downside deviation — penaliza menos la volatilidad positiva.</div>
+        <div class="sc-implication ${v<0?'neg':v>0.5?'pos':'neu'}">${sortinoNote || (v<0?'No compensa el riesgo vs T-Bills.':v>1?'Excelente relación retorno/riesgo en USD.':'Ratio moderado para cartera con exposición argentina.')}</div>
         ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,v>0)}<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-left:4px">${series.length}w</span></div>`:''}
       </div>`;
     },
