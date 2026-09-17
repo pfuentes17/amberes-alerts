@@ -600,14 +600,14 @@ async function render(d){
     {
       scenario: 'RP Argentina +400 bp',
       val: b3.stress_rp400_pct,
-      usd: -b3.stress_rp400_ars_m / (d.meta.ccl||1600),
-      good: b3.stress_rp400_pct > 0,
+      usdM: -b3.stress_rp400_ars_m / (d.meta.ccl||1600),
+      good: false,
       desc: 'Suba brusca del riesgo país argentino en 400 puntos básicos. Impacta directamente a bonos soberanos y corporativos en USD. Escenario: evento de crédito o deterioro macro severo.',
     },
     {
       scenario: 'CCL +20%',
       val: b3.stress_ccl20_pct,
-      usd: b3.stress_ccl20_ars_m / (d.meta.ccl||1600),
+      usdM: null,
       good: null,
       desc: 'Revaluación nominal en ARS de activos dolarizados (bonos hard-dollar + CEDEARs). La ganancia contable en ARS no implica ganancia real: el poder adquisitivo en USD no cambia. Escenario: corrección cambiaria o brecha en aumento.',
       descExtra: 'En USD el impacto neto es neutro — los activos valen lo mismo en dólares. El dato mide exposición dólar del portafolio, no una ganancia real.',
@@ -615,18 +615,26 @@ async function render(d){
     {
       scenario: 'Renta Variable −10%',
       val: b3.stress_rv10_pct,
-      usd: b3.stress_rv10_ars_m / (d.meta.ccl||1600),
+      usdM: b3.stress_rv10_ars_m / (d.meta.ccl||1600),
       good: false,
       desc: `Caída del 10% en toda la renta variable (CEDEARs + acciones). Con ${pct(b2.equity_pct)} en equity, este escenario es el principal driver de riesgo del portafolio. Escenario: corrección global o local.`,
     },
   ];
+
+  function fmtUsd(usdM) {
+    if (usdM == null) return null;
+    const abs = Math.abs(usdM);
+    const sign = usdM >= 0 ? '+' : '−';
+    if (abs >= 1) return `${sign}USD ${abs.toFixed(2)}M`;
+    return `${sign}USD ${(abs*1000).toFixed(0)}K`;
+  }
 
   document.getElementById('b3-st-cards').innerHTML = stCards.map(st=>{
     const col = st.good === null ? 'var(--am)' : st.good ? 'var(--gr)' : 'var(--rd)';
     const sign = st.val >= 0 ? '+' : '';
     const usdLabel = st.good === null
       ? `≈ neutro en USD · ${sign}${pct(st.val)} nominal ARS`
-      : `${st.usd>=0?'+':''}USD ${Math.abs(st.usd).toFixed(0)}K impacto`;
+      : fmtUsd(st.usdM) + ' impacto';
     return `<div class="st-card">
       <div class="st-scenario">${st.scenario}</div>
       <div class="st-val" style="color:${col}">${sign}${pct(st.val)}</div>
