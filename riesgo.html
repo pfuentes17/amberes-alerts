@@ -378,8 +378,9 @@ async function render(d){
     ['Total ARS','ARS '+meta.total_ars_bn.toFixed(3)+' bn',meta.clientes+' clientes'],
     ['Total USD','USD '+meta.total_usd_m.toFixed(2)+'M','MEP/Cable'],
     ['CCL','$'+meta.ccl.toLocaleString('es-AR'),meta.ccl_fuente.split('(')[0].trim()],
-    ['Equity',''+pct(b2.equity_pct),'CEDEARs + Acciones'],
-    ['Renta Fija',''+pct(b1.bonds_pct),'del portafolio'],
+    ['Equity',    pct(b2.equity_pct), 'CEDEARs + Acciones'],
+    ['Renta Fija',pct(b1.bonds_pct),  'del portafolio'],
+    ['Cash / Div',pct(b2.cash_pct != null ? b2.cash_pct : Math.max(0, 1-b2.equity_pct-b1.bonds_pct)), 'divisas + liquidez'],
   ].map(([l,v,s])=>`<div class="mbk"><div class="mbk-l">${l}</div><div class="mbk-v">${v}</div><div class="mbk-s">${s}</div></div>`).join('');
 
   /* alertas */
@@ -607,8 +608,9 @@ async function render(d){
       scenario: 'CCL +20%',
       val: b3.stress_ccl20_pct,
       usd: b3.stress_ccl20_ars_m / (d.meta.ccl||1600),
-      good: true,
-      desc: 'Devaluación implícita del 20% en el tipo de cambio contado con liquidación. Beneficia a activos en USD (bonos hard-dollar, CEDEARs). Escenario: corrección cambiaria o corrida.',
+      good: null,
+      desc: 'Revaluación nominal en ARS de activos dolarizados (bonos hard-dollar + CEDEARs). La ganancia contable en ARS no implica ganancia real: el poder adquisitivo en USD no cambia. Escenario: corrección cambiaria o brecha en aumento.',
+      descExtra: 'En USD el impacto neto es neutro — los activos valen lo mismo en dólares. El dato mide exposición dólar del portafolio, no una ganancia real.',
     },
     {
       scenario: 'Renta Variable −10%',
@@ -620,14 +622,17 @@ async function render(d){
   ];
 
   document.getElementById('b3-st-cards').innerHTML = stCards.map(st=>{
-    const col = st.good ? 'var(--gr)' : 'var(--rd)';
+    const col = st.good === null ? 'var(--am)' : st.good ? 'var(--gr)' : 'var(--rd)';
     const sign = st.val >= 0 ? '+' : '';
-    const usdSign = st.usd >= 0 ? '+' : '';
+    const usdLabel = st.good === null
+      ? `≈ neutro en USD · ${sign}${pct(st.val)} nominal ARS`
+      : `${st.usd>=0?'+':''}USD ${Math.abs(st.usd).toFixed(0)}K impacto`;
     return `<div class="st-card">
       <div class="st-scenario">${st.scenario}</div>
       <div class="st-val" style="color:${col}">${sign}${pct(st.val)}</div>
-      <div class="st-usd" style="color:${st.good?'var(--gr)':'var(--rd)'}44;color:var(--mu)">${usdSign}USD ${Math.abs(st.usd).toFixed(0)}K impacto</div>
+      <div class="st-usd" style="color:var(--mu)">${usdLabel}</div>
       <div class="st-desc">${st.desc}</div>
+      ${st.descExtra ? `<div style="margin-top:6px;padding:5px 8px;border-radius:4px;background:rgba(245,158,11,.07);border-left:2px solid var(--am);font-family:'IBM Plex Sans',sans-serif;font-size:9.5px;color:var(--am);line-height:1.4">${st.descExtra}</div>` : ''}
     </div>`;
   }).join('');
 
@@ -802,8 +807,8 @@ async function loadBenchmarks(d) {
         <span class="bm-lbl">Sharpe (Rf 4%)</span>
         <span class="bm-val" style="color:${sharpeCol}">${bm.sharpe.toFixed(2)}</span>
       </div>
-      ${isPort ? `<div class="bm-row"><span class="bm-lbl">Beta S&amp;P500</span><span class="bm-val" style="color:#e8f0f8">${b2.beta_sp500.toFixed(2)}</span></div>
-      <div class="bm-row"><span class="bm-lbl">Equity / Bonos</span><span class="bm-val" style="color:var(--mu)">${(b2.equity_pct*100).toFixed(0)}% / ${((1-b2.equity_pct)*100).toFixed(0)}%</span></div>` : ''}
+      ${isPort ? `<div class="bm-row"><span class="bm-lbl">Beta S&amp;P500 / Merval</span><span class="bm-val" style="color:#e8f0f8">${b2.beta_sp500.toFixed(2)} / ${b2.beta_merval.toFixed(2)}</span></div>
+      <div class="bm-row"><span class="bm-lbl">EQ / RF / Cash</span><span class="bm-val" style="color:var(--mu)">${(b2.equity_pct*100).toFixed(0)}% / ${(b1.bonds_pct*100).toFixed(0)}% / ${((b2.cash_pct != null ? b2.cash_pct : Math.max(0,1-b2.equity_pct-b1.bonds_pct))*100).toFixed(0)}%</span></div>` : ''}
     </div>`;
   }
 
