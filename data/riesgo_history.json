@@ -2,21 +2,21 @@
   {
     "fecha_iso": "20260917",
     "var99": -0.22,
-    "var95": -0.1337,
+    "var95": -0.1338,
     "cvar95": -0.1867,
     "var99_hist": 0.1169,
     "var95_hist": 0.1294,
     "stress_rp400": -0.0727,
     "stress_ccl20": 0.1546,
     "stress_rv10": -0.0563,
-    "ytm": 0.0785,
+    "ytm": 0.0784,
     "duration": 1.9,
     "beta_sp500": 0.56,
     "vol_portfolio": 0.1266,
     "hhi": 0.0463,
     "sharpe": 0.27,
     "equity_pct": 0.5628,
-    "ccl": 1594,
-    "total_usd_m": 6.45
+    "ccl": 1589,
+    "total_usd_m": 6.47
   }
 ]
