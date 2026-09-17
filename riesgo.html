@@ -425,7 +425,7 @@ async function render(d){
     ['YTM pond.',pct(b1.ytm_ponderada),'anual','bl-cy','var(--cy)'],
     ['Duration Mod.',b1.duration_mod.toFixed(2)+' años','modified','','#e8f0f8'],
     ['DV01','$'+Math.round(b1.dv01_usd).toLocaleString(),'por bp','bl-am','var(--am)'],
-    ['WAL',b1.wal.toFixed(1)+' años','vida prom.','','#e8f0f8'],
+    ['DV01',`USD ${b1.dv01_usd.toLocaleString('es-AR',{maximumFractionDigits:0})}`,'por bp de tasa','','#e8f0f8'],
   ];
   document.getElementById('b1-metrics').innerHTML = b1m.map(([l,v,s,cls,col])=>
     `<div class="metric ${cls}"><div class="metric-l">${l}</div><div class="metric-v" style="${c(col)}">${v}</div><div class="metric-s">${s}</div></div>`
