@@ -28,7 +28,15 @@
     "sortino": 0.41,
     "retorno_usd_est": 0.0742,
     "equity_pct": 0.5628,
-    "cash_pct": 0.1237
+    "cash_pct": 0.1237,
+    "correlation_matrix": {
+      "labels": ["Equity", "Bonos", "Cash"],
+      "values": [
+        [1.0,  0.312, 0.0],
+        [0.312, 1.0,  0.0],
+        [0.0,   0.0,  1.0]
+      ]
+    }
   },
   "b3_tail_risk": {
     "var95_param": -0.1338,

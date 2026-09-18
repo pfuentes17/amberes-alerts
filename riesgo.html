@@ -114,6 +114,15 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
 .lim-bar-label{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-top:2px;}
 /* stress tests expandidos */
 .st-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+/* escenarios combinados */
+.comb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.comb-card{background:rgba(248,113,113,.05);border:1px solid rgba(248,113,113,.25);border-radius:8px;padding:12px 14px;}
+.comb-card.extreme{background:rgba(248,113,113,.09);border-color:rgba(248,113,113,.45);}
+.comb-scenario{font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--rd);margin-bottom:4px;}
+.comb-val{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:700;color:var(--rd);margin-bottom:2px;}
+.comb-usd{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(248,113,113,.7);margin-bottom:6px;}
+.comb-shocks{font-family:'IBM Plex Sans',sans-serif;font-size:9.5px;color:var(--mu);line-height:1.5;margin-bottom:5px;}
+.comb-prob{font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);padding:3px 6px;border-radius:3px;background:rgba(74,96,128,.15);display:inline-block;}
 .st-card{background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:12px 14px;}
 .st-scenario{font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:4px;}
 .st-val{font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:700;margin-bottom:3px;}
@@ -228,8 +237,10 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
         <div class="section-lbl">Métricas de riesgo de cola</div>
         <div id="risk-evolution-panel" style="margin-bottom:10px"></div>
         <div class="sc-grid" id="b3-sc-cards"></div>
-        <div class="section-lbl" style="margin-top:4px">Escenarios de stress</div>
+        <div class="section-lbl" style="margin-top:4px">Escenarios de stress  ·  individuales</div>
         <div class="st-grid" id="b3-st-cards"></div>
+        <div class="section-lbl" style="margin-top:10px">Escenarios combinados  ·  multi-shock</div>
+        <div id="b3-combined-cards"></div>
       </div>
     </div>
 
@@ -305,6 +316,7 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
           <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:20px;border:1px solid rgba(34,211,160,.3);color:var(--gr)">Yahoo Finance 252d</span>
         </span>
       </div>
+      <div id="corr-heatmap" style="padding:10px 14px 0"></div>
       <div class="eq-body">
         <table class="eq-table">
           <thead>
@@ -820,6 +832,57 @@ async function render(d){
     return `${sign}USD ${(abs*1000).toFixed(0)}K`;
   }
 
+  /* ── Escenarios combinados (multi-shock) ── */
+  (function renderCombinedScenarios() {
+    const rp  = b3.stress_rp400_pct;   // negativo
+    const rv  = b3.stress_rv10_pct;    // negativo
+    const dev = b3.stress_deval30_pct; // negativo
+    const TOTAL_USD = d.meta.total_usd_m;
+
+    const combined = [
+      {
+        name: 'Crisis Argentina',
+        emoji: '🇦🇷',
+        shocks: ['RP +400bp', 'Deval ARS 30%'],
+        val: rp + dev,
+        prob: 'Prob. baja · 1-2 veces por década',
+        desc: 'Deterioro fiscal + salto cambiario. El escenario típico de crisis argentina: spreads se amplían y el peso se devalúa simultáneamente.',
+        extreme: false,
+      },
+      {
+        name: 'Risk-off Global',
+        emoji: '🌐',
+        shocks: ['RV −10%', 'RP +200bp'],
+        val: rv + rp / 2,
+        prob: 'Prob. moderada · cada 3-5 años',
+        desc: 'Corrección global de activos de riesgo con contagio a EM. Equity cae y spreads EM se amplían, pero sin crisis local específica.',
+        extreme: false,
+      },
+      {
+        name: 'Perfect Storm',
+        emoji: '⛈',
+        shocks: ['RP +400bp', 'RV −10%', 'Deval ARS 30%'],
+        val: rp + rv + dev,
+        prob: 'Prob. muy baja · cola extrema',
+        desc: 'Colapso simultáneo de todos los factores. Crisis sistémica con contagio global + crisis local argentina. Usado para calibrar capital de emergencia.',
+        extreme: true,
+      },
+    ];
+
+    document.getElementById('b3-combined-cards').innerHTML = `<div class="comb-grid">${combined.map(c => {
+      const usdImpact = c.val * TOTAL_USD;
+      const usdLabel = `${usdImpact >= 0 ? '+' : ''}USD ${usdImpact.toFixed(2)}M`;
+      return `<div class="comb-card ${c.extreme ? 'extreme' : ''}">
+        <div class="comb-scenario">${c.emoji} ${c.name}</div>
+        <div class="comb-val">${pct(c.val,1)}</div>
+        <div class="comb-usd">${usdLabel} impacto estimado</div>
+        <div class="comb-shocks">${c.shocks.map(s=>`<span style="display:inline-block;padding:1px 5px;border-radius:3px;background:rgba(248,113,113,.12);margin-right:4px;margin-bottom:3px;font-size:8.5px">${s}</span>`).join('')}</div>
+        <div style="font-family:'IBM Plex Sans',sans-serif;font-size:9.5px;color:var(--mu);line-height:1.4;margin-bottom:7px">${c.desc}</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:rgba(148,163,184,.45);border-top:1px solid var(--bdr);padding-top:5px">⚠ Aproximación aditiva lineal · no captura efectos de segunda vuelta<br>${c.prob}</div>
+      </div>`;
+    }).join('')}</div>`;
+  })();
+
   document.getElementById('b3-st-cards').innerHTML = stCards.map(st=>{
     const col = st.good === null ? 'var(--am)' : st.good ? 'var(--gr)' : 'var(--rd)';
     const sign = st.val >= 0 ? '+' : '';
@@ -839,6 +902,56 @@ async function render(d){
   document.getElementById('eq-kpi-weight').textContent = pct(b2.equity_pct)+' del portafolio';
   document.getElementById('eq-kpi-beta').textContent   = 'β S&P: '+b2.beta_sp500.toFixed(2);
   document.getElementById('eq-kpi-vol').textContent    = 'σ: '+pct(b2.vol_portfolio);
+
+  /* ── Heatmap de correlaciones ── */
+  (function renderCorrHeatmap() {
+    const el = document.getElementById('corr-heatmap');
+    const cm = b2.correlation_matrix;
+    if (!el || !cm) return;
+    const labels = cm.labels;
+    const vals   = cm.values;
+    const N = labels.length;
+    const CELL = 52, PAD = 36, W = PAD + N * CELL, H = PAD + N * CELL;
+
+    // Color: -1 → rojo, 0 → neutro, +1 → verde
+    function corrColor(v) {
+      if (v >= 0.99) return 'rgba(148,163,184,.15)'; // diagonal — gris
+      const t = (v + 1) / 2; // 0..1
+      const r = Math.round(248 * (1 - t) + 34  * t);
+      const g = Math.round(113 * (1 - t) + 211 * t);
+      const b = Math.round(113 * (1 - t) + 160 * t);
+      return `rgba(${r},${g},${b},${0.15 + Math.abs(v) * 0.5})`;
+    }
+    function textCol(v) { return v >= 0.99 ? 'var(--mu)' : v > 0.3 ? 'var(--gr)' : v < -0.3 ? 'var(--rd)' : '#e8f0f8'; }
+
+    const cells = vals.flatMap((row, i) => row.map((v, j) => {
+      const x = PAD + j * CELL, y = PAD + i * CELL;
+      const isDiag = i === j;
+      return `
+        <rect x="${x}" y="${y}" width="${CELL}" height="${CELL}" rx="3" fill="${corrColor(v)}" stroke="rgba(74,96,128,.15)" stroke-width="0.5"/>
+        <text x="${x+CELL/2}" y="${y+CELL/2-5}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="600" fill="${textCol(v)}">${isDiag ? '—' : v.toFixed(2)}</text>
+        ${!isDiag ? `<text x="${x+CELL/2}" y="${y+CELL/2+9}" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="8" fill="${textCol(v)}" opacity="0.7">${v > 0.5 ? 'alta' : v > 0.2 ? 'mod.' : 'baja'}</text>` : ''}`;
+    }));
+
+    const rowLabels = labels.map((l,i) => `<text x="${PAD-4}" y="${PAD + i*CELL + CELL/2 + 4}" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="9" fill="var(--mu)">${l}</text>`);
+    const colLabels = labels.map((l,j) => `<text x="${PAD + j*CELL + CELL/2}" y="${PAD-6}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9" fill="var(--mu)">${l}</text>`);
+
+    el.innerHTML = `<div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:6px">Correlaciones entre componentes · 3 años</div>
+        <svg viewBox="0 0 ${W} ${H}" style="width:${W}px;height:${H}px;max-width:100%">
+          ${rowLabels.join('')}${colLabels.join('')}${cells.join('')}
+        </svg>
+      </div>
+      <div style="flex:1;min-width:180px;padding-top:22px">
+        <div style="font-family:'IBM Plex Sans',sans-serif;font-size:10px;color:var(--mu);line-height:1.6">
+          <b style="color:#e8f0f8">Equity ↔ Bonos: ${vals[0][1].toFixed(2)}</b><br>
+          ${Math.abs(vals[0][1]) < 0.3 ? 'Correlación baja — buena diversificación entre componentes. En crisis las correlaciones tienden a converger hacia 1.' : vals[0][1] > 0.5 ? 'Correlación alta — los dos componentes principales se mueven juntos. Diversificación real limitada.' : 'Correlación moderada — diversificación parcial entre equity y renta fija.'}<br><br>
+          <span style="color:rgba(148,163,184,.5);font-size:9px">Calculado con retornos diarios reales. Cash excluido por vol ≈ 0.</span>
+        </div>
+      </div>
+    </div>`;
+  })();
 
   // Top 15 por contribución al riesgo (pct × vol)
   const eqhTop = [...eqh].sort((a,b)=>b.contrib_riesgo-a.contrib_riesgo).slice(0,15);
