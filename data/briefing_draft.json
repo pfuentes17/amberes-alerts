@@ -1,9 +1,9 @@
 {
-  "date": "2026-09-17",
-  "generated": "2026-09-17T12:30:00Z",
+  "date": "2026-09-18",
+  "generated": "2026-09-18T12:30:00Z",
   "sentiment": {
-    "overall": "risk-on",
-    "label": "Alivio post-Fed a nivel global: futuros de EE.UU. y Europa suben, el VIX se desploma 9% y el Brent perdió los US$100. Argentina no acompaña el rally: las acciones cayeron hasta 5% en Wall Street y el riesgo país volvió a subir a 510 puntos.",
+    "overall": "neutral",
+    "label": "Tono constructivo en futuros de EE.UU. y Bitcoin, mixto en bonos y monedas: la Fed y el BOJ mueven tasas en direcciones opuestas el mismo día de un triple witching de US$1 billón. Argentina no acompaña: el riesgo país tocó su máximo del mes en 515 pb pese al rebote de los ADR.",
     "fg": 30,
     "fg_label": "Miedo",
     "putcall": 0.85,
@@ -12,98 +12,99 @@
   "drivers": [
     {
       "id": 1,
-      "tag": "Bancos Centrales · Fed",
+      "tag": "Bancos Centrales · BOJ",
       "tag_class": "tb",
-      "title": "La Fed sube 25 pb a 3,75%-4,00% en su primera alza en tres años, voto unánime",
-      "brief": "Warsh logró unanimidad en su primera suba; 16 de 18 funcionarios ven al menos otra alza este año y la tasa neutral estimada saltó a 3,2%, la más alta en una década.",
-      "tldr": "El mercado debate si es un ajuste fino al estilo Greenspan 1997 o el inicio de un ciclo más largo",
+      "title": "El BOJ sube a 1,25% al ritmo más rápido desde 1990 y tensiona el carry trade del yen",
+      "brief": "El Banco de Japón llevó su tasa al nivel más alto en 31 años, presionado por Bessent; el USD/JPY sube 1,30% a 157,98 pese a la suba, y el fin del yen barato amenaza con desarmar hasta US$1,3 billones en posiciones apalancadas.",
+      "tldr": "El fin del yen como moneda de fondeo barata es uno de los cambios estructurales más subestimados del año",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "La Fed subió la tasa <strong>25 pb a 3,75%-4,00%</strong> el miércoles, la primera alza en tres años, con voto <strong>unánime</strong> bajo la primera conferencia de Kevin Warsh. El UST 10Y opera hoy en <strong>4,99%</strong>, retrocediendo apenas desde el <strong>5,02%</strong> del cierre de miércoles (máximo en 19 años); el 2Y está en <strong>4,715%</strong> y el 30Y en <strong>5,336%</strong>.",
-      "contexto": "16 de 18 funcionarios proyectan al menos una suba más este año y la tasa neutral estimada saltó a <strong>3,2%</strong>, la más alta en una década. La inflación subyacente ronda 2,3%-2,7% pero lleva cinco años y medio arriba del objetivo. La reacción de la curva —el 2Y subió más que el 10Y— sugiere que el mercado teme más a la inflación persistente que a un error de política.",
+      "evento": "El Banco de Japón subió su tasa de referencia a <strong>1,25%</strong>, el nivel más alto en casi 31 años, en el ritmo de ajuste más rápido desde 1990. La decisión llegó tras la insistencia del secretario del Tesoro de EE.UU., Bessent, en que Japón muestre compromiso fiscal antes de recibir ayuda con el yen. El USD/JPY sube <strong>1,30% a 157,98</strong> pese a la suba de tasas, y el Nikkei cerró con una ganancia de <strong>1,38%</strong>.",
+      "contexto": "El BIS estimó en ¥200 billones (US$1,3 billones) la oferta neta de yenes absorbida por no bancos en posiciones de carry trade apalancadas hasta 50 a 1. Un desarme abrupto puede amplificar la volatilidad de bonos y acciones globales, como ocurrió en julio-agosto de 2024. El franco suizo y el yuan offshore empiezan a ganar terreno como monedas de fondeo alternativas de menor volatilidad, mientras el mercado recalibra exposiciones de carry trade de cara al último trimestre del año.",
       "impacto": [
-        {"asset": "UST 10Y", "dir": "4,99%", "cls": "neu"},
-        {"asset": "UST 2Y", "dir": "4,715%", "cls": "neu"},
-        {"asset": "Fed Funds", "dir": "3,75%-4,00%", "cls": "up"}
+        {"asset": "USD/JPY", "dir": "↑ 1,30% a 157,98", "cls": "up"},
+        {"asset": "Tasa BOJ", "dir": "1,25%", "cls": "up"},
+        {"asset": "Nikkei", "dir": "↑ 1,38%", "cls": "up"}
       ]
     },
     {
       "id": 2,
-      "tag": "Mercados Globales · Alivio",
+      "tag": "Mercados Globales · Técnico",
       "tag_class": "tg",
-      "title": "Alivio post-Fed: futuros suben, VIX cae 9% y el Brent pierde los US$100",
-      "brief": "El futuro del Nasdaq sube 1,06%, el S&P 500 0,80% y el Dow 0,70%; Europa opera al alza en bloque y el Brent cede 0,83% a US$99,92, perdiendo el nivel psicológico de los US$100.",
-      "tldr": "Doble alivio simultáneo: la suba de tasas fue esperada y el petróleo cede al mismo tiempo",
+      "title": "Wall Street sube y el VIX cae a 15,26 en medio de un triple witching récord de US$1 billón",
+      "brief": "El futuro del Nasdaq sube 0,40%, el S&P 500 0,17% y el Dow 0,08%; el VIX cae 1,17% mientras vence más de US$1 billón en opciones el mismo día en que la Fed y el BOJ mueven tasas.",
+      "tldr": "Los dealers entran cortos de gamma: la mecánica del vencimiento puede amplificar movimientos sin reflejar una señal fundamental",
       "sentiment": "ro",
       "sentiment_label": "🟢 Risk-On",
-      "evento": "Los futuros de EE.UU. suben con fuerza: <strong>Nasdaq +1,06%</strong> a 29.568, <strong>S&amp;P 500 +0,80%</strong> a 7.684 y <strong>Dow +0,70%</strong> a 52.278. Europa opera al alza en bloque (EuroStoxx +0,58%, DAX +0,54%, FTSE +0,46%) y el <strong>VIX se desploma 9,03%</strong> a 16,11. El <strong>Brent cae 0,83%</strong> a <strong>US$99,92</strong>, perdiendo los US$100 por primera vez en varias semanas; el WTI cede 1,14% a US$101,26.",
-      "contexto": "El DXY se mantiene firme en <strong>100,20</strong> tras el salto post-decisión, con EUR/USD en 1,15 y USD/JPY en 155,70. El oro cede 0,85% a US$4.350 y la plata 0,73% a US$64,44, arrastrados por el dólar fuerte más que por el alivio en tasas; el cobre sube 1,25% a US$6,59. La atención pasa ahora a si el ciclo de suba de la Fed continúa en octubre y a la carrera de bancos centrales (BOJ, BOE) que sigue esta semana.",
+      "evento": "El futuro del Nasdaq sube <strong>0,40% a 29.862</strong>, el del S&amp;P 500 <strong>0,17% a 7.720,50</strong> y el del Dow <strong>0,08% a 52.264</strong>. El VIX opera en <strong>15,26 (-1,17%)</strong>, Bitcoin sube <strong>2,34% a 78.138</strong> y el oro avanza <strong>0,59% a US$4.425,60</strong>, mientras las bolsas europeas operan a la baja lideradas por el FTSE 100.",
+      "contexto": "Más de <strong>US$1 billón</strong> en opciones vence hoy en la sesión trimestral de &ldquo;triple witching&rdquo;, el mayor desarme de posiciones de un solo día en 2026, coincidiendo con la suba de tasas de la Fed y la decisión del BOJ en la misma jornada. Los dealers ingresan con posiciones de gamma neto corto en un amplio rango de strikes cercanos a los niveles actuales del índice, lo que puede amplificar la volatilidad intradía en SPY y QQQ sin que refleje necesariamente una señal fundamental; la tensión Fed-BOJ se traslada igual al último trimestre del año.",
       "impacto": [
-        {"asset": "VIX", "dir": "↓ 9,03%", "cls": "dn"},
-        {"asset": "Brent", "dir": "US$99,92", "cls": "dn"},
-        {"asset": "Nasdaq fut.", "dir": "↑ 1,06%", "cls": "up"}
+        {"asset": "VIX", "dir": "15,26 (-1,17%)", "cls": "dn"},
+        {"asset": "Nasdaq fut.", "dir": "↑ 0,40%", "cls": "up"},
+        {"asset": "Bitcoin", "dir": "↑ 2,34% a 78.138", "cls": "up"}
       ]
     },
     {
       "id": 3,
-      "tag": "Argentina · Mercados",
-      "tag_class": "ta",
-      "title": "Acciones argentinas caen hasta 5% en Wall Street pese al rally global post-Fed",
-      "brief": "El Merval cedió 1,7% y los bonos 0,3% tras la suba de tasas; el riesgo país subió a 510 pb (+4pb) y el dólar oficial saltó a $1.535 en el Banco Nación.",
-      "tldr": "La Fed hawkish pega distinto en Argentina: sube el riesgo país mientras el mundo festeja el alivio",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Las acciones argentinas cayeron hasta <strong>5%</strong> en Wall Street tras la decisión de la Fed: el Merval cedió <strong>1,7%</strong>, los bonos perdieron <strong>0,3%</strong> y el riesgo país subió a <strong>510 puntos (+4pb, +0,79%)</strong>. El dólar oficial saltó a <strong>$1.535</strong> en el Banco Nación; hoy el mayorista opera en $1.504,5/$1.513,5, el MEP en $1.534,1/$1.542,1 y el CCL en $1.597,9/$1.600,2. Los bonos en dólares abren mixtos: GD30 -0,53%, AL30 -0,21%, GD35 -0,13%.",
-      "contexto": "En contrapartida, las reservas del BCRA aumentaron por primera vez en <strong>siete ruedas</strong>, sumando US$47 millones pese al impacto negativo del oro y del dólar global, y se mantienen en torno a los <strong>US$50.000 millones</strong>. Pero el ritmo de compra sigue muy débil: cayó a US$769M en agosto y a menos de US$200M en la primera quincena de septiembre, el más bajo del año. La misión del FMI llega el <strong>21 de septiembre</strong> para la tercera revisión del programa, en un esquema que el propio BCRA describe como flotación &ldquo;administrada&rdquo; dentro de las bandas.",
+      "tag": "Argentina · Actividad y Riesgo País",
+      "tag_class": "tr",
+      "title": "El PBI cayó 0,6% en el segundo trimestre y el riesgo país tocó su máximo del mes en 515 pb",
+      "brief": "El desempleo subió a 7,9% (máximo desde 2021) con informalidad en 45%; el BCRA compró apenas USD 9 millones en un mercado que operó USD 496 millones, pese al rebote de los ADR de hasta 6,7%.",
+      "tldr": "El mercado sigue exigiendo una prima propia a Argentina, más allá del beta emergente",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El PBI argentino cayó <strong>0,6%</strong> en el segundo trimestre, con fuerte baja de importaciones y deterioro en consumo e inversión, según el INDEC. El riesgo país subió a <strong>515 puntos (+5pb)</strong>, su máximo del mes, pese al rebote de los ADR de hasta <strong>6,7%</strong> y una suba del Merval de <strong>1,1%</strong>. El dólar blue bajó por primera vez en siete ruedas a <strong>$1.555</strong>, con la brecha en <strong>2,98%</strong>; el oficial cotiza en $1.485/$1.535.",
+      "contexto": "El desempleo subió a <strong>7,9%</strong>, máximo desde 2021, con la informalidad laboral en <strong>45%</strong>, récord desde 2023 —aunque parte de la suba responde a mayor participación laboral y no solo a destrucción de empleo—. El BCRA compró apenas <strong>USD 9 millones</strong> en un Mercado Libre de Cambios que operó USD 496 millones, mostrando que el ritmo de acumulación de reservas sigue muy débil. El banco central habilitó a los bancos a incorporar más títulos dólar linked de hasta 36 meses para ganar tiempo de cara a la incertidumbre electoral y fiscal.",
       "impacto": [
-        {"asset": "Riesgo País", "dir": "510 pb", "cls": "up"},
-        {"asset": "Dólar oficial", "dir": "$1.535", "cls": "up"},
-        {"asset": "GD30D", "dir": "↓ 0,53%", "cls": "dn"}
+        {"asset": "Riesgo País", "dir": "515 pb", "cls": "up"},
+        {"asset": "Dólar Blue", "dir": "$1.555", "cls": "dn"},
+        {"asset": "Desempleo", "dir": "7,9%", "cls": "up"}
       ]
     },
     {
       "id": 4,
-      "tag": "Geopolítica · Logística",
+      "tag": "Energía · Petróleo",
       "tag_class": "tq",
-      "title": "La disrupción en Hormuz dispara la prima de tránsito por Panamá a más de US$5M",
-      "brief": "El conflicto en el estrecho de Hormuz redirige tráfico marítimo hacia Panamá, cuyo Canal reduce tránsitos por sequía justo cuando la demanda previa a fin de año sube ~15%.",
-      "tldr": "Hormuz, Bab el-Mandeb, Suez y Panamá dejaron de ser eventos aislados: es un solo sistema bajo estrés",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "Un carguero pagó más de <strong>US$5 millones</strong> por un solo turno de tránsito en el Canal de Panamá, superando ofertas previas de US$4M. La disrupción en el estrecho de <strong>Hormuz</strong> elevó el tránsito diario por Panamá ~17% desde que empezó el conflicto con Irán.",
-      "contexto": "El Canal reducirá tránsitos diarios a 32-34 buques en septiembre por la sequía del Niño, justo cuando la demanda de contenedores previa a fin de año sube ~15%. El flete de un contenedor de 40 pies de China a la costa oeste de EE.UU. casi se cuadruplicó en un año, a US$7.848. En paralelo, las importaciones asiáticas de GNL caen a un mínimo de 8 años mientras Europa acelera compras antes del invierno, replicando el patrón de la crisis post-invasión rusa de 2022.",
+      "title": "El petróleo cae por tercer día consecutivo, pero el diésel toca récords que preocupan a la Casa Blanca",
+      "brief": "El WTI retrocede 1,39% a US$95,88 y el Brent 1,43% a US$98,50, mientras el diésel europeo tocó US$210 por barril y el minorista en EE.UU. superó los US$6 por galón.",
+      "tldr": "El shock de diésel es estructural, no especulativo: refleja pérdida efectiva de capacidad de refinación",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El WTI cae <strong>1,39% a US$95,88</strong> y el Brent retrocede <strong>1,43% a US$98,50</strong>, tercer día consecutivo de bajas. Sin embargo, los futuros de diésel europeo tocaron <strong>US$210 por barril</strong> y el diésel minorista en EE.UU. superó los <strong>US$6 por galón</strong>, en máximos que ya preocupan a la Casa Blanca de cara a las elecciones de noviembre.",
+      "contexto": "Ataques a refinerías del Golfo y la prohibición rusa de exportar diésel recortaron dos tercios de la oferta combinada; reconstruir la capacidad dañada puede tardar años y los inventarios de EE.UU. están en mínimos desde 1982. Para la Fed, un shock de oferta de esta duración complica el escenario de baja de tasas hacia 2027; para la administración Trump, introduce un riesgo político concreto antes de las elecciones legislativas.",
       "impacto": [
-        {"asset": "Prima tránsito Panamá", "dir": "US$5M+", "cls": "up"},
-        {"asset": "Flete contenedor (Asia-EE.UU.)", "dir": "US$7.848", "cls": "up"}
+        {"asset": "WTI", "dir": "↓ 1,39% a US$95,88", "cls": "dn"},
+        {"asset": "Brent", "dir": "↓ 1,43% a US$98,50", "cls": "dn"},
+        {"asset": "Diésel EE.UU.", "dir": "> US$6/galón", "cls": "up"}
       ]
     },
     {
       "id": 5,
-      "tag": "LatAm · Bancos Centrales",
-      "tag_class": "tb",
-      "title": "El Copom de Brasil baja la Selic a 13,75% sin dar señales sobre próximos pasos",
-      "brief": "El banco central brasileño recortó 25pb en la misma jornada de la suba de la Fed, sin forward guidance, en medio de riesgos electorales y globales de cara a octubre.",
-      "tldr": "El resultado de la elección de octubre en Brasil es hoy la variable que más pesa sobre la Selic y el real",
+      "tag": "Comercio · China",
+      "tag_class": "ta",
+      "title": "Washington evalúa postergar nuevos aranceles a China de cara a la cumbre Trump-Xi del 24/9",
+      "brief": "Agricultura, energía y tierras raras son las fichas centrales de la negociación, mientras el Congreso habilita aranceles de hasta 100% a los principales compradores de petróleo ruso.",
+      "tldr": "La gran incógnita es si Trump usará la nueva herramienta arancelaria contra Rusia también contra Beijing",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El Copom llevó la Selic a <strong>13,75%</strong> el miércoles, recortando 25pb sin dar señales sobre los próximos pasos, en la misma jornada en que la Fed subía su tasa en EE.UU.",
-      "contexto": "El mercado sigue dividido sobre los movimientos de noviembre y diciembre; el resultado electoral de octubre en Brasil es hoy la variable que más pesa sobre la proyección de tasas y del real para 2027. El salto de tasas de la Fed ya golpeó a otras monedas de la región: el peso chileno saltó más de $4 hasta los $961.",
+      "evento": "Washington evalúa postergar nuevos aranceles a China hasta después de la cumbre Trump-Xi del <strong>24 de septiembre</strong>, con agricultura, energía y tierras raras como las principales fichas de negociación. En paralelo, la Cámara aprobó la ley de sanciones a Rusia impulsada por Lindsey Graham, que faculta a Trump a imponer aranceles de hasta <strong>100%</strong> a los cinco principales importadores de petróleo y gas ruso.",
+      "contexto": "La ley incluye una cláusula de exención para países cuyas importaciones de gas ruso sean menores al 15% de las exportaciones rusas. La gran pregunta es si Trump usará esta herramienta contra Beijing antes de la cumbre; si se activa, el mercado debería descontar mayor volatilidad en energía, mientras que si se diluye vía waivers, confirma que la política comercial de EE.UU. sigue subordinada a consideraciones tácticas de corto plazo.",
       "impacto": [
-        {"asset": "Selic", "dir": "13,75%", "cls": "dn"},
-        {"asset": "Peso chileno", "dir": "↑ a $961", "cls": "dn"}
+        {"asset": "EEM", "dir": "↑ 1,81%", "cls": "up"},
+        {"asset": "Cumbre Trump-Xi", "dir": "24/9", "cls": "neu"}
       ]
     }
   ],
   "tensiones": [
-    {"label": "Fed hawkish de fondo, mercado festeja el alivio", "texto": "El voto unánime y la tasa neutral estimada en 3,2% (máxima en una década) conviven con un rally de alivio en acciones; el mercado ya debate si es un ajuste fino al estilo Greenspan 1997 o el inicio de un ciclo más largo de subas."},
-    {"label": "Argentina no acompaña el rally global", "texto": "Pese al alivio post-Fed en el mundo, las acciones argentinas cayeron hasta 5% en Wall Street y el riesgo país subió a 510 pb, mostrando que el ajuste hawkish de la Fed pega distinto en emergentes con fundamentals más débiles."},
-    {"label": "BCRA: reservas cortan la racha negativa, pero el ritmo de compra sigue en mínimos", "texto": "El stock subió US$47M tras siete ruedas a la baja, pero el ritmo de compras cayó a menos de US$200M en la primera quincena de septiembre —el más bajo del año— justo antes de la misión del FMI del 21/9."},
-    {"label": "Cuellos de botella marítimos interconectados", "texto": "La prima de tránsito por Panamá superó los US$5M por buque por la disrupción en Hormuz, mientras el Canal reduce tránsitos por sequía justo cuando la demanda de fin de año sube ~15%."}
+    {"label": "Fed y BOJ mueven fichas en direcciones opuestas", "texto": "La Fed subió tasas por primera vez desde 2023 y el BOJ aceleró su propio ciclo al ritmo más rápido desde 1990; el diferencial de tasas EE.UU.-Japón queda como el verdadero driver de fondo para el carry trade global de cara al último trimestre del año."},
+    {"label": "Argentina no logra traducir el rebote de Wall Street en menor riesgo país", "texto": "Los ADR argentinos subieron hasta 6,7% y el Merval avanzó 1,1%, pero el riesgo país igual tocó su máximo del mes en 515 pb, mostrando que el mercado exige una prima propia más allá del clima global."},
+    {"label": "Triple witching de US$1 billón coincide con el día de mayor movimiento de bancos centrales", "texto": "Los dealers ingresan con gamma neto corto en un amplio rango de strikes, lo que puede amplificar la volatilidad técnica de la sesión sin que refleje necesariamente una señal fundamental."},
+    {"label": "El petróleo cae pero el diésel toca récords", "texto": "El WTI perdió los US$100 por tercer día consecutivo, pero el diésel europeo tocó US$210 por barril y el minorista en EE.UU. superó los US$6 por galón, reflejando un problema de capacidad de refinación más que de oferta de crudo."}
   ],
   "correlaciones": [
-    {"par": "VIX vs. futuros de EE.UU.", "texto": "El desplome del VIX (-9,03%) coincidió con la suba de los futuros del Nasdaq (+1,06%) y el S&P 500 (+0,80%), el patrón típico de alivio post-decisión de tasas cuando el resultado ya estaba descontado."},
-    {"par": "UST 10Y vs. oro", "texto": "Pese a que el 10 años retrocede a 4,99% desde el máximo de 19 años, el oro cae 0,85% a US$4.350, arrastrado por el salto del dólar (DXY en 100,20, máximo de siete semanas) más que por el alivio en tasas."},
-    {"par": "Riesgo país argentino vs. Selic brasileña", "texto": "Mientras el Copom recortó la Selic a 13,75% en la misma jornada de la suba de la Fed, el riesgo país argentino subió a 510 pb, mostrando la divergencia de percepción de riesgo entre los dos mayores mercados de la región."}
+    {"par": "USD/JPY vs. suba de tasas del BOJ", "texto": "Pese a que el Banco de Japón subió su tasa al nivel más alto en 31 años, el USD/JPY sube 1,30% a 157,98, señal de que el mercado todavía no valida el fin del carry trade del yen como moneda de fondeo."},
+    {"par": "Riesgo país Argentina vs. EMBI emergente", "texto": "Mientras el EEM sube 1,81% y el clima emergente mejora, el riesgo país argentino se mueve en la dirección contraria y toca su máximo mensual en 515 pb, evidenciando que la prima de riesgo local no correlaciona con el beta emergente en este ciclo."},
+    {"par": "VIX vs. futuros de EE.UU.", "texto": "El VIX cae a 15,26 (-1,17%) en simultáneo con la suba de los futuros del Nasdaq (+0,40%) y el S&P 500 (+0,17%), consistente con el apetito por riesgo constructivo previo al vencimiento técnico de opciones de hoy."}
   ],
-  "bottom_line": "La jornada post-Fed es de alivio generalizado: la suba de tasas, al ser unánime y esperada, despejó la incertidumbre que pesaba sobre acciones y bonos, y el retroceso del petróleo bajo los US$100 suma un segundo alivio simultáneo. Pero el mensaje de fondo sigue siendo hawkish —tasa neutral en máximos de una década y más subas en el horizonte— y ese contraste es justamente lo que golpea a Argentina: las acciones cayeron hasta 5% en Wall Street y el riesgo país volvió a subir a <strong>510 puntos</strong>, incluso con las reservas del BCRA cortando una racha negativa de siete ruedas. Con el ritmo de compra de dólares en mínimos del año y la misión del FMI llegando el <strong>21 de septiembre</strong> para la tercera revisión, el mercado local debería seguir de cerca si la Fed insinúa otra suba en octubre, ya que eso presionaría aún más sobre un esquema cambiario que el propio BCRA describe como &ldquo;pequeño y poco profundo&rdquo;."
+  "bottom_line": "La jornada combina un tono constructivo en los futuros de EE.UU. y en Bitcoin con señales mixtas en bonos, monedas y commodities: la Fed y el BOJ mueven tasas en direcciones opuestas el mismo día en que vence más de <strong>US$1 billón</strong> en opciones, lo que puede generar mayor volatilidad técnica sin reflejar necesariamente una señal fundamental. Argentina vuelve a mostrar que no alcanza con el alivio global: pese al rebote de los ADR de hasta <strong>6,7%</strong> y la suba del Merval, el riesgo país tocó su máximo del mes en <strong>515 puntos</strong>, el PBI cayó 0,6% en el segundo trimestre y el BCRA compró apenas USD 9 millones en un mercado que operó casi 500 millones. Con el desempleo en 7,9% (máximo desde 2021) y la informalidad en 45%, el mercado sigue exigiendo una prima propia a la Argentina más allá del beta emergente, justo cuando el diferencial de tasas EE.UU.-Japón empieza a tensionar el apetito de riesgo global de cara al último trimestre del año."
 }
