@@ -317,6 +317,7 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
         </span>
       </div>
       <div id="corr-heatmap" style="padding:10px 14px 0"></div>
+      <div id="risk-attribution-panel" style="padding:10px 14px 4px"></div>
       <div class="eq-body">
         <table class="eq-table">
           <thead>
@@ -949,6 +950,69 @@ async function render(d){
           ${Math.abs(vals[0][1]) < 0.3 ? 'Correlación baja — buena diversificación entre componentes. En crisis las correlaciones tienden a converger hacia 1.' : vals[0][1] > 0.5 ? 'Correlación alta — los dos componentes principales se mueven juntos. Diversificación real limitada.' : 'Correlación moderada — diversificación parcial entre equity y renta fija.'}<br><br>
           <span style="color:rgba(148,163,184,.5);font-size:9px">Calculado con retornos diarios reales. Cash excluido por vol ≈ 0.</span>
         </div>
+      </div>
+    </div>`;
+  })();
+
+  /* ── Risk Attribution por componente ── */
+  (function renderRiskAttribution() {
+    const el = document.getElementById('risk-attribution-panel');
+    const ra = b2.risk_attribution;
+    if (!el || !ra) return;
+
+    const COLORS = { Equity: 'var(--rd)', Bonos: 'var(--cy)', Cash: 'var(--mu)' };
+    const FILLS  = { Equity: 'rgba(248,113,113,.7)', Bonos: 'rgba(96,165,250,.7)', Cash: 'rgba(148,163,184,.4)' };
+
+    // Barra apilada: % de riesgo vs % de peso
+    function stackedBar(values, total, label) {
+      let x = 0;
+      const segs = ra.labels.map((l, i) => {
+        const w = (values[i] / total) * 100;
+        const seg = `<div style="width:${w.toFixed(1)}%;background:${FILLS[l]};height:100%;display:inline-block;position:relative" title="${l}: ${(values[i]*100).toFixed(1)}%"></div>`;
+        x += w;
+        return seg;
+      }).join('');
+      return `<div style="margin-bottom:3px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-bottom:2px">${label}</div>
+        <div style="height:14px;border-radius:3px;overflow:hidden;background:rgba(74,96,128,.15);display:flex">${segs}</div>
+      </div>`;
+    }
+
+    // Tabla de atribución
+    const rows = ra.labels.map((l, i) => {
+      const w    = ra.weight[i];
+      const v    = ra.vol[i];
+      const rc   = ra.pct[i];
+      const ratio = w > 0.01 ? rc / w : 0; // risk/weight ratio — >1 = genera más riesgo que peso
+      const ratioCol = ratio > 1.5 ? 'var(--rd)' : ratio > 1.0 ? 'var(--am)' : 'var(--gr)';
+      const color = COLORS[l] || 'var(--mu)';
+      return `<tr>
+        <td style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:${color};padding:4px 0;border-bottom:1px solid var(--bdr)">${l}</td>
+        <td class="r" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);border-bottom:1px solid var(--bdr)">${pct(w)}</td>
+        <td class="r" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);border-bottom:1px solid var(--bdr)">${v > 0 ? pct(v) : '—'}</td>
+        <td class="r" style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:${color};border-bottom:1px solid var(--bdr)">${pct(rc)}</td>
+        <td class="r" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:${ratioCol};border-bottom:1px solid var(--bdr)">${w > 0.01 ? ratio.toFixed(1)+'×' : '—'}</td>
+      </tr>`;
+    }).join('');
+
+    el.innerHTML = `<div style="margin-top:10px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:8px">Risk Attribution  ·  contribución al riesgo por componente (Euler)</div>
+      ${stackedBar(ra.pct, 1, '% de riesgo')}
+      ${stackedBar(ra.weight, 1, '% de peso')}
+      <table style="width:100%;border-collapse:collapse;margin-top:10px">
+        <thead>
+          <tr style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(148,163,184,.5);text-transform:uppercase;letter-spacing:.06em">
+            <th style="text-align:left;padding:0 0 4px;border-bottom:1px solid var(--bdr)">Componente</th>
+            <th class="r" style="padding:0 0 4px;border-bottom:1px solid var(--bdr)">Peso</th>
+            <th class="r" style="padding:0 0 4px;border-bottom:1px solid var(--bdr)">Vol</th>
+            <th class="r" style="padding:0 0 4px;border-bottom:1px solid var(--bdr)">% Riesgo</th>
+            <th class="r" style="padding:0 0 4px;border-bottom:1px solid var(--bdr)">Risk/Weight</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+      <div style="font-family:'IBM Plex Sans',sans-serif;font-size:9px;color:rgba(148,163,184,.4);margin-top:6px">
+        Risk/Weight &gt; 1 = el componente genera más riesgo que su peso. Equity ${pct(ra.weight[0])} del portfolio → ${pct(ra.pct[0])} del riesgo total.
       </div>
     </div>`;
   })();
