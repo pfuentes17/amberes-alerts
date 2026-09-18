@@ -96,6 +96,7 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
 .stress-section-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--rd);}
 .stress-section-body{padding:16px 18px 18px;}
 .sc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+@media(max-width:1200px){.sc-grid{grid-template-columns:repeat(2,1fr);}}
 .sc-card{background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:12px 14px;}
 .sc-card.warn{border-color:rgba(248,113,113,.35);}
 .sc-card.ok{border-color:rgba(34,211,160,.25);}
@@ -381,6 +382,7 @@ async function render(d){
     ['Equity',    pct(b2.equity_pct), 'CEDEARs + Acciones'],
     ['Renta Fija',pct(b1.bonds_pct),  'del portafolio'],
     ['Cash / Div',pct(b2.cash_pct != null ? b2.cash_pct : Math.max(0, 1-b2.equity_pct-b1.bonds_pct)), 'divisas + liquidez'],
+    ['Retorno est. USD', b2.retorno_usd_est != null ? pct(b2.retorno_usd_est,1) : ((b2.sharpe*b2.vol_portfolio+0.04)*100).toFixed(1)+'%', 'anualizado estimado'],
   ].map(([l,v,s])=>`<div class="mbk"><div class="mbk-l">${l}</div><div class="mbk-v">${v}</div><div class="mbk-s">${s}</div></div>`).join('');
 
   /* alertas */
@@ -388,6 +390,9 @@ async function render(d){
   if(b4.top1_pct>0.08) alertas.push({t:'rd',m:`⚠ ${b4.top1_ticker} representa ${pct(b4.top1_pct)} del total (umbral 8%)`});
   if(b2.beta_sp500>1.0) alertas.push({t:'am',m:`⚠ Beta S&P500 = ${b2.beta_sp500.toFixed(2)} — portafolio amplifica el mercado global`});
   if(b3.var99_param<-0.05) alertas.push({t:'rd',m:`⚠ VaR 99% = ${pct(b3.var99_param)} — pérdida material en escenarios de stress`});
+  // Posición táctica short detectada automáticamente
+  const shPos = eqh && eqh.find(e=>e.beta_sp<-0.5 && e.pct>0.03);
+  if(shPos) alertas.push({t:'am',m:`⚡ ${shPos.ticker} (${pct(shPos.pct)}) — posición táctica SHORT β S&P ${shPos.beta_sp.toFixed(2)} · USD ${(shPos.monto_usd/1e3).toFixed(0)}K · suprime el retorno esperado del portafolio`});
   if(!alertas.length) alertas.push({t:'gr',m:'✓ Sin alertas críticas de concentración ni riesgo de cola en este período'});
   document.getElementById('alertas').innerHTML = alertas.map(a=>
     `<div class="${a.t==='gr'?'ok-bar':'alert-bar'}">${a.m}</div>`).join('');
@@ -477,12 +482,16 @@ async function render(d){
     const col = v => v < -0.10 ? 'var(--rd)' : v < -0.04 ? 'var(--am)' : v < 0 ? '#e8f0f8' : 'var(--gr)';
     const border = v => v < -0.10 ? 'warn' : v < 0 ? '' : 'ok';
     const series = hSeries(key);
+    const histWarnBanner = (hasHist && histVal > 0)
+      ? `<div style="background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.4);border-radius:4px;padding:5px 8px;margin-top:5px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--am)">⚠ Histórico positivo: período 2024-2026 alcista. Subestima el riesgo estructural.</div>`
+      : '';
     const histRow = hasHist
       ? `<div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding-top:6px;border-top:1px solid var(--bdr)">
            <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em">Histórico 3a</span>
            <span style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:700;color:${col(histVal)}">${pct(histVal)}</span>
          </div>
-         <div style="font-family:'IBM Plex Sans',sans-serif;font-size:9.5px;color:var(--mu);margin-top:3px;font-style:italic">${histCtx}</div>`
+         <div style="font-family:'IBM Plex Sans',sans-serif;font-size:9.5px;color:var(--mu);margin-top:3px;font-style:italic">${histCtx}</div>
+         ${histWarnBanner}`
       : `<div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);margin-top:8px;font-style:italic">Histórico disponible desde la próxima semana</div>`;
     return `<div class="sc-card ${border(paramVal)}">
       <div class="sc-label">${label}</div>
@@ -568,6 +577,7 @@ async function render(d){
             <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${soCol}">${so.toFixed(2)}</div>
           </div>`:''}
         </div>
+        ${(()=>{const r=b2.retorno_usd_est!=null?b2.retorno_usd_est:v*b2.vol_portfolio+0.04;const ex=r-0.04;return `<div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);margin-bottom:6px">Retorno est. USD: <b style="color:#e8f0f8">${(r*100).toFixed(1)}%</b>  ·  Rf 4%  ·  exceso <b style="color:var(--cy)">${(ex*100).toFixed(1)}%</b></div>`;})()}
         <div class="sc-ctx">Sharpe: excedente sobre Rf 4% / vol total. Sortino: ídem usando solo downside deviation — penaliza menos la volatilidad positiva.</div>
         <div class="sc-implication ${v<0?'neg':v>0.5?'pos':'neu'}">${sortinoNote || (v<0?'No compensa el riesgo vs T-Bills.':v>1?'Excelente relación retorno/riesgo en USD.':'Ratio moderado para cartera con exposición argentina.')}</div>
         ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,v>0)}<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-left:4px">${series.length}w</span></div>`:''}
@@ -596,6 +606,20 @@ async function render(d){
           </div>
           <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:${x.col};width:44px;text-align:right">${pct(x.v)}</span>
         </div>`).join('')}
+      </div>`;
+    },
+    // Max Drawdown
+    () => {
+      const v = b3.max_drawdown;
+      if(v == null) return `<div class="sc-card"><div class="sc-label">Max Drawdown  ·  3 años</div><div class="sc-ctx" style="margin-top:8px">Disponible desde la próxima actualización del script.</div></div>`;
+      const col = v < -0.20 ? 'var(--rd)' : v < -0.10 ? 'var(--am)' : 'var(--gr)';
+      const series = hSeries('max_drawdown');
+      return `<div class="sc-card ${v < -0.20 ? 'warn' : ''}">
+        <div class="sc-label">Max Drawdown  ·  3 años</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${col};margin-bottom:4px">${pct(v,1)}</div>
+        <div class="sc-ctx">Caída máxima pico-a-fondo observada (retornos diarios proxy equity+EMB). Complementa el VaR — muestra el dolor real durante el período.</div>
+        <div class="sc-implication ${v < -0.15 ? 'neg' : v < -0.05 ? 'neu' : 'pos'}">${v < -0.20 ? 'Drawdown significativo — revisar límites de riesgo activo.' : v < -0.10 ? 'Drawdown moderado para exposición argentina.' : 'Drawdown contenido en el período alcista 2024-2026.'}</div>
+        ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,false)}</div>`:''}
       </div>`;
     },
     // σ Portfolio

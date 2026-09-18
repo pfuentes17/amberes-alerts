@@ -26,6 +26,7 @@
     "vol_equity": 0.2185,
     "sharpe": 0.27,
     "sortino": 0.41,
+    "retorno_usd_est": 0.0742,
     "equity_pct": 0.5628,
     "cash_pct": 0.1237
   },
@@ -49,7 +50,8 @@
     "stress_rv10_pct": -0.0563,
     "stress_rv10_ars_m": -579.0,
     "stress_deval30_pct": -0.0159,
-    "stress_deval30_ars_m": -164.0
+    "stress_deval30_ars_m": -164.0,
+    "max_drawdown": -0.0312
   },
   "b4_concentracion": {
     "hhi": 0.0463,
