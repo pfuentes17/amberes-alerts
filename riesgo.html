@@ -226,6 +226,7 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
       </div>
       <div class="stress-section-body">
         <div class="section-lbl">Métricas de riesgo de cola</div>
+        <div id="risk-evolution-panel" style="margin-bottom:10px"></div>
         <div class="sc-grid" id="b3-sc-cards"></div>
         <div class="section-lbl" style="margin-top:4px">Escenarios de stress</div>
         <div class="st-grid" id="b3-st-cards"></div>
@@ -691,6 +692,92 @@ async function render(d){
   ];
 
   document.getElementById('b3-sc-cards').innerHTML = scCards.map(fn=>fn()).join('');
+
+  /* ── Panel de evolución histórica de riesgo ── */
+  (function renderEvolutionPanel() {
+    const el = document.getElementById('risk-evolution-panel');
+    if (!el) return;
+
+    const MIN_POINTS = 4;
+    // Series que queremos graficar: {key, label, color, limit, isNeg}
+    const SERIES = [
+      { key: 'var95',        label: 'VaR 95%', color: '#f87171', limit: -0.18, isNeg: true  },
+      { key: 'cvar95',       label: 'CVaR 95%',color: '#fb923c', limit: -0.22, isNeg: true  },
+      { key: 'vol_portfolio',label: 'σ',        color: '#60a5fa', limit:  0.25, isNeg: false },
+      { key: 'sharpe',       label: 'Sharpe',   color: '#22d3a0', limit:  0.30, isNeg: false },
+    ];
+
+    // Extraer datos con fecha
+    const pts = hist.filter(h => h.fecha_iso).map(h => {
+      const f = h.fecha_iso; // "20260917"
+      const date = `${f.slice(6,8)}/${f.slice(4,6)}/${f.slice(0,4)}`;
+      return { date, ...h };
+    });
+
+    if (pts.length < MIN_POINTS) {
+      el.innerHTML = `<div style="background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em">Evolución de riesgo</div>
+        <div style="flex:1;height:1px;background:var(--bdr)"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu)">${pts.length}/4 snapshots · disponible desde la semana 4</div>
+        <div style="display:flex;gap:3px">${Array.from({length:4},(_,i)=>`<div style="width:8px;height:8px;border-radius:50%;background:${i<pts.length?'var(--cy)':'var(--bdr)'}"></div>`).join('')}</div>
+      </div>`;
+      return;
+    }
+
+    // Normalizar series para SVG — cada serie va de 0 a 1 en el eje Y
+    const W = 700, H = 110, PAD = { t: 14, r: 70, b: 22, l: 44 };
+    const cW = W - PAD.l - PAD.r, cH = H - PAD.t - PAD.b;
+    const n = pts.length;
+
+    // Calcular rango global por serie
+    function seriesSVG(s) {
+      const vals = pts.map(p => p[s.key]).filter(v => v != null);
+      if (vals.length < 2) return '';
+      const mn = Math.min(...vals, s.limit);
+      const mx = Math.max(...vals, s.limit);
+      const range = mx - mn || 0.01;
+      const toY = v => PAD.t + cH - ((v - mn) / range) * cH;
+      const toX = i => PAD.l + (i / (n - 1)) * cW;
+
+      const linePoints = pts.map((p, i) => p[s.key] != null ? `${toX(i)},${toY(p[s.key])}` : null).filter(Boolean).join(' ');
+      const limitY = toY(s.limit);
+      const lastVal = vals[vals.length - 1];
+      let lastIdx = 0; for(let i=0;i<pts.length;i++) if(pts[i][s.key]!=null) lastIdx=i;
+      const lastX = toX(lastIdx);
+
+      return `
+        <!-- límite ${s.label} -->
+        <line x1="${PAD.l}" y1="${limitY}" x2="${W - PAD.r}" y2="${limitY}"
+              stroke="${s.color}" stroke-width="0.7" stroke-dasharray="3,3" opacity="0.4"/>
+        <!-- línea serie -->
+        <polyline points="${linePoints}" stroke="${s.color}" stroke-width="1.8" fill="none" opacity="0.9"/>
+        <!-- punto último -->
+        <circle cx="${lastX}" cy="${toY(lastVal)}" r="3" fill="${s.color}"/>
+        <!-- label derecho -->
+        <text x="${W - PAD.r + 5}" y="${toY(lastVal) + 4}"
+              font-family="IBM Plex Mono,monospace" font-size="8" fill="${s.color}">${s.label} ${s.isNeg ? pct(lastVal) : lastVal.toFixed(2)}</text>`;
+    }
+
+    // Eje X: fechas
+    const xAxis = pts.map((p, i) => {
+      if (i !== 0 && i !== n - 1 && i !== Math.floor(n / 2)) return '';
+      return `<text x="${PAD.l + (i/(n-1))*cW}" y="${H - 4}" text-anchor="middle"
+              font-family="IBM Plex Mono,monospace" font-size="7.5" fill="rgba(148,163,184,.5)">${p.date}</text>`;
+    }).join('');
+
+    el.innerHTML = `<div style="background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:10px 14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu)">Evolución de riesgo · ${n} semanas</div>
+        <div style="display:flex;gap:12px">${SERIES.map(s=>`<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:${s.color}">— ${s.label}</span>`).join('')}<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(148,163,184,.4)">··· límite</span></div>
+      </div>
+      <svg viewBox="0 0 ${W} ${H}" style="width:100%;height:${H}px;display:block">
+        <!-- fondo grid -->
+        ${[0.25,0.5,0.75].map(t=>`<line x1="${PAD.l}" y1="${PAD.t+cH*t}" x2="${W-PAD.r}" y2="${PAD.t+cH*t}" stroke="rgba(74,96,128,.12)" stroke-width="1"/>`).join('')}
+        ${SERIES.map(seriesSVG).join('')}
+        ${xAxis}
+      </svg>
+    </div>`;
+  })();
 
   const stCards = [
     {
