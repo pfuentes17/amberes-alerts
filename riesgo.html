@@ -128,8 +128,11 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
 .bm-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);}
 .bm-val{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;}
 .bm-table{width:100%;border-collapse:collapse;}
+.bm-table{table-layout:fixed;}
 .bm-table th{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--mu);padding:6px 10px;border-bottom:1px solid var(--bdr);text-align:left;white-space:nowrap;}
 .bm-table th.r{text-align:right;}
+.bm-table th:first-child{width:38%;}
+.bm-table th:not(:first-child){width:15.5%;}
 .bm-table td{padding:7px 10px;border-bottom:1px solid rgba(31,45,64,.5);font-family:'IBM Plex Mono',monospace;font-size:11px;}
 .bm-table tr:last-child td{border-bottom:none;}
 .bm-table td.r{text-align:right;}
@@ -245,7 +248,7 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
         <span style="font-size:15px">⚠️</span>
         <span class="stress-section-title">B3 — Tail Risk & Stress Testing</span>
         <span class="bloque-badge" id="b3-badge" style="color:var(--rd);border-color:rgba(248,113,113,.3);margin-left:8px"></span>
-        <span style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu)">Modelo paramétrico · Normal multivariada</span>
+        <span style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu)">Horizonte 1 año · Param. + Histórico 3a</span>
       </div>
       <div class="stress-section-body">
         <div class="section-lbl">Métricas de riesgo de cola</div>
@@ -275,7 +278,7 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
                 <th class="r">Portafolio</th>
                 <th class="r">S&amp;P 500</th>
                 <th class="r">Merval USD</th>
-                <th class="r">Port vs S&amp;P</th>
+                <th class="r">vs S&amp;P 500</th>
               </tr>
             </thead>
             <tbody id="bm-tbody"></tbody>
@@ -374,16 +377,23 @@ async function render(d){
     `<div>Actualizado: <b>${meta.fecha}</b></div>`+
     `<div>${meta.clientes} clientes · ${meta.instrumentos} instrumentos</div>`;
 
-  /* meta bar */
-  document.getElementById('meta-bar').innerHTML = [
-    ['Total ARS','ARS '+meta.total_ars_bn.toFixed(3)+' bn',meta.clientes+' clientes'],
-    ['Total USD','USD '+meta.total_usd_m.toFixed(2)+'M','MEP/Cable'],
-    ['CCL','$'+meta.ccl.toLocaleString('es-AR'),meta.ccl_fuente.split('(')[0].trim()],
-    ['Equity',    pct(b2.equity_pct), 'CEDEARs + Acciones'],
-    ['Renta Fija',pct(b1.bonds_pct),  'del portafolio'],
-    ['Cash / Div',pct(b2.cash_pct != null ? b2.cash_pct : Math.max(0, 1-b2.equity_pct-b1.bonds_pct)), 'divisas + liquidez'],
-    ['Retorno est. USD', b2.retorno_usd_est != null ? pct(b2.retorno_usd_est,1) : ((b2.sharpe*b2.vol_portfolio+0.04)*100).toFixed(1)+'%', 'anualizado estimado'],
-  ].map(([l,v,s])=>`<div class="mbk"><div class="mbk-l">${l}</div><div class="mbk-v">${v}</div><div class="mbk-s">${s}</div></div>`).join('');
+  /* meta bar — tres grupos: tamaño | composición | performance */
+  const cashPct = b2.cash_pct != null ? b2.cash_pct : Math.max(0, 1-b2.equity_pct-b1.bonds_pct);
+  const retornoEst = b2.retorno_usd_est != null ? b2.retorno_usd_est : b2.sharpe*b2.vol_portfolio+0.04;
+  const retCol = retornoEst > 0.08 ? 'var(--gr)' : retornoEst > 0.04 ? 'var(--am)' : 'var(--rd)';
+  const sharpeCol = b2.sharpe > 0.8 ? 'var(--gr)' : b2.sharpe > 0.3 ? 'var(--am)' : 'var(--rd)';
+  const divider = `<div style="width:1px;background:var(--bdr);align-self:stretch;margin:0 4px;flex-shrink:0"></div>`;
+  const mbk = (l,v,s,vc='#e8f0f8') => `<div class="mbk"><div class="mbk-l">${l}</div><div class="mbk-v" style="color:${vc}">${v}</div><div class="mbk-s">${s}</div></div>`;
+  document.getElementById('meta-bar').innerHTML =
+    mbk('Total USD','USD '+meta.total_usd_m.toFixed(2)+'M', meta.clientes+' clientes · CCL $'+meta.ccl.toLocaleString('es-AR')) +
+    mbk('Total ARS','ARS '+meta.total_ars_bn.toFixed(3)+' bn', meta.instrumentos+' instrumentos') +
+    divider +
+    mbk('Equity',    pct(b2.equity_pct), 'CEDEARs + Acciones') +
+    mbk('Renta Fija',pct(b1.bonds_pct),  'del portafolio') +
+    mbk('Cash / Div',pct(cashPct),        'divisas + liquidez') +
+    divider +
+    mbk('Retorno est. USD', pct(retornoEst,1), 'anualizado estimado', retCol) +
+    mbk('Sharpe', b2.sharpe.toFixed(2), 'vs T-Bills 4% · Sortino '+b2.sortino.toFixed(2), sharpeCol);
 
   /* alertas */
   const alertas=[];
