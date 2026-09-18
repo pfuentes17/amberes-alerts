@@ -108,6 +108,10 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
 .sc-implication.pos{background:rgba(34,211,160,.06);color:var(--gr);}
 .sc-implication.neu{background:rgba(74,96,128,.15);color:var(--cy);}
 .sc-spark{margin-top:6px;}
+.lim-bar-wrap{margin-top:8px;margin-bottom:2px;}
+.lim-bar-track{height:3px;background:rgba(74,96,128,.2);border-radius:2px;overflow:hidden;}
+.lim-bar-fill{height:100%;border-radius:2px;transition:width .3s;}
+.lim-bar-label{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-top:2px;}
 /* stress tests expandidos */
 .st-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
 .st-card{background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:12px 14px;}
@@ -435,6 +439,39 @@ async function render(d){
     </div>`;
   }).join('');
 
+  /* ── Límites de riesgo (mandato interno) ── */
+  const LIMITS = {
+    var95_param:   { limit: -0.18, label: 'Límite VaR 95%',    lowerIsBetter: true,  fmt: v => pct(v)          },
+    var99_param:   { limit: -0.28, label: 'Límite VaR 99%',    lowerIsBetter: true,  fmt: v => pct(v)          },
+    cvar95:        { limit: -0.22, label: 'Límite CVaR 95%',   lowerIsBetter: true,  fmt: v => pct(v)          },
+    max_drawdown:  { limit: -0.20, label: 'Límite drawdown',   lowerIsBetter: true,  fmt: v => pct(v)          },
+    vol_portfolio: { limit: 0.25,  label: 'Límite vol',        lowerIsBetter: true,  fmt: v => pct(v)          },
+    duration_mod:  { limit: 3.5,   label: 'Límite duration',   lowerIsBetter: true,  fmt: v => v.toFixed(1)+'a'},
+    hhi:           { limit: 0.15,  label: 'Límite HHI',        lowerIsBetter: true,  fmt: v => v.toFixed(3)    },
+    sharpe:        { limit: 0.30,  label: 'Mínimo Sharpe',     lowerIsBetter: false, fmt: v => v.toFixed(2)    },
+  };
+  function limitBar(key, value) {
+    const cfg = LIMITS[key];
+    if (!cfg || value == null) return '';
+    const limit = cfg.limit;
+    let util, overLimit;
+    if (cfg.lowerIsBetter) {
+      util = Math.abs(value) / Math.abs(limit);
+      // Para negativos (VaR): breach si value < limit (más negativo). Para positivos (vol, hhi): breach si value > limit.
+      overLimit = limit < 0 ? value < limit : value > limit;
+    } else {
+      util = limit / Math.max(value, 0.01);
+      overLimit = value < limit;
+    }
+    const pctUsed = Math.min(util * 100, 100);
+    const fillColor = overLimit ? 'var(--rd)' : util > 0.85 ? 'var(--am)' : 'var(--gr)';
+    const utilLabel = overLimit ? `⚠ BREACH (${(util*100).toFixed(0)}%)` : `${pctUsed.toFixed(0)}% del límite`;
+    return `<div class="lim-bar-wrap">
+      <div class="lim-bar-track"><div class="lim-bar-fill" style="width:${pctUsed}%;background:${fillColor}"></div></div>
+      <div class="lim-bar-label"><span>${cfg.label}: ${cfg.fmt(limit)}</span><span style="color:${fillColor}">${utilLabel}</span></div>
+    </div>`;
+  }
+
   /* ── B1 Renta Fija ── */
   document.getElementById('b1-badge').textContent = pct(b1.bonds_pct)+' portafolio';
   const b1m = [
@@ -443,9 +480,10 @@ async function render(d){
     ['DV01',        `USD ${Math.round(b1.dv01_usd).toLocaleString()}`,          'por bp',      'bl-am','var(--am)'],
     ['PL +100bp',   `USD ${Math.abs(Math.round(b1.pl_100bp_usd)).toLocaleString()}`, 'pérdida estimada','bl-rd','var(--rd)'],
   ];
-  document.getElementById('b1-metrics').innerHTML = b1m.map(([l,v,s,cls,col])=>
-    `<div class="metric ${cls}"><div class="metric-l">${l}</div><div class="metric-v" style="${c(col)}">${v}</div><div class="metric-s">${s}</div></div>`
-  ).join('');
+  document.getElementById('b1-metrics').innerHTML = b1m.map(([l,v,s,cls,col], i)=>{
+    const bar = i === 1 ? limitBar('duration_mod', b1.duration_mod) : '';
+    return `<div class="metric ${cls}"><div class="metric-l">${l}</div><div class="metric-v" style="${c(col)}">${v}</div><div class="metric-s">${s}</div>${bar}</div>`;
+  }).join('');
   document.getElementById('b1-stress').innerHTML = [
     ['+100 bps','USD '+Math.abs(Math.round(b1.pl_100bp_usd)).toLocaleString(),'P&L USD',false],
     ['+400 bps','USD '+Math.abs(Math.round(b1.pl_400bp_usd)).toLocaleString(),'P&L stress',false],
@@ -511,6 +549,7 @@ async function render(d){
       </div>
       <div class="sc-ctx">${ctx}</div>
       ${histRow}
+      ${limitBar(key+'_param', paramVal)}
       ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,false)}<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-left:4px">${series.length}w</span></div>`:''}
     </div>`;
   }
@@ -559,6 +598,7 @@ async function render(d){
         </div>
         <div class="sc-ctx">Promedio de pérdidas en el 5% más extremo. Siempre mayor (peor) que el VaR. No asume cola truncada.</div>
         ${histRow}
+        ${limitBar('cvar95', v)}
         ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,false)}<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-left:4px">${series.length}w</span></div>`:''}
       </div>`;
     },
@@ -590,6 +630,7 @@ async function render(d){
         ${(()=>{const r=b2.retorno_usd_est!=null?b2.retorno_usd_est:v*b2.vol_portfolio+0.04;const ex=r-0.04;const exCol=ex>0.04?'var(--gr)':ex>0?'var(--am)':'var(--rd)';return `<div style="display:flex;gap:20px;align-items:baseline;padding:7px 10px;background:rgba(255,255,255,.04);border-radius:6px;margin-bottom:8px;border-left:3px solid var(--cy)"><div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px">Retorno est. USD</div><div style="font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:700;color:#e8f0f8">${(r*100).toFixed(1)}%</div></div><div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px">Rf (T-Bills)</div><div style="font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:700;color:var(--mu)">4.0%</div></div><div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px">Exceso</div><div style="font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:700;color:${exCol}">${ex>=0?'+':''}${(ex*100).toFixed(1)}%</div></div></div>`;})()}
         <div class="sc-ctx">Sharpe: excedente sobre Rf 4% / vol total. Sortino: ídem usando solo downside deviation — penaliza menos la volatilidad positiva.</div>
         <div class="sc-implication ${v<0?'neg':v>0.5?'pos':'neu'}">${sortinoNote || (v<0?'No compensa el riesgo vs T-Bills.':v>1?'Excelente relación retorno/riesgo en USD.':'Ratio moderado para cartera con exposición argentina.')}</div>
+        ${limitBar('sharpe', v)}
         ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,v>0)}<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-left:4px">${series.length}w</span></div>`:''}
       </div>`;
     },
@@ -630,6 +671,7 @@ async function render(d){
         ${b3.max_drawdown_peak_date ? `<div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);margin-bottom:4px">pico ${b3.max_drawdown_peak_date} → fondo ${b3.max_drawdown_trough_date}</div>` : ''}
         <div class="sc-ctx">Caída máxima pico-a-fondo observada (retornos diarios proxy equity+EMB). Complementa el VaR — muestra el dolor real durante el período.</div>
         <div class="sc-implication ${v < -0.15 ? 'neg' : v < -0.05 ? 'neu' : 'pos'}">${v < -0.20 ? 'Drawdown significativo — revisar límites de riesgo activo.' : v < -0.10 ? 'Drawdown moderado para exposición argentina.' : 'Drawdown contenido en el período alcista 2024-2026.'}</div>
+        ${limitBar('max_drawdown', v)}
         ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,false)}</div>`:''}
       </div>`;
     },
@@ -642,6 +684,7 @@ async function render(d){
         <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${col};margin-bottom:4px">${pct(v,1)}</div>
         <div class="sc-ctx">Volatilidad del portfolio consolidado (Elton-Gruber, ρ≈0.4 entre activos). Incluye bonos con vol ~6.5% y equity con vol ponderada real.</div>
         <div class="sc-implication ${v>0.25?'neg':'pos'}">Vol de ${pct(v,1)} — ${v>0.25?'alta para fondo balanceado. Refleja el '+pct(b2.equity_pct)+' en RV.':'razonable dado el '+pct(b2.equity_pct)+' en renta variable.'}</div>
+        ${limitBar('vol_portfolio', v)}
         ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,false)}</div>`:''}
       </div>`;
     },
@@ -770,9 +813,10 @@ async function render(d){
     ['Eff N',   b4.eff_n.toFixed(1)+' apuestas','por peso','','#e8f0f8'],
     ['Liq. A',  pct(b4.liq_a_pct),'alta liquidez','bl-gr','var(--gr)'],
     ['Exp. USD',pct(b4.usd_exposure_pct),'exposición dólar','bl-cy','var(--cy)'],
-  ].map(([l,v,s,cls,col])=>
-    `<div class="metric ${cls}"><div class="metric-l">${l}</div><div class="metric-v" style="${c(col)}">${v}</div><div class="metric-s">${s}</div></div>`
-  ).join('');
+  ].map(([l,v,s,cls,col], i)=>{
+    const bar = i === 0 ? limitBar('hhi', b4.hhi) : '';
+    return `<div class="metric ${cls}"><div class="metric-l">${l}</div><div class="metric-v" style="${c(col)}">${v}</div><div class="metric-s">${s}</div>${bar}</div>`;
+  }).join('');
 
   document.getElementById('footnote').textContent =
     `Fuentes: YTM/MD — amberes-alerts.vercel.app/bonos.html (Playwright) · Vol/Beta — Yahoo Finance 252 días · CCL — ${meta.ccl_fuente} · Actualización automática: lunes 8:00 AM`;
