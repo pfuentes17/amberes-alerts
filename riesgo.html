@@ -212,6 +212,22 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
     <div class="meta-bar" id="meta-bar"></div>
     <div id="alertas"></div>
 
+    <!-- ══ B3 TAIL RISK & STRESS TESTING ════════════════════ -->
+    <div class="stress-section">
+      <div class="stress-section-hdr">
+        <span style="font-size:15px">⚠️</span>
+        <span class="stress-section-title">B3 — Tail Risk & Stress Testing</span>
+        <span class="bloque-badge" id="b3-badge" style="color:var(--rd);border-color:rgba(248,113,113,.3);margin-left:8px"></span>
+        <span style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu)">Horizonte 1 año · Param. + Histórico 3a</span>
+      </div>
+      <div class="stress-section-body">
+        <div class="section-lbl">Métricas de riesgo de cola</div>
+        <div class="sc-grid" id="b3-sc-cards"></div>
+        <div class="section-lbl" style="margin-top:4px">Escenarios de stress</div>
+        <div class="st-grid" id="b3-st-cards"></div>
+      </div>
+    </div>
+
     <!-- ══ COMPOSICIÓN DE CARTERA ══════════════════════════ -->
     <div class="comp-card">
       <div class="comp-hdr">
@@ -239,22 +255,6 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
         <div class="metrics m4" id="b1-metrics"></div>
         <div class="section-lbl" style="margin-top:14px">Sensibilidad a tasas</div>
         <div class="stress-grid" id="b1-stress"></div>
-      </div>
-    </div>
-
-    <!-- ══ B3 TAIL RISK & STRESS TESTING ════════════════════ -->
-    <div class="stress-section">
-      <div class="stress-section-hdr">
-        <span style="font-size:15px">⚠️</span>
-        <span class="stress-section-title">B3 — Tail Risk & Stress Testing</span>
-        <span class="bloque-badge" id="b3-badge" style="color:var(--rd);border-color:rgba(248,113,113,.3);margin-left:8px"></span>
-        <span style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu)">Horizonte 1 año · Param. + Histórico 3a</span>
-      </div>
-      <div class="stress-section-body">
-        <div class="section-lbl">Métricas de riesgo de cola</div>
-        <div class="sc-grid" id="b3-sc-cards"></div>
-        <div class="section-lbl" style="margin-top:4px">Escenarios de stress</div>
-        <div class="st-grid" id="b3-st-cards"></div>
       </div>
     </div>
 
@@ -587,7 +587,7 @@ async function render(d){
             <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${soCol}">${so.toFixed(2)}</div>
           </div>`:''}
         </div>
-        ${(()=>{const r=b2.retorno_usd_est!=null?b2.retorno_usd_est:v*b2.vol_portfolio+0.04;const ex=r-0.04;return `<div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);margin-bottom:6px">Retorno est. USD: <b style="color:#e8f0f8">${(r*100).toFixed(1)}%</b>  ·  Rf 4%  ·  exceso <b style="color:var(--cy)">${(ex*100).toFixed(1)}%</b></div>`;})()}
+        ${(()=>{const r=b2.retorno_usd_est!=null?b2.retorno_usd_est:v*b2.vol_portfolio+0.04;const ex=r-0.04;const exCol=ex>0.04?'var(--gr)':ex>0?'var(--am)':'var(--rd)';return `<div style="display:flex;gap:20px;align-items:baseline;padding:7px 10px;background:rgba(255,255,255,.04);border-radius:6px;margin-bottom:8px;border-left:3px solid var(--cy)"><div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px">Retorno est. USD</div><div style="font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:700;color:#e8f0f8">${(r*100).toFixed(1)}%</div></div><div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px">Rf (T-Bills)</div><div style="font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:700;color:var(--mu)">4.0%</div></div><div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px">Exceso</div><div style="font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:700;color:${exCol}">${ex>=0?'+':''}${(ex*100).toFixed(1)}%</div></div></div>`;})()}
         <div class="sc-ctx">Sharpe: excedente sobre Rf 4% / vol total. Sortino: ídem usando solo downside deviation — penaliza menos la volatilidad positiva.</div>
         <div class="sc-implication ${v<0?'neg':v>0.5?'pos':'neu'}">${sortinoNote || (v<0?'No compensa el riesgo vs T-Bills.':v>1?'Excelente relación retorno/riesgo en USD.':'Ratio moderado para cartera con exposición argentina.')}</div>
         ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,v>0)}<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-left:4px">${series.length}w</span></div>`:''}
@@ -626,7 +626,8 @@ async function render(d){
       const series = hSeries('max_drawdown');
       return `<div class="sc-card ${v < -0.20 ? 'warn' : ''}">
         <div class="sc-label">Max Drawdown  ·  3 años</div>
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${col};margin-bottom:4px">${pct(v,1)}</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${col};margin-bottom:2px">${pct(v,1)}</div>
+        ${b3.max_drawdown_peak_date ? `<div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);margin-bottom:4px">pico ${b3.max_drawdown_peak_date} → fondo ${b3.max_drawdown_trough_date}</div>` : ''}
         <div class="sc-ctx">Caída máxima pico-a-fondo observada (retornos diarios proxy equity+EMB). Complementa el VaR — muestra el dolor real durante el período.</div>
         <div class="sc-implication ${v < -0.15 ? 'neg' : v < -0.05 ? 'neu' : 'pos'}">${v < -0.20 ? 'Drawdown significativo — revisar límites de riesgo activo.' : v < -0.10 ? 'Drawdown moderado para exposición argentina.' : 'Drawdown contenido en el período alcista 2024-2026.'}</div>
         ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,false)}</div>`:''}
@@ -884,11 +885,14 @@ async function loadBenchmarks(d) {
     summaryCard(port, true) + summaryCard(sp, false) + summaryCard(mv, false);
 
   // ── Tabla detallada ──────────────────────────────────────────
-  function diff(pv, bv) {
+  function diff(pv, bv, isRatio=false) {
     if (pv == null || bv == null) return '<td class="r" style="color:var(--mu)">—</td>';
     const d = pv - bv;
     const col = d < 0 ? 'var(--rd)' : d > 0 ? 'var(--gr)' : 'var(--mu)';
-    return `<td class="r" style="color:${col};font-size:10px">${d >= 0 ? '+' : ''}${(d*100).toFixed(1)}pp</td>`;
+    const fmt = isRatio
+      ? `${d >= 0 ? '+' : ''}${d.toFixed(2)}`
+      : `${d >= 0 ? '+' : ''}${(d*100).toFixed(1)}pp`;
+    return `<td class="r" style="color:${col};font-size:10px">${fmt}</td>`;
   }
   function fmtV(v, goodIfPos) {
     if (v == null) return '<span style="color:var(--mu)">—</span>';
@@ -907,7 +911,7 @@ async function loadBenchmarks(d) {
     { label: 'VaR 99% histórico 3a',pv: port.var99_h,  sv: sp.var99_h,  mv: mv.var99_h,  goodIfPos: true,  note: 'Portafolio sin pérdida en ninguna ventana de 1 año en 3 años' },
     { label: 'Peor año observado',  pv: port.worst,    sv: sp.worst,    mv: mv.worst,    goodIfPos: true,  note: 'Mínimo de todas las ventanas rolling 252d' },
     { label: 'Mejor año observado', pv: port.best,     sv: sp.best,     mv: mv.best,     goodIfPos: true,  note: 'Máximo — Merval outlier por normalización 2023' },
-    { label: 'Sharpe (Rf USD 4%)',  pv: port.sharpe,   sv: sp.sharpe,   mv: mv.sharpe,   goodIfPos: true,  note: 'Portafolio: retorno/riesgo moderado vs benchmarks puros' },
+    { label: 'Sharpe (Rf USD 4%)',  pv: port.sharpe,   sv: sp.sharpe,   mv: mv.sharpe,   goodIfPos: true,  note: 'Portafolio: retorno/riesgo moderado vs benchmarks puros', isRatio: true },
   ];
 
   document.getElementById('bm-tbody').innerHTML = rows.map(r => {
@@ -928,7 +932,7 @@ async function loadBenchmarks(d) {
       ${cell(r.pv, r.goodIfPos)}
       ${cell(r.sv, r.goodIfPos)}
       ${cell(r.mv, r.goodIfPos)}
-      ${diff(r.pv, r.sv)}
+      ${diff(r.pv, r.sv, r.isRatio||false)}
     </tr>`;
   }).join('');
 

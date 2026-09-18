@@ -51,7 +51,9 @@
     "stress_rv10_ars_m": -579.0,
     "stress_deval30_pct": -0.0159,
     "stress_deval30_ars_m": -164.0,
-    "max_drawdown": -0.0312
+    "max_drawdown": -0.0312,
+    "max_drawdown_peak_date": "14/01/2025",
+    "max_drawdown_trough_date": "07/04/2025"
   },
   "b4_concentracion": {
     "hhi": 0.0463,
