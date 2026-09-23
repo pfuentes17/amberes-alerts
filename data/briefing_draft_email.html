@@ -6,9 +6,10 @@
 
 <tr><td style="background:#0f1f17;padding:24px 30px;">
   <span style="color:#ffffff;font-size:20px;font-weight:bold;">Consultora Amberes</span><br>
-  <span style="color:#00E880;font-size:14px;">Briefing Diario — 22/09/2026</span>
+  <span style="color:#00E880;font-size:14px;">Briefing Diario — 23/09/2026</span>
 </td></tr>
 
+<!--DRAFT_START-->
 <tr><td style="padding:20px 30px 0 30px;">
   <div style="background:#fff3cd;border:1px solid #ffe58f;border-radius:6px;padding:10px 14px;color:#7a5c00;font-size:13px;">
     ⚠️ BORRADOR PARA REVISIÓN — no publicado
@@ -17,15 +18,16 @@
 
 <tr><td style="padding:14px 30px 0 30px;">
   <div style="background:#e7f3ff;border:1px solid #b8daff;border-radius:6px;padding:10px 14px;color:#0c5460;font-size:12px;">
-    <strong>Nota para Pedro:</strong> priorizamos el Parte Diario / Flash de Mercados que pegaste (futuros de EE.UU., UST 10Y/2Y, VIX, DXY, metales, EMBI/globales argentinos, riesgo país, claves geopolíticas y de Argentina) por sobre WebSearch. Para ARS/FX y bonos usamos además las APIs propias (dolarapi, riesgo país, rendimientos.co), que coinciden con las cifras de tu newsletter (riesgo país 533pb, GD30D/GD35D/AL30D). Fear&amp;Greed (34) y AAII Bulls (28,8%, semana del 16/9) se verificaron por WebSearch con fecha de hoy; el Put/Call (0,95) es la última lectura de CBOE disponible en las fuentes consultadas (1/9), no encontramos un dato más reciente, así que lo marcamos como referencia y no como cifra de hoy.
+    <strong>Nota para Pedro:</strong> los precios de bonos, dólar, ETFs y FX salen de las APIs (cierre del martes 22/9). No hay TIR en la API de soberanos, así que solo mostramos precios y variaciones. Las LECAPs vinieron solo con precio y no se incluyeron. El UST 10Y (4,96%) es el último dato de FRED (21/9). Fear &amp; Greed (35) se verificó hoy. AAII (28,8%) es la encuesta de la semana pasada; la nueva sale el jueves. El Put/Call (0,95) sigue siendo la última lectura disponible y no es de hoy. Reservas, compras del BCRA, pago al FMI y Brent salen de Ámbito, El Cronista, Rio Times y NBC con fecha 22-23/9. El canje dollar-linked se menciona sin monto porque la fuente no deja clara la moneda.
   </div>
 </td></tr>
+<!--DRAFT_END-->
 
 <tr><td style="padding:20px 30px;">
   <h2 style="color:#0f1f17;font-size:16px;margin:0 0 8px 0;">Tono del día</h2>
   <p style="color:#333;font-size:14px;line-height:1.5;margin:0;">
-    <strong>Neutral / mixto, Argentina no acompaña.</strong> Futuros de EE.UU. mixtos con el S&amp;P 500 como peor referencia; Treasuries y VIX bajan, pero el sentimiento minorista sigue defensivo (Fear &amp; Greed en 34, AAII con el mayor pesimismo en 16 meses). El riesgo país argentino tocó 533 puntos, máximo en cuatro meses, justo cuando el FMI evalúa reservas en Buenos Aires y Caputo hace su roadshow en Nueva York.<br>
-    <span style="color:#888;font-size:12px;">Fear &amp; Greed: 34 (Miedo) · Put/Call: 0,95 (ref.) · AAII Bulls: 28,8%</span>
+    <strong>Neutral afuera, risk-off en Argentina.</strong> Afuera alivia el petróleo y el Nasdaq toca récord intradiario, pero Argentina va a contramano: el riesgo país saltó a 555 puntos, máximo desde mayo, con reservas en US$49.414M y un pago al FMI el viernes.<br>
+    <span style="color:#888;font-size:12px;">Fear &amp; Greed: 35 (Miedo) · Put/Call: 0,95 (ref.) · AAII Bulls: 28,8%</span>
   </p>
 </td></tr>
 
@@ -33,55 +35,61 @@
   <h2 style="color:#0f1f17;font-size:16px;margin:0 0 12px 0;">Drivers del día</h2>
 
   <div style="border-left:3px solid #dc3545;padding:10px 14px;margin-bottom:12px;background:#f8f9fa;">
-    <span style="font-size:11px;color:#dc3545;font-weight:bold;">ARGENTINA · RIESGO SOBERANO</span><br>
-    <strong style="font-size:14px;color:#0f1f17;">Riesgo país argentino trepa a 533 puntos, máximo en cuatro meses</strong>
-    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">Sexto día consecutivo de suba (+9pb); bonos en dólares cayeron hasta 1,2% y el Merval operó en negativo pese a la suba de Wall Street. El BCRA compró apenas US$8M en el mes y las reservas brutas cayeron a US$49.695M. Coincide con la misión del FMI en Buenos Aires (revisión de reservas y superávit) y el roadshow de Caputo ante JP Morgan en Nueva York, previo a un desembolso esperado de US$900M.</p>
+    <span style="display:inline-block;background:#0f1f17;color:#00E880;font-size:10px;font-weight:bold;padding:1px 6px;border-radius:3px;margin-right:6px;">ARG</span><span style="font-size:11px;color:#dc3545;font-weight:bold;">ARGENTINA · RIESGO SOBERANO</span><br>
+    <strong style="font-size:14px;color:#0f1f17;">Riesgo país salta a 555 puntos, máximo desde mayo, en su séptima suba seguida</strong>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">El riesgo país cerró el martes en <strong>555 puntos básicos</strong> (+22pb), séptima suba consecutiva desde los 506pb del 15/9 y máximo desde mayo. La caída se concentró en la parte larga: <strong>AL35 -1,49%</strong> (US$72,55), <strong>AO29 -1,49%</strong>, <strong>AE38 -1,20%</strong>, <strong>GD35 -1,00%</strong> (US$77,06) y <strong>GD41 -1,02%</strong>; el tramo corto aguantó mejor (<strong>AL30 -0,49%</strong> a US$55,19, <strong>GD30 -0,35%</strong> a US$57,00). El Merval quedó prácticamente plano (-0,04%) con bancos a la baja.</p>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">La deuda emergente cedió apenas 0,1% en la misma rueda, así que el movimiento es local. En Nueva York, Caputo dijo a unos 50 inversores en JP Morgan que Argentina <strong>no tomará deuda para refinanciar vencimientos a las tasas actuales</strong>, con los soberanos rindiendo más de 10%. Parte del mercado leyó eso como falta de un plan de financiamiento anticipado antes de la volatilidad electoral de 2027. El canje de títulos dollar-linked del lunes tuvo 75% de adhesión y alargó plazos, pero no cambió el ánimo.</p>
+    <p style="font-size:12px;color:#666;margin:6px 0 0 0;"><em>Impacto:</em> Riesgo País: ↑ 555pb (+22pb) · AL35: ↓ 1,49% · GD35: ↓ 1,00% · AL30: ↓ 0,49%</p>
   </div>
-
-  <div style="border-left:3px solid #1a73e8;padding:10px 14px;margin-bottom:12px;background:#f8f9fa;">
-    <span style="font-size:11px;color:#1a73e8;font-weight:bold;">BANCOS CENTRALES · RENTA FIJA</span><br>
-    <strong style="font-size:14px;color:#0f1f17;">Treasuries cerca de máximos de casi dos décadas por el shock energético y la emisión ligada a IA</strong>
-    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">UST 10Y 4,939% (-2,4pb), UST 2Y 4,732% (-2,1pb), curva 2s10s en 20,7pb. El "basis trade" bonos-futuros que llegó a US$830.000M en 2025 pierde tracción frente a la creciente oferta de deuda del Tesoro; la pregunta para 2026 es quién financia esa oferta.</p>
+  <div style="border-left:3px solid #c98a1f;padding:10px 14px;margin-bottom:12px;background:#f8f9fa;">
+    <span style="display:inline-block;background:#0f1f17;color:#00E880;font-size:10px;font-weight:bold;padding:1px 6px;border-radius:3px;margin-right:6px;">ARG</span><span style="font-size:11px;color:#c98a1f;font-weight:bold;">ARGENTINA · BCRA · RESERVAS</span><br>
+    <strong style="font-size:14px;color:#0f1f17;">Reservas caen US$281M a US$49.414M y el BCRA compra apenas US$7M</strong>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">Las reservas brutas cerraron el martes en <strong>US$49.414 millones</strong> (<strong>-US$281M</strong>), la segunda peor caída del mes, explicada por un pago a la CAF de ~US$100M y la valuación de monedas (euro, libra y yuan débiles contra el dólar). El BCRA compró <strong>US$7M</strong>, apenas 1% de los US$608M operados, y acumula <strong>US$218M</strong> en septiembre.</p>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">La liquidación del agro no alcanza a cubrir una demanda no agrícola estimada en ~US$154M diarios, así que el BCRA casi no puede comprar. El viernes 25/9 vence un pago al FMI por <strong>DEG 583,3M (~US$803M)</strong> mientras la misión técnica revisa el acuerdo en Buenos Aires. En el mercado de cambios, el mayorista cerró en <strong>$1.515</strong>, el MEP en <strong>$1.536,6</strong> y el CCL en <strong>$1.598,3</strong> (brecha CCL/mayorista ~5,5%; canje CCL/MEP ~4%).</p>
+    <p style="font-size:12px;color:#666;margin:6px 0 0 0;"><em>Impacto:</em> Reservas brutas: ↓ US$49.414M (-281M) · Dólar mayorista: $1.515 · CCL: $1.598,3</p>
   </div>
-
   <div style="border-left:3px solid #17a2b8;padding:10px 14px;margin-bottom:12px;background:#f8f9fa;">
-    <span style="font-size:11px;color:#17a2b8;font-weight:bold;">GEOPOLÍTICA · ENERGÍA</span><br>
-    <strong style="font-size:14px;color:#0f1f17;">Fletes de crudo saltan a US$1,1 millones diarios, nuevo canal inflacionario</strong>
-    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">Flete de un VLCC de Golfo Pérsico a Asia se multiplicó 12 veces; transportar crudo desde Ormuz a Asia cuesta ya más de US$22/barril (vs. US$2 hace un año). El tráfico por Hormuz cayó a dos buques desde diez. El WTI cede igual 1,54% a US$90,95 y el Brent 0,99% a US$99,35 ante expectativas de diálogo EE.UU.-Irán en la ONU.</p>
+    <span style="display:inline-block;background:#0f1f17;color:#00E880;font-size:10px;font-weight:bold;padding:1px 6px;border-radius:3px;margin-right:6px;">INT</span><span style="font-size:11px;color:#17a2b8;font-weight:bold;">GEOPOLÍTICA · ENERGÍA</span><br>
+    <strong style="font-size:14px;color:#0f1f17;">Brent cae debajo de US$100 por el oleoducto saudí y las charlas con Irán</strong>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">El Brent cerró cerca de <strong>US$99</strong> (-1,1%) y el WTI en torno a <strong>US$89,5</strong>; el ETF <strong>USO cayó 2,75%</strong> a US$144,08. Arabia Saudita empezó a reactivar el oleoducto Este-Oeste hacia el Mar Rojo, cerrado desde el 11/9 por ataques hutíes, y apunta a una reanudación significativa para el sábado. En su discurso ante la ONU, Trump dijo que no habría acuerdo con Irán antes del 3 de noviembre, pero luego informó avances tras una reunión de tres horas de Witkoff y Kushner con mediadores iraníes.</p>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">La baja del crudo no llega al consumidor: el diésel está en récord de <strong>US$6,52/galón</strong> y la nafta en US$4,47, 50% más que al inicio de la guerra. El crudo sigue más de 60% arriba en el año y algunos analistas advierten que podría ir a US$120-150 si el conflicto se extiende. Para Argentina, un Brent más bajo reduce el ingreso exportador de Vaca Muerta pero también baja el costo de los combustibles importados.</p>
+    <p style="font-size:12px;color:#666;margin:6px 0 0 0;"><em>Impacto:</em> Brent: ↓ ~US$99 (-1,1%) · USO: ↓ 2,75% · GLD: ↑ 0,42%</p>
   </div>
-
-  <div style="border-left:3px solid #f0ad4e;padding:10px 14px;margin-bottom:12px;background:#f8f9fa;">
-    <span style="font-size:11px;color:#c98a1f;font-weight:bold;">EE.UU. · SENTIMIENTO</span><br>
-    <strong style="font-size:14px;color:#0f1f17;">Wall Street cerca de récords pero el sentimiento minorista sigue en modo defensivo</strong>
-    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">Fear &amp; Greed en 34 (Miedo) pese a récords recientes del Nasdaq; AAII (semana 16/9) con apenas 28,8% de alcistas vs. 53,3% de bajistas, el spread más negativo en 16 meses. Futuros: S&amp;P 500 -0,07% a 7.828, Nasdaq -0,05% a 30.769, VIX 14,86 (-0,07%).</p>
+  <div style="border-left:3px solid #1a73e8;padding:10px 14px;margin-bottom:12px;background:#f8f9fa;">
+    <span style="display:inline-block;background:#0f1f17;color:#00E880;font-size:10px;font-weight:bold;padding:1px 6px;border-radius:3px;margin-right:6px;">USA</span><span style="font-size:11px;color:#1a73e8;font-weight:bold;">EE.UU. · MERCADOS · FED</span><br>
+    <strong style="font-size:14px;color:#0f1f17;">Nasdaq toca récord intradiario y el UST 10Y vuelve debajo de 5%</strong>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">Wall Street cerró mixto el martes: <strong>QQQ +0,81%</strong> (US$747,46) con el Nasdaq en récord intradiario, mientras <strong>SPY</strong> terminó plano en <strong>US$773,38</strong> (-0,02%). El rendimiento del <strong>UST 10Y</strong> quedó en <strong>4,96%</strong> (último dato FRED, 21/9) y volvió a operar debajo de 5% con la baja del petróleo. Para hoy, los futuros del Nasdaq y del Russell operan en alza y los del S&amp;P y el Dow en baja; hay discursos de la Fed a las 10:05 y 10:20 ET.</p>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">La Fed subió la tasa el 16/9 por primera vez en tres años y el mercado busca en los discursos de hoy pistas sobre una segunda suba. El sentimiento sigue defensivo: <strong>Fear &amp; Greed en 35</strong> (Miedo) y la encuesta AAII de la semana pasada con apenas <strong>28,8% de alcistas</strong>; la nueva encuesta sale mañana. En monedas, el dólar se ubica en <strong>¥157,18</strong>, <strong>R$5,1231</strong> y <strong>€0,8724</strong> (Frankfurter, 22/9).</p>
+    <p style="font-size:12px;color:#666;margin:6px 0 0 0;"><em>Impacto:</em> QQQ: ↑ 0,81% · SPY: → -0,02% · UST 10Y: 4,96%</p>
   </div>
-
-  <div style="border-left:3px solid #dc3545;padding:10px 14px;margin-bottom:0;background:#f8f9fa;">
-    <span style="font-size:11px;color:#dc3545;font-weight:bold;">ARGENTINA · ACTIVIDAD</span><br>
-    <strong style="font-size:14px;color:#0f1f17;">La industria metalúrgica cayó 6,1% en agosto y opera al 50% de su capacidad</strong>
-    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">Acumula -5,6% en el año; 68,1% de las empresas no espera aumentar producción. Gasto de hogares del AMBA en servicios públicos -7,3% i.a. ($268.405 sin subsidios en septiembre). Dólar mayorista estable en $1.514, pero perdió 30 puntos contra el IPC en doce meses.</p>
+  <div style="border-left:3px solid #00a85a;padding:10px 14px;margin-bottom:0;background:#f8f9fa;">
+    <span style="display:inline-block;background:#0f1f17;color:#00E880;font-size:10px;font-weight:bold;padding:1px 6px;border-radius:3px;margin-right:6px;">ARG</span><span style="font-size:11px;color:#00a85a;font-weight:bold;">ARGENTINA · POLÍTICA</span><br>
+    <strong style="font-size:14px;color:#0f1f17;">Milei habla hoy ante la Asamblea General de la ONU</strong>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">Milei expone hoy a las <strong>12:00</strong> ante la 81° Asamblea General de la ONU. Según la prensa, reivindicará la soberanía sobre <strong>Malvinas</strong>, ratificará la <strong>alianza estratégica con EE.UU.</strong> y defenderá la desregulación de la inteligencia artificial. A las 16:00 encabeza la conferencia &ldquo;Western Values, Economic Freedom &amp; Strategic Security&rdquo;.</p>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">La agenda en Nueva York coincide con la peor racha de los bonos en meses. Si Milei o Caputo dan señales concretas sobre cómo se financian los vencimientos de 2027 (repo, organismos multilaterales o acumulación de reservas), eso podría frenar la suba del riesgo país. Un discurso solo político difícilmente cambie la tendencia.</p>
+    <p style="font-size:12px;color:#666;margin:6px 0 0 0;"><em>Impacto:</em> Bonos USD: Atentos a señales de financiamiento · Merval: → -0,04%</p>
   </div>
 </td></tr>
 
 <tr><td style="padding:0 30px 20px 30px;">
   <h2 style="color:#0f1f17;font-size:16px;margin:0 0 10px 0;">Tensiones</h2>
-  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Fed "silenciosa" vs. mercado escéptico</strong> — Warsh busca una Fed que hable menos, pero El-Erian advierte que ese silencio puede ampliar la desconexión entre expectativas de mercado y política real: tras la última suba de tasas, los rendimientos del Tesoro subieron igual.</p>
-  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Elección brasileña técnicamente empatada</strong> — A 13 días de los comicios, Quaest mostró por primera vez un empate técnico entre Lula y Flávio Bolsonaro (42%-41%), con 50% de desaprobación al gobierno.</p>
-  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Cumbre Trump-Xi sin grandes acuerdos a la vista</strong> — El 70% de los inversores encuestados por Goldman Sachs espera un resultado meramente simbólico esta semana en la ONU, lo que podría decepcionar al rally reciente de commodities.</p>
-  <p style="font-size:13px;color:#444;margin:0;"><strong>Reservas del BCRA en la previa a la revisión del FMI</strong> — El BCRA compró apenas US$8M en el mes y las reservas brutas cayeron a US$49.695M, alejándose de los US$50.000M justo antes de un desembolso esperado de US$900M.</p>
+  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Riesgo local vs. contexto global calmo</strong> — El petróleo baja, los Treasuries se estabilizan y el Nasdaq toca récord, pero el riesgo país sube 22pb en un día en que la deuda emergente cede apenas 0,1%. La prima argentina se está abriendo por factores propios.</p>
+  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>No endeudarse vs. vencimientos 2027</strong> — Caputo descarta emitir a tasas de más de 10%, pero sin financiamiento anticipado el mercado duda de cómo se cubren los pagos de 2027, año electoral y de inicio de los pagos de capital al FMI.</p>
+  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Compras del BCRA vs. pago al FMI</strong> — El BCRA compró US$218M en todo septiembre, mientras el viernes vence un pago al FMI de ~US$803M y las reservas ya perdieron ~US$800M en el mes.</p>
+  <p style="font-size:13px;color:#444;margin:0;"><strong>Diplomacia con Irán vs. retórica</strong> — Trump habla de avances con Irán pero descarta un acuerdo antes del 3/11 y amenaza con &ldquo;aniquilar&rdquo; al país. El Brent quedó muy sensible a cada titular.</p>
 </td></tr>
 
 <tr><td style="padding:0 30px 20px 30px;">
   <h2 style="color:#0f1f17;font-size:16px;margin:0 0 10px 0;">Correlaciones</h2>
-  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Riesgo país ARG vs. Wall Street</strong> — Los bonos argentinos en dólares cayeron hasta 1,2% y el Merval operó en negativo pese a la suba de Wall Street, mostrando una desconexión entre el ciclo global de riesgo y el riesgo idiosincrático argentino.</p>
-  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>WTI/Brent vs. flete marítimo (VLCC)</strong> — Pese a que el crudo spot cede, el costo de flete de un VLCC se mantiene en récord de US$1,1M diarios, un canal inflacionario que se desacopla del precio del barril.</p>
-  <p style="font-size:13px;color:#444;margin:0;"><strong>UST 10Y vs. DXY</strong> — Los rendimientos del Tesoro bajan (10Y a 4,939%) mientras el dólar (DXY 100,44) se sostiene firme frente a la mayoría de las monedas, salvo real, peso chileno y won coreano.</p>
+  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Riesgo país ARG vs. EMBI emergentes</strong> — Se desacoplaron: +4,1% en el riesgo país contra -0,1% en la deuda emergente. Hoy el riesgo argentino no sigue al ciclo global.</p>
+  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Brent vs. UST 10Y</strong> — La sexta baja consecutiva del Brent llevó al 10Y otra vez debajo de 5%: con la inflación empujada por energía, el petróleo es hoy el principal motor de las tasas largas.</p>
+  <p style="font-size:13px;color:#444;margin:0;"><strong>Tramo largo vs. tramo corto (curva hard-dollar ARG)</strong> — AL35/GD35/GD41 cayeron entre 1% y 1,5% contra -0,35%/-0,49% de GD30/AL30: la curva se empina porque el mercado castiga el riesgo posterior a 2027 más que el de corto plazo.</p>
 </td></tr>
 
 <tr><td style="padding:0 30px 24px 30px;">
   <h2 style="color:#0f1f17;font-size:16px;margin:0 0 10px 0;">Bottom line</h2>
   <p style="font-size:13px;color:#444;line-height:1.6;margin:0;">
-    Wall Street opera con futuros mixtos y el S&amp;P 500 como peor referencia, en una sesión donde los rendimientos de Treasuries retroceden y el VIX cierra en baja, pero el sentimiento minorista (AAII con apenas 28,8% de alcistas, Fear &amp; Greed en 34) sigue defensivo pese a los récords recientes del Nasdaq. El shock de fletes petroleros (US$1,1M/día por VLCC) se consolida como un canal inflacionario adicional que se suma a la agenda de la Fed. <strong>Para Argentina</strong>, el dato saliente es el riesgo país en <strong>533 puntos</strong>, máximo en cuatro meses y en suba por sexto día consecutivo, justo cuando la misión del FMI evalúa reservas y superávit en Buenos Aires y Caputo hace su roadshow en Nueva York previo al desembolso esperado de US$900 millones. Con reservas brutas en US$49.695M, el dólar mayorista ($1.514) perdiendo 30 puntos contra la inflación en doce meses y la industria metalúrgica operando al 50% de su capacidad, el mercado testea en tiempo real el compromiso fiscal 2027 — un contexto que exige cautela de corto plazo pese al alivio relativo en tasas y volatilidad globales.
+    Afuera el día es tranquilo: el Brent encadena seis bajas y queda debajo de US$100 por el oleoducto saudí y las charlas con Irán, el UST 10Y vuelve debajo de 5% y el Nasdaq marca récord intradiario, aunque el sentimiento sigue en zona de miedo (Fear &amp; Greed 35) y hoy hablan funcionarios de la Fed. <strong>Para Argentina</strong>, el contexto externo no ayuda: el riesgo país saltó a <strong>555 puntos</strong> (+22pb, séptima suba seguida) mientras la deuda emergente quedó estable, con la curva hard-dollar empinándose por la caída de los bonos largos. Las reservas bajaron a <strong>US$49.414M</strong>, el BCRA casi no compra (US$7M) y el viernes hay que pagarle ~US$803M al FMI. El mensaje de Caputo de no endeudarse a estas tasas no convenció. El discurso de Milei en la ONU (12:00) y cualquier anuncio sobre financiamiento de los vencimientos 2027 son lo que puede cortar la racha. Mientras tanto, el tramo corto (GD30/AL30) resiste bastante mejor que el largo.
   </p>
 </td></tr>
 
@@ -89,9 +97,11 @@
   <span style="color:#aaaaaa;font-size:11px;">Consultora Amberes · Buenos Aires, Argentina</span>
 </td></tr>
 
+<!--DRAFT_FOOTER_START-->
 <tr><td style="padding:16px 30px;background:#fafafa;">
   <p style="font-size:12px;color:#888;font-style:italic;margin:0;">Este es un borrador para revisión. Respondé a Claude con "ok deploy" para publicarlo, o con las correcciones necesarias.</p>
 </td></tr>
+<!--DRAFT_FOOTER_END-->
 
 </table>
 </td></tr>
