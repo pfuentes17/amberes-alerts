@@ -1,9 +1,9 @@
 {
-  "date": "2026-09-23",
-  "generated": "2026-09-23T12:53:26Z",
+  "date": "2026-09-24",
+  "generated": "2026-09-24T12:19:30Z",
   "sentiment": {
-    "overall": "neutral",
-    "label": "Afuera alivia el petróleo y el Nasdaq toca récord intradiario, pero Argentina va a contramano: el riesgo país saltó a 555 puntos, máximo desde mayo, con reservas en US$49.414M y un pago al FMI el viernes.",
+    "overall": "risk-off",
+    "label": "El UST 10Y supera 5,1% (máximo desde 2007) tras un PMI caliente y Wall Street cae; en Argentina el riesgo país sube por octava rueda a 566pb y las reservas perforan los US$49.000M.",
     "fg": 35,
     "fg_label": "Miedo",
     "putcall": 0.95,
@@ -14,32 +14,32 @@
       "id": 1,
       "tag": "Argentina · Riesgo Soberano",
       "tag_class": "tr",
-      "title": "Riesgo país salta a 555 puntos, máximo desde mayo, en su séptima suba seguida",
-      "brief": "El índice subió 22pb (+4,1%) en un día con emergentes estables: el castigo es idiosincrático. Los bonos largos cayeron hasta 1,6%.",
-      "tldr": "El mercado no compró el mensaje de &ldquo;no nos endeudamos a estas tasas&rdquo;",
+      "title": "Riesgo país sube por octava rueda a 566pb, máximo en cinco meses",
+      "brief": "El índice sumó 11pb y ya está 60pb arriba del 15/9. AL35 y GD29 caen más de 2% y el Merval pierde 1,3% en dólares con bancos a la baja.",
+      "tldr": "Ni el discurso en la ONU ni las reuniones de Caputo frenaron la venta de bonos",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "El riesgo país cerró el martes en <strong>555 puntos básicos</strong> (+22pb), séptima suba consecutiva desde los 506pb del 15/9 y máximo desde mayo. La caída se concentró en la parte larga: <strong>AL35 -1,49%</strong> (US$72,55), <strong>AO29 -1,49%</strong>, <strong>AE38 -1,20%</strong>, <strong>GD35 -1,00%</strong> (US$77,06) y <strong>GD41 -1,02%</strong>; el tramo corto aguantó mejor (<strong>AL30 -0,49%</strong> a US$55,19, <strong>GD30 -0,35%</strong> a US$57,00). El Merval quedó prácticamente plano (-0,04%) con bancos a la baja.",
-      "contexto": "La deuda emergente cedió apenas 0,1% en la misma rueda, así que el movimiento es local. En Nueva York, Caputo dijo a unos 50 inversores en JP Morgan que Argentina <strong>no tomará deuda para refinanciar vencimientos a las tasas actuales</strong>, con los soberanos rindiendo más de 10%. Parte del mercado leyó eso como falta de un plan de financiamiento anticipado antes de la volatilidad electoral de 2027. El canje de títulos dollar-linked del lunes tuvo 75% de adhesión y alargó plazos, pero no cambió el ánimo.",
+      "evento": "El riesgo país cerró el miércoles en <strong>566 puntos básicos</strong> (+11pb), octava suba consecutiva (desde 506pb el 15/9) y máximo en cinco meses, más de 150pb arriba del piso de 402pb del 10/7. Los bonos volvieron a caer, otra vez más en la parte larga: <strong>AL35 -2,07%</strong> (US$71,05), <strong>GD29 -2,02%</strong>, <strong>AE38 -1,65%</strong>, <strong>AN29 -1,62%</strong>, <strong>AL30 -1,16%</strong> (US$54,55) y <strong>GD35 -0,95%</strong> (US$76,33). El <strong>GD30</strong> fue el que mejor aguantó (-0,25%, US$56,86). El <strong>Merval cayó 1% en pesos y 1,3% en dólares</strong>, con bancos a la baja (Supervielle -3,0%, Galicia -2,9%, Macro -2,7%) e YPF en contra de la tendencia (+1,6%).",
+      "contexto": "Milei habló ante la ONU sobre Malvinas, IA y la alianza con EE.UU., pero no hubo anuncios de financiamiento, y las reuniones de Caputo con inversores en Nueva York tampoco cambiaron el ánimo. La prensa local señala datos flojos de actividad y empleo, compras del BCRA en mínimos y desgaste en encuestas. Esta vez el contexto externo también jugó en contra: el salto de los Treasuries encarece la deuda emergente en general.",
       "impacto": [
         {
           "asset": "Riesgo País",
-          "dir": "↑ 555pb (+22pb)",
+          "dir": "↑ 566pb (+11pb)",
           "cls": "dn"
         },
         {
           "asset": "AL35",
-          "dir": "↓ 1,49%",
-          "cls": "dn"
-        },
-        {
-          "asset": "GD35",
-          "dir": "↓ 1,00%",
+          "dir": "↓ 2,07%",
           "cls": "dn"
         },
         {
           "asset": "AL30",
-          "dir": "↓ 0,49%",
+          "dir": "↓ 1,16%",
+          "cls": "dn"
+        },
+        {
+          "asset": "Merval (USD)",
+          "dir": "↓ 1,3%",
           "cls": "dn"
         }
       ]
@@ -48,145 +48,155 @@
       "id": 2,
       "tag": "Argentina · BCRA · Reservas",
       "tag_class": "ta",
-      "title": "Reservas caen US$281M a US$49.414M y el BCRA compra apenas US$7M",
-      "brief": "Bajaron en 10 de las últimas 11 ruedas y pierden ~US$800M en septiembre, en la previa de un pago al FMI de ~US$803M el viernes 25/9.",
-      "tldr": "Las compras del BCRA no alcanzan a compensar la demanda no agro",
+      "title": "Reservas caen US$481M a US$48.933M, su peor baja del mes; BCRA compra US$6M",
+      "brief": "Perforan los US$49.000M en la previa del pago al FMI de ~US$803M del viernes. En septiembre el BCRA compra US$13M por día, contra US$103M en julio.",
+      "tldr": "Compras mínimas y valuación negativa: el colchón se achica justo antes del FMI",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "Las reservas brutas cerraron el martes en <strong>US$49.414 millones</strong> (<strong>-US$281M</strong>), la segunda peor caída del mes, explicada por un pago a la CAF de ~US$100M y la valuación de monedas (euro, libra y yuan débiles contra el dólar). El BCRA compró <strong>US$7M</strong>, apenas 1% de los US$608M operados, y acumula <strong>US$218M</strong> en septiembre.",
-      "contexto": "La liquidación del agro no alcanza a cubrir una demanda no agrícola estimada en ~US$154M diarios, así que el BCRA casi no puede comprar. El viernes 25/9 vence un pago al FMI por <strong>DEG 583,3M (~US$803M)</strong> mientras la misión técnica revisa el acuerdo en Buenos Aires. En el mercado de cambios, el mayorista cerró en <strong>$1.515</strong>, el MEP en <strong>$1.536,6</strong> y el CCL en <strong>$1.598,3</strong> (brecha CCL/mayorista ~5,5%; canje CCL/MEP ~4%).",
+      "evento": "Las reservas brutas cerraron el miércoles en <strong>US$48.933 millones</strong> (<strong>-US$481M</strong>), la mayor caída diaria del mes. Unos <strong>US$150M</strong> se explican por la baja del oro (-1,3%) y el resto por la suba global del dólar (+0,6%). El BCRA compró <strong>US$6M</strong>, apenas 1% de los US$481M operados en el contado. Suma <strong>US$224M en septiembre</strong> y <strong>US$14.319M en 2026</strong>.",
+      "contexto": "El promedio diario de compras bajó a <strong>US$13M en septiembre</strong>, contra US$38M en agosto y US$103M en julio. El viernes 25/9 vence un pago al FMI de <strong>~US$803M</strong>, que también sale de las reservas. En el mercado de cambios, el mayorista cerró en <strong>$1.516</strong>, el MEP en <strong>$1.542,9</strong> y el CCL en <strong>$1.607,1</strong>, con una brecha CCL/mayorista de ~6%.",
       "impacto": [
         {
           "asset": "Reservas brutas",
-          "dir": "↓ US$49.414M (-281M)",
+          "dir": "↓ US$48.933M (-481M)",
           "cls": "dn"
         },
         {
           "asset": "Dólar mayorista",
-          "dir": "$1.515",
+          "dir": "→ $1.516",
           "cls": "neu"
         },
         {
           "asset": "CCL",
-          "dir": "$1.598,3",
+          "dir": "→ $1.607,1",
           "cls": "neu"
         }
       ]
     },
     {
       "id": 3,
-      "tag": "Geopolítica · Energía",
-      "tag_class": "tq",
-      "title": "Brent cae debajo de US$100 por el oleoducto saudí y las charlas con Irán",
-      "brief": "Sexta baja seguida del Brent (~US$99, -1,1%), que acumula casi -9% en cinco ruedas. USO cayó 2,75%.",
-      "tldr": "Menos presión energética alivia a los Treasuries",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El Brent cerró cerca de <strong>US$99</strong> (-1,1%) y el WTI en torno a <strong>US$89,5</strong>; el ETF <strong>USO cayó 2,75%</strong> a US$144,08. Arabia Saudita empezó a reactivar el oleoducto Este-Oeste hacia el Mar Rojo, cerrado desde el 11/9 por ataques hutíes, y apunta a una reanudación significativa para el sábado. En su discurso ante la ONU, Trump dijo que no habría acuerdo con Irán antes del 3 de noviembre, pero luego informó avances tras una reunión de tres horas de Witkoff y Kushner con mediadores iraníes.",
-      "contexto": "La baja del crudo no llega al consumidor: el diésel está en récord de <strong>US$6,52/galón</strong> y la nafta en US$4,47, 50% más que al inicio de la guerra. El crudo sigue más de 60% arriba en el año y algunos analistas advierten que podría ir a US$120-150 si el conflicto se extiende. Para Argentina, un Brent más bajo reduce el ingreso exportador de Vaca Muerta pero también baja el costo de los combustibles importados.",
+      "tag": "EE.UU. · Tasas · Fed",
+      "tag_class": "tb",
+      "title": "UST 10Y supera 5,1%, máximo desde 2007, tras un PMI caliente y Barr pro-subas",
+      "brief": "El PMI compuesto subió a 58,4, el más alto desde julio de 2021, con costos subiendo al ritmo más rápido en cuatro años. El mercado ya descuenta ~2/3 de chances de otra suba en octubre.",
+      "tldr": "El mercado pasa a descontar más subas de la Fed y castiga a la renta variable",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El <strong>PMI compuesto flash de S&amp;P Global</strong> subió a <strong>58,4</strong> en septiembre (56,0 en agosto), el mayor desde julio de 2021, con costos de insumos subiendo al ritmo más rápido en cuatro años. El <strong>UST 10Y</strong> superó <strong>5,1%</strong> por primera vez desde 2007 y el 2Y tocó máximos desde 2024. El gobernador de la Fed <strong>Michael Barr</strong> dijo que probablemente harán falta más subas de tasas. Wall Street cerró en baja: <strong>SPY -0,72%</strong> (US$767,81) y <strong>QQQ -0,84%</strong> (US$741,21). El Nasdaq cayó 1,13% desde su récord.",
+      "contexto": "Según CME FedWatch, la probabilidad de una suba en octubre pasó de 55% a <strong>~66%</strong>. Hoy temprano los futuros seguían en baja (Nasdaq-100 -1%), con el 10Y cerca de 5,15% y el 30Y en máximos desde 2004. Hoy se publican las solicitudes de subsidio por desempleo y la tercera estimación del PBI del 2T. El dólar se fortaleció: USD/JPY 157,92 y EUR/USD ~1,141. Para los emergentes, tasas largas en EE.UU. por encima de 5% encarecen el financiamiento.",
       "impacto": [
         {
-          "asset": "Brent",
-          "dir": "↓ ~US$99 (-1,1%)",
+          "asset": "UST 10Y",
+          "dir": "↑ >5,1%",
           "cls": "dn"
         },
         {
-          "asset": "USO",
-          "dir": "↓ 2,75%",
+          "asset": "SPY",
+          "dir": "↓ 0,72%",
           "cls": "dn"
         },
         {
-          "asset": "GLD",
-          "dir": "↑ 0,42%",
-          "cls": "up"
+          "asset": "QQQ",
+          "dir": "↓ 0,84%",
+          "cls": "dn"
+        },
+        {
+          "asset": "USD/JPY",
+          "dir": "↑ 157,92",
+          "cls": "neu"
         }
       ]
     },
     {
       "id": 4,
-      "tag": "EE.UU. · Mercados · Fed",
-      "tag_class": "tb",
-      "title": "Nasdaq toca récord intradiario y el UST 10Y vuelve debajo de 5%",
-      "brief": "QQQ +0,81% y SPY plano (-0,02%). Hoy hablan funcionarios de la Fed, una semana después de la primera suba de tasas en tres años.",
-      "tldr": "Mercado dividido: tech sube, el resto no acompaña",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Wall Street cerró mixto el martes: <strong>QQQ +0,81%</strong> (US$747,46) con el Nasdaq en récord intradiario, mientras <strong>SPY</strong> terminó plano en <strong>US$773,38</strong> (-0,02%). El rendimiento del <strong>UST 10Y</strong> quedó en <strong>4,96%</strong> (último dato FRED, 21/9) y volvió a operar debajo de 5% con la baja del petróleo. Para hoy, los futuros del Nasdaq y del Russell operan en alza y los del S&amp;P y el Dow en baja; hay discursos de la Fed a las 10:05 y 10:20 ET.",
-      "contexto": "La Fed subió la tasa el 16/9 por primera vez en tres años y el mercado busca en los discursos de hoy pistas sobre una segunda suba. El sentimiento sigue defensivo: <strong>Fear &amp; Greed en 35</strong> (Miedo) y la encuesta AAII de la semana pasada con apenas <strong>28,8% de alcistas</strong>; la nueva encuesta sale mañana. En monedas, el dólar se ubica en <strong>¥157,18</strong>, <strong>R$5,1231</strong> y <strong>€0,8724</strong> (Frankfurter, 22/9).",
+      "tag": "Geopolítica · Energía",
+      "tag_class": "tq",
+      "title": "Brent rebota ~4% a US$103 tras el mensaje desafiante de Irán en la ONU",
+      "brief": "El crudo cortó una racha de cinco bajas después de que Pezeshkian respondiera a la amenaza de Trump. El oro cae 1,3% por el dólar y las tasas.",
+      "tldr": "El petróleo vuelve a empujar a las tasas largas y a la inflación esperada",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El <strong>Brent</strong> cerró en <strong>US$103,08</strong> (+3,86%) y el <strong>WTI</strong> en <strong>US$92,16</strong> (+1,8%); el ETF <strong>USO subió 3,30%</strong> a US$148,83. El presidente iraní <strong>Masoud Pezeshkian</strong> dijo ante la Asamblea General de la ONU que Irán &ldquo;no puede ser obligado a rendirse&rdquo;, un día después de que Trump amenazara con &ldquo;aniquilar&rdquo; al país. El oro se movió al revés: el contrato de diciembre cayó <strong>1,33% a US$4.318,4</strong> y <strong>GLD -1,80%</strong>.",
+      "contexto": "El petróleo cortó cinco bajas seguidas y volvió por encima de US$100. Junto con el PMI, reavivó el temor a una inflación persistente en EE.UU. La caída del oro también pesó en las reservas del BCRA (~US$150M). Para Argentina, un Brent más alto mejora la balanza energética (Vaca Muerta) y explica la suba de YPF, pero empeora el contexto de tasas globales.",
       "impacto": [
         {
-          "asset": "QQQ",
-          "dir": "↑ 0,81%",
+          "asset": "Brent",
+          "dir": "↑ US$103,08 (+3,86%)",
           "cls": "up"
         },
         {
-          "asset": "SPY",
-          "dir": "→ -0,02%",
-          "cls": "neu"
+          "asset": "USO",
+          "dir": "↑ 3,30%",
+          "cls": "up"
         },
         {
-          "asset": "UST 10Y",
-          "dir": "4,96%",
-          "cls": "neu"
+          "asset": "GLD",
+          "dir": "↓ 1,80%",
+          "cls": "dn"
         }
       ]
     },
     {
       "id": 5,
-      "tag": "Argentina · Política",
+      "tag": "Argentina · Datos · Congreso",
       "tag_class": "tg",
-      "title": "Milei habla hoy ante la Asamblea General de la ONU",
-      "brief": "El discurso está previsto a las 12:00 (hora argentina): Malvinas, alianza con EE.UU. y desregulación de la IA. A las 16:00 da una conferencia sobre libertad económica.",
-      "tldr": "El mercado espera señales económicas, no solo geopolíticas",
+      "title": "Superjueves: EMAE de julio, pobreza del 1S26 y reforma del BCRA en el Senado",
+      "brief": "El INDEC publica a las 16h el EMAE de julio (se espera otra baja) y la pobreza del 1S26 (~30-32% vs. 28,2%). El Senado vota la reforma del BCRA.",
+      "tldr": "Datos de actividad y pobreza débiles pueden sumar ruido; la reforma del BCRA es la señal institucional positiva",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "Milei expone hoy a las <strong>12:00</strong> ante la 81° Asamblea General de la ONU. Según la prensa, reivindicará la soberanía sobre <strong>Malvinas</strong>, ratificará la <strong>alianza estratégica con EE.UU.</strong> y defenderá la desregulación de la inteligencia artificial. A las 16:00 encabeza la conferencia &ldquo;Western Values, Economic Freedom &amp; Strategic Security&rdquo;.",
-      "contexto": "La agenda en Nueva York coincide con la peor racha de los bonos en meses. Si Milei o Caputo dan señales concretas sobre cómo se financian los vencimientos de 2027 (repo, organismos multilaterales o acumulación de reservas), eso podría frenar la suba del riesgo país. Un discurso solo político difícilmente cambie la tendencia.",
+      "evento": "El INDEC publica hoy a las <strong>16:00</strong> el <strong>EMAE de julio</strong> y el informe de <strong>pobreza e indigencia del 1er semestre de 2026</strong>. Las consultoras esperan otra baja mensual de la actividad: en julio la industria cayó 5% mensual y la construcción 4,6%. Para la pobreza, la UTDT proyecta <strong>31,4%</strong> (indigencia 6,9%) y la UCA entre 31% y 32%, contra 28,2% en el 2S25. El <strong>Senado</strong> vota la <strong>reforma de la Carta Orgánica del BCRA</strong> (prohíbe financiar al Tesoro, exige mayoría absoluta para remover al directorio) y la ley de Zonas Frías. Según la prensa, el Gobierno tendría los votos.",
+      "contexto": "Un dato flojo de actividad reforzaría la narrativa que el mercado viene castigando (economía real débil y menor acumulación de reservas). La aprobación de la reforma del BCRA sería una señal institucional a favor, aunque difícilmente alcance por sí sola para cortar la racha de los bonos mientras no haya definiciones sobre el financiamiento de 2027.",
       "impacto": [
         {
-          "asset": "Bonos USD",
-          "dir": "Atentos a señales de financiamiento",
-          "cls": "neu"
+          "asset": "Pobreza 1S26 (est.)",
+          "dir": "↑ ~31% (vs 28,2%)",
+          "cls": "dn"
         },
         {
-          "asset": "Merval",
-          "dir": "→ -0,04%",
-          "cls": "neu"
+          "asset": "EMAE jul (est.)",
+          "dir": "↓ baja m/m esperada",
+          "cls": "dn"
+        },
+        {
+          "asset": "Reforma BCRA",
+          "dir": "↑ señal institucional",
+          "cls": "up"
         }
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Riesgo local vs. contexto global calmo",
-      "texto": "El petróleo baja, los Treasuries se estabilizan y el Nasdaq toca récord, pero el riesgo país sube 22pb en un día en que la deuda emergente cede apenas 0,1%. La prima argentina se está abriendo por factores propios."
-    },
-    {
-      "label": "No endeudarse vs. vencimientos 2027",
-      "texto": "Caputo descarta emitir a tasas de más de 10%, pero sin financiamiento anticipado el mercado duda de cómo se cubren los pagos de 2027, año electoral y de inicio de los pagos de capital al FMI."
+      "label": "Fed hawkish vs. deuda emergente",
+      "texto": "Con el UST 10Y arriba de 5,1% y el mercado descontando otra suba en octubre, el costo de oportunidad de los bonos argentinos sube justo cuando el riesgo país ya estaba presionado por factores propios."
     },
     {
       "label": "Compras del BCRA vs. pago al FMI",
-      "texto": "El BCRA compró US$218M en todo septiembre, mientras el viernes vence un pago al FMI de ~US$803M y las reservas ya perdieron ~US$800M en el mes."
+      "texto": "El BCRA compró US$224M en todo septiembre, menos de un tercio de los ~US$803M que vence el viernes con el FMI. Las reservas ya quedaron debajo de US$49.000M."
     },
     {
-      "label": "Diplomacia con Irán vs. retórica",
-      "texto": "Trump habla de avances con Irán pero descarta un acuerdo antes del 3/11 y amenaza con &ldquo;aniquilar&rdquo; al país. El Brent quedó muy sensible a cada titular."
+      "label": "Petróleo alto: alivio externo vs. costo financiero",
+      "texto": "Un Brent de US$103 mejora el saldo energético argentino y favorece a YPF, pero alimenta la inflación en EE.UU. y las tasas largas que castigan a la deuda soberana."
+    },
+    {
+      "label": "Reforma institucional vs. datos reales",
+      "texto": "El Senado puede aprobar hoy la reforma del BCRA, una buena señal de largo plazo, el mismo día en que el INDEC publicaría más pobreza y menos actividad."
     }
   ],
   "correlaciones": [
     {
-      "par": "Riesgo país ARG vs. EMBI emergentes",
-      "texto": "Se desacoplaron: +4,1% en el riesgo país contra -0,1% en la deuda emergente. Hoy el riesgo argentino no sigue al ciclo global."
+      "par": "UST 10Y vs. bonos hard-dollar ARG",
+      "texto": "A diferencia del martes, ayer el castigo externo y el local fueron en la misma dirección: el 10Y saltó arriba de 5,1% y la curva argentina cayó entre 1% y 2% en el tramo largo."
     },
     {
-      "par": "Brent vs. UST 10Y",
-      "texto": "La sexta baja consecutiva del Brent llevó al 10Y otra vez debajo de 5%: con la inflación empujada por energía, el petróleo es hoy el principal motor de las tasas largas."
+      "par": "Oro vs. reservas BCRA",
+      "texto": "La baja de 1,3% del oro restó ~US$150M a las reservas: con una tenencia relevante de oro, las reservas brutas quedan expuestas a su precio más allá de lo que pase en el mercado de cambios."
     },
     {
-      "par": "Tramo largo vs. tramo corto (curva hard-dollar ARG)",
-      "texto": "AL35/GD35/GD41 cayeron entre 1% y 1,5% contra -0,35%/-0,49% de GD30/AL30: la curva se empina porque el mercado castiga el riesgo posterior a 2027 más que el de corto plazo."
+      "par": "Brent vs. YPF / bancos",
+      "texto": "YPF subió 1,6% con el rebote del crudo mientras los bancos cayeron hasta 3%: el mercado local separa exposición energética de riesgo doméstico."
     }
   ],
-  "bottom_line": "Afuera el día es tranquilo: el Brent encadena seis bajas y queda debajo de US$100 por el oleoducto saudí y las charlas con Irán, el UST 10Y vuelve debajo de 5% y el Nasdaq marca récord intradiario, aunque el sentimiento sigue en zona de miedo (Fear &amp; Greed 35) y hoy hablan funcionarios de la Fed. <strong>Para Argentina</strong>, el contexto externo no ayuda: el riesgo país saltó a <strong>555 puntos</strong> (+22pb, séptima suba seguida) mientras la deuda emergente quedó estable, con la curva hard-dollar empinándose por la caída de los bonos largos. Las reservas bajaron a <strong>US$49.414M</strong>, el BCRA casi no compra (US$7M) y el viernes hay que pagarle ~US$803M al FMI. El mensaje de Caputo de no endeudarse a estas tasas no convenció. El discurso de Milei en la ONU (12:00) y cualquier anuncio sobre financiamiento de los vencimientos 2027 son lo que puede cortar la racha. Mientras tanto, el tramo corto (GD30/AL30) resiste bastante mejor que el largo."
+  "bottom_line": "Afuera el día se dio vuelta: un PMI caliente y Barr hablando de más subas llevaron el <strong>UST 10Y arriba de 5,1%</strong> por primera vez desde 2007, el Brent rebotó ~4% a <strong>US$103</strong> tras el mensaje desafiante de Irán en la ONU y Wall Street cayó (SPY -0,72%, QQQ -0,84%), con futuros todavía en baja esta mañana. <strong>Para Argentina</strong>, el shock de tasas se suma a la desconfianza local: el riesgo país subió por octava rueda a <strong>566pb</strong>, los bonos largos cayeron hasta 2% y las reservas perforaron los <strong>US$49.000M</strong> (US$48.933M) con el BCRA comprando apenas US$6M, a un día del pago de ~US$803M al FMI. Hoy importan el EMAE y la pobreza (16h) y la votación de la reforma del BCRA en el Senado. Sin un anuncio concreto sobre el financiamiento de 2027, conviene preferir duration corta (GD30/AL30) sobre el tramo largo."
 }
