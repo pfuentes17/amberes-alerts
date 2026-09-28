@@ -122,8 +122,24 @@
         "pct": 0.1315
       },
       {
+        "tipo": "Fondos",
+        "pct": 0.1155
+      },
+      {
         "tipo": "Divisas",
         "pct": 0.0763
+      },
+      {
+        "tipo": "Fideicomisos",
+        "pct": 0.0003
+      },
+      {
+        "tipo": "ETF",
+        "pct": 0.0
+      },
+      {
+        "tipo": "Cauciones",
+        "pct": 0.0
       }
     ],
     "top5": [
