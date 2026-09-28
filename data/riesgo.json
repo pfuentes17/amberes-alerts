@@ -1,124 +1,156 @@
 {
   "meta": {
-    "fecha": "17/09/2026",
-    "fecha_iso": "20260917",
-    "clientes": 325,
-    "instrumentos": 177,
-    "total_ars_bn": 10.289,
-    "total_usd_m": 6.45,
-    "ccl": 1595,
+    "fecha": "28/09/2026",
+    "fecha_iso": "20260928",
+    "clientes": 326,
+    "instrumentos": 180,
+    "total_ars_bn": 10.873,
+    "total_usd_m": 6.7,
+    "ccl": 1623,
     "ccl_fuente": "GGAL.BA × 10 / GGAL (Yahoo Finance)",
     "fuente_bonos": "amberes-alerts.vercel.app/bonos.html (Playwright)",
     "fuente_equity": "Yahoo Finance 252 días"
   },
   "b1_renta_fija": {
-    "ytm_ponderada": 0.0783,
-    "duration_mod": 1.91,
-    "dv01_usd": 386.0,
-    "pl_100bp_usd": -38562.0,
-    "pl_400bp_usd": -154246.0,
-    "bonds_pct": 0.3136
+    "ytm_ponderada": 0.0894,
+    "duration_mod": 1.87,
+    "dv01_usd": 296.0,
+    "pl_100bp_usd": -29585.0,
+    "pl_400bp_usd": -118338.0,
+    "bonds_pct": 0.2368
   },
   "b2_estadistico": {
-    "beta_sp500": 0.56,
-    "beta_merval": 0.23,
-    "vol_portfolio": 0.1267,
-    "vol_equity": 0.2185,
-    "sharpe": 0.27,
-    "sortino": 0.41,
-    "retorno_usd_est": 0.0742,
-    "equity_pct": 0.5628,
-    "cash_pct": 0.1237,
+    "beta_sp500": 0.59,
+    "beta_merval": 0.29,
+    "vol_portfolio": 0.1337,
+    "vol_equity": 0.2298,
+    "sharpe": 0.26,
+    "sortino": 0.36,
+    "retorno_usd_est": 0.0746,
+    "equity_pct": 0.5712,
+    "cash_pct": 0.192,
     "correlation_matrix": {
-      "labels": ["Equity", "Bonos", "Cash"],
+      "labels": [
+        "Equity",
+        "Bonos",
+        "Cash"
+      ],
       "values": [
-        [1.0,  0.312, 0.0],
-        [0.312, 1.0,  0.0],
-        [0.0,   0.0,  1.0]
+        [
+          1.0,
+          0.355,
+          NaN
+        ],
+        [
+          0.355,
+          1.0,
+          NaN
+        ],
+        [
+          NaN,
+          NaN,
+          NaN
+        ]
       ]
     },
     "risk_attribution": {
-      "labels": ["Equity", "Bonos", "Cash"],
-      "pct":    [0.9576, 0.0424, 0.0],
-      "vol":    [0.2185, 0.065,  0.0],
-      "weight": [0.5628, 0.3135, 0.1237]
+      "labels": [
+        "Equity",
+        "Bonos",
+        "Cash"
+      ],
+      "pct": [
+        0.9754,
+        0.0246,
+        0.0
+      ],
+      "vol": [
+        0.2298,
+        0.065,
+        0.0
+      ],
+      "weight": [
+        0.5712,
+        0.2368,
+        0.192
+      ]
     }
   },
   "b3_tail_risk": {
-    "var95_param": -0.1338,
-    "var99_param": -0.2201,
-    "cvar95": -0.1868,
-    "var95_hist": 0.1294,
-    "var99_hist": 0.1169,
-    "cvar95_hist": 0.1232,
-    "worst_year": 0.1112,
-    "best_year": 0.3245,
-    "p25_year": 0.154,
-    "p75_year": 0.2146,
+    "var95_param": -0.1454,
+    "var99_param": -0.2364,
+    "cvar95": -0.2013,
+    "var95_hist": 0.1467,
+    "var99_hist": 0.1326,
+    "cvar95_hist": 0.1381,
+    "worst_year": 0.1231,
+    "best_year": 0.3851,
+    "p25_year": 0.1817,
+    "p75_year": 0.2473,
     "n_windows": 522,
     "hist_days": 773,
-    "stress_rp400_pct": -0.0727,
-    "stress_rp400_ars_m": -748.0,
-    "stress_ccl20_pct": 0.1546,
-    "stress_ccl20_ars_m": 1591.0,
-    "stress_rv10_pct": -0.0563,
-    "stress_rv10_ars_m": -579.0,
-    "stress_deval30_pct": -0.0159,
-    "stress_deval30_ars_m": -164.0,
-    "max_drawdown": -0.0312,
-    "max_drawdown_peak_date": "14/01/2025",
-    "max_drawdown_trough_date": "07/04/2025"
+    "stress_rp400_pct": -0.0725,
+    "stress_rp400_ars_m": -789.0,
+    "stress_ccl20_pct": 0.1353,
+    "stress_ccl20_ars_m": 1471.0,
+    "stress_rv10_pct": -0.0571,
+    "stress_rv10_ars_m": -621.0,
+    "stress_deval30_pct": -0.0202,
+    "stress_deval30_ars_m": -220.0,
+    "max_drawdown": -0.0819,
+    "max_drawdown_peak_date": "29/01/2026",
+    "max_drawdown_trough_date": "25/06/2026"
   },
   "b4_concentracion": {
-    "hhi": 0.0463,
-    "eff_n": 21.6,
-    "top1_ticker": "SLV",
-    "top1_pct": 0.1017,
+    "hhi": 0.0496,
+    "eff_n": 20.1,
+    "top1_ticker": "Balanceado A",
+    "top1_pct": 0.0961,
     "liq_a_pct": 1.0,
-    "usd_exposure_pct": 0.872,
+    "usd_exposure_pct": 0.753,
     "por_tipo": [
       {
         "tipo": "CEDEARs",
-        "pct": 0.4595
+        "pct": 0.4397
       },
       {
         "tipo": "Bonos",
-        "pct": 0.3136
+        "pct": 0.2368
       },
       {
         "tipo": "Acciones",
-        "pct": 0.1033
+        "pct": 0.1315
       },
       {
         "tipo": "Divisas",
-        "pct": 0.0989
+        "pct": 0.0763
       }
     ],
     "top5": [
       {
+        "ticker": "Balanceado A",
+        "nombre": "MEGA QM Balanceado A",
+        "pct": 0.0961
+      },
+      {
         "ticker": "SLV",
         "nombre": "ETF ISHARES SILVER TRUST",
-        "pct": 0.1017
+        "pct": 0.0955
       },
       {
         "ticker": "TZX28",
         "nombre": "BONO REP ARG AJ CER V30/06/28",
-        "pct": 0.0858
+        "pct": 0.0811
       },
       {
-        "ticker": "USD",
-        "nombre": "US_DOLLARS",
-        "pct": 0.085
+        "ticker": "GLD",
+        "nombre": "ETF SPDR GOLD TRUST",
+        "pct": 0.0734
       },
       {
-        "ticker": "SH",
-        "nombre": "PROSHARES SHORT S&P500",
-        "pct": 0.0738
-      },
-      {
-        "ticker": "MCD",
-        "nombre": "McDonalds Corp",
-        "pct": 0.0647
+        "ticker": "YPFD",
+        "nombre": "YPF S.A.",
+        "pct": 0.0658
       }
     ],
     "top15": [
@@ -126,106 +158,106 @@
         "ticker": "SLV",
         "nombre": "ETF ISHARES SILVER TRUST",
         "tipo": "Cedears",
-        "pct": 0.1017,
-        "incidencia": 0.06352
-      },
-      {
-        "ticker": "IBM",
-        "nombre": "CEDEAR IBM CORP",
-        "tipo": "Cedears",
-        "pct": 0.0267,
-        "incidencia": 0.01304
+        "pct": 0.0955,
+        "incidencia": 0.05974
       },
       {
         "ticker": "YPFD",
         "nombre": "YPF S.A.",
         "tipo": "Acciones",
-        "pct": 0.0336,
-        "incidencia": 0.01303
+        "pct": 0.0658,
+        "incidencia": 0.02553
       },
       {
         "ticker": "GLD",
         "nombre": "ETF SPDR GOLD TRUST",
         "tipo": "Cedears",
-        "pct": 0.0445,
-        "incidencia": 0.013
+        "pct": 0.0734,
+        "incidencia": 0.02148
+      },
+      {
+        "ticker": "VIST",
+        "nombre": "CEDEAR VISTA OIL & GAS",
+        "tipo": "Cedears",
+        "pct": 0.0244,
+        "incidencia": 0.01188
       },
       {
         "ticker": "MCD",
         "nombre": "McDonalds Corp",
         "tipo": "Cedears",
-        "pct": 0.0647,
-        "incidencia": 0.01198
+        "pct": 0.059,
+        "incidencia": 0.01125
       },
       {
-        "ticker": "SH",
-        "nombre": "PROSHARES SHORT S&P500",
+        "ticker": "IBM",
+        "nombre": "CEDEAR IBM CORP",
         "tipo": "Cedears",
-        "pct": 0.0738,
-        "incidencia": 0.00942
+        "pct": 0.0223,
+        "incidencia": 0.01084
+      },
+      {
+        "ticker": "Balanceado A",
+        "nombre": "MEGA QM Balanceado A",
+        "tipo": "Fondos",
+        "pct": 0.0961,
+        "incidencia": 0.00961
       },
       {
         "ticker": "TZX28",
         "nombre": "BONO REP ARG AJ CER V30/06/28",
         "tipo": "Bonos",
-        "pct": 0.0858,
-        "incidencia": 0.00858
+        "pct": 0.0811,
+        "incidencia": 0.00811
       },
       {
         "ticker": "USD",
         "nombre": "US_DOLLARS",
         "tipo": "Divisas",
-        "pct": 0.085,
-        "incidencia": 0.0085
+        "pct": 0.0649,
+        "incidencia": 0.00649
+      },
+      {
+        "ticker": "SH",
+        "nombre": "PROSHARES SHORT S&P500",
+        "tipo": "Cedears",
+        "pct": 0.0504,
+        "incidencia": 0.00648
       },
       {
         "ticker": "TGSU2",
         "nombre": "Transportadora de Gas Del Sur",
         "tipo": "Acciones",
-        "pct": 0.0166,
-        "incidencia": 0.00734
-      },
-      {
-        "ticker": "SUPV",
-        "nombre": "Grupo Supervielle",
-        "tipo": "Acciones",
-        "pct": 0.0094,
-        "incidencia": 0.00677
+        "pct": 0.0146,
+        "incidencia": 0.00648
       },
       {
         "ticker": "MELI",
         "nombre": "CEDEAR MERCADOLIBRE INC",
         "tipo": "Cedears",
-        "pct": 0.0152,
-        "incidencia": 0.00624
+        "pct": 0.0141,
+        "incidencia": 0.00566
+      },
+      {
+        "ticker": "SUPV",
+        "nombre": "Grupo Supervielle",
+        "tipo": "Acciones",
+        "pct": 0.0078,
+        "incidencia": 0.00556
       },
       {
         "ticker": "CRES",
         "nombre": "CRESUD S.A. ORDS. 1 VOTO ESCRITURALES",
         "tipo": "Acciones",
-        "pct": 0.0133,
-        "incidencia": 0.00557
+        "pct": 0.013,
+        "incidencia": 0.00543
       },
       {
         "ticker": "TGNO4",
         "nombre": "Transportadora de Gas del Norte",
         "tipo": "Acciones",
         "pct": 0.0092,
-        "incidencia": 0.00531
-      },
-      {
-        "ticker": "AO27",
-        "nombre": "USD BONO TESORO NACIONAL 6% Vto. 29/10/2027",
-        "tipo": "Bonos",
-        "pct": 0.0519,
-        "incidencia": 0.00519
-      },
-      {
-        "ticker": "GGAL",
-        "nombre": "Grupo Financiero Galicia",
-        "tipo": "Acciones",
-        "pct": 0.0091,
-        "incidencia": 0.00482
+        "incidencia": 0.00515
       }
     ]
   },
@@ -234,250 +266,250 @@
       "ticker": "SLV",
       "nombre": "ETF ISHARES SILVER TRUST",
       "tipo": "Cedears",
-      "pct": 0.1017,
-      "monto_usd": 655937.0,
-      "vol": 0.6245,
+      "pct": 0.0955,
+      "monto_usd": 639674.0,
+      "vol": 0.6254,
       "beta_sp": 1.83,
-      "beta_mrv": 0.15,
-      "contrib_riesgo": 0.0635
-    },
-    {
-      "ticker": "SH",
-      "nombre": "PROSHARES SHORT S&P500",
-      "tipo": "Cedears",
-      "pct": 0.0738,
-      "monto_usd": 475731.0,
-      "vol": 0.1277,
-      "beta_sp": -0.99,
-      "beta_mrv": -0.1,
-      "contrib_riesgo": 0.0094
-    },
-    {
-      "ticker": "MCD",
-      "nombre": "McDonalds Corp",
-      "tipo": "Cedears",
-      "pct": 0.0647,
-      "monto_usd": 417423.0,
-      "vol": 0.1851,
-      "beta_sp": -0.0,
-      "beta_mrv": -0.02,
-      "contrib_riesgo": 0.012
+      "beta_mrv": 0.16,
+      "contrib_riesgo": 0.0597
     },
     {
       "ticker": "GLD",
       "nombre": "ETF SPDR GOLD TRUST",
       "tipo": "Cedears",
-      "pct": 0.0445,
-      "monto_usd": 286800.0,
-      "vol": 0.2922,
-      "beta_sp": 0.79,
+      "pct": 0.0734,
+      "monto_usd": 491831.0,
+      "vol": 0.2924,
+      "beta_sp": 0.78,
       "beta_mrv": 0.03,
-      "contrib_riesgo": 0.013
+      "contrib_riesgo": 0.0215
     },
     {
       "ticker": "YPFD",
       "nombre": "YPF S.A.",
       "tipo": "Acciones",
-      "pct": 0.0336,
-      "monto_usd": 216510.0,
-      "vol": 0.3881,
-      "beta_sp": -0.04,
+      "pct": 0.0658,
+      "monto_usd": 440593.0,
+      "vol": 0.388,
+      "beta_sp": -0.09,
       "beta_mrv": 0.73,
-      "contrib_riesgo": 0.013
+      "contrib_riesgo": 0.0255
+    },
+    {
+      "ticker": "MCD",
+      "nombre": "McDonalds Corp",
+      "tipo": "Cedears",
+      "pct": 0.059,
+      "monto_usd": 395249.0,
+      "vol": 0.1906,
+      "beta_sp": 0.02,
+      "beta_mrv": -0.02,
+      "contrib_riesgo": 0.0113
+    },
+    {
+      "ticker": "SH",
+      "nombre": "PROSHARES SHORT S&P500",
+      "tipo": "Cedears",
+      "pct": 0.0504,
+      "monto_usd": 337277.0,
+      "vol": 0.1286,
+      "beta_sp": -0.99,
+      "beta_mrv": -0.1,
+      "contrib_riesgo": 0.0065
+    },
+    {
+      "ticker": "VIST",
+      "nombre": "CEDEAR VISTA OIL & GAS",
+      "tipo": "Cedears",
+      "pct": 0.0244,
+      "monto_usd": 163186.0,
+      "vol": 0.4874,
+      "beta_sp": -0.15,
+      "beta_mrv": 0.6,
+      "contrib_riesgo": 0.0119
     },
     {
       "ticker": "IBM",
       "nombre": "CEDEAR IBM CORP",
       "tipo": "Cedears",
-      "pct": 0.0267,
-      "monto_usd": 172371.0,
-      "vol": 0.4877,
+      "pct": 0.0223,
+      "monto_usd": 149234.0,
+      "vol": 0.4863,
       "beta_sp": 0.9,
-      "beta_mrv": 0.14,
-      "contrib_riesgo": 0.013
-    },
-    {
-      "ticker": "BRKB",
-      "nombre": "Berkshire Hathaway Inc.",
-      "tipo": "Cedears",
-      "pct": 0.0261,
-      "monto_usd": 168349.0,
-      "vol": 0.1454,
-      "beta_sp": 0.04,
-      "beta_mrv": -0.05,
-      "contrib_riesgo": 0.0038
+      "beta_mrv": 0.16,
+      "contrib_riesgo": 0.0108
     },
     {
       "ticker": "XLF",
       "nombre": "The Select Sector Financial",
       "tipo": "Cedears",
-      "pct": 0.0195,
-      "monto_usd": 125932.0,
-      "vol": 0.1457,
+      "pct": 0.0184,
+      "monto_usd": 123195.0,
+      "vol": 0.1467,
       "beta_sp": 0.61,
-      "beta_mrv": 0.05,
-      "contrib_riesgo": 0.0028
+      "beta_mrv": 0.04,
+      "contrib_riesgo": 0.0027
     },
     {
       "ticker": "TGSU2",
       "nombre": "Transportadora de Gas Del Sur",
       "tipo": "Acciones",
-      "pct": 0.0166,
-      "monto_usd": 106996.0,
-      "vol": 0.4425,
-      "beta_sp": 0.37,
-      "beta_mrv": 0.96,
-      "contrib_riesgo": 0.0073
+      "pct": 0.0146,
+      "monto_usd": 97732.0,
+      "vol": 0.444,
+      "beta_sp": 0.33,
+      "beta_mrv": 0.98,
+      "contrib_riesgo": 0.0065
     },
     {
       "ticker": "MELI",
       "nombre": "CEDEAR MERCADOLIBRE INC",
       "tipo": "Cedears",
-      "pct": 0.0152,
-      "monto_usd": 97703.0,
-      "vol": 0.4121,
-      "beta_sp": 1.11,
-      "beta_mrv": 0.24,
-      "contrib_riesgo": 0.0062
+      "pct": 0.0141,
+      "monto_usd": 94493.0,
+      "vol": 0.4015,
+      "beta_sp": 1.14,
+      "beta_mrv": 0.23,
+      "contrib_riesgo": 0.0057
     },
     {
       "ticker": "CRES",
       "nombre": "CRESUD S.A. ORDS. 1 VOTO ESCRITURALES",
       "tipo": "Acciones",
-      "pct": 0.0133,
-      "monto_usd": 85629.0,
-      "vol": 0.4195,
-      "beta_sp": 0.72,
-      "beta_mrv": 0.8,
-      "contrib_riesgo": 0.0056
+      "pct": 0.013,
+      "monto_usd": 87049.0,
+      "vol": 0.4177,
+      "beta_sp": 0.67,
+      "beta_mrv": 0.81,
+      "contrib_riesgo": 0.0054
     },
     {
       "ticker": "JPM",
       "nombre": "CEDEAR JPMORGAN CHASE & CO",
       "tipo": "Cedears",
-      "pct": 0.0131,
-      "monto_usd": 84404.0,
-      "vol": 0.2208,
+      "pct": 0.0125,
+      "monto_usd": 83700.0,
+      "vol": 0.2232,
       "beta_sp": 0.78,
       "beta_mrv": 0.11,
-      "contrib_riesgo": 0.0029
-    },
-    {
-      "ticker": "FXI",
-      "nombre": "ISHARES TRUST FTSE CHINA 25 IF (FXI)",
-      "tipo": "Cedears",
-      "pct": 0.0121,
-      "monto_usd": 78056.0,
-      "vol": 0.195,
-      "beta_sp": 0.78,
-      "beta_mrv": 0.1,
-      "contrib_riesgo": 0.0024
+      "contrib_riesgo": 0.0028
     },
     {
       "ticker": "PAMP",
       "nombre": "Pampa Energia SA",
       "tipo": "Acciones",
-      "pct": 0.0115,
-      "monto_usd": 74381.0,
-      "vol": 0.3488,
-      "beta_sp": 0.4,
+      "pct": 0.0116,
+      "monto_usd": 77621.0,
+      "vol": 0.3467,
+      "beta_sp": 0.38,
       "beta_mrv": 0.78,
       "contrib_riesgo": 0.004
+    },
+    {
+      "ticker": "FXI",
+      "nombre": "ISHARES TRUST FTSE CHINA 25 IF (FXI)",
+      "tipo": "Cedears",
+      "pct": 0.0115,
+      "monto_usd": 77337.0,
+      "vol": 0.1956,
+      "beta_sp": 0.79,
+      "beta_mrv": 0.1,
+      "contrib_riesgo": 0.0023
     },
     {
       "ticker": "EWZ",
       "nombre": "iShares Msci Brazil Cap.",
       "tipo": "Cedears",
-      "pct": 0.0102,
-      "monto_usd": 65666.0,
-      "vol": 0.2515,
+      "pct": 0.0096,
+      "monto_usd": 64141.0,
+      "vol": 0.2522,
       "beta_sp": 0.97,
       "beta_mrv": 0.23,
-      "contrib_riesgo": 0.0026
-    },
-    {
-      "ticker": "SUPV",
-      "nombre": "Grupo Supervielle",
-      "tipo": "Acciones",
-      "pct": 0.0094,
-      "monto_usd": 60764.0,
-      "vol": 0.7188,
-      "beta_sp": 1.97,
-      "beta_mrv": 1.7,
-      "contrib_riesgo": 0.0068
+      "contrib_riesgo": 0.0024
     },
     {
       "ticker": "TGNO4",
       "nombre": "Transportadora de Gas del Norte",
       "tipo": "Acciones",
       "pct": 0.0092,
-      "monto_usd": 59438.0,
-      "vol": 0.5764,
-      "beta_sp": 0.92,
-      "beta_mrv": 1.16,
-      "contrib_riesgo": 0.0053
+      "monto_usd": 61332.0,
+      "vol": 0.5618,
+      "beta_sp": 0.93,
+      "beta_mrv": 1.14,
+      "contrib_riesgo": 0.0051
     },
     {
       "ticker": "GGAL",
       "nombre": "Grupo Financiero Galicia",
       "tipo": "Acciones",
-      "pct": 0.0091,
-      "monto_usd": 58428.0,
-      "vol": 0.532,
-      "beta_sp": 1.43,
-      "beta_mrv": 1.28,
-      "contrib_riesgo": 0.0048
-    },
-    {
-      "ticker": "VIST",
-      "nombre": "CEDEAR VISTA OIL & GAS",
-      "tipo": "Cedears",
-      "pct": 0.0084,
-      "monto_usd": 54261.0,
-      "vol": 0.4886,
-      "beta_sp": -0.13,
-      "beta_mrv": 0.6,
-      "contrib_riesgo": 0.0041
-    },
-    {
-      "ticker": "V",
-      "nombre": "Visa Inc",
-      "tipo": "Cedears",
-      "pct": 0.0069,
-      "monto_usd": 44741.0,
-      "vol": 0.2186,
-      "beta_sp": 0.3,
-      "beta_mrv": -0.04,
-      "contrib_riesgo": 0.0015
-    },
-    {
-      "ticker": "XLU",
-      "nombre": "CEDEAR UTILITIES SELECT SECTOR SPDR FUND",
-      "tipo": "Cedears",
-      "pct": 0.0069,
-      "monto_usd": 44734.0,
-      "vol": 0.1507,
-      "beta_sp": 0.16,
-      "beta_mrv": -0.0,
-      "contrib_riesgo": 0.001
+      "pct": 0.009,
+      "monto_usd": 60248.0,
+      "vol": 0.527,
+      "beta_sp": 1.4,
+      "beta_mrv": 1.27,
+      "contrib_riesgo": 0.0047
     },
     {
       "ticker": "NU",
       "nombre": "NU Holdings Ltd",
       "tipo": "Cedears",
-      "pct": 0.0059,
-      "monto_usd": 38151.0,
-      "vol": 0.3819,
-      "beta_sp": 1.45,
+      "pct": 0.0085,
+      "monto_usd": 56920.0,
+      "vol": 0.3815,
+      "beta_sp": 1.47,
       "beta_mrv": 0.3,
-      "contrib_riesgo": 0.0023
+      "contrib_riesgo": 0.0032
+    },
+    {
+      "ticker": "SUPV",
+      "nombre": "Grupo Supervielle",
+      "tipo": "Acciones",
+      "pct": 0.0078,
+      "monto_usd": 52413.0,
+      "vol": 0.7107,
+      "beta_sp": 1.95,
+      "beta_mrv": 1.7,
+      "contrib_riesgo": 0.0056
+    },
+    {
+      "ticker": "V",
+      "nombre": "Visa Inc",
+      "tipo": "Cedears",
+      "pct": 0.0066,
+      "monto_usd": 44091.0,
+      "vol": 0.2191,
+      "beta_sp": 0.29,
+      "beta_mrv": -0.05,
+      "contrib_riesgo": 0.0014
+    },
+    {
+      "ticker": "XLU",
+      "nombre": "CEDEAR UTILITIES SELECT SECTOR SPDR FUND",
+      "tipo": "Cedears",
+      "pct": 0.0063,
+      "monto_usd": 42422.0,
+      "vol": 0.1514,
+      "beta_sp": 0.15,
+      "beta_mrv": -0.0,
+      "contrib_riesgo": 0.001
+    },
+    {
+      "ticker": "ACWI",
+      "nombre": "ISHARES MSCI ACWI ETF",
+      "tipo": "Cedears",
+      "pct": 0.0045,
+      "monto_usd": 30147.0,
+      "vol": 0.1417,
+      "beta_sp": 1.06,
+      "beta_mrv": 0.11,
+      "contrib_riesgo": 0.0006
     },
     {
       "ticker": "NVDA",
       "nombre": "CEDEAR NVIDIA CORPORATION",
       "tipo": "Cedears",
-      "pct": 0.0035,
-      "monto_usd": 22703.0,
+      "pct": 0.0036,
+      "monto_usd": 23797.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -488,40 +520,29 @@
       "nombre": "CEDEAR MICROSOFT CORP.",
       "tipo": "Cedears",
       "pct": 0.0027,
-      "monto_usd": 17357.0,
+      "monto_usd": 17987.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
       "contrib_riesgo": 0.0006
     },
     {
-      "ticker": "PSQ",
-      "nombre": "ETF PROSHARES SHORT QQQ",
-      "tipo": "Cedears",
-      "pct": 0.0023,
-      "monto_usd": 14943.0,
-      "vol": 0.22,
-      "beta_sp": 0.5,
-      "beta_mrv": 0.3,
-      "contrib_riesgo": 0.0005
-    },
-    {
-      "ticker": "ACWI",
-      "nombre": "ISHARES MSCI ACWI ETF",
-      "tipo": "Cedears",
-      "pct": 0.0022,
-      "monto_usd": 13975.0,
-      "vol": 0.1404,
-      "beta_sp": 1.06,
-      "beta_mrv": 0.11,
-      "contrib_riesgo": 0.0003
-    },
-    {
       "ticker": "BIDU",
       "nombre": "BAIDU INC.",
       "tipo": "Cedears",
-      "pct": 0.002,
-      "monto_usd": 12879.0,
+      "pct": 0.0019,
+      "monto_usd": 12500.0,
+      "vol": 0.22,
+      "beta_sp": 0.5,
+      "beta_mrv": 0.3,
+      "contrib_riesgo": 0.0004
+    },
+    {
+      "ticker": "QQQ",
+      "nombre": "CEDEAR INVESCO QQQ TRUST",
+      "tipo": "Cedears",
+      "pct": 0.0018,
+      "monto_usd": 11964.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -531,8 +552,19 @@
       "ticker": "EEM",
       "nombre": "iShares MSCI Emerging Market",
       "tipo": "Cedears",
-      "pct": 0.0016,
-      "monto_usd": 10108.0,
+      "pct": 0.0015,
+      "monto_usd": 10235.0,
+      "vol": 0.22,
+      "beta_sp": 0.5,
+      "beta_mrv": 0.3,
+      "contrib_riesgo": 0.0003
+    },
+    {
+      "ticker": "PSQ",
+      "nombre": "ETF PROSHARES SHORT QQQ",
+      "tipo": "Cedears",
+      "pct": 0.0014,
+      "monto_usd": 9440.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -542,8 +574,8 @@
       "ticker": "SPOT",
       "nombre": "Spotify Technology SA",
       "tipo": "Cedears",
-      "pct": 0.0015,
-      "monto_usd": 9475.0,
+      "pct": 0.0013,
+      "monto_usd": 8969.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -553,22 +585,22 @@
       "ticker": "PAAS",
       "nombre": "Pan American Silver Corp",
       "tipo": "Cedears",
-      "pct": 0.0012,
-      "monto_usd": 7674.0,
+      "pct": 0.0011,
+      "monto_usd": 7348.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
-      "contrib_riesgo": 0.0003
+      "contrib_riesgo": 0.0002
     },
     {
-      "ticker": "SPY",
-      "nombre": "SPDR S&P 500",
+      "ticker": "BRKB",
+      "nombre": "Berkshire Hathaway Inc.",
       "tipo": "Cedears",
-      "pct": 0.0008,
-      "monto_usd": 4860.0,
-      "vol": 0.22,
-      "beta_sp": 0.5,
-      "beta_mrv": 0.3,
+      "pct": 0.0011,
+      "monto_usd": 7313.0,
+      "vol": 0.1455,
+      "beta_sp": 0.02,
+      "beta_mrv": -0.05,
       "contrib_riesgo": 0.0002
     },
     {
@@ -576,29 +608,29 @@
       "nombre": "CEDEAR GLOBAL X URANIUM ETF",
       "tipo": "Cedears",
       "pct": 0.0007,
-      "monto_usd": 4629.0,
+      "monto_usd": 4740.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
       "contrib_riesgo": 0.0002
     },
     {
-      "ticker": "CAT",
-      "nombre": "CEDEAR CATERPILLAR INC. ESCRIT.",
+      "ticker": "SPY",
+      "nombre": "SPDR S&P 500",
       "tipo": "Cedears",
-      "pct": 0.0006,
-      "monto_usd": 3999.0,
+      "pct": 0.0007,
+      "monto_usd": 4574.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
-      "contrib_riesgo": 0.0001
+      "contrib_riesgo": 0.0002
     },
     {
       "ticker": "UBER",
       "nombre": "Uber Technologies Inc",
       "tipo": "Cedears",
-      "pct": 0.0006,
-      "monto_usd": 3620.0,
+      "pct": 0.0005,
+      "monto_usd": 3543.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -609,7 +641,7 @@
       "nombre": "Pagseguro Digital Ltd",
       "tipo": "Cedears",
       "pct": 0.0005,
-      "monto_usd": 3254.0,
+      "monto_usd": 3080.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -617,21 +649,10 @@
     },
     {
       "ticker": "BBD",
-      "nombre": "Banco Bradesco SA",
+      "nombre": "CEDEAR BANCO BRADESCO S.A.",
       "tipo": "Cedears",
-      "pct": 0.0005,
-      "monto_usd": 2998.0,
-      "vol": 0.22,
-      "beta_sp": 0.5,
-      "beta_mrv": 0.3,
-      "contrib_riesgo": 0.0001
-    },
-    {
-      "ticker": "BMA",
-      "nombre": "Banco Macro",
-      "tipo": "Acciones",
       "pct": 0.0004,
-      "monto_usd": 2840.0,
+      "monto_usd": 2920.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -642,7 +663,7 @@
       "nombre": "CEDEAR ELI LILLY AND COMPANY ESC",
       "tipo": "Cedears",
       "pct": 0.0004,
-      "monto_usd": 2808.0,
+      "monto_usd": 2894.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -653,18 +674,18 @@
       "nombre": "CEDEAR GOOGLE INC.",
       "tipo": "Cedears",
       "pct": 0.0004,
-      "monto_usd": 2553.0,
+      "monto_usd": 2517.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
       "contrib_riesgo": 0.0001
     },
     {
-      "ticker": "FSLR",
-      "nombre": "First Solar Inc",
-      "tipo": "Cedears",
-      "pct": 0.0003,
-      "monto_usd": 2052.0,
+      "ticker": "BMA",
+      "nombre": "Banco Macro",
+      "tipo": "Acciones",
+      "pct": 0.0004,
+      "monto_usd": 2504.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -675,7 +696,29 @@
       "nombre": "ISHARES BITCOIN TR (IBIT)",
       "tipo": "Cedears",
       "pct": 0.0003,
-      "monto_usd": 1641.0,
+      "monto_usd": 2322.0,
+      "vol": 0.22,
+      "beta_sp": 0.5,
+      "beta_mrv": 0.3,
+      "contrib_riesgo": 0.0001
+    },
+    {
+      "ticker": "BA.C",
+      "nombre": "Bank of America Corp",
+      "tipo": "Cedears",
+      "pct": 0.0003,
+      "monto_usd": 2021.0,
+      "vol": 0.22,
+      "beta_sp": 0.5,
+      "beta_mrv": 0.3,
+      "contrib_riesgo": 0.0001
+    },
+    {
+      "ticker": "USO",
+      "nombre": "UNITED STATE OIL FUND",
+      "tipo": "Cedears",
+      "pct": 0.0003,
+      "monto_usd": 1868.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -686,7 +729,7 @@
       "nombre": "CEDEAR ISHARES LATIN AMERICA 40 ETF",
       "tipo": "Cedears",
       "pct": 0.0002,
-      "monto_usd": 1393.0,
+      "monto_usd": 1360.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -694,10 +737,21 @@
     },
     {
       "ticker": "DISN",
-      "nombre": "Walt Disney Co",
+      "nombre": "CEDEAR THE WALT DISNEY COMPANY",
       "tipo": "Cedears",
       "pct": 0.0002,
-      "monto_usd": 1273.0,
+      "monto_usd": 1266.0,
+      "vol": 0.22,
+      "beta_sp": 0.5,
+      "beta_mrv": 0.3,
+      "contrib_riesgo": 0.0
+    },
+    {
+      "ticker": "MSTR",
+      "nombre": "CEDEAR MICROSTRATEGY INC",
+      "tipo": "Cedears",
+      "pct": 0.0002,
+      "monto_usd": 1174.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -708,7 +762,7 @@
       "nombre": "VAN ECK GOLD MINERS ETF",
       "tipo": "Cedears",
       "pct": 0.0002,
-      "monto_usd": 1211.0,
+      "monto_usd": 1166.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -719,7 +773,7 @@
       "nombre": "CEDEAR MICRON TECHNOLOGY",
       "tipo": "Cedears",
       "pct": 0.0002,
-      "monto_usd": 981.0,
+      "monto_usd": 1081.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -730,18 +784,7 @@
       "nombre": "CEDEAR ISHARES CORE S&P 500 ETF",
       "tipo": "Cedears",
       "pct": 0.0001,
-      "monto_usd": 963.0,
-      "vol": 0.22,
-      "beta_sp": 0.5,
-      "beta_mrv": 0.3,
-      "contrib_riesgo": 0.0
-    },
-    {
-      "ticker": "MSTR",
-      "nombre": "CEDEAR MICROSTRATEGY INC",
-      "tipo": "Cedears",
-      "pct": 0.0001,
-      "monto_usd": 950.0,
+      "monto_usd": 975.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -752,7 +795,7 @@
       "nombre": "Sociedad Comercial del Plata",
       "tipo": "Acciones",
       "pct": 0.0001,
-      "monto_usd": 888.0,
+      "monto_usd": 841.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -763,40 +806,7 @@
       "nombre": "OKLO INC.",
       "tipo": "Cedears",
       "pct": 0.0001,
-      "monto_usd": 555.0,
-      "vol": 0.22,
-      "beta_sp": 0.5,
-      "beta_mrv": 0.3,
-      "contrib_riesgo": 0.0
-    },
-    {
-      "ticker": "LAR",
-      "nombre": "LITHIUM AMERICA CORP",
-      "tipo": "Cedears",
-      "pct": 0.0001,
-      "monto_usd": 413.0,
-      "vol": 0.22,
-      "beta_sp": 0.5,
-      "beta_mrv": 0.3,
-      "contrib_riesgo": 0.0
-    },
-    {
-      "ticker": "IBB",
-      "nombre": "IShares NASDAQ BIOTECHNOLOGY ETF",
-      "tipo": "Cedears",
-      "pct": 0.0001,
-      "monto_usd": 353.0,
-      "vol": 0.22,
-      "beta_sp": 0.5,
-      "beta_mrv": 0.3,
-      "contrib_riesgo": 0.0
-    },
-    {
-      "ticker": "SMH",
-      "nombre": "CEDEAR VAN ECK VECTORS ETF TRUST",
-      "tipo": "Cedears",
-      "pct": 0.0001,
-      "monto_usd": 348.0,
+      "monto_usd": 411.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -807,10 +817,54 @@
       "nombre": "Applied Materials Inc",
       "tipo": "Cedears",
       "pct": 0.0001,
-      "monto_usd": 334.0,
-      "vol": 0.5929,
-      "beta_sp": 2.68,
-      "beta_mrv": 0.29,
+      "monto_usd": 388.0,
+      "vol": 0.594,
+      "beta_sp": 2.67,
+      "beta_mrv": 0.28,
+      "contrib_riesgo": 0.0
+    },
+    {
+      "ticker": "SMH",
+      "nombre": "CEDEAR VAN ECK VECTORS ETF TRUST",
+      "tipo": "Cedears",
+      "pct": 0.0001,
+      "monto_usd": 376.0,
+      "vol": 0.22,
+      "beta_sp": 0.5,
+      "beta_mrv": 0.3,
+      "contrib_riesgo": 0.0
+    },
+    {
+      "ticker": "IBB",
+      "nombre": "IShares NASDAQ BIOTECHNOLOGY ETF",
+      "tipo": "Cedears",
+      "pct": 0.0001,
+      "monto_usd": 355.0,
+      "vol": 0.22,
+      "beta_sp": 0.5,
+      "beta_mrv": 0.3,
+      "contrib_riesgo": 0.0
+    },
+    {
+      "ticker": "LAR",
+      "nombre": "LITHIUM AMERICA CORP",
+      "tipo": "Cedears",
+      "pct": 0.0,
+      "monto_usd": 303.0,
+      "vol": 0.22,
+      "beta_sp": 0.5,
+      "beta_mrv": 0.3,
+      "contrib_riesgo": 0.0
+    },
+    {
+      "ticker": "BNG",
+      "nombre": "Bunge Ltd",
+      "tipo": "Cedears",
+      "pct": 0.0,
+      "monto_usd": 283.0,
+      "vol": 0.22,
+      "beta_sp": 0.5,
+      "beta_mrv": 0.3,
       "contrib_riesgo": 0.0
     },
     {
@@ -818,18 +872,18 @@
       "nombre": "American Airlines Group Inc.",
       "tipo": "Cedears",
       "pct": 0.0,
-      "monto_usd": 267.0,
-      "vol": 0.4731,
-      "beta_sp": 1.89,
-      "beta_mrv": 0.07,
+      "monto_usd": 283.0,
+      "vol": 0.4745,
+      "beta_sp": 1.91,
+      "beta_mrv": 0.05,
       "contrib_riesgo": 0.0
     },
     {
       "ticker": "BABA",
-      "nombre": "Alibaba Group Holding Ltd",
+      "nombre": "CEDEAR ALIBABA GROUP HOLDING",
       "tipo": "Cedears",
       "pct": 0.0,
-      "monto_usd": 252.0,
+      "monto_usd": 255.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -840,7 +894,7 @@
       "nombre": "Lithium Americas Corp",
       "tipo": "Cedears",
       "pct": 0.0,
-      "monto_usd": 240.0,
+      "monto_usd": 233.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -851,7 +905,7 @@
       "nombre": "Vanguard FTSE Developed Markets ETF",
       "tipo": "Cedears",
       "pct": 0.0,
-      "monto_usd": 232.0,
+      "monto_usd": 230.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -862,7 +916,7 @@
       "nombre": "CEDEAR MP MATERIALS CORP.",
       "tipo": "Cedears",
       "pct": 0.0,
-      "monto_usd": 228.0,
+      "monto_usd": 223.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -873,7 +927,7 @@
       "nombre": "Brasilagro Com",
       "tipo": "Cedears",
       "pct": 0.0,
-      "monto_usd": 188.0,
+      "monto_usd": 181.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -884,18 +938,7 @@
       "nombre": "Loma Negra",
       "tipo": "Acciones",
       "pct": 0.0,
-      "monto_usd": 155.0,
-      "vol": 0.22,
-      "beta_sp": 0.5,
-      "beta_mrv": 0.3,
-      "contrib_riesgo": 0.0
-    },
-    {
-      "ticker": "QQQ",
-      "nombre": "CEDEAR INVESCO QQQ TRUST",
-      "tipo": "Cedears",
-      "pct": 0.0,
-      "monto_usd": 143.0,
+      "monto_usd": 148.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -906,7 +949,7 @@
       "nombre": "Upstart Holdings Inc",
       "tipo": "Cedears",
       "pct": 0.0,
-      "monto_usd": 135.0,
+      "monto_usd": 129.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -917,7 +960,7 @@
       "nombre": "CEDEAR ISHARES MSCI SOUTH KOREA ETF",
       "tipo": "Cedears",
       "pct": 0.0,
-      "monto_usd": 109.0,
+      "monto_usd": 112.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -928,7 +971,7 @@
       "nombre": "Procter & Gamble Co",
       "tipo": "Cedears",
       "pct": 0.0,
-      "monto_usd": 88.0,
+      "monto_usd": 87.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -940,20 +983,9 @@
       "tipo": "Cedears",
       "pct": 0.0,
       "monto_usd": 79.0,
-      "vol": 0.2633,
-      "beta_sp": -0.07,
-      "beta_mrv": -0.12,
-      "contrib_riesgo": 0.0
-    },
-    {
-      "ticker": "BNY",
-      "nombre": "BANK OF NEW YORK MELLON",
-      "tipo": "Cedears",
-      "pct": 0.0,
-      "monto_usd": 77.0,
-      "vol": 0.22,
-      "beta_sp": 0.5,
-      "beta_mrv": 0.3,
+      "vol": 0.2524,
+      "beta_sp": -0.1,
+      "beta_mrv": -0.11,
       "contrib_riesgo": 0.0
     },
     {
@@ -961,7 +993,18 @@
       "nombre": "CEDEAR NEBIUS GROUP",
       "tipo": "Cedears",
       "pct": 0.0,
-      "monto_usd": 71.0,
+      "monto_usd": 79.0,
+      "vol": 0.22,
+      "beta_sp": 0.5,
+      "beta_mrv": 0.3,
+      "contrib_riesgo": 0.0
+    },
+    {
+      "ticker": "BNY",
+      "nombre": "BANK OF NEW YORK MELLON",
+      "tipo": "Cedears",
+      "pct": 0.0,
+      "monto_usd": 75.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -972,7 +1015,7 @@
       "nombre": "Ark Innovation",
       "tipo": "Cedears",
       "pct": 0.0,
-      "monto_usd": 69.0,
+      "monto_usd": 72.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -983,18 +1026,7 @@
       "nombre": "CEDEAR INVESCO S&P 500 EQUAL WEIGHT ETF",
       "tipo": "Cedears",
       "pct": 0.0,
-      "monto_usd": 64.0,
-      "vol": 0.22,
-      "beta_sp": 0.5,
-      "beta_mrv": 0.3,
-      "contrib_riesgo": 0.0
-    },
-    {
-      "ticker": "NIO",
-      "nombre": "Nio Inc.",
-      "tipo": "Cedears",
-      "pct": 0.0,
-      "monto_usd": 60.0,
+      "monto_usd": 63.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -1005,7 +1037,18 @@
       "nombre": "Ferrari NV",
       "tipo": "Cedears",
       "pct": 0.0,
-      "monto_usd": 60.0,
+      "monto_usd": 59.0,
+      "vol": 0.22,
+      "beta_sp": 0.5,
+      "beta_mrv": 0.3,
+      "contrib_riesgo": 0.0
+    },
+    {
+      "ticker": "NIO",
+      "nombre": "Nio Inc.",
+      "tipo": "Cedears",
+      "pct": 0.0,
+      "monto_usd": 59.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -1016,29 +1059,18 @@
       "nombre": "ARISTA NETWORKS INC",
       "tipo": "Cedears",
       "pct": 0.0,
-      "monto_usd": 56.0,
-      "vol": 0.5396,
+      "monto_usd": 57.0,
+      "vol": 0.5387,
       "beta_sp": 2.02,
-      "beta_mrv": 0.2,
+      "beta_mrv": 0.21,
       "contrib_riesgo": 0.0
     },
     {
-      "ticker": "CEPU",
-      "nombre": "CENTRAL PUERTO S.A. ESCRIT. \"B\" 1 V.",
-      "tipo": "Acciones",
+      "ticker": "CAT",
+      "nombre": "CEDEAR CATERPILLAR INC. ESCRIT.",
+      "tipo": "Cedears",
       "pct": 0.0,
-      "monto_usd": 26.0,
-      "vol": 0.22,
-      "beta_sp": 0.5,
-      "beta_mrv": 0.3,
-      "contrib_riesgo": 0.0
-    },
-    {
-      "ticker": "BYMA",
-      "nombre": "BOLSAS Y MERCADOS ARG. $ ORD",
-      "tipo": "Acciones",
-      "pct": 0.0,
-      "monto_usd": 25.0,
+      "monto_usd": 41.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -1049,10 +1081,21 @@
       "nombre": "CEDEAR AMAZON INC",
       "tipo": "Cedears",
       "pct": 0.0,
-      "monto_usd": 25.0,
-      "vol": 0.3418,
-      "beta_sp": 1.44,
+      "monto_usd": 24.0,
+      "vol": 0.3428,
+      "beta_sp": 1.45,
       "beta_mrv": 0.19,
+      "contrib_riesgo": 0.0
+    },
+    {
+      "ticker": "BYMA",
+      "nombre": "BOLSAS Y MERCADOS ARG. $ ORD",
+      "tipo": "Acciones",
+      "pct": 0.0,
+      "monto_usd": 23.0,
+      "vol": 0.22,
+      "beta_sp": 0.5,
+      "beta_mrv": 0.3,
       "contrib_riesgo": 0.0
     },
     {
@@ -1062,7 +1105,7 @@
       "pct": 0.0,
       "monto_usd": 17.0,
       "vol": 0.2441,
-      "beta_sp": 0.69,
+      "beta_sp": 0.71,
       "beta_mrv": 0.06,
       "contrib_riesgo": 0.0
     },
@@ -1071,7 +1114,7 @@
       "nombre": "Ford Motor Co",
       "tipo": "Cedears",
       "pct": 0.0,
-      "monto_usd": 14.0,
+      "monto_usd": 13.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -1089,11 +1132,22 @@
       "contrib_riesgo": 0.0
     },
     {
+      "ticker": "CEPU",
+      "nombre": "CENTRAL PUERTO S.A. ESCRIT. \"B\" 1 V.",
+      "tipo": "Acciones",
+      "pct": 0.0,
+      "monto_usd": 7.0,
+      "vol": 0.22,
+      "beta_sp": 0.5,
+      "beta_mrv": 0.3,
+      "contrib_riesgo": 0.0
+    },
+    {
       "ticker": "MCD_E",
       "nombre": "MCDONALDS",
       "tipo": "Acciones",
       "pct": 0.0,
-      "monto_usd": 8.0,
+      "monto_usd": 7.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -1105,8 +1159,8 @@
       "tipo": "Acciones",
       "pct": 0.0,
       "monto_usd": 7.0,
-      "vol": 0.4673,
-      "beta_sp": 0.57,
+      "vol": 0.4607,
+      "beta_sp": 0.53,
       "beta_mrv": 0.44,
       "contrib_riesgo": 0.0
     },
@@ -1115,7 +1169,7 @@
       "nombre": "Global X Uranium ETF",
       "tipo": "ETF",
       "pct": 0.0,
-      "monto_usd": 4.0,
+      "monto_usd": 3.0,
       "vol": 0.22,
       "beta_sp": 0.5,
       "beta_mrv": 0.3,
@@ -1179,34 +1233,34 @@
   ],
   "benchmarks": {
     "sp500": {
-      "vol": 0.1533,
-      "var95_p": -0.0476,
-      "var99_p": -0.152,
-      "cvar95_p": -0.1115,
+      "vol": 0.1529,
+      "var95_p": -0.0286,
+      "var99_p": -0.1327,
+      "cvar95_p": -0.0924,
       "var95_h": 0.1038,
       "var99_h": 0.0476,
       "cvar95_h": 0.0668,
       "worst": -0.0302,
       "best": 0.4358,
       "p25": 0.1499,
-      "p75": 0.2546,
-      "sharpe": 1.07,
+      "p75": 0.2507,
+      "sharpe": 1.2,
       "n_windows": 501
     },
     "merval": {
-      "vol": 0.4799,
-      "var95_p": -0.1059,
-      "var99_p": -0.4327,
-      "cvar95_p": -0.3061,
+      "vol": 0.4794,
+      "var95_p": -0.1032,
+      "var99_p": -0.4296,
+      "cvar95_p": -0.3032,
       "var95_h": 0.0748,
-      "var99_h": -0.0127,
+      "var99_h": -0.0126,
       "cvar95_h": 0.0168,
       "worst": -0.0446,
       "best": 2.6615,
-      "p25": 0.2607,
-      "p75": 0.907,
-      "sharpe": 1.34,
-      "n_windows": 481
+      "p25": 0.2608,
+      "p75": 0.8586,
+      "sharpe": 1.35,
+      "n_windows": 482
     }
   }
 }
