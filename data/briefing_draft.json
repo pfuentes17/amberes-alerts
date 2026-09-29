@@ -1,10 +1,10 @@
 {
-  "date": "2026-09-25",
-  "generated": "2026-09-25T12:35:38Z",
+  "date": "2026-09-29",
+  "generated": "2026-09-29T13:12:22Z",
   "sentiment": {
     "overall": "risk-off",
-    "label": "Superjueves negativo: EMAE -2,9% m/m, pobreza 32,3% y riesgo país en 578pb por novena suba; afuera el 10Y hace pausa en 5,1% antes del PCE.",
-    "fg": 35,
+    "label": "Riesgo país en 628pb (undécima suba), Merval -3,3% y reservas bajo US$48.000M; afuera el 10Y sigue arriba de 5,2% y el Brent se estabiliza en ~US$105.",
+    "fg": 34,
     "fg_label": "Miedo",
     "putcall": 0.95,
     "aaii_bulls": 28.8
@@ -14,204 +14,170 @@
       "id": 1,
       "tag": "Argentina · Riesgo Soberano",
       "tag_class": "tr",
-      "title": "Riesgo país sube por novena rueda a 578pb; todos los bonos rinden más de 10%",
-      "brief": "El riesgo país cerró el jueves en 578pb (+12pb), novena suba seguida y máximo desde fines de abril. Los largos siguieron cayendo y el Merval tocó mínimos de cinco meses.",
-      "tldr": "El mercado ya cotiza riesgo electoral además del shock de tasas externo.",
+      "title": "Riesgo país sube a 628pb, undécima suba seguida; el Merval cae 3,3%",
+      "brief": "El riesgo país cerró el lunes en 628pb (+19pb) y en el día tocó 642pb, máximo desde diciembre. El Merval cayó 3,3% y los ADRs perdieron hasta 8%.",
+      "tldr": "El castigo ya se extiende de los bonos largos a las acciones: el mercado descuenta riesgo local creciente.",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "El riesgo país cerró el jueves en <strong>578 puntos básicos</strong> (+12pb), novena suba consecutiva y máximo desde el 28/4; desde el piso de ~400pb de fines de julio acumula casi 180pb. Todos los bonos en dólares ya rinden <strong>más de 10% anual</strong>. La caída se concentró otra vez en el tramo largo: <strong>AO29 -1,60%</strong>, <strong>GD35 -1,35%</strong> (US$75,30), <strong>GD38 -1,02%</strong>, <strong>AE38 -1,01%</strong> y <strong>AL35 -0,80%</strong> (US$70,48). El tramo corto aguantó: <strong>AL30 -0,18%</strong> (US$54,45) y <strong>GD30 -0,37%</strong> (US$56,65). El <strong>S&amp;P Merval cayó 1%</strong> a 2.939.964 puntos, mínimo en cinco meses, con Bioceres (-5,3%) y Telecom (-4,1%) a la cabeza de las bajas en ADRs.",
-      "contexto": "Los analistas apuntan a cinco factores: compras del BCRA en mínimos (~US$13M diarios en septiembre), la suba de tasas en EE.UU., encuestas con menor apoyo al Gobierno, el arranque de la campaña (con Kicillof en Nueva York) y datos de actividad flojos. El deterioro argentino es más fuerte que el de otros emergentes, lo que indica que pesa más el factor local que el externo.",
+      "evento": "El riesgo país cerró el lunes en <strong>628 puntos básicos</strong> (<strong>+19pb</strong>), undécima suba consecutiva; en el intradía llegó a <strong>642pb</strong>, el nivel más alto desde el 2 de diciembre. El <strong>S&amp;P Merval cayó 3,3%</strong> a 2.798.925 puntos, séptima baja seguida y mínimo desde el 20 de mayo. En Nueva York los ADRs se hundieron: <strong>Central Puerto -8,3%</strong>, <strong>Telecom -7,1%</strong> y <strong>Cresud -6,3%</strong>. En la curva en dólares (cierre del lunes, data912), el tramo corto aguantó: <strong>GD30 +0,05%</strong> (US$56,15), mientras que el largo siguió cayendo: <strong>GD38 -1,68%</strong> (US$77,45), <strong>GD46 -1,33%</strong> (US$63,60), <strong>GD41 -1,20%</strong> (US$68,62) y <strong>GD35 -0,56%</strong> (US$74,38).",
+      "contexto": "La presión dejó de estar concentrada en los bonos: las acciones, sobre todo bancos y utilities, se sumaron a las bajas. El mercado combina dudas sobre la acumulación de reservas y el financiamiento de 2027 con un contexto externo de tasas largas en máximos desde 2007. Mientras la curva siga invertida a favor de los cortos, el mercado está pagando por vencer antes de la definición electoral.",
       "impacto": [
         {
           "asset": "Riesgo País",
-          "dir": "↑ 578pb (+12pb)",
+          "dir": "↑ 628pb (+19pb)",
           "cls": "dn"
         },
         {
-          "asset": "GD35",
-          "dir": "↓ 1,35%",
+          "asset": "S&amp;P Merval",
+          "dir": "↓ 3,3%",
           "cls": "dn"
         },
         {
-          "asset": "AL30",
-          "dir": "↓ 0,18%",
+          "asset": "GD38 (lun)",
+          "dir": "↓ 1,68%",
+          "cls": "dn"
+        },
+        {
+          "asset": "GD30 (lun)",
+          "dir": "→ +0,05%",
           "cls": "neu"
-        },
-        {
-          "asset": "S&P Merval",
-          "dir": "↓ 1,0%",
-          "cls": "dn"
         }
       ]
     },
     {
       "id": 2,
-      "tag": "Argentina · Actividad · Pobreza",
-      "tag_class": "tr",
-      "title": "EMAE cae 2,9% mensual en julio y la pobreza sube a 32,3% en el 1S26",
-      "brief": "El INDEC confirmó el superjueves negativo: la actividad cayó 2,9% m/m (-1,4% i.a.) y la pobreza subió 4,1pp a 32,3%, cortando la baja desde 2024.",
-      "tldr": "Los datos reales refuerzan la lectura electoral negativa que ya descuentan los bonos.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>EMAE de julio</strong> cayó <strong>2,9% mensual</strong> desestacionalizado y <strong>1,4% interanual</strong>; la tendencia-ciclo todavía marca +0,2%. La <strong>pobreza del 1er semestre de 2026</strong> subió a <strong>32,3%</strong> de las personas (~15,5 millones), <strong>4,1pp más</strong> que el 28,2% del 2S25, y la <strong>indigencia</strong> llegó a <strong>7,5%</strong>. En hogares, la pobreza alcanza al 24,4%. El dato quedó por encima de lo que esperaban la UTDT (31,4%) y la UCA (31%-32%).",
-      "contexto": "Es la primera suba de la pobreza desde el pico de 52,9% del 1S24 y llega en plena campaña. Junto con la caída de actividad de julio, alimenta la narrativa que el mercado viene castigando: si la economía no reacciona, bajan las chances electorales del oficialismo. La tendencia-ciclo positiva es lo único que matiza el cuadro.",
+      "tag": "Argentina · BCRA · Tesoro",
+      "tag_class": "ta",
+      "title": "Reservas perforan US$48.000M; el Tesoro renueva 100% pero convalida tasas altas",
+      "brief": "Las reservas cayeron US$449M a US$47.796M por la baja del oro. El BCRA compró solo US$11M. El Tesoro logró rollover de 100,08% con fuerte demanda de dollar linked.",
+      "tldr": "El Tesoro consigue refinanciar, pero a tasas más altas y con el mercado buscando cobertura cambiaria.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "Las <strong>reservas brutas</strong> cayeron <strong>US$449M</strong> a <strong>US$47.796M</strong>, el nivel más bajo desde el 31 de julio; la caída del oro (-3,8%) explica unos US$300M. El <strong>BCRA compró US$11M</strong> (1,6% del volumen) y acumula <strong>US$243M</strong> en septiembre. El <strong>mayorista</strong> cerró en <strong>$1.524,5</strong> (-0,07%). Esta mañana el oficial BNA está en <strong>$1.545</strong>, el <strong>MEP en $1.556,5</strong>, el <strong>CCL en $1.619,6</strong> y el blue en <strong>$1.565</strong>; la brecha CCL/mayorista es de ~6,2%. En la <strong>licitación</strong> el Tesoro adjudicó <strong>$8,62 billones</strong> (rollover <strong>100,08%</strong>): TML27 a <strong>TAMAR + 3,63%</strong> ($2,92 billones), Boncap T15E7 a <strong>29,36% TIREA</strong> ($2,85 billones), Boncer TZXY7 a CER + 5,97% ($1,02 billones) y las Lelink D30O6 (9,06%) y D30N6 (7,38%) por ~$1,83 billones.",
+      "contexto": "Renovar el 100% en esta semana es un dato positivo, pero la composición muestra la cautela: más de un quinto de lo adjudicado fue a instrumentos atados al dólar y la Boncap salió casi al 30% anual. La misión del FMI sigue en Buenos Aires con la tercera revisión: el superávit primario del primer semestre ($6,29 billones) quedó ~$574 mil millones debajo de la meta, por lo que se discute un waiver. La aprobación destrabaría un desembolso de ~US$867M.",
       "impacto": [
         {
-          "asset": "EMAE jul (m/m)",
-          "dir": "↓ 2,9%",
+          "asset": "Reservas brutas",
+          "dir": "↓ US$47.796M (-449M)",
           "cls": "dn"
         },
         {
-          "asset": "EMAE jul (i.a.)",
-          "dir": "↓ 1,4%",
-          "cls": "dn"
+          "asset": "Compras BCRA",
+          "dir": "↑ US$11M",
+          "cls": "neu"
         },
         {
-          "asset": "Pobreza 1S26",
-          "dir": "↑ 32,3% (+4,1pp)",
-          "cls": "dn"
+          "asset": "Rollover Tesoro",
+          "dir": "→ 100,08%",
+          "cls": "up"
         },
         {
-          "asset": "Indigencia",
-          "dir": "↑ 7,5%",
+          "asset": "Boncap T15E7",
+          "dir": "↑ 29,36% TIREA",
           "cls": "dn"
         }
       ]
     },
     {
       "id": 3,
-      "tag": "Argentina · BCRA · FMI",
-      "tag_class": "ta",
-      "title": "Hoy se paga ~US$803M al FMI; el Senado aprobó con cambios la reforma del BCRA",
-      "brief": "El Tesoro paga hoy ~US$803M al FMI con sus depósitos en el BCRA, con reservas en US$48.845M. La reforma de la Carta Orgánica vuelve a Diputados.",
-      "tldr": "Las reservas brutas perforarían los US$48.000M hoy; la reforma institucional se demora.",
+      "tag": "Geopolítica · Energía",
+      "tag_class": "tq",
+      "title": "El Brent se estabiliza en ~US$105 con el oleoducto saudí de vuelta",
+      "brief": "El crudo sube el lunes tras el rechazo de Trump al plan iraní, pero hoy opera plano: Arabia Saudita volvió a exportar ~3,5 mb/d por el oleoducto Este-Oeste.",
+      "tldr": "Sin acuerdo en Ormuz pero con más oferta saudí, el petróleo frena la suba.",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El Tesoro afronta hoy un vencimiento de <strong>~US$803M</strong> (DEG 583,3M) de capital con el <strong>FMI</strong>, que pagará con sus depósitos en el BCRA: no afecta las reservas netas pero sí las brutas, que cerraron el jueves en <strong>US$48.845M</strong> (-US$88M). El BCRA compró <strong>US$8M</strong> (1,6% del volumen). Mientras tanto, el <strong>Senado aprobó la reforma de la Carta Orgánica del BCRA</strong> por <strong>46 a 22</strong>, pero con cambios (mayoría absoluta del Senado para designar y remover directores, mandatos de seis años), por lo que el proyecto <strong>vuelve a Diputados</strong>. El texto prohíbe financiar al sector público y elimina los adelantos transitorios.",
-      "contexto": "El pago coincide con la misión del FMI que hace la tercera revisión del programa: el equipo económico espera compensarlo con el desembolso de ~US$900M si se aprueba. Quedan ~US$840M en noviembre y ~US$344M en diciembre. En el mercado de cambios, el mayorista cerró en <strong>$1.519,5</strong> y el oficial minorista del BNA marcó un récord de <strong>$1.540</strong>; esta mañana el MEP opera en <strong>$1.545,6</strong>, el CCL en <strong>$1.614,3</strong> y el blue en <strong>$1.560</strong>, con una brecha CCL/mayorista de ~6%.",
+      "evento": "El lunes el <strong>USO subió 1,13%</strong> (US$150,01) después de que <strong>Trump rechazara</strong> la propuesta de Irán para reabrir el <strong>Estrecho de Ormuz</strong>. Esta mañana el <strong>Brent</strong> de noviembre opera plano en <strong>~US$105,2</strong> tras haber subido más de 2% en la madrugada. <strong>Arabia Saudita</strong> reanudó las exportaciones por su oleoducto <strong>Este-Oeste</strong>, reparado tras los ataques con drones de este mes, con unos <strong>3,5 millones de barriles diarios</strong>. Funcionarios iraníes pusieron en duda un acuerdo antes de las elecciones de medio término de noviembre. El <strong>oro</strong> tuvo su peor día en seis meses: <strong>GLD -3,94%</strong> (US$377,91).",
+      "contexto": "La ruta saudí alternativa a Ormuz compensa parte de la oferta perdida y le pone un techo transitorio al crudo. La caída del oro sigue siendo la señal más clara de que el mercado lee el conflicto como shock inflacionario (Fed más dura) antes que como demanda de refugio. Para Argentina, el Brent arriba de US$100 favorece el saldo energético, pero la baja del oro golpea el valor contable de las reservas.",
       "impacto": [
         {
-          "asset": "Reservas brutas",
-          "dir": "↓ US$48.845M (-88M)",
-          "cls": "dn"
-        },
-        {
-          "asset": "Pago FMI hoy",
-          "dir": "↓ ~US$803M",
-          "cls": "dn"
-        },
-        {
-          "asset": "Dólar mayorista",
-          "dir": "↑ $1.519,5",
+          "asset": "Brent (hoy)",
+          "dir": "→ ~US$105,2",
           "cls": "neu"
         },
         {
-          "asset": "CCL",
-          "dir": "↑ $1.614,3",
+          "asset": "USO (lun)",
+          "dir": "↑ 1,13%",
+          "cls": "up"
+        },
+        {
+          "asset": "GLD (lun)",
+          "dir": "↓ 3,94%",
+          "cls": "dn"
+        },
+        {
+          "asset": "USD/BRL",
+          "dir": "→ 5,20",
           "cls": "neu"
         }
       ]
     },
     {
       "id": 4,
-      "tag": "EE.UU. · Tasas · PCE",
+      "tag": "EE.UU. · Tasas · Datos",
       "tag_class": "tb",
-      "title": "El 10Y se estabiliza en máximos de 2007 antes del PCE de agosto",
-      "brief": "Wall Street cerró mixto el jueves (SPY -0,08%, QQQ -0,01%). El 10Y tocó 5,15% y volvió a ~5,1%; hoy sale el PCE de agosto, con el mercado esperando una aceleración.",
-      "tldr": "Si el PCE sorprende al alza, se reabre el debate por otra suba de la Fed.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>S&amp;P 500</strong> cerró prácticamente plano en <strong>7.704</strong> (<strong>SPY -0,08%</strong>, US$767,18), el <strong>Nasdaq</strong> subió 0,01% (<strong>QQQ -0,01%</strong>) y el <strong>Dow</strong> cayó 0,3%. El <strong>UST 10Y</strong> superó <strong>5,15%</strong> en el día antes de volver a la zona de 5,1%, en máximos desde 2007; FRED registra 5,11% al cierre del 23/9. Los <strong>pedidos de subsidio por desempleo</strong> bajaron a <strong>197.000</strong> (vs 201.000 esperados). Meta subió 4% (+16% en la semana) y Oracle cayó 4,5% tras declarar fuerza mayor en un data center.",
-      "contexto": "Hoy a las 9:30 (ARG) se publica el <strong>PCE de agosto</strong>, la medida de inflación preferida de la Fed, y se espera una aceleración del índice general. Con el mercado del trabajo firme (claims en 197K) y el PMI caliente del martes, un dato alto sostendría la tasa larga arriba de 5%. Los futuros operan con leves subas porque la suba de tasas hizo una pausa.",
+      "title": "Wall Street cae por el 10Y arriba de 5,2%; hoy JOLTS y confianza del consumidor",
+      "brief": "El S&amp;P 500 cayó 0,77% y el Nasdaq 0,92% el lunes, con el 10Y arriba de 5,2% y el 30Y en 5,55%. Hoy salen JOLTS y Conference Board; el miércoles, el PCE.",
+      "tldr": "Con tasas largas en máximos desde 2007, los datos de esta semana definen si la Fed vuelve a subir.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El lunes el <strong>S&amp;P 500 cayó 0,77%</strong>, el <strong>Nasdaq 0,92%</strong> y el <strong>Dow 0,67%</strong>; el <strong>SPY</strong> cerró en US$765,61 (<strong>-0,74%</strong>) y el <strong>QQQ</strong> en US$736,53 (<strong>-1,07%</strong>). El <strong>UST 10Y</strong> superó el <strong>5,2%</strong> (FRED: 5,17% al 25/9) y el <strong>30Y</strong> tocó <strong>5,55%</strong>. Los futuros operan estables antes de la apertura. Hoy se publican las vacantes laborales <strong>JOLTS</strong> y la <strong>confianza del consumidor</strong> del Conference Board, con varios oradores de la Fed. El miércoles llegan el ADP, el <strong>PCE de agosto</strong> y la tercera estimación del PIB del 2T. En FX, <strong>USD/JPY 156,88</strong>, <strong>EUR/USD ~1,138</strong> y <strong>USD/BRL 5,20</strong>.",
+      "contexto": "El mercado teme que el petróleo alto mantenga la inflación arriba del objetivo y obligue a la Fed a otra suba después de la de septiembre. Un PCE firme el miércoles y un payroll sólido el viernes consolidarían ese escenario. Tasas largas arriba de 5% encarecen el financiamiento de los emergentes y restan demanda por riesgo, algo que Argentina siente con más fuerza por su propio deterioro.",
       "impacto": [
         {
-          "asset": "SPY",
-          "dir": "↓ 0,08%",
-          "cls": "neu"
+          "asset": "SPY (lun)",
+          "dir": "↓ 0,74%",
+          "cls": "dn"
         },
         {
-          "asset": "QQQ",
-          "dir": "↓ 0,01%",
-          "cls": "neu"
+          "asset": "QQQ (lun)",
+          "dir": "↓ 1,07%",
+          "cls": "dn"
         },
         {
           "asset": "UST 10Y",
-          "dir": "→ ~5,1%",
+          "dir": "↑ >5,2%",
           "cls": "dn"
         },
         {
-          "asset": "Jobless claims",
-          "dir": "↓ 197K",
-          "cls": "up"
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "tag": "Geopolítica · Energía",
-      "tag_class": "tq",
-      "title": "Brent sube a ~US$107 y hoy afloja por reportes de acuerdo EE.UU.-Irán por Ormuz",
-      "brief": "El crudo siguió subiendo el jueves (USO +2,86%) y esta mañana cede ~1% a ~US$105 ante reportes de un acuerdo por etapas para reabrir el Estrecho de Ormuz.",
-      "tldr": "Un acuerdo en Ormuz bajaría el petróleo y aliviaría la presión inflacionaria sobre las tasas.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>Brent</strong> cerró el jueves cerca de <strong>US$107</strong> y el ETF <strong>USO subió 2,86%</strong> a US$153,09. Recortó parte de la suba por reportes de que <strong>EE.UU. e Irán exploran un acuerdo por etapas para reabrir el Estrecho de Ormuz</strong> y levantar el bloqueo naval a los petroleros del Golfo. Esta mañana el Brent opera en torno a <strong>US$105</strong> (-1,25%). El <strong>oro</strong> retrocedió (<strong>GLD -0,30%</strong>, US$391,69) y el dólar se mantuvo firme: <strong>USD/JPY 158,85</strong>, <strong>EUR/USD ~1,137</strong>, <strong>USD/BRL 5,18</strong>.",
-      "contexto": "El petróleo es hoy el principal canal entre la geopolítica y las tasas: un Brent arriba de US$100 alimenta las expectativas de inflación que empujan al 10Y. Un acuerdo concreto en Ormuz sería la mejor noticia posible para la deuda emergente. Para Argentina, un crudo alto mejora el saldo energético y favorece a YPF y Vista, aunque ayer ambas cayeron (-0,7% y -2,8%) arrastradas por el ánimo local.",
-      "impacto": [
-        {
-          "asset": "USO",
-          "dir": "↑ 2,86%",
-          "cls": "up"
-        },
-        {
-          "asset": "Brent (hoy)",
-          "dir": "↓ ~1,25% a ~US$105",
-          "cls": "neu"
-        },
-        {
-          "asset": "GLD",
-          "dir": "↓ 0,30%",
+          "asset": "UST 30Y",
+          "dir": "↑ 5,55%",
           "cls": "dn"
-        },
-        {
-          "asset": "USD/BRL",
-          "dir": "→ 5,18",
-          "cls": "neu"
         }
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Pago al FMI vs. reservas brutas",
-      "texto": "El pago de ~US$803M de hoy supera todo lo que el BCRA compró en septiembre (~US$232M) y llevaría las reservas brutas por debajo de US$48.100M. La compensación depende de que el FMI apruebe la tercera revisión."
+      "label": "Rollover vs. costo de refinanciar",
+      "texto": "El Tesoro renovó el 100%, pero con la Boncap cerca del 30% anual y más de un quinto del total en dollar linked. Refinanciar se consigue, aunque cada vez más caro."
     },
     {
-      "label": "Reforma del BCRA vs. calendario electoral",
-      "texto": "La aprobación en el Senado es una buena señal institucional, pero la vuelta a Diputados demora su sanción justo cuando el mercado castiga la incertidumbre política."
+      "label": "Compras del BCRA vs. reservas",
+      "texto": "El BCRA sigue comprando poco (US$11M) y las reservas caen por valuación y pagos. Sin acumulación visible, el riesgo país no tiene ancla."
     },
     {
-      "label": "Tendencia-ciclo vs. dato mensual",
-      "texto": "El EMAE cayó 2,9% en julio, pero la tendencia-ciclo sigue positiva (+0,2%). Si agosto rebota, la lectura cambia; si no, se consolida el deterioro que ven los inversores."
+      "label": "Waiver del FMI vs. credibilidad",
+      "texto": "El faltante de ~$574 mil millones en la meta fiscal abre la puerta a un waiver. Aprobarlo destraba ~US$867M, pero pedirlo en este contexto suma ruido."
     },
     {
-      "label": "Ormuz vs. PCE",
-      "texto": "Un acuerdo con Irán bajaría el petróleo y aliviaría las tasas, pero un PCE caliente hoy podría neutralizar ese efecto y mantener el 10Y arriba de 5%."
+      "label": "Oferta saudí vs. Ormuz cerrado",
+      "texto": "El oleoducto Este-Oeste compensa parte de la oferta, pero sin acuerdo con Irán el Brent sigue arriba de US$100 y presiona sobre las tasas."
     }
   ],
   "correlaciones": [
     {
-      "par": "UST 10Y vs. bonos hard-dollar ARG",
-      "texto": "El jueves el 10Y se estabilizó en ~5,1% y aun así la curva argentina siguió cayendo: el componente local del riesgo país ya pesa más que el externo."
+      "par": "Oro vs. reservas BCRA",
+      "texto": "La caída de 3,8% del oro restó ~US$300M a las reservas en un solo día: el canal de valuación pesó más que las compras del BCRA."
+    },
+    {
+      "par": "UST 10Y vs. activos argentinos",
+      "texto": "Con el 10Y arriba de 5,2%, el ajuste argentino es mucho más profundo que el de otros emergentes: el shock externo amplifica un deterioro que es sobre todo local."
     },
     {
       "par": "Tramo corto vs. tramo largo ARG",
-      "texto": "AL30/GD30 cayeron menos de 0,4% mientras AO29/GD35 bajaron más de 1,3%: el mercado paga por duration corta que vence antes de la definición electoral."
-    },
-    {
-      "par": "Brent vs. YPF / Vista",
-      "texto": "Con el crudo en alza, YPF (-0,7%) y Vista (-2,8%) igual cayeron: el riesgo argentino dominó sobre el viento a favor del petróleo."
+      "texto": "GD30 +0,05% frente a GD38 -1,68% y GD46 -1,33%: el mercado sigue pagando por duration corta que vence antes de la definición electoral."
     }
   ],
-  "bottom_line": "Afuera el día fue de pausa: el <strong>UST 10Y</strong> tocó 5,15% y volvió a ~5,1% (máximo desde 2007), Wall Street cerró plano (SPY -0,08%) y el Brent subió a ~US$107 antes de aflojar esta mañana por los reportes de un acuerdo EE.UU.-Irán por Ormuz. Hoy la atención está en el <strong>PCE de agosto</strong>. <strong>Para Argentina</strong>, el superjueves salió mal: el EMAE cayó <strong>2,9% mensual</strong> en julio y la pobreza subió a <strong>32,3%</strong>, mientras el riesgo país sumó su novena suba a <strong>578pb</strong> y el Merval tocó mínimos de cinco meses. Hoy se pagan <strong>~US$803M al FMI</strong> con reservas en US$48.845M y la reforma del BCRA vuelve a Diputados. Con el mercado ya descontando riesgo electoral, la curva castiga la duration: seguimos prefiriendo el tramo corto (<strong>GD30/AL30</strong>) sobre los largos hasta que haya una señal concreta de financiamiento para 2027 o se apruebe la revisión del FMI con su desembolso."
+  "bottom_line": "Afuera el tono sigue risk-off: Wall Street cayó el lunes con el <strong>UST 10Y arriba de 5,2%</strong> y el 30Y en 5,55%, aunque el <strong>Brent</strong> se estabiliza en ~US$105 gracias a la vuelta del oleoducto saudí. La semana se define con JOLTS hoy, el <strong>PCE</strong> el miércoles y el payroll el viernes. <strong>Para Argentina</strong>, el riesgo país sumó su undécima suba a <strong>628pb</strong>, el Merval cayó 3,3% y las <strong>reservas perforaron los US$48.000M</strong> (US$47.796M) por la baja del oro, con el BCRA comprando apenas US$11M. El Tesoro renovó el <strong>100%</strong> de los vencimientos, pero a tasas altas y con fuerte demanda de cobertura cambiaria. Lo que puede cambiar el rumbo es la misión del FMI: una aprobación con waiver y el desembolso de ~US$867M daría aire. Hasta entonces, seguimos prefiriendo el tramo corto (<strong>GD30/AL30</strong>) sobre los largos."
 }
