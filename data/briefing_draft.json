@@ -1,183 +1,183 @@
 {
-  "date": "2026-10-01",
-  "generated": "2026-10-01T12:11:55Z",
+  "date": "2026-10-05",
+  "generated": "2026-10-05T13:03:47Z",
   "sentiment": {
     "overall": "neutral",
-    "label": "Cierre de un septiembre malo: bonos y Merval rebotan, pero las reservas caen US$1.392M por fin de trimestre; afuera, PCE más blando que lo esperado no frena al 10Y en 5,29%, máximo desde 2007.",
+    "label": "El empleo flojo en EE.UU. le quita presión a la Fed y a las tasas, pero el riesgo país cerró la semana en 655pb, máximo en casi un año; el BCRA compra fuerte.",
     "fg": 31,
     "fg_label": "Miedo",
     "putcall": 0.95,
-    "aaii_bulls": 32.7
+    "aaii_bulls": 34.6
   },
   "drivers": [
     {
       "id": 1,
       "tag": "Argentina · Riesgo Soberano",
-      "tag_class": "tg",
-      "title": "Bonos y Merval rebotan en la última rueda de un septiembre para el olvido",
-      "brief": "El riesgo país se mantuvo en 607pb y el Merval subió 1,3%, pero en el mes las acciones cedieron 7,1%, los bonos ~5% y el riesgo país sumó 95pb.",
-      "tldr": "Rebote de cierre de mes; el balance de septiembre sigue siendo negativo.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>riesgo país</strong> cerró el miércoles en <strong>607pb</strong>, sin cambios frente al martes (argentinadatos). El <strong>S&amp;P Merval subió 1,3%</strong> a <strong>2.819.323 puntos</strong> y cortó ocho bajas seguidas; los bonos en dólares ganaron ~0,5% en promedio. En BYMA (data912): <strong>GD38 +2,24%</strong> (US$79,37), <strong>AL35 +1,24%</strong> (US$70,36), <strong>GD30 +1,12%</strong> (US$55,11), <strong>AE38 +1,11%</strong>, <strong>AL30 +0,44%</strong> (US$54,74); GD35 -0,04% (US$74,89) y GD29 -0,63%. En <strong>septiembre</strong>: Merval <strong>-7,1%</strong> en pesos (-8,6% en dólares CCL), bonos <strong>~-5%</strong> en precio y riesgo país <strong>+95pb</strong>.",
-      "contexto": "Los largos volvieron a liderar el rebote, señal de que la suba es más de cobertura de posiciones que de flujo nuevo. El mercado sigue acortando horizonte: el AO27, que vence antes de las elecciones, rinde ~4,4%, contra ~11,6% del AO28. Esa pendiente muestra que el riesgo que se paga es el político de 2027, no el de corto plazo.",
+      "tag_class": "tr",
+      "title": "El riesgo país sube 19pb a 655pb, máximo en casi un año; el Merval apenas rebota",
+      "brief": "Pese al alivio global tras el empleo de EE.UU., el spread argentino volvió a subir el viernes. Los precios en BYMA quedaron casi planos y el Merval ganó 0,3%.",
+      "tldr": "El alivio en tasas globales todavía no llega al spread argentino.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El <strong>riesgo país</strong> cerró el viernes en <strong>655pb</strong> (+19pb, argentinadatos), el nivel más alto en casi un año y por encima del máximo del jueves (636pb). El <strong>S&amp;P Merval</strong> dio vuelta las bajas de la mañana y cerró <strong>+0,32%</strong> a <strong>2.767.663 puntos</strong>, con BYMA (+3,19%), Ternium (+2,33%) e YPF (+0,74%); Macro (-0,75%) y Galicia (-0,34%) en rojo. Cierres en BYMA (data912): <strong>GD30 US$56,34</strong>, <strong>GD29 US$55,21</strong>, <strong>AL30 US$54,51</strong>, <strong>GD35 US$73,41</strong>, <strong>AL35 US$69,11</strong>, <strong>GD41 US$68,36</strong>: casi sin cambios frente al jueves en el tramo largo.",
+      "contexto": "El dato es llamativo: el viernes el 10Y de EE.UU. aflojó tras el empleo débil, pero el spread argentino igual subió. Es una señal de que la prima ya no es solo tasa global, sino también riesgo local (calendario del FMI y horizonte electoral 2027). Hoy BYMA abre después de un fin de semana con Asia en alza y futuros de Wall Street levemente negativos.",
       "impacto": [
         {
           "asset": "Riesgo País",
-          "dir": "→ 607pb",
+          "dir": "↑ 655pb (+19)",
+          "cls": "dn"
+        },
+        {
+          "asset": "S&amp;P Merval",
+          "dir": "↑ 0,32%",
+          "cls": "up"
+        },
+        {
+          "asset": "GD35",
+          "dir": "US$73,41 (=)",
           "cls": "neu"
         },
         {
-          "asset": "S&P Merval",
-          "dir": "↑ 1,3%",
-          "cls": "up"
-        },
-        {
-          "asset": "GD38",
-          "dir": "↑ 2,24%",
-          "cls": "up"
-        },
-        {
           "asset": "GD30",
-          "dir": "↑ 1,12%",
-          "cls": "up"
+          "dir": "US$56,34",
+          "cls": "neu"
         }
       ]
     },
     {
       "id": 2,
-      "tag": "Argentina · BCRA · FMI",
-      "tag_class": "ta",
-      "title": "BCRA compra US$160M, pero las reservas caen US$1.392M por cierre de trimestre",
-      "brief": "Mayor compra del mes, aunque septiembre cierra con US$473M, el menor del año. Reservas en US$46.090M, mínimo desde junio. Hoy habla el FMI.",
-      "tldr": "La caída de reservas es estacional; la señal a seguir es el FMI.",
+      "tag": "Argentina · BCRA · Reservas",
+      "tag_class": "tg",
+      "title": "BCRA: compras por US$369M en la semana, máximo desde julio; reservas US$48.653M",
+      "brief": "Tras el cierre de la misión del FMI, el Central aceleró las compras: US$35M el viernes y US$14.696M acumulados en 2026. La brecha CCL/mayorista sigue cerca de 7%.",
+      "tldr": "Las cuentas del BCRA mejoran; el mercado de cobertura no se relaja.",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>BCRA compró US$160M</strong> (15,5% del volumen de contado), su mayor compra de septiembre, y cerró el mes con <strong>US$473M</strong>, el menor monto mensual de 2026 (acumula <strong>US$14.578M</strong> en el año contra una meta de US$10.000M). Las <strong>reservas brutas cayeron US$1.392M</strong> a <strong>US$46.090M</strong>, el nivel más bajo desde fines de junio, por el habitual desarme de posiciones y encajes de fin de trimestre. El <strong>mayorista</strong> cerró en <strong>$1.517</strong> (-0,3%). Esta mañana: oficial BNA <strong>$1.540</strong>, <strong>MEP $1.548,7</strong>, <strong>CCL $1.614,2</strong> y blue $1.560. Con el FMI, la misión cerró la <strong>tercera revisión</strong>; resta el aval del Directorio para un desembolso de <strong>~US$900M</strong>, con un posible <strong>waiver</strong> por la meta fiscal (superávit ~0,6% del PBI en el semestre contra 0,7%). Hoy la vocera <strong>Julie Kozack</strong> da conferencia en Washington.",
-      "contexto": "La caída de reservas debería revertirse en parte en las primeras ruedas de octubre, cuando vuelven los encajes. Lo estructural es otra cosa: el ritmo de compras se desaceleró fuerte en septiembre. Si Kozack confirma el cierre técnico de la revisión, sería la primera noticia positiva concreta en semanas. La brecha CCL/mayorista sigue en ~6,4%.",
+      "evento": "El <strong>BCRA compró US$35M</strong> el viernes y cerró la semana con <strong>US$369M</strong>, la mayor cifra semanal desde julio (septiembre completo: US$473M). Acumula <strong>US$14.696M</strong> en 2026. Las <strong>reservas brutas</strong> subieron <strong>US$364M</strong> a <strong>US$48.653M</strong>. Caputo: &ldquo;ahora hay dólares para la gente, para las empresas, para los que quieren remitir dividendos&rdquo; y para recomponer reservas. La <strong>tercera revisión</strong> del FMI y el desembolso de <strong>~US$1.000M</strong> siguen sin aprobación. Esta mañana (dolarapi): <strong>MEP $1.551,9</strong>, <strong>CCL $1.623,8</strong>, blue $1.560; el mayorista cerró el viernes en <strong>$1.520</strong> y el oficial BNA en $1.540.",
+      "contexto": "El ritmo de compras de octubre (promedio ~US$64M diarios) triplica el de septiembre (US$22M) y le da al Gobierno margen antes de las elecciones de 2027. Del otro lado, la <strong>brecha CCL/mayorista</strong> está en <strong>~6,8%</strong> y el canje CCL/MEP en ~4,6%: la demanda de dolarización con salida al exterior sigue firme.",
       "impacto": [
         {
           "asset": "Reservas brutas",
-          "dir": "↓ US$46.090M",
-          "cls": "dn"
-        },
-        {
-          "asset": "Compras BCRA",
-          "dir": "↑ US$160M",
+          "dir": "↑ US$48.653M",
           "cls": "up"
         },
         {
-          "asset": "Mayorista",
-          "dir": "↓ $1.517",
-          "cls": "neu"
+          "asset": "Compras BCRA (semana)",
+          "dir": "↑ US$369M",
+          "cls": "up"
         },
         {
           "asset": "CCL",
-          "dir": "$1.614,2",
+          "dir": "$1.623,8",
           "cls": "neu"
+        },
+        {
+          "asset": "Brecha CCL/mayorista",
+          "dir": "~6,8%",
+          "cls": "dn"
         }
       ]
     },
     {
       "id": 3,
-      "tag": "EE.UU. · Tasas · Datos",
+      "tag": "EE.UU. · Empleo · Fed",
       "tag_class": "tb",
-      "title": "PCE más blando que lo esperado, pero el 10Y toca 5,29%, máximo desde 2007",
-      "brief": "PCE núcleo 3,0% anual (esp. 3,3%) y ADP +90k. Aun así el 10Y sube y el S&P cede 0,25%. Hoy ISM manufacturero; el viernes, empleo.",
-      "tldr": "Ni la inflación más baja frena a las tasas largas.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>PCE de agosto</strong> subió <strong>0,3% mensual y 3,4% anual</strong> (esperado 0,4% y 3,7%); el <strong>núcleo</strong> marcó <strong>0,2% y 3,0%</strong> (esperado 0,3% y 3,3%). El <strong>ADP</strong> mostró <strong>+90.000 empleos privados</strong> (esp. 68.000; agosto 36.000). Aun así el <strong>UST 10Y</strong> subió a <strong>~5,29%</strong>, máximo desde 2007 (FRED: 5,26% el 29/9). El <strong>S&amp;P 500 cayó 0,25%</strong> (7.651,54), el <strong>Dow 0,86%</strong> y el <strong>Nasdaq subió 0,24%</strong>; <strong>SPY -0,21%</strong> (US$762,63), <strong>QQQ +0,25%</strong> (US$739,77). Tras el cierre, <strong>Micron</strong> facturó <strong>US$54.230M</strong> (esp. ~US$51.000M) y proyectó US$61.500M para el próximo trimestre. Hoy: <strong>ISM manufacturero</strong> (esp. 54,8; previo 54,6), pedidos de desempleo y Challenger.",
-      "contexto": "Que el 10Y suba con una inflación por debajo de lo esperado confirma que el problema es la prima por plazo: oferta de deuda y riesgo fiscal, no solo el dato mensual. Con un ADP firme, el mercado no ve espacio para recortes rápidos. El empleo del viernes es la próxima prueba; un dato fuerte podría llevar al 10Y por encima de 5,3%.",
+      "title": "Solo 29.000 empleos en septiembre: se enfrían las apuestas de suba de la Fed",
+      "brief": "Las nóminas quedaron muy por debajo del consenso (~84.000), el desempleo subió a 4,2% y hubo revisiones por -60.000. La probabilidad de suba en octubre cayó a 17%.",
+      "tldr": "Un empleo débil le da aire a las tasas largas y a los emergentes.",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "Las <strong>nóminas no agrícolas</strong> sumaron <strong>29.000</strong> en septiembre (esp. ~84.000); julio se revisó a <strong>-10.000</strong> y agosto a <strong>133.000</strong> (<strong>-60.000</strong> combinados). El <strong>desempleo</strong> subió a <strong>4,2%</strong> y los <strong>salarios</strong> avanzaron <strong>0,1%</strong> mensual (<strong>3,0%</strong> anual). Según CME FedWatch, la probabilidad de una suba en la reunión del <strong>27-28/10</strong> bajó a <strong>17%</strong> (desde ~36% una semana antes); el mercado todavía descuenta una suba en diciembre. Wall Street cerró el viernes en alza: <strong>SPY +0,74%</strong> (US$769,64), <strong>QQQ +1,02%</strong> (US$749,58). El <strong>UST 10Y</strong> opera hoy en <strong>~5,26%-5,29%</strong> (FRED, último dato 1/10: 5,24%).",
+      "contexto": "La Fed subió tasas en septiembre por la inflación (PCE núcleo ~3%), y el empleo flojo le da argumentos para hacer una pausa. Esta semana salen las <strong>minutas de septiembre</strong>, que deberían mostrar el temor a la inflación previo al dato de empleo, y hoy el <strong>ISM de servicios</strong>. Los futuros operan con leves bajas (S&amp;P ~-0,1%, Nasdaq ~-0,3%). Un 10Y debajo de 5,2% sería la condición para que los emergentes respiren.",
       "impacto": [
         {
-          "asset": "UST 10Y",
-          "dir": "↑ ~5,29%",
+          "asset": "Nóminas (sep)",
+          "dir": "↓ 29.000",
           "cls": "dn"
         },
         {
-          "asset": "SPY",
-          "dir": "↓ 0,21%",
-          "cls": "dn"
-        },
-        {
-          "asset": "QQQ",
-          "dir": "↑ 0,25%",
+          "asset": "Prob. suba Fed oct.",
+          "dir": "↓ 17%",
           "cls": "up"
         },
         {
-          "asset": "PCE núcleo",
-          "dir": "3,0% a/a",
+          "asset": "SPY",
+          "dir": "↑ 0,74%",
+          "cls": "up"
+        },
+        {
+          "asset": "QQQ",
+          "dir": "↑ 1,02%",
           "cls": "up"
         }
       ]
     },
     {
       "id": 4,
-      "tag": "Geopolítica · Energía",
+      "tag": "Energía · Commodities · FX",
       "tag_class": "tq",
-      "title": "China suspende exportaciones de combustibles y el Brent vuelve a US$100",
-      "brief": "Las refinadoras chinas frenan envíos de productos fuera de Hong Kong y Macao; el Brent diciembre sube 2,2% a ~US$100,15 y el WTI a ~US$92,5.",
-      "tldr": "El cuello de botella pasa del crudo a los refinados.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "Las <strong>refinadoras chinas suspendieron las exportaciones de combustibles</strong> fuera de Hong Kong y Macao hasta nuevo aviso; PetroChina canceló cargamentos de nafta y jet fuel de octubre. El <strong>Brent</strong> (diciembre) revirtió pérdidas y sube <strong>2,2% a ~US$100,15</strong>; el <strong>WTI +2,3% a ~US$92,48</strong>. El miércoles, <strong>USO +1,61%</strong> (US$145,66) y <strong>GLD -0,54%</strong> (US$380,84).",
-      "contexto": "Los flujos de crudo de Medio Oriente se acercan a niveles previos a la guerra, pero los refinados siguen escasos: la suspensión china ajusta un mercado de combustibles ya tenso. Un Brent sostenido en tres dígitos mantiene la presión inflacionaria sobre las tasas largas. Para Argentina, favorece a Vaca Muerta y la balanza energética, aunque complica el esquema de precios internos.",
+      "title": "El Brent sigue arriba de US$100 y el oro rebota en el arranque de la semana",
+      "brief": "El viernes cayeron el crudo (USO -1,8%) y el oro (GLD -0,7%). Hoy el Brent opera cerca de US$102,9 y el oro futuro sube 0,5% a US$4.183.",
+      "tldr": "La energía cara sigue alimentando la prima inflacionaria global.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El viernes, <strong>USO</strong> cayó <strong>1,77%</strong> (US$147,37) y <strong>GLD</strong> <strong>0,68%</strong> (US$380,14). Esta mañana el <strong>Brent</strong> opera en <strong>~US$102,9</strong> (+0,6%) y el <strong>WTI</strong> en <strong>~US$90,2-90,7</strong> (-0,5%/-1,0%). El <strong>oro</strong> futuro sube <strong>0,5%</strong> a <strong>US$4.183</strong>. En Asia, el MSCI Asia-Pacífico subió ~1% y el <strong>Nikkei ~2%</strong>. FX (Frankfurter, viernes): <strong>USD/BRL 5,22</strong>, EUR/USD 1,12, USD/JPY 157,67.",
+      "contexto": "La diferencia de ~US$12 entre el Brent y el WTI refleja un mercado internacional ajustado por las tensiones en Medio Oriente. Para Argentina, un crudo arriba de US$100 sostiene la balanza energética y a Vaca Muerta (YPF +0,74% el viernes), pero es un viento en contra para la inflación global y las tasas largas.",
       "impacto": [
         {
-          "asset": "Brent (dic)",
-          "dir": "↑ ~US$100,15",
+          "asset": "Brent",
+          "dir": "↑ ~US$102,9",
           "cls": "up"
         },
         {
-          "asset": "WTI",
-          "dir": "↑ ~US$92,48",
-          "cls": "up"
-        },
-        {
-          "asset": "USO (mié)",
-          "dir": "↑ 1,61%",
-          "cls": "up"
-        },
-        {
-          "asset": "GLD (mié)",
-          "dir": "↓ 0,54%",
+          "asset": "USO (vie)",
+          "dir": "↓ 1,77%",
           "cls": "dn"
+        },
+        {
+          "asset": "Oro (fut.)",
+          "dir": "↑ 0,5% US$4.183",
+          "cls": "up"
+        },
+        {
+          "asset": "USD/BRL",
+          "dir": "5,22",
+          "cls": "neu"
         }
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Compras del BCRA vs. reservas",
-      "texto": "El BCRA hizo su mayor compra del mes (US$160M), pero las reservas cayeron US$1.392M. La baja es estacional, aunque septiembre dejó la menor acumulación del año."
+      "label": "Alivio global vs. spread local",
+      "texto": "El empleo débil bajó las apuestas de suba de la Fed y Wall Street subió, pero el riesgo país igual trepó 19pb a 655pb. La prima argentina empieza a despegarse de la tasa global."
     },
     {
-      "label": "Inflación más baja vs. tasas más altas",
-      "texto": "El PCE núcleo quedó 0,3pp debajo de lo esperado y aun así el 10Y tocó su máximo desde 2007. El mercado está pagando prima por plazo, no reaccionando al dato."
+      "label": "Compras récord vs. brecha firme",
+      "texto": "El BCRA compró US$369M en la semana y las reservas superan los US$48.600M, pero el CCL se mantiene en $1.623,8, con una brecha de ~6,8% sobre el mayorista."
     },
     {
-      "label": "Rebote diario vs. balance mensual",
-      "texto": "Bonos y Merval subieron el miércoles, pero septiembre cerró con -7,1% en acciones, ~-5% en bonos y +95pb de riesgo país."
+      "label": "Empleo frío vs. inflación caliente",
+      "texto": "Las nóminas sumaron apenas 29.000, pero el PCE núcleo sigue en ~3% y el crudo arriba de US$100. La Fed puede pausar en octubre sin descartar diciembre."
     },
     {
-      "label": "Crudo normalizado vs. refinados escasos",
-      "texto": "Los flujos de crudo de Medio Oriente se recuperan, pero China corta exportaciones de combustibles y el Brent vuelve a US$100."
+      "label": "FMI que apoya vs. desembolso que no llega",
+      "texto": "Caputo destaca el sobrecumplimiento de la meta de reservas, pero la tercera revisión y el giro de ~US$1.000M siguen sin aprobación del Directorio."
     }
   ],
   "correlaciones": [
     {
       "par": "UST 10Y vs. riesgo país ARG",
-      "texto": "Con el 10Y en 5,29%, el piso de rendimiento para emergentes sube; el riesgo país no logra perforar 600pb aun en días de rebote local."
+      "texto": "El 10Y bajó desde 5,29% a ~5,24%-5,26% tras el empleo, pero el riesgo país subió a 655pb: la correlación habitual se cortó el viernes, señal de componente local."
     },
     {
-      "par": "AO27 vs. AO28",
-      "texto": "~4,4% contra ~11,6%: la curva de Bonares muestra que el mercado paga por cubrirse del riesgo electoral de 2027, no del corto plazo."
+      "par": "Brent vs. inflación / tasas",
+      "texto": "Brent en ~US$102,9 y PCE núcleo en ~3%: la energía sostiene la prima inflacionaria que impide a la Fed relajar del todo."
     },
     {
-      "par": "Brent vs. Nasdaq / Micron",
-      "texto": "El Nasdaq subió (+0,24%) con el petróleo en alza: la narrativa de IA y memoria sostiene a la tecnología pese al costo energético y las tasas."
+      "par": "Compras BCRA vs. CCL",
+      "texto": "Compras de US$369M en la semana y CCL estable en $1.623,8: el Central acumula sin que se cierre la brecha, que se mantiene cerca de 7%."
     }
   ],
-  "bottom_line": "Septiembre terminó con un rebote que no alcanza a cambiar el balance: afuera, el <strong>PCE</strong> salió más blando que lo esperado, pero el <strong>UST 10Y</strong> tocó <strong>~5,29%</strong>, máximo desde 2007, y el <strong>Brent</strong> volvió a <strong>US$100</strong> por la suspensión de exportaciones de combustibles de China. Hoy se publica el ISM y el viernes el empleo. <strong>Para Argentina</strong>, el riesgo país quedó en <strong>607pb</strong> (+95pb en el mes), el Merval rebotó 1,3% tras perder 7,1% en septiembre y el BCRA compró US$160M, aunque las <strong>reservas cayeron a US$46.090M</strong> por el cierre de trimestre. La señal de corto plazo es la conferencia de <strong>Kozack</strong> hoy: una confirmación del cierre de la revisión y del desembolso de ~US$900M podría darle soporte a los bonos. Con tasas globales altas y compras de reservas en desaceleración, mantenemos la preferencia por el tramo corto (AO27) y tomaríamos el rebote de los largos con cautela."
+  "bottom_line": "El dato clave del viernes fue el <strong>empleo de EE.UU.</strong>: <strong>29.000 nóminas</strong>, desempleo en <strong>4,2%</strong> y revisiones negativas. Bajó la probabilidad de una suba de la Fed en octubre a <strong>17%</strong> y Wall Street subió (SPY +0,74%, QQQ +1,02%). Argentina no aprovechó el alivio: el <strong>riesgo país</strong> subió a <strong>655pb</strong>, máximo en casi un año, con bonos en BYMA casi planos y el Merval +0,3%. En lo local, el BCRA aceleró: compró <strong>US$369M</strong> en la semana y las reservas llegaron a <strong>US$48.653M</strong>, aunque la brecha CCL/mayorista sigue en ~6,8% y el desembolso del FMI no está aprobado. Esta semana se conocen las <strong>minutas de la Fed</strong> y hoy el <strong>ISM de servicios</strong>. <strong>Para Argentina</strong>, que el spread suba con el 10Y en baja indica que la prima local gana peso: mantenemos la preferencia por el tramo corto (GD29/GD30/AO27) y esperaríamos una baja sostenida del riesgo país, junto con la aprobación de la revisión del FMI, antes de sumar duración."
 }
