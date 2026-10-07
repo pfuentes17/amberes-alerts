@@ -1,9 +1,9 @@
 {
-  "date": "2026-10-06",
-  "generated": "2026-10-06T12:18:14Z",
+  "date": "2026-10-07",
+  "generated": "2026-10-07T12:11:39Z",
   "sentiment": {
-    "overall": "risk-on",
-    "label": "El &ldquo;efecto Bolsonaro&rdquo; en Brasil arrastró a la región: el riesgo país perforó los 600pb y los bonos subieron ~2%, aunque el 10Y de EE.UU. tocó máximos desde 2002.",
+    "overall": "neutral",
+    "label": "El riesgo país cae a 573pb (-82pb en dos ruedas) y el blue toca mínimos de un mes, pero los rendimientos globales vuelven a subir antes de las minutas de la Fed y de la subasta a 10 años.",
     "fg": 31,
     "fg_label": "Miedo",
     "putcall": 0.95,
@@ -14,204 +14,204 @@
       "id": 1,
       "tag": "Argentina · Riesgo Soberano",
       "tag_class": "tg",
-      "title": "El riesgo país cae 56pb a 599pb y perfora los 600; el Merval sube 3,7%",
-      "brief": "El optimismo por el resultado electoral en Brasil se contagió a los activos argentinos: bonos en dólares +2% en promedio y ADRs con subas de hasta 9,6%.",
-      "tldr": "La región vuelve a cotizar como bloque: Brasil le devolvió a Argentina lo que había perdido la semana pasada.",
+      "title": "El riesgo país baja 26pb a 573pb: acumula -82pb en dos ruedas",
+      "brief": "Los bonos en dólares siguieron subiendo el martes, otra vez con el tramo largo adelante (GD35 +1,40%, AL35 +1,62%), aunque las tasas globales no dieron respiro.",
+      "tldr": "La compresión siguió sin Brasil como motor: el martes el EWZ quedó plano.",
       "sentiment": "ro",
       "sentiment_label": "🟢 Risk-On",
-      "evento": "El <strong>riesgo país</strong> cerró el lunes en <strong>599pb</strong> (argentinadatos), <strong>-56pb</strong> frente a los 655pb del viernes, y borró toda la suba de la semana pasada. Los <strong>Bonares y Globales</strong> ganaron <strong>~2,1%</strong> en promedio. Cierres en BYMA (data912): <strong>GD35 US$75,15</strong> (+2,37%), <strong>AL35 US$70,90</strong> (+2,59%), <strong>GD41 US$69,74</strong> (+2,02%), <strong>AL30 US$55,48</strong> (+1,78%), <strong>GD30 US$57,01</strong> (+1,19%) y GD29 US$55,13 (-0,14%). El <strong>S&amp;P Merval</strong> subió <strong>3,7%</strong> a <strong>2.869.488 puntos</strong>; en Nueva York, Mercado Libre (+9,6%), BBVA (+7,7%), Supervielle (+7,6%) y Telecom (+7,1%) lideraron. El ETF <strong>ARGT</strong> ganó <strong>5,93%</strong> (Finnhub).",
-      "contexto": "El rebote vino de afuera: el desempeño de <strong>Flávio Bolsonaro</strong> en Brasil disparó a los activos regionales. El tramo largo fue el que más subió, lo opuesto a la semana pasada. Igual, el spread sigue alto: hace un mes estaba en ~500pb y la <strong>tercera revisión del FMI</strong> sigue pendiente. Sostener niveles por debajo de 600pb con el 10Y de EE.UU. en 5,3% es la prueba de los próximos días.",
+      "evento": "El <strong>riesgo país</strong> cerró el martes en <strong>573pb</strong> (<strong>-26pb</strong>, argentinadatos), después de los 599pb del lunes y los 655pb del viernes: <strong>-82pb en dos ruedas</strong>. Cierres en BYMA (data912): <strong>AL35 US$72,05</strong> (+1,62%), <strong>GD35 US$76,20</strong> (+1,40%), <strong>GD41 US$70,50</strong> (+1,09%), AE38 US$74,73 (+0,99%), <strong>GD30 US$57,36</strong> (+0,61%), AL30 US$55,70 (+0,40%) y GD29 US$55,01 (-0,22%). El ETF <strong>ARGT</strong> sumó <strong>0,18%</strong> y el <strong>EWZ</strong> quedó casi sin cambios (+0,05%), después del +12,5% del lunes (Finnhub).",
+      "contexto": "A diferencia del lunes, la baja del martes no vino de Brasil: el EWZ no se movió y el 10Y de EE.UU. siguió arriba de 5,3%. Es una señal de que hay demanda propia por el tramo largo argentino. La duda es si la mejora se sostiene si las <strong>minutas de la Fed</strong> o la <strong>subasta a 10 años</strong> de hoy empujan más arriba las tasas largas.",
       "impacto": [
         {
           "asset": "Riesgo País",
-          "dir": "↓ 599pb (-56)",
+          "dir": "↓ 573pb (-26)",
           "cls": "up"
         },
         {
-          "asset": "S&amp;P Merval",
-          "dir": "↑ 3,7%",
+          "asset": "AL35",
+          "dir": "↑ 1,62% US$72,05",
           "cls": "up"
         },
         {
           "asset": "GD35",
-          "dir": "↑ 2,37% US$75,15",
+          "dir": "↑ 1,40% US$76,20",
           "cls": "up"
         },
         {
-          "asset": "ARGT",
-          "dir": "↑ 5,93%",
+          "asset": "GD30",
+          "dir": "↑ 0,61% US$57,36",
           "cls": "up"
         }
       ]
     },
     {
       "id": 2,
-      "tag": "Brasil · Elecciones · Mercados",
-      "tag_class": "tq",
-      "title": "Flávio Bolsonaro gana la primera vuelta en Brasil y el EWZ vuela 12,5%",
-      "brief": "Flávio sacó 47,03% contra 45,16% de Lula; habrá segunda vuelta el 25/10. El real se apreció ~4,5% y la bolsa paulista tuvo su mejor día en años.",
-      "tldr": "El mercado ya apuesta a un cambio de gobierno en Brasil: Polymarket le da 84% a Flávio.",
+      "tag": "Argentina · Dólar · Reservas",
+      "tag_class": "tg",
+      "title": "Blue en mínimos de un mes, reservas arriba de US$49.000M y depósitos en dólares récord del año",
+      "brief": "La brecha con el oficial es la menor desde mediados de año. Los depósitos privados en dólares tuvieron su mejor mes de 2026 y se acercan a US$42.000M.",
+      "tldr": "Menos presión cambiaria y más dólares en el sistema.",
       "sentiment": "ro",
       "sentiment_label": "🟢 Risk-On",
-      "evento": "Con el 99,99% escrutado, <strong>Flávio Bolsonaro</strong> (PL) obtuvo <strong>47,03%</strong> y <strong>Lula</strong> (PT) <strong>45,16%</strong>: van a <strong>segunda vuelta el 25/10</strong>. El PL ganó <strong>121 de 513 bancas</strong> de diputados. El lunes, el <strong>Ibovespa</strong> subió cerca de <strong>8%</strong> (arriba de 206.000 puntos), el <strong>EWZ</strong> ganó <strong>12,54%</strong> a <strong>US$42,98</strong> (Finnhub) y el <strong>USD/BRL</strong> bajó a <strong>4,98</strong> desde 5,22 (Frankfurter, -4,5%). En los mercados de predicción, Flávio tiene <strong>~84%</strong> de chances en el balotaje (Polymarket).",
-      "contexto": "El mercado lee el resultado como un giro probable hacia una política fiscal más ortodoxa en Brasil. Para Argentina importa por dos canales: un real más fuerte mejora la competitividad de las exportaciones argentinas a su principal socio, y un Brasil con menos riesgo baja la prima regional. El riesgo es que la apuesta sea demasiado temprana: faltan 19 días para el balotaje.",
+      "evento": "El <strong>blue</strong> cerró el martes en <strong>$1.540</strong>, mínimo de un mes, con la brecha con el oficial en su nivel más bajo desde mediados de año. Las <strong>reservas brutas</strong> superaron los <strong>US$49.000M</strong>, máximo de dos semanas, y los <strong>depósitos privados en dólares</strong> tuvieron su mejor mes del año, cerca de <strong>US$42.000M</strong>. Esta mañana (dolarapi, 8:58 ART): <strong>MEP $1.544,4</strong>, <strong>CCL $1.610,8</strong>, blue $1.550; el mayorista cerró el martes en <strong>$1.520</strong> por tercera rueda seguida y el oficial BNA en $1.540.",
+      "contexto": "La <strong>brecha CCL/mayorista</strong> se mantiene en <strong>~6,0%</strong> y el canje CCL/MEP baja a ~4,3%. Para el BCRA (Vladimir Werning), la mora &ldquo;dejó de ser un lastre&rdquo; para el crédito, aunque los préstamos personales y las tarjetas siguen sin despegar con mora en niveles récord; los hipotecarios y prendarios crecen.",
       "impacto": [
         {
-          "asset": "EWZ",
-          "dir": "↑ 12,54%",
+          "asset": "Reservas brutas",
+          "dir": "↑ +US$49.000M",
           "cls": "up"
         },
         {
-          "asset": "Ibovespa",
-          "dir": "↑ ~8%",
+          "asset": "Depósitos USD privados",
+          "dir": "↑ ~US$42.000M",
           "cls": "up"
         },
         {
-          "asset": "USD/BRL",
-          "dir": "↓ 4,98",
+          "asset": "Blue (cierre mar.)",
+          "dir": "↓ $1.540",
           "cls": "up"
         },
         {
-          "asset": "Prob. Flávio (Polymarket)",
-          "dir": "~84%",
+          "asset": "CCL",
+          "dir": "$1.610,8",
           "cls": "neu"
         }
       ]
     },
     {
       "id": 3,
-      "tag": "Argentina · BCRA · Dólar",
-      "tag_class": "tg",
-      "title": "El BCRA compra US$14M y las reservas suben a US$48.797M; la brecha baja a ~6%",
-      "brief": "El mayorista quedó en $1.520 sin cambios. Esta mañana el CCL cede a $1.610,8 y el MEP a $1.537,9, por debajo de los niveles del viernes.",
-      "tldr": "Con el clima regional a favor, la cobertura cambiaria afloja un poco.",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El <strong>BCRA compró US$14M</strong> el lunes (3,4% del volumen spot), después de los <strong>US$369M</strong> de la semana pasada. Las <strong>reservas brutas</strong> subieron <strong>US$144M</strong> a <strong>US$48.797M</strong>. El <strong>mayorista</strong> cerró sin cambios en <strong>$1.520</strong> y el oficial BNA en <strong>$1.540</strong>. Esta mañana (dolarapi, 8:56 ART): <strong>MEP $1.537,9</strong>, <strong>CCL $1.610,8</strong> y blue $1.545, todos por debajo de los $1.551,9 / $1.623,8 / $1.560 del lunes temprano.",
-      "contexto": "La <strong>brecha CCL/mayorista</strong> baja a <strong>~6,0%</strong> (desde ~6,8% la semana pasada) y el canje CCL/MEP queda en ~4,7%. El ritmo de compras del lunes fue menor que el de la semana pasada, pero las reservas siguen subiendo antes del desembolso de ~US$1.000M del FMI, que todavía necesita la aprobación del Directorio.",
+      "tag": "Argentina · Actividad · Deuda",
+      "tag_class": "ta",
+      "title": "REM y Banco Mundial recortan el crecimiento 2026; el Gobierno evalúa cómo pagar la deuda de 2027",
+      "brief": "El REM baja el PBI 2026 a 1,5% y el Banco Mundial a 2,1% (desde 3,6%). Mañana se conocen las ofertas por AySA, que estarían por debajo de lo esperado.",
+      "tldr": "Mercados mejor, economía real más lenta.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El <strong>REM del BCRA</strong> volvió a recortar la estimación de crecimiento del <strong>PBI 2026 a 1,5%</strong> y proyectó <strong>inflación de 1,9%</strong> para septiembre. El <strong>Banco Mundial</strong> bajó su proyección a <strong>2,1%</strong> (desde <strong>3,6%</strong> en junio). El <strong>Gobierno evalúa alternativas para pagar los vencimientos en dólares de 2027</strong> ante la suba de tasas y el freno de las colocaciones locales. Además, autorizó una emisión de <strong>$220.000 millones</strong> para regularizar pagos de obra pública. <strong>Mañana</strong> se abren las ofertas por <strong>AySA</strong>, que estarían por debajo de los <strong>US$500M</strong> que espera Economía.",
+      "contexto": "La baja del riesgo país ayuda a abrir la puerta a una refinanciación de 2027, pero el 10Y de EE.UU. en 5,3% encarece cualquier emisión. El resultado de AySA será una prueba del apetito inversor por activos regulados argentinos. En lo judicial, la Justicia declaró inconstitucional el decreto que condicionaba la Ley de Financiamiento Universitario; el Gobierno apelará.",
       "impacto": [
         {
-          "asset": "Reservas brutas",
-          "dir": "↑ US$48.797M",
-          "cls": "up"
+          "asset": "PBI 2026 (REM)",
+          "dir": "↓ 1,5%",
+          "cls": "dn"
         },
         {
-          "asset": "Compras BCRA",
-          "dir": "↑ US$14M",
-          "cls": "up"
+          "asset": "PBI 2026 (BM)",
+          "dir": "↓ 2,1%",
+          "cls": "dn"
         },
         {
-          "asset": "CCL",
-          "dir": "↓ $1.610,8",
-          "cls": "up"
+          "asset": "Inflación sep. (REM)",
+          "dir": "1,9%",
+          "cls": "neu"
         },
         {
-          "asset": "Brecha CCL/mayorista",
-          "dir": "↓ ~6,0%",
-          "cls": "up"
+          "asset": "AySA (ofertas)",
+          "dir": "< US$500M",
+          "cls": "dn"
         }
       ]
     },
     {
       "id": 4,
-      "tag": "EE.UU. · Tasas · Fed",
+      "tag": "EE.UU. · Fed · Treasuries",
       "tag_class": "tb",
-      "title": "El 10Y toca 5,34%, máximo desde 2002, y hoy afloja a 5,27% con el crudo debajo de US$100",
-      "brief": "Los Treasuries se vendieron fuerte el lunes tras un ISM de servicios con precios en 74,0. Igual, Wall Street subió y el Nasdaq 100 marcó un récord.",
-      "tldr": "Las acciones ignoran las tasas gracias a la IA; los bonos no.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El lunes, el <strong>UST 10Y</strong> llegó a <strong>5,34%</strong> y el <strong>30Y</strong> a <strong>5,70%</strong>, los niveles más altos desde 2002 (FRED, último dato oficial 2/10: 5,28%). El componente de <strong>precios pagados del ISM de servicios</strong> saltó a <strong>74,0</strong>, el más alto desde julio de 2022. Igual, <strong>SPY</strong> subió <strong>0,67%</strong> (US$774,83) y <strong>QQQ</strong> <strong>0,88%</strong> (US$756,20); el Nasdaq 100 cerró en récord. Hoy los futuros suben (S&amp;P +0,25%, Nasdaq +0,33%) y el 10Y retrocede a <strong>~5,27%</strong>. El mercado asigna <strong>78%</strong> a que la Fed mantenga la tasa en octubre.",
-      "contexto": "El empleo débil del viernes bajó la chance de una suba en octubre, pero la inflación de servicios no da tregua y diciembre sigue en juego. Esta semana salen las <strong>minutas de la Fed</strong>, y la temporada de balances arranca la semana próxima con los bancos (se espera +30% interanual en ganancias del S&amp;P 500). Un 10Y arriba de 5,3% es el principal freno para que el riesgo país siga bajando.",
+      "title": "Minutas de la Fed y subasta a 10 años por US$39.000M con el 10Y en 5,31%",
+      "brief": "Los rendimientos suben en toda la curva global. Hoy se conocen las minutas del FOMC (14hs ET) y el Tesoro licita a 10 años (13hs ET), tras la peor subasta a 5 años en nueve años.",
+      "tldr": "El mercado de bonos empieza a cobrarle más caro el déficit a EE.UU.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El <strong>UST 10Y</strong> opera en <strong>5,307%</strong> (+3,6pb) y el <strong>30Y</strong> en <strong>5,688%</strong> (+4,7pb); el 2s10s, en 50,5pb (FRED, último dato oficial 5/10: 5,31%). Hoy: <strong>subasta a 10 años por US$39.000M</strong> (13hs ET), discurso de <strong>Trump</strong> (13hs ET) y <strong>minutas del FOMC</strong> (14hs ET). La subasta a 5 años del 23/9 tuvo el bid-to-cover más bajo en nueve años y un &ldquo;tail&rdquo; de más de 3pb que no se veía desde 2011. El martes, <strong>SPY</strong> subió <strong>0,55%</strong> (US$779,09) y <strong>QQQ</strong> <strong>0,46%</strong> (US$759,66); hoy los futuros están planos (S&amp;P +0,02%, Nasdaq -0,2%) y el <strong>VIX</strong> en <strong>15,26</strong>. El déficit comercial de agosto saltó <strong>13,7%</strong> a <strong>US$105.600M</strong>.",
+      "contexto": "Europa suma presión: el OAT francés sube 9,8pb a 4,845% y el BTP italiano 9,3pb a 4,629%, y el BCE descarta por ahora intervenir. Una sorpresa hawkish en las minutas, junto con una subasta floja, podría llevar al 10Y por encima del máximo de 5,34% del lunes. Para los emergentes, ese es el principal riesgo de la semana.",
       "impacto": [
         {
           "asset": "UST 10Y",
-          "dir": "↑ 5,34% (lun) → ~5,27%",
+          "dir": "↑ 5,307% (+3,6pb)",
           "cls": "dn"
         },
         {
-          "asset": "SPY",
-          "dir": "↑ 0,67%",
+          "asset": "UST 30Y",
+          "dir": "↑ 5,688%",
+          "cls": "dn"
+        },
+        {
+          "asset": "SPY (mar.)",
+          "dir": "↑ 0,55%",
           "cls": "up"
         },
         {
-          "asset": "QQQ",
-          "dir": "↑ 0,88%",
-          "cls": "up"
-        },
-        {
-          "asset": "Prob. pausa Fed oct.",
-          "dir": "78%",
+          "asset": "VIX",
+          "dir": "15,26",
           "cls": "neu"
         }
       ]
     },
     {
       "id": 5,
-      "tag": "Energía · Commodities",
-      "tag_class": "ta",
-      "title": "El Brent cae debajo de US$100 por la liberación de reservas del G7",
-      "brief": "El crudo baja por segundo día: USO -2,29% el lunes y el Brent opera hoy en US$98,58 (-2,6%). El oro, estable.",
-      "tldr": "Menos presión de la energía le saca algo de presión a la inflación global.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "<strong>USO</strong> cayó <strong>2,29%</strong> el lunes (US$143,99) y hoy el <strong>Brent</strong> opera en <strong>US$98,58</strong> (<strong>-2,64%</strong>), con el WTI en baja de más de 1%. Pesan la <strong>liberación de reservas de emergencia del G7</strong> y exportaciones de Medio Oriente que se sostienen. <strong>GLD</strong> cedió <strong>0,16%</strong> (US$379,55). FX (Frankfurter, 5/10): EUR/USD 1,12, USD/JPY 158,23.",
-      "contexto": "Un Brent debajo de US$100 ayuda a bajar las tasas largas y es una buena noticia para los emergentes. Para Argentina tiene dos caras: alivia la inflación global, pero achica el ingreso de dólares por exportaciones energéticas de Vaca Muerta.",
+      "tag": "Geopolítica · Energía",
+      "tag_class": "tq",
+      "title": "El Brent vuelve arriba de US$100 por tormentas en el Golfo y ataques Houthi",
+      "brief": "Irak devaluó su moneda ~13% por el cierre de Hormuz y Rusia lanzó uno de sus mayores ataques contra Ucrania. El oro cae pese a las tensiones.",
+      "tldr": "Por ahora el riesgo geopolítico se maneja con orden, pero la oferta sigue frágil.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El <strong>Brent</strong> opera en <strong>US$100,87</strong> (+0,29%) y el <strong>WTI</strong> en <strong>US$89,45</strong>, por tormentas en el Golfo de EE.UU. y ataques Houthi contra Arabia Saudita en el Mar Rojo. <strong>Irak devaluó su moneda ~13%</strong> por el cierre efectivo de Hormuz. <strong>Rusia</strong> lanzó cerca de 70 misiles y drones contra la infraestructura energética de Ucrania (al menos 11 muertos). El <strong>oro</strong> cae <strong>0,84%</strong> a <strong>US$4.152</strong> y el <strong>Bitcoin</strong> <strong>1,87%</strong> a US$83.945. El martes, <strong>USO</strong> subió <strong>0,64%</strong> y <strong>GLD</strong> <strong>0,72%</strong> (Finnhub). <strong>DXY 102,25</strong> (+0,41%), EUR/USD 1,12, USD/JPY 158,09, USD/BRL 4,97 (Frankfurter, 6/10).",
+      "contexto": "Según el CEO de Vitol, salen 14 millones de barriles diarios de Medio Oriente, así que el flujo sigue relativamente ordenado. En política monetaria, el <strong>RBI de India</strong> subió tasas por primera vez en tres años por el costo de la energía. Para Argentina, un crudo cerca de US$100 sostiene las exportaciones de Vaca Muerta, pero alimenta la suba de tasas globales que frena la compresión del spread.",
       "impacto": [
         {
           "asset": "Brent",
-          "dir": "↓ US$98,58",
+          "dir": "↑ US$100,87",
           "cls": "neu"
         },
         {
-          "asset": "USO",
-          "dir": "↓ 2,29%",
+          "asset": "Oro",
+          "dir": "↓ 0,84% US$4.152",
           "cls": "dn"
         },
         {
-          "asset": "GLD",
-          "dir": "↓ 0,16%",
-          "cls": "neu"
+          "asset": "DXY",
+          "dir": "↑ 102,25",
+          "cls": "dn"
         },
         {
-          "asset": "USD/JPY",
-          "dir": "158,23",
-          "cls": "neu"
+          "asset": "Bitcoin",
+          "dir": "↓ 1,87%",
+          "cls": "dn"
         }
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Euforia regional vs. tasas en máximos",
-      "texto": "El riesgo país cayó 56pb y el EWZ subió 12,5% el mismo día en que el 10Y de EE.UU. tocó 5,34%, máximo desde 2002. El impulso regional le ganó al global, pero es difícil que eso dure si las tasas siguen subiendo."
+      "label": "Spread local vs. yields globales",
+      "texto": "El riesgo país bajó 82pb en dos ruedas mientras el 10Y de EE.UU. se mantiene arriba de 5,3% y el 30Y cerca de 5,7%. La compresión argentina va contra la corriente global."
     },
     {
-      "label": "Primera vuelta vs. balotaje",
-      "texto": "El mercado ya descuenta un triunfo de Flávio Bolsonaro (84% en Polymarket), pero faltan 19 días para el 25/10 y la diferencia en primera vuelta fue de menos de 2 puntos."
+      "label": "Mercados mejor vs. actividad más lenta",
+      "texto": "Bonos y dólar mejoran, pero el REM recorta el PBI 2026 a 1,5% y el Banco Mundial a 2,1%. Los precios de los activos se adelantan a una economía que no acelera."
     },
     {
-      "label": "Acciones en récord vs. inflación de servicios",
-      "texto": "El Nasdaq 100 marcó un récord con el empuje de la IA, mientras el ISM de servicios mostró precios pagados en 74,0, el más alto desde 2022. La Fed puede pausar en octubre, pero diciembre sigue abierto."
+      "label": "Refinanciar 2027 vs. tasas en máximos",
+      "texto": "El Gobierno evalúa cómo pagar la deuda de 2027 justo cuando las tasas largas de EE.UU. están en máximos desde 2002. La ventana de emisión depende de que el spread siga bajando."
     },
     {
-      "label": "Reservas en alza vs. FMI pendiente",
-      "texto": "Las reservas llegaron a US$48.797M, pero la tercera revisión y el desembolso de ~US$1.000M siguen sin aprobación del Directorio del FMI."
+      "label": "Geopolítica vs. refugios",
+      "texto": "Irak devalúa, los Houthi atacan en el Mar Rojo y Rusia escala en Ucrania, pero el oro cae 0,84% y el VIX está en 15. El mercado todavía no corre a cubrirse."
     }
   ],
   "correlaciones": [
     {
-      "par": "Riesgo país vs. EWZ / USD/BRL",
-      "texto": "Brasil marcó el ritmo: EWZ +12,5% y real -4,5% contra el dólar; el riesgo país cayó 56pb y ARGT ganó 5,9%. La correlación regional volvió con fuerza."
+      "par": "Riesgo país vs. EWZ",
+      "texto": "Correlación cortada el martes: el EWZ quedó plano (+0,05%) y el riesgo país igual bajó 26pb. El lunes, en cambio, se habían movido juntos."
     },
     {
-      "par": "UST 10Y vs. Nasdaq 100",
-      "texto": "Correlación cortada: el 10Y en 5,34% no frenó al Nasdaq 100, que cerró en récord gracias a las expectativas de ganancias por la IA."
+      "par": "UST 10Y vs. OAT / BTP",
+      "texto": "Suba coordinada de tasas largas: 10Y +3,6pb, OAT +9,8pb, BTP +9,3pb. El tema fiscal pasó a ser global y Europa lo siente más."
     },
     {
-      "par": "Brent vs. tasas largas",
-      "texto": "El Brent debajo de US$100 hoy coincide con la baja del 10Y a ~5,27% y del 30Y a 5,63%: la energía sigue marcando el pulso de las expectativas de inflación."
+      "par": "Brent vs. oro",
+      "texto": "El Brent sube arriba de US$100 por la geopolítica, pero el oro cae: el mercado lee el riesgo como de oferta de energía, no como de cobertura."
     }
   ],
-  "bottom_line": "El lunes fue el día de <strong>Brasil</strong>: <strong>Flávio Bolsonaro</strong> ganó la primera vuelta (47,03% contra 45,16% de Lula), el <strong>EWZ</strong> subió <strong>12,5%</strong> y el real se apreció ~4,5%. El efecto llegó a Argentina: el <strong>riesgo país</strong> cayó <strong>56pb a 599pb</strong>, los bonos en dólares ganaron ~2% (más en el tramo largo) y el <strong>Merval</strong> subió <strong>3,7%</strong>. Todo esto pasó con el <strong>10Y de EE.UU. en 5,34%</strong>, máximo desde 2002, aunque hoy afloja a ~5,27% con el Brent debajo de US$100. El BCRA compró US$14M y las reservas subieron a <strong>US$48.797M</strong>; la brecha CCL/mayorista baja a ~6%. <strong>Para Argentina</strong>, el rebote es una buena noticia pero depende mucho de factores externos (el balotaje brasileño del 25/10 y las tasas de EE.UU.). Mantenemos la preferencia por el tramo corto (GD30/AO27) y esperaríamos la aprobación de la revisión del FMI y un 10Y estable antes de sumar duración."
+  "bottom_line": "Argentina sigue a contramano del mundo: el <strong>riesgo país</strong> cayó <strong>26pb a 573pb</strong> (-82pb en dos ruedas), el tramo largo lideró las subas (AL35 +1,62%, GD35 +1,40%) y el <strong>blue</strong> tocó mínimos de un mes. Las reservas superan los <strong>US$49.000M</strong> y los depósitos en dólares se acercan a <strong>US$42.000M</strong>. Del lado negativo, el REM y el Banco Mundial recortan el crecimiento 2026 (1,5% y 2,1%) y el Gobierno ya analiza cómo pagar los vencimientos de 2027. Afuera, el día gira en torno a la <strong>subasta a 10 años</strong> y las <strong>minutas de la Fed</strong>, con el 10Y en <strong>5,31%</strong> y la deuda europea bajo presión; el Brent vuelve arriba de US$100. <strong>Para Argentina</strong>, la compresión del spread es genuina, pero sensible a una sorpresa en tasas de EE.UU. Mañana AySA será una prueba de apetito inversor. Mantenemos la preferencia por el tramo corto (GD30/AO27) y esperaríamos la reacción a las minutas antes de sumar duración."
 }
