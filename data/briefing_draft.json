@@ -1,12 +1,12 @@
 {
-  "date": "2026-10-16",
-  "generated": "2026-10-16T12:15:47Z",
+  "date": "2026-10-19",
+  "generated": "2026-10-19T12:24:51Z",
   "sentiment": {
-    "overall": "neutral",
-    "label": "Wall Street rota de tecnología a blue chips y Warsh no da señales; en Argentina, el riesgo país sube por quinta rueda a 622pb mientras las reservas superan US$50.000M.",
-    "fg": 32,
+    "overall": "risk-off",
+    "label": "Rebote técnico en futuros tras un viernes de venta en tecnología; en Argentina, el riesgo país salta 26pb a 648 y la reforma de las PASO se empantana.",
+    "fg": 27,
     "fg_label": "Miedo",
-    "putcall": 0.78,
+    "putcall": 0.69,
     "aaii_bulls": 34.6
   },
   "drivers": [
@@ -14,180 +14,185 @@
       "id": 1,
       "tag": "Argentina · Bonos · Dólar",
       "tag_class": "tr",
-      "title": "Riesgo país: quinta suba seguida, toca 640pb intradía y cierra en 622pb",
-      "brief": "El índice sumó 11pb el jueves (611→622) y llegó a 640 durante la rueda. Los Globales largos lideraron las bajas. CCL $1.616, brecha ~5,6%.",
-      "tldr": "La deuda en dólares sigue atada a las tasas de EE.UU.: el piso de 600pb ya es techo perdido.",
+      "title": "Riesgo país: sexta suba seguida, salta 26pb y cierra en 648pb",
+      "brief": "El índice pasó de 622 a 648 el viernes 16/10 (máximo de la racha, 589 el 12/10). Globales y Bonares cayeron entre 1,1% y 1,5%. CCL $1.620, brecha ~5,6%.",
+      "tldr": "En una semana el riesgo país sumó casi 60pb: la deuda ya descuenta ruido electoral además de tasas globales.",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>riesgo país cerró en 622pb</strong> el jueves 15/10 (argentinadatos), <strong>+11pb</strong> y quinta suba consecutiva (589 el 12/10). Según C5N e Infobae, durante la mañana tocó <strong>640pb</strong>, el nivel más alto desde el 2/10, con bajas de hasta 0,8% en los Globales largos. Precios locales en dólares (data912): <strong>AL30 US$56,15</strong> (-0,09%), <strong>GD30 US$57,65</strong> (+0,09%), GD29 US$56,29 (+0,29%), <strong>GD35 US$75,30</strong> (-0,07%), AL35 US$71,45 (-0,32%) y AL41 US$66,41 (-0,87%). Dólar (dolarapi): <strong>oficial BNA $1.530</strong>, <strong>mayorista $1.513</strong>, <strong>MEP $1.536</strong>, <strong>CCL $1.616</strong> y blue $1.545.",
-      "contexto": "Infobae atribuye la presión a la suba de los rendimientos del Tesoro de EE.UU. tras el CPI caliente: con el 10Y por encima de 5%, la curva argentina se empina y el tramo largo (2035–2041) es el que más sufre. Los bonos en pesos aguantaron mejor (CER cortos +0,25%). La brecha <strong>CCL vs. oficial BNA</strong> queda en <strong>~5,6%</strong> y el MEP sigue prácticamente pegado al oficial.",
+      "evento": "El <strong>riesgo país cerró en 648pb</strong> el viernes 16/10 (argentinadatos), <strong>+26pb</strong> en el día y <strong>+59pb</strong> desde el 12/10 (589). Cierre local en dólares (data912): <strong>AL30 US$55,54</strong> (-1,09%), <strong>GD30 US$56,88</strong> (-1,34%), GD29 US$56,05 (-0,43%), <strong>GD35 US$74,18</strong> (-1,49%), AL35 US$70,58 (-1,22%), GD41 US$68,98 (-1,46%) y AL41 US$65,46 (-1,43%). Dólar (dolarapi): <strong>oficial BNA $1.535</strong> y <strong>mayorista $1.518</strong> (cierre 16/10); <strong>MEP $1.542,5</strong>, <strong>CCL $1.620,5</strong> y blue $1.555 (última cotización de hoy).",
+      "contexto": "A diferencia de los días previos, la baja fue pareja en toda la curva, incluido el tramo corto (GD30/AL30 -1,1/-1,3%): no es solo un tema de duración y UST 10Y, que de hecho aflojó a ~5,09%. El mercado empieza a cobrar prima por la incertidumbre electoral (PASO, empleo) y por el informe de una consultora internacional que recomendó tomar ganancias en activos argentinos (Ámbito). La brecha <strong>CCL vs. oficial</strong> queda en <strong>~5,6%</strong> y el MEP sigue pegado al oficial.",
       "impacto": [
         {
           "asset": "Riesgo País",
-          "dir": "↑ 622pb (+11)",
+          "dir": "↑ 648pb (+26)",
           "cls": "dn"
         },
         {
-          "asset": "AL41",
-          "dir": "↓ 0,87% US$66,41",
+          "asset": "GD35",
+          "dir": "↓ 1,49% US$74,18",
           "cls": "dn"
         },
         {
           "asset": "GD30",
-          "dir": "↑ 0,09% US$57,65",
-          "cls": "neu"
+          "dir": "↓ 1,34% US$56,88",
+          "cls": "dn"
         },
         {
           "asset": "CCL",
-          "dir": "$1.616 (brecha ~5,6%)",
+          "dir": "$1.620,5 (brecha ~5,6%)",
           "cls": "neu"
         }
       ]
     },
     {
       "id": 2,
-      "tag": "Argentina · BCRA · Reservas",
-      "tag_class": "tg",
-      "title": "El BCRA compró US$182M y las reservas brutas superaron los US$50.000M",
-      "brief": "Decimotercera rueda seguida con compras. En octubre ya suma US$915M, más que agosto y septiembre completos; en el año, US$15.483M.",
-      "tldr": "La acumulación de reservas es el contrapeso local a un riesgo país que sube por factores externos.",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El BCRA compró <strong>US$182 millones</strong> el jueves 15/10 y las <strong>reservas brutas</strong> subieron US$318M hasta <strong>US$50.040 millones</strong> (Infobae, Examedia). Es la <strong>13ª rueda consecutiva</strong> con compras: en octubre acumula <strong>US$915M</strong> y en 2026 <strong>US$15.483M</strong>. Según Examedia, absorbió ~36% de los US$510,7M operados en el contado.",
-      "contexto": "El ritmo de compras se aceleró en la semana (la del martes fue la mayor desde julio). El mayorista se mantiene estable en <strong>$1.513</strong> y el blue cede a $1.545, señal de oferta holgada. Superar los US$50.000M mejora la foto para los vencimientos de enero y los Bonares 2027, aunque el mercado sigue mirando las <strong>reservas netas</strong>.",
+      "tag": "Argentina · Política · Empleo",
+      "tag_class": "ta",
+      "title": "PASO empantanadas en el Senado y seguro de desempleo +30%",
+      "brief": "El Gobierno no logra avanzar con la suspensión de las PASO y ya evalúa extraordinarias. En septiembre 127.613 personas cobraron el seguro de desempleo.",
+      "tldr": "El mercado compraba continuidad; la economía real y el calendario electoral empiezan a ponerla en duda.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "La reforma que suspende o elimina las <strong>PASO</strong> sigue trabada en el Senado (exige mayorías agravadas) y la <strong>Cámara Electoral</strong> pidió definirla antes de fin de mes; el Gobierno ya mira <strong>sesiones extraordinarias</strong> (Clarín, La Nación). En paralelo, el <strong>seguro de desempleo creció casi 30%</strong>: <strong>127.613 beneficiarios</strong> en septiembre por despidos en industria, comercio y construcción (Ámbito). Las ventas del Día de la Madre cayeron <strong>1,4% interanual</strong> (Ámbito).",
+      "contexto": "Los gobernadores no oficialistas no tienen incentivos para dar votos gratis: cada apoyo se paga con transferencias u obras, es decir, con superávit. Según Jacquelin (La Nación), a mediados de noviembre la política ya no podrá correr la fecha. Como contrapeso, el campo comercializó un récord de <strong>105 Mt</strong> de la campaña 2025/26 y queda mercadería por vender, lo que anticipa más oferta de dólares (El Cronista).",
       "impacto": [
         {
-          "asset": "Reservas brutas",
-          "dir": "↑ US$50.040M (+318M)",
-          "cls": "up"
+          "asset": "Bonos largos",
+          "dir": "↓ prima electoral",
+          "cls": "dn"
         },
         {
-          "asset": "Mayorista",
-          "dir": "$1.513 (estable)",
-          "cls": "neu"
+          "asset": "Consumo",
+          "dir": "↓ 1,4% a/a (Día de la Madre)",
+          "cls": "dn"
         },
         {
-          "asset": "Blue",
-          "dir": "↓ $1.545",
+          "asset": "Oferta agro",
+          "dir": "↑ 105 Mt vendidas",
           "cls": "up"
         }
       ]
     },
     {
       "id": 3,
-      "tag": "EE.UU. · Fed · Tasas",
+      "tag": "EE.UU. · Fed · Tecnología",
       "tag_class": "tb",
-      "title": "Warsh no anticipa la próxima decisión y los Treasuries aflojan",
-      "brief": "En Bangkok, el chair de la Fed evitó dar señales para el 27-28/10. El 10Y baja a ~5,07% y el mercado descuenta mayormente una pausa.",
-      "tldr": "Sin guía de Warsh, el mercado se queda con la pausa en octubre y la duda abierta para diciembre.",
+      "title": "Chips rebotan tras su peor semana desde marzo; Warsh enfría la suba de octubre",
+      "brief": "Viernes: SPY -1,11% y QQQ -2,50%. Hoy los futuros del Nasdaq suben 1,05% y el UST 10Y cede a 5,087%. El mercado mueve la apuesta de suba a diciembre.",
+      "tldr": "La IA reemplazó a la inflación como factor de riesgo: lo que preocupa ahora es cómo se financia el capex.",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "En las reuniones del FMI en Bangkok, <strong>Kevin Warsh</strong> se negó a prejuzgar las reuniones que quedan en el año (CNBC, 16/10). El <strong>UST 10Y</strong> cede a <strong>~5,07%</strong> esta mañana (CNBC) desde <strong>5,19%</strong> del 14/10 (último dato FRED); el 2Y está en ~4,73%. Según CNBC, la herramienta FedWatch asigna <strong>~87% de probabilidad a una pausa</strong> el 27-28/10.",
-      "contexto": "Después del CPI de septiembre (3,7% a/a), el mercado había empezado a jugar una segunda suba. Goldman Sachs espera pausa en octubre y una última suba en diciembre (CNBC). El dólar global retrocede: <strong>EUR/USD ~1,121</strong>, <strong>USD/JPY 157,98</strong> y <strong>USD/BRL 5,057</strong> (Frankfurter, 15/10).",
+      "evento": "Cierre del viernes 16/10 (Finnhub): <strong>SPY US$763,25 (-1,11%)</strong> y <strong>QQQ US$709,80 (-2,50%)</strong>, cerrando la peor semana para los chips de EE.UU. desde marzo. Esta mañana los <strong>futuros del Nasdaq suben 1,05%</strong> y los del S&amp;P 500 +0,49%; el <strong>VIX</strong> cede a <strong>18,65</strong> (-6,7%). El <strong>UST 10Y</strong> baja a <strong>5,087%</strong> (FRED: 5,10% al 15/10) y el 2Y a 4,734%. Tras los comentarios de <strong>Kevin Warsh</strong>, el mercado moderó las apuestas de una suba en la reunión del 27-28/10 y las concentra en diciembre (Parte Diario, Bloomberg, Reuters).",
+      "contexto": "El foco pasó de la tasa al crédito: la deuda subordinada de <strong>CoreWeave</strong> superó los 1.000pb sobre el Tesoro y los hiperescaladores deberían invertir ~US$1,2 billones en 2027. El nuevo modelo de <strong>DeepSeek</strong> volvió a golpear a SK Hynix y Samsung en Corea. Esta semana publican balances grandes de tecnología; el rebote de hoy es técnico hasta que esos números confirmen que el capex se financia con flujo propio.",
       "impacto": [
         {
+          "asset": "QQQ",
+          "dir": "↓ 2,50% viernes / fut. +1,05%",
+          "cls": "neu"
+        },
+        {
+          "asset": "SPY",
+          "dir": "↓ 1,11% US$763,25",
+          "cls": "dn"
+        },
+        {
           "asset": "UST 10Y",
-          "dir": "↓ ~5,07%",
+          "dir": "↓ 5,087%",
           "cls": "up"
         },
         {
-          "asset": "USD/JPY",
-          "dir": "157,98",
-          "cls": "neu"
-        },
-        {
-          "asset": "USD/BRL",
-          "dir": "5,057",
-          "cls": "neu"
+          "asset": "VIX",
+          "dir": "↓ 18,65",
+          "cls": "up"
         }
       ]
     },
     {
       "id": 4,
-      "tag": "EE.UU. · Acciones · Rotación",
-      "tag_class": "ta",
-      "title": "Rotación: el Dow sube 1,08% y el Nasdaq 100 suma siete bajas seguidas",
-      "brief": "El dinero sale de IA/chips hacia blue chips. SPY +0,28%, QQQ -0,13%. El Nasdaq 100 ya está más de 5% abajo de su máximo.",
-      "tldr": "No es huida del riesgo sino rotación: castigo a la duración larga de las tecnológicas.",
+      "tag": "Energía · Geopolítica",
+      "tag_class": "tq",
+      "title": "El Brent cede a US$108 desde máximos de 5 meses por la exención a Rusia",
+      "brief": "Trump eximió a Rusia de sanciones y aranceles; el Brent cae 1,4% a US$108,3 y el WTI 0,9% a US$98,2. Ormuz sigue afectado y los fletes, en récord.",
+      "tldr": "Alivio de corto plazo: la oferta rusa extra es marginal frente al cuello de botella logístico en Ormuz.",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El jueves 15/10 el <strong>Dow subió 1,08%</strong> (+556 puntos, máximo de un mes) y el <strong>S&amp;P 500 0,33%</strong>, mientras el Nasdaq apenas ganó 0,08% (Proactive Investors, Investing.com). En ETFs (Finnhub): <strong>SPY US$771,79 (+0,28%)</strong> y <strong>QQQ US$728,00 (-0,13%)</strong>. El <strong>Nasdaq 100</strong> encadenó su séptima baja y quedó más de 5% por debajo de su récord.",
-      "contexto": "Tras el CPI caliente, el mercado castiga a las acciones de crecimiento —más sensibles a la tasa de descuento— y premia a las de valor. Los futuros suben levemente esta mañana tras el discurso de Warsh.",
+      "evento": "El <strong>Brent</strong> retrocede <strong>1,40% a US$108,32</strong> y el <strong>WTI</strong> <strong>0,88% a US$98,15</strong> esta mañana, desde máximos de cinco meses, tras la <strong>exención de sanciones y aranceles a Rusia</strong> (Reuters). El viernes el <strong>USO subió 2,83%</strong> a US$161,76 (Finnhub). Irán insiste en su oferta de reabrir <strong>Ormuz</strong> en siete días y Ucrania atacó una terminal petrolera en San Petersburgo.",
+      "contexto": "El flete récord eleva el precio entregado en China a ~US$140/bbl y se come el 82% del margen de las refinerías asiáticas (Reuters). La inflación energética sostiene la presión sobre la Fed y ya se traslada a la calle en Francia. Para Argentina, el crudo alto favorece la balanza energética y a Vaca Muerta, pero mantiene altas las tasas globales.",
       "impacto": [
         {
-          "asset": "SPY",
-          "dir": "↑ 0,28% US$771,79",
-          "cls": "up"
-        },
-        {
-          "asset": "QQQ",
-          "dir": "↓ 0,13% US$728,00",
+          "asset": "Brent",
+          "dir": "↓ 1,40% US$108,32",
           "cls": "dn"
         },
         {
-          "asset": "Dow",
-          "dir": "↑ 1,08%",
+          "asset": "WTI",
+          "dir": "↓ 0,88% US$98,15",
+          "cls": "dn"
+        },
+        {
+          "asset": "USO (viernes)",
+          "dir": "↑ 2,83% US$161,76",
           "cls": "up"
         }
       ]
     },
     {
       "id": 5,
-      "tag": "Internacional · Energía · Hormuz",
-      "tag_class": "tq",
-      "title": "El Brent cierra en US$105,9 por los ataques en Hormuz y el oro rebota",
-      "brief": "El flujo por Hormuz cae a 11,6 mb/d contra 17,2 de base. WTI +3%. La AIE libera 100M de barriles. GLD +1,79%, USO +2,44%.",
-      "tldr": "El shock de oferta sigue vivo y sostiene la inflación que preocupa a la Fed.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>Brent</strong> cerró el jueves en <strong>US$105,92</strong> y el <strong>WTI</strong> subió ~3% a <strong>US$97,97</strong> (CNBC, 15/10), por la intensificación de ataques iraníes en el <strong>Estrecho de Hormuz</strong>. Según Kpler (vía Oilprice), el flujo promedió <strong>11,62 mb/d</strong> en la semana al 13/10, contra 17,15 mb/d de base. La EIA informó una caída de <strong>8,6M de barriles</strong> en inventarios de crudo. En ETFs (Finnhub): <strong>USO +2,44%</strong> (US$157,31) y <strong>GLD +1,79%</strong> (US$382,71).",
-      "contexto": "Los miembros de la <strong>AIE</strong> acordaron liberar los 100M de barriles restantes del programa de emergencia de marzo, incluidos ~20M de diésel. Esta mañana el crudo afloja levemente pero va a cerrar la semana en alza; el oro (futuros diciembre ~US$4.190–4.200) se apoya en la baja de tasas y del dólar.",
+      "tag": "Internacional · China · Europa",
+      "tag_class": "tg",
+      "title": "China crece 4,5% en el 3T y Francia entra en &ldquo;modo crisis&rdquo;",
+      "brief": "El PBI chino superó lo esperado por exportaciones y el yuan tocó máximo de 4 años. En Francia, disturbios por el costo de vida golpean OAT, acciones y euro.",
+      "tldr": "Demanda china firme para commodities; Europa suma riesgo político con Francia como eslabón débil.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El <strong>PBI de China creció 4,5%</strong> interanual en el 3T (vs. 4,3% previo), impulsado por exportaciones; el <strong>yuan</strong> tocó máximo de cuatro años (USD/CNH 6,6805) y el PBOC mantendría tasas por 17º mes (Bloomberg, Reuters). En <strong>Francia</strong>, tras un fin de semana de saqueos, Macron rechazó la renuncia del ministro del Interior; bonos y acciones francesas lideran las caídas europeas y el <strong>EUR/USD</strong> cede a <strong>1,1217</strong> (-0,24%). Frankfurter (16/10): USD/JPY 158,02, USD/BRL 5,0828.",
+      "contexto": "El spread OAT-Bund es el termómetro a seguir rumbo a 2027: Francia sumó €1 billón de deuda desde 2019 y no tiene margen fiscal. Para Argentina, una China que crece por exportaciones sostiene la demanda de soja y litio; en Brasil, la segunda vuelta Lula-Flávio y el IPCA-15 dominan la semana, con el bono a 10 años en 13,085% (+13,5pb).",
       "impacto": [
         {
-          "asset": "Brent",
-          "dir": "↑ US$105,92",
+          "asset": "PBI China 3T",
+          "dir": "↑ 4,5% a/a",
           "cls": "up"
         },
         {
-          "asset": "USO",
-          "dir": "↑ 2,44%",
-          "cls": "up"
+          "asset": "EUR/USD",
+          "dir": "↓ 0,24% 1,1217",
+          "cls": "dn"
         },
         {
-          "asset": "GLD",
-          "dir": "↑ 1,79%",
-          "cls": "up"
+          "asset": "Brasil 10Y",
+          "dir": "↑ 13,085% (+13,5pb)",
+          "cls": "dn"
         }
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Reservas arriba, riesgo país arriba",
-      "texto": "El BCRA suma 13 ruedas de compras y supera US$50.000M, pero el riesgo país sube cinco días seguidos: el precio de la deuda en dólares lo están marcando las tasas de EE.UU., no los fundamentos locales."
+      "label": "Riesgo país sin ancla externa",
+      "texto": "El UST 10Y aflojó de 5,34% a ~5,09% y aun así el riesgo país subió 26pb el viernes: por primera vez en la racha la presión no viene de las tasas de EE.UU. sino del frente local (PASO, empleo, consumo)."
     },
     {
       "label": "Petróleo vs. Fed",
-      "texto": "Un Brent arriba de US$100 por Hormuz alimenta la inflación que justamente frena a la Fed; la baja de tasas de hoy depende de que el shock energético no se traslade a los próximos datos."
+      "texto": "La exención a Rusia baja el Brent a US$108, pero Ormuz y los fletes sostienen la inflación energética (3,7% a/a en septiembre); la Fed puede pausar en octubre y subir en diciembre."
     },
     {
-      "label": "Rotación sin capitulación",
-      "texto": "El Dow en máximos de un mes y el Nasdaq 100 con siete bajas seguidas: el mercado no sale del riesgo, cambia de duración. Un dato de inflación más puede convertir la rotación en venta generalizada."
+      "label": "Rebote vs. crédito de IA",
+      "texto": "Los futuros del Nasdaq rebotan 1%, pero los spreads de CoreWeave por encima de 1.000pb y el capex de US$1,2 billones para 2027 indican que el estrés migró del equity al crédito."
     }
   ],
   "correlaciones": [
     {
       "par": "UST 10Y vs. Riesgo país",
-      "texto": "Con el 10Y arriba de 5%, cada suba de tasas en EE.UU. se traslada al tramo largo argentino (AL41 -0,87%), mientras los cortos (GD30/AL30) casi no se mueven."
+      "texto": "Se rompe la correlación de las últimas semanas: el 10Y bajó y el EMBI Argentina subió 26pb, con caídas parejas en toda la curva (GD30 -1,34%, GD35 -1,49%). Señal de factor idiosincrático."
     },
     {
-      "par": "GLD vs. dólar global",
-      "texto": "El oro rebotó 1,79% con un dólar más débil (EUR/USD ~1,12) y tasas reales que ceden: vuelve a funcionar la relación inversa clásica tras el golpe del CPI."
+      "par": "Brent vs. USO / EUR",
+      "texto": "El USO subió 2,83% el viernes con el Brent en máximos y hoy el crudo corrige 1,4%; el euro cede en paralelo por el riesgo político francés, con el DXY en 101,90."
     },
     {
-      "par": "Dow vs. QQQ",
-      "texto": "Divergencia de 1,2 puntos entre el Dow (+1,08%) y QQQ (-0,13%): la correlación entre índices se rompe por el factor tasa, que pega más en las tecnológicas."
+      "par": "QQQ vs. GLD",
+      "texto": "El viernes QQQ cayó 2,50% y GLD apenas 0,18%: el oro funcionó como refugio relativo y hoy el futuro sube a US$4.189 junto con Bitcoin (US$82.935)."
     }
   ],
-  "bottom_line": "Día <strong>mixto</strong>. Wall Street rotó de tecnología a blue chips (<strong>Dow +1,08%</strong>, <strong>QQQ -0,13%</strong>) y <strong>Warsh</strong> no dio pistas sobre el 27-28/10, lo que permitió que el <strong>10Y</strong> afloje a ~5,07%. El <strong>Brent</strong> cerró en <strong>US$105,9</strong> por los ataques en Hormuz, manteniendo viva la amenaza inflacionaria. En lo local, el <strong>riesgo país subió por quinta rueda a 622pb</strong> (640 intradía), mientras el <strong>BCRA compró US$182M</strong> y las reservas superaron los <strong>US$50.000M</strong>. <strong>Para Argentina</strong>, el contraste es claro: los fundamentos cambiarios mejoran (compras sostenidas, mayorista estable en $1.513, brecha CCL ~5,6%), pero la deuda en dólares sigue cautiva de las tasas globales. Si el 10Y consolida la baja, hay espacio para recuperar el tramo largo; hasta entonces, preferimos el tramo corto (GD30/AL30) y los CER en pesos, que mostraron mejor resistencia."
+  "bottom_line": "Arranque de semana con <strong>sesgo risk-off</strong> y rebote técnico. El viernes la tecnología cerró su peor semana desde marzo (<strong>QQQ -2,50%</strong>, <strong>SPY -1,11%</strong>) y hoy los futuros del Nasdaq rebotan 1,05%, con el <strong>UST 10Y</strong> en <strong>5,087%</strong> y el mercado corriendo a diciembre la apuesta de suba de la Fed tras Warsh. El <strong>Brent</strong> cede a <strong>US$108</strong> por la exención a Rusia, China creció <strong>4,5%</strong> en el 3T y Francia suma riesgo político en Europa. <strong>Para Argentina</strong>, el dato es el <strong>riesgo país en 648pb</strong> (+26 el viernes, +59 en la semana) con caídas parejas en toda la curva, aun con tasas globales a la baja: el mercado empieza a cobrar la incertidumbre electoral (PASO trabadas) y el deterioro del empleo (seguro de desempleo +30%). El frente cambiario sigue tranquilo (CCL $1.620,5, brecha ~5,6%) y la cosecha récord anticipa oferta de dólares, pero sin reglas electorales claras antes de mediados de noviembre, preferimos el tramo corto (GD30/AL30) frente a la duración larga."
 }
