@@ -1,198 +1,113 @@
 {
-  "date": "2026-10-20",
-  "generated": "2026-10-20T12:07:56Z",
+  "date": "2026-10-23",
+  "generated": "2026-10-23T12:30:00Z",
   "sentiment": {
     "overall": "risk-off",
-    "label": "El riesgo país sube por séptima rueda a 675pb mientras Wall Street rebota; el Brent vuelve a superar US$110 por los ataques hutíes y Francia sacude la deuda europea.",
-    "fg": 21,
-    "fg_label": "Miedo extremo",
-    "putcall": 0.88,
-    "aaii_bulls": 34.6
+    "label": "El riesgo país supera los 700pb por primera vez en un año, mientras el Nasdaq cae 2,6% por las dudas sobre el gasto en IA y el Brent pasa US$113.",
+    "fg": 28,
+    "fg_label": "Miedo",
+    "putcall": 0.8,
+    "aaii_bulls": 36.9
   },
   "drivers": [
     {
       "id": 1,
-      "tag": "Argentina · Bonos · Dólar",
+      "tag": "Argentina · Bonos · Riesgo país",
       "tag_class": "tr",
-      "title": "Riesgo país: séptima suba seguida, 675pb y máximo en casi un año",
-      "brief": "El índice sumó 27pb el lunes (648→675) aunque Wall Street subió. Acciones hasta -5%, AO29 rinde más de 10%. CCL $1.625,6, brecha ~5,6%.",
-      "tldr": "El spread sube con el UST 10Y estable: el mercado ya cotiza riesgo argentino, con la mirada puesta en 2028.",
+      "title": "El riesgo país salta 30pb a 704, el nivel más alto desde octubre de 2025",
+      "brief": "El índice subió 4,5% el jueves y cerró en 704pb. Los Globales cerraron mixtos en data912 y acumulan bajas de hasta 7,5% en el último mes.",
+      "tldr": "El mercado ya no premia las compras del BCRA: la caída de la tecnología en Wall Street y la fragilidad local pesan más.",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>riesgo país cerró en 675pb</strong> el lunes 19/10 (argentinadatos), <strong>+27pb</strong> y séptima suba consecutiva, máximo en casi un año (Infobae); en julio había tocado un piso de 403pb. Cierre local en dólares (data912): <strong>AL30 US$55,27</strong> (-0,49%), <strong>GD30 US$56,82</strong> (-0,11%), GD29 US$55,46 (-1,05%), <strong>GD35 US$73,90</strong> (-0,38%), <strong>AL35 US$69,52</strong> (-1,50%), GD41 US$68,54 (-0,64%) y AO29 US$85,20 (-0,47%). Dólar (dolarapi): <strong>oficial BNA $1.540</strong> y <strong>mayorista $1.524,5</strong> (cierre 19/10); <strong>MEP $1.544,1</strong>, <strong>CCL $1.625,6</strong> y blue $1.560 (última cotización de hoy).",
-      "contexto": "Según Infobae, el mercado asigna un riesgo de default casi nulo para 2027 (swap chino como respaldo), pero cobra la posibilidad de un incumplimiento desde 2028 con otro gobierno: el <strong>AO29 rinde más de 10%</strong> contra 8,5% en emisiones previas y el Tesoro evitó colocar en dólares en las últimas cuatro licitaciones. Las acciones cayeron hasta 5% y los bancos pierden ~30% en el año. La brecha <strong>CCL vs. oficial</strong> queda en <strong>~5,6%</strong>.",
+      "evento": "El <strong>riesgo país cerró en 704pb</strong> el jueves 22/10 (argentinadatos), <strong>+30pb</strong> frente a 674 del miércoles (+4,5%). Según Perfil, es el <strong>nivel más alto desde octubre de 2025</strong>. Cierre de bonos en dólares del 22/10 (data912): <strong>AL30 US$55,24</strong> (+0,16%), <strong>GD30 US$56,70</strong> (-0,05%), GD29 US$56,00 (-0,36%), <strong>GD35 US$74,16</strong> (+0,54%), AL35 US$69,95 (0,00%), GD41 US$68,87 (+0,54%), AN29 US$87,05 (-1,08%) y AO29 US$85,80 (-0,52%).",
+      "contexto": "Economis atribuye la presión al <strong>desplome de las tecnológicas en EE.UU.</strong>; las acciones argentinas en Wall Street cayeron hasta 6%. Perfil señala que los Globales acumulan bajas de <strong>hasta 7,5% en el último mes</strong>. El índice suma <strong>+93pb desde el 14/10</strong> (611pb) y quedó a 6pb del máximo intradía anual de 710.",
       "impacto": [
-        {
-          "asset": "Riesgo País",
-          "dir": "↑ 675pb (+27)",
-          "cls": "dn"
-        },
-        {
-          "asset": "AL35",
-          "dir": "↓ 1,50% US$69,52",
-          "cls": "dn"
-        },
-        {
-          "asset": "AO29",
-          "dir": "TIR >10%",
-          "cls": "dn"
-        },
-        {
-          "asset": "CCL",
-          "dir": "$1.625,6 (brecha ~5,6%)",
-          "cls": "neu"
-        }
+        {"asset": "Riesgo País", "dir": "↑ 704pb (+30)", "cls": "dn"},
+        {"asset": "GD30", "dir": "↓ 0,05% US$56,70", "cls": "dn"},
+        {"asset": "GD35", "dir": "↑ 0,54% US$74,16", "cls": "up"},
+        {"asset": "AN29", "dir": "↓ 1,08% US$87,05", "cls": "dn"}
       ]
     },
     {
       "id": 2,
-      "tag": "Argentina · BCRA · Actividad",
+      "tag": "Argentina · BCRA · Dólar",
       "tag_class": "ta",
-      "title": "El BCRA supera US$1.000M de compras en octubre, pero el ritmo se frena",
-      "brief": "Compró solo US$18M el lunes. La energía explica más de la mitad del superávit comercial y se aprobaron tres proyectos RIGI en Vaca Muerta por US$15.400M.",
-      "tldr": "Los dólares entran por energía y RIGI; el problema que cotiza el mercado es actividad y política, no reservas.",
+      "title": "El oficial BNA toca $1.550 y el CCL sigue en $1.640; el BCRA compró US$61M",
+      "brief": "Las compras de octubre llegan a US$1.210M y las reservas siguen arriba de US$50.000M. La brecha CCL/mayorista ronda el 7,3%.",
+      "tldr": "El BCRA compra todos los días, pero no alcanza para frenar la presión sobre el oficial y la brecha.",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>BCRA compró US$18 millones</strong> el lunes 19/10 y acumula <strong>más de US$1.000M en octubre</strong>, el triple que en septiembre (Infobae). El <strong>superávit energético</strong> llegó a <strong>US$9.427M</strong> en enero-septiembre, más que todo 2025 (US$7.815M). Se formalizaron <strong>tres proyectos RIGI</strong> en Vaca Muerta por <strong>US$15.400M</strong> (Pluspetrol US$12.240M y TGS más de US$3.200M); el régimen suma 25 proyectos por US$68.438M (Clarín). El Gobierno postergó un mes los <strong>Fondos de Asistencia Laboral</strong>, al 1/12 (El Cronista).",
-      "contexto": "Del otro lado, la actividad sigue floja: el desempleo está en 7,9%, el empleo privado registrado acumula 14 meses de caída y las empresas en situación no normal en el sistema bancario subieron 53% interanual (La Nación, Infobae). Milei dijo que la inflación núcleo ronda el 20% anual. El BCRA anunció cinco medidas para impulsar el crédito a pymes y comercios.",
+      "evento": "Dólar hoy, ~9h ART (dolarapi): <strong>oficial BNA $1.550</strong> (nuevo máximo, según Conclusión), <strong>mayorista $1.528</strong> (cierre 22/10), <strong>MEP $1.553,6</strong>, <strong>CCL $1.639,5</strong> y blue $1.565. El <strong>BCRA compró US$61 millones</strong> el jueves, lleva <strong>US$228M en la semana</strong> y <strong>US$1.210M en octubre</strong>; las reservas siguen por encima de <strong>US$50.000M</strong> (Perfil/Economis).",
+      "contexto": "La brecha del CCL contra el mayorista es de <strong>~7,3%</strong> y el canje CCL/MEP de <strong>~5,5%</strong>, prácticamente sin cambios frente a ayer. El mayorista sumó $2 en el día. El Destape señala que las reservas solo reflejaron cerca de la mitad de las compras del último tramo.",
       "impacto": [
-        {
-          "asset": "Compras BCRA oct.",
-          "dir": "↑ >US$1.000M",
-          "cls": "up"
-        },
-        {
-          "asset": "Superávit energético",
-          "dir": "↑ US$9.427M (9M)",
-          "cls": "up"
-        },
-        {
-          "asset": "Empleo privado",
-          "dir": "↓ 14 meses de caída",
-          "cls": "dn"
-        }
+        {"asset": "Oficial BNA", "dir": "↑ $1.550 (máx.)", "cls": "dn"},
+        {"asset": "CCL", "dir": "$1.639,5 · brecha ~7,3%", "cls": "neu"},
+        {"asset": "Compras BCRA", "dir": "US$61M · oct US$1.210M", "cls": "up"},
+        {"asset": "Reservas", "dir": "> US$50.000M", "cls": "up"}
       ]
     },
     {
       "id": 3,
-      "tag": "EE.UU. · Fed · Tecnología",
-      "tag_class": "tb",
-      "title": "Wall Street rebota el lunes; Warsh quiere condiciones más restrictivas",
-      "brief": "SPY +0,42% y QQQ +1,21% el lunes. Hoy los futuros del Nasdaq caen 0,37% y vuelve la venta de IA. El UST 10Y opera en 5,127%.",
-      "tldr": "El mercado endurece las condiciones financieras, pero según Warsh todavía no alcanza: la Fed decide la semana próxima.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Cierre del lunes 19/10 (Finnhub): <strong>SPY US$766,48 (+0,42%)</strong> y <strong>QQQ US$718,36 (+1,21%)</strong>, rebote tras ocho caídas seguidas del SOX, su peor racha desde 2008. Esta mañana los <strong>futuros del Nasdaq caen 0,37%</strong>, el S&amp;P 500 -0,02% y el Dow +0,28%; el <strong>VIX</strong> sube a <strong>18,62</strong>. El <strong>UST 10Y</strong> está en <strong>5,127%</strong> (FRED: 5,09% al 16/10) y el 2Y en 4,774%. Microsoft canceló un contrato con la neocloud Nscale y Elice cayó hasta 36% en su debut en Corea (FT, Bloomberg).",
-      "contexto": "<strong>Kevin Warsh</strong>, que subió tasas en septiembre, dijo que &ldquo;removió una dosis de acomodación&rdquo;: todavía ve condiciones laxas. El consenso ubica la próxima suba en diciembre; saltear la reunión de la semana próxima, a seis días de las elecciones de medio término, requeriría otro golpe a las condiciones financieras (Reuters). Hoy se publican housing starts y permisos de septiembre.",
+      "tag": "EE.UU. · Mercados · Balances",
+      "tag_class": "tr",
+      "title": "El Nasdaq cae 2,6%, su peor rueda desde junio, por el costo de la IA",
+      "brief": "Meta perdió ~7% pese a superar estimaciones, AMD más de 8% y Micron 6%. El S&P 500 cayó 1,2%; el Dow terminó plano.",
+      "tldr": "El mercado empieza a castigar el gasto en IA aunque los números sean buenos.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "Cierre del jueves 22/10 (Finnhub): <strong>SPY US$763,96 (-1,18%)</strong> y <strong>QQQ US$704,47 (-2,86%)</strong>. El <strong>Nasdaq Composite cerró en 26.009 (-2,6%)</strong>, su peor rueda desde junio; el S&amp;P 500 cayó 1,21% a 7.663 y el Dow quedó en 52.868 (+0,02%) (Yahoo Finance/GV Wire).",
+      "contexto": "<strong>Meta cayó ~7%</strong> pese a superar las estimaciones de ingresos y dar una guía optimista: el mercado castigó el aumento del gasto de capital en IA. Se sumaron <strong>AMD (-8%)</strong>, <strong>Micron (-6%)</strong> y <strong>Nvidia (-4%)</strong>. La rotación fue hacia sectores defensivos: el Dow y el Russell 2000 cerraron levemente arriba.",
       "impacto": [
-        {
-          "asset": "QQQ",
-          "dir": "↑ 1,21% US$718,36",
-          "cls": "up"
-        },
-        {
-          "asset": "SPY",
-          "dir": "↑ 0,42% US$766,48",
-          "cls": "up"
-        },
-        {
-          "asset": "UST 10Y",
-          "dir": "5,127%",
-          "cls": "neu"
-        },
-        {
-          "asset": "Fut. Nasdaq",
-          "dir": "↓ 0,37%",
-          "cls": "dn"
-        }
+        {"asset": "QQQ", "dir": "↓ 2,86% US$704,47", "cls": "dn"},
+        {"asset": "SPY", "dir": "↓ 1,18% US$763,96", "cls": "dn"},
+        {"asset": "Meta", "dir": "↓ ~7%", "cls": "dn"},
+        {"asset": "Dow", "dir": "≈ +0,02%", "cls": "neu"}
       ]
     },
     {
       "id": 4,
       "tag": "Energía · Geopolítica",
       "tag_class": "tq",
-      "title": "El Brent vuelve a superar US$110 por los ataques hutíes a Arabia Saudita",
-      "brief": "Brent +1,59% a US$111,29 y WTI +2,04% a US$100,55. Los hutíes atacaron sitios energéticos y aeropuertos sauditas; el GNL asiático, en máximos desde 2022.",
-      "tldr": "La exención a Rusia bajó el crudo solo un rato: la prima de Medio Oriente vuelve a mandar.",
+      "title": "El Brent sube 4% a US$113, máximo en cinco meses, por Yanbu y Ormuz",
+      "brief": "Los hutíes atacaron el puerto saudí de Yanbu e Irán dice que sus minas frenaron tres petroleros en Ormuz. El WTI cerró en US$99,47.",
+      "tldr": "El riesgo de oferta ya no es solo una amenaza: hay ataques concretos sobre la infraestructura del Golfo.",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>Brent</strong> sube <strong>1,59% a US$111,29</strong> y el <strong>WTI</strong> <strong>2,04% a US$100,55</strong> esta mañana, tras los ataques de los hutíes a instalaciones energéticas y aeropuertos de <strong>Arabia Saudita</strong>, que hundieron la mayoría de las bolsas del Golfo (CNBC, Reuters). El <strong>GNL asiático</strong> tocó máximos desde 2022. El lunes el USO cerró en US$160,81 (-0,59%, Finnhub), cuando la exención a Rusia moderó el precio.",
-      "contexto": "Los ataques de Irán a buques cerca de Ormuz llegaron a un récord de 12 la semana pasada (UKMTO) y las terminales iraníes siguen vacías por el bloqueo naval de EE.UU. Para Argentina, el crudo caro refuerza la balanza energética y Vaca Muerta, pero sostiene la inflación global y la presión sobre la Fed.",
+      "evento": "El <strong>Brent cerró el jueves en US$113,17</strong> (+US$4,35, +4%) y el <strong>WTI en US$99,47</strong>; esta mañana el Brent opera cerca de <strong>US$113,6–114</strong>, máximo en más de cinco meses (CNBC/Trading Economics). El ETF <strong>USO subió 1,70% a US$162,51</strong> (Finnhub).",
+      "contexto": "Los <strong>hutíes se adjudicaron ataques al puerto saudí de Yanbu</strong>, en el Mar Rojo, y la Guardia Revolucionaria iraní afirmó que <strong>minas navales impidieron el paso de tres petroleros por Ormuz</strong>. Se suma el informe sobre planes de EE.UU. e Israel para nuevos ataques a Irán después de las midterms de noviembre.",
       "impacto": [
-        {
-          "asset": "Brent",
-          "dir": "↑ 1,59% US$111,29",
-          "cls": "up"
-        },
-        {
-          "asset": "WTI",
-          "dir": "↑ 2,04% US$100,55",
-          "cls": "up"
-        },
-        {
-          "asset": "Bolsas del Golfo",
-          "dir": "↓ ataques hutíes",
-          "cls": "dn"
-        }
+        {"asset": "Brent", "dir": "↑ 4% US$113,17", "cls": "up"},
+        {"asset": "WTI", "dir": "↑ US$99,47", "cls": "up"},
+        {"asset": "USO", "dir": "↑ 1,70% US$162,51", "cls": "up"}
       ]
     },
     {
       "id": 5,
-      "tag": "Internacional · Europa · Deuda",
-      "tag_class": "tg",
-      "title": "Francia sacude la deuda europea: el bono a 10 años roza 5%",
-      "brief": "Casi 2.400 arrestos por las protestas. El OAT a 10 años, en máximos desde 2002, con prima de 145pb; contagio a España (62pb) e Italia.",
-      "tldr": "Francia es el nuevo foco de riesgo soberano en Europa; el presupuesto es la prueba a seguir.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>bono francés a 10 años roza 5%</strong>, máximo desde 2002, con una <strong>prima de 145pb</strong> sobre el Bund, récord desde 2012; la deuda pública llega a 119% del PIB. Las protestas dejaron casi <strong>2.400 arrestos</strong> y daños por cientos de millones de euros (Bloomberg, El Español). La prima española cerró en <strong>62pb</strong> (+32% en un mes) e Italia convocará a bancos, aseguradoras y CDP para financiar su presupuesto 2027 (Reuters). Las bolsas europeas operan en baja, con el DAX liderando; el Nikkei cayó 1,30%.",
-      "contexto": "Con presidenciales en unos seis meses, el presupuesto francés se complica y un fracaso reabriría el debate sobre el rol del BCE. FX (Frankfurter, 19/10): USD/EUR 0,8909, USD/JPY 158,24, USD/BRL 5,0453; esta mañana el EUR/USD está en 1,1220 y el DXY cede a 101,82. En Brasil, la segunda vuelta y el presupuesto 2027 concentran la atención.",
+      "tag": "EE.UU. · Tasas · Metales",
+      "tag_class": "tb",
+      "title": "El oro va a su peor semana desde junio aunque el UST 10Y perfora 5%",
+      "brief": "El crudo caro refuerza la idea de tasas altas por más tiempo antes de la Fed del miércoles. El oro cae ~3,5% en la semana, cerca de US$4.016.",
+      "tldr": "Ni la baja de rendimientos rescató al oro: manda el miedo a una Fed más dura por el petróleo.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El <strong>GLD cayó 2,63% a US$369</strong> el jueves (Finnhub) y el <strong>oro spot opera en ~US$4.016/oz</strong> esta mañana, mínimo desde el 20/7, con una <strong>baja semanal de ~3,5%</strong> (CNBC). El último dato de FRED para el <strong>UST 10Y es 5,13%</strong> (21/10); el jueves el rendimiento <strong>bajó de 5%</strong> por primera vez desde el 23/9 (Yahoo Finance). FX hoy: <strong>USD/JPY 156,9</strong>, <strong>EUR/USD 1,122</strong>, <strong>USD/BRL 5,04</strong>.",
+      "contexto": "CNBC vincula la caída del oro al <strong>crudo caro, que sostiene las expectativas de tasas altas por más tiempo</strong> antes de la reunión de la Fed de la semana próxima. Kitco destaca que la baja de rendimientos no generó demanda de refugio. Para emergentes, un Tesoro por debajo de 5% es un alivio, pero la aversión al riesgo pesa más.",
       "impacto": [
-        {
-          "asset": "OAT 10Y",
-          "dir": "↑ ~5% (prima 145pb)",
-          "cls": "dn"
-        },
-        {
-          "asset": "Prima España",
-          "dir": "↑ 62pb",
-          "cls": "dn"
-        },
-        {
-          "asset": "Nikkei",
-          "dir": "↓ 1,30%",
-          "cls": "dn"
-        }
+        {"asset": "GLD", "dir": "↓ 2,63% US$369", "cls": "dn"},
+        {"asset": "UST 10Y", "dir": "↓ <5% (5,13% FRED 21/10)", "cls": "up"},
+        {"asset": "USD/BRL", "dir": "5,04", "cls": "neu"}
       ]
     }
   ],
   "tensiones": [
-    {
-      "label": "Riesgo país vs. tasas globales",
-      "texto": "El UST 10Y se mantiene cerca de 5,1% y Wall Street subió el lunes, pero el riesgo país sumó 27pb: el castigo es idiosincrático y apunta a 2028, no a 2027."
-    },
-    {
-      "label": "Reservas vs. actividad",
-      "texto": "El BCRA ya compró más de US$1.000M en octubre y la energía sostiene el superávit, pero el desempleo en 7,9% y el crédito caro alimentan dudas sobre el resultado electoral de 2027."
-    },
-    {
-      "label": "Petróleo vs. Fed",
-      "texto": "Con el Brent arriba de US$110 y Warsh pidiendo condiciones más restrictivas, la suba de diciembre gana probabilidad y la reunión de la semana próxima queda abierta."
-    }
+    {"label": "Compras récord vs. riesgo país", "texto": "El BCRA lleva US$1.210M comprados en octubre y las reservas superan US$50.000M, pero el riesgo país pasó los 700pb: el mercado mira más el contexto externo y la política que la acumulación de reservas."},
+    {"label": "Buenos balances vs. gasto en IA", "texto": "Meta superó estimaciones y aun así cayó ~7%: el mercado empieza a castigar el capex en IA y arrastra a semis y memorias."},
+    {"label": "Tasas abajo, oro abajo", "texto": "El UST 10Y bajó de 5%, pero el oro cae igual: el Brent a US$113 alimenta la idea de una Fed más dura y domina sobre el efecto tasa."}
   ],
   "correlaciones": [
-    {
-      "par": "UST 10Y vs. Riesgo país",
-      "texto": "Segunda rueda de desacople: el 10Y estable y el EMBI Argentina +27pb. La prima local ya no sigue a las tasas de EE.UU."
-    },
-    {
-      "par": "SOX vs. UST 10Y",
-      "texto": "Los chips encadenaron ocho bajas mientras subían los bonos largos; la tasa larga, no los beneficios, fija el precio del boom de IA (El Español)."
-    },
-    {
-      "par": "Brent vs. GLD",
-      "texto": "El crudo sube por la prima geopolítica, pero el oro cede (GLD -0,61% el lunes, futuro -0,49% hoy a US$4.139,7): el refugio pasa por los Treasuries antes que por los metales."
-    }
+    {"par": "Riesgo país vs. Nasdaq", "texto": "El salto de 30pb del jueves coincidió con la peor rueda del Nasdaq desde junio: la deuda argentina vuelve a operar como activo de riesgo global."},
+    {"par": "Brent vs. oro", "texto": "Correlación negativa esta semana: el crudo sube por riesgo de oferta y el oro cae por el temor a tasas altas, no actúa como refugio."},
+    {"par": "Riesgo país vs. CCL", "texto": "Desde el 14/10 el índice suma +93pb y el CCL se mantiene en torno a $1.640: el riesgo soberano se refleja en la brecha más que en el oficial, que sube gradualmente."}
   ],
-  "bottom_line": "Día con <strong>sesgo risk-off</strong>. Wall Street rebotó el lunes (<strong>SPY +0,42%</strong>, <strong>QQQ +1,21%</strong>), pero hoy vuelve la venta de IA, el <strong>Brent supera US$110</strong> por los ataques hutíes a Arabia Saudita y Francia lleva su bono a 10 años cerca de 5%. Warsh considera que las condiciones financieras siguen laxas, así que la reunión de la Fed de la semana próxima queda abierta. <strong>Para Argentina</strong>, el <strong>riesgo país en 675pb</strong> (+27, séptima suba seguida, máximo en casi un año) muestra que el mercado ya cotiza riesgo local: con el 10Y estable, el castigo apunta a la capacidad de pago desde 2028 y al humor electoral, no a 2027. Los dólares siguen entrando (compras del BCRA por más de US$1.000M en octubre, superávit energético récord, RIGI por US$15.400M) y el frente cambiario está tranquilo (CCL $1.625,6, brecha ~5,6%), pero sin señales de actividad ni de financiamiento 2027, preferimos duration corta (GD30/AL30) y escalonar entradas, con el AO29 como termómetro."
+  "bottom_line": "Día de <strong>aversión al riesgo</strong>. El jueves el <strong>Nasdaq cayó 2,6%</strong> (QQQ -2,86%, SPY -1,18%) por las dudas sobre el gasto en IA, y el <strong>Brent subió 4% a US$113</strong> por los ataques a Yanbu y las minas en Ormuz. El oro va a su peor semana desde junio pese a que el UST 10Y bajó de 5%: el mercado teme una Fed más dura el miércoles. <strong>Para Argentina</strong>, el <strong>riesgo país saltó a 704pb</strong>, máximo desde octubre de 2025, y el <strong>oficial BNA toca $1.550</strong>, aunque el BCRA ya compró <strong>US$1.210M en octubre</strong> y las reservas siguen arriba de US$50.000M. El crudo caro ayuda a la balanza energética, pero hoy pesa más la aversión global. Seguimos prefiriendo duration corta (GD30/AL30) y esperar que el índice vuelva por debajo de 650pb antes de sumar parte larga."
 }
