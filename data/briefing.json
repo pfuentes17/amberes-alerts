@@ -1,10 +1,10 @@
 {
-  "date": "2026-10-23",
-  "generated": "2026-10-23T12:30:00Z",
+  "date": "2026-10-26",
+  "generated": "2026-10-26T12:30:00Z",
   "sentiment": {
     "overall": "risk-off",
-    "label": "El riesgo país supera los 700pb por primera vez en un año, mientras el Nasdaq cae 2,6% por las dudas sobre el gasto en IA y el Brent pasa US$113.",
-    "fg": 28,
+    "label": "Lula reelecto: el real se desploma en futuros y arrastra a los activos argentinos, con el riesgo país en 707pb; afuera, futuros en alza y crudo a la baja antes de la Fed.",
+    "fg": 30,
     "fg_label": "Miedo",
     "putcall": 0.8,
     "aaii_bulls": 36.9
@@ -14,100 +14,190 @@
       "id": 1,
       "tag": "Argentina · Bonos · Riesgo país",
       "tag_class": "tr",
-      "title": "El riesgo país salta 30pb a 704, el nivel más alto desde octubre de 2025",
-      "brief": "El índice subió 4,5% el jueves y cerró en 704pb. Los Globales cerraron mixtos en data912 y acumulan bajas de hasta 7,5% en el último mes.",
-      "tldr": "El mercado ya no premia las compras del BCRA: la caída de la tecnología en Wall Street y la fragilidad local pesan más.",
+      "title": "Efecto Brasil: riesgo país en 707pb y ADR en baja en la previa",
+      "brief": "El EMBI cerró el viernes en 707pb (+3). Con la reelección de Lula, el Galicia caía 7% en Nueva York antes de la apertura.",
+      "tldr": "El riesgo país ya no responde al superávit: depende de la actividad y de la sostenibilidad política del programa.",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>riesgo país cerró en 704pb</strong> el jueves 22/10 (argentinadatos), <strong>+30pb</strong> frente a 674 del miércoles (+4,5%). Según Perfil, es el <strong>nivel más alto desde octubre de 2025</strong>. Cierre de bonos en dólares del 22/10 (data912): <strong>AL30 US$55,24</strong> (+0,16%), <strong>GD30 US$56,70</strong> (-0,05%), GD29 US$56,00 (-0,36%), <strong>GD35 US$74,16</strong> (+0,54%), AL35 US$69,95 (0,00%), GD41 US$68,87 (+0,54%), AN29 US$87,05 (-1,08%) y AO29 US$85,80 (-0,52%).",
-      "contexto": "Economis atribuye la presión al <strong>desplome de las tecnológicas en EE.UU.</strong>; las acciones argentinas en Wall Street cayeron hasta 6%. Perfil señala que los Globales acumulan bajas de <strong>hasta 7,5% en el último mes</strong>. El índice suma <strong>+93pb desde el 14/10</strong> (611pb) y quedó a 6pb del máximo intradía anual de 710.",
+      "evento": "El <strong>riesgo país cerró en 707pb</strong> el viernes 23/10 (argentinadatos), <strong>+3pb</strong> frente a 704. Cierre en Buenos Aires del viernes (data912): <strong>GD30 US$56,47</strong> (-0,41%), <strong>GD35 US$73,88</strong> (-0,38%), <strong>AL30 US$55,08</strong> (-0,29%), AL35 US$69,56 (-0,56%), GD41 US$68,90 (+0,04%), AO29 US$86,80 (+1,17%) y AN29 US$88,70 (+1,90%). En el premercado de hoy, las acciones del <strong>Grupo Galicia caían 7%</strong> en Nueva York por el arrastre de Brasil (Cronista).",
+      "contexto": "La paradoja sigue: las <strong>exportaciones superaron US$100.000M en 12 meses</strong> (récord) y el superávit comercial pasó los <strong>US$26.000M</strong>, pero el índice sumó más de 300pb desde los mínimos de julio (~400). Infobae apunta a la actividad (EMAE -1,7% i.a. en agosto, recesión técnica probable) y a los <strong>vencimientos en moneda extranjera de 2027, ~US$25.400M</strong> según LCG. Desde septiembre el riesgo argentino subió más que el promedio de América Latina.",
       "impacto": [
-        {"asset": "Riesgo País", "dir": "↑ 704pb (+30)", "cls": "dn"},
-        {"asset": "GD30", "dir": "↓ 0,05% US$56,70", "cls": "dn"},
-        {"asset": "GD35", "dir": "↑ 0,54% US$74,16", "cls": "up"},
-        {"asset": "AN29", "dir": "↓ 1,08% US$87,05", "cls": "dn"}
+        {
+          "asset": "Riesgo País",
+          "dir": "↑ 707pb (+3)",
+          "cls": "dn"
+        },
+        {
+          "asset": "GD30",
+          "dir": "↓ 0,41% US$56,47",
+          "cls": "dn"
+        },
+        {
+          "asset": "AN29",
+          "dir": "↑ 1,90% US$88,70",
+          "cls": "up"
+        },
+        {
+          "asset": "GGAL (previa)",
+          "dir": "↓ ~7%",
+          "cls": "dn"
+        }
       ]
     },
     {
       "id": 2,
-      "tag": "Argentina · BCRA · Dólar",
-      "tag_class": "ta",
-      "title": "El oficial BNA toca $1.550 y el CCL sigue en $1.640; el BCRA compró US$61M",
-      "brief": "Las compras de octubre llegan a US$1.210M y las reservas siguen arriba de US$50.000M. La brecha CCL/mayorista ronda el 7,3%.",
-      "tldr": "El BCRA compra todos los días, pero no alcanza para frenar la presión sobre el oficial y la brecha.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Dólar hoy, ~9h ART (dolarapi): <strong>oficial BNA $1.550</strong> (nuevo máximo, según Conclusión), <strong>mayorista $1.528</strong> (cierre 22/10), <strong>MEP $1.553,6</strong>, <strong>CCL $1.639,5</strong> y blue $1.565. El <strong>BCRA compró US$61 millones</strong> el jueves, lleva <strong>US$228M en la semana</strong> y <strong>US$1.210M en octubre</strong>; las reservas siguen por encima de <strong>US$50.000M</strong> (Perfil/Economis).",
-      "contexto": "La brecha del CCL contra el mayorista es de <strong>~7,3%</strong> y el canje CCL/MEP de <strong>~5,5%</strong>, prácticamente sin cambios frente a ayer. El mayorista sumó $2 en el día. El Destape señala que las reservas solo reflejaron cerca de la mitad de las compras del último tramo.",
+      "tag": "Brasil · Elecciones · FX",
+      "tag_class": "tr",
+      "title": "Lula gana el balotaje y el real cae cerca de 10% en futuros",
+      "brief": "Lula superó a Flávio Bolsonaro 51,7% a 48,3%. El EWZ llegó a perder casi 20% fuera de horario y el ETF de Brasil en Tokio cayó 12,75%.",
+      "tldr": "El mercado había apostado a un cambio de gobierno; ahora espera el nombre del ministro de Hacienda y la meta fiscal.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "<strong>Lula fue reelecto</strong> con <strong>51,74% contra 48,26%</strong> de Flávio Bolsonaro, contra lo que indicaban las encuestas. En los futuros del domingo el <strong>real caía cerca de 10%</strong> (dólar implícito ~R$5,56), el <strong>EWZ cedía 18-20%</strong> fuera de horario y el ETF Ibovespa de Nomura en Tokio perdía <strong>12,75%</strong> (InfoMoney/Folha). El viernes el EWZ había cerrado en <strong>US$42,59 (+1,77%)</strong> (Finnhub).",
+      "contexto": "El FMI proyecta una <strong>deuda bruta de ~98% del PIB</strong> y la Selic está en <strong>13,75%</strong>, con un Congreso dominado por la derecha. El mercado espera el primer mensaje fiscal y la alícuota de la reforma tributaria esta semana. Para Argentina, Brasil es el principal socio: en 2025 el déficit bilateral fue de <strong>US$5.653M</strong> (Infobae/INDEC), y un real más débil abarata las importaciones desde Brasil y encarece las ventas argentinas.",
       "impacto": [
-        {"asset": "Oficial BNA", "dir": "↑ $1.550 (máx.)", "cls": "dn"},
-        {"asset": "CCL", "dir": "$1.639,5 · brecha ~7,3%", "cls": "neu"},
-        {"asset": "Compras BCRA", "dir": "US$61M · oct US$1.210M", "cls": "up"},
-        {"asset": "Reservas", "dir": "> US$50.000M", "cls": "up"}
+        {
+          "asset": "BRL (futuros)",
+          "dir": "↓ ~10% · R$5,56 implícito",
+          "cls": "dn"
+        },
+        {
+          "asset": "EWZ (aftermarket)",
+          "dir": "↓ hasta ~20%",
+          "cls": "dn"
+        },
+        {
+          "asset": "ETF Brasil Tokio",
+          "dir": "↓ 12,75%",
+          "cls": "dn"
+        }
       ]
     },
     {
       "id": 3,
-      "tag": "EE.UU. · Mercados · Balances",
-      "tag_class": "tr",
-      "title": "El Nasdaq cae 2,6%, su peor rueda desde junio, por el costo de la IA",
-      "brief": "Meta perdió ~7% pese a superar estimaciones, AMD más de 8% y Micron 6%. El S&P 500 cayó 1,2%; el Dow terminó plano.",
-      "tldr": "El mercado empieza a castigar el gasto en IA aunque los números sean buenos.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "Cierre del jueves 22/10 (Finnhub): <strong>SPY US$763,96 (-1,18%)</strong> y <strong>QQQ US$704,47 (-2,86%)</strong>. El <strong>Nasdaq Composite cerró en 26.009 (-2,6%)</strong>, su peor rueda desde junio; el S&amp;P 500 cayó 1,21% a 7.663 y el Dow quedó en 52.868 (+0,02%) (Yahoo Finance/GV Wire).",
-      "contexto": "<strong>Meta cayó ~7%</strong> pese a superar las estimaciones de ingresos y dar una guía optimista: el mercado castigó el aumento del gasto de capital en IA. Se sumaron <strong>AMD (-8%)</strong>, <strong>Micron (-6%)</strong> y <strong>Nvidia (-4%)</strong>. La rotación fue hacia sectores defensivos: el Dow y el Russell 2000 cerraron levemente arriba.",
+      "tag": "Argentina · BCRA · Dólar",
+      "tag_class": "ta",
+      "title": "El CCL sube a $1.654 y la brecha con el mayorista pasa el 8%",
+      "brief": "MEP $1.563,9 y blue $1.565. El BCRA prepara el uso de dólar futuro para contener el tipo de cambio en 2027; hoy su posición vendida es de solo US$42M.",
+      "tldr": "La cobertura se canaliza por el CCL mientras el oficial sigue estable cerca de $1.550.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "Dólar (dolarapi): <strong>CCL $1.654</strong> (+0,9% frente a $1.639,5 del viernes por la mañana), <strong>MEP $1.563,9</strong>, blue $1.565, <strong>oficial BNA $1.550</strong> y <strong>mayorista $1.529,5</strong> (cierre del 23/10). La brecha del <strong>CCL contra el mayorista</strong> llega a <strong>~8,1%</strong> y el canje CCL/MEP a <strong>~5,8%</strong>.",
+      "contexto": "Según Infobae, el <strong>BCRA prepara el dólar futuro</strong> como herramienta para contener el tipo de cambio en 2027: su <strong>posición vendida es de US$42M</strong>, contra casi <strong>US$6.900M en septiembre de 2025</strong>. Con el real bajo presión, el canal brasileño suma demanda de cobertura en la apertura.",
       "impacto": [
-        {"asset": "QQQ", "dir": "↓ 2,86% US$704,47", "cls": "dn"},
-        {"asset": "SPY", "dir": "↓ 1,18% US$763,96", "cls": "dn"},
-        {"asset": "Meta", "dir": "↓ ~7%", "cls": "dn"},
-        {"asset": "Dow", "dir": "≈ +0,02%", "cls": "neu"}
+        {
+          "asset": "CCL",
+          "dir": "↑ $1.654 · brecha ~8,1%",
+          "cls": "dn"
+        },
+        {
+          "asset": "MEP",
+          "dir": "$1.563,9",
+          "cls": "neu"
+        },
+        {
+          "asset": "Mayorista",
+          "dir": "$1.529,5 (23/10)",
+          "cls": "neu"
+        }
       ]
     },
     {
       "id": 4,
-      "tag": "Energía · Geopolítica",
-      "tag_class": "tq",
-      "title": "El Brent sube 4% a US$113, máximo en cinco meses, por Yanbu y Ormuz",
-      "brief": "Los hutíes atacaron el puerto saudí de Yanbu e Irán dice que sus minas frenaron tres petroleros en Ormuz. El WTI cerró en US$99,47.",
-      "tldr": "El riesgo de oferta ya no es solo una amenaza: hay ataques concretos sobre la infraestructura del Golfo.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>Brent cerró el jueves en US$113,17</strong> (+US$4,35, +4%) y el <strong>WTI en US$99,47</strong>; esta mañana el Brent opera cerca de <strong>US$113,6–114</strong>, máximo en más de cinco meses (CNBC/Trading Economics). El ETF <strong>USO subió 1,70% a US$162,51</strong> (Finnhub).",
-      "contexto": "Los <strong>hutíes se adjudicaron ataques al puerto saudí de Yanbu</strong>, en el Mar Rojo, y la Guardia Revolucionaria iraní afirmó que <strong>minas navales impidieron el paso de tres petroleros por Ormuz</strong>. Se suma el informe sobre planes de EE.UU. e Israel para nuevos ataques a Irán después de las midterms de noviembre.",
+      "tag": "EE.UU. · Fed · Tasas",
+      "tag_class": "tb",
+      "title": "Semana de la Fed: futuros en alza y el UST 10Y en 4,99%",
+      "brief": "El FOMC decide el miércoles 28/10 y el consenso espera mantener la tasa en 4,00% tras la suba de septiembre. El jueves llegan el PCE y el PIB del 3T.",
+      "tldr": "El foco no es la tasa sino la conferencia de Warsh, que rechaza el forward guidance.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "Futuros esta mañana: <strong>S&amp;P 500 +0,30%</strong> (7.682,75), <strong>Nasdaq +0,28%</strong> (29.198,25) y <strong>Dow +0,46%</strong>. El <strong>UST 10Y está en 4,990%</strong> (+0,2pb) y el <strong>2Y en 4,694%</strong>; la curva 2s10s se aplana a 29,6pb. <strong>VIX 19,20</strong> (-1,29%) y DXY 101,78. El viernes cerraron <strong>SPY US$759,97 (-0,52%)</strong> y <strong>QQQ US$704,40 (-0,01%)</strong> (Finnhub); el sentimiento de Michigan dio 48,0 contra 46,3 esperado.",
+      "contexto": "La Fed decide el <strong>miércoles a las 14:00 ET</strong>; el mercado teme que Warsh deje a la curva sin guía con el crudo arriba de US$100. El 10Y bajó ~35pb en dos semanas pese a la tensión en Medio Oriente: los bonos funcionan como refugio frente al riesgo de la IA (Siaba Serrate, Ámbito). El jueves llegan el <strong>PCE núcleo</strong> (consenso 3,1% a/a), el <strong>PIB del 3T</strong> (3,2%) y el BCE (depósito 2,50%). Esta semana también reporta cerca del 40% del S&amp;P 500.",
       "impacto": [
-        {"asset": "Brent", "dir": "↑ 4% US$113,17", "cls": "up"},
-        {"asset": "WTI", "dir": "↑ US$99,47", "cls": "up"},
-        {"asset": "USO", "dir": "↑ 1,70% US$162,51", "cls": "up"}
+        {
+          "asset": "UST 10Y",
+          "dir": "4,990% (+0,2pb)",
+          "cls": "neu"
+        },
+        {
+          "asset": "Fut. S&P 500",
+          "dir": "↑ 0,30%",
+          "cls": "up"
+        },
+        {
+          "asset": "VIX",
+          "dir": "↓ 19,20",
+          "cls": "up"
+        },
+        {
+          "asset": "SPY (vie)",
+          "dir": "↓ 0,52% US$759,97",
+          "cls": "dn"
+        }
       ]
     },
     {
       "id": 5,
-      "tag": "EE.UU. · Tasas · Metales",
-      "tag_class": "tb",
-      "title": "El oro va a su peor semana desde junio aunque el UST 10Y perfora 5%",
-      "brief": "El crudo caro refuerza la idea de tasas altas por más tiempo antes de la Fed del miércoles. El oro cae ~3,5% en la semana, cerca de US$4.016.",
-      "tldr": "Ni la baja de rendimientos rescató al oro: manda el miedo a una Fed más dura por el petróleo.",
+      "tag": "Energía · Geopolítica",
+      "tag_class": "tq",
+      "title": "El Brent cede 1,8% a US$114,57 por la mediación de Qatar con Irán",
+      "brief": "Tocó US$117 el viernes. Trump dice que se acerca la hora de elegir entre un acuerdo o retomar los ataques. El gas europeo supera €97/MWh.",
+      "tldr": "Un acuerdo bajaría el crudo con fuerza; una escalada lo devolvería a máximos.",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>GLD cayó 2,63% a US$369</strong> el jueves (Finnhub) y el <strong>oro spot opera en ~US$4.016/oz</strong> esta mañana, mínimo desde el 20/7, con una <strong>baja semanal de ~3,5%</strong> (CNBC). El último dato de FRED para el <strong>UST 10Y es 5,13%</strong> (21/10); el jueves el rendimiento <strong>bajó de 5%</strong> por primera vez desde el 23/9 (Yahoo Finance). FX hoy: <strong>USD/JPY 156,9</strong>, <strong>EUR/USD 1,122</strong>, <strong>USD/BRL 5,04</strong>.",
-      "contexto": "CNBC vincula la caída del oro al <strong>crudo caro, que sostiene las expectativas de tasas altas por más tiempo</strong> antes de la reunión de la Fed de la semana próxima. Kitco destaca que la baja de rendimientos no generó demanda de refugio. Para emergentes, un Tesoro por debajo de 5% es un alivio, pero la aversión al riesgo pesa más.",
+      "evento": "El <strong>Brent de diciembre baja 1,8% a US$114,57</strong> y el <strong>WTI 2,2% a US$100,96</strong>, tras tocar <strong>US$117</strong> el viernes (WSJ/FT/Bloomberg). El viernes el ETF <strong>USO subió 4,32% a US$169,53</strong> (Finnhub). El <strong>gas europeo TTF superó €97/MWh</strong>, máximo desde 2022. El oro futuro sube <strong>0,60% a US$4.032</strong>, tras un viernes con el GLD en -0,65% (US$366,61).",
+      "contexto": "Hoy se reúnen en Teherán funcionarios de Arabia Saudita, Turquía y Pakistán con autoridades iraníes, con <strong>Qatar como mediador</strong>. Trump dijo que se acerca la decisión entre un acuerdo o &ldquo;terminarlo&rdquo;. El martes también vota Israel. Para Argentina, el crudo caro sostiene el superávit energético, pero hoy pesa más el canal Brasil.",
       "impacto": [
-        {"asset": "GLD", "dir": "↓ 2,63% US$369", "cls": "dn"},
-        {"asset": "UST 10Y", "dir": "↓ <5% (5,13% FRED 21/10)", "cls": "up"},
-        {"asset": "USD/BRL", "dir": "5,04", "cls": "neu"}
+        {
+          "asset": "Brent",
+          "dir": "↓ 1,8% US$114,57",
+          "cls": "dn"
+        },
+        {
+          "asset": "WTI",
+          "dir": "↓ 2,2% US$100,96",
+          "cls": "dn"
+        },
+        {
+          "asset": "TTF",
+          "dir": "↑ >€97/MWh",
+          "cls": "up"
+        },
+        {
+          "asset": "Oro fut.",
+          "dir": "↑ 0,60% US$4.032",
+          "cls": "up"
+        }
       ]
     }
   ],
   "tensiones": [
-    {"label": "Compras récord vs. riesgo país", "texto": "El BCRA lleva US$1.210M comprados en octubre y las reservas superan US$50.000M, pero el riesgo país pasó los 700pb: el mercado mira más el contexto externo y la política que la acumulación de reservas."},
-    {"label": "Buenos balances vs. gasto en IA", "texto": "Meta superó estimaciones y aun así cayó ~7%: el mercado empieza a castigar el capex en IA y arrastra a semis y memorias."},
-    {"label": "Tasas abajo, oro abajo", "texto": "El UST 10Y bajó de 5%, pero el oro cae igual: el Brent a US$113 alimenta la idea de una Fed más dura y domina sobre el efecto tasa."}
+    {
+      "label": "Superávit récord vs. riesgo país",
+      "texto": "Exportaciones por más de US$100.000M en 12 meses y superávit fiscal no alcanzan: el riesgo país sigue arriba de 700pb porque el mercado mira la actividad, los vencimientos de 2027 y el escenario político."
+    },
+    {
+      "label": "Lula y el comercio bilateral",
+      "texto": "Un real más débil después de la elección abarata las ventas de Brasil y encarece las argentinas, sobre un déficit bilateral que ya ronda US$5.600M por año. Es un viento en contra para las industriales exportadoras."
+    },
+    {
+      "label": "Crudo que cede vs. Fed sin guía",
+      "texto": "La mediación de Qatar baja el Brent, pero sigue arriba de US$110 en la semana del FOMC: si Warsh suena duro con la inflación por energía, la curva queda sin ancla."
+    }
   ],
   "correlaciones": [
-    {"par": "Riesgo país vs. Nasdaq", "texto": "El salto de 30pb del jueves coincidió con la peor rueda del Nasdaq desde junio: la deuda argentina vuelve a operar como activo de riesgo global."},
-    {"par": "Brent vs. oro", "texto": "Correlación negativa esta semana: el crudo sube por riesgo de oferta y el oro cae por el temor a tasas altas, no actúa como refugio."},
-    {"par": "Riesgo país vs. CCL", "texto": "Desde el 14/10 el índice suma +93pb y el CCL se mantiene en torno a $1.640: el riesgo soberano se refleja en la brecha más que en el oficial, que sube gradualmente."}
+    {
+      "par": "Real vs. ADR y bonos argentinos",
+      "texto": "La caída de ~10% del real en futuros se traslada a la previa de los ADR (Galicia -7%): el mercado vuelve a operar a Argentina junto con Brasil."
+    },
+    {
+      "par": "UST 10Y vs. Nasdaq",
+      "texto": "El 10Y bajó ~35pb en dos semanas mientras los semiconductores caían ~16%: los bonos del Tesoro funcionan como refugio frente al riesgo de la IA más que frente a la inflación."
+    },
+    {
+      "par": "Brent vs. gas europeo",
+      "texto": "El crudo cede por la diplomacia, pero el TTF sigue en máximos desde 2022 por el invierno: el riesgo energético de Europa no depende solo de Irán."
+    }
   ],
-  "bottom_line": "Día de <strong>aversión al riesgo</strong>. El jueves el <strong>Nasdaq cayó 2,6%</strong> (QQQ -2,86%, SPY -1,18%) por las dudas sobre el gasto en IA, y el <strong>Brent subió 4% a US$113</strong> por los ataques a Yanbu y las minas en Ormuz. El oro va a su peor semana desde junio pese a que el UST 10Y bajó de 5%: el mercado teme una Fed más dura el miércoles. <strong>Para Argentina</strong>, el <strong>riesgo país saltó a 704pb</strong>, máximo desde octubre de 2025, y el <strong>oficial BNA toca $1.550</strong>, aunque el BCRA ya compró <strong>US$1.210M en octubre</strong> y las reservas siguen arriba de US$50.000M. El crudo caro ayuda a la balanza energética, pero hoy pesa más la aversión global. Seguimos prefiriendo duration corta (GD30/AL30) y esperar que el índice vuelva por debajo de 650pb antes de sumar parte larga."
+  "bottom_line": "Arranque de semana marcado por <strong>Brasil</strong>. La <strong>reelección de Lula</strong> derrumbó al real (~-10% en futuros) y al EWZ (hasta -20% fuera de horario), mientras afuera los <strong>futuros de EE.UU. suben ~0,3%</strong>, el <strong>Brent cede 1,8% a US$114,57</strong> por la mediación de Qatar y el <strong>UST 10Y está en 4,99%</strong> antes de la Fed del miércoles. <strong>Para Argentina</strong>, el contagio llega por dos canales: el financiero, con el <strong>riesgo país en 707pb</strong>, el Galicia -7% en la previa y el <strong>CCL en $1.654</strong> (brecha ~8%); y el comercial, porque un real débil complica a las exportadoras industriales. Las exportaciones récord y el superávit no alcanzan mientras la actividad no repunte y no se despejen los vencimientos de 2027 (~US$25.400M). Seguimos prefiriendo duration corta (GD30/AL30) y esperar el primer mensaje fiscal de Lula antes de sumar riesgo."
 }
