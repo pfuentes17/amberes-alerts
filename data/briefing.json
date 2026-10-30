@@ -1,9 +1,9 @@
 {
-  "date": "2026-10-29",
-  "generated": "2026-10-29T12:21:42Z",
+  "date": "2026-10-30",
+  "generated": "2026-10-30T12:16:49Z",
   "sentiment": {
     "overall": "risk-off",
-    "label": "Argentina contra la corriente: riesgo país 763pb y BCRA tres ruedas sin comprar; pausa halcona de la Fed y PCE a las 9:30.",
+    "label": "Tech arrastra a Wall Street (Nasdaq fut. -2,1%) y Ormuz sube el crudo; Argentina rebota: riesgo país 741pb y BCRA vuelve a comprar.",
     "fg": 35,
     "fg_label": "Miedo",
     "putcall": 0.8,
@@ -12,202 +12,202 @@
   "drivers": [
     {
       "id": 1,
-      "tag": "Argentina · Bonos · Riesgo país",
-      "tag_class": "tr",
-      "title": "El riesgo país vuelve a 763pb y los Globales largos pagan la prima 2027",
-      "brief": "El EMBI subió 10pb el miércoles y los bonos posteriores a 2027 lideraron las bajas: GD35 -1,59%, AE38 -1,87%. El BCRA no compró dólares por tercera rueda seguida.",
-      "tldr": "El mercado separa el tramo corto, cubierto, del largo, que opera como opción sobre 2027.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>riesgo país cerró en 763pb</strong> el miércoles 28/10 (argentinadatos), <strong>+10pb</strong> frente a los 753 del martes y otra vez cerca del pico de 765 del lunes. Cierre en Buenos Aires (data912): <strong>GD35 US$71,70 (-1,59%)</strong>, <strong>AE38 US$70,31 (-1,87%)</strong>, AL35 US$67,53 (-1,44%), <strong>GD30 US$55,42 (-1,14%)</strong>, AL30 US$54,05 (-0,73%) y GD29 US$55,33 (-0,38%). Según Parte Diario, el <strong>BCRA no compró dólares por tercera rueda consecutiva</strong>, la primera racha así en el año.",
-      "contexto": "La caída fue local: los emergentes subieron (EEM +1,6%) y el real casi no se movió, pero los ADR cayeron hasta 4% con los bancos al frente (Cronista, Infobae). La lectura dominante es el &ldquo;efecto Lula&rdquo; sobre las chances opositoras en 2027: el castigo se concentra en los bonos que vencen después de la elección. A eso se suma el ruido por la salida de Flávio Bolsonaro vía Argentina, que abre un frente diplomático con Brasil.",
+      "tag": "Argentina · Bonos · BCRA",
+      "tag_class": "tg",
+      "title": "Rebote local: el riesgo país baja 22pb a 741 y el BCRA vuelve a comprar",
+      "brief": "Los Globales subieron hasta 1,4% (GD35 +1,39%) y el EMBI cerró en 741pb. El BCRA compró US$47M tras tres ruedas sin hacerlo, pero las reservas cayeron US$447M.",
+      "tldr": "Alivio en bonos tras el castigo por Lula, pero el ancla de reservas sigue sin aparecer.",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "El <strong>riesgo país cerró en 741pb</strong> el jueves 29/10 (argentinadatos), <strong>-22pb</strong> frente a los 763 del miércoles, la mayor baja diaria en tres semanas. Cierre en Buenos Aires (data912): <strong>GD35 US$72,70 (+1,39%)</strong>, GD41 US$68,19 (+1,43%), AE38 US$71,09 (+1,11%), GD29 US$55,91 (+1,05%), <strong>GD30 US$55,90 (+0,87%)</strong>, AL35 US$68,18 (+0,96%) y <strong>AL30 US$54,30 (+0,46%)</strong>; los nuevos AO28/AO29 sumaron +0,32%/+0,25%. El <strong>BCRA compró US$47M</strong> después de tres ruedas sin intervenir (acumula US$1.299M en octubre), pero las <strong>reservas brutas bajaron US$447M a US$50.154M</strong> (Ámbito, BAE).",
+      "contexto": "El rebote fue de bonos, no de acciones: el MSCI Merval cayó 1% por cuarto día, arrastrado por Wall Street y por Brasil, cuyas acciones acumulan -20% desde el triunfo de Lula según 1816. Bausili descartó una &ldquo;corrida&rdquo; en 2027, defendió la cobertura sobre el oro y confirmó US$5.000M activados del swap con China. Aun con la baja, el GD35 rinde ~12,6% (Parte Diario): el mercado internacional de deuda sigue cerrado.",
       "impacto": [
         {
           "asset": "Riesgo País",
-          "dir": "↑ 763pb (+10)",
-          "cls": "dn"
+          "dir": "↓ 741pb (-22)",
+          "cls": "up"
         },
         {
           "asset": "GD35",
-          "dir": "↓ 1,59% US$71,70",
-          "cls": "dn"
+          "dir": "↑ 1,39% US$72,70",
+          "cls": "up"
         },
         {
           "asset": "GD30",
-          "dir": "↓ 1,14% US$55,42",
-          "cls": "dn"
+          "dir": "↑ 0,87% US$55,90",
+          "cls": "up"
         },
         {
-          "asset": "AL30",
-          "dir": "↓ 0,73% US$54,05",
+          "asset": "Reservas BCRA",
+          "dir": "↓ US$50.154M (-447M)",
           "cls": "dn"
         }
       ]
     },
     {
       "id": 2,
-      "tag": "Argentina · Tesoro · Dólar",
+      "tag": "Argentina · Dólar · Macro",
       "tag_class": "ta",
-      "title": "Rollover de 106% con demanda por cobertura; el CCL sube a $1.665",
-      "brief": "El Tesoro captó $11,56 billones y renovó todo lo que vencía, pero lo más pedido fueron el dual 2028 y el dollar-linked. El CCL sube a $1.665 y la brecha con el mayorista llega a 8%.",
-      "tldr": "Hay rollover, pero el mercado lo paga en cobertura, no en tasa fija.",
+      "title": "Dólar bajo y riesgo país alto: la contradicción que marca 1816",
+      "brief": "El mayorista cerró en $1.539, cerca de su máximo nominal, y el CCL baja a $1.650. 1816 advierte que un peso fuerte y un spread alto no conviven sin acceso al mercado.",
+      "tldr": "Con US$4.500M a pagar en enero, uno de los dos precios tiene que ceder.",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "Finanzas adjudicó <strong>$11,56 billones</strong> y renovó el <strong>106% de los vencimientos</strong> (Infobae, La Nación). La LECAP a tasa fija atrajo poco: la demanda fue al <strong>dual a 2028 y al dollar-linked</strong>. En el mercado de cambios (dolarapi, hoy 08:59): <strong>CCL $1.665,4</strong> (+0,6% vs. ayer), <strong>MEP $1.573,1</strong>, blue $1.565 y <strong>mayorista $1.542</strong> (cierre 28/10). La brecha CCL-mayorista sube a <strong>8,0%</strong>, desde 7,7%.",
-      "contexto": "El excedente de pesos fortalece los depósitos del Tesoro y descomprime la presión sobre el dólar hasta fin de año, pero la preferencia por títulos atados al dólar confirma que el mercado busca cobertura cambiaria. En paralelo, Diputados dictaminó la reforma de la Carta Orgánica del BCRA con los cambios del Senado: mandato único de preservar el valor de la moneda, prohibición de financiar al Tesoro y remoción de autoridades solo con 37 votos del Senado (Cronista). Recinto previsto para el 18 o 25/11.",
+      "evento": "Cotizaciones (dolarapi, hoy 08:57): <strong>CCL $1.650,3</strong> (vs. $1.665,4 de ayer), <strong>MEP $1.568,8</strong>, blue $1.565. El <strong>mayorista cerró el jueves en $1.539</strong> (-$3) y el oficial BNA en $1.560. Brecha CCL/mayorista: <strong>7,2%</strong>. La consultora 1816 señaló que el riesgo país tocó máximos desde la elección de 2025 el mismo día en que el <strong>tipo de cambio real multilateral marcó mínimos desde mayo de 2025</strong>. El IPOM del BCRA muestra <strong>PBI -0,6% en el 2T</strong> e <strong>inflación interanual de 33,6%</strong>.",
+      "contexto": "Para 1816, el peso fuerte solo es consistente si vuelve el acceso a la deuda externa; si el Tesoro paga los <strong>US$4.500M de enero</strong> con recursos propios (comprándole dólares al BCRA), la consecuencia es una moneda más débil. En paralelo, el Gobierno postergó hasta el 1/12 parte de la suba de impuestos a los combustibles (Decreto 1305/2026) y oficializó aumentos de luz y gas desde el 1/11. Según La Nación, Economía evalúa crédito dirigido (BNA, FGS para construcción) ante la recesión.",
       "impacto": [
         {
           "asset": "CCL",
-          "dir": "↑ $1.665,4 (+0,6%)",
-          "cls": "dn"
+          "dir": "↓ $1.650,3 (-0,9%)",
+          "cls": "neu"
         },
         {
-          "asset": "Brecha CCL/mayorista",
-          "dir": "↑ 8,0%",
-          "cls": "dn"
+          "asset": "Mayorista",
+          "dir": "↓ $1.539 (-$3)",
+          "cls": "neu"
         },
         {
-          "asset": "Rollover Tesoro",
-          "dir": "↑ 106%",
-          "cls": "up"
+          "asset": "MEP",
+          "dir": "= $1.568,8",
+          "cls": "neu"
         },
         {
-          "asset": "Dollar-linked / duales",
-          "dir": "↑ demanda",
+          "asset": "Brecha CCL",
+          "dir": "7,2%",
           "cls": "neu"
         }
       ]
     },
     {
       "id": 3,
-      "tag": "Bancos centrales · Fed · Datos",
-      "tag_class": "tb",
-      "title": "Pausa halcona de la Fed: dos votos por subir y ~90% de suba en diciembre",
-      "brief": "El FOMC dejó la tasa en 3,75%-4% con Cook y Hammack a favor de subir. Hoy a las 9:30 (ARG) salen el PBI del 3T y el Core PCE; el UST 10Y cede a 4,995%.",
-      "tldr": "Sin &ldquo;put&rdquo; de la Fed: el PCE de hoy decide si diciembre queda sellado.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "La Fed mantuvo el rango en <strong>3,75%-4%</strong> con <strong>dos disidencias a favor de subir</strong> (Lisa Cook y Beth Hammack). Warsh no dio guía explícita, pero dijo que la inflación sigue alta; Bloomberg asigna <strong>~90% a una suba en diciembre</strong>. Hoy, 09:30 ARG: <strong>PBI 3T</strong> (consenso 3,2% anualizado vs. 2,2% previo; GDPNow 3,3%) y <strong>Core PCE</strong> de septiembre (consenso 3,1% anual vs. 3,0%). El <strong>UST 10Y baja 5bp a 4,995%</strong> y el 2Y a 4,681% (Parte Diario); FRED registra 4,99% al 27/10.",
-      "contexto": "La Fed también anunció que votará tasas siete veces en 2027 y seis en 2028, en lugar de ocho. Un Core PCE por encima de 3,1% reforzaría la suba de diciembre y presionaría los rendimientos cortos y el dólar; una lectura benigna dejaría la puerta abierta. Para emergentes, un 10Y clavado cerca de 5% sigue siendo el techo para la compresión de spreads.",
+      "tag": "EE.UU. · Tech · Balances",
+      "tag_class": "tr",
+      "title": "Alphabet, Amazon e Intel: el Nasdaq cae 2% en futuros por la IA",
+      "brief": "Alphabet cayó 12,6% en su peor día bursátil; tras el cierre Amazon (-6/7%) e Intel (-17%) decepcionaron. El futuro del Nasdaq cede 2,14% y el VIX sube a 18,3.",
+      "tldr": "El mercado dejó de pagar capex de IA sin conversión a flujo de caja.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El jueves 29/10 el <strong>QQQ cerró -1,42% (US$715,34)</strong> y el <strong>SPY -0,38% (US$769,36)</strong> (Finnhub), con <strong>Alphabet -12,6%</strong> (ingresos de Search por debajo de lo esperado) y una amplitud positiva en salud, real estate y consumo básico. Tras el cierre, <strong>Amazon</strong> erró en EPS y dio una guía navideña floja (aunque AWS creció 39%) e <strong>Intel</strong> cayó ~17% por una guía débil del 4T. Esta mañana: <strong>Nasdaq fut. -2,14%</strong>, S&amp;P fut. -0,93%, Dow fut. +0,10%; <strong>VIX 18,30 (+6,4%)</strong>; Nikkei -2,12% (Parte Diario).",
+      "contexto": "El patrón de la semana es claro: el mercado premia el retorno visible (Microsoft, que además emitirá US$25.000M de deuda con FCF positivo) y castiga el gasto sin monetización. Amazon informó FCF negativo de US$42.400M y mantuvo un capex de US$220.000M para 2026. La rotación hacia defensivos limita el daño en el S&amp;P, pero la concentración en Big Tech deja al índice expuesto.",
       "impacto": [
         {
-          "asset": "Fed Funds",
-          "dir": "= 3,75%-4%",
-          "cls": "neu"
+          "asset": "Nasdaq fut.",
+          "dir": "↓ 2,14%",
+          "cls": "dn"
         },
         {
-          "asset": "UST 10Y",
-          "dir": "↓ 4,995% (-5bp)",
-          "cls": "up"
+          "asset": "S&amp;P 500 fut.",
+          "dir": "↓ 0,93%",
+          "cls": "dn"
         },
         {
-          "asset": "UST 2Y",
-          "dir": "↓ 4,681% (-5,4bp)",
-          "cls": "up"
+          "asset": "QQQ (29/10)",
+          "dir": "↓ 1,42% US$715,34",
+          "cls": "dn"
         },
         {
-          "asset": "DXY",
-          "dir": "↑ 102,28 (+0,08%)",
-          "cls": "neu"
+          "asset": "VIX",
+          "dir": "↑ 18,30 (+6,4%)",
+          "cls": "dn"
         }
       ]
     },
     {
       "id": 4,
-      "tag": "EE.UU. · Equity · IA",
-      "tag_class": "tr",
-      "title": "La IA divide a Big Tech: Alphabet -7%, Microsoft +5% y Oracle +12%",
-      "brief": "Los balances separaron a quien muestra retorno de quien solo muestra gasto. El futuro del Nasdaq cae 1,15% y los semis ceden; Amazon e Intel reportan hoy tras el cierre.",
-      "tldr": "El mercado ya no paga capex de IA a ciegas: exige retorno visible.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "<strong>Alphabet cae 7%</strong> por búsqueda floja y capex de IA arriba de US$50.000 millones; <strong>Microsoft sube 5%</strong> con ingresos de US$92.300 millones (+19% interanual) y <strong>Oracle +12%</strong> por su guía de flujo de caja (FT, vía Parte Diario). Futuros: <strong>Nasdaq -1,15%</strong>, <strong>S&amp;P 500 -0,32%</strong> y Dow +0,53%; <strong>VIX 17,12</strong> (+1,2%). Cierre del miércoles (Finnhub): <strong>SPY US$772,31 (+0,34%)</strong> y <strong>QQQ US$725,61 (+0,60%)</strong>.",
-      "contexto": "INTC, AMD, AVGO y MU ceden tras el desvío en las ganancias de Samsung y las señales de capex de Microsoft y Alphabet. El DOJ indaga la compra de Hugging Face por Nvidia (~US$13.000 millones). La rotación al Dow muestra un mercado que castiga múltiplos de crecimiento justo cuando la Fed apunta a subir en diciembre.",
+      "tag": "Bancos centrales · Fed · BCE · BOJ",
+      "tag_class": "tb",
+      "title": "PIB 3,4% y PCE 3,6%; BCE y BOJ pausan, Lagarde se va en febrero",
+      "brief": "EE.UU. creció 3,4% en el 3T con PCE en 3,6% y core 3,1%. El BCE mantuvo 2,50% y Lagarde dejará el cargo el 7/2/2027; el BOJ quedó en 1,25% y dio por cumplida su meta.",
+      "tldr": "Diciembre se perfila como mes de subas en el G3; el 10Y igual cae hacia 4,94%.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "EE.UU.: <strong>PIB 3T +3,4%</strong> anualizado (consenso 3,2%); <strong>PCE de septiembre 3,6%</strong> interanual y <strong>core 3,1%</strong>, en línea. El <strong>BCE mantuvo la tasa de depósito en 2,50%</strong>, discutió una suba y anunció que <strong>Lagarde renunciará el 7/2/2027</strong> (Hernández de Cos y Knot, favoritos). El <strong>BOJ dejó la tasa en 1,25%</strong> (8-1, Takata votó por subir) y declaró cumplida la meta de 2% por primera vez desde 2013. Bonos: <strong>UST 10Y 4,937% (-5,2bp)</strong> y 2Y 4,598% (-5,8bp); <strong>DXY 101,69 (-0,34%)</strong>, USD/JPY 157,32 (Parte Diario).",
+      "contexto": "Con crecimiento firme e inflación en aceleración, el mercado sigue asignando una suba de la Fed en diciembre; el BCE está listo para subir si la inflación no cede (Francia: IPCA 3,8% y PIB -0,1% trimestral hoy) y el BOJ abrió la puerta. Hoy: <strong>Employment Cost Index 3T a las 9:30 ARG</strong> (consenso 0,8%), Chicago PMI (10:45) y Daly (13:00). FRED registra el 10Y en 5,05% al 28/10; el retroceso posterior es compra de duración ante el sell-off de tech.",
       "impacto": [
         {
-          "asset": "Futuro Nasdaq",
-          "dir": "↓ 1,15%",
-          "cls": "dn"
-        },
-        {
-          "asset": "Futuro S&amp;P 500",
-          "dir": "↓ 0,32%",
-          "cls": "dn"
-        },
-        {
-          "asset": "QQQ (cierre 28/10)",
-          "dir": "↑ 0,60% US$725,61",
+          "asset": "UST 10Y",
+          "dir": "↓ 4,937% (-5,2bp)",
           "cls": "up"
         },
         {
-          "asset": "VIX",
-          "dir": "↑ 17,12",
-          "cls": "dn"
+          "asset": "UST 2Y",
+          "dir": "↓ 4,598% (-5,8bp)",
+          "cls": "up"
+        },
+        {
+          "asset": "DXY",
+          "dir": "↓ 101,69 (-0,34%)",
+          "cls": "neu"
+        },
+        {
+          "asset": "EUR/USD",
+          "dir": "↑ 1,1198 (+0,16%)",
+          "cls": "neu"
         }
       ]
     },
     {
       "id": 5,
-      "tag": "Geo · Energía · BCE",
+      "tag": "Geopolítica · Energía · Ormuz",
       "tag_class": "tq",
-      "title": "El crudo cede por la diplomacia con Irán; el BCE decide hoy con Francia en foco",
-      "brief": "Vance intenta reabrir negociaciones y el Brent retrocede, aunque Trump amenaza retomar la guerra tras las elecciones. El BCE decide a las 10:15 ARG y se espera que mantenga.",
-      "tldr": "La energía cara y el spread francés atan las manos al BCE.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>futuro del Brent cae 0,72% a US$110,84</strong> y el <strong>WTI 0,84% a US$101,92</strong> (Parte Diario); el contrato de diciembre del Brent había cerrado en US$114,02. El <strong>TTF europeo cede a €96,59/MWh</strong> tras tocar €100, máximo desde 2022. El <strong>BCE decide a las 10:15 ARG</strong> (consenso: depósito en 2,50%) y Lagarde habla a las 10:45; el spread francés contra el Bund bajó a ~150pb tras tocar 178. El <strong>BOJ</strong> se reúne el viernes. Cierre del miércoles (Finnhub): <strong>USO US$166,57 (+1,64%)</strong>, <strong>GLD US$373,51 (+0,33%)</strong>.",
-      "contexto": "EE.UU. advirtió al Golfo de una posible renovación &ldquo;corta e intensa&rdquo; de la guerra tras las elecciones del 3/11, e Israel quedó sin mayoría clara con Netanyahu como interino. Shell y TotalEnergies reportaron ganancias récord. Para Argentina, el crudo sobre US$100 sostiene el saldo energético: YPF y Vista mostraron producción récord en Vaca Muerta en el 3T. Real a R$5,33 por dólar (BCE, 28/10).",
+      "title": "Ormuz vuelve a mover el crudo: Brent US$116,5 y TTF arriba de €100",
+      "brief": "Un ataque a un petrolero y la denuncia iraní de buques contra minas llevan el Brent dic. a US$116,53 (+1,4%) y el WTI a US$103,6. El gas europeo supera €100/MWh.",
+      "tldr": "El crudo cotiza un binario: acuerdo Vance-Rezaei o nueva ofensiva tras el 3/11.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El <strong>Brent diciembre sube 1,4% a US$116,53</strong> y el <strong>WTI fut. +1,55% a US$103,58</strong> tras un ataque a un petrolero en Ormuz; Irán afirma que cuatro buques chocaron con minas y se reporta que Washington evalúa retomar la ofensiva después de las elecciones (WSJ, CNBC vía Parte Diario). El <strong>TTF sube 3,3% a €101,10/MWh</strong>. El jueves el USO cerró +0,97% (Finnhub). Metales a la baja: <strong>oro fut. -0,76% a US$4.000,70</strong> (GLD -1,32% el jueves), plata -2,84%, cobre -1,14%.",
+      "contexto": "La carta de JD Vance a Mohsen Rezaei mantiene abierta la vía diplomática, pero con las <strong>legislativas del martes 3/11</strong> y Netanyahu sin mayoría clara, el riesgo de escalada sigue en el precio. Europa liberará 42 millones de barriles de reservas en tres meses. En cripto, Binance sufrió el mayor robo de la historia (US$6.300M, Bloomberg); Bitcoin opera en US$77.589.",
       "impacto": [
         {
-          "asset": "Brent (futuro)",
-          "dir": "↓ 0,72% US$110,84",
-          "cls": "neu"
+          "asset": "Brent dic.",
+          "dir": "↑ 1,4% US$116,53",
+          "cls": "dn"
         },
         {
-          "asset": "WTI (futuro)",
-          "dir": "↓ 0,84% US$101,92",
-          "cls": "neu"
+          "asset": "WTI fut.",
+          "dir": "↑ 1,55% US$103,58",
+          "cls": "dn"
         },
         {
           "asset": "TTF",
-          "dir": "↓ €96,59/MWh",
-          "cls": "neu"
+          "dir": "↑ €101,10/MWh (+3,3%)",
+          "cls": "dn"
         },
         {
-          "asset": "EUR/USD",
-          "dir": "↓ 1,1135 (-0,20%)",
-          "cls": "dn"
+          "asset": "Oro fut.",
+          "dir": "↓ 0,76% US$4.000,70",
+          "cls": "neu"
         }
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Rollover alto vs. BCRA sin compras",
-      "texto": "El Tesoro renovó 106%, pero el BCRA lleva tres ruedas sin comprar y la demanda se fue a dollar-linked: hay pesos, pero no se convierten en reservas."
+      "label": "Dólar bajo vs. riesgo país alto",
+      "texto": "El tipo de cambio real está en mínimos desde mayo de 2025 mientras el EMBI ronda 740pb: sin acceso al mercado para pagar los US$4.500M de enero, la tensión se resuelve con un peso más débil o con spreads más bajos."
     },
     {
-      "label": "Fed halcona vs. tasas a la baja",
-      "texto": "Dos votos por subir y ~90% de suba en diciembre conviven con un 10Y que cae 5bp: el mercado compra duración antes del PCE, y un dato caliente puede revertirlo rápido."
+      "label": "BCRA compra vs. reservas caen",
+      "texto": "El BCRA volvió a comprar (US$47M), pero las reservas brutas bajaron US$447M en el día: las compras no alcanzan para acumular mientras el Tesoro necesita dólares para enero."
     },
     {
-      "label": "Diplomacia con Irán vs. amenaza post-electoral",
-      "texto": "El crudo cede por la carta de Vance, pero Washington advierte una renovación de la guerra después del 3/11: el piso de US$100 del WTI sigue en juego."
+      "label": "Crecimiento fuerte vs. capex castigado",
+      "texto": "El PIB de EE.UU. crece 3,4% impulsado por inversión en IA, pero el mercado castiga a quienes la financian (Alphabet -12,6%, Amazon e Intel tras el cierre): la macro valida el ciclo que la bolsa empieza a dudar."
     }
   ],
   "correlaciones": [
     {
-      "par": "Riesgo país vs. EEM / real",
-      "texto": "EEM subió 1,6% y el real casi no se movió, mientras el EMBI argentino sumó 10pb: se rompe la correlación con Brasil y queda una prima puramente local por 2027."
+      "par": "UST 10Y vs. Nasdaq / VIX",
+      "texto": "El sell-off de tech empuja la compra de duración: el 10Y cae 5bp a 4,94% aun con PCE en 3,6% y una Fed que descuenta suba en diciembre."
     },
     {
-      "par": "Alphabet vs. Microsoft / Oracle",
-      "texto": "Mismo ciclo de capex en IA, reacción opuesta: el mercado premia el retorno visible y castiga el gasto sin monetización clara."
+      "par": "Riesgo país vs. Merval / Ibovespa",
+      "texto": "Los Globales rebotan (EMBI -22pb) pero el Merval cae por cuarto día: las acciones siguen atadas a Brasil y a Wall Street, los bonos a la oferta de dólares del BCRA."
     },
     {
-      "par": "Brent vs. TTF / EUR",
-      "texto": "La baja del crudo acompaña al gas europeo, pero el euro cede igual: el mercado pesa más el riesgo fiscal francés que el alivio energético."
+      "par": "Crudo vs. oro / DXY",
+      "texto": "El Brent sube por Ormuz mientras el oro cae a US$4.000 con un dólar más débil: el mercado prioriza la expectativa de suba de tasas por sobre la cobertura geopolítica."
     }
   ],
-  "bottom_line": "Argentina vuelve a ir contra la corriente. Con los emergentes en alza, el <strong>riesgo país subió a 763pb (+10)</strong>, el <strong>GD35 cayó 1,59%</strong> y el <strong>BCRA no compró por tercera rueda</strong>; el <strong>CCL sube a $1.665,4</strong> y la brecha llega a 8%. Afuera, la <strong>Fed hizo una pausa halcona</strong> (3,75%-4%, dos votos por subir) y hoy a las 9:30 ARG el <strong>PBI y el Core PCE</strong> definen si diciembre queda sellado; el BCE decide a las 10:15 y la IA divide a Big Tech, con el <strong>Nasdaq -1,15% en futuros</strong>. <strong>Para Argentina</strong>, el rollover de 106% da aire en pesos, pero la preferencia por dollar-linked y duales y la ausencia de compras del BCRA muestran que el mercado se cubre de cara a 2027. El tramo corto de la curva está cubierto; el largo opera como opción electoral. Seguimos prefiriendo duration corta y cobertura cambiaria hasta ver si el BCRA retoma las compras y cómo reacciona el 10Y al PCE."
+  "bottom_line": "Día de dos velocidades. Afuera domina el <strong>sell-off de tech</strong>: Alphabet cayó 12,6%, Amazon e Intel decepcionaron tras el cierre y el <strong>Nasdaq cede 2,14% en futuros</strong> con el VIX en 18,3; el <strong>crudo vuelve a subir por Ormuz</strong> (Brent dic. US$116,53) y el G3 se encamina a un diciembre de subas tras el PCE de 3,6%, la pausa del BCE con salida de Lagarde y el BOJ dando por cumplida su meta. El <strong>10Y baja a 4,94%</strong> por refugio. <strong>Para Argentina</strong>, el jueves trajo alivio: el <strong>riesgo país bajó a 741pb (-22)</strong>, el <strong>GD35 subió 1,39%</strong> y el <strong>BCRA volvió a comprar</strong> (US$47M), aunque las reservas cayeron US$447M y el Merval sumó su cuarta baja. El <strong>CCL afloja a $1.650</strong> (brecha 7,2%). La pregunta de fondo sigue abierta: con el mercado de deuda cerrado (GD35 ~12,6%) y US$4.500M a pagar en enero, el dólar bajo y el spread alto no pueden convivir mucho tiempo. Con un viernes de riesgo global y las legislativas de EE.UU. el martes, seguimos prefiriendo duration corta en pesos con cobertura y cautela en Globales largos hasta ver compras sostenidas del BCRA y cómo se financia enero."
 }
