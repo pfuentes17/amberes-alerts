@@ -1,193 +1,164 @@
 {
-  "date": "2026-11-03",
-  "generated": "2026-11-03T13:25:28Z",
+  "date": "2026-11-04",
+  "generated": "2026-11-04T13:10:55Z",
   "sentiment": {
     "overall": "risk-off",
-    "label": "Riesgo país en 805pb (máximo del año) y Merval -3,3%; afuera, crudo -7% por Irán, Apple decepciona en márgenes y EE.UU. vota hoy",
-    "fg": 35,
-    "fg_label": "Miedo",
+    "label": "Barrida demócrata en el Congreso y AMD sostiene a los futuros; en Argentina el riesgo país marca 831pb, nuevo máximo del año",
+    "fg": 23,
+    "fg_label": "Miedo extremo",
     "putcall": 0.8,
     "aaii_bulls": 36.9
   },
   "drivers": [
     {
       "id": 1,
-      "tag": "Argentina · Bonos · Acciones",
+      "tag": "Argentina · Bonos · Riesgo país",
       "tag_class": "tr",
-      "title": "El riesgo país perfora los 800: cierra en 805pb, máximo de 2026",
-      "brief": "+18pb en el día y sexta baja seguida del Merval (-3,3%). Globales en rojo: GD30 -1,28%, AL35 -1,32%, GD38 -2,95%; el AL30 casi neutro (-0,07%).",
-      "tldr": "El castigo ya es mayormente local: el componente idiosincrático explica ~568pb del spread.",
+      "title": "El riesgo país sube a 831pb: tercer récord del año en tres ruedas",
+      "brief": "+26pb el martes sobre los 805 del lunes y +90pb desde los 741 del 29/10. Globales otra vez en rojo: GD35 -1,4%, GD38 -1,65%, GD29 -1,26%.",
+      "tldr": "La suba del spread ya no frena: en tres ruedas el mercado cobró 90pb de riesgo argentino.",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>riesgo país cerró el lunes 2/11 en 805pb</strong> (argentinadatos), <strong>+18pb</strong> sobre los 787 del viernes y el cierre más alto de 2026. Cierre en Buenos Aires (data912): <strong>GD30 US$55,26 (-1,28%)</strong>, <strong>AL35 US$66,56 (-1,32%)</strong>, GD35 US$71,19 (-0,75%), GD29 US$54,72 (-0,58%), <strong>GD38 US$75,46 (-2,95%)</strong>, AE38 US$69,60 (-1,62%) y <strong>AL30 US$53,41 (-0,07%)</strong>; el AO27 subió 0,15%. El <strong>Merval cayó 3,32% a 89.026,5 puntos</strong>, sexta baja consecutiva (Rankia/Rava).",
-      "contexto": "A diferencia del viernes, el lunes afuera no fue un día de pánico (Dow +0,4%, crudo -7%), y aun así los activos argentinos siguieron cayendo. Según GMA Capital (citado por Examedia), del spread actual <strong>solo ~209pb se explican por el componente global</strong> y <strong>~568pb por el local</strong>: el mercado está cobrando incertidumbre política y la falta de un camino claro para refinanciar los vencimientos de enero.",
+      "evento": "El <strong>riesgo país cerró el martes 3/11 en 831pb</strong> (argentinadatos), <strong>+26pb</strong> en el día y su <strong>nivel más alto de 2026</strong> (Rankia/Rava, Ámbito); en el intradía llegó a tocar 834pb (El Cronista). Cierre de Globales en dólares (data912): <strong>GD30 US$54,75</strong>, GD29 US$54,03 (-1,26%), <strong>GD35 US$70,19 (-1,40%)</strong>, <strong>GD38 US$74,35 (-1,65%)</strong>, GD41 US$65,85 (-1,57%). En acciones, el <strong>MSCI Merval cortó la racha de seis bajas</strong> (Ámbito), con rebote de bancos y energía: <strong>BMA +3,5%</strong>, <strong>YPFD +3,5%</strong>, GGAL +1,0%.",
+      "contexto": "El indicador acumula <strong>+90pb desde el 29/10</strong> (741 → 831). Los medios locales atribuyeron parte de la rueda a la cautela previa a las elecciones de EE.UU. y a la volatilidad del crudo, pero el patrón de los últimos días (Globales cayendo con Wall Street estable) sigue señalando un castigo mayormente local. Que las acciones reboten mientras los bonos caen sugiere cobertura de cortos en equity más que un cambio de tendencia.",
       "impacto": [
         {
           "asset": "Riesgo País",
-          "dir": "↑ 805pb (+18)",
+          "dir": "↑ 831pb (+26)",
           "cls": "dn"
         },
         {
-          "asset": "Merval",
-          "dir": "↓ 3,32% 89.026",
-          "cls": "dn"
-        },
-        {
-          "asset": "GD30",
-          "dir": "↓ 1,28% US$55,26",
+          "asset": "GD35",
+          "dir": "↓ 1,40% US$70,19",
           "cls": "dn"
         },
         {
           "asset": "GD38",
-          "dir": "↓ 2,95% US$75,46",
+          "dir": "↓ 1,65% US$74,35",
           "cls": "dn"
+        },
+        {
+          "asset": "BMA / YPFD",
+          "dir": "↑ ~3,5%",
+          "cls": "up"
         }
       ]
     },
     {
       "id": 2,
-      "tag": "Argentina · Dólar · BCRA",
-      "tag_class": "ta",
-      "title": "El mayorista sube a $1.545,5, el BCRA no compra y el CCL toca $1.670",
-      "brief": "Mayorista +$11,50 (+0,75%) en la primera rueda de noviembre, sin compras del BCRA. Reservas +US$1.879M a US$50.441M por encajes. Brecha CCL/mayorista 8,1%.",
-      "tldr": "Suben los dos dólares a la vez y el BCRA se corre: la cobertura gana terreno sobre el carry.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>mayorista cerró el lunes en $1.545,50</strong> (+$11,50, +0,75%) y el <strong>BCRA no compró ni vendió</strong> divisas. Las <strong>reservas brutas subieron US$1.879M a US$50.441M</strong> por reajuste de encajes y cierre de posiciones de fin de mes, revirtiendo la caída del viernes (La Gaceta/BAE). Cotizaciones de hoy (dolarapi, 08:57): <strong>CCL $1.670</strong> (+0,7% vs. $1.658,5 de ayer), <strong>MEP $1.579,90</strong>, blue $1.565, oficial BNA $1.565. Brecha <strong>CCL/mayorista 8,1%</strong>; MEP/mayorista 2,2%.",
-      "contexto": "El BCRA acumula ~US$15.300M de compras en 2026 (US$732M en octubre), pero el dato de ayer no muestra acumulación genuina: la suba de reservas es contable. El CCL sigue absorbiendo la salida de cartera: el canje CCL/MEP ya ronda 5,7%, señal de demanda de dólares afuera.",
+      "tag": "EE.UU. · Política · Midterms",
+      "tag_class": "tb",
+      "title": "Los demócratas ganan Cámara y Senado en las elecciones de medio término",
+      "brief": "AP proyectó la Cámara para los demócratas en la madrugada; en el Senado dieron vuelta siete bancas. Fin del control republicano del Congreso desde enero.",
+      "tldr": "Gobierno dividido desde enero: menos margen para agenda fiscal y arancelaria por ley.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "Según proyecciones de las cadenas (CNN, CBS, Forbes), los <strong>demócratas ganaron el control de ambas cámaras</strong>: la <strong>AP proyectó la Cámara de Representantes</strong> esta madrugada y en el <strong>Senado dieron vuelta siete bancas</strong> (Ohio, Iowa, Carolina del Sur, Maine, Carolina del Norte, Kansas y Texas), con Alaska y Mississippi aún sin definir. Hakeem Jeffries quedaría como próximo speaker cuando asuma el nuevo Congreso en enero. Los futuros llegaron a caer <strong>entre 1% y 2,5%</strong> con los primeros resultados y luego recortaron: esta mañana el <strong>S&amp;P 500 opera +0,2%</strong> en futuros (Investing.com).",
+      "contexto": "El mercado venía descontando un Congreso demócrata, por eso la reacción inicial se revirtió rápido. El escenario de <strong>gobierno dividido</strong> limita nuevas rebajas impositivas o gasto por ley y abre la puerta a investigaciones del Congreso, pero la política arancelaria y exterior sigue mayormente en manos del Ejecutivo. Para la Fed, menos impulso fiscal es marginalmente pro-recortes. Ayer, antes de los resultados, el <strong>SPY cerró +0,30%</strong> y el <strong>QQQ +0,62%</strong> (Finnhub); el <strong>UST 10Y</strong> estaba en <strong>4,91%</strong> al 2/11 (FRED).",
       "impacto": [
         {
-          "asset": "Mayorista",
-          "dir": "↑ 0,75% $1.545,5",
-          "cls": "dn"
+          "asset": "Futuros S&P 500",
+          "dir": "↑ ~0,2% (tras caer hasta 1%-2,5%)",
+          "cls": "up"
         },
         {
-          "asset": "CCL",
-          "dir": "↑ $1.670",
-          "cls": "dn"
+          "asset": "SPY (cierre 3/11)",
+          "dir": "↑ 0,30% US$754,35",
+          "cls": "up"
         },
         {
-          "asset": "Reservas BCRA",
-          "dir": "↑ US$1.879M (encajes)",
+          "asset": "UST 10Y",
+          "dir": "→ 4,91% (2/11)",
           "cls": "neu"
         }
       ]
     },
     {
       "id": 3,
-      "tag": "Geo · Energía",
-      "tag_class": "tq",
-      "title": "El crudo se desploma ~7% por señales de diálogo entre EE.UU. e Irán",
-      "brief": "USO -7,08% a US$156,87 y Brent cerca de US$104,8, la mayor baja en meses, tras las conversaciones de Irán con Qatar. El Dow sube 0,4% liderado por cíclicas.",
-      "tldr": "Menos prima de guerra en el petróleo: alivio para la inflación y para la Fed, golpe para Vaca Muerta.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>USO cayó 7,08% a US$156,87</strong> (Finnhub). El <strong>Brent perdió ~7,6% a US$104,77</strong> (Benzinga; otras fuentes ubican la baja entre 6% y 7,6%) tras conversaciones de Irán con funcionarios de Qatar que alimentaron expectativas de una salida diplomática con EE.UU. El <strong>Dow subió 0,41%</strong> con consumo y cíclicas, mientras energía quedó rezagada.",
-      "contexto": "Es la continuidad del giro del fin de semana (Trump priorizando la diplomacia). Para la Fed, que viene reclamando más subas, un crudo en baja es la principal válvula de descompresión de la inflación. Para Argentina el efecto es mixto: abarata importaciones de energía pero pega en el precio de las petroleras (VIST, YPF) y en las exportaciones de Vaca Muerta.",
+      "tag": "Argentina · Dólar · Brecha",
+      "tag_class": "ta",
+      "title": "Oficial BNA en $1.570, mayorista $1.551 y CCL en $1.669",
+      "brief": "El BNA subió a $1.570 y el mayorista quedó en $1.551. CCL $1.668,8 y MEP $1.581,1: brecha CCL de 7,6% sobre el mayorista y canje CCL/MEP de 5,5%.",
+      "tldr": "El canje CCL/MEP alto confirma la salida de cartera por contado con liqui.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "Según dolarapi: <strong>oficial BNA $1.520/$1.570</strong>, <strong>mayorista $1.542/$1.551</strong> (último dato, vs. $1.545,5 del lunes), <strong>MEP $1.581,10</strong>, <strong>CCL $1.668,80</strong>, blue $1.570 y cripto $1.660,67. La <strong>brecha CCL/mayorista es 7,6%</strong> y el <strong>canje CCL/MEP llega a 5,5%</strong>.",
+      "contexto": "El mayorista sigue subiendo de a poco sin un ancla clara de compras del BCRA, mientras el CCL se despega del MEP: la demanda de cobertura se canaliza vía dólares cable, en línea con la salida de Globales. Con el riesgo país en máximos, el costo de refinanciar en dólares sube y aumenta la presión sobre las reservas de cara a los vencimientos de enero.",
       "impacto": [
         {
-          "asset": "USO",
-          "dir": "↓ 7,08% US$156,87",
+          "asset": "Mayorista",
+          "dir": "↑ $1.551",
           "cls": "dn"
         },
         {
-          "asset": "Brent",
-          "dir": "↓ ~7,6% US$104,77",
-          "cls": "dn"
+          "asset": "CCL",
+          "dir": "$1.668,8",
+          "cls": "neu"
         },
         {
-          "asset": "Dow Jones",
-          "dir": "↑ 0,41%",
-          "cls": "up"
+          "asset": "Canje CCL/MEP",
+          "dir": "5,5%",
+          "cls": "dn"
         }
       ]
     },
     {
       "id": 4,
-      "tag": "EE.UU. · Equity · Tech",
-      "tag_class": "tb",
-      "title": "Apple supera estimaciones pero cae after hours por la guía de márgenes",
-      "brief": "Ingresos US$114,5B (+12%) y EPS US$2,10, ambos sobre consenso; la guía de margen bruto 45-46% (vs. 46,3% esperado) la hunde 1%-3%. QQQ -1,36% el lunes.",
-      "tldr": "El primer balance de Ternus confirma el patrón: crecer no alcanza si el costo (memorias) come el margen.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "Cierre del lunes 2/11 (Finnhub): <strong>SPY US$752,10 (-0,48%)</strong> y <strong>QQQ US$681,09 (-1,36%)</strong>; el Nasdaq Composite cerró -1,07%. Tras la campana, <strong>Apple</strong> reportó en el primer trimestre con <strong>John Ternus</strong> como CEO: <strong>ingresos US$114,5B (+12%)</strong>, <strong>EPS US$2,10</strong> e iPhone US$57,6B, todos por encima del consenso. Pero guió un <strong>margen bruto de 45%-46%</strong> para el trimestre de fiestas (vs. 46,3% esperado) y crecimiento de 7%-10%, y la acción <strong>cayó entre 1% y 3% after hours</strong> (CNBC/TradingView). Premarket de hoy (Ámbito): S&amp;P -0,14%, Nasdaq +0,30%, Dow -0,73%.",
-      "contexto": "Tras el viernes de Intel (-29%), el mercado sigue castigando cualquier señal de presión en márgenes. Hoy reporta <strong>AMD</strong>, otro test para el trade de IA. Greater China creció ~21% pero quedó por debajo de lo esperado.",
+      "tag": "EE.UU. · Balances · Semiconductores",
+      "tag_class": "tg",
+      "title": "AMD supera estimaciones: data center casi duplica y guía de US$17.000M",
+      "brief": "EPS ajustado US$2,09 e ingresos US$13.380M (+45% anual); guía 4T ~US$17.000M ±3%. La acción sube ~7-8% en el premarket.",
+      "tldr": "AMD le devuelve el ánimo al trade de IA tras el castigo de octubre.",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "AMD reportó el 3T26 tras el cierre del martes: <strong>EPS ajustado US$2,09</strong> e <strong>ingresos US$13.380M (+45% anual)</strong>, con <strong>ventas de data center casi duplicadas</strong>. Para el 4T guió <strong>~US$17.000M (±3%)</strong>, por encima de lo esperado. La acción <strong>sube más de 7% en el premarket</strong> (CNBC, Investing.com) y arrastra a los semiconductores.",
+      "contexto": "El papel había más que duplicado en el año pero cayó fuerte en octubre; el balance confirma que la demanda de aceleradores sigue firme y compensa en parte la decepción de Apple del lunes. Es el principal sostén de los futuros del Nasdaq esta mañana, en medio del ruido electoral.",
       "impacto": [
         {
-          "asset": "QQQ",
-          "dir": "↓ 1,36% US$681,09",
-          "cls": "dn"
-        },
-        {
-          "asset": "SPY",
-          "dir": "↓ 0,48% US$752,10",
-          "cls": "dn"
-        },
-        {
-          "asset": "AAPL (after hours)",
-          "dir": "↓ 1%-3%",
-          "cls": "dn"
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "tag": "EE.UU. · Elecciones · Tasas",
-      "tag_class": "tb",
-      "title": "EE.UU. vota hoy: el mercado descuenta un Congreso demócrata",
-      "brief": "Se renuevan 435 bancas de Diputados y 35 del Senado. Polymarket da 77% a que los demócratas ganen ambas cámaras; UBS, 50%. El oro rebota 1,65%.",
-      "tldr": "Un Congreso opositor suma escrutinio a la IA y frena la agenda fiscal de Trump: más volatilidad sectorial que direccional.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Hoy son las <strong>elecciones de medio término</strong>: se renuevan las <strong>435 bancas</strong> de la Cámara y <strong>35 del Senado</strong>. <strong>Polymarket asigna 77%</strong> a que los demócratas controlen ambas cámaras, mientras <strong>UBS lo ubica en 50%</strong> (DiarioBitcoin/Ámbito). El <strong>GLD rebotó 1,65% a US$361,65</strong> (Finnhub) tras caer 3,5% el viernes. El último <strong>UST 10Y en FRED es 4,94% (30/10)</strong>.",
-      "contexto": "El foco del mercado está en un posible mayor escrutinio a las empresas de IA, la negociación presupuestaria post-elección y la respuesta de los Treasuries. Los resultados se conocerán durante la madrugada del miércoles; un Senado disputado podría extender la incertidumbre.",
-      "impacto": [
-        {
-          "asset": "GLD",
-          "dir": "↑ 1,65% US$361,65",
+          "asset": "AMD (premarket)",
+          "dir": "↑ 7%-8%",
           "cls": "up"
         },
         {
-          "asset": "UST 10Y (30/10)",
-          "dir": "→ 4,94%",
-          "cls": "neu"
+          "asset": "QQQ (cierre 3/11)",
+          "dir": "↑ 0,62% US$685,28",
+          "cls": "up"
         },
         {
-          "asset": "Fut. Dow (premarket)",
-          "dir": "↓ 0,73%",
-          "cls": "dn"
+          "asset": "Semis",
+          "dir": "↑",
+          "cls": "up"
         }
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Calma afuera vs. presión local",
-      "texto": "El lunes el Dow subió 0,4% y el crudo cayó 7%, pero el riesgo país sumó 18pb y el Merval cayó 3,3%: el spread argentino ya no se explica por el contexto global (~568pb de componente local según GMA)."
+      "label": "Wall Street sube, Argentina no",
+      "texto": "El SPY cerró +0,3% y el QQQ +0,6% el martes, y los futuros recuperan tras los midterms, pero el riesgo país sumó 26pb hasta 831pb: el desacople con el mundo se profundiza por tercera rueda."
     },
     {
-      "label": "Reservas suben vs. BCRA ausente",
-      "texto": "Las reservas brutas saltaron US$1.879M por encajes y fin de mes, pero el BCRA no compró en la primera rueda de noviembre mientras el mayorista subió 0,75%: la acumulación genuina vuelve a quedar en duda."
+      "label": "Acciones rebotan, bonos caen",
+      "texto": "BMA y YPFD subieron ~3,5% y el Merval cortó seis bajas, mientras los Globales largos cayeron hasta 1,65%. Señal de cobertura de posiciones en acciones, no de mejora del crédito."
     },
     {
-      "label": "Beat de Apple vs. márgenes",
-      "texto": "Apple superó en ingresos, EPS e iPhone, pero el mercado vende por la guía de margen 45%-46%: igual que con Intel y Amazon, el costo de la IA y las memorias pesa más que el crecimiento."
+      "label": "Gobierno dividido vs. Fed",
+      "texto": "Un Congreso demócrata recorta el margen para estímulo fiscal, lo que en teoría ayuda a la Fed a bajar tasas; pero el 10Y sigue en 4,91% y el mercado todavía no lo reflejó en la curva."
     }
   ],
   "correlaciones": [
     {
-      "par": "Riesgo país vs. Dow / crudo",
-      "texto": "Desacople: el EMBI sube 18pb en un día de alza del Dow y baja del crudo; Argentina dejó de operar como beta global y pasó a cotizar riesgo propio."
-    },
-    {
-      "par": "Crudo vs. petroleras argentinas / Fed",
-      "texto": "La baja de ~7% del crudo por Irán alivia la inflación y la presión sobre la Fed, pero golpea a VIST/YPF y a las exportaciones de Vaca Muerta."
+      "par": "Riesgo país vs. S&P 500",
+      "texto": "Correlación rota: el EMBI argentino sube 90pb en tres ruedas con el S&P 500 estable o en alza; Argentina cotiza riesgo propio."
     },
     {
       "par": "CCL vs. Globales",
-      "texto": "CCL a $1.670 (+0,7%) con Globales en baja de hasta 3%: la salida de cartera se canaliza vía contado con liqui y el canje CCL/MEP se estira a ~5,7%."
+      "texto": "CCL en $1.668,8 y canje CCL/MEP de 5,5% mientras caen los Globales: la salida de cartera se hace por contado con liqui."
+    },
+    {
+      "par": "Oro (GLD) vs. dólar",
+      "texto": "GLD -0,66% a US$359,26 con el dólar firme (USD/JPY 158,4, EUR/USD 1,119): el resultado electoral no disparó demanda de refugio."
     }
   ],
-  "bottom_line": "Día de <strong>elecciones de medio término en EE.UU.</strong>, con el mercado descontando un Congreso demócrata (77% en Polymarket) y una sesión de ayer dividida: <strong>crudo -7%</strong> por señales de diálogo con Irán, Dow +0,4% y <strong>Nasdaq -1,1%</strong>, seguido de un <strong>Apple que superó estimaciones pero cae after hours</strong> por la guía de márgenes; hoy reporta AMD. <strong>Para Argentina</strong>, el dato preocupante es el desacople: el <strong>riesgo país perforó los 800 y cerró en 805pb</strong> (máximo de 2026), el <strong>Merval cayó 3,3%</strong> (sexta baja seguida) y los Globales largos perdieron hasta 3% en un día sin pánico global. El <strong>mayorista subió a $1.545,5</strong> sin compras del BCRA y el <strong>CCL llega a $1.670</strong> (brecha 8,1%). Con el spread explicado mayormente por factores locales y los vencimientos de enero sin financiamiento de mercado, mantenemos <strong>duration corta en pesos con cobertura vía CCL</strong> y cautela en Globales largos; el AL30/GD30 corto aguanta mejor que el tramo 2035-2038."
+  "bottom_line": "Los <strong>demócratas ganaron Cámara y Senado</strong> en las elecciones de medio término: el mercado lo tenía descontado y, tras una caída inicial de los futuros, el <strong>S&amp;P 500 opera +0,2%</strong> esta mañana, sostenido por el <strong>balance de AMD</strong> (ingresos +45%, guía de US$17.000M, acción +7% en el premarket). Desde enero habrá gobierno dividido en EE.UU., con menos margen para estímulo fiscal por ley. <strong>Para Argentina</strong>, el contexto externo no explica lo que pasa: el <strong>riesgo país subió a 831pb</strong> (+26pb, máximo de 2026 y +90pb en tres ruedas), los <strong>Globales largos siguieron cayendo</strong> (GD35 -1,4%, GD38 -1,65%) y el <strong>CCL en $1.668,8</strong> se despega del MEP (canje 5,5%), con el <strong>mayorista en $1.551</strong>. El rebote de bancos y YPF no cambia el diagnóstico: el mercado exige una señal concreta sobre el financiamiento de los vencimientos de enero. Mantenemos <strong>duration corta en pesos con cobertura vía CCL</strong> y cautela en el tramo largo de Globales (2035-2041)."
 }
