@@ -6,7 +6,7 @@
 
 <tr><td style="background:#0f1f17;padding:24px 30px;">
   <span style="color:#ffffff;font-size:20px;font-weight:bold;">Consultora Amberes</span><br>
-  <span style="color:#00E880;font-size:14px;">Briefing Diario — 11/11/2026</span>
+  <span style="color:#00E880;font-size:14px;">Briefing Diario — 12/11/2026</span>
 </td></tr>
 
 <!--DRAFT_START-->
@@ -18,7 +18,7 @@
 
 <tr><td style="padding:14px 30px 0 30px;">
   <div style="background:#e7f3ff;border:1px solid #b8daff;border-radius:6px;padding:10px 14px;color:#0c5460;font-size:12px;">
-    <strong>Nota para Pedro:</strong> borrador del <strong>miércoles 11/11</strong> (~09:30 ARG). <strong>Lunes 9 y martes 10 el mercado local estuvo cerrado</strong> (feriado nacional + feriado bancario por la visita del Papa); hoy el feriado rige solo en PBA, BYMA debería operar. Riesgo país 873 (9/11) y 860 (10/11) de argentinadatos; Infobae da 853 al 10/11, usé el de la API. Precios data912 de bonos probablemente son del último cierre local (6/11): el GD29 +3,53% es raro, lo dejé afuera. <strong>Oficial ($1.570) y mayorista ($1.545,5) en dolarapi tienen fecha 05/11</strong>, la API no los actualizó. ETFs (Finnhub) y FX (Frankfurter) son cierre del martes 10/11. FRED tiene el 10Y en 4,88% al <strong>9/11</strong>; el ~5% del 10/11 es de prensa. <strong>CPI:</strong> no encontré la cifra exacta de octubre con fuente confiable fechada, solo que superó el consenso; no puse números. Tampoco incluí la tasa de la Fed ni los dichos de Waller (una sola fuente). <strong>Fear &amp; Greed 34 (Miedo) en vivo</strong> (endpoint del dashboard); <strong>Put/Call 0,80 y AAII 36,9% se repiten</strong> sin dato nuevo. LECAPs: la API solo trae precios, sin TIR, no incluidas. Merval no incluido (sin rueda local).
+    <strong>Nota para Pedro:</strong> borrador del <strong>jueves 12/11</strong> (~09:40 ARG). Riesgo país 852 (11/11) y 853 (10/11) de argentinadatos; el 860 del 10/11 que usé ayer fue revisado a 853. Bonos data912 = cierre de la reapertura local del 11/11 (sin TIR, solo precios). Mayorista ($1.544) y oficial ($1.570) son del 11/11; MEP/CCL/blue de esta mañana. ETFs (Finnhub) y FX (Frankfurter) son cierre del miércoles 11/11. <strong>FRED tiene el 10Y en 4,88% al 9/11</strong>; el ~4,98% del 10/11 es de prensa (CNN). El caso Nvidia está en desarrollo: <strong>sin decisión oficial del directorio</strong> al momento de escribir; el rango -5%/-8% premarket varía según la hora del reporte. Licitación: datos de Infobae, El Argentino Diario y La Prensa (11-12/11). <strong>Fear &amp; Greed 38 (Miedo)</strong> desde /api/markets del dashboard; <strong>Put/Call 0,80 y AAII 36,9% se repiten</strong> sin dato nuevo. LECAPs: la API solo trae precios, no incluidas.
   </div>
 </td></tr>
 <!--DRAFT_END-->
@@ -26,61 +26,68 @@
 <tr><td style="padding:20px 30px;">
   <h2 style="color:#0f1f17;font-size:16px;margin:0 0 8px 0;">Tono del día</h2>
   <p style="color:#333;font-size:14px;line-height:1.5;margin:0;">
-    <strong>Risk-off global, alivio local.</strong> El CPI caliente reaviva las apuestas de suba de la Fed y golpea al oro; Argentina reabre tras el feriado con el riesgo país en baja.<br>
-    <span style="color:#888;font-size:12px;">Fear &amp; Greed: 34 (Miedo) · Put/Call: 0,8 (ref.) · AAII Bulls: 36,9% (ref.)</span>
+    <strong>Neutral: rebote de la IA, freno por Nvidia.</strong> Wall Street rebotó con la IA, pero la crisis en la cúpula de Nvidia enfría los futuros; Argentina estabiliza el riesgo país en 852pb.<br>
+    <span style="color:#888;font-size:12px;">Fear &amp; Greed: 38 (Miedo) · Put/Call: 0,8 (ref.) · AAII Bulls: 36,9% (ref.)</span>
   </p>
 </td></tr>
 
 <tr><td style="padding:0 30px 20px 30px;">
   <h2 style="color:#0f1f17;font-size:16px;margin:0 0 12px 0;">Drivers del día</h2>
+  <div style="border-left:3px solid #2463a8;padding:10px 14px;margin-bottom:12px;background:#f8f9fa;">
+    <span style="display:inline-block;background:#0f1f17;color:#00E880;font-size:10px;font-weight:bold;padding:1px 6px;border-radius:3px;margin-right:6px;">ARG</span><span style="font-size:11px;color:#2463a8;font-weight:bold;">ARGENTINA · TESORO · LICITACIÓN</span><br>
+    <strong style="font-size:14px;color:#0f1f17;">El Tesoro renovó 84% efectivo y volvió a inyectar ~$1,7 billones</strong>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">En la licitación del miércoles 11/11 el Tesoro recibió <strong>ofertas por $11,6 billones</strong> y adjudicó <strong>$8,87 billones</strong> contra vencimientos de ~$10,5–10,6 billones. La Secretaría de Finanzas comunicó un <strong>rollover de 103,07%</strong>, pero <strong>excluyó del cálculo los Boncer TX26 y TX28</strong>, que liquidaban ese día; incluyéndolos, el rollover efectivo queda en <strong>~84%</strong> (Puente, Bavsa, Infobae). La operación <strong>liberó cerca de $1,7 billones</strong> y, según Puente, es la primera licitación expansiva desde agosto.</p>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">El Tesoro priorizó no convalidar tasas más altas en un mercado líquido y aceptó dejar pesos sueltos. La pregunta es a dónde van: si se quedan en caución y LECAPs cortas, bajan las tasas; si se dolarizan, presionan un CCL que ya opera con canje de 5,5% contra el MEP.</p>
+    <p style="font-size:12px;color:#666;margin:6px 0 0 0;"><em>Impacto:</em> Rollover efectivo: ~84% · Liquidez inyectada: ↑ ~$1,7 bn · Adjudicado: $8,87 bn</p>
+  </div>
   <div style="border-left:3px solid #1e8449;padding:10px 14px;margin-bottom:12px;background:#f8f9fa;">
     <span style="display:inline-block;background:#0f1f17;color:#00E880;font-size:10px;font-weight:bold;padding:1px 6px;border-radius:3px;margin-right:6px;">ARG</span><span style="font-size:11px;color:#1e8449;font-weight:bold;">ARGENTINA · BONOS · RIESGO PAÍS</span><br>
-    <strong style="font-size:14px;color:#0f1f17;">El riesgo país baja a 860pb y el mercado local reabre tras dos días de feriado</strong>
-    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">El <strong>riesgo país cerró el martes 10/11 en 860pb</strong> (argentinadatos), <strong>-13pb</strong> en el día y <strong>-79pb desde el pico de 939pb del viernes 6/11</strong>, su nivel más alto desde octubre de 2025. El lunes 9 (feriado nacional) y el martes 10 (feriado bancario) <strong>el mercado local estuvo cerrado por la visita del Papa León XIV</strong>, así que los bonos operaron solo en el exterior; Infobae reporta que los <strong>Globales subieron ~0,36% en promedio</strong> el martes. Últimos precios locales data912: <strong>GD30 US$53,13</strong>, <strong>GD35 US$68,09</strong>, AL30 US$51,30, AL35 US$63,19. Hoy reabre BYMA (el feriado del miércoles rige solo en la Provincia de Buenos Aires).</p>
-    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">El rebote es más alivio técnico que cambio de tendencia: Infobae y Rosario Finanzas ubican el castigo de la semana pasada en las dudas sobre el programa de cara a 2027 y el respaldo de EE.UU., en un contexto global que ahora se endurece con el CPI. La rueda de hoy es la primera prueba local para ver si los precios convergen al alivio del exterior.</p>
-    <p style="font-size:12px;color:#666;margin:6px 0 0 0;"><em>Impacto:</em> Riesgo País: ↓ 860pb (-13) · GD30: US$53,13 · GD35: US$68,09</p>
+    <strong style="font-size:14px;color:#0f1f17;">Riesgo país estable en 852pb; el tramo largo lidera la recuperación</strong>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">El <strong>riesgo país cerró el 11/11 en 852pb</strong> (argentinadatos), <strong>-1pb</strong> contra 853 del 10/11 y <strong>-87pb desde el máximo de 939pb del 6/11</strong>. En la reapertura de BYMA los bonos largos lideraron (data912): <strong>GD35 US$69,37 (+1,88%)</strong>, <strong>GD38 US$73,85 (+2,88%)</strong>, <strong>AL35 US$64,40 (+1,91%)</strong>; el tramo corto casi sin cambios: <strong>GD30 US$53,25 (+0,23%)</strong>, AL30 US$51,52 (+0,43%) y GD29 US$53,50 (-0,85%). El <strong>Merval cayó 0,60% a 83.586 puntos</strong> (El Cronista). Con el cash de Treasuries cerrado por Veterans Day, la referencia externa fue limitada.</p>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">Morgan Stanley publicó que la venta de deuda argentina &ldquo;fue demasiado lejos&rdquo; y destacó el tramo largo de la curva, que es justamente el que más rebotó. Aun así, el riesgo país sigue lejos de los niveles de fines de octubre y los bonos acumulan una caída cercana al 20% desde máximos.</p>
+    <p style="font-size:12px;color:#666;margin:6px 0 0 0;"><em>Impacto:</em> Riesgo País: ↓ 852pb (-1) · GD35: ↑ 1,88% US$69,37 · Merval: ↓ 0,60%</p>
   </div>
   <div style="border-left:3px solid #b7950b;padding:10px 14px;margin-bottom:12px;background:#f8f9fa;">
     <span style="display:inline-block;background:#0f1f17;color:#00E880;font-size:10px;font-weight:bold;padding:1px 6px;border-radius:3px;margin-right:6px;">ARG</span><span style="font-size:11px;color:#b7950b;font-weight:bold;">ARGENTINA · DÓLAR · BRECHA</span><br>
-    <strong style="font-size:14px;color:#0f1f17;">CCL en $1.665 con el canje contra el MEP cerca del 5%</strong>
-    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">Cotizaciones dolarapi de esta mañana: <strong>MEP $1.587,9</strong>, <strong>CCL $1.664,9</strong>, <strong>blue $1.555</strong> y cripto $1.646,7. El <strong>canje CCL/MEP queda en ~4,8%</strong> y la brecha del CCL contra el <strong>mayorista ($1.545,5)</strong> en <strong>~7,7%</strong>. El oficial minorista figura en <strong>$1.570</strong> (último dato cargado en la API).</p>
-    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">Con el mercado de cambios cerrado lunes y martes, el CCL y el cripto absorbieron la demanda de cobertura. Si el mayorista abre hoy sin cambios, el desarme del canje es la señal a mirar: una baja confirmaría el alivio del riesgo país; si se sostiene arriba del 5%, la dolarización de carteras sigue vigente.</p>
-    <p style="font-size:12px;color:#666;margin:6px 0 0 0;"><em>Impacto:</em> CCL: $1.664,9 · MEP: $1.587,9 · Canje CCL/MEP: ~4,8%</p>
+    <strong style="font-size:14px;color:#0f1f17;">El canje CCL/MEP se amplía a 5,5% con el CCL en $1.665</strong>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">Cotizaciones dolarapi de esta mañana: <strong>MEP $1.578,3</strong>, <strong>CCL $1.664,9</strong>, <strong>blue $1.570</strong> y cripto $1.655,9. El <strong>mayorista cerró el 11/11 en $1.544</strong> y el oficial minorista en <strong>$1.570</strong>. El <strong>canje CCL/MEP sube a ~5,5%</strong> (desde ~4,8% ayer) y la brecha del CCL contra el mayorista queda en <strong>~7,8%</strong>.</p>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">La baja del MEP con el CCL quieto muestra que la presión está en la salida de pesos al exterior, no en el dólar local. Con $1,7 billones extra de la licitación, el canje es la variable a seguir esta semana.</p>
+    <p style="font-size:12px;color:#666;margin:6px 0 0 0;"><em>Impacto:</em> CCL: $1.664,9 · MEP: $1.578,3 · Canje CCL/MEP: ↑ ~5,5%</p>
+  </div>
+  <div style="border-left:3px solid #c0392b;padding:10px 14px;margin-bottom:12px;background:#f8f9fa;">
+    <span style="display:inline-block;background:#0f1f17;color:#00E880;font-size:10px;font-weight:bold;padding:1px 6px;border-radius:3px;margin-right:6px;">USA</span><span style="font-size:11px;color:#c0392b;font-weight:bold;">EE.UU. · ACCIONES · NVIDIA</span><br>
+    <strong style="font-size:14px;color:#0f1f17;">Rebote liderado por la IA y caída de Nvidia en el premarket por su CEO</strong>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">El miércoles 11/11 Wall Street rebotó: <strong>SPY +1,32% a US$759,81</strong>, <strong>QQQ +2,31% a US$690,38</strong> e IWM +0,89% (Finnhub), con <strong>CoreWeave +~25%</strong> tras subir su guía de ingresos 2026. Hoy jueves, los <strong>futuros del Nasdaq 100 caen ~0,6%</strong> y los del S&amp;P ~0,3% (Bloomberg) porque <strong>el directorio de Nvidia discute el futuro de Jensen Huang</strong> tras reportes del WSJ y el NYT sobre su vida personal. <strong>Nvidia cae entre 5% y 8% en el premarket</strong>; no hay decisión oficial del directorio.</p>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">Bernstein bajó la calificación de Nvidia y recortó su precio objetivo a US$200 desde US$400. AMD y Broadcom suben en el premarket. Si Huang deja el cargo, el golpe al Nasdaq puede borrar el rebote del miércoles y afectar a los CEDEARs tecnológicos que pesan en carteras locales.</p>
+    <p style="font-size:12px;color:#666;margin:6px 0 0 0;"><em>Impacto:</em> SPY: ↑ 1,32% US$759,81 · QQQ: ↑ 2,31% US$690,38 · NVDA premarket: ↓ 5%-8%</p>
   </div>
   <div style="border-left:3px solid #2463a8;padding:10px 14px;margin-bottom:12px;background:#f8f9fa;">
-    <span style="display:inline-block;background:#0f1f17;color:#00E880;font-size:10px;font-weight:bold;padding:1px 6px;border-radius:3px;margin-right:6px;">USA</span><span style="font-size:11px;color:#2463a8;font-weight:bold;">EE.UU. · INFLACIÓN · FED</span><br>
-    <strong style="font-size:14px;color:#0f1f17;">El CPI de octubre supera lo esperado y el mercado apuesta a una suba de la Fed</strong>
-    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">El <strong>CPI de octubre</strong> publicado el martes salió <strong>por encima de lo esperado</strong> y reforzó las apuestas a una <strong>suba de tasas de la Fed en diciembre</strong> (Motley Fool, Saxo, Bloomberg). <strong>SPY -0,37% a US$749,92</strong> y <strong>QQQ -0,68% a US$674,76</strong> (Finnhub), después de que el S&amp;P 500 subiera 2,35% el lunes; <strong>Nvidia cayó más de 5%</strong>. El <strong>UST 10Y</strong> estaba en <strong>4,88%</strong> al 9/11 (FRED) y la prensa lo ubica cerca de <strong>5%</strong> al cierre del 10/11. <strong>Hoy, Veterans Day: el mercado de bonos cash de EE.UU. está cerrado</strong>; las acciones operan normalmente.</p>
-    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">Bloomberg señala que los futuros de bonos anticipan que el 10Y supere el 5% cuando reabra el cash. Un 10Y en 5% con la Fed subiendo encarece el fondeo de emergentes y compite directamente con el rendimiento de los Globales.</p>
-    <p style="font-size:12px;color:#666;margin:6px 0 0 0;"><em>Impacto:</em> SPY: ↓ 0,37% US$749,92 · QQQ: ↓ 0,68% US$674,76 · UST 10Y: ↑ 4,88% (9/11)</p>
-  </div>
-  <div style="border-left:3px solid #b7950b;padding:10px 14px;margin-bottom:12px;background:#f8f9fa;">
-    <span style="display:inline-block;background:#0f1f17;color:#00E880;font-size:10px;font-weight:bold;padding:1px 6px;border-radius:3px;margin-right:6px;">INT</span><span style="font-size:11px;color:#b7950b;font-weight:bold;">INTERNACIONAL · ORO · DÓLAR</span><br>
-    <strong style="font-size:14px;color:#0f1f17;">El oro cae 2,7% con el dólar más firme y las tasas en alza</strong>
-    <p style="font-size:13px;color:#444;margin:6px 0 0 0;"><strong>GLD -2,68% a US$369,36</strong> y <strong>USO -0,85% a US$141,45</strong> (Finnhub, cierre 10/11). FX Frankfurter (10/11): <strong>EUR/USD 1,1214</strong>, <strong>USD/JPY 158,18</strong> y <strong>USD/BRL 5,5517</strong>. Según Reuters vía MarketScreener, el oro spot cayó cerca de 3% por el dólar y las tasas más altas tras el CPI.</p>
-    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">El real arriba de 5,55 sigue siendo un factor de presión para Argentina por el canal comercial y por el precio relativo con Brasil. El yen en 158 mantiene viva la posibilidad de intervención de Japón.</p>
-    <p style="font-size:12px;color:#666;margin:6px 0 0 0;"><em>Impacto:</em> GLD: ↓ 2,68% US$369,36 · USD/BRL: 5,5517 · USO: ↓ 0,85% US$141,45</p>
+    <span style="display:inline-block;background:#0f1f17;color:#00E880;font-size:10px;font-weight:bold;padding:1px 6px;border-radius:3px;margin-right:6px;">USA</span><span style="font-size:11px;color:#2463a8;font-weight:bold;">EE.UU. · FED · TASAS</span><br>
+    <strong style="font-size:14px;color:#0f1f17;">El mercado da ~90% de chances a una suba de la Fed en diciembre</strong>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">El <strong>CPI de octubre subió 0,4% m/m</strong> (esperado 0,3%) y el <strong>núcleo 0,3%</strong> (esperado 0,2%). Según la prensa, el <strong>10Y cerró el martes en ~4,98%</strong> y llegó a superar el 5% (FRED tiene <strong>4,88% al 9/11</strong>); ayer el cash estuvo cerrado por Veterans Day. La CME FedWatch asigna <strong>~87%-90% a una suba en diciembre</strong>, y Lorie Logan (Dallas Fed) pidió al menos dos subas más. <strong>GLD -1,13% a US$365,17</strong>, <strong>USO +0,01%</strong>; FX Frankfurter (11/11): <strong>EUR/USD 1,1127</strong>, <strong>USD/JPY 159,23</strong>, <strong>USD/BRL 5,5565</strong>.</p>
+    <p style="font-size:13px;color:#444;margin:6px 0 0 0;">Una Fed que sube con el 10Y en 5% compite con el rendimiento de los Globales y encarece el fondeo emergente. El real en 5,56 mantiene la presión cambiaria regional.</p>
+    <p style="font-size:12px;color:#666;margin:6px 0 0 0;"><em>Impacto:</em> UST 10Y: ~4,98% (10/11, prensa) · GLD: ↓ 1,13% US$365,17 · USD/BRL: 5,5565</p>
   </div>
 </td></tr>
 
 <tr><td style="padding:0 30px 20px 30px;">
   <h2 style="color:#0f1f17;font-size:16px;margin:0 0 10px 0;">Tensiones</h2>
-  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Alivio local vs. Fed más dura</strong> — El riesgo país bajó 79pb en dos ruedas justo cuando el CPI empuja al 10Y hacia el 5%. Si la Fed sube en diciembre, el alivio argentino queda expuesto a un contexto global menos amigable.</p>
-  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Precios locales viejos</strong> — Con BYMA cerrado lunes y martes, los precios locales de los bonos no reflejan el rebote del exterior. La rueda de hoy puede mostrar saltos de arbitraje que no son información nueva.</p>
-  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Real débil y canje alto</strong> — El USD/BRL en 5,55 y el canje CCL/MEP cerca del 5% presionan el tipo de cambio por dos canales a la vez: competitividad y dolarización de carteras.</p>
+  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Pesos nuevos vs. canje alto</strong> — El Tesoro liberó ~$1,7 billones justo cuando el canje CCL/MEP se estira a 5,5%. Si esos pesos buscan cobertura, el alivio del riesgo país puede no trasladarse al dólar.</p>
+  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Rebote IA vs. riesgo Nvidia</strong> — El miércoles la IA empujó al Nasdaq +2,3%, pero hoy la principal acción del sector cae hasta 8% por un tema de gobierno corporativo, no de demanda. El rally queda atado a una sola compañía.</p>
+  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Curva larga argentina vs. Fed</strong> — Los Globales largos rebotan casi 2%-3% mientras el mercado descuenta una suba de la Fed. La recuperación del tramo largo es la más expuesta si el 10Y supera el 5% al reabrir.</p>
 </td></tr>
 
 <tr><td style="padding:0 30px 20px 30px;">
   <h2 style="color:#0f1f17;font-size:16px;margin:0 0 10px 0;">Correlaciones</h2>
-  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>UST 10Y vs. riesgo país</strong> — Esta vez se desacoplaron: el 10Y subió hacia el 5% y el riesgo país igual bajó 13pb. El rebote argentino viene de un castigo propio previo, no del contexto global.</p>
-  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Oro (GLD) vs. tasas / dólar</strong> — GLD -2,7% con tasas al alza y EUR/USD bajando a 1,1214: el oro vuelve a moverse inverso a las tasas reales.</p>
-  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Nasdaq (QQQ) vs. S&P 500 (SPY)</strong> — QQQ -0,68% contra SPY -0,37%: la tecnología, con Nvidia -5%, es la más sensible a una Fed que sube.</p>
+  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Riesgo país vs. Merval</strong> — Riesgo país estable (-1pb) y bonos largos en alza, pero Merval -0,6%: el rebote es de crédito, no de acciones.</p>
+  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Oro (GLD) vs. tasas / dólar</strong> — GLD -1,13% con apuestas de suba de la Fed y EUR/USD en 1,1127: el oro sigue moviéndose inverso a las tasas reales.</p>
+  <p style="font-size:13px;color:#444;margin:0 0 8px 0;"><strong>Nasdaq (QQQ) vs. S&amp;P 500 (SPY)</strong> — QQQ +2,31% vs SPY +1,32% el miércoles; hoy los futuros se dan vuelta con el Nasdaq cayendo el doble que el S&P. La beta tecnológica corta para los dos lados.</p>
 </td></tr>
 
 <tr><td style="padding:0 30px 24px 30px;">
   <h2 style="color:#0f1f17;font-size:16px;margin:0 0 10px 0;">Bottom line</h2>
   <p style="font-size:13px;color:#444;line-height:1.6;margin:0;">
-    El <strong>CPI de octubre por encima de lo esperado</strong> cambió el tono global: el mercado pasa a descontar una <strong>suba de la Fed en diciembre</strong>, el <strong>10Y se acerca al 5%</strong>, el <strong>oro cae 2,7%</strong> y el Nasdaq lidera las bajas. Hoy el cash de bonos de EE.UU. está cerrado por Veterans Day. <strong>Para Argentina</strong>, el <strong>riesgo país bajó a 860pb</strong> (-79pb desde el pico de 939 del 6/11) con operatoria solo en el exterior, y hoy el mercado local reabre tras dos días de feriado: la rueda va a mostrar si los precios locales convergen al alivio. El <strong>CCL en $1.665</strong> con canje cercano al 5% indica que la demanda de cobertura sigue firme. Con una Fed más dura y el real débil, mantenemos <strong>duration corta en pesos con cobertura vía CCL</strong> y prudencia en Globales largos hasta ver si el riesgo país consolida debajo de 850pb.
+    El tono global quedó partido: el miércoles la IA empujó un rebote fuerte (<strong>QQQ +2,31%</strong>), pero hoy la <strong>crisis en la conducción de Nvidia</strong> tira los futuros del Nasdaq y el cash de Treasuries reabre con la Fed camino a una <strong>suba en diciembre (~90% de probabilidad)</strong> y el 10Y cerca del 5%. <strong>Para Argentina</strong>, el <strong>riesgo país se estabilizó en 852pb</strong> (-87pb desde el pico) con el tramo largo liderando, pero la <strong>licitación fue expansiva</strong> (rollover efectivo ~84%, ~$1,7 billones liberados) y el <strong>canje CCL/MEP se amplió a 5,5%</strong>. Mantenemos <strong>duration corta en pesos con cobertura vía CCL</strong>; en Globales, el rebote del tramo largo es atractivo pero sensible a un 10Y arriba de 5%, así que preferimos esperar consolidación del riesgo país debajo de 850pb.
   </p>
 </td></tr>
 
