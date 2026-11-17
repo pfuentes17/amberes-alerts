@@ -688,7 +688,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
       <h1>Inflación Breakeven — Nominal vs CER</h1>
     </div>
     <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);text-align:right">
-      Curva CER interpolada logarítmicamente · TEM nominal calculada desde VF<br>
+      CER BCRA ya publicado + curva LECAP/BONCAP · liquidación T+1<br>
       <button onclick="bkevRender()" style="background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3);color:#34d399;border-radius:4px;padding:2px 9px;font-family:'IBM Plex Mono',monospace;font-size:10px;cursor:pointer">↻ Recalcular</button>
     </div>
   </div>
@@ -702,22 +702,22 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     </div>
     <div style="width:1px;height:38px;background:var(--bdr)"></div>
     <div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--mu);margin-bottom:3px">Método interpolación</div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#34d399">Regresión log. CER</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--mu);margin-bottom:3px">Método</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;color:#34d399">CER publicado + IPC por conocer</div>
       <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim)" id="bk-regfn-status">cargando curva CER…</div>
     </div>
     <div style="width:1px;height:38px;background:var(--bdr)"></div>
     <div>
       <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--mu);margin-bottom:3px">Interpretación</div>
       <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);line-height:1.7">
-        <span style="color:var(--gr)">inf. esperada &gt; breakeven</span> → conviene <strong style="color:var(--or)">CER</strong><br>
-        <span style="color:var(--rd)">inf. esperada &lt; breakeven</span> → conviene <strong style="color:var(--cy)">Nominal</strong>
+        <span style="color:var(--gr)">REM &gt; breakeven</span> → conviene <strong style="color:var(--or)">CER</strong><br>
+        <span style="color:var(--rd)">REM &lt; breakeven</span> → conviene <strong style="color:var(--cy)">Nominal</strong>
       </div>
     </div>
     <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);background:var(--s2);border:1px solid var(--bdr);border-radius:5px;padding:6px 12px;line-height:1.8">
       <strong style="color:#34d399">Fórmula:</strong><br>
-      breakeven = (1 + TEM<sub>nom</sub>) / (1 + TIR<sub>real</sub>) − 1<br>
-      TIR<sub>real</sub> interpolada entre los ZC CER (mes = 30 días)
+      π tal que precio CER = 100·CER<sub>publicado</sub>·(1+π)<sup>días sin CER/30</sup> / CER₀<br>
+      ÷ (1+TEM<sub>nom</sub>)<sup>plazo/30</sup> · TEM<sub>nom</sub> = curva LECAP al mismo plazo
     </div>
   </div>
 
@@ -725,9 +725,9 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   <div class="kpis">
     <div class="kpi"><div class="kpi-lbl">Mayor breakeven</div><div class="kpi-val" id="bk-k1" style="color:var(--cy)">—</div><div class="kpi-sub" id="bk-k1s">más favorable al nominal</div></div>
     <div class="kpi"><div class="kpi-lbl">Menor breakeven</div><div class="kpi-val" id="bk-k2" style="color:var(--or)">—</div><div class="kpi-sub" id="bk-k2s">más favorable al CER</div></div>
-    <div class="kpi"><div class="kpi-lbl" id="bk-k3l">Vs IPC último</div><div class="kpi-val" id="bk-k3" style="color:var(--gr)">—</div><div class="kpi-sub">nominales bajo IPC actual</div></div>
-    <div class="kpi"><div class="kpi-lbl">Breakeven promedio</div><div class="kpi-val" id="bk-k4" style="color:#34d399">—</div><div class="kpi-sub">media curva completa</div></div>
-    <div class="kpi"><div class="kpi-lbl">Puntos en curva CER</div><div class="kpi-val" id="bk-k5" style="color:var(--pu)">—</div><div class="kpi-sub">pares interpolados</div></div>
+    <div class="kpi"><div class="kpi-lbl" id="bk-k3l">Vs IPC último</div><div class="kpi-val" id="bk-k3" style="color:var(--gr)">—</div><div class="kpi-sub">bonos CER con breakeven bajo el REM</div></div>
+    <div class="kpi"><div class="kpi-lbl">Breakeven promedio</div><div class="kpi-val" id="bk-k4" style="color:#34d399">—</div><div class="kpi-sub">promedio de los bonos CER</div></div>
+    <div class="kpi"><div class="kpi-lbl">CER con pago ya conocido</div><div class="kpi-val" id="bk-k5" style="color:var(--pu)">—</div><div class="kpi-sub">funcionan como nominales</div></div>
   </div>
 
   <div class="main-grid">
@@ -735,21 +735,20 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     <div class="tcol">
       <div class="tw">
         <div class="tw-hdr" style="color:#34d399">
-          Inflación Breakeven por instrumento nominal
+          Inflación breakeven por bono CER (meses de IPC todavía no publicados)
           <span style="color:var(--mu);font-weight:400;margin-left:8px" id="bk-count"></span>
         </div>
         <div class="tbl-wrap"><table>
           <thead><tr>
-            <th>Nominal</th>
+            <th>Bono CER</th>
             <th class="ct">Vto.</th>
             <th>Días</th>
-            <th>TEM nom.</th>
-            <th>TIR real equiv.</th>
-            <th>TEM CER interp.</th>
-            <th>CER ref. usado</th>
+            <th>IPC que cubre</th>
+            <th>TEM nominal<br><span style="color:var(--dim);font-size:8px">mismo plazo</span></th>
             <th style="text-align:center">Breakeven<br><span style="color:var(--dim);font-size:8px">mensual</span></th>
             <th style="text-align:center">Breakeven<br><span style="color:var(--dim);font-size:8px">anualizado</span></th>
-            <th class="ct" id="bk-th-ipc">vs IPC último</th>
+            <th style="text-align:center">REM<br><span style="color:var(--dim);font-size:8px">esos meses</span></th>
+            <th class="ct">vs REM</th>
             <th class="ct">Señal</th>
           </tr></thead>
           <tbody id="bkev-body"></tbody>
@@ -761,7 +760,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     <div class="cpanel">
       <div>
         <div class="ctitle" style="color:#34d399">Curva Breakeven vs Plazo</div>
-        <div class="csub">Inflación mensual implícita de mercado · ordenada por vencimiento · zona verde = CER conviene · zona azul = nominal conviene</div>
+        <div class="csub">Inflación mensual que pricea el mercado para los meses de IPC todavía no publicados · por vencimiento del bono CER · zona verde = CER conviene (REM por encima) · azul = nominal conviene</div>
         <div class="cbox" style="height:320px"><canvas id="bkevChart"></canvas></div>
         <div class="cleg">
           <div class="cli"><div class="cld" style="background:#10b981"></div>Punto verde = CER conviene</div>
@@ -772,10 +771,10 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
       </div>
       <hr class="dv">
       <div>
-        <div class="ctitle" style="color:var(--pu)">Curva CER usada para interpolación</div>
-        <div class="csub">TIR real (%) observada de cada bono ZC CER · base de la interpolación</div>
+        <div class="ctitle" style="color:var(--pu)">Bonos CER con pago ya conocido</div>
+        <div class="csub">El CER que define su pago (vto − 10 hábiles) ya está publicado: rinden una tasa fija · comparación con la LECAP del mismo plazo</div>
         <table class="vt">
-          <thead><tr><th>Bono CER</th><th>Días</th><th>TIR Real</th><th>Tipo</th><th>TEM interp. en curva</th></tr></thead>
+          <thead><tr><th>Bono CER</th><th>Días</th><th>Pago</th><th>TEM</th><th>TEM LECAP</th><th>Dif.</th></tr></thead>
           <tbody id="bkev-cer-body"></tbody>
         </table>
       </div>
@@ -786,7 +785,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
       <div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:#34d399;display:inline-block"></span>CER conviene</div>
       <div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:var(--cy);display:inline-block"></span>Nominal conviene</div>
-      <div class="fml-tag">breakeven = (1+TEM_nom)/(1+TIR_real_interp) − 1 &nbsp;|&nbsp; TIR_real interpolada linealmente entre las TIR observadas de los ZC CER</div>
+      <div class="fml-tag">breakeven = inflación mensual de los días con CER aún no publicado que iguala el bono CER (proyectado) a la curva LECAP del mismo plazo &nbsp;|&nbsp; CER del período 15→15 = IPC de M−2 &nbsp;|&nbsp; ajuste a vto − 10 hábiles (con feriados) &nbsp;|&nbsp; REM = expectativa de mercado (BAND_IPC_DEFAULT)</div>
     </div>
     <div class="fnote">Requiere datos de ambas solapas cargados · Se recalcula con ↻</div>
   </div>
@@ -1417,7 +1416,7 @@ const CER_INSTR=[
   {sym:'TZXD6',tipo:'ZC', cer0:271.0476, vto:'15/12/26',vtoi:'2026-12-15',dur:0.55, resid:100,coupon:0},
   // Agregados 01/09/2026 (ver memoria bonos-dashboard-cer-audit): cer0 = CER BCRA a T-10 hábiles antes de la fecha de emisión
   // (misma convención de prospecto ya usada para los Duales), fecha de emisión tomada de bonistas.com, CER histórico de api.bcra.gob.ar (id 30)
-  {sym:'X29E7',tipo:'ZC', cer0:823.99892290981, vto:'29/01/27',vtoi:'2027-01-29',dur:0.41, resid:100,coupon:0}, // emisión 31/08/26 (LECER)
+  {sym:'X29E7',tipo:'ZC', cer0:822.39537, vto:'29/01/27',vtoi:'2027-01-29',dur:0.41, resid:100,coupon:0}, // emisión 31/08/26 (LECER). CER₀ corregido 17/11/2026: 10 hábiles antes del 31/08 = 14/08 (el 17/08 fue feriado San Martín); antes 823,99892 (CER del 17/08)
   {sym:'TZXM7',tipo:'ZC', cer0:362.5767, vto:'31/03/27',vtoi:'2027-03-31',dur:0.84, resid:100,coupon:0},
   {sym:'TZXY7',tipo:'ZC', cer0:661.18067847314, vto:'31/05/27',vtoi:'2027-05-31',dur:0.74, resid:100,coupon:0}, // emisión 15/12/25
   {sym:'TZX27',tipo:'ZC', cer0:200.388,  vto:'30/06/27',vtoi:'2027-06-30',dur:1.09, resid:100,coupon:0},
@@ -3160,229 +3159,134 @@ function tsimRun(){
 const IPC_ULTIMO = 2.2; // Oct-2026 (INDEC), actualizado 12/11/2026
 let bkevChart = null;
 
+// ═══════════════════════════════════════════════════════════════
+//  BREAKEVEN v2 (17/11/2026) — con CER ya publicado y liquidación T+1
+//  El BCRA publica el CER por adelantado hasta el 15 del mes siguiente. Para cada ZC CER:
+//   · pago al vto = 100 · CER(vto − 10 hábiles) / CER₀
+//   · si CER(vto−10h) ya está publicado → el pago es CONOCIDO: el bono es nominal (se compara con la LECAP)
+//   · si no → breakeven = inflación mensual π de los días todavía no publicados tal que
+//       precio = 100 · CER_último_publicado · (1+π)^(días sin publicar/30) / CER₀ / (1+TEM_nom(plazo))^(plazo/30)
+//     con TEM_nom interpolada de la curva LECAP/BONCAP (desde liquidación). Los días sin publicar dependen de
+//     IPC todavía no difundidos (período 15→15 usa IPC de M−2) → se indica qué meses de IPC cubre.
+//  Antes (v1): TIR real anualizada con el CER de hoy (T−10), que en el tramo corto mezclaba inflación ya conocida
+//  y producía TIR reales absurdas (X30N6 −0,9%, X29E7 −5,5%) → breakevens corto plazo artificialmente altos.
+// ═══════════════════════════════════════════════════════════════
+const FERIADOS_AR = new Set([ // nacionales (incl. puentes) — aproximado, revisar cada año
+  '2026-01-01','2026-02-16','2026-02-17','2026-03-23','2026-03-24','2026-04-02','2026-04-03','2026-05-01','2026-05-25','2026-06-15','2026-06-20',
+  '2026-07-09','2026-07-10','2026-08-17','2026-10-12','2026-11-23','2026-12-07','2026-12-08','2026-12-25',
+  '2027-01-01','2027-02-08','2027-02-09','2027-03-24','2027-03-25','2027-03-26','2027-04-02','2027-05-01','2027-05-25','2027-06-14','2027-06-20',
+  '2027-07-09','2027-08-16','2027-10-11','2027-11-22','2027-12-08','2027-12-25']);
+const MES_C=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+function bkIso(d){ return d.toISOString().slice(0,10); }
+function bkIsBiz(d){ const w=d.getUTCDay(); return w!==0 && w!==6 && !FERIADOS_AR.has(bkIso(d)); }
+function bkAddBiz(iso,n){ const d=new Date(iso+'T00:00:00Z'); const s=n<0?-1:1; let k=Math.abs(n); while(k>0){ d.setUTCDate(d.getUTCDate()+s); if(bkIsBiz(d)) k--; } return bkIso(d); }
+function bkDays(a,b){ return Math.round((new Date(b+'T00:00:00Z')-new Date(a+'T00:00:00Z'))/86400000); }
+function bkIpcMonthOf(iso){ // IPC que define el CER en esa fecha: el período (15 M, 15 M+1] usa IPC de M−1 (el valor del día 15 cierra el período anterior)
+  let y=+iso.slice(0,4), m=+iso.slice(5,7); const d=+iso.slice(8,10);
+  m = d>15 ? m-1 : m-2; while(m<1){ m+=12; y--; } return {y,m};
+}
+function bkYmLabel({y,m}){ return MES_C[m-1]+'-'+String(y).slice(2); }
+let bkCerSerie=null, bkCerSerieTried=false;
+async function bkLoadCerSerie(){
+  if(bkCerSerieTried) return; bkCerSerieTried=true;
+  try{ const r=await fetch('/api/proxy?src=cer-serie'); const j=await r.json(); if(j && j.serie && j.serie.length){ bkCerSerie=j.serie; bkevRender(); } }catch(e){}
+}
+function bkCerAt(iso){ // CER publicado en una fecha (o el último anterior)
+  if(!bkCerSerie) return null; let v=null; for(const x of bkCerSerie){ if(x.fecha<=iso) v=x.valor; else break; } return v;
+}
+
 function bkevRender() {
-  // Verificar que cerRegFn está ajustada (no el fallback x=>0)
-  const testVal = cerRegFn(100);
-  if (!isFinite(testVal) || testVal === 0) {
-    document.getElementById('bk-regfn-status').textContent = '⚠ Curva CER no ajustada aún — esperá o abrí el tab CER';
-    return;
-  }
-  // Datos TF
+  if(!bkCerSerie) bkLoadCerSerie();
+  const st=document.getElementById('bk-regfn-status');
+  const todayIso=bkIso(new Date(Date.UTC(new Date().getFullYear(),new Date().getMonth(),new Date().getDate())));
+  const settle=bkAddBiz(todayIso,1);
+  // ── Curva nominal (LECAP/BONCAP) desde liquidación T+1
   const base = tfData && tfData.length ? tfData : SEED_TF;
-  const tfValid = base.map(d => {
-    const dtm = getDTM(TF_VTO[d.symbol]) ?? d.dtm;
-    const r   = computeTF(d.symbol, d.price) || { tem: d.tem, dtm };
-    return { ...d, dtm, tem: r?.tem ?? d.tem, r };
-  }).filter(d => d.dtm > 3 && d.tem != null && isFinite(d.tem));
-
-  if (!tfValid.length) {
-    document.getElementById('bk-regfn-status').textContent = '⚠ Sin datos TF — abrí el tab Tasa Fija';
-    return;
-  }
-
-  // Mínimo DTM de la curva CER (no extrapolar hacia abajo)
-  const cerZCDtms = CER_INSTR
-    .filter(i => i.tipo === 'ZC')
-    .map(i => getDTM(i.vtoi))
-    .filter(d => d > 0);
-  const cerMinDTM = cerZCDtms.length ? Math.min(...cerZCDtms) : 30;
-  const cerMaxDTM = cerZCDtms.length ? Math.max(...cerZCDtms) : 800;
-
-  // Calcular breakeven para cada nominal
-  const rows = tfValid.sort((a,b)=>a.dtm-b.dtm).map(d => {
-    // Clampear DTM al rango de la curva CER para evitar extrapolación
-    const dtmClamped = Math.max(Math.min(d.dtm, cerMaxDTM), cerMinDTM);
-    const clamped    = dtmClamped !== d.dtm;
-
-    // TIR real ANUAL de la curva CER (interpolada)
-    const tirRealAnual = cerCurveReal(dtmClamped);
-
-    // Convertir a "mes de 30 dias" (misma base que la TEM del nominal: (VF/P)^(30/dtm)-1)
-    // TIR_real_30d = (1 + TIR_real_anual/100)^(30/365) - 1
-    const tirRealMens = (Math.pow(1 + tirRealAnual/100, 30/365) - 1) * 100;
-
-    // Inflación implícita por 30 dias: (1+TEM_nom) / (1+TIR_real_30d) - 1
-    const bkMens  = ((1 + d.tem/100) / (1 + tirRealMens/100) - 1) * 100;
-    const bkAnual = (Math.pow(1 + bkMens/100, 365/30) - 1) * 100;
-    const vsIpc   = bkMens - IPC_ULTIMO;
-
-    return { ...d, tirRealAnual, tirRealMens, bkMens, bkAnual, vsIpc, clamped };
+  const nom = base.map(d=>{ const vto=TF_VTO[d.symbol], vf=VF_MAP[d.symbol]; if(!vto||!vf||!(d.price>0)) return null;
+      const ds=bkDays(settle,vto); if(ds<=2) return null; return {symbol:d.symbol, ds, tem:(Math.pow(vf/d.price,30/ds)-1)*100}; })
+    .filter(Boolean).sort((a,b)=>a.ds-b.ds);
+  if(nom.length<2){ st.textContent='⚠ Sin datos de la curva tasa fija — abrí el tab Tasa Fija'; return; }
+  const temAt=ds=>{ if(ds<nom[0].ds||ds>nom.at(-1).ds) return null;
+    for(let i=1;i<nom.length;i++){ const a=nom[i-1],b=nom[i]; if(ds<=b.ds) return a.tem+(b.tem-a.tem)*(ds-a.ds)/(b.ds-a.ds); } return nom.at(-1).tem; };
+  // ── CER: último publicado (o fallback al CER de hoy T−10 si no cargó la serie)
+  const lastPub = bkCerSerie ? bkCerSerie.at(-1) : (cerOf ? {fecha:todayIso, valor:cerOf} : null);
+  if(!lastPub || !cerPriceMap){ st.textContent='cargando curva CER…'; return; }
+  const remAvg=(a,b)=>{ const v=[]; let {y,m}=a; while(y<b.y||(y===b.y&&m<=b.m)){ v.push(bandIpcDefault(y*100+m)); m++; if(m>12){m=1;y++;} } return v.length?v.reduce((s,x)=>s+x,0)/v.length:null; };
+  const rows=[], known=[];
+  CER_INSTR.filter(i=>i.tipo==='ZC').forEach(i=>{
+    const p=cerPriceMap[i.sym]; const P=p&&(p.c||p.price); if(!(P>0)||!i.cer0) return;
+    const ds=bkDays(settle,i.vtoi); if(ds<=0) return;
+    const tadj=bkAddBiz(i.vtoi,-10);
+    const temNom=temAt(ds);
+    if(tadj<=lastPub.fecha && bkCerSerie){
+      const pay=100*bkCerAt(tadj)/i.cer0; const temK=(Math.pow(pay/P,30/ds)-1)*100;
+      known.push({sym:i.sym, vto:i.vto, ds, pay, P, temK, temNom});
+      return;
+    }
+    if(temNom==null) return; // fuera del tramo cubierto por la curva nominal: no se extrapola
+    const extra=bkDays(lastPub.fecha,tadj);
+    const need=P*Math.pow(1+temNom/100,ds/30)*i.cer0/100/lastPub.valor;
+    const bk=(Math.pow(need,30/extra)-1)*100;
+    const _d1=new Date(lastPub.fecha+'T00:00:00Z'); _d1.setUTCDate(_d1.getUTCDate()+1); const m0n=bkIpcMonthOf(bkIso(_d1)); // primer IPC no incorporado al CER publicado
+    const m1=bkIpcMonthOf(tadj);
+    const rem=remAvg(m0n,m1);
+    rows.push({sym:i.sym, vto:i.vto, vtoi:i.vtoi, ds, extra, temNom, P, bk, bkAnual:(Math.pow(1+bk/100,12)-1)*100,
+      ipcDesde:bkYmLabel(m0n), ipcHasta:bkYmLabel(m1), rem, vsRem:rem==null?null:bk-rem});
   });
-
-  // Tabla
-  document.getElementById('bk-count').textContent = '· ' + rows.length + ' instrumentos';
-  document.getElementById('bkev-body').innerHTML = rows.map(d => {
-    const bkCol  = d.bkMens < IPC_ULTIMO ? 'color:var(--gr);font-weight:600' : 'color:var(--cy);font-weight:600';
-    const vsCol  = d.vsIpc  < 0          ? 'color:var(--gr)'                 : 'color:var(--cy)';
-    const signal = d.bkMens < IPC_ULTIMO
-      ? `<span class="vc cheap">CER</span>`
-      : `<span class="vc exp" style="color:var(--cy);background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.25)">NOM</span>`;
-    const cerRef = bkevClosestCER(d.dtm);
-    const typePill = d.type==='BONCAP'
-      ? `<span style="font-size:8px;margin-left:3px;padding:1px 4px;border-radius:3px;background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.3);color:var(--pu)">B</span>`
-      : `<span style="font-size:8px;margin-left:3px;padding:1px 4px;border-radius:3px;background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.25);color:var(--cy)">L</span>`;
-    const clampWarn = d.clamped ? `<span style="font-size:8px;color:var(--am)"> ⚠interp.</span>` : '';
+  rows.sort((a,b)=>a.ds-b.ds); known.sort((a,b)=>a.ds-b.ds);
+  st.textContent=`CER publicado hasta ${lastPub.fecha.split('-').reverse().join('/')} (${lastPub.valor.toFixed(2)}) · liquidación ${settle.split('-').reverse().join('/')}`+(bkCerSerie?'':' · ⚠ sin serie BCRA, usando CER T−10');
+  // ── Tabla principal
+  document.getElementById('bk-count').textContent='· '+rows.length+' bonos CER con IPC por conocer';
+  document.getElementById('bkev-body').innerHTML=rows.map(d=>{
+    const cerWins = d.vsRem!=null ? d.vsRem<0 : d.bk<IPC_ULTIMO;
+    const bkCol = cerWins?'color:var(--gr);font-weight:600':'color:var(--cy);font-weight:600';
+    const signal = cerWins?`<span class="vc cheap">CER</span>`:`<span class="vc exp" style="color:var(--cy);background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.25)">NOM</span>`;
     return `<tr>
-      <td>${d.symbol}${typePill}</td>
-      <td class="ct"><span class="vto">${TF_VTO_D[d.symbol]||'—'}</span></td>
-      <td style="color:var(--mu)">${d.dtm}d</td>
-      <td style="color:var(--cy)">${p2(d.tem)}</td>
-      <td style="color:var(--or)">${p2(d.tirRealAnual)}</td>
-      <td style="color:var(--am)">${p2(d.tirRealMens)}</td>
-      <td style="color:var(--mu);font-size:10px">${cerRef}${clampWarn}</td>
-      <td style="text-align:center;${bkCol}">${p2(d.bkMens)}</td>
-      <td style="text-align:center;${bkCol}">${p2(d.bkAnual)}</td>
-      <td style="text-align:center;${vsCol}">${d.vsIpc>=0?'+':''}${d.vsIpc.toFixed(3)}%</td>
-      <td style="text-align:center">${signal}</td>
-    </tr>`;
-  }).join('');
-
-  // Tabla curva CER de referencia
-  const cerZC = CER_INSTR.filter(i=>i.tipo==='ZC').map(i=>{
-    const dtm=getDTM(i.vtoi); if(!dtm||dtm<=0) return null;
-    return {...i, dtm, tir:cerCurveReal(dtm)};
-  }).filter(Boolean).sort((a,b)=>a.dtm-b.dtm);
-  document.getElementById('bk-k5').textContent = cerZC.length;
-  document.getElementById('bkev-cer-body').innerHTML = cerZC.map(d=>{
-    const tirCol=d.tir>0?'color:var(--gr)':d.tir<0?'color:var(--rd)':'color:var(--mu)';
-    return `<tr><td style="color:#94adc8">${d.sym}</td><td style="color:var(--mu)">${d.dtm}d</td><td style="${tirCol};font-weight:600">${p2(d.tir)}</td><td style="font-size:9px;color:var(--pu)">ZC</td><td style="color:var(--am)">${p2((Math.pow(1+d.tir/100,30/365)-1)*100)}</td></tr>`;
-  }).join('');
-
-  // KPIs
-  const maxBk  = rows.reduce((a,b)=>a.bkMens>b.bkMens?a:b);
-  const minBk  = rows.reduce((a,b)=>a.bkMens<b.bkMens?a:b);
-  const avgBk  = rows.reduce((s,d)=>s+d.bkMens,0)/rows.length;
-  const belowIPC = rows.filter(d=>d.bkMens<IPC_ULTIMO).length;
-  document.getElementById('bk-k1').textContent  = p2(maxBk.bkMens);
-  document.getElementById('bk-k1s').textContent = maxBk.symbol+' · nominal conviene hasta '+p2(maxBk.bkMens)+'/mes';
-  document.getElementById('bk-k2').textContent  = p2(minBk.bkMens);
-  document.getElementById('bk-k2s').textContent = minBk.symbol+' · CER domina';
-  document.getElementById('bk-k3').textContent  = belowIPC+' / '+rows.length;
-  document.getElementById('bk-k3l').textContent = 'Vs IPC Oct '+IPC_ULTIMO.toFixed(1)+'%';
-  document.getElementById('bk-th-ipc').textContent = 'vs IPC '+IPC_ULTIMO.toFixed(1)+'%';
-  document.getElementById('bk-leg-ipc').textContent = 'IPC actual ('+IPC_ULTIMO.toFixed(1)+'%)';
-  document.getElementById('bk-k4').textContent  = p2(avgBk);
-  document.getElementById('bk-regfn-status').textContent = 'Activa · interpolación lineal entre TIR reales observadas · '+cerZC.length+' ZC';
-
-
-  // ── Gráfico de línea: curva breakeven por fecha de vencimiento ───
-  // Ordenar por DTM (cronológico)
-  const rowsByDate = [...rows].sort((a,b) => a.dtm - b.dtm);
-
-  // Convertir DTM a fecha para el label
-  function dtmToLabel(dtm) {
-    const d = new Date(); d.setDate(d.getDate() + dtm);
-    return d.toLocaleDateString('es-AR', {month:'short', year:'2-digit'});
+      <td>${d.sym}</td><td class="ct"><span class="vto">${d.vto}</span></td><td style="color:var(--mu)">${d.ds}d</td>
+      <td style="color:var(--mu);font-size:10px">${d.ipcDesde} → ${d.ipcHasta}</td>
+      <td style="color:var(--cy)">${p2(d.temNom)}</td>
+      <td style="text-align:center;${bkCol}">${p2(d.bk)}</td><td style="text-align:center;${bkCol}">${p2(d.bkAnual)}</td>
+      <td style="text-align:center;color:var(--am)">${d.rem==null?'—':p2(d.rem)}</td>
+      <td style="text-align:center;color:${d.vsRem<0?'var(--gr)':'var(--cy)'}">${d.vsRem==null?'—':(d.vsRem>=0?'+':'')+d.vsRem.toFixed(2)+'pp'}</td>
+      <td style="text-align:center">${signal}</td></tr>`;
+  }).join('') || '<tr><td colspan="10" style="text-align:center;color:var(--mu)">Sin bonos CER dentro del tramo de la curva nominal</td></tr>';
+  // ── Panel: bonos CER con pago ya conocido (son nominales)
+  document.getElementById('bk-k5').textContent = known.length;
+  document.getElementById('bkev-cer-body').innerHTML = known.map(d=>{
+    const dif=d.temNom==null?null:d.temK-d.temNom;
+    return `<tr><td style="color:#94adc8">${d.sym}</td><td style="color:var(--mu)">${d.ds}d</td><td>${d.pay.toFixed(2)}</td>
+      <td style="color:var(--or);font-weight:600">${p2(d.temK)}</td><td style="color:var(--cy)">${d.temNom==null?'—':p2(d.temNom)}</td>
+      <td style="color:${dif==null?'var(--mu)':dif>0?'var(--gr)':'var(--rd)'}">${dif==null?'—':(dif>=0?'+':'')+dif.toFixed(2)+'pp'}</td></tr>`;
+  }).join('') || '<tr><td colspan="6" style="text-align:center;color:var(--mu)">—</td></tr>';
+  // ── KPIs
+  if(rows.length){
+    const maxBk=rows.reduce((a,b)=>a.bk>b.bk?a:b), minBk=rows.reduce((a,b)=>a.bk<b.bk?a:b);
+    const avg=rows.reduce((s,d)=>s+d.bk,0)/rows.length, cerN=rows.filter(d=>d.vsRem!=null&&d.vsRem<0).length;
+    document.getElementById('bk-k1').textContent=p2(maxBk.bk); document.getElementById('bk-k1s').textContent=maxBk.sym+' · IPC '+maxBk.ipcDesde+' → '+maxBk.ipcHasta;
+    document.getElementById('bk-k2').textContent=p2(minBk.bk); document.getElementById('bk-k2s').textContent=minBk.sym+' · IPC '+minBk.ipcDesde+' → '+minBk.ipcHasta;
+    document.getElementById('bk-k3').textContent=cerN+' / '+rows.length; document.getElementById('bk-k3l').textContent='CER conviene vs REM';
+    document.getElementById('bk-k4').textContent=p2(avg);
   }
-
-  const labels     = rowsByDate.map(d => dtmToLabel(d.dtm));
-  const bkLine     = rowsByDate.map(d => parseFloat(d.bkMens.toFixed(3)));
-  const ipcFlat    = rowsByDate.map(() => IPC_ULTIMO);
-  const ptColors   = rowsByDate.map(d => d.bkMens < IPC_ULTIMO ? '#10b981' : '#06b6d4');
-  const ptRadius   = rowsByDate.map(() => 5);
-
+  document.getElementById('bk-leg-ipc').textContent='REM (expectativa por plazo)';
+  // ── Gráfico
+  const labels=rows.map(d=>d.sym+' · '+d.vto);
+  const bkLine=rows.map(d=>+d.bk.toFixed(3)), remLine=rows.map(d=>d.rem==null?null:+d.rem.toFixed(3));
+  const ptColors=rows.map(d=>(d.vsRem!=null?d.vsRem<0:d.bk<IPC_ULTIMO)?'#10b981':'#06b6d4');
   if(bkevChart) bkevChart.destroy();
-  const ctx = document.getElementById('bkevChart').getContext('2d');
-  bkevChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels,
-      datasets: [
-        {
-          label: `IPC actual ${IPC_ULTIMO}%/mes`,
-          data: ipcFlat,
-          borderColor: 'rgba(245,158,11,.7)',
-          borderWidth: 2,
-          borderDash: [8, 5],
-          pointRadius: 0,
-          fill: false,
-          tension: 0,
-          order: 2,
-        },
-        {
-          label: 'Inflación breakeven mensual',
-          data: bkLine,
-          borderColor: '#34d399',
-          borderWidth: 2.5,
-          pointBackgroundColor: ptColors,
-          pointBorderColor: ptColors,
-          pointRadius: ptRadius,
-          pointHoverRadius: 8,
-          fill: {
-            target: 1,  // fill respecto a dataset IPC
-            above: 'rgba(6,182,212,.08)',    // sobre el IPC → nominal conviene (azul)
-            below: 'rgba(52,211,153,.08)',   // bajo el IPC → CER conviene (verde)
-          },
-          tension: 0.35,
-          order: 1,
-        },
-      ]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: { mode: 'index', intersect: false },
-      plugins: {
-        legend: {
-          display: true,
-          labels: { color: '#4a6080', font: { family: 'IBM Plex Mono', size: 9 }, boxWidth: 20, usePointStyle: false }
-        },
-        tooltip: {
-          backgroundColor: '#111827',
-          borderColor: '#2d4060',
-          borderWidth: 1,
-          titleColor: '#e8f0f8',
-          bodyColor: '#94adc8',
-          padding: 10,
-          callbacks: {
-            title(items) {
-              const i = items.find(x => x.datasetIndex === 1);
-              if (!i) return '';
-              const d = rowsByDate[i.dataIndex];
-              return `${d.symbol}  ·  vto ${TF_VTO_D[d.symbol]||''}`;
-            },
-            label(item) {
-              if (item.datasetIndex === 0) return `IPC actual: ${IPC_ULTIMO}%/mes`;
-              const d = rowsByDate[item.dataIndex];
-              const dec = d.vsIpc < 0 ? '🟢 CER conviene' : '🔵 Nominal conviene';
-              return [
-                `Breakeven: ${d.bkMens.toFixed(3)}%/mes  (${d.bkAnual.toFixed(1)}%/año)`,
-                `Diferencia con IPC: ${d.vsIpc >= 0 ? '+' : ''}${d.vsIpc.toFixed(3)}%  →  ${dec}`,
-                `TEM nominal: ${d.tem.toFixed(3)}%  |  TIR real CER: ${d.tirRealAnual.toFixed(2)}%/año`,
-              ];
-            }
-          }
-        }
-      },
-      scales: {
-        x: {
-          grid: { color: 'rgba(31,45,64,.5)' },
-          ticks: { color: '#94adc8', font: { family: 'IBM Plex Mono', size: 10 } }
-        },
-        y: {
-          title: { display: true, text: 'Inflación mensual (%)', color: '#4a6080', font: { family: 'IBM Plex Mono', size: 10 } },
-          grid: { color: 'rgba(31,45,64,.5)' },
-          ticks: { color: '#4a6080', font: { family: 'IBM Plex Mono', size: 10 }, callback: v => v.toFixed(2)+'%' }
-        }
-      }
-    },
-    plugins: [{
-      id: 'labelPoints',
-      afterDatasetsDraw(chart) {
-        const { ctx: c, data, scales: { x, y } } = chart;
-        const meta = chart.getDatasetMeta(1);
-        meta.data.forEach((pt, i) => {
-          const d = rowsByDate[i];
-          c.save();
-          c.font = '600 9px IBM Plex Mono, monospace';
-          c.fillStyle = d.bkMens < IPC_ULTIMO ? '#10b981' : '#06b6d4';
-          c.textAlign = 'center';
-          c.fillText(d.symbol, pt.x, pt.y - 12);
-          c.restore();
-        });
-      }
-    }]
-  });
+  const ctx=document.getElementById('bkevChart').getContext('2d');
+  bkevChart=new Chart(ctx,{type:'line',data:{labels,datasets:[
+      {label:'REM promedio de los meses cubiertos',data:remLine,borderColor:'rgba(245,158,11,.7)',borderWidth:2,borderDash:[8,5],pointRadius:0,fill:false,tension:0,order:2},
+      {label:'Inflación breakeven mensual (IPC por conocer)',data:bkLine,borderColor:'#34d399',borderWidth:2.5,pointBackgroundColor:ptColors,pointBorderColor:ptColors,pointRadius:5,pointHoverRadius:8,
+       fill:{target:0,above:'rgba(6,182,212,.08)',below:'rgba(52,211,153,.08)'},tension:0.25,order:1}]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:true,labels:{color:'#4a6080',font:{family:'IBM Plex Mono',size:9},boxWidth:20}},
+        tooltip:{backgroundColor:'#111827',borderColor:'#2d4060',borderWidth:1,titleColor:'#e8f0f8',bodyColor:'#94adc8',padding:10,
+          callbacks:{title(items){const d=rows[items[0].dataIndex];return `${d.sym} · vto ${d.vto} · IPC ${d.ipcDesde} → ${d.ipcHasta}`;},
+            label(item){const d=rows[item.dataIndex]; if(item.datasetIndex===0) return `REM: ${d.rem==null?'—':d.rem.toFixed(2)+'%/mes'}`;
+              return [`Breakeven: ${d.bk.toFixed(2)}%/mes (${d.bkAnual.toFixed(1)}%/año)`,`TEM nominal mismo plazo: ${d.temNom.toFixed(2)}%`,`Días con CER por conocer: ${d.extra}`];}}}},
+      scales:{x:{grid:{color:'rgba(31,45,64,.5)'},ticks:{color:'#94adc8',font:{family:'IBM Plex Mono',size:9}}},
+        y:{title:{display:true,text:'Inflación mensual (%)',color:'#4a6080',font:{family:'IBM Plex Mono',size:10}},grid:{color:'rgba(31,45,64,.5)'},
+          ticks:{color:'#4a6080',font:{family:'IBM Plex Mono',size:10},callback:v=>v.toFixed(2)+'%'}}}}});
 }
 
 function bkevClosestCER(dtm) {

@@ -53,6 +53,26 @@ export default async function handler(req, res) {
     }
   }
 
+  // Serie CER diaria del BCRA (id 30) desde hace 40 días hasta lo último PUBLICADO, que llega por adelantado
+  // hasta el 15 del mes siguiente (el CER de cada período 15→15 se define con el IPC de M-2). La usa el
+  // breakeven de bonos.html para separar el CER ya conocido del que depende de IPC todavía no publicado.
+  if (src === 'cer-serie') {
+    try {
+      const fmt = d => d.toISOString().slice(0, 10);
+      const now = new Date();
+      const desde = new Date(now.getTime() - 40 * 86400000), hasta = new Date(now.getTime() + 70 * 86400000);
+      const r = await fetch(`${BCRA_CER_URL}?desde=${fmt(desde)}&hasta=${fmt(hasta)}&limit=1000`, { signal: AbortSignal.timeout(9000) });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const data = await r.json();
+      const serie = (data?.results?.[0]?.detalle || []).map(x => ({ fecha: x.fecha, valor: x.valor })).sort((a, b) => a.fecha < b.fecha ? -1 : 1);
+      if (!serie.length) throw new Error('serie BCRA vacía');
+      res.setHeader('Cache-Control', 's-maxage=3600');
+      return res.status(200).json({ serie, ultimo: serie[serie.length - 1], fuente: 'BCRA (id 30)' });
+    } catch (e) {
+      return res.status(502).json({ error: e.message });
+    }
+  }
+
   // TAMAR bancos privados (BCRA id 136, TNA %), diaria desde abr-2026 — para acumular la pata TAMAR de los duales CER/TAMAR desde su emisión
   if (src === 'tamar-hist') {
     try {
