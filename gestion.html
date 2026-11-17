@@ -740,10 +740,17 @@ async function loadLive(){
       if(val!=null) reservas=val;
     }
 
+    // Mes de la última fila de HIST_SEED (ej. 'Oct 26' -> '2026-10'): las series lentas (salario, fiscal, UTDT)
+    // se cargan a mano con el dato oficial; la API solo se usa si trae un mes MÁS NUEVO que esa fila (fix 16/11/2026:
+    // antes la API atrasada de datos.gob.ar pisaba el dato oficial más reciente del seed).
+    const _MES_IDX={Ene:1,Feb:2,Mar:3,Abr:4,May:5,Jun:6,Jul:7,Ago:8,Sep:9,Oct:10,Nov:11,Dic:12};
+    const _sm=HIST_SEED[HIST_SEED.length-1].m.split(' ');
+    const seedYM=`20${_sm[1]}-${String(_MES_IDX[_sm[0]]).padStart(2,'0')}`;
+    const newerThanSeed=d=>typeof d==='string'&&d.slice(0,7)>seedYM;
     let salReal=null;
     if(wageRes?.data?.length>=14){
       const rows=wageRes.data.filter(r=>r[1]!=null&&r[2]!=null);
-      if(rows.length>=13){
+      if(rows.length>=13 && newerThanSeed(rows[0][0])){
         const latest=rows[0]; const year_ago=rows[12];
         if(latest[1]&&latest[2]&&year_ago[1]&&year_ago[2])
           salReal=((latest[1]/latest[2])/(year_ago[1]/year_ago[2])-1)*100;
@@ -752,14 +759,15 @@ async function loadLive(){
 
     // Fiscal: trailing 12m % PBI desde API datos.gob.ar
     let fiscalLive=null;
-    if(fiscalRes?.data?.length>=12){
+    if(fiscalRes?.data?.length>=12 && newerThanSeed(fiscalRes.data[0][0])){
       fiscalLive=trail12mPct(fiscalRes.data);
     }
 
     const manualRes=await fetch('/api/data').then(r=>r.ok?r.json():null);
-    const icgUtdt=manualRes?.icg_utdt??null;
-    // fiscalLive desde API; fallback a manual.json; fallback a seed
-    const fiscalVal=fiscalLive??manualRes?.fiscal_primario??null;
+    // UTDT: manual.json no trae fecha → el seed (fila mensual con el dato oficial) manda.
+    const icgUtdt=null;
+    // fiscal: API solo si es más nueva que el seed; si no, seed (manual.json queda como respaldo del seed, no lo pisa)
+    const fiscalVal=fiscalLive??null;
 
     const seed=HIST_SEED[HIST_SEED.length-1].v;
     const vals=[
