@@ -103,6 +103,12 @@ td:first-child{text-align:left;font-weight:600;font-size:12px;color:#dce8f5;}td.
 hr.dv{border:none;border-top:1px solid var(--bdr);}
 /* val table */
 .vt{width:100%;border-collapse:collapse;}
+.cart-in{background:var(--s2);border:1px solid var(--bdr2);color:var(--txt);border-radius:4px;padding:3px 6px;font-family:'IBM Plex Mono',monospace;font-size:11px}
+.cart-btn{background:rgba(167,139,250,.12);border:1px solid rgba(167,139,250,.4);color:#a78bfa;border-radius:4px;padding:3px 9px;font-family:'IBM Plex Mono',monospace;font-size:10px;cursor:pointer}
+.cart-btn.ghost{background:transparent;border-color:var(--bdr2);color:var(--mu)}.cart-btn.ghost:hover,.cart-btn.on{color:#a78bfa;border-color:rgba(167,139,250,.6)}
+.cart-lbl{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--mu);margin-bottom:5px}.cart-note{font-size:9px;color:var(--dim);margin-top:4px}
+.tab.cart.active{color:#a78bfa!important;border-bottom-color:#a78bfa}
+@media(max-width:900px){.cart-grid2{grid-template-columns:1fr!important}}
 #hdd-wrap .hdd-tbl th{white-space:normal;line-height:1.25;vertical-align:bottom;padding:6px 6px;}#hdd-wrap .hdd-tbl td{padding:7px 6px;font-size:10.5px;}
 .hdd-pre{background:var(--s2);border:1px solid var(--bdr2);color:var(--mu);border-radius:4px;padding:1px 7px;font-family:'IBM Plex Mono',monospace;font-size:10px;cursor:pointer}.hdd-pre:hover{color:var(--txt)}
 .vt thead tr{border-bottom:1px solid var(--bdr);}
@@ -201,6 +207,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   <div class="tab"           id="btn-on"   onclick="sw('on')"   style="color:var(--mu)">🏢 ONs Corporativas</div>
   <div class="tab dual"      id="btn-dual" onclick="sw('dual')" style="color:var(--mu)">🎲 Duales</div>
   <div class="tab pvd"       id="btn-pvd"  onclick="sw('pvd')"  style="color:var(--mu)">💱 Pesos vs USD</div>
+  <div class="tab cart"      id="btn-cart" onclick="sw('cart')" style="color:var(--mu)">🧺 Cartera</div>
   <div class="tab-status"><span class="dot seed" id="sdot"></span><span id="stxt">Cargando…</span><span style="color:var(--dim)" id="stime"></span></div>
 </div>
 
@@ -1077,7 +1084,6 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
 </div>
       </div>
     </div>
-  </div>
 
   <div class="ftr">
     <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
@@ -1343,6 +1349,137 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     <div class="mod-pill" style="color:var(--am);border-color:var(--am)33" onclick="sw('hd')">💵 Soberanos HD</div>
   </div>
 </div><!-- /tab-pvd -->
+
+<div class="tab-content" id="tab-cart">
+  <div class="hdr">
+    <div>
+      <div class="eyebrow" style="color:#a78bfa">⬤ Cartera · Simulador de rendimiento</div>
+      <h1>Cartera de bonos — rendimiento al horizonte</h1>
+    </div>
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);text-align:right;line-height:1.7">
+      Precios en vivo del tablero · liquidación T+1<br><span id="cart-status">—</span>
+    </div>
+  </div>
+
+  <!-- Armado -->
+  <div class="tw" style="margin-bottom:14px">
+    <div class="tw-hdr" style="color:#a78bfa;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <span>1 · Armado de la cartera</span>
+      <span style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-weight:400;text-transform:none;letter-spacing:0">
+        <input id="cart-sym" list="cart-syms" placeholder="Bono (ej. S29E7, TZXM7, GD30)" class="cart-in" style="width:190px">
+        <datalist id="cart-syms"></datalist>
+        <input id="cart-monto" type="number" min="0" step="100000" placeholder="Monto ARS" class="cart-in" style="width:120px">
+        <button class="cart-btn" onclick="cartAdd()">+ Agregar</button>
+        <button class="cart-btn ghost" onclick="cartExample()">Ejemplo</button>
+        <button class="cart-btn ghost" onclick="cartClear()">Vaciar</button>
+      </span>
+    </div>
+    <div class="tbl-wrap"><table>
+      <thead><tr>
+        <th>Bono</th><th class="ct">Tipo</th><th class="ct">Vto.</th><th>Monto ARS</th><th>Peso</th>
+        <th>Precio<br><span style="color:var(--dim);font-size:8px">editable</span></th><th>VN</th><th class="ct"></th>
+      </tr></thead>
+      <tbody id="cart-items"></tbody>
+    </table></div>
+  </div>
+
+  <!-- Supuestos -->
+  <div class="tw" style="margin-bottom:14px">
+    <div class="tw-hdr" style="color:#a78bfa;display:flex;justify-content:space-between;align-items:center"><span>2 · Horizonte y supuestos <span style="color:var(--mu);font-weight:400;text-transform:none;letter-spacing:0;margin-left:6px">(valores por defecto = mercado / REM; se pueden pisar)</span></span><button class="cart-btn ghost" onclick="cartResetA()">Restablecer supuestos</button></div>
+    <div style="padding:12px 14px;display:flex;flex-wrap:wrap;gap:18px 26px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu)">
+      <div>
+        <div class="cart-lbl">Horizonte</div>
+        <button class="cart-btn ghost hz" data-m="3" onclick="cartHz(3)">3m</button>
+        <button class="cart-btn ghost hz" data-m="6" onclick="cartHz(6)">6m</button>
+        <button class="cart-btn ghost hz" data-m="12" onclick="cartHz(12)">12m</button>
+        <input id="cart-h" type="date" class="cart-in" style="width:130px" onchange="cartSet('h',this.value)">
+        <div class="cart-note" id="cart-h-note"></div>
+      </div>
+      <div>
+        <div class="cart-lbl">Devaluación oficial (% mensual)</div>
+        <input id="cart-dev" type="number" step="0.1" class="cart-in" style="width:70px" onchange="cartSet('dev',+this.value)">
+        <div class="cart-note" id="cart-dev-note"></div>
+      </div>
+      <div>
+        <div class="cart-lbl">Brecha MEP / oficial (%)</div>
+        <input id="cart-brecha" type="number" step="0.5" class="cart-in" style="width:70px" onchange="cartSet('brecha',+this.value)">
+        <div class="cart-note" id="cart-brecha-note"></div>
+      </div>
+      <div>
+        <div class="cart-lbl">TAMAR (TNA %, de acá al vto.)</div>
+        <input id="cart-tamar" type="number" step="0.25" class="cart-in" style="width:70px" onchange="cartSet('tamar',+this.value)">
+        <div class="cart-note" id="cart-tamar-note"></div>
+      </div>
+      <div>
+        <div class="cart-lbl">Comisión (% por operación)</div>
+        <input id="cart-com" type="number" step="0.05" min="0" class="cart-in" style="width:70px" onchange="cartSet('com',+this.value)">
+        <div class="cart-note">en la compra y en la venta antes del vto.</div>
+      </div>
+      <div>
+        <div class="cart-lbl">Reinversión cupones/vtos (TEM %)</div>
+        <input id="cart-reinv" type="number" step="0.05" class="cart-in" style="width:70px" onchange="cartSet('reinv',+this.value)">
+        <div class="cart-note">default: LECAP más corta</div>
+      </div>
+      <div>
+        <div class="cart-lbl">Corrimiento curvas a la salida</div>
+        TF <input id="cart-shTF" type="number" step="0.05" class="cart-in" style="width:56px" onchange="cartSet('shTF',+this.value)"> pp TEM ·
+        CER <input id="cart-shCER" type="number" step="0.25" class="cart-in" style="width:56px" onchange="cartSet('shCER',+this.value)"> pp ·
+        HD/DL <input id="cart-shHD" type="number" step="25" class="cart-in" style="width:62px" onchange="cartSet('shHD',+this.value)"> pb
+        <div class="cart-note">0 = tasa fija: curva de hoy al plazo restante · CER, DL y HD: TIR actual de cada bono</div>
+      </div>
+      <div style="flex-basis:100%">
+        <div class="cart-lbl">Inflación mensual esperada (% · por mes de IPC) <span style="margin-left:8px">
+          <button class="cart-btn ghost" onclick="cartIpcPreset('rem')">REM</button>
+          <button class="cart-btn ghost" onclick="cartIpcPreset(0.5)">+0,5</button>
+          <button class="cart-btn ghost" onclick="cartIpcPreset(-0.5)">−0,5</button></span></div>
+        <div id="cart-ipc" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px"></div>
+        <div class="cart-note">El CER ya publicado por el BCRA se usa tal cual; estos meses solo afectan el tramo todavía no publicado.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Resultados -->
+  <div class="kpis" id="cart-kpis"></div>
+  <div class="tw" style="margin-bottom:14px">
+    <div class="tw-hdr" style="color:#a78bfa">3 · Resultado por bono al horizonte <span id="cart-res-sub" style="color:var(--mu);font-weight:400;text-transform:none;letter-spacing:0;margin-left:6px"></span></div>
+    <div class="tbl-wrap"><table>
+      <thead><tr>
+        <th>Bono</th><th class="ct">Cómo llega</th><th>Costo ARS</th><th>Valor ARS<br><span style="color:var(--dim);font-size:8px">al horizonte</span></th>
+        <th>Rend. ARS</th><th>TEM ARS</th><th>TEA ARS</th><th>Rend. USD<br><span style="color:var(--dim);font-size:8px">MEP</span></th><th>TEA USD</th><th>Aporte</th>
+      </tr></thead>
+      <tbody id="cart-res"></tbody>
+    </table></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px" class="cart-grid2">
+    <div class="tw">
+      <div class="tw-hdr" style="color:#a78bfa">Escenarios — rendimiento de la cartera</div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Escenario</th><th>Qué cambia</th><th>Rend. ARS</th><th>TEA ARS</th><th>Rend. USD</th><th>TEA USD</th></tr></thead>
+        <tbody id="cart-scen"></tbody>
+      </table></div>
+    </div>
+    <div class="tw">
+      <div class="tw-hdr" style="color:#a78bfa">Exposición de la cartera</div>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Tipo</th><th>Peso</th><th>Rend. ARS</th><th>Plazo prom.</th></tr></thead>
+        <tbody id="cart-exp"></tbody>
+      </table></div>
+    </div>
+  </div>
+  <div style="background:var(--s);border:1px solid var(--bdr2);border-left:3px solid #a78bfa;border-radius:8px;padding:12px 16px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);line-height:1.75">
+    <strong style="color:#a78bfa">Cómo se calcula.</strong> Se compra hoy (liquidación T+1) al precio de la tabla. Al horizonte, la cartera vale lo cobrado (reinvertido a la TEM indicada; los USD de los HD quedan en USD) más el precio de salida de lo que no venció.
+    <b>Tasa fija:</b> valor final del bono; si no venció, se descuenta con la curva LECAP/BONCAP de hoy al plazo restante (+ corrimiento).
+    <b>CER:</b> CER publicado por el BCRA y, después, proyectado con la inflación de arriba (períodos 15→15, IPC M−2, ajuste T−10 hábiles); si no venció, se vende a la TIR real actual del bono (+ corrimiento).
+    <b>Dollar linked:</b> A3500 proyectado con la devaluación indicada; salida a la TIR en USD actual del bono.
+    <b>Hard dollar (GD/AL):</b> flujos de la reestructuración 2020 en USD, salida a la TIR actual del bono (+ corrimiento), pasados a pesos al MEP proyectado (oficial × (1+brecha)).
+    <b>TAMAR:</b> el precio rinde la TAMAR supuesta (TEM según prospecto, spread ≈ 0, igual que la solapa TAMAR; no modela cupones de cada emisión).
+    <b>Duales:</b> pago al vto. = capital × (1+TEM de la TAMAR promedio + margen)^(meses), con la TAMAR publicada (BCRA) y la TNA supuesta para el resto; pagan la pata mayor (TAMAR vs CER proyectado, o vs tasa fija). Si se venden antes, se mantiene la TIR implícita entre el precio de hoy y ese pago.
+    <b>ONs:</b> flujos en USD del universo del tablero, salida a la TIR actual (+ corrimiento HD/DL).
+    <b>Default HD:</b> en ese escenario GD/AL se canjean al horizonte con el simulador de reestructuración (tipo 2020 a tasa de mercado).
+    Comisión opcional; no incluye impuestos ni derechos de mercado. El dual TAMAR/USD (TMVE8) todavía no está.
+  </div>
+</div><!-- /tab-cart -->
+
 
 <script>
 // ═══════════════════════════════════════════════════════════════
@@ -1711,6 +1848,7 @@ function sw(tab){
   if(tab==='dl')   { if(dlChart)   dlChart.resize();   }
   if(tab==='on')   { onRefresh(); }
   if(tab==='pvd')  { if(pvdChart) pvdChart.resize(); if(ladderChart) ladderChart.resize(); }
+  if(tab==='cart') { try{ cartRender(); }catch(e){ console.error(e); } }
 }
 
 function setStatus(s,txt){
@@ -2774,6 +2912,7 @@ function tmrDualCTRender(){
   document.getElementById('tmr-duales-cer').innerHTML=L.map(d=>tmrRow(d,tmrTamarTEM)).join('');
 }
 function tmrRender(notes, bonds, tamarTEM) {
+  window._tmrLast = {notes: notes || [], bonds: bonds || []};
   tmrTamarTEM = tamarTEM;
   const letamar   = notes.filter(d=>TMR_INSTR[d.symbol]?.tipo==='LETAMAR');
   const bTamar    = bonds.filter(d=>TMR_INSTR[d.symbol]?.tipo==='BONO TAMAR');
@@ -4853,6 +4992,397 @@ function pvdInit(){
 }
 pvdInit();
 ladderInit();
+
+// ══════════════════════════════════════════════════════════════════════════
+// CARTERA — simulador de rendimiento al horizonte (etapa 1: tasa fija, CER, dollar linked, hard dollar)
+// Reutiliza los motores del tablero: tfData/VF_MAP/TF_VTO + tfTeaAt (curva TF), CER_INSTR/CPN_FLOWS +
+// cerPriceMap + bkCerSerie/bkIpcMonthOf/bkAddBiz (CER publicado y mecánica 15→15, T−10), cerCurveReal
+// (curva real), DL_CONFIG + dlNotesLast/dlTcData (A3500), HDD_* (flujos 2020) + hddLast. MEP: /api/proxy?src=dolar.
+// La cartera y los supuestos se guardan en el navegador (localStorage 'amberes_cartera_v1').
+// ══════════════════════════════════════════════════════════════════════════
+const CART_KEY = 'amberes_cartera_v1';
+let cartItems = [];            // [{sym, monto, px (override o null)}]
+let cartA = null;              // supuestos editables
+let cartMep0 = null;           // MEP venta hoy
+let cartCerCache = {};
+
+function cartLoad(){
+  try{ const s = JSON.parse(localStorage.getItem(CART_KEY) || 'null'); if(s){ cartItems = s.items || []; cartA = s.A || null; } }catch(e){}
+}
+function cartSave(){
+  try{ localStorage.setItem(CART_KEY, JSON.stringify({items:cartItems, A:cartA})); }catch(e){}
+}
+function cartToday(){ const d=new Date(); return new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())).toISOString().slice(0,10); }
+function cartSettle(){ return bkAddBiz(cartToday(), 1); }
+function cartAddMonths(iso, m){ const d=new Date(iso+'T00:00:00Z'); d.setUTCMonth(d.getUTCMonth()+m); return d.toISOString().slice(0,10); }
+function cartYm(y,m){ return y*100+m; }
+function cartFmtD(iso){ return iso ? iso.slice(8,10)+'/'+iso.slice(5,7)+'/'+iso.slice(2,4) : '—'; }
+function cartPct(v,d=1){ return Number.isFinite(v) ? (v>=0?'+':'')+v.toFixed(d).replace('.',',')+'%' : '—'; }
+function cartNum(v,d=0){ return Number.isFinite(v) ? v.toLocaleString('es-AR',{minimumFractionDigits:d,maximumFractionDigits:d}) : '—'; }
+function cartTc0(){ return (typeof dlTcData!=='undefined' && dlTcData && dlTcData.valor) ? dlTcData.valor : SEED_DL_TC.valor; }
+
+// ── universo de bonos con precio ───────────────────────────────────────────
+function cartUniverse(){
+  const st = cartSettle(), U = {};
+  (tfData && tfData.length ? tfData : SEED_TF).forEach(d => {
+    const vto = TF_VTO[d.symbol]; if(!vto || !VF_MAP[d.symbol] || vto <= st) return;
+    U[d.symbol] = {sym:d.symbol, tipo:'Tasa fija', cls:'TF', px:d.price, vto};
+  });
+  CER_INSTR.forEach(i => {
+    const p = cerPriceMap[i.sym]; if(!p || !p.c || i.vtoi <= st) return;
+    if(i.tipo === 'CPN' && !CPN_FLOWS[i.sym]) return;
+    if(i.tipo !== 'ZC' && i.tipo !== 'CPN') return;
+    U[i.sym] = {sym:i.sym, tipo:'CER', cls:'CER', px:p.c, vto:i.vtoi, instr:i};
+  });
+  ((typeof dlNotesLast!=='undefined' && dlNotesLast) || SEED_DL_NOTES).forEach(d => {
+    const c = DL_CONFIG[d.symbol]; if(!c || !d.c || c.vto <= st) return;
+    U[d.symbol] = {sym:d.symbol, tipo:'Dollar linked', cls:'DL', px:d.c, vto:c.vto};
+  });
+  const hdPx = (hddLast && Object.keys(hddLast).length) ? hddLast : Object.fromEntries(SEED_HD_SOB.map(d=>[d.symbol,d.price_usd]));
+  HDD_BONDS.forEach(s => {
+    const pu = hdPx[s]; if(!pu) return;
+    const k = hddKey(s), last = HDD_AMORT[k].at(-1)[0];
+    U[s] = {sym:s, tipo:'Hard dollar', cls:'HD', pxUsd:pu, px:cartMep0 ? pu*cartMep0 : null, vto:last};
+  });
+  // TAMAR y duales (LETAMAR, BONO TAMAR, dual TAMAR/piso fijo, dual CER/TAMAR). El dual TAMAR/USD (TMVE8) queda afuera:
+  // la convención de VN/precio no está confirmada en el tablero.
+  const tl = window._tmrLast || {notes: [], bonds: SEED_TMR_BONDS};
+  [...(tl.notes||[]), ...(tl.bonds||[])].forEach(d => {
+    const i = TMR_INSTR[d.symbol]; const px = d.c || d.px_bid || d.px_ask;
+    if(!i || !px || i.vtoi <= st || i.tipo === 'DUAL TAMAR/USD') return;
+    if(i.tipo === 'DUAL CER/TAMAR' && !i.cer0) return;
+    const cls = (i.tipo === 'LETAMAR' || i.tipo === 'BONO TAMAR') ? 'TAMAR' : 'DUAL';
+    U[d.symbol] = {sym:d.symbol, tipo: cls === 'TAMAR' ? 'TAMAR' : (i.tipo === 'DUAL' ? 'Dual TAMAR/fija' : 'Dual CER/TAMAR'), cls, px, vto:i.vtoi, instr:i};
+  });
+  // ONs en USD (universo del tablero con flujos; precio en vivo BYMA/data912 si hay)
+  const live = (typeof onxLive !== 'undefined' && onxLive) || {};
+  (typeof ON_UNIV !== 'undefined' ? ON_UNIV : []).forEach(o => {
+    const fl = o.fx && o.fx.fl; if(!fl || !fl.length || o.v <= st) return;
+    const pu = (live[o.t] && live[o.t].px > 0) ? live[o.t].px : o.px; if(!pu) return;
+    U[o.t] = {sym:o.t, tipo:'ON (USD)', cls:'ON', pxUsd:pu, px: cartMep0 ? pu*cartMep0 : null, vto:o.v, on:o, emisor:o.e};
+  });
+  return U;
+}
+
+// ── supuestos por defecto ───────────────────────────────────────────────────
+function cartDefaultDev(){
+  // devaluación implícita de mercado: breakeven DL vs tasa fija (mediana de las letras/bonos DL)
+  try{
+    const notes = (typeof dlNotesLast!=='undefined' && dlNotesLast) || SEED_DL_NOTES;
+    const v = notes.map(d => dlCalc(d, dlTcData)).filter(x => x && Number.isFinite(x.devBKMens) && x.dtm > 45).map(x => x.devBKMens*100).sort((a,b)=>a-b);
+    if(v.length) return {v: +v[Math.floor(v.length/2)].toFixed(2), src:'implícita DL vs tasa fija (mediana)'};
+  }catch(e){}
+  return {v:1.5, src:'valor fijo (sin datos DL)'};
+}
+function cartDefaultReinv(){
+  const r = tfTeaAt(30); return r ? +r.tem.toFixed(2) : 2.0;
+}
+function cartDefaultTamar(){
+  const H = window._tamarHist; if(H && H.dates && H.dates.length) return +H.map[H.dates.at(-1)].toFixed(2);
+  return SEED_TAMAR_TNA;
+}
+function cartIpcMonthsNeeded(h){
+  // meses de IPC desde nov-26 (primer mes no reflejado en CER publicado, aprox.) hasta el que define el CER del horizonte (+ margen)
+  const out = []; const end = bkIpcMonthOf(h);
+  let y, m;
+  const lp = bkCerSerie && bkCerSerie.length ? bkCerSerie.at(-1).fecha : cartToday();
+  const first = bkIpcMonthOf(bkAddBiz(lp, 1)); y = first.y; m = first.m;
+  while(cartYm(y,m) <= cartYm(end.y,end.m)){ out.push(cartYm(y,m)); m++; if(m>12){m=1;y++;} }
+  return out;
+}
+function cartEnsureA(){
+  const dev = cartDefaultDev();
+  const tc0 = cartTc0();
+  const brechaDef = cartMep0 ? +((cartMep0/tc0 - 1)*100).toFixed(1) : 5;
+  if(!cartA) cartA = {h: cartAddMonths(cartToday(), 6), shTF:0, shCER:0, shHD:0, ipc:{}};
+  // los defaults de mercado se recalculan en cada render (llegan precios en vivo después del primer render);
+  // solo quedan fijos los que el usuario tocó (cartA._user)
+  cartA._user = cartA._user || {};
+  if(!cartA._user.dev) cartA.dev = dev.v;
+  if(!cartA._user.brecha) cartA.brecha = brechaDef;
+  if(!cartA._user.reinv) cartA.reinv = cartDefaultReinv();
+  if(!cartA._user.tamar) cartA.tamar = cartDefaultTamar();
+  if(!Number.isFinite(cartA.com)) cartA.com = 0;
+  if(cartA.h <= cartSettle()) cartA.h = cartAddMonths(cartToday(), 6);
+  cartIpcMonthsNeeded(cartA.h).forEach(k => { if(!Number.isFinite(cartA.ipc[k]) || !cartA._user.ipc) cartA.ipc[k] = Number.isFinite(cartA.ipc[k]) && cartA._user.ipc ? cartA.ipc[k] : bandIpcDefault(k); });
+  cartA._devSrc = dev.src; cartA._brechaDef = brechaDef;
+}
+function cartIpcAt(A, ym){ const v = A.ipc[ym]; return Number.isFinite(v) ? v : bandIpcDefault(ym); }
+
+// ── trayectorias ────────────────────────────────────────────────────────────
+function cartTcAt(A, iso){
+  const t = Math.max(0, bkDays(cartToday(), iso));
+  return cartTc0() * (1 + (A.jump||0)/100) * Math.pow(1 + A.dev/100, t/30);
+}
+function cartMepAt(A, iso){ return cartTcAt(A, iso) * (1 + A.brecha/100); }
+function cartCerAt(A, iso){
+  // CER publicado (BCRA) hasta la última fecha disponible; después se proyecta día a día con la inflación del mes que corresponde
+  const key = A._v + '|' + iso; if(cartCerCache[key]) return cartCerCache[key];
+  let base, bd;
+  if(bkCerSerie && bkCerSerie.length){
+    const last = bkCerSerie.at(-1);
+    if(iso <= last.fecha){ const v = bkCerAt(iso); cartCerCache[key] = v; return v; }
+    base = last.valor; bd = last.fecha;
+  } else { base = window._cerIdx || SEED_CER_IDX.cer; bd = bkAddBiz(cartToday(), -10); }
+  let v = base, d = new Date(bd+'T00:00:00Z'); const end = new Date(iso+'T00:00:00Z');
+  while(d < end){
+    d.setUTCDate(d.getUTCDate()+1);
+    const di = d.toISOString().slice(0,10), dd = d.getUTCDate();
+    // período (15 M, 15 M+1]: cantidad de días del período que contiene a d
+    const s = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() - (dd>15?0:1), 15));
+    const e = new Date(Date.UTC(s.getUTCFullYear(), s.getUTCMonth()+1, 15));
+    const n = Math.round((e - s)/86400000);
+    const im = bkIpcMonthOf(di);
+    v *= Math.pow(1 + cartIpcAt(A, cartYm(im.y, im.m))/100, 1/n);
+  }
+  cartCerCache[key] = v; return v;
+}
+
+// ── pata TAMAR: promedio de la TAMAR (TNA) entre emisión−10 hábiles y vto−10 hábiles; lo ya publicado sale del
+// histórico BCRA (window._tamarHist), el resto se completa con la TNA supuesta. Capitaliza con calcTamarTEM (prospecto).
+function cartTamarPay(i, A, margen){
+  const Hh = window._tamarHist, s = bkAddBiz(i.emision, -10), e = bkAddBiz(i.vtoi, -10), cut = bkAddBiz(cartToday(), -10);
+  let sum = 0, n = 0;
+  if(Hh && Hh.dates && Hh.dates.length && s >= Hh.dates[0]){
+    Hh.dates.forEach(k => { if(k >= s && k <= e && k <= cut){ sum += Hh.map[k]; n++; } });
+  }
+  const from = n ? cut : s; let nf = 0; const d = new Date(from+'T00:00:00Z'), end = new Date(e+'T00:00:00Z');
+  while(d < end){ d.setUTCDate(d.getUTCDate()+1); if(bkIsBiz(d)) nf++; }
+  const avg = (sum + nf*A.tamar) / Math.max(1, n + nf);
+  const emi = new Date(i.emision+'T00:00:00'), vto = new Date(i.vtoi+'T00:00:00');
+  return 100 * Math.pow(1 + calcTamarTEM(avg + (margen||0)), days30360(emi, vto)/30);
+}
+// pago proyectado al vencimiento de TAMAR y duales (por 100 VN, ARS)
+function cartProjPay(u, A){
+  const i = u.instr, emi = new Date(i.emision+'T00:00:00'), vto = new Date(i.vtoi+'T00:00:00');
+  if(i.tipo === 'LETAMAR' || i.tipo === 'BONO TAMAR') return {pay: cartTamarPay(i, A, 0), leg:'TAMAR'};
+  if(i.tipo === 'DUAL'){ const t = cartTamarPay(i, A, 0), f = 100*Math.pow(1 + i.piso_tem, days30360(emi, vto)/30); return t >= f ? {pay:t, leg:'TAMAR'} : {pay:f, leg:'tasa fija'}; }
+  const t = cartTamarPay(i, A, i.margen), c = 100 * cartCerAt(A, bkAddBiz(i.vtoi, -10)) / i.cer0;
+  return t >= c ? {pay:t, leg:'TAMAR'} : {pay:c, leg:'CER'};
+}
+
+// ── valuación de 1 bono (por 100 VN) al horizonte ──────────────────────────
+function cartValue(u, px, A){
+  const st = cartSettle(), H = A.h, rf = Math.pow(1 + A.reinv/100, 1/30);
+  const grow = (amt, d) => amt * Math.pow(rf, Math.max(0, bkDays(d, H)));   // reinversión ARS hasta H
+  let valARS = 0, valUSD = null, how = '', costARS = px, sold = false;
+  if(u.cls === 'TF'){
+    const vf = VF_MAP[u.sym];
+    if(u.vto <= H){ valARS = grow(vf, u.vto); how = 'vence · reinvierte'; }
+    else { const dres = bkDays(H, u.vto); const tf = tfTeaAt(dres); const tem = (tf ? tf.tem : 2) + A.shTF;
+           valARS = vf / Math.pow(1 + tem/100, dres/30); sold = true; how = 'se vende ('+dres+'d, TEM '+tem.toFixed(2).replace('.',',')+'%)'; }
+  } else if(u.cls === 'CER'){
+    const i = u.instr;
+    const flows = i.tipo === 'ZC' ? [{d:i.vtoi, pct:100*i.resid/100}] : CPN_FLOWS[i.sym].filter(f => f.d > st).map(f => ({d:f.d, pct:f.pct}));
+    flows.filter(f => f.d <= H).forEach(f => { valARS += grow(f.pct * cartCerAt(A, bkAddBiz(f.d, -10)) / i.cer0, f.d); });
+    const rest = flows.filter(f => f.d > H);
+    if(rest.length){
+      // salida a la TIR real ACTUAL del bono (constante) + corrimiento: la curva real de hoy tiene el tramo corto
+      // distorsionado (CER ya publicado hasta el 15 del mes próximo), y usarla para el roll-down inflaba mucho a los largos
+      const tir0 = computeCER(i, px, window._cerIdx || SEED_CER_IDX.cer).tir;
+      const r = ((Number.isFinite(tir0) ? tir0 : cerCurveReal(bkDays(H, i.vtoi))) + A.shCER)/100;
+      const cerH = cartCerAt(A, bkAddBiz(H, -10));
+      rest.forEach(f => { valARS += f.pct * cerH / i.cer0 / Math.pow(1 + r, bkDays(H, f.d)/365); });
+      sold = true; how = 'se vende (TIR real '+(r*100).toFixed(1).replace('.',',')+'%)';
+    } else how = 'vence · reinvierte';
+  } else if(u.cls === 'DL'){
+    const tc0 = cartTc0(), dtm = bkDays(st, u.vto);
+    const tirUSD = Math.pow(100 / (px / tc0), 365/dtm) - 1 + A.shHD/1e4;
+    if(u.vto <= H){ valARS = grow(100 * cartTcAt(A, bkAddBiz(u.vto, -1)), u.vto); how = 'vence · reinvierte'; }
+    else { const dres = bkDays(H, u.vto); valARS = 100 * cartTcAt(A, H) / Math.pow(1 + tirUSD, dres/365); sold = true; how = 'se vende (TIR USD '+(tirUSD*100).toFixed(1).replace('.',',')+'%)'; }
+  } else if(u.cls === 'TAMAR'){
+    // LETAMAR / BONO TAMAR: mismo criterio que la solapa TAMAR — el precio rinde la TAMAR (TEM de la TNA supuesta), spread ≈ 0.
+    // No se modela el cronograma de cupones de cada emisión (los emitidos en 2025 no capitalizan desde la emisión).
+    const tem = calcTamarTEM(A.tamar), dtm = bkDays(st, u.vto), held = bkDays(st, H);
+    if(u.vto <= H){ valARS = grow(px * Math.pow(1 + tem, dtm/30), u.vto); how = 'vence · rinde TAMAR · reinvierte'; }
+    else { valARS = px * Math.pow(1 + tem, held/30); sold = true; how = 'se vende · rinde TAMAR (TEM '+(tem*100).toFixed(2).replace('.',',')+'%)'; }
+  } else if(u.cls === 'DUAL'){
+    const P = cartProjPay(u, A), dtm = bkDays(st, u.vto);
+    if(u.vto <= H){ valARS = grow(P.pay, u.vto); how = 'vence · paga '+P.leg+' · reinvierte'; }
+    else {   // se vende manteniendo la TIR implícita entre el precio de hoy y el pago proyectado
+      const held = bkDays(st, H); valARS = px * Math.pow(P.pay / px, held / dtm); sold = true;
+      how = 'se vende (paga '+P.leg+' · TEM '+((Math.pow(P.pay/px, 30/dtm)-1)*100).toFixed(2).replace('.',',')+'%)';
+    }
+  } else if(u.cls === 'HD' || u.cls === 'ON'){
+    const f = u.cls === 'HD' ? hddFlows(hddKey(u.sym), st) : u.on.fx.fl.filter(x => x[0] > st).map(x => ({d:x[0], cf:x[1]}));
+    const y = hddYTM(f, u.pxUsd, st) + A.shHD/1e4;
+    let usd = f.filter(x => x.d <= H).reduce((s, x) => s + x.cf, 0);
+    const rest = f.filter(x => x.d > H);
+    if(rest.length && A.dflt && u.cls === 'HD'){   // escenario default: al horizonte se canjea (reestructuración tipo 2020)
+      const [, q, ext, cpn, ex] = HDD_PRESETS.c20m;
+      usd += hddRecovery(hddKey(u.sym), H, q, ext, cpn, ex); sold = true; how = 'default al horizonte · canje';
+    } else {
+      usd += rest.reduce((s, x) => s + x.cf / Math.pow(1 + y, bkDays(H, x.d)/365), 0);
+      if(rest.length) sold = true;
+      how = rest.length ? (f.some(x => x.d <= H) ? 'cobra cupones · ' : '') + 'se vende (TIR '+(y*100).toFixed(1).replace('.',',')+'%)' : 'vence';
+    }
+    valUSD = usd; valARS = usd * cartMepAt(A, H);
+    costARS = u.pxUsd * cartMep0;
+  }
+  // comisión (% por operación): en la compra y, si se vende antes del vto., en la venta
+  const com = (A.com || 0)/100;
+  costARS *= (1 + com);
+  if(sold && com){ valARS *= (1 - com); if(valUSD !== null) valUSD *= (1 - com); }
+  if(valUSD === null) valUSD = valARS / cartMepAt(A, H);
+  return {costARS, valARS, valUSD, costUSD: costARS / cartMep0, how};
+}
+
+// ── cálculo de cartera bajo un set de supuestos ───────────────────────────
+function cartCompute(A){
+  const U = cartUniverse(), days = bkDays(cartSettle(), A.h), rows = [];
+  let C = 0, V = 0, CU = 0, VU = 0;
+  cartItems.forEach((it, idx) => {
+    const u = U[it.sym]; if(!u || !(it.monto > 0)) { rows.push({it, idx, err: u ? 'monto' : 'sin precio'}); return; }
+    const usdPx = u.cls === 'HD' || u.cls === 'ON';
+    const px = Number.isFinite(it.px) && it.px > 0 ? it.px : (usdPx ? u.pxUsd : u.px);
+    const uu = usdPx ? {...u, pxUsd: px} : u;
+    const per = cartValue(uu, usdPx ? px * cartMep0 : px, A);
+    const n = it.monto / per.costARS;              // cantidad de "lotes de 100 VN"
+    const r = {it, idx, u, px, vn: n*100, cost: it.monto, val: per.valARS*n, costU: per.costUSD*n, valU: per.valUSD*n, how: per.how};
+    C += r.cost; V += r.val; CU += r.costU; VU += r.valU; rows.push(r);
+  });
+  return {rows, C, V, CU, VU, days};
+}
+const cartRet = (v, c) => (v/c - 1)*100;
+const cartTem = (v, c, d) => (Math.pow(v/c, 30/d) - 1)*100;
+const cartTea = (v, c, d) => (Math.pow(v/c, 365/d) - 1)*100;
+
+// ── UI ──────────────────────────────────────────────────────────────────────
+function cartAdd(){
+  const s = (document.getElementById('cart-sym').value || '').trim().toUpperCase();
+  const m = +document.getElementById('cart-monto').value;
+  const U = cartUniverse();
+  if(!U[s]){ cartMsg('No encuentro '+s+' con precio en el tablero'); return; }
+  if(!(m > 0)){ cartMsg('Cargá un monto en pesos'); return; }
+  const ex = cartItems.find(x => x.sym === s);
+  if(ex) ex.monto += m; else cartItems.push({sym:s, monto:m, px:null});
+  document.getElementById('cart-sym').value = ''; cartSave(); cartRender();
+}
+function cartDel(i){ cartItems.splice(i,1); cartSave(); cartRender(); }
+function cartEdit(i, field, v){ const x = cartItems[i]; if(!x) return; x[field] = v === '' ? null : +v; cartSave(); cartRender(); }
+function cartClear(){ cartItems = []; cartSave(); cartRender(); }
+function cartExample(){
+  const U = cartUniverse();
+  const pick = (arr) => arr.find(s => U[s]);
+  const cand = [
+    pick(Object.keys(U).filter(s => U[s].cls === 'TF').sort((a,b) => U[a].vto < U[b].vto ? -1 : 1).slice(2)),
+    pick(Object.keys(U).filter(s => U[s].cls === 'CER' && U[s].instr.tipo === 'ZC').sort((a,b) => U[a].vto < U[b].vto ? -1 : 1).slice(2)),
+    pick(['TZV27','D31M7']), pick(['GD30','AL30']), pick(['GD35','AL35'])
+  ].filter(Boolean);
+  const w = [0.25, 0.25, 0.15, 0.20, 0.15];
+  cartItems = cand.map((s, i) => ({sym:s, monto: Math.round(10e6 * w[i]), px:null}));
+  cartSave(); cartRender();
+}
+function cartHz(m){ cartA.h = cartAddMonths(cartToday(), m); cartAfterA(); }
+function cartSet(k, v){ if(k === 'h' && (!v || v <= cartSettle())) return; if(!Number.isFinite(v) && k !== 'h') return; cartA[k] = v; cartA._user = cartA._user || {}; cartA._user[k] = true; cartAfterA(); }
+function cartIpcSet(k, v){ cartA.ipc[k] = +v; cartA._user = cartA._user || {}; cartA._user.ipc = true; cartAfterA(); }
+function cartResetA(){ cartA = null; cartAfterA(); }
+function cartIpcPreset(p){
+  cartA._user = cartA._user || {}; cartA._user.ipc = p !== 'rem';
+  Object.keys(cartA.ipc).forEach(k => { cartA.ipc[k] = p === 'rem' ? bandIpcDefault(+k) : +(cartA.ipc[k] + p).toFixed(2); });
+  cartAfterA();
+}
+function cartAfterA(){ if(cartA) cartA._v = (cartA._v||0) + 1; cartCerCache = {}; cartEnsureA(); cartSave(); cartRender(); }
+function cartMsg(t){ const e = document.getElementById('cart-status'); if(e){ e.textContent = t; e.style.color = 'var(--rd)'; setTimeout(()=>{ e.style.color=''; cartStatus(); }, 3500); } }
+function cartStatus(){
+  const e = document.getElementById('cart-status'); if(!e) return;
+  const cer = bkCerSerie && bkCerSerie.length ? 'CER publicado hasta '+cartFmtD(bkCerSerie.at(-1).fecha) : 'CER: valor de hoy (serie BCRA no cargada)';
+  e.innerHTML = 'Liquidación '+cartFmtD(cartSettle())+' · A3500 '+cartNum(cartTc0(),2)+' · MEP '+(cartMep0 ? cartNum(cartMep0,2) : '—')+' · '+cer;
+}
+
+function cartScenarios(){
+  const b = {...cartA};
+  return [
+    ['Base', 'supuestos de arriba', b],
+    ['Más inflación', 'IPC +0,5 pp por mes · TAMAR +6 pp', {...b, ipc: Object.fromEntries(Object.entries(b.ipc).map(([k,v]) => [k, v+0.5])), tamar:b.tamar+6, _v:'inf'+b._v}],
+    ['Devaluación', 'salto +15% oficial y +1 pp/mes', {...b, jump:15, dev:b.dev+1, _v:'dev'+b._v}],
+    ['Riesgo país +300', 'HD/DL +300 pb · TF +0,3 pp · CER +1 pp', {...b, shHD:b.shHD+300, shTF:b.shTF+0.3, shCER:b.shCER+1, _v:'rp'+b._v}],
+    ['Estrés', 'los tres juntos', {...b, ipc: Object.fromEntries(Object.entries(b.ipc).map(([k,v]) => [k, v+0.5])), tamar:b.tamar+6, jump:15, dev:b.dev+1, shHD:b.shHD+300, shTF:b.shTF+0.3, shCER:b.shCER+1, _v:'st'+b._v}],
+    ['Default HD', 'GD/AL se canjean al horizonte (tipo 2020 a tasa de mercado: quita 2%, +5 años, cupón 3%, salida 13%)', {...b, dflt:true, _v:'df'+b._v}],
+  ];
+}
+
+function cartRender(){
+  if(!document.getElementById('tab-cart')) return;
+  cartCerCache = {}; cartEnsureA(); cartStatus();
+  const U = cartUniverse();
+  // datalist
+  document.getElementById('cart-syms').innerHTML = Object.values(U).sort((a,b) => a.cls.localeCompare(b.cls) || (a.vto < b.vto ? -1 : 1))
+    .map(u => `<option value="${u.sym}">${u.tipo} · vto ${cartFmtD(u.vto)}</option>`).join('');
+  // supuestos
+  document.getElementById('cart-h').value = cartA.h;
+  document.querySelectorAll('#tab-cart .hz').forEach(b => b.classList.toggle('on', cartAddMonths(cartToday(), +b.dataset.m) === cartA.h));
+  const days = bkDays(cartSettle(), cartA.h);
+  document.getElementById('cart-h-note').textContent = days + ' días desde la liquidación';
+  document.getElementById('cart-dev').value = cartA.dev;
+  document.getElementById('cart-dev-note').textContent = 'default '+cartDefaultDev().v.toFixed(2).replace('.',',')+'% · '+cartA._devSrc;
+  document.getElementById('cart-brecha').value = cartA.brecha;
+  document.getElementById('cart-brecha-note').textContent = 'hoy '+(cartA._brechaDef ?? '—')+'% (MEP vs A3500)';
+  document.getElementById('cart-reinv').value = cartA.reinv;
+  document.getElementById('cart-tamar').value = cartA.tamar;
+  document.getElementById('cart-tamar-note').textContent = 'última publicada '+cartDefaultTamar().toFixed(2).replace('.',',')+'% (BCRA)';
+  document.getElementById('cart-com').value = cartA.com;
+  ['shTF','shCER','shHD'].forEach(k => document.getElementById('cart-'+k).value = cartA[k]);
+  const need = cartIpcMonthsNeeded(cartA.h);
+  document.getElementById('cart-ipc').innerHTML = need.map(k => {
+    const y = Math.floor(k/100), m = k%100;
+    return `<label style="display:flex;flex-direction:column;align-items:center;gap:2px"><span>${MES_C[m-1]}-${String(y).slice(2)}</span><input type="number" step="0.1" value="${cartA.ipc[k]}" class="cart-in" style="width:52px;text-align:center" onchange="cartIpcSet(${k},this.value)"></label>`;
+  }).join('');
+
+  const R = cartCompute(cartA);
+  // items
+  document.getElementById('cart-items').innerHTML = cartItems.length ? R.rows.map(r => {
+    const it = r.it, u = U[it.sym];
+    const pxShown = r.err ? '—' : r.px;
+    return `<tr><td>${it.sym}</td><td class="ct">${u ? u.tipo : '<span style="color:var(--rd)">sin precio</span>'}</td><td class="ct"><span class="vto">${u ? cartFmtD(u.vto) : '—'}</span></td>
+      <td><input type="number" value="${it.monto}" class="cart-in" style="width:110px;text-align:right" onchange="cartEdit(${r.idx},'monto',this.value)"></td>
+      <td>${R.C ? cartNum(it.monto / R.C * 100, 1) + '%' : '—'}</td>
+      <td><input type="number" step="0.01" value="${Number.isFinite(it.px) ? it.px : ''}" placeholder="${u ? ((u.cls==='HD'||u.cls==='ON') ? 'US$ '+cartNum(u.pxUsd,2) : cartNum(u.px,2)) : ''}" class="cart-in" style="width:96px;text-align:right" onchange="cartEdit(${r.idx},'px',this.value)"></td>
+      <td>${r.vn ? cartNum(r.vn) : '—'}</td><td class="ct"><button class="cart-btn ghost" onclick="cartDel(${r.idx})">✕</button></td></tr>`;
+  }).join('') : '<tr><td colspan="8" style="text-align:center;color:var(--mu);font-weight:400">Agregá bonos arriba o cargá el ejemplo</td></tr>';
+
+  const ok = R.rows.filter(r => !r.err);
+  // KPIs
+  const k = (l, v, s, c) => `<div class="kpi"><div class="kpi-lbl">${l}</div><div class="kpi-val" style="color:${c}">${v}</div><div class="kpi-sub">${s}</div></div>`;
+  document.getElementById('cart-kpis').innerHTML = ok.length ? [
+    k('Invertido', '$'+cartNum(R.C/1e6,2)+'M', 'US$ '+cartNum(R.CU,0)+' al MEP de hoy', 'var(--txt)'),
+    k('Valor al '+cartFmtD(cartA.h), '$'+cartNum(R.V/1e6,2)+'M', 'US$ '+cartNum(R.VU,0)+' al MEP proyectado', '#a78bfa'),
+    k('Rendimiento ARS', cartPct(cartRet(R.V,R.C)), 'TEM '+cartPct(cartTem(R.V,R.C,R.days),2)+' · TEA '+cartPct(cartTea(R.V,R.C,R.days)), cartRet(R.V,R.C) >= 0 ? 'var(--gr)' : 'var(--rd)'),
+    k('Rendimiento USD (MEP)', cartPct(cartRet(R.VU,R.CU)), 'TEA '+cartPct(cartTea(R.VU,R.CU,R.days)), cartRet(R.VU,R.CU) >= 0 ? 'var(--gr)' : 'var(--rd)'),
+    k('Inflación (vía CER)', cartPct((cartCerAt(cartA, cartA.h)/cartCerAt(cartA, cartSettle()) - 1)*100), 'rend. real ARS '+cartPct(((R.V/R.C)/(cartCerAt(cartA,cartA.h)/cartCerAt(cartA,cartSettle())) - 1)*100), 'var(--or)'),
+  ].join('') : '';
+  document.getElementById('cart-res-sub').textContent = ok.length ? '· horizonte '+cartFmtD(cartA.h)+' ('+R.days+' días)' : '';
+  document.getElementById('cart-res').innerHTML = ok.map(r => {
+    const ra = cartRet(r.val, r.cost), ru = cartRet(r.valU, r.costU);
+    return `<tr><td>${r.it.sym}</td><td class="ct" style="font-size:10px;color:var(--mu)">${r.how}</td><td>${cartNum(r.cost)}</td><td>${cartNum(r.val)}</td>
+      <td style="color:${ra>=0?'var(--gr)':'var(--rd)'}">${cartPct(ra)}</td><td>${cartPct(cartTem(r.val,r.cost,R.days),2)}</td><td>${cartPct(cartTea(r.val,r.cost,R.days))}</td>
+      <td style="color:${ru>=0?'var(--gr)':'var(--rd)'}">${cartPct(ru)}</td><td>${cartPct(cartTea(r.valU,r.costU,R.days))}</td>
+      <td>${R.C ? cartPct((r.val - r.cost)/R.C*100, 2) : '—'}</td></tr>`;
+  }).join('');
+  // escenarios
+  document.getElementById('cart-scen').innerHTML = ok.length ? cartScenarios().map(([n, d, A]) => {
+    const S = cartCompute(A); const ra = cartRet(S.V,S.C), ru = cartRet(S.VU,S.CU);
+    return `<tr><td>${n}</td><td style="text-align:left;font-size:10px;color:var(--mu)">${d}</td><td style="color:${ra>=0?'var(--gr)':'var(--rd)'}">${cartPct(ra)}</td><td>${cartPct(cartTea(S.V,S.C,S.days))}</td>
+      <td style="color:${ru>=0?'var(--gr)':'var(--rd)'}">${cartPct(ru)}</td><td>${cartPct(cartTea(S.VU,S.CU,S.days))}</td></tr>`;
+  }).join('') : '';
+  // exposición
+  const g = {};
+  ok.forEach(r => { const t = r.u.tipo; g[t] = g[t] || {c:0, v:0, dw:0}; g[t].c += r.cost; g[t].v += r.val; g[t].dw += r.cost * bkDays(cartSettle(), r.u.vto); });
+  document.getElementById('cart-exp').innerHTML = Object.entries(g).map(([t, x]) =>
+    `<tr><td>${t}</td><td>${cartNum(x.c/R.C*100,1)}%</td><td>${cartPct(cartRet(x.v,x.c))}</td><td>${cartNum(x.dw/x.c/30,1)} meses</td></tr>`).join('');
+}
+
+async function cartInit(){
+  cartLoad();
+  try{ const r = await fetch('/api/proxy?src=dolar'); const j = await r.json(); const b = (j||[]).find(x => x.casa === 'bolsa'); if(b && b.venta) cartMep0 = b.venta; }catch(e){}
+  if(!cartMep0) cartMep0 = cartTc0() * 1.05;
+  if(cartA) cartA._v = 0;
+  cartRender();
+  // la serie CER del BCRA puede llegar después (la carga también la solapa Breakeven): re-renderizar cuando esté
+  if(!bkCerSerie){ try{ await bkLoadCerSerie(); }catch(e){} let n = 0; const t = setInterval(() => { if(bkCerSerie || ++n > 20){ clearInterval(t); cartRender(); } }, 500); }
+}
+
+cartInit();
 </script>
 </body>
 </html>

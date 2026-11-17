@@ -77,7 +77,7 @@ export default async function handler(req, res) {
   if (src === 'tamar-hist') {
     try {
       const fmt = d => d.toISOString().slice(0, 10);
-      const r = await fetch(`https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/136?desde=2026-04-01&hasta=${fmt(new Date())}&limit=1000`, { signal: AbortSignal.timeout(9000) });
+      const r = await fetch(`https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/136?desde=2024-10-01&hasta=${fmt(new Date())}&limit=1000`, { signal: AbortSignal.timeout(9000) });
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       const d = await r.json();
       const serie = (d?.results?.[0]?.detalle || []).map(x => ({ f: x.fecha, v: x.valor })).sort((a, b) => a.f.localeCompare(b.f));
