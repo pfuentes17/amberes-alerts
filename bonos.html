@@ -103,6 +103,8 @@ td:first-child{text-align:left;font-weight:600;font-size:12px;color:#dce8f5;}td.
 hr.dv{border:none;border-top:1px solid var(--bdr);}
 /* val table */
 .vt{width:100%;border-collapse:collapse;}
+#hdd-wrap .hdd-tbl th{white-space:normal;line-height:1.25;vertical-align:bottom;padding:6px 6px;}#hdd-wrap .hdd-tbl td{padding:7px 6px;font-size:10.5px;}
+.hdd-pre{background:var(--s2);border:1px solid var(--bdr2);color:var(--mu);border-radius:4px;padding:1px 7px;font-family:'IBM Plex Mono',monospace;font-size:10px;cursor:pointer}.hdd-pre:hover{color:var(--txt)}
 .vt thead tr{border-bottom:1px solid var(--bdr);}
 .vt th{padding:5px 7px;font-family:'IBM Plex Mono',monospace;font-size:8px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);text-align:right;}
 .vt th:first-child{text-align:left;}
@@ -883,6 +885,55 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
           <thead><tr><th>Par</th><th>Vto.</th><th>TIR AL</th><th>TIR GD</th><th>Spread</th><th>pb</th></tr></thead>
           <tbody id="hd-spread"></tbody>
         </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ ¿QUÉ PRICEAN LOS HARD DOLLAR? — escenario de default (agregado 16/11/2026) ═══ -->
+  <div class="tw" id="hdd-wrap" style="margin-top:18px">
+    <div class="tw-hdr" style="color:var(--rd);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <span>¿Qué están priceando los Hard Dollar? · Escenario de default</span>
+      <span style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;text-transform:none;letter-spacing:0;font-weight:400;color:var(--mu)">
+        <span style="display:flex;gap:4px;flex-wrap:wrap">
+          <button onclick="hddPreset('rep')" class="hdd-pre" title="Quita 0% · +3 años · cupón 5% · tasa de salida 12%">Reperfilamiento</button>
+          <button onclick="hddPreset('c20')" class="hdd-pre" title="Quita 2% · +5 años · cupón 3% · tasa de salida 10% (≈ valor teórico de la oferta 2020, ~55)">Tipo 2020</button>
+          <button onclick="hddPreset('c20m')" class="hdd-pre" title="Mismo canje 2020 pero a la tasa a la que cotizaron después los bonos nuevos (~13%)">2020 a tasa de mercado</button>
+          <button onclick="hddPreset('c05')" class="hdd-pre" title="Quita 30% · +10 años · cupón 2,5% · tasa de salida 12% (≈ recupero 2005, 25–35)">Duro tipo 2005</button>
+        </span>
+        <label>Tasa libre de riesgo
+          <input id="hdd-rf" type="number" min="0" max="10" step="0.25" value="4.0" oninput="hddRender()" style="width:52px;background:var(--s2);border:1px solid var(--bdr2);color:var(--txt);border-radius:4px;padding:2px 4px;font-family:inherit">
+          % (UST)</label>
+      </span>
+    </div>
+    <div style="padding:10px 14px 0;display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu)">
+      <span style="color:var(--rd);text-transform:uppercase;letter-spacing:.1em">Simulador de reestructuración (default hoy) →</span>
+      <label>Quita de capital <input id="hdd-q" type="number" step="5" value="2" oninput="hddRender()" style="width:46px;background:var(--s2);border:1px solid var(--bdr2);color:var(--txt);border-radius:4px;padding:2px 4px;font-family:inherit">%</label>
+      <label>Extensión <input id="hdd-ext" type="number" step="1" value="5" oninput="hddRender()" style="width:46px;background:var(--s2);border:1px solid var(--bdr2);color:var(--txt);border-radius:4px;padding:2px 4px;font-family:inherit"> años</label>
+      <label>Cupón nuevo <input id="hdd-cpn" type="number" step="0.25" value="3" oninput="hddRender()" style="width:46px;background:var(--s2);border:1px solid var(--bdr2);color:var(--txt);border-radius:4px;padding:2px 4px;font-family:inherit">%</label>
+      <label>Tasa de salida <input id="hdd-exit" type="number" step="0.5" value="13" oninput="hddRender()" style="width:46px;background:var(--s2);border:1px solid var(--bdr2);color:var(--txt);border-radius:4px;padding:2px 4px;font-family:inherit">%</label>
+      <span id="hdd-esc" style="color:var(--txt)"></span>
+    </div>
+    <div style="padding:12px 14px 4px">
+      <div class="kpis" style="margin-bottom:12px">
+        <div class="kpi"><div class="kpi-lbl">Prob. default a fin de mandato · GD</div><div class="kpi-val" id="hdd-k1" style="color:var(--rd)">—</div><div class="kpi-sub">promedio Globales · acumulada a dic-27</div></div>
+        <div class="kpi"><div class="kpi-lbl">Prob. default a fin de mandato · AL</div><div class="kpi-val" id="hdd-k2" style="color:var(--or)">—</div><div class="kpi-sub">promedio Bonares · acumulada a dic-27</div></div>
+        <div class="kpi"><div class="kpi-lbl">Prima de ley NY</div><div class="kpi-val" id="hdd-k3" style="color:var(--cy)">—</div><div class="kpi-sub">PD Bonares − PD Globales (pp)</div></div>
+        <div class="kpi"><div class="kpi-lbl">Pérdida media si hay default</div><div class="kpi-val" id="hdd-k4" style="color:var(--rd)">—</div><div class="kpi-sub">precio actual → valor de recupero</div></div>
+        <div class="kpi"><div class="kpi-lbl">Riesgo descontado (intensidad)</div><div class="kpi-val" id="hdd-k5" style="color:var(--am)">—</div><div class="kpi-sub">prob. anual promedio implícita</div></div>
+      </div>
+    </div>
+    <div class="tbl-wrap"><table class="hdd-tbl"><thead><tr>
+      <th style="text-align:left">Bono</th><th>Precio</th><th title="Precio / capital residual (pasá el mouse por cada valor para ver el residual)">Paridad</th><th>TIR exacta</th>
+      <th title="Valor del bono nuevo del canje, por 100 VN original (entre paréntesis: % del capital residual)">Valor en default<br>(recupero)</th><th>Caída si<br>default hoy</th><th>Prob. default<br>a dic-27</th><th>Prob. default<br>al vto.</th><th title="Recupero con el que el precio actual implica 50% de probabilidad de default a fin de mandato">Recupero de<br>equilibrio</th>
+    </tr></thead><tbody id="hdd-tb"></tbody></table></div>
+    <div style="padding:12px 14px">
+      <div class="ctitle" style="color:var(--rd)">Qué parte del precio es piso de recupero y qué parte es apuesta a que se pague</div>
+      <div class="csub">USD por cada 100 de valor nominal original · gris = lo que se recupera aun en default · color = prima que el mercado paga por el escenario de pago normal</div>
+      <div class="cbox" style="height:260px"><canvas id="hddChart"></canvas></div>
+      <div class="fnote" style="text-align:left;margin-top:8px">
+        <b>Cómo se calcula.</b> Flujos exactos de los bonos de la reestructuración 2020 (cupones step-up y cronograma de amortización de cada serie; AL = GD, AE38 = GD38). Precio de mercado = precio sucio (convención BYMA), TIR efectiva anual con liquidación T+1.
+        <b>Valor en default</b> (simulador): el saldo de cada bono se canjea hoy por un bono nuevo — capital × (1 − quita), mismo cronograma de amortización corrido la extensión elegida, cupón fijo semestral — valuado a la tasa de salida (la TIR a la que cotizaría el bono nuevo). Referencias: canje 2020 ≈ 55 a 10% teórico, pero los bonos nuevos cotizaron ~35–45 en los meses siguientes (≈13%); 2005 ≈ 25–35. <b>Recupero</b> = valor en default / capital residual. <b>Distancia al default</b> = cuánto caería el precio si el default ocurriera hoy. <b>Recupero de equilibrio</b> = recupero con el que el precio actual implicaría 50% de probabilidad de default a fin de mandato: si esperás un recupero mayor y creés que el default es tan probable como que no, el bono está barato.
+        <b>Probabilidad implícita</b>: intensidad de default constante λ (modelo de forma reducida) tal que el valor esperado de los flujos — pagados si no hubo default, recupero sobre el saldo si lo hubo — descontado a la tasa libre de riesgo iguala el precio. Prob. acumulada = 1 − e<sup>−λt</sup>. Es probabilidad "neutral al riesgo": incluye prima por riesgo y liquidez, por lo que suele exceder la probabilidad real. Más recupero ⇒ más probabilidad implícita para el mismo precio. Cifras históricas de referencia aproximadas. GD46 sin precio en vivo: no se incluye.
       </div>
     </div>
   </div>
@@ -3532,6 +3583,7 @@ function hdRenderAll(sobData, bpData) {
   const liveSymbols = new Set(sobData.map(d => d.symbol));
   const missing = SEED_HD_SOB.filter(s => HD_CONFIG[s.symbol] && !liveSymbols.has(s.symbol));
   const sobDataFull = [...sobData, ...missing];
+  try { hddUpdate(sobData); } catch(e) { console.warn('hdd', e); }
 
   // Enriquecer con YTM y duración del seed si la API no los trae
   // Si el precio cambió vs el seed, aproximamos el nuevo YTM con duración modificada:
@@ -3803,6 +3855,125 @@ function hdRenderAll(sobData, bpData) {
       }
     }]
   });
+}
+
+// ═══════════════════════════════════════════════════════════════
+//  ¿QUÉ PRICEAN LOS HD? — escenario de default (16/11/2026)
+//  Flujos exactos reestructuración 2020 (por 100 VN original). Validado vs bonistas.com 15/09/2026:
+//  TIR efectiva anual, precio sucio, liquidación T+1 → GD30 6,60 vs 6,59 · GD35 9,66 vs 9,60 · GD38 9,44 vs 9,44 · GD41 9,81 vs 9,79.
+// ═══════════════════════════════════════════════════════════════
+const HDD_CPN = { // [desde, hasta, cupón % anual]; el cupón pagado en t usa la tasa del semestre que termina en t
+  '29':[['2020-09-04','2100-01-09',1.0]],
+  '30':[['2020-09-04','2021-07-09',.125],['2021-07-09','2023-07-09',.5],['2023-07-09','2027-07-09',.75],['2027-07-09','2100-01-09',1.75]],
+  '35':[['2020-09-04','2021-07-09',.125],['2021-07-09','2022-07-09',1.125],['2022-07-09','2023-07-09',1.5],['2023-07-09','2024-07-09',3.625],['2024-07-09','2027-07-09',4.125],['2027-07-09','2028-07-09',4.75],['2028-07-09','2100-01-09',5.0]],
+  '38':[['2020-09-04','2021-07-09',.125],['2021-07-09','2022-07-09',2.0],['2022-07-09','2023-07-09',3.875],['2023-07-09','2024-07-09',4.25],['2024-07-09','2100-01-09',5.0]],
+  '41':[['2020-09-04','2021-07-09',.125],['2021-07-09','2022-07-09',2.5],['2022-07-09','2029-07-09',3.5],['2029-07-09','2100-01-09',4.875]],
+  '46':[['2020-09-04','2021-07-09',.125],['2021-07-09','2022-07-09',1.125],['2022-07-09','2023-07-09',1.5],['2023-07-09','2024-07-09',3.625],['2024-07-09','2027-07-09',4.125],['2027-07-09','2028-07-09',4.375],['2028-07-09','2100-01-09',5.0]],
+};
+function hddSched(y,m,n,pct){const o=[];for(let i=0;i<n;i++){o.push([`${y}-${m===1?'01':'07'}-09`,pct]);if(m===1)m=7;else{m=1;y++;}}return o;}
+const HDD_AMORT = {
+  '29':hddSched(2025,1,10,10), '30':[['2024-07-09',4],...hddSched(2025,1,12,8)], '35':hddSched(2031,1,10,10),
+  '38':hddSched(2027,7,22,100/22), '41':hddSched(2028,1,28,100/28), '46':hddSched(2025,1,44,100/44),
+};
+const HDD_BONDS = ['GD29','GD30','GD35','GD38','GD41','GD46','AL29','AL30','AL35','AE38','AL41'];
+const HDD_END_MANDATO = '2027-12-10';
+let hddLast = null, hddChart = null;
+function hddKey(sym){ return sym.slice(2); }
+function hddDays(a,b){ return (new Date(b+'T00:00:00Z')-new Date(a+'T00:00:00Z'))/86400000; }
+function hddSettle(){ const d=new Date(); d.setUTCHours(0,0,0,0); do{ d.setUTCDate(d.getUTCDate()+1); }while([0,6].includes(d.getUTCDay())); return d.toISOString().slice(0,10); }
+function hddFlows(k, today){
+  const am=Object.fromEntries(HDD_AMORT[k]); const last=HDD_AMORT[k].at(-1)[0];
+  const dates=[]; for(let y=2021;y<=2046;y++){ dates.push(`${y}-01-09`,`${y}-07-09`); }
+  let res=100; const out=[];
+  for(const d of dates){
+    if(d>last) break;
+    const r=(HDD_CPN[k].find(([a,b])=>a<d&&d<=b)||[0,0,0])[2];
+    const c=res*r/200, a=am[d]||0;
+    if(d>today) out.push({d, cf:c+a, res});
+    res-=a;
+  }
+  return out;
+}
+function hddResidual(k,today){ return 100-HDD_AMORT[k].filter(([d])=>d<=today).reduce((s,[,p])=>s+p,0); }
+function hddYTM(f,price,today){
+  const g=r=>f.reduce((s,x)=>s+x.cf/Math.pow(1+r,hddDays(today,x.d)/365),0)-price;
+  let lo=-0.5,hi=3; for(let i=0;i<200;i++){const m=(lo+hi)/2; if(g(m)>0)lo=m; else hi=m;} return (lo+hi)/2;
+}
+function hddLambda(f,price,today,R,rf){
+  const model=lam=>{ let v=0,sp=1; for(const x of f){ const t=hddDays(today,x.d)/365, S=Math.exp(-lam*t), df=Math.exp(-rf*t); v+=x.cf*S*df+R*x.res*(sp-S)*df; sp=S; } return v; };
+  if(model(0)<=price) return 0;
+  if(model(10)>price) return 10;
+  let lo=0,hi=10; for(let i=0;i<200;i++){const m=(lo+hi)/2; if(model(m)>price)lo=m; else hi=m;} return (lo+hi)/2;
+}
+function hddUpdate(sobData){
+  hddLast={};
+  (sobData||[]).forEach(d=>{ if(HDD_BONDS.includes(d.symbol) && d.price_usd>0) hddLast[d.symbol]=d.price_usd; });
+  hddRender();
+}
+const HDD_PRESETS={ rep:['Reperfilamiento',0,3,5,12], c20:['Tipo 2020',2,5,3,10], c20m:['2020 a tasa de mercado',2,5,3,13], c05:['Duro tipo 2005',30,10,2.5,12] };
+function hddPreset(k){ const [,q,e,c,x]=HDD_PRESETS[k]; [['hdd-q',q],['hdd-ext',e],['hdd-cpn',c],['hdd-exit',x]].forEach(([id,v])=>document.getElementById(id).value=v); hddRender(); }
+// Valor del bono nuevo (por 100 VN original) si el default/canje fuera HOY: capital nuevo = saldo × (1−quita), mismo cronograma de
+// amortización restante corrido +ext años, cupón fijo semestral, descontado a la tasa de salida (TIR efectiva anual).
+function hddRecovery(k,today,q,ext,cpn,exitY){
+  const res=hddResidual(k,today), face=res*(1-q/100);
+  const fut=HDD_AMORT[k].filter(([d])=>d>today); const tot=fut.reduce((s,[,p])=>s+p,0); if(!tot||face<=0) return 0;
+  const am={}; fut.forEach(([d,p])=>{ am[(+d.slice(0,4)+ext)+d.slice(4)]=p/tot*face; });
+  const last=Object.keys(am).sort().at(-1); let y=+today.slice(0,4), md=today.slice(5), m; if(md<'01-09') m=1; else if(md<'07-09') m=7; else { m=1; y++; }
+  let bal=face, pv=0;
+  for(let d=`${y}-${m===1?'01':'07'}-09`; d<=last; ){
+    const a=am[d]||0, c=bal*cpn/200; pv+=(c+a)/Math.pow(1+exitY/100,hddDays(today,d)/365); bal-=a;
+    if(m===1){m=7;}else{m=1;y++;} d=`${y}-${m===1?'01':'07'}-09`;
+  }
+  return pv;
+}
+// Recupero (fracción del saldo) con el que el precio actual implicaría probabilidad pm de default a fin de mandato.
+function hddBreakevenR(f,price,today,rf,Tm,pm){
+  if(Tm<=0) return NaN; const lam=-Math.log(1-pm)/Tm; let A=0,B=0,sp=1;
+  for(const x of f){ const t=hddDays(today,x.d)/365, S=Math.exp(-lam*t), df=Math.exp(-rf*t); A+=x.cf*S*df; B+=x.res*(sp-S)*df; sp=S; }
+  return (price-A)/B;
+}
+function hddRender(){
+  if(!hddLast || !document.getElementById('hdd-tb')) return;
+  const num=id=>parseFloat(document.getElementById(id).value)||0;
+  const q=Math.max(0,Math.min(100,num('hdd-q'))), ext=Math.max(0,Math.round(num('hdd-ext'))), cpn=Math.max(0,num('hdd-cpn')), exitY=Math.max(0.1,num('hdd-exit'));
+  const esc=Object.values(HDD_PRESETS).find(([,a,b,c,d])=>a===q&&b===ext&&c===cpn&&d===exitY);
+  document.getElementById('hdd-esc').textContent=esc?'Escenario: '+esc[0]:'Escenario: personalizado';
+  const rf=(parseFloat(document.getElementById('hdd-rf').value)||0)/100;
+  const today=hddSettle();
+  const pct=v=>(v*100).toFixed(1)+'%';
+  const rows=HDD_BONDS.filter(s=>hddLast[s]).map(s=>{
+    const k=hddKey(s), price=hddLast[s], f=hddFlows(k,today), res=hddResidual(k,today);
+    const rec=hddRecovery(k,today,q,ext,cpn,exitY), R=res>0?rec/res:0;
+    const ytm=hddYTM(f,price,today), lam=hddLambda(f,price,today,R,rf);
+    const T=hddDays(today,f.at(-1).d)/365, Tm=Math.max(0,hddDays(today,HDD_END_MANDATO)/365);
+    const be=hddBreakevenR(f,price,today,rf,Tm,0.5);
+    return {s,price,res,par:price/res,ytm,lam,rec,R,be,dist:rec/price-1,p1:1-Math.exp(-lam),pm:1-Math.exp(-lam*Tm),pT:1-Math.exp(-lam*T)};
+  });
+  const col=p=>p>=.5?'var(--rd)':p>=.25?'var(--or)':p>=.1?'var(--am)':'var(--gr)';
+  document.getElementById('hdd-tb').innerHTML=rows.map(r=>`<tr>
+    <td style="text-align:left;color:${r.s.startsWith('GD')?'#facc15':'var(--am)'};font-weight:600">${r.s}</td>
+    <td>${r.price.toFixed(2)}</td><td title="Capital residual: ${r.res.toFixed(1)} de 100">${pct(r.par)}</td><td>${(r.ytm*100).toFixed(2)}%</td>
+    <td>${r.rec.toFixed(1)} <span style="color:var(--mu)">(${(r.R*100).toFixed(0)}%)</span></td><td style="color:${r.dist<0?'var(--rd)':'var(--gr)'}">${(r.dist*100).toFixed(0)}%</td>
+    <td style="color:${col(r.pm)};font-weight:600">${pct(r.pm)}</td><td style="color:${col(r.pT)}">${pct(r.pT)}</td><td style="color:var(--cy)">${isFinite(r.be)?(r.be<0?'&lt;0%':(r.be*100).toFixed(0)+'%'):'—'}</td></tr>`).join('');
+  const avg=a=>a.length?a.reduce((s,x)=>s+x,0)/a.length:NaN;
+  const gd=rows.filter(r=>r.s.startsWith('GD')), al=rows.filter(r=>!r.s.startsWith('GD'));
+  const kGD=avg(gd.map(r=>r.pm)), kAL=avg(al.map(r=>r.pm));
+  document.getElementById('hdd-k1').textContent=isNaN(kGD)?'—':pct(kGD);
+  document.getElementById('hdd-k2').textContent=isNaN(kAL)?'—':pct(kAL);
+  document.getElementById('hdd-k3').textContent=(isNaN(kGD)||isNaN(kAL))?'—':((kAL-kGD)*100>=0?'+':'')+((kAL-kGD)*100).toFixed(1)+' pp';
+  document.getElementById('hdd-k4').textContent=rows.length?(avg(rows.map(r=>r.dist))*100).toFixed(0)+'%':'—';
+  document.getElementById('hdd-k5').textContent=rows.length?pct(avg(rows.map(r=>r.p1)))+' / año':'—';
+  const ctx=document.getElementById('hddChart'); if(!ctx||typeof Chart==='undefined') return;
+  const data={labels:rows.map(r=>r.s),datasets:[
+    {label:'Piso de recupero',data:rows.map(r=>+Math.min(r.rec,r.price).toFixed(2)),backgroundColor:'rgba(148,173,200,.35)'},
+    {label:'Prima por escenario de pago',data:rows.map(r=>+Math.max(0,r.price-r.rec).toFixed(2)),backgroundColor:rows.map(r=>r.s.startsWith('GD')?'rgba(250,204,21,.75)':'rgba(245,158,11,.75)')},
+  ]};
+  if(hddChart){ hddChart.data=data; hddChart.update(); return; }
+  hddChart=new Chart(ctx,{type:'bar',data,options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{labels:{color:'#94adc8',font:{family:'IBM Plex Mono',size:10}}},
+      tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.y.toFixed(1)} USD`}}},
+    scales:{x:{stacked:true,ticks:{color:'#94adc8',font:{family:'IBM Plex Mono',size:10}},grid:{color:'rgba(31,45,64,.5)'}},
+      y:{stacked:true,title:{display:true,text:'USD por 100 VN original',color:'#4a6080',font:{size:10}},ticks:{color:'#94adc8',font:{family:'IBM Plex Mono',size:10}},grid:{color:'rgba(31,45,64,.5)'}}}}});
 }
 
 async function hdRefresh(){
