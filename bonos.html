@@ -1421,6 +1421,16 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
         <div class="cart-note">default: LECAP más corta</div>
       </div>
       <div>
+        <div class="cart-lbl">TIR real de salida (bonos CER)</div>
+        <select id="cart-cerExit" class="cart-in" onchange="cartSet('cerExit',this.value)">
+          <option value="bono">La del bono (constante)</option>
+          <option value="curva">Curva real al plazo restante</option>
+          <option value="manual">Manual</option>
+        </select>
+        <input id="cart-cerExitManual" type="number" step="0.25" class="cart-in" style="width:62px;display:none" placeholder="% real" onchange="cartSet('cerExitManual',+this.value)">
+        <div class="cart-note" id="cart-cerExit-note"></div>
+      </div>
+      <div>
         <div class="cart-lbl">Corrimiento curvas a la salida</div>
         TF <input id="cart-shTF" type="number" step="0.05" class="cart-in" style="width:56px" onchange="cartSet('shTF',+this.value)"> pp TEM ·
         CER <input id="cart-shCER" type="number" step="0.25" class="cart-in" style="width:56px" onchange="cartSet('shCER',+this.value)"> pp ·
@@ -1469,7 +1479,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   <div style="background:var(--s);border:1px solid var(--bdr2);border-left:3px solid #a78bfa;border-radius:8px;padding:12px 16px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);line-height:1.75">
     <strong style="color:#a78bfa">Cómo se calcula.</strong> Se compra hoy (liquidación T+1) al precio de la tabla. Al horizonte, la cartera vale lo cobrado (reinvertido a la TEM indicada; los USD de los HD quedan en USD) más el precio de salida de lo que no venció.
     <b>Tasa fija:</b> valor final del bono; si no venció, se descuenta con la curva LECAP/BONCAP de hoy al plazo restante (+ corrimiento).
-    <b>CER:</b> CER publicado por el BCRA y, después, proyectado con la inflación de arriba (períodos 15→15, IPC M−2, ajuste T−10 hábiles); si no venció, se vende a la TIR real actual del bono (+ corrimiento).
+    <b>CER:</b> CER publicado por el BCRA y, después, proyectado con la inflación de arriba (períodos 15→15, IPC M−2, ajuste T−10 hábiles); si no venció, se vende a la TIR real elegida: la actual del bono, la de la curva real al plazo restante o una manual (+ corrimiento en las dos primeras).
     <b>Dollar linked:</b> A3500 proyectado con la devaluación indicada; salida a la TIR en USD actual del bono.
     <b>Hard dollar (GD/AL):</b> flujos de la reestructuración 2020 en USD, salida a la TIR actual del bono (+ corrimiento), pasados a pesos al MEP proyectado (oficial × (1+brecha)).
     <b>TAMAR:</b> el precio rinde la TAMAR supuesta (TEM según prospecto, spread ≈ 0, igual que la solapa TAMAR; no modela cupones de cada emisión).
@@ -5103,6 +5113,7 @@ function cartEnsureA(){
   if(!cartA._user.reinv) cartA.reinv = cartDefaultReinv();
   if(!cartA._user.tamar) cartA.tamar = cartDefaultTamar();
   if(!Number.isFinite(cartA.com)) cartA.com = 0;
+  if(!cartA.cerExit) cartA.cerExit = 'bono';
   if(cartA.h <= cartSettle()) cartA.h = cartAddMonths(cartToday(), 6);
   cartIpcMonthsNeeded(cartA.h).forEach(k => { if(!Number.isFinite(cartA.ipc[k]) || !cartA._user.ipc) cartA.ipc[k] = Number.isFinite(cartA.ipc[k]) && cartA._user.ipc ? cartA.ipc[k] : bandIpcDefault(k); });
   cartA._devSrc = dev.src; cartA._brechaDef = brechaDef;
@@ -5179,11 +5190,19 @@ function cartValue(u, px, A){
     if(rest.length){
       // salida a la TIR real ACTUAL del bono (constante) + corrimiento: la curva real de hoy tiene el tramo corto
       // distorsionado (CER ya publicado hasta el 15 del mes próximo), y usarla para el roll-down inflaba mucho a los largos
-      const tir0 = computeCER(i, px, window._cerIdx || SEED_CER_IDX.cer).tir;
-      const r = ((Number.isFinite(tir0) ? tir0 : cerCurveReal(bkDays(H, i.vtoi))) + A.shCER)/100;
+      // TIR real de salida según la opción elegida: 'bono' = la TIR real actual del bono (constante);
+      // 'curva' = curva real CER de hoy interpolada al plazo restante (roll-down; tramo corto ruidoso);
+      // 'manual' = la que cargue el usuario. El corrimiento CER se suma en 'bono' y 'curva'.
+      const tir0 = computeCER(i, px, window._cerIdx || SEED_CER_IDX.cer).tir, dres = bkDays(H, i.vtoi);
+      const mode = A.cerExit || 'bono';
+      let rr, tag;
+      if(mode === 'manual' && Number.isFinite(A.cerExitManual)){ rr = A.cerExitManual; tag = 'manual'; }
+      else if(mode === 'curva'){ rr = cerCurveReal(dres) + A.shCER; tag = 'curva '+dres+'d'; }
+      else { rr = (Number.isFinite(tir0) ? tir0 : cerCurveReal(dres)) + A.shCER; tag = 'del bono'; }
+      const r = rr/100;
       const cerH = cartCerAt(A, bkAddBiz(H, -10));
       rest.forEach(f => { valARS += f.pct * cerH / i.cer0 / Math.pow(1 + r, bkDays(H, f.d)/365); });
-      sold = true; how = 'se vende (TIR real '+(r*100).toFixed(1).replace('.',',')+'%)';
+      sold = true; how = 'se vende (TIR real '+tag+' '+(r*100).toFixed(1).replace('.',',')+'%)';
     } else how = 'vence · reinvierte';
   } else if(u.cls === 'DL'){
     const tc0 = cartTc0(), dtm = bkDays(st, u.vto);
@@ -5274,7 +5293,7 @@ function cartExample(){
   cartSave(); cartRender();
 }
 function cartHz(m){ cartA.h = cartAddMonths(cartToday(), m); cartAfterA(); }
-function cartSet(k, v){ if(k === 'h' && (!v || v <= cartSettle())) return; if(!Number.isFinite(v) && k !== 'h') return; cartA[k] = v; cartA._user = cartA._user || {}; cartA._user[k] = true; cartAfterA(); }
+function cartSet(k, v){ if(k === 'h' && (!v || v <= cartSettle())) return; if(!Number.isFinite(v) && k !== 'h' && k !== 'cerExit') return; cartA[k] = v; cartA._user = cartA._user || {}; cartA._user[k] = true; cartAfterA(); }
 function cartIpcSet(k, v){ cartA.ipc[k] = +v; cartA._user = cartA._user || {}; cartA._user.ipc = true; cartAfterA(); }
 function cartResetA(){ cartA = null; cartAfterA(); }
 function cartIpcPreset(p){
@@ -5322,6 +5341,15 @@ function cartRender(){
   document.getElementById('cart-tamar').value = cartA.tamar;
   document.getElementById('cart-tamar-note').textContent = 'última publicada '+cartDefaultTamar().toFixed(2).replace('.',',')+'% (BCRA)';
   document.getElementById('cart-com').value = cartA.com;
+  document.getElementById('cart-cerExit').value = cartA.cerExit;
+  const mi = document.getElementById('cart-cerExitManual');
+  mi.style.display = cartA.cerExit === 'manual' ? 'inline-block' : 'none';
+  if(Number.isFinite(cartA.cerExitManual)) mi.value = cartA.cerExitManual;
+  document.getElementById('cart-cerExit-note').textContent = {
+    bono: 'se vende a la TIR real de hoy de cada bono (conservador si la curva tiene pendiente positiva)',
+    curva: 'roll-down: TIR real de la curva de hoy al plazo que le queda; el tramo corto (<4 meses) es ruidoso',
+    manual: Number.isFinite(cartA.cerExitManual) ? 'misma TIR real para todos los CER (sin corrimiento)' : 'cargá una TIR real (%)'
+  }[cartA.cerExit];
   ['shTF','shCER','shHD'].forEach(k => document.getElementById('cart-'+k).value = cartA[k]);
   const need = cartIpcMonthsNeeded(cartA.h);
   document.getElementById('cart-ipc').innerHTML = need.map(k => {
