@@ -171,7 +171,7 @@ body.vista-mkt .sh{border-left-color:var(--mkt);}
 .c-real .ct{color:var(--real);}
 .c-rd .ct{color:var(--rd);}
 .ch{position:relative;}
-.h240{height:240px;}.h190{height:190px;}.h165{height:165px;}
+.h280{height:280px;}.h240{height:240px;}.h190{height:190px;}.h165{height:165px;}
 
 /* ── Overview cards ── */
 .og{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;}
@@ -443,6 +443,46 @@ function bx3(ids,ttls,ht,cls){ht=ht||'h165';return '<div class="cg3">'+ids.map(f
 function ocard(mid,tag,name,desc,val,vcls,period,ctx,ti){return '<div class="oc" onclick="showTab('+ti+')"><div class="ot">'+tag+'</div><div class="on">'+name+'</div><div class="od">'+desc+'</div><div class="mc"><canvas id="'+mid+'"></canvas></div><div class="of"><div><div class="ov '+vcls+'">'+val+'</div><div class="op">'+period+'</div></div><div class="ox">'+ctx+'</div></div></div>';}
 function panel2col(id,left,right,active){return '<div class="panel'+(active?' active':'')+(active?'':'')+'" id="'+id+'"><div class="twocol"><div class="col-l">'+left+'</div><div class="col-r">'+right+'</div></div></div>';}
 
+// ══ COMPONENTES DE LA INFLACIÓN (estimación Amberes; datos en D.compInfl, ver componentes_inflacion/) ══
+var CI_COMP=[['inercia','Inercia (núcleo mes previo)','#1f6fb2'],['expect','Expectativas (REM)','#7bbfe8'],['dolar','Dólar (A3500)','#e8a044'],
+  ['regulados','Regulados (tarifas, combustibles)','#b07d1a'],['estacionales','Estacionales','#4db87a'],['otros','Otros / residuo','rgba(240,244,248,.30)']];
+function ciF(v){return (v>=0?'':'−')+Math.abs(v).toFixed(2).replace('.',',');}
+function compInflPanel(cal){
+  var d=D.compInfl,n=d.l.length-1,k=d.coef;
+  var pers=d.inercia[n]+d.expect[n], shock=d.regulados[n]+d.estacionales[n];
+  function avg(key,a,b){var s=0,c=0;for(var i=0;i<d.l.length;i++){var y=+('20'+d.l[i].slice(-2));if(y>=a&&y<=b){s+=d[key][i];c++;}}return c?s/c:0;}
+  var per=[['2018–19',2018,2019],['2020–22',2020,2022],['2023',2023,2023],['2024',2024,2024],['2025',2025,2025],['2026',2026,2026]];
+  var th='<th style="text-align:left;padding:4px 6px">Período</th><th style="padding:4px 6px">IPC</th>'+CI_COMP.map(function(c){return '<th style="padding:4px 6px;color:'+(c[0]==='otros'?C.DM:c[2])+'">'+c[1].split(' (')[0]+'</th>';}).join('');
+  var tb=per.map(function(p){return '<tr><td style="padding:4px 6px">'+p[0]+'</td><td style="padding:4px 6px;text-align:right;font-weight:600">'+ciF(avg('gen',p[1],p[2]))+'</td>'+CI_COMP.map(function(c){return '<td style="padding:4px 6px;text-align:right">'+ciF(avg(c[0],p[1],p[2]))+'</td>';}).join('')+'</tr>';}).join('');
+  var btn=function(m,t){return '<button class="ci-rng" data-m="'+m+'" onclick="compInflChart('+m+')" style="background:transparent;border:1px solid rgba(74,159,212,.35);color:'+C.WH+';font-size:10px;padding:3px 8px;margin-left:4px;cursor:pointer">'+t+'</button>';};
+  return panel2col('p6',
+    shdr('Componentes de la inflación','Estimación Amberes — cuánto es inercia, expectativas, dólar, tarifas y estacionales',ciF(pers)+' pp','Persistente '+d.l[n]+' (inercia + expect.)','r')+
+    src('INDEC (IPC por categoría) · BCRA REM (mediana IPC próx. 12 meses) · BCRA A3500 · modelo propio Amberes, actualizado '+d.upd)+
+    sr4([{l:'IPC '+d.l[n],v:ciF(d.gen[n])+'%',c:'r',n:'Suma de los componentes',x:'indec'},
+         {l:'Persistente',v:ciF(pers)+' pp',c:'r',n:'Inercia '+ciF(d.inercia[n])+' · expectativas '+ciF(d.expect[n]),x:'indec'},
+         {l:'Tarifas + estacionales',v:ciF(shock)+' pp',c:'a',n:'Regulados '+ciF(d.regulados[n])+' · estacionales '+ciF(d.estacionales[n]),x:'indec'},
+         {l:'Dólar',v:ciF(d.dolar[n])+' pp',c:d.dolar[n]>0.3?'r':'g',n:'Otros / residuo '+ciF(d.otros[n])+' pp',x:'indec'}])+
+    '<div class="cg1"><div class="card c-indec"><div class="ct" style="display:flex;justify-content:space-between;align-items:center"><span>Inflación mensual por componente (pp) — línea = IPC general</span><span>'+btn(24,'24 meses')+btn(48,'4 años')+btn(999,'2017–hoy')+'</span></div><div class="ch h280"><canvas id="cinf1"></canvas></div></div></div>'+
+    '<div class="cg1"><div class="card c-indec"><div class="ct">Promedio mensual por período (pp)</div><div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:11px;color:'+C.WH+'"><thead><tr style="border-bottom:1px solid rgba(74,159,212,.25)">'+th+'</tr></thead><tbody>'+tb+'</tbody></table></div></div></div>'+
+    '<div class="cg1"><div class="card c-indec"><div class="ct">Cómo se calcula</div><div style="font-size:11px;line-height:1.55;color:'+C.WH+';padding:2px 2px 6px">'+
+      'Núcleo(t) = '+ciF(k.const)+' + <b>'+ciF(k.inercia)+'</b>·núcleo(t−1) + <b>'+ciF(k.expect)+'</b>·REM(t−1) + <b>'+ciF(k.fx0)+'</b>·Δdólar(t) '+ciF(k.fx1)+'·Δdólar(t−1) — MCO mensual mar-17 a '+d.l[n]+', n='+d.n+', R²='+d.r2.toFixed(2).replace('.',',')+'. '+
+      'IPC general ≈ '+ciF(d.w[0])+' núcleo + '+ciF(d.w[1])+' regulados + '+ciF(d.w[2])+' estacionales (pesos estimados, coinciden con INDEC). REM = mediana de la expectativa a 12 meses del relevamiento previo, llevada a mensual.<br>'+
+      '<span style="color:'+C.DM+'">Cuidados: inercia y expectativas están muy correlacionadas (en Argentina se espera lo que se vio) — leerlas juntas como componente persistente. Salarios y commodities se probaron y no agregan señal propia (los salarios siguen a la inflación pasada). El modelo no es estable entre regímenes: estimado solo con 2024–26 el dólar y las expectativas pierden significancia. Es una estimación, no un dato oficial.</span></div></div></div>',
+    cal);
+}
+function compInflChart(m){
+  var d=D.compInfl,el=$('cinf1');if(!el)return;
+  var a=Math.max(0,d.l.length-m);
+  document.querySelectorAll('.ci-rng').forEach(function(b){b.style.borderColor=(+b.dataset.m===m)?C.CEL:'rgba(74,159,212,.35)';});
+  var old=Chart.getChart(el);if(old)old.destroy();
+  var ds=CI_COMP.map(function(c){return {type:'bar',label:c[1],data:d[c[0]].slice(a),backgroundColor:c[2],borderWidth:0,stack:'s',order:2};});
+  ds.push({type:'line',label:'IPC general',data:d.gen.slice(a),borderColor:'#f0f4f8',backgroundColor:'#f0f4f8',pointRadius:m>48?0:2,borderWidth:1.6,tension:0.2,order:1});
+  new Chart(el,{data:{labels:d.l.slice(a),datasets:ds},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},
+      plugins:{legend:{display:true,labels:{color:C.DM,font:{size:10},boxWidth:10,padding:8}},
+        tooltip:{...tip(C.CEL),callbacks:{label:function(c){return c.dataset.label+': '+ciF(c.parsed.y)+(c.dataset.type==='line'?'%':' pp');}}}},
+      scales:{x:{stacked:true,grid:gc,ticks:tk,border:{color:'transparent'}},y:{stacked:true,grid:gc,ticks:{color:C.DM,font:{size:10}},border:{color:'transparent'}}}}});
+}
 function showTab(i){
   document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('active');});
   var t=$('p'+i);if(t)t.classList.add('active');
@@ -499,6 +539,17 @@ function setVista(v){
 // DATOS VERIFICADOS — ARGENTINA JUN 2026
 // ══════════════════════════════════════════
 var D={
+  // <<COMP_INFL (generado por componentes_inflacion/sync_html.py — no editar a mano)
+  compInfl:{l:["Mar 17", "Abr 17", "May 17", "Jun 17", "Jul 17", "Ago 17", "Sep 17", "Oct 17", "Nov 17", "Dic 17", "Ene 18", "Feb 18", "Mar 18", "Abr 18", "May 18", "Jun 18", "Jul 18", "Ago 18", "Sep 18", "Oct 18", "Nov 18", "Dic 18", "Ene 19", "Feb 19", "Mar 19", "Abr 19", "May 19", "Jun 19", "Jul 19", "Ago 19", "Sep 19", "Oct 19", "Nov 19", "Dic 19", "Ene 20", "Feb 20", "Mar 20", "Abr 20", "May 20", "Jun 20", "Jul 20", "Ago 20", "Sep 20", "Oct 20", "Nov 20", "Dic 20", "Ene 21", "Feb 21", "Mar 21", "Abr 21", "May 21", "Jun 21", "Jul 21", "Ago 21", "Sep 21", "Oct 21", "Nov 21", "Dic 21", "Ene 22", "Feb 22", "Mar 22", "Abr 22", "May 22", "Jun 22", "Jul 22", "Ago 22", "Sep 22", "Oct 22", "Nov 22", "Dic 22", "Ene 23", "Feb 23", "Mar 23", "Abr 23", "May 23", "Jun 23", "Jul 23", "Ago 23", "Sep 23", "Oct 23", "Nov 23", "Dic 23", "Ene 24", "Feb 24", "Mar 24", "Abr 24", "May 24", "Jun 24", "Jul 24", "Ago 24", "Sep 24", "Oct 24", "Nov 24", "Dic 24", "Ene 25", "Feb 25", "Mar 25", "Abr 25", "May 25", "Jun 25", "Jul 25", "Ago 25", "Sep 25", "Oct 25", "Nov 25", "Dic 25", "Ene 26", "Feb 26", "Mar 26", "Abr 26", "May 26", "Jun 26", "Jul 26", "Ago 26", "Sep 26", "Oct 26"],
+    gen:[2.40,2.70,1.40,1.20,1.70,1.40,1.90,1.50,1.40,3.10,1.80,2.40,2.30,2.70,2.10,3.70,3.10,3.90,6.50,5.40,3.20,2.60,2.90,3.80,4.70,3.40,3.10,2.70,2.20,4.00,5.90,3.30,4.30,3.70,2.30,2.00,3.30,1.50,1.50,2.20,1.90,2.70,2.80,3.80,3.20,4.00,4.00,3.60,4.80,4.10,3.30,3.20,3.00,2.50,3.50,3.50,2.50,3.80,3.90,4.70,6.70,6.00,5.10,5.30,7.40,7.00,6.20,6.30,4.90,5.10,6.00,6.60,7.70,8.40,7.80,6.00,6.30,12.40,12.70,8.30,12.80,25.50,20.60,13.20,11.00,8.80,4.20,4.60,4.00,4.20,3.50,2.70,2.40,2.70,2.20,2.40,3.70,2.80,1.50,1.60,1.90,1.90,2.10,2.30,2.50,2.80,2.90,2.90,3.40,2.60,2.10,1.90,2.10,1.70,1.90,2.20],
+    inercia:[0.57,0.63,0.70,0.57,0.43,0.60,0.47,0.53,0.43,0.43,0.57,0.50,0.70,0.87,0.70,0.90,1.37,1.07,1.14,2.54,1.50,1.10,0.90,1.00,1.30,1.54,1.27,1.07,0.90,0.70,1.54,2.14,1.27,1.34,1.24,0.80,0.80,1.04,0.57,0.53,0.77,0.83,1.00,0.77,1.17,1.30,1.64,1.30,1.37,1.50,1.54,1.17,1.20,1.04,1.04,1.10,1.07,1.10,1.47,1.10,1.50,2.14,2.24,1.74,1.70,2.44,2.27,1.84,1.84,1.60,1.77,1.80,2.57,2.40,2.80,2.60,2.17,2.17,4.61,4.47,2.94,4.47,9.45,6.75,4.11,3.14,2.10,1.24,1.24,1.27,1.37,1.10,0.97,0.90,1.07,0.80,0.97,1.07,1.07,0.73,0.57,0.50,0.67,0.63,0.73,0.87,1.00,0.87,1.04,1.07,0.77,0.63,0.53,0.60,0.60,0.57],
+    expect:[0.51,0.49,0.46,0.45,0.45,0.45,0.46,0.45,0.46,0.46,0.46,0.49,0.47,0.47,0.48,0.58,0.62,0.61,0.79,0.80,0.77,0.73,0.73,0.72,0.73,0.77,0.79,0.78,0.76,0.76,1.14,1.14,1.14,1.09,1.02,0.97,0.97,0.96,1.16,1.20,1.23,1.21,1.20,1.19,1.22,1.22,1.17,1.16,1.08,1.04,1.04,1.04,1.03,1.04,1.05,1.09,1.15,1.22,1.27,1.25,1.23,1.28,1.29,1.37,1.53,1.78,1.89,1.94,2.02,2.05,2.01,2.01,2.09,2.23,2.67,2.97,2.85,2.78,3.26,3.13,3.24,3.55,3.42,3.10,2.68,2.33,1.85,1.53,1.43,1.25,1.07,0.99,0.87,0.74,0.66,0.57,0.58,0.63,0.67,0.55,0.54,0.55,0.55,0.57,0.54,0.55,0.53,0.55,0.58,0.61,0.62,0.60,0.58,0.57,0.55,0.55],
+    dolar:[-0.01,-0.16,0.40,0.36,0.96,0.01,-0.21,0.23,-0.00,0.19,1.16,0.44,0.18,-0.07,2.61,1.34,0.26,1.30,3.81,-1.53,-0.16,0.70,-0.35,0.48,1.14,0.47,0.48,-0.57,-0.39,3.67,0.39,0.34,0.21,-0.03,0.03,0.36,0.40,0.58,0.34,0.34,0.36,0.32,0.34,0.43,0.39,0.45,0.54,0.37,0.33,0.23,0.15,0.15,0.13,0.13,0.15,0.12,0.14,0.22,0.28,0.30,0.41,0.48,0.52,0.55,0.61,0.70,0.81,0.80,0.79,0.86,0.65,0.67,0.76,0.86,0.86,0.99,0.88,2.91,0.71,-0.29,0.18,9.87,1.92,-0.53,0.23,0.30,0.26,0.24,0.30,0.26,0.26,0.27,0.27,0.24,0.30,0.16,0.11,0.76,0.21,0.40,1.06,0.55,0.69,0.19,-0.13,0.24,-0.03,-0.47,-0.06,-0.14,0.23,0.58,0.28,0.06,0.12,0.09],
+    regulados:[0.69,0.74,0.18,0.16,0.42,0.27,0.31,0.31,0.27,1.65,0.38,0.87,0.36,0.96,0.07,0.53,0.47,1.12,0.85,1.34,0.51,0.47,0.62,0.76,0.89,0.60,0.67,0.51,0.33,0.38,0.62,0.36,0.69,0.83,0.20,0.13,0.60,-0.13,-0.02,0.13,0.09,0.18,0.34,0.27,0.22,0.47,0.93,0.40,0.82,0.63,0.69,0.58,0.25,0.20,0.54,0.34,0.18,0.31,0.51,0.56,1.52,0.71,1.03,0.96,0.89,1.14,0.82,1.34,1.12,0.93,1.29,0.93,1.51,0.89,1.63,1.31,1.22,1.51,1.51,1.20,1.83,3.76,4.83,3.83,3.28,3.34,0.73,1.47,0.78,1.07,0.82,0.49,0.63,0.62,0.47,0.42,0.58,0.33,0.24,0.40,0.42,0.49,0.47,0.47,0.53,0.60,0.44,0.78,0.93,0.85,0.44,0.42,0.38,0.40,0.42,0.53],
+    estacionales:[0.27,0.36,0.09,0.10,0.06,0.12,0.45,0.27,0.19,0.03,0.31,-0.08,0.18,0.10,0.28,0.38,0.43,0.21,0.45,0.70,0.34,0.16,0.12,0.21,0.54,0.18,0.07,0.28,0.41,0.44,0.96,0.32,0.83,0.24,0.41,0.28,0.55,0.54,0.53,0.54,0.10,0.45,0.89,1.09,0.23,0.15,0.34,0.35,0.81,0.25,0.17,0.06,0.55,0.07,0.72,0.92,0.06,0.42,1.02,0.95,0.70,0.61,0.38,0.75,1.28,0.98,1.32,1.02,0.46,0.52,0.89,0.37,1.05,1.42,0.68,0.20,0.58,1.21,1.66,0.86,1.45,1.83,1.83,0.98,1.26,1.12,0.81,0.50,0.58,0.17,0.33,0.16,-0.14,-0.16,0.05,-0.09,0.95,0.21,-0.31,-0.02,0.46,-0.09,0.25,0.32,0.05,0.07,0.64,-0.15,0.11,0.00,0.40,0.38,0.51,-0.10,0.33,0.62],
+    otros:[0.37,0.63,-0.44,-0.44,-0.62,-0.06,0.43,-0.30,0.05,0.33,-1.08,0.18,0.41,0.37,-2.05,-0.03,-0.06,-0.42,-0.54,1.55,0.24,-0.56,0.88,0.61,0.09,-0.16,-0.18,0.63,0.20,-1.96,1.26,-0.99,0.16,0.24,-0.59,-0.54,-0.02,-1.49,-1.08,-0.54,-0.65,-0.30,-0.98,0.06,-0.02,0.41,-0.61,0.01,0.39,0.45,-0.29,0.20,-0.17,0.03,0.00,-0.08,-0.10,0.53,-0.65,0.54,1.33,0.79,-0.37,-0.06,1.39,-0.05,-0.91,-0.64,-1.34,-0.85,-0.61,0.81,-0.28,0.59,-0.85,-2.07,-1.40,1.82,0.96,-1.07,3.16,2.01,-0.84,-0.93,-0.56,-1.42,-1.56,-0.37,-0.32,0.18,-0.34,-0.31,-0.20,0.36,-0.35,0.55,0.51,-0.20,-0.38,-0.46,-1.15,-0.10,-0.52,0.11,0.78,0.47,0.32,1.32,0.81,0.21,-0.35,-0.72,-0.19,0.18,-0.12,-0.15],
+    coef:{"const": -0.137, "inercia": 0.476, "expect": 0.488, "fx0": 0.237, "fx1": -0.051},se:{"const": 0.237, "inercia": 0.088, "expect": 0.15, "fx0": 0.037, "fx1": 0.034},w:[0.702, 0.181, 0.113],n:116,r2:0.909,upd:'17/11/2026'},
+  // COMP_INFL>>
   // ── INDEC ──────────────────────────────
   // IPC: datos verificados del PDF INDEC ipc_05_2680B692D2F5-2.pdf + mayo 2026 INDEC
   // Cuadro 13 (categorías) + serie mensual del gráfico
@@ -988,7 +1039,7 @@ function buildINDEC(){
     {l:'ISAC Sep 26 MoM',v:'+7.8%',c:'g',n:'Construcci\u00f3n INDEC \u00b7 YoY +5.1%'},
     {l:'UCII Sep 26',v:'60.1%',c:'r',n:'-1.3pp YoY \u00b7 Cap. instalada industria'}
   ]);
-  $('tabrow').innerHTML=tabs(['Resumen','IPC \u00b7 Precios','EMAE \u00b7 Actividad','EPH \u00b7 Laboral','ICA \u00b7 Comercio','ISAC \u00b7 IPI \u00b7 Sectorial']);
+  $('tabrow').innerHTML=tabs(['Resumen','IPC \u00b7 Precios','EMAE \u00b7 Actividad','EPH \u00b7 Laboral','ICA \u00b7 Comercio','ISAC \u00b7 IPI \u00b7 Sectorial','Componentes \u00b7 Inflaci\u00f3n']);
   var cal=makeCal(D.cal.year,D.cal.month,D.cal.events);
   $('main').innerHTML=
     panel2col('p0',
@@ -1069,10 +1120,12 @@ function buildINDEC(){
         {l:'IPIB Sep 26 MoM',v:'+3.4%',c:'r',n:'YoY +28.1% (ex-impuestos)',x:'indec'},
         {l:'IPP Sep 26 MoM',v:'+3.8%',c:'r',n:'YoY +29.5% (precios productor)',x:'indec'}
       ]),
-      cal);
+      cal)+
+    compInflPanel(cal);
 
   setTimeout(function(){
     var ai=C.INDEC;
+    compInflChart(24);
     mini('om0',D.ipc.v,C.RD);mini('om1',D.emaeDesest.v,C.G4);mini('om2',D.eph.desempleo,C.RD);
     mini('om3',D.ica.saldo,C.G4);mini('om4',D.isac.v,C.RD);mini('om5',D.ipi.v,C.RD);
     // IPC
