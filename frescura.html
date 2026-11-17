@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Frescura de datos | Amberes</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0d1117;--s1:#161b22;--s2:#21262d;--s3:#30363d;--tx:#e6edf3;--t2:#a8b5c2;--t3:#7a8896;--pos:#3fb950;--neg:#f85149;--warn:#d29922;--info:#58a6ff}
+body{background:var(--bg);color:var(--tx);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:13px}
+.top{background:#1e1e22;border-bottom:3px solid var(--info);padding:0 20px;height:54px;display:flex;align-items:center;gap:12px}
+.top a{color:var(--t2);text-decoration:none;font-size:11px}.top a:hover{color:var(--tx)}
+.top b{font-size:14px;letter-spacing:.14em;text-transform:uppercase}
+.top span{font-family:monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+main{max-width:1100px;margin:0 auto;padding:20px 16px 60px}
+h1{font-size:20px;font-weight:600;margin-bottom:4px}
+.sub{color:var(--t3);font-size:12px;line-height:1.5;margin-bottom:16px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:18px}
+.kpi{background:var(--s1);border:1px solid var(--s3);border-radius:10px;padding:12px 14px}
+.kpi .l{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--t3)}
+.kpi .v{font-size:26px;font-weight:700;margin-top:2px}
+.bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px;font-size:11px;color:var(--t3)}
+select,button{background:var(--s2);color:var(--tx);border:1px solid var(--s3);border-radius:6px;padding:5px 9px;font-size:11px}
+button{cursor:pointer}button:hover{border-color:var(--info)}
+table{width:100%;border-collapse:collapse;background:var(--s1);border:1px solid var(--s3);border-radius:10px;overflow:hidden}
+th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.07em;color:var(--t3);padding:9px 12px;background:var(--s2);cursor:pointer;white-space:nowrap}
+td{padding:8px 12px;border-top:1px solid var(--s3)}
+td.n{font-weight:600}
+td.m{color:var(--t2)}
+.chip{display:inline-block;padding:2px 8px;border-radius:99px;font-size:10px;font-weight:700;white-space:nowrap}
+.ok{background:rgba(63,185,80,.15);color:var(--pos)}
+.warn{background:rgba(210,153,34,.18);color:var(--warn)}
+.stale{background:rgba(248,81,73,.16);color:var(--neg)}
+.na{background:rgba(122,136,150,.18);color:var(--t3)}
+.pg{color:var(--t3);font-size:11px}
+.load{color:var(--t3);margin:14px 0;font-size:12px}
+.note{margin-top:16px;color:var(--t3);font-size:11px;line-height:1.6}
+a.lk{color:var(--info);text-decoration:none}a.lk:hover{text-decoration:underline}
+@media(max-width:700px){td,th{padding:7px 8px}.hide-m{display:none}}
+</style>
+<script>/* tema Amberes: activo por defecto; ?theme=off lo desactiva, ?theme=amberes lo reactiva */var _t=1;try{var q=location.search;if(/theme=off/.test(q))localStorage.setItem("amb-theme","0");if(/theme=amberes/.test(q))localStorage.setItem("amb-theme","1");_t=localStorage.getItem("amb-theme")!=="0";}catch(e){}if(_t){var l=document.createElement("link");l.rel="stylesheet";l.href="/amberes-theme.css";document.head.appendChild(l);}</script>
+</head>
+<body>
+<div class="top"><a href="index.html"><b>Amberes</b></a><span>Frescura de datos</span><a href="index.html" style="margin-left:auto">← Inicio</a></div>
+<main>
+  <h1>Frescura de datos</h1>
+  <p class="sub">Compara el último dato que muestra cada dashboard (ya con los datos en vivo aplicados) con el que debería tener hoy según el calendario de publicación de cada fuente. Se calcula al abrir esta página, cargando cada dashboard en segundo plano.</p>
+  <div class="kpis">
+    <div class="kpi"><div class="l">Series revisadas</div><div class="v" id="k-n">—</div></div>
+    <div class="kpi"><div class="l">Al día</div><div class="v" id="k-ok" style="color:var(--pos)">—</div></div>
+    <div class="kpi"><div class="l">Atrasadas</div><div class="v" id="k-warn" style="color:var(--warn)">—</div></div>
+    <div class="kpi"><div class="l">Desactualizadas</div><div class="v" id="k-stale" style="color:var(--neg)">—</div></div>
+  </div>
+  <div class="bar">
+    <span id="status">Cargando dashboards…</span>
+    <span style="margin-left:auto">Mostrar</span>
+    <select id="f-st" onchange="render()"><option value="">Todo</option><option value="problem">Solo problemas</option><option value="warn">Atrasadas</option><option value="stale">Desactualizadas</option></select>
+    <select id="f-pg" onchange="render()"><option value="">Todos los dashboards</option></select>
+    <button onclick="run()">Volver a revisar</button>
+  </div>
+  <table>
+    <thead><tr><th onclick="sortBy('page')">Dashboard</th><th onclick="sortBy('name')">Serie</th><th onclick="sortBy('last')">Último dato</th><th class="hide-m" onclick="sortBy('exp')">Debería tener</th><th onclick="sortBy('rank')">Estado</th></tr></thead>
+    <tbody id="tb"><tr><td colspan="5" class="load">Cargando…</td></tr></tbody>
+  </table>
+  <p class="note"><b>Cómo se lee:</b> "Al día" = tiene el último período ya publicado. "Atrasada" = falta 1 período. "Desactualizada" = faltan 2 o más. "Debería tener" usa la fecha habitual de publicación de cada fuente (p. ej. el IPC de septiembre sale a mediados de octubre), así que un dato que sale hoy puede figurar como atrasado unas horas. Las series de las pestañas Brasil, Europa y China de Macro no tienen actualización automática: aparecen desactualizadas hasta que se cargan a mano.</p>
+</main>
+<script>
+// ── Registro de series: page, ruta dentro de D, nombre, tipo, rezago de publicación (meses) y día aproximado de publicación ──
+//   m = mensual (lag: meses entre el mes del dato y el de publicación) | q = trimestral (lag: meses desde el fin del trimestre) | d = diaria/semanal (max: días)
+const PAGES={arg:{url:'arg.html',name:'Argentina'},macro:{url:'macro.html',name:'Macro Global'},agro:{url:'agro.html',name:'Commodities'}};
+const REG=[
+  // Argentina
+  ['arg','ipc','IPC','m',1,14],['arg','emae','EMAE','m',2,21],['arg','ica','Balanza comercial (ICA)','m',1,19],
+  ['arg','isac','ISAC','m',2,8],['arg','ipi','IPI manufacturero','m',2,8],['arg','ipiMinero','IPI minero','m',2,8],['arg','ucii','Capacidad instalada','m',2,8],
+  ['arg','icc','Costo de la construcción','m',1,20],['arg','fiscal','Resultado fiscal','m',1,20],['arg','recaud','Recaudación','m',1,3],
+  ['arg','salRealIS','Salarios reales','m',2,21],['arg','sipa','SIPA (empleo registrado)','m',3,10],
+  ['arg','construya','Índice Construya','m',1,7],['arg','acara','Patentamientos (ACARA)','m',1,3],['arg','adefa','Producción automotriz (ADEFA)','m',1,5],['arg','cemento','Despachos de cemento','m',1,10],
+  ['arg','reservas','Reservas (mensual)','m',1,3],['arg','tasa','Tasa de política','m',1,3],['arg','m2','M2','m',1,10],['arg','credito','Crédito al sector privado','m',1,10],
+  ['arg','baseMonLargo','Base monetaria (histórico)','m',1,5],['arg','repoColchon','Colchón de liquidez (REPO)','d',null,4],
+  // Macro — EE.UU.
+  ['macro','us.cpi','EE.UU. · CPI','m',1,13],['macro','us.pce','EE.UU. · PCE','m',1,30],['macro','us.ppi','EE.UU. · PPI','m',1,15],
+  ['macro','us.ur','EE.UU. · Desempleo','m',1,5],['macro','us.nfp','EE.UU. · Nóminas no agrícolas','m',1,5],['macro','us.gdp','EE.UU. · PIB','q',1,29],
+  ['macro','us.trade','EE.UU. · Balanza comercial','m',2,5],
+  // Macro — Brasil
+  ['macro','br.cpi','Brasil · IPCA','m',1,10],['macro','br.ur','Brasil · Desempleo','m',1,30],['macro','br.trade','Brasil · Balanza comercial','m',1,5],
+  ['macro','br.pim','Brasil · Producción industrial','m',2,3],['macro','br.gdp','Brasil · PIB','q',2,3],
+  // Macro — Europa
+  ['macro','eu.cpi','Eurozona · IPC','m',1,17],['macro','eu.ppi','Eurozona · PPI','m',2,5],['macro','eu.ur','Eurozona · Desempleo','m',2,2],
+  ['macro','eu.trade','Eurozona · Balanza comercial','m',2,16],['macro','eu.gdp','Eurozona · PIB','q',2,8],
+  // Macro — Japón
+  ['macro','jp.cpi','Japón · IPC','m',1,24],['macro','jp.ur','Japón · Desempleo','m',1,31],['macro','jp.trade','Japón · Balanza comercial','m',1,19],
+  ['macro','jp.ppi','Japón · PPI','m',1,10],['macro','jp.gdp','Japón · PIB','q',2,15],
+  // Macro — China
+  ['macro','cn.cpi','China · IPC','m',1,10],['macro','cn.ppi','China · PPI','m',1,10],['macro','cn.trade','China · Balanza comercial','m',1,8],
+  ['macro','cn.ip','China · Producción industrial','m',1,15],['macro','cn.ret','China · Ventas minoristas','m',1,15],['macro','cn.pmiNbs','China · PMI oficial','m',0,31],['macro','cn.pmiCai','China · PMI Caixin','m',1,3],
+  // Commodities
+  ['agro','cbotHist','CBOT (histórico mensual)','m',1,3],['agro','arg.expo','Exportaciones agro','m',1,3],['agro','arg.ciara','Liquidación CIARA-CEC','m',1,3],
+  ['agro','cot','COT granos (CFTC)','d',null,10],['agro','cotMetales','COT metales (CFTC)','d',null,10]
+];
+const MES={ene:0,feb:1,mar:2,abr:3,may:4,jun:5,jul:6,ago:7,sep:8,set:8,oct:9,nov:10,dic:11};
+const NOW=new Date(); const NOWIDX=NOW.getFullYear()*12+NOW.getMonth();
+// Devuelve {kind:'m'|'q'|'d', idx|date}
+function parseLabel(s){
+  s=String(s).replace(/\*/g,'').trim().toLowerCase(); let m;
+  if(m=s.match(/^([a-z]{3})[a-z]*\.?\s+'?(\d{2}|\d{4})$/)){ if(m[1] in MES){ let y=+m[2]; if(y<100) y+=2000; return {kind:'m',idx:y*12+MES[m[1]]}; } }
+  if(m=s.match(/^q([1-4])\s+(\d{2}|\d{4})$/)){ let y=+m[2]; if(y<100) y+=2000; return {kind:'q',idx:y*12+(+m[1])*3-1}; }
+  if(m=s.match(/^(\d{1,2})\/(\d{1,2})$/)){ let d=new Date(NOW.getFullYear(),+m[2]-1,+m[1]); if(d>NOW) d=new Date(NOW.getFullYear()-1,+m[2]-1,+m[1]); return {kind:'d',date:d}; }
+  if(m=s.match(/^(\d{1,2})-([a-z]{3})/)){ if(m[2] in MES){ let d=new Date(NOW.getFullYear(),MES[m[2]],+m[1]); if(d>NOW) d=new Date(NOW.getFullYear()-1,MES[m[2]],+m[1]); return {kind:'d',date:d}; } }
+  return null;
+}
+const MN=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+const fmtM=i=>MN[i%12]+' '+(Math.floor(i/12)+'').slice(2);
+const fmtQ=i=>'T'+(((i%12)+1)/3)+' '+(Math.floor(i/12)+'').slice(2);
+function getPath(D,p){ return p.split('.').reduce((o,k)=>o&&o[k],D); }
+function evalRow(def,labs){
+  const [pg,path,name,type,lag,day]=def; const row={page:PAGES[pg].name,pg,name,last:'—',exp:'—',rank:3,st:'na',lbl:'Sin datos'};
+  if(!labs||!labs.length) return row;
+  const lastRaw=labs[labs.length-1]; const p=parseLabel(lastRaw); row.last=String(lastRaw).replace(/\*/g,'');
+  if(!p) return row;
+  if(type==='d'){
+    const days=Math.floor((NOW-p.date)/86400000); row.exp='≤ '+day+' días'; row.last+=' ('+days+' d)';
+    row.st=days<=day?'ok':days<=day*2?'warn':'stale'; }
+  else{
+    const dayAdj=NOW.getDate()<day?1:0;
+    if(type==='m'){ const exp=NOWIDX-lag-dayAdj; row.exp=fmtM(exp); const diff=exp-p.idx; row.st=diff<=0?'ok':diff===1?'warn':'stale'; row.last=fmtM(p.idx); }
+    else{ // trimestral: último trimestre cuyo fin + lag ya pasó
+      let q=Math.floor(NOWIDX/3)*3+2; // mes de fin de trimestre más cercano (idx)
+      const qEndOfIdx=i=>Math.floor((i%12)/3)*3+2+Math.floor(i/12)*12;
+      let cand=qEndOfIdx(NOWIDX); while(cand+lag>NOWIDX-dayAdj) cand-=3; row.exp=fmtQ(cand);
+      const diffQ=Math.round((cand-p.idx)/3); row.st=diffQ<=0?'ok':diffQ===1?'warn':'stale'; row.last=fmtQ(p.idx); }
+  }
+  row.lbl={ok:'Al día',warn:'Atrasada',stale:'Desactualizada',na:'—'}[row.st]; row.rank={stale:0,warn:1,ok:2,na:3}[row.st]; return row;
+}
+let ROWS=[], sortKey='rank', sortDir=1;
+function sortBy(k){ sortDir=(sortKey===k)?-sortDir:1; sortKey=k; render(); }
+function render(){
+  const fs=document.getElementById('f-st').value, fp=document.getElementById('f-pg').value;
+  let r=ROWS.filter(x=>(!fp||x.pg===fp)&&(!fs||(fs==='problem'?(x.st==='warn'||x.st==='stale'||x.st==='na'):x.st===fs)));
+  r.sort((a,b)=>{ const x=a[sortKey],y=b[sortKey]; return (typeof x==='number'?x-y:String(x).localeCompare(String(y)))*sortDir||a.name.localeCompare(b.name); });
+  document.getElementById('tb').innerHTML=r.map(x=>`<tr><td class="pg">${x.page}</td><td class="n">${x.name}</td><td class="m">${x.last}</td><td class="m hide-m">${x.exp}</td><td><span class="chip ${x.st}">${x.lbl}</span></td></tr>`).join('')||'<tr><td colspan="5" class="load">Sin resultados</td></tr>';
+  const c=s=>ROWS.filter(x=>x.st===s).length;
+  document.getElementById('k-n').textContent=ROWS.length; document.getElementById('k-ok').textContent=c('ok'); document.getElementById('k-warn').textContent=c('warn'); document.getElementById('k-stale').textContent=c('stale')+c('na');
+}
+function loadPage(key){
+  return new Promise(res=>{
+    const f=document.createElement('iframe'); f.style.cssText='position:absolute;left:-9999px;top:0;width:1280px;height:900px;border:0;visibility:hidden';
+    f.src=PAGES[key].url+'?fresh='+Date.now(); document.body.appendChild(f);
+    const t0=Date.now();
+    f.onload=()=>{ // esperar a que terminen las llamadas en vivo y se apliquen sobre D
+      setTimeout(()=>{ let D=null; try{ D=f.contentWindow.eval('D'); }catch(e){} res({key,D,frame:f}); },9000); };
+    setTimeout(()=>{ if(Date.now()-t0>30000) res({key,D:null,frame:f}); },30500);
+  });
+}
+async function run(){
+  document.getElementById('status').textContent='Cargando dashboards en segundo plano (≈10 s)…';
+  document.querySelectorAll('iframe').forEach(f=>f.remove());
+  const res=await Promise.all(Object.keys(PAGES).map(loadPage)); const Ds={}; res.forEach(r=>Ds[r.key]=r.D);
+  ROWS=REG.map(def=>{ const D=Ds[def[0]]; let o=D?getPath(D,def[1]):null; const labs=o&&(Array.isArray(o)?o:o.l)||null; return evalRow(def,labs); });
+  res.forEach(r=>r.frame.remove());
+  document.getElementById('status').textContent='Revisado '+NOW.toLocaleString('es-AR',{dateStyle:'short',timeStyle:'short'});
+  const sel=document.getElementById('f-pg'); if(sel.options.length<2) Object.keys(PAGES).forEach(k=>sel.add(new Option(PAGES[k].name,k)));
+  render();
+}
+run();
+</script>
+</body>
+</html>

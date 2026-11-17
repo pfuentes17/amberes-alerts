@@ -394,22 +394,11 @@ else:
     resultados['error'].append(f"{sh}: sin datos merval")
 time.sleep(0.5)
 
-# Dólar (histórico diario)
-sh = 'Dólar'
-uf = ultima_fecha_sheet(wb[sh]) if sh in wb.sheetnames else None
-data_dol = argdata('cotizaciones/dolares/oficial')
-if isinstance(data_dol, list):
-    rows = []
-    for r in data_dol:
-        d = parse_date(r.get('fecha',''))
-        v = r.get('venta') or r.get('valor')
-        if d and v is not None and d > (uf or date(2022,1,1)):
-            rows.append([to_excel_date(d), round(float(v), 2)])
-    update_sheet(sh, rows, "argentinadatos dolar/oficial")
-else:
-    resultados['error'].append(f"{sh}: sin datos dolar")
-time.sleep(0.5)
-
+# Dólar (histórico diario) — DESACTIVADO 07/10/2026.
+# Este bloque agregaba a la hoja "Dólar" filas por día CALENDARIO con solo "Oficial" (venta redondeada de
+# argentinadatos), sin Mayorista. Como update_dolar.py (BCRA vars 4 y 5, paso del combo diario / cierre diario)
+# solo avanza desde la última fecha, esas filas nunca se completaban → Mayorista vacío y fórmulas DLK con TC viejo.
+# La hoja "Dólar" la mantiene update_dolar.py. Ver memoria dolar_sheet_gap_fix.
 # ════════════════════════════════════════════════════════════════
 # 5. INDEC datos.gob.ar — series Argentina estadísticas
 # ════════════════════════════════════════════════════════════════

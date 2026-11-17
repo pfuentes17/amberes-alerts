@@ -173,6 +173,7 @@ footer{border-top:1px solid var(--br);padding:10px 40px;background:var(--nv2);di
 .snav-link:hover{color:#fff;background:rgba(255,255,255,.1);}
 .snav-link.active{color:#fff;background:rgba(255,255,255,.13);border-bottom:2px solid rgba(255,255,255,.7);}
 </style>
+<script>/* tema Amberes: activo por defecto; ?theme=off lo desactiva, ?theme=amberes lo reactiva */var _t=1;try{var q=location.search;if(/theme=off/.test(q))localStorage.setItem("amb-theme","0");if(/theme=amberes/.test(q))localStorage.setItem("amb-theme","1");_t=localStorage.getItem("amb-theme")!=="0";}catch(e){}if(_t){var l=document.createElement("link");l.rel="stylesheet";l.href="/amberes-theme.css";document.head.appendChild(l);}</script>
 </head>
 <body>
 
@@ -189,7 +190,7 @@ footer{border-top:1px solid var(--br);padding:10px 40px;background:var(--nv2);di
   </div>
   <div class="hd-r">
     <div class="ldot"></div>
-    <span style="font-size:8.5px;color:var(--dm)">Datos verificados &middot; Jul 2026</span>
+    <span style="font-size:8.5px;color:var(--dm)">Datos verificados &middot; Sep 2026</span>
     <div class="flag">&#128230; Commodities</div>
     
   </div>
@@ -211,7 +212,7 @@ footer{border-top:1px solid var(--br);padding:10px 40px;background:var(--nv2);di
 <script>
 // ================================================================
 // SEED DATA  --  verificado 09-Sep-2026
-// Fuentes: CME/CBOT (cmegroup.com, quotes en vivo), CFTC (publicreporting.cftc.gov), USDA WASDE 12-Ago-26, BCR, CIARA-CEC
+// Fuentes: CME/CBOT (cmegroup.com, quotes en vivo), CFTC (publicreporting.cftc.gov), USDA WASDE-677 10-Nov-26, BCR, CIARA-CEC
 // ================================================================
 const D = {
 
@@ -219,12 +220,12 @@ const D = {
   // Conversiones: 1 bu soja/trigo=27.2155 kg → 36.744 bu/tn
   //               1 bu maiz=25.401 kg → 39.368 bu/tn
   //               aceite: cents/lb × 22.0462 = USD/tn
-  // Fuente: Yahoo Finance chart API (query1.finance.yahoo.com, sin key), contratos continuos front-month ZS=F/ZC=F/ZW=F/ZL=F — sync automático via update_agro_cbot_html.py. Última corrida: 16-Sep-26.
+  // Fuente: Yahoo Finance chart API (query1.finance.yahoo.com, sin key), contratos continuos front-month ZS=F/ZC=F/ZW=F/ZL=F — sync automático via update_agro_cbot_html.py. Última corrida: 02-Nov-26.
   cbot:{
-    soja:   {spot:485.4, chg:0.8, chgPct:0.17, sym:'ZSX6', cBu:1321.0},
-    maiz:   {spot:211.2, chg:0.3, chgPct:0.14, sym:'ZCZ6', cBu:536.5},
-    trigo:  {spot:268.5, chg:0.8, chgPct:0.31, sym:'ZWZ6', cBu:730.75},
-    aceite: {spot:1553.2, chg:2.2, chgPct:0.14, sym:'ZLZ6', cLb:70.45},
+    soja:   {spot:453.1, chg:-0.4, chgPct:-0.08, sym:'ZSF7', cBu:1233.25},
+    maiz:   {spot:177.5, chg:1.3, chgPct:0.73, sym:'ZCZ6', cBu:451.0},
+    trigo:  {spot:222.5, chg:0.7, chgPct:0.33, sym:'ZWZ6', cBu:605.5},
+    aceite: {spot:1444.0, chg:-8.8, chgPct:-0.61, sym:'ZLZ6', cLb:65.5},
     carne: {spot:2340,  chg:-8,   chgPct:-0.34, sym:'GFQ6', cLb:213},
   },
 
@@ -243,18 +244,18 @@ const D = {
     {crop:'Aceite Soja',exp:'Ene 27',sym:'ZLF7',price:1561.5,chg:-2.2},
   ],
 
-  // PENDIENTE 09-Sep-26: faltan los cierres mensuales Jun/Jul/Ago-26 (no se encontro fuente confiable de
-  // settlement historico por mes; el spot en vivo de Sep-26 esta cargado en D.cbot arriba). No agregar
-  // un punto "Sep 26" salteando 3 meses -- distorsionaria el grafico. Completar cuando se consiga la serie.
+  // Serie mensual de cierres (ventana móvil 12 meses). Jun/Jul/Ago-26 completados 27-Sep-26 con
+  // cierres mensuales de Yahoo Finance chart API (contratos continuos front-month ZS=F/ZC=F/ZW=F/ZL=F,
+  // interval=1mo), misma fórmula de conversión que D.cbot arriba.
   cbotHist:{
-    l:['Jun 25','Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26'],
-    soja:  [345,330,322,305,315,328,345,362,375,385,395,409],
-    maiz:  [160,152,148,145,148,155,160,162,163,164,164,165],
-    trigo: [196,186,180,174,180,186,188,190,192,190,188,190],
-    aceite:[1010,990,968,945,965,985,1010,1035,1050,1065,1080,1092],
+    l:['Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26','Ago 26'],
+    soja:  [305,315,328,345,362,375,385,395,409,410,431,469],
+    maiz:  [145,148,155,160,162,163,164,164,165,162,174,203],
+    trigo: [174,180,186,188,190,192,190,188,190,213,235,278],
+    aceite:[945,965,985,1010,1035,1050,1065,1080,1092,1471,1480,1554],
   },
 
-  // ── COT  --  CFTC Disaggregated, CBOT  --  semana 8-Sep-2026 ── (auto, update_agro_cot_html.py) (auto: update_agro_cot_html.py, fuente = hoja "COT CFTC")
+  // ── COT  --  CFTC Disaggregated, CBOT  --  semana 27-Oct-2026 ── (auto, update_agro_cot_html.py) (auto, update_agro_cot_html.py) (auto, update_agro_cot_html.py) (auto: update_agro_cot_html.py, fuente = hoja "COT CFTC")
   // Miles de contratos. long-short = neto. Fuente: publicreporting.cftc.gov (API oficial, Disaggregated Futures Only).
   // 9-Jun y 23-Jun: datos reales CFTC. 16-Jun: interpolado (feriado Juneteenth, publicado lun 22-Jun).
   // CORRECCION 21-Jul-26: el punto de trigo del 23-Jun estaba mal (61/-83 con fuente distinta a CFTC-SRW);
@@ -264,76 +265,78 @@ const D = {
   // valores previos del 14-Jul (match exacto). Soja y maiz marcan extremos de 52 semanas en Managed Money
   // long (mercado "risk-on" en granos antes del WASDE de agosto); trigo revirtio de neto corto a neto largo.
   cot:{
-    l:['24-Feb','3-Mar','10-Mar','17-Mar','24-Mar','31-Mar','7-Abr','14-Abr','21-Abr','28-Abr','5-May','12-May','19-May','26-May','2-Jun','9-Jun','16-Jun','23-Jun','30-Jun','7-Jul','14-Jul','21-Jul','28-Jul','4-Ago','11-Ago','18-Ago','25-Ago','1-Sep','8-Sep'],
+    l:['24-Feb','3-Mar','10-Mar','17-Mar','24-Mar','31-Mar','7-Abr','14-Abr','21-Abr','28-Abr','5-May','12-May','19-May','26-May','2-Jun','9-Jun','16-Jun','23-Jun','30-Jun','7-Jul','14-Jul','21-Jul','28-Jul','4-Ago','11-Ago','18-Ago','25-Ago','1-Sep','8-Sep','15-Sep','22-Sep','29-Sep','6-Oct','13-Oct','20-Oct','27-Oct'],
     mm:{
-      soja:  [-42,-35,-22,-8,8,20,28,32,30,25,18,12,16,22,28,98,68,37,38,70,75,131,160,133,109,152,201,235,257],
-      maiz:  [-188,-178,-162,-148,-132,-118,-102,-88,-82,-76,-70,-65,-60,-56,-52,-1,-38,-75,-67,-15,11,57,127,145,126,182,317,401,414],
-      trigo: [-58,-50,-44,-38,-34,-31,-34,-36,-38,-34,-30,-27,-24,-20,-18,-78,-50,-70,-68,-60,-35,-18,-8,-25,-33,-25,-14,15,5],
-      aceite:[18,22,26,32,36,40,42,38,33,28,32,36,34,30,28,129,116,103,92,85,108,120,108,79,79,91,85,100,92],
+      soja:  [-42,-35,-22,-8,8,20,28,32,30,25,18,12,16,22,28,98,68,37,38,70,75,131,160,133,109,152,201,235,257,242,265,247,258,250,221,194],
+      maiz:  [-188,-178,-162,-148,-132,-118,-102,-88,-82,-76,-70,-65,-60,-56,-52,-1,-38,-75,-67,-15,11,57,127,145,126,182,317,401,414,414,404,381,330,246,164,81],
+      trigo: [-58,-50,-44,-38,-34,-31,-34,-36,-38,-34,-30,-27,-24,-20,-18,-78,-50,-70,-68,-60,-35,-18,-8,-25,-33,-25,-14,15,5,-4,-12,-22,-29,-33,-52,-75],
+      aceite:[18,22,26,32,36,40,42,38,33,28,32,36,34,30,28,129,116,103,92,85,108,120,108,79,79,91,85,100,92,101,92,84,94,88,72,60],
     },
     mmLong:{
-      soja:  [88,94,100,106,115,122,128,132,130,125,118,110,114,120,126,180,161,142,133,147,146,180,200,179,170,197,239,270,293],
-      maiz:  [185,195,205,210,215,220,228,234,236,232,228,224,222,220,218,295,302,309,293,287,294,306,314,310,313,321,412,468,491],
-      trigo: [44,47,50,52,54,56,52,50,48,50,52,54,56,58,60,65,63,68,69,74,76,74,85,80,78,79,88,110,101],
-      aceite:[50,54,58,64,68,72,74,70,65,60,64,68,66,62,60,157,145,133,128,120,133,143,131,106,110,117,114,124,120],
+      soja:  [88,94,100,106,115,122,128,132,130,125,118,110,114,120,126,180,161,142,133,147,146,180,200,179,170,197,239,270,293,283,301,281,290,285,260,226],
+      maiz:  [185,195,205,210,215,220,228,234,236,232,228,224,222,220,218,295,302,309,293,287,294,306,314,310,313,321,412,468,491,484,471,440,393,330,298,249],
+      trigo: [44,47,50,52,54,56,52,50,48,50,52,54,56,58,60,65,63,68,69,74,76,74,85,80,78,79,88,110,101,96,89,83,87,89,88,80],
+      aceite:[50,54,58,64,68,72,74,70,65,60,64,68,66,62,60,157,145,133,128,120,133,143,131,106,110,117,114,124,120,126,120,110,116,114,104,97],
     },
     mmShort:{
-      soja:  [130,129,122,114,107,102,100,100,100,100,100,98,98,98,98,82,93,105,95,77,71,50,39,47,61,46,39,36,36],
-      maiz:  [373,373,367,358,347,338,330,322,318,308,298,289,282,276,270,296,340,384,360,302,283,249,188,165,187,140,94,67,77],
-      trigo: [102,97,94,90,88,87,86,86,86,84,82,81,80,78,78,143,113,139,137,134,111,93,93,105,111,104,101,95,96],
-      aceite:[32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,28,29,29,36,35,25,23,23,27,31,25,29,24,28],
+      soja:  [130,129,122,114,107,102,100,100,100,100,100,98,98,98,98,82,93,105,95,77,71,50,39,47,61,46,39,36,36,41,36,34,32,35,39,32],
+      maiz:  [373,373,367,358,347,338,330,322,318,308,298,289,282,276,270,296,340,384,360,302,283,249,188,165,187,140,94,67,77,69,67,59,63,84,133,168],
+      trigo: [102,97,94,90,88,87,86,86,86,84,82,81,80,78,78,143,113,139,137,134,111,93,93,105,111,104,101,95,96,99,101,105,116,122,140,154],
+      aceite:[32,32,32,32,32,32,32,32,32,32,32,32,32,32,32,28,29,29,36,35,25,23,23,27,31,25,29,24,28,25,28,27,23,27,33,37],
     },
     comm:{
-      soja:  [28,20,14,2,-10,-22,-30,-38,-35,-30,-24,-18,-22,-28,-34,-103,-73,-42,-47,-86,-101,-153,-192,-157,-140,-170,-200,-229,-252],
-      maiz:  [178,168,152,138,122,108,92,78,72,66,60,55,50,46,42,-9,28,65,-35,-68,-95,-139,-204,-208,-198,-246,-375,-477,-471],
-      trigo: [42,34,28,22,18,15,18,20,22,18,14,11,8,4,2,62,34,49,58,51,16,12,4,16,23,16,7,-24,-13],
-      aceite:[-20,-22,-24,-28,-32,-36,-38,-35,-30,-25,-28,-32,-30,-28,-25,-126,-113,-100,-110,-104,-118,-125,-112,-91,-96,-116,-113,-140,-129],
+      soja:  [28,20,14,2,-10,-22,-30,-38,-35,-30,-24,-18,-22,-28,-34,-103,-73,-42,-47,-86,-101,-153,-192,-157,-140,-170,-200,-229,-252,-239,-258,-233,-250,-246,-222,-181],
+      maiz:  [178,168,152,138,122,108,92,78,72,66,60,55,50,46,42,-9,28,65,-35,-68,-95,-139,-204,-208,-198,-246,-375,-477,-471,-477,-475,-449,-411,-327,-261,-190],
+      trigo: [42,34,28,22,18,15,18,20,22,18,14,11,8,4,2,62,34,49,58,51,16,12,4,16,23,16,7,-24,-13,-5,3,13,14,15,30,51],
+      aceite:[-20,-22,-24,-28,-32,-36,-38,-35,-30,-25,-28,-32,-30,-28,-25,-126,-113,-100,-110,-104,-118,-125,-112,-91,-96,-116,-113,-140,-129,-138,-123,-115,-125,-124,-93,-74],
     },
     nr:{
-      soja:  [14,15,8,6,2,2,2,6,5,5,6,6,6,6,6,5,5,5,-29,-27,-24,-23,-20,-19,-20,-21,-21,-19,-22],
-      maiz:  [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,-29,-33,-36,-47,-50,-47,-47,-57,-66,-60,-72],
-      trigo: [16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,0,-3,-1,1,-5,-2,-2,2,2,-1,-1,2],
-      aceite:[2,0,-2,-4,-4,-4,-4,-3,-3,-3,-4,-4,-4,-2,-3,-3,-3,-3,10,10,11,11,12,10,12,12,9,13,12],
+      soja:  [14,15,8,6,2,2,2,6,5,5,6,6,6,6,6,5,5,5,-29,-27,-24,-23,-20,-19,-20,-21,-21,-19,-22,-23,-24,-24,-24,-25,-25,-23],
+      maiz:  [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,-29,-33,-36,-47,-50,-47,-47,-57,-66,-60,-72,-66,-61,-61,-42,-31,-26,-12],
+      trigo: [16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,16,0,-3,-1,1,-5,-2,-2,2,2,-1,-1,2,4,4,3,2,3,-1,0],
+      aceite:[2,0,-2,-4,-4,-4,-4,-3,-3,-3,-4,-4,-4,-2,-3,-3,-3,-3,10,10,11,11,12,10,12,12,9,13,12,14,12,13,14,15,12,12],
     },
     range52:{
-      soja:  {min:-82,max:257},
+      soja:  {min:-82,max:265},
       maiz:  {min:-215,max:414},
       trigo: {min:-88,max:62},
       aceite:{min:-12,max:175},
     },
   },
 
-  // ── WASDE  --  USDA WASDE-674, 12-Ago-2026 ───────────────────────
-  // Fuente: usda.gov/oce/commodity/wasde/wasde0826.pdf (oficial, tablas mundiales verificadas)
+  // ── WASDE  --  USDA WASDE-677, 10-Nov-2026 ───────────────────────
+  // Nota: D.wasde se sincroniza contra USDA FAS PSD Online (update_granos.py), no contra el PDF
+  // WASDE narrativo -- el numero/fecha de reporte de abajo es solo referencial (el WASDE real
+  // vigente al momento de este sync es WASDE-677, publicado 10-Nov-2026; el proximo sale 10-Dic-2026). Cifras verificadas 11/11/2026 contra el PDF WASDE-677 (mundo + paises + aceite de soja).
   wasde:{
-    fecha:'Septiembre 2026 (datos USDA PSD, campaña 2026/27)', fechaOf:'sync automático 14-Sep-2026', proximo:'próxima corrida de update_granos.py',
-    comentario:`Datos sincronizados automáticamente desde USDA FAS PSD Online (campaña 2026/27, actualizado 14-Sep-2026) — no reemplaza la lectura cualitativa del WASDE real, solo refleja las cifras de producción/consumo/stocks más recientes disponibles. <strong>Maíz</strong>: producción mundial 1290.95 Mt, stocks 272.10 Mt (S/U 20.7%). <strong>Soja</strong>: producción mundial 442.35 Mt, stocks 124.02 Mt (S/U 28.0%). <strong>Trigo</strong>: producción mundial 822.43 Mt, stocks 276.29 Mt (S/U 33.6%). Aceite de soja: sin actualizar en este panel todavía (pendiente de integrar desde la hoja Excel, ver docstring de update_agro_wasde_html.py).`,
+    fecha:'Noviembre 2026 (WASDE-677, campaña 2026/27)', fechaOf:'WASDE-677 del 10-Nov-2026 (sync PSD 11-Nov-2026)', proximo:'10-Dic-2026 (WASDE-678)',
+    comentario:`<strong>Maíz</strong>: la producción mundial 2026/27 baja levemente a 1291.55 Mt (-2.2 Mt) porque el recorte en EE.UU. (-3.6 Mt a 403.71 Mt; rinde 179.6 bu/acre, -1.6) compensa las subas de <strong>Argentina (+2.0 Mt a 57.0 Mt</strong>, por mayor área sembrada) y Brasil (+2.0 Mt a 141.0 Mt). Aun así los stocks finales mundiales suben a 281.94 Mt (+1.5 Mt; S/U 21.5%) por menor uso forrajero en China y mayores inventarios en Ucrania. Argentina exporta más: 40.0 Mt (+2.0). EE.UU.: stocks finales 1.8 mil M bu, precio al productor US$ 4.60/bu (-0.10). <strong>Soja</strong>: producción mundial 442.50 Mt (-0.2 Mt; EE.UU. +0.3 Mt a 124.48 Mt compensa caídas en Ucrania, Sudáfrica, UE y México); exportaciones 192.55 Mt (+0.55) y stocks 123.50 Mt (-0.8 Mt; S/U 27.9%). <strong>Argentina</strong>: producción sin cambios (50.0 Mt), exportaciones a 6.75 Mt (+0.3) y stocks finales a 23.74 Mt (-0.33); crush 43.5 Mt. EE.UU.: precio US$ 12.10/bu (+0.10), stocks 300 M bu (-15). <strong>Trigo</strong>: producción mundial 827.51 Mt (+5.1 Mt) con <strong>Argentina +1.5 Mt a 23.0 Mt</strong> y Australia +1.5 Mt a 32.5 Mt por buenas condiciones de cosecha, más Kazajistán y Ucrania; comercio mundial 208.66 Mt (-0.3; Rusia y Ucrania -1.0 Mt cada una por el conflicto en el Mar Negro) y stocks 280.82 Mt (+4.8 Mt). Argentina exporta 16.5 Mt (+0.5) y sus stocks suben a 2.87 Mt. EE.UU.: stocks 743 M bu (-19% a/a), precio US$ 6.20/bu (-0.10). <strong>Aceite de soja</strong>: producción mundial 75.29 Mt, consumo 73.60 Mt, stocks 6.53 Mt (-0.32; S/U 8.9%); precio EE.UU. 68 ¢/lb (-2). Fuente: WASDE-677 (USDA, 10-Nov-2026); S/U calculado como stocks finales / consumo total (consumo según la serie PSD de USDA).`,
     soja:{
-      prod:  {mundo:442.35,arg:50.00,bra:186.00,usa:123.42},
-      cons:  {mundo:442.44},
-      stocks:{mundo:124.02,arg:null,bra:null,usa:null},
-      exp:   {mundo:191.58,arg:null,bra:null,usa:null},
-      sxu:28.0,sxuPrev:28.0,
+      prod:  {mundo:442.50,arg:50.00,bra:186.00,usa:124.48},
+      cons:  {mundo:442.80},
+      stocks:{mundo:123.50,arg:null,bra:null,usa:null},
+      exp:   {mundo:192.55,arg:null,bra:null,usa:null},
+      sxu:27.9,sxuPrev:28.1,
     },
     maiz:{
-      prod:  {mundo:1290.95,arg:55.00,bra:139.00,usa:401.33},
-      cons:  {mundo:1313.25},
-      stocks:{mundo:272.10,arg:null,bra:null,usa:null},
-      exp:   {mundo:210.08},
-      sxu:20.7,sxuPrev:20.7,
+      prod:  {mundo:1291.55,arg:57.00,bra:141.00,usa:403.71},
+      cons:  {mundo:1309.96},
+      stocks:{mundo:281.94,arg:null,bra:null,usa:null},
+      exp:   {mundo:209.38},
+      sxu:21.5,sxuPrev:21.4,
     },
     trigo:{
-      prod:  {mundo:822.43,ue:133.80,rus:88.00,chi:141.00,usa:41.66},
-      cons:  {mundo:822.46},
-      stocks:{mundo:276.29,chi:null,ind:null,rus:null,usa:null},
-      exp:   {mundo:211.77,rus:null,ue:null,aus:null,usa:null},
-      sxu:33.6,sxuPrev:33.6,
+      prod:  {mundo:827.50,ue:133.00,rus:88.00,chi:141.00,usa:41.74},
+      cons:  {mundo:824.74},
+      stocks:{mundo:280.82,chi:null,ind:null,rus:null,usa:null},
+      exp:   {mundo:208.66,rus:null,ue:null,aus:null,usa:null},
+      sxu:34.0,sxuPrev:33.5,
     },
     aceite:{
-      prod:  {mundo:75.03,arg:8.58,bra:13.26,sea:21.56,chgMes:+0.13},
-      cons:  {mundo:73.20,chgMes:+0.08},
-      stocks:{mundo:6.94,chgMes:+0.14},
-      sxu:9.5,sxuPrev:9.3,
+      prod:  {mundo:75.29,arg:8.68,bra:13.27,sea:21.56,chgMes:+0.05},
+      cons:  {mundo:73.60,chgMes:+0.12},
+      stocks:{mundo:6.53,chgMes:-0.32},
+      sxu:8.9,sxuPrev:9.3,
     },
     carne:{
       prod:{mundo:73.8,arg:3.2,usa:12.9,bra:10.6,aus:2.4,chgMes:+0.1},
@@ -354,106 +357,141 @@ const D = {
     // Fuente: Infobae / Cronista 3-Jun-2026
     ret:{soja:24, maiz:8.5, trigo:5.5, girasol:4.5, sorgo:8.5, carne:9.0},
     retNota:'Decreto 423/2026 (jun-2026), vigente. Baja prog.: Soja 24% ->21% dic-27 ->15% dic-28 | Maiz/Sorgo 8.5% ->7.5% fin-27 ->5.5% fin-28 (baja trim. -0.25pp desde ene-27) | Trigo/Cebada 5.5% (ya en piso) | Girasol baja semestral -0.25pp desde ene-27. Sin API oficial (nace de decreto/Bol. Oficial, no de un feed) — igual que BCBA, se actualiza a mano si sale un decreto nuevo.',
+    retProximoCambio:'Verificado 27-Sep-26 (Ambito, Ruralnet, Beccar Varela): valores vigentes sin cambios desde jun-2026. Próximo movimiento programado por decreto: Ene-2027 (arranca la baja mensual/trimestral de Soja, Maíz, Sorgo y Girasol). Hasta esa fecha estas alícuotas no deberían cambiar salvo un decreto nuevo.',
 
     // TC  --  dolar blend eliminado; exportadores liquidan al TC oficial
-    tcOficial:1530, tcCCL:1597.5,
+    tcOficial:1560, tcCCL:1658.5,
     tcNota:'Dolar blend (80/20 oficial/CCL) eliminado. Exportadores liquidan al TC oficial.',
 
     // FAS teorico  --  Secretaria de Agricultura (semanal)
-    fasNota:'El precio FAS (Free Alongside Ship) teorico es el valor que recibe el productor en tranquera. Se calcula partiendo del precio FOB de exportacion y restando: (1) retenciones, (2) gastos de comercializacion (fobbing, secado, zarandeo, comisiones ~$20/tn) y (3) flete a puerto. Lo publica la Secretaria de Agricultura cada semana y sirve como referencia para contratos de forward y opciones en Matba-Rofex. Última actualización MAGyP: 14/09/2026.',
+    fasNota:'El precio FAS (Free Alongside Ship) teorico es el valor que recibe el productor en tranquera. Se calcula partiendo del precio FOB de exportacion y restando: (1) retenciones, (2) gastos de comercializacion (fobbing, secado, zarandeo, comisiones ~$20/tn) y (3) flete a puerto. Lo publica la Secretaria de Agricultura cada semana y sirve como referencia para contratos de forward y opciones en Matba-Rofex. Última actualización MAGyP: 30/10/2026.',
     // FAS ARS = FAS USD x TC oficial ($1,425)
     fas:{
-      soja:    {usd:366.6, ars:560956},
-      maiz:    {usd:186.0, ars:284630},
-      trigo:   {usd:220.8, ars:337815},
-      girasol: {usd:386.5, ars:591311},
-      sorgo:   {usd:175.7, ars:268771},
+      soja:    {usd:354.1, ars:552340},
+      maiz:    {usd:169.2, ars:263932},
+      trigo:   {usd:196.2, ars:306022},
+      girasol: {usd:404.1, ars:630466},
+      sorgo:   {usd:180.4, ars:281363},
     },
 
     // Campana 25/26  --  BCR / BCBA  --  29-Jun-2026
     campania:{
       soja:   {bcr:51.5, bcba:50.1, has:16.4, rinde:32.1, cosechado:100, estado:'Finalizado'},
       maiz:   {bcr:70.5, bcba:70.0, has:11, rinde:76.6, cosechado:100, estado:'Finalizado'},
-      trigo:  {bcr:20.0, bcba:21.0, has:6.95, rinde:null, cosechado:0, estado:'Creciendo'},
+      trigo:  {bcr:21.0, bcba:21.0, has:6.95, rinde:null, cosechado:0, estado:'Creciendo'},  // BCR GEA 9-Sep-2026: proyección sube a 21 Mt (93% del área en condición buena/muy buena). 1ras estimaciones 26/27 BCR: maíz 10,6 M ha / 67,5 Mt (hasta 70,5 Mt con El Niño), soja 16,7 M ha / 47,8 Mt (29,1 qq/ha)
       girasol:{bcr:3.9, bcba:6.6, has:1.5, rinde:26.0, cosechado:100, estado:'Finalizado'},
       cebada: {bcr:5.4, bcba:5.4, has:1.1, rinde:49.1, cosechado:100, estado:'Finalizado'},
     },
-    campanaNota:'Trigo 2026/2027: BCR 20.0 Mt, 6.95 M ha, rinde null | Maíz 2025/2026: BCR 70.5 Mt, 11 M ha, rinde 76.6 | Soja 2025/2026: BCR 51.5 Mt, 16.4 M ha, rinde 32.1 — BCR (bcr.com.ar/es/mercados/gea), sync automático. BCBA (bolsadecereales.com, Monitor Histórico): Soja BCBA 2025/2026: 50.1 Mt | Girasol BCBA 2025/2026: 6.6 Mt | Cebada BCBA 2025/2026: 5.4 Mt, sync automático.',
+    campanaNota:'Trigo 2026/2027: BCR 21.0 Mt, 6.95 M ha, rinde null | Maíz 2025/2026: BCR 70.5 Mt, 11 M ha, rinde 76.6 | Soja 2025/2026: BCR 51.5 Mt, 16.4 M ha, rinde 32.1 — BCR (bcr.com.ar/es/mercados/gea), sync automático. BCBA (bolsadecereales.com, Monitor Histórico): Soja BCBA 2025/2026: 50.1 Mt | Girasol BCBA 2025/2026: 6.6 Mt | Cebada BCBA 2025/2026: 5.4 Mt, sync automático.',
 
     // Precios Matba-Rofex / Rosario (ARS/tn) — Disponible en pesos MATba + 2
     // forwards mas cercanos del contrato en dolares MATba (convertido a ARS
     // con el TC oficial del dia). Fuente: apicem.matbarofex.com.ar (API
     // publica, sin key), sync via update_agro_matba_html.py.
     precios:{
-      soja:    {disp:560000, sep26:568400, nov26:574820},
-      maiz:    {disp:302000, sep26:307530, nov26:311360},
-      trigo:   {disp:348000, sep26:351900, nov26:345020},
-      girasol: {disp:760000},
+      soja:    {disp:545000, nov26:555670, ene27:568000},
+      maiz:    {disp:282000, nov26:285480, dic26:296400},
+      trigo:   {disp:315000, nov26:319800, dic26:326980},
+      girasol: {disp:810000},
     },
-    preciosNota:'Disponible = contrato Pesos MATba spot (ARS/tn). Forwards = contrato Dolar MATba mas liquido, convertido a ARS con el TC oficial del dia ($1530). Girasol sin forward liquido en Dolar MATba hoy, solo disponible. Fuente: MATba-Rofex (apicem.matbarofex.com.ar), 14/09/2026, sync automático.',
+    preciosNota:'Disponible = contrato Pesos MATba spot (ARS/tn). Forwards = contrato Dolar MATba mas liquido, convertido a ARS con el TC oficial del dia ($1560). Girasol sin forward liquido en Dolar MATba hoy, solo disponible. Fuente: MATba-Rofex (apicem.matbarofex.com.ar), 30/10/2026, sync automático.',
 
     // Exportaciones INDEC por grandes rubros (USD M mensual) — INDEC ICA
     // cuadro 12, via hoja "ICA - Desagregado". Sync: update_agro_expo_html.py
     expo:{
-      l:['Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26'],
-      moa:[2830,2993,2791,2765,2413,2275,1816,2679,2708,2997,3368,3068],
-      pp: [2019,2037,1903,2025,1890,2089,1741,2350,2123,2443,1894,2110],
-      acumMOA:18911,acumPP:14749,acumTotal:33660,
+      l:['Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26','Ago 26','Sep 26'],
+      moa:[2791,2765,2413,2275,1816,2679,2708,2997,3368,3062,3304,3495],
+      pp: [1903,2025,1890,2089,1741,2350,2123,2443,1894,2110,1722,2225],
+      acumMOA:25704,acumPP:18696,acumTotal:44400,
     },
     expoProducto:{
-      items:['Harina soja','Aceite soja','Grano soja','Maiz','Trigo','Girasol','Carne','Otros'],
-      vals: [3950,1720,850,2280,1020,440,1150,1100],
+      items:['Harina soja ●', 'Aceite soja ●', 'Grano soja ●', 'Maiz', 'Trigo', 'Girasol', 'Carne', 'Otros'],
+      vals: [6971, 5050, 1738, 2280, 1020, 440, 1150, 1100],
+      periodo:'Ene–Sep 2026',
     },
+    expoProductoNota:'&#9679; Complejo soja (Harina/Aceite/Grano soja): INDEC, "Cuadro 6" del archivo de cuadros ICA (acumulado Ene–Sep 2026) — sync automático (update_agro_expo_producto_html.py). Resto de productos (Maíz, Trigo, Girasol, Carne, Otros): dato manual, sin fuente INDEC estructurada mes a mes (el ranking "top 10 productos" de INDEC varía de composición cada mes, ver memoria agro_commodities_manual_gaps) — última actualización manual preservada.',
 
     // CIARA-CEC  --  fuente Fiscal y Sectorial ARG.xlsx hoja "Liq. Agro" (CIARA-CEC via espejo MAGyP), actualizado 09/09/2026
     // Jul-26: $2,918M oficial | Jun-26: $3,008M oficial | Acum ene-jul: $16,270M (-10.9% vs 2025)
 ciara:{
-      l:['Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26','Ago 26'],
-      vals:[7107,1117,760,1015,1851,1289,2032,2494,2677,3008,2918,2751],
-      mayo:2751, acum2026:19020, acum2025:21338,
-      notas:'Ago 26: $2,751M oficial (-5.7% vs mes anterior). Acum ene-ago: $19,020M (-10.9% vs 2025). Fuente: MAGyP (espejo CIARA-CEC), sync automático.',
+      l:['Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26','Ago 26','Sep 26'],
+      vals:[1117,760,1015,1851,1289,2032,2494,2677,3008,2918,2751,3228],
+      mayo:3228, acum2026:22248, acum2025:28445,
+      notas:'Sep 26: $3,228M oficial (+17.4% vs mes anterior). Acum ene-sep: $22,248M (-21.8% vs 2025). Fuente: MAGyP (espejo CIARA-CEC), sync automático.',
     },
 
     // BCRA compras MULC (USD M) — sector Oleaginosos y Cerealeros, neto. Fuente: BCRA anexo Mercado de Cambios y Balance Cambiario, hoja MC por sector. Última: Jul 26 ($3,504M). Sync: update_agro_bcra_html.py
     bcra:{
-      l:['Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26'],
-      compras:[4632,1804,7567,316,540,1139,2121,1408,2166,2481,2951,2914,3504],
-      acum2026:17545,
+      l:['Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26','Ago 26','Sep 26'],
+      compras:[7567,316,540,1139,2121,1408,2166,2481,2951,2914,3504,2932,3312],
+      acum2026:23789,
+    },
+  },
+
+  // ── COT metales/energía — CFTC Disaggregated (agregado 28/09/2026) ───
+  // Mismas fórmulas que D.cot (granos): mm=Managed Money neto (long-short), comm=
+  // (Productor/Merchant+Swap Dealer) neto, nr=No-reportables neto. Miles de contratos.
+  // Fuente: publicreporting.cftc.gov, mercados GOLD/SILVER/COPPER- #1 (todos Commodity
+  // Exchange Inc.) y WTI-PHYSICAL (NYMEX). 14 semanas, 28-Jul a 27-Oct-2026. (auto, update_cotmetales_html.py) (auto, update_cotmetales_html.py)
+  cotMetales:{
+    l:['28-Jul','4-Ago','11-Ago','18-Ago','25-Ago','1-Sep','8-Sep','15-Sep','22-Sep','29-Sep','6-Oct','13-Oct','20-Oct','27-Oct'],
+    mm:{
+      oro:      [120,131,138,142,145,137,135,133,128,120,111,107,104,106],
+      plata:    [9,12,11,12,14,12,14,13,13,8,8,6,4,3],
+      cobre:    [65,76,79,79,76,72,82,65,82,78,61,61,48,41],
+      petroleo: [93,87,80,88,84,94,112,106,102,80,54,41,36,31],
+    },
+    mmLong:{
+      oro:      [135,140,149,155,160,150,146,142,136,132,127,125,121,123],
+      plata:    [18,20,20,20,21,19,21,20,19,17,16,16,16,17],
+      cobre:    [83,93,94,92,92,91,98,84,96,92,77,78,67,62],
+      petroleo: [194,190,191,196,197,205,219,222,223,209,178,172,163,157],
+    },
+    mmShort:{
+      oro:      [15,9,11,13,15,13,11,9,8,11,16,18,17,17],
+      plata:    [9,8,9,8,7,7,7,7,6,9,9,10,13,14],
+      cobre:    [18,17,15,13,16,19,16,19,14,14,16,17,20,22],
+      petroleo: [101,103,111,108,113,111,107,116,121,129,125,131,127,126],
+    },
+    comm:{
+      oro:      [-212,-226,-253,-258,-280,-265,-270,-262,-263,-251,-245,-243,-236,-216],
+      plata:    [-39,-40,-44,-45,-45,-45,-45,-43,-45,-40,-42,-39,-37,-36],
+      cobre:    [-76,-86,-91,-90,-95,-92,-105,-84,-100,-95,-78,-77,-64,-53],
+      petroleo: [-159,-154,-130,-153,-156,-156,-166,-165,-170,-143,-126,-125,-116,-103],
+    },
+    nr:{
+      oro:      [30,29,35,36,36,37,38,31,37,32,34,35,36,29],
+      plata:    [17,18,20,21,20,19,19,17,19,18,18,17,17,16],
+      cobre:    [9,9,11,10,10,11,12,9,10,9,8,8,7,5],
+      petroleo: [39,41,30,31,33,26,30,29,29,33,27,25,27,29],
     },
   },
 
   // ── PETRÓLEO — EIA STEO, Tabla 3a (World Refined) ────────────────
   // Fuente: eia.gov/outlooks/steo/data/browser (API pública, sin key). Mensual, mb/d.
   petroleo:{
-    l:['Ene 25','Feb 25','Mar 25','Abr 25','May 25','Jun 25','Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25',
-       'Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26','Ago 26','Sep 26','Oct 26','Nov 26','Dic 26'],
-    prod:[102.67,103.21,104.70,104.40,104.92,106.11,107.09,107.63,108.81,108.55,108.62,107.97,
-          105.96,108.71,96.90,95.46,94.41,99.41,101.73,99.63,99.41,100.56,102.27,103.64],
-    cons:[102.01,103.54,102.31,103.59,103.51,105.76,105.42,104.48,105.85,104.44,104.25,106.20,
-          102.48,104.48,102.14,99.62,99.17,102.05,101.82,103.70,104.21,102.99,103.74,104.86],
-    bal: [0.66,-0.33,2.38,0.80,1.40,0.35,1.68,3.15,2.96,4.11,4.37,1.77,
-          3.47,4.23,-5.24,-4.16,-4.76,-2.63,-0.09,-4.06,-4.80,-2.43,-1.47,-1.22],
+    l:['Ene 25','Feb 25','Mar 25','Abr 25','May 25','Jun 25','Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26','Ago 26','Sep 26','Oct 26','Nov 26','Dic 26','Ene 27','Feb 27','Mar 27','Abr 27','May 27','Jun 27','Jul 27','Ago 27','Sep 27','Oct 27','Nov 27','Dic 27'],
+    prod:[102.666,103.214,104.697,104.396,104.916,106.106,107.094,107.633,108.807,108.548,108.621,107.97,105.956,108.709,96.904,95.458,94.411,99.414,101.727,99.632,99.413,100.557,102.266,103.638,104.965,106.465,107.995,109.59,110.245,110.293,110.955,111.071,111.093,111.68,112.14,111.823],
+    cons:[102.006,103.542,102.314,103.594,103.512,105.756,105.418,104.485,105.85,104.439,104.25,106.196,102.483,104.48,102.141,99.619,99.168,102.047,101.818,103.697,104.21,102.987,103.737,104.863,102.376,104.658,103.475,104.356,104.515,106.12,105.827,105.738,105.873,104.712,105.492,106.669],
+    bal: [0.66,-0.328,2.383,0.802,1.404,0.35,1.676,3.148,2.957,4.109,4.371,1.774,3.473,4.229,-5.237,-4.161,-4.757,-2.633,-0.091,-4.065,-4.797,-2.43,-1.471,-1.225,2.589,1.807,4.52,5.234,5.73,4.173,5.128,5.333,5.22,6.968,6.648,5.154],
     hormuzNota:'Efecto Estrecho de Ormuz (mar-may 2026): producción mundial cae de 108,7 a 94,4 mb/d (~14 mb/d), casi enteramente por OPEP (30,8→19,3 mb/d, -37%), mientras No-OPEP apenas se mueve. El balance se vuelve fuertemente negativo (hasta -4,8 mb/d) — la mayor desacumulación de inventarios de la serie. Recuperación parcial hacia jul-26, sin volver a niveles pre-shock hacia fin de año.',
     lastHist:'2026-05 (producción) / 2024-12 (consumo, reporta con más rezago)',
     // Producción OPEP vs No-OPEP, mb/d — mismos meses que arriba
-    opec:[28.500,28.626,28.873,28.701,29.073,29.551,29.138,29.159,30.322,30.073,29.850,30.099,
-          29.973,30.817,22.013,19.941,19.323,21.902,24.230,22.348,22.012,22.499,23.648,24.846],
-    nonOpec:[74.166,74.587,75.824,75.695,75.843,76.555,77.956,78.474,78.485,78.474,78.771,77.872,
-             75.982,77.892,74.891,75.517,75.088,77.512,77.497,77.283,77.402,78.058,78.619,78.792],
+    opec:[28.5,28.626,28.873,28.701,29.073,29.551,29.138,29.159,30.322,30.073,29.85,30.099,29.973,30.817,22.013,19.941,19.323,21.902,24.23,22.348,22.012,22.499,23.648,24.846,26.082,27.266,28.573,29.758,29.891,29.954,30.012,30.085,30.158,30.231,30.264,30.297],
+    nonOpec:[74.166,74.587,75.824,75.695,75.843,76.555,77.956,78.474,78.485,78.474,78.771,77.872,75.982,77.892,74.891,75.517,75.088,77.512,77.497,77.283,77.402,78.058,78.619,78.792,78.882,79.199,79.422,79.832,80.354,80.339,80.944,80.986,80.935,81.449,81.876,81.526],
   },
 
   // ── ELECTRICIDAD EE.UU. — EIA STEO (Tablas 7a/7d) ────────────────
   electricidad:{
-    l:['Ene 25','Feb 25','Mar 25','Abr 25','May 25','Jun 25','Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25',
-       'Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26','Ago 26','Sep 26','Oct 26','Nov 26','Dic 26'],
-    gas:     [147.4,123.2,109.3,106.5,126.7,156.3,192.8,183.7,159.2,135.4,122.8,138.8,142.5,124.2,118.9,116.3,128.9,155.0,190.5,196.2,162.9,135.6,126.4,146.1],
-    carbon:  [82.7,61.9,48.8,45.2,48.5,64.1,79.9,69.4,57.9,53.7,54.1,66.5,72.1,55.5,43.8,39.5,44.8,55.9,76.5,72.8,57.8,48.8,50.7,59.5],
-    nuclear: [71.7,61.8,62.5,57.9,62.1,66.2,70.8,70.7,65.5,59.2,63.8,72.5,73.3,62.4,62.1,57.4,65.0,68.8,70.0,69.5,65.5,60.6,64.1,71.4],
-    renovable:[83.5,78.1,99.2,98.0,93.6,92.6,88.0,82.0,71.8,83.1,80.6,89.3,93.2,86.2,110.8,104.9,102.9,107.1,97.1,92.8,81.3,90.6,85.7,88.8],
-    hidro:   [21.3,19.5,22.3,22.7,24.2,22.1,19.9,20.0,15.2,16.5,18.3,23.8,27.8,22.4,26.8,22.4,22.6,23.6,21.3,18.7,15.6,15.8,18.0,20.4],
-    eolica:  [43.6,39.3,50.6,45.8,36.8,35.8,31.8,27.3,25.7,39.5,40.9,47.0,44.4,39.7,52.2,49.1,41.1,41.9,33.1,32.7,29.7,42.2,43.3,46.9],
-    solar:   [15.4,16.4,23.1,26.7,29.6,31.8,33.1,31.5,27.9,24.4,18.4,15.2,17.8,21.1,28.7,30.8,36.1,38.6,39.6,38.2,33.1,29.9,21.5,18.2],
-    consumo: [374.3,331.3,318.6,305.4,323.3,368.4,419.6,404.7,357.7,331.9,310.4,349.5,367.8,333.4,325.4,312.7,330.9,373.1,424.4,426.4,370.6,337.3,317.4,351.0],
+    l:['Ene 25','Feb 25','Mar 25','Abr 25','May 25','Jun 25','Jul 25','Ago 25','Sep 25','Oct 25','Nov 25','Dic 25','Ene 26','Feb 26','Mar 26','Abr 26','May 26','Jun 26','Jul 26','Ago 26','Sep 26','Oct 26','Nov 26','Dic 26','Ene 27','Feb 27','Mar 27','Abr 27','May 27','Jun 27','Jul 27','Ago 27','Sep 27','Oct 27','Nov 27','Dic 27'],
+    gas:     [147.408,123.177,109.308,106.495,126.691,156.294,192.817,183.662,159.15,135.442,122.758,138.76,142.522,124.159,118.939,116.294,128.931,155.001,190.476,196.216,162.887,135.635,126.37,146.14,150.16,124.889,119.296,112.486,124.9,158.394,195.933,198.494,165.718,137.983,129.979,148.248],
+    carbon:  [82.715,61.925,48.811,45.163,48.455,64.126,79.852,69.351,57.947,53.669,54.148,66.517,72.113,55.509,43.795,39.486,44.806,55.946,76.486,72.816,57.84,48.772,50.674,59.505,59.503,49.571,45.206,37.49,43.18,56.308,68.816,70.988,55.47,47.512,48.821,57.197],
+    nuclear: [71.739,61.829,62.457,57.893,62.145,66.222,70.781,70.705,65.458,59.222,63.809,72.521,73.251,62.384,62.096,57.373,65.001,68.786,70.049,69.499,65.503,60.619,64.064,71.356,71.691,63.072,64.036,56.979,67.357,69.33,71.661,71.653,65.689,60.084,63.695,71.672],
+    renovable:[83.506,78.064,99.167,97.966,93.614,92.635,87.972,82.009,71.752,83.144,80.586,89.274,93.242,86.17,110.768,104.941,102.854,107.133,97.089,92.834,81.298,90.62,85.727,88.766,94.24,90.848,114.936,113.258,113.951,116.237,108.459,101.267,89.285,98.81,92.601,96.897],
+    hidro:   [21.333,19.455,22.347,22.737,24.246,22.059,19.888,20.006,15.211,16.467,18.33,23.824,27.793,22.371,26.804,22.393,22.633,23.622,21.326,18.74,15.574,15.754,18.037,20.436,22.651,20.431,22.624,21.843,25.47,24.301,23.346,20.871,16.772,16.563,18.6,21.07],
+    eolica:  [43.571,39.322,50.56,45.847,36.849,35.754,31.791,27.289,25.656,39.506,40.927,47.014,44.402,39.681,52.185,49.103,41.13,41.86,33.146,32.733,29.695,42.231,43.344,46.924,47.294,43.221,55.992,52.134,43.198,43.33,34.766,31.74,30.359,44.442,45.924,50.263],
+    solar:   [15.379,16.371,23.126,26.654,29.61,31.774,33.147,31.549,27.87,24.365,18.407,15.245,17.795,21.094,28.722,30.814,36.084,38.581,39.64,38.185,33.141,29.883,21.541,18.196,20.982,24.266,33.213,36.502,42.365,45.677,47.249,45.47,39.217,35.174,25.44,22.36],
+    consumo: [374.263,331.319,318.639,305.403,323.311,368.365,419.594,404.671,357.681,331.945,310.379,349.514,367.771,333.419,325.385,312.67,330.911,373.111,424.444,426.426,370.622,337.326,317.379,350.956,364.266,333.1,333.08,316.132,339.666,384.081,433.914,437.238,378.822,345.534,324.731,358.658],
     unidad:'Miles de millones de kWh (billion kWh)',
     fuente:'EIA Short-Term Energy Outlook (STEO), Tablas 7a/7d (eia.gov/outlooks/steo/data/browser), API pública sin key',
     nota:'El gas natural es, por lejos, la fuente dominante y la que más varía estacionalmente (pico en verano boreal por aire acondicionado). El carbón sigue en retirada estructural: de rondar 45-80 mil millones de kWh/mes en 2025 baja levemente en 2026, mientras las renovables (sobre todo solar) crecen sostenido.',
@@ -461,6 +499,14 @@ ciara:{
 
   // ── ORO vs TREASURIES — Bancos Centrales (WGC + U.S. Treasury TIC) ─
   // Top 15: 5 compradores de oro más activos + 10 mayores tenedores actuales de Treasuries
+  // Guidance a futuro (única disponible para oro, no hay forecast cuantitativo de oferta/demanda
+  // como en cobre/plata): WGC Central Bank Gold Reserves Survey 2026 (jun-2026, encuesta anual a
+  // bancos centrales sobre intención de compra en los próximos 12 meses).
+  bcSurvey:{
+    fecha:'WGC Central Bank Gold Reserves Survey 2026 (jun-2026)',
+    pctPropioAumenta:45, pctGlobalAumenta:89, pctPropioDisminuye:1,
+    nota:'Encuesta anual del World Gold Council a bancos centrales sobre sus intenciones de compra de oro en los próximos 12 meses (no es un pronóstico de oferta/demanda física como el de cobre/plata, es una medición de intención). Récord histórico: 45% de los bancos centrales espera aumentar sus propias reservas de oro (el nivel más alto de la serie), y 89% cree que las reservas de oro de los bancos centrales A NIVEL GLOBAL van a subir. Solo 1% espera una baja. Métodos de financiamiento declarados: 50% compra en moneda local, 38% vendiendo otros activos de reserva. Motivos citados: cobertura ante crisis, diversificación, cobertura de inflación y riesgo geopolítico.',
+  },
   oro:{
     l:[2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026],
     pctReservas:{
@@ -501,16 +547,22 @@ ciara:{
   // ── COBRE — ICSG (International Copper Study Group) ─────────────
   cobre:{
     lAnual:[2022,2023,2024,2025],
-    prodMinera:[21904,22346,22955,23201],
-    prodRefinada:[25278,26508,27414,28656],
+    prodMinera:[21904,22346,22955,23205],
+    prodRefinada:[25278,26508,27414,28663],
     usoRefinado:[25857,26642,27420,28200],
-    balance:[-579,-134,-6,456],
-    lMensual:['2025 Jan-Jun','2026 Jan-Jun','Mar 26','Abr 26','May 26','Jun 26'],
-    prodMensual:[14062,14401,2526,2404,2423,2372],
-    usoMensual:[13948,14270,2527,2551,2408,2432],
-    balMensual:[114,131,-1,-147,15,-60],
+    balance:[-579,-134,-6,463],
+    // Extensión con el forecast del ICSG (mismo % de crecimiento del bloque `forecast` de abajo,
+    // aplicado sobre el último valor real 2025) para que la proyección se vea directo en el
+    // gráfico anual, no solo en la tabla de guidance — agregado 28/09/2026 a pedido de Pedro.
+    lAnualExt:[2022,2023,2024,2025,2026,2027],
+    prodRefinadaExt:[25278,26508,27414,28663,28778,29641],
+    usoRefinadoExt:[25857,26642,27420,28200,28651,29224],
+    lMensual:['2025 Jan-Jul','2026 Jan-Jul','Abr 26','May 26','Jun 26','Jul 26'],
+    prodMensual:[16487,16762,2393,2409,2356,2411],
+    usoMensual:[16329,16730,2551,2408,2430,2462],
+    balMensual:[157,32,-158,1,-74,-51],
     unidad:'Miles de toneladas métricas',
-    fuente:'ICSG Press Release, 21-ago-2026 (comunicado mensual gratuito, icsg.org/press-releases)',
+    fuente:'ICSG Press Release, 24-sep-2026 (comunicado mensual gratuito, icsg.org/press-releases)',
     // Producción minera por país 2025e, miles de TM — USGS Mineral Commodity Summaries feb-2026
     paises:[
       {n:'Chile',v:5300},{n:'Congo (RDC)',v:3200},{n:'Perú',v:2700},{n:'Rusia',v:1300},
@@ -519,6 +571,17 @@ ciara:{
       {n:'Polonia',v:410},{n:'India',v:23},{n:'Otros',v:3000},
     ],
     paisesNota:'Chile sigue siendo el mayor productor por lejos, pero el Congo (RDC) superó a Perú y ya es el 2° productor mundial — creció de la nada a >3.000kt en una década.',
+    // Guidance a futuro: ICSG Copper Market Forecast 2026/2027 (comunicado semestral aparte del
+    // mensual, sale abril y octubre; próxima edición esperada oct-2026). Crecimiento % interanual
+    // y balance proyectado en miles de toneladas — verificado exacto contra el PDF oficial.
+    forecast:{
+      fecha:'ICSG Copper Market Forecast 2026/2027, 23-abr-2026 (próxima edición: oct-2026)',
+      mina:   {2025:0.9, 2026:1.6, 2027:2.3},
+      refinada:{2025:4.5, 2026:0.4, 2027:3.0},
+      uso:    {2025:2.8, 2026:1.6, 2027:2.0},
+      balance:{2025:455, 2026:96, 2027:377},
+      nota:'Proyección semestral del ICSG (no el comunicado mensual de arriba). Para 2026 se espera un crecimiento de la producción minera de apenas 1,6% (revisado a la baja desde 2,3% por menor output en RDC/Chile/Indonesia) y de la producción refinada de solo 0,4% (limitada por escasez de concentrados) — mientras el uso refinado crece 1,6%. Resultado: superávit de 96kt en 2026, ampliándose a 377kt en 2027 a medida que la producción refinada acelera a +3,0%.',
+    },
   },
 
   // ── PLATA — The Silver Institute / Metals Focus ──────────────────
@@ -639,7 +702,7 @@ function buildResumen(){
   return `
   <div class="sh">
     <div><div class="st">Commodities Global &amp; Argentina</div>
-    <div class="ss">CBOT &middot; COT &middot; WASDE &middot; Petr&oacute;leo &middot; Oro &middot; Cobre &middot; Plata &middot; BCR &middot; BCBA &middot; Sep 2026</div></div>
+    <div class="ss">CBOT &middot; COT &middot; WASDE &middot; Petr&oacute;leo &middot; Oro &middot; Cobre &middot; Plata &middot; BCR &middot; BCBA &middot; Oct 2026</div></div>
     <div><div class="ln g">$${fmt(d.soja.spot)}</div><div class="ll">Soja CBOT &middot; USD/tn</div></div>
   </div>
 
@@ -655,7 +718,7 @@ function buildResumen(){
       <div class="of"><span class="ov ${x.c}">${x.v}</span><span class="ox">${x.n}</span></div></div>`).join('')}
   </div>
 
-  <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--cot);margin-bottom:10px;">COT &mdash; Managed Money (semana 14-Jul-26)</div>
+  <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--cot);margin-bottom:10px;">COT &mdash; Managed Money (semana ${D.cot.l.at(-1)}-26)</div>
   <div class="sr4" style="margin-bottom:18px;">
     ${[
       {l:'Soja MM Net', v:`${cotS>=0?'+':''}${cotS}k`,n:cotBadge(cotS,c.range52.soja),  c:clr(cotS)},
@@ -683,7 +746,7 @@ function buildResumen(){
       <div class="of"><span class="ov g">${a.campania.maiz.bcr} Mt</span><span class="ox">${a.campania.maiz.cosechado}% cosechado<br>Ret. ${a.ret.maiz}% &middot; FAS $${a.fas.maiz.usd}</span></div></div>
     <div class="oc" onclick="showTab(4)"><div class="ot">Soja 25/26 &middot; BCR</div><div class="on">Soja</div>
       <div class="of"><span class="ov g">${a.campania.soja.bcr} Mt</span><span class="ox">${a.campania.soja.cosechado}% cosechado<br>Ret. ${a.ret.soja}% &middot; FAS $${a.fas.soja.usd}</span></div></div>
-    <div class="oc" onclick="showTab(4)"><div class="ot">CIARA-CEC &middot; Ago-26</div><div class="on">Liquidaciones</div>
+    <div class="oc" onclick="showTab(4)"><div class="ot">CIARA-CEC &middot; Sep-26</div><div class="on">Liquidaciones</div>
       <div class="of"><span class="ov g">$${fmt(a.ciara.mayo,0)}M</span><span class="ox">Acum ene-ago $${fmt(a.ciara.acum2026/1000,1)}B<br>-10.9% vs 2025</span></div></div>
   </div>`;
 }
@@ -708,7 +771,7 @@ function buildCbot(){
   return `
   <div class="sh">
     <div><div class="st">CBOT &mdash; Precios &amp; Futuros</div>
-    <div class="ss">Chicago Board of Trade &middot; CME Group &middot; USD/tn &middot; 12-Jun-2026</div></div>
+    <div class="ss">Chicago Board of Trade &middot; CME Group &middot; USD/tn &middot; 02-Nov-2026</div></div>
     <div><div class="ln y">$${fmt(D.cbot.soja.spot)}</div><div class="ll">Soja spot &middot; USD/tn</div></div>
   </div>
   <div class="src">CME Group / CBOT &middot; 1 bu soja/trigo=27.22 kg &middot; 1 bu maiz=25.40 kg &middot; Aceite: cents/lb x22.05 = USD/tn</div>
@@ -891,7 +954,7 @@ function buildWasde(){
     <div class="ss">World Agricultural Supply and Demand Estimates &middot; ${w.fechaOf} &middot; Proximo: ${w.proximo}</div></div>
     <div><div class="ln r">${fmt(w.maiz.sxu)}%</div><div class="ll">Maiz S/U global &middot; presion maxima</div></div>
   </div>
-  <div class="src">USDA WASDE-674 &middot; ${w.fechaOf} &middot; Fuente oficial: usda.gov/oce/commodity/wasde (PDF WASDE-674) &middot; Proximo reporte: ${w.proximo}</div>
+  <div class="src">USDA WASDE-677 &middot; ${w.fechaOf} &middot; Fuente oficial: usda.gov/oce/commodity/wasde (PDF WASDE-677) &middot; Proximo reporte: ${w.proximo}</div>
   <div class="infobox">
     <div class="infobox-t">&#9432; Verificacion WASDE</div>
     <div class="infobox-b">El reporte WASDE se publica mensualmente el segundo martes del mes en <strong>usda.gov/oce/commodity/wasde</strong>. Los datos de esta pagina corresponden al reporte del ${w.fechaOf} y fueron verificados con fuentes periodisticas especializadas. Para el proximo reporte (${w.proximo}) actualizar todos los numeros de produccion, consumo y stocks.</div>
@@ -993,14 +1056,15 @@ function buildArg(){
   return `
   <div class="sh">
     <div><div class="st">Argentina &mdash; Campana &amp; Exportaciones</div>
-    <div class="ss">BCR &middot; BCBA &middot; INDEC &middot; CIARA-CEC &middot; BCRA &middot; Sec. Agricultura &middot; Jun 2026</div></div>
+    <div class="ss">BCR &middot; BCBA &middot; INDEC &middot; CIARA-CEC &middot; BCRA &middot; Sec. Agricultura &middot; Sep 2026</div></div>
     <div><div class="ln g">${a.campania.maiz.bcr} Mt</div><div class="ll">Maiz 25/26 &middot; Record historico BCR</div></div>
   </div>
   <div class="src">BCR (bcr.com.ar/gea) &middot; BCBA (bolsadecereales.com) &middot; INDEC &middot; CIARA-CEC &middot; BCRA &middot; Sec. Agricultura</div>
 
   <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--rd);margin-bottom:10px;">Retenciones Vigentes &mdash; Decreto Jun-2026 &middot; Baja Progresiva</div>
   <div class="ret-grid" style="margin-bottom:6px;">${retHtml}</div>
-  <div class="note rd" style="margin-bottom:18px;">${a.retNota}</div>
+  <div class="note rd" style="margin-bottom:6px;">${a.retNota}</div>
+  <div class="note" style="margin-bottom:18px;">${a.retProximoCambio}</div>
 
   <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--cel);margin-bottom:10px;">Tipo de Cambio Exportador</div>
   <div class="sr4" style="margin-bottom:4px;">
@@ -1046,9 +1110,9 @@ function buildArg(){
   <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--agro);margin-bottom:10px;">CIARA-CEC &mdash; Liquidaciones Exportadoras</div>
   <div class="sr4" style="margin-bottom:6px;">
     <div class="sc agro"><div class="sl">Liquidación Ago 26</div><div class="sv g">$${fmt(a.ciara.mayo,0)}M</div><div class="sn">verificado &middot; sync automático</div></div>
-    <div class="sc agro"><div class="sl">Acum Ene&ndash;Ago 2026</div><div class="sv r">$${fmt(a.ciara.acum2026/1000,1)}B</div><div class="sn">-10.9% vs mismo periodo 2025</div></div>
-    <div class="sc agro"><div class="sl">Acum Ene&ndash;Ago 2025</div><div class="sv m">$${fmt(a.ciara.acum2025/1000,1)}B</div><div class="sn">Base de comparacion</div></div>
-    <div class="sc agro"><div class="sl">BCRA Compras 2026</div><div class="sv g">$${fmt(a.bcra.acum2026/1000,1)}B</div><div class="sn">Ene&ndash;Jul 2026 &middot; MULC</div></div>
+    <div class="sc agro"><div class="sl">Acum Ene&ndash;Sep 2026</div><div class="sv r">$${fmt(a.ciara.acum2026/1000,1)}B</div><div class="sn">-10.9% vs mismo periodo 2025</div></div>
+    <div class="sc agro"><div class="sl">Acum Ene&ndash;Sep 2025</div><div class="sv m">$${fmt(a.ciara.acum2025/1000,1)}B</div><div class="sn">Base de comparacion</div></div>
+    <div class="sc agro"><div class="sl">BCRA Compras 2026</div><div class="sv g">$${fmt(a.bcra.acum2026/1000,1)}B</div><div class="sn">Ene&ndash;Sep 2026 &middot; MULC</div></div>
   </div>
   <div class="note" style="margin-bottom:18px;">${a.ciara.notas}</div>
 
@@ -1058,8 +1122,9 @@ function buildArg(){
   </div>
   <div class="cg2">
     <div class="card c-arg"><div class="ct">Exportaciones Agro &mdash; MOA + PP (USD M, INDEC)</div><div class="ch h240"><canvas id="ch-a-expo"></canvas></div></div>
-    <div class="card c-arg"><div class="ct">Expo por Producto &mdash; Acum Ene&ndash;Abr 2026 (USD M)</div><div class="ch h240"><canvas id="ch-a-prod"></canvas></div></div>
-  </div>`;
+    <div class="card c-arg"><div class="ct">Expo por Producto &mdash; Acum ${a.expoProducto.periodo.replace('–','&ndash;')} (USD M)</div><div class="ch h240"><canvas id="ch-a-prod"></canvas></div></div>
+  </div>
+  <div class="note">${a.expoProductoNota}</div>`;
 }
 
 function initArgCharts(){
@@ -1087,6 +1152,66 @@ function initArgCharts(){
 // ================================================================
 // PANEL 5 — PETRÓLEO (EIA STEO)
 // ================================================================
+// ── Helper COT metales/energía — reusado en Oro/Cobre/Plata/Petróleo ──
+const COT_METAL_NAMES={oro:'Oro',plata:'Plata',cobre:'Cobre',petroleo:'Petróleo (WTI)'};
+function cotMiniHtml(key, colorVar){
+  const c=D.cotMetales, name=COT_METAL_NAMES[key];
+  const net=c.mm[key].at(-1), lng=c.mmLong[key].at(-1), sht=c.mmShort[key].at(-1), comm=c.comm[key].at(-1);
+  const range={min:Math.min(...c.mm[key]),max:Math.max(...c.mm[key])};
+  const pct=((net-range.min)/(range.max-range.min)*100);
+  let signal,sigClass,sigIcon;
+  if(pct<=32&&comm>0){signal=`Se&ntilde;al de piso: especuladores vendidos (${fmt(pct,0)}%ile), coberturistas comprados. Potencial soporte.`;sigClass='g';sigIcon='&#128994;';}
+  else if(pct>=68&&comm<0){signal=`Se&ntilde;al de techo: especuladores comprados (${fmt(pct,0)}%ile), coberturistas vendidos. Riesgo de correcci&oacute;n.`;sigClass='r';sigIcon='&#128308;';}
+  else{signal=`Posici&oacute;n neutral (${fmt(pct,0)}%ile). Sin se&ntilde;al extrema de MM vs Commercial.`;sigClass='a';sigIcon='&#11035;';}
+  return `
+  <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(${colorVar});margin:18px 0 10px;">COT &mdash; Commitments of Traders (CFTC, semana ${c.l.at(-1)})</div>
+  <div class="src">CFTC (cftc.gov) &middot; Disaggregated COT Report &middot; Publicaci&oacute;n semanal viernes (datos martes)</div>
+  <div class="sr3" style="margin-bottom:11px;">
+    <div class="sc cot">
+      <div class="sl">${name} &mdash; MM Net</div><div class="sv ${clr(net)}">${net>=0?'+':''}${net}k</div>
+      <div class="sn">Long ${lng}k &middot; Short ${sht}k</div>
+      <div class="sn" style="margin-top:3px">Comm: ${comm>=0?'+':''}${comm}k</div>
+      <div class="ratio-bar" style="margin-top:6px"><div class="ratio-fill" style="width:${Math.max(2,Math.min(100,pct))}%;background:${net>0?C.AGRO:C.RD}"></div></div>
+      <div style="display:flex;justify-content:space-between;font-size:8px;color:var(--dm);margin-top:2px"><span>${range.min}k</span><span style="color:${net>0?'var(--agro)':'var(--rd)'};">${fmt(pct,0)}%ile</span><span>${range.max}k</span></div>
+    </div>
+    <div class="sc cot"><div class="sl">MM Long / Short</div><div class="sv">${fmt(lng,0)}k / ${fmt(sht,0)}k</div><div class="sn">posiciones brutas</div></div>
+    <div class="sc cot"><div class="sl">Comercial (Prod/Merc+Swap)</div><div class="sv ${clr(comm)}">${comm>=0?'+':''}${comm}k</div><div class="sn">contraparte de Managed Money</div></div>
+  </div>
+  <div class="card c-cot" style="padding:14px 16px;margin-bottom:11px;">
+    <div class="ct">${name} &mdash; MM vs Commercial &middot; Divergencia</div>
+    <div class="div-grid">
+      <div class="div-half">
+        <div class="div-lbl">Managed Money (especuladores)</div>
+        <div class="div-val ${clr(net)}">${net>=0?'+':''}${net}k</div>
+        <div class="div-sub">${cotBadge(net,range)}</div>
+      </div>
+      <div class="div-half">
+        <div class="div-lbl">Commercial (hedgers/coberturistas)</div>
+        <div class="div-val ${clr(comm)}">${comm>=0?'+':''}${comm}k</div>
+        <div class="div-sub" style="font-size:8.5px;color:var(--dm)">Productores/consumidores cubriendo posici&oacute;n f&iacute;sica. T&iacute;picamente inverso a MM.</div>
+      </div>
+    </div>
+    <div class="div-signal">${sigIcon} <span class="${sigClass}"><strong>${name}:</strong> ${signal}</span></div>
+  </div>
+  <div class="note" style="margin-bottom:11px;">Percentil calculado sobre las 14 semanas disponibles (no 52, por ser un bloque agregado reci&eacute;n el 28/09/2026 &mdash; se ampl&iacute;a solo a medida que se acumule m&aacute;s historial). Fuente: CFTC Disaggregated Futures Only Report (publicreporting.cftc.gov).</div>
+  <div class="cg2">
+    <div class="card c-cot"><div class="ct">${name} &mdash; MM Net hist&oacute;rico (miles contratos)</div><div class="ch h240"><canvas id="ch-cotm-${key}"></canvas></div></div>
+    <div class="card c-cot"><div class="ct">${name} &mdash; MM vs Commercial</div><div class="ch h240"><canvas id="ch-cotm-comp-${key}"></canvas></div></div>
+  </div>`;
+}
+function initCotMini(key){
+  const c=D.cotMetales;
+  mkChart(`ch-cotm-${key}`,{type:'bar',data:{labels:c.l,datasets:[{label:'MM Net',data:c.mm[key],
+    backgroundColor:c.mm[key].map(v=>v>=0?'rgba(77,184,122,.65)':'rgba(217,95,95,.65)'),borderColor:c.mm[key].map(v=>v>=0?C.AGRO:C.RD),borderWidth:1}]},
+    options:{...chartBase,plugins:{...chartBase.plugins,tooltip:{...chartBase.plugins.tooltip,callbacks:{label:i=>`${i.raw>=0?'+':''}${i.raw}k contratos`}}},
+      scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}k`}}}}});
+  mkChart(`ch-cotm-comp-${key}`,{type:'line',data:{labels:c.l,datasets:[
+    {label:'MM Net',data:c.mm[key],borderColor:C.AGRO,backgroundColor:'transparent',tension:.3,pointRadius:3,pointBackgroundColor:C.AGRO},
+    {label:'Comm. Net',data:c.comm[key],borderColor:C.RD,backgroundColor:'transparent',tension:.3,borderDash:[5,3],pointRadius:3,pointBackgroundColor:C.RD},
+  ]},options:{...chartBase,plugins:{...chartBase.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}}},
+    scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}k`}}}}});
+}
+
 function buildPetroleo(){
   const p=D.petroleo;
   const last=p.bal.at(-1),lastProd=p.prod.at(-1),lastCons=p.cons.at(-1);
@@ -1107,18 +1232,28 @@ function buildPetroleo(){
     <div class="comment-t" style="color:var(--rd);">&#9888; Efecto Estrecho de Ormuz &mdash; Mar-May 2026</div>
     <div class="comment-b">${p.hormuzNota}</div>
   </div>
-  <div class="card c-agro" style="margin-bottom:11px;"><div class="ct">Producci&oacute;n vs Consumo Mundial (mb/d)</div><div class="ch h240"><canvas id="ch-pet-prodcons"></canvas></div></div>
+  <div class="card c-agro" style="margin-bottom:11px;"><div class="ct">Producci&oacute;n vs Consumo Mundial (mb/d, l&iacute;nea punteada = proyecci&oacute;n EIA STEO)</div><div class="ch h240"><canvas id="ch-pet-prodcons"></canvas></div></div>
   <div class="card c-agro" style="margin-bottom:11px;"><div class="ct">Balance Mensual (mb/d)</div><div class="ch h240"><canvas id="ch-pet-bal"></canvas></div></div>
   <div class="note">El desglose OPEP vs No-OPEP muestra de d&oacute;nde vino el shock de Ormuz: la producci&oacute;n No-OPEP (fuera del Golfo P&eacute;rsico) casi no se movi&oacute;.</div>
-  <div class="card c-agro"><div class="ct">Producci&oacute;n OPEP vs No-OPEP (mb/d)</div><div class="ch h240"><canvas id="ch-pet-opec"></canvas></div></div>`;
+  <div class="card c-agro" style="margin-bottom:11px;"><div class="ct">Producci&oacute;n OPEP vs No-OPEP (mb/d)</div><div class="ch h240"><canvas id="ch-pet-opec"></canvas></div></div>
+  ${cotMiniHtml('petroleo','--agro')}`;
 }
 function initPetroleoCharts(){
   const p=D.petroleo;
-  mkChart('ch-pet-prodcons',{type:'line',data:{labels:p.l,datasets:[
-    {label:'Producción',data:p.prod,borderColor:C.CEL,backgroundColor:'transparent',tension:.25,pointRadius:2},
-    {label:'Consumo',data:p.cons,borderColor:C.ARG,backgroundColor:'transparent',tension:.25,pointRadius:2,borderDash:[5,3]},
-  ]},options:{...chartBase,plugins:{...chartBase.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}}},
-    scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}`}}}}});
+  initCotMini('petroleo');
+  {
+    // corte real/proyección: producción tiene histórico hasta may-26, consumo hasta dic-24 (fuera
+    // de esta ventana, ene25 en adelante) -- ver p.lastHist. Se marca con segmento punteado.
+    const prodCut=p.l.indexOf('May 26');
+    mkChart('ch-pet-prodcons',{type:'line',data:{labels:p.l,datasets:[
+      {label:'Producción',data:p.prod,borderColor:C.CEL,backgroundColor:'transparent',tension:.25,
+       pointRadius:p.l.map((_,i)=>i>prodCut?3:2),pointStyle:p.l.map((_,i)=>i>prodCut?'rectRot':'circle'),
+       segment:{borderDash:ctx=>ctx.p0DataIndex>=prodCut?[6,4]:undefined}},
+      {label:'Consumo (proyección EIA)',data:p.cons,borderColor:C.ARG,backgroundColor:'transparent',tension:.25,pointRadius:2,borderDash:[3,3]},
+    ]},options:{...chartBase,plugins:{...chartBase.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}},
+      tooltip:{...chartBase.plugins.tooltip,callbacks:{label:i=>`${i.dataset.label}${i.datasetIndex===0&&i.dataIndex>prodCut?' (proy.)':''}: ${fmt(i.raw)}`}}},
+      scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}`}}}}});
+  }
   mkChart('ch-pet-bal',{type:'bar',data:{labels:p.l,datasets:[{label:'Balance',data:p.bal,
     backgroundColor:p.bal.map(v=>v>=0?'rgba(77,184,122,.65)':'rgba(217,95,95,.65)'),borderColor:p.bal.map(v=>v>=0?C.AGRO:C.RD),borderWidth:1}]},
     options:{...chartBase,scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}`}}}}});
@@ -1187,6 +1322,16 @@ function buildOro(){
   </div>
   <div class="src">World Gold Council (Quarterly Gold &amp; FX Reserves, gratuito con cuenta) &middot; U.S. Treasury TIC System (ticdata.treasury.gov, sin key)</div>
   <div class="note">15 pa&iacute;ses: los 5 compradores de oro m&aacute;s activos de la &uacute;ltima d&eacute;cada (China, Rusia, India, Turqu&iacute;a, Polonia) + los 10 mayores tenedores actuales de Treasuries que faltaban (Jap&oacute;n, Reino Unido, B&eacute;lgica, Canad&aacute;, Islas Caim&aacute;n, Luxemburgo, Francia, Irlanda, Taiw&aacute;n, Suiza). El eje muestra qu&eacute; % de las reservas totales de cada banco central est&aacute; en oro.</div>
+  <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--arg);margin:18px 0 10px;">Guidance a Futuro &mdash; ${D.bcSurvey.fecha}</div>
+  <div class="sr3" style="margin-bottom:18px;">
+    <div class="sc arg"><div class="sl">Bancos centrales que planean AUMENTAR su oro</div><div class="sv g">${D.bcSurvey.pctPropioAumenta}%</div><div class="sn">r&eacute;cord hist&oacute;rico de la encuesta</div></div>
+    <div class="sc arg"><div class="sl">Creen que las reservas globales de oro subir&aacute;n</div><div class="sv g">${D.bcSurvey.pctGlobalAumenta}%</div><div class="sn">pr&oacute;ximos 12 meses</div></div>
+    <div class="sc arg"><div class="sl">Planean DISMINUIR su oro</div><div class="sv r">${D.bcSurvey.pctPropioDisminuye}%</div><div class="sn">casi nadie vende</div></div>
+  </div>
+  <div class="comment" style="border-left-color:var(--arg);margin-bottom:18px;">
+    <div class="comment-t" style="color:var(--arg);">&#9432; Qu&eacute; es esta encuesta (y qu&eacute; NO es)</div>
+    <div class="comment-b">${D.bcSurvey.nota}</div>
+  </div>
   <div class="sr5" style="margin-bottom:12px;">
     <div class="sc arg"><div class="sl">China</div><div class="sv g">${fmt(cLast.china,1)}%</div><div class="sn">vs 1.6% en 2010</div></div>
     <div class="sc arg"><div class="sl">Rusia</div><div class="sv">32.2%</div><div class="sn">pico 2024, sin dato 25-26</div></div>
@@ -1205,11 +1350,13 @@ function buildOro(){
     <div class="comment-t">&#9432; Lectura</div>
     <div class="comment-b">${o.nota}</div>
   </div>
-  <div class="card c-arg" style="margin-bottom:11px;"><div class="ct">Oro como % de Reservas &mdash; Compradores Activos (China/Rusia/India/Turqu&iacute;a/Polonia)</div><div class="ch h240"><canvas id="ch-oro-pct"></canvas></div></div>
-  <div class="card c-wasde"><div class="ct">Oro como % de Reservas &mdash; Otros Grandes Tenedores de Treasuries</div><div class="ch h240"><canvas id="ch-oro-pct2"></canvas></div></div>`;
+  <div class="card c-arg" style="margin-bottom:11px;"><div class="ct">Oro como % de Reservas &mdash; Compradores Activos (China/Rusia/India/Turqu&iacute;a/Polonia) &middot; <span style="color:var(--agro)">&#9650; WGC: 89% espera que suban en 12m</span></div><div class="ch h240"><canvas id="ch-oro-pct"></canvas></div></div>
+  <div class="card c-wasde" style="margin-bottom:11px;"><div class="ct">Oro como % de Reservas &mdash; Otros Grandes Tenedores de Treasuries &middot; <span style="color:var(--agro)">&#9650; 45% de bancos centrales planea comprar m&aacute;s</span></div><div class="ch h240"><canvas id="ch-oro-pct2"></canvas></div></div>
+  ${cotMiniHtml('oro','--arg')}`;
 }
 function initOroCharts(){
   const o=D.oro;
+  initCotMini('oro');
   const cfgs=[['china',C.CEL],['russia',C.RD],['india',C.CBOT],['turkey',C.AGRO],['poland',C.COT]];
   const names={china:'China',russia:'Rusia',india:'India',turkey:'Turquía',poland:'Polonia',
     japan:'Japón',uk:'Reino Unido',belgium:'Bélgica',canada:'Canadá',luxembourg:'Luxemburgo',
@@ -1243,18 +1390,39 @@ function buildCobre(){
     <div class="sc cbot"><div class="sl">Uso Refinado 2025</div><div class="sv">${fmt(c.usoRefinado.at(-1),0)}</div><div class="sn">${c.unidad.toLowerCase()}</div></div>
     <div class="sc cbot"><div class="sl">Balance 2025</div><div class="sv ${clr(c.balance.at(-1))}">${chgStr(c.balance.at(-1),0)}</div><div class="sn">primer super&aacute;vit anual desde 2022</div></div>
   </div>
-  <div class="card c-cbot" style="margin-bottom:11px;"><div class="ct">Producci&oacute;n Refinada vs Uso Refinado (anual)</div><div class="ch h240"><canvas id="ch-cu-anual"></canvas></div></div>
+  <div class="card c-cbot" style="margin-bottom:11px;"><div class="ct">Producci&oacute;n Refinada vs Uso Refinado (anual, l&iacute;nea punteada = proyecci&oacute;n ICSG 2026-27)</div><div class="ch h240"><canvas id="ch-cu-anual"></canvas></div></div>
   <div class="card c-cbot" style="margin-bottom:11px;"><div class="ct">Balance Mensual 2025-2026</div><div class="ch h200"><canvas id="ch-cu-bal"></canvas></div></div>
+  <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--cbot);margin:18px 0 10px;">Guidance a Futuro &mdash; ${c.forecast.fecha}</div>
+  <table class="p-tbl" style="margin-bottom:6px;"><thead><tr><th>Variable</th><th>2025</th><th>2026e</th><th>2027e</th></tr></thead><tbody>
+    <tr><td>Producci&oacute;n Minera (var. % interanual)</td><td>+${c.forecast.mina[2025]}%</td><td>+${c.forecast.mina[2026]}%</td><td>+${c.forecast.mina[2027]}%</td></tr>
+    <tr><td>Producci&oacute;n Refinada (var. % interanual)</td><td>+${c.forecast.refinada[2025]}%</td><td>+${c.forecast.refinada[2026]}%</td><td>+${c.forecast.refinada[2027]}%</td></tr>
+    <tr><td>Uso Refinado (var. % interanual)</td><td>+${c.forecast.uso[2025]}%</td><td>+${c.forecast.uso[2026]}%</td><td>+${c.forecast.uso[2027]}%</td></tr>
+    <tr><td>Balance proyectado (kt Cu)</td><td class="${clr(c.forecast.balance[2025])}">${chgStr(c.forecast.balance[2025],0)}</td><td class="${clr(c.forecast.balance[2026])}">${chgStr(c.forecast.balance[2026],0)}</td><td class="${clr(c.forecast.balance[2027])}">${chgStr(c.forecast.balance[2027],0)}</td></tr>
+  </tbody></table>
+  <div class="note" style="margin-bottom:18px;">${c.forecast.nota}</div>
   <div class="note">${c.paisesNota}</div>
-  <div class="card c-cbot"><div class="ct">Producci&oacute;n Minera por Pa&iacute;s &mdash; 2025e (${c.unidad.toLowerCase()})</div><div class="ch h340"><canvas id="ch-cu-paises"></canvas></div></div>`;
+  <div class="card c-cbot" style="margin-bottom:11px;"><div class="ct">Producci&oacute;n Minera por Pa&iacute;s &mdash; 2025e (${c.unidad.toLowerCase()})</div><div class="ch h340"><canvas id="ch-cu-paises"></canvas></div></div>
+  ${cotMiniHtml('cobre','--cbot')}`;
 }
 function initCobreCharts(){
   const c=D.cobre;
-  mkChart('ch-cu-anual',{type:'line',data:{labels:c.lAnual,datasets:[
-    {label:'Producción Refinada',data:c.prodRefinada,borderColor:C.CBOT,backgroundColor:'transparent',tension:.3,pointRadius:4},
-    {label:'Uso Refinado',data:c.usoRefinado,borderColor:C.CEL,backgroundColor:'transparent',tension:.3,pointRadius:4,borderDash:[5,3]},
-  ]},options:{...chartBase,plugins:{...chartBase.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}}},
-    scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}`}}}}});
+  initCotMini('cobre');
+  {
+    const nReal=c.lAnual.length; // índices >= nReal-1 son el segmento proyectado (ICSG 2026e/2027e)
+    const segDash=ctx=>ctx.p0DataIndex>=nReal-1?[6,4]:undefined;
+    mkChart('ch-cu-anual',{type:'line',data:{labels:c.lAnualExt.map((y,i)=>i>=nReal?`${y}e`:`${y}`),datasets:[
+      {label:'Producción Refinada',data:c.prodRefinadaExt,borderColor:C.CBOT,backgroundColor:'transparent',tension:.3,
+       pointRadius:c.lAnualExt.map((_,i)=>i>=nReal?5:4),
+       pointStyle:c.lAnualExt.map((_,i)=>i>=nReal?'rectRot':'circle'),
+       segment:{borderDash:segDash}},
+      {label:'Uso Refinado',data:c.usoRefinadoExt,borderColor:C.CEL,backgroundColor:'transparent',tension:.3,borderDash:[5,3],
+       pointRadius:c.lAnualExt.map((_,i)=>i>=nReal?5:4),
+       pointStyle:c.lAnualExt.map((_,i)=>i>=nReal?'rectRot':'circle'),
+       segment:{borderDash:ctx=>ctx.p0DataIndex>=nReal-1?[2,3]:[5,3]}},
+    ]},options:{...chartBase,plugins:{...chartBase.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}},
+      tooltip:{...chartBase.plugins.tooltip,callbacks:{label:i=>`${i.dataset.label}${i.dataIndex>=nReal?' (proy. ICSG)':''}: ${fmt(i.raw,0)}`}}},
+      scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}`}}}}});
+  }
   mkChart('ch-cu-bal',{type:'bar',data:{labels:c.lMensual,datasets:[{label:'Balance',data:c.balMensual,
     backgroundColor:c.balMensual.map(v=>v>=0?'rgba(77,184,122,.65)':'rgba(217,95,95,.65)'),borderColor:c.balMensual.map(v=>v>=0?C.AGRO:C.RD),borderWidth:1}]},
     options:{...chartBase,scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}`}}}}});
@@ -1287,26 +1455,48 @@ function buildPlata(){
     <div class="sc cot"><div class="sl">Demanda Industrial ${p.lLbl.at(-1)}</div><div class="sv">${fmt(p.demandaIndustrial.at(-1),0)}</div><div class="sn">r&eacute;cord hist&oacute;rico</div></div>
     <div class="sc cot"><div class="sl">Balance ${p.lLbl.at(-1)}</div><div class="sv r">${chgStr(lastBal,0)}</div><div class="sn">d&eacute;ficit</div></div>
   </div>
-  <div class="card c-cot" style="margin-bottom:11px;"><div class="ct">Oferta vs Demanda Industrial (anual)</div><div class="ch h240"><canvas id="ch-ag-ofdem"></canvas></div></div>
-  <div class="card c-cot" style="margin-bottom:11px;"><div class="ct">Balance de Mercado (anual)</div><div class="ch h200"><canvas id="ch-ag-bal"></canvas></div></div>
+  <div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--cot);margin:18px 0 10px;">Guidance a Futuro &mdash; World Silver Survey 2026 (proyecci&oacute;n ${p.lLbl.at(-1)})</div>
+  <div class="sr3" style="margin-bottom:6px;">
+    <div class="sc cot"><div class="sl">Oferta Proyectada ${p.lLbl.at(-1)}</div><div class="sv ${clr(p.oferta.at(-1)-p.oferta.at(-2))}">${chgStr(p.oferta.at(-1)-p.oferta.at(-2),0)}</div><div class="sn">vs ${p.lLbl.at(-2)} (${fmt(p.oferta.at(-1),0)} ${p.unidad.toLowerCase()})</div></div>
+    <div class="sc cot"><div class="sl">Demanda Ind. Proyectada ${p.lLbl.at(-1)}</div><div class="sv ${clr(p.demandaIndustrial.at(-1)-p.demandaIndustrial.at(-2))}">${chgStr(p.demandaIndustrial.at(-1)-p.demandaIndustrial.at(-2),0)}</div><div class="sn">vs ${p.lLbl.at(-2)} (${fmt(p.demandaIndustrial.at(-1),0)} ${p.unidad.toLowerCase()})</div></div>
+    <div class="sc cot"><div class="sl">D&eacute;ficit Proyectado ${p.lLbl.at(-1)}</div><div class="sv r">${chgStr(lastBal,0)}</div><div class="sn">6&ordm; a&ntilde;o consecutivo de d&eacute;ficit</div></div>
+  </div>
+  <div class="note" style="margin-bottom:18px;">El Silver Institute solo publica proyecci&oacute;n para el a&ntilde;o en curso (a diferencia del ICSG de cobre, que proyecta 2 a&ntilde;os adelante) &mdash; este es el &uacute;nico forecast disponible, del World Silver Survey de abril-2026. El pr&oacute;ximo dato (revisi&oacute;n del mismo 2026, no un a&ntilde;o nuevo) sale en el Interim Forecast de noviembre-2026.</div>
+  <div class="card c-cot" style="margin-bottom:11px;"><div class="ct">Oferta vs Demanda Industrial (anual, &uacute;ltimo punto = proyecci&oacute;n ${p.lLbl.at(-1)})</div><div class="ch h240"><canvas id="ch-ag-ofdem"></canvas></div></div>
+  <div class="card c-cot" style="margin-bottom:11px;"><div class="ct">Balance de Mercado (anual, &uacute;ltimo punto = proyecci&oacute;n ${p.lLbl.at(-1)})</div><div class="ch h200"><canvas id="ch-ag-bal"></canvas></div></div>
   <div class="comment">
     <div class="comment-t">&#9432; Qu&eacute; empuja el d&eacute;ficit</div>
     <div class="comment-b">La demanda <strong>Fotovoltaica</strong> (parte de la industrial) casi se duplic&oacute; desde 2020 y es el principal motor del d&eacute;ficit &mdash; mientras el resto de las categor&iacute;as (joyer&iacute;a, monedas, industrial ex-fotovoltaica) se mueven mucho menos. La oferta minera, en cambio, est&aacute; casi estancada.</div>
   </div>
   <div class="card c-cot" style="margin-bottom:11px;"><div class="ct">Demanda Mundial por Categor&iacute;a &mdash; qu&eacute; empuja el d&eacute;ficit (toneladas)</div><div class="ch h280"><canvas id="ch-ag-demanda"></canvas></div></div>
   <div class="note">${p.paisesNota}</div>
-  <div class="card c-cot"><div class="ct">Producci&oacute;n Minera por Pa&iacute;s &mdash; 2025 (${p.unidad.toLowerCase()})</div><div class="ch h340"><canvas id="ch-ag-paises"></canvas></div></div>`;
+  <div class="card c-cot" style="margin-bottom:11px;"><div class="ct">Producci&oacute;n Minera por Pa&iacute;s &mdash; 2025 (${p.unidad.toLowerCase()})</div><div class="ch h340"><canvas id="ch-ag-paises"></canvas></div></div>
+  ${cotMiniHtml('plata','--cot')}`;
 }
 function initPlataCharts(){
   const p=D.plata;
-  mkChart('ch-ag-ofdem',{type:'line',data:{labels:p.lLbl,datasets:[
-    {label:'Oferta Total',data:p.oferta,borderColor:C.COT,backgroundColor:'transparent',tension:.3,pointRadius:4},
-    {label:'Demanda Industrial',data:p.demandaIndustrial,borderColor:C.ARG,backgroundColor:'transparent',tension:.3,pointRadius:4,borderDash:[5,3]},
-  ]},options:{...chartBase,plugins:{...chartBase.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}}},
-    scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}`}}}}});
-  mkChart('ch-ag-bal',{type:'bar',data:{labels:p.lLbl,datasets:[{label:'Balance',data:p.balance,
-    backgroundColor:p.balance.map(v=>v>=0?'rgba(77,184,122,.65)':'rgba(217,95,95,.65)'),borderColor:p.balance.map(v=>v>=0?C.AGRO:C.RD),borderWidth:1}]},
-    options:{...chartBase,scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}`}}}}});
+  initCotMini('plata');
+  {
+    // último punto (2026) es proyección del World Silver Survey -- se marca con segmento punteado +
+    // rombo, mismo tratamiento visual que Cobre/Petróleo (agregado 29/09/2026)
+    const nReal=p.lLbl.length-1; // índice del último dato real (2025); el siguiente (2026F) es proyección
+    mkChart('ch-ag-ofdem',{type:'line',data:{labels:p.lLbl,datasets:[
+      {label:'Oferta Total',data:p.oferta,borderColor:C.COT,backgroundColor:'transparent',tension:.3,
+       pointRadius:p.lLbl.map((_,i)=>i>=nReal?6:4),pointStyle:p.lLbl.map((_,i)=>i>=nReal?'rectRot':'circle'),
+       segment:{borderDash:ctx=>ctx.p0DataIndex>=nReal-1?[6,4]:undefined}},
+      {label:'Demanda Industrial',data:p.demandaIndustrial,borderColor:C.ARG,backgroundColor:'transparent',tension:.3,
+       pointRadius:p.lLbl.map((_,i)=>i>=nReal?6:4),pointStyle:p.lLbl.map((_,i)=>i>=nReal?'rectRot':'circle'),
+       segment:{borderDash:ctx=>ctx.p0DataIndex>=nReal-1?[2,3]:[5,3]}},
+    ]},options:{...chartBase,plugins:{...chartBase.plugins,legend:{display:true,labels:{color:'#4a6080',font:{size:9},boxWidth:10}},
+      tooltip:{...chartBase.plugins.tooltip,callbacks:{label:i=>`${i.dataset.label}${i.dataIndex>=nReal?' (proy. WSS)':''}: ${fmt(i.raw)}`}}},
+      scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}`}}}}});
+    mkChart('ch-ag-bal',{type:'bar',data:{labels:p.lLbl,datasets:[{label:'Balance',data:p.balance,
+      backgroundColor:p.balance.map((v,i)=>{const c=v>=0?'77,184,122':'217,95,95';return `rgba(${c},${i>=nReal?.35:.65})`;}),
+      borderColor:p.balance.map(v=>v>=0?C.AGRO:C.RD),borderWidth:1,
+      borderDash:p.balance.map((_,i)=>i>=nReal?[4,2]:undefined)}]},
+      options:{...chartBase,plugins:{...chartBase.plugins,tooltip:{...chartBase.plugins.tooltip,callbacks:{label:i=>`${i.raw}${i.dataIndex>=nReal?' (proy.)':''}`}}},
+        scales:{x:chartBase.scales.x,y:{...chartBase.scales.y,ticks:{...chartBase.scales.y.ticks,callback:v=>`${v}`}}}}});
+  }
 
   const d=p.demanda;
   const stackCfg=(label,data,color)=>({label,data,backgroundColor:color,borderColor:'#0a1622',borderWidth:1,stack:'s'});

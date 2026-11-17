@@ -190,6 +190,7 @@ footer{text-align:center;padding:20px 24px;font-size:10px;color:var(--t3);border
 .snav-link:hover{color:#fff;background:rgba(255,255,255,.1);}
 .snav-link.active{color:#fff;background:rgba(255,255,255,.13);border-bottom:2px solid rgba(255,255,255,.7);}
 </style>
+<script>/* tema Amberes: activo por defecto; ?theme=off lo desactiva, ?theme=amberes lo reactiva */var _t=1;try{var q=location.search;if(/theme=off/.test(q))localStorage.setItem("amb-theme","0");if(/theme=amberes/.test(q))localStorage.setItem("amb-theme","1");_t=localStorage.getItem("amb-theme")!=="0";}catch(e){}if(_t){var l=document.createElement("link");l.rel="stylesheet";l.href="/amberes-theme.css";document.head.appendChild(l);}</script>
 </head>
 <body>
 
@@ -220,6 +221,7 @@ footer{text-align:center;padding:20px 24px;font-size:10px;color:var(--t3);border
     <a class="nav-btn nb-bonos" href="/bonos.html"><span class="dot"></span>Bonos</a>
     <a class="nav-btn nb-conf" href="/confianza.html"><span class="dot"></span>Continuidad</a>
     <a class="nav-btn nb-gest" href="/gestion.html"><span class="dot"></span>Gestión</a>
+    <a class="nav-btn" href="/frescura.html" title="Estado de actualización de los datos"><span class="dot" style="background:#3fb950"></span>Frescura</a>
   </div>
 
 </nav>

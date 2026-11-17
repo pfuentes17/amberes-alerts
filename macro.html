@@ -121,6 +121,7 @@ footer{border-top:1px solid var(--br);padding:12px 44px;background:var(--nv2);di
 .snav-link:hover{color:#fff;background:rgba(255,255,255,.1);}
 .snav-link.active{color:#fff;background:rgba(255,255,255,.13);border-bottom:2px solid rgba(255,255,255,.7);}
 </style>
+<script>/* tema Amberes: activo por defecto; ?theme=off lo desactiva, ?theme=amberes lo reactiva */var _t=1;try{var q=location.search;if(/theme=off/.test(q))localStorage.setItem("amb-theme","0");if(/theme=amberes/.test(q))localStorage.setItem("amb-theme","1");_t=localStorage.getItem("amb-theme")!=="0";}catch(e){}if(_t){var l=document.createElement("link");l.rel="stylesheet";l.href="/amberes-theme.css";document.head.appendChild(l);}</script>
 </head>
 <body>
 <header>
@@ -314,6 +315,11 @@ async function fetchChinaLive() {
   return Object.keys(out).length ? out : null;
 }
 
+// El feed en vivo (FRED) tarda horas en ingerir un release nuevo: si la serie cargada en el dashboard/seed ya tiene un período MÁS NUEVO que la del feed, no se pisa.
+var _MESX={ene:0,feb:1,mar:2,abr:3,may:4,jun:5,jul:6,ago:7,sep:8,oct:9,nov:10,dic:11};
+function _lblIdx(l){ var s=String(l||'').toLowerCase(), m=s.match(/^([a-z]{3})\w*\s+(\d{2})$/); if(m && (m[1] in _MESX)) return (2000+(+m[2]))*12+_MESX[m[1]]; m=s.match(/^q([1-4])\s+(\d{2})$/); if(m) return (2000+(+m[2]))*12+(+m[1])*3-1; return null; }
+function _liveNotOlder(cur, live){ if(!cur||!cur.l||!cur.l.length) return true; var a=_lblIdx(cur.l[cur.l.length-1]), b=_lblIdx(live&&live.l&&live.l[live.l.length-1]); return a==null||b==null||b>=a; }
+
 async function loadLiveData() {
   try {
     var results = await Promise.allSettled([
@@ -334,39 +340,32 @@ async function loadLiveData() {
     var updated = false;
 
     if (us) {
-      if (us.gdp)     D.us.gdp     = us.gdp;
-      if (us.cpi)     { D.us.cpi = us.cpi; if (us.cpiCore) D.us.cpiCore = us.cpiCore; if (us.cpiMoM) D.us.cpiMoM = us.cpiMoM; }
-      if (us.pce)     { D.us.pce = us.pce; if (us.pceCore) D.us.pceCore = us.pceCore; if (us.pceMoM) D.us.pceMoM = us.pceMoM; }
-      if (us.ppi)     { D.us.ppi = us.ppi; if (us.ppiCore) D.us.ppiCore = us.ppiCore; if (us.ppiMoM) D.us.ppiMoM = us.ppiMoM; }
-      if (us.ur)      D.us.ur      = us.ur;
-      if (us.nfp)     D.us.nfp     = us.nfp;
+      if (us.gdp && _liveNotOlder(D.us.gdp, us.gdp))     D.us.gdp     = us.gdp;
+      if (us.cpi && _liveNotOlder(D.us.cpi, us.cpi))     { D.us.cpi = us.cpi; if (us.cpiCore) D.us.cpiCore = us.cpiCore; if (us.cpiMoM) D.us.cpiMoM = us.cpiMoM; }
+      if (us.pce && _liveNotOlder(D.us.pce, us.pce))     { D.us.pce = us.pce; if (us.pceCore) D.us.pceCore = us.pceCore; if (us.pceMoM) D.us.pceMoM = us.pceMoM; }
+      if (us.ppi && _liveNotOlder(D.us.ppi, us.ppi))     { D.us.ppi = us.ppi; if (us.ppiCore) D.us.ppiCore = us.ppiCore; if (us.ppiMoM) D.us.ppiMoM = us.ppiMoM; }
+      if (us.ur && _liveNotOlder(D.us.ur, us.ur))      D.us.ur      = us.ur;
+      if (us.nfp && _liveNotOlder(D.us.nfp, us.nfp))     D.us.nfp     = us.nfp;
       if (us.fed)     D.us.fed     = us.fed;
       if (us.claims)  D.us.claims  = us.claims;
       if (us.trade)   D.us.trade   = us.trade;
       updated = true;
     }
     if (eu) {
-      if (eu.cpi)  { D.eu.cpi = eu.cpi; if (eu.cpiCore) D.eu.cpiCore = eu.cpiCore; }
-      if (eu.ppi)  D.eu.ppi  = eu.ppi;
-      if (eu.bce)  D.eu.bce  = eu.bce;
-      if (eu.ur)   D.eu.ur   = eu.ur;
-      if (eu.gdp)  D.eu.gdp  = eu.gdp;
+      if (eu.cpi && _liveNotOlder(D.eu.cpi, eu.cpi))  { D.eu.cpi = eu.cpi; if (eu.cpiCore) D.eu.cpiCore = eu.cpiCore; }
+      ['ppi','bce','ur','gdp'].forEach(function(k){ if (eu[k] && _liveNotOlder(D.eu[k], eu[k])) D.eu[k]=eu[k]; });
       updated = true;
     }
     if (jp) {
-      if (jp.cpi)  { D.jp.cpi = jp.cpi; if (jp.cpiCore) D.jp.cpiCore = jp.cpiCore; }
-      if (jp.ppi)  D.jp.ppi  = jp.ppi;
-      if (jp.ur)   D.jp.ur   = jp.ur;
-      if (jp.gdp)  D.jp.gdp  = jp.gdp;
-      if (jp.boj)  D.jp.boj  = jp.boj;
-      if (jp.trade)D.jp.trade = jp.trade;
+      if (jp.cpi && _liveNotOlder(D.jp.cpi, jp.cpi))  { D.jp.cpi = jp.cpi; if (jp.cpiCore) D.jp.cpiCore = jp.cpiCore; }
+      ['ppi','ur','gdp','boj','trade'].forEach(function(k){ if (jp[k] && _liveNotOlder(D.jp[k], jp[k])) D.jp[k]=jp[k]; });  // 16/11/2026: FRED (OECD) viene atrasado vs seed
       updated = true;
     }
     if (br) {
       if (br.cpi)   { D.br.cpi = br.cpi; if (br.cpiMoM) D.br.cpiMoM = br.cpiMoM; }
       if (br.selic) D.br.selic = br.selic;
       if (br.ur)    D.br.ur    = br.ur;
-      if (br.gdp)   D.br.gdp   = br.gdp;
+      if (br.gdp && _liveNotOlder(D.br.gdp, br.gdp)) D.br.gdp = br.gdp;
       updated = true;
     }
     // Manual data (scheduler-updated) — Brasil CPI/UR fallback
@@ -382,12 +381,8 @@ async function loadLiveData() {
     }
     if (cn) {
       // cpi/rate/pmiCai no tienen fuente gratis todavía, quedan en el seed
-      if (cn.ppi)    D.cn.ppi    = cn.ppi;
-      if (cn.ip)     D.cn.ip     = cn.ip;
-      if (cn.ret)    D.cn.ret    = cn.ret;
-      if (cn.pmiNbs) D.cn.pmiNbs = cn.pmiNbs;
-      if (cn.pmiSvc) D.cn.pmiSvc = cn.pmiSvc;
-      if (cn.trade)  D.cn.trade  = cn.trade;
+      // 16/11/2026: chinadata.live viene con rezago -> no pisar series ya cargadas más nuevas (seed manual)
+      ['ppi','ip','ret','pmiNbs','pmiSvc','trade'].forEach(function(k){ var src=k; if (cn[src] && _liveNotOlder(D.cn[k], cn[src])) D.cn[k]=cn[src]; });
       updated = true;
     }
 
@@ -409,18 +404,22 @@ async function loadLiveData() {
 var D={
 us:{
   // Fuente: FRED API — datos verificados jun 2026
-  gdp:{l:["Q1 24","Q2 24","Q3 24","Q4 24","Q1 25","Q2 25","Q3 25","Q4 25","Q1 26"],v:[0.8,3.6,3.3,1.9,-0.6,3.8,4.4,0.5,2.1]},
-  // CPI: BLS informe Ago26 (USDL-26-1496, publicado 11-sep-2026) trae YoY oficial solo de Ago26
-  // (headline +3.4% NSA, Core +2.4%). Jun26/Jul26 YoY NO son oficiales -- interpolados linealmente
-  // entre May26 (4.2%, oficial) y Ago26 (3.4%, oficial), igual metodo usado para el PPI de EE.UU.
-  // el 10-sep-2026. MoM de Jun/Jul/Ago SI son oficiales (Table A del informe, SA): Jun -0.4%,
-  // Jul +0.1%, Ago +0.4% (headline); Core Jun 0.0%, Jul +0.2%, Ago +0.3%.
-  cpi:{l:["Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26*","Jul 26*","Ago 26"],v:[2.6,2.7,2.9,3.0,2.9,2.7,3.0,2.8,2.7,3.3,3.8,4.2,3.9,3.7,3.4]},
-  cpiCore:[2.6,2.7,2.8,2.8,2.7,2.7,2.8,2.9,2.7,2.7,2.8,2.9,2.7,2.6,2.4],
-  cpiMoM:[0.3,0.2,0.4,0.3,0.2,0.1,0.2,0.2,0.2,0.9,0.6,0.5,-0.4,0.1,0.4],
-  pce:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[2.3,2.6,2.6,2.7,2.8,2.7,2.8,2.9,2.9,2.9,3.5,3.8,4.1]},
-  pceCore:[2.5,2.5,2.6,2.7,2.7,2.6,2.7,3.0,3.1,3.0,3.2,3.3,3.4],
-  pceMoM:[0.1,0.2,0.2,0.2,0.2,0.2,0.2,0.3,0.2,0.2,0.4,0.4,0.4],
+  gdp:{l:["Q2 24","Q3 24","Q4 24","Q1 25","Q2 25","Q3 25","Q4 25","Q1 26","Q2 26","Q3 26"],v:[3.6,3.2,2.4,0.1,4.0,3.9,0.2,2.5,2.2,3.4]}, // Q3 26 estimación adelantada +3.4% (BEA 26-45, 29-oct-2026); serie = FRED A191RL1Q225SBEA (vintage vigente)
+  // CPI: BLS informe Sep26 (USDL-26-1574, publicado 14-oct-2026): headline +3.7% YoY NSA (Ago 3.4%), Core +2.6% (Ago 2.4%), MoM SA +0.6% / Core +0.3%.
+  // Jun26/Jul26 YoY reemplazados por los valores reales calculados con FRED (CPIAUCNS/CPILFENS: 3.5%/3.4% headline, 2.6%/2.5% core); antes eran interpolaciones (marcadas con *).
+  // Oct26 (BLS USDL-26-1685, 10-nov-2026): MoM SA +0.4% / Core +0.3%. BLS NO publica a/a de Oct26 (Oct25 sin relevar por el cierre del gobierno):
+  // a/a Oct26 ESTIMADA con Oct25 = media geometrica Sep25/Nov25 (FRED CPIAUCNS/CPILFENS): headline 4.0%, core 2.8%.
+  cpi:{l:["Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26","Oct 26"],v:[2.9,3.0,2.9,2.7,3.0,2.8,2.7,3.3,3.8,4.2,3.5,3.4,3.4,3.7,4.0]},
+  cpiCore:[2.8,2.8,2.7,2.7,2.8,2.9,2.7,2.7,2.8,2.9,2.6,2.5,2.4,2.6,2.8],
+  cpiMoM:[0.4,0.3,0.2,0.1,0.2,0.2,0.2,0.9,0.6,0.5,-0.4,0.1,0.4,0.6,0.4],
+  // PCE: BEA informe Ago26 (BEA 26-43, publicado 30-sep-2026) trae YoY oficial solo de Ago26
+  // (headline +3.4%, Core +3.0%). Jun26/Jul26 YoY NO son oficiales -- interpolados linealmente
+  // entre May26 (4.1%, oficial) y Ago26 (3.4%, oficial), mismo metodo que CPI/PPI. MoM de
+  // Jul/Ago SI son oficiales (Tabla pag.3 del informe): Jul +0.1%, Ago +0.3% (headline). Jun
+  // interpolado entre May (0.4%) y Jul oficial (0.1%).
+  pce:{l:["Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26"],v:[2.7,2.7,2.8,2.7,2.8,3.4,3.6,3.8,3.5,3.4,3.4,3.6]},  // Sep 26 (BEA 26-46, 29-oct-2026): PCE +3,6% a/a (+0,5% m/m), core +3,1% a/a (+0,3% m/m); serie = FRED PCEPI/PCEPILFE (reemplaza estimados * de jun/jul)
+  pceCore:[2.7,2.7,2.9,2.9,3,3.1,3.1,3.2,3,3,3,3.1],
+  pceMoM:[0.15,0.2,0.32,0.3,0.35,0.63,0.44,0.44,-0.1,0.06,0.32,0.49],
   // PPI: BLS informe Ago26 (publicado 10-sep-2026, USDL 26-1495) trae YoY oficial solo del mes
   // reportado (Ago26: Final demand +5.4% NSA, Core +4.7%). Jun26/Jul26 NO tienen YoY oficial en
   // este release (BLS solo publica el YoY del mes corriente por informe) — se interpolaron
@@ -431,8 +430,13 @@ us:{
   ppi:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26*","Jul 26*","Ago 26"],v:[2.6,2.4,3.2,2.7,3.0,2.8,3.1,3.1,2.4,4.0,6.9,9.8,6.5,6.1,5.8,5.4]},
   ppiCore:[2.5,2.3,3.1,2.7,3.0,2.8,3.0,3.0,3.0,3.3,4.1,3.9,5.1,5.0,4.8,4.7],
   ppiMoM:[0.2,0.3,0.5,0.2,0.3,0.2,0.3,0.3,0.4,0.7,1.4,1.1,1.1,-0.1,0.1,0.4],
-  ur:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[4.2,4.1,4.3,4.3,4.4,4.4,4.5,4.4,4.3,4.4,4.3,4.3,4.3]},
-  nfp:{l:["May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[19,-13,72,-26,108,-173,56,-17,160,-156,214,179,172]},
+  ur:{l:["Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26","Oct 26"],v:[4.1,4.3,4.3,4.4,4.4,4.5,4.4,4.3,4.4,4.3,4.3,4.3,4.2,4.1,4.1,4.2,4.1]},
+  // NFP: BLS Employment Situation Oct26 (USDL-26-1632, 6-nov-2026): Oct +165K; Ago revisado a +186K (antes +133K), Sep a +60K (antes +29K). UR Oct 4.1%.
+  nfp:{l:["Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26","Oct 26"],v:[-13,72,-26,108,-173,56,-17,160,-156,214,179,172,31,-10,186,60,165]},
+  // JOLTS Sep26 (BLS USDL-26-1630, publicado 03-nov-2026) -- snapshot unico, sin historico cargado en el dashboard (el historico esta en Internacional.xlsx, hoja 'JOLTS - US').
+  // Job openings 7.523M (4.5%), Hires 5.402M (3.4%), Separaciones 5.319M (3.3%), de las cuales Quits 3.365M (2.1%) y Layoffs 1.641M (1.0%).
+  // Agosto revisado: openings 7.190M, hires 5.271M, separaciones 5.175M, quits 3.044M, layoffs 1.768M.
+  jolts:{l:"Sep 26",openings:7523,openingsRate:4.5,hires:5402,hiresRate:3.4,separations:5319,separationsRate:3.3,quits:3365,quitsRate:2.1},
   trade:{l:["Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[-74,-56,-49,-31,-56,-73,-55,-58,-60,-55,-78]},
   // Fed: ciclo de recortes 2024-2025. Target upper bound: 3.75% desde dic 2025
   fed:{l:["Ene 22","Jun 22","Dic 22","Mar 23","Jun 23","Dic 23","Sep 24","Nov 24","Dic 24","Oct 25","Nov 25","Dic 25"],v:[0.25,1.5,4.25,4.75,5.25,5.5,5.0,4.75,4.5,4.25,4.0,3.75]},
@@ -468,11 +472,11 @@ br:{
   ]}
 },
 cn:{
-  cpi:{l:["Ene 23","Feb 23","Mar 23","Abr 23","May 23","Jun 23","Jul 23","Ago 23","Sep 23","Oct 23","Nov 23","Dic 23","Ene 24","Feb 24","Mar 24","Abr 24","May 24","Jun 24","Jul 24","Ago 24","Sep 24","Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],v:[2.1,1,0.7,0.1,0.2,0,-0.3,0.1,0,-0.2,-0.5,-0.3,-0.8,0.7,0.1,0.3,0.3,0.2,0.5,0.6,0.4,0.3,0.2,0.1,0.5,-0.7,-0.4,-0.1,-0.1,-0.2,-0.6,-0.99,-0.7,-0.1,0.5,0.8,0.5,-0.7,-0.1,1.2,1.2,1]},
-  ppi:{l:["Ene 23","Feb 23","Mar 23","Abr 23","May 23","Jun 23","Jul 23","Ago 23","Sep 23","Oct 23","Nov 23","Dic 23","Ene 24","Feb 24","Mar 24","Abr 24","May 24","Jun 24","Jul 24","Ago 24","Sep 24","Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],v:[-0.8,-1.4,-2.5,-3.6,-4.6,-5.4,-4.4,-3,-2.5,-2.6,-3,-2.7,-2.5,-2.7,-2.8,-2.5,-1.4,-0.8,-0.8,-1.8,-2.8,-2.9,-2.5,-2.3,-2.3,-2.2,-2.5,-2.7,-3.3,-3.6,-3.6,-2.8,-2.5,-2.3,-2.5,-2.3,-2.1,-2.2,-2.4,2.8,3.9,4.1]},
-  cpiCore:{l:["Ene 23","Feb 23","Mar 23","Abr 23","May 23","Jun 23","Jul 23","Ago 23","Sep 23","Oct 23","Nov 23","Dic 23","Ene 24","Feb 24","Mar 24","Abr 24","May 24","Jun 24","Jul 24","Ago 24","Sep 24","Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],v:[0.6,0.6,0.7,0.7,0.6,0.4,0.4,0.8,0.8,0.6,0.6,0.6,0.4,1.5,0.6,0.7,0.6,0.6,0.4,0.3,0.1,0.2,0.3,0.4,0.6,-0.1,0.5,0.5,0.6,0.6,0.5,0.8,0.9,1,1.2,1.2,0.9,1,1.1,1.2,1.1,1]},
-  cpiMom:{l:["Ene 23","Feb 23","Mar 23","Abr 23","May 23","Jun 23","Jul 23","Ago 23","Sep 23","Oct 23","Nov 23","Dic 23","Ene 24","Feb 24","Mar 24","Abr 24","May 24","Jun 24","Jul 24","Ago 24","Sep 24","Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],v:[0.8,-0.5,-0.3,-0.1,-0.2,-0.2,0.2,0.3,0.2,-0.1,-0.5,0.1,0.3,1,-1,0.1,-0.1,-0.2,0.5,0.4,0,-0.3,-0.6,0,0.7,-0.2,-0.4,0.1,-0.2,-0.1,0.4,0,0.1,0.2,-0.1,0.2,0.2,1,-0.7,0.3,-0.1,-0.3]},
-  ppiMom:{l:["Ene 23","Feb 23","Mar 23","Abr 23","May 23","Jun 23","Jul 23","Ago 23","Sep 23","Oct 23","Nov 23","Dic 23","Ene 24","Feb 24","Mar 24","Abr 24","May 24","Jun 24","Jul 24","Ago 24","Sep 24","Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26"],v:[-0.4,0,0,-0.5,-0.9,-0.8,-0.2,0.2,0.4,0,-0.3,-0.3,-0.2,-0.2,-0.1,-0.2,0.2,-0.2,-0.2,-0.7,-0.6,-0.1,0.1,-0.1,-0.4,0,-0.4,-0.3,-0.4,-0.3,-0.2,0.4,0,0.1,0.1,0.2,0.4,0.4,1,1.7,0.5,-0.3]},
+  cpi:{l:["Ene 23","Feb 23","Mar 23","Abr 23","May 23","Jun 23","Jul 23","Ago 23","Sep 23","Oct 23","Nov 23","Dic 23","Ene 24","Feb 24","Mar 24","Abr 24","May 24","Jun 24","Jul 24","Ago 24","Sep 24","Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26"],v:[2.1,1,0.7,0.1,0.2,0,-0.3,0.1,0,-0.2,-0.5,-0.3,-0.8,0.7,0.1,0.3,0.3,0.2,0.5,0.6,0.4,0.3,0.2,0.1,0.5,-0.7,-0.4,-0.1,-0.1,-0.2,-0.6,-0.99,-0.7,-0.1,0.5,0.8,0.5,-0.7,-0.1,1.2,1.2,1,0.5,0.8,0.9]},
+  ppi:{l:["Ene 23","Feb 23","Mar 23","Abr 23","May 23","Jun 23","Jul 23","Ago 23","Sep 23","Oct 23","Nov 23","Dic 23","Ene 24","Feb 24","Mar 24","Abr 24","May 24","Jun 24","Jul 24","Ago 24","Sep 24","Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26"],v:[-0.8,-1.4,-2.5,-3.6,-4.6,-5.4,-4.4,-3,-2.5,-2.6,-3,-2.7,-2.5,-2.7,-2.8,-2.5,-1.4,-0.8,-0.8,-1.8,-2.8,-2.9,-2.5,-2.3,-2.3,-2.2,-2.5,-2.7,-3.3,-3.6,-3.6,-2.8,-2.5,-2.3,-2.5,-2.3,-2.1,-2.2,-2.4,2.8,3.9,4.1,3.5,3.8,5.0]},
+  cpiCore:{l:["Ene 23","Feb 23","Mar 23","Abr 23","May 23","Jun 23","Jul 23","Ago 23","Sep 23","Oct 23","Nov 23","Dic 23","Ene 24","Feb 24","Mar 24","Abr 24","May 24","Jun 24","Jul 24","Ago 24","Sep 24","Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26","Oct 26"],v:[0.6,0.6,0.7,0.7,0.6,0.4,0.4,0.8,0.8,0.6,0.6,0.6,0.4,1.5,0.6,0.7,0.6,0.6,0.4,0.3,0.1,0.2,0.3,0.4,0.6,-0.1,0.5,0.5,0.6,0.6,0.5,0.8,0.9,1,1.2,1.2,0.9,1,1.1,1.2,1.1,1,0.9,1.0,1.0,0.8]},
+  cpiMom:{l:["Ene 23","Feb 23","Mar 23","Abr 23","May 23","Jun 23","Jul 23","Ago 23","Sep 23","Oct 23","Nov 23","Dic 23","Ene 24","Feb 24","Mar 24","Abr 24","May 24","Jun 24","Jul 24","Ago 24","Sep 24","Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26","Oct 26"],v:[0.8,-0.5,-0.3,-0.1,-0.2,-0.2,0.2,0.3,0.2,-0.1,-0.5,0.1,0.3,1,-1,0.1,-0.1,-0.2,0.5,0.4,0,-0.3,-0.6,0,0.7,-0.2,-0.4,0.1,-0.2,-0.1,0.4,0,0.1,0.2,-0.1,0.2,0.2,1,-0.7,0.3,-0.1,-0.3,-0.1,0.4,0.2,0.0]},
+  ppiMom:{l:["Ene 23","Feb 23","Mar 23","Abr 23","May 23","Jun 23","Jul 23","Ago 23","Sep 23","Oct 23","Nov 23","Dic 23","Ene 24","Feb 24","Mar 24","Abr 24","May 24","Jun 24","Jul 24","Ago 24","Sep 24","Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26","Oct 26"],v:[-0.4,0,0,-0.5,-0.9,-0.8,-0.2,0.2,0.4,0,-0.3,-0.3,-0.2,-0.2,-0.1,-0.2,0.2,-0.2,-0.2,-0.7,-0.6,-0.1,0.1,-0.1,-0.4,0,-0.4,-0.3,-0.4,-0.3,-0.2,0.4,0,0.1,0.1,0.2,0.4,0.4,1,1.7,0.5,-0.3,-0.7,0.4,1.2,0.7]},
   trade:{l:["Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26"],v:[990,910,1048,982,1023,905,960,1020,980,880,920,970]},
   pmiNbs:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[49.8,50.1,50.3,49.2,50.1,49.0,50.4,50.3,49.5]},
   pmiSvc:{l:["Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26"],v:[50.3,50.8,51.5,52.2,52.5,50.4,50.1,49.4,49.8]},
@@ -508,64 +512,124 @@ eu:{
   ]}
 },
 jp:{
-  cpi:{l:["Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],v:[2.9,3.6,1.5,1.3,0.0,1.4]},
-  cpiCore:[2.7,3.0,1.8,1.6,0.0,1.3],
-  ppi:{l:["Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],v:[3.7,4.0,4.2,4.3,3.8,3.9]},
-  boj:{l:["Mar 24","Jul 24","Ene 26","Abr 26","Jun 26"],v:[0.0,0.25,0.5,0.5,1.0]},
-  ur:{l:["Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],v:[2.4,2.4,2.5,2.4,2.4,2.5]},
-  gdp:{l:["Q2 25","Q3 25","Q4 25","Q1 26"],v:[-0.2,0.3,0.7,0.45]},
-  trade:{l:["Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26"],v:[0.3,2.1,-2.7,1.1,0.6,-0.12]},
-  cal:{year:2026,month:6,events:[
-    {day:5,name:'CPI Tokio May 2026 (Prelim.)',val:'+1.4% YoY &middot; l&#237;der inflaci&#243;n nacional',col:'a'},
-    {day:8,name:'PIB Q1 2026 (Revisado)',val:'+1.8% anualizado &middot; +0.45% QoQ &middot; consumo privado fuerte',col:'g'},
-    {day:16,name:'BOJ &ndash; Decisi&#243;n de tasas',val:'&#8593; +25pb a 1.00% &middot; mayor nivel desde 2008',col:'r'},
-    {day:20,name:'CPI Nacional May 2026',val:'Dato pendiente &middot; Tokyo Mayo: +1.4%',col:'a'}
+  cpi:{l:["Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26"],v:[2.9, 2.1, 1.5, 1.3, 1.5, 1.4, 1.5, 1.6, 2.0, 1.9]},
+  cpiCore:[3.0, 2.4, 1.9, 1.5, 1.7, 1.4, 1.4, 1.6, 1.8, 1.7],
+  ppi:{"l":["Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26"],"v":[2.8,2.5,2.5,2.2,3.0,5.5,6.8,7.5,7.7,7.6,6.8]},
+  boj:{"l":["Mar 24","Jul 24","Ene 25","Dic 25","Jun 26","Sep 26"],"v":[0.1,0.25,0.5,0.75,1.0,1.25]},
+  ur:{"l":["Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26"],"v":[2.6,2.6,2.7,2.6,2.7,2.5,2.5,2.5,2.4,2.5]},
+  gdp:{"l":["Q2 25","Q3 25","Q4 25","Q1 26","Q2 26"],"v":[-0.2,0.3,0.7,0.45,0.4]},
+  trade:{"l":["Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26"],"v":[0.32,0.11,-1.16,0.04,0.64,0.3,-0.39,-0.41,-0.64,-1.11]},
+  cal:{year:2026,month:10,events:[
+    {day:13,name:'PPI (CGPI) Sep 2026 (Prelim.)',val:'-0.3% MoM &middot; +6.8% YoY &middot; BOJ',col:'a'},
+    {day:23,name:'CPI Nacional Sep 2026',val:'Dato pendiente &middot; ago: +1.9% YoY',col:'a'},
+    {day:29,name:'BOJ &ndash; Decisi&#243;n de tasas',val:'Reuni&#243;n 29-30 Oct &middot; tasa actual 1.25% (sep: +25pb, 7-2)',col:'r'}
   ]}
 }
 };
 
 // ══ BUILD US ══
+// ── EARNINGS S&P 500 — FactSet Earnings Insight (informe de cierre de cada temporada; Q3 26* = corte 30/10/2026, 60% reportado, en curso). Transcripto de los gráficos sectoriales; ver Internacional.xlsx hoja 'Earnings S&P 500'.
+var EARN={"asOf":"13/11/2026","q":["Q4 24","Q1 25","Q2 25","Q3 25","Q4 25","Q1 26","Q2 26","Q3 26"],"pctRep":[97,98,98,95,96,99,97,91],"sec":["IT","CS","CD","Staples","HC","Fin","Ind","Energy","Mat","Util","RE","SP"],"growth":{"IT":[17.6,16.1,22.6,28.4,33.4,54.8,75.3,69.4],"CS":[29.6,28.9,45.6,-7.8,13.1,48.9,116.9,18.2],"CD":[27.0,8.4,5.7,8.0,0.4,40.8,92.4,3.8],"Staples":[0.4,-6.3,-0.5,0.6,2.6,6.7,13.5,7.4],"HC":[13.0,43.0,7.9,5.3,0.4,-3.1,-6.5,9.2],"Fin":[55.9,7.1,12.9,23.5,9.3,21.8,22.0,6.4],"Ind":[2.7,8.1,1.1,15.6,26.7,20.9,16.7,21.6],"Energy":[-26.3,-12.7,-18.0,-0.4,1.2,0.6,146.3,151.2],"Mat":[1.3,-2.6,-4.0,20.1,11.7,42.5,41.7,29.8],"Util":[16.3,14.7,1.2,23.8,1.4,15.7,13.7,20.6],"RE":[8.9,2.1,4.3,6.0,3.1,6.4,8.6,11.2],"SP":[18.2,13.3,11.9,13.4,14.2,28.8,52.0,31.9]},"beat":{"IT":[82,86,92,93,93,97,93,95],"CS":[77,87,78,58,74,74,82,81],"CD":[80,68,76,68,57,81,83,72],"Staples":[69,72,74,93,87,84,84,87],"HC":[78,92,85,93,83,90,96,91],"Fin":[85,75,88,89,66,85,85,80],"Ind":[78,82,82,83,76,86,90,87],"Energy":[76,64,71,77,77,86,81,95],"Mat":[68,73,50,73,50,73,85,58],"Util":[53,61,74,74,63,77,68,90],"RE":[53,77,84,77,52,74,84,80],"SP":[75,78,81,83,73,85,86,84]},"surp":{"IT":[4.0,5.7,6.2,6.7,8.0,9.1,10.7,5.5],"CS":[7.8,23.8,12.2,-9.5,6.5,53.0,102.3,-22.1],"CD":[13.2,9.4,11.7,10.4,3.3,38.7,82.3,1.4],"Staples":[3.5,3.4,2.7,4.6,2.9,5.2,8.2,4.8],"HC":[5.4,8.6,8.7,11.9,4.3,10.0,18.1,13.7],"Fin":[12.6,6.0,10.4,8.8,3.0,6.7,14.7,3.9],"Ind":[10.6,8.4,2.3,16.0,28.6,18.8,6.8,7.2],"Energy":[6.7,1.8,7.5,7.4,6.7,19.9,9.8,8.8],"Mat":[5.9,8.8,-0.7,6.5,3.2,17.3,5.7,2.1],"Util":[3.1,4.0,4.9,5.8,-1.6,5.5,4.6,10.5],"RE":[1.5,3.0,2.9,3.3,0.8,2.5,2.4,2.5],"SP":[7.5,8.2,7.7,6.6,6.8,16.4,26.5,3.1]},"rev":{"IT":[11.9,12.5,15.6,16.0,21.6,31.9,37.1,42.9],"CS":[8.3,7.6,9.7,10.0,12.5,15.1,15.3,16.0],"CD":[6.2,2.9,5.2,7.3,5.9,9.9,9.5,5.5],"Staples":[1.9,0.2,2.5,4.9,5.3,7.8,8.4,6.2],"HC":[9.0,8.8,10.7,10.4,10.4,7.1,7.5,6.3],"Fin":[7.4,3.2,5.8,9.4,8.8,10.9,14.2,7.4],"Ind":[-2.7,-0.7,3.7,6.6,8.1,8.1,9.8,11.2],"Energy":[-2.1,0.9,-6.8,0.9,-0.5,4.1,42.4,35.7],"Mat":[-1.8,2.6,2.7,3.1,3.6,9.2,7.8,9.2],"Util":[1.4,10.7,7.6,6.8,10.2,14.3,5.4,10.4],"RE":[8.4,5.1,6.5,7.4,8.6,11.5,11.3,11.5],"SP":[5.3,4.9,6.4,8.4,9.4,11.8,15.5,14.4]},"revBeat":[63,64,81,76,73,82,77,74],"pe":[21.2,21.3,22.4,21.5,21.6,21.1,19.6,18.3],"avg5":{"beat":78,"surprise":7.5,"rev_beat":70,"fwd_pe":19.8}};
+var EARN_NM={IT:'Tecnolog&#237;a',CS:'Serv. comunicaci&#243;n',CD:'Cons. discrecional',Staples:'Cons. b&#225;sico',HC:'Salud',Fin:'Financieras',Ind:'Industriales',Energy:'Energ&#237;a',Mat:'Materiales',Util:'Utilities',RE:'Inmobiliario',SP:'S&amp;P 500'};
+// ── Liquidez USD (repo, reservas, TGA, RRP, SRF, M2) — datos: update_liquidez_usd.py (cierre diario). Bandas de referencia
+//    adaptadas del tablero de @Pipo_Bpo (11/11/2026): 0 normal / 1 atencion / 2 estres.
+var LIQ=/*LIQ-START*/{"upd":"16/11/2026","cur":{"s_sofr":{"v":0,"d":"2026-11-13","w":-1},"s_effr":{"v":-2,"d":"2026-11-13","w":-2},"rrp":{"v":325.0,"d":"2026-11-13","w":150.0},"srf":{"v":0.0,"d":"2026-11-13","w":0.0},"res":{"v":2960603.0,"d":"2026-11-11","w":2930088.0},"tga":{"v":924618.0,"d":"2026-11-13","w":910313.0},"m2":{"v":5.71,"d":"2026-09-01","w":5.6},"gm2":{"v":108.7,"d":"2026-09-01","w":108.0},"gm2y":{"v":7.98,"d":"2026-09-01","w":8.42,"cfx":5.83}},"spr":{"l":["29 Oct 25","30 Oct 25","31 Oct 25","3 Nov 25","4 Nov 25","5 Nov 25","6 Nov 25","7 Nov 25","10 Nov 25","12 Nov 25","13 Nov 25","14 Nov 25","17 Nov 25","18 Nov 25","19 Nov 25","20 Nov 25","21 Nov 25","24 Nov 25","25 Nov 25","26 Nov 25","28 Nov 25","1 Dic 25","2 Dic 25","3 Dic 25","4 Dic 25","5 Dic 25","8 Dic 25","9 Dic 25","10 Dic 25","11 Dic 25","12 Dic 25","15 Dic 25","16 Dic 25","17 Dic 25","18 Dic 25","19 Dic 25","22 Dic 25","23 Dic 25","24 Dic 25","26 Dic 25","29 Dic 25","30 Dic 25","31 Dic 25","2 Ene 26","5 Ene 26","6 Ene 26","7 Ene 26","8 Ene 26","9 Ene 26","12 Ene 26","13 Ene 26","14 Ene 26","15 Ene 26","16 Ene 26","20 Ene 26","21 Ene 26","22 Ene 26","23 Ene 26","26 Ene 26","27 Ene 26","28 Ene 26","29 Ene 26","30 Ene 26","2 Feb 26","3 Feb 26","4 Feb 26","5 Feb 26","6 Feb 26","9 Feb 26","10 Feb 26","11 Feb 26","12 Feb 26","13 Feb 26","17 Feb 26","18 Feb 26","19 Feb 26","20 Feb 26","23 Feb 26","24 Feb 26","25 Feb 26","26 Feb 26","27 Feb 26","2 Mar 26","3 Mar 26","4 Mar 26","5 Mar 26","6 Mar 26","9 Mar 26","10 Mar 26","11 Mar 26","12 Mar 26","13 Mar 26","16 Mar 26","17 Mar 26","18 Mar 26","19 Mar 26","20 Mar 26","23 Mar 26","24 Mar 26","25 Mar 26","26 Mar 26","27 Mar 26","30 Mar 26","31 Mar 26","1 Abr 26","2 Abr 26","6 Abr 26","7 Abr 26","8 Abr 26","9 Abr 26","10 Abr 26","13 Abr 26","14 Abr 26","15 Abr 26","16 Abr 26","17 Abr 26","20 Abr 26","21 Abr 26","22 Abr 26","23 Abr 26","24 Abr 26","27 Abr 26","28 Abr 26","29 Abr 26","30 Abr 26","1 May 26","4 May 26","5 May 26","6 May 26","7 May 26","8 May 26","11 May 26","12 May 26","13 May 26","14 May 26","15 May 26","18 May 26","19 May 26","20 May 26","21 May 26","22 May 26","26 May 26","27 May 26","28 May 26","29 May 26","1 Jun 26","2 Jun 26","3 Jun 26","4 Jun 26","5 Jun 26","8 Jun 26","9 Jun 26","10 Jun 26","11 Jun 26","12 Jun 26","15 Jun 26","16 Jun 26","17 Jun 26","18 Jun 26","22 Jun 26","23 Jun 26","24 Jun 26","25 Jun 26","26 Jun 26","29 Jun 26","30 Jun 26","1 Jul 26","2 Jul 26","6 Jul 26","7 Jul 26","8 Jul 26","9 Jul 26","10 Jul 26","13 Jul 26","14 Jul 26","15 Jul 26","16 Jul 26","17 Jul 26","20 Jul 26","21 Jul 26","22 Jul 26","23 Jul 26","24 Jul 26","27 Jul 26","28 Jul 26","29 Jul 26","30 Jul 26","31 Jul 26","3 Ago 26","4 Ago 26","5 Ago 26","6 Ago 26","7 Ago 26","10 Ago 26","11 Ago 26","12 Ago 26","13 Ago 26","14 Ago 26","17 Ago 26","18 Ago 26","19 Ago 26","20 Ago 26","21 Ago 26","24 Ago 26","25 Ago 26","26 Ago 26","27 Ago 26","28 Ago 26","31 Ago 26","1 Sep 26","2 Sep 26","3 Sep 26","4 Sep 26","8 Sep 26","9 Sep 26","10 Sep 26","11 Sep 26","14 Sep 26","15 Sep 26","16 Sep 26","17 Sep 26","18 Sep 26","21 Sep 26","22 Sep 26","23 Sep 26","24 Sep 26","25 Sep 26","28 Sep 26","29 Sep 26","30 Sep 26","1 Oct 26","2 Oct 26","5 Oct 26","6 Oct 26","7 Oct 26","8 Oct 26","9 Oct 26","13 Oct 26","14 Oct 26","15 Oct 26","16 Oct 26","19 Oct 26","20 Oct 26","21 Oct 26","22 Oct 26","23 Oct 26","26 Oct 26","27 Oct 26","28 Oct 26","29 Oct 26","30 Oct 26","2 Nov 26","3 Nov 26","4 Nov 26","5 Nov 26","6 Nov 26","9 Nov 26","10 Nov 26","12 Nov 26","13 Nov 26"],"sofr":[12,14,32,23,10,1,2,3,5,8,10,5,10,4,1,1,3,6,11,15,22,22,11,5,2,3,5,3,0,1,2,10,4,4,1,1,3,1,1,11,12,6,22,10,5,1,0,-1,-1,-1,0,-1,1,0,-1,-2,-1,0,1,1,-1,0,3,4,4,0,0,-1,-2,0,0,0,1,6,8,2,1,1,2,2,2,3,6,5,2,1,0,0,-1,-1,0,0,5,0,-3,-3,-3,-3,-2,-1,0,-2,-2,3,0,1,0,-3,-6,-8,-4,-2,1,7,2,0,-2,-2,-1,0,1,1,-1,-2,1,-1,-2,-3,-4,-5,-5,-5,-5,-6,-9,-10,-12,-14,-15,-14,-10,-2,-2,-3,-2,0,-2,-4,-3,-2,-2,-5,-6,-5,0,4,-2,-2,-3,-4,-3,-3,-1,-3,-3,3,1,-1,-2,-3,-7,-12,-10,-5,-2,-1,-3,-6,-8,-4,-3,-1,-1,-1,0,0,0,1,0,1,-1,0,-3,-2,-1,-3,-3,-3,1,0,-3,-2,0,0,1,-1,-1,0,3,1,0,1,0,-1,-1,-3,-3,-3,-1,-3,-5,-5,-5,-3,-3,-2,0,0,-2,0,-3,-2,-1,0,-2,-3,-3,-1,-2,-1,-2,-3,-2,-2,0,2,3,5,4,4,5,5,7,4,2,-1,-2,-1,0,0],"effr":[-3,-3,-4,-3,-3,-3,-3,-3,-3,-3,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-2,-2,-2,-2,-2,-2,-2,-2,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-3,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-3,-3,-3,-3,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2,-2]},"bal":{"l":["30 Oct 24","6 Nov 24","13 Nov 24","20 Nov 24","27 Nov 24","4 Dic 24","11 Dic 24","18 Dic 24","8 Ene 25","15 Ene 25","22 Ene 25","29 Ene 25","5 Feb 25","12 Feb 25","19 Feb 25","26 Feb 25","5 Mar 25","12 Mar 25","19 Mar 25","26 Mar 25","2 Abr 25","9 Abr 25","16 Abr 25","23 Abr 25","30 Abr 25","7 May 25","14 May 25","21 May 25","28 May 25","4 Jun 25","11 Jun 25","18 Jun 25","25 Jun 25","2 Jul 25","9 Jul 25","16 Jul 25","23 Jul 25","30 Jul 25","6 Ago 25","13 Ago 25","20 Ago 25","27 Ago 25","3 Sep 25","10 Sep 25","17 Sep 25","24 Sep 25","1 Oct 25","8 Oct 25","15 Oct 25","22 Oct 25","29 Oct 25","5 Nov 25","12 Nov 25","19 Nov 25","26 Nov 25","3 Dic 25","10 Dic 25","17 Dic 25","24 Dic 25","31 Dic 25","7 Ene 26","14 Ene 26","21 Ene 26","28 Ene 26","4 Feb 26","11 Feb 26","18 Feb 26","25 Feb 26","4 Mar 26","11 Mar 26","18 Mar 26","25 Mar 26","1 Abr 26","8 Abr 26","15 Abr 26","22 Abr 26","29 Abr 26","6 May 26","13 May 26","20 May 26","27 May 26","3 Jun 26","10 Jun 26","17 Jun 26","24 Jun 26","1 Jul 26","8 Jul 26","15 Jul 26","22 Jul 26","29 Jul 26","5 Ago 26","12 Ago 26","19 Ago 26","26 Ago 26","2 Sep 26","9 Sep 26","16 Sep 26","23 Sep 26","30 Sep 26","7 Oct 26","14 Oct 26","21 Oct 26","28 Oct 26","4 Nov 26"],"res":[3.237,3.274,3.244,3.287,3.228,3.225,3.265,3.282,3.255,3.341,3.332,3.225,3.177,3.22,3.27,3.327,3.313,3.4,3.468,3.451,3.379,3.475,3.452,3.257,3.219,3.219,3.236,3.289,3.271,3.294,3.407,3.406,3.369,3.226,3.33,3.399,3.362,3.347,3.332,3.32,3.317,3.225,3.182,3.161,3.073,3.002,2.966,2.998,3.019,2.933,2.848,2.863,2.855,2.889,2.897,2.858,2.932,2.959,2.956,2.957,2.996,3.05,2.955,2.902,2.925,2.94,2.95,2.966,3.016,3.038,3.02,2.994,3.027,3.116,3.13,2.902,2.919,3.033,3.103,3.13,3.067,3.014,3.081,3.033,2.951,2.967,3.099,3.143,3.062,2.985,2.993,2.944,2.935,2.925,2.895,2.991,3.014,2.93,2.948,3.03,3.022,2.963,2.894,2.93],"tga":[0.847,0.84,0.809,0.738,0.783,0.815,0.711,0.804,0.621,0.651,0.665,0.812,0.818,0.809,0.739,0.569,0.523,0.451,0.416,0.316,0.302,0.315,0.639,0.576,0.678,0.596,0.562,0.476,0.437,0.376,0.277,0.384,0.335,0.372,0.311,0.312,0.334,0.419,0.464,0.515,0.526,0.596,0.662,0.668,0.807,0.758,0.819,0.794,0.852,0.905,0.984,0.943,0.943,0.901,0.9,0.909,0.806,0.861,0.802,0.873,0.784,0.777,0.871,0.953,0.908,0.911,0.889,0.839,0.847,0.806,0.876,0.837,0.804,0.697,0.924,1.007,0.988,0.863,0.807,0.782,0.843,0.846,0.801,0.957,0.902,0.807,0.749,0.796,0.835,0.97,0.929,0.959,0.936,0.959,0.944,0.844,0.992,0.947,0.984,0.886,0.886,0.945,1.016,0.936],"rrp":[0.229,0.178,0.238,0.218,0.17,0.163,0.18,0.132,0.185,0.12,0.124,0.122,0.079,0.068,0.073,0.126,0.139,0.131,0.193,0.241,0.233,0.168,0.055,0.172,0.251,0.155,0.165,0.163,0.174,0.169,0.205,0.205,0.211,0.237,0.227,0.197,0.19,0.155,0.092,0.057,0.035,0.035,0.018,0.029,0.014,0.029,0.01,0.005,0.005,0.004,0.02,0.013,0.006,0.001,0.002,0.003,0.005,0.01,0.005,0.106,0.005,0.003,0.003,0.001,0.002,0.001,0.001,0.001,0.001,0.001,0.001,0.001,0.002,0.0,0.0,0.001,0.001,0.002,0.004,0.025,0.002,0.002,0.0,0.007,0.005,0.001,0.003,0.0,0.0,0.003,0.002,0.001,0.0,0.001,0.001,0.0,0.005,0.0,0.012,0.002,0.0,0.0,0.0,0.0]},"srf":{"l":["8 May 26","11 May 26","12 May 26","13 May 26","14 May 26","15 May 26","18 May 26","19 May 26","20 May 26","21 May 26","22 May 26","26 May 26","27 May 26","28 May 26","29 May 26","1 Jun 26","2 Jun 26","3 Jun 26","4 Jun 26","5 Jun 26","8 Jun 26","9 Jun 26","10 Jun 26","11 Jun 26","12 Jun 26","15 Jun 26","16 Jun 26","17 Jun 26","18 Jun 26","22 Jun 26","23 Jun 26","24 Jun 26","25 Jun 26","26 Jun 26","29 Jun 26","30 Jun 26","1 Jul 26","2 Jul 26","6 Jul 26","7 Jul 26","8 Jul 26","9 Jul 26","10 Jul 26","13 Jul 26","14 Jul 26","15 Jul 26","16 Jul 26","17 Jul 26","20 Jul 26","21 Jul 26","22 Jul 26","23 Jul 26","24 Jul 26","27 Jul 26","28 Jul 26","29 Jul 26","30 Jul 26","31 Jul 26","3 Ago 26","4 Ago 26","5 Ago 26","6 Ago 26","7 Ago 26","10 Ago 26","11 Ago 26","12 Ago 26","13 Ago 26","14 Ago 26","17 Ago 26","18 Ago 26","19 Ago 26","20 Ago 26","21 Ago 26","24 Ago 26","25 Ago 26","26 Ago 26","27 Ago 26","28 Ago 26","31 Ago 26","1 Sep 26","2 Sep 26","3 Sep 26","4 Sep 26","8 Sep 26","9 Sep 26","10 Sep 26","11 Sep 26","14 Sep 26","15 Sep 26","16 Sep 26","17 Sep 26","18 Sep 26","21 Sep 26","22 Sep 26","23 Sep 26","24 Sep 26","25 Sep 26","28 Sep 26","29 Sep 26","30 Sep 26","1 Oct 26","2 Oct 26","5 Oct 26","6 Oct 26","7 Oct 26","8 Oct 26","9 Oct 26","13 Oct 26","14 Oct 26","15 Oct 26","16 Oct 26","19 Oct 26","20 Oct 26","21 Oct 26","22 Oct 26","23 Oct 26","26 Oct 26","27 Oct 26","28 Oct 26","29 Oct 26","30 Oct 26","2 Nov 26","3 Nov 26","4 Nov 26","5 Nov 26","6 Nov 26","9 Nov 26","10 Nov 26","12 Nov 26","13 Nov 26"],"v":[0.0,0.0,0.1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.02,0.05,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.1,0.0,0.0,0.0,0.0,0.01,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.1,0.1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.01,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.01,0.0,0.01,0.0,0.01,0.0,0.0,0.0,0.0,0.1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.2,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.11,0.0,0.01,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.01,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0]},"m2":{"l":["Oct 21","Nov 21","Dic 21","Ene 22","Feb 22","Mar 22","Abr 22","May 22","Jun 22","Jul 22","Ago 22","Sep 22","Oct 22","Nov 22","Dic 22","Ene 23","Feb 23","Mar 23","Abr 23","May 23","Jun 23","Jul 23","Ago 23","Sep 23","Oct 23","Nov 23","Dic 23","Ene 24","Feb 24","Mar 24","Abr 24","May 24","Jun 24","Jul 24","Ago 24","Sep 24","Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26"],"v":[12.74,12.24,12.39,11.6,10.51,9.54,7.81,6.07,5.66,4.82,3.49,2.18,1.39,0.28,-1.0,-1.67,-2.14,-3.85,-4.66,-4.11,-3.95,-3.98,-3.99,-3.68,-3.41,-3.11,-2.44,-2.13,-1.63,0.04,0.93,0.9,1.29,1.46,1.96,2.51,2.89,3.4,3.41,3.39,3.28,3.42,3.89,3.87,4.14,4.39,4.25,4.23,4.28,3.84,4.04,4.06,4.59,4.42,4.53,5.37,5.3,5.36,5.6,5.71]},"gm2":{"l":["Oct 21","Nov 21","Dic 21","Ene 22","Feb 22","Mar 22","Abr 22","May 22","Jun 22","Jul 22","Ago 22","Sep 22","Oct 22","Nov 22","Dic 22","Ene 23","Feb 23","Mar 23","Abr 23","May 23","Jun 23","Jul 23","Ago 23","Sep 23","Oct 23","Nov 23","Dic 23","Ene 24","Feb 24","Mar 24","Abr 24","May 24","Jun 24","Jul 24","Ago 24","Sep 24","Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26"],"yoy":[9.8,8.1,6.96,6.7,6.52,6.48,4.54,0.77,0.61,0.16,-0.34,-3.27,-4.73,-3.66,-1.71,0.11,-0.91,-0.89,0.91,2.18,1.02,2.2,1.37,2.79,3.88,3.9,2.58,-0.04,0.36,1.18,-0.34,0.72,1.73,1.67,4.64,7.2,7.09,4.47,2.59,2.38,3.51,4.54,6.67,7.22,8.44,8.67,6.76,6.06,6.68,7.82,9.75,11.27,11.51,9.55,9.44,9.32,8.06,7.63,8.42,7.98],"cfx":[8.77,8.48,8.64,8.83,8.31,8.24,8.16,7.84,7.87,7.93,7.7,7.31,6.74,6.4,5.61,5.78,5.5,4.86,4.37,4.11,3.91,3.4,3.16,2.98,3.1,3.24,3.57,3.15,3.43,3.84,3.68,3.59,3.48,3.6,3.82,4.33,4.76,4.86,4.91,4.9,4.85,4.84,5.31,5.33,5.43,5.76,5.74,5.52,5.59,5.44,5.76,6.07,6.22,6.1,6.16,6.36,6.18,6.05,5.94,5.83],"sh":{"us":21.5,"ez":17.5,"cn":49.3,"jp":7.6,"uk":4.1}}}/*LIQ-END*/;
+var LIQ_ROWS=[
+ {k:'s_sofr',t:'SOFR &minus; IORB',d:'Costo del repo overnight vs. lo que la Fed paga por reservas',f:function(v){return (v>0?'+':'')+v+' pb';},n:'&minus;12 a 0 pb',a:'0 a +10 pb: atenci&oacute;n &middot; &gt;+10 pb sostenido: estr&eacute;s',s:function(v){return v>10?2:v>0?1:0;}},
+ {k:'s_effr',t:'EFFR &minus; IORB',d:'Fed funds efectiva vs. tasa sobre reservas',f:function(v){return (v>0?'+':'')+v+' pb';},n:'&minus;10 a &minus;4 pb',a:'&minus;4 a 0 pb: atenci&oacute;n &middot; &gt;0 pb: estr&eacute;s',s:function(v){return v>0?2:v>-4?1:0;}},
+ {k:'res',t:'Reservas bancarias',d:'Dinero de los bancos depositado en la Fed (semanal)',f:function(v){return '$'+(v/1e6).toFixed(2)+'T';},n:'&ge; $3.0T',a:'$2.8&ndash;3.0T: atenci&oacute;n &middot; &lt;$2.8T: estr&eacute;s',s:function(v){return v<2.8e6?2:v<3.0e6?1:0;}},
+ {k:'tga',t:'TGA (cuenta del Tesoro)',d:'Caja del Tesoro en la Fed: cuando sube, drena reservas',f:function(v){return '$'+Math.round(v/1e3)+'B';},n:'$600&ndash;900B',a:'$900B&ndash;1.0T: atenci&oacute;n &middot; &gt;$1.0T: estr&eacute;s',s:function(v){return v>1.0e6?2:v>9e5?1:0;}},
+ {k:'rrp',t:'ON RRP (reverse repo)',d:'Colch&oacute;n de liquidez que absorbe shocks',f:function(v){return v>=1e3?'$'+(v/1e3).toFixed(1)+'B':'$'+Math.round(v)+'M';},n:'colch&oacute;n &gt; $50B',a:'&lt;$50B: sin amortiguador (no es estr&eacute;s por s&iacute; solo)',s:function(v){return v<5e4?1:0;}},
+ {k:'srf',t:'Repo de la Fed / Standing Repo Facility',d:'Bancos pidiendo d&oacute;lares prestados a la Fed',f:function(v){return v>=1e3?'$'+(v/1e3).toFixed(1)+'B':'$'+Math.round(v)+'M';},n:'&asymp; $0 fuera de cierres de mes',a:'$1&ndash;10B: atenci&oacute;n &middot; &gt;$10B: estr&eacute;s',s:function(v){return v>1e4?2:v>=1e3?1:0;}},
+ {k:'gm2',t:'M2 global (nivel)',d:'Suma del M2 de EE.UU., zona euro, China, Jap&oacute;n y R. Unido (~80% del total), en USD',f:function(v){return '$'+v.toFixed(1)+'T';},n:'sin rango (es un nivel)',a:'mirar la variaci&oacute;n interanual',s:function(v){return -1;}},
+ {k:'gm2y',t:'M2 global &mdash; var. interanual',d:'Crecimiento anual del M2 global medido en d&oacute;lares',f:function(v){return v.toFixed(1)+'%';},x:function(c){return c.cfx!=null?'TC constante: '+c.cfx.toFixed(1)+'%':'';},n:'4&ndash;9%',a:'2&ndash;4% o 9&ndash;12%: atenci&oacute;n &middot; &lt;2% o &gt;12%: estr&eacute;s',s:function(v){return (v<2||v>12)?2:(v<4||v>9)?1:0;}},
+ {k:'m2',t:'M2 EE.UU. &mdash; var. interanual',d:'Crecimiento de la cantidad de dinero (mensual, desest.)',f:function(v){return v.toFixed(1)+'%';},n:'3&ndash;6%',a:'1&ndash;3% o 6&ndash;8%: atenci&oacute;n &middot; &lt;1% o &gt;8%: estr&eacute;s',s:function(v){return (v<1||v>8)?2:(v<3||v>6)?1:0;}}
+];
+var LIQ_ST=[['NORMAL','#5cbf8a'],['ATENCI&Oacute;N','#e8a044'],['ESTR&Eacute;S','#d95f5f']];LIQ_ST[-1]=['INFORMATIVO','#5aaee0'];
+function liqFecha(d){var p=d.split('-');return p[2]+'/'+p[1];}
+function liqTable(){
+  if(!LIQ)return '<div class="card">Sin datos de liquidez.</div>';
+  var th='padding:7px 8px;text-align:left;font-size:8.5px;letter-spacing:1.5px;text-transform:uppercase;color:'+C.DM+';border-bottom:1px solid rgba(242,239,232,.12)';
+  var td='padding:9px 8px;border-bottom:1px solid rgba(242,239,232,.06);vertical-align:top;font-size:11px;color:'+C.WH;
+  var rows=LIQ_ROWS.map(function(r){
+    var c=LIQ.cur[r.k];if(!c||c.v==null)return '';
+    var st=r.s(c.v),col=st<0?C.WH:LIQ_ST[st][1],bc=LIQ_ST[st][1];
+    var wk=(c.w==null)?'&mdash;':r.f(c.w);
+    return '<tr><td style="'+td+'"><b>'+r.t+'</b><div style="font-size:9.5px;color:'+C.DM+'">'+r.d+'</div></td>'+
+      '<td style="'+td+';font-size:15px;color:'+col+';white-space:nowrap">'+r.f(c.v)+'<div style="font-size:9px;color:'+C.DM+'">'+(/m2/.test(r.k)?c.d.slice(0,7):liqFecha(c.d))+(r.x&&r.x(c)?' &middot; '+r.x(c):'')+'</div></td>'+
+      '<td style="'+td+';white-space:nowrap;color:'+C.DM+'">'+wk+'</td>'+
+      '<td style="'+td+'">'+r.n+'</td><td style="'+td+';font-size:10px;color:'+C.DM+'">'+r.a+'</td>'+
+      '<td style="'+td+'"><span style="font-size:8.5px;letter-spacing:1px;padding:3px 7px;border:1px solid '+bc+';color:'+bc+'">'+LIQ_ST[st][0]+'</span></td></tr>';
+  }).join('');
+  return '<div class="cg1"><div class="card"><div class="ct">Tablero de liquidez en d&oacute;lares &mdash; actualizado '+LIQ.upd+'</div><div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse">'+
+    '<tr><th style="'+th+'">Indicador</th><th style="'+th+'">Actual</th><th style="'+th+'">Previo*</th><th style="'+th+'">Normal</th><th style="'+th+'">Alerta / estr&eacute;s</th><th style="'+th+'">Estado</th></tr>'+rows+
+    '</table></div><div style="font-size:9.5px;color:'+C.DM+';padding-top:8px">* Previo: hace 1 semana (reservas: semana anterior; M2: mes anterior). Bandas de referencia, no oficiales. Fuentes: FRED (SOFR, EFFR, IORB, WRESBAL, RRPONTSYD, RPONTSYD, M2SL, tipos de cambio), Daily Treasury Statement (TGA), BCE, PBoC, BOJ y BoE (M4) para el M2 global.</div></div></div>';
+}
+function liqResumen(){
+  if(!LIQ)return ['&mdash;','a'];
+  var sts=LIQ_ROWS.map(function(r){var c=LIQ.cur[r.k];return c&&c.v!=null?r.s(c.v):0;}).filter(function(x){return x>=0;});
+  var e=sts.filter(function(x){return x===2;}).length,a=sts.filter(function(x){return x===1;}).length;
+  var n=sts.length;
+  return [(e||a||0)+'/'+n, e?'r':a?'a':'g', e?'indicadores en estr&eacute;s'+(a?' &middot; '+a+' en atenci&oacute;n':''):a?'indicadores en atenci&oacute;n':'todos en rango normal'];
+}
+function liqCharts(){
+  if(!LIQ||!$('lq1'))return;
+  line('lq1',LIQ.spr.l,[{label:'SOFR − IORB',data:LIQ.spr.sofr,borderColor:C.GD,borderWidth:1.5,pointRadius:0,tension:0.2,spanGaps:true},{label:'EFFR − IORB',data:LIQ.spr.effr,borderColor:C.BL,borderWidth:1.5,pointRadius:0,tension:0.2,spanGaps:true}],' pb');
+  line('lq2',LIQ.bal.l,[{label:'Reservas',data:LIQ.bal.res,borderColor:C.G4,borderWidth:1.8,pointRadius:0,tension:0.3},{label:'TGA',data:LIQ.bal.tga,borderColor:C.OR,borderWidth:1.8,pointRadius:0,tension:0.3},{label:'ON RRP',data:LIQ.bal.rrp,borderColor:C.BL,borderWidth:1.8,pointRadius:0,tension:0.3}],'T');
+  bar('lq3',LIQ.srf.l,LIQ.srf.v,{cf:function(v){return v>10?C.RD:v>=1?C.OR:C.G4;},s:'B',pre:'$'});
+  if(LIQ.gm2)line('lq5',LIQ.gm2.l,[{label:'En USD',data:LIQ.gm2.yoy,borderColor:C.GD,borderWidth:1.8,pointRadius:0,tension:0.3},{label:'A tipo de cambio constante',data:LIQ.gm2.cfx,borderColor:C.BL,borderWidth:1.8,pointRadius:0,tension:0.3,borderDash:[4,3]}]);
+  bar('lq4',LIQ.m2.l,LIQ.m2.v,{cf:function(v){return (v<1||v>8)?C.RD:(v<3||v>6)?C.OR:C.G4;}});
+}
+function erTable(id,title){return '<div class="cg1"><div class="card"><div class="ct">'+title+'</div><div id="'+id+'" style="overflow-x:auto"></div></div></div>';}
+function erHeat(id,key,dec,lo,mid,hi){
+  var el=$(id);if(!el)return;
+  var col=function(v){var a,rgb;if(v>=mid){a=Math.min(1,(v-mid)/(hi-mid));rgb='92,191,138';}else{a=Math.min(1,(mid-v)/(mid-lo));rgb='217,95,95';}return 'rgba('+rgb+','+(0.08+0.5*a).toFixed(2)+')';};
+  var h='<table style="width:100%;border-collapse:collapse;font-size:11px;font-family:\'DM Sans\',sans-serif"><thead><tr><th style="text-align:left;padding:5px 6px;color:'+C.DM+';font-weight:500">Sector</th>'+EARN.q.map(function(q){return '<th style="padding:5px 4px;color:'+C.DM+';font-weight:500;text-align:center">'+q+'</th>';}).join('')+'</tr></thead><tbody>';
+  EARN.sec.forEach(function(c){var tot=c==='SP';
+    h+='<tr style="'+(tot?'border-top:1px solid rgba(201,168,76,.35);font-weight:700':'')+'"><td style="padding:5px 6px;color:'+(tot?C.GD:C.WH)+'">'+EARN_NM[c]+'</td>'+EARN[key][c].map(function(v){return '<td style="padding:5px 4px;text-align:center;background:'+col(v)+';color:'+C.WH+'">'+(key==='beat'?v+'%':(v>0?'+':'')+v.toFixed(dec)+'%')+'</td>';}).join('')+'</tr>';});
+  el.innerHTML=h+'</tbody></table>';
+}
 function buildUS(){
   var d=D.us;
   $('kstrip').innerHTML=kpis([
-    {l:'GDP Q1 2026 (3ra est.)',v:pct(L(d.gdp.v)),c:sgn(L(d.gdp.v))},
-    {l:'CPI Ago 2026 YoY',v:L(d.cpi.v)+'%',c:'r'},
+    {l:'GDP '+L(d.gdp.l)+' (adel.)',v:pct(L(d.gdp.v)),c:sgn(L(d.gdp.v))},
+    {l:'CPI Oct 2026 YoY (est.)',v:L(d.cpi.v)+'%',c:'r'},
     {l:'Core CPI',v:L(d.cpiCore)+'%',c:'r'},
-    {l:'PCE May 2026',v:L(d.pce.v)+'%',c:'r'},
+    {l:'PCE '+L(d.pce.l),v:L(d.pce.v)+'%',c:'r'},
     {l:'PPI Ago 2026',v:L(d.ppi.v)+'%',c:'r'},
-    {l:'NFP May 2026',v:'+172K',c:'g'},
-    {l:'Desempleo May 26',v:'4.3%',c:'a'},
-    {l:'Fed Funds Rate',v:'3.50-3.75%',c:'a'}
+    {l:'NFP '+L(d.nfp.l),v:(L(d.nfp.v)>=0?'+':'')+L(d.nfp.v)+'K',c:L(d.nfp.v)>=0?'g':'r'},
+    {l:'Desempleo '+L(d.ur.l),v:L(d.ur.v)+'%',c:'a'},
+    {l:'Fed Funds Rate',v:L(d.fed.v)+'%',c:'a'}
   ]);
-  $('tabrow').innerHTML=tabs(['Resumen','GDP','CPI','PCE','PPI','Laboral','Comercio','Mercados','Claims'],'us');
+  $('tabrow').innerHTML=tabs(['Resumen','GDP','CPI','PCE','PPI','Laboral','Comercio','Mercados','Claims','Earnings','Liquidez'],'us');
   var cal=makeCalendar(d.cal.year,d.cal.month,d.cal.events);
   var overviewHtml='<div class="og">'+
-    ocard('om1','GDP &middot; PBI','Producto Bruto Interno','Var. trimestral anualizada',pct(L(d.gdp.v)),sgn(L(d.gdp.v)),L(d.gdp.l),'Q4 25: +0.5%<br>3ra est. BEA',"showTab(1,'us')")+
-    ocard('om2','CPI &middot; Inflaci&#243;n','&Iacute;ndice Precios Consumidor','Variaci&#243;n interanual',L(d.cpi.v)+'%','r',L(d.cpi.l),'Core: '+L(d.cpiCore)+'%<br>Energ&#237;a +16.3%',"showTab(2,'us')")+
-    ocard('om3','PCE &middot; Fed','Consumo Personal','Medida preferida de la Fed',L(d.pce.v)+'%','r',L(d.pce.l),'Core PCE: '+L(d.pceCore)+'%<br>May 26 &middot; Target: 2.0%',"showTab(3,'us')")+
+    ocard('om1','GDP &middot; PBI','Producto Bruto Interno','Var. trimestral anualizada',pct(L(d.gdp.v)),sgn(L(d.gdp.v)),L(d.gdp.l),'Q2 26: +2.2%<br>1ra est. BEA',"showTab(1,'us')")+
+    ocard('om2','CPI &middot; Inflaci&#243;n','&Iacute;ndice Precios Consumidor','Variaci&#243;n interanual',L(d.cpi.v)+'%','r',L(d.cpi.l),'Core: '+L(d.cpiCore)+'%<br>Energ&#237;a +20.8% (est.)',"showTab(2,'us')")+
+    ocard('om3','PCE &middot; Fed','Consumo Personal','Medida preferida de la Fed',L(d.pce.v)+'%','r',L(d.pce.l),'Core PCE: '+L(d.pceCore)+'%<br>'+L(d.pce.l)+' &middot; Target: 2.0%',"showTab(3,'us')")+
     ocard('om4','PPI &middot; Mayorista','&Iacute;ndice Precios Productor','Presi&#243;n en pipeline',L(d.ppi.v)+'%','r',L(d.ppi.l),'Core PPI: '+L(d.ppiCore)+'%<br>May 2026 &middot; BLS',"showTab(4,'us')")+
-    ocard('om5','Mercado Laboral','NFP &middot; Desempleo','N&#243;minas no agr&#237;colas','+172K','g','May 2026','Desempleo 4.3%<br>AHE +3.6% YoY',"showTab(5,'us')")+
+    ocard('om5','Mercado Laboral','NFP &middot; Desempleo','N&#243;minas no agr&#237;colas',(L(d.nfp.v)>=0?'+':'')+L(d.nfp.v)+'K',L(d.nfp.v)>=0?'g':'r',L(d.nfp.l),'Desempleo '+L(d.ur.v)+'%<br>AHE +3.1% YoY',"showTab(5,'us')")+
     ocard('om6','Balanza Comercial','Saldo Comercio Exterior','D&#233;ficit mensual B USD','$'+L(d.trade.v)+'B','r',L(d.trade.l),'Peor: -$136B<br>Mar 2025',"showTab(6,'us')")+
   '</div>';
   $('main').innerHTML=
     panelFull('us-p0',overviewHtml)+
     panel('us-p1',
-      shdr('GDP &middot; Producto Bruto Interno','Variaci&#243;n trimestral anualizada &mdash; BEA',pct(L(d.gdp.v)),L(d.gdp.l)+' (3ra est.)',sgn(L(d.gdp.v)))+
-      sr4([{l:'Q1 26 (3ra est.)',v:'+2.1%',c:'g',n:'Revisado al alza &middot; BEA'},{l:'Q4 2025',v:'+0.5%',c:'a',n:'Expansi&#243;n lenta'},{l:'Q1 2025',v:'-0.6%',c:'r',n:'Import front-loading'},{l:'Q3 2025',v:'+4.4%',c:'g',n:'Pico del ciclo'}])+
-      box1('cg1','h240','GDP QoQ Anualizado &mdash; &Uacute;ltimos 9 trimestres')+
+      shdr('GDP &middot; Producto Bruto Interno','Variaci&#243;n trimestral anualizada &mdash; BEA',pct(L(d.gdp.v)),L(d.gdp.l)+' (1ra est.)',sgn(L(d.gdp.v)))+
+      sr4([{l:'Q3 26 (adelanto)',v:'+3.4%',c:'g',n:'Inversi&#243;n, consumo y gasto p&#250;blico &middot; exportaciones restan'},{l:'Q2 26',v:'+2.2%',c:'g',n:'3ra est. final'},{l:'Q1 26',v:'+2.5%',c:'g',n:'Revisado (BEA 26-42)'},{l:'Ventas finales priv.',v:'+4.9%',c:'g',n:'Q3 26 &middot; vs +4.6% en Q2'}])+
+      box1('cg1','h240','GDP QoQ Anualizado &mdash; &Uacute;ltimos 10 trimestres')+
       box2(['cg2a','cg2b'],['Consumo Personal (est.)','Tendencia 2024&ndash;2026']),
       cal
     )+
     panel('us-p2',
-      shdr('CPI &middot; &Iacute;ndice de Precios al Consumidor','BLS &mdash; Ago 2026: +3.4% YoY',L(d.cpi.v)+'%','Ago 2026 &middot; YoY','r')+
-      sr4([{l:'CPI General',v:L(d.cpi.v)+'%',c:'r',n:'Ago 2026'},{l:'Core CPI',v:L(d.cpiCore)+'%',c:'r',n:'Ex alim. y energ&#237;a'},{l:'MoM',v:'+'+L(d.cpiMoM)+'%',c:'r',n:'Ago 2026'},{l:'Energ&#237;a YoY',v:'+16.3%',c:'r',n:'Gasolina +27.4%'}])+
+      shdr('CPI &middot; &Iacute;ndice de Precios al Consumidor','BLS &mdash; Oct 2026: +0.4% MoM &middot; a/a estimada (BLS no publica a/a: falta oct-25)',L(d.cpi.v)+'%','Oct 2026 &middot; YoY est.','r')+
+      sr4([{l:'CPI General',v:L(d.cpi.v)+'%',c:'r',n:'Oct 2026 &middot; a/a est.'},{l:'Core CPI',v:L(d.cpiCore)+'%',c:'r',n:'Ex alim. y energ&#237;a'},{l:'MoM',v:'+'+L(d.cpiMoM)+'%',c:'r',n:'Oct 2026 &middot; core +0.3%'},{l:'Energ&#237;a YoY',v:'+20.8%',c:'r',n:'est. &middot; Gasolina +37.4%'}])+
       box1('cc1','h240','CPI General YoY &mdash; 2025&ndash;2026')+
       box2(['cc2','cc3'],['CPI vs Core CPI vs Target (2%)','CPI MoM &mdash; &Iacute;mpetu mensual']),
       cal
     )+
     panel('us-p3',
-      shdr('PCE &middot; Consumo Personal','BEA &mdash; Inflaci&#243;n preferida de la Fed',L(d.pce.v)+'%','May 2026 &middot; YoY','r')+
-      sr4([{l:'PCE YoY',v:L(d.pce.v)+'%',c:'r',n:'May 2026'},{l:'Core PCE',v:L(d.pceCore)+'%',c:'r',n:'Ex alim. y energ&#237;a'},{l:'MoM',v:'+'+L(d.pceMoM)+'%',c:'r',n:'May 2026'},{l:'Target Fed',v:'2.0%',c:'a',n:'Meta inflaci&#243;n'}])+
+      shdr('PCE &middot; Consumo Personal','BEA &mdash; Inflaci&#243;n preferida de la Fed',L(d.pce.v)+'%',L(d.pce.l)+' &middot; YoY','r')+
+      sr4([{l:'PCE YoY',v:L(d.pce.v)+'%',c:'r',n:L(d.pce.l)},{l:'Core PCE',v:L(d.pceCore)+'%',c:'r',n:'Ex alim. y energ&#237;a'},{l:'MoM',v:'+'+L(d.pceMoM)+'%',c:'r',n:L(d.pce.l)},{l:'Target Fed',v:'2.0%',c:'a',n:'Meta inflaci&#243;n'}])+
       box1('cp1','h240','PCE YoY &mdash; &Uacute;ltimo a&#241;o vs Target (2%)')+
       box2(['cp2','cp3'],['PCE vs Core PCE vs Target','PCE MoM']),
       cal
@@ -578,8 +642,15 @@ function buildUS(){
       cal
     )+
     panel('us-p5',
-      shdr('Mercado Laboral','NFP &middot; Desempleo &mdash; BLS &mdash; May 2026','+172K','NFP May 2026','g')+
-      sr4([{l:'NFP May 2026',v:'+172K',c:'g',n:'revisión abr: +179K'},{l:'Desempleo',v:'4.3%',c:'a',n:'Sin cambio May 26'},{l:'AHE MoM',v:'+0.2%',c:'a',n:'May 2026'},{l:'Participaci&#243;n',v:'61.8%',c:'r',n:'M&#237;n. desde 2021'}])+
+      shdr('Mercado Laboral','NFP &middot; Desempleo &mdash; BLS &mdash; '+L(d.nfp.l),(L(d.nfp.v)>=0?'+':'')+L(d.nfp.v)+'K','NFP '+L(d.nfp.l),L(d.nfp.v)>=0?'g':'r')+
+      sr4([
+        {l:'NFP '+L(d.nfp.l),v:(L(d.nfp.v)>=0?'+':'')+L(d.nfp.v)+'K',c:L(d.nfp.v)>=0?'g':'r',n:'BLS'},
+        {l:'Desempleo',v:L(d.ur.v)+'%',c:'a',n:L(d.ur.l)},
+        {l:'JOLTS Openings',v:(d.jolts.openings/1000).toFixed(1)+'M',c:'a',n:d.jolts.openingsRate+'% &middot; '+d.jolts.l},
+        {l:'JOLTS Quit Rate',v:d.jolts.quitsRate+'%',c:'a',n:(d.jolts.quits/1000).toFixed(1)+'M quits &middot; '+d.jolts.l},
+        {l:'AHE Oct 26',v:'+0.4%',c:'a',n:'MoM &middot; +3.1% YoY &middot; $38.00'},
+        {l:'Participaci&#243;n',v:'61.9%',c:'a',n:'Empleo/Pob. 59.3% &middot; Oct 26'}
+      ])+
       box1('jj1','h240','Non-Farm Payrolls &mdash; &Uacute;ltimos 12 Meses (miles)')+
       box2(['jj2','jj3'],['Tasa de Desempleo','NFP vs Desempleo &mdash; Correlaci&#243;n']),
       cal
@@ -604,11 +675,38 @@ function buildUS(){
       box1('cl1','h240','Initial Claims &mdash; Serie mensual 2025&ndash;2026 (miles)')+
       box2(['cl2','cl3'],['Tendencia &uacute;ltimos 12 meses','Claims vs Desempleo']),
       cal
+    )+
+    panel('us-p9',
+      shdr('Earnings Season &middot; S&amp;P 500','FactSet Earnings Insight &middot; &uacute;ltimos '+EARN.q.length+' trimestres ('+EARN.q[0]+' &ndash; '+EARN.q[EARN.q.length-1].replace('*','')+')','+'+EARN.growth.SP[EARN.q.length-1].toFixed(1)+'%',EARN.q[EARN.q.length-1].replace('*','')+' &middot; crec. EPS a/a ('+EARN.pctRep[EARN.q.length-1]+'% reportado)','g')+
+      sr4([{l:'Superan EPS &middot; '+EARN.q[EARN.q.length-1].replace('*',''),v:EARN.beat.SP[EARN.q.length-1]+'%',c:'g',n:'Promedio 5 a&ntilde;os: '+EARN.avg5.beat+'%'},{l:'Sorpresa EPS agregada',v:'+'+EARN.surp.SP[EARN.q.length-1]+'%',c:'a',n:'Prom. 5 a&ntilde;os +'+EARN.avg5.surprise+'% &middot; '+EARN.q[EARN.q.length-2].replace('*','')+': +'+EARN.surp.SP[EARN.q.length-2]+'%'},{l:'Crec. ingresos a/a',v:'+'+EARN.rev.SP[EARN.q.length-1]+'%',c:'g',n:'Superan ingresos: '+EARN.revBeat[EARN.q.length-1]+'% (prom. '+EARN.avg5.rev_beat+'%)'},{l:'P/E forward 12m',v:EARN.pe[EARN.q.length-1].toFixed(1),c:'g',n:'Prom. 5 a&ntilde;os '+EARN.avg5.fwd_pe}])+
+      box1('er1','h240','Crecimiento EPS a/a (barras) vs % de empresas que superan la estimaci&oacute;n (l&iacute;nea)')+
+      box2(['er2','er3'],['Sorpresa de EPS agregada (%) &mdash; prom. 5 a&ntilde;os +7.5%','Crecimiento a/a: ingresos vs ganancias (%)'])+
+      erTable('er-t1','Crecimiento de ganancias (EPS) a/a por sector')+erTable('er-t2','% de empresas que superan la estimaci&oacute;n de EPS')+erTable('er-t3','Sorpresa de EPS agregada por sector')+erTable('er-t4','Crecimiento de ingresos a/a por sector')+
+      '<div style="font-size:10px;color:'+C.DM+';padding:4px 2px 14px">Fuente: FactSet Earnings Insight (informe de cierre de cada temporada). '+(EARN.pctRep[EARN.q.length-1]<90?EARN.q[EARN.q.length-1]+' en curso ('+EARN.pctRep[EARN.q.length-1]+'% reportado, corte '+EARN.asOf+'). ':'')+'Q2 26 incluye ganancias GAAP extraordinarias de Alphabet y Amazon por revaluaciones.</div>',
+      cal
+    )+
+    panel('us-p10',
+      shdr('Liquidez en d&oacute;lares','Repo, reservas, TGA y M2 &mdash; se&ntilde;ales de tensi&oacute;n en el fondeo del sistema',liqResumen()[0],liqResumen()[2],liqResumen()[1])+
+      liqTable()+
+      box1('lq1','h240','SOFR &minus; IORB y EFFR &minus; IORB (pb) &mdash; &uacute;ltimo a&ntilde;o')+
+      box2(['lq2','lq3'],['Reservas, TGA y ON RRP (billones USD) &mdash; 2 a&ntilde;os, semanal','Repo de la Fed / SRF (miles de M USD) &mdash; 6 meses'])+
+      box2(['lq5','lq4'],['M2 global &mdash; var. interanual (%): en USD vs. a tipo de cambio constante','M2 EE.UU. &mdash; variaci&oacute;n interanual (%) &mdash; 5 a&ntilde;os'])+
+      (LIQ&&LIQ.gm2?'<div style="font-size:9.5px;color:'+C.DM+';padding:0 2px 14px">Composici&oacute;n del M2 global ('+LIQ.cur.gm2.d.slice(0,7)+'): China '+LIQ.gm2.sh.cn+'% &middot; EE.UU. '+LIQ.gm2.sh.us+'% &middot; zona euro '+LIQ.gm2.sh.ez+'% &middot; Jap&oacute;n '+LIQ.gm2.sh.jp+'% &middot; R. Unido '+LIQ.gm2.sh.uk+'%. La diferencia entre las dos l&iacute;neas es el efecto del d&oacute;lar: si el d&oacute;lar se debilita, el M2 global en USD crece m&aacute;s r&aacute;pido aunque los bancos centrales no emitan m&aacute;s.</div>':''),
+      cal
     );
 
   showTab(0,'us');
   setTimeout(function(){
     mini('om1',d.gdp.v,C.G4);mini('om2',d.cpi.v,C.RD);mini('om3',d.pce.v,C.OR);
+    (function(){
+      var q=EARN.q;
+      if($('er1'))new Chart($('er1'),{data:{labels:q,datasets:[{type:'bar',label:'Crec. EPS a/a %',data:EARN.growth.SP,backgroundColor:EARN.growth.SP.map(function(v){return v>=0?C.G4:C.RD;}),yAxisID:'y',borderRadius:2},{type:'line',label:'% superan EPS',data:EARN.beat.SP,borderColor:C.GD,backgroundColor:C.GD,tension:0.3,pointRadius:4,yAxisID:'y1'}]},
+        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:C.DM,font:{size:10},boxWidth:12}},tooltip:tip()},scales:{x:{grid:gc,ticks:tk,border:{color:'transparent'}},y:{position:'left',grid:gc,ticks:{color:C.DM,font:{size:10},callback:function(v){return v+'%';}},border:{color:'transparent'}},y1:{position:'right',min:60,max:100,grid:{display:false},ticks:{color:C.GD,font:{size:10},callback:function(v){return v+'%';}},border:{color:'transparent'}}}}});
+      bar('er2',q,EARN.surp.SP,{cf:function(v){return v>=EARN.avg5.surprise?C.G4:C.OR;}});
+      line('er3',q,[{label:'Ingresos a/a',data:EARN.rev.SP,borderColor:C.BL,tension:0.3,pointRadius:3,pointBackgroundColor:C.BL},{label:'EPS a/a',data:EARN.growth.SP,borderColor:C.GD,tension:0.3,pointRadius:3,pointBackgroundColor:C.GD}]);
+      erHeat('er-t1','growth',1,-20,0,60);erHeat('er-t2','beat',0,50,78,100);erHeat('er-t3','surp',1,-10,0,30);erHeat('er-t4','rev',1,-5,0,25);
+    })();
+    liqCharts();
     mini('om4',d.ppi.v,C.RD);mini('om5',d.nfp.v,C.G4);mini('om6',d.trade.v,C.RD);
     bar('cg1',d.gdp.l,d.gdp.v,{cf:GB});
     line('cg2a',d.gdp.l,[{label:'GDP',data:d.gdp.v,borderColor:C.G4,fill:true,backgroundColor:C.G4+'22',tension:0.4,pointRadius:3,pointBackgroundColor:C.G4},{label:'Consumo est.',data:[1.5,2.8,2.6,0.8,3.5,4.0,2.0,1.4,1.4],borderColor:C.BL,tension:0.4,pointRadius:3,pointBackgroundColor:C.BL}]);
@@ -643,11 +741,11 @@ function buildBR(){
   var d=D.br;
   $('kstrip').innerHTML=kpis([
     {l:'IPCA Jun 2026 YoY',v:L(d.cpi.v)+'%',c:'r'},
-    {l:'IPCA MoM',v:'+0.16%',c:'a'},
+    {l:'IPCA MoM',v:(L(d.cpiMoM)>=0?'+':'')+L(d.cpiMoM)+'%',c:'a'},
     {l:'SELIC',v:L(d.selic.v)+'%',c:'r'},
-    {l:'Desempleo Abr 26',v:L(d.ur.v)+'%',c:'a'},
-    {l:'PIB Q1 2026 YoY',v:'+'+L(d.gdp.v)+'%',c:'g'},
-    {l:'Bal. Com. Mar 26',v:'+$7.1B',c:'g'},
+    {l:'Desempleo '+L(d.ur.l),v:L(d.ur.v)+'%',c:'a'},
+    {l:'PIB '+L(d.gdp.l)+' YoY',v:(L(d.gdp.v)>=0?'+':'')+L(d.gdp.v)+'%',c:L(d.gdp.v)>=0?'g':'r'},
+    {l:'Bal. Com. '+L(d.trade.l),v:(L(d.trade.v)>=0?'+':'')+'$'+(L(d.trade.v)/1000).toFixed(1)+'B',c:L(d.trade.v)>=0?'g':'r'},
     {l:'PIM May 26 YoY',v:(L(d.pim.yoy)>0?'+':'')+L(d.pim.yoy)+'%',c:L(d.pim.yoy)>0?'g':'r'},
     {l:'Tasa real',v:'+'+(L(d.selic.v)-L(d.cpi.v)).toFixed(1)+'pp',c:'g'}
   ]);
@@ -678,7 +776,7 @@ function buildBR(){
     )+
     panel('br-p3',
       shdr('Mercado Laboral','PNAD Cont&#237;nua &mdash; IBGE',L(d.ur.v)+'%',L(d.ur.l),'a')+
-      sr4([{l:'Desempleo Abr 26',v:L(d.ur.v)+'%',c:'a',n:L(d.ur.l)},{l:'M&#237;nimo hist.',v:'5.4%',c:'g',n:'Feb 2026'},{l:'Pico pandemia',v:'14.9%',c:'r',n:'2020'},{l:'Q1 2026',v:'6.1%',c:'g',n:'M&#237;n hist&#243;rico Q1'}])+
+      sr4([{l:'Desempleo '+L(d.ur.l),v:L(d.ur.v)+'%',c:'a',n:L(d.ur.l)},{l:'M&#237;nimo hist.',v:'5.4%',c:'g',n:'Feb 2026'},{l:'Pico pandemia',v:'14.9%',c:'r',n:'2020'},{l:'Q1 2026',v:'6.1%',c:'g',n:'M&#237;n hist&#243;rico Q1'}])+
       box1('bu1','h240','Desempleo Brasil &mdash; 2025&ndash;2026'),
       cal
     )+
@@ -743,16 +841,16 @@ function buildCN(){
   $('main').innerHTML=
     panelFull('cn-p0','<div class="og">'+
       ocard('nm1','CPI &middot; PPI','Precios al Cons. y Productor','Variaci&#243;n interanual',L(d.cpi.v)+'%',L(d.cpi.v)<0?'r':'a',L(d.cpi.l),'PPI: '+L(d.ppi.v)+'%<br>M&#225;x. casi 4 a&#241;os',"showTab(1,'cn')")+
-      ocard('nm2','PMI NBS','Actividad Manufacturera','NBS &mdash; L&#237;nea 50',L(d.pmiNbs.v),L(d.pmiNbs.v)>=50?'g':'r',L(d.pmiNbs.l),'Caixin: '+L(d.pmiCai.v)+'<br>Ambos bajo 50',"showTab(2,'cn')")+
+      ocard('nm2','PMI NBS','Actividad Manufacturera','NBS &mdash; L&#237;nea 50',L(d.pmiNbs.v),L(d.pmiNbs.v)>=50?'g':'r',L(d.pmiNbs.l),'RatingDog (ex-Caixin): '+L(d.pmiCai.v)+'<br>'+(L(d.pmiNbs.v)>=50&&L(d.pmiCai.v)>=50?'Ambos sobre 50':(L(d.pmiNbs.v)<50&&L(d.pmiCai.v)<50?'Ambos bajo 50':'Divergen: privado '+(L(d.pmiCai.v)>=50?'expande':'contrae')+', oficial '+(L(d.pmiNbs.v)>=50?'expande':'contrae'))),"showTab(2,'cn')")+
       ocard('nm3','Balanza Comercial','Saldo Exportaciones Netas','USD 100M',(L(d.trade.v)>=0?'+':'')+'$'+L(d.trade.v)+'亿','g',L(d.trade.l),'Super&#225;vit<br>estructural',"showTab(3,'cn')")+
       ocard('nm4','Prod. Industrial','Actividad Econ&#243;mica','Variaci&#243;n interanual',(L(d.ip.v)>=0?'+':'')+L(d.ip.v)+'%','g',L(d.ip.l),'vs mismo mes<br>a&#241;o anterior',"showTab(4,'cn')")+
       ocard('nm5','Ventas Minoristas','Consumo Dom&#233;stico','Variaci&#243;n interanual',(L(d.ret.v)>=0?'+':'')+L(d.ret.v)+'%',L(d.ret.v)>=0?'g':'r',L(d.ret.l),'vs mismo mes<br>a&#241;o anterior',"showTab(4,'cn')")+
-      ocard('nm6','LPR &middot; Tasa','Loan Prime Rate','Banco Popular de China',L(d.rate.v)+'%','a',L(d.rate.l),'Est&#237;mulos<br>selectivos 2024',"showTab(5,'cn')")+
+      ocard('nm6','LPR &middot; Tasa','Loan Prime Rate','Banco Popular de China',L(d.rate.v)+'%','a',L(d.rate.l),'Sin cambios<br>desde May 2025',"showTab(5,'cn')")+
     '</div>')+
     panel('cn-p1',
       shdr('CPI &middot; PPI &mdash; China','NBS &mdash; Presi&#243;n de precios',L(d.cpi.v)+'%',L(d.cpi.l)+' &middot; CPI YoY',L(d.cpi.v)<0?'r':'a')+
       sr4([{l:'CPI YoY',v:L(d.cpi.v)+'%',c:L(d.cpi.v)<0?'r':'a',n:L(d.cpi.l)},{l:'Core CPI YoY',v:L(d.cpiCore.v)+'%',c:'a',n:'Ex alim. y energ.'},{l:'CPI MoM',v:L(d.cpiMom.v)+'%',c:L(d.cpiMom.v)>=0?'a':'r',n:L(d.cpiMom.l)},{l:'PPI MoM',v:L(d.ppiMom.v)+'%',c:L(d.ppiMom.v)>=0?'a':'r',n:L(d.ppiMom.l)}])+
-      box1('nc1','h240','CPI &middot; Core CPI &middot; PPI China YoY &mdash; Ago 2025&ndash;Jun 2026')+
+      box1('nc1','h240','CPI &middot; Core CPI &middot; PPI China YoY &mdash; Ago 2025&ndash;Sep 2026')+
       box2(['nc2','nc3'],['CPI MoM &mdash; &Iacute;mpetu mensual','PPI MoM &mdash; Precios productor mensual']),
       cal
     )+
@@ -766,7 +864,7 @@ function buildCN(){
     panel('cn-p3',
       shdr('Balanza Comercial','General Admin. of Customs',(L(d.trade.v)>=0?'+':'')+'$'+L(d.trade.v)+'亿',L(d.trade.l)+' &middot; Super&#225;vit','g')+
       sr4([{l:L(d.trade.l),v:(L(d.trade.v)>=0?'+':'')+'$'+L(d.trade.v)+'亿',c:'g',n:'USD 100M (亿)'},{l:'Pico &#250;ltimos 12m',v:'+$'+Math.max.apply(null,d.trade.v)+'亿',c:'g',n:'M&#225;ximo mensual'},{l:'M&#237;nimo &#250;ltimos 12m',v:'+$'+Math.min.apply(null,d.trade.v)+'亿',c:'a',n:'M&#237;nimo mensual'},{l:'Aranceles EE.UU.',v:'47% aprox.',c:'r',n:'Post truce Trump-Xi'}])+
-      box1('nt1','h240','Balanza Comercial China &mdash; MM RMB')+
+      box1('nt1','h240','Balanza Comercial China &mdash; cientos de millones de USD (亿)')+
       box2(['nt2','nt3'],['Tendencia del super&#225;vit','USD/CNY &mdash; Tipo de cambio']),
       cal
     )+
@@ -778,8 +876,8 @@ function buildCN(){
       cal
     )+
     panel('cn-p5',
-      shdr('Pol&#237;tica Monetaria','LPR Loan Prime Rate &mdash; PBoC',L(d.rate.v)+'%','LPR 1 a&#241;o May 2026','a')+
-      sr4([{l:'LPR 1 a&#241;o',v:L(d.rate.v)+'%',c:'a',n:L(d.rate.l)},{l:'LPR 5 a&#241;os',v:'3.6%',c:'a',n:'Hipotecas'},{l:'Recorte total 2024',v:'-0.35pp',c:'g',n:'Est&#237;mulo'},{l:'Reservas FX',v:'~$3.2T',c:'g',n:'USD &middot; Banco Central'}])+
+      shdr('Pol&#237;tica Monetaria','LPR Loan Prime Rate &mdash; PBoC',L(d.rate.v)+'%','Sin cambios desde May 2025','a')+
+      sr4([{l:'LPR 1 a&#241;o',v:L(d.rate.v)+'%',c:'a',n:L(d.rate.l)},{l:'LPR 5 a&#241;os',v:(d.rate5?L(d.rate5.v):3.5)+'%',c:'a',n:'Hipotecas'},{l:'Recorte total 2024',v:'-0.35pp',c:'g',n:'Est&#237;mulo'},{l:'Reservas FX',v:'~$3.2T',c:'g',n:'USD &middot; Banco Central'}])+
       box1('nr1','h240','LPR &mdash; Evoluci&#243;n tasa de referencia'),
       cal
     );
@@ -787,14 +885,15 @@ function buildCN(){
   setTimeout(function(){
     mini('nm1',d.cpi.v,L(d.cpi.v)>=0?C.G4:C.RD);mini('nm2',d.pmiNbs.v,L(d.pmiNbs.v)>=50?C.G4:C.RD);
     mini('nm3',d.trade.v,C.G3);mini('nm4',d.ip.v,C.G4);mini('nm5',d.ret.v,C.G4);mini('nm6',d.rate.v,C.GD);
-    line('nc1',d.cpi.l,[{label:'CPI',data:d.cpi.v,borderColor:C.G4,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4},{label:'Core CPI',data:d.cpiCore.v,borderColor:C.BL,tension:0.3,pointRadius:3,pointBackgroundColor:C.BL},{label:'PPI',data:d.ppi.v,borderColor:C.RD,tension:0.3,pointRadius:3,pointBackgroundColor:C.RD},{label:'0%',data:Array(d.cpi.l.length).fill(0),borderColor:C.GD,borderDash:[5,3],pointRadius:0,tension:0}]);
+    var ncAl=function(s){return d.cpi.l.map(function(m){var j=(s.l||[]).indexOf(m);return j>=0?s.v[j]:null;});};  // alinea cada serie por etiqueta (antes por posición: core y PPI quedaban desfasados)
+    line('nc1',d.cpi.l,[{label:'CPI',data:d.cpi.v,borderColor:C.G4,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4},{label:'Core CPI',data:ncAl(d.cpiCore),borderColor:C.BL,tension:0.3,pointRadius:3,pointBackgroundColor:C.BL},{label:'PPI',data:ncAl(d.ppi),borderColor:C.RD,tension:0.3,pointRadius:3,pointBackgroundColor:C.RD},{label:'0%',data:Array(d.cpi.l.length).fill(0),borderColor:C.GD,borderDash:[5,3],pointRadius:0,tension:0}]);
     bar('nc2',d.cpiMom.l,d.cpiMom.v,{cf:function(v){return v>=0?C.G4:C.RD;}});
     bar('nc3',d.ppiMom.l,d.ppiMom.v,{cf:function(v){return v>=0?C.G4:C.RD;}});
     line('np1',d.pmiNbs.l,[{label:'PMI NBS Mfg',data:d.pmiNbs.v,borderColor:C.G4,fill:true,backgroundColor:C.G4+'18',tension:0.3,pointRadius:4,pointBackgroundColor:C.G4},{label:'PMI NBS Svc',data:d.pmiSvc.v,borderColor:C.BL,tension:0.3,pointRadius:4,pointBackgroundColor:C.BL},{label:'L&#237;nea 50',data:Array(d.pmiNbs.l.length).fill(50),borderColor:C.RD,borderDash:[6,3],pointRadius:0,tension:0}],'');
     line('np2',d.pmiNbs.l,[{label:'NBS Mfg',data:d.pmiNbs.v,borderColor:C.G4,tension:0.3,pointRadius:4,pointBackgroundColor:C.G4},{label:'Caixin',data:d.pmiCai.v,borderColor:C.OR,tension:0.3,pointRadius:4,pointBackgroundColor:C.OR},{label:'50',data:Array(d.pmiNbs.l.length).fill(50),borderColor:C.RD,borderDash:[5,3],pointRadius:0,tension:0}],'');
     bar('np3',d.pmiSvc.l,d.pmiSvc.v,{cf:function(v){return v>=50?C.G4:C.RD;},s:''});
-    bar('nt1',d.trade.l,d.trade.v,{c:C.G3,s:'B'});
-    line('nt2',d.trade.l,[{label:'Super&#225;vit (B RMB)',data:d.trade.v,borderColor:C.G3,fill:true,backgroundColor:C.G3+'22',tension:0.3,pointRadius:4,pointBackgroundColor:C.G3}],'B');
+    bar('nt1',d.trade.l,d.trade.v,{c:C.G3,s:''});
+    line('nt2',d.trade.l,[{label:'Super&#225;vit (USD 100M)',data:d.trade.v,borderColor:C.G3,fill:true,backgroundColor:C.G3+'22',tension:0.3,pointRadius:4,pointBackgroundColor:C.G3}],'B');
     line('nt3',['Ene 25','Mar 25','May 25','Jul 25','Sep 25','Nov 25','Ene 26','Mar 26'],[{label:'USD/CNY',data:[7.30,7.25,7.28,7.20,7.15,7.22,7.18,7.24],borderColor:C.GD,fill:true,backgroundColor:C.GDM,tension:0.3,pointRadius:3,pointBackgroundColor:C.GD}],'');
     bar('na1',d.ip.l,d.ip.v,{cf:function(v){return v>5?C.G4:v>0?C.G3:C.RD;}});
     bar('na2',d.ret.l,d.ret.v,{cf:function(v){return v>3?C.G4:v>0?C.G3:C.RD;}});
@@ -808,36 +907,36 @@ function buildCN(){
 function buildEU(){
   var d=D.eu;
   $('kstrip').innerHTML=kpis([
-    {l:'HICP May 2026',v:L(d.cpi.v)+'%',c:'r'},
+    {l:'HICP '+L(d.cpi.l),v:L(d.cpi.v)+'%',c:'r'},
     {l:'Core HICP',v:L(d.cpiCore)+'%',c:'a'},
-    {l:'Energ&#237;a YoY',v:'+10.8%',c:'r'},
+    {l:'Energ&#237;a YoY',v:'+18.9%',c:'r'},
     {l:'BCE Rate',v:L(d.bce.v)+'%',c:'g'},
     {l:'Desempleo '+L(d.ur.l),v:L(d.ur.v)+'%',c:'a'},
     {l:'PIB '+L(d.gdp.l),v:'+'+L(d.gdp.v)+'%',c:'g'},
     {l:'Target BCE',v:'2.0%',c:'a'},
-    {l:'Bal. Com. Ago 25',v:'&#8364;5,567M',c:'g'}
+    {l:'Bal. Com. '+L(d.trade.l),v:'&#8364;'+L(d.trade.v).toLocaleString('es-AR')+'M',c:L(d.trade.v)>=0?'g':'r'}
   ]);
   $('tabrow').innerHTML=tabs(['Resumen','HICP &middot; Inflaci&#243;n','BCE &middot; Pol&#237;tica','Laboral','Balanza Comercial','PIB'],'eu');
   var cal=makeCalendar(d.cal.year,d.cal.month,d.cal.events);
   $('main').innerHTML=
     panelFull('eu-p0','<div class="og">'+
-      ocard('em1','HICP &middot; Inflaci&#243;n','Inflaci&#243;n Armonizada EA','Mayor desde Sep 2023',L(d.cpi.v)+'%','r',L(d.cpi.l),'Core: '+L(d.cpiCore)+'%<br>Energ&#237;a: +10.8%',"showTab(1,'eu')")+
+      ocard('em1','HICP &middot; Inflaci&#243;n','Inflaci&#243;n Armonizada EA','Eurostat &middot; Eurozona',L(d.cpi.v)+'%','r',L(d.cpi.l),'Core: '+L(d.cpiCore)+'%<br>Energ&#237;a: +18.9%',"showTab(1,'eu')")+
       ocard('em2','BCE &middot; Pol&#237;tica','Tasa de Dep&#243;sitos BCE','European Central Bank',L(d.bce.v)+'%','r',L(d.bce.l),'Suba +25pb<br>vigente 16-Sep',"showTab(2,'eu')")+
       ocard('em3','Mercado Laboral','Tasa de Desempleo','Eurostat &mdash; EA',L(d.ur.v)+'%','a',L(d.ur.l),'M&#237;nimos<br>hist&#243;ricos 2023',"showTab(3,'eu')")+
-      ocard('em4','Balanza Comercial','Saldo Comercial EA','Eurostat','&#8364;5,567M','g','Ago 2025','Super&#225;vit<br>sostenido',"showTab(4,'eu')")+
+      ocard('em4','Balanza Comercial','Saldo Comercial EA','Eurostat (desest.)','&#8364;'+L(d.trade.v).toLocaleString('es-AR')+'M',L(d.trade.v)>=0?'g':'r',L(d.trade.l),(L(d.trade.v)>=0?'Super&#225;vit':'D&#233;ficit')+'<br>MM EUR',"showTab(4,'eu')")+
       ocard('em5','PIB &middot; Crecimiento','Producto Bruto EA','Var. trimestral QoQ','+'+L(d.gdp.v)+'%','g',L(d.gdp.l),'Mejor que<br>EE.UU. Q4 25',"showTab(5,'eu')")+
-      ocard('em6','PPI &middot; Mayorista','Precios al Productor','Var. interanual',L(d.ppi.v)+'%',L(d.ppi.v)>0?'r':'g',L(d.ppi.l),'M&#225;x desde<br>Mar 2023',null)+
+      ocard('em6','PPI &middot; Mayorista','Precios al Productor','Var. interanual',L(d.ppi.v)+'%',L(d.ppi.v)>0?'r':'g',L(d.ppi.l),'Eurostat<br>Eurozona',null)+
     '</div>')+
     panel('eu-p1',
-      shdr('HICP &middot; Inflaci&#243;n Eurozona','Eurostat &mdash; May 2026: 3.0% (mayor desde Sep 2023)',L(d.cpi.v)+'%',L(d.cpi.l)+' &middot; YoY','r')+
-      sr4([{l:'HICP YoY',v:L(d.cpi.v)+'%',c:'r',n:'May 2026'},{l:'Core HICP',v:L(d.cpiCore)+'%',c:'a',n:'Ex energ&#237;a y alim.'},{l:'Energ&#237;a YoY',v:'+10.8%',c:'r',n:'Mayor desde Feb 23'},{l:'MoM',v:'+1.3%',c:'r',n:'Mayor desde Oct 22'}])+
-      box1('ec1','h240','HICP Eurozona YoY &mdash; Nov 2025&ndash;May 2026')+
+      shdr('HICP &middot; Inflaci&#243;n Eurozona','Eurostat &mdash; '+L(d.cpi.l)+': '+L(d.cpi.v)+'% interanual',L(d.cpi.v)+'%',L(d.cpi.l)+' &middot; YoY','r')+
+      sr4([{l:'HICP YoY',v:L(d.cpi.v)+'%',c:'r',n:L(d.cpi.l)},{l:'Core HICP',v:L(d.cpiCore)+'%',c:'a',n:'Ex energ&#237;a y alim.'},{l:'Energ&#237;a YoY',v:'+18.9%',c:'r',n:L(d.cpi.l)+' &middot; Eurostat'},{l:'MoM',v:'+0.6%',c:'r',n:L(d.cpi.l)}])+
+      box1('ec1','h240','HICP Eurozona YoY &mdash; Sep 2025&ndash;Sep 2026')+
       box2(['ec2','ec3'],['HICP vs Core HICP vs Target (2%)','PPI Eurozona YoY']),
       cal
     )+
     panel('eu-p2',
       shdr('BCE &middot; Pol&#237;tica Monetaria','FRED: ECBDFR &mdash; Tasa de dep&#243;sitos',L(d.bce.v)+'%',L(d.bce.l),'g')+
-      sr4([{l:'BCE Rate',v:L(d.bce.v)+'%',c:'g',n:L(d.bce.l)},{l:'Pico',v:'4.0%',c:'r',n:'Sep 2023'},{l:'Recortes 2024&ndash;25',v:'6',c:'g',n:'Jun 24 a Abr 25'},{l:'HICP vs Target',v:'+1.0pp',c:'r',n:'Presiona pausa'}])+
+      sr4([{l:'BCE Rate',v:L(d.bce.v)+'%',c:'g',n:L(d.bce.l)},{l:'Pico',v:'4.0%',c:'r',n:'Sep 2023'},{l:'Recortes 2024&ndash;25',v:'6',c:'g',n:'Jun 24 a Abr 25'},{l:'HICP vs Target',v:'+'+(L(d.cpi.v)-2).toFixed(1)+'pp',c:'r',n:'Presiona pausa'}])+
       box1('eb1','h240','Tasa BCE &mdash; Ciclo de recortes 2024&ndash;2026')+
       box2(['eb2','eb3'],['BCE vs Fed Funds','HICP vs Target durante ciclo de baja']),
       cal
@@ -849,8 +948,8 @@ function buildEU(){
       cal
     )+
     panel('eu-p4',
-      shdr('Balanza Comercial Eurozona','Eurostat &mdash; MM EUR','&#8364;5,567M','Ago 2025','g')+
-      sr4([{l:'Ago 2025',v:'&#8364;5,567M',c:'g',n:'MM EUR'},{l:'Pico Jul 25',v:'&#8364;6,988M',c:'g',n:'Mayor 2025'},{l:'Min. Mar 25',v:'&#8364;4,696M',c:'a',n:'Menor 2025'},{l:'Tendencia',v:'&#8594; Super&#225;vit',c:'g',n:'Estable'}])+
+      shdr('Balanza Comercial Eurozona','Eurostat &mdash; MM EUR, desestacionalizado','&#8364;'+L(d.trade.v).toLocaleString('es-AR')+'M',L(d.trade.l),L(d.trade.v)>=0?'g':'r')+
+      (function(){var tv=d.trade.v,tl=d.trade.l,mx=Math.max.apply(null,tv),mn=Math.min.apply(null,tv),f=function(x){return '&#8364;'+x.toLocaleString('es-AR')+'M';};return sr4([{l:L(tl),v:f(L(tv)),c:L(tv)>=0?'g':'r',n:'MM EUR'},{l:'M&#225;ximo '+tl[tv.indexOf(mx)],v:f(mx),c:'g',n:'&Uacute;ltimos 12 meses'},{l:'M&#237;nimo '+tl[tv.indexOf(mn)],v:f(mn),c:'r',n:'&Uacute;ltimos 12 meses'},{l:'Tendencia',v:L(tv)>=0?'&#8594; Super&#225;vit':'&#8594; D&#233;ficit',c:L(tv)>=0?'g':'r',n:'Saldo mensual'}]);})()+
       box1('et1','h240','Balanza Comercial EA &mdash; MM EUR'),
       cal
     )+
@@ -894,16 +993,16 @@ function buildJP(){
   $('main').innerHTML=
     panelFull('jp-p0','<div class="og">'+
       ocard('jm1','CPI &middot; Inflaci&#243;n','&#205;ndice Precios Consumidor','Variaci&#243;n interanual',L(d.cpi.v)+'%',L(d.cpi.v)>2?'r':'a',L(d.cpi.l),'Core: '+L(d.cpiCore)+'%<br>BOJ: 2% objetivo',"showTab(1,'jp')")+
-      ocard('jm2','BOJ &middot; Pol&#237;tica','Tasa Banco de Jap&#243;n','&#8593; +25pb Jun 2026',L(d.boj.v)+'%','r','Jun 2026','1.00% &middot; Mayor nivel desde 2008',"showTab(2,'jp')")+
+      ocard('jm2','BOJ &middot; Pol&#237;tica','Tasa Banco de Jap&#243;n','&#8593; +25pb Sep 2026',L(d.boj.v)+'%','r','Sep 2026','1.25% &middot; Mayor nivel desde 1995',"showTab(2,'jp')")+
       ocard('jm3','Mercado Laboral','Tasa de Desempleo','Ministerio de Trabajo',L(d.ur.v)+'%','g',L(d.ur.l),'Pleno empleo<br>estructural',"showTab(3,'jp')")+
       ocard('jm4','Balanza Comercial','Saldo Comercial','Ministerio de Finanzas',pct(L(d.trade.v))+' T&#165;',sgn(L(d.trade.v)),L(d.trade.l),'Yen d&#233;bil<br>impacta imports',"showTab(4,'jp')")+
       ocard('jm5','PIB','Producto Bruto Interno','Var. trimestral QoQ',pct(L(d.gdp.v)),sgn(L(d.gdp.v)),L(d.gdp.l),'Recuperaci&#243;n<br>moderada',"showTab(5,'jp')")+
       ocard('jm6','PPI &middot; Mayorista','Precios al Productor','Var. interanual',L(d.ppi.v)+'%','r',L(d.ppi.l),'Presi&#243;n costos<br>por energ&#237;a',null)+
     '</div>')+
     panel('jp-p1',
-      shdr('CPI &middot; Inflaci&#243;n Jap&#243;n','Statistics Bureau &mdash; May 2026',L(d.cpi.v)+'%',L(d.cpi.l)+' &middot; YoY',L(d.cpi.v)>2?'r':'a')+
+      shdr('CPI &middot; Inflaci&#243;n Jap&#243;n','Statistics Bureau &mdash; Ago 2026',L(d.cpi.v)+'%',L(d.cpi.l)+' &middot; YoY',L(d.cpi.v)>2?'r':'a')+
       sr4([{l:'CPI YoY',v:L(d.cpi.v)+'%',c:'a',n:L(d.cpi.l)},{l:'Core CPI',v:L(d.cpiCore)+'%',c:'a',n:'Ex alim. y energ&#237;a'},{l:'Objetivo BOJ',v:'2.0%',c:'a',n:'Meta sostenida'},{l:'Subsidios energ&#237;a',v:'Activos',c:'g',n:'Suprimen CPI art.'}])+
-      box1('jc1','h240','CPI Jap&#243;n YoY &mdash; Nov 2025&ndash;May 2026')+
+      box1('jc1','h240','CPI Jap&#243;n YoY &mdash; Nov 2025&ndash;Ago 2026')+
       box2(['jc2','jc3'],['CPI vs Core CPI vs Target (2%)','PPI Jap&#243;n YoY']),
       cal
     )+
@@ -1225,7 +1324,21 @@ function buildCAL(){
 (function(){
   fetch('/api/seed').then(function(r){ return r.ok ? r.json() : null; }).then(function(s){
     if(!s) return;
-    ['us','br','cn','eu','jp'].forEach(function(k){ if(s[k]) Object.assign(D[k], s[k]); });
+    // Varias series de data/seed.json (generadas por update_all_series.py) traen v
+    // completo pero l (etiquetas de fecha) vacío — un Object.assign directo pisaba
+    // el literal bueno del HTML con una serie sin fechas, mostrando "undefined" en
+    // los KPIs que arman su label con L(d.xxx.l) (ver memoria macro_seed_labels_bug).
+    // Por campo: solo se acepta el valor nuevo si no es un {l,v} con l vacío/desalineado.
+    ['us','br','cn','eu','jp'].forEach(function(k){
+      if(!s[k]) return;
+      Object.keys(s[k]).forEach(function(field){
+        var nv = s[k][field];
+        if(nv && typeof nv==='object' && Array.isArray(nv.l) && Array.isArray(nv.v)){
+          if(nv.l.length===0 || nv.l.length!==nv.v.length) return; // broken, keep seed literal del HTML
+        }
+        D[k][field] = nv;
+      });
+    });
     if(s._meta) console.info('[seed] actualizado:', s._meta.updated);
   }).catch(function(){}).finally(function(){
     buildUS();

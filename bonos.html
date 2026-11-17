@@ -167,6 +167,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
 .cf-tbl tr.tot-row td{color:var(--pu);font-weight:700;border-top:1px solid var(--bdr2);}
 .ph{display:flex;flex-direction:column;align-items:center;justify-content:center;height:300px;color:var(--mu);font-family:'IBM Plex Mono',monospace;font-size:11px;gap:10px;opacity:.6;}
 </style>
+<script>/* tema Amberes: activo por defecto; ?theme=off lo desactiva, ?theme=amberes lo reactiva */var _t=1;try{var q=location.search;if(/theme=off/.test(q))localStorage.setItem("amb-theme","0");if(/theme=amberes/.test(q))localStorage.setItem("amb-theme","1");_t=localStorage.getItem("amb-theme")!=="0";}catch(e){}if(_t){var l=document.createElement("link");l.rel="stylesheet";l.href="/amberes-theme.css";document.head.appendChild(l);}</script>
 </head>
 <body>
 <nav class="top-nav">
@@ -219,7 +220,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
       <div class="tw"><div class="tw-hdr" style="color:var(--cy)">LECAPs &amp; BONCAPs · ordenados por vencimiento <span id="all-cnt" style="color:var(--mu);font-weight:400"></span></div><div class="tbl-wrap"><table><thead><tr><th>Ticker</th><th class="ct">Vto.</th><th>Precio</th><th>VF</th><th>Días</th><th>Ret.Dir.</th><th>TEM</th><th>TNA</th><th>TEA</th><th class="ct">vs Curva</th><th>Δ TEM</th></tr></thead><tbody id="all-body"></tbody></table></div></div>
     </div>
     <div class="cpanel">
-      <div><div class="ctitle" style="color:var(--cy)">Curva de Rendimientos — Tasa Fija</div><div class="csub">TEM (%) vs. días · regresión polinómica grado 2</div><div class="cbox"><canvas id="tfChart"></canvas></div>
+      <div><div class="ctitle" style="color:var(--cy)">Curva de Rendimientos — Tasa Fija</div><div class="csub">TEM (%) vs. días · regresión polinómica grado 2 · <span id="tf-upd" style="color:var(--gr)">cargando…</span></div><div class="cbox"><canvas id="tfChart"></canvas></div>
       <div class="cleg"><div class="cli"><div class="cld" style="background:var(--gr)"></div>Barato</div><div class="cli"><div class="cld" style="background:var(--rd)"></div>Caro</div><div class="cli"><div class="cld" style="background:#94a3b8"></div>En curva</div><div class="cli"><div class="cldash" style="border-color:rgba(6,182,212,.5)"></div>Curva ref.</div><div class="cli"><div class="clk" style="background:var(--pu)"></div>BONCAP</div></div></div>
       <hr class="dv">
       <div><div class="ctitle" style="color:var(--pu)">Análisis vs Curva · Δ positivo = barato</div>
@@ -232,7 +233,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   <div style="background:var(--s);border:1px solid var(--bdr);border-radius:11px;padding:16px;margin-top:18px">
     <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#a3e635;margin-bottom:12px">
       Esquema de Bandas vs TC Breakeven de Nominales
-      <span style="color:var(--mu);font-weight:400;font-size:9px;margin-left:8px">TC_bk = TC_hoy × (VF/Precio) · punto ≤ techo → banda protege</span>
+      <span style="color:var(--mu);font-weight:400;font-size:9px;margin-left:8px">TC_bk = TC_hoy × (VF/Precio) · punto ≥ techo → la banda cubre (el dólar no puede ganarle a la letra)</span>
     </div>
 
     <!-- CONTROLES INTERACTIVOS -->
@@ -243,7 +244,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
         <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:6px">TC A3500 ($/USD)</div>
         <div style="display:flex;align-items:center;gap:6px">
           <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--mu)">$</span>
-          <input type="number" id="tf-tc-input" min="100" max="9999" step="1" value="1413"
+          <input type="number" id="tf-tc-input" min="100" max="9999" step="1" value="1520"
             oninput="renderTFBandChart()"
             style="width:110px;background:var(--s);border:1px solid rgba(163,230,53,.4);color:#a3e635;font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:700;padding:6px 8px;border-radius:6px;outline:none;text-align:right">
           <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim)">/USD</span>
@@ -254,12 +255,12 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
       <!-- IPC mes a mes -->
       <div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu)">IPC mensual proyectado (T-2) · mes a mes</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu)">IPC T-2 aplicado a la banda cada mes (oct ya publicado por BCRA) · default REM</div>
           <div style="display:flex;gap:5px">
-            <button onclick="tfBandIpcPreset(2.6)" style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 7px;background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.25);color:var(--or);border-radius:4px;cursor:pointer">2.6% actual</button>
-            <button onclick="tfBandIpcPreset(2.0)" style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 7px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);color:var(--gr);border-radius:4px;cursor:pointer">2%</button>
-            <button onclick="tfBandIpcPreset(3.5)" style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 7px;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);color:var(--rd);border-radius:4px;cursor:pointer">3.5%</button>
-            <button onclick="tfBandIpcDecay()" style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 7px;background:rgba(100,116,139,.08);border:1px solid rgba(100,116,139,.2);color:var(--mu);border-radius:4px;cursor:pointer">Decreciente</button>
+            <button onclick="tfBandIpcRem()" style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 7px;background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.25);color:var(--or);border-radius:4px;cursor:pointer">REM sept-26</button>
+            <button onclick="tfBandIpcPreset(1.5)" style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 7px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);color:var(--gr);border-radius:4px;cursor:pointer">1,5%</button>
+            <button onclick="tfBandIpcPreset(2.5)" style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 7px;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);color:var(--am);border-radius:4px;cursor:pointer">2,5%</button>
+            <button onclick="tfBandIpcPreset(3.5)" style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 7px;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);color:var(--rd);border-radius:4px;cursor:pointer">3,5%</button>
           </div>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:5px" id="tf-ipc-months"></div>
@@ -274,8 +275,8 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
 
     <div style="position:relative;height:340px"><canvas id="tfBandChart"></canvas></div>
     <div class="cleg" style="margin-top:8px">
-      <div class="cli"><div class="cld" style="background:var(--gr)"></div>TC_bk protegido (≤ techo)</div>
-      <div class="cli"><div class="cld" style="background:var(--rd)"></div>TC_bk sobre el techo</div>
+      <div class="cli"><div class="cld" style="background:var(--gr)"></div>TC_bk ≥ techo (banda cubre)</div>
+      <div class="cli"><div class="cld" style="background:var(--rd)"></div>TC_bk < techo (el dólar puede ganar)</div>
       <div class="cli"><div class="cld" style="background:var(--pu)"></div>BONCAP</div>
       <div class="cli"><div class="cldash" style="border-color:rgba(16,185,129,.5)"></div>Piso banda</div>
       <div class="cli"><div class="cldash" style="border-color:rgba(248,113,113,.5)"></div>Techo banda</div>
@@ -500,11 +501,11 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     <!-- DUALES CER/TAMAR -->
     <div class="tw">
       <div class="tw-hdr" style="color:#34d399">Duales CER/TAMAR · max(CER acum., TAMAR acum.) al vencimiento
-        <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:10px">Gestión Milei · Serie TXM</span>
+        <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:10px">Pago TAMAR = VNO×(1+TAMAR TEM)^(DÍAS/30), TAMAR promedio simple de toda la vida + margen 3,00% (proyectada con la TAMAR actual) · se actualiza con precios, CER y TAMAR en vivo</span>
       </div>
       <div class="tbl-wrap"><table><thead><tr>
         <th>Ticker</th><th class="ct">Vto.</th><th>Precio</th><th>Bid</th><th>Ask</th><th>Días</th>
-        <th>Ret. si gana TAMAR</th><th>TNA equiv.</th><th>TIR real CER impl.</th><th class="ct">Escenario actual</th><th>Var%</th>
+        <th style="color:#f472b6">TEA si paga TAMAR</th><th style="color:#f472b6">Pago TAMAR al vto.</th><th style="color:#34d399">TIR real si paga CER</th><th style="color:#34d399">VT CER hoy</th><th>Paridad</th><th>Infl. mensual equilibrio</th><th class="ct">Gana hoy</th><th>Var%</th>
       </tr></thead><tbody id="tmr-duales-cer"></tbody></table></div>
     </div>
 
@@ -694,8 +695,8 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   <div style="background:var(--s);border:1px solid var(--bdr2);border-left:3px solid #34d399;border-radius:8px;padding:12px 16px;margin-bottom:18px;display:flex;gap:24px;align-items:center;flex-wrap:wrap">
     <div>
       <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--mu);margin-bottom:3px">Último IPC publicado</div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:var(--or)" id="bk-ipc">1.7% / mes</div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim)">Agosto 2026 (INDEC)</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:600;color:var(--or)" id="bk-ipc">2.2% / mes</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim)">Octubre 2026 (INDEC)</div>
     </div>
     <div style="width:1px;height:38px;background:var(--bdr)"></div>
     <div>
@@ -714,7 +715,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);background:var(--s2);border:1px solid var(--bdr);border-radius:5px;padding:6px 12px;line-height:1.8">
       <strong style="color:#34d399">Fórmula:</strong><br>
       breakeven = (1 + TEM<sub>nom</sub>) / (1 + TIR<sub>real</sub>) − 1<br>
-      TIR<sub>real</sub> interpolada de la curva CER
+      TIR<sub>real</sub> interpolada entre los ZC CER (mes = 30 días)
     </div>
   </div>
 
@@ -722,7 +723,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   <div class="kpis">
     <div class="kpi"><div class="kpi-lbl">Mayor breakeven</div><div class="kpi-val" id="bk-k1" style="color:var(--cy)">—</div><div class="kpi-sub" id="bk-k1s">más favorable al nominal</div></div>
     <div class="kpi"><div class="kpi-lbl">Menor breakeven</div><div class="kpi-val" id="bk-k2" style="color:var(--or)">—</div><div class="kpi-sub" id="bk-k2s">más favorable al CER</div></div>
-    <div class="kpi"><div class="kpi-lbl">Vs IPC Abril 2.6%</div><div class="kpi-val" id="bk-k3" style="color:var(--gr)">—</div><div class="kpi-sub">nominales bajo IPC actual</div></div>
+    <div class="kpi"><div class="kpi-lbl" id="bk-k3l">Vs IPC último</div><div class="kpi-val" id="bk-k3" style="color:var(--gr)">—</div><div class="kpi-sub">nominales bajo IPC actual</div></div>
     <div class="kpi"><div class="kpi-lbl">Breakeven promedio</div><div class="kpi-val" id="bk-k4" style="color:#34d399">—</div><div class="kpi-sub">media curva completa</div></div>
     <div class="kpi"><div class="kpi-lbl">Puntos en curva CER</div><div class="kpi-val" id="bk-k5" style="color:var(--pu)">—</div><div class="kpi-sub">pares interpolados</div></div>
   </div>
@@ -746,7 +747,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
             <th>CER ref. usado</th>
             <th style="text-align:center">Breakeven<br><span style="color:var(--dim);font-size:8px">mensual</span></th>
             <th style="text-align:center">Breakeven<br><span style="color:var(--dim);font-size:8px">anualizado</span></th>
-            <th class="ct">vs IPC 2.6%</th>
+            <th class="ct" id="bk-th-ipc">vs IPC último</th>
             <th class="ct">Señal</th>
           </tr></thead>
           <tbody id="bkev-body"></tbody>
@@ -763,14 +764,14 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
         <div class="cleg">
           <div class="cli"><div class="cld" style="background:#10b981"></div>Punto verde = CER conviene</div>
           <div class="cli"><div class="cld" style="background:#06b6d4"></div>Punto azul = Nominal conviene</div>
-          <div class="cli"><div class="cldash" style="border-color:rgba(245,158,11,.7)"></div>IPC actual (2.6%)</div>
+          <div class="cli"><div class="cldash" style="border-color:rgba(245,158,11,.7)"></div><span id="bk-leg-ipc">IPC actual</span></div>
           <div class="cli" style="gap:3px"><span style="width:18px;height:2px;background:#34d399;display:inline-block;border-radius:1px"></span>Curva breakeven</div>
         </div>
       </div>
       <hr class="dv">
       <div>
         <div class="ctitle" style="color:var(--pu)">Curva CER usada para interpolación</div>
-        <div class="csub">TIR real (%) de cada bono ZC CER · misma regresión del tab CER</div>
+        <div class="csub">TIR real (%) observada de cada bono ZC CER · base de la interpolación</div>
         <table class="vt">
           <thead><tr><th>Bono CER</th><th>Días</th><th>TIR Real</th><th>Tipo</th><th>TEM interp. en curva</th></tr></thead>
           <tbody id="bkev-cer-body"></tbody>
@@ -783,7 +784,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
       <div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:#34d399;display:inline-block"></span>CER conviene</div>
       <div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:var(--cy);display:inline-block"></span>Nominal conviene</div>
-      <div class="fml-tag">breakeven = (1+TEM_nom)/(1+TIR_real_interp) − 1 &nbsp;|&nbsp; TIR_real de curva log CER: a + b·ln(DTM)</div>
+      <div class="fml-tag">breakeven = (1+TEM_nom)/(1+TIR_real_interp) − 1 &nbsp;|&nbsp; TIR_real interpolada linealmente entre las TIR observadas de los ZC CER</div>
     </div>
     <div class="fnote">Requiere datos de ambas solapas cargados · Se recalcula con ↻</div>
   </div>
@@ -833,7 +834,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
 
       <!-- Bonares -->
       <div class="tw">
-        <div class="tw-hdr" style="color:var(--am)">Bonares · Ley Argentina (AL)</div>
+        <div class="tw-hdr" style="color:var(--am)">Bonares · Ley Argentina (AL + AE38)</div>
         <div class="tbl-wrap"><table><thead><tr>
           <th>Ticker</th><th class="ct">Vto.</th><th>Precio USD</th><th>Bid</th><th>Ask</th>
           <th>Cupón</th><th>TIR (YTM)</th><th>MD</th><th>Var%</th><th>Vol. USD</th>
@@ -842,7 +843,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
 
       <!-- Otros soberanos -->
       <div class="tw">
-        <div class="tw-hdr" style="color:var(--mu)">Otros Ley Argentina (AO, AN, AE) + BPD7 Ley NY</div>
+        <div class="tw-hdr" style="color:var(--mu)">Bonares AO / AN · Ley Argentina (cupón 6,0–6,5%)</div>
         <div class="tbl-wrap"><table><thead><tr>
           <th>Ticker</th><th class="ct">Vto.</th><th>Precio USD</th><th>Bid</th><th>Ask</th>
           <th>Cupón</th><th>TIR (YTM)</th><th>MD</th><th>Var%</th><th>Vol. USD</th>
@@ -869,7 +870,8 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
         <div class="cleg">
           <div class="cli"><span style="width:20px;height:2px;background:#facc15;display:inline-block;border-radius:1px"></span>GD · Ley NY</div>
           <div class="cli"><span style="width:20px;height:2px;background:#f59e0b;display:inline-block;border-radius:1px"></span>AL · Ley Arg.</div>
-          <div class="cli"><div class="cld" style="background:var(--te)"></div>Otros soberanos</div>
+          <div class="cli"><div class="cld" style="background:#fb923c"></div>AO / AN · Bonares 2027-29</div>
+          <div class="cli"><div class="cld" style="background:var(--te)"></div>BOPREAL 1D (BPD7)</div>
           <div class="cli"><div class="cld" style="background:var(--pu)"></div>BOPREAL</div>
         </div>
       </div>
@@ -889,7 +891,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
       <div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:#facc15;display:inline-block"></span>GD · Ley NY</div>
       <div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:var(--am);display:inline-block"></span>AL · Ley Arg.</div>
-      <div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:var(--te);display:inline-block"></span>Otros soberanos</div>
+      <div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:#fb923c;display:inline-block"></span>AO / AN</div>
       <div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:var(--pu);display:inline-block"></span>BOPREAL</div>
     </div>
     <div class="fnote">Soberanos: rendimientos.co/api/proxy?src=soberanos · BOPREALes: data912.com/live/arg_bonds · Auto-refresh 20 min</div>
@@ -932,9 +934,9 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     <div style="width:1px;height:38px;background:var(--bdr)"></div>
     <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);background:var(--s2);border:1px solid var(--bdr);border-radius:5px;padding:8px 14px;line-height:1.9">
       <strong style="color:#a3e635">Régimen de bandas (desde 11/04/2025):</strong> TC flota libremente entre piso y techo<br>
-      <strong style="color:#a3e635">Ajuste de bandas desde 2026:</strong> piso baja y techo sube al ritmo del IPC T-2 (hoy: 2.6%/mes)<br>
+      <strong style="color:#a3e635">Ajuste de bandas desde 2026:</strong> piso baja y techo sube al ritmo del IPC T-2 · <span id="banda-hoy-txt">BCRA: piso $721 / techo $1.927 (07/10/2026)</span><br>
       <strong style="color:#a3e635">TC implícito:</strong> precio_ARS / VN_USD → TC que necesitás al vto para break even<br>
-      <strong style="color:#a3e635">Dev. BK:</strong> devaluación A3500 anual para igualar benchmark de plazo similar (AO27/AO28/BPD7)
+      <strong style="color:#a3e635">Dev. BK:</strong> devaluación A3500 anual a la que el DL iguala a una tasa fija (LECAP/BONCAP) del mismo plazo · spread de TIR USD vs HD aparte
     </div>
   </div>
 
@@ -942,7 +944,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   <div class="kpis">
     <div class="kpi"><div class="kpi-lbl">Mejor paridad</div><div class="kpi-val" id="dl-k1" style="color:#a3e635">—</div><div class="kpi-sub" id="dl-k1s">más cercano al par</div></div>
     <div class="kpi"><div class="kpi-lbl">Mejor TIR USD (flat)</div><div class="kpi-val" id="dl-k2" style="color:var(--cy)">—</div><div class="kpi-sub" id="dl-k2s">con TC sin moverse</div></div>
-    <div class="kpi"><div class="kpi-lbl">Dev. breakeven mín.</div><div class="kpi-val" id="dl-k3" style="color:var(--am)">—</div><div class="kpi-sub" id="dl-k3s">vs GD35 (TIR 8.97%)</div></div>
+    <div class="kpi"><div class="kpi-lbl">Dev. breakeven mín.</div><div class="kpi-val" id="dl-k3" style="color:var(--am)">—</div><div class="kpi-sub" id="dl-k3s">vs tasa fija comparable</div></div>
     <div class="kpi"><div class="kpi-lbl">TC A3500 (mayorista)</div><div class="kpi-val" id="dl-k4" style="color:#a3e635">—</div><div class="kpi-sub">BCRA · T-3 h.h. al pago</div></div>
     <div class="kpi"><div class="kpi-lbl">Instrumentos</div><div class="kpi-val" id="dl-k5" style="color:var(--pu)">—</div><div class="kpi-sub">letras + bonos DL activos</div></div>
   </div>
@@ -955,19 +957,37 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
         <div class="tbl-wrap"><table><thead><tr>
           <th>Ticker</th><th>Tipo</th><th class="ct">Vto.</th><th>Precio ARS</th><th>Bid</th><th>Ask</th>
           <th>TC implícito</th><th>Paridad</th><th>DTM</th>
-          <th>TIR USD (TC flat)</th><th>Dev. BK (vs bench)</th><th>Benchmark</th><th>Banda al vto.</th>
+          <th>TIR USD (TC flat)</th><th>Dev. BK (vs tasa fija)</th><th>Tasa fija comp.</th><th>Banda al vto.</th>
           <th>Var%</th><th>Vol.</th>
         </tr></thead><tbody id="dl-body"></tbody></table></div>
       </div>
 
       <!-- Tabla de devaluación breakeven vs distintos benchmarks -->
       <div class="tw">
-        <div class="tw-hdr" style="color:var(--am)">Devaluación breakeven vs benchmark de plazo similar (AO27/AO28/BPD7)</div>
+        <div class="tw-hdr" style="color:var(--am)">Devaluación breakeven vs tasa fija de igual plazo (y spread de TIR en USD vs HD)</div>
         <div class="tbl-wrap"><table><thead><tr>
           <th>Instrumento</th><th>DTM</th><th>TIR USD flat</th>
-          <th>Benchmark (plazo similar)</th><th>Dev BK anual</th><th>Dev BK mensual</th>
-          <th>TC impl. vs banda al vto.</th><th>Señal</th>
+          <th>Tasa fija comparable</th><th>Dev BK anual</th><th>Dev BK 30d</th>
+          <th>TC BK vs techo al vto.</th><th>Spread TIR vs HD</th><th>Señal</th>
         </tr></thead><tbody id="dl-bk-body"></tbody></table></div>
+      </div>
+
+      <!-- VNO Circulación — Letras y Bonos Dólar Linked (fuente: Secretaría de Finanzas / A3 Mercados, ver hoja "Vencimientos - Detalle DLK") -->
+      <div class="tw">
+        <div class="tw-hdr" style="color:#a3e635">VNO Circulación — Letras y Bonos Dólar Linked
+          <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">Secretaría de Finanzas / A3 Mercados · actualizado 11/11/2026 (licitación)</span>
+        </div>
+        <div class="tbl-wrap"><table><thead><tr><th>Ticker</th><th class="ct">Vto.</th><th>VNO Circulación</th><th>Fecha del Dato</th><th>Nota</th></tr></thead><tbody id="dl-vno-body">
+          <tr><td>D30S6</td><td class="ct">30/09/2026</td><td>USD 1.098 M</td><td>22/09/2026</td><td style="color:var(--mu);font-size:11px">Rescate 75% VNO (USD 3.299M) en conversión a D30O6/D30N6/TZV28</td></tr>
+          <tr><td>D30O6</td><td class="ct">30/10/2026</td><td>USD 1.418 M</td><td>21/10/2026</td><td style="color:var(--mu);font-size:11px">Rescate USD 3.929,7M en conversión a D30N6/D15E7/TZV27 (A3 #14.747); remanente no convertido vence 30-oct</td></tr>
+          <tr><td>D30N6</td><td class="ct">30/11/2026</td><td>USD 4.742 M</td><td>21/10/2026</td><td style="color:var(--mu);font-size:11px">Alta por conversión D30O6 (+USD 2.680,5M) — A3 Com. #14.747; antes USD 2.062M (A3 #14.730)</td></tr>
+          <tr><td>D15E7</td><td class="ct">15/01/2027</td><td>USD 4.388 M</td><td>11/11/2026</td><td style="color:var(--mu);font-size:11px">Reapertura licitación 11-nov (+USD 768M, precio de corte USD 992, TIREA 4,77%; circulación según Finanzas, falta A3). Antes: Reapertura licitación 28-oct (+USD 1.666,2M, precio de corte USD 986, TIREA 7,00%); VNO exacto A3 #14.756 (USD 3.619.980.785); antes USD 1.953,8M tras conversión D30O6 (A3 #14.747)</td></tr>
+          <tr><td>D31M7</td><td class="ct">31/03/2027</td><td>USD 941 M</td><td>15/09/2026</td><td style="color:var(--mu);font-size:11px">Confirmado A3 Comunicado #14.677</td></tr>
+          <tr><td>DLK 10-may-2027<span style="font-size:8px;margin-left:4px;padding:1px 4px;border-radius:3px;background:rgba(148,163,184,.12);border:1px solid rgba(148,163,184,.3);color:var(--mu)">s/cód.</span></td><td class="ct">10/05/2027</td><td>USD 604 M</td><td>15/07/2026</td><td style="color:var(--mu);font-size:11px">Instrumento nuevo, código no confirmado en el anuncio oficial</td></tr>
+          <tr><td>TZV27</td><td class="ct">30/06/2027</td><td>USD 1.070 M</td><td>21/10/2026</td><td style="color:var(--mu);font-size:11px">Alta por conversión D30O6 (+USD 206,1M) — A3 Com. #14.747; antes USD 864M (A3 #14.677)</td></tr>
+          <tr><td>TZV28</td><td class="ct">30/06/2028</td><td>USD 1.095 M</td><td>25/09/2026</td><td style="color:var(--mu);font-size:11px">Reapertura conversión D30S6 — valor oficial A3 Mercados Com. #14.699 (corrige estimación previa de USD 758M)</td></tr>
+          <tr><td>TZVD8</td><td class="ct">15/12/2028</td><td>USD 862 M</td><td>21/07/2026</td><td style="color:var(--mu);font-size:11px">Reapertura regular + tramo canje D31L6</td></tr>
+        </tbody></table></div>
       </div>
 
       <!-- Duales TAMAR/DL — no son DL puro, van aparte y etiquetados (mismo criterio que Duales CER/TAMAR en el tab CER) -->
@@ -976,7 +996,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
           <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">max(TAMAR acum., devaluación acum.) — no es DL puro, ver tab Duales</span>
         </div>
         <div class="tbl-wrap"><table><thead><tr><th>Ticker</th><th class="ct">Vto.</th><th>VNO Circulación</th><th>Fecha del Dato</th><th>Nota</th></tr></thead><tbody id="dual-tamardl-body-dl">
-          <tr><td>TMVE8<span style="font-size:8px;margin-left:4px;padding:1px 4px;border-radius:3px;background:rgba(163,230,53,.12);border:1px solid rgba(163,230,53,.3);color:#a3e635">TAM/DL</span></td><td class="ct">31/01/2028</td><td>USD 3.467 M</td><td>29/07/2026</td><td style="color:var(--mu);font-size:11px">Primera emisión — licitación 29/07/2026, precio de corte USD 908,10, TIREA pata DL 6,64%</td></tr>
+          <tr><td>TMVE8<span style="font-size:8px;margin-left:4px;padding:1px 4px;border-radius:3px;background:rgba(163,230,53,.12);border:1px solid rgba(163,230,53,.3);color:#a3e635">TAM/DL</span></td><td class="ct">31/01/2028</td><td>USD 4.194 M</td><td>14/10/2026</td><td style="color:var(--mu);font-size:11px">Reapertura licitación 14/10/2026 (adjudicado USD 727M, precio de corte USD 946,46, TIREA pata DL 4,35%); emisión 29/07/2026 a USD 908,10</td></tr>
         </tbody></table></div>
       </div>
     </div>
@@ -985,7 +1005,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     <div class="cpanel">
       <div>
         <div class="ctitle" style="color:#a3e635">TC Implícito vs Banda Proyectada al Vencimiento</div>
-        <div class="csub">TC_impl = precio_ARS/VN_USD · banda proyectada con IPC T-2 = 2.6%/mes · 🟢 dentro de banda · 🔴 fuera</div>
+        <div class="csub">TC_impl = precio_ARS/VN_USD · banda BCRA publicada + proyección con IPC T-2 (REM) · 🟢 dentro de banda · 🔴 fuera</div>
         <div class="cbox" style="height:260px"><canvas id="dlChart"></canvas></div>
         <div class="cleg">
           <div class="cli"><div class="cld" style="background:#a3e635"></div>TC impl. (dentro banda)</div>
@@ -998,12 +1018,13 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
       <div>
         <div class="ctitle" style="color:var(--cy)">¿Cómo leer el breakeven?</div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);line-height:1.9;padding:8px 0">
-          Si la <strong style="color:#a3e635">devaluación real supera el breakeven</strong> → el DL gana<br>
-          Si la <strong style="color:var(--rd)">devaluación real es menor al breakeven</strong> → el HD gana<br><br>
-          <strong style="color:var(--cy)">Ejemplo:</strong> D30S6 breakeven vs GD35 = 1.88%/año<br>
-          Si el TC sube más de 1.88% anual adicional sobre lo esperado → D30S6 conviene<br>
-          Con crawling peg actual ≈ 1% mensual (12% anual), el DL domina.
+          El DL paga <strong style="color:#a3e635">VN × A3500</strong>: en dólares rinde su TIR USD (flat) pase lo que pase con el TC; en pesos rinde <strong style="color:#a3e635">(1+TIR USD)·(1+devaluación)</strong>.<br>
+          <strong style="color:var(--am)">Dev. BK</strong> = (1+TEA tasa fija)/(1+TIR USD) − 1 → la devaluación anual a la que el DL <strong>empata con una LECAP/BONCAP</strong> del mismo plazo.<br>
+          Si esperás devaluar <strong style="color:#a3e635">más</strong> que Dev. BK → DL · si <strong style="color:var(--rd)">menos</strong> → tasa fija.<br>
+          La banda acota el escenario: si el <strong>TC BK al vto. supera el techo</strong> proyectado, el DL no le gana a la tasa fija ni con el TC en el techo (<strong style="color:var(--rd)">SOLO TASA FIJA</strong>).<br>
+          El <strong>spread vs HD</strong> compara TIR en USD (DL vs AO27/AO28/BPD7): ahí no hay devaluación que cuente; la diferencia es riesgo/liquidez y brecha oficial-MEP.
         </div>
+</div>
       </div>
     </div>
   </div>
@@ -1012,7 +1033,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
       <div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:#a3e635;display:inline-block"></span>Letra DL</div>
       <div class="fl"><span style="width:7px;height:7px;border-radius:50%;background:var(--am);display:inline-block"></span>Bono DL</div>
-      <div class="fml-tag">Paridad = precio_ARS / (VN×TC) · TIR_USD = (VN/precio_USD)^(365/DTM)−1 · Dev_BK = (1+TIR_bench)/(1+TIR_USD)−1</div>
+      <div class="fml-tag">Paridad = precio_ARS / (VN×TC) · TIR_USD = (VN/precio_USD)^(365/DTM)−1 · Dev_BK = (1+TEA_tasa_fija)/(1+TIR_USD)−1</div>
     </div>
     <div class="fnote">Precios: data912.com/live · TC Oficial: rendimientos.co/api/proxy?src=bcra</div>
   </div>
@@ -1042,6 +1063,72 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     </div>
   </div>
 
+  <!-- ═ Tracker ONs Hard Dollar (universo cargado a mano) ═ -->
+  <div id="onx-wrap">
+    <div class="kpis">
+      <div class="kpi"><div class="kpi-lbl">ONs en universo</div><div class="kpi-val" id="onx-k1" style="color:#4ade80">—</div><div class="kpi-sub" id="onx-k1s">filtradas</div></div>
+      <div class="kpi"><div class="kpi-lbl">TIR mediana</div><div class="kpi-val" id="onx-k2" style="color:var(--cy)">—</div><div class="kpi-sub">de las filtradas</div></div>
+      <div class="kpi"><div class="kpi-lbl">Spread mediano</div><div class="kpi-val" id="onx-k3" style="color:var(--am)">—</div><div class="kpi-sub">vs. soberano HD interpolado</div></div>
+      
+      <div class="kpi"><div class="kpi-lbl">Con precio de mercado</div><div class="kpi-val" id="onx-k5" style="color:var(--up)">—</div><div class="kpi-sub">con precio de mercado; el resto, cierre 30/10</div></div>
+    </div>
+    <style>
+  .onx-fb{display:flex;flex-direction:column;gap:9px;margin:0 0 14px;padding:12px 14px;background:var(--s);border:1px solid var(--bdr);border-radius:2px}
+  .onx-frow{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px}
+  .onx-grp{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  .onx-fl{font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mu);min-width:44px}
+  .onx-pills{display:flex;flex-wrap:wrap;gap:4px}
+  .onx-pill{font-size:11px;font-weight:700;padding:3px 11px;border-radius:99px;border:1px solid var(--bdr2);background:transparent;color:var(--mu);cursor:pointer;line-height:1.5;transition:all .12s}
+  .onx-pill:hover{color:var(--txt);border-color:var(--accent)}
+  .onx-pill.on{background:var(--accent);border-color:var(--accent);color:#1c1c1c}
+  .onx-in,.onx-sel{font-size:12px;background:var(--bg);color:var(--txt);border:1px solid var(--bdr2);border-radius:2px;padding:5px 9px;min-width:150px}
+  .onx-sel{appearance:none;-webkit-appearance:none;padding-right:26px;background-image:linear-gradient(45deg,transparent 50%,var(--mu) 50%),linear-gradient(135deg,var(--mu) 50%,transparent 50%);background-position:calc(100% - 14px) 52%,calc(100% - 9px) 52%;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+  .onx-in:focus,.onx-sel:focus{outline:none;border-color:var(--accent)}
+  #onx-wrap table th.num,#onx-wrap table td.num{text-align:right;font-variant-numeric:tabular-nums}
+  .onx-row{cursor:pointer}.onx-row:hover td{background:rgba(0,231,127,.05)}
+  .onx-chev{color:var(--dim);font-size:10px;width:20px;text-align:center}
+  .onx-dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-left:6px;vertical-align:middle}
+  .onx-det td{background:var(--s2);padding:10px 16px!important;border-top:none!important}
+  .onx-dg{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px 22px}
+  .onx-dg div span{display:block;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);margin-bottom:1px}
+  .onx-dg div b{font-size:13px;font-weight:700;color:var(--txt)}
+  .onx-chip{font-size:9px;font-weight:700;padding:2px 7px;border-radius:2px;letter-spacing:.05em}
+</style>
+    <div class="onx-fb" id="onx-filters">
+      <div class="onx-frow">
+        <div class="onx-grp"><span class="onx-fl">Buscar</span><input id="onx-f-q" class="onx-in" placeholder="Ticker o emisor" oninput="onxRender()"></div>
+        <div class="onx-grp"><span class="onx-fl">Emisor</span><select id="onx-f-e" class="onx-sel" onchange="onxRender()"></select></div>
+        <div class="onx-grp"><span class="onx-fl">Plazo</span><div class="onx-pills" data-f="t"></div></div>
+      </div>
+      <div class="onx-frow">
+        <div class="onx-grp"><span class="onx-fl">Sector</span><div class="onx-pills" data-f="s"></div></div>
+      </div>
+      <div class="onx-frow">
+        <div class="onx-grp"><span class="onx-fl">Ley</span><div class="onx-pills" data-f="l"></div></div>
+        <div class="onx-grp"><span class="onx-fl">Pago</span><div class="onx-pills" data-f="p"></div></div>
+        <div class="onx-grp"><span class="onx-fl">Curva</span><div class="onx-pills" data-f="c"></div></div>
+        <div class="onx-grp"><span class="onx-fl">Color</span><div class="onx-pills" data-f="k"></div></div>
+        <div class="onx-grp"><div class="onx-pills" data-f="x"></div></div>
+      </div>
+      <input type="hidden" id="onx-f-s"><input type="hidden" id="onx-f-l"><input type="hidden" id="onx-f-p"><input type="hidden" id="onx-f-t">
+      <input type="hidden" id="onx-f-c" value="all"><input type="hidden" id="onx-f-k" value="sig"><input type="checkbox" id="onx-f-x" style="display:none">
+    </div>
+    <div class="cbox" style="height:340px;margin-bottom:14px"><canvas id="onxChart"></canvas></div>
+    <div class="tw">
+      <div class="tw-hdr" style="color:#4ade80">ONs Hard Dollar · universo cargado (<span id="onx-asof"></span>) · clic en el encabezado para ordenar</div>
+      <div class="tbl-wrap"><table>
+        <thead><tr>
+          <th onclick="onxSort('t')">Ticker</th><th onclick="onxSort('e')">Emisor</th><th class="ct" onclick="onxSort('v')">Vto.</th>
+          <th class="num" onclick="onxSort('px')">Precio</th><th class="num" onclick="onxSort('pct')">Var.</th>
+          <th class="num" onclick="onxSort('tir')">TIR</th><th class="num" onclick="onxSort('dur')">Dur. mod.</th>
+          <th class="num" onclick="onxSort('vc')">vs curva (pb)</th><th onclick="onxSort('sig')">Valuación</th><th></th>
+        </tr></thead>
+        <tbody id="onx-body"></tbody>
+      </table></div>
+    </div>
+    <div class="fnote" style="margin:8px 0 18px;line-height:1.6">Universo: tabla de ONs Hard Dollar cargada el <span id="onx-asof2"></span> (precio, TIR, call y lámina mínima de esa fecha). Precios sucios (incluyen cupón corrido), como en la tabla de origen. Precio: último trade de BYMA (liquidación 24 h); si no hay, último precio de data912; si tampoco, promedio de puntas compradora y vendedora; si no hay nada, el de la tabla del 30/10. La etiqueta junto al precio indica de dónde sale (BYMA, D912, PUNTA o 30/10). TIR (efectiva, base 365), duración modificada y paridad (precio sucio sobre capital residual más intereses corridos) se calculan con el cronograma de cupones y amortizaciones de cada ON: cupón, vencimiento y amortización salen de la ficha técnica de BYMA, y la frecuencia de pago se infiere comparando con la TIR de la tabla del 30/10 (la ficha no la informa); liquidación T+1. Las ONs marcadas con * no tienen cronograma (sin ficha o sin cupón fijo informado) y usan una aproximación; el spread se calcula contra la curva de Globales (GD29–GD41) de esta misma página, interpolada por plazo; fuera de ese rango se usa el extremo más cercano. Curva de ONs: ajuste y = a + b·ln(1+años) por mínimos cuadrados sobre las ONs no marcadas "a revisar" (con plazo mayor a 6 meses), descartando valores atípicos; "barata" = TIR más de 25 pb sobre la curva, "cara" = más de 25 pb debajo. Sin calificación crediticia cargada todavía: una ON puede verse barata por tener más riesgo (ej. Edenor).</div>
+  </div>
+  <details style="margin-bottom:14px"><summary style="cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu)">Vista BYMA completa (todas las series, 3 especies)</summary>
   <!-- KPIs -->
   <div class="kpis">
     <div class="kpi"><div class="kpi-lbl">Total instrumentos</div><div class="kpi-val" id="on-k1" style="color:#4ade80">—</div><div class="kpi-sub">ONs en BYMA</div></div>
@@ -1085,8 +1172,10 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     </div>
   </div>
 
+  </details>
+
   <div class="ftr">
-    <div class="fnote">Datos: BYMA Open Data (open.bymadata.com.ar) · Solo disponibles durante horario bursátil · 30 ONs listadas recientemente</div>
+    <div class="fnote">Datos: BYMA Open Data (open.bymadata.com.ar) · Solo disponibles durante horario bursátil · universo de seguimiento: 79 ONs HD</div>
   </div>
 
   <div class="mod-nav">
@@ -1116,7 +1205,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   <div class="tw" style="margin-top:18px"><div class="tw-hdr" style="color:#a3e635">Duales TAMAR / Dólar Linked
     <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">max(TAMAR acum., devaluación acum.) — familia nueva, primera emisión 29/07/2026</span>
   </div><div class="tbl-wrap"><table><thead><tr><th>Ticker</th><th class="ct">Vto.</th><th>VNO Circulación</th><th>Fecha del Dato</th><th>Nota</th></tr></thead><tbody id="dual-tamardl-body">
-    <tr><td>TMVE8<span style="font-size:8px;margin-left:4px;padding:1px 4px;border-radius:3px;background:rgba(163,230,53,.12);border:1px solid rgba(163,230,53,.3);color:#a3e635">TAM/DL</span></td><td class="ct">31/01/2028</td><td>USD 3.467 M</td><td>29/07/2026</td><td style="color:var(--mu);font-size:11px">Primera emisión — licitación 29/07/2026, precio de corte USD 908,10, TIREA pata DL 6,64%</td></tr>
+    <tr><td>TMVE8<span style="font-size:8px;margin-left:4px;padding:1px 4px;border-radius:3px;background:rgba(163,230,53,.12);border:1px solid rgba(163,230,53,.3);color:#a3e635">TAM/DL</span></td><td class="ct">31/01/2028</td><td>USD 4.194 M</td><td>14/10/2026</td><td style="color:var(--mu);font-size:11px">Reapertura licitación 14/10/2026 (adjudicado USD 727M, precio de corte USD 946,46, TIREA pata DL 4,35%); emisión 29/07/2026 a USD 908,10</td></tr>
   </tbody></table></div></div>
 
   <div class="mod-nav">
@@ -1137,23 +1226,23 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   </div>
 
   <div class="tw" style="border:1px solid rgba(248,113,113,.35)"><div class="tw-hdr" style="color:#f87171;font-size:13px">★ TASA DE SUSTENTABILIDAD DE LA DEUDA — HOY
-    <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">¿A qué tasa podría endeudarse el Gobierno sin ampliar Deuda/PBI? · r* = g + pb×(1+g)/d · 14/09/2026</span>
+    <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">¿A qué tasa podría endeudarse el Gobierno sin ampliar Deuda/PBI? · r* = g + pb×(1+g)/d · 06/10/2026</span>
   </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;padding:16px">
       <div style="padding-right:16px;border-right:1px solid var(--bdr2)">
         <div style="font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em">Pesos (nominal)</div>
         <div style="font-size:32px;font-weight:700;color:var(--gr);margin:4px 0">34,26%</div>
-        <div style="font-size:11px;color:var(--mu)">vs. LECAP actual: <strong style="color:var(--txt)">22,6%</strong> → margen <strong style="color:var(--gr)">+11,7pp</strong></div>
+        <div style="font-size:11px;color:var(--mu)">vs. LECAP actual: <strong style="color:var(--txt)">21,1%-23,0%</strong> → margen <strong style="color:var(--gr)">+11,3 a +13,2pp</strong></div>
         <div style="font-size:11px;color:var(--gr);font-weight:600;margin-top:6px">✓ SUSTENTABLE — margen amplio</div>
       </div>
       <div style="padding-left:16px">
         <div style="font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em">Dólares</div>
-        <div style="font-size:32px;font-weight:700;color:#f87171;margin:4px 0">3,84%</div>
-        <div style="font-size:11px;color:var(--mu)">vs. curva de bonos: <strong style="color:var(--txt)">4,0% a 10,2%</strong> → margen <strong style="color:#f87171">-0,2 a -6,4pp</strong></div>
-        <div style="font-size:11px;color:#f87171;font-weight:600;margin-top:6px">✗ INSUSTENTABLE — toda la curva, incluido el AO27</div>
+        <div style="font-size:32px;font-weight:700;color:#facc15;margin:4px 0">3,84%</div>
+        <div style="font-size:11px;color:var(--mu)">vs. curva de bonos: <strong style="color:var(--txt)">3,5% a 17,3%</strong> → margen <strong style="color:#facc15">+0,3pp (AO27) a -13,5pp</strong></div>
+        <div style="font-size:11px;color:#facc15;font-weight:600;margin-top:6px">◐ SOLO EL AO27 ES SUSTENTABLE (por 0,3pp) — AO28/AO29/GD41 insustentables</div>
       </div>
     </div>
-    <div style="padding:0 16px 14px;font-size:11px;color:var(--mu);line-height:1.5">g(pesos)=+33,5% nominal (INDEC) · g(USD)=+0,60% (Q1-26 vs Q1-25) · pesos: d=Deuda/PBI 68,2% (FMI/FRED 2026e), pb=superávit primario real 0,39% PBI (ene-jul anualizado) · dólares [corregido 07/09/2026, todo en USD y mismo trimestre]: d=69,76% (Deuda USD jun-26/PBI USD anualizado Q1-26, propio), pb=2,25% (superávit primario Q1-26 convertido a USD mes a mes, anualizado). En pesos el Gobierno paga bien por debajo de lo que podría sin ampliar el ratio; en dólares, <strong style="color:var(--txt)">el AO27 cruzó el límite el 14/09/2026 (TIR subió de 3,58% a 4,0%) — ya no queda ningún punto sustentable en la curva</strong>.</div>
+    <div style="padding:0 16px 14px;font-size:11px;color:var(--mu);line-height:1.5">g(pesos)=+33,5% nominal (INDEC) · g(USD)=+0,60% (Q1-26 vs Q1-25) · pesos: d=Deuda/PBI 68,2% (FMI/FRED 2026e), pb=superávit primario real 0,39% PBI (ene-sep anualizado) · dólares [corregido 07/09/2026, todo en USD y mismo trimestre]: d=69,76% (Deuda USD jun-26/PBI USD anualizado Q1-26, propio), pb=2,25% (superávit primario Q1-26 convertido a USD mes a mes, anualizado). En pesos el Gobierno paga bien por debajo de lo que podría sin ampliar el ratio; en dólares, <strong style="color:var(--txt)">el AO27 volvió a quedar por debajo del límite el 06/10/2026 (TIR bajó de ~4,0% a 3,54%) — es el único punto sustentable de la curva, con margen chico (0,3pp; TIR 3,5% al 16/11/2026); el resto (AO28 16,1%, GD41 12,2%, AO29 17,3%) sigue muy por encima</strong>.</div>
   </div>
 
   <div class="tw" style="margin-top:18px"><div class="tw-hdr" style="color:#38bdf8">% Deuda en Pesos vs. % Moneda Extranjera — 2019-2026
@@ -1180,21 +1269,21 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   </div>
 
   <div class="tw" style="margin-top:18px"><div class="tw-hdr" style="color:#a3e635">Laddering — Concentración de Vencimientos por Trimestre
-    <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">Deuda en pesos · actual vs. objetivo parejo · 07/09/2026</span>
+    <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">Deuda en pesos · actual vs. objetivo parejo · 11/11/2026</span>
   </div>
     <div class="cbox-cer" style="height:260px"><canvas id="ladderChart"></canvas></div>
     <div style="padding:0 16px 14px;font-size:11px;color:var(--mu);line-height:1.5">
-      Índice de concentración (HHI): <strong style="color:var(--txt)">0,1022 actual</strong> vs. <strong style="color:var(--gr)">0,0769 si estuviera perfectamente laddeado</strong> (más bajo = más parejo = menor riesgo de refinanciación puntual).
-      El trimestre más sobrecargado es <strong style="color:#f87171">2027 T2 (16,7% del stock)</strong> — redirigir ahí menos emisión nueva y priorizar los trimestres hoy vacíos (2029 T2, 2030 T2, 2028 T4) permitiría bajar la concentración <strong style="color:var(--txt)">sin cambiar de moneda</strong>, solo reordenando el calendario de licitaciones.
+      Índice de concentración (HHI): <strong style="color:var(--txt)">0,1265 actual</strong> vs. <strong style="color:var(--gr)">0,0833 si estuviera perfectamente laddeado</strong> (más bajo = más parejo = menor riesgo de refinanciación puntual).
+      El trimestre más sobrecargado es <strong style="color:#f87171">2027 T2 (22,3% del stock, $43,7 billones; la licitación del 11-nov le sumó $4,7 billones)</strong> — redirigir ahí menos emisión nueva y priorizar los trimestres hoy más vacíos (2030 T2, 2029 T2, 2028 T2) permitiría bajar la concentración <strong style="color:var(--txt)">sin cambiar de moneda</strong>, solo reordenando el calendario de licitaciones.
     </div>
   </div>
 
   <div class="tw" style="margin-top:18px"><div class="tw-hdr" style="color:var(--gr)">Síntesis · ¿Vale la pena estirar plazos pagando más?</div>
     <div style="padding:14px 16px;font-size:12px;line-height:1.6;color:var(--mu)">
       <p style="margin:0 0 10px"><strong style="color:var(--cy)">Pesos (~1,2 años en promedio):</strong> tasa REAL negativa (~-0,3% mensual) — financiamiento muy barato en términos reales, PERO exige refinanciar (rollover) buena parte del stock varias veces por año. Cada vencimiento es una "prueba de mercado": si cae la demanda en algún momento, el Tesoro puede verse forzado a convalidar tasas mucho más altas de golpe, o a emitir pesos (riesgo inflacionario) — el clásico "riesgo de bola de nieve" de la deuda corta.</p>
-      <p style="margin:0 0 10px"><strong style="color:#facc15">Dólares (1 a 6+ años):</strong> tasa nominal notablemente más alta (3,6%-9,9% según plazo) y en dólares "duros" (no se licúa con inflación local) — un costo real efectivo mucho mayor que el de la deuda en pesos hoy. A cambio, fija ese costo por años: sin vencimientos que enfrentar ni tasa que renegociar hasta el vencimiento — elimina el riesgo de refinanciación en ese horizonte.</p>
+      <p style="margin:0 0 10px"><strong style="color:#facc15">Dólares (1 a 6+ años):</strong> tasa nominal notablemente más alta (2,7%-12,5% según plazo) y en dólares "duros" (no se licúa con inflación local) — un costo real efectivo mucho mayor que el de la deuda en pesos hoy. A cambio, fija ese costo por años: sin vencimientos que enfrentar ni tasa que renegociar hasta el vencimiento — elimina el riesgo de refinanciación en ese horizonte.</p>
       <p style="margin:0 0 10px"><strong style="color:var(--gr)">Conclusión (confirmada con datos):</strong> no es una comparación de "cuál es más barata" sino de costo vs. riesgo. La suba de la porción en pesos de 22% (2019) a 47% (2026) mejoró el costo real, pero el plazo promedio de esa deuda (1,21 años) sigue siendo sensiblemente más corto que la curva en dólares — confirma que la "pesificación" resolvió el problema de MONEDA pero no el de PLAZO: el riesgo de refinanciación de corto plazo sigue siendo alto en la porción peso de la deuda.</p>
-      <p style="margin:0"><strong style="color:var(--rd)">Sustentabilidad en USD:</strong> con el PBI en dólares creciendo apenas +0,60% (Q1-26 vs Q1-25 — casi todo el +33,5% nominal en pesos se lo comió la devaluación del +32,7%), la brecha entre el costo de la deuda en USD y el crecimiento de la economía en USD es <strong style="color:var(--rd)">positiva en TODA la curva (+3,4pp a +9,6pp)</strong>: la deuda en dólares crece bastante más rápido que la capacidad de la economía de generar dólares — a diferencia de la deuda en pesos, cuya brecha nominal es negativa. Tomando la tasa de sustentabilidad r* (todo en USD, mismo trimestre: d=69,76%, pb=2,25%, g=0,60%) da <strong style="color:var(--txt)">3,84%</strong> — <strong style="color:var(--rd)">actualizado 14/09/2026:</strong> el AO27 (TIR subió de 3,58% a 4,0%) cruzó ese límite, sumándose al resto de la curva que ya lo superaba.</p>
+      <p style="margin:0"><strong style="color:var(--rd)">Sustentabilidad en USD:</strong> con el PBI en dólares creciendo apenas +0,60% (Q1-26 vs Q1-25 — casi todo el +33,5% nominal en pesos se lo comió la devaluación del +32,7%), la brecha entre el costo de la deuda en USD y el crecimiento de la economía en USD es <strong style="color:var(--rd)">positiva en TODA la curva (+1,9pp a +14,8pp)</strong>: la deuda en dólares crece bastante más rápido que la capacidad de la economía de generar dólares — a diferencia de la deuda en pesos, cuya brecha nominal es negativa. Tomando la tasa de sustentabilidad r* (todo en USD, mismo trimestre: d=69,76%, pb=2,25%, g=0,60%) da <strong style="color:var(--txt)">3,84%</strong> — <strong style="color:var(--rd)">actualizado 06/10/2026:</strong> el AO27 (TIR bajó de ~4,0% a 3,54%) volvió a quedar por debajo de ese límite y es el único tramo sustentable, por 0,3pp (TIR 3,5% al 16/11/2026). El resto de la curva se alejó todavía más (AO28 16,1%, GD41 12,2%, AO29 17,3%, vs. 5%-10% a mediados de septiembre).</p>
     </div>
   </div>
 
@@ -1230,9 +1319,9 @@ const SEED_TF = [
 // licitación 29/07/26), DIAS(30/360)=76 → VF=105.2753. S29E7: emisión 31/08/26, Tm=2.25%
 // (licitación 27/08/26), DIAS(30/360)=149 → VF=111.6849. Verificado: la TEM implícita hoy
 // contra el precio de mercado (103.32 / 101.95) cae en curva (1.83%/2.03%), no es outlier.
-const VF_MAP={S16O6:105.2753,S29E7:111.6849,S30S6:117.5482,S30O6:135.2593,S30N6:129.9035,S13N6:109.651,T15E7:161.0457,T30A7:157.3155,T31Y7:151.4979,T30J7:156.0009};
-const TF_VTO  = {S16O6:'2026-10-16',S29E7:'2027-01-29',S30S6:'2026-09-30',S30O6:'2026-10-30',S30N6:'2026-11-30',S13N6:'2026-11-13',T15E7:'2027-01-15',T30A7:'2027-04-30',T31Y7:'2027-05-31',T30J7:'2027-06-30'};
-const TF_VTO_D= {S16O6:'16/10/26',S29E7:'29/01/27',S30S6:'30/09/26',S30O6:'30/10/26',S30N6:'30/11/26',S13N6:'13/11/26',T15E7:'15/01/27',T30A7:'30/04/27',T31Y7:'31/05/27',T30J7:'30/06/27'};
+const VF_MAP={S16O6:105.2753,S26F7:108.3676,S29E7:111.6849,S30S6:117.5482,S30O6:135.2593,S30N6:129.9035,S13N6:109.651,T15E7:161.0457,T30A7:157.3155,T31Y7:151.4979,T30J7:156.0009};
+const TF_VTO  = {S16O6:'2026-10-16',S26F7:'2027-02-26',S29E7:'2027-01-29',S30S6:'2026-09-30',S30O6:'2026-10-30',S30N6:'2026-11-30',S13N6:'2026-11-13',T15E7:'2027-01-15',T30A7:'2027-04-30',T31Y7:'2027-05-31',T30J7:'2027-06-30'};
+const TF_VTO_D= {S16O6:'16/10/26',S26F7:'26/02/27',S29E7:'29/01/27',S30S6:'30/09/26',S30O6:'30/10/26',S30N6:'30/11/26',S13N6:'13/11/26',T15E7:'15/01/27',T30A7:'30/04/27',T31Y7:'31/05/27',T30J7:'30/06/27'};
 
 const SEED_CER_PRECIOS=[
   {symbol:'X30S6',c:111.4, bid:111.3, ask:111.4, pct:0.09},
@@ -1311,20 +1400,52 @@ const CER_INSTR=[
 
 // ─── HELPERS ────────────────────────────────────────────────────
 // ─── Régimen de bandas cambiarias (global) ──────────────────────
-// Desde 2026: piso baja y techo sube al ritmo del IPC T-2
-// IPC abril-2026 = 2.6% → aplica a junio-2026
-const BANDA = {
-  ipc_t2:   2.6 / 100,
-  piso_hoy: 1232.0,
-  techo_hoy: 1762.0,
-};
-function bandaAlVto(dtm) {
-  const meses = dtm / 30.4;
-  return {
-    piso:  BANDA.piso_hoy  * Math.pow(1 - BANDA.ipc_t2, meses),
-    techo: BANDA.techo_hoy * Math.pow(1 + BANDA.ipc_t2, meses),
-  };
+// Desde 2026 el BCRA ajusta ambos bordes cada día a la tasa del IPC T-2 del mes: dentro del mes m el techo sube
+// (1+i)^(1/días del mes) por día y el piso baja (1-i)^(1/días del mes), con i = IPC de m-2 (verificado vs la
+// serie oficial: oct-26 usa IPC ago 1,7%). Valores oficiales: BCRA API v4 ids 1187 (inferior) y 1188 (superior),
+// que el BCRA publica por adelantado (hasta fin del mes en curso). Más allá de lo publicado se proyecta con el
+// IPC T-2 de cada mes (inputs del gráfico de bandas; default = REM). Antes esto estaba hardcodeado
+// (piso 1.232 / techo 1.762 / IPC 2,6% de ~jun-26: techo real hoy 1.927, piso 721) — ver memoria bonos_banda_dl_audit.
+const BANDA_SEED = {serie:[
+  {f:'2026-10-07',piso:721.48,techo:1926.72},
+  {f:'2026-10-30',piso:712.36,techo:1950.97},
+], fuente:'seed 07/10/2026'};
+let BANDA_LIVE = BANDA_SEED;
+// IPC T-2 (% mensual) aplicado a la banda en cada mes: nov = IPC sep ... (REM sept-26: sep 1,9 · oct 1,7 · nov 1,6 ·
+// dic 1,8 · ene 1,6 · feb-mar 1,6/1,7); sin dato mensual se usa 1,6 (REM: 21,1% a 12 meses ≈ 1,6%/mes).
+const BAND_IPC_DEFAULT = {202610:1.7, 202611:1.9, 202612:1.7, 202701:1.6, 202702:1.8, 202703:1.6, 202704:1.6, 202705:1.7};
+const BAND_IPC_FALLBACK = 1.6;
+function bandIpcDefault(ym){ return BAND_IPC_DEFAULT[ym] ?? BAND_IPC_FALLBACK; }
+
+function bandaProyectada(dtm, ipcMap){
+  const today = new Date(); today.setHours(0,0,0,0);
+  const target = new Date(today.getTime() + dtm*86400000);
+  const S = BANDA_LIVE.serie.map(x => ({t:new Date(x.f+'T00:00:00'), piso:x.piso, techo:x.techo}));
+  const lastP = S[S.length-1];
+  if (target <= S[0].t) return {piso:S[0].piso, techo:S[0].techo};
+  if (target <= lastP.t) {                       // dentro de lo publicado: interpolación entre días publicados
+    for (let i=1;i<S.length;i++){
+      if (target <= S[i].t){
+        const a=S[i-1], b=S[i], w=(target-a.t)/(b.t-a.t);
+        return {piso:a.piso+(b.piso-a.piso)*w, techo:a.techo+(b.techo-a.techo)*w};
+      }
+    }
+  }
+  let piso=lastP.piso, techo=lastP.techo, cur=new Date(lastP.t);
+  while (cur < target){
+    const y=cur.getFullYear(), m=cur.getMonth();
+    const D=new Date(y,m+1,0).getDate();
+    const finMes=new Date(y,m+1,1);
+    const hasta=finMes<target?finMes:target;
+    const dias=Math.round((hasta-cur)/86400000);
+    const ym=y*100+m+1;
+    const i=((ipcMap&&ipcMap[ym]!=null)?ipcMap[ym]:bandIpcDefault(ym))/100;
+    piso*=Math.pow(1-i,dias/D); techo*=Math.pow(1+i,dias/D);
+    cur=hasta;
+  }
+  return {piso,techo};
 }
+function bandaAlVto(dtm) { return bandaProyectada(dtm, tfBandIpcMap); }
 
 const p2=v=>v!=null?v.toFixed(2)+'%':'—';
 const p3=v=>v!=null?v.toFixed(3)+'%':'—';
@@ -1501,6 +1622,23 @@ function logReg(pts){
   const b=(n*syl-sl*sy)/(n*sl2-sl*sl),a=(sy-b*sl)/n;return x=>a+b*Math.log(x);
 }
 
+// Curva de TIR real CER usada por el breakeven: interpolacion lineal (en DTM) entre las
+// TIR reales OBSERVADAS de los ZC (no la regresion log, que con R2~0.78 erraba hasta ~4pp
+// en el tramo corto y distorsionaba el breakeven de los nominales). Pasa exacto por los
+// bonos del mismo vencimiento y se clampea fuera del rango de la curva.
+let cerZcPts=[];
+function cerCurveReal(dtm){
+  if(!cerZcPts.length) return cerRegFn(dtm);
+  if(dtm<=cerZcPts[0].x) return cerZcPts[0].y;
+  const last=cerZcPts[cerZcPts.length-1];
+  if(dtm>=last.x) return last.y;
+  for(let i=1;i<cerZcPts.length;i++){
+    const a=cerZcPts[i-1], b=cerZcPts[i];
+    if(dtm<=b.x) return a.y+(b.y-a.y)*(dtm-a.x)/(b.x-a.x);
+  }
+  return last.y;
+}
+
 function badge(diff,thr=0.03){
   if(diff==null)return`<span class="vc fair">s/d</span>`;
   if(diff>thr) return`<span class="vc cheap">BARATO</span>`;
@@ -1582,9 +1720,8 @@ async function fetchProxy(url) {
 
 let tfChart=null,tfRegFn=x=>1.9,tfData=SEED_TF;
 let tfBandChart = null;
-let tfTcHoy     = 1412.99;
-const TF_TC_DEFAULT  = 1412.99;
-const TF_IPC_DEFAULT = 2.6;
+let tfTcHoy     = 1520.30;   // A3500 06/10/2026 (seed; se pisa con el dato en vivo de dlRefresh)
+const TF_TC_DEFAULT  = 1520.30;
 
 // IPC mes a mes para el gráfico de bandas
 // Se construye dinámicamente según los vencimientos de los instrumentos TF
@@ -1610,7 +1747,7 @@ function tfBandIpcMonths() {
 function tfBandBuildUI() {
   const months = tfBandIpcMonths();
   // Inicializar con IPC actual si no existe
-  months.forEach(m => { if (!(m.ym in tfBandIpcMap)) tfBandIpcMap[m.ym] = 2.6; });
+  months.forEach(m => { if (!(m.ym in tfBandIpcMap)) tfBandIpcMap[m.ym] = bandIpcDefault(m.ym); });
   const container = document.getElementById('tf-ipc-months');
   if (!container) return;
   container.innerHTML = months.map((m, i) => `
@@ -1649,11 +1786,12 @@ function tfBandIpcPreset(v) {
   renderTFBandChart();
 }
 
-function tfBandIpcDecay() {
-  // Decreciente: empieza en 3% y baja a 1.5% en 12 meses
+function tfBandIpcRem() {
+  // Vuelve a los defaults (REM sept-26) para todos los meses
+  tfBandIpcMap = {};
   const months = tfBandIpcMonths();
-  months.forEach((m, i) => {
-    const v = parseFloat(Math.max(1.5, 3.0 - i * 0.12).toFixed(1));
+  months.forEach(m => {
+    const v = bandIpcDefault(m.ym);
     tfBandIpcMap[m.ym] = v;
     const el = document.getElementById('tf-ipc-m-'+m.ym);
     if (el) { el.value = v.toFixed(1); el.style.borderColor = tfBandIpcColor(v); }
@@ -1666,8 +1804,8 @@ function tfBandReset() {
   // Reset TC input
   const tcInput = document.getElementById('tf-tc-input');
   if (tcInput) tcInput.value = TF_TC_DEFAULT;
-  // Reset IPC a 2.6% para todos
-  tfBandIpcPreset(TF_IPC_DEFAULT);
+  // Reset IPC al path del REM
+  tfBandIpcRem();
 }
 
 function renderTFBandChart() {
@@ -1677,30 +1815,7 @@ function renderTFBandChart() {
 
   // ── Banda proyectada usando IPC mes a mes ─────────────────────
   // Para cada DTM, calculamos el IPC acumulado hasta ese punto
-  function bandaLocal(dtm) {
-    const today = new Date(); today.setHours(0,0,0,0);
-    const target = new Date(today); target.setDate(today.getDate() + dtm);
-    let pisoAcum  = BANDA.piso_hoy;
-    let techoAcum = BANDA.techo_hoy;
-    let cur = new Date(today.getFullYear(), today.getMonth(), 1);
-    while (cur <= target) {
-      const y = cur.getFullYear(), m = cur.getMonth()+1;
-      const ym = y*100+m;
-      const ipcMes = (tfBandIpcMap[ym] ?? 2.6) / 100;
-      // Fracción del mes que cae dentro del DTM
-      const mStart = new Date(y, m-1, 1);
-      const mEnd   = new Date(y, m, 0);
-      const from   = mStart < today ? today : mStart;
-      const to     = mEnd   < target ? mEnd : target;
-      const diasMes = new Date(y, m, 0).getDate();
-      const diasEfec = Math.max(0, Math.round((to - from)/86400000)+1);
-      const frac = diasEfec / diasMes;
-      pisoAcum  *= Math.pow(1 - ipcMes, frac);
-      techoAcum *= Math.pow(1 + ipcMes, frac);
-      cur = new Date(y, m, 1);
-    }
-    return { piso: pisoAcum, techo: techoAcum };
-  }
+  function bandaLocal(dtm) { return bandaProyectada(dtm, tfBandIpcMap); }
 
   const maxDTM = 420;
   const pisoLine = [], techoLine = [], tcNowLine = [];
@@ -1719,7 +1834,8 @@ function renderTFBandChart() {
     if (!vf || !dtm || dtm <= 0 || !d.price) return null;
     const tcBK      = tc * (vf / d.price);
     const banda     = bandaLocal(dtm);
-    const protegido = tcBK <= banda.techo;
+    // La banda protege al tenedor de la letra si el techo (máx. TC posible) no alcanza el TC breakeven
+    const protegido = tcBK >= banda.techo;
     const sobreTC   = (tcBK / tc - 1) * 100;
     return { x:dtm, y:tcBK, sym:d.symbol, tipo:d.type,
              tcBK, protegido, sobreTC, pisoVto:banda.piso, techoVto:banda.techo, tem:d.tem };
@@ -1727,13 +1843,13 @@ function renderTFBandChart() {
 
   // ── Línea TC según inflación breakeven promedio (de cerRegFn) ─
   const bkevLine = [];
-  const hasCerRegFn = typeof cerRegFn==='function' && cerRegFn(100) !== 0;
+  const hasCerRegFn = cerZcPts.length>0 || (typeof cerRegFn==='function' && cerRegFn(100) !== 0);
   if (hasCerRegFn) {
     const bkPoints = base.map(d => {
       const dtm = getDTM(TF_VTO[d.symbol]) ?? d.dtm;
       if (!dtm || dtm <= 0) return null;
-      const tirRealAnual = cerRegFn(Math.max(dtm, 30));
-      const tirRealMens  = Math.pow(1 + tirRealAnual/100, 1/12) - 1;
+      const tirRealAnual = cerCurveReal(Math.max(dtm, 30));
+      const tirRealMens  = Math.pow(1 + tirRealAnual/100, 30/365) - 1;
       const infBK        = (1 + d.tem/100) / (1 + tirRealMens) - 1;
       return { dtm, infBK };
     }).filter(Boolean);
@@ -1801,7 +1917,7 @@ function renderTFBandChart() {
             title(i){return i[0].raw.sym||'';},
             label(i){
               const d=i.raw; if(!d.sym) return `TC: $${i.parsed.y.toFixed(0)}`;
-              const prot = d.protegido ? '✓ PROTEGIDO' : '⚠ SOBRE EL TECHO';
+              const prot = d.protegido ? '✓ BANDA CUBRE: techo < TC breakeven (el dólar no puede ganarle)' : '⚠ RIESGO: el dólar puede superar el breakeven dentro de la banda';
               return [
                 `TC breakeven: $${d.tcBK.toFixed(2)}/USD`,
                 `vs TC hoy: ${d.sobreTC>=0?'+':''}${d.sobreTC.toFixed(2)}%`,
@@ -1905,12 +2021,13 @@ function tfRender(data){
   const pts=valid.map(d=>{const diff=d.tem-tfRegFn(d.dtm);return{x:d.dtm,y:d.tem,sym:d.symbol,type:d.type,diff};});
   const refPts=[];for(let x=5;x<=xMax;x+=4)refPts.push({x,y:tfRegFn(x)});
   const colors=pts.map(p=>p.diff>0.03?{bg:'rgba(16,185,129,.9)',brd:'rgba(16,185,129,1)'}:p.diff<-0.03?{bg:'rgba(248,113,113,.9)',brd:'rgba(248,113,113,1)'}:{bg:'rgba(148,163,184,.8)',brd:'rgba(148,163,184,1)'});
+  const _tfFirst=!tfChart;  // en refrescos en vivo se redibuja sin animación (evita parpadeo)
   if(tfChart)tfChart.destroy();
   const ctx=document.getElementById('tfChart').getContext('2d');
   tfChart=new Chart(ctx,{type:'scatter',data:{datasets:[
     {label:'Curva',data:refPts,type:'line',borderColor:'rgba(6,182,212,.45)',borderWidth:2,borderDash:[7,4],pointRadius:0,tension:.3,fill:false,order:10},
     {label:'Pts',data:pts.map(p=>({x:p.x,y:p.y,sym:p.sym,diff:p.diff,type:p.type})),backgroundColor:colors.map(c=>c.bg),borderColor:colors.map(c=>c.brd),borderWidth:1.5,pointRadius:6,pointHoverRadius:9,pointStyle:pts.map(p=>p.type==='BONCAP'?'rect':'circle'),order:1}
-  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#111827',borderColor:'#2d4060',borderWidth:1,titleColor:'#e8f0f8',bodyColor:'#94adc8',padding:9,callbacks:{title(i){return i[0].raw.sym||'Curva';},label(i){const d=i.raw;if(!d.sym)return`TEM ref: ${i.parsed.y.toFixed(3)}%`;const s=d.diff>=0?'+':'';return[`Tipo: ${d.type}`,`TEM: ${i.parsed.y.toFixed(2)}%`,`Curva: ${tfRegFn(i.parsed.x).toFixed(3)}%`,`Δ: ${s}${d.diff.toFixed(3)}% ${d.diff>0.03?'← BARATO':d.diff<-0.03?'← CARO':'← en curva'}`,`DTM: ${i.parsed.x}d`];}}}},
+  ]},options:{animation:_tfFirst?undefined:false,responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#111827',borderColor:'#2d4060',borderWidth:1,titleColor:'#e8f0f8',bodyColor:'#94adc8',padding:9,callbacks:{title(i){return i[0].raw.sym||'Curva';},label(i){const d=i.raw;if(!d.sym)return`TEM ref: ${i.parsed.y.toFixed(3)}%`;const s=d.diff>=0?'+':'';return[`Tipo: ${d.type}`,`TEM: ${i.parsed.y.toFixed(2)}%`,`Curva: ${tfRegFn(i.parsed.x).toFixed(3)}%`,`Δ: ${s}${d.diff.toFixed(3)}% ${d.diff>0.03?'← BARATO':d.diff<-0.03?'← CARO':'← en curva'}`,`DTM: ${i.parsed.x}d`];}}}},
   scales:{
     x:{type:'linear',min:0,max:xMax,title:{display:true,text:'Días al vencimiento',color:'#4a6080',font:{family:'IBM Plex Mono',size:10}},grid:{color:'rgba(31,45,64,.5)'},ticks:{color:'#4a6080',font:{family:'IBM Plex Mono',size:10}}},
     y:{title:{display:true,text:'TEM (%)',color:'#4a6080',font:{family:'IBM Plex Mono',size:10}},grid:{color:'rgba(31,45,64,.5)'},min:parseFloat(minTEM.toFixed(2)),max:parseFloat(maxTEM.toFixed(2)),ticks:{color:'#4a6080',font:{family:'IBM Plex Mono',size:10},callback:v=>v.toFixed(2)+'%'}}
@@ -1922,8 +2039,12 @@ function tfRender(data){
 
 async function tfRefresh(){
   try{
-    const json=await fetch('/api/proxy?src=lecaps').then(r=>r.json());
-    const raw=(json.data||json).filter(d=>TF_VTO[d.symbol]);
+    const[json,notesJson]=await Promise.all([
+      fetch('/api/proxy?src=lecaps').then(r=>r.json()),
+      fetch('/api/proxy?src=notes').then(r=>r.json()).catch(()=>({data:[]})),
+    ]);
+    const tfList=addMissingTFFromNotes(json.data||json, notesJson.data||notesJson);
+    const raw=tfList.filter(d=>TF_VTO[d.symbol]);
     if(!raw.length) throw new Error('datos vacíos');
     // Recalculate TEM from live price + VF
     const enriched=raw.map(d=>{
@@ -1940,8 +2061,10 @@ async function tfRefresh(){
     });
     tfRender(enriched);
     setStatus('live','En vivo · '+now8());
+    const _u=document.getElementById('tf-upd'); if(_u){_u.style.color='var(--gr)'; _u.textContent='● en vivo · actualizado '+now8()+(tfMarketOpen()?' (c/60 s)':' (mercado cerrado: último precio)');}
   }catch(e){
     setStatus('seed','⚠ Sin conexión · mostrando datos de referencia');
+    const _u=document.getElementById('tf-upd'); if(_u){_u.style.color='var(--am)'; _u.textContent='⚠ sin conexión · datos de referencia';}
   }
 }
 
@@ -1951,6 +2074,7 @@ async function tfRefresh(){
 let cerChart=null,cerRegFn=x=>0,cerOf=SEED_CER_IDX.cer,cerPriceMap={};
 
 function cerRender(priceMap,cer){
+  if(Number.isFinite(cer)&&cer>0) window._cerIdx=cer;  // antes nunca se actualizaba: la solapa TAMAR usaba el CER semilla de jun-26 (796,44)
   // Suplementar priceMap con seed TXM si la API CER no los incluye
   SEED_CER_PRECIOS.filter(d=>d.symbol.startsWith('TXM')).forEach(d=>{
     if(!priceMap[d.symbol]) priceMap[d.symbol]={c:d.c,bid:d.bid,ask:d.ask,pct:d.pct};
@@ -1963,6 +2087,7 @@ function cerRender(priceMap,cer){
   const cpn=CER_INSTR.filter(i=>i.tipo==='CPN');
   const zcCalc=zc.map(i=>{const p=priceMap[i.sym];if(!p)return null;const c=computeCER(i,p.c,cer);return{...i,...c,precio:p.c,bid:p.bid||p.px_bid,ask:p.ask||p.px_ask,pct:p.pct||p.pct_change};}).filter(Boolean);
 
+  cerZcPts=zcCalc.filter(d=>d.dtm>0&&d.tir!=null).map(d=>({x:d.dtm,y:d.tir})).sort((a,b)=>a.x-b.x);
   if(zcCalc.length>=3){try{cerRegFn=logReg(zcCalc.filter(d=>d.dtm>0&&d.tir!=null).map(d=>({x:d.dtm,y:d.tir})));
     // Recalcular breakeven ahora que cerRegFn está lista
     setTimeout(()=>{try{bkevRender();}catch(e){}},50);
@@ -2034,7 +2159,7 @@ function cerRender(priceMap,cer){
     if(i.cer0){
       vtCer=100*(cer/i.cer0);
       tirCer=(Math.pow(vtCer/precio,365/dtm)-1)*100;
-      paridad=vtCer/precio;
+      paridad=precio/vtCer;  // igual que ZC/CPN: precio sobre valor técnico (antes estaba invertida)
     }
     const tCol=tirCer!=null?(tirCer>0.5?'color:var(--gr)':tirCer<-0.5?'color:var(--rd)':'color:#94adc8'):'color:var(--mu)';
     const pCol=paridad!=null?(paridad>1.005?'color:var(--rd)':paridad<0.995?'color:var(--gr)':'color:#94adc8'):'color:var(--mu)';
@@ -2397,11 +2522,11 @@ const TMR_INSTR = {
   TTS26: {tipo:'DUAL',         vtod:'15/09/26', vtoi:'2026-09-15', emision:'2025-01-24', piso_tem:2.17/100, cer0:null}, // vto corregido 15/09/2026 (era 30/09/26, fecha real via bonistas/cohen/docta)
   TTD26: {tipo:'DUAL',         vtod:'15/12/26', vtoi:'2026-12-15', emision:'2025-01-24', piso_tem:2.14/100, cer0:null},
   // Duales CER/TAMAR — Gestión Milei · CER₀ pendiente de datos de licitación
-  TXMJ8: {tipo:'DUAL CER/TAMAR', vtod:'30/06/28', vtoi:'2028-06-30', emision:'2026-05-15', piso_tem:null, cer0:758.1180},
-  TXMD8: {tipo:'DUAL CER/TAMAR', vtod:'15/12/28', vtoi:'2028-12-15', emision:'2026-06-11', piso_tem:null, cer0:779.2409},
-  TXMJ9: {tipo:'DUAL CER/TAMAR', vtod:'29/06/29', vtoi:'2029-06-29', emision:'2026-04-30', piso_tem:null, cer0:746.3809},
-  TXMD9: {tipo:'DUAL CER/TAMAR', vtod:'14/12/29', vtoi:'2029-12-14', emision:'2026-06-11', piso_tem:null, cer0:779.2409},
-  TXMJ0: {tipo:'DUAL CER/TAMAR', vtod:'28/06/30', vtoi:'2030-06-28', emision:'2026-06-11', piso_tem:null, cer0:779.2409},
+  TXMJ8: {tipo:'DUAL CER/TAMAR', vtod:'30/06/28', vtoi:'2028-06-30', emision:'2026-05-15', piso_tem:null, margen:3.00, cer0:758.1180},
+  TXMD8: {tipo:'DUAL CER/TAMAR', vtod:'15/12/28', vtoi:'2028-12-15', emision:'2026-06-11', piso_tem:null, margen:3.00, cer0:779.2409},
+  TXMJ9: {tipo:'DUAL CER/TAMAR', vtod:'29/06/29', vtoi:'2029-06-29', emision:'2026-04-30', piso_tem:null, margen:3.00, cer0:746.3809},
+  TXMD9: {tipo:'DUAL CER/TAMAR', vtod:'14/12/29', vtoi:'2029-12-14', emision:'2026-06-11', piso_tem:null, margen:3.00, cer0:779.2409},
+  TXMJ0: {tipo:'DUAL CER/TAMAR', vtod:'28/06/30', vtoi:'2030-06-28', emision:'2026-06-11', piso_tem:null, margen:3.00, cer0:779.2409},
   // Agregado 01/09/2026 (ver memoria bonos-dashboard-cer-audit): dual TAMAR/Dólar, estreno licitación 29/07/2026
   // Paga MAX(TAMAR acumulada, devaluación A3500 acumulada desde emisión + spread 6,64% anual) — spread sobre TAMAR = 0%
   // TC0 y spread: Secretaría de Finanzas (resultado licitación 29-jul-2026) + prensa (Ámbito/Cronista); TC0 = A3500 BCRA del 31/07/2026
@@ -2443,45 +2568,39 @@ function tmrRow(d, tamarTEM) {
   }
 
   if (instr.tipo === 'DUAL CER/TAMAR') {
-    const precio    = d.c;
-    const pchCls    = d.pct >= 0 ? 'color:var(--gr)' : 'color:var(--rd)';
-    const pCls      = 'color:#94adc8';
-    const today     = new Date(); today.setHours(0,0,0,0);
-    const vtoDate   = new Date(instr.vtoi+'T00:00:00-03:00');
-    const diasRest30360 = days30360(today, vtoDate);
-    if (diasRest30360 <= 0) return '';
-    const mesesRest = diasRest30360 / 30;
-
-    // Escenario TAMAR: precio × (1 + TAMAR_TEM)^meses_rest
-    const vtTamar   = precio * Math.pow(1 + tamarTEM, mesesRest);
-    const retTamar  = vtTamar / precio - 1;
-    const tnaEquiv  = tamarTEM * 12 * 100;
-
-    // Escenario CER: necesita cer0 + CER hoy
-    let tirCer = null, cerGana = null;
-    if (instr.cer0 && window._cerIdx) {
-      const vtCer = 100 * (window._cerIdx / instr.cer0);
-      tirCer = (Math.pow(vtCer / precio, 365 / diasRest30360) - 1) * 100;
-      cerGana = vtCer > vtTamar;
-    }
-
-    const escTag = cerGana === null
-      ? '<span style="color:var(--mu);font-size:9px">necesita CER₀</span>'
-      : cerGana
-        ? '<span style="color:#34d399;font-size:9px;font-weight:700">📈 CER</span>'
-        : '<span style="color:#f472b6;font-size:9px;font-weight:700">⚡ TAMAR</span>';
-
+    const today   = new Date(); today.setHours(0,0,0,0);
+    const vtoDate = new Date(instr.vtoi+'T00:00:00-03:00');
+    const dtm     = Math.round((vtoDate-today)/86400000);
+    if (dtm <= 0) return '';
+    const pchCls  = d.pct >= 0 ? 'color:var(--gr)' : 'color:var(--rd)';
+    const vtCer   = (instr.cer0 && window._cerIdx) ? 100*window._cerIdx/instr.cer0 : null;   // pata CER hoy (capital ajustado)
+    const T       = tamarDualCalc(instr, today);                                              // pata TAMAR (prospecto)
+    const vtTam   = T ? T.vtNow : null;
+    const vtMax   = Math.max(vtCer??0, vtTam??0) || null;
+    const par     = vtMax ? precio/vtMax : null;
+    const tirTam  = T ? (Math.pow(T.payVto/precio, 365/dtm)-1)*100 : null;                    // si paga TAMAR (TAMAR actual proyectada)
+    const tirCer  = vtCer ? (Math.pow(vtCer/precio, 365/dtm)-1)*100 : null;                   // si paga CER (real)
+    const meses   = dtm/30.4167;
+    const piBE    = (T && vtCer) ? (Math.pow(T.payVto/vtCer, 1/meses)-1)*100 : null;          // inflación mensual (CER) que iguala ambas patas al vto.
+    const gana    = (vtCer!=null && vtTam!=null) ? (vtCer>=vtTam ? 'CER' : 'TAMAR') : null;
+    const escTag  = gana===null ? '<span style="color:var(--mu);font-size:9px">—</span>'
+      : gana==='CER' ? '<span style="color:#34d399;font-size:9px;font-weight:700">📈 CER</span>'
+                     : '<span style="color:#f472b6;font-size:9px;font-weight:700">⚡ TAMAR</span>';
+    const f2 = v => v==null ? '—' : v.toFixed(2);
     return `<tr>
       <td>${d.symbol}<span style="font-size:8px;margin-left:4px;padding:1px 5px;border-radius:3px;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.3);color:#34d399">CER/TAM</span></td>
       <td class="ct"><span class="vto">${instr.vtod}</span></td>
-      <td style="${pCls};font-weight:600">${pr(precio)}</td>
+      <td style="color:#94adc8;font-weight:600">${pr(precio)}</td>
       <td style="color:var(--mu)">${pr(d.bid)}</td>
       <td style="color:var(--mu)">${pr(d.ask)}</td>
-      <td style="color:var(--mu)">${diasRest30360}d</td>
-      <td style="color:var(--gr);font-weight:600">${p2(retTamar*100)}</td>
-      <td style="color:var(--am)">${p2(tnaEquiv)}</td>
-      <td style="color:#34d399">${tirCer !== null ? p2(tirCer) : '<span style="color:var(--mu);font-size:9px">—&nbsp;(CER₀ pendiente)</span>'}</td>
-      <td class="ct">${escTag}</td>
+      <td style="color:var(--mu)">${dtm}d</td>
+      <td style="color:#f472b6;font-weight:700" title="${T?('TAMAR promedio a la fecha '+T.avgNow.toFixed(2)+'% · proyectada al vto. '+T.avgVto.toFixed(2)+'% (+ margen '+(instr.margen||0).toFixed(2)+'%)'):''}">${tirTam!=null?p2(tirTam):'—'}</td>
+      <td style="color:#f472b6">${f2(T?T.payVto:null)}</td>
+      <td style="color:#34d399;font-weight:700">${tirCer!=null?p2(tirCer):'—'}</td>
+      <td style="color:#34d399">${f2(vtCer)}</td>
+      <td style="color:#94adc8" title="Precio sobre el mayor valor de las dos patas hoy">${par==null?'—':(par*100).toFixed(1)+'%'}</td>
+      <td style="color:var(--am)" title="Inflación mensual (CER) desde hoy hasta el vto. que iguala el pago CER con el pago TAMAR">${piBE!=null?piBE.toFixed(2)+'%':'—'}</td>
+      <td class="ct" title="Pata con mayor valor a la fecha: CER ${f2(vtCer)} vs TAMAR ${f2(vtTam)}">${escTag}</td>
       <td style="${pchCls}">${d.pct!=null?(d.pct>=0?'+':'')+d.pct.toFixed(2)+'%':'—'}</td>
     </tr>`;
   }
@@ -2576,6 +2695,34 @@ function tmrRow(d, tamarTEM) {
   return '';
 }
 
+window._tamarHist=null;
+// ── Pata TAMAR de los duales CER/TAMAR según prospecto (TXMJ8, 15/05/2026) ──
+// Pago al vto. = max( capital×CER(T-10 vto)/CER(T-10 emisión) ; VNO×(1+TAMAR TEM)^(DÍAS/30) ), con DÍAS 30/360 emisión→vto.,
+// TAMAR = promedio aritmético simple de la TAMAR TNA publicada desde 10 días hábiles antes de la emisión hasta 10 días hábiles antes del vto.,
+// TEM = [(1+(TNA+margen)·32/365)^(365/32)]^(1/12)−1, margen 3,00% sumado a la TNA — confirmado con la fórmula del prospecto de TXMJ8: TEM = [(1+(TAMAR+3%)/(365/32))^(365/32)]^(1/12)−1.
+function bdShift(d,n){ const x=new Date(d); let c=0; while(c<n){ x.setDate(x.getDate()-1); const w=x.getDay(); if(w!==0&&w!==6) c++; } return x; }
+function bdCount(a,b){ let c=0; const x=new Date(a); while(x<b){ x.setDate(x.getDate()+1); const w=x.getDay(); if(w!==0&&w!==6) c++; } return c; }
+function tamarDualCalc(instr, today){
+  const H=window._tamarHist; if(!H||!H.dates.length) return null;
+  const ymd=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  const emi=new Date(instr.emision+'T00:00:00'), vto=new Date(instr.vtoi+'T00:00:00');
+  const s=ymd(bdShift(emi,10)), eD=bdShift(today,10), e=ymd(eD);
+  if(s<H.dates[0]) return null;
+  const vals=H.dates.filter(k=>k>=s&&k<=e).map(k=>H.map[k]); if(!vals.length) return null;
+  const sum=vals.reduce((a,b)=>a+b,0), n=vals.length, tnaLast=H.map[H.dates[H.dates.length-1]];
+  const nFut=Math.max(0, bdCount(eD, bdShift(vto,10)));
+  const avgNow=sum/n, avgVto=(sum+nFut*tnaLast)/(n+nFut), mg=instr.margen||0;
+  const tem=tna=>calcTamarTEM(tna+mg);
+  return {
+    vtNow:100*Math.pow(1+tem(avgNow), days30360(emi,today)/30),   // lo que pagaría la pata TAMAR si venciera hoy
+    payVto:100*Math.pow(1+tem(avgVto), days30360(emi,vto)/30),    // pago al vto. proyectando la TAMAR actual hasta el final
+    avgNow, avgVto, tnaLast, n
+  };
+}
+function tmrDualCTRender(){
+  const L=window._tmrDualCTList; if(!L) return;
+  document.getElementById('tmr-duales-cer').innerHTML=L.map(d=>tmrRow(d,tmrTamarTEM)).join('');
+}
 function tmrRender(notes, bonds, tamarTEM) {
   tmrTamarTEM = tamarTEM;
   const letamar   = notes.filter(d=>TMR_INSTR[d.symbol]?.tipo==='LETAMAR');
@@ -2587,12 +2734,14 @@ function tmrRender(notes, bonds, tamarTEM) {
   document.getElementById('tmr-letamar').innerHTML    = letamar.map(d=>tmrRow(d,tamarTEM)).join('');
   document.getElementById('tmr-bonos').innerHTML      = bTamar.map(d=>tmrRow(d,tamarTEM)).join('');
   document.getElementById('tmr-duales').innerHTML     = duales.map(d=>tmrRow(d,tamarTEM)).join('');
+  window._tmrDualCTList = dualesCT;
   document.getElementById('tmr-duales-cer').innerHTML = dualesCT.map(d=>tmrRow(d,tamarTEM)).join('');
   document.getElementById('tmr-duales-usd').innerHTML = dualesUSD.map(d=>tmrRow(d,tamarTEM)).join('');
 
   // fallback seed para duales CER/TAMAR y TAMAR/USD si la API no los devuelve
   if (!dualesCT.length) {
     const seedCT = SEED_TMR_BONDS.filter(d=>TMR_INSTR[d.symbol]?.tipo==='DUAL CER/TAMAR');
+    window._tmrDualCTList = seedCT;
     document.getElementById('tmr-duales-cer').innerHTML = seedCT.map(d=>tmrRow(d,tamarTEM)).join('');
   }
   if (!dualesUSD.length) {
@@ -2650,6 +2799,7 @@ async function tmrRefresh(){
       if(tv){ tamarTNA = tv.valor; tamarFecha = tv.fecha; }
     }catch{}
     const tamarTEM = calcTamarTEM(tamarTNA);  // fórmula oficial prospecto
+    try{ const th=await fetch('/api/proxy?src=tamar-hist').then(r=>r.json()); const m={}; (th.serie||[]).forEach(x=>m[x.f]=x.v); if(Object.keys(m).length) window._tamarHist={map:m,dates:Object.keys(m).sort()}; }catch(e){}
 
     const notes   = Array.isArray(notesRes) ? notesRes : (notesRes.data||[]);
     const bonds   = Array.isArray(bondsRes) ? bondsRes : (bondsRes.data||[]);
@@ -2956,7 +3106,7 @@ function tsimRun(){
 // ═══════════════════════════════════════════════════════════════
 //  BREAKEVEN INFLATION — Nominal vs CER
 // ═══════════════════════════════════════════════════════════════
-const IPC_ULTIMO = 1.7; // Ago-2026 (INDEC), actualizado 10/09/2026
+const IPC_ULTIMO = 2.2; // Oct-2026 (INDEC), actualizado 12/11/2026
 let bkevChart = null;
 
 function bkevRender() {
@@ -2994,15 +3144,15 @@ function bkevRender() {
     const clamped    = dtmClamped !== d.dtm;
 
     // TIR real ANUAL de la curva CER (interpolada)
-    const tirRealAnual = cerRegFn(dtmClamped);
+    const tirRealAnual = cerCurveReal(dtmClamped);
 
-    // Convertir a MENSUAL para comparar con TEM (que ya es mensual)
-    // TIR_real_monthly = (1 + TIR_real_anual/100)^(1/12) - 1
-    const tirRealMens = (Math.pow(1 + tirRealAnual/100, 1/12) - 1) * 100;
+    // Convertir a "mes de 30 dias" (misma base que la TEM del nominal: (VF/P)^(30/dtm)-1)
+    // TIR_real_30d = (1 + TIR_real_anual/100)^(30/365) - 1
+    const tirRealMens = (Math.pow(1 + tirRealAnual/100, 30/365) - 1) * 100;
 
-    // Inflación mensual implícita: (1+TEM_nom) / (1+TIR_real_mens) - 1
+    // Inflación implícita por 30 dias: (1+TEM_nom) / (1+TIR_real_30d) - 1
     const bkMens  = ((1 + d.tem/100) / (1 + tirRealMens/100) - 1) * 100;
-    const bkAnual = (Math.pow(1 + bkMens/100, 12) - 1) * 100;
+    const bkAnual = (Math.pow(1 + bkMens/100, 365/30) - 1) * 100;
     const vsIpc   = bkMens - IPC_ULTIMO;
 
     return { ...d, tirRealAnual, tirRealMens, bkMens, bkAnual, vsIpc, clamped };
@@ -3039,12 +3189,12 @@ function bkevRender() {
   // Tabla curva CER de referencia
   const cerZC = CER_INSTR.filter(i=>i.tipo==='ZC').map(i=>{
     const dtm=getDTM(i.vtoi); if(!dtm||dtm<=0) return null;
-    return {...i, dtm, tir:cerRegFn(dtm)};
+    return {...i, dtm, tir:cerCurveReal(dtm)};
   }).filter(Boolean).sort((a,b)=>a.dtm-b.dtm);
   document.getElementById('bk-k5').textContent = cerZC.length;
   document.getElementById('bkev-cer-body').innerHTML = cerZC.map(d=>{
     const tirCol=d.tir>0?'color:var(--gr)':d.tir<0?'color:var(--rd)':'color:var(--mu)';
-    return `<tr><td style="color:#94adc8">${d.sym}</td><td style="color:var(--mu)">${d.dtm}d</td><td style="${tirCol};font-weight:600">${p2(d.tir)}</td><td style="font-size:9px;color:var(--pu)">ZC</td><td style="color:var(--am)">${p2(d.tir/12)}</td></tr>`;
+    return `<tr><td style="color:#94adc8">${d.sym}</td><td style="color:var(--mu)">${d.dtm}d</td><td style="${tirCol};font-weight:600">${p2(d.tir)}</td><td style="font-size:9px;color:var(--pu)">ZC</td><td style="color:var(--am)">${p2((Math.pow(1+d.tir/100,30/365)-1)*100)}</td></tr>`;
   }).join('');
 
   // KPIs
@@ -3057,8 +3207,11 @@ function bkevRender() {
   document.getElementById('bk-k2').textContent  = p2(minBk.bkMens);
   document.getElementById('bk-k2s').textContent = minBk.symbol+' · CER domina';
   document.getElementById('bk-k3').textContent  = belowIPC+' / '+rows.length;
+  document.getElementById('bk-k3l').textContent = 'Vs IPC Oct '+IPC_ULTIMO.toFixed(1)+'%';
+  document.getElementById('bk-th-ipc').textContent = 'vs IPC '+IPC_ULTIMO.toFixed(1)+'%';
+  document.getElementById('bk-leg-ipc').textContent = 'IPC actual ('+IPC_ULTIMO.toFixed(1)+'%)';
   document.getElementById('bk-k4').textContent  = p2(avgBk);
-  document.getElementById('bk-regfn-status').textContent = 'Activa · TIR = a + b·ln(DTM) · '+cerZC.length+' puntos';
+  document.getElementById('bk-regfn-status').textContent = 'Activa · interpolación lineal entre TIR reales observadas · '+cerZC.length+' ZC';
 
 
   // ── Gráfico de línea: curva breakeven por fecha de vencimiento ───
@@ -3212,12 +3365,12 @@ const HD_CONFIG = {
   AL30:{tipo:'AL',ley:'Arg', vto:'2030-07-09',vtod:'Jul 30',cpn:'0.75%'},
   AL35:{tipo:'AL',ley:'Arg', vto:'2035-07-09',vtod:'Jul 35',cpn:'4.13%'},
   AL41:{tipo:'AL',ley:'Arg', vto:'2041-07-09',vtod:'Jul 41',cpn:'3.50%'},
-  // Otros ley Argentina (también van en curva AL)
-  AO27:{tipo:'AL',ley:'Arg', vto:'2027-10-30',vtod:'Oct 27',cpn:'6.00%'},
-  AO28:{tipo:'AL',ley:'Arg', vto:'2028-10-31',vtod:'Oct 28',cpn:'6.00%'},
+  // AO/AN: bonares 2027-2029 de cupón 6,0-6,5% (grupo propio 'AO'); AE38 queda en 'AL' (par ley Arg. del GD38). Reordenado 30/10/2026: orden por VENCIMIENTO y no por duración
+  AO27:{tipo:'AO',ley:'Arg', vto:'2027-10-30',vtod:'Oct 27',cpn:'6.00%'},
+  AO28:{tipo:'AO',ley:'Arg', vto:'2028-10-31',vtod:'Oct 28',cpn:'6.00%'},
   // Agregado 01/09/2026 (ver memoria bonos-dashboard-cer-audit): cotiza en la fuente en vivo (rendimientos.co/api/soberanos) pero faltaba acá, se descartaba en silencio
-  AO29:{tipo:'AL',ley:'Arg', vto:'2029-10-31',vtod:'Oct 29',cpn:'6.00%'},
-  AN29:{tipo:'AL',ley:'Arg', vto:'2029-11-30',vtod:'Nov 29',cpn:'6.50%'},
+  AO29:{tipo:'AO',ley:'Arg', vto:'2029-10-31',vtod:'Oct 29',cpn:'6.00%'},
+  AN29:{tipo:'AO',ley:'Arg', vto:'2029-11-30',vtod:'Nov 29',cpn:'6.50%'},
   AE38:{tipo:'AL',ley:'Arg', vto:'2038-01-09',vtod:'Ene 38',cpn:'5.00%'},
   // Ley NY — otros
   BPD7:{tipo:'OT',ley:'NY',  vto:'2027-11-01',vtod:'Nov 27',cpn:'5.00%'},
@@ -3400,20 +3553,26 @@ function hdRenderAll(sobData, bpData) {
     }
     return { ...d, ytm, duration: seed.duration };
   });
+  // TIR de los benchmarks HD para el tab DL (spread vs HD)
+  enriched.forEach(d => { const y = parseFloat(d.ytm); if (Number.isFinite(y)) HD_YTM[d.symbol] = y; });
+  try { if (typeof onxRender === 'function' && typeof ON_UNIV !== 'undefined') onxRender(); } catch(e) {}
+  try { if (typeof dlNotesLast !== 'undefined' && dlNotesLast) dlRenderAll(dlNotesLast, dlTcData); } catch(e) {}
 
-  const gd    = enriched.filter(d => HD_CONFIG[d.symbol]?.tipo==='GD').sort((a,b)=>parseFloat(a.duration||0)-parseFloat(b.duration||0));
-  // Todos los de ley Argentina (AL + AO/AN/AE) van en la curva AL
-  const al    = enriched.filter(d => HD_CONFIG[d.symbol]?.tipo==='AL').sort((a,b)=>parseFloat(a.duration||0)-parseFloat(b.duration||0));
-  const otros = enriched.filter(d => HD_CONFIG[d.symbol]?.tipo==='OT').sort((a,b)=>parseFloat(a.duration||0)-parseFloat(b.duration||0));
-
-  // Separar para las tablas: Bonares puros (AL*) vs otros ley arg (AO/AN/AE)
-  const bonares   = al.filter(d => d.symbol.startsWith('AL'));
-  const otrosArg  = al.filter(d => !d.symbol.startsWith('AL'));
-  const bp    = bpData.sort((a,b)=>b.vol-a.vol);
+  // Orden por fecha de vencimiento (antes por duración seed: GD38 aparecía antes que GD35, AN29 antes que AO29)
+  const byVto = (a,b) => (HD_CONFIG[a.symbol]?.vto||'').localeCompare(HD_CONFIG[b.symbol]?.vto||'');
+  const gd    = enriched.filter(d => HD_CONFIG[d.symbol]?.tipo==='GD').sort(byVto);
+  // AL = Bonares AL29/AL30/AL35/AL41 + AE38 (par ley Argentina de GD38) — es la curva comparable con GD
+  const al    = enriched.filter(d => HD_CONFIG[d.symbol]?.tipo==='AL').sort(byVto);
+  // AO = Bonares AO27/AO28/AO29/AN29 (cupón 6,0–6,5%), tabla y serie aparte
+  const ao    = enriched.filter(d => HD_CONFIG[d.symbol]?.tipo==='AO').sort(byVto);
+  // OT = BPD7 (BOPREAL serie 1D ley NY): ya figura en la tabla BOPREAL, solo se usa para KPIs/curva
+  const otros = enriched.filter(d => HD_CONFIG[d.symbol]?.tipo==='OT').sort(byVto);
+  const bpOrd = d => { const c=BP_CONFIG[d.symbol]||{}; return (c.vto==='2028'?'2028':'2027')+'|'+(c.serie||'')+'|'+(d.symbol.endsWith('D')?'0':'1'); };
+  const bp    = bpData.sort((a,b)=>bpOrd(a).localeCompare(bpOrd(b)));  // por vencimiento, serie y moneda (antes por volumen)
 
   document.getElementById('hd-gd').innerHTML    = gd.map(d=>hdRow(d,HD_CONFIG[d.symbol])).join('');
-  document.getElementById('hd-al').innerHTML    = bonares.map(d=>hdRow(d,HD_CONFIG[d.symbol])).join('');
-  document.getElementById('hd-otros').innerHTML = [...otrosArg,...otros].map(d=>hdRow(d,HD_CONFIG[d.symbol])).join('');
+  document.getElementById('hd-al').innerHTML    = al.map(d=>hdRow(d,HD_CONFIG[d.symbol])).join('');
+  document.getElementById('hd-otros').innerHTML = ao.map(d=>hdRow(d,HD_CONFIG[d.symbol])).join('');
   document.getElementById('hd-bp').innerHTML    = bp.filter(d=>BP_CONFIG[d.symbol]).map(bpRow).join('');
 
   // KPIs
@@ -3438,7 +3597,7 @@ function hdRenderAll(sobData, bpData) {
   document.getElementById('hd-k5').textContent = allSob.length+' sob + '+bpData.filter(d=>BP_CONFIG[d.symbol]).length+' BOPREAL';
 
   // Spread table TIR AL − TIR GD
-  const pairs = [['GD29','AL29'],['GD30','AL30'],['GD35','AL35'],['GD38','AL38'],['GD41','AL41']];
+  const pairs = [['GD29','AL29'],['GD30','AL30'],['GD35','AL35'],['GD38','AE38'],['GD41','AL41']];
   document.getElementById('hd-spread').innerHTML = pairs.map(([gs,as]) => {
     const g = enriched.find(d=>d.symbol===gs);
     const a = enriched.find(d=>d.symbol===as);
@@ -3468,7 +3627,9 @@ function hdRenderAll(sobData, bpData) {
   const alPts = al
     .map(d=>({x:toNum(d.duration), y:toNum(d.ytm), sym:d.symbol, precio:d.price_usd}))
     .filter(d=>d.x&&d.y).sort((a,b)=>a.x-b.x);
-  const alExtPts = [];
+  const alExtPts = ao
+    .map(d=>({x:toNum(d.duration), y:toNum(d.ytm), sym:d.symbol, precio:d.price_usd}))
+    .filter(d=>d.x&&d.y).sort((a,b)=>a.x-b.x);
   const otPts = otros
     .map(d=>({x:toNum(d.duration), y:toNum(d.ytm), sym:d.symbol, precio:d.price_usd}))
     .filter(d=>d.x&&d.y).sort((a,b)=>a.x-b.x);
@@ -3553,7 +3714,7 @@ function hdRenderAll(sobData, bpData) {
         pointRadius: 7, pointHoverRadius: 11,
         showLine: false, order: 1 },
       // ── Otros ley arg — triángulos ──
-      { label:'Otros Ley Arg. (AO/AN/AE)',
+      { label:'AO/AN · Bonares 2027-29 (ley Arg.)',
         data: alExtScatter,
         backgroundColor: 'rgba(251,146,60,.7)',
         borderColor: '#fb923c',
@@ -3561,7 +3722,7 @@ function hdRenderAll(sobData, bpData) {
         pointStyle: 'triangle',
         showLine: false, order: 1 },
       // ── Otros soberanos ──
-      { label:'Otros soberanos',
+      { label:'BOPREAL 1D (BPD7)',
         data: otPts,
         backgroundColor: 'rgba(20,184,166,.75)',
         borderColor: '#14b8a6',
@@ -3671,6 +3832,7 @@ document.getElementById('sim-cer-f').textContent=SEED_CER_IDX.fecha;
 // Construir controles de IPC mes a mes para el gráfico de bandas
 tfBandBuildUI();
 setTimeout(()=>{ try{ renderTFBandChart(); }catch(e){} }, 100);
+bandaRefresh();
 // TAMAR seed
 tmrUpdateRateBox(SEED_TAMAR_RATE, SEED_TAMAR_TNA, '27/05/2026 (seed)');
 tmrRender(SEED_TMR_NOTES, SEED_TMR_BONDS, SEED_TAMAR_RATE);
@@ -3691,10 +3853,31 @@ const DL_BENCH = {
   AO27: { tir: 4.95, desc: 'AO27 Oct-27' },
   AO28: { tir: 8.44, desc: 'AO28 Oct-28' },
 };
+// TIR de los benchmarks HD: se toma del módulo HD (hdRenderAll → HD_YTM); DL_BENCH queda solo como respaldo
+let HD_YTM = {};
 function dlBench(dtm) {
-  if (dtm <= 150) return { name:'BPD7', ...DL_BENCH.BPD7 };
-  if (dtm <= 600) return { name:'AO27', ...DL_BENCH.AO27 };
-  return { name:'AO28', ...DL_BENCH.AO28 };
+  const name = dtm <= 150 ? 'BPD7' : (dtm <= 600 ? 'AO27' : 'AO28');
+  const live = HD_YTM[name];
+  return { name, ...DL_BENCH[name], tir: Number.isFinite(live) ? live : DL_BENCH[name].tir };
+}
+// Tasa fija (LECAP/BONCAP) comparable por plazo: TEM interpolada linealmente sobre la curva TF actual
+function tfTeaAt(dtm) {
+  const base = (tfData && tfData.length) ? tfData : SEED_TF;
+  const pts = base.map(d => {
+    const dd = getDTM(TF_VTO[d.symbol]) ?? d.dtm;
+    const r = computeTF(d.symbol, d.price) || { tem: d.tem };
+    return { x: dd, tem: r.tem };
+  }).filter(p => p.x > 3 && Number.isFinite(p.tem)).sort((a,b) => a.x - b.x);
+  if (!pts.length) return null;
+  let tem;
+  if (dtm <= pts[0].x) tem = pts[0].tem;
+  else if (dtm >= pts[pts.length-1].x) tem = pts[pts.length-1].tem;
+  else {
+    for (let i = 1; i < pts.length; i++) {
+      if (dtm <= pts[i].x) { const a = pts[i-1], b = pts[i]; tem = a.tem + (b.tem - a.tem) * (dtm - a.x) / (b.x - a.x); break; }
+    }
+  }
+  return { tem, tea: (Math.pow(1 + tem/100, 365/30) - 1) * 100, clamped: dtm > pts[pts.length-1].x };
 }
 
 const DL_CONFIG = {
@@ -3714,9 +3897,9 @@ const DL_CONFIG = {
 };
 
 const SEED_DL_TC = {
-  valor: 1512.7304,      // TC A3500 mayorista BCRA — actualizado 01/09/2026
-  valorAnterior: 1509.4686,
-  fecha: '2026-09-01',
+  valor: 1520.30,        // TC A3500 mayorista BCRA — actualizado 06/10/2026
+  valorAnterior: 1519.25,
+  fecha: '2026-10-06',
   fuente: 'BCRA A3500'
 };
 const SEED_DL_NOTES = [
@@ -3750,11 +3933,16 @@ function dlCalc(d, tcData) {
   const paridad   = (precioUSD / cfg.vn_usd) * 100;
   // TIR en USD con TC flat (correcto: dividir precio ARS por TC hoy)
   const tirUSD    = Math.pow(cfg.vn_usd / precioUSD, 365/dtm) - 1;
-  // Benchmark por madurez (AO27/AO28/BPD7)
+  // Benchmark HD por madurez (AO27/AO28/BPD7): solo para el spread de TIR en USD (el DL rinde tirUSD en USD
+  // sin importar cuánto devalúe: su pago ya está indexado al A3500)
   const bench     = dlBench(dtm);
-  // Devaluación breakeven: devaluación A3500 anual que iguala rendimiento vs benchmark
-  const devBK     = (1 + bench.tir/100) / (1 + tirUSD) - 1;
-  const devBKMens = Math.pow(1 + devBK, 1/12) - 1;
+  const spreadHD  = tirUSD * 100 - bench.tir;
+  // Devaluación breakeven REAL: la que iguala al DL con una tasa fija en pesos de igual plazo.
+  // ARS DL = (1+TIR_USD)·(1+dev) ; ARS tasa fija = (1+TEA)  →  dev* = (1+TEA)/(1+TIR_USD) − 1 (anual)
+  const tfRef     = tfTeaAt(dtm);
+  const devBK     = tfRef ? (1 + tfRef.tea/100) / (1 + tirUSD) - 1 : null;
+  const devBKMens = devBK != null ? Math.pow(1 + devBK, 30/365) - 1 : null;      // por 30 días
+  const tcBK      = devBK != null ? tc * Math.pow(1 + devBK, dtm/365) : null;     // TC al vto que iguala a la tasa fija
   // Análisis de banda al vencimiento
   const banda     = bandaAlVto(dtm);
   // Posición del TC implícito dentro de la banda
@@ -3762,14 +3950,16 @@ function dlCalc(d, tcData) {
     ? Math.max(0, Math.min(100, (tcImpl - banda.piso) / (banda.techo - banda.piso) * 100))
     : 50;
   const dentroB   = tcImpl >= banda.piso && tcImpl <= banda.techo;
+  // El techo limita cuánto puede subir el TC: si el TC breakeven vs tasa fija lo supera, el DL no le gana a la tasa fija
+  const sobreTecho = tcBK != null && tcBK > banda.techo;
 
-  return { precio, precioUSD, tcImpl, paridad, tirUSD, dtm, bench, devBK, devBKMens, banda, posBanda, dentroB };
+  return { precio, precioUSD, tcImpl, paridad, tirUSD, dtm, bench, spreadHD, tfRef, devBK, devBKMens, tcBK, sobreTecho, banda, posBanda, dentroB };
 }
 
 function dlRow(d, tcData) {
   const cfg = DL_CONFIG[d.symbol]; if(!cfg) return '';
   const calc = dlCalc(d, tcData);  if(!calc) return '';
-  const { precio, precioUSD, tcImpl, paridad, tirUSD, dtm, bench, devBK, devBKMens, banda, posBanda, dentroB } = calc;
+  const { precio, precioUSD, tcImpl, paridad, tirUSD, dtm, bench, tfRef, devBK, devBKMens, sobreTecho, banda, posBanda, dentroB } = calc;
   const pchCls  = (d.pct_change??0) >= 0 ? 'color:var(--gr)' : 'color:var(--rd)';
   const vol     = d.vol ?? d.volume ?? 0;
   const volStr  = vol > 1e6 ? `$${(vol/1e6).toFixed(0)}M` : vol > 1e3 ? `$${(vol/1e3).toFixed(0)}K` : '—';
@@ -3779,11 +3969,13 @@ function dlRow(d, tcData) {
   const tirCls  = tirUSD > 0.07 ? 'color:var(--gr);font-weight:700'
                 : tirUSD > 0.04 ? 'color:var(--am);font-weight:700'
                 : 'color:#94adc8;font-weight:600';
-  const devCls  = devBK < 0.02 ? 'color:var(--gr)' : devBK < 0.05 ? 'color:var(--am)' : 'color:var(--rd)';
-  // Posición en banda: barra de progreso simple
+  const devCls  = devBK == null ? 'color:var(--mu)' : devBK < 0 ? 'color:var(--gr)' : sobreTecho ? 'color:var(--rd)' : 'color:var(--am)';
+  // TC implícito (TC con retorno 0% en pesos) vs banda al vencimiento
   const bandaTag = dentroB
     ? `<span style="font-size:9px;color:var(--gr)">✓ ${posBanda.toFixed(0)}% en banda</span>`
-    : `<span style="font-size:9px;color:var(--rd)">⚠ fuera de banda</span>`;
+    : (tcImpl > banda.techo
+        ? `<span style="font-size:9px;color:var(--rd)">⚠ sobre techo: pierde en ARS aun con TC en el techo</span>`
+        : `<span style="font-size:9px;color:var(--gr)">✓ bajo piso: gana en ARS siempre</span>`);
   const tipePill = `<span style="font-size:8px;padding:1px 5px;border-radius:3px;margin-left:3px;background:rgba(163,230,53,.1);border:1px solid rgba(163,230,53,.3);color:#a3e635">${cfg.tipo==='Letra DL'?'LT':'BN'}</span>`;
   return `<tr>
     <td style="font-weight:600;color:#dce8f5">${d.symbol}${tipePill}</td>
@@ -3796,15 +3988,17 @@ function dlRow(d, tcData) {
     <td style="${parCls}">${paridad.toFixed(2)}%</td>
     <td style="color:var(--mu)">${dtm}d</td>
     <td style="${tirCls}">${(tirUSD*100).toFixed(2)}%</td>
-    <td style="${devCls}">${(devBK*100).toFixed(2)}%/a<br><span style="font-size:9px">${(devBKMens*100).toFixed(3)}%/m</span></td>
-    <td style="color:var(--mu);font-size:10px">${bench.name}</td>
+    <td style="${devCls}">${devBK==null?'—':(devBK*100).toFixed(2)+'%/a<br><span style="font-size:9px">'+(devBKMens*100).toFixed(3)+'%/30d</span>'}</td>
+    <td style="color:var(--mu);font-size:10px">${tfRef?tfRef.tea.toFixed(1)+'% TEA':'—'}</td>
     <td>${bandaTag}</td>
     <td style="${pchCls}">${(d.pct_change??0)>=0?'+':''}${(d.pct_change??0).toFixed(2)}%</td>
     <td style="color:var(--dim);font-size:10px">${volStr}</td>
   </tr>`;
 }
 
+let dlNotesLast = null;
 function dlRenderAll(notes, tcData) {
+  dlNotesLast = notes;
   dlTcData = tcData;
   const tc       = tcData.valor;
   const tcVar    = tc - tcData.valorAnterior;
@@ -3827,26 +4021,28 @@ function dlRenderAll(notes, tcData) {
   document.getElementById('dl-body').innerHTML = instr.map(d=>dlRow(d,tcData)).join('');
   document.getElementById('dl-k5').textContent = instr.length;
 
-  // Breakeven table vs maturity-matched benchmarks
+  // Breakeven de devaluación vs tasa fija comparable + spread de TIR USD vs HD
   document.getElementById('dl-bk-body').innerHTML = instr.map(d => {
     const cfg  = DL_CONFIG[d.symbol]; if(!cfg) return '';
     const calc = dlCalc(d, tcData);   if(!calc) return '';
-    const { tirUSD, dtm, devBK, devBKMens, bench, tcImpl, banda, posBanda, dentroB } = calc;
-    const devCls = devBK < 0.02 ? 'color:var(--gr)' : devBK < 0.05 ? 'color:var(--am)' : 'color:var(--rd)';
-    const bandaStr = `$${banda.piso.toFixed(0)}–$${banda.techo.toFixed(0)}`;
-    const signal = devBK < 0.02
+    const { tirUSD, dtm, devBK, devBKMens, tfRef, tcBK, sobreTecho, spreadHD, bench, banda } = calc;
+    if (devBK == null) return '';
+    const devCls = devBK < 0 ? 'color:var(--gr)' : sobreTecho ? 'color:var(--rd)' : 'color:var(--am)';
+    const subeBK = (tcBK / tc - 1) * 100, subeTecho = (banda.techo / tc - 1) * 100;   // % de suba del TC hasta el breakeven / hasta el techo
+    const signal = devBK < 0
       ? '<span class="vc cheap">DL CONVIENE</span>'
-      : devBK < 0.05
-        ? '<span class="vc fair">ANALIZAR</span>'
-        : '<span class="vc exp">HD CONVIENE</span>';
+      : sobreTecho
+        ? '<span class="vc exp">SOLO TASA FIJA</span>'
+        : '<span class="vc fair">DEPENDE DEL TC</span>';
     return `<tr>
       <td style="color:#dce8f5;font-weight:600">${d.symbol}</td>
       <td style="color:var(--mu)">${dtm}d</td>
       <td style="color:var(--cy);font-weight:600">${(tirUSD*100).toFixed(2)}%</td>
-      <td style="color:var(--am)">${bench.desc} (${bench.tir.toFixed(2)}%)</td>
+      <td style="color:var(--am)">${tfRef.tea.toFixed(2)}% TEA<br><span style="font-size:9px;color:var(--mu)">${tfRef.tem.toFixed(2)}% TEM${tfRef.clamped?' · ⚠ extrapolado':''}</span></td>
       <td style="${devCls}">${(devBK*100).toFixed(2)}%/año</td>
-      <td style="${devCls}">${(devBKMens*100).toFixed(3)}%/mes</td>
-      <td style="color:var(--mu);font-size:10px">$${tcImpl.toFixed(0)} · ${bandaStr}<br>${dentroB?'<span style="color:var(--gr)">✓ dentro ('+posBanda.toFixed(0)+'%)</span>':'<span style="color:var(--rd)">⚠ fuera</span>'}</td>
+      <td style="${devCls}">${(devBKMens*100).toFixed(3)}%/30d</td>
+      <td style="color:var(--mu);font-size:10px">TC BK $${tcBK.toFixed(0)} (${subeBK>=0?'+':''}${subeBK.toFixed(1)}%) vs techo $${banda.techo.toFixed(0)} (+${subeTecho.toFixed(0)}%)<br>${sobreTecho?'<span style="color:var(--rd)">⚠ sobre el techo</span>':'<span style="color:var(--gr)">✓ alcanzable dentro de la banda</span>'}</td>
+      <td style="color:var(--mu);font-size:10px">${spreadHD>=0?'+':''}${spreadHD.toFixed(2)}pp<br>vs ${bench.name} (${bench.tir.toFixed(2)}%)</td>
       <td>${signal}</td>
     </tr>`;
   }).join('');
@@ -3856,13 +4052,16 @@ function dlRenderAll(notes, tcData) {
   if(calcs.length){
     const bestPar = calcs.reduce((a,b)=>a.calc.paridad>b.calc.paridad?a:b);
     const bestTIR = calcs.reduce((a,b)=>a.calc.tirUSD>b.calc.tirUSD?a:b);
-    const minBK   = calcs.reduce((a,b)=>a.calc.devBK<b.calc.devBK?a:b);
+    const bkCalcs = calcs.filter(x=>x.calc.devBK!=null);
     document.getElementById('dl-k1').textContent  = bestPar.calc.paridad.toFixed(2)+'%';
     document.getElementById('dl-k1s').textContent = bestPar.d.symbol+' · TC impl $'+bestPar.calc.tcImpl.toFixed(0);
     document.getElementById('dl-k2').textContent  = (bestTIR.calc.tirUSD*100).toFixed(2)+'%';
     document.getElementById('dl-k2s').textContent = bestTIR.d.symbol+' · TC flat';
-    document.getElementById('dl-k3').textContent  = (minBK.calc.devBK*100).toFixed(2)+'%/año';
-    document.getElementById('dl-k3s').textContent = minBK.d.symbol+' vs '+minBK.calc.bench.name;
+    if(bkCalcs.length){
+      const minBK = bkCalcs.reduce((a,b)=>a.calc.devBK<b.calc.devBK?a:b);
+      document.getElementById('dl-k3').textContent  = (minBK.calc.devBK*100).toFixed(2)+'%/año';
+      document.getElementById('dl-k3s').textContent = minBK.d.symbol+' vs tasa fija '+minBK.calc.tfRef.tea.toFixed(1)+'% TEA';
+    }
     document.getElementById('dl-k4').textContent  = '$'+tc.toLocaleString('es-AR',{maximumFractionDigits:2});
   }
 
@@ -3951,6 +4150,22 @@ function dlRenderAll(notes, tcData) {
   });
 }
 
+// Banda cambiaria oficial (BCRA ids 1187/1188 vía /api/proxy?src=banda); cae al seed si falla
+async function bandaRefresh(){
+  try{
+    const j = await fetch('/api/proxy?src=banda').then(r=>r.json());
+    if (j && Array.isArray(j.serie) && j.serie.length) BANDA_LIVE = j;
+  }catch(e){}
+  try{
+    const S = BANDA_LIVE.serie, hoy = new Date(); hoy.setHours(0,0,0,0);
+    let ref = S[0]; S.forEach(x => { if (new Date(x.f+'T00:00:00') <= hoy) ref = x; });
+    const el = document.getElementById('banda-hoy-txt');
+    if (el) el.textContent = 'BCRA: piso $'+Math.round(ref.piso).toLocaleString('es-AR')+' / techo $'+Math.round(ref.techo).toLocaleString('es-AR')+' ('+ref.f.split('-').reverse().join('/')+')';
+  }catch(e){}
+  try{ renderTFBandChart(); }catch(e){}
+  try{ if (dlNotesLast) dlRenderAll(dlNotesLast, dlTcData); }catch(e){}
+}
+
 async function dlRefresh(){
   try{
     const [notesRes, bondsRes, bcraRes] = await Promise.all([
@@ -3989,6 +4204,262 @@ async function dlRefresh(){
     dlRenderAll(SEED_DL_NOTES, SEED_DL_TC);
     setStatus('seed','Seed 30/05 · sin conexión');
   }
+}
+
+const ON_UNIV_ASOF='30/10/2026';
+const ON_UNIV=[
+  {t:'BYCWD',px:103.2,v:'2026-11-30',y:1.14,e:'Banco Galicia',s:'Bancos',l:'ARG',p:'Mep',lm:1000,c:null,fx:{"c":6.0,"q":2,"pd":"2026-05-30","rs":100,"fl":[["2026-11-30",103.0,100.0]]},w:'TIR por flujos difiere de la tabla en 3.6 pp (revisar cronograma)'},
+  {t:'BF39D',px:103.0,v:'2026-12-05',y:-1.25,e:'BBVA',s:'Bancos',l:'ARG',p:'Mep',lm:1200,c:null,n:'Vence en pocas semanas: TIR poco informativa',fx:{"c":5.75,"q":2,"pd":"2026-06-05","rs":100,"fl":[["2026-12-05",102.875,100.0]]}},
+  {t:'BYCXD',px:102.55,v:'2026-12-30',y:1.23,e:'Banco Galicia',s:'Bancos',l:'ARG',p:'Mep',lm:1,c:null,fx:{"c":5.5,"q":2,"pd":"2026-06-30","rs":100,"fl":[["2026-12-30",102.75,100.0]]}},
+  {t:'CS51D',px:101.25,v:'2027-01-20',y:7.63,e:'Cresud',s:'Consumo/Agro',l:'ARG',p:'Mep',lm:100,c:'2026-11-04',fx:{"c":5.75,"q":2,"pd":"2026-07-20","rs":100,"fl":[["2027-01-20",102.875,100.0]]}},
+  {t:'PN42D',px:100.8,v:'2027-04-17',y:4.9,e:'PAE',s:'Energía',l:'ARG',p:'Mep',lm:100,c:null,fx:{"c":6.0,"q":4,"pd":"2026-10-17","rs":100,"fl":[["2027-01-17",1.5,0],["2027-04-17",101.5,100.0]]}},
+  {t:'PNDCD',px:18.35,v:'2027-04-30',y:30.56,e:'PAE',s:'Energía',l:'NY',p:'Cable',lm:100,c:null,n:'Amortizable: precio bajo por capital residual (TIR calculada con el cronograma de cuotas)',fx:{"c":9.125,"q":2,"pd":"2026-10-30","rs":20.0,"fl":[["2027-04-30",20.9125,20.0]]}},
+  {t:'YM37D',px:102.25,v:'2027-05-07',y:5.99,e:'YPF',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2026-11-11',fx:{"c":7.0,"q":4,"pd":"2026-08-07","rs":100,"fl":[["2026-11-07",1.75,0],["2027-02-07",1.75,0],["2027-05-07",101.75,100.0]]}},
+  {t:'RCCRD',px:104.5,v:'2027-05-09',y:4.36,e:'Arcor',s:'Consumo/Agro',l:'ARG',p:'Mep',lm:100,c:null,fx:{"c":6.75,"q":2,"pd":"2026-05-09","rs":100,"fl":[["2026-11-09",3.375,0],["2027-05-09",103.375,100.0]]}},
+  {t:'YFCMD',px:104.65,v:'2027-05-20',y:3.36,e:'YPF Luz',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2026-11-29',fx:{"c":6.5,"q":2,"pd":"2026-05-20","rs":100,"fl":[["2026-11-20",3.25,0],["2027-05-20",103.25,100.0]]}},
+  {t:'TLCQD',px:102.25,v:'2027-07-02',y:5.13,e:'Telecom',s:'Telecom',l:'ARG',p:'Mep',lm:100,c:'2026-11-14',fx:{"c":7.5,"q":4,"pd":"2026-10-02","rs":100,"fl":[["2027-01-02",1.875,0],["2027-04-02",1.875,0],["2027-07-02",101.875,100.0]]}},
+  {t:'YM38D',px:102.65,v:'2027-07-22',y:4.14,e:'YPF',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2026-10-31',fx:{"c":7.5,"q":4,"pd":"2026-10-22","rs":100,"fl":[["2027-01-22",1.875,0],["2027-04-22",1.875,0],["2027-07-22",101.875,100.0]]}},
+  {t:'LOC5D',px:104.6,v:'2027-07-24',y:4.64,e:'Loma Negra',s:'Industria',l:'ARG',p:'Mep',lm:100,c:'2026-11-14',fx:{"c":8.0,"q":2,"pd":"2026-07-24","rs":100,"fl":[["2027-01-24",4.0,0],["2027-07-24",104.0,100.0]]}},
+  {t:'BF49D',px:100.0,v:'2027-07-24',y:3.91,e:'BBVA',s:'Bancos',l:'ARG',p:'Mep',lm:1200,c:null},
+  {t:'HJCJD',px:105.0,v:'2027-07-25',y:4.75,e:'John Deere',s:'Financiero',l:'ARG',p:'Mep',lm:1000,c:null,fx:{"c":8.5,"q":2,"pd":"2026-07-25","rs":100,"fl":[["2027-01-25",4.25,0],["2027-07-25",104.25,100.0]]}},
+  {t:'TTCBD',px:102.05,v:'2027-10-16',y:4.66,e:'Tecpetrol',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2026-11-04',fx:{"c":6.5,"q":2,"pd":"2026-10-16","rs":100,"fl":[["2027-04-16",3.25,0],["2027-10-16",103.25,100.0]]}},
+  {t:'VSCYD',px:102.75,v:'2028-01-16',y:2.37,e:'Vista Energy',s:'Energía',l:'ARG',p:'Cable',lm:100,c:'2026-11-29',fx:{"c":3.75,"q":2,"pd":"2026-07-16","rs":100,"fl":[["2027-01-16",1.875,0],["2027-07-16",1.875,0],["2028-01-16",101.875,100.0]]}},
+  {t:'BF48D',px:102.0,v:'2028-01-24',y:2.95,e:'BBVA',s:'Bancos',l:'ARG',p:'Cable',lm:1200,c:null},
+  {t:'PLC1D',px:101.9,v:'2028-01-27',y:4.54,e:'Pluspetrol',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2026-10-31',fx:{"c":6.0,"q":4,"pd":"2026-10-27","rs":100,"fl":[["2027-01-27",1.5,0],["2027-04-27",1.5,0],["2027-07-27",1.5,0],["2027-10-27",1.5,0],["2028-01-27",101.5,100.0]]}},
+  {t:'PLC3D',px:104.75,v:'2028-04-30',y:5.28,e:'Pluspetrol',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2026-10-31',fx:{"c":7.25,"q":1,"pd":"2026-04-30","rs":100,"fl":[["2027-04-30",7.25,0],["2028-04-30",107.25,100.0]]},w:'TIR por flujos difiere de la tabla en 1.2 pp (revisar cronograma)'},
+  {t:'BF44D',px:102.0,v:'2028-05-08',y:3.98,e:'BBVA',s:'Bancos',l:'ARG',p:'Mep',lm:1200,c:null,fx:{"c":5.0,"q":12,"pd":"2026-10-08","rs":100,"fl":[["2026-11-08",0.4167,0],["2026-12-08",0.4167,0],["2027-01-08",0.4167,0],["2027-02-08",0.4167,0],["2027-03-08",0.4167,0],["2027-04-08",0.4167,0],["2027-05-08",0.4167,0],["2027-06-08",0.4167,0],["2027-07-08",0.4167,0],["2027-08-08",0.4167,0],["2027-09-08",0.4167,0],["2027-10-08",0.4167,0],["2027-11-08",0.4167,0],["2027-12-08",0.4167,0],["2028-01-08",0.4167,0],["2028-02-08",0.4167,0],["2028-03-08",0.4167,0],["2028-04-08",0.4167,0],["2028-05-08",100.4167,100.0]]}},
+  {t:'MTC2D',px:101.8,v:'2028-06-22',y:5.93,e:'Mastellone',s:'Consumo/Agro',l:'ARG',p:'Mep',lm:100,c:'2026-10-30',fx:{"c":6.5,"q":4,"pd":"2026-09-22","rs":100,"fl":[["2026-12-22",1.625,0],["2027-03-22",1.625,0],["2027-06-22",1.625,0],["2027-09-22",1.625,0],["2027-12-22",1.625,0],["2028-03-22",1.625,0],["2028-06-22",101.625,100.0]]}},
+  {t:'BF50D',px:100.0,v:'2028-07-24',y:5.52,e:'BBVA',s:'Bancos',l:'ARG',p:'Mep',lm:1200,c:null},
+  {t:'MGCQD',px:107.65,v:'2028-08-06',y:3.78,e:'Pampa Energia',s:'Energía',l:'ARG',p:'Cable',lm:100,c:'2026-10-31',fx:{"c":7.25,"q":2,"pd":"2026-08-06","rs":100,"fl":[["2027-02-06",3.625,0],["2027-08-06",3.625,0],["2028-02-06",3.625,0],["2028-08-06",103.625,100.0]]}},
+  {t:'MGCND',px:101.45,v:'2028-10-04',y:5.26,e:'Pampa Energia',s:'Energía',l:'ARG',p:'Mep',lm:50,c:'2026-10-31',fx:{"c":5.75,"q":2,"pd":"2026-10-04","rs":100,"fl":[["2027-04-04",2.875,0],["2027-10-04",2.875,0],["2028-04-04",2.875,0],["2028-10-04",102.875,100.0]]}},
+  {t:'BYCHD',px:106.4,v:'2028-10-10',y:4.57,e:'Banco Galicia',s:'Bancos',l:'NY',p:'Cable',lm:2000,c:null,fx:{"c":7.75,"q":2,"pd":"2026-10-10","rs":100,"fl":[["2027-04-10",3.875,0],["2027-10-10",3.875,0],["2028-04-10",3.875,0],["2028-10-10",103.875,100.0]]}},
+  {t:'LMS7D',px:71.6,v:'2028-10-12',y:0.44,e:'Aluar',s:'Industria',l:'ARG',p:'Cable',lm:100,c:'2027-01-13',n:'Amortizable en 12 cuotas: precio bajo por capital residual',fx:{"c":7.0,"q":4,"pd":"2026-10-12","rs":66.6667,"fl":[["2027-01-12",9.5,8.3333],["2027-04-12",9.3542,8.3333],["2027-07-12",9.2083,8.3333],["2027-10-12",9.0625,8.3333],["2028-01-12",8.9167,8.3333],["2028-04-12",8.7708,8.3333],["2028-07-12",8.625,8.3333],["2028-10-12",8.4792,8.3333]]}},
+  {t:'HJCLD',px:103.3,v:'2028-12-08',y:5.13,e:'John Deere',s:'Financiero',l:'ARG',p:'Mep',lm:1000,c:null,fx:{"c":6.5,"q":12,"pd":"2026-10-08","rs":100,"fl":[["2026-11-08",0.5417,0],["2026-12-08",0.5417,0],["2027-01-08",0.5417,0],["2027-02-08",0.5417,0],["2027-03-08",0.5417,0],["2027-04-08",0.5417,0],["2027-05-08",0.5417,0],["2027-06-08",0.5417,0],["2027-07-08",0.5417,0],["2027-08-08",0.5417,0],["2027-09-08",0.5417,0],["2027-10-08",0.5417,0],["2027-11-08",0.5417,0],["2027-12-08",0.5417,0],["2028-01-08",0.5417,0],["2028-02-08",0.5417,0],["2028-03-08",0.5417,0],["2028-04-08",0.5417,0],["2028-05-08",0.5417,0],["2028-06-08",0.5417,0],["2028-07-08",0.5417,0],["2028-08-08",0.5417,0],["2028-09-08",0.5417,0],["2028-10-08",0.5417,0],["2028-11-08",0.5417,0],["2028-12-08",100.5417,100.0]]}},
+  {t:'HJCKD',px:104.7,v:'2029-01-16',y:6.65,e:'John Deere',s:'Financiero',l:'ARG',p:'Mep',lm:1000,c:null,fx:{"c":7.75,"q":2,"pd":"2026-07-16","rs":100,"fl":[["2027-01-16",3.875,0],["2027-07-16",3.875,0],["2028-01-16",3.875,0],["2028-07-16",3.875,0],["2029-01-16",103.875,100.0]]}},
+  {t:'LOC6D',px:102.55,v:'2029-01-23',y:6.21,e:'Loma Negra',s:'Industria',l:'ARG',p:'Mep',lm:50,c:'2026-11-14',fx:{"c":6.5,"q":2,"pd":"2026-07-23","rs":100,"fl":[["2027-01-23",3.25,0],["2027-07-23",3.25,0],["2028-01-23",3.25,0],["2028-07-23",3.25,0],["2029-01-23",103.25,100.0]]}},
+  {t:'YM42D',px:105.55,v:'2029-03-02',y:5.86,e:'YPF',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2026-10-31',fx:{"c":7.0,"q":2,"pd":"2026-09-02","rs":100,"fl":[["2027-03-02",3.5,0],["2027-09-02",3.5,0],["2028-03-02",3.5,0],["2028-09-02",3.5,0],["2029-03-02",103.5,100.0]]},w:'TIR por flujos difiere de la tabla en 0.8 pp (revisar cronograma)'},
+  {t:'TLCUD',px:101.3,v:'2029-03-05',y:6.48,e:'Telecom',s:'Telecom',l:'ARG',p:'Mep',lm:100,c:'2026-11-14',fx:{"c":6.5,"q":2,"pd":"2026-09-05","rs":100,"fl":[["2027-03-05",3.25,0],["2027-09-05",3.25,0],["2028-03-05",3.25,0],["2028-09-05",3.25,0],["2029-03-05",103.25,100.0]]}},
+  {t:'CS50D',px:102.55,v:'2029-03-10',y:6.66,e:'Cresud',s:'Consumo/Agro',l:'ARG',p:'Mep',lm:100,c:'2026-11-04',fx:{"c":7.25,"q":2,"pd":"2026-09-10","rs":100,"fl":[["2027-03-10",3.625,0],["2027-09-10",3.625,0],["2028-03-10",3.625,0],["2028-09-10",3.625,0],["2029-03-10",103.625,100.0]]}},
+  {t:'HJCMD',px:99.01,v:'2029-03-28',y:6.83,e:'John Deere',s:'Financiero',l:'ARG',p:'Mep',lm:1000,c:null,fx:{"c":6.0,"q":2,"pd":"2026-09-28","rs":100,"fl":[["2027-03-28",3.0,0],["2027-09-28",3.0,0],["2028-03-28",3.0,0],["2028-09-28",3.0,0],["2029-03-28",103.0,100.0]]}},
+  {t:'MGCTD',px:100.05,v:'2029-04-01',y:5.76,e:'Pampa Energia',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2026-10-31',fx:{"c":5.49,"q":2,"pd":"2026-10-01","rs":100,"fl":[["2027-04-01",2.745,0],["2027-10-01",2.745,0],["2028-04-01",2.745,0],["2028-10-01",2.745,0],["2029-04-01",102.745,100.0]]}},
+  {t:'RC5CD',px:100.7,v:'2029-05-21',y:5.05,e:'Arcor',s:'Consumo/Agro',l:'ARG',p:'Mep',lm:100,c:null,fx:{"c":5.25,"q":12,"pd":"2026-10-21","rs":100,"fl":[["2026-11-21",0.4375,0],["2026-12-21",0.4375,0],["2027-01-21",0.4375,0],["2027-02-21",0.4375,0],["2027-03-21",0.4375,0],["2027-04-21",0.4375,0],["2027-05-21",0.4375,0],["2027-06-21",0.4375,0],["2027-07-21",0.4375,0],["2027-08-21",0.4375,0],["2027-09-21",0.4375,0],["2027-10-21",0.4375,0],["2027-11-21",0.4375,0],["2027-12-21",0.4375,0],["2028-01-21",0.4375,0],["2028-02-21",0.4375,0],["2028-03-21",0.4375,0],["2028-04-21",0.4375,0],["2028-05-21",0.4375,0],["2028-06-21",0.4375,0],["2028-07-21",0.4375,0],["2028-08-21",0.4375,0],["2028-09-21",0.4375,0],["2028-10-21",0.4375,0],["2028-11-21",0.4375,0],["2028-12-21",0.4375,0],["2029-01-21",0.4375,0],["2029-02-21",0.4375,0],["2029-03-21",0.4375,0],["2029-04-21",0.4375,0],["2029-05-21",100.4375,100.0]]}},
+  {t:'TTCED',px:101.7,v:'2029-05-21',y:4.94,e:'Tecpetrol',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2026-11-04',fx:{"c":5.5,"q":12,"pd":"2026-10-21","rs":100,"fl":[["2026-11-21",0.4583,0],["2026-12-21",0.4583,0],["2027-01-21",0.4583,0],["2027-02-21",0.4583,0],["2027-03-21",0.4583,0],["2027-04-21",0.4583,0],["2027-05-21",0.4583,0],["2027-06-21",0.4583,0],["2027-07-21",0.4583,0],["2027-08-21",0.4583,0],["2027-09-21",0.4583,0],["2027-10-21",0.4583,0],["2027-11-21",0.4583,0],["2027-12-21",0.4583,0],["2028-01-21",0.4583,0],["2028-02-21",0.4583,0],["2028-03-21",0.4583,0],["2028-04-21",0.4583,0],["2028-05-21",0.4583,0],["2028-06-21",0.4583,0],["2028-07-21",0.4583,0],["2028-08-21",0.4583,0],["2028-09-21",0.4583,0],["2028-10-21",0.4583,0],["2028-11-21",0.4583,0],["2028-12-21",0.4583,0],["2029-01-21",0.4583,0],["2029-02-21",0.4583,0],["2029-03-21",0.4583,0],["2029-04-21",0.4583,0],["2029-05-21",100.4583,100.0]]}},
+  {t:'BACGD',px:109.45,v:'2029-06-23',y:5.36,e:'Banco Macro',s:'Bancos',l:'NY',p:'Cable',lm:1000,c:null,fx:{"c":8.0,"q":2,"pd":"2026-06-23","rs":100,"fl":[["2026-12-23",4.0,0],["2027-06-23",4.0,0],["2027-12-23",4.0,0],["2028-06-23",4.0,0],["2028-12-23",4.0,0],["2029-06-23",104.0,100.0]]}},
+  {t:'VSCZD',px:99.3,v:'2029-07-16',y:5.97,e:'Vista Energy',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2026-11-29',fx:{"c":5.0,"q":2,"pd":"2026-07-16","rs":100,"fl":[["2027-01-16",2.5,0],["2027-07-16",2.5,0],["2028-01-16",2.5,0],["2028-07-16",2.5,0],["2029-01-16",2.5,0],["2029-07-16",102.5,100.0]]}},
+  {t:'YFCPD',px:97.1,v:'2029-08-18',y:6.16,e:'YPF Luz',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2026-11-29',fx:{"c":5.0,"q":12,"pd":"2026-10-18","rs":100,"fl":[["2026-11-18",0.4167,0],["2026-12-18",0.4167,0],["2027-01-18",0.4167,0],["2027-02-18",0.4167,0],["2027-03-18",0.4167,0],["2027-04-18",0.4167,0],["2027-05-18",0.4167,0],["2027-06-18",0.4167,0],["2027-07-18",0.4167,0],["2027-08-18",0.4167,0],["2027-09-18",0.4167,0],["2027-10-18",0.4167,0],["2027-11-18",0.4167,0],["2027-12-18",0.4167,0],["2028-01-18",0.4167,0],["2028-02-18",0.4167,0],["2028-03-18",0.4167,0],["2028-04-18",0.4167,0],["2028-05-18",0.4167,0],["2028-06-18",0.4167,0],["2028-07-18",0.4167,0],["2028-08-18",0.4167,0],["2028-09-18",0.4167,0],["2028-10-18",0.4167,0],["2028-11-18",0.4167,0],["2028-12-18",0.4167,0],["2029-01-18",0.4167,0],["2029-02-18",0.4167,0],["2029-03-18",0.4167,0],["2029-04-18",0.4167,0],["2029-05-18",0.4167,0],["2029-06-18",0.4167,0],["2029-07-18",0.4167,0],["2029-08-18",100.4167,100.0]]}},
+  {t:'NPCCD',px:107.45,v:'2029-08-25',y:5.75,e:'Central Puerto',s:'Energía',l:'ARG',p:'Cable',lm:100,c:'2026-11-04',fx:{"c":8.0,"q":2,"pd":"2026-08-25","rs":100,"fl":[["2027-02-25",4.0,0],["2027-08-25",4.0,0],["2028-02-25",4.0,0],["2028-08-25",4.0,0],["2029-02-25",4.0,0],["2029-08-25",104.0,100.0]]}},
+  {t:'NPCCD',px:107.45,v:'2029-08-25',y:5.75,e:'Central Puerto',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2026-11-04',fx:{"c":8.0,"q":2,"pd":"2026-08-25","rs":100,"fl":[["2027-02-25",4.0,0],["2027-08-25",4.0,0],["2028-02-25",4.0,0],["2028-08-25",4.0,0],["2029-02-25",4.0,0],["2029-08-25",104.0,100.0]]}},
+  {t:'PN41D',px:105.15,v:'2029-08-27',y:6.1,e:'PAE',s:'Energía',l:'ARG',p:'Mep',lm:100,c:null,fx:{"c":7.5,"q":2,"pd":"2026-08-27","rs":100,"fl":[["2027-02-27",3.75,0],["2027-08-27",3.75,0],["2028-02-27",3.75,0],["2028-08-27",3.75,0],["2029-02-27",3.75,0],["2029-08-27",103.75,100.0]]}},
+  {t:'YM40D',px:105.9,v:'2029-08-28',y:5.86,e:'YPF',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2026-10-31',fx:{"c":7.5,"q":4,"pd":"2026-08-28","rs":100,"fl":[["2026-11-28",1.875,0],["2027-02-28",1.875,0],["2027-05-28",1.875,0],["2027-08-28",1.875,0],["2027-11-28",1.875,0],["2028-02-28",1.875,0],["2028-05-28",1.875,0],["2028-08-28",1.875,0],["2028-11-28",1.875,0],["2029-02-28",1.875,0],["2029-05-28",1.875,0],["2029-08-28",101.875,100.0]]}},
+  {t:'PN35D',px:105.2,v:'2029-09-27',y:5.37,e:'PAE',s:'Energía',l:'ARG',p:'Mep',lm:100,c:null,fx:{"c":7.0,"q":2,"pd":"2026-09-27","rs":100,"fl":[["2027-03-27",3.5,0],["2027-09-27",3.5,0],["2028-03-27",3.5,0],["2028-09-27",3.5,0],["2029-03-27",3.5,0],["2029-09-27",103.5,100.0]]}},
+  {t:'LOC7D',px:100.05,v:'2029-10-22',y:6.39,e:'Loma Negra',s:'Industria',l:'ARG',p:'Mep',lm:100,c:'2026-11-14',fx:{"c":6.25,"q":2,"pd":"2026-10-22","rs":100,"fl":[["2027-04-22",3.125,0],["2027-10-22",3.125,0],["2028-04-22",3.125,0],["2028-10-22",3.125,0],["2029-04-22",3.125,0],["2029-10-22",103.125,100.0]]}},
+  {t:'TTC9D',px:103.2,v:'2029-10-24',y:5.75,e:'Tecpetrol',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2026-11-04',fx:{"c":6.8,"q":2,"pd":"2026-10-24","rs":100,"fl":[["2027-04-24",3.4,0],["2027-10-24",3.4,0],["2028-04-24",3.4,0],["2028-10-24",3.4,0],["2029-04-24",3.4,0],["2029-10-24",103.4,100.0]]}},
+  {t:'PFC3D',px:102.0,v:'2029-11-08',y:5.17,e:'Profertil',s:'Industria',l:'ARG',p:'Mep',lm:100,c:'2026-11-13',fx:{"c":5.75,"q":12,"pd":"2026-10-08","rs":100,"fl":[["2026-11-08",0.4792,0],["2026-12-08",0.4792,0],["2027-01-08",0.4792,0],["2027-02-08",0.4792,0],["2027-03-08",0.4792,0],["2027-04-08",0.4792,0],["2027-05-08",0.4792,0],["2027-06-08",0.4792,0],["2027-07-08",0.4792,0],["2027-08-08",0.4792,0],["2027-09-08",0.4792,0],["2027-10-08",0.4792,0],["2027-11-08",0.4792,0],["2027-12-08",0.4792,0],["2028-01-08",0.4792,0],["2028-02-08",0.4792,0],["2028-03-08",0.4792,0],["2028-04-08",0.4792,0],["2028-05-08",0.4792,0],["2028-06-08",0.4792,0],["2028-07-08",0.4792,0],["2028-08-08",0.4792,0],["2028-09-08",0.4792,0],["2028-10-08",0.4792,0],["2028-11-08",0.4792,0],["2028-12-08",0.4792,0],["2029-01-08",0.4792,0],["2029-02-08",0.4792,0],["2029-03-08",0.4792,0],["2029-04-08",0.4792,0],["2029-05-08",0.4792,0],["2029-06-08",0.4792,0],["2029-07-08",0.4792,0],["2029-08-08",0.4792,0],["2029-09-08",0.4792,0],["2029-10-08",0.4792,0],["2029-11-08",100.4792,100.0]]}},
+  {t:'PLC2D',px:105.95,v:'2030-01-27',y:6.11,e:'Pluspetrol',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2026-10-31',fx:{"c":7.5,"q":2,"pd":"2026-07-27","rs":100,"fl":[["2027-01-27",3.75,0],["2027-07-27",3.75,0],["2028-01-27",3.75,0],["2028-07-27",3.75,0],["2029-01-27",3.75,0],["2029-07-27",3.75,0],["2030-01-27",103.75,100.0]]}},
+  {t:'PFC4D',px:97.5,v:'2030-02-28',y:6.39,e:'Profertil',s:'Industria',l:'ARG',p:'Mep',lm:100,c:'2026-12-15',fx:{"c":5.5,"q":12,"pd":"2026-10-28","rs":100,"fl":[["2026-11-28",0.4583,0],["2026-12-28",0.4583,0],["2027-01-28",0.4583,0],["2027-02-28",0.4583,0],["2027-03-28",0.4583,0],["2027-04-28",0.4583,0],["2027-05-28",0.4583,0],["2027-06-28",0.4583,0],["2027-07-28",0.4583,0],["2027-08-28",0.4583,0],["2027-09-28",0.4583,0],["2027-10-28",0.4583,0],["2027-11-28",0.4583,0],["2027-12-28",0.4583,0],["2028-01-28",0.4583,0],["2028-02-28",0.4583,0],["2028-03-28",0.4583,0],["2028-04-28",0.4583,0],["2028-05-28",0.4583,0],["2028-06-28",0.4583,0],["2028-07-28",0.4583,0],["2028-08-28",0.4583,0],["2028-09-28",0.4583,0],["2028-10-28",0.4583,0],["2028-11-28",0.4583,0],["2028-12-28",0.4583,0],["2029-01-28",0.4583,0],["2029-02-28",0.4583,0],["2029-03-28",0.4583,0],["2029-04-28",0.4583,0],["2029-05-28",0.4583,0],["2029-06-28",0.4583,0],["2029-07-28",0.4583,0],["2029-08-28",0.4583,0],["2029-09-28",0.4583,0],["2029-10-28",0.4583,0],["2029-11-28",0.4583,0],["2029-12-28",0.4583,0],["2030-01-28",0.4583,0],["2030-02-28",0.4583,0],["2030-03-28",0.4583,0],["2030-04-28",0.4583,0],["2030-05-28",0.4583,0],["2030-06-28",0.4583,0],["2030-07-28",0.4583,0],["2030-08-28",100.4583,100.0]]}},
+  {t:'YM43D',px:100.75,v:'2030-04-14',y:6.25,e:'YPF',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2027-10-14',fx:{"c":5.5,"q":1,"pd":"2026-04-14","rs":100,"fl":[["2027-04-14",5.5,0],["2028-04-14",5.5,0],["2029-04-14",5.5,0],["2030-04-14",105.5,100.0]]}},
+  {t:'NPCDD',px:98.81,v:'2030-04-30',y:6.5,e:'Central Puerto',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2026-11-04',fx:{"c":6.0,"q":2,"pd":"2026-10-30","rs":100,"fl":[["2027-04-30",3.0,0],["2027-10-30",3.0,0],["2028-04-30",3.0,0],["2028-10-30",3.0,0],["2029-04-30",3.0,0],["2029-10-30",3.0,0],["2030-04-30",103.0,100.0]]}},
+  {t:'MCC3D',px:103.8,v:'2030-05-11',y:6.5,e:'Pecom',s:'Energía',l:'ARG',p:'Mep',lm:100,c:null,fx:{"c":7.5,"q":12,"pd":"2026-10-11","rs":100,"fl":[["2026-11-11",0.625,0],["2026-12-11",0.625,0],["2027-01-11",0.625,0],["2027-02-11",0.625,0],["2027-03-11",0.625,0],["2027-04-11",0.625,0],["2027-05-11",0.625,0],["2027-06-11",0.625,0],["2027-07-11",0.625,0],["2027-08-11",0.625,0],["2027-09-11",0.625,0],["2027-10-11",0.625,0],["2027-11-11",0.625,0],["2027-12-11",0.625,0],["2028-01-11",0.625,0],["2028-02-11",0.625,0],["2028-03-11",0.625,0],["2028-04-11",0.625,0],["2028-05-11",0.625,0],["2028-06-11",0.625,0],["2028-07-11",0.625,0],["2028-08-11",0.625,0],["2028-09-11",0.625,0],["2028-10-11",0.625,0],["2028-11-11",0.625,0],["2028-12-11",0.625,0],["2029-01-11",0.625,0],["2029-02-11",0.625,0],["2029-03-11",0.625,0],["2029-04-11",0.625,0],["2029-05-11",0.625,0],["2029-06-11",0.625,0],["2029-07-11",0.625,0],["2029-08-11",0.625,0],["2029-09-11",0.625,0],["2029-10-11",0.625,0],["2029-11-11",0.625,0],["2029-12-11",0.625,0],["2030-01-11",0.625,0],["2030-02-11",0.625,0],["2030-03-11",0.625,0],["2030-04-11",0.625,0],["2030-05-11",100.625,100.0]]}},
+  {t:'TLCWD',px:102.25,v:'2030-05-29',y:5.69,e:'Telecom',s:'Telecom',l:'ARG',p:'Mep',lm:100,c:'2026-11-14',fx:{"c":6.25,"q":12,"pd":"2026-10-29","rs":100,"fl":[["2026-11-29",0.5208,0],["2026-12-29",0.5208,0],["2027-01-29",0.5208,0],["2027-02-28",0.5208,0],["2027-03-29",0.5208,0],["2027-04-29",0.5208,0],["2027-05-29",0.5208,0],["2027-06-29",0.5208,0],["2027-07-29",0.5208,0],["2027-08-29",0.5208,0],["2027-09-29",0.5208,0],["2027-10-29",0.5208,0],["2027-11-29",0.5208,0],["2027-12-29",0.5208,0],["2028-01-29",0.5208,0],["2028-02-29",0.5208,0],["2028-03-29",0.5208,0],["2028-04-29",0.5208,0],["2028-05-29",0.5208,0],["2028-06-29",0.5208,0],["2028-07-29",0.5208,0],["2028-08-29",0.5208,0],["2028-09-29",0.5208,0],["2028-10-29",0.5208,0],["2028-11-29",0.5208,0],["2028-12-29",0.5208,0],["2029-01-29",0.5208,0],["2029-02-28",0.5208,0],["2029-03-29",0.5208,0],["2029-04-29",0.5208,0],["2029-05-29",0.5208,0],["2029-06-29",0.5208,0],["2029-07-29",0.5208,0],["2029-08-29",0.5208,0],["2029-09-29",0.5208,0],["2029-10-29",0.5208,0],["2029-11-29",0.5208,0],["2029-12-29",0.5208,0],["2030-01-29",0.5208,0],["2030-02-28",0.5208,0],["2030-03-29",0.5208,0],["2030-04-29",0.5208,0],["2030-05-29",100.5208,100.0]]}},
+  {t:'YM39D',px:111.35,v:'2030-07-22',y:6.13,e:'YPF',s:'Energía',l:'ARG',p:'Cable',lm:100,c:'2026-10-31',fx:{"c":8.75,"q":2,"pd":"2026-07-22","rs":100,"fl":[["2027-01-22",4.375,0],["2027-07-22",4.375,0],["2028-01-22",4.375,0],["2028-07-22",4.375,0],["2029-01-22",4.375,0],["2029-07-22",4.375,0],["2030-01-22",4.375,0],["2030-07-22",104.375,100.0]]}},
+  {t:'MGCUD',px:100.25,v:'2030-08-21',y:5.5,e:'Pampa Energia',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2026-10-31',fx:{"c":5.5,"q":12,"pd":"2026-10-21","rs":100,"fl":[["2026-11-21",0.4583,0],["2026-12-21",0.4583,0],["2027-01-21",0.4583,0],["2027-02-21",0.4583,0],["2027-03-21",0.4583,0],["2027-04-21",0.4583,0],["2027-05-21",0.4583,0],["2027-06-21",0.4583,0],["2027-07-21",0.4583,0],["2027-08-21",0.4583,0],["2027-09-21",0.4583,0],["2027-10-21",0.4583,0],["2027-11-21",0.4583,0],["2027-12-21",0.4583,0],["2028-01-21",0.4583,0],["2028-02-21",0.4583,0],["2028-03-21",0.4583,0],["2028-04-21",0.4583,0],["2028-05-21",0.4583,0],["2028-06-21",0.4583,0],["2028-07-21",0.4583,0],["2028-08-21",0.4583,0],["2028-09-21",0.4583,0],["2028-10-21",0.4583,0],["2028-11-21",0.4583,0],["2028-12-21",0.4583,0],["2029-01-21",0.4583,0],["2029-02-21",0.4583,0],["2029-03-21",0.4583,0],["2029-04-21",0.4583,0],["2029-05-21",0.4583,0],["2029-06-21",0.4583,0],["2029-07-21",0.4583,0],["2029-08-21",0.4583,0],["2029-09-21",0.4583,0],["2029-10-21",0.4583,0],["2029-11-21",0.4583,0],["2029-12-21",0.4583,0],["2030-01-21",0.4583,0],["2030-02-21",0.4583,0],["2030-03-21",0.4583,0],["2030-04-21",0.4583,0],["2030-05-21",0.4583,0],["2030-06-21",0.4583,0],["2030-07-21",0.4583,0],["2030-08-21",100.4583,100.0]]}},
+  {t:'VMC1D',px:100.45,v:'2030-09-22',y:6.46,e:'VMOS',s:'Energía',l:'ARG',p:'Mep',lm:100,c:null,fx:{"c":6.25,"q":4,"pd":"2026-09-22","rs":100,"fl":[["2026-12-22",1.5625,0],["2027-03-22",1.5625,0],["2027-06-22",1.5625,0],["2027-09-22",1.5625,0],["2027-12-22",1.5625,0],["2028-03-22",1.5625,0],["2028-06-22",1.5625,0],["2028-09-22",1.5625,0],["2028-12-22",1.5625,0],["2029-03-22",1.5625,0],["2029-06-22",1.5625,0],["2029-09-22",1.5625,0],["2029-12-22",1.5625,0],["2030-03-22",1.5625,0],["2030-06-22",1.5625,0],["2030-09-22",101.5625,100.0]]}},
+  {t:'OTS7D',px:99.74,v:'2030-09-25',y:5.82,e:'Otamerica',s:'Energía',l:'ARG',p:'Mep',lm:100,c:'2026-11-04',fx:{"c":6.25,"q":4,"pd":"2026-09-25","rs":100,"fl":[["2026-12-25",1.5625,0],["2027-03-25",1.5625,0],["2027-06-25",1.5625,0],["2027-09-25",1.5625,0],["2027-12-25",1.5625,0],["2028-03-25",1.5625,0],["2028-06-25",1.5625,0],["2028-09-25",1.5625,0],["2028-12-25",1.5625,0],["2029-03-25",1.5625,0],["2029-06-25",1.5625,0],["2029-09-25",1.5625,0],["2029-12-25",1.5625,0],["2030-03-25",1.5625,0],["2030-06-25",1.5625,0],["2030-09-25",101.5625,100.0]]},w:'TIR por flujos difiere de la tabla en 0.9 pp (revisar cronograma)'},
+  {t:'TTCDD',px:107.75,v:'2030-11-03',y:6.59,e:'Tecpetrol',s:'Energía',l:'NY',p:'Cable',lm:1000,c:'2027-11-03',fx:{"c":7.625,"q":2,"pd":"2026-05-03","rs":100,"fl":[["2026-11-03",3.8125,0],["2027-05-03",3.8125,0],["2027-11-03",3.8125,0],["2028-05-03",3.8125,0],["2028-11-03",3.8125,0],["2029-05-03",3.8125,0],["2029-11-03",3.8125,0],["2030-05-03",3.8125,0],["2030-11-03",103.8125,100.0]]}},
+  {t:'BACHD',px:107.7,v:'2031-01-28',y:6.56,e:'Banco Macro',s:'Bancos',l:'NY',p:'Cable',lm:1000,c:'2030-12-28',fx:{"c":8.0,"q":2,"pd":"2026-07-28","rs":100,"fl":[["2027-01-28",4.0,0],["2027-07-28",4.0,0],["2028-01-28",4.0,0],["2028-07-28",4.0,0],["2029-01-28",4.0,0],["2029-07-28",4.0,0],["2030-01-28",4.0,0],["2030-07-28",4.0,0],["2031-01-28",104.0,100.0]]}},
+  {t:'PLC5D',px:108.8,v:'2031-05-18',y:6.92,e:'Pluspetrol',s:'Energía',l:'NY',p:'Cable',lm:1000,c:'2028-05-18',fx:{"c":8.125,"q":2,"pd":"2026-05-18","rs":100,"fl":[["2026-11-18",4.0625,0],["2027-05-18",4.0625,0],["2027-11-18",4.0625,0],["2028-05-18",4.0625,0],["2028-11-18",4.0625,0],["2029-05-18",4.0625,0],["2029-11-18",4.0625,0],["2030-05-18",4.0625,0],["2030-11-18",4.0625,0],["2031-05-18",104.0625,100.0]]}},
+  {t:'TSC3D',px:109.9,v:'2031-07-24',y:6.71,e:'TGS',s:'Energía',l:'NY',p:'Mep',lm:10000,c:'2027-07-24'},
+  {t:'MGCMD',px:107.5,v:'2031-09-10',y:6.5,e:'Pampa Energia',s:'Energía',l:'NY',p:'Cable',lm:10000,c:null,fx:{"c":7.95,"q":2,"pd":"2026-09-10","rs":100,"fl":[["2027-03-10",3.975,0],["2027-09-10",3.975,0],["2028-03-10",3.975,0],["2028-09-10",3.975,0],["2029-03-10",3.975,0],["2029-09-10",3.975,0],["2030-03-10",3.975,0],["2030-09-10",3.975,0],["2031-03-10",3.975,0],["2031-09-10",103.975,100.0]]}},
+  {t:'YMCXD',px:109.05,v:'2031-09-11',y:6.71,e:'YPF',s:'Energía',l:'NY',p:'Cable',lm:1000,c:'2027-09-11',fx:{"c":8.75,"q":2,"pd":"2026-09-11","rs":100,"fl":[["2027-03-11",4.375,0],["2027-09-11",4.375,0],["2028-03-11",4.375,0],["2028-09-11",4.375,0],["2029-03-11",4.375,0],["2029-09-11",24.375,20.0],["2030-03-11",3.5,0],["2030-09-11",23.5,20.0],["2031-03-11",2.625,0],["2031-09-11",62.625,60.0]]}},
+  {t:'PLC4D',px:110.5,v:'2032-05-30',y:7.1,e:'Pluspetrol',s:'Energía',l:'NY',p:'Cable',lm:1000,c:'2028-05-30',fx:{"c":8.5,"q":2,"pd":"2026-05-30","rs":100,"fl":[["2026-11-30",4.25,0],["2027-05-30",4.25,0],["2027-11-30",4.25,0],["2028-05-30",4.25,0],["2028-11-30",4.25,0],["2029-05-30",4.25,0],["2029-11-30",4.25,0],["2030-05-30",4.25,0],["2030-11-30",4.25,0],["2031-05-30",4.25,0],["2031-11-30",4.25,0],["2032-05-30",104.25,100.0]]}},
+  {t:'TTCAD',px:104.25,v:'2033-01-22',y:7.25,e:'Tecpetrol',s:'Energía',l:'NY',p:'Cable',lm:1000,c:'2028-01-22',fx:{"c":7.625,"q":2,"pd":"2026-07-22","rs":100,"fl":[["2027-01-22",3.8125,0],["2027-07-22",3.8125,0],["2028-01-22",3.8125,0],["2028-07-22",3.8125,0],["2029-01-22",3.8125,0],["2029-07-22",3.8125,0],["2030-01-22",3.8125,0],["2030-07-22",3.8125,0],["2031-01-22",36.8125,33.0],["2031-07-22",2.5544,0],["2032-01-22",35.5544,33.0],["2032-07-22",1.2962,0],["2033-01-22",35.2963,34.0]]}},
+  {t:'DNCAD',px:94.87,v:'2033-04-28',y:11.09,e:'Edenor',s:'Energía',l:'NY',p:'Cable',lm:1000,c:'2028-04-28',n:'TIR muy superior al resto: mayor riesgo',fx:{"c":9.5,"q":4,"pd":"2026-10-28","rs":100,"fl":[["2027-01-28",2.375,0],["2027-04-28",2.375,0],["2027-07-28",2.375,0],["2027-10-28",2.375,0],["2028-01-28",2.375,0],["2028-04-28",2.375,0],["2028-07-28",2.375,0],["2028-10-28",2.375,0],["2029-01-28",2.375,0],["2029-04-28",2.375,0],["2029-07-28",2.375,0],["2029-10-28",2.375,0],["2030-01-28",2.375,0],["2030-04-28",2.375,0],["2030-07-28",2.375,0],["2030-10-28",2.375,0],["2031-01-28",2.375,0],["2031-04-28",2.375,0],["2031-07-28",2.375,0],["2031-10-28",2.375,0],["2032-01-28",2.375,0],["2032-04-28",2.375,0],["2032-07-28",2.375,0],["2032-10-28",35.375,33.0],["2033-01-28",34.5913,33.0],["2033-04-28",34.8075,34.0]]}},
+  {t:'TLCPD',px:111.1,v:'2033-05-28',y:7.9,e:'Telecom',s:'Telecom',l:'NY',p:'Cable',lm:100,c:'2028-05-28',fx:{"c":9.25,"q":2,"pd":"2026-05-28","rs":100,"fl":[["2026-11-28",4.625,0],["2027-05-28",4.625,0],["2027-11-28",4.625,0],["2028-05-28",4.625,0],["2028-11-28",4.625,0],["2029-05-28",4.625,0],["2029-11-28",4.625,0],["2030-05-28",4.625,0],["2030-11-28",4.625,0],["2031-05-28",4.625,0],["2031-11-28",4.625,0],["2032-05-28",54.625,50.0],["2032-11-28",2.3125,0],["2033-05-28",52.3125,50.0]]}},
+  {t:'VSCVD',px:110.3,v:'2033-06-10',y:7.1,e:'Vista Energy',s:'Energía',l:'NY',p:'Cable',lm:1000,c:'2028-06-10',fx:{"c":8.5,"q":2,"pd":"2026-06-10","rs":100,"fl":[["2026-12-10",4.25,0],["2027-06-10",4.25,0],["2027-12-10",4.25,0],["2028-06-10",4.25,0],["2028-12-10",4.25,0],["2029-06-10",4.25,0],["2029-12-10",4.25,0],["2030-06-10",4.25,0],["2030-12-10",4.25,0],["2031-06-10",37.25,33.0],["2031-12-10",2.8475,0],["2032-06-10",35.8475,33.0],["2032-12-10",1.445,0],["2033-06-10",35.445,34.0]]}},
+  {t:'RC1CD',px:107.8,v:'2033-07-31',y:6.46,e:'Arcor',s:'Consumo/Agro',l:'NY',p:'Cable',lm:1000,c:'2028-07-31',fx:{"c":7.6,"q":2,"pd":"2026-07-31","rs":100,"fl":[["2027-01-31",3.8,0],["2027-07-31",3.8,0],["2028-01-31",3.8,0],["2028-07-31",3.8,0],["2029-01-31",3.8,0],["2029-07-31",3.8,0],["2030-01-31",3.8,0],["2030-07-31",3.8,0],["2031-01-31",3.8,0],["2031-07-31",36.8,33.0],["2032-01-31",2.546,0],["2032-07-31",35.546,33.0],["2033-01-31",1.292,0],["2033-07-31",35.292,34.0]]}},
+  {t:'YM34D',px:108.6,v:'2034-01-17',y:7.18,e:'YPF',s:'Energía',l:'NY',p:'Cable',lm:100,c:'2029-01-17',fx:{"c":8.25,"q":2,"pd":"2026-07-17","rs":100,"fl":[["2027-01-17",4.125,0],["2027-07-17",4.125,0],["2028-01-17",4.125,0],["2028-07-17",4.125,0],["2029-01-17",4.125,0],["2029-07-17",4.125,0],["2030-01-17",4.125,0],["2030-07-17",4.125,0],["2031-01-17",4.125,0],["2031-07-17",4.125,0],["2032-01-17",4.125,0],["2032-07-17",4.125,0],["2033-01-17",34.125,30.0],["2033-07-17",32.8875,30.0],["2034-01-17",41.65,40.0]]}},
+  {t:'MGCOD',px:107.55,v:'2034-12-16',y:7.25,e:'Pampa Energia',s:'Energía',l:'NY',p:'Cable',lm:10000,c:'2029-12-16',fx:{"c":7.875,"q":2,"pd":"2026-06-16","rs":100,"fl":[["2026-12-16",3.9375,0],["2027-06-16",3.9375,0],["2027-12-16",3.9375,0],["2028-06-16",3.9375,0],["2028-12-16",3.9375,0],["2029-06-16",3.9375,0],["2029-12-16",3.9375,0],["2030-06-16",3.9375,0],["2030-12-16",3.9375,0],["2031-06-16",3.9375,0],["2031-12-16",3.9375,0],["2032-06-16",3.9375,0],["2032-12-16",3.9375,0],["2033-06-16",3.9375,0],["2033-12-16",3.9375,0],["2034-06-16",3.9375,0],["2034-12-16",103.9375,100.0]]}},
+  {t:'IRCPD',px:104.85,v:'2035-03-31',y:7.39,e:'IRSA',s:'Inmobiliario',l:'NY',p:'Cable',lm:1,c:'2029-03-31'},
+  {t:'YM44D',px:100.05,v:'2035-06-18',y:7.82,e:'YPF',s:'Energía',l:'NY',p:'Cable',lm:1000,c:'2030-12-18',fx:{"c":7.55,"q":2,"pd":"2026-09-18","rs":100,"fl":[["2026-12-18",3.775,0],["2027-06-18",3.775,0],["2027-12-18",3.775,0],["2028-06-18",3.775,0],["2028-12-18",3.775,0],["2029-06-18",3.775,0],["2029-12-18",3.775,0],["2030-06-18",3.775,0],["2030-12-18",3.775,0],["2031-06-18",3.775,0],["2031-12-18",3.775,0],["2032-06-18",3.775,0],["2032-12-18",3.775,0],["2033-06-18",3.775,0],["2033-12-18",3.775,0],["2034-06-18",3.775,0],["2034-12-18",3.775,0],["2035-06-18",103.775,100.0]]},w:'TIR por flujos difiere de la tabla en 0.3 pp (revisar cronograma)'},
+  {t:'TSC4D',px:106.05,v:'2035-11-20',y:7.49,e:'TGS',s:'Energía',l:'NY',p:'Cable',lm:1000,c:'2030-11-20',fx:{"c":7.75,"q":2,"pd":"2026-05-20","rs":100,"fl":[["2026-11-20",3.875,0],["2027-05-20",3.875,0],["2027-11-20",3.875,0],["2028-05-20",3.875,0],["2028-11-20",3.875,0],["2029-05-20",3.875,0],["2029-11-20",3.875,0],["2030-05-20",3.875,0],["2030-11-20",3.875,0],["2031-05-20",3.875,0],["2031-11-20",3.875,0],["2032-05-20",3.875,0],["2032-11-20",3.875,0],["2033-05-20",3.875,0],["2033-11-20",3.875,0],["2034-05-20",3.875,0],["2034-11-20",3.875,0],["2035-05-20",3.875,0],["2035-11-20",103.875,100.0]]}},
+  {t:'VSCTD',px:106.9,v:'2035-12-10',y:7.1,e:'Vista Energy',s:'Energía',l:'NY',p:'Cable',lm:10000,c:'2029-12-10',fx:{"c":7.625,"q":2,"pd":"2026-06-10","rs":100,"fl":[["2026-12-10",3.8125,0],["2027-06-10",3.8125,0],["2027-12-10",3.8125,0],["2028-06-10",3.8125,0],["2028-12-10",3.8125,0],["2029-06-10",3.8125,0],["2029-12-10",3.8125,0],["2030-06-10",3.8125,0],["2030-12-10",3.8125,0],["2031-06-10",3.8125,0],["2031-12-10",3.8125,0],["2032-06-10",3.8125,0],["2032-12-10",3.8125,0],["2033-06-10",3.8125,0],["2033-12-10",36.8125,33.0],["2034-06-10",2.5544,0],["2034-12-10",35.5544,33.0],["2035-06-10",1.2962,0],["2035-12-10",35.2963,34.0]]}},
+  {t:'PN43D',px:107.5,v:'2037-01-15',y:7.09,e:'PAE',s:'Energía',l:'NY',p:'Cable',lm:1000,c:null,fx:{"c":7.9,"q":4,"pd":"2026-10-15","rs":100,"fl":[["2027-01-15",1.975,0],["2027-04-15",1.975,0],["2027-07-15",1.975,0],["2027-10-15",1.975,0],["2028-01-15",1.975,0],["2028-04-15",1.975,0],["2028-07-15",1.975,0],["2028-10-15",1.975,0],["2029-01-15",1.975,0],["2029-04-15",1.975,0],["2029-07-15",1.975,0],["2029-10-15",1.975,0],["2030-01-15",1.975,0],["2030-04-15",1.975,0],["2030-07-15",1.975,0],["2030-10-15",1.975,0],["2031-01-15",1.975,0],["2031-04-15",1.975,0],["2031-07-15",1.975,0],["2031-10-15",1.975,0],["2032-01-15",1.975,0],["2032-04-15",1.975,0],["2032-07-15",1.975,0],["2032-10-15",1.975,0],["2033-01-15",1.975,0],["2033-04-15",1.975,0],["2033-07-15",1.975,0],["2033-10-15",1.975,0],["2034-01-15",1.975,0],["2034-04-15",1.975,0],["2034-07-15",1.975,0],["2034-10-15",1.975,0],["2035-01-15",1.975,0],["2035-04-15",1.975,0],["2035-07-15",1.975,0],["2035-10-15",1.975,0],["2036-01-15",1.975,0],["2036-04-15",1.975,0],["2036-07-15",34.975,33.0],["2036-10-15",34.3233,33.0],["2037-01-15",34.6715,34.0]]}},
+  {t:'PLC7D',px:100.5,v:'2037-09-30',y:7.99,e:'Pluspetrol',s:'Energía',l:'NY',p:'Cable',lm:1000,c:'2031-09-30',fx:{"c":7.55,"q":4,"pd":"2026-09-30","rs":100,"fl":[["2026-12-30",1.8875,0],["2027-03-30",1.8875,0],["2027-06-30",1.8875,0],["2027-09-30",1.8875,0],["2027-12-30",1.8875,0],["2028-03-30",1.8875,0],["2028-06-30",1.8875,0],["2028-09-30",1.8875,0],["2028-12-30",1.8875,0],["2029-03-30",1.8875,0],["2029-06-30",1.8875,0],["2029-09-30",1.8875,0],["2029-12-30",1.8875,0],["2030-03-30",1.8875,0],["2030-06-30",1.8875,0],["2030-09-30",1.8875,0],["2030-12-30",1.8875,0],["2031-03-30",1.8875,0],["2031-06-30",1.8875,0],["2031-09-30",1.8875,0],["2031-12-30",1.8875,0],["2032-03-30",1.8875,0],["2032-06-30",1.8875,0],["2032-09-30",1.8875,0],["2032-12-30",1.8875,0],["2033-03-30",1.8875,0],["2033-06-30",1.8875,0],["2033-09-30",1.8875,0],["2033-12-30",1.8875,0],["2034-03-30",1.8875,0],["2034-06-30",1.8875,0],["2034-09-30",1.8875,0],["2034-12-30",1.8875,0],["2035-03-30",1.8875,0],["2035-06-30",1.8875,0],["2035-09-30",34.8875,33.0],["2035-12-30",1.2646,0],["2036-03-30",1.2646,0],["2036-06-30",1.2646,0],["2036-09-30",34.2646,33.0],["2036-12-30",0.6418,0],["2037-03-30",0.6418,0],["2037-06-30",0.6418,0],["2037-09-30",34.6418,34.0]]}},
+  {t:'MGCRD',px:104.1,v:'2037-11-14',y:7.83,e:'Pampa Energia',s:'Energía',l:'NY',p:'Cable',lm:10000,c:'2032-11-14',fx:{"c":7.75,"q":2,"pd":"2026-05-14","rs":100,"fl":[["2026-11-14",3.875,0],["2027-05-14",3.875,0],["2027-11-14",3.875,0],["2028-05-14",3.875,0],["2028-11-14",3.875,0],["2029-05-14",3.875,0],["2029-11-14",3.875,0],["2030-05-14",3.875,0],["2030-11-14",3.875,0],["2031-05-14",3.875,0],["2031-11-14",3.875,0],["2032-05-14",3.875,0],["2032-11-14",3.875,0],["2033-05-14",3.875,0],["2033-11-14",3.875,0],["2034-05-14",3.875,0],["2034-11-14",3.875,0],["2035-05-14",3.875,0],["2035-11-14",3.875,0],["2036-05-14",3.875,0],["2036-11-14",3.875,0],["2037-05-14",3.875,0],["2037-11-14",103.875,100.0]]}},
+  {t:'VSCXD',px:101.7,v:'2038-04-08',y:7.86,e:'Vista Energy',s:'Energía',l:'NY',p:'Cable',lm:1000,c:'2031-04-08',fx:{"c":7.875,"q":2,"pd":"2026-10-08","rs":100,"fl":[["2027-04-08",3.9375,0],["2027-10-08",3.9375,0],["2028-04-08",3.9375,0],["2028-10-08",3.9375,0],["2029-04-08",3.9375,0],["2029-10-08",3.9375,0],["2030-04-08",3.9375,0],["2030-10-08",3.9375,0],["2031-04-08",3.9375,0],["2031-10-08",3.9375,0],["2032-04-08",3.9375,0],["2032-10-08",3.9375,0],["2033-04-08",3.9375,0],["2033-10-08",3.9375,0],["2034-04-08",3.9375,0],["2034-10-08",3.9375,0],["2035-04-08",3.9375,0],["2035-10-08",3.9375,0],["2036-04-08",3.9375,0],["2036-10-08",3.9375,0],["2037-04-08",36.9375,33.0],["2037-10-08",35.6381,33.0],["2038-04-08",35.3387,34.0]]}}
+];
+
+// ── Tracker ONs Hard Dollar ──────────────────────────────────────
+const ONX_TOL=25; let onxCos={}; let onxChart=null, onxLive={}, onxSortKey='v', onxSortDir=1, onxRows=[];
+const ONX_COL={'Energía':'#f59e0b','Bancos':'#22d3ee','Financiero':'#38bdf8','Consumo/Agro':'#4ade80','Industria':'#a78bfa','Telecom':'#f472b6','Inmobiliario':'#fb923c'};
+function onxMedian(a){ if(!a.length) return null; const s=[...a].sort((x,y)=>x-y), m=s.length>>1; return s.length%2?s[m]:(s[m-1]+s[m])/2; }
+function onxYears(iso){ return (new Date(iso+'T00:00:00-03:00')-new Date())/(365.25*86400000); }
+function onxDur(y,n){ y=y/100; if(n<=0) return 0; if(Math.abs(y)<1e-4) return n; return (1-Math.pow(1+y,-n))/y; }
+function onxFitPlain(pts){  // mismo modelo y = a + b·ln(1+x), sin descartar puntos (pocos benchmarks)
+  const n=pts.length; if(n<3) return null;
+  let sx=0,sy=0,sxx=0,sxy=0; pts.forEach(p=>{const f=Math.log(1+p.x); sx+=f; sy+=p.y; sxx+=f*f; sxy+=f*p.y;});
+  const b=(n*sxy-sx*sy)/((n*sxx-sx*sx)||1); return {a:(sy-b*sx)/n,b};
+}
+function onxSovCurve(){
+  const pts=[];
+  Object.keys(HD_CONFIG).forEach(k=>{ const y=HD_YTM[k], c=HD_CONFIG[k]; if(c.tipo==='GD'&&k!=='GD46'&&Number.isFinite(y)&&c.vto) pts.push({x:onxYears(c.vto),y}); });  // solo Globales (GD46 es estimado)
+  pts.sort((a,b)=>a.x-b.x); return pts;
+}
+function onxInterp(pts,x){
+  if(!pts.length) return null; if(x<=pts[0].x) return pts[0].y; if(x>=pts[pts.length-1].x) return pts[pts.length-1].y;
+  for(let i=1;i<pts.length;i++) if(x<=pts[i].x){ const a=pts[i-1],b=pts[i]; return a.y+(b.y-a.y)*(x-a.x)/((b.x-a.x)||1); }
+}
+function onxFit(pts){  // y = a + b·ln(1+x), MCO con dos pasadas descartando |resid|>2σ
+  let P=pts; let co=null;
+  for(let it=0;it<3;it++){
+    const n=P.length; if(n<4) return null;
+    let sx=0,sy=0,sxx=0,sxy=0; P.forEach(p=>{const f=Math.log(1+p.x); sx+=f; sy+=p.y; sxx+=f*f; sxy+=f*p.y;});
+    const b=(n*sxy-sx*sy)/((n*sxx-sx*sx)||1), a=(sy-b*sx)/n; co={a,b};
+    const res=pts.map(p=>p.y-(a+b*Math.log(1+p.x))), sd=Math.sqrt(res.reduce((s,r)=>s+r*r,0)/pts.length);
+    P=pts.filter((p,i)=>Math.abs(res[i])<=2*sd);
+  }
+  return co;
+}
+const onxCurveAt=(co,x)=>co?co.a+co.b*Math.log(1+x):null;
+function onxSettle(){ const d=new Date(); d.setHours(12,0,0,0); do{ d.setDate(d.getDate()+1); }while(d.getDay()===0||d.getDay()===6); return d; }  // liquidación T+1 hábil
+function onxFlow(fx,px,st){
+  // TIR efectiva act/365 sobre precio sucio, duración modificada y paridad (precio sucio / valor técnico), con el cronograma real
+  const fl=fx.fl.map(f=>({t:(new Date(f[0]+'T12:00:00')-st)/86400000/365,cf:f[1]})).filter(f=>f.t>0);
+  if(!fl.length) return null;
+  const pv=y=>fl.reduce((s,f)=>s+f.cf/Math.pow(1+y,f.t),0);
+  let lo=-0.9,hi=3; for(let i=0;i<80;i++){ const m=(lo+hi)/2; if(pv(m)>px) lo=m; else hi=m; }
+  const y=(lo+hi)/2, mac=fl.reduce((s,f)=>s+f.t*f.cf/Math.pow(1+y,f.t),0)/px;
+  const pd=new Date(fx.pd+'T12:00:00'), nx=new Date(fx.fl[0][0]+'T12:00:00');
+  const acc=fx.rs*fx.c/100/fx.q*Math.max(0,Math.min(1,(st-pd)/(nx-pd)));
+  return {tir:y*100,dm:mac/(1+y),par:px/(fx.rs+acc)*100,acc};
+}
+function onxBuild(){
+  const sov=onxSovCurve();
+  const rows=ON_UNIV.map(o=>{
+    const yrs=onxYears(o.v), live=onxLive[o.t];
+    const isLive=!!(live&&live.px>0), px=isLive?live.px:o.px, psrc=isLive?live.src:'ref';  // último precio disponible, sin filtro de desvío
+    const st=onxSettle(), fr=o.fx?onxFlow(o.fx,px,st):null;
+    let tir,dur,par=null;
+    if(fr){ tir=fr.tir; dur=fr.dm; par=fr.par; }
+    else { const dur0=onxDur(o.y,yrs); tir=(isLive&&yrs>=1&&dur0>0.05)?o.y-((px/o.px-1)/dur0)*100:o.y; dur=onxDur(tir,yrs); }
+    const sv=onxInterp(sov,yrs);
+    return {...o,yrs,px,isLive,psrc,par,exact:!!fr,pct:isLive?(live.pct!=null&&psrc==='data912'?live.pct:(live.prev>0?(px/live.prev-1)*100:null)):null,tir,dur,spr:sv!=null?(tir-sv)*100:null,sov:sv,bad:!!o.n||o.px<90||o.y<0||yrs<0.25};
+  });
+  const mode=(document.getElementById('onx-f-c')||{}).value||'all';
+  const base=rows.filter(r=>!r.bad&&r.yrs>=0.5).map(r=>({x:r.yrs,y:r.tir,l:r.l}));
+  const cos={all:onxFit(base)}; if(mode==='ley'){ ['ARG','NY'].forEach(l=>cos[l]=onxFit(base.filter(p=>p.l===l))); }
+  onxCos=cos;
+  rows.forEach(r=>{ const co=mode==='ley'?cos[r.l]:cos.all; r.cur=onxCurveAt(co,r.yrs); r.vc=r.cur!=null&&!r.bad?(r.tir-r.cur)*100:null;
+    r.sig=r.vc==null?null:r.vc>ONX_TOL?'barata':r.vc<-ONX_TOL?'cara':'en curva'; });
+  return rows;
+}
+const onxOpen=new Set();
+function onxToggle(t){ if(onxOpen.has(t)) onxOpen.delete(t); else onxOpen.add(t); onxRender(); }
+const ONX_PILLS={
+  s:()=>[['','Todos']].concat([...new Set(ON_UNIV.map(o=>o.s))].sort().map(v=>[v,v])),
+  l:()=>[['','Todas'],['ARG','Argentina'],['NY','Nueva York']],
+  p:()=>[['','Todos'],['Mep','Mep'],['Cable','Cable']],
+  t:()=>[['','Todos'],['0-2','hasta 2 años'],['2-5','2 a 5 años'],['5-99','más de 5']],
+  c:()=>[['all','Universo'],['ley','Por ley']],
+  k:()=>[['sig','Barata / cara'],['sec','Sector']],
+  x:()=>[['1','Ocultar a revisar']]
+};
+function onxPillsInit(){
+  document.querySelectorAll('#onx-filters .onx-pills').forEach(box=>{
+    const f=box.dataset.f; if(box.dataset.ready) return; box.dataset.ready='1';
+    box.innerHTML=ONX_PILLS[f]().map(([v,l])=>`<button type="button" class="onx-pill" data-v="${v}">${l}</button>`).join('');
+    box.addEventListener('click',ev=>{ const b=ev.target.closest('.onx-pill'); if(!b) return;
+      if(f==='x'){ const cb=document.getElementById('onx-f-x'); cb.checked=!cb.checked; }
+      else document.getElementById('onx-f-'+f).value=b.dataset.v;
+      onxPillsSync(); onxRender(); });
+  });
+  onxPillsSync();
+}
+function onxPillsSync(){
+  document.querySelectorAll('#onx-filters .onx-pills').forEach(box=>{
+    const f=box.dataset.f, cur=f==='x'?(document.getElementById('onx-f-x').checked?'1':'0'):document.getElementById('onx-f-'+f).value;
+    box.querySelectorAll('.onx-pill').forEach(b=>b.classList.toggle('on',b.dataset.v===cur));
+  });
+}
+function onxFiltered(rows){
+  const g=id=>document.getElementById(id).value;
+  const s=g('onx-f-s'),e=g('onx-f-e'),l=g('onx-f-l'),p=g('onx-f-p'),t=g('onx-f-t'),x=document.getElementById('onx-f-x').checked;
+  const q=(document.getElementById('onx-f-q')||{value:''}).value.trim().toLowerCase();
+  return rows.filter(r=>(!q||r.t.toLowerCase().includes(q)||r.e.toLowerCase().includes(q))&&(!s||r.s===s)&&(!e||r.e===e)&&(!l||r.l===l)&&(!p||r.p===p)&&(!x||!r.bad)&&(!t||(r.yrs>=+t.split('-')[0]&&r.yrs<+t.split('-')[1])));
+}
+function onxSort(k){ onxSortDir=(onxSortKey===k)?-onxSortDir:1; onxSortKey=k; onxRender(); }
+function onxFillFilters(){
+  const el=document.getElementById('onx-f-e');
+  if(!el.options.length) el.innerHTML='<option value="">Todos los emisores</option>'+[...new Set(ON_UNIV.map(o=>o.e))].sort().map(v=>'<option>'+v+'</option>').join('');
+  onxPillsInit();
+}
+function onxRender(){
+  onxFillFilters();
+  document.getElementById('onx-asof').textContent=ON_UNIV_ASOF; document.getElementById('onx-asof2').textContent=ON_UNIV_ASOF;
+  const all=onxBuild(), rows=onxFiltered(all); onxRows=rows;
+  const k=onxSortKey, d=onxSortDir;
+  rows.sort((a,b)=>{ const x=a[k],y=b[k]; if(x==null) return 1; if(y==null) return -1; return (typeof x==='string'?x.localeCompare(y):x-y)*d; });
+  const f=(v,n=2)=>v==null?'—':v.toFixed(n);
+  const SRC={byma:['Último trade BYMA','#00e77f'],data912:['Último precio (data912)','#24cbfc'],punta:['Promedio de puntas compradora y vendedora','#f0b429'],ref:['Precio de referencia (tabla del 30/10)','#62626b']};
+  const chip=r=>r.sig==null?'<span style="color:var(--dim)">—</span>':`<span class="onx-chip" style="background:${r.sig==='barata'?'rgba(0,231,127,.14)':r.sig==='cara'?'rgba(248,113,113,.14)':'rgba(154,154,163,.12)'};color:${r.sig==='barata'?'var(--up)':r.sig==='cara'?'var(--rd)':'var(--mu)'}">${r.sig.toUpperCase()}</span>`;
+  const det=r=>`<tr class="onx-det"><td colspan="10"><div class="onx-dg">
+      <div><span>Sector</span><b>${r.s}</b></div><div><span>Ley · pago</span><b>${r.l==='NY'?'Nueva York':'Argentina'} · ${r.p}</b></div>
+      <div><span>Plazo</span><b>${f(r.yrs,1)} años</b></div><div><span>Paridad</span><b>${r.par==null?'—':f(r.par,1)+'%'}</b></div>
+      <div><span>Spread vs soberano</span><b>${r.spr==null?'—':Math.round(r.spr)+' pb'}</b></div><div><span>Call</span><b>${r.c||'—'}</b></div>
+      <div><span>Lámina mínima</span><b>${r.lm.toLocaleString('es-AR')}</b></div>
+      <div><span>Cupón</span><b>${r.fx?r.fx.c+'% · '+({1:'anual',2:'semestral',4:'trimestral',12:'mensual'}[r.fx.q]||'—'):'—'}</b></div>
+      <div><span>Fuente del precio</span><b>${SRC[r.psrc][0]}</b></div>
+      ${(r.n||r.w)?`<div style="grid-column:1/-1"><span>Nota</span><b style="color:var(--am);font-weight:400">${r.n||r.w}</b></div>`:''}
+    </div></td></tr>`;
+  document.getElementById('onx-body').innerHTML=rows.map(r=>`<tr class="onx-row" onclick="onxToggle('${r.t}')"${r.bad?' style="opacity:.6"':''}>
+    <td><strong>${r.t}</strong></td><td>${r.e}</td><td class="ct"><span class="vto">${r.v}</span></td>
+    <td class="num" style="font-weight:600;color:${r.isLive?'#ececea':'var(--mu)'}">${f(r.px)}<span class="onx-dot" style="background:${SRC[r.psrc][1]}" title="${SRC[r.psrc][0]}"></span></td>
+    <td class="num">${r.pct==null?'<span style="color:var(--dim)">—</span>':`<span style="color:${r.pct>=0?'var(--up)':'var(--rd)'}">${r.pct>=0?'+':''}${r.pct.toFixed(2)}%</span>`}</td>
+    <td class="num" style="color:var(--cy);font-weight:700">${f(r.tir)}%${r.exact?'':'<span title="Sin cronograma de flujos: TIR y duración aproximadas" style="color:var(--am)">*</span>'}</td>
+    <td class="num">${f(r.dur,2)}${r.exact?'':'*'}</td>
+    <td class="num" style="font-weight:700;color:${r.vc==null?'var(--dim)':r.vc>ONX_TOL?'var(--up)':r.vc<-ONX_TOL?'var(--rd)':'var(--mu)'}">${r.vc==null?'—':(r.vc>0?'+':'')+Math.round(r.vc)}</td>
+    <td>${chip(r)}</td><td class="onx-chev">${onxOpen.has(r.t)?'▾':'▸'}</td></tr>${onxOpen.has(r.t)?det(r):''}`).join('')||'<tr><td colspan="10" style="text-align:center;color:var(--mu);padding:24px">Sin ONs con esos filtros</td></tr>';
+  const good=rows.filter(r=>!r.bad), tirs=good.map(r=>r.tir), sprs=good.filter(r=>r.spr!=null).map(r=>r.spr);
+  document.getElementById('onx-k1').textContent=rows.length;
+  document.getElementById('onx-k1s').textContent='de '+ON_UNIV.length+' en total';
+  document.getElementById('onx-k2').textContent=tirs.length?f(onxMedian(tirs))+'%':'—';
+  document.getElementById('onx-k3').textContent=sprs.length?Math.round(onxMedian(sprs))+' pb':'—';
+  document.getElementById('onx-k5').textContent=all.filter(r=>r.isLive).length+' / '+all.length;
+  onxChartRender(good);
+}
+function onxChartRender(good){
+  const cv=document.getElementById('onxChart'); if(!cv||typeof Chart==='undefined') return;
+  const byS=(document.getElementById('onx-f-k')||{}).value==='sec';
+  const pt=r=>({x:r.yrs,y:r.tir,t:r.t,e:r.e,spr:r.spr,vc:r.vc,sig:r.sig});
+  const SIGC={barata:'#4ade80','en curva':'#94adc8',cara:'#f87171'};
+  const sets=byS?Object.keys(ONX_COL).map(s=>({label:s,data:good.filter(r=>r.s===s).map(pt),backgroundColor:ONX_COL[s],pointRadius:5,pointHoverRadius:7})).filter(s=>s.data.length)
+    :['barata','en curva','cara'].map(g=>({label:g==='barata'?'Barata (TIR sobre la curva)':g==='cara'?'Cara (TIR bajo la curva)':'En curva (±'+ONX_TOL+' pb)',data:good.filter(r=>r.sig===g).map(pt),backgroundColor:SIGC[g],pointRadius:5,pointHoverRadius:7})).filter(s=>s.data.length);
+  const xs=[]; for(let x=0.5;x<=12.01;x+=0.25) xs.push(x);
+  const curveSets=Object.entries(onxCos).filter(([k,co])=>co).map(([k,co],i)=>({label:'Curva ONs'+(k==='all'?'':' '+k),data:xs.filter(x=>x<=Math.max(...good.filter(r=>k==='all'||r.l===k).map(r=>r.yrs),1)).map(x=>({x,y:onxCurveAt(co,x)})),type:'line',borderColor:k==='NY'?'#38bdf8':k==='ARG'?'#f59e0b':'#e8f0f8',borderWidth:2,pointRadius:0,fill:false,tension:.3,order:0}));
+  sets.push(...curveSets);
+  const sovPts=onxSovCurve().filter(p=>p.x>0), sco=onxFitPlain(sovPts), sxMax=Math.max(...good.map(r=>r.yrs),sovPts.length?sovPts[sovPts.length-1].x:1);
+  const sov=sco?xs.filter(x=>x>=Math.max(0.5,sovPts[0].x-0.5)&&x<=sxMax).map(x=>({x,y:onxCurveAt(sco,x)})):sovPts;
+  sets.push({label:'Curva soberana (Globales)',data:sov,type:'line',borderColor:'#94adc8',borderDash:[6,4],pointRadius:0,borderWidth:2,fill:false,tension:.3});
+  if(onxChart) onxChart.destroy();
+  const tk={color:'#4a6080',font:{family:'IBM Plex Mono',size:9}}, gr={color:'rgba(31,45,64,.5)'};
+  onxChart=new Chart(cv.getContext('2d'),{type:'scatter',data:{datasets:sets},options:{responsive:true,maintainAspectRatio:false,animation:false,
+    plugins:{legend:{display:true,position:'bottom',labels:{color:'#94adc8',font:{family:'IBM Plex Mono',size:9},boxWidth:10}},
+      tooltip:{backgroundColor:'#111827',borderColor:'#2d4060',borderWidth:1,titleColor:'#e8f0f8',bodyColor:'#94adc8',callbacks:{
+        title:i=>i[0].raw.t||'Soberano HD',
+        label:i=>i.raw.t?[i.raw.e,'TIR: '+i.parsed.y.toFixed(2)+'%','Plazo: '+i.parsed.x.toFixed(1)+' años',i.raw.vc!=null?'vs curva: '+(i.raw.vc>0?'+':'')+Math.round(i.raw.vc)+' pb ('+i.raw.sig+')':'',i.raw.spr!=null?'Spread vs soberano: '+Math.round(i.raw.spr)+' pb':'']:'TIR: '+i.parsed.y.toFixed(2)+'%'}}},
+    scales:{x:{type:'linear',title:{display:true,text:'Años al vencimiento',color:'#4a6080',font:{family:'IBM Plex Mono',size:9}},grid:gr,ticks:tk},
+            y:{suggestedMin:0,title:{display:true,text:'TIR (%)',color:'#4a6080',font:{family:'IBM Plex Mono',size:9}},grid:gr,ticks:{...tk,callback:v=>v+'%'}}}}});
+}
+function onxSetLive(items,corp){
+  // Prioridad: último trade BYMA (liq. 24 h) > último precio data912 > promedio de puntas > referencia (en onxBuild)
+  const m={};
+  (items||[]).forEach(d=>{ if(d.settlementType!=='2'||d.denominationCcy!=='USD') return; const px=d.trade||d.closingPrice||0;
+    m[d.symbol]={px,prev:d.previousClosingPrice||d.previousSettlementPrice||0,bid:d.bidPrice||0,ask:d.offerPrice||0,src:px>0?'byma':null}; });
+  (corp||[]).forEach(d=>{ if(!/D$/.test(d.symbol||'')) return; const x=m[d.symbol]||(m[d.symbol]={px:0,prev:0,bid:0,ask:0,src:null});
+    if(!(x.px>0)&&d.c>0){ x.px=d.c; x.src='data912'; if(d.pct_change!=null) x.pct=d.pct_change; }
+    if(!(x.bid>0)) x.bid=d.px_bid||0; if(!(x.ask>0)) x.ask=d.px_ask||0; });
+  Object.values(m).forEach(x=>{ if(!(x.px>0)&&x.bid>0&&x.ask>0){ x.px=(x.bid+x.ask)/2; x.src='punta'; } });
+  onxLive=m; try{ onxRender(); }catch(e){}
 }
 
 // ════ ONs CORPORATIVAS ════════════════════════════════════════════
@@ -4081,9 +4552,13 @@ function onRenderAll(items) {
 
 async function onRefresh() {
   try {
-    const data = await fetch('/api/proxy?src=byma-ons').then(r => r.json());
+    const [data, corp] = await Promise.all([
+      fetch('/api/proxy?src=byma-ons').then(r => r.json()),
+      fetch('/api/proxy?src=corp').then(r => r.json()).catch(() => []),
+    ]);
     const items = Array.isArray(data) ? data : [];
     onRenderAll(items);
+    onxSetLive(items, Array.isArray(corp) ? corp : []);
     document.getElementById('on-src').textContent = 'BYMA · en vivo · ' + now8();
     setStatus('live', 'En vivo · ' + now8());
   } catch(e) {
@@ -4093,6 +4568,9 @@ async function onRefresh() {
 
 // ── ON initial load ──────────────────────────────────────────────
 onRefresh();
+try{ onxRender(); }catch(e){}
+// Historia TAMAR (BCRA) para acumular la pata TAMAR de los duales CER/TAMAR
+fetchJsonRetry('/api/proxy?src=tamar-hist').then(r=>{ const m={}; (r.serie||[]).forEach(x=>m[x.f]=x.v); const dates=Object.keys(m).sort(); window._tamarHist={map:m,dates}; try{ tmrDualCTRender(); }catch(e){} }).catch(()=>{});
 // ── HD seed ──────────────────────────────────────────────────────
 hdRenderAll(SEED_HD_SOB, SEED_HD_BP);
 // ── DL seed ──────────────────────────────────────────────────────
@@ -4100,6 +4578,22 @@ dlRenderAll(SEED_DL_NOTES, SEED_DL_TC);
 // Se dispara con un pequeño delay para asegurar que cerRender ya corrió
 setTimeout(()=>{ try{ bkevRender(); }catch(e){} }, 200);
 setStatus('seed','Cargando datos en vivo…');
+
+// S16O6/S29E7 no están en rendimientos.co (src=lecaps) — completar con data912 (src=notes).
+function addMissingTFFromNotes(tfList,notesList){
+  const out=[...(tfList||[])];
+  const have=new Set(out.map(d=>d.symbol));
+  (notesList||[]).forEach(n=>{
+    if(TF_VTO[n.symbol]&&!have.has(n.symbol)){
+      const price=n.c||n.px_bid||n.px_ask;
+      if(price>0){
+        out.push({symbol:n.symbol,price,bid:n.px_bid,ask:n.px_ask,type:n.symbol.startsWith('T')?'BONCAP':'LECAP'});
+        have.add(n.symbol);
+      }
+    }
+  });
+  return out;
+}
 
 // Reintenta una vez si la función serverless tarda en "despertar" (cold start de Vercel)
 // o la primera llamada falla — evita quedar pegado en SEED por más tiempo del necesario.
@@ -4127,8 +4621,11 @@ setTimeout(async()=>{
       fetchJsonRetry('/api/proxy?src=bonds'),
       fetchJsonRetry('/api/proxy?src=bcra'),
     ]);
+    // TF — rendimientos.co (src=lecaps) no trackea S16O6/S29E7 (los más cortos);
+    // completar con data912 (src=notes), que sí los tiene bajo otro feed.
+    const tfList=addMissingTFFromNotes(tfRes.data||tfRes, notesRes.data||notesRes);
     // TF — recalcular TEM desde precio y VF para que la regresión funcione
-    const tfRaw=(tfRes.data||tfRes).filter(d=>TF_VTO[d.symbol]).map(d=>{
+    const tfRaw=tfList.filter(d=>TF_VTO[d.symbol]).map(d=>{
       const dtm=getDTM(TF_VTO[d.symbol])??0;
       const vf=VF_MAP[d.symbol];
       let tem=d.tem,tna=d.tna,tea=d.tea;
@@ -4144,11 +4641,14 @@ setTimeout(async()=>{
     const cerRaw=[...(bondsRes.data||bondsRes||[]),...(notesRes.data||notesRes||[])];
     const pm={};cerRaw.forEach(d=>pm[d.symbol]={c:d.c,bid:d.px_bid,ask:d.px_ask,pct:d.pct_change});
     document.getElementById('cer-fecha').textContent='BCRA: '+cerRes.fecha;
+    { const _t=new Date();_t.setHours(0,0,0,0); document.getElementById('cer-lag').textContent=Math.round((_t-new Date(cerRes.fecha+'T00:00:00-03:00'))/86400000); }  // antes quedaba en "—" en la carga inicial
     document.getElementById('sim-cer-f').textContent=cerRes.fecha;
     cerRender(pm,cerRes.cer);
     try{ bkevRender(); }catch(e){}   // recalcular breakeven con curva fresca
     // HD en background
     try{ hdRefresh(); }catch(e){}
+    // DL en background (antes solo se actualizaba a los 20 min o con el botón: el tab DL mostraba precios seed de ~01/09)
+    try{ dlRefresh(); }catch(e){}
     // TAMAR — tasa oficial BCRA en vivo (antes quedaba pisada en SEED_TAMAR_RATE en esta
     // carga inicial; solo se corregía tras 20min de auto-refresh o click manual en "Actualizar")
     let tamarTNA=SEED_TAMAR_TNA, tamarFecha='—';
@@ -4174,8 +4674,24 @@ setTimeout(async()=>{
   }
 },800);
 
+// 3a. Curva de tasa fija: refresco en vivo cada 60 s en horario de mercado (L-V 10:45-17:15 ART) y cada 5 min fuera de horario.
+//     Solo con la pestaña visible; el proxy cachea 60 s, así que más seguido no aporta datos nuevos.
+function tfMarketOpen(){
+  const ar=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Argentina/Buenos_Aires'}));
+  const d=ar.getDay(),m=ar.getHours()*60+ar.getMinutes();
+  return d>=1&&d<=5&&m>=10*60+45&&m<=17*60+15;
+}
+let _tfLast=0;
+setInterval(()=>{
+  if(document.hidden) return;
+  const gap=tfMarketOpen()?60000:300000;
+  if(Date.now()-_tfLast<gap-1000) return;
+  _tfLast=Date.now(); tfRefresh();
+},15000);
+document.addEventListener('visibilitychange',()=>{ if(!document.hidden && Date.now()-_tfLast>60000){ _tfLast=Date.now(); tfRefresh(); } });
+
 // 3. Auto-refresh cada 20 min
-setInterval(async()=>{await Promise.allSettled([tfRefresh(),cerRefresh(),tmrRefresh(),hdRefresh(),dlRefresh()]);},20*60*1000);
+setInterval(async()=>{await Promise.allSettled([bandaRefresh(),tfRefresh(),cerRefresh(),tmrRefresh(),hdRefresh(),dlRefresh()]);},20*60*1000);
 
 // ═══════════════════════════════════════════════════════════════
 //  PESOS VS USD — Composición de deuda y costo de refinanciación
@@ -4218,9 +4734,9 @@ function pvdRender(){
   }).join('');
 }
 // Laddering — vencimientos por trimestre, deuda en pesos (Tasa Fija+CER+TAMAR+Duales)
-const LADDER_L = ['2026 T3','2026 T4','2027 T1','2027 T2','2027 T3','2027 T4','2028 T1','2028 T2','2028 T3','2028 T4','2029 T2','2029 T4','2030 T2'];
-const LADDER_ACTUAL = [9748.3,20294.9,15240.4,24372.3,7635.4,11154.3,17968.8,6613.1,14302.4,5284.9,4095.8,6832.8,2705.5];
-const LADDER_TARGET = 11249.9;
+const LADDER_L = ['2026 T4','2027 T1','2027 T2','2027 T3','2027 T4','2028 T1','2028 T2','2028 T3','2028 T4','2029 T2','2029 T4','2030 T2'];
+const LADDER_ACTUAL = [20997.5,31299.2,43737.5,11921.4,24598.7,17968.8,5423.2,15358.0,8949.9,4095.8,8774.1,2705.5];  // 11/11/2026: licitación 11-nov (S29E7 +2.032 en 27T1; T30J7 +1.224 y LETAM M30A7 +3.514 en 27T2; TZX28 a circulación oficial 5.423); incluye T30Z7 ($12,1 bn, vto. 30-dic-2027 inferido por el código, no confirmado)
+const LADDER_TARGET = 16319.1;
 let ladderChart=null;
 function ladderInit(){
   const el = document.getElementById('ladderChart');

@@ -289,12 +289,14 @@ if ipca_mom:
     _, v = trim(pairs, keep=24)
     update(["br", "cpiMoM"], [], v, "IPCA MoM Brasil")
 
-# SELIC
+# SELIC (la serie 432 viene con fechas futuras hasta la próxima reunión del Copom → filtrar > hoy)
 selic_rows = bcb("432", start="01/01/2024")
 if selic_rows:
     monthly = {}
     for date_str, val in selic_rows:
         d_obj = datetime.strptime(date_str, "%d/%m/%Y")
+        if d_obj.date() > date.today():
+            continue
         monthly[(d_obj.year, d_obj.month)] = round(val, 2)
     pairs = [(lbl(y, m), v) for (y, m), v in sorted(monthly.items())]
     l, v = trim(pairs, keep=24)
@@ -314,7 +316,8 @@ if ur_br:
 # La serie 22099 es YoY, no QoQ — no la reemplazamos para no romper el dashboard
 
 # Balanza Comercial Brasil
-trade_br = bcb("22704", start="01/01/2023")
+# 16/11/2026: era 22704 (no es el saldo de bienes); 22707 = balanza comercial de bienes (BPM6), = 22708 export − 22709 import
+trade_br = bcb("22707", start="01/01/2023")
 if trade_br:
     pairs = []
     for date_str, val in trade_br:
@@ -359,8 +362,8 @@ if emae_yoy:
     l, v = trim([(d, round(val * 100, 1)) for d, val in emae_yoy], keep=24)
     update(["arg", "emae"], l, v, "EMAE YoY")
 
-# EMAE nivel desest (para calcular MoM)
-emae_lev = datosgob("143.3_NO_PR_2004_A_21", limit=40)
+# EMAE nivel desest (para calcular MoM). OJO: _A_21 es la serie original (con estacionalidad), _A_31 la desestacionalizada
+emae_lev = datosgob("143.3_NO_PR_2004_A_31", limit=40)
 if len(emae_lev) >= 2:
     mom = mompct(emae_lev)
     l, v = trim([(d, val) for d, val in mom], keep=24)

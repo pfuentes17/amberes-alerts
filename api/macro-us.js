@@ -20,6 +20,24 @@ async function fred(id, limit=14, retries=3){
   }
   throw lastErr;
 }
+// FRED devuelve '.' para meses sin dato (ej. oct-2025: BLS no relevo por el cierre del gobierno). fred() los filtra, asi que
+// sin esto yoy() (offset de 12 posiciones) comparaba contra 13 meses atras y mom() contra 2 meses atras. densify() reinserta
+// cada mes mensual faltante aislado como media geometrica de los vecinos (criterio BLS "approximating missing data").
+function densify(obs){
+  const ym=d=>{const x=new Date(d+'T12:00:00Z');return x.getUTCFullYear()*12+x.getUTCMonth();};
+  const out=[];
+  for(let i=0;i<obs.length;i++){
+    if(i>0){
+      const a=out[out.length-1], gap=ym(obs[i].date)-ym(a.date);
+      if(gap===2){
+        const k=ym(a.date)+1, d=`${Math.floor(k/12)}-${String(k%12+1).padStart(2,'0')}-01`;
+        out.push({date:d,value:String(Math.sqrt(parseFloat(a.value)*parseFloat(obs[i].value))),est:true});
+      }
+    }
+    out.push(obs[i]);
+  }
+  return out;
+}
 function yoy(obs){const r=[];for(let i=12;i<obs.length;i++){const c=parseFloat(obs[i].value),p=parseFloat(obs[i-12].value);if(!isNaN(c)&&!isNaN(p)&&p)r.push({date:obs[i].date,value:((c/p-1)*100).toFixed(1)});}return r;}
 function mom(obs){const r=[];for(let i=1;i<obs.length;i++){const c=parseFloat(obs[i].value),p=parseFloat(obs[i-1].value);if(!isNaN(c)&&!isNaN(p)&&p)r.push({date:obs[i].date,value:((c/p-1)*100).toFixed(2)});}return r;}
 const MES=['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
@@ -32,9 +50,9 @@ const fmt=a=>({l:a.map(o=>fmtM(o.date)),v:a.map(o=>parseFloat(o.value))});
 // Promise.allSettled -- si una serie falla (incluso despues de los reintentos), el resto
 // de las series siguen entregandose normalmente en la respuesta.
 const SERIES = {
-  cpiL:  ()=>fred('CPIAUCSL',26),  cpiCL: ()=>fred('CPILFESL',26),
-  pceL:  ()=>fred('PCEPI',26),     pceCL: ()=>fred('PCEPILFE',26),
-  ppiL:  ()=>fred('PPIACO',26),    ppiCL: ()=>fred('PPICOR',26),
+  cpiL:  ()=>fred('CPIAUCSL',26).then(densify),  cpiCL: ()=>fred('CPILFESL',26).then(densify),
+  pceL:  ()=>fred('PCEPI',26).then(densify),     pceCL: ()=>fred('PCEPILFE',26).then(densify),
+  ppiL:  ()=>fred('PPIACO',26).then(densify),    ppiCL: ()=>fred('PPICOR',26).then(densify),
   gdp:   ()=>fred('A191RL1Q225SBEA',10),
   ur:    ()=>fred('UNRATE',12),
   nfp:   ()=>fred('PAYEMS',13),

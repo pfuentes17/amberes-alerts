@@ -4,6 +4,7 @@ const SOURCES = {
   bonds:      'https://data912.com/live/arg_bonds',
   cedears:    'https://data912.com/live/arg_cedears',
   notes:      'https://data912.com/live/arg_notes',
+  corp:       'https://data912.com/live/arg_corp',
   dolar:      'https://dolarapi.com/v1/dolares',
   bcra:       'https://rendimientos.co/api/bcra',
   lecaps:     'https://rendimientos.co/api/lecaps',
@@ -49,6 +50,65 @@ export default async function handler(req, res) {
       return res.status(200).json({ cer: ultimo.valor, fecha: ultimo.fecha, fuente: 'BCRA (id 30, T-10, directo)' });
     } catch (e) {
       return res.status(502).json({ error: e.message });
+    }
+  }
+
+  // TAMAR bancos privados (BCRA id 136, TNA %), diaria desde abr-2026 — para acumular la pata TAMAR de los duales CER/TAMAR desde su emisión
+  if (src === 'tamar-hist') {
+    try {
+      const fmt = d => d.toISOString().slice(0, 10);
+      const r = await fetch(`https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/136?desde=2026-04-01&hasta=${fmt(new Date())}&limit=1000`, { signal: AbortSignal.timeout(9000) });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const d = await r.json();
+      const serie = (d?.results?.[0]?.detalle || []).map(x => ({ f: x.fecha, v: x.valor })).sort((a, b) => a.f.localeCompare(b.f));
+      if (!serie.length) throw new Error('serie TAMAR vacía');
+      res.setHeader('Cache-Control', 's-maxage=3600');
+      return res.status(200).json({ serie, fuente: 'BCRA (id 136, TAMAR bancos privados TNA)' });
+    } catch (e) {
+      return res.status(502).json({ error: e.message });
+    }
+  }
+
+  // Bandas cambiarias — BCRA directo (ids 1187 límite inferior / 1188 límite superior). El BCRA publica la serie
+  // por adelantado (hasta fin del mes en curso), así el dashboard no depende de constantes hardcodeadas.
+  if (src === 'banda') {
+    try {
+      const fmt = d => d.toISOString().slice(0, 10);
+      const hoy = new Date();
+      const desde = fmt(new Date(hoy.getTime() - 4 * 24 * 3600 * 1000));
+      const hasta = fmt(new Date(hoy.getTime() + 150 * 24 * 3600 * 1000));
+      const get = async id => {
+        const r = await fetch(`https://api.bcra.gob.ar/estadisticas/v4.0/monetarias/${id}?desde=${desde}&hasta=${hasta}&limit=400`, { signal: AbortSignal.timeout(9000) });
+        if (!r.ok) throw new Error(`HTTP ${r.status} (id ${id})`);
+        const d = await r.json();
+        return Object.fromEntries((d?.results?.[0]?.detalle || []).map(x => [x.fecha, x.valor]));
+      };
+      const [lo, hi] = await Promise.all([get(1187), get(1188)]);
+      const serie = Object.keys(hi).filter(f => f in lo).sort().map(f => ({ f, piso: lo[f], techo: hi[f] }));
+      if (!serie.length) throw new Error('serie de bandas vacía');
+      res.setHeader('Cache-Control', 's-maxage=3600');
+      return res.status(200).json({ serie, fuente: 'BCRA (ids 1187/1188)' });
+    } catch (e) {
+      return res.status(502).json({ error: e.message });
+    }
+  }
+
+  // Soberanos USD-MEP en la forma del viejo feed de Netlify (usado por confianza.html):
+  // {data:[{symbol, price_usd, bid, ask, volume, pct_change}], source}. Fuente: data912, líneas "XXXD".
+  if (src === 'soberanos-usd') {
+    try {
+      const SYMS = ['AL29','AL30','AL35','AL41','AE38','AO27','AO28','AO29','BPD7','GD29','GD30','GD35','GD38','GD41','GD46'];
+      const r = await fetch(SOURCES.bonds, { signal: AbortSignal.timeout(9000) });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const by = Object.fromEntries((await r.json()).map(x => [x.symbol, x]));
+      const data = SYMS.map(sym => {
+        const x = by[sym + 'D'];
+        return x && x.c ? { symbol: sym, price_usd: x.c, bid: x.px_bid, ask: x.px_ask, volume: x.v, pct_change: x.pct_change } : null;
+      }).filter(Boolean);
+      if (!data.length) throw new Error('sin datos');
+      return res.status(200).json({ data, source: 'data912' });
+    } catch (e) {
+      return res.status(502).json({ error: e.message, data: [] });
     }
   }
 

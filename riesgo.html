@@ -186,6 +186,7 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
 .section-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin:12px 0 8px;}
 @media(max-width:960px){.two-col{grid-template-columns:1fr;}.m4{grid-template-columns:repeat(2,1fr);}}
 </style>
+<script>/* tema Amberes: activo por defecto; ?theme=off lo desactiva, ?theme=amberes lo reactiva */var _t=1;try{var q=location.search;if(/theme=off/.test(q))localStorage.setItem("amb-theme","0");if(/theme=amberes/.test(q))localStorage.setItem("amb-theme","1");_t=localStorage.getItem("amb-theme")!=="0";}catch(e){}if(_t){var l=document.createElement("link");l.rel="stylesheet";l.href="/amberes-theme.css";document.head.appendChild(l);}</script>
 </head>
 <body>
 <nav class="top-nav">
@@ -316,8 +317,10 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
           <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:20px;border:1px solid rgba(34,211,160,.3);color:var(--gr)">Yahoo Finance 252d</span>
         </span>
       </div>
-      <div id="corr-heatmap" style="padding:10px 14px 0"></div>
-      <div id="risk-attribution-panel" style="padding:10px 14px 4px"></div>
+      <div style="display:flex;gap:0;padding:10px 14px 4px;align-items:flex-start">
+        <div id="corr-heatmap" style="flex-shrink:0"></div>
+        <div id="risk-attribution-panel" style="flex:1;min-width:0;padding-left:20px;border-left:1px solid var(--bdr);margin-left:16px"></div>
+      </div>
       <div class="eq-body">
         <table class="eq-table">
           <thead>
@@ -937,20 +940,12 @@ async function render(d){
     const rowLabels = labels.map((l,i) => `<text x="${PAD-4}" y="${PAD + i*CELL + CELL/2 + 4}" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="9" fill="var(--mu)">${l}</text>`);
     const colLabels = labels.map((l,j) => `<text x="${PAD + j*CELL + CELL/2}" y="${PAD-6}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9" fill="var(--mu)">${l}</text>`);
 
-    el.innerHTML = `<div style="display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap">
-      <div>
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:6px">Correlaciones entre componentes · 3 años</div>
-        <svg viewBox="0 0 ${W} ${H}" style="width:${W}px;height:${H}px;max-width:100%">
-          ${rowLabels.join('')}${colLabels.join('')}${cells.join('')}
-        </svg>
-      </div>
-      <div style="flex:1;min-width:180px;padding-top:22px">
-        <div style="font-family:'IBM Plex Sans',sans-serif;font-size:10px;color:var(--mu);line-height:1.6">
-          <b style="color:#e8f0f8">Equity ↔ Bonos: ${vals[0][1].toFixed(2)}</b><br>
-          ${Math.abs(vals[0][1]) < 0.3 ? 'Correlación baja — buena diversificación entre componentes. En crisis las correlaciones tienden a converger hacia 1.' : vals[0][1] > 0.5 ? 'Correlación alta — los dos componentes principales se mueven juntos. Diversificación real limitada.' : 'Correlación moderada — diversificación parcial entre equity y renta fija.'}<br><br>
-          <span style="color:rgba(148,163,184,.5);font-size:9px">Calculado con retornos diarios reales. Cash excluido por vol ≈ 0.</span>
-        </div>
-      </div>
+    el.innerHTML = `<div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:6px">Correlaciones · 3 años</div>
+      <svg viewBox="0 0 ${W} ${H}" style="width:${W}px;height:${H}px;max-width:100%">
+        ${rowLabels.join('')}${colLabels.join('')}${cells.join('')}
+      </svg>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(148,163,184,.4);margin-top:4px">ρ eq↔bond: ${vals[0][1].toFixed(2)} · retornos diarios reales</div>
     </div>`;
   })();
 

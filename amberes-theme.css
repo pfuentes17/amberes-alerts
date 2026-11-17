@@ -1,0 +1,46 @@
+/* Tema visual Amberes: unifica la paleta y la tipografía de todos los dashboards con la identidad de la marca.
+   Paleta: carbón #1c1c1c / #282828, verde #00e77f, cyan #24cbfc, ámbar #f0b429. Tipografía: Lato. Esquinas casi rectas, regla verde bajo el header. */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+/* ── Familia 1: arg, agro, macro (--nv, --cel, --wh …) ── */
+:root{
+  --nv:#1c1c1c;--nv2:#282828;--nv3:#232328;
+  --cel:#00e77f;--cell:#42e894;--celm:rgba(0,231,127,.12);
+  --gd:#00e77f;--gdl:#42e894;--gdm:rgba(0,231,127,.12);
+  --g4:#00e77f;--g3:#00c46a;--g2:#0a7a47;
+  --rd:#ff6b6b;--or:#f0b429;--bl:#24cbfc;
+  --wh:#f4f4f2;--dm:rgba(244,244,242,.5);--ft:rgba(244,244,242,.07);--br:rgba(0,231,127,.2);
+  --indec:#24cbfc;--indec-m:rgba(36,203,252,.12);--bcra:#00e77f;--bcra-m:rgba(0,231,127,.12);
+  --mecon:#f0b429;--mecon-m:rgba(240,180,41,.12);--mkt:#24cbfc;--mkt-m:rgba(36,203,252,.12);
+  --agro:#00e77f;--agro-m:rgba(0,231,127,.12);--wasde:#24cbfc;--arg:#f0b429;
+  /* ── Familia 2: bonos, riesgo, tc, gestión, confianza (--bg, --s, --accent …) ── */
+  --bg:#1c1c1c;--s:#232328;--s2:#2a2a30;--bdr:#3a3a40;--bdr2:#4a4a52;
+  --txt:#ececea;--mu:#9a9aa3;--dim:#62626b;
+  --accent:#00e77f;--accent-dim:rgba(0,231,127,.1);
+  --up:#00e77f;--gr:#00e77f;--cy:#24cbfc;--am:#f0b429;--red:#ff6b6b;--yellow:#f0b429;--blue:#24cbfc;--lm:#42e894;
+  /* ── Familia 3: index, frescura (--s1, --tx, --info …) ── */
+  --s1:#232328;--s3:#3a3a40;--tx:#f4f4f2;--t2:#c4c4ca;--t3:#8d8d95;
+  --pos:#00e77f;--neg:#ff6b6b;--warn:#f0b429;--info:#24cbfc;--card-r:2px;
+}
+html,body{background:#1c1c1e!important}
+*{font-family:'Lato',-apple-system,'Segoe UI',sans-serif!important}
+body{font-variant-numeric:tabular-nums}
+h1,h2,.eyebrow{letter-spacing:.01em}
+h1{font-weight:900!important}
+
+/* Cabecera: banda #282828 + regla verde de 2px */
+.topbar,header,.hdr-top,.top{background:#282828!important;border-bottom:2px solid #00e77f!important}
+.top{border-bottom-color:#00e77f!important}
+
+/* Tarjetas: sin esquinas redondeadas y borde superior de color (KPI) */
+.kpi,.tw,.cbox,.cbox-cer,.sc,.ocard,.oc,.card,.panel-card,.ast,.mod-card,.bx,.chart-card,.sec{border-radius:2px!important}
+.kpi{border-top:3px solid #00e77f!important}
+.kpi:nth-child(2n){border-top-color:#24cbfc!important}
+.kpi:nth-child(3n){border-top-color:#f0b429!important}
+.kpi:nth-child(4n){border-top-color:#42e894!important}
+
+/* Eyebrows: trazo verde + texto verde en mayúsculas */
+.eyebrow,.ctitle{color:#00e77f!important}
+a{color:#42e894}
+a.nav-btn,.nav-btn{color:#c4c4ca}
+::selection{background:#00e77f;color:#1c1c1c}
