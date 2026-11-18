@@ -1,9 +1,9 @@
 {
-  "date": "2026-11-17",
-  "generated": "2026-11-17T13:13:57Z",
+  "date": "2026-11-18",
+  "generated": "2026-11-18T12:30:00Z",
   "sentiment": {
-    "overall": "risk-off",
-    "label": "Día de Nvidia con el Nasdaq en corrección; en Argentina el riesgo país salta a 855pb y el oficial toca máximo nominal",
+    "overall": "neutral",
+    "label": "Nvidia supera expectativas y los futuros rebotan tras cuatro bajas seguidas del S&P; en Argentina el riesgo país se sostiene en 854pb",
     "fg": null,
     "fg_label": "Sin dato verificado",
     "putcall": null,
@@ -13,87 +13,82 @@
     {
       "id": 1,
       "tag": "EE.UU. · Acciones · IA",
-      "tag_class": "tr",
-      "title": "El Nasdaq entra en corrección y Nvidia reporta hoy tras el cierre",
-      "brief": "Lunes 16/11: S&P 500 -1,9% a 7.416,59, Nasdaq -2,5% a 24.509,76 (-10,9% desde el máximo del 6/10). Nvidia -4,1%. Balance 3T FY27 hoy post-cierre.",
-      "tldr": "El balance de Nvidia define si la corrección del Nasdaq se profundiza o encuentra piso.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "Cierre del lunes 16/11 (AP/Reuters): <strong>S&amp;P 500 -1,9% a 7.416,59</strong> (tercera baja seguida), <strong>Nasdaq -2,5% a 24.509,76</strong> y <strong>Dow -1,4% a 51.608</strong>. En ETFs (Finnhub): <strong>SPY -1,91% a US$739,95</strong> y <strong>QQQ -2,67% a US$661,75</strong>. Amplitud muy negativa: <strong>355 bajas contra 145 subas</strong> en el S&amp;P; solo consumo básico y utilities cerraron en alza. <strong>Nvidia cayó 4,1%</strong> y arrastró a todo el sector de chips. Con esta baja, el <strong>Nasdaq queda 10,9% debajo de su máximo del 6/10</strong>: técnicamente, en corrección.",
-      "contexto": "Nvidia presenta su <strong>3T FY27 hoy después del cierre</strong>, el primer balance tras la salida de Jensen Huang como CEO (Colette Kress quedó como interina). El mercado va a mirar menos el número del trimestre y más la guía y el mensaje sobre la continuidad de la demanda de data centers. Esta semana también está prevista la IPO de Anthropic (precio el 18/11, debut el 19/11), que compite por la misma liquidez del complejo IA.",
+      "tag_class": "tg",
+      "title": "Nvidia supera expectativas y guía US$130.000 M: futuros del Nasdaq rebotan ~1%",
+      "brief": "3T FY27: ingresos US$115.800 M y EPS ajustado US$2,68 (vs US$2,48 esperado). Guía 4T ~US$130.000 M. La acción subió hasta 6% after hours; futuros Nasdaq +1%.",
+      "tldr": "El balance despeja la principal duda del trimestre: la demanda de IA sigue firme sin Jensen Huang.",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "Nvidia presentó ayer tras el cierre su <strong>3T FY27</strong>: <strong>ingresos por US$115.800 M</strong> (vs US$57.000 M hace un año) y <strong>EPS ajustado de US$2,68</strong> contra <strong>US$2,48 esperado</strong>. Guió <strong>ingresos del 4T en torno a US$130.000 M</strong>, por encima del consenso. La acción había cerrado el martes en <strong>US$155,46 (-0,44%)</strong> (Finnhub), tras acumular una caída cercana al 25% en noviembre, y <strong>subió hasta 6% en el after hours</strong>. Esta mañana los <strong>futuros del Nasdaq-100 suben ~1%</strong> y los del <strong>S&amp;P 500 ~0,6%</strong>.",
+      "contexto": "Fue el primer balance sin Jensen Huang (renunció el 12/11); Colette Kress, CFO y CEO interina, condujo la conferencia y el directorio descartó su regreso. El número confirma que la corrección de chips de noviembre fue más por posicionamiento y gobierno corporativo que por demanda. En Asia la reacción fue dispar: Corea subió con fuerza, mientras los reportes sobre el Nikkei no coinciden.",
       "impacto": [
         {
-          "asset": "S&P 500",
-          "dir": "↓ 1,9%",
-          "cls": "dn"
+          "asset": "Nvidia (AH)",
+          "dir": "↑ hasta 6%",
+          "cls": "up"
         },
         {
-          "asset": "Nasdaq",
-          "dir": "↓ 2,5%",
-          "cls": "dn"
+          "asset": "Fut. Nasdaq-100",
+          "dir": "↑ ~1%",
+          "cls": "up"
         },
         {
-          "asset": "Nvidia",
-          "dir": "↓ 4,1%",
-          "cls": "dn"
+          "asset": "Fut. S&P 500",
+          "dir": "↑ ~0,6%",
+          "cls": "up"
         }
       ]
     },
     {
       "id": 2,
-      "tag": "Internacional · Asia · Chips",
+      "tag": "EE.UU. · Acciones · Software",
       "tag_class": "tr",
-      "title": "Asia sigue a Wall Street: KOSPI -2,6% y Nikkei -1,3% por límites a chips",
-      "brief": "Martes 17/11: Nikkei -1,3% a 58.860, KOSPI -2,6%, Hang Seng -0,8%; China en mínimos del año. EE.UU. endureció el acceso de China a chips de IA. Europa abre en baja.",
-      "tldr": "La venta de tecnología se globaliza antes del balance de Nvidia.",
+      "title": "El S&P 500 cae por cuarta rueda y cierra en su nivel más bajo desde julio",
+      "brief": "Martes 17/11: S&P 500 -1,03% a 7.340,53, Nasdaq -0,74% a 24.328,38, Dow -1,6%. Lideró la baja el software (Salesforce, Intuit, ServiceNow).",
+      "tldr": "El rebote de hoy parte de un mercado técnicamente dañado.",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "En la rueda asiática de hoy, el <strong>Nikkei 225 cerró -1,3% a 58.860,43</strong> (Advantest y SoftBank entre las más castigadas), el <strong>KOSPI cayó 2,6%</strong> y el <strong>Hang Seng -0,8%</strong>; las bolsas de China continental tocaron <strong>mínimos del año</strong>. Además de la baja de Nvidia, pesaron las <strong>nuevas restricciones de EE.UU. al acceso de China a chips avanzados de IA</strong>. Las bolsas europeas abrieron en baja, tras un Stoxx 600 que había caído 0,28% el lunes.",
-      "contexto": "Corea y Taiwán son los mercados más expuestos a la cadena de memorias y semiconductores. Las nuevas restricciones a China suman un riesgo regulatorio a la duda sobre la demanda de IA: no solo importa cuánto vende Nvidia, sino a quién puede venderle.",
+      "evento": "Cierre del martes 17/11: <strong>S&amp;P 500 -1,03% a 7.340,53</strong>, su <strong>menor cierre desde fines de julio</strong> y cuarta baja seguida; <strong>Nasdaq -0,74% a 24.328,38</strong> y <strong>Dow -1,6%</strong>. En ETFs (Finnhub): <strong>SPY -1,01% a US$732,44</strong> y <strong>QQQ -0,73% a US$656,95</strong>. El <strong>software</strong> encabezó las caídas (Salesforce, Intuit, ServiceNow) y las <strong>prepagas</strong> cayeron por una propuesta de ampliar auditorías a Medicare Advantage.",
+      "contexto": "La rotación ya no es solo contra semiconductores: el software se suma por el temor a que la IA erosione los modelos de suscripción. El <strong>UST 10Y en 5,12%</strong> (FRED, último dato 16/11) sigue siendo un techo para las valuaciones. El rebote de futuros de hoy necesita confirmarse con amplitud, no solo con Nvidia.",
       "impacto": [
         {
-          "asset": "KOSPI",
-          "dir": "↓ 2,6%",
+          "asset": "S&P 500",
+          "dir": "↓ 1,03%",
           "cls": "dn"
         },
         {
-          "asset": "Nikkei 225",
-          "dir": "↓ 1,3%",
+          "asset": "Nasdaq",
+          "dir": "↓ 0,74%",
           "cls": "dn"
         },
         {
-          "asset": "Hang Seng",
-          "dir": "↓ 0,8%",
-          "cls": "dn"
+          "asset": "UST 10Y",
+          "dir": "5,12%",
+          "cls": "neu"
         }
       ]
     },
     {
       "id": 3,
-      "tag": "Energía · Petróleo",
-      "tag_class": "tq",
-      "title": "El petróleo cae más de 3%: se normaliza el flujo por Ormuz y la IEA ve superávit",
-      "brief": "WTI -3,21% a US$85,72 y Brent -3,55% a US$92,44 el lunes 16/11. USO -3,81% (Finnhub). Señales de recuperación de flujos por Ormuz y la IEA anticipa vuelta al superávit.",
-      "tldr": "Menos prima geopolítica en el crudo: alivio para la inflación global, presión sobre las energéticas.",
+      "tag": "EE.UU. · IPO · IA",
+      "tag_class": "tb",
+      "title": "Anthropic fija precio hoy: rango US$70-78 y demanda de ~6 veces la oferta",
+      "brief": "La IPO (ticker ANT, Nasdaq) se pricea esta noche y debuta el jueves 19/11. 825 M de acciones; valuación de hasta US$1,4 billones.",
+      "tldr": "Test de apetito por IA con Nvidia ya despejada.",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El lunes 16/11 el <strong>WTI cerró en US$85,72 (-3,21%)</strong> y el <strong>Brent en US$92,44 (-3,55%)</strong>. El ETF <strong>USO cayó 3,81% a US$140,03</strong> (Finnhub). Los operadores señalaron <strong>señales de recuperación en los flujos por el Estrecho de Ormuz</strong> y el pronóstico de la <strong>IEA de vuelta a un mercado con superávit</strong>. El oro (GLD) también cedió <strong>0,71% a US$352,93</strong>.",
-      "contexto": "La baja del crudo saca prima geopolítica y ayuda a contener las expectativas de inflación en un contexto de tasas largas altas. Para Argentina el efecto es doble: menor precio de exportación para Vaca Muerta (VIST, YPF) pero también menor costo de importación de energía en el invierno 2027.",
+      "evento": "Anthropic define hoy a la noche el precio de su IPO: rango de <strong>US$70 a US$78</strong> por acción, <strong>825 M de acciones clase A</strong> en Nasdaq bajo el ticker <strong>ANT</strong>, con <strong>debut el jueves 19/11</strong>. Reportes de prensa ubican el libro de órdenes en <strong>~6 veces lo ofrecido</strong> y una valuación de <strong>hasta US$1,4 billones</strong> (fully diluted). Hay versiones de un precio por encima del rango, aún sin confirmar.",
+      "contexto": "Con una recaudación que podría superar los US$57.000 M, compite por la misma liquidez que el complejo IA. Tras el balance de Nvidia, el escenario de salida mejoró respecto de ayer; un precio sobre el rango sería una señal de que el apetito por IA sigue intacto pese a la corrección.",
       "impacto": [
         {
-          "asset": "WTI",
-          "dir": "↓ 3,21% US$85,72",
-          "cls": "dn"
+          "asset": "Rango IPO",
+          "dir": "US$70-78",
+          "cls": "neu"
         },
         {
-          "asset": "Brent",
-          "dir": "↓ 3,55% US$92,44",
-          "cls": "dn"
-        },
-        {
-          "asset": "Oro (GLD)",
-          "dir": "↓ 0,71%",
-          "cls": "dn"
+          "asset": "Sobresuscripción",
+          "dir": "~6x",
+          "cls": "up"
         }
       ]
     },
@@ -101,56 +96,56 @@
       "id": 4,
       "tag": "Argentina · Bonos · Riesgo país",
       "tag_class": "ta",
-      "title": "Riesgo país salta 25pb a 855 y el Merval cae 5,3% en una rueda negra",
-      "brief": "Riesgo país 855pb el 16/11 (+25pb vs 830). Globales -0,6% promedio, Merval -5,3% en pesos y ADRs hasta -7,7%. Caputo lo atribuye a factores externos e incertidumbre política.",
-      "tldr": "Argentina amplifica el risk-off global: el crédito devuelve buena parte de la mejora de la semana pasada.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>riesgo país cerró el lunes 16/11 en 855pb</strong> (argentinadatos), <strong>+25pb</strong> contra 830 del viernes 13/11. Desde el <strong>máximo de ~939pb de comienzos de noviembre</strong> la mejora acumulada se recorta a ~84pb. Según la prensa del lunes, los <strong>bonos en dólares cayeron 0,6% en promedio</strong>, el <strong>Merval -5,3% en pesos</strong> y los <strong>ADRs hasta -7,7%</strong>. Últimos precios data912: <strong>GD30 US$52,90 (-0,30%)</strong>, <strong>GD35 US$70,10 (-0,72%)</strong>, <strong>AL35 US$64,81 (-0,75%)</strong>, GD38 US$74,85 (-0,33%), GD41 US$66,00 (-0,77%) y GD29 US$54,07 (+0,41%).",
-      "contexto": "El ministro Luis Caputo atribuyó la suba a factores internacionales y a la incertidumbre política local. La caída es pareja en toda la curva, pero los tramos largos (GD35, GD41, AL35) ceden más: con el 10Y de EE.UU. en 5,15%, la duration es lo primero que se vende. El nivel sigue lejos del mínimo de ~402pb de julio.",
+      "title": "Riesgo país se sostiene en 854pb: bonos mixtos y Merval estable pese a Wall Street",
+      "brief": "Riesgo país 854pb el 17/11 (-1 vs 855 del lunes); llegó a 863 intradía. GD30 US$52,67 (-0,43%), GD35 US$70,30 (+0,29%), AL35 US$65,22 (+0,63%).",
+      "tldr": "Los activos argentinos resistieron un día malo afuera, pero sin comprimir spread.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El <strong>riesgo país cerró el martes 17/11 en 854pb</strong> (argentinadatos), <strong>-1pb</strong> contra 855 del lunes; según la prensa tocó <strong>863pb intradía</strong>. Precios data912 de esta mañana: <strong>GD30 US$52,67 (-0,43%)</strong>, <strong>GD35 US$70,30 (+0,29%)</strong>, <strong>AL30 US$51,44 (+0,04%)</strong>, <strong>AL35 US$65,22 (+0,63%)</strong> y GD38 US$75,19 (+0,45%). El GD29 marca -2,05%, pero con volumen mínimo. El <strong>Merval</strong> cerró prácticamente sin cambios (los reportes van de -0,2% a +1,1%) y los <strong>ADRs</strong> terminaron con mayoría de subas, de la mano de las energéticas.",
+      "contexto": "Tras la rueda negra del lunes, los activos locales mostraron menor beta: el S&amp;P cayó 1% y el riesgo país apenas se movió. La agenda local (reforma electoral, datos fiscales) mantiene la cautela. Si el rebote global de hoy se sostiene, el tramo largo (GD35/AL35) es el más sensible a una mejora.",
       "impacto": [
         {
           "asset": "Riesgo país",
-          "dir": "↑ 855pb (+25)",
-          "cls": "dn"
+          "dir": "→ 854pb (-1)",
+          "cls": "neu"
         },
         {
-          "asset": "Merval",
-          "dir": "↓ 5,3%",
-          "cls": "dn"
+          "asset": "AL35",
+          "dir": "↑ 0,63% US$65,22",
+          "cls": "up"
         },
         {
-          "asset": "GD35",
-          "dir": "↓ 0,72% US$70,10",
+          "asset": "GD30",
+          "dir": "↓ 0,43% US$52,67",
           "cls": "dn"
         }
       ]
     },
     {
       "id": 5,
-      "tag": "Argentina · Dólar · Brecha",
+      "tag": "Argentina · Dólar · BCRA",
       "tag_class": "ta",
-      "title": "El oficial toca máximo nominal de $1.575 y el CCL sube a $1.683",
-      "brief": "Oficial BNA $1.575, blue $1.600, MEP $1.588,9, CCL $1.682,9. Canje CCL/MEP ~5,9%, brecha CCL/mayorista ~8,5%. El real brasileño, en mínimos de 19 meses.",
-      "tldr": "Sube todo el complejo cambiario; el canje se mantiene alto y Brasil suma presión.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "Cotizaciones dolarapi de esta mañana: <strong>oficial BNA $1.525/$1.575</strong> (máximo nominal), <strong>blue $1.580/$1.600</strong>, <strong>MEP $1.588,9</strong>, <strong>CCL $1.682,9</strong> y cripto $1.678. El <strong>mayorista cerró el lunes en $1.551</strong>, lejos del techo de la banda (<strong>$1.971,80</strong>). El <strong>canje CCL/MEP queda en ~5,9%</strong> (vs ~6,2% del lunes a la mañana) y la <strong>brecha CCL/mayorista en ~8,5%</strong>. El <strong>BCRA compró USD 33 M</strong> el lunes (Perfil, MDZ; C5N informa USD 40 M).",
-      "contexto": "La presión ya no se limita al cable: el MEP sube ~$10 y el oficial minorista marca máximo nominal. A esto se suma Brasil: el <strong>real cayó 2,3% el lunes</strong> y tocó <strong>mínimos de 19 meses</strong> (USD/BRL 5,7053 en el fixing BCE del 16/11), lo que encarece relativamente lo argentino frente a su principal socio. Con la banda todavía lejos, el BCRA puede seguir comprando, pero el margen de apreciación real se achica.",
+      "title": "Oficial estable en $1.575; el CCL sube a $1.697 y el canje se mantiene cerca de 6%",
+      "brief": "Oficial BNA $1.525/$1.575, mayorista $1.552, MEP $1.603,3, CCL $1.697,2, blue $1.605. El BCRA compró USD 75 M el martes según la prensa.",
+      "tldr": "Compras del BCRA y demanda de cobertura conviven: el cable sigue firme.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "Cotizaciones dolarapi de esta mañana: <strong>oficial BNA $1.525/$1.575</strong> (sin cambios), <strong>mayorista $1.552</strong> (cierre 17/11), <strong>MEP $1.603,3</strong>, <strong>CCL $1.697,2</strong>, <strong>blue $1.585/$1.605</strong> y cripto $1.688,5. El <strong>canje CCL/MEP queda en ~5,9%</strong> y la <strong>brecha CCL/mayorista en ~9,4%</strong> (vs ~8,5% ayer). Según la prensa, el <strong>BCRA compró USD 75 M</strong> el martes.",
+      "contexto": "El CCL suma ~$14 en un día mientras el oficial queda quieto: la presión vuelve a concentrarse en la salida de pesos al exterior. Las compras del BCRA ayudan a reservas, pero con el real cerca de mínimos (USD/BRL 5,78 en el fixing BCE del 17/11) el margen para sostener la apreciación real se achica.",
       "impacto": [
         {
-          "asset": "Oficial BNA",
-          "dir": "↑ $1.575",
-          "cls": "dn"
-        },
-        {
           "asset": "CCL",
-          "dir": "↑ $1.682,9",
-          "cls": "dn"
+          "dir": "↑ $1.697,2",
+          "cls": "up"
         },
         {
-          "asset": "Canje CCL/MEP",
-          "dir": "~5,9%",
+          "asset": "Brecha CCL/mayorista",
+          "dir": "~9,4%",
+          "cls": "up"
+        },
+        {
+          "asset": "USD/BRL",
+          "dir": "5,78",
           "cls": "neu"
         }
       ]
@@ -158,31 +153,31 @@
   ],
   "tensiones": [
     {
-      "label": "Nvidia vs. la IPO de Anthropic",
-      "texto": "Nvidia reporta hoy con el Nasdaq ya en corrección y Anthropic define precio mañana. Un balance flojo dejaría a la IPO saliendo al peor mercado del año para la IA; uno sólido podría reactivar todo el complejo."
+      "label": "Nvidia firme vs. software en caída",
+      "texto": "El balance confirma la demanda de chips, pero el martes el software encabezó las bajas por el temor a que la IA erosione las suscripciones. El mercado empieza a separar ganadores y perdedores de la IA en vez de comprar todo el complejo."
     },
     {
-      "label": "Petróleo en baja vs. tasas arriba de 5%",
-      "texto": "El crudo cae más de 3% y quita presión inflacionaria, pero el 10Y sigue en 5,15%: el alivio energético todavía no se traslada a las tasas largas que necesitan los emergentes."
+      "label": "Rebote de futuros vs. tasas en 5%",
+      "texto": "Los futuros suben tras Nvidia, pero el 10Y sigue en 5,12% y el S&amp;P está en mínimos desde julio. Sin una baja de tasas largas, el rebote puede quedar en un alivio de corto plazo."
     },
     {
-      "label": "BCRA compra vs. dólar en máximos",
-      "texto": "El BCRA sigue comprando (USD 33–40 M el lunes) y el mayorista está lejos del techo de la banda, pero el oficial minorista toca máximo nominal y el CCL sube: la acumulación de reservas convive con mayor demanda de cobertura."
+      "label": "BCRA compra vs. CCL en alza",
+      "texto": "El BCRA compra (USD 75 M el martes según la prensa) y el oficial está quieto, pero la brecha CCL/mayorista sube a ~9,4%: la acumulación de reservas convive con mayor demanda de dolarización vía cable."
     }
   ],
   "correlaciones": [
     {
-      "par": "Nasdaq (QQQ) vs. S&P 500 (SPY)",
-      "texto": "QQQ -2,67% vs SPY -1,91% el lunes: la venta sigue concentrada en tecnología, con solo consumo básico y utilities en alza."
+      "par": "Nvidia vs. Nasdaq-100",
+      "texto": "Nvidia +hasta 6% after hours arrastra a los futuros del Nasdaq-100 (+~1%) casi el doble que los del S&amp;P (+~0,6%): el peso de los chips en el índice sigue dominando la dirección."
     },
     {
-      "par": "Wall Street vs. ADRs argentinos / Merval",
-      "texto": "Un S&amp;P -1,9% se tradujo en ADRs hasta -7,7% y Merval -5,3%: la beta de los activos argentinos al risk-off global sigue siendo de 3x o más."
+      "par": "S&P 500 vs. riesgo país",
+      "texto": "Con el S&amp;P -1% el martes, el riesgo país apenas se movió (854pb, -1): tras el lunes negro la beta local al risk-off global se moderó."
     },
     {
-      "par": "Real brasileño vs. dólar en Argentina",
-      "texto": "El real en mínimos de 19 meses (-2,3% el lunes) acompaña la suba del oficial a $1.575 y del CCL a $1.683: la debilidad regional se contagia al peso."
+      "par": "Real brasileño vs. CCL",
+      "texto": "USD/BRL en 5,78 cerca de mínimos del real y CCL en $1.697: la debilidad regional se sigue reflejando en el dólar financiero argentino."
     }
   ],
-  "bottom_line": "Martes de <strong>alto riesgo</strong>: el <strong>Nasdaq entró en corrección</strong> (-10,9% desde el máximo) y la venta de chips se extendió a Asia (KOSPI -2,6%, Nikkei -1,3%) antes del <strong>balance de Nvidia, hoy tras el cierre</strong>. El <strong>petróleo cayó más de 3%</strong> (Brent US$92,44) y el <strong>10Y sigue en 5,15%</strong>. <strong>Para Argentina</strong>, el lunes fue una rueda negra: <strong>riesgo país 855pb (+25)</strong>, <strong>Merval -5,3%</strong> y ADRs hasta -7,7%, mientras el <strong>oficial toca máximo nominal de $1.575</strong>, el <strong>CCL sube a $1.683</strong> y el real brasileño cae a mínimos de 19 meses. El BCRA sigue comprando y el mayorista está lejos del techo de la banda, pero la combinación de risk-off global y presión regional deja poco espacio para comprimir spreads esta semana. Mantenemos <strong>prudencia en Globales largos</strong> y en ADRs hasta conocer el balance de Nvidia, y <strong>cobertura cambiaria vía CCL/MEP</strong> en carteras en pesos."
+  "bottom_line": "Miércoles de <strong>alivio condicionado</strong>: <strong>Nvidia superó expectativas</strong> (ingresos US$115.800 M, guía 4T ~US$130.000 M) y los <strong>futuros del Nasdaq suben ~1%</strong>, después de que el <strong>S&amp;P 500 cerrara en su nivel más bajo desde julio</strong> (7.340,53, cuarta baja seguida). Esta noche se define el precio de la <strong>IPO de Anthropic</strong> (rango US$70-78), segundo test del apetito por IA en la semana, con el <strong>10Y todavía en 5,12%</strong>. <strong>Para Argentina</strong>, el martes mostró resistencia: <strong>riesgo país estable en 854pb</strong>, bonos mixtos con mejoras en el tramo largo (AL35 +0,63%) y ADRs mayormente en alza por energía. El frente a vigilar es el cambiario: el <strong>CCL sube a $1.697</strong> y la <strong>brecha con el mayorista llega a ~9,4%</strong> pese a las compras del BCRA. Si el rebote global se consolida, hay espacio para que el spread recupere parte de lo perdido desde la semana pasada; mientras tanto, mantenemos <strong>cobertura cambiaria vía CCL/MEP</strong> en carteras en pesos y <strong>exposición moderada a Globales largos</strong>."
 }
