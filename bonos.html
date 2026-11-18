@@ -1032,13 +1032,14 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
       <!-- VNO Circulación — Letras y Bonos Dólar Linked (fuente: Secretaría de Finanzas / A3 Mercados, ver hoja "Vencimientos - Detalle DLK") -->
       <div class="tw">
         <div class="tw-hdr" style="color:#a3e635">VNO Circulación — Letras y Bonos Dólar Linked
-          <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">Secretaría de Finanzas / A3 Mercados · actualizado 11/11/2026 (licitación)</span>
+          <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">Secretaría de Finanzas / A3 Mercados · actualizado 17/11/2026 (conversión D30N6)</span>
         </div>
         <div class="tbl-wrap"><table><thead><tr><th>Ticker</th><th class="ct">Vto.</th><th>VNO Circulación</th><th>Fecha del Dato</th><th>Nota</th></tr></thead><tbody id="dl-vno-body">
           <tr><td>D30S6</td><td class="ct">30/09/2026</td><td>USD 1.098 M</td><td>22/09/2026</td><td style="color:var(--mu);font-size:11px">Rescate 75% VNO (USD 3.299M) en conversión a D30O6/D30N6/TZV28</td></tr>
           <tr><td>D30O6</td><td class="ct">30/10/2026</td><td>USD 1.418 M</td><td>21/10/2026</td><td style="color:var(--mu);font-size:11px">Rescate USD 3.929,7M en conversión a D30N6/D15E7/TZV27 (A3 #14.747); remanente no convertido vence 30-oct</td></tr>
-          <tr><td>D30N6</td><td class="ct">30/11/2026</td><td>USD 4.742 M</td><td>21/10/2026</td><td style="color:var(--mu);font-size:11px">Alta por conversión D30O6 (+USD 2.680,5M) — A3 Com. #14.747; antes USD 2.062M (A3 #14.730)</td></tr>
+          <tr><td>D30N6</td><td class="ct">30/11/2026</td><td>USD 1.888 M</td><td>17/11/2026</td><td style="color:var(--mu);font-size:11px">Rescate USD 2.854M (60,19% del VNO) en conversión a D29E7 (Finanzas 17-nov, liquida 19-nov; falta VNO exacto A3); antes USD 4.742M (A3 #14.747)</td></tr>
           <tr><td>D15E7</td><td class="ct">15/01/2027</td><td>USD 4.388 M</td><td>11/11/2026</td><td style="color:var(--mu);font-size:11px">Reapertura licitación 11-nov (+USD 768M, precio de corte USD 992, TIREA 4,77%; circulación según Finanzas, falta A3). Antes: Reapertura licitación 28-oct (+USD 1.666,2M, precio de corte USD 986, TIREA 7,00%); VNO exacto A3 #14.756 (USD 3.619.980.785); antes USD 1.953,8M tras conversión D30O6 (A3 #14.747)</td></tr>
+          <tr><td>D29E7<span style="font-size:8px;margin-left:4px;padding:1px 4px;border-radius:3px;background:rgba(163,230,53,.12);border:1px solid rgba(163,230,53,.3);color:#a3e635">nueva</span></td><td class="ct">29/01/2027</td><td>USD 2.875 M</td><td>17/11/2026</td><td style="color:var(--mu);font-size:11px">Emitida por conversión de D30N6 (precio de corte USD 992,33 por VNO 1.000; 481 ofertas, ofertado USD 3.328M); emisión 19-nov-2026</td></tr>
           <tr><td>D31M7</td><td class="ct">31/03/2027</td><td>USD 941 M</td><td>15/09/2026</td><td style="color:var(--mu);font-size:11px">Confirmado A3 Comunicado #14.677</td></tr>
           <tr><td>DLK 10-may-2027<span style="font-size:8px;margin-left:4px;padding:1px 4px;border-radius:3px;background:rgba(148,163,184,.12);border:1px solid rgba(148,163,184,.3);color:var(--mu)">s/cód.</span></td><td class="ct">10/05/2027</td><td>USD 604 M</td><td>15/07/2026</td><td style="color:var(--mu);font-size:11px">Instrumento nuevo, código no confirmado en el anuncio oficial</td></tr>
           <tr><td>TZV27</td><td class="ct">30/06/2027</td><td>USD 1.070 M</td><td>21/10/2026</td><td style="color:var(--mu);font-size:11px">Alta por conversión D30O6 (+USD 206,1M) — A3 Com. #14.747; antes USD 864M (A3 #14.677)</td></tr>
@@ -4118,6 +4119,9 @@ const DL_CONFIG = {
   // Agregados 01/09/2026 (ver memoria bonos-dashboard-cer-audit): faltaban, cotizan en vivo con volumen real
   D30O6: {tipo:'Letra DL', vto:'2026-10-30', vtod:'Oct 26', vn_usd:100, emision:'2026-08-31'},
   D15E7: {tipo:'Letra DL', vto:'2027-01-15', vtod:'Ene 27', vn_usd:100, emision:'2026-07-31'},
+  // Agregados 18/11/2026: D30N6 cotiza con volumen (faltaba) y D29E7 nueva (conversión D30N6 del 17/11, emisión 19/11/2026)
+  D30N6: {tipo:'Letra DL', vto:'2026-11-30', vtod:'Nov 26', vn_usd:100, emision:'2026-09-30'},
+  D29E7: {tipo:'Letra DL', vto:'2027-01-29', vtod:'Ene 27', vn_usd:100, emision:'2026-11-19'},
   // Bonos DL (TZV prefix) — ZC, vto 30 de junio, ley Argentina
   // TC aplicable al pago: A3500 del T-1 hábil previo al vencimiento
   TZV27: {tipo:'Bono DL',  vto:'2027-06-30', vtod:'Jun 27', vn_usd:100, emision:'2024-02-28'},
