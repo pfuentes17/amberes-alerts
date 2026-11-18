@@ -1416,9 +1416,14 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
         <div class="cart-note">en la compra y en la venta antes del vto.</div>
       </div>
       <div>
-        <div class="cart-lbl">Reinversión cupones/vtos (TEM %)</div>
+        <div class="cart-lbl">Reinversión en pesos (TEM %)</div>
         <input id="cart-reinv" type="number" step="0.05" class="cart-in" style="width:70px" onchange="cartSet('reinv',+this.value)">
-        <div class="cart-note">default: LECAP más corta</div>
+        <div class="cart-note">cobros en ARS (tasa fija, CER, DL, TAMAR, duales) · default: LECAP más corta</div>
+      </div>
+      <div>
+        <div class="cart-lbl">Reinversión en dólares (TEA %)</div>
+        <input id="cart-reinvUsd" type="number" step="0.25" class="cart-in" style="width:70px" onchange="cartSet('reinvUsd',+this.value)">
+        <div class="cart-note">cupones y amortizaciones de HD y ONs · default: tasa libre de riesgo USD</div>
       </div>
       <div>
         <div class="cart-lbl">TIR real de salida (bonos CER)</div>
@@ -1477,7 +1482,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     </div>
   </div>
   <div style="background:var(--s);border:1px solid var(--bdr2);border-left:3px solid #a78bfa;border-radius:8px;padding:12px 16px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);line-height:1.75">
-    <strong style="color:#a78bfa">Cómo se calcula.</strong> Se compra hoy (liquidación T+1) al precio de la tabla. Al horizonte, la cartera vale lo cobrado (reinvertido a la TEM indicada; los USD de los HD quedan en USD) más el precio de salida de lo que no venció.
+    <strong style="color:#a78bfa">Cómo se calcula.</strong> Se compra hoy (liquidación T+1) al precio de la tabla. Al horizonte, la cartera vale lo cobrado (los pesos reinvertidos a la TEM en pesos; los dólares de HD y ONs, en dólares a la TEA en dólares) más el precio de salida de lo que no venció.
     <b>Tasa fija:</b> valor final del bono; si no venció, se descuenta con la curva LECAP/BONCAP de hoy al plazo restante (+ corrimiento).
     <b>CER:</b> CER publicado por el BCRA y, después, proyectado con la inflación de arriba (períodos 15→15, IPC M−2, ajuste T−10 hábiles); si no venció, se vende a la TIR real elegida: la actual del bono, la de la curva real al plazo restante o una manual (+ corrimiento en las dos primeras).
     <b>Dollar linked:</b> A3500 proyectado con la devaluación indicada; salida a la TIR en USD actual del bono.
@@ -5087,6 +5092,9 @@ function cartDefaultDev(){
 function cartDefaultReinv(){
   const r = tfTeaAt(30); return r ? +r.tem.toFixed(2) : 2.0;
 }
+function cartDefaultReinvUsd(){   // tasa libre de riesgo USD de la sección HD (UST), si no 4%
+  const v = +(document.getElementById('hdd-rf') || {}).value; return Number.isFinite(v) && v > 0 ? v : 4;
+}
 function cartDefaultTamar(){
   const H = window._tamarHist; if(H && H.dates && H.dates.length) return +H.map[H.dates.at(-1)].toFixed(2);
   return SEED_TAMAR_TNA;
@@ -5112,6 +5120,7 @@ function cartEnsureA(){
   if(!cartA._user.brecha) cartA.brecha = brechaDef;
   if(!cartA._user.reinv) cartA.reinv = cartDefaultReinv();
   if(!cartA._user.tamar) cartA.tamar = cartDefaultTamar();
+  if(!cartA._user.reinvUsd) cartA.reinvUsd = cartDefaultReinvUsd();
   if(!Number.isFinite(cartA.com)) cartA.com = 0;
   if(!cartA.cerExit) cartA.cerExit = 'bono';
   if(cartA.h <= cartSettle()) cartA.h = cartAddMonths(cartToday(), 6);
@@ -5225,7 +5234,9 @@ function cartValue(u, px, A){
   } else if(u.cls === 'HD' || u.cls === 'ON'){
     const f = u.cls === 'HD' ? hddFlows(hddKey(u.sym), st) : u.on.fx.fl.filter(x => x[0] > st).map(x => ({d:x[0], cf:x[1]}));
     const y = hddYTM(f, u.pxUsd, st) + A.shHD/1e4;
-    let usd = f.filter(x => x.d <= H).reduce((s, x) => s + x.cf, 0);
+    // cupones/amortizaciones en USD cobrados antes del horizonte: se reinvierten en USD a la TEA indicada
+    const ru = (Number.isFinite(A.reinvUsd) ? A.reinvUsd : 0)/100;
+    let usd = f.filter(x => x.d <= H).reduce((s, x) => s + x.cf * Math.pow(1 + ru, Math.max(0, bkDays(x.d, H))/365), 0);
     const rest = f.filter(x => x.d > H);
     if(rest.length && A.dflt && u.cls === 'HD'){   // escenario default: al horizonte se canjea (reestructuración tipo 2020)
       const [, q, ext, cpn, ex] = HDD_PRESETS.c20m;
@@ -5338,6 +5349,7 @@ function cartRender(){
   document.getElementById('cart-brecha').value = cartA.brecha;
   document.getElementById('cart-brecha-note').textContent = 'hoy '+(cartA._brechaDef ?? '—')+'% (MEP vs A3500)';
   document.getElementById('cart-reinv').value = cartA.reinv;
+  document.getElementById('cart-reinvUsd').value = cartA.reinvUsd;
   document.getElementById('cart-tamar').value = cartA.tamar;
   document.getElementById('cart-tamar-note').textContent = 'última publicada '+cartDefaultTamar().toFixed(2).replace('.',',')+'% (BCRA)';
   document.getElementById('cart-com').value = cartA.com;
