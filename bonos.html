@@ -1407,8 +1407,13 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
         <div class="cart-note" id="cart-brecha-note"></div>
       </div>
       <div>
-        <div class="cart-lbl">TAMAR (TNA %, de acá al vto.)</div>
-        <input id="cart-tamar" type="number" step="0.25" class="cart-in" style="width:70px" onchange="cartSet('tamar',+this.value)">
+        <div class="cart-lbl">TAMAR futura</div>
+        <select id="cart-tamarMode" class="cart-in" onchange="cartSet('tamarMode',this.value)">
+          <option value="fija">Fija (TNA %)</option>
+          <option value="ipc">Sigue a la inflación</option>
+        </select>
+        <input id="cart-tamar" type="number" step="0.25" class="cart-in" style="width:64px" title="TNA %" onchange="cartSet('tamar',+this.value)">
+        <input id="cart-tamarReal" type="number" step="0.05" class="cart-in" style="width:64px;display:none" title="spread real % mensual" onchange="cartSet('tamarReal',+this.value)">
         <div class="cart-note" id="cart-tamar-note"></div>
       </div>
       <div>
@@ -1489,7 +1494,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     <b>Dollar linked:</b> A3500 proyectado con la devaluación indicada; salida a la TIR en USD actual del bono.
     <b>Hard dollar (GD/AL):</b> flujos de la reestructuración 2020 en USD, salida a la TIR actual del bono (+ corrimiento), pasados a pesos al MEP proyectado (oficial × (1+brecha)).
     <b>TAMAR:</b> el precio rinde la TAMAR supuesta (TEM según prospecto, spread ≈ 0, igual que la solapa TAMAR; no modela cupones de cada emisión).
-    <b>Duales:</b> pago al vto. = capital × (1+TEM de la TAMAR promedio + margen)^(meses), con la TAMAR publicada (BCRA) y la TNA supuesta para el resto; pagan la pata mayor (TAMAR vs CER proyectado, o vs tasa fija). Si se venden antes, se mantiene la TIR implícita entre el precio de hoy y ese pago.
+    <b>Duales:</b> pata TAMAR = capital × (1+TEM de la TAMAR promedio + margen)^(meses), con la TAMAR publicada (BCRA) y la supuesta para el resto (fija o acompañando la inflación); pagan la pata mayor (TAMAR vs CER proyectado, vs tasa fija, o vs dólar A3500 + spread en el TAMAR/dólar TMVE8, cuyo VN es en USD). Si se venden antes, se mantiene la TIR implícita entre el precio de hoy y ese pago (+ corrimiento CER).
     <b>ONs:</b> flujos en USD del universo del tablero, salida a la TIR actual (+ corrimiento HD/DL).
     <b>Default HD:</b> en ese escenario GD/AL se canjean al horizonte con el simulador de reestructuración (tipo 2020 a tasa de mercado).
     Comisión opcional; no incluye impuestos ni derechos de mercado. El dual TAMAR/USD (TMVE8) todavía no está.
@@ -5063,15 +5068,14 @@ function cartUniverse(){
     const k = hddKey(s), last = HDD_AMORT[k].at(-1)[0];
     U[s] = {sym:s, tipo:'Hard dollar', cls:'HD', pxUsd:pu, px:cartMep0 ? pu*cartMep0 : null, vto:last};
   });
-  // TAMAR y duales (LETAMAR, BONO TAMAR, dual TAMAR/piso fijo, dual CER/TAMAR). El dual TAMAR/USD (TMVE8) queda afuera:
-  // la convención de VN/precio no está confirmada en el tablero.
+  // TAMAR y duales (LETAMAR, BONO TAMAR, dual TAMAR/piso fijo, dual CER/TAMAR y dual TAMAR/USD).
   const tl = window._tmrLast || {notes: [], bonds: SEED_TMR_BONDS};
   [...(tl.notes||[]), ...(tl.bonds||[])].forEach(d => {
     const i = TMR_INSTR[d.symbol]; const px = d.c || d.px_bid || d.px_ask;
-    if(!i || !px || i.vtoi <= st || i.tipo === 'DUAL TAMAR/USD') return;
+    if(!i || !px || i.vtoi <= st) return;
     if(i.tipo === 'DUAL CER/TAMAR' && !i.cer0) return;
     const cls = (i.tipo === 'LETAMAR' || i.tipo === 'BONO TAMAR') ? 'TAMAR' : 'DUAL';
-    U[d.symbol] = {sym:d.symbol, tipo: cls === 'TAMAR' ? 'TAMAR' : (i.tipo === 'DUAL' ? 'Dual TAMAR/fija' : 'Dual CER/TAMAR'), cls, px, vto:i.vtoi, instr:i};
+    U[d.symbol] = {sym:d.symbol, tipo: cls === 'TAMAR' ? 'TAMAR' : ({'DUAL':'Dual TAMAR/fija','DUAL TAMAR/USD':'Dual TAMAR/dólar'}[i.tipo] || 'Dual CER/TAMAR'), cls, px, vto:i.vtoi, instr:i};
   });
   // ONs en USD (universo del tablero con flujos; precio en vivo BYMA/data912 si hay)
   const live = (typeof onxLive !== 'undefined' && onxLive) || {};
@@ -5127,6 +5131,8 @@ function cartEnsureA(){
   if(!cartA._user.reinvUsd) cartA.reinvUsd = cartDefaultReinvUsd();
   if(!Number.isFinite(cartA.com)) cartA.com = 0;
   if(!cartA.cerExit) cartA.cerExit = 'bono';
+  if(!cartA.tamarMode) cartA.tamarMode = 'fija';
+  if(!cartA._user.tamarReal) cartA.tamarReal = cartDefaultTamarReal(cartA);
   if(cartA.h <= cartSettle()) cartA.h = cartAddMonths(cartToday(), 6);
   cartIpcMonthsNeeded(cartA.h).forEach(k => { if(!Number.isFinite(cartA.ipc[k]) || !cartA._user.ipc) cartA.ipc[k] = Number.isFinite(cartA.ipc[k]) && cartA._user.ipc ? cartA.ipc[k] : bandIpcDefault(k); });
   cartA._devSrc = dev.src; cartA._brechaDef = brechaDef;
@@ -5164,15 +5170,34 @@ function cartCerAt(A, iso){
 
 // ── pata TAMAR: promedio de la TAMAR (TNA) entre emisión−10 hábiles y vto−10 hábiles; lo ya publicado sale del
 // histórico BCRA (window._tamarHist), el resto se completa con la TNA supuesta. Capitaliza con calcTamarTEM (prospecto).
+// TAMAR (TNA %) supuesta para una fecha futura: 'fija' = la TNA cargada; 'ipc' = acompaña la inflación supuesta
+// (TEM = (1+IPC del mes)·(1+spread real mensual) − 1, pasada a TNA con la inversa de calcTamarTEM)
+function cartTnaFromTem(tem){ return (Math.pow(1 + tem, 12*32/365) - 1) * 365/32 * 100; }
+function cartTamarAt(A, iso){
+  if(A.tamarMode !== 'ipc') return A.tamar;
+  const ym = +iso.slice(0,4)*100 + +iso.slice(5,7);
+  return cartTnaFromTem((1 + cartIpcAt(A, ym)/100) * (1 + (A.tamarReal || 0)/100) - 1);
+}
+function cartDefaultTamarReal(A){   // spread real mensual de hoy: TEM de la TAMAR vigente vs IPC esperado del mes próximo
+  const t = new Date(); const ym = t.getMonth() === 11 ? (t.getFullYear()+1)*100 + 1 : t.getFullYear()*100 + t.getMonth() + 2;
+  return +(((1 + calcTamarTEM(cartDefaultTamar())) / (1 + cartIpcAt(A, ym)/100) - 1) * 100).toFixed(2);
+}
+// TEM promedio de la TAMAR supuesta entre dos fechas (para los títulos TAMAR sin cronograma modelado)
+function cartTamarGrowth(A, a, b){
+  if(A.tamarMode !== 'ipc') return Math.pow(1 + calcTamarTEM(A.tamar), Math.max(0, bkDays(a, b))/30);
+  let g = 1; const d = new Date(a+'T00:00:00Z'), end = new Date(b+'T00:00:00Z');
+  while(d < end){ d.setUTCDate(d.getUTCDate()+1); g *= Math.pow(1 + calcTamarTEM(cartTamarAt(A, d.toISOString().slice(0,10))), 1/30); }
+  return g;
+}
 function cartTamarPay(i, A, margen){
   const Hh = window._tamarHist, s = bkAddBiz(i.emision, -10), e = bkAddBiz(i.vtoi, -10), cut = bkAddBiz(cartToday(), -10);
   let sum = 0, n = 0;
   if(Hh && Hh.dates && Hh.dates.length && s >= Hh.dates[0]){
     Hh.dates.forEach(k => { if(k >= s && k <= e && k <= cut){ sum += Hh.map[k]; n++; } });
   }
-  const from = n ? cut : s; let nf = 0; const d = new Date(from+'T00:00:00Z'), end = new Date(e+'T00:00:00Z');
-  while(d < end){ d.setUTCDate(d.getUTCDate()+1); if(bkIsBiz(d)) nf++; }
-  const avg = (sum + nf*A.tamar) / Math.max(1, n + nf);
+  const from = n ? cut : s; let nf = 0, sf = 0; const d = new Date(from+'T00:00:00Z'), end = new Date(e+'T00:00:00Z');
+  while(d < end){ d.setUTCDate(d.getUTCDate()+1); if(bkIsBiz(d)){ nf++; sf += cartTamarAt(A, d.toISOString().slice(0,10)); } }
+  const avg = (sum + sf) / Math.max(1, n + nf);
   const emi = new Date(i.emision+'T00:00:00'), vto = new Date(i.vtoi+'T00:00:00');
   return 100 * Math.pow(1 + calcTamarTEM(avg + (margen||0)), days30360(emi, vto)/30);
 }
@@ -5181,6 +5206,13 @@ function cartProjPay(u, A){
   const i = u.instr, emi = new Date(i.emision+'T00:00:00'), vto = new Date(i.vtoi+'T00:00:00');
   if(i.tipo === 'LETAMAR' || i.tipo === 'BONO TAMAR') return {pay: cartTamarPay(i, A, 0), leg:'TAMAR'};
   if(i.tipo === 'DUAL'){ const t = cartTamarPay(i, A, 0), f = 100*Math.pow(1 + i.piso_tem, days30360(emi, vto)/30); return t >= f ? {pay:t, leg:'TAMAR'} : {pay:f, leg:'tasa fija'}; }
+  if(i.tipo === 'DUAL TAMAR/USD'){
+    // VN en USD (el precio cotiza en ARS por 100 USD de VN, como las letras DL). Paga el mayor entre:
+    // pata TAMAR = 100 USD × TC₀ capitalizado a TAMAR (sin margen) · pata USD = 100 × A3500(vto−1 hábil) × (1+spread)^(años 30/360 desde emisión)
+    const tam = cartTamarPay(i, A, 0) * i.tc0;
+    const usd = 100 * cartTcAt(A, bkAddBiz(i.vtoi, -1)) * Math.pow(1 + i.spread_usd, days30360(emi, vto)/360);
+    return tam >= usd ? {pay:tam, leg:'TAMAR'} : {pay:usd, leg:'dólar+'+(i.spread_usd*100).toFixed(2).replace('.',',')+'%'};
+  }
   const t = cartTamarPay(i, A, i.margen), c = 100 * cartCerAt(A, bkAddBiz(i.vtoi, -10)) / i.cer0;
   return t >= c ? {pay:t, leg:'TAMAR'} : {pay:c, leg:'CER'};
 }
@@ -5225,15 +5257,17 @@ function cartValue(u, px, A){
   } else if(u.cls === 'TAMAR'){
     // LETAMAR / BONO TAMAR: mismo criterio que la solapa TAMAR — el precio rinde la TAMAR (TEM de la TNA supuesta), spread ≈ 0.
     // No se modela el cronograma de cupones de cada emisión (los emitidos en 2025 no capitalizan desde la emisión).
-    const tem = calcTamarTEM(A.tamar), dtm = bkDays(st, u.vto), held = bkDays(st, H);
-    if(u.vto <= H){ valARS = grow(px * Math.pow(1 + tem, dtm/30), u.vto); how = 'vence · rinde TAMAR · reinvierte'; }
-    else { valARS = px * Math.pow(1 + tem, held/30); sold = true; how = 'se vende · rinde TAMAR (TEM '+(tem*100).toFixed(2).replace('.',',')+'%)'; }
+    const end = u.vto <= H ? u.vto : H, g = cartTamarGrowth(A, st, end), temAvg = (Math.pow(g, 30/Math.max(1, bkDays(st, end))) - 1)*100;
+    if(u.vto <= H){ valARS = grow(px * g, u.vto); how = 'vence · rinde TAMAR · reinvierte'; }
+    else { valARS = px * g; sold = true; how = 'se vende · rinde TAMAR (TEM prom. '+temAvg.toFixed(2).replace('.',',')+'%)'; }
   } else if(u.cls === 'DUAL'){
     const P = cartProjPay(u, A), dtm = bkDays(st, u.vto);
     if(u.vto <= H){ valARS = grow(P.pay, u.vto); how = 'vence · paga '+P.leg+' · reinvierte'; }
     else {   // se vende manteniendo la TIR implícita entre el precio de hoy y el pago proyectado
-      const held = bkDays(st, H); valARS = px * Math.pow(P.pay / px, held / dtm); sold = true;
-      how = 'se vende (paga '+P.leg+' · TEM '+((Math.pow(P.pay/px, 30/dtm)-1)*100).toFixed(2).replace('.',',')+'%)';
+      // TIR implícita (anual) entre el precio de hoy y el pago proyectado; a la salida se le suma el corrimiento CER (pp)
+      const y = Math.pow(P.pay / px, 365/dtm) - 1 + (A.shCER || 0)/100;
+      valARS = P.pay / Math.pow(1 + y, bkDays(H, u.vto)/365); sold = true;
+      how = 'se vende (paga '+P.leg+' · TIR '+(y*100).toFixed(1).replace('.',',')+'%)';
     }
   } else if(u.cls === 'HD' || u.cls === 'ON'){
     const f = u.cls === 'HD' ? hddFlows(hddKey(u.sym), st) : u.on.fx.fl.filter(x => x[0] > st).map(x => ({d:x[0], cf:x[1]}));
@@ -5308,7 +5342,7 @@ function cartExample(){
   cartSave(); cartRender();
 }
 function cartHz(m){ cartA.h = cartAddMonths(cartToday(), m); cartAfterA(); }
-function cartSet(k, v){ if(k === 'h' && (!v || v <= cartSettle())) return; if(!Number.isFinite(v) && k !== 'h' && k !== 'cerExit') return; cartA[k] = v; cartA._user = cartA._user || {}; cartA._user[k] = true; cartAfterA(); }
+function cartSet(k, v){ if(k === 'h' && (!v || v <= cartSettle())) return; if(!Number.isFinite(v) && !['h','cerExit','tamarMode'].includes(k)) return; cartA[k] = v; cartA._user = cartA._user || {}; cartA._user[k] = true; cartAfterA(); }
 function cartIpcSet(k, v){ cartA.ipc[k] = +v; cartA._user = cartA._user || {}; cartA._user.ipc = true; cartAfterA(); }
 function cartResetA(){ cartA = null; cartAfterA(); }
 function cartIpcPreset(p){
@@ -5355,7 +5389,13 @@ function cartRender(){
   document.getElementById('cart-reinv').value = cartA.reinv;
   document.getElementById('cart-reinvUsd').value = cartA.reinvUsd;
   document.getElementById('cart-tamar').value = cartA.tamar;
-  document.getElementById('cart-tamar-note').textContent = 'última publicada '+cartDefaultTamar().toFixed(2).replace('.',',')+'% (BCRA)';
+  document.getElementById('cart-tamarMode').value = cartA.tamarMode;
+  const tf = cartA.tamarMode === 'ipc';
+  document.getElementById('cart-tamar').style.display = tf ? 'none' : 'inline-block';
+  const trI = document.getElementById('cart-tamarReal'); trI.style.display = tf ? 'inline-block' : 'none'; trI.value = cartA.tamarReal;
+  document.getElementById('cart-tamar-note').textContent = tf
+    ? 'TEM = IPC supuesto + '+String(cartA.tamarReal).replace('.',',')+'% real mensual (hoy: '+cartDefaultTamarReal(cartA).toFixed(2).replace('.',',')+'%)'
+    : 'última publicada '+cartDefaultTamar().toFixed(2).replace('.',',')+'% (BCRA)';
   document.getElementById('cart-com').value = cartA.com;
   document.getElementById('cart-cerExit').value = cartA.cerExit;
   const mi = document.getElementById('cart-cerExitManual');
