@@ -598,10 +598,10 @@ var D={
   // Colch\u00f3n de Liquidez BCRA en Rueda REPO (ARS billones) \u2014 A3/MAE (volumen/tasas, live) + BCRA API id=198 "Otros" (rezago).
   // D\u00edas sin dato oficial a\u00fan ("est" en estado[]): estimados por regresi\u00f3n en ventana m\u00f3vil de 10 d\u00edas h\u00e1biles (MAPE backtest \u224817.5%).
   repoColchon:{
-    l: ["13/07", "14/07", "15/07", "16/07", "17/07", "20/07", "21/07", "22/07", "23/07", "24/07", "27/07", "28/07", "29/07", "30/07", "31/07", "03/08", "04/08", "05/08", "06/08", "07/08", "10/08", "11/08", "12/08", "13/08", "14/08", "18/08", "19/08", "20/08", "21/08", "24/08", "25/08", "26/08", "27/08", "28/08", "31/08", "01/09", "02/09", "03/09", "04/09", "07/09", "08/09", "09/09", "10/09", "11/09", "14/09", "15/09", "16/09", "17/09", "18/09", "21/09", "22/09", "23/09", "24/09", "25/09", "28/09", "29/09", "30/09", "01/10", "02/10", "05/10", "06/10", "07/10", "08/10", "09/10", "13/10", "14/10", "15/10", "16/10", "19/10", "20/10", "21/10", "22/10", "23/10", "26/10", "27/10", "28/10", "29/10", "30/10", "02/11", "03/11", "04/11", "05/11", "11/11", "12/11", "13/11", "16/11"],
-    partes: [2.193, 1.739, 1.826, 1.753, 1.644, 1.87, 1.92, 1.778, 1.991, 1.977, 1.761, 1.471, 1.778, 1.545, 2.215, 2.408, 1.97, 1.748, 1.82, 2.122, 2.31, 2.524, 2.864, 3.22, 2.897, 2.136, 3.075, 3.72, 3.138, 3.45, 3.599, 3.452, 3.148, 2.19, 2.233, 1.469, 1.538, 1.826, 1.775, 1.827, 1.725, 1.578, 1.93, 2.005, 2.409, 2.874, 2.279, 2.632, 2.411, 2.934, 2.621, 2.813, 3.207, 2.895, 3.066, 2.622, 2.926, 2.318, 1.88, 2.351, 2.631, 2.553, 2.687, 2.525, 2.642, 2.736, 2.426, 2.062, 1.879, 2.381, 2.283, 2.581, 2.9, 3.038, 2.806, 2.593, 2.496, 2.205, 1.79, 2.304, 2.325, 4.345, 3.432, 2.366, 2.208, 2.451],
-    bcra: [1.644, 3.932, 4.14, 3.662, 2.217, 1.661, 2.067, 1.572, 1.547, 1.781, 1.573, 2.566, 2.993, 1.754, 1.602, 1.433, 0.88, 0.815, 1.086, 1.085, 1.203, 1.106, 0.827, 0.718, 0.971, 0.979, 0.875, 0.65, 2.117, 1.273, 2.345, 2.291, 2.203, 2.163, 1.001, 1.262, 2.13, 1.222, 1.283, 1.708, 2.983, 2.8, 2.482, 2.372, 1.345, 1.603, 2.469, 1.963, 1.785, 1.696, 1.4, 2.163, 1.573, 1.763, 1.399, 1.297, 0.962, 1.348, 2.055, 1.663, 1.329, 1.512, 1.299, 1.868, 1.289, 1.855, 1.966, 2.035, 2.262, 1.59, 1.463, 1.664, 1.996, 1.862, 2.988, 2.873, 2.362, 1.327, 1.428, 1.451, 1.36, 0.271, 0.247, 1.9, 3.434, 3.456],
-    estado: ["real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "est"]
+    l: ["13/07", "14/07", "15/07", "16/07", "17/07", "20/07", "21/07", "22/07", "23/07", "24/07", "27/07", "28/07", "29/07", "30/07", "31/07", "03/08", "04/08", "05/08", "06/08", "07/08", "10/08", "11/08", "12/08", "13/08", "14/08", "18/08", "19/08", "20/08", "21/08", "24/08", "25/08", "26/08", "27/08", "28/08", "31/08", "01/09", "02/09", "03/09", "04/09", "07/09", "08/09", "09/09", "10/09", "11/09", "14/09", "15/09", "16/09", "17/09", "18/09", "21/09", "22/09", "23/09", "24/09", "25/09", "28/09", "29/09", "30/09", "01/10", "02/10", "05/10", "06/10", "07/10", "08/10", "09/10", "13/10", "14/10", "15/10", "16/10", "19/10", "20/10", "21/10", "22/10", "23/10", "26/10", "27/10", "28/10", "29/10", "30/10", "02/11", "03/11", "04/11", "05/11", "11/11", "12/11", "13/11", "16/11", "17/11"],
+    partes: [2.193, 1.739, 1.826, 1.753, 1.644, 1.87, 1.92, 1.778, 1.991, 1.977, 1.761, 1.471, 1.778, 1.545, 2.215, 2.408, 1.97, 1.748, 1.82, 2.122, 2.31, 2.524, 2.864, 3.22, 2.897, 2.136, 3.075, 3.72, 3.138, 3.45, 3.599, 3.452, 3.148, 2.19, 2.233, 1.469, 1.538, 1.826, 1.775, 1.827, 1.725, 1.578, 1.93, 2.005, 2.409, 2.874, 2.279, 2.632, 2.411, 2.934, 2.621, 2.813, 3.207, 2.895, 3.066, 2.622, 2.926, 2.318, 1.88, 2.351, 2.631, 2.553, 2.687, 2.525, 2.642, 2.736, 2.426, 2.062, 1.879, 2.381, 2.283, 2.581, 2.9, 3.038, 2.806, 2.593, 2.496, 2.205, 1.79, 2.304, 2.325, 4.345, 3.432, 2.366, 2.208, 2.199, 2.208],
+    bcra: [1.644, 3.932, 4.14, 3.662, 2.217, 1.661, 2.067, 1.572, 1.547, 1.781, 1.573, 2.566, 2.993, 1.754, 1.602, 1.433, 0.88, 0.815, 1.086, 1.085, 1.203, 1.106, 0.827, 0.718, 0.971, 0.979, 0.875, 0.65, 2.117, 1.273, 2.345, 2.291, 2.203, 2.163, 1.001, 1.262, 2.13, 1.222, 1.283, 1.708, 2.983, 2.8, 2.482, 2.372, 1.345, 1.603, 2.469, 1.963, 1.785, 1.696, 1.4, 2.163, 1.573, 1.763, 1.399, 1.297, 0.962, 1.348, 2.055, 1.663, 1.329, 1.512, 1.299, 1.868, 1.289, 1.855, 1.966, 2.035, 2.262, 1.59, 1.463, 1.664, 1.996, 1.862, 2.988, 2.873, 2.362, 1.327, 1.428, 1.451, 1.36, 0.271, 0.247, 1.9, 3.434, 3.708, 4.39],
+    estado: ["real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "real", "est"]
   },
   // EPH — INDEC · 2do trimestre 2026 (publicado 17/09/2026)
   eph:{l:["Q1 24","Q2 24","Q3 24","Q4 24","Q1 25","Q2 25","Q3 25","Q4 25","Q1 26","Q2 26"],
@@ -670,19 +670,20 @@ var D={
     l:["Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26"],
     v:[6.8,7.8,4.0,2.0,4.2,2.2,5.1,5.7,3.6,10.9,9.7,9.4,11.5,4.0,8.4,7.1]  // YoY %
   },
-  // ICC — Índice Costo Construcción GBA — INDEC · Septiembre 2026 (publicado 16/10/2026)
+  // ICC — Índice Costo Construcción GBA — INDEC · Octubre 2026 (publicado 17/11/2026)
   icc:{
-    l:["Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26"],
-    multi:[2.7,0.3,0.8,2.0,1.0,1.2,1.5,2.7,1.4,2.6,1.6,1.1,1.7,2.1,3.2,2.4,2.5,1.8,2.5,2.2],
-    uni:[2.5,-0.3,-0.2,3.3,1.1,2.1,2.1,2.8,1.8,3.0,1.4,2.2,2.3,2.5,3.8,3.7,1.9,1.6,2.5,1.5],
-    mom:1.5,yoy:31.3,acum:23.9,
-    materiales:1.3,manoDeObra:1.6,gastos:1.5
+    // Octubre 2026 (INDEC 17/11/2026, icc_11_266E108A19A1.pdf) — Cuadros 7/8; jul-sep 26 revisados por INDEC
+    l:["Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26","Oct 26"],
+    multi:[0.3,0.8,2.0,1.0,1.2,1.5,2.7,1.4,2.6,1.6,1.1,1.7,2.1,3.2,2.4,2.5,1.9,2.6,2.2,1.7],
+    uni:[-0.3,-0.2,3.3,1.1,2.1,2.1,2.8,1.8,3.0,1.4,2.2,2.3,2.5,3.8,3.7,1.9,1.8,2.6,1.6,1.7],
+    mom:1.7,yoy:31.9,acum:26.5,
+    materiales:1.5,manoDeObra:1.8,gastos:1.8
   },
-  // SIPM — Sistema Índices Precios Mayoristas — INDEC · Septiembre 2026 (publicado 16/10/2026)
+  // SIPM — Sistema Índices Precios Mayoristas — INDEC · Octubre 2026 (publicado 17/11/2026)
   sipm:{
-    ipim_mom:3.2,ipim_yoy:29.2,ipim_acum:22.8,
-    ipib_mom:3.4,ipib_yoy:28.1,
-    ipp_mom:3.8,ipp_yoy:29.5
+    ipim_mom:1.6,ipim_yoy:29.8,ipim_acum:24.8,
+    ipib_mom:1.5,ipib_yoy:28.3,
+    ipp_mom:1.5,ipp_yoy:29.2
   },
   petroleo:{
     // Septiembre 2026 · miles de m3 (INDEC ipi_minero_11_26, Secretaría de Energía)
@@ -1103,22 +1104,22 @@ function buildINDEC(){
       ])+
       bx2(['is4','is5'],['IPI Minero \u2014 Nivel General YoY %','Petr\u00f3leo \u2014 Convencional vs No Convencional (miles m\u00b3)'],'h240',['c-indec','c-indec'])+
       bx2(['is6','is7'],['Gas Natural \u2014 Conv vs No Conv (mill. m\u00b3)','Litio \u2014 Carbonato de litio (toneladas)'],'h200',['c-indec','c-indec'])+
-      shdr('ICC \u00b7 Costo de la Construcci\u00f3n','INDEC \u2014 Gran Buenos Aires \u00b7 Nivel General y modelos','+1.5%','Septiembre 2026 \u00b7 MoM','a')+
-      src('INDEC \u00b7 icc_09_26FEFC2E3F64.pdf \u00b7 Agosto 2026')+
+      shdr('ICC \u00b7 Costo de la Construcci\u00f3n','INDEC \u2014 Gran Buenos Aires \u00b7 Nivel General y modelos','+1.7%','Octubre 2026 \u00b7 MoM','a')+
+      src('INDEC \u00b7 icc_11_266E108A19A1.pdf \u00b7 Octubre 2026 (publicado 17/11/2026)')+
       sr4([
-        {l:'ICC Nivel General Sep 26',v:'+1.5%',c:'a',n:'Interanual +31.3% \u00b7 acum +23.9%',x:'indec'},
-        {l:'Materiales Sep 26',v:'+1.3%',c:'g',n:'Incidencia 0.53 pp',x:'indec'},
-        {l:'Mano de Obra Sep 26',v:'+1.6%',c:'a',n:'Asalariada +1.6% \u00b7 Subcontr. +1.8% (acuerdo UOCRA 21/09)',x:'indec'},
-        {l:'Gastos Generales Sep 26',v:'+1.5%',c:'a',n:'Tarifas el\u00e9ctricas Edenor/Edesur + conexi\u00f3n gas, agua y cloaca',x:'indec'}
+        {l:'ICC Nivel General Oct 26',v:'+1.7%',c:'a',n:'Interanual +31.9% \u00b7 acum +26.5%',x:'indec'},
+        {l:'Materiales Oct 26',v:'+1.5%',c:'g',n:'Incidencia 0.61 pp \u00b7 ca\u00f1os de hierro +4.7%',x:'indec'},
+        {l:'Mano de Obra Oct 26',v:'+1.8%',c:'a',n:'Asalariada +1.7% \u00b7 Subcontr. +2.3% (acuerdo UOCRA desde oct.) \u00b7 YoY +40.6%',x:'indec'},
+        {l:'Gastos Generales Oct 26',v:'+1.8%',c:'a',n:'Tarifas el\u00e9ctricas Edenor/Edesur, conexi\u00f3n gas, agua y cloaca',x:'indec'}
       ])+
       bx2(['is8','is9'],['ICC \u2014 Vivienda Multifamiliar MoM %','ICC \u2014 Vivienda Unifamiliar MoM %'],'h220',['c-indec','c-indec'])+
-      shdr('SIPM \u00b7 Precios Mayoristas','INDEC \u2014 IPIM \u00b7 IPIB \u00b7 IPP \u00b7 Septiembre 2026','+3.2%','IPIM Septiembre 2026 \u00b7 MoM','r')+
-      src('INDEC \u00b7 ipm_10_264148D51FC8.pdf \u00b7 Septiembre 2026')+
+      shdr('SIPM \u00b7 Precios Mayoristas','INDEC \u2014 IPIM \u00b7 IPIB \u00b7 IPP \u00b7 Octubre 2026','+1.6%','IPIM Octubre 2026 \u00b7 MoM','r')+
+      src('INDEC \u00b7 ipm_11_26113053ADA3.pdf \u00b7 Octubre 2026 (publicado 17/11/2026)')+
       sr4([
-        {l:'IPIM Sep 26 MoM',v:'+3.2%',c:'r',n:'Petr\u00f3leo crudo y gas +15.0% \u00b7 acum +22.8%',x:'indec'},
-        {l:'IPIM Sep 26 YoY',v:'+29.2%',c:'r',n:'Prod. nacionales +30.5% \u00b7 importados +11.8%',x:'indec'},
-        {l:'IPIB Sep 26 MoM',v:'+3.4%',c:'r',n:'YoY +28.1% (ex-impuestos)',x:'indec'},
-        {l:'IPP Sep 26 MoM',v:'+3.8%',c:'r',n:'YoY +29.5% (precios productor)',x:'indec'}
+        {l:'IPIM Oct 26 MoM',v:'+1.6%',c:'r',n:'Refinados del petr\u00f3leo +4.6% (0.58 pp) \u00b7 acum +24.8%',x:'indec'},
+        {l:'IPIM Oct 26 YoY',v:'+29.8%',c:'r',n:'Prod. nacionales +31.0% \u00b7 importados +14.4%',x:'indec'},
+        {l:'IPIB Oct 26 MoM',v:'+1.5%',c:'r',n:'YoY +28.3% (ex-impuestos)',x:'indec'},
+        {l:'IPP Oct 26 MoM',v:'+1.5%',c:'r',n:'YoY +29.2% (precios productor)',x:'indec'}
       ]),
       cal)+
     compInflPanel(cal);
@@ -1600,7 +1601,7 @@ async function buildBCRA(){
       bx1('bm_hist','h240','Base Monetaria \u2014 MM ARS \u00b7 Desde Dic 2023 \u00b7 BCRA API id=71','c-bcra')+
       bx2(['bm_var','bm_fact'],['Variaci\u00f3n Mensual Base Monetaria %','Factores de Variaci\u00f3n \u00b7 prom. mensual (IMM BCRA)'],'h190',['c-bcra','c-bcra'])+
       src('A3/MAE (Rueda REPO, live) + BCRA API id=198 \u201cOtros\u201d (rezago ~1-2 d\u00edas h\u00e1biles). D\u00edas sin dato oficial a\u00fan: estimaci\u00f3n por regresi\u00f3n en ventana m\u00f3vil de 10 d\u00edas (MAPE backtest \u2248 17,5%).')+
-      bx1('repo_colchon','h240','Colch\u00f3n de Liquidez BCRA en Rueda REPO \u2014 ARS billones \u00b7 13-Jul a 16-Nov 26 (\u00faltimo dato: estimado)','c-bcra'),
+      bx1('repo_colchon','h240','Colch\u00f3n de Liquidez BCRA en Rueda REPO \u2014 ARS billones \u00b7 13-Jul a 17-Nov 26 (\u00faltimo dato: estimado)','c-bcra'),
       cal)+
     panel2col('p5',
       shdr('Cr\u00e9dito y Dep\u00f3sitos','BCRA \u2014 Sector Privado \u00b7 Evoluci\u00f3n mensual','...','Cargando... (API BCRA)','g')+
