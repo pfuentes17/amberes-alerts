@@ -1,9 +1,9 @@
 {
-  "date": "2026-11-18",
-  "generated": "2026-11-18T12:30:00Z",
+  "date": "2026-11-19",
+  "generated": "2026-11-19T12:30:00Z",
   "sentiment": {
     "overall": "neutral",
-    "label": "Nvidia supera expectativas y los futuros rebotan tras cuatro bajas seguidas del S&P; en Argentina el riesgo país se sostiene en 854pb",
+    "label": "Anthropic debuta sobre el rango y los futuros suben, pero la Fed se endurece; en Argentina el CCL pasa los $1.720",
     "fg": null,
     "fg_label": "Sin dato verificado",
     "putcall": null,
@@ -12,83 +12,88 @@
   "drivers": [
     {
       "id": 1,
-      "tag": "EE.UU. · Acciones · IA",
-      "tag_class": "tg",
-      "title": "Nvidia supera expectativas y guía US$130.000 M: futuros del Nasdaq rebotan ~1%",
-      "brief": "3T FY27: ingresos US$115.800 M y EPS ajustado US$2,68 (vs US$2,48 esperado). Guía 4T ~US$130.000 M. La acción subió hasta 6% after hours; futuros Nasdaq +1%.",
-      "tldr": "El balance despeja la principal duda del trimestre: la demanda de IA sigue firme sin Jensen Huang.",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "Nvidia presentó ayer tras el cierre su <strong>3T FY27</strong>: <strong>ingresos por US$115.800 M</strong> (vs US$57.000 M hace un año) y <strong>EPS ajustado de US$2,68</strong> contra <strong>US$2,48 esperado</strong>. Guió <strong>ingresos del 4T en torno a US$130.000 M</strong>, por encima del consenso. La acción había cerrado el martes en <strong>US$155,46 (-0,44%)</strong> (Finnhub), tras acumular una caída cercana al 25% en noviembre, y <strong>subió hasta 6% en el after hours</strong>. Esta mañana los <strong>futuros del Nasdaq-100 suben ~1%</strong> y los del <strong>S&amp;P 500 ~0,6%</strong>.",
-      "contexto": "Fue el primer balance sin Jensen Huang (renunció el 12/11); Colette Kress, CFO y CEO interina, condujo la conferencia y el directorio descartó su regreso. El número confirma que la corrección de chips de noviembre fue más por posicionamiento y gobierno corporativo que por demanda. En Asia la reacción fue dispar: Corea subió con fuerza, mientras los reportes sobre el Nikkei no coinciden.",
+      "tag": "EE.UU. · Fed · Tasas",
+      "tag_class": "tb",
+      "title": "Minutas de la Fed: casi todos ven más subas y Waller pide 50pb en diciembre",
+      "brief": "Minutas de octubre: casi todos los participantes ven apropiadas nuevas subas. Waller: un alza de 50pb el 8-9/12 es “probablemente necesaria”.",
+      "tldr": "La Fed endurece el tono: el debate ya no es si sube en diciembre, sino cuánto.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "Las <strong>minutas de la reunión de octubre</strong>, publicadas ayer, muestran que <strong>casi todos los participantes</strong> consideran que <strong>nuevas subas de tasas serían apropiadas</strong>. La tasa se mantuvo en <strong>3,75%-4%</strong> con un voto <strong>10-2</strong>: Lisa Cook y Beth Hammack disintieron a favor de subir 25pb. Un par de miembros planteó evaluar en diciembre un alza <strong>mayor a 25pb</strong>. En paralelo, <strong>Christopher Waller</strong> dijo a CNBC que una <strong>suba de 50pb</strong> en la reunión del <strong>8-9 de diciembre</strong> es probablemente necesaria. Según CME FedWatch, el mercado pricea <strong>~95% de probabilidad de +25pb</strong> y apenas ~5% de +50pb. El <strong>UST 10Y</strong> cerró en <strong>5,10%</strong> el 17/11 (FRED, último dato).",
+      "contexto": "La IA aparece en las minutas como una <strong>fuente material de riesgo inflacionario</strong> (demanda de energía, inversión en centros de datos). Con el mercado todavía lejos de los 50pb que sugiere Waller, el riesgo es un reajuste hacia arriba en la parte corta de la curva. Para emergentes, un dólar más firme y tasas reales altas en EE.UU. son el principal viento en contra.",
       "impacto": [
         {
-          "asset": "Nvidia (AH)",
-          "dir": "↑ hasta 6%",
+          "asset": "Prob. +25pb dic.",
+          "dir": "~95%",
+          "cls": "neu"
+        },
+        {
+          "asset": "Prob. +50pb dic.",
+          "dir": "↑ ~5%",
           "cls": "up"
         },
         {
-          "asset": "Fut. Nasdaq-100",
-          "dir": "↑ ~1%",
-          "cls": "up"
-        },
-        {
-          "asset": "Fut. S&P 500",
-          "dir": "↑ ~0,6%",
-          "cls": "up"
+          "asset": "UST 10Y",
+          "dir": "5,10%",
+          "cls": "neu"
         }
       ]
     },
     {
       "id": 2,
-      "tag": "EE.UU. · Acciones · Software",
-      "tag_class": "tr",
-      "title": "El S&P 500 cae por cuarta rueda y cierra en su nivel más bajo desde julio",
-      "brief": "Martes 17/11: S&P 500 -1,03% a 7.340,53, Nasdaq -0,74% a 24.328,38, Dow -1,6%. Lideró la baja el software (Salesforce, Intuit, ServiceNow).",
-      "tldr": "El rebote de hoy parte de un mercado técnicamente dañado.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "Cierre del martes 17/11: <strong>S&amp;P 500 -1,03% a 7.340,53</strong>, su <strong>menor cierre desde fines de julio</strong> y cuarta baja seguida; <strong>Nasdaq -0,74% a 24.328,38</strong> y <strong>Dow -1,6%</strong>. En ETFs (Finnhub): <strong>SPY -1,01% a US$732,44</strong> y <strong>QQQ -0,73% a US$656,95</strong>. El <strong>software</strong> encabezó las caídas (Salesforce, Intuit, ServiceNow) y las <strong>prepagas</strong> cayeron por una propuesta de ampliar auditorías a Medicare Advantage.",
-      "contexto": "La rotación ya no es solo contra semiconductores: el software se suma por el temor a que la IA erosione los modelos de suscripción. El <strong>UST 10Y en 5,12%</strong> (FRED, último dato 16/11) sigue siendo un techo para las valuaciones. El rebote de futuros de hoy necesita confirmarse con amplitud, no solo con Nvidia.",
+      "tag": "EE.UU. · IPO · IA",
+      "tag_class": "tg",
+      "title": "Anthropic pricea a US$83, sobre el rango, y debuta hoy: futuros del Nasdaq suben",
+      "brief": "IPO a US$83 (rango US$70-78), ~US$81.000 M recaudados y valuación ~US$1,5 billones. Futuros: S&P +0,8%, Nasdaq-100 +1,3%. Ayer el S&P cayó por 5ta rueda.",
+      "tldr": "El apetito por IA sigue vivo, pero llega a un mercado que ayer perdió el soporte de la media de 200 ruedas.",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "Anthropic fijó anoche el precio de su IPO ampliada en <strong>US$83 por acción</strong>, <strong>por encima del rango de US$70-78</strong>. Según Reuters, recauda <strong>~US$81.000 M</strong> con una valuación de <strong>~US$1,5 billones</strong>; debuta hoy en Nasdaq bajo el ticker <strong>ANT</strong>. Los <strong>futuros del S&amp;P 500 suben ~0,8%</strong> y los del <strong>Nasdaq-100 ~1,3%</strong> (Investing.com, madrugada), con Amazon y Alphabet en alza en el pre-market. El cierre de ayer fue dividido: <strong>S&amp;P 500 -0,23% a 7.323,63</strong> (quinta baja seguida, debajo de su media de 200 ruedas), <strong>Dow -561 puntos (-1,11%) a 50.198,17</strong> y <strong>Nasdaq +0,42% a 24.429,89</strong>. En ETFs (Finnhub): <strong>SPY -0,31% a US$730,20</strong> y <strong>QQQ +0,39% a US$659,51</strong>.",
+      "contexto": "Las subas iniciales de Nvidia tras su balance se diluyeron con las minutas de la Fed, pero el Nasdaq cortó dos ruedas de baja. Un debut fuerte de Anthropic puede reactivar el flujo hacia el complejo IA; uno flojo confirmaría que la corrección de noviembre todavía no terminó. Una IPO de este tamaño también absorbe liquidez del resto del mercado.",
       "impacto": [
         {
-          "asset": "S&P 500",
-          "dir": "↓ 1,03%",
-          "cls": "dn"
+          "asset": "Precio IPO ANT",
+          "dir": "US$83",
+          "cls": "up"
         },
         {
-          "asset": "Nasdaq",
-          "dir": "↓ 0,74%",
-          "cls": "dn"
+          "asset": "Fut. Nasdaq-100",
+          "dir": "↑ ~1,3%",
+          "cls": "up"
         },
         {
-          "asset": "UST 10Y",
-          "dir": "5,12%",
-          "cls": "neu"
+          "asset": "S&P 500 (ayer)",
+          "dir": "↓ 0,23%",
+          "cls": "dn"
         }
       ]
     },
     {
       "id": 3,
-      "tag": "EE.UU. · IPO · IA",
-      "tag_class": "tb",
-      "title": "Anthropic fija precio hoy: rango US$70-78 y demanda de ~6 veces la oferta",
-      "brief": "La IPO (ticker ANT, Nasdaq) se pricea esta noche y debuta el jueves 19/11. 825 M de acciones; valuación de hasta US$1,4 billones.",
-      "tldr": "Test de apetito por IA con Nvidia ya despejada.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Anthropic define hoy a la noche el precio de su IPO: rango de <strong>US$70 a US$78</strong> por acción, <strong>825 M de acciones clase A</strong> en Nasdaq bajo el ticker <strong>ANT</strong>, con <strong>debut el jueves 19/11</strong>. Reportes de prensa ubican el libro de órdenes en <strong>~6 veces lo ofrecido</strong> y una valuación de <strong>hasta US$1,4 billones</strong> (fully diluted). Hay versiones de un precio por encima del rango, aún sin confirmar.",
-      "contexto": "Con una recaudación que podría superar los US$57.000 M, compite por la misma liquidez que el complejo IA. Tras el balance de Nvidia, el escenario de salida mejoró respecto de ayer; un precio sobre el rango sería una señal de que el apetito por IA sigue intacto pese a la corrección.",
+      "tag": "Commodities · Oro · Petróleo",
+      "tag_class": "tq",
+      "title": "Oro cae 3,5% a mínimos desde sep-2025 y el WTI pierde ~3% por inventarios",
+      "brief": "Oro futuro -3,5% a US$3.728,80 (GLD -3,20%). WTI ~-3% a ~US$83 tras una suba sorpresiva de inventarios de crudo (USO -2,95%).",
+      "tldr": "El tono hawkish de la Fed golpea al oro; el petróleo cae por oferta.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El <strong>oro futuro cerró -3,50% a US$3.728,80</strong>, su nivel más bajo desde septiembre de 2025, presionado por el dólar y las tasas tras las minutas de la Fed. El <strong>GLD cayó 3,20% a US$341,19</strong> (Finnhub). El <strong>WTI bajó ~3% a ~US$83</strong> luego de un <strong>aumento inesperado de inventarios de crudo</strong> en EE.UU.; el <strong>USO cerró -2,95% a US$136,11</strong>. Esta mañana el Brent opera cerca de <strong>US$92,65</strong>.",
+      "contexto": "La baja del oro tiene efecto directo en Argentina: según la prensa, las <strong>reservas del BCRA cayeron ~US$190 M</strong> ayer, en buena parte por la valuación del oro. La baja del crudo es neutral a negativa para Vaca Muerta (precios de exportación), aunque alivia el componente energético de la inflación global y, en el margen, la presión sobre la Fed.",
       "impacto": [
         {
-          "asset": "Rango IPO",
-          "dir": "US$70-78",
-          "cls": "neu"
+          "asset": "Oro futuro",
+          "dir": "↓ 3,50%",
+          "cls": "dn"
         },
         {
-          "asset": "Sobresuscripción",
-          "dir": "~6x",
-          "cls": "up"
+          "asset": "GLD",
+          "dir": "↓ 3,20%",
+          "cls": "dn"
+        },
+        {
+          "asset": "USO (WTI)",
+          "dir": "↓ 2,95%",
+          "cls": "dn"
         }
       ]
     },
@@ -96,27 +101,27 @@
       "id": 4,
       "tag": "Argentina · Bonos · Riesgo país",
       "tag_class": "ta",
-      "title": "Riesgo país se sostiene en 854pb: bonos mixtos y Merval estable pese a Wall Street",
-      "brief": "Riesgo país 854pb el 17/11 (-1 vs 855 del lunes); llegó a 863 intradía. GD30 US$52,67 (-0,43%), GD35 US$70,30 (+0,29%), AL35 US$65,22 (+0,63%).",
-      "tldr": "Los activos argentinos resistieron un día malo afuera, pero sin comprimir spread.",
+      "title": "Riesgo país baja a 848pb; GD30 sube 0,8% pero el tramo largo cede",
+      "brief": "Riesgo país 848pb el 18/11 (-6 vs 854). GD30 US$53,10 (+0,82%), AL30 US$51,60 (+0,31%); GD35 US$69,83 (-0,67%), AL35 US$65,00 (-0,34%). Merval -0,07%.",
+      "tldr": "Leve compresión del spread, liderada por el tramo corto.",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "El <strong>riesgo país cerró el martes 17/11 en 854pb</strong> (argentinadatos), <strong>-1pb</strong> contra 855 del lunes; según la prensa tocó <strong>863pb intradía</strong>. Precios data912 de esta mañana: <strong>GD30 US$52,67 (-0,43%)</strong>, <strong>GD35 US$70,30 (+0,29%)</strong>, <strong>AL30 US$51,44 (+0,04%)</strong>, <strong>AL35 US$65,22 (+0,63%)</strong> y GD38 US$75,19 (+0,45%). El GD29 marca -2,05%, pero con volumen mínimo. El <strong>Merval</strong> cerró prácticamente sin cambios (los reportes van de -0,2% a +1,1%) y los <strong>ADRs</strong> terminaron con mayoría de subas, de la mano de las energéticas.",
-      "contexto": "Tras la rueda negra del lunes, los activos locales mostraron menor beta: el S&amp;P cayó 1% y el riesgo país apenas se movió. La agenda local (reforma electoral, datos fiscales) mantiene la cautela. Si el rebote global de hoy se sostiene, el tramo largo (GD35/AL35) es el más sensible a una mejora.",
+      "evento": "El <strong>riesgo país cerró el miércoles 18/11 en 848pb</strong> (argentinadatos), <strong>-6pb</strong> contra 854 del martes. Precios data912 de esta mañana: <strong>GD30 US$53,10 (+0,82%)</strong>, <strong>AL30 US$51,60 (+0,31%)</strong>, <strong>GD35 US$69,83 (-0,67%)</strong>, <strong>AL35 US$65,00 (-0,34%)</strong> y GD38 US$74,66 (-0,70%). El GD29 marca -0,11%, con volumen mínimo. El <strong>Merval</strong> cerró <strong>-0,07%</strong> (Perfil) y los ADRs terminaron con mayoría de bajas.",
+      "contexto": "La compresión vino del tramo corto (GD30/AL30), mientras el largo (GD35/GD38) devolvió parte de lo ganado el martes: con el 10Y en 5,10% y una Fed que se endurece, la duración sigue castigada. El spread lleva tres ruedas por debajo de 860pb, lejos de los ~925-940pb de principios de mes.",
       "impacto": [
         {
           "asset": "Riesgo país",
-          "dir": "→ 854pb (-1)",
-          "cls": "neu"
-        },
-        {
-          "asset": "AL35",
-          "dir": "↑ 0,63% US$65,22",
+          "dir": "↓ 848pb (-6)",
           "cls": "up"
         },
         {
           "asset": "GD30",
-          "dir": "↓ 0,43% US$52,67",
+          "dir": "↑ 0,82% US$53,10",
+          "cls": "up"
+        },
+        {
+          "asset": "GD35",
+          "dir": "↓ 0,67% US$69,83",
           "cls": "dn"
         }
       ]
@@ -125,59 +130,59 @@
       "id": 5,
       "tag": "Argentina · Dólar · BCRA",
       "tag_class": "ta",
-      "title": "Oficial estable en $1.575; el CCL sube a $1.697 y el canje se mantiene cerca de 6%",
-      "brief": "Oficial BNA $1.525/$1.575, mayorista $1.552, MEP $1.603,3, CCL $1.697,2, blue $1.605. El BCRA compró USD 75 M el martes según la prensa.",
-      "tldr": "Compras del BCRA y demanda de cobertura conviven: el cable sigue firme.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Cotizaciones dolarapi de esta mañana: <strong>oficial BNA $1.525/$1.575</strong> (sin cambios), <strong>mayorista $1.552</strong> (cierre 17/11), <strong>MEP $1.603,3</strong>, <strong>CCL $1.697,2</strong>, <strong>blue $1.585/$1.605</strong> y cripto $1.688,5. El <strong>canje CCL/MEP queda en ~5,9%</strong> y la <strong>brecha CCL/mayorista en ~9,4%</strong> (vs ~8,5% ayer). Según la prensa, el <strong>BCRA compró USD 75 M</strong> el martes.",
-      "contexto": "El CCL suma ~$14 en un día mientras el oficial queda quieto: la presión vuelve a concentrarse en la salida de pesos al exterior. Las compras del BCRA ayudan a reservas, pero con el real cerca de mínimos (USD/BRL 5,78 en el fixing BCE del 17/11) el margen para sostener la apreciación real se achica.",
+      "title": "CCL supera $1.720 y la brecha con el mayorista pasa el 10%; el BCRA compra menos",
+      "brief": "CCL $1.724,1, MEP $1.628,8, mayorista $1.559,5, blue $1.630. Brecha CCL/mayorista ~10,6%. BCRA compró ~USD 11 M y reservas -USD 190 M (prensa).",
+      "tldr": "La presión sobre el dólar financiero se acelera mientras el BCRA reduce el ritmo de compras.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "Cotizaciones dolarapi (cierre 18/11): <strong>oficial BNA $1.530/$1.580</strong> (+$5), <strong>mayorista $1.559,5</strong> (nuevo máximo nominal según la prensa), <strong>MEP $1.628,8</strong>, <strong>CCL $1.724,1</strong>, <strong>blue $1.610/$1.630</strong> y cripto $1.718,5. La <strong>brecha CCL/mayorista sube a ~10,6%</strong> (vs ~9,4% ayer) y el <strong>canje CCL/MEP queda en ~5,9%</strong>. Según la prensa, el <strong>BCRA compró ~USD 11 M</strong> (vs USD 74 M el martes) y las <strong>reservas brutas bajaron ~USD 190 M a ~USD 49.551 M</strong>, en buena parte por la caída del oro.",
+      "contexto": "El CCL sumó ~$27 en una rueda y el MEP ~$25: la demanda de cobertura se extiende a todo el dólar financiero. Con el BCRA comprando menos y el real cerca de mínimos (USD/BRL 5,82 en el fixing BCE del 18/11), el sesgo de corto plazo para los dólares financieros sigue siendo alcista.",
       "impacto": [
         {
           "asset": "CCL",
-          "dir": "↑ $1.697,2",
+          "dir": "↑ $1.724,1",
           "cls": "up"
         },
         {
           "asset": "Brecha CCL/mayorista",
-          "dir": "~9,4%",
+          "dir": "↑ ~10,6%",
           "cls": "up"
         },
         {
-          "asset": "USD/BRL",
-          "dir": "5,78",
-          "cls": "neu"
+          "asset": "Reservas brutas",
+          "dir": "↓ ~USD 190 M",
+          "cls": "dn"
         }
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Nvidia firme vs. software en caída",
-      "texto": "El balance confirma la demanda de chips, pero el martes el software encabezó las bajas por el temor a que la IA erosione las suscripciones. El mercado empieza a separar ganadores y perdedores de la IA en vez de comprar todo el complejo."
+      "label": "Euforia IPO vs. Fed hawkish",
+      "texto": "Anthropic pricea sobre el rango y los futuros suben, pero las minutas y Waller apuntan a más subas, posiblemente de 50pb. El apetito por IA choca con un costo de capital en alza."
     },
     {
-      "label": "Rebote de futuros vs. tasas en 5%",
-      "texto": "Los futuros suben tras Nvidia, pero el 10Y sigue en 5,12% y el S&amp;P está en mínimos desde julio. Sin una baja de tasas largas, el rebote puede quedar en un alivio de corto plazo."
+      "label": "Spread a la baja vs. CCL al alza",
+      "texto": "El riesgo país baja a 848pb mientras la brecha CCL/mayorista supera el 10%: el mercado de deuda en dólares mejora en el margen, pero la demanda de cobertura local se acelera."
     },
     {
-      "label": "BCRA compra vs. CCL en alza",
-      "texto": "El BCRA compra (USD 75 M el martes según la prensa) y el oficial está quieto, pero la brecha CCL/mayorista sube a ~9,4%: la acumulación de reservas convive con mayor demanda de dolarización vía cable."
+      "label": "Compras del BCRA vs. reservas",
+      "texto": "El BCRA sigue comprando (~USD 11 M ayer según la prensa), pero las reservas brutas caen ~USD 190 M por la baja del oro: la acumulación no alcanza a compensar el efecto valuación."
     }
   ],
   "correlaciones": [
     {
-      "par": "Nvidia vs. Nasdaq-100",
-      "texto": "Nvidia +hasta 6% after hours arrastra a los futuros del Nasdaq-100 (+~1%) casi el doble que los del S&amp;P (+~0,6%): el peso de los chips en el índice sigue dominando la dirección."
+      "par": "Oro vs. Fed / dólar",
+      "texto": "Minutas hawkish y Waller pidiendo 50pb: el oro cae 3,5% a mínimos desde sep-2025. La tasa real esperada vuelve a dominar al metal."
     },
     {
-      "par": "S&P 500 vs. riesgo país",
-      "texto": "Con el S&amp;P -1% el martes, el riesgo país apenas se movió (854pb, -1): tras el lunes negro la beta local al risk-off global se moderó."
+      "par": "Oro vs. reservas BCRA",
+      "texto": "La caída del oro explica buena parte de la baja de ~USD 190 M en las reservas brutas, aun con el BCRA comprador."
     },
     {
       "par": "Real brasileño vs. CCL",
-      "texto": "USD/BRL en 5,78 cerca de mínimos del real y CCL en $1.697: la debilidad regional se sigue reflejando en el dólar financiero argentino."
+      "texto": "USD/BRL en 5,82 (fixing BCE 18/11, desde 5,78) y CCL en $1.724 (desde $1.697): la debilidad regional sigue acompañando la suba del dólar financiero argentino."
     }
   ],
-  "bottom_line": "Miércoles de <strong>alivio condicionado</strong>: <strong>Nvidia superó expectativas</strong> (ingresos US$115.800 M, guía 4T ~US$130.000 M) y los <strong>futuros del Nasdaq suben ~1%</strong>, después de que el <strong>S&amp;P 500 cerrara en su nivel más bajo desde julio</strong> (7.340,53, cuarta baja seguida). Esta noche se define el precio de la <strong>IPO de Anthropic</strong> (rango US$70-78), segundo test del apetito por IA en la semana, con el <strong>10Y todavía en 5,12%</strong>. <strong>Para Argentina</strong>, el martes mostró resistencia: <strong>riesgo país estable en 854pb</strong>, bonos mixtos con mejoras en el tramo largo (AL35 +0,63%) y ADRs mayormente en alza por energía. El frente a vigilar es el cambiario: el <strong>CCL sube a $1.697</strong> y la <strong>brecha con el mayorista llega a ~9,4%</strong> pese a las compras del BCRA. Si el rebote global se consolida, hay espacio para que el spread recupere parte de lo perdido desde la semana pasada; mientras tanto, mantenemos <strong>cobertura cambiaria vía CCL/MEP</strong> en carteras en pesos y <strong>exposición moderada a Globales largos</strong>."
+  "bottom_line": "Jueves de <strong>señales cruzadas</strong>: <strong>Anthropic preció su IPO a US$83</strong>, sobre el rango, y los <strong>futuros del Nasdaq-100 suben ~1,3%</strong>, pero las <strong>minutas de la Fed</strong> muestran que casi todo el comité ve más subas y <strong>Waller pide 50pb en diciembre</strong>. Ayer el <strong>S&amp;P 500 sumó su quinta baja</strong> (7.323,63), el <strong>oro cayó 3,5%</strong> y el <strong>WTI ~3%</strong>. <strong>Para Argentina</strong>, el riesgo país mejoró a <strong>848pb</strong> con el tramo corto liderando (GD30 +0,82%), pero el frente cambiario se tensiona: el <strong>CCL llegó a $1.724</strong>, la <strong>brecha con el mayorista supera el 10%</strong> y el BCRA compró menos mientras las reservas caen por el oro. Con una Fed que se endurece, la duración larga en dólares sigue expuesta; mantenemos <strong>cobertura cambiaria vía CCL/MEP</strong> en carteras en pesos y preferencia por el <strong>tramo corto de Globales/Bonares</strong> frente al largo."
 }
