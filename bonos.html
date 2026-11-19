@@ -266,7 +266,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
           <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu)">IPC T-2 aplicado a la banda cada mes (oct ya publicado por BCRA) · default REM</div>
           <div style="display:flex;gap:5px">
-            <button onclick="tfBandIpcRem()" style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 7px;background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.25);color:var(--or);border-radius:4px;cursor:pointer">REM sept-26</button>
+            <button id="tf-rem-btn" onclick="tfBandIpcRem()" style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 7px;background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.25);color:var(--or);border-radius:4px;cursor:pointer">REM</button>
             <button onclick="tfBandIpcPreset(1.5)" style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 7px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);color:var(--gr);border-radius:4px;cursor:pointer">1,5%</button>
             <button onclick="tfBandIpcPreset(2.5)" style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 7px;background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);color:var(--am);border-radius:4px;cursor:pointer">2,5%</button>
             <button onclick="tfBandIpcPreset(3.5)" style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 7px;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);color:var(--rd);border-radius:4px;cursor:pointer">3,5%</button>
@@ -1454,7 +1454,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
           <button class="cart-btn ghost" onclick="cartIpcPreset(0.5)">+0,5</button>
           <button class="cart-btn ghost" onclick="cartIpcPreset(-0.5)">−0,5</button></span></div>
         <div id="cart-ipc" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px"></div>
-        <div class="cart-note">El CER ya publicado por el BCRA se usa tal cual; estos meses solo afectan el tramo todavía no publicado.</div>
+        <div class="cart-note">Default: <span id="cart-ipc-src"></span>. El CER ya publicado por el BCRA se usa tal cual; estos meses solo afectan el tramo todavía no publicado.</div>
       </div>
     </div>
   </div>
@@ -1619,10 +1619,12 @@ const BANDA_SEED = {serie:[
   {f:'2026-10-30',piso:712.36,techo:1950.97},
 ], fuente:'seed 07/10/2026'};
 let BANDA_LIVE = BANDA_SEED;
-// IPC T-2 (% mensual) aplicado a la banda en cada mes: nov = IPC sep ... (REM sept-26: sep 1,9 · oct 1,7 · nov 1,6 ·
-// dic 1,8 · ene 1,6 · feb-mar 1,6/1,7); sin dato mensual se usa 1,6 (REM: 21,1% a 12 meses ≈ 1,6%/mes).
-const BAND_IPC_DEFAULT = {202610:1.7, 202611:1.9, 202612:1.7, 202701:1.6, 202702:1.8, 202703:1.6, 202704:1.6, 202705:1.7};
-const BAND_IPC_FALLBACK = 1.6;
+// IPC T-2 (% mensual) aplicado a la banda en cada mes (nov = IPC sep ...): camino por defecto del último REM del BCRA,
+// lo reescribe update_rem.py (rutina diaria) entre las 3 constantes de abajo.
+const BAND_IPC_DEFAULT = {202610:1.8, 202611:1.7, 202612:1.8, 202701:1.7, 202702:1.6, 202703:1.7, 202704:1.7, 202705:1.66, 202706:1.66, 202707:1.66, 202708:1.66, 202709:1.66, 202710:1.66, 202711:1.66, 202712:1.66, 202801:1.19, 202802:1.19, 202803:1.19, 202804:1.19, 202805:1.19, 202806:1.19, 202807:1.19, 202808:1.19, 202809:1.19, 202810:1.19, 202811:1.19, 202812:1.19};   // REM BCRA oct-26 (mediana): mensual donde lo hay; resto del año cierra la expectativa anual dic/dic — lo escribe update_rem.py
+const BAND_IPC_FALLBACK = 1.19;   // después del último año del REM: tasa mensual del último año
+const BAND_IPC_SRC = 'REM BCRA oct-26';
+try{ document.getElementById('tf-rem-btn').textContent = BAND_IPC_SRC.replace('REM BCRA ','REM '); }catch(e){}
 function bandIpcDefault(ym){ return BAND_IPC_DEFAULT[ym] ?? BAND_IPC_FALLBACK; }
 
 function bandaProyectada(dtm, ipcMap){
@@ -1996,7 +1998,7 @@ function tfBandIpcPreset(v) {
 }
 
 function tfBandIpcRem() {
-  // Vuelve a los defaults (REM sept-26) para todos los meses
+  // Vuelve a los defaults (último REM, BAND_IPC_SRC) para todos los meses
   tfBandIpcMap = {};
   const months = tfBandIpcMonths();
   months.forEach(m => {
@@ -5388,6 +5390,7 @@ function cartRender(){
   document.getElementById('cart-brecha-note').textContent = 'hoy '+(cartA._brechaDef ?? '—')+'% (MEP vs A3500)';
   document.getElementById('cart-reinv').value = cartA.reinv;
   document.getElementById('cart-reinvUsd').value = cartA.reinvUsd;
+  document.getElementById('cart-ipc-src').textContent = BAND_IPC_SRC + ' (mediana; meses sin dato mensual cierran la expectativa anual)';
   document.getElementById('cart-tamar').value = cartA.tamar;
   document.getElementById('cart-tamarMode').value = cartA.tamarMode;
   const tf = cartA.tamarMode === 'ipc';
