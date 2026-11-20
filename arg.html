@@ -405,6 +405,7 @@ function GB(v){return v>=0?C.G4:C.RD;}
 
 // ══ CALENDAR ══
 function makeCal(year,month,events){
+  return '';  // calendarios de publicaciones retirados 20/11/2026 (habían quedado desactualizados en julio; pedido Pedro). El panel ocupa todo el ancho.
   var mN=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   var dN=['L','M','X','J','V','S','D'];
   var dim=new Date(year,month+1,0).getDate();
@@ -441,7 +442,7 @@ function bx1(id,ht,ttl,cls){return '<div class="cg1"><div class="card '+(cls||'c
 function bx2(ids,ttls,ht,cls){ht=ht||'h190';return '<div class="cg2">'+ids.map(function(id,i){var c=Array.isArray(cls)?cls[i]:(cls||'c-indec');return '<div class="card '+c+'"><div class="ct">'+ttls[i]+'</div><div class="ch '+ht+'"><canvas id="'+id+'"></canvas></div></div>';}).join('')+'</div>';}
 function bx3(ids,ttls,ht,cls){ht=ht||'h165';return '<div class="cg3">'+ids.map(function(id,i){var c=Array.isArray(cls)?cls[i]:(cls||'c-indec');return '<div class="card '+c+'"><div class="ct">'+ttls[i]+'</div><div class="ch '+ht+'"><canvas id="'+id+'"></canvas></div></div>';}).join('')+'</div>';}
 function ocard(mid,tag,name,desc,val,vcls,period,ctx,ti){return '<div class="oc" onclick="showTab('+ti+')"><div class="ot">'+tag+'</div><div class="on">'+name+'</div><div class="od">'+desc+'</div><div class="mc"><canvas id="'+mid+'"></canvas></div><div class="of"><div><div class="ov '+vcls+'">'+val+'</div><div class="op">'+period+'</div></div><div class="ox">'+ctx+'</div></div></div>';}
-function panel2col(id,left,right,active){return '<div class="panel'+(active?' active':'')+(active?'':'')+'" id="'+id+'"><div class="twocol"><div class="col-l">'+left+'</div><div class="col-r">'+right+'</div></div></div>';}
+function panel2col(id,left,right,active){var r=right||'';return '<div class="panel'+(active?' active':'')+'" id="'+id+'"><div class="twocol"'+(r?'':' style="grid-template-columns:1fr"')+'><div class="col-l">'+left+'</div>'+(r?'<div class="col-r">'+r+'</div>':'')+'</div></div>';}
 
 // ══ COMPONENTES DE LA INFLACIÓN (estimación Amberes; datos en D.compInfl, ver componentes_inflacion/) ══
 var CI_COMP=[['inercia','Inercia (núcleo mes previo)','#1f6fb2'],['expect','Expectativas (REM)','#7bbfe8'],['dolar','Dólar (A3500)','#e8a044'],

@@ -150,7 +150,6 @@ footer{border-top:1px solid var(--br);padding:12px 44px;background:var(--nv2);di
         <div class="cso" onclick="go('cn')"><span class="fl">&#127464;&#127475;</span><div>China</div></div>
         <div class="cso" onclick="go('eu')"><span class="fl">&#127466;&#127482;</span><div>Europa (EA)</div></div>
         <div class="cso" onclick="go('jp')"><span class="fl">&#127471;&#127477;</span><div>Jap&#243;n</div></div>
-        <div class="cso" onclick="go('cal')"><span class="fl">&#128197;</span><div>Calendario Global</div></div>
       </div>
     </div>
   </div>
@@ -218,6 +217,7 @@ function showTab(i,pref){
 
 // ══ CALENDAR ══
 function makeCalendar(year,month,events){
+  return '';  // calendarios de publicaciones retirados 20/11/2026 (habían quedado desactualizados en julio; pedido Pedro). El panel ocupa todo el ancho.
   // month is 0-indexed
   var months=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
   var days=['L','M','X','J','V','S','D'];
@@ -270,7 +270,8 @@ function ocard(mid,tag,name,desc,val,vcls,period,ctx,onclick){return '<div class
   '<div class="of"><div><div class="ov2 '+vcls+'">'+val+'</div><div class="op">'+period+'</div></div><div class="ox">'+ctx+'</div></div></div>';}
 
 function panel(id,left,right){
-  return '<div class="panel" id="'+id+'"><div class="panel-inner"><div class="panel-left">'+left+'</div><div class="panel-right">'+right+'</div></div></div>';
+  var r=right||'';
+  return '<div class="panel" id="'+id+'"><div class="panel-inner"'+(r?'':' style="grid-template-columns:1fr"')+'><div class="panel-left">'+left+'</div>'+(r?'<div class="panel-right">'+r+'</div>':'')+'</div></div>';
 }
 function panelFull(id,cnt){
   return '<div class="panel active" id="'+id+'">'+cnt+'</div>';
