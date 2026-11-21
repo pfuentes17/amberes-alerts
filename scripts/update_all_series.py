@@ -286,39 +286,11 @@ def bcb_desde(sh_name, series_id, cols, transform=None):
     update_sheet(sh_name, rows, f"BCB serie {series_id}")
     time.sleep(0.5)
 
-# IBC-Br (proxy actividad mensual) — serie 24363
-bcb_desde('IBC-Br', 24363, ['Fecha','IBC-Br'])
-
-# Desempleo Brasil (PNAD) — serie 24369
-bcb_desde('Desempleo - Br', 24369, ['Fecha','Desempleo %'])
-
-# INPC Brasil — serie 188 (MoM %)
-bcb_desde('INPC - Br', 188, ['Fecha','INPC MoM %'])
-
-# PIM Brasil (Produccion industrial) — serie 21859
-bcb_desde('PIM - Br', 21859, ['Fecha','PIM YoY %'])
-
-# Cuenta corriente Brasil (M USD) — serie 22707
-bcb_desde('Cuenta Corriente - Br', 22707, ['Fecha','Cta Corriente M USD'])
-
-# Balanza Comercial Brasil (M USD) — serie 22704
-bcb_desde('Balanza Comercial - Br', 22704, ['Fecha','Saldo M USD'])
-
-# PIB Brasil trimestral (YoY %) — serie 22099
-sh = 'PIB - Br'
-uf = ultima_fecha_sheet(wb[sh]) if sh in wb.sheetnames else None
-start_str = (uf + timedelta(days=1)).strftime('%d/%m/%Y') if uf else '01/01/2015'
-data = bcb(22099, start=start_str)
-rows = []
-for dt_str, val in data:
-    d = parse_date(dt_str)
-    if d and d > (uf or date(2000,1,1)):
-        rows.append([to_excel_date(d), round(float(str(val).replace(',','.')), 2)])
-update_sheet(sh, rows, "BCB serie 22099 (PIB YoY)")
-time.sleep(0.5)
-
-# IPP Brasil — serie 27574
-bcb_desde('IPP - Br', 27574, ['Fecha','IPP MoM %'])
+# DESACTIVADO 20/11/2026: este bloque escribía series de Brasil con el formato equivocado (índice sin desestacionalizar en
+# IBC-Br/PIM, % en vez de fracción en Desempleo/INPC, índice en IPP, una sola columna en Cuenta Corriente/Balanza/PIB) y rompió
+# las 12 hojas de Brasil desde fines de 2025. Ahora las mantiene /Users/pedrofuentes/Documents/Claude/Projects/update_brasil.py
+# (paso propio en las tareas programadas, DESPUÉS de este script: no llamarlo desde acá porque este script guarda al final y lo pisaría).
+print('  Brasil: lo actualiza update_brasil.py (paso aparte)')
 
 # ════════════════════════════════════════════════════════════════
 # 3. BCRA — Argentina financiero
