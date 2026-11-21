@@ -520,7 +520,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
 
     <!-- DUAL TAMAR/USD -->
     <div class="tw">
-      <div class="tw-hdr" style="color:#38bdf8">Dual TAMAR/Dólar · max(A3500 acum. +6,64%, TAMAR acum.) al vencimiento
+      <div class="tw-hdr" style="color:#38bdf8">Dual TAMAR/Dólar · max(VN USD × A3500, VN USD × TC₀ × TAMAR acum.) al vencimiento
         <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:10px">Estreno jul-2026 · TMVE8</span>
       </div>
       <div class="tbl-wrap"><table><thead><tr>
@@ -590,7 +590,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
           <option value="TXMD9">TXMD9 — Dual CER/TAMAR vto 14/12/29</option>
           <option value="TXMJ0">TXMJ0 — Dual CER/TAMAR vto 28/06/30</option>
         </optgroup>
-        <optgroup label="Dual TAMAR/Dólar · max(A3500+6,64%, TAMAR)">
+        <optgroup label="Dual TAMAR/Dólar · max(A3500, TAMAR)">
           <option value="TMVE8">TMVE8 — Dual TAMAR/USD vto 31/01/28</option>
         </optgroup>
       </select>
@@ -856,6 +856,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
           <th>Ticker</th><th class="ct">Vto.</th><th>Precio USD</th><th>Bid</th><th>Ask</th>
           <th>Cupón</th><th>TIR (YTM)</th><th>MD</th><th>Var%</th><th>Vol. USD</th>
         </tr></thead><tbody id="hd-otros"></tbody></table></div>
+        <div class="fnote" style="margin:6px 10px 2px;line-height:1.5">TIR efectiva anual y duración modificada exactas, sobre precio sucio y liquidación T+1: GD/AL/AE38 con los flujos de la reestructuración 2020; AO27/AO28/AO29 (6% mensual) y AN29 (6,5% semestral) con cupón a fin de mes (AN29: 30/05 y 30/11), base 30/360 y amortización al vencimiento.</div>
       </div>
 
       <!-- BOPREALes -->
@@ -1037,9 +1038,9 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
         <div class="tbl-wrap"><table><thead><tr><th>Ticker</th><th class="ct">Vto.</th><th>VNO Circulación</th><th>Fecha del Dato</th><th>Nota</th></tr></thead><tbody id="dl-vno-body">
           <tr><td>D30S6</td><td class="ct">30/09/2026</td><td>USD 1.098 M</td><td>22/09/2026</td><td style="color:var(--mu);font-size:11px">Rescate 75% VNO (USD 3.299M) en conversión a D30O6/D30N6/TZV28</td></tr>
           <tr><td>D30O6</td><td class="ct">30/10/2026</td><td>USD 1.418 M</td><td>21/10/2026</td><td style="color:var(--mu);font-size:11px">Rescate USD 3.929,7M en conversión a D30N6/D15E7/TZV27 (A3 #14.747); remanente no convertido vence 30-oct</td></tr>
-          <tr><td>D30N6</td><td class="ct">30/11/2026</td><td>USD 1.888 M</td><td>17/11/2026</td><td style="color:var(--mu);font-size:11px">Rescate USD 2.854M (60,19% del VNO) en conversión a D29E7 (Finanzas 17-nov, liquida 19-nov; falta VNO exacto A3); antes USD 4.742M (A3 #14.747)</td></tr>
+          <tr><td>D30N6</td><td class="ct">30/11/2026</td><td>USD 1.888 M</td><td>20/11/2026</td><td style="color:var(--mu);font-size:11px">Rescate USD 2.854,2M (60,19% del VNO) en conversión a D29E7 del 17-nov (A3 #14.793: circulación USD 1.887,9M); antes USD 4.742M (A3 #14.747)</td></tr>
           <tr><td>D15E7</td><td class="ct">15/01/2027</td><td>USD 4.388 M</td><td>11/11/2026</td><td style="color:var(--mu);font-size:11px">Reapertura licitación 11-nov (+USD 768M, precio de corte USD 992, TIREA 4,77%; circulación según Finanzas, falta A3). Antes: Reapertura licitación 28-oct (+USD 1.666,2M, precio de corte USD 986, TIREA 7,00%); VNO exacto A3 #14.756 (USD 3.619.980.785); antes USD 1.953,8M tras conversión D30O6 (A3 #14.747)</td></tr>
-          <tr><td>D29E7<span style="font-size:8px;margin-left:4px;padding:1px 4px;border-radius:3px;background:rgba(163,230,53,.12);border:1px solid rgba(163,230,53,.3);color:#a3e635">nueva</span></td><td class="ct">29/01/2027</td><td>USD 2.875 M</td><td>17/11/2026</td><td style="color:var(--mu);font-size:11px">Emitida por conversión de D30N6 (precio de corte USD 992,33 por VNO 1.000; 481 ofertas, ofertado USD 3.328M); emisión 19-nov-2026</td></tr>
+          <tr><td>D29E7<span style="font-size:8px;margin-left:4px;padding:1px 4px;border-radius:3px;background:rgba(163,230,53,.12);border:1px solid rgba(163,230,53,.3);color:#a3e635">nueva</span></td><td class="ct">29/01/2027</td><td>USD 2.875 M</td><td>20/11/2026</td><td style="color:var(--mu);font-size:11px">Emitida por conversión de D30N6 (precio de corte USD 992,33 por VNO 1.000; 481 ofertas, ofertado USD 3.328M); emisión 19-nov-2026; VNO exacto USD 2.875,1M (A3 #14.793)</td></tr>
           <tr><td>D31M7</td><td class="ct">31/03/2027</td><td>USD 941 M</td><td>15/09/2026</td><td style="color:var(--mu);font-size:11px">Confirmado A3 Comunicado #14.677</td></tr>
           <tr><td>DLK 10-may-2027<span style="font-size:8px;margin-left:4px;padding:1px 4px;border-radius:3px;background:rgba(148,163,184,.12);border:1px solid rgba(148,163,184,.3);color:var(--mu)">s/cód.</span></td><td class="ct">10/05/2027</td><td>USD 604 M</td><td>15/07/2026</td><td style="color:var(--mu);font-size:11px">Instrumento nuevo, código no confirmado en el anuncio oficial</td></tr>
           <tr><td>TZV27</td><td class="ct">30/06/2027</td><td>USD 1.070 M</td><td>21/10/2026</td><td style="color:var(--mu);font-size:11px">Alta por conversión D30O6 (+USD 206,1M) — A3 Com. #14.747; antes USD 864M (A3 #14.677)</td></tr>
@@ -1494,7 +1495,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     <b>Dollar linked:</b> A3500 proyectado con la devaluación indicada; salida a la TIR en USD actual del bono.
     <b>Hard dollar (GD/AL):</b> flujos de la reestructuración 2020 en USD, salida a la TIR actual del bono (+ corrimiento), pasados a pesos al MEP proyectado (oficial × (1+brecha)).
     <b>TAMAR:</b> el precio rinde la TAMAR supuesta (TEM según prospecto, spread ≈ 0, igual que la solapa TAMAR; no modela cupones de cada emisión).
-    <b>Duales:</b> pata TAMAR = capital × (1+TEM de la TAMAR promedio + margen)^(meses), con la TAMAR publicada (BCRA) y la supuesta para el resto (fija o acompañando la inflación); pagan la pata mayor (TAMAR vs CER proyectado, vs tasa fija, o vs dólar A3500 + spread en el TAMAR/dólar TMVE8, cuyo VN es en USD). Si se venden antes, se mantiene la TIR implícita entre el precio de hoy y ese pago (+ corrimiento CER).
+    <b>Duales:</b> pata TAMAR = capital × (1+TEM de la TAMAR promedio + margen)^(meses), con la TAMAR publicada (BCRA) y la supuesta para el resto (fija o acompañando la inflación); pagan la pata mayor (TAMAR vs CER proyectado, vs tasa fija, o vs VN en USD al A3500 en el TAMAR/dólar TMVE8, sin spread). Si se venden antes, se mantiene la TIR implícita entre el precio de hoy y ese pago (+ corrimiento CER).
     <b>ONs:</b> flujos en USD del universo del tablero, salida a la TIR actual (+ corrimiento HD/DL).
     <b>Default HD:</b> en ese escenario GD/AL se canjean al horizonte con el simulador de reestructuración (tipo 2020 a tasa de mercado).
     Comisión opcional; no incluye impuestos ni derechos de mercado. El dual TAMAR/USD (TMVE8) todavía no está.
@@ -2734,14 +2735,16 @@ const TMR_INSTR = {
   TTD26: {tipo:'DUAL',         vtod:'15/12/26', vtoi:'2026-12-15', emision:'2025-01-24', piso_tem:2.14/100, cer0:null},
   // Duales CER/TAMAR — Gestión Milei · CER₀ pendiente de datos de licitación
   TXMJ8: {tipo:'DUAL CER/TAMAR', vtod:'30/06/28', vtoi:'2028-06-30', emision:'2026-05-15', piso_tem:null, margen:3.00, cer0:758.1180},
-  TXMD8: {tipo:'DUAL CER/TAMAR', vtod:'15/12/28', vtoi:'2028-12-15', emision:'2026-06-11', piso_tem:null, margen:3.00, cer0:779.2409},
-  TXMJ9: {tipo:'DUAL CER/TAMAR', vtod:'29/06/29', vtoi:'2029-06-29', emision:'2026-04-30', piso_tem:null, margen:3.00, cer0:746.3809},
-  TXMD9: {tipo:'DUAL CER/TAMAR', vtod:'14/12/29', vtoi:'2029-12-14', emision:'2026-06-11', piso_tem:null, margen:3.00, cer0:779.2409},
-  TXMJ0: {tipo:'DUAL CER/TAMAR', vtod:'28/06/30', vtoi:'2030-06-28', emision:'2026-06-11', piso_tem:null, margen:3.00, cer0:779.2409},
+  TXMD8: {tipo:'DUAL CER/TAMAR', vtod:'15/12/28', vtoi:'2028-12-15', emision:'2026-06-11', piso_tem:null, margen:3.00, cer0:779.2409}, // margen 3% confirmado: llamado 08/06/2026 y Res. Conj. 46/2026
+  TXMJ9: {tipo:'DUAL CER/TAMAR', vtod:'29/06/29', vtoi:'2029-06-29', emision:'2026-04-30', piso_tem:null, margen:3.00, cer0:746.3809}, // margen 3% confirmado: Res. Conj. 23/2026 art. 3
+  TXMD9: {tipo:'DUAL CER/TAMAR', vtod:'14/12/29', vtoi:'2029-12-14', emision:'2026-06-11', piso_tem:null, margen:3.00, cer0:779.2409}, // margen 3% confirmado: llamado 08/06/2026
+  TXMJ0: {tipo:'DUAL CER/TAMAR', vtod:'28/06/30', vtoi:'2030-06-28', emision:'2026-06-11', piso_tem:null, margen:3.00, cer0:779.2409}, // margen 3% confirmado: llamado 08/06/2026 (encabezado)
   // Agregado 01/09/2026 (ver memoria bonos-dashboard-cer-audit): dual TAMAR/Dólar, estreno licitación 29/07/2026
-  // Paga MAX(TAMAR acumulada, devaluación A3500 acumulada desde emisión + spread 6,64% anual) — spread sobre TAMAR = 0%
-  // TC0 y spread: Secretaría de Finanzas (resultado licitación 29-jul-2026) + prensa (Ámbito/Cronista); TC0 = A3500 BCRA del 31/07/2026
-  TMVE8: {tipo:'DUAL TAMAR/USD', vtod:'31/01/28', vtoi:'2028-01-31', emision:'2026-07-31', piso_tem:null, tc0:1488.4531, spread_usd:0.0664},
+  // Res. Conj. 46/2026 (BO 31/07/2026): VN en USD; paga MAX(VN USD × A3500 de 3 hábiles antes del pago, VN USD × TC₀ × TAMAR TEM capitalizada
+  // mensual, 30/360, sin margen). TC₀ = A3500 del hábil anterior a la licitación (28/07/2026 = 1.499,8387).
+  // Corregido 20/11/2026: antes sumaba un "spread" de 6,64% anual a la pata dólar — ese 6,64% era la TIR implícita del precio de emisión
+  // (USD 908,10 por 1.000 a 18 meses), no una condición del bono; inflaba la pata dólar ~10% al vencimiento. TC₀ estaba al 31/07 (1.488,45).
+  TMVE8: {tipo:'DUAL TAMAR/USD', vtod:'31/01/28', vtoi:'2028-01-31', emision:'2026-07-31', piso_tem:null, tc0:1499.8387, spread_usd:0},
 };
 
 let tmrTamarTEM = SEED_TAMAR_RATE; // TEM mensual TAMAR actual
@@ -2831,8 +2834,8 @@ function tmrRow(d, tamarTEM) {
     const retTamar  = vtTamar / precio - 1;
     const tnaEquiv  = tamarTEM * 12 * 100;
 
-    // Escenario USD: VN=100 USD (no pesos, a diferencia de los duales CER/TAMAR) → VT_hoy(ARS) = 100 × TC_hoy × (1+spread_usd)^(años desde emisión)
-    // TC0 no aparece en la fórmula: el valor en pesos de "100 USD + spread acumulado" depende solo del TC de HOY, no del TC de emisión
+    // Escenario USD: VN=100 USD (no pesos, a diferencia de los duales CER/TAMAR) → VT_hoy(ARS) = 100 × TC_hoy (spread_usd = 0 según Res. Conj. 46/2026)
+    // TC0 no aparece en la pata dólar: depende solo del TC de HOY
     // (mismo criterio que el leg CER: usa TC de HOY como proxy del TC al vto, no proyecta devaluación futura)
     let tirUsd = null, usdGana = null;
     // dlTcData se declara más abajo en el script (sección Dollar Linked) — en el primer render con datos
@@ -3060,7 +3063,7 @@ const TSIM_INSTR = {
   TXMD9: {tipo:'DUAL CER/TAMAR', vtoi:'2029-12-14', vtod:'14/12/29', emision:'2026-06-11', piso_tem:null, vn_emision:100, cer0:779.2409},
   TXMJ0: {tipo:'DUAL CER/TAMAR', vtoi:'2030-06-28', vtod:'28/06/30', emision:'2026-06-11', piso_tem:null, vn_emision:100, cer0:779.2409},
   // Agregado 01/09/2026: el simulador muestra el camino TAMAR puro (no compara vs leg USD, esa comparación completa está en la tabla principal del tab TAMAR)
-  TMVE8: {tipo:'DUAL TAMAR/USD', vtoi:'2028-01-31', vtod:'31/01/28', emision:'2026-07-31', piso_tem:null, vn_emision:100, tc0:1488.4531, spread_usd:0.0664},
+  TMVE8: {tipo:'DUAL TAMAR/USD', vtoi:'2028-01-31', vtod:'31/01/28', emision:'2026-07-31', piso_tem:null, vn_emision:100, tc0:1499.8387, spread_usd:0}, // Res. Conj. 46/2026, sin spread (corr. 20/11/2026)
 };
 
 const MN_ES = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
@@ -3598,7 +3601,7 @@ function hdRow(d, cfg) {
     <td style="color:var(--mu)">${d.bid?'$'+Number(d.bid).toFixed(2):'—'}</td>
     <td style="color:var(--mu)">${d.ask?'$'+Number(d.ask).toFixed(2):'—'}</td>
     <td style="color:var(--mu)">${cfg.cpn||'—'}</td>
-    <td style="${tirCls}">${tir}</td>
+    <td style="${tirCls}" title="${d.exact?'TIR efectiva anual exacta: flujos de la reestructuración 2020, precio sucio, liquidación T+1':'TIR aproximada por duración desde el ancla del 15/09/2026'}">${tir}${d.exact||tir==='—'?'':'<span style="color:var(--am)">*</span>'}</td>
     <td style="color:var(--pu)">${md}</td>
     <td style="${pchCls}">${pch>=0?'+':''}${pch.toFixed(2)}%</td>
     <td style="color:var(--dim);font-size:10px">${volStr}</td>
@@ -3654,8 +3657,21 @@ function hdRenderAll(sobData, bpData) {
   // Enriquecer con YTM y duración del seed si la API no los trae
   // Si el precio cambió vs el seed, aproximamos el nuevo YTM con duración modificada:
   // ΔYTM ≈ -ΔP/P × (1/Dur)  (relación precio-yield)
+  // Desde 20/11/2026: GD/AL/AE38 (reestructuración 2020) usan TIR y duración EXACTAS con los flujos del motor HDD
+  // (TIR efectiva anual, precio sucio, liquidación T+1; validado vs bonistas). El resto (AO/AN, BPD7) sigue con la aproximación.
+  const hdSettle = hddSettle();
   const enriched = sobDataFull.map(d => {
     const sym  = d.symbol;
+    const pxL  = d.price_usd ?? d.c;
+    if ((HDD_BONDS.includes(sym) || AO_TERMS[sym]) && pxL > 0) {
+      try {
+        const f = AO_TERMS[sym] ? aoFlows(sym, hdSettle) : hddFlows(hddKey(sym), hdSettle), y = hddYTM(f, pxL, hdSettle);
+        let pv = 0, tpv = 0;
+        f.forEach(x => { const t = hddDays(hdSettle, x.d) / 365, v = x.cf / Math.pow(1 + y, t); pv += v; tpv += t * v; });
+        const md = tpv / pv / (1 + y);
+        if (Number.isFinite(y) && Number.isFinite(md)) return { ...d, ytm: (y * 100).toFixed(2) + '%', duration: md.toFixed(2), exact: true };
+      } catch (e) { console.warn('hd exacta', sym, e); }
+    }
     const seed = SEED_HD_SOB.find(s => s.symbol === sym);
     if (!seed) return d;
     const seedYTM = parseFloat(seed.ytm) || null;
@@ -3958,6 +3974,31 @@ function hddFlows(k, today){
     if(d>today) out.push({d, cf:c+a, res});
     res-=a;
   }
+  return out;
+}
+// Bonares 2026 (AO27/AO28/AO29, 6% mensual) y BONAR 2029N (AN29, 6,5% semestral 30/05–30/11): bullet, cupón el último día
+// del mes (AN29: 30/05 y 30/11), base 30/360 sobre VN 100. Emisión/vto: bonistas.com y llamados de Finanzas. Validado 20/11/2026:
+// con la TIR de bonistas, la paridad del AO27 da 1,00330 = bonistas (AO28/AO29/AN29 dentro de ±0,0005). Agregado 20/11/2026.
+const AO_TERMS = {
+  AO27:{emi:'2026-02-27', vto:'2027-10-29', cpn:6.0, m:1},
+  AO28:{emi:'2026-03-31', vto:'2028-10-31', cpn:6.0, m:1},
+  AO29:{emi:'2026-07-17', vto:'2029-10-31', cpn:6.0, m:1},
+  AN29:{emi:'2025-12-12', vto:'2029-11-30', cpn:6.5, m:6},
+};
+function aoD360(a,b){ const [y1,m1,x1]=a.split('-').map(Number), [y2,m2,x2]=b.split('-').map(Number); const d1=Math.min(x1,30), d2=(x2===31&&d1===30)?30:x2; return (y2-y1)*360+(m2-m1)*30+d2-d1; }
+function aoFlows(sym, today){
+  const T=AO_TERMS[sym], ds=[]; let y=+T.emi.slice(0,4), m=+T.emi.slice(5,7);
+  const vm=+T.vto.slice(5,7);
+  while(true){
+    const day = T.m===6 ? Math.min(30,new Date(Date.UTC(y,m,0)).getUTCDate()) : new Date(Date.UTC(y,m,0)).getUTCDate();
+    let d=`${y}-${String(m).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+    if(d>=T.vto.slice(0,7)+'-01' && d.slice(0,7)===T.vto.slice(0,7)) d=T.vto;
+    if(d>T.emi && ((m-vm)%T.m+T.m)%T.m===0) ds.push(d);
+    if(d>=T.vto) break;
+    if(++m>12){ m=1; y++; }
+  }
+  const out=[]; let prev=T.emi;
+  for(const d of ds){ const cf=T.cpn*aoD360(prev,d)/360+(d===T.vto?100:0); if(d>today) out.push({d,cf,res:100}); prev=d; }
   return out;
 }
 function hddResidual(k,today){ return 100-HDD_AMORT[k].filter(([d])=>d<=today).reduce((s,[,p])=>s+p,0); }
@@ -5210,10 +5251,10 @@ function cartProjPay(u, A){
   if(i.tipo === 'DUAL'){ const t = cartTamarPay(i, A, 0), f = 100*Math.pow(1 + i.piso_tem, days30360(emi, vto)/30); return t >= f ? {pay:t, leg:'TAMAR'} : {pay:f, leg:'tasa fija'}; }
   if(i.tipo === 'DUAL TAMAR/USD'){
     // VN en USD (el precio cotiza en ARS por 100 USD de VN, como las letras DL). Paga el mayor entre:
-    // pata TAMAR = 100 USD × TC₀ capitalizado a TAMAR (sin margen) · pata USD = 100 × A3500(vto−1 hábil) × (1+spread)^(años 30/360 desde emisión)
+    // pata TAMAR = 100 USD × TC₀ capitalizado a TAMAR (sin margen) · pata USD = 100 × A3500(vto−3 hábiles) (spread 0 según Res. Conj. 46/2026)
     const tam = cartTamarPay(i, A, 0) * i.tc0;
-    const usd = 100 * cartTcAt(A, bkAddBiz(i.vtoi, -1)) * Math.pow(1 + i.spread_usd, days30360(emi, vto)/360);
-    return tam >= usd ? {pay:tam, leg:'TAMAR'} : {pay:usd, leg:'dólar+'+(i.spread_usd*100).toFixed(2).replace('.',',')+'%'};
+    const usd = 100 * cartTcAt(A, bkAddBiz(i.vtoi, -3)) * Math.pow(1 + (i.spread_usd||0), days30360(emi, vto)/360);   // A3500 de 3 hábiles antes del pago (RC 46/2026)
+    return tam >= usd ? {pay:tam, leg:'TAMAR'} : {pay:usd, leg:'dólar'};
   }
   const t = cartTamarPay(i, A, i.margen), c = 100 * cartCerAt(A, bkAddBiz(i.vtoi, -10)) / i.cer0;
   return t >= c ? {pay:t, leg:'TAMAR'} : {pay:c, leg:'CER'};
