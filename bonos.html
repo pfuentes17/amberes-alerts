@@ -1284,23 +1284,32 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   </div>
 
   <div class="tw" style="border:1px solid rgba(248,113,113,.35)"><div class="tw-hdr" style="color:#f87171;font-size:13px">★ TASA DE SUSTENTABILIDAD DE LA DEUDA — HOY
-    <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">¿A qué tasa podría endeudarse el Gobierno sin ampliar Deuda/PBI? · r* = g + pb×(1+g)/d · 06/10/2026</span>
+    <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">¿A qué tasa podría endeudarse el Gobierno sin ampliar Deuda/PBI? · r* = g + pb×(1+g)/d · r* al 17/11/2026, TIR USD en vivo</span>
   </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;padding:16px">
       <div style="padding-right:16px;border-right:1px solid var(--bdr2)">
         <div style="font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em">Pesos (nominal)</div>
-        <div style="font-size:32px;font-weight:700;color:var(--gr);margin:4px 0">34,26%</div>
-        <div style="font-size:11px;color:var(--mu)">vs. LECAP actual: <strong style="color:var(--txt)">21,1%-23,0%</strong> → margen <strong style="color:var(--gr)">+11,3 a +13,2pp</strong></div>
+        <div style="font-size:32px;font-weight:700;color:var(--gr);margin:4px 0">34,52%</div>
+        <div style="font-size:11px;color:var(--mu)">vs. LECAP actual: <strong style="color:var(--txt)">21,1%-23,0%</strong> → margen <strong style="color:var(--gr)">+11,5 a +13,4pp</strong></div>
         <div style="font-size:11px;color:var(--gr);font-weight:600;margin-top:6px">✓ SUSTENTABLE — margen amplio</div>
       </div>
       <div style="padding-left:16px">
         <div style="font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em">Dólares</div>
-        <div style="font-size:32px;font-weight:700;color:#facc15;margin:4px 0">3,84%</div>
-        <div style="font-size:11px;color:var(--mu)">vs. curva de bonos: <strong style="color:var(--txt)">3,5% a 17,3%</strong> → margen <strong style="color:#facc15">+0,3pp (AO27) a -13,5pp</strong></div>
-        <div style="font-size:11px;color:#facc15;font-weight:600;margin-top:6px">◐ SOLO EL AO27 ES SUSTENTABLE (por 0,3pp) — AO28/AO29/GD41 insustentables</div>
+        <div style="font-size:32px;font-weight:700;color:var(--rd);margin:4px 0">3,84%</div>
+        <div id="pvd-usd-rango" style="font-size:11px;color:var(--mu)">vs. curva de bonos: cargando TIR de la tab HD…</div>
+        <div id="pvd-usd-veredicto" style="font-size:11px;font-weight:600;margin-top:6px"></div>
       </div>
     </div>
-    <div style="padding:0 16px 14px;font-size:11px;color:var(--mu);line-height:1.5">g(pesos)=+33,5% nominal (INDEC) · g(USD)=+0,60% (Q1-26 vs Q1-25) · pesos: d=Deuda/PBI 68,2% (FMI/FRED 2026e), pb=superávit primario real 0,39% PBI (ene-sep anualizado) · dólares [corregido 07/09/2026, todo en USD y mismo trimestre]: d=69,76% (Deuda USD jun-26/PBI USD anualizado Q1-26, propio), pb=2,25% (superávit primario Q1-26 convertido a USD mes a mes, anualizado). En pesos el Gobierno paga bien por debajo de lo que podría sin ampliar el ratio; en dólares, <strong style="color:var(--txt)">el AO27 volvió a quedar por debajo del límite el 06/10/2026 (TIR bajó de ~4,0% a 3,54%) — es el único punto sustentable de la curva, con margen chico (0,3pp; TIR 3,5% al 16/11/2026); el resto (AO28 16,1%, GD41 12,2%, AO29 17,3%) sigue muy por encima</strong>.</div>
+    <div style="padding:0 16px 14px;font-size:11px;color:var(--mu);line-height:1.5">g(pesos)=+33,5% nominal (INDEC) · g(USD)=+0,60% (Q1-26 vs Q1-25) · pesos: d=Deuda/PBI 68,2% (FMI/FRED 2026e), pb=superávit primario real 0,52% PBI (ene-oct anualizado) · dólares [corregido 07/09/2026, todo en USD y mismo trimestre]: d=69,76% (Deuda USD jun-26/PBI USD anualizado Q1-26, propio), pb=2,25% (superávit primario Q1-26 convertido a USD mes a mes, anualizado). En pesos el Gobierno paga bien por debajo de lo que podría sin ampliar el ratio; en dólares, <span id="pvd-usd-txt"></span> El AO27 fue el único tramo sustentable entre el 06/10 y el 16/11/2026.</div>
+    <div style="padding:4px 16px 16px;border-top:1px solid var(--bdr2)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin:12px 0 8px">
+        <div><div style="font-size:12px;font-weight:700;color:var(--txt)">Sensibilidad en dólares: r* según el crecimiento y brecha contra cada bono</div>
+        <div style="font-size:10px;color:var(--mu);margin-top:2px">Cada fila es un escenario de crecimiento del PBI en USD (g). Columnas de bonos = TIR en vivo − r* (pp): <span style="color:var(--gr)">verde</span> = el bono rinde menos que r* (emitir ahí no sube la deuda/PBI), <span style="color:var(--rd)">rojo</span> = la sube.</div></div>
+        <div style="font-size:10px;color:var(--mu);white-space:nowrap">Superávit primario <input id="pvd-s-pb" class="cart-in" type="number" step="0.25" value="2.25" style="width:56px" oninput="pvdSens()"> % PBI · Deuda/PBI <input id="pvd-s-d" class="cart-in" type="number" step="1" value="69.76" style="width:62px" oninput="pvdSens()"> %</div>
+      </div>
+      <div class="tbl-wrap"><table><thead id="pvd-s-head"></thead><tbody id="pvd-s-body"></tbody></table></div>
+      <div id="pvd-s-nota" style="font-size:10px;color:var(--mu);margin-top:6px;line-height:1.5"></div>
+    </div>
   </div>
 
   <div class="tw" style="margin-top:18px"><div class="tw-hdr" style="color:#38bdf8">% Deuda en Pesos vs. % Moneda Extranjera — 2019-2026
@@ -1313,7 +1322,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
     </div><div class="tbl-wrap"><table><thead><tr><th>Ticker</th><th class="ct">Días</th><th>TNA</th><th>TEM</th><th>TEM Real</th></tr></thead><tbody id="pvd-pesos-body"></tbody></table></div></div>
 
     <div class="tw"><div class="tw-hdr" style="color:#facc15">Dólares — Curva de Bonos Soberanos (TIR de mercado)
-      <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">TIR Real vs. inflación EE.UU. (~3%) · 14/09/2026</span>
+      <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">TIR Real vs. inflación EE.UU. (~3%) · <span id="pvd-usd-fecha">TIR en vivo</span> · en verde, por debajo de r*</span>
     </div><div class="tbl-wrap"><table><thead><tr><th>Ticker</th><th class="ct">Vto.</th><th>MD (años)</th><th>TIR USD</th><th>TIR Real</th><th>Brecha r-g(USD)</th></tr></thead><tbody id="pvd-usd-body"></tbody></table></div></div>
   </div>
 
@@ -1341,7 +1350,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
       <p style="margin:0 0 10px"><strong style="color:var(--cy)">Pesos (~1,2 años en promedio):</strong> tasa REAL negativa (~-0,3% mensual) — financiamiento muy barato en términos reales, PERO exige refinanciar (rollover) buena parte del stock varias veces por año. Cada vencimiento es una "prueba de mercado": si cae la demanda en algún momento, el Tesoro puede verse forzado a convalidar tasas mucho más altas de golpe, o a emitir pesos (riesgo inflacionario) — el clásico "riesgo de bola de nieve" de la deuda corta.</p>
       <p style="margin:0 0 10px"><strong style="color:#facc15">Dólares (1 a 6+ años):</strong> tasa nominal notablemente más alta (2,7%-12,5% según plazo) y en dólares "duros" (no se licúa con inflación local) — un costo real efectivo mucho mayor que el de la deuda en pesos hoy. A cambio, fija ese costo por años: sin vencimientos que enfrentar ni tasa que renegociar hasta el vencimiento — elimina el riesgo de refinanciación en ese horizonte.</p>
       <p style="margin:0 0 10px"><strong style="color:var(--gr)">Conclusión (confirmada con datos):</strong> no es una comparación de "cuál es más barata" sino de costo vs. riesgo. La suba de la porción en pesos de 22% (2019) a 47% (2026) mejoró el costo real, pero el plazo promedio de esa deuda (1,21 años) sigue siendo sensiblemente más corto que la curva en dólares — confirma que la "pesificación" resolvió el problema de MONEDA pero no el de PLAZO: el riesgo de refinanciación de corto plazo sigue siendo alto en la porción peso de la deuda.</p>
-      <p style="margin:0"><strong style="color:var(--rd)">Sustentabilidad en USD:</strong> con el PBI en dólares creciendo apenas +0,60% (Q1-26 vs Q1-25 — casi todo el +33,5% nominal en pesos se lo comió la devaluación del +32,7%), la brecha entre el costo de la deuda en USD y el crecimiento de la economía en USD es <strong style="color:var(--rd)">positiva en TODA la curva (+1,9pp a +14,8pp)</strong>: la deuda en dólares crece bastante más rápido que la capacidad de la economía de generar dólares — a diferencia de la deuda en pesos, cuya brecha nominal es negativa. Tomando la tasa de sustentabilidad r* (todo en USD, mismo trimestre: d=69,76%, pb=2,25%, g=0,60%) da <strong style="color:var(--txt)">3,84%</strong> — <strong style="color:var(--rd)">actualizado 06/10/2026:</strong> el AO27 (TIR bajó de ~4,0% a 3,54%) volvió a quedar por debajo de ese límite y es el único tramo sustentable, por 0,3pp (TIR 3,5% al 16/11/2026). El resto de la curva se alejó todavía más (AO28 16,1%, GD41 12,2%, AO29 17,3%, vs. 5%-10% a mediados de septiembre).</p>
+      <p style="margin:0"><strong style="color:var(--rd)">Sustentabilidad en USD:</strong> con el PBI en dólares creciendo apenas +0,60% (Q1-26 vs Q1-25 — casi todo el +33,5% nominal en pesos se lo comió la devaluación del +32,7%), la brecha entre el costo de la deuda en USD y el crecimiento de la economía en USD es <strong style="color:var(--rd)">positiva en TODA la curva (<span id="pvd-usd-brecha">—</span>)</strong>: la deuda en dólares crece bastante más rápido que la capacidad de la economía de generar dólares — a diferencia de la deuda en pesos, cuya brecha nominal es negativa. Tomando la tasa de sustentabilidad r* (todo en USD, mismo trimestre: d=69,76%, pb=2,25%, g=0,60%) da <strong style="color:var(--txt)">3,84%</strong>: <span id="pvd-usd-txt2"></span></p>
     </div>
   </div>
 
@@ -3688,7 +3697,8 @@ function hdRenderAll(sobData, bpData) {
     return { ...d, ytm, duration: seed.duration };
   });
   // TIR de los benchmarks HD para el tab DL (spread vs HD)
-  enriched.forEach(d => { const y = parseFloat(d.ytm); if (Number.isFinite(y)) HD_YTM[d.symbol] = y; });
+  enriched.forEach(d => { const y = parseFloat(d.ytm); if (Number.isFinite(y)) HD_YTM[d.symbol] = y; const m = parseFloat(d.duration); if (Number.isFinite(m)) HD_MD[d.symbol] = m; if (d.exact) HD_EXACT[d.symbol] = true; });
+  try { if (window.PVD_READY) pvdRender(); } catch(e) { console.warn('pvd', e); }
   try { if (typeof onxRender === 'function' && typeof ON_UNIV !== 'undefined') onxRender(); } catch(e) {}
   try { if (typeof dlNotesLast !== 'undefined' && dlNotesLast) dlRenderAll(dlNotesLast, dlTcData); } catch(e) {}
 
@@ -4132,7 +4142,7 @@ const DL_BENCH = {
   AO28: { tir: 8.44, desc: 'AO28 Oct-28' },
 };
 // TIR de los benchmarks HD: se toma del módulo HD (hdRenderAll → HD_YTM); DL_BENCH queda solo como respaldo
-let HD_YTM = {};
+let HD_YTM = {}, HD_MD = {}, HD_EXACT = {};
 function dlBench(dtm) {
   const name = dtm <= 150 ? 'BPD7' : (dtm <= 600 ? 'AO27' : 'AO28');
   const live = HD_YTM[name];
@@ -4991,11 +5001,62 @@ const PVD_PESOS = [
   {sym:'T30J7',dtm:357,tna:22.4,tem:1.80},
 ];
 const PVD_INFL_MENSUAL = 2.1; // IPC jul-2026
+// Curva USD de la sección de sustentabilidad: desde 20/11/2026 toma la TIR y MD EN VIVO de la tab HD (HD_YTM/HD_MD, flujos exactos);
+// PVD_USD queda solo como respaldo si la tab HD todavía no cargó (valores del 14/09/2026).
 const PVD_USD = [
   {sym:'AO27',vto:'29/10/2027',md:1.08,tir:4.00},{sym:'GD30',vto:'09/07/2030',md:1.92,tir:6.50},
   {sym:'AO28',vto:'31/10/2028',md:1.98,tir:9.30},{sym:'AO29',vto:'31/10/2029',md:2.81,tir:10.20},
   {sym:'GD41',vto:'09/07/2041',md:5.69,tir:9.60},
 ];
+const PVD_USD_LIVE = ['AO27','GD29','AO28','GD30','AO29','AN29','GD38','GD35','GD41'];   // ley NY + Bonares nuevos (GD46 excluido: precio estimado)
+const PVD_RSTAR_USD = 3.84;   // r* USD (d=69,76%, pb=2,25%, g=0,60%) — ver texto de la sección
+function pvdUsdRows(){
+  const live = PVD_USD_LIVE.filter(k => HD_EXACT[k] && Number.isFinite(HD_YTM[k]) && Number.isFinite(HD_MD[k]))
+    .map(k => { const c = HD_CONFIG[k] || {}, v = AO_TERMS[k] ? AO_TERMS[k].vto : (c.vto || ''); return {sym:k, vto:v ? v.split('-').reverse().join('/') : '—', md:HD_MD[k], tir:HD_YTM[k]}; })
+    .sort((a,b) => a.md - b.md);
+  return live.length >= 3 ? {rows:live, live:true} : {rows:PVD_USD, live:false};
+}
+const pvdPct = (v,d=2) => v.toFixed(d).replace('.',',');
+// Cuadro de sensibilidad (21/11/2026): r* = g + pb(1+g)/d para varios g en USD, y TIR en vivo − r* por bono (uno por año de vencimiento).
+const PVD_SENS_G = [-4, -2, 0, 0.6, 2, 4, 6, 8, 10];
+const PVD_SENS_BONOS = ['AO27','AO28','GD29','AO29','AN29','GD30','GD35','GD38','GD41'];
+function pvdSens(){
+  const head = document.getElementById('pvd-s-head'), body = document.getElementById('pvd-s-body');
+  if(!head || !body) return;
+  const pb = (parseFloat(document.getElementById('pvd-s-pb').value) || 0) / 100;
+  const d  = Math.max(1, parseFloat(document.getElementById('pvd-s-d').value) || 69.76) / 100;
+  const vto = k => { const v = AO_TERMS[k] ? AO_TERMS[k].vto : (HD_CONFIG[k] || {}).vto; return v ? v.slice(0,4) : ''; };
+  const bon = PVD_SENS_BONOS.filter(k => Number.isFinite(HD_YTM[k]));
+  head.innerHTML = '<tr><th>g PBI USD</th><th>r*</th>' + bon.map(k => `<th style="text-align:center">${vto(k)}<br><span style="font-weight:400">${k} · ${pvdPct(HD_YTM[k],1)}%</span></th>`).join('') + '</tr>';
+  body.innerHTML = PVD_SENS_G.map(gp => {
+    const g = gp / 100, rs = (g + pb * (1 + g) / d) * 100, hoy = gp === PVD_G_USD;
+    const cells = bon.map(k => { let gap = Math.round((HD_YTM[k] - rs) * 10) / 10; if (gap === 0) gap = 0; const col = gap < 0 ? 'var(--gr)' : 'var(--rd)', a = Math.min(.35, Math.abs(gap) / 40 + .05);
+      return `<td style="text-align:center;color:${col};background:${gap<0?`rgba(52,211,153,${a})`:`rgba(248,113,113,${a})`}">${gap>=0?'+':''}${pvdPct(gap,1)}</td>`; }).join('');
+    return `<tr${hoy?' style="outline:1px solid var(--am)"':''}><td style="${hoy?'color:var(--am);font-weight:700':''}">${gp>0?'+':''}${pvdPct(gp,1)}%${hoy?' (hoy)':''}</td><td style="font-weight:700">${pvdPct(rs)}%</td>${cells}</tr>`;
+  }).join('');
+  // crecimiento en USD que haría sustentable cada bono: r = g + pb(1+g)/d  →  g = (r − pb/d) / (1 + pb/d)
+  const k1 = pb / d, need = bon.map(k => { const r = HD_YTM[k] / 100; return `${k} ${pvdPct((r - k1) / (1 + k1) * 100, 1)}%`; });
+  document.getElementById('pvd-s-nota').innerHTML = `Crecimiento del PBI en USD que necesitaría cada bono para no subir la deuda/PBI (con superávit ${pvdPct(pb*100)}% y deuda ${pvdPct(d*100,1)}%): ${need.join(' · ')}. Para leerlo: g en USD ≈ crecimiento real + inflación en pesos − devaluación. Si el dólar sube al ritmo de la inflación, g queda cerca del crecimiento real (2-5%); si el peso se aprecia en términos reales, más; con una devaluación como la del último año (+32,7% contra +33,5% de PBI nominal) queda cerca de 0.`;
+}
+function pvdUsdCard(R){
+  const el = id => document.getElementById(id);
+  if(!el('pvd-usd-rango')) return;
+  const rows = R.rows, tirs = rows.map(r=>r.tir), mn = Math.min(...tirs), mx = Math.max(...tirs);
+  const minRow = rows.find(r=>r.tir===mn), ok = rows.filter(r=>r.tir<PVD_RSTAR_USD);
+  const fecha = R.live ? 'al '+new Date().toLocaleDateString('es-AR')+', TIR en vivo de la tab HD' : 'TIR del 14/09/2026, respaldo: la tab HD no cargó';
+  el('pvd-usd-rango').innerHTML = `vs. curva de bonos: <strong style="color:var(--txt)">${pvdPct(mn,1)}% a ${pvdPct(mx,1)}%</strong> → margen <strong style="color:${ok.length?'var(--gr)':'var(--rd)'}">${(PVD_RSTAR_USD-mn>=0?'+':'')+pvdPct(PVD_RSTAR_USD-mn)}pp (${minRow.sym}) a ${pvdPct(PVD_RSTAR_USD-mx,1)}pp</strong>`;
+  el('pvd-usd-veredicto').innerHTML = ok.length
+    ? `<span style="color:var(--am)">◐ SUSTENTABLE SOLO EN ${ok.map(r=>r.sym).join(', ')} — el resto de la curva rinde más que r*</span>`
+    : `<span style="color:var(--rd)">✗ INSUSTENTABLE EN TODA LA CURVA — el tramo más barato (${minRow.sym}) rinde ${pvdPct(mn)}%, ${pvdPct(mn-PVD_RSTAR_USD)}pp sobre r*</span>`;
+  const lista = rows.map(r=>`${r.sym} ${pvdPct(r.tir,1)}%`).join(', ');
+  ['pvd-usd-txt','pvd-usd-txt2'].forEach(id => { if(el(id)) el(id).innerHTML = (ok.length
+      ? `hoy ${ok.map(r=>r.sym).join(', ')} rinde${ok.length>1?'n':''} por debajo de r* (${pvdPct(PVD_RSTAR_USD)}%): emitir a ese plazo no amplía la Deuda/PBI; el resto no.`
+      : `hoy <strong style="color:var(--rd)">ningún tramo de la curva en dólares es sustentable</strong>: el más barato (${minRow.sym}) rinde ${pvdPct(mn)}% contra un r* de ${pvdPct(PVD_RSTAR_USD)}%.`)
+      + ` Curva ${fecha}: ${lista}.`; });
+  if(el('pvd-usd-brecha')) el('pvd-usd-brecha').textContent = '+'+pvdPct(mn-PVD_G_USD,1)+'pp a +'+pvdPct(mx-PVD_G_USD,1)+'pp';
+  try { pvdSens(); } catch(e) { console.warn('pvdSens', e); }
+  if(el('pvd-usd-fecha')) el('pvd-usd-fecha').textContent = R.live ? 'TIR en vivo' : 'TIR 14/09/2026';
+}
 const PVD_INFL_US = 3.0;
 // g(USD) = crecimiento del PBI en dólares, Q1-2026 vs Q1-2025: PBI nominal ARS (INDEC, +33,5%)
 // deflactado por la devaluación del TC oficial en el mismo período (+32,7%) — evita depender
@@ -5008,10 +5069,12 @@ function pvdRender(){
     const cls = temReal<0 ? 'color:var(--rd)' : 'color:var(--gr)';
     return `<tr><td>${d.sym}</td><td class="ct">${d.dtm}d</td><td>${d.tna.toFixed(1)}%</td><td>${d.tem.toFixed(2)}%</td><td style="${cls};font-weight:600">${temReal>=0?'+':''}${temReal.toFixed(2)}%</td></tr>`;
   }).join('');
-  document.getElementById('pvd-usd-body').innerHTML = PVD_USD.map(d=>{
+  const R = pvdUsdRows();
+  pvdUsdCard(R);
+  document.getElementById('pvd-usd-body').innerHTML = R.rows.map(d=>{
     const tirReal = ((1+d.tir/100)/(1+PVD_INFL_US/100)-1)*100;
     const gapUsd = d.tir - PVD_G_USD;
-    return `<tr><td>${d.sym}</td><td class="ct">${d.vto}</td><td>${d.md.toFixed(2)}</td><td>${d.tir.toFixed(2)}%</td><td style="color:var(--am);font-weight:600">${tirReal.toFixed(2)}%</td><td style="color:var(--rd);font-weight:600">+${gapUsd.toFixed(2)}pp</td></tr>`;
+    return `<tr><td>${d.sym}</td><td class="ct">${d.vto}</td><td>${d.md.toFixed(2)}</td><td style="${d.tir<PVD_RSTAR_USD?'color:var(--gr)':''}">${d.tir.toFixed(2)}%</td><td style="color:var(--am);font-weight:600">${tirReal.toFixed(2)}%</td><td style="color:var(--rd);font-weight:600">${gapUsd>=0?'+':''}${gapUsd.toFixed(2)}pp</td></tr>`;
   }).join('');
 }
 // Laddering — vencimientos por trimestre, deuda en pesos (Tasa Fija+CER+TAMAR+Duales)
@@ -5039,6 +5102,7 @@ function ladderInit(){
 }
 let pvdChart=null;
 function pvdInit(){
+  window.PVD_READY = true;
   pvdRender();
   const el = document.getElementById('pvdChart');
   if(!el) return;
