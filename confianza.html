@@ -225,7 +225,7 @@ footer a{color:var(--accent);text-decoration:none;}
       <div class="chart-header">
         <div>
           <div class="chart-title">Evolución histórica</div>
-          <div class="chart-sub">Índice mensual · Nov 2024–hoy (desde emisión AO27) · AO27 vs avg(AO28+AO29) · todos ley local</div>
+          <div class="chart-sub">Índice mensual · desde abr-2026: AO27 vs avg(AO28+AO29), ley local · <span style="color:rgba(148,163,184,.9)">nov-2024 a mar-2026 (punteado): estimado con AL35</span></div>
         </div>
         <div style="display:flex;gap:16px;font-size:10px;align-items:center">
           <span style="color:var(--green)">━ Índice</span>
@@ -255,6 +255,7 @@ footer a{color:var(--accent);text-decoration:none;}
           <tbody id="hist-body"></tbody>
         </table>
       </div>
+      <div style="font-size:10px;color:var(--mu);margin-top:8px;line-height:1.5">* Nov-24 a mar-26: estimado con la TIR del AL35, porque AO27 y AO28 todavía no existían (ver Metodología). † Abr–jun 26: AN29 en lugar de AO29 (emitido el 17/07/2026).</div>
     </div>
 
     <!-- METODOLOGÍA -->
@@ -280,6 +281,10 @@ footer a{color:var(--accent);text-decoration:none;}
         <div class="info-item-desc">AO28 (oct 2028) y AO29 (oct 2029) pagan el capital íntegramente en la próxima gestión (post dic 2027). Son bonos del Tesoro Nacional, misma ley local que AO27 — la única diferencia es el período de gobierno en que vencen. Esto elimina el ruido de jurisdicción y aísla la prima de transición política.</div>
       </div>
       <div class="info-item">
+        <div class="info-item-title">Antes de abril 2026: estimación con AL35</div>
+        <div class="info-item-desc">El AO27 se emitió el 27/02/2026 y el AO28 el 31/03/2026, así que antes no existe el spread real. Para nov-2024 a mar-2026 se estima con la TIR del AL35 (Bonar 2035, ley local): spread ≈ −1.277 + 1,748 × TIR AL35 (en bp). La relación se calibró con el spread real diario de abr–nov 2026 (128 ruedas, correlación 0,97, error medio 56bp). Es una estimación: supone que la relación entre el nivel de la curva y la prima de transición vale hacia atrás, cuando las tasas altas también reflejaban riesgo de default general. Se probó con la pendiente de la curva (bonos cortos contra largos), pero no sirve: en las crisis la curva HD se invierte y el spread real se ensancha.</div>
+      </div>
+      <div class="info-item">
         <div class="info-item-title">Interpretación</div>
         <div class="info-item-desc">
           <span style="color:var(--accent)">▲ 75–100</span> — Alta confianza. Prima política ≲ 170bp, el mercado no descuenta riesgo de discontinuidad relevante.<br>
@@ -296,58 +301,47 @@ footer a{color:var(--accent);text-decoration:none;}
   </div>
 
   <footer>
-    <span>Fuentes: rendimientos.co · data912.com · Amberes Research</span>
+    <span>Fuentes: rendimientos.co · data912.com · bonistas.com · Amberes Research</span>
     <span><a href="https://grupoamberes.com.ar">grupoamberes.com.ar</a></span>
   </footer>
 </div>
 
 <script>
-// ── Datos históricos (mensual desde mar 2024) ──────────────
-// YTM aproximados basados en precios de mercado observados
-// Spread = YTM_próximo − YTM_actual
-// Serie calculada con TIR real de bonos (precios mensuales analisistecnico.com.ar)
-// Gestión actual = BOPREALes (vencen dentro del mandato) · Próxima = GD29/GD30 (globales)
-// YTM por flujos exactos, precios en USD. Arranca mar-2024 (emisión BOPREAL).
+// ── Serie histórica mensual (rehecha 22/11/2026) ─────────────────────────────
+// src:'real'  (abr-26 en adelante): TIR de cierre de mes de bonistas.com. ya = AO27 · yn = avg(AO28, AO29); abr–jun usa AN29 en lugar
+//              de AO29 (n29:1), porque el AO29 recién se emitió el 17/07/2026. sp = (yn − ya) en bp.
+// src:'proxy' (nov-24 a mar-26): el AO27 se emitió el 27/02/2026 y el AO28 el 31/03/2026, así que antes no hay spread real. Se estima con
+//              la TIR del AL35 (Bonar ley local, flujos exactos del canje 2020, precio USD de data912 al cierre de mes):
+//              sp ≈ −1.277 + 1,748 × TIR_AL35(bp). Calibrado por mínimos cuadrados con el spread real diario abr–nov 2026
+//              (128 ruedas, correlación 0,97, error medio 56bp). Es una ESTIMACIÓN: supone que la relación entre el nivel de la curva
+//              y la prima de transición de 2026 vale hacia atrás (en 2024-25 el nivel de tasas también reflejaba riesgo de default general).
+// La versión anterior de esta serie (jun-2026) mezclaba BOPREAL, AL29, GD29/GD30 y valores sin fuente para los meses previos a la emisión.
+// Índice v4: idx = 100/(1+(sp/440)^3,4).
 const HIST = [
-  // ─────────────────────────────────────────────────────────────────────────────
-  // Metodología v3: AO27 (esta gestión) vs avg(AO28, AO29) (próxima gestión)
-  // Todos bonos Tesoro Nacional, ley local → spread = puro riesgo político
-  // Calibración: rendimientos.co 17-jun-2026
-  // Fórmula v4 (16/11/2026): idx = 100/(1+(sp/440)^3,4) — log-logística, idx de TODA la serie recalculado. (v3: max(0,min(100,100−(sp−150)/6)))
-  // ya = YTM AO27 · yn = avg(YTM AO28, YTM AO29) · sp = yn−ya en bp
-  // ⚠️ SWAP 07/09/2026: se reemplazó AN29 por AO29 en esta ronda. Las filas de HIST
-  // de ANTES de esta fecha siguen calculadas con AN29 (no se recalcularon), solo el
-  // dato en vivo de hoy en adelante usa AO29. Si se necesita la serie histórica
-  // consistente con AO29 desde el inicio, hay que rehacerla con precios históricos
-  // de AO29 (analisistecnico.com.ar u otra fuente) — pendiente, no crítico porque
-  // el nivel de AO29 y AN29 históricamente fue similar (mismo perfil de riesgo).
-  // ─────────────────────────────────────────────────────────────────────────────
-  {m:'Nov 24', ya:11.2, yn:15.8, sp:460, idx:46},
-  {m:'Dic 24', ya:9.5,  yn:13.2, sp:370, idx:64},
-  {m:'Ene 25', ya:7.87, yn:12.0, sp:413, idx:55},
-  {m:'Feb 25', ya:8.96, yn:13.5, sp:454, idx:47},
-  {m:'Mar 25', ya:8.84, yn:13.8, sp:496, idx:40},
-  {m:'Abr 25', ya:8.89, yn:12.5, sp:361, idx:66},
-  {m:'May 25', ya:6.44, yn:11.0, sp:456, idx:47},
-  {m:'Jun 25', ya:6.41, yn:11.1, sp:469, idx:45},
-  {m:'Jul 25', ya:6.47, yn:12.3, sp:583, idx:28},
-  {m:'Ago 25', ya:7.40, yn:14.0, sp:660, idx:20},
-  {m:'Sep 25', ya:9.97, yn:17.0, sp:703, idx:17},
-  {m:'Oct 25', ya:7.54, yn:11.6, sp:406, idx:57},
-  {m:'Nov 25', ya:6.26, yn:9.8,  sp:354, idx:68},
-  {m:'Dic 25', ya:6.39, yn:9.15, sp:276, idx:83},
-  {m:'Ene 26', ya:4.87, yn:8.5,  sp:363, idx:66},
-  {m:'Feb 26', ya:5.53, yn:9.2,  sp:367, idx:65},
-  {m:'Mar 26', ya:4.43, yn:8.5,  sp:407, idx:57},
-  {m:'Abr 26', ya:6.51, yn:10.8, sp:429, idx:52},
-  {m:'May 26', ya:4.98, yn:8.5,  sp:352, idx:68},
-  {m:'Jun 26', ya:4.13, yn:8.22, sp:409, idx:56},
-  // Jul–Oct 26 (cargados 16/11/2026): TIR de cierre de mes de bonistas.com (serie diaria 'tir'), ya los 3 bonos con AO29.
-  // Jul = último dato del mes en bonistas (27-jul).
-  {m:'Jul 26', ya:3.61, yn:7.63, sp:403, idx:57},
-  {m:'Ago 26', ya:4.38, yn:9.56, sp:518, idx:36},
-  {m:'Sep 26', ya:4.08, yn:11.84, sp:776, idx:13},
-  {m:'Oct 26', ya:3.07, yn:13.75, sp:1067, idx:4.7},
+  {m:'Nov 24', ya:null, yn:null, al35:11.50, sp:732, idx:15, src:'proxy', d:'2024-11-29'},
+  {m:'Dic 24', ya:null, yn:null, al35:10.92, sp:632, idx:23, src:'proxy', d:'2024-12-30'},
+  {m:'Ene 25', ya:null, yn:null, al35:10.72, sp:597, idx:26, src:'proxy', d:'2025-01-31'},
+  {m:'Feb 25', ya:null, yn:null, al35:12.32, sp:876, idx:8.8, src:'proxy', d:'2025-02-28'},
+  {m:'Mar 25', ya:null, yn:null, al35:12.56, sp:919, idx:7.6, src:'proxy', d:'2025-03-31'},
+  {m:'Abr 25', ya:null, yn:null, al35:11.44, sp:723, idx:16, src:'proxy', d:'2025-04-30'},
+  {m:'May 25', ya:null, yn:null, al35:11.27, sp:693, idx:18, src:'proxy', d:'2025-05-30'},
+  {m:'Jun 25', ya:null, yn:null, al35:11.61, sp:753, idx:14, src:'proxy', d:'2025-06-30'},
+  {m:'Jul 25', ya:null, yn:null, al35:12.08, sp:835, idx:10, src:'proxy', d:'2025-07-31'},
+  {m:'Ago 25', ya:null, yn:null, al35:13.25, sp:1040, idx:5.1, src:'proxy', d:'2025-08-29'},
+  {m:'Sep 25', ya:null, yn:null, al35:17.69, sp:1815, idx:0.8, src:'proxy', d:'2025-09-30'},
+  {m:'Oct 25', ya:null, yn:null, al35:10.85, sp:620, idx:24, src:'proxy', d:'2025-10-31'},
+  {m:'Nov 25', ya:null, yn:null, al35:10.26, sp:517, idx:37, src:'proxy', d:'2025-11-28'},
+  {m:'Dic 25', ya:null, yn:null, al35:9.82, sp:439, idx:50, src:'proxy', d:'2025-12-30'},
+  {m:'Ene 26', ya:null, yn:null, al35:9.03, sp:301, idx:78, src:'proxy', d:'2026-01-30'},
+  {m:'Feb 26', ya:null, yn:null, al35:9.70, sp:419, idx:54, src:'proxy', d:'2026-02-27'},
+  {m:'Mar 26', ya:null, yn:null, al35:10.28, sp:520, idx:36, src:'proxy', d:'2026-03-31'},
+  {m:'Abr 26', ya:5.03, yn:8.96, sp:393, idx:59, src:'real', d:'2026-04-30', n29:1},
+  {m:'May 26', ya:4.82, yn:8.66, sp:384, idx:61, src:'real', d:'2026-05-29', n29:1},
+  {m:'Jun 26', ya:4.14, yn:8.22, sp:408, idx:56, src:'real', d:'2026-06-30', n29:1},
+  {m:'Jul 26', ya:3.61, yn:7.63, sp:403, idx:57, src:'real', d:'2026-07-27'},
+  {m:'Ago 26', ya:4.38, yn:9.56, sp:518, idx:36, src:'real', d:'2026-08-31'},
+  {m:'Sep 26', ya:4.08, yn:11.84, sp:776, idx:13, src:'real', d:'2026-09-30'},
+  {m:'Oct 26', ya:3.07, yn:13.75, sp:1067, idx:4.7, src:'real', d:'2026-10-30'},
 ];
 
 // ── Helpers ─────────────────────────────────────────────────────
@@ -429,6 +423,7 @@ function drawGauge(value){
 
 // ── Historical chart ─────────────────────────────────────────────
 let histChartInstance = null;
+const PROXY_COL = 'rgba(148,163,184,.9)';
 function buildHistChart(data){
   const ctx = document.getElementById('histChart').getContext('2d');
   const labels = data.map(d=>d.m);
@@ -441,14 +436,15 @@ function buildHistChart(data){
           type:'line', label:'Índice',
           data: data.map(d=>d.idx),
           borderColor:'#00e880', backgroundColor:'rgba(0,232,128,.08)',
-          fill:true, tension:.4, pointRadius:3, pointBackgroundColor:'#00e880',
+          fill:true, tension:.4, pointRadius:3, pointBackgroundColor: data.map(d=>d.src==='proxy'?PROXY_COL:'#00e880'),
+          segment:{ borderColor: c => data[c.p1DataIndex]?.src==='proxy' ? PROXY_COL : undefined, borderDash: c => data[c.p1DataIndex]?.src==='proxy' ? [5,4] : undefined },
           yAxisID:'yIdx', order:1, borderWidth:2.5,
         },
         {
           type:'bar', label:'Spread (bp)',
           data: data.map(d=>d.sp),
-          backgroundColor: data.map(d=>
-            d.sp<=100?'rgba(0,232,128,.5)':d.sp<=200?'rgba(245,197,24,.5)':'rgba(232,64,64,.5)'
+          backgroundColor: data.map(d=> d.src==='proxy' ? 'rgba(148,163,184,.35)' :
+            d.idx>=75?'rgba(0,232,128,.5)':d.idx>=50?'rgba(245,197,24,.5)':'rgba(232,64,64,.5)'
           ),
           yAxisID:'ySp', order:2,
         }
@@ -462,6 +458,7 @@ function buildHistChart(data){
         tooltip:{
           backgroundColor:'#1e242a',borderColor:'rgba(0,232,128,.3)',borderWidth:1,
           titleColor:'#e8f0f8',bodyColor:'rgba(232,240,248,.6)',padding:10,
+          callbacks:{ afterTitle: it => { const d = data[it[0].dataIndex]; return d?.src==='proxy' ? 'Estimado con AL35 ('+d.al35.toFixed(2)+'%) — antes de la emisión de AO27/AO28' : (d?.n29 ? 'Real · AO29 reemplazado por AN29 (aún no emitido)' : (d?.src==='real' ? 'Real · AO27 vs AO28+AO29' : '')); } }
         }
       },
       scales:{
@@ -469,7 +466,7 @@ function buildHistChart(data){
         yIdx:{position:'left',min:0,max:100,
           grid:{color:'rgba(232,240,248,.04)'},
           ticks:{color:'#00e880',font:{size:10},callback:v=>v}},
-        ySp:{position:'right',min:0,max:500,
+        ySp:{position:'right',min:0,
           grid:{display:false},
           ticks:{color:'rgba(245,197,24,.6)',font:{size:10},callback:v=>v+'bp'}},
       }
@@ -483,18 +480,19 @@ function buildHistTable(data){
   document.getElementById('hist-body').innerHTML = [...data].reverse().slice(0,15).map(d=>`
     <tr>
       <td>${d.m}</td>
-      <td>${d.ya.toFixed(2)}%</td>
-      <td>${d.yn.toFixed(2)}%</td>
-      <td style="color:${d.sp<=100?'#00e880':d.sp<=200?'#f5c518':'#e84040'}">${d.sp}bp</td>
-      <td style="color:${col(d.idx)};font-weight:700">${d.idx}</td>
+      <td>${d.ya!=null ? d.ya.toFixed(2)+'%' : '<span style="color:var(--mu)">—</span>'}</td>
+      <td>${d.yn!=null ? d.yn.toFixed(2)+'%'+(d.n29?'<span title="AN29 en lugar de AO29" style="color:var(--mu)">†</span>':'') : '<span style="color:'+PROXY_COL+'" title="Estimado con la TIR del AL35">AL35 '+d.al35.toFixed(2)+'%*</span>'}</td>
+      <td style="color:${d.src==='proxy'?PROXY_COL:col(d.idx)}">${d.sp}bp${d.src==='proxy'?'*':''}</td>
+      <td style="color:${col(d.idx)};font-weight:700">${fmtIdx(d.idx)}</td>
     </tr>`).join('');
 }
 
 // ── Propiedades fijas de los bonos (no cambian nunca) ────────────────────────
 const BOND_SPECS = {
-  AO27: { mat:'2027-10-30', cpn:1.13 },  // coupon % anual sobre VNO
-  AO28: { mat:'2028-10-31', cpn:1.00 },
-  AO29: { mat:'2029-10-31', cpn:6.00 },  // fuente: bonos.html BOND_SPECS/curva soberana
+  // Corregido 22/11/2026: AO27 y AO28 pagan 6% anual mensual (antes 1,13% y 1,00%); AO27 vence el 29/10/2027 (antes 30/10).
+  AO27: { mat:'2027-10-29', cpn:6.00 },  // cupón % anual sobre VNO (pago mensual, bullet) — fuente: bonistas.com / llamados Finanzas
+  AO28: { mat:'2028-10-31', cpn:6.00 },
+  AO29: { mat:'2029-10-31', cpn:6.00 },
 };
 
 // ── Calibración de precio/yield de referencia ────────────────────────────────
@@ -583,7 +581,7 @@ async function loadLive(){
     const now = new Date();
     const mLabel = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'][now.getMonth()]+' '+String(now.getFullYear()).slice(2);
     const lastHist = HIST[HIST.length-1];
-    const livePoint = {m: mLabel+' (live)', ya: ytmCurrent, yn: ytmNext, sp: spread_bp, idx: Number(fmtIdx(idx))};
+    const livePoint = {m: mLabel+' (live)', ya: ytmCurrent, yn: ytmNext, sp: spread_bp, idx: Number(fmtIdx(idx)), src:'real'};
     const histWithLive = lastHist.m.startsWith(mLabel) ? [...HIST.slice(0,-1), livePoint] : [...HIST, livePoint];
 
     buildHistChart(histWithLive);
