@@ -3331,7 +3331,16 @@ function tsimRun(){
 // ═══════════════════════════════════════════════════════════════
 //  BREAKEVEN INFLATION — Nominal vs CER
 // ═══════════════════════════════════════════════════════════════
-const IPC_ULTIMO = 2.2; // Oct-2026 (INDEC), actualizado 12/11/2026
+let IPC_ULTIMO = 2.2; // respaldo Oct-2026 (INDEC); desde 24/11/2026 se pisa con el último IPC de /api/seed (arg.ipc, lo mantiene la rutina matutina)
+let IPC_ULTIMO_MES = 'oct-2026';
+fetch('/api/seed').then(r => r.ok ? r.json() : null).then(s => {
+  const ipc = s && s.arg && s.arg.ipc; if(!ipc || !Array.isArray(ipc.v) || !Array.isArray(ipc.l)) return;
+  let i = ipc.v.length - 1; while(i >= 0 && !Number.isFinite(ipc.v[i])) i--;
+  if(i < 0 || !ipc.l[i]) return;
+  const [mes, aa] = String(ipc.l[i]).split(' ');
+  IPC_ULTIMO = ipc.v[i]; IPC_ULTIMO_MES = mes.toLowerCase() + '-20' + aa;
+  if(window.PVD_READY) try{ pvdRender(); }catch(e){ console.warn('pvdRender', e); }
+}).catch(e => console.warn('IPC seed', e));
 let bkevChart = null;
 
 // ═══════════════════════════════════════════════════════════════
@@ -5003,7 +5012,6 @@ const PVD_PESOS = [
 ];
 // Curva en pesos (24/11/2026): toma TNA/TEM EN VIVO de la tab Tasa Fija (tfData, precio + VF); PVD_PESOS queda solo como respaldo
 // (valores de julio 2026) si esa tab todavía no cargó. Inflación = IPC_ULTIMO (último IPC INDEC publicado).
-const PVD_IPC_MES = 'oct-2026';   // mes de IPC_ULTIMO: actualizar junto con IPC_ULTIMO
 function pvdPesosRows(){
   const live = (typeof tfData !== 'undefined' && Array.isArray(tfData) ? tfData : [])
     .filter(d => d.dtm > 5 && Number.isFinite(d.tem) && Number.isFinite(d.tna))
@@ -5075,7 +5083,7 @@ const PVD_G_USD = 0.60;
 function pvdRender(){
   const P = pvdPesosRows(), infl = IPC_ULTIMO;
   const sub = document.getElementById('pvd-pesos-sub');
-  if(sub) sub.textContent = `TEM Real vs. inflación ${PVD_IPC_MES} (${pvdPct(infl,1)}%) · ${P.live ? 'TEM en vivo de la tab Tasa Fija' : 'precios de referencia: la tab Tasa Fija todavía no cargó en vivo'}`;
+  if(sub) sub.textContent = `TEM Real vs. inflación ${IPC_ULTIMO_MES} (${pvdPct(infl,1)}%) · ${P.live ? 'TEM en vivo de la tab Tasa Fija' : 'precios de referencia: la tab Tasa Fija todavía no cargó en vivo'}`;
   document.getElementById('pvd-pesos-body').innerHTML = P.rows.map(d=>{
     const temReal = ((1+d.tem/100)/(1+infl/100)-1)*100;
     const cls = temReal<0 ? 'color:var(--rd)' : 'color:var(--gr)';
