@@ -764,8 +764,9 @@ async function loadLive(){
     }
 
     const manualRes=await fetch('/api/data').then(r=>r.ok?r.json():null);
-    // UTDT: manual.json no trae fecha → el seed (fila mensual con el dato oficial) manda.
-    const icgUtdt=null;
+    // UTDT: manual.json trae icg_utdt + icg_utdt_mes ('2026-11'); se usa en el punto en vivo solo si es de un mes
+    // más nuevo que la última fila de HIST_SEED (si no, manda el seed con el dato oficial de cierre).
+    const icgUtdt=(manualRes&&typeof manualRes.icg_utdt==='number'&&newerThanSeed(manualRes.icg_utdt_mes))?manualRes.icg_utdt:null;
     // fiscal: API solo si es más nueva que el seed; si no, seed (manual.json queda como respaldo del seed, no lo pisa)
     const fiscalVal=fiscalLive??null;
 
