@@ -1,9 +1,9 @@
 {
-  "date": "2026-11-23",
-  "generated": "2026-11-23T14:20:00Z",
+  "date": "2026-11-24",
+  "generated": "2026-11-24T12:19:50Z",
   "sentiment": {
     "overall": "neutral",
-    "label": "Futuros rebotan ~2,5% tras el desplome del viernes (Nasdaq -5,3%); el riesgo país quedó en 1.070pb y el CCL en $1.806",
+    "label": "Wall Street vuela con la vuelta de Huang (Nasdaq +6,5%) pero los futuros corrigen; riesgo país baja a 1.035pb y el CCL sigue en $1.806",
     "fg": null,
     "fg_label": "Sin dato verificado",
     "putcall": null,
@@ -13,175 +13,175 @@
     {
       "id": 1,
       "tag": "EE.UU. · Wall Street · IA",
-      "tag_class": "tr",
-      "title": "Viernes negro de la IA: Nasdaq -5,3% y S&P 500 -3,7%, ambos en corrección",
-      "brief": "Nasdaq -5,28% a 22.617,73 y S&P 500 -3,7% a 6.910,39. Nvidia -13,8%, SOX -10,7%. SPY -3,64%, QQQ -5,67%. En la semana: Nasdaq -10%, S&P -8,6%.",
-      "tldr": "La peor semana del año para la tecnología: el Nasdaq borró las ganancias de 2026 y el S&P entró en corrección.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El viernes 20/11 el <strong>Nasdaq Composite cayó 5,28% a 22.617,73</strong> y el <strong>S&amp;P 500 3,7% a 6.910,39</strong>; el S&amp;P y el Dow cerraron <strong>más de 10% debajo de sus máximos</strong> (corrección) y el <strong>Nasdaq-100 llegó a tocar terreno bajista</strong> (-20% desde el pico) intradía. <strong>Nvidia cayó 13,8%</strong> y el <strong>índice de semiconductores (SOX) 10,7%</strong>; <strong>Anthropic (ANT) perdió 8,5%</strong> y devolvió buena parte de la suba del debut. En la semana, el <strong>Nasdaq acumuló -10%</strong> y el <strong>S&amp;P 500 -8,6%</strong>. En ETFs (Finnhub): <strong>SPY -3,64% a US$689,81</strong> y <strong>QQQ -5,67% a US$608,45</strong>.",
-      "contexto": "El disparador fue el reporte de Reuters sobre una investigación de la SEC a la contabilidad de Nvidia, sobre un mercado ya golpeado por seis ruedas de baja, una Fed que se encamina a subir tasas en diciembre (Waller y Cook reforzaron esa expectativa) y la absorción de liquidez de la IPO de Anthropic. El Nasdaq quedó prácticamente neutro/negativo en el año según la fuente. El desarme del trade de IA es el principal riesgo de contagio para emergentes de beta alta como Argentina.",
+      "tag_class": "tg",
+      "title": "Huang vuelve a Nvidia: S&amp;P 500 +4,7% y Nasdaq +6,5%, mejor día en 19 meses",
+      "brief": "Nvidia +31,5% a US$165 tras reinstalar a Jensen Huang como CEO. S&amp;P 7.237 (+4,73%), Nasdaq 24.090 (+6,51%). SPY +4,71%, QQQ +7,0%.",
+      "tldr": "El mercado recuperó cerca de la mitad de la caída de la semana pasada en una sola rueda.",
+      "sentiment": "ro",
+      "sentiment_label": "🟢 Risk-On",
+      "evento": "El lunes 23/11 el directorio de <strong>Nvidia reinstaló a Jensen Huang como CEO y presidente</strong>, a once días de su renuncia, y la acción <strong>subió 31,5% a ~US$165</strong>, sumando cerca de US$1 billón de capitalización (Motley Fool/CNBC). Melius y StoneX la subieron a compra. El <strong>S&amp;P 500 cerró +4,73% a 7.237,17</strong>, el <strong>Nasdaq +6,51% a 24.089,56</strong> (mejor día desde abril de 2025) y el <strong>Dow +3% a 49.595</strong>. En ETFs (Finnhub): <strong>SPY +4,71% a US$722,29</strong> y <strong>QQQ +7,00% a US$651,03</strong>.",
+      "contexto": "El rebote recupera aproximadamente la mitad de la peor semana del Nasdaq desde marzo de 2020. Con la vuelta de Huang se despeja la incertidumbre sobre el liderazgo, pero no la investigación de la SEC sobre la contabilidad de la compañía, que sigue abierta. La concentración del índice en Nvidia hace que cualquier titular sobre ese frente se traslade al S&amp;P 500 entero.",
       "impacto": [
         {
           "asset": "SPY",
-          "dir": "↓ 3,64% US$689,81",
-          "cls": "dn"
+          "dir": "↑ 4,71% US$722,29",
+          "cls": "up"
         },
         {
           "asset": "QQQ",
-          "dir": "↓ 5,67% US$608,45",
-          "cls": "dn"
+          "dir": "↑ 7,00% US$651,03",
+          "cls": "up"
         },
         {
           "asset": "Nvidia",
-          "dir": "↓ 13,8%",
-          "cls": "dn"
+          "dir": "↑ 31,5% ~US$165",
+          "cls": "up"
         }
       ]
     },
     {
       "id": 2,
-      "tag": "EE.UU. · Futuros · Rebote",
-      "tag_class": "tg",
-      "title": "Futuros rebotan: S&P ~+2,5% y Nasdaq-100 más de +3%; Nvidia +8% pre-market",
-      "brief": "Futuros del S&P 500 entre +2% y +2,9% según la hora y la fuente; Nasdaq-100 más de +3%. Nvidia ~+8% pre-market. Semana corta: jueves cerrado por Thanksgiving.",
-      "tldr": "Rebote técnico tras siete bajas seguidas, en una semana corta con el PCE del miércoles como dato clave.",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "Esta mañana los <strong>futuros del S&amp;P 500 suben ~2,5%</strong> y los del <strong>Nasdaq-100 más de 3%</strong> (Fox Business); Bloomberg llegó a marcar <strong>+2,9% en el S&amp;P</strong> a las 6:38 de Nueva York, cortando una racha de siete bajas. <strong>Nvidia sube ~8% en el pre-market</strong>, junto con chips y acciones de data centers. El <strong>Brent cede ~0,8% a ~US$91,8</strong> (Tickmill). Es una <strong>semana corta</strong>: Wall Street <strong>cierra el jueves 26/11 por Thanksgiving</strong> y el viernes opera hasta las 13 h de Nueva York. El dato fuerte es el <strong>PCE del miércoles</strong>.",
-      "contexto": "Los rebotes después de caídas de esta magnitud suelen ser violentos y no confirman por sí solos un piso: el daño técnico (S&amp;P en corrección, Nasdaq-100 cerca de terreno bajista) y la investigación sobre Nvidia siguen abiertos. Un PCE caliente consolidaría la suba de tasas de diciembre y podría cortar el rebote; uno benigno le daría aire.",
+      "tag": "EE.UU. · Futuros · Toma de ganancias",
+      "tag_class": "ta",
+      "title": "Futuros devuelven parte del rally: Nasdaq-100 ~-2% y S&amp;P ~-1%",
+      "brief": "Nvidia retrocede en el pre-market y arrastra a los futuros. Semana corta: PCE el miércoles, Wall Street cerrado el jueves por Thanksgiving.",
+      "tldr": "Tras un +6,5% en un día, el mercado testea si el rebote tiene sustento.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "Esta mañana los <strong>futuros del Nasdaq-100 caen ~2%</strong> y los del <strong>S&amp;P 500 ~1%</strong>, con los del Dow ~-0,5%, a medida que <strong>Nvidia devuelve parte de la suba</strong> (CNBC/Yahoo Finance). Algunas lecturas posteriores muestran los futuros recortando la baja, así que los niveles son aproximados. Es una <strong>semana corta</strong>: el <strong>PCE se publica el miércoles</strong> y Wall Street <strong>cierra el jueves 26/11 por Thanksgiving</strong>.",
+      "contexto": "La toma de ganancias después de una suba de esta magnitud es esperable; lo relevante es si el S&amp;P sostiene la zona de 7.200. El PCE del miércoles es el dato que define si la Fed confirma la suba de tasas de diciembre: un número caliente puede cortar el rebote, uno benigno le da aire.",
       "impacto": [
         {
-          "asset": "Fut. S&P 500",
-          "dir": "↑ ~2,5%",
-          "cls": "up"
-        },
-        {
           "asset": "Fut. Nasdaq-100",
-          "dir": "↑ >3%",
-          "cls": "up"
+          "dir": "↓ ~2%",
+          "cls": "dn"
         },
         {
-          "asset": "Nvidia (pre-market)",
-          "dir": "↑ ~8%",
-          "cls": "up"
+          "asset": "Fut. S&amp;P 500",
+          "dir": "↓ ~1%",
+          "cls": "dn"
         }
       ]
     },
     {
       "id": 3,
-      "tag": "EE.UU. · Nvidia · Regulación",
-      "tag_class": "ta",
-      "title": "La SEC investiga la contabilidad de Nvidia y California suma una causa penal",
-      "brief": "Reuters: personal de la SEC examina posibles irregularidades contables en Nvidia. El fiscal de California suma posibles delitos penales a su causa por ventas de chips a China.",
-      "tldr": "Riesgo de titulares que pesa sobre la acción más grande del índice y sobre todo el complejo IA.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "Según <strong>Reuters</strong> (viernes 20/11), el área de enforcement de la <strong>SEC examina posibles irregularidades contables en Nvidia</strong>; no se conocen las prácticas bajo análisis ni hay hallazgos públicos de irregularidades. Los cambios de 2025 en la forma de reportar ingresos por geografía venían generando preguntas, aunque Reuters no pudo confirmar si la investigación los involucra. Además, el <strong>fiscal general de California</strong> informó que su investigación ahora cubre <strong>posibles violaciones penales</strong>, además de los reclamos civiles por haber engañado a inversores sobre ventas a China. La acción cerró el viernes en <strong>~US$125,5 (-14%)</strong>.",
-      "contexto": "Se suma a la salida de Jensen Huang como CEO. Con el peso de Nvidia en los índices, cualquier novedad de la investigación mueve al S&amp;P 500 y al Nasdaq; la reacción del pre-market sugiere que el mercado sobrerreaccionó el viernes, pero el riesgo de titulares sigue alto.",
+      "tag": "Commodities · Oro · Petróleo",
+      "tag_class": "tq",
+      "title": "El oro sube 3,1% y el petróleo cae 4,5%: commodities divergen con el rebote",
+      "brief": "GLD +3,14% a US$333,02 y USO -4,49% a US$133,36 el lunes (Finnhub). Brent ~US$89,2 y WTI ~US$80 esta mañana.",
+      "tldr": "El oro volvió a funcionar como cobertura; el petróleo cede prima de riesgo.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El lunes <strong>GLD subió 3,14% a US$333,02</strong> y <strong>USO cayó 4,49% a US$133,36</strong> (Finnhub). Esta mañana el <strong>Brent cede ~0,25% a ~US$89,2</strong> y el <strong>WTI ~US$80,0</strong> (Yahoo Finance). En monedas (Frankfurter, fixing BCE 23/11): <strong>USD/JPY 159,07</strong>, <strong>EUR/USD ~1,094</strong> y <strong>USD/BRL 5,998</strong>. La última tasa del <strong>UST 10Y disponible en FRED es 4,92% (20/11)</strong>, -12pb en el día.",
+      "contexto": "Después de haber funcionado como fuente de liquidez en el pánico del viernes, el oro recuperó su rol de cobertura frente a una Fed que sube tasas. La baja del petróleo reduce presión inflacionaria de corto plazo, una buena noticia de cara al PCE. El real en torno a 6 por dólar sigue siendo un factor de presión regional.",
       "impacto": [
         {
-          "asset": "Nvidia (cierre vie)",
-          "dir": "↓ ~14% ~US$125,5",
+          "asset": "GLD",
+          "dir": "↑ 3,14% US$333,02",
+          "cls": "up"
+        },
+        {
+          "asset": "USO",
+          "dir": "↓ 4,49% US$133,36",
           "cls": "dn"
         },
         {
-          "asset": "SOX",
-          "dir": "↓ 10,7%",
-          "cls": "dn"
+          "asset": "USD/BRL",
+          "dir": "5,998",
+          "cls": "neu"
         }
       ]
     },
     {
       "id": 4,
       "tag": "Argentina · Bonos · Riesgo país",
-      "tag_class": "tr",
-      "title": "Riesgo país salta 139pb a 1.070, máximo en 13 meses; los bonos caen hasta 6%",
-      "brief": "Riesgo país 1.070pb el 20/11 (+139 vs. 931; +215 en la semana). GD30 -4,18%, AL30 -4,56%, GD35 -3,80%, AL35 -4,46%, GD38 -6,09%, GD41 -5,80%.",
-      "tldr": "El spread perforó los 1.000pb: casi triplica el mínimo de 402pb de julio.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "El <strong>riesgo país cerró el viernes 20/11 en 1.070pb</strong> (argentinadatos), <strong>+139pb (+14,9%)</strong> contra 931 del jueves y <strong>+215pb</strong> contra los 855 del lunes 16/11; es el nivel más alto en 13 meses. Precios data912 (cierre viernes): <strong>GD30 US$49,27 (-4,18%)</strong>, <strong>AL30 US$47,50 (-4,56%)</strong>, <strong>GD35 US$65,00 (-3,80%)</strong>, <strong>AL35 US$60,00 (-4,46%)</strong>, <strong>GD38 US$68,81 (-6,09%)</strong>, <strong>GD41 US$59,81 (-5,80%)</strong>, AE38 US$63,00 (-4,69%) y GD29 US$51,09 (-1,54%).",
-      "contexto": "La prensa atribuye el salto a la combinación del risk-off global con un componente político local: el mercado descuenta el riesgo de un cambio de reglas después de 2027, en medio del debate en el Congreso sobre la suspensión de las PASO y la reforma electoral. Con el spread arriba de 1.000pb, la vuelta al mercado internacional para refinanciar los vencimientos de 2027 se aleja. La pendiente castigó más al tramo largo (GD38/GD41).",
+      "tag_class": "tg",
+      "title": "Riesgo país baja 35pb a 1.035 con el rebote; la plaza local reabre",
+      "brief": "Riesgo país 1.035pb el 23/11 (-35 vs. 1.070). Globales +1,5% promedio en el exterior durante el feriado. Hoy reabre la plaza local.",
+      "tldr": "Alivio parcial: el spread sigue arriba de 1.000pb y +180pb sobre el 16/11.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "Con la plaza local cerrada el lunes por el <strong>feriado del Día de la Soberanía</strong>, el <strong>riesgo país bajó 35pb a 1.035pb</strong> (argentinadatos), después del máximo de 13 meses de 1.070pb del viernes. Según la prensa, los <strong>Globales subieron ~1,5% en promedio</strong> en el exterior y los ADRs acompañaron el rebote de Wall Street. Los precios locales (data912) siguen siendo los del cierre del viernes 20/11: <strong>GD30 US$49,27</strong>, <strong>AL30 US$47,50</strong>, <strong>GD35 US$65,00</strong>, <strong>AL35 US$60,00</strong>, GD29 US$51,09.",
+      "contexto": "El rebote es más de beta global que de cambio local: el spread sigue arriba de 1.000pb y +180pb sobre el 16/11. Pesan el debate por la reforma electoral y las dudas sobre el financiamiento de los vencimientos de 2027 (el Financial Times se hizo eco). Hoy la plaza local se pone al día con el movimiento del exterior; además, el <strong>30/11 vence la S30N6</strong>, con un vencimiento en pesos que la prensa ubica en torno a $20 billones.",
       "impacto": [
         {
           "asset": "Riesgo país",
-          "dir": "↑ 1.070pb (+139)",
-          "cls": "dn"
+          "dir": "↓ 1.035pb (-35)",
+          "cls": "up"
         },
         {
-          "asset": "AL30",
-          "dir": "↓ 4,56% US$47,50",
-          "cls": "dn"
+          "asset": "Globales (exterior)",
+          "dir": "↑ ~1,5%",
+          "cls": "up"
         },
         {
-          "asset": "GD38",
-          "dir": "↓ 6,09% US$68,81",
-          "cls": "dn"
+          "asset": "GD30 (cierre 20/11)",
+          "dir": "US$49,27",
+          "cls": "neu"
         }
       ]
     },
     {
       "id": 5,
-      "tag": "Argentina · Dólar · BCRA",
-      "tag_class": "ta",
-      "title": "CCL a $1.806 y mayorista en récord nominal de $1.580; el BCRA cortó sus compras",
-      "brief": "CCL $1.806,2, MEP $1.743,1, mayorista $1.580, blue $1.675. Brecha CCL/mayorista ~14,3%. El BCRA no compró el viernes y las reservas bajaron a ~USD 49.362 M.",
-      "tldr": "La mayor suba semanal del dólar en 19 meses, con el BCRA fuera del mercado.",
+      "tag": "Argentina · Dólar · Brecha",
+      "tag_class": "tr",
+      "title": "CCL en $1.806 y brecha de ~14%: el cambiario reabre bajo presión",
+      "brief": "CCL $1.806,2, MEP $1.743,1, blue $1.675, mayorista $1.580 (cierre 20/11). Brecha CCL/mayorista ~14,3%.",
+      "tldr": "La reapertura muestra si el rebote global alcanza para frenar al dólar financiero.",
       "sentiment": "rf",
       "sentiment_label": "🔴 Risk-Off",
-      "evento": "Cotizaciones dolarapi: <strong>oficial BNA $1.550/$1.600</strong>, <strong>mayorista $1.580</strong> (máximo histórico nominal, desde $1.565), <strong>MEP $1.743,1</strong> (desde $1.649,8), <strong>CCL $1.806,2</strong> (desde $1.748,2), <strong>blue $1.655/$1.675</strong> y cripto $1.762,6. La <strong>brecha CCL/mayorista sube a ~14,3%</strong> (vs. ~11,7%) y la <strong>MEP/mayorista a ~10,3%</strong>; el canje CCL/MEP se achica a ~3,6%. El <strong>BCRA no compró dólares el viernes</strong>, cortando una racha de nueve ruedas con compras que venían en caída (USD 33 M, 74 M, 11 M y 3 M de lunes a jueves); según la prensa, las <strong>reservas bajaron USD 81 M a ~USD 49.362 M</strong>.",
-      "contexto": "Fue la mayor suba semanal del dólar en 19 meses. Con el BCRA sin capacidad de compra en este contexto y los vencimientos de enero por delante, los analistas advierten que el Tesoro podría tener que usar más dólares del Central si no consigue otras fuentes. El real también se debilita (USD/BRL 5,938 en el fixing BCE del 20/11), lo que suma presión regional.",
+      "evento": "Cotizaciones dolarapi esta mañana: <strong>CCL $1.801,4/$1.806,2</strong>, <strong>MEP $1.682,6/$1.743,1</strong>, <strong>blue $1.655/$1.675</strong> y <strong>cripto $1.736,2</strong>. El <strong>mayorista ($1.580)</strong> y el <strong>oficial BNA ($1.550/$1.600)</strong> siguen en el cierre del viernes 20/11 porque el lunes fue feriado. La <strong>brecha CCL/mayorista queda en ~14,3%</strong> y la <strong>MEP/mayorista en ~10,3%</strong>.",
+      "contexto": "La semana pasada fue la mayor suba semanal del dólar en 19 meses y el BCRA cortó sus compras el viernes. Con el mercado de vuelta, el foco está en si el mayorista sigue marcando récords nominales y si el Central retoma la acumulación de reservas. Sin compras, crece la duda sobre cómo se cubren los vencimientos en dólares de enero.",
       "impacto": [
         {
           "asset": "CCL",
-          "dir": "↑ $1.806,2",
+          "dir": "$1.806,2",
           "cls": "dn"
         },
         {
           "asset": "Brecha CCL/mayorista",
-          "dir": "↑ ~14,3%",
+          "dir": "~14,3%",
           "cls": "dn"
         },
         {
-          "asset": "Reservas brutas",
-          "dir": "↓ USD 81 M",
-          "cls": "dn"
+          "asset": "Mayorista (20/11)",
+          "dir": "$1.580",
+          "cls": "neu"
         }
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Rebote vs. daño técnico",
-      "texto": "Los futuros suben ~2,5% tras siete bajas seguidas, pero el S&amp;P 500 sigue en corrección y el Nasdaq-100 tocó terreno bajista el viernes. Un rebote fuerte en una semana corta y de bajo volumen no alcanza para confirmar un piso."
+      "label": "Rally récord vs. toma de ganancias",
+      "texto": "El Nasdaq tuvo su mejor día desde abril de 2025, pero los futuros ya devuelven ~2%. Un rebote concentrado en una sola acción y en una semana corta no alcanza para confirmar un piso."
     },
     {
-      "label": "Fed que sube vs. mercado que cae",
-      "texto": "El mercado descuenta una suba de tasas en el FOMC del 8-9 de diciembre aun con las acciones en corrección. El PCE del miércoles define si la Fed mantiene el sesgo duro o encuentra margen para pausar."
+      "label": "Huang vuelve, la SEC sigue",
+      "texto": "La reinstalación del CEO despeja el riesgo de liderazgo en Nvidia, pero la investigación contable de la SEC y la causa de California siguen abiertas y pueden volver a mover a todo el índice."
     },
     {
-      "label": "Solvencia vs. riesgo político",
-      "texto": "Con superávit fiscal y desinflación, el riesgo país igual supera los 1.000pb: el mercado no discute la solvencia de corto plazo sino la continuidad de las reglas después de 2027, en pleno debate de la reforma electoral."
+      "label": "Alivio global vs. riesgo político local",
+      "texto": "El riesgo país baja 35pb por arrastre de Wall Street, pero sigue arriba de 1.000pb: el mercado discute la continuidad de las reglas después de 2027, algo que el rebote externo no resuelve."
     }
   ],
   "correlaciones": [
     {
-      "par": "Bonos argentinos vs. Nasdaq",
-      "texto": "El día que el Nasdaq cayó 5,3%, los Globales cayeron entre 4% y 6% y el riesgo país subió 139pb: la beta de los activos argentinos al risk-off global sigue siendo muy alta, amplificada por el ruido político local."
+      "par": "Riesgo país vs. Nasdaq",
+      "texto": "El viernes el Nasdaq cayó 5,3% y el riesgo país subió 139pb; el lunes el Nasdaq subió 6,5% y el spread bajó solo 35pb. La sensibilidad es asimétrica: Argentina sufre más las caídas de lo que aprovecha los rebotes."
     },
     {
       "par": "Oro vs. acciones",
-      "texto": "GLD cayó 3,67% a US$322,87 junto con las acciones: en el pico del pánico el oro funcionó como fuente de liquidez y no como refugio."
-    },
-    {
-      "par": "Real brasileño vs. CCL",
-      "texto": "USD/BRL subió a 5,938 (fixing BCE 20/11, desde 5,89) y el CCL a $1.806 (desde $1.748): la debilidad regional acompaña la suba del dólar financiero argentino."
+      "texto": "GLD subió 3,14% junto con el S&amp;P (+4,7%), después de haber caído con las acciones el viernes: el oro vuelve a operar como cobertura, no como fuente de liquidez."
     },
     {
       "par": "Petróleo vs. tecnología",
-      "texto": "USO subió 1,12% a US$139,63 el viernes mientras QQQ caía 5,67%, por el riesgo de escalada entre EE.UU. e Irán; hoy el Brent cede ~0,8% a ~US$91,8 con el rebote de las acciones."
+      "texto": "USO cayó 4,49% mientras QQQ subía 7%: el rebote del riesgo vino con menor prima geopolítica en energía, lo que alivia la inflación de corto plazo."
+    },
+    {
+      "par": "Real brasileño vs. CCL",
+      "texto": "USD/BRL cerca de 6,0 (BCE 23/11) y CCL en $1.806: la debilidad del real sigue siendo un viento en contra regional para el peso."
     }
   ],
-  "bottom_line": "Lunes de <strong>rebote</strong> después de la <strong>peor semana del año para Wall Street</strong>: el viernes el <strong>Nasdaq cayó 5,3%</strong> y el <strong>S&amp;P 500 3,7%</strong> (ambos en corrección) por el desarme del trade de IA y la <strong>investigación de la SEC a Nvidia</strong>, y esta mañana los <strong>futuros suben ~2,5%</strong> con Nvidia +8% pre-market. Es una semana corta (Thanksgiving el jueves) con el <strong>PCE del miércoles</strong> como dato clave para una Fed que se encamina a subir en diciembre. <strong>Para Argentina</strong> el golpe fue mayor: el <strong>riesgo país saltó a 1.070pb</strong> (+215pb en la semana, máximo en 13 meses), los Globales cayeron hasta 6%, el <strong>CCL llegó a $1.806</strong> con una <strong>brecha de ~14%</strong> y el <strong>BCRA dejó de comprar</strong>. Un rebote global puede aliviar a bonos y ADRs hoy, pero el componente político y la falta de acumulación de reservas no se resuelven con Wall Street: mantenemos <strong>cobertura cambiaria vía CCL/MEP</strong> en carteras en pesos y <strong>prudencia en soberanos en dólares</strong>, priorizando el tramo corto (GD29/GD30) sobre el largo si se busca exposición."
+  "bottom_line": "Wall Street tuvo su <strong>mejor día desde abril de 2025</strong>: con la <strong>vuelta de Jensen Huang a Nvidia</strong> (+31,5%), el <strong>S&amp;P 500 subió 4,7%</strong> y el <strong>Nasdaq 6,5%</strong>, recuperando cerca de la mitad de la peor semana desde 2020. Esta mañana los <strong>futuros devuelven parte</strong> (Nasdaq-100 ~-2%) antes del <strong>PCE del miércoles</strong>, el dato que define la suba de la Fed en diciembre, en una semana corta por Thanksgiving. El oro sube y el petróleo cae, lo que ayuda del lado de la inflación. <strong>Para Argentina</strong>, el feriado del lunes dejó el ajuste para hoy: el <strong>riesgo país bajó 35pb a 1.035pb</strong> y los Globales subieron ~1,5% afuera, pero el spread sigue arriba de 1.000pb, el <strong>CCL está en $1.806</strong> con una <strong>brecha de ~14%</strong> y el BCRA no compra. El rebote externo da alivio, no cambia el diagnóstico: mantenemos <strong>cobertura cambiaria vía CCL/MEP</strong> en carteras en pesos, <strong>prudencia en soberanos en dólares</strong> priorizando el tramo corto (GD29/GD30), y seguimos de cerca la reapertura del mayorista y el <strong>vencimiento en pesos del 30/11</strong>."
 }
