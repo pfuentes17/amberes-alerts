@@ -1318,7 +1318,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
 
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px">
     <div class="tw"><div class="tw-hdr" style="color:var(--cy)">Pesos — Curva LECAP/BONCAP (tasa fija)
-      <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">TEM Real vs. inflación jul-2026 (2,1%)</span>
+      <span id="pvd-pesos-sub" style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">TEM Real vs. inflación oct-2026 (2,2%)</span>
     </div><div class="tbl-wrap"><table><thead><tr><th>Ticker</th><th class="ct">Días</th><th>TNA</th><th>TEM</th><th>TEM Real</th></tr></thead><tbody id="pvd-pesos-body"></tbody></table></div></div>
 
     <div class="tw"><div class="tw-hdr" style="color:#facc15">Dólares — Curva de Bonos Soberanos (TIR de mercado)
@@ -2179,6 +2179,7 @@ function renderTFBandChart() {
 
 function tfRender(data){
   tfData=data;
+  setTimeout(()=>{ if(window.PVD_READY) try{ pvdRender(); }catch(e){ console.warn('pvdRender', e); } }, 0);
   // Ordenar TODOS juntos por DTM
   const valid=data.filter(d=>d.dtm>5).sort((a,b)=>a.dtm-b.dtm);
   try{if(valid.length>=3)tfRegFn=poly2(valid.map(d=>({x:d.dtm,y:d.tem})));}catch(e){}
@@ -4112,7 +4113,7 @@ async function hdRefresh(){
 
 
 // TF seed — recalcular dtm al día de hoy para filtrar vencidos
-(()=>{const sf=SEED_TF.map(d=>({...d,dtm:getDTM(TF_VTO[d.symbol])||0}));tfRender(sf);})();
+(()=>{const sf=SEED_TF.map(d=>({...d,dtm:getDTM(TF_VTO[d.symbol])||0,_seed:true}));tfRender(sf);})();
 (()=>{const pm={};SEED_CER_PRECIOS.forEach(d=>pm[d.symbol]={c:d.c,bid:d.bid,ask:d.ask,pct:d.pct});cerRender(pm,SEED_CER_IDX.cer);})();
 document.getElementById('cer-fecha').textContent='BCRA: '+SEED_CER_IDX.fecha;
 document.getElementById('sim-cer-chip').textContent=SEED_CER_IDX.cer.toFixed(4);
@@ -5000,7 +5001,15 @@ const PVD_PESOS = [
   {sym:'T30A7',dtm:296,tna:22.4,tem:1.80},{sym:'T31Y7',dtm:327,tna:22.4,tem:1.80},
   {sym:'T30J7',dtm:357,tna:22.4,tem:1.80},
 ];
-const PVD_INFL_MENSUAL = 2.1; // IPC jul-2026
+// Curva en pesos (24/11/2026): toma TNA/TEM EN VIVO de la tab Tasa Fija (tfData, precio + VF); PVD_PESOS queda solo como respaldo
+// (valores de julio 2026) si esa tab todavía no cargó. Inflación = IPC_ULTIMO (último IPC INDEC publicado).
+const PVD_IPC_MES = 'oct-2026';   // mes de IPC_ULTIMO: actualizar junto con IPC_ULTIMO
+function pvdPesosRows(){
+  const live = (typeof tfData !== 'undefined' && Array.isArray(tfData) ? tfData : [])
+    .filter(d => d.dtm > 5 && Number.isFinite(d.tem) && Number.isFinite(d.tna))
+    .map(d => ({sym:d.symbol, dtm:d.dtm, tna:d.tna, tem:d.tem, seed:!!d._seed})).sort((a,b) => a.dtm - b.dtm);
+  return live.length >= 3 ? {rows:live, live:!live.some(d => d.seed)} : {rows:PVD_PESOS, live:false};
+}
 // Curva USD de la sección de sustentabilidad: desde 20/11/2026 toma la TIR y MD EN VIVO de la tab HD (HD_YTM/HD_MD, flujos exactos);
 // PVD_USD queda solo como respaldo si la tab HD todavía no cargó (valores del 14/09/2026).
 const PVD_USD = [
@@ -5064,8 +5073,11 @@ const PVD_INFL_US = 3.0;
 const PVD_G_USD = 0.60;
 
 function pvdRender(){
-  document.getElementById('pvd-pesos-body').innerHTML = PVD_PESOS.map(d=>{
-    const temReal = ((1+d.tem/100)/(1+PVD_INFL_MENSUAL/100)-1)*100;
+  const P = pvdPesosRows(), infl = IPC_ULTIMO;
+  const sub = document.getElementById('pvd-pesos-sub');
+  if(sub) sub.textContent = `TEM Real vs. inflación ${PVD_IPC_MES} (${pvdPct(infl,1)}%) · ${P.live ? 'TEM en vivo de la tab Tasa Fija' : 'precios de referencia: la tab Tasa Fija todavía no cargó en vivo'}`;
+  document.getElementById('pvd-pesos-body').innerHTML = P.rows.map(d=>{
+    const temReal = ((1+d.tem/100)/(1+infl/100)-1)*100;
     const cls = temReal<0 ? 'color:var(--rd)' : 'color:var(--gr)';
     return `<tr><td>${d.sym}</td><td class="ct">${d.dtm}d</td><td>${d.tna.toFixed(1)}%</td><td>${d.tem.toFixed(2)}%</td><td style="${cls};font-weight:600">${temReal>=0?'+':''}${temReal.toFixed(2)}%</td></tr>`;
   }).join('');
