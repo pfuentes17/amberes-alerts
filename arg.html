@@ -901,10 +901,11 @@ var D={
   // Deuda: fuente Secretaría de Finanzas
   // Dic 2025: USD 455.077M (deuda_publica_31-12-2025.xlsx)
   // Jun 2026: USD 474.192M total (A- Deuda Bruta I+II+III), boletin_mensual_30_06_2026.xlsx
-  deuda:{total:486628,total_dic25:455077,pib_pct:70.9,ext:65,int:35,me:50.7,pesos:49.3,
-         // Situación de pago normal sep-26 (provisorio *): pesos $238.466,6M (49,3%) / me $245.657,6M (50,7%) — Boletín Mensual Deuda 30/09/2026 (Hoja A.3). Total deuda bruta A) = $486.627,5M
+  deuda:{total:489634,total_dic25:455077,pib_pct:71.4,ext:65,int:35,me:50.4,pesos:49.6,
+         // Situación de pago normal oct-26 (provisorio *): pesos $241.793M (49,6%) / me $245.350M (50,4%) — Boletín Mensual Deuda 31/10/2026 (Hoja A.3). Total deuda bruta A) = $489.634,2M
+         // Sep-26: 486.628 (70,9%)
          // Ago-26: 484.917 (70,7%)
-         hist:{l:['2019','2020','2021','2022','2023','2024','2025','Sep 26'],v:[89.4,102.8,80.8,84.7,91.5,82.6,78.4,70.9]}, // Sep-26 (486.628 / PBI-USD implícito 686.106, igual que ago). Ago-26 con PBI-USD implícito de INDEC (Deuda Externa 1T-26: USD 321.783M = 46,9% PBI → PBI-USD ≈ $686.106M). Metodología distinta a 2019-2025 (esos años usaban otro PBI-USD, probablemente más bajo) — el salto 78,4%→70,7% no es una mejora real de un año a otro, es un cambio de vara de medición. No comparar directamente sin ajustar la serie vieja.
+         hist:{l:['2019','2020','2021','2022','2023','2024','2025','Oct 26'],v:[89.4,102.8,80.8,84.7,91.5,82.6,78.4,71.4]}, // Oct-26 (489.634 / PBI-USD implícito 686.106, igual que ago/sep). Ago-26 con PBI-USD implícito de INDEC (Deuda Externa 1T-26: USD 321.783M = 46,9% PBI → PBI-USD ≈ $686.106M). Metodología distinta a 2019-2025 (esos años usaban otro PBI-USD, probablemente más bajo) — el salto 78,4%→70,7% no es una mejora real de un año a otro, es un cambio de vara de medición. No comparar directamente sin ajustar la serie vieja.
          // 2027: Bop $2.915M (sin REPO) · 2028: +$6.000M REPO BCRA rolleado (SOFR+4%, vto sep-2028) · 2029: +AO29 $470M
          // 2030+ no se sincronizaba desde jul-05 (era $115.8B, quedó stale ~5 semanas)
          venc:[{l:'2026',v:27.1},{l:'2027',v:26.5},{l:'2028',v:33.0},{l:'2029',v:29.1},{l:'2030+',v:155.5}],
@@ -2033,7 +2034,7 @@ function buildMECON(){
     {l:'Recaud. Oct 26',v:'$21.6B',c:'m',n:'+33.7% YoY nominal'},
     {l:'Recaud. IVA Oct 26',v:'$7.0B',c:'m',n:'32.5% del total'},
     {l:'Recaud. Real YoY Oct 26',v:'+0.37%',c:'g',n:'IPC oct oficial 2.2% \u00b7 Sep +3.75%'},
-    {l:'Deuda Sep 26',v:'$486.6B',c:'r',n:'USD &middot; vs $455B Dic 25'},
+    {l:'Deuda Oct 26',v:'$489.6B',c:'r',n:'USD &middot; vs $455B Dic 25'},
     {l:'Venc. 2026 total',v:'$27.1B',c:'a',n:'USD · fuente Vencimientos USD'},
     {l:'Financ. Tesoro 28-Oct',v:'$11.56B',c:'g',n:'Ofertas $15.79B'}
   ]);
@@ -2045,7 +2046,7 @@ function buildMECON(){
       '<div class="og">'+
         ocard('mm0','Resultado Fiscal','Super\u00e1vit Primario y Financiero','Sector P\u00fablico Nacional','$1.931B','g','Prim. Oct 2026','32/34 meses<br>super\u00e1vit',1)+
         ocard('mm1','Recaudaci\u00f3n AFIP','Ingresos tributarios totales','IVA \u00b7 Ganancias \u00b7 Seg. Social','$21.6B','m','Oct 2026','+33.7% YoY<br>Nominal',2)+
-        ocard('mm2','Deuda P\u00fablica','Secretar\u00eda de Finanzas','Sep 2026 \u00b7 Bolet\u00edn Mensual','70.9%','r','del PBI (nueva metodolog\u00eda)','$486.6B USD<br>50.7% moneda ext.',3)+
+        ocard('mm2','Deuda P\u00fablica','Secretar\u00eda de Finanzas','Oct 2026 \u00b7 Bolet\u00edn Mensual','71.4%','r','del PBI (nueva metodolog\u00eda)','$489.6B USD<br>50.4% moneda ext.',3)+
         ocard('mm3','Financiamiento Tesoro','Licitaciones y colocaciones','Letes + Bonos + Rollover','$8.87B','g','11-Nov 2026','Ofertas $11.60B<br>Rollover: 103.07%',4)+
         ocard('mm4','Balanza de Pagos','Cuenta Corriente / Capital','Flujos externos','$2.977B','g','Bimestre 2026','Super\u00e1vit vs -$438M<br>Bimestre 2025',5)+
       '</div>',
@@ -2065,9 +2066,9 @@ function buildMECON(){
       bx2(['rc2','rc3'],['Componentes: IVA \u00b7 Ganancias \u00b7 Seg. Social \u00b7 DGA','Recaudaci\u00f3n Real Deflactada \u2014 \u00cdndice Base Dic99=100'],'h190',['c-mecon','']),
       cal)+
     panel2col('p3',
-      shdr('Deuda P\u00fablica','Secretar\u00eda de Finanzas \u2014 Sep 2026 (Bolet\u00edn Mensual oficial, provisorio)','70.9%','del PBI \u2014 $486.6B USD (metodolog\u00eda revisada, ver nota)','r')+
+      shdr('Deuda P\u00fablica','Secretar\u00eda de Finanzas \u2014 Oct 2026 (Bolet\u00edn Mensual oficial, provisorio)','71.4%','del PBI \u2014 $489.6B USD (metodolog\u00eda revisada, ver nota)','r')+
       src('Secretar\u00eda de Finanzas \u00b7 Bolet\u00edn Mensual de Deuda, septiembre 2026 (boletin_mensual_30_09_2026.xlsx)')+
-      sr4([{l:'Deuda Total Sep 26',v:'$486.6B',c:'r',n:'USD \u2014 A) Deuda Bruta (I+II+III) · +$1.7B vs Ago',x:'mecon'},{l:'Deuda / PBI Sep 26',v:'70.9%',c:'r',n:'PBI-USD ~$686.1B (impl. Deuda Externa INDEC 1T26) \u2014 no comparable directo vs. 78.4% dic-25 (otra vara)',x:'mecon'},{l:'En moneda extranjera',v:'$245.7B',c:'a',n:'50.7% del total · USD $182.8B + otras',x:'mecon'},{l:'En pesos',v:'$238.5B',c:'g',n:'49.3% · no aj. CER $107.6B + aj. CER $130.9B',x:'mecon'}])+
+      sr4([{l:'Deuda Total Oct 26',v:'$489.6B',c:'r',n:'USD \u2014 A) Deuda Bruta (I+II+III) · +$3.0B vs Sep',x:'mecon'},{l:'Deuda / PBI Oct 26',v:'71.4%',c:'r',n:'PBI-USD ~$686.1B (impl. Deuda Externa INDEC 1T26) \u2014 no comparable directo vs. 78.4% dic-25 (otra vara)',x:'mecon'},{l:'En moneda extranjera',v:'$245.3B',c:'a',n:'50.4% del total · USD $182.7B + otras',x:'mecon'},{l:'En pesos',v:'$241.8B',c:'g',n:'49.6% · no aj. CER $109.1B + aj. CER $132.7B',x:'mecon'}])+
       '<div style="background:var(--nv3);border:1px solid var(--br);padding:13px 15px;margin-bottom:11px;">'+
         '<div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--rd);margin-bottom:10px;padding-left:8px;border-left:2px solid var(--rd);">Estructura de la Deuda \u2014 Dic 2025</div>'+
         '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">'+
