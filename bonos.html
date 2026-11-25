@@ -1284,7 +1284,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   </div>
 
   <div class="tw" style="border:1px solid rgba(248,113,113,.35)"><div class="tw-hdr" style="color:#f87171;font-size:13px">★ TASA DE SUSTENTABILIDAD DE LA DEUDA — HOY
-    <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">¿A qué tasa podría endeudarse el Gobierno sin ampliar Deuda/PBI? · r* = g + pb×(1+g)/d · r* al 17/11/2026, TIR USD en vivo</span>
+    <span style="font-size:9px;font-weight:400;color:var(--mu);margin-left:8px">¿A qué tasa podría endeudarse el Gobierno sin ampliar Deuda/PBI? · r* = g + pb×(1+g)/d · r* al 25/11/2026 (USD: promedio 3T25-2T26), TIR USD en vivo</span>
   </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;padding:16px">
       <div style="padding-right:16px;border-right:1px solid var(--bdr2)">
@@ -1295,17 +1295,17 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
       </div>
       <div style="padding-left:16px">
         <div style="font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em">Dólares</div>
-        <div style="font-size:32px;font-weight:700;color:var(--rd);margin:4px 0">3,84%</div>
+        <div style="font-size:32px;font-weight:700;color:var(--rd);margin:4px 0">3,28%</div>
         <div id="pvd-usd-rango" style="font-size:11px;color:var(--mu)">vs. curva de bonos: cargando TIR de la tab HD…</div>
         <div id="pvd-usd-veredicto" style="font-size:11px;font-weight:600;margin-top:6px"></div>
       </div>
     </div>
-    <div style="padding:0 16px 14px;font-size:11px;color:var(--mu);line-height:1.5">g(pesos)=+33,5% nominal (INDEC) · g(USD)=+0,60% (Q1-26 vs Q1-25) · pesos: d=Deuda/PBI 68,2% (FMI/FRED 2026e), pb=superávit primario real 0,52% PBI (ene-oct anualizado) · dólares [corregido 07/09/2026, todo en USD y mismo trimestre]: d=69,76% (Deuda USD jun-26/PBI USD anualizado Q1-26, propio), pb=2,25% (superávit primario Q1-26 convertido a USD mes a mes, anualizado). En pesos el Gobierno paga bien por debajo de lo que podría sin ampliar el ratio; en dólares, <span id="pvd-usd-txt"></span> El AO27 fue el único tramo sustentable entre el 06/10 y el 16/11/2026.</div>
+    <div style="padding:0 16px 14px;font-size:11px;color:var(--mu);line-height:1.5">g(pesos)=+33,5% nominal (INDEC) · g(USD)=+1,52% (PBI USD 3T25-2T26 vs 3T24-2T25) · pesos: d=Deuda/PBI 68,2% (FMI/FRED 2026e), pb=superávit primario real 0,52% PBI (ene-oct anualizado) · dólares [todo en USD, promedio móvil de 4 trimestres desde 25/11/2026; con un solo trimestre el indicador saltaba por estacionalidad y tipo de cambio]: d=68,05% (Deuda USD jun-26 / PBI USD promedio 3T25-2T26, propio), pb=1,18% (superávit primario jul-25 a jun-26 convertido a USD mes a mes). En pesos el Gobierno paga bien por debajo de lo que podría sin ampliar el ratio; en dólares, <span id="pvd-usd-txt"></span> El AO27 fue el único tramo sustentable entre el 06/10 y el 16/11/2026.</div>
     <div style="padding:4px 16px 16px;border-top:1px solid var(--bdr2)">
       <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin:12px 0 8px">
         <div><div style="font-size:12px;font-weight:700;color:var(--txt)">Sensibilidad en dólares: r* según el crecimiento y brecha contra cada bono</div>
         <div style="font-size:10px;color:var(--mu);margin-top:2px">Cada fila es un escenario de crecimiento del PBI en USD (g). Columnas de bonos = TIR en vivo − r* (pp): <span style="color:var(--gr)">verde</span> = el bono rinde menos que r* (emitir ahí no sube la deuda/PBI), <span style="color:var(--rd)">rojo</span> = la sube.</div></div>
-        <div style="font-size:10px;color:var(--mu);white-space:nowrap">Superávit primario <input id="pvd-s-pb" class="cart-in" type="number" step="0.25" value="2.25" style="width:56px" oninput="pvdSens()"> % PBI · Deuda/PBI <input id="pvd-s-d" class="cart-in" type="number" step="1" value="69.76" style="width:62px" oninput="pvdSens()"> %</div>
+        <div style="font-size:10px;color:var(--mu);white-space:nowrap">Superávit primario <input id="pvd-s-pb" class="cart-in" type="number" step="0.25" value="1.18" style="width:56px" oninput="pvdSens()"> % PBI · Deuda/PBI <input id="pvd-s-d" class="cart-in" type="number" step="1" value="68.05" style="width:62px" oninput="pvdSens()"> %</div>
       </div>
       <div class="tbl-wrap"><table><thead id="pvd-s-head"></thead><tbody id="pvd-s-body"></tbody></table></div>
       <div id="pvd-s-nota" style="font-size:10px;color:var(--mu);margin-top:6px;line-height:1.5"></div>
@@ -1350,7 +1350,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
       <p style="margin:0 0 10px"><strong style="color:var(--cy)">Pesos (~1,2 años en promedio):</strong> tasa REAL negativa (~-0,3% mensual) — financiamiento muy barato en términos reales, PERO exige refinanciar (rollover) buena parte del stock varias veces por año. Cada vencimiento es una "prueba de mercado": si cae la demanda en algún momento, el Tesoro puede verse forzado a convalidar tasas mucho más altas de golpe, o a emitir pesos (riesgo inflacionario) — el clásico "riesgo de bola de nieve" de la deuda corta.</p>
       <p style="margin:0 0 10px"><strong style="color:#facc15">Dólares (1 a 6+ años):</strong> tasa nominal notablemente más alta (2,7%-12,5% según plazo) y en dólares "duros" (no se licúa con inflación local) — un costo real efectivo mucho mayor que el de la deuda en pesos hoy. A cambio, fija ese costo por años: sin vencimientos que enfrentar ni tasa que renegociar hasta el vencimiento — elimina el riesgo de refinanciación en ese horizonte.</p>
       <p style="margin:0 0 10px"><strong style="color:var(--gr)">Conclusión (confirmada con datos):</strong> no es una comparación de "cuál es más barata" sino de costo vs. riesgo. La suba de la porción en pesos de 22% (2019) a 47% (2026) mejoró el costo real, pero el plazo promedio de esa deuda (1,21 años) sigue siendo sensiblemente más corto que la curva en dólares — confirma que la "pesificación" resolvió el problema de MONEDA pero no el de PLAZO: el riesgo de refinanciación de corto plazo sigue siendo alto en la porción peso de la deuda.</p>
-      <p style="margin:0"><strong style="color:var(--rd)">Sustentabilidad en USD:</strong> con el PBI en dólares creciendo apenas +0,60% (Q1-26 vs Q1-25 — casi todo el +33,5% nominal en pesos se lo comió la devaluación del +32,7%), la brecha entre el costo de la deuda en USD y el crecimiento de la economía en USD es <strong style="color:var(--rd)">positiva en TODA la curva (<span id="pvd-usd-brecha">—</span>)</strong>: la deuda en dólares crece bastante más rápido que la capacidad de la economía de generar dólares — a diferencia de la deuda en pesos, cuya brecha nominal es negativa. Tomando la tasa de sustentabilidad r* (todo en USD, mismo trimestre: d=69,76%, pb=2,25%, g=0,60%) da <strong style="color:var(--txt)">3,84%</strong>: <span id="pvd-usd-txt2"></span></p>
+      <p style="margin:0"><strong style="color:var(--rd)">Sustentabilidad en USD:</strong> con el PBI en dólares creciendo apenas +1,5% (3T25-2T26 vs un año antes — casi todo el +35,4% nominal en pesos se lo comió la devaluación promedio de ~+33,3%), la brecha entre el costo de la deuda en USD y el crecimiento de la economía en USD es <strong style="color:var(--rd)">positiva en TODA la curva (<span id="pvd-usd-brecha">—</span>)</strong>: la deuda en dólares crece bastante más rápido que la capacidad de la economía de generar dólares — a diferencia de la deuda en pesos, cuya brecha nominal es negativa. Tomando la tasa de sustentabilidad r* (todo en USD, promedio de 4 trimestres: d=68,05%, pb=1,18%, g=1,52%) da <strong style="color:var(--txt)">3,28%</strong>: <span id="pvd-usd-txt2"></span></p>
     </div>
   </div>
 
@@ -5056,7 +5056,7 @@ const PVD_USD = [
   {sym:'GD41',vto:'09/07/2041',md:5.69,tir:9.60},
 ];
 const PVD_USD_LIVE = ['AO27','GD29','AO28','GD30','AO29','AN29','GD38','GD35','GD41','GD46'];   // ley NY + Bonares nuevos (GD46 solo si cotiza en vivo, ver HD_GD46_LIVE)
-const PVD_RSTAR_USD = 3.84;   // r* USD (d=69,76%, pb=2,25%, g=0,60%) — ver texto de la sección
+const PVD_RSTAR_USD = 3.28;   // r* USD promedio 3T25-2T26 (d=68,05%, pb=1,18%, g=1,52%; 25/11/2026) — ver texto de la sección
 function pvdUsdRows(){
   const live = PVD_USD_LIVE.filter(k => (k!=='GD46'||HD_GD46_LIVE) && HD_EXACT[k] && Number.isFinite(HD_YTM[k]) && Number.isFinite(HD_MD[k]))
     .map(k => { const c = HD_CONFIG[k] || {}, v = AO_TERMS[k] ? AO_TERMS[k].vto : (c.vto || ''); return {sym:k, vto:v ? v.split('-').reverse().join('/') : '—', md:HD_MD[k], tir:HD_YTM[k]}; })
@@ -5065,13 +5065,13 @@ function pvdUsdRows(){
 }
 const pvdPct = (v,d=2) => v.toFixed(d).replace('.',',');
 // Cuadro de sensibilidad (21/11/2026): r* = g + pb(1+g)/d para varios g en USD, y TIR en vivo − r* por bono (uno por año de vencimiento).
-const PVD_SENS_G = [-4, -2, 0, 0.6, 2, 4, 6, 8, 10];
+const PVD_SENS_G = [-4, -2, 0, 1.52, 4, 6, 8, 10];
 const PVD_SENS_BONOS = ['AO27','AO28','GD29','AO29','AN29','GD30','GD35','GD38','GD41'];
 function pvdSens(){
   const head = document.getElementById('pvd-s-head'), body = document.getElementById('pvd-s-body');
   if(!head || !body) return;
   const pb = (parseFloat(document.getElementById('pvd-s-pb').value) || 0) / 100;
-  const d  = Math.max(1, parseFloat(document.getElementById('pvd-s-d').value) || 69.76) / 100;
+  const d  = Math.max(1, parseFloat(document.getElementById('pvd-s-d').value) || 68.05) / 100;
   const vto = k => { const v = AO_TERMS[k] ? AO_TERMS[k].vto : (HD_CONFIG[k] || {}).vto; return v ? v.slice(0,4) : ''; };
   const bon = PVD_SENS_BONOS.filter(k => Number.isFinite(HD_YTM[k]));
   head.innerHTML = '<tr><th>g PBI USD</th><th>r*</th>' + bon.map(k => `<th style="text-align:center">${vto(k)}<br><span style="font-weight:400">${k} · ${pvdPct(HD_YTM[k],1)}%</span></th>`).join('') + '</tr>';
@@ -5105,10 +5105,10 @@ function pvdUsdCard(R){
   if(el('pvd-usd-fecha')) el('pvd-usd-fecha').textContent = R.live ? 'TIR en vivo' : 'TIR 14/09/2026';
 }
 const PVD_INFL_US = 3.0;
-// g(USD) = crecimiento del PBI en dólares, Q1-2026 vs Q1-2025: PBI nominal ARS (INDEC, +33,5%)
-// deflactado por la devaluación del TC oficial en el mismo período (+32,7%) — evita depender
-// del nivel absoluto de PBI en USD (sensible al TC), solo usa tasas de variación. Calculado 07/09/2026.
-const PVD_G_USD = 0.60;
+// g(USD) = crecimiento del PBI en dólares, promedio 3T25-2T26 vs 3T24-2T25: cada trimestre de PBI nominal ARS
+// (INDEC cuadro 8) pasado a USD al TC oficial promedio del trimestre. Promedio de 4 trimestres desde 25/11/2026
+// (con un solo trimestre saltaba por estacionalidad y TC: el 2T26 solo daba g=9,75%, r*=10,99%).
+const PVD_G_USD = 1.52;
 
 function pvdRender(){
   const P = pvdPesosRows(), infl = IPC_ULTIMO;
