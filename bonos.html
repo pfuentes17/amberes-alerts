@@ -4857,10 +4857,21 @@ async function onRefresh() {
       fetch('/api/proxy?src=byma-ons').then(r => r.json()),
       fetch('/api/proxy?src=corp').then(r => r.json()).catch(() => []),
     ]);
-    const items = Array.isArray(data) ? data : [];
+    let items = Array.isArray(data) ? data : [], fuente = 'BYMA';
+    // Respaldo (25/11/2026): si BYMA no responde (open.bymadata suele cortar por timeout → 502 del proxy),
+    // armar la tabla con el panel de ONs de data912 (src=corp). Sin vencimiento ni VWAP; moneda por sufijo del ticker.
+    if (!items.length && Array.isArray(corp) && corp.length) {
+      items = corp.filter(d => d.symbol && (d.c > 0 || d.px_bid > 0 || d.px_ask > 0)).map(d => ({
+        symbol: d.symbol, closingPrice: d.c || 0,
+        previousClosingPrice: (d.c > 0 && Number.isFinite(d.pct_change)) ? d.c / (1 + d.pct_change / 100) : 0,
+        bidPrice: d.px_bid || 0, offerPrice: d.px_ask || 0, volumeAmount: /[DC]$/.test(d.symbol) ? (d.v || 0) : 0,   // el KPI suma volumen en USD: los tickers en pesos no cuentan
+        denominationCcy: /D$/.test(d.symbol) ? 'USD' : /C$/.test(d.symbol) ? 'EXT' : 'ARS',
+      }));
+      fuente = 'data912 (BYMA no responde)';
+    }
     onRenderAll(items);
-    onxSetLive(items, Array.isArray(corp) ? corp : []);
-    document.getElementById('on-src').textContent = 'BYMA · en vivo · ' + now8();
+    onxSetLive(Array.isArray(data) ? data : [], Array.isArray(corp) ? corp : []);
+    document.getElementById('on-src').textContent = fuente + ' · ' + (items.length ? 'en vivo · ' : 'sin datos · ') + now8();
     setStatus('live', 'En vivo · ' + now8());
   } catch(e) {
     document.getElementById('on-src').textContent = 'Error de conexión — BYMA fuera de horario';
