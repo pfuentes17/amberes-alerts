@@ -2957,6 +2957,9 @@ function tmrDualCTRender(){
   if(el && B.length) el.innerHTML=B.filter(d=>TMR_INSTR[d.symbol]?.tipo==='BONO TAMAR').map(d=>tmrRow(d,tmrTamarTEM)).join('');
 }
 function tmrRender(notes, bonds, tamarTEM) {
+  // data912 trae px_bid/px_ask/pct_change; las filas leen bid/ask/pct — normalizar acá cubre todos los caminos de carga (fix 25/11/2026)
+  const norm = d => ({...d, bid: d.bid ?? d.px_bid, ask: d.ask ?? d.px_ask, pct: d.pct ?? d.pct_change});
+  notes = (notes || []).map(norm); bonds = (bonds || []).map(norm);
   window._tmrLast = {notes: notes || [], bonds: bonds || []};
   tmrTamarTEM = tamarTEM;
   const letamar   = notes.filter(d=>TMR_INSTR[d.symbol]?.tipo==='LETAMAR');
