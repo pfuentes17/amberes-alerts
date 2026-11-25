@@ -405,7 +405,7 @@ async function loadLiveData() {
 var D={
 us:{
   // Fuente: FRED API — datos verificados jun 2026
-  gdp:{l:["Q2 24","Q3 24","Q4 24","Q1 25","Q2 25","Q3 25","Q4 25","Q1 26","Q2 26","Q3 26"],v:[3.6,3.2,2.4,0.1,4.0,3.9,0.2,2.5,2.2,3.4]}, // Q3 26 estimación adelantada +3.4% (BEA 26-45, 29-oct-2026); serie = FRED A191RL1Q225SBEA (vintage vigente)
+  gdp:{l:["Q2 24","Q3 24","Q4 24","Q1 25","Q2 25","Q3 25","Q4 25","Q1 26","Q2 26","Q3 26"],v:[3.6,3.2,2.4,0.1,4.0,3.9,0.2,2.5,2.2,4.3]}, // Q3 26 2da estimación +4.3% (BEA 26-50, 25-nov-2026; adelanto 3.4%); serie = FRED A191RL1Q225SBEA (vintage vigente)
   // CPI: BLS informe Sep26 (USDL-26-1574, publicado 14-oct-2026): headline +3.7% YoY NSA (Ago 3.4%), Core +2.6% (Ago 2.4%), MoM SA +0.6% / Core +0.3%.
   // Jun26/Jul26 YoY reemplazados por los valores reales calculados con FRED (CPIAUCNS/CPILFENS: 3.5%/3.4% headline, 2.6%/2.5% core); antes eran interpolaciones (marcadas con *).
   // Oct26 (BLS USDL-26-1685, 10-nov-2026): MoM SA +0.4% / Core +0.3%. BLS NO publica a/a de Oct26 (Oct25 sin relevar por el cierre del gobierno):
@@ -418,9 +418,9 @@ us:{
   // entre May26 (4.1%, oficial) y Ago26 (3.4%, oficial), mismo metodo que CPI/PPI. MoM de
   // Jul/Ago SI son oficiales (Tabla pag.3 del informe): Jul +0.1%, Ago +0.3% (headline). Jun
   // interpolado entre May (0.4%) y Jul oficial (0.1%).
-  pce:{l:["Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26"],v:[2.7,2.7,2.8,2.7,2.8,3.4,3.6,3.8,3.5,3.4,3.4,3.6]},  // Sep 26 (BEA 26-46, 29-oct-2026): PCE +3,6% a/a (+0,5% m/m), core +3,1% a/a (+0,3% m/m); serie = FRED PCEPI/PCEPILFE (reemplaza estimados * de jun/jul)
-  pceCore:[2.7,2.7,2.9,2.9,3,3.1,3.1,3.2,3,3,3,3.1],
-  pceMoM:[0.15,0.2,0.32,0.3,0.35,0.63,0.44,0.44,-0.1,0.06,0.32,0.49],
+  pce:{l:["Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26","Oct 26"],v:[2.7,2.8,2.7,2.8,3.4,3.6,3.8,3.5,3.4,3.4,3.6,3.8]},  // Oct 26 (BEA 26-51, 25-nov-2026): PCE +3,8% a/a (+0,3% m/m), core +3,3% a/a (+0,3% m/m); serie = FRED PCEPI/PCEPILFE
+  pceCore:[2.7,2.9,2.9,3,3.1,3.1,3.2,3,3,3,3.1,3.3],
+  pceMoM:[0.2,0.32,0.3,0.35,0.63,0.44,0.44,-0.1,0.06,0.32,0.49,0.32],
   // PPI: BLS informe Ago26 (publicado 10-sep-2026, USDL 26-1495) trae YoY oficial solo del mes
   // reportado (Ago26: Final demand +5.4% NSA, Core +4.7%). Jun26/Jul26 NO tienen YoY oficial en
   // este release (BLS solo publica el YoY del mes corriente por informe) — se interpolaron
@@ -661,7 +661,7 @@ function buildUS(){
   $('tabrow').innerHTML=tabs(['Resumen','GDP','CPI','PCE','PPI','Laboral','Comercio','Mercados','Claims','Earnings','Liquidez','FOMC'],'us');
   var cal=makeCalendar(d.cal.year,d.cal.month,d.cal.events);
   var overviewHtml='<div class="og">'+
-    ocard('om1','GDP &middot; PBI','Producto Bruto Interno','Var. trimestral anualizada',pct(L(d.gdp.v)),sgn(L(d.gdp.v)),L(d.gdp.l),'Q2 26: +2.2%<br>1ra est. BEA',"showTab(1,'us')")+
+    ocard('om1','GDP &middot; PBI','Producto Bruto Interno','Var. trimestral anualizada',pct(L(d.gdp.v)),sgn(L(d.gdp.v)),L(d.gdp.l),'Q3 26 2da est. (adelanto +3.4%)<br>Q2 26: +2.2%',"showTab(1,'us')")+
     ocard('om2','CPI &middot; Inflaci&#243;n','&Iacute;ndice Precios Consumidor','Variaci&#243;n interanual',L(d.cpi.v)+'%','r',L(d.cpi.l),'Core: '+L(d.cpiCore)+'%<br>Energ&#237;a +20.8% (est.)',"showTab(2,'us')")+
     ocard('om3','PCE &middot; Fed','Consumo Personal','Medida preferida de la Fed',L(d.pce.v)+'%','r',L(d.pce.l),'Core PCE: '+L(d.pceCore)+'%<br>'+L(d.pce.l)+' &middot; Target: 2.0%',"showTab(3,'us')")+
     ocard('om4','PPI &middot; Mayorista','&Iacute;ndice Precios Productor','Presi&#243;n en pipeline',L(d.ppi.v)+'%','r',L(d.ppi.l),'Core PPI: '+L(d.ppiCore)+'%<br>May 2026 &middot; BLS',"showTab(4,'us')")+
@@ -672,7 +672,7 @@ function buildUS(){
     panelFull('us-p0',overviewHtml)+
     panel('us-p1',
       shdr('GDP &middot; Producto Bruto Interno','Variaci&#243;n trimestral anualizada &mdash; BEA',pct(L(d.gdp.v)),L(d.gdp.l)+' (1ra est.)',sgn(L(d.gdp.v)))+
-      sr4([{l:'Q3 26 (adelanto)',v:'+3.4%',c:'g',n:'Inversi&#243;n, consumo y gasto p&#250;blico &middot; exportaciones restan'},{l:'Q2 26',v:'+2.2%',c:'g',n:'3ra est. final'},{l:'Q1 26',v:'+2.5%',c:'g',n:'Revisado (BEA 26-42)'},{l:'Ventas finales priv.',v:'+4.9%',c:'g',n:'Q3 26 &middot; vs +4.6% en Q2'}])+
+      sr4([{l:'Q3 26 (2da est.)',v:'+4.3%',c:'g',n:'Revisado desde +3.4% &middot; inversi&#243;n y consumo'},{l:'Q2 26',v:'+2.2%',c:'g',n:'3ra est. final'},{l:'Q1 26',v:'+2.5%',c:'g',n:'Revisado (BEA 26-42)'},{l:'Ventas finales priv.',v:'+5.8%',c:'g',n:'Q3 26 (2da est.) &middot; vs +4.6% en Q2'}])+
       box1('cg1','h240','GDP QoQ Anualizado &mdash; &Uacute;ltimos 10 trimestres')+
       box2(['cg2a','cg2b'],['Consumo Personal (est.)','Tendencia 2024&ndash;2026']),
       cal
