@@ -1,9 +1,9 @@
 {
-  "date": "2026-11-24",
-  "generated": "2026-11-24T12:19:50Z",
+  "date": "2026-11-25",
+  "generated": "2026-11-25T12:15:30Z",
   "sentiment": {
-    "overall": "neutral",
-    "label": "Wall Street vuela con la vuelta de Huang (Nasdaq +6,5%) pero los futuros corrigen; riesgo país baja a 1.035pb y el CCL sigue en $1.806",
+    "overall": "risk-off",
+    "label": "Riesgo país toca máximos del año (1.094pb) y los futuros del Nasdaq caen ~2% antes del PCE, el dato que define la suba de la Fed",
     "fg": null,
     "fg_label": "Sin dato verificado",
     "putcall": null,
@@ -12,176 +12,176 @@
   "drivers": [
     {
       "id": 1,
-      "tag": "EE.UU. · Wall Street · IA",
-      "tag_class": "tg",
-      "title": "Huang vuelve a Nvidia: S&amp;P 500 +4,7% y Nasdaq +6,5%, mejor día en 19 meses",
-      "brief": "Nvidia +31,5% a US$165 tras reinstalar a Jensen Huang como CEO. S&amp;P 7.237 (+4,73%), Nasdaq 24.090 (+6,51%). SPY +4,71%, QQQ +7,0%.",
-      "tldr": "El mercado recuperó cerca de la mitad de la caída de la semana pasada en una sola rueda.",
-      "sentiment": "ro",
-      "sentiment_label": "🟢 Risk-On",
-      "evento": "El lunes 23/11 el directorio de <strong>Nvidia reinstaló a Jensen Huang como CEO y presidente</strong>, a once días de su renuncia, y la acción <strong>subió 31,5% a ~US$165</strong>, sumando cerca de US$1 billón de capitalización (Motley Fool/CNBC). Melius y StoneX la subieron a compra. El <strong>S&amp;P 500 cerró +4,73% a 7.237,17</strong>, el <strong>Nasdaq +6,51% a 24.089,56</strong> (mejor día desde abril de 2025) y el <strong>Dow +3% a 49.595</strong>. En ETFs (Finnhub): <strong>SPY +4,71% a US$722,29</strong> y <strong>QQQ +7,00% a US$651,03</strong>.",
-      "contexto": "El rebote recupera aproximadamente la mitad de la peor semana del Nasdaq desde marzo de 2020. Con la vuelta de Huang se despeja la incertidumbre sobre el liderazgo, pero no la investigación de la SEC sobre la contabilidad de la compañía, que sigue abierta. La concentración del índice en Nvidia hace que cualquier titular sobre ese frente se traslade al S&amp;P 500 entero.",
+      "tag": "Argentina · Bonos · Riesgo país",
+      "tag_class": "tr",
+      "title": "Riesgo país sube 59pb a 1.094, máximo del año; Globales caen ~2%",
+      "brief": "Riesgo país 1.094pb el 24/11 (+59 vs. 1.035), tras tocar ~1.108 intradía. GD35 -1,38%, GD29 -1,61%, AO28 -1,8% (data912).",
+      "tldr": "El alivio del lunes duró un día: el spread vuelve a máximos con la plaza local abierta.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El <strong>riesgo país cerró en 1.094pb el 24/11</strong> (argentinadatos), <strong>+59pb</strong> contra los 1.035pb del lunes y el nivel más alto del año; según la prensa llegó a tocar <strong>~1.108pb</strong> durante la mañana y los <strong>Globales cayeron ~2% en promedio</strong>. Precios locales (data912): <strong>GD30 US$49,20 (-0,14%)</strong>, <strong>GD35 US$64,10 (-1,38%)</strong>, <strong>GD29 US$50,27 (-1,61%)</strong>, <strong>AL30 US$47,55 (+0,11%)</strong>, <strong>AL35 US$59,71 (-0,48%)</strong>. Los Bopreal también cedieron: <strong>AO28 -1,8%</strong> y <strong>AO29 -1,62%</strong>.",
+      "contexto": "Con la plaza local de vuelta después del feriado, el mercado ajustó hacia abajo pese al rebote previo de Wall Street. Las notas del día apuntan a dos factores: la falta de acumulación de reservas (el BCRA volvió a no comprar) y las dudas sobre cómo se financian los vencimientos de 2027 en un año electoral. El tramo largo (GD35) sufre más que el corto, señal de que el castigo es al riesgo de mediano plazo.",
       "impacto": [
         {
-          "asset": "SPY",
-          "dir": "↑ 4,71% US$722,29",
-          "cls": "up"
+          "asset": "Riesgo país",
+          "dir": "↑ 1.094pb (+59)",
+          "cls": "dn"
         },
         {
-          "asset": "QQQ",
-          "dir": "↑ 7,00% US$651,03",
-          "cls": "up"
+          "asset": "GD35",
+          "dir": "↓ 1,38% US$64,10",
+          "cls": "dn"
         },
         {
-          "asset": "Nvidia",
-          "dir": "↑ 31,5% ~US$165",
-          "cls": "up"
+          "asset": "GD30",
+          "dir": "↓ 0,14% US$49,20",
+          "cls": "dn"
         }
       ]
     },
     {
       "id": 2,
-      "tag": "EE.UU. · Futuros · Toma de ganancias",
+      "tag": "Argentina · Dólar · Brecha",
       "tag_class": "ta",
-      "title": "Futuros devuelven parte del rally: Nasdaq-100 ~-2% y S&amp;P ~-1%",
-      "brief": "Nvidia retrocede en el pre-market y arrastra a los futuros. Semana corta: PCE el miércoles, Wall Street cerrado el jueves por Thanksgiving.",
-      "tldr": "Tras un +6,5% en un día, el mercado testea si el rebote tiene sustento.",
+      "title": "Mayorista sube a $1.593 sin compras del BCRA; la brecha se comprime",
+      "brief": "Mayorista $1.593, oficial BNA $1.615, CCL $1.797,1, MEP $1.695,1, blue $1.700. Brecha CCL/mayorista ~12,8% (vs. ~14,3%).",
+      "tldr": "El ajuste vino por el oficial, no por el financiero: la brecha se achica, pero el BCRA sigue sin comprar.",
       "sentiment": "mx",
       "sentiment_label": "🟡 Mixto",
-      "evento": "Esta mañana los <strong>futuros del Nasdaq-100 caen ~2%</strong> y los del <strong>S&amp;P 500 ~1%</strong>, con los del Dow ~-0,5%, a medida que <strong>Nvidia devuelve parte de la suba</strong> (CNBC/Yahoo Finance). Algunas lecturas posteriores muestran los futuros recortando la baja, así que los niveles son aproximados. Es una <strong>semana corta</strong>: el <strong>PCE se publica el miércoles</strong> y Wall Street <strong>cierra el jueves 26/11 por Thanksgiving</strong>.",
-      "contexto": "La toma de ganancias después de una suba de esta magnitud es esperable; lo relevante es si el S&amp;P sostiene la zona de 7.200. El PCE del miércoles es el dato que define si la Fed confirma la suba de tasas de diciembre: un número caliente puede cortar el rebote, uno benigno le da aire.",
+      "evento": "Cotizaciones dolarapi: <strong>mayorista $1.584/$1.593</strong> y <strong>oficial BNA $1.565/$1.615</strong> (cierre 24/11), contra $1.580 y $1.600 del viernes. Esta mañana: <strong>CCL $1.793,4/$1.797,1</strong>, <strong>MEP $1.677,6/$1.695,1</strong>, <strong>blue $1.680/$1.700</strong> y <strong>cripto $1.782,2</strong>. La <strong>brecha CCL/mayorista baja a ~12,8%</strong> (desde ~14,3%) y la <strong>MEP/mayorista a ~6,4%</strong> (desde ~10,3%). Según la prensa, el <strong>BCRA no compró divisas</strong> en la rueda.",
+      "contexto": "La convergencia de la brecha es una buena noticia a medias: se explica tanto por un mayorista que sube como por un MEP que cede ~$48. Sin compras del Central, el mercado sigue sin una respuesta sobre cómo se cubren los vencimientos en dólares de enero, y eso es lo que está leyendo el riesgo país.",
       "impacto": [
         {
-          "asset": "Fut. Nasdaq-100",
-          "dir": "↓ ~2%",
+          "asset": "Mayorista",
+          "dir": "↑ $1.593",
           "cls": "dn"
         },
         {
-          "asset": "Fut. S&amp;P 500",
-          "dir": "↓ ~1%",
-          "cls": "dn"
+          "asset": "Brecha CCL/mayorista",
+          "dir": "↓ ~12,8%",
+          "cls": "up"
+        },
+        {
+          "asset": "MEP",
+          "dir": "$1.695,1",
+          "cls": "neu"
         }
       ]
     },
     {
       "id": 3,
-      "tag": "Commodities · Oro · Petróleo",
-      "tag_class": "tq",
-      "title": "El oro sube 3,1% y el petróleo cae 4,5%: commodities divergen con el rebote",
-      "brief": "GLD +3,14% a US$333,02 y USO -4,49% a US$133,36 el lunes (Finnhub). Brent ~US$89,2 y WTI ~US$80 esta mañana.",
-      "tldr": "El oro volvió a funcionar como cobertura; el petróleo cede prima de riesgo.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "El lunes <strong>GLD subió 3,14% a US$333,02</strong> y <strong>USO cayó 4,49% a US$133,36</strong> (Finnhub). Esta mañana el <strong>Brent cede ~0,25% a ~US$89,2</strong> y el <strong>WTI ~US$80,0</strong> (Yahoo Finance). En monedas (Frankfurter, fixing BCE 23/11): <strong>USD/JPY 159,07</strong>, <strong>EUR/USD ~1,094</strong> y <strong>USD/BRL 5,998</strong>. La última tasa del <strong>UST 10Y disponible en FRED es 4,92% (20/11)</strong>, -12pb en el día.",
-      "contexto": "Después de haber funcionado como fuente de liquidez en el pánico del viernes, el oro recuperó su rol de cobertura frente a una Fed que sube tasas. La baja del petróleo reduce presión inflacionaria de corto plazo, una buena noticia de cara al PCE. El real en torno a 6 por dólar sigue siendo un factor de presión regional.",
+      "tag": "EE.UU. · Wall Street · Tecnología",
+      "tag_class": "tr",
+      "title": "Tecnología devuelve parte del rally: Nasdaq -1,5% y futuros otra vez abajo",
+      "brief": "Martes: S&amp;P 7.201 (-0,50%), Nasdaq 23.734 (-1,48%), Dow 50.019 (+0,85%). SPY -0,49%, QQQ -1,99%. Hoy futuros Nasdaq-100 entre -1,4% y -2%.",
+      "tldr": "El rebote de Nvidia no se sostiene; el mercado rota fuera de tecnología.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "El martes el <strong>Nasdaq cayó 1,48% a 23.733,54</strong> y el <strong>S&amp;P 500 0,50% a 7.201,09</strong>, mientras el <strong>Dow subió 0,85% a 50.018,70</strong>, primer cierre arriba de 50.000, ayudado por su menor peso tecnológico (TipRanks). En ETFs (Finnhub): <strong>SPY -0,49% a US$718,78</strong> y <strong>QQQ -1,99% a US$638,10</strong>. Esta mañana los <strong>futuros del Nasdaq-100 caen entre 1,4% y 2%</strong> y los del <strong>S&amp;P ~0,8%-1%</strong>, según la hora del relevamiento (Yahoo Finance/TipRanks), con <strong>Nvidia y chips</strong> otra vez en baja y ruido por <strong>aranceles</strong>.",
+      "contexto": "La rotación hacia el Dow muestra que el mercado no sale del riesgo en general, sino de la tecnología concentrada. Después del +6,5% del lunes, el Nasdaq ya devolvió una parte relevante y sigue muy dependiente de los titulares sobre Nvidia. Jueves cerrado por Thanksgiving y viernes con rueda corta: poca liquidez para absorber sorpresas.",
       "impacto": [
         {
-          "asset": "GLD",
-          "dir": "↑ 3,14% US$333,02",
-          "cls": "up"
-        },
-        {
-          "asset": "USO",
-          "dir": "↓ 4,49% US$133,36",
+          "asset": "QQQ",
+          "dir": "↓ 1,99% US$638,10",
           "cls": "dn"
         },
         {
-          "asset": "USD/BRL",
-          "dir": "5,998",
-          "cls": "neu"
+          "asset": "SPY",
+          "dir": "↓ 0,49% US$718,78",
+          "cls": "dn"
+        },
+        {
+          "asset": "Dow",
+          "dir": "↑ 0,85% 50.019",
+          "cls": "up"
         }
       ]
     },
     {
       "id": 4,
-      "tag": "Argentina · Bonos · Riesgo país",
-      "tag_class": "tg",
-      "title": "Riesgo país baja 35pb a 1.035 con el rebote; la plaza local reabre",
-      "brief": "Riesgo país 1.035pb el 23/11 (-35 vs. 1.070). Globales +1,5% promedio en el exterior durante el feriado. Hoy reabre la plaza local.",
-      "tldr": "Alivio parcial: el spread sigue arriba de 1.000pb y +180pb sobre el 16/11.",
-      "sentiment": "mx",
-      "sentiment_label": "🟡 Mixto",
-      "evento": "Con la plaza local cerrada el lunes por el <strong>feriado del Día de la Soberanía</strong>, el <strong>riesgo país bajó 35pb a 1.035pb</strong> (argentinadatos), después del máximo de 13 meses de 1.070pb del viernes. Según la prensa, los <strong>Globales subieron ~1,5% en promedio</strong> en el exterior y los ADRs acompañaron el rebote de Wall Street. Los precios locales (data912) siguen siendo los del cierre del viernes 20/11: <strong>GD30 US$49,27</strong>, <strong>AL30 US$47,50</strong>, <strong>GD35 US$65,00</strong>, <strong>AL35 US$60,00</strong>, GD29 US$51,09.",
-      "contexto": "El rebote es más de beta global que de cambio local: el spread sigue arriba de 1.000pb y +180pb sobre el 16/11. Pesan el debate por la reforma electoral y las dudas sobre el financiamiento de los vencimientos de 2027 (el Financial Times se hizo eco). Hoy la plaza local se pone al día con el movimiento del exterior; además, el <strong>30/11 vence la S30N6</strong>, con un vencimiento en pesos que la prensa ubica en torno a $20 billones.",
+      "tag": "EE.UU. · Fed · Inflación",
+      "tag_class": "tb",
+      "title": "Hoy sale el PCE de octubre: el mercado pricea 98% una suba de 25pb en diciembre",
+      "brief": "Consenso: PCE general 3,8% a/a; núcleo +0,3% m/m y 3,2% a/a. UST 10Y en 4,92% (FRED, 23/11).",
+      "tldr": "Un núcleo arriba de 0,3% reabre la puerta a 50pb; uno en línea consolida 25pb.",
+      "sentiment": "rf",
+      "sentiment_label": "🔴 Risk-Off",
+      "evento": "Hoy se publica el <strong>PCE de octubre</strong>. El consenso relevado por Dow Jones espera <strong>PCE general 3,8% a/a</strong> y <strong>núcleo +0,3% m/m</strong>, con el interanual subiendo a <strong>3,2%</strong>. El mercado de tasas asigna <strong>~98% de probabilidad a una suba de 25pb</strong> en la reunión de diciembre y recortó las chances de 50pb (Yahoo Finance). La última tasa del <strong>UST 10Y en FRED es 4,92% (23/11)</strong>, sin cambios frente al 20/11.",
+      "contexto": "Con la suba de 25pb casi descontada, la asimetría está en el dato: un núcleo caliente revive el escenario de 50pb y presiona a la curva y a los emergentes; uno en línea o benigno puede darle aire al rebote. Para Argentina, cada suba de los Treasuries encarece el refinanciamiento y amplía el spread que ya está en máximos del año.",
       "impacto": [
         {
-          "asset": "Riesgo país",
-          "dir": "↓ 1.035pb (-35)",
-          "cls": "up"
-        },
-        {
-          "asset": "Globales (exterior)",
-          "dir": "↑ ~1,5%",
-          "cls": "up"
-        },
-        {
-          "asset": "GD30 (cierre 20/11)",
-          "dir": "US$49,27",
+          "asset": "UST 10Y",
+          "dir": "4,92% (23/11)",
           "cls": "neu"
+        },
+        {
+          "asset": "Prob. suba 25pb dic.",
+          "dir": "~98%",
+          "cls": "dn"
         }
       ]
     },
     {
       "id": 5,
-      "tag": "Argentina · Dólar · Brecha",
-      "tag_class": "tr",
-      "title": "CCL en $1.806 y brecha de ~14%: el cambiario reabre bajo presión",
-      "brief": "CCL $1.806,2, MEP $1.743,1, blue $1.675, mayorista $1.580 (cierre 20/11). Brecha CCL/mayorista ~14,3%.",
-      "tldr": "La reapertura muestra si el rebote global alcanza para frenar al dólar financiero.",
-      "sentiment": "rf",
-      "sentiment_label": "🔴 Risk-Off",
-      "evento": "Cotizaciones dolarapi esta mañana: <strong>CCL $1.801,4/$1.806,2</strong>, <strong>MEP $1.682,6/$1.743,1</strong>, <strong>blue $1.655/$1.675</strong> y <strong>cripto $1.736,2</strong>. El <strong>mayorista ($1.580)</strong> y el <strong>oficial BNA ($1.550/$1.600)</strong> siguen en el cierre del viernes 20/11 porque el lunes fue feriado. La <strong>brecha CCL/mayorista queda en ~14,3%</strong> y la <strong>MEP/mayorista en ~10,3%</strong>.",
-      "contexto": "La semana pasada fue la mayor suba semanal del dólar en 19 meses y el BCRA cortó sus compras el viernes. Con el mercado de vuelta, el foco está en si el mayorista sigue marcando récords nominales y si el Central retoma la acumulación de reservas. Sin compras, crece la duda sobre cómo se cubren los vencimientos en dólares de enero.",
+      "tag": "Commodities · Monedas",
+      "tag_class": "tq",
+      "title": "Oro cae 2,3% y petróleo rebota 1,6%; el real se aprecia a 5,87",
+      "brief": "GLD -2,27% a US$325,45, USO +1,55% a US$135,43 (Finnhub, 24/11). USD/BRL 5,870, EUR/USD ~1,096, USD/JPY 159,07 (BCE 24/11).",
+      "tldr": "Movimientos opuestos al lunes: el oro devuelve la cobertura y el petróleo recupera.",
+      "sentiment": "mx",
+      "sentiment_label": "🟡 Mixto",
+      "evento": "El martes <strong>GLD cayó 2,27% a US$325,45</strong> y <strong>USO subió 1,55% a US$135,43</strong> (Finnhub), invirtiendo el movimiento del lunes. En monedas (Frankfurter, fixing BCE 24/11): <strong>USD/BRL 5,870</strong> (desde 5,998), <strong>EUR/USD ~1,096</strong> y <strong>USD/JPY 159,07</strong>.",
+      "contexto": "El rebote del petróleo es una mala noticia de cara a la inflación, justo el día del PCE. La apreciación del real (~2% frente al fixing previo) le saca presión regional al peso y contrasta con el castigo a los activos argentinos: el problema de ayer fue local, no regional.",
       "impacto": [
         {
-          "asset": "CCL",
-          "dir": "$1.806,2",
+          "asset": "GLD",
+          "dir": "↓ 2,27% US$325,45",
           "cls": "dn"
         },
         {
-          "asset": "Brecha CCL/mayorista",
-          "dir": "~14,3%",
-          "cls": "dn"
+          "asset": "USO",
+          "dir": "↑ 1,55% US$135,43",
+          "cls": "up"
         },
         {
-          "asset": "Mayorista (20/11)",
-          "dir": "$1.580",
-          "cls": "neu"
+          "asset": "USD/BRL",
+          "dir": "↓ 5,870",
+          "cls": "up"
         }
       ]
     }
   ],
   "tensiones": [
     {
-      "label": "Rally récord vs. toma de ganancias",
-      "texto": "El Nasdaq tuvo su mejor día desde abril de 2025, pero los futuros ya devuelven ~2%. Un rebote concentrado en una sola acción y en una semana corta no alcanza para confirmar un piso."
+      "label": "Brasil sube, Argentina baja",
+      "texto": "El real se apreció ~2% y el Dow marcó récord, pero los Globales cayeron ~2% y el riesgo país subió 59pb. El castigo de ayer fue idiosincrático: reservas y financiamiento 2027."
     },
     {
-      "label": "Huang vuelve, la SEC sigue",
-      "texto": "La reinstalación del CEO despeja el riesgo de liderazgo en Nvidia, pero la investigación contable de la SEC y la causa de California siguen abiertas y pueden volver a mover a todo el índice."
+      "label": "Brecha que cierra, spread que abre",
+      "texto": "La brecha CCL/mayorista bajó a ~12,8% y la MEP a ~6,4%, pero sin compras del BCRA la compresión viene por un oficial más caro, no por más oferta de dólares. El mercado de deuda no lo lee como alivio."
     },
     {
-      "label": "Alivio global vs. riesgo político local",
-      "texto": "El riesgo país baja 35pb por arrastre de Wall Street, pero sigue arriba de 1.000pb: el mercado discute la continuidad de las reglas después de 2027, algo que el rebote externo no resuelve."
+      "label": "Fed que sube con inflación en 3,8%",
+      "texto": "Con una suba de 25pb casi descontada para diciembre, el PCE de hoy decide si el ciclo se acelera. Un dato caliente con el petróleo rebotando complica a los emergentes de mayor beta."
     }
   ],
   "correlaciones": [
     {
       "par": "Riesgo país vs. Nasdaq",
-      "texto": "El viernes el Nasdaq cayó 5,3% y el riesgo país subió 139pb; el lunes el Nasdaq subió 6,5% y el spread bajó solo 35pb. La sensibilidad es asimétrica: Argentina sufre más las caídas de lo que aprovecha los rebotes."
+      "texto": "El lunes el Nasdaq subió 6,5% y el spread bajó 35pb; el martes el Nasdaq cayó 1,5% y el spread subió 59pb. La asimetría se profundiza: Argentina absorbe más las bajas que las subas."
     },
     {
-      "par": "Oro vs. acciones",
-      "texto": "GLD subió 3,14% junto con el S&amp;P (+4,7%), después de haber caído con las acciones el viernes: el oro vuelve a operar como cobertura, no como fuente de liquidez."
+      "par": "Real brasileño vs. Globales",
+      "texto": "USD/BRL bajó de 5,998 a 5,870 mientras los Globales caían ~2%: se rompe la correlación regional habitual, señal de que el factor de riesgo es local."
     },
     {
-      "par": "Petróleo vs. tecnología",
-      "texto": "USO cayó 4,49% mientras QQQ subía 7%: el rebote del riesgo vino con menor prima geopolítica en energía, lo que alivia la inflación de corto plazo."
+      "par": "Oro vs. petróleo",
+      "texto": "GLD -2,27% y USO +1,55% el martes, exactamente al revés que el lunes (+3,14% y -4,49%): ambos responden a la misma variable, la prima de riesgo inflacionaria antes del PCE."
     },
     {
-      "par": "Real brasileño vs. CCL",
-      "texto": "USD/BRL cerca de 6,0 (BCE 23/11) y CCL en $1.806: la debilidad del real sigue siendo un viento en contra regional para el peso."
+      "par": "Dow vs. Nasdaq",
+      "texto": "Dow +0,85% y Nasdaq -1,48% en la misma rueda: rotación sectorial, no salida generalizada del riesgo."
     }
   ],
-  "bottom_line": "Wall Street tuvo su <strong>mejor día desde abril de 2025</strong>: con la <strong>vuelta de Jensen Huang a Nvidia</strong> (+31,5%), el <strong>S&amp;P 500 subió 4,7%</strong> y el <strong>Nasdaq 6,5%</strong>, recuperando cerca de la mitad de la peor semana desde 2020. Esta mañana los <strong>futuros devuelven parte</strong> (Nasdaq-100 ~-2%) antes del <strong>PCE del miércoles</strong>, el dato que define la suba de la Fed en diciembre, en una semana corta por Thanksgiving. El oro sube y el petróleo cae, lo que ayuda del lado de la inflación. <strong>Para Argentina</strong>, el feriado del lunes dejó el ajuste para hoy: el <strong>riesgo país bajó 35pb a 1.035pb</strong> y los Globales subieron ~1,5% afuera, pero el spread sigue arriba de 1.000pb, el <strong>CCL está en $1.806</strong> con una <strong>brecha de ~14%</strong> y el BCRA no compra. El rebote externo da alivio, no cambia el diagnóstico: mantenemos <strong>cobertura cambiaria vía CCL/MEP</strong> en carteras en pesos, <strong>prudencia en soberanos en dólares</strong> priorizando el tramo corto (GD29/GD30), y seguimos de cerca la reapertura del mayorista y el <strong>vencimiento en pesos del 30/11</strong>."
+  "bottom_line": "El rebote del lunes duró un día. La <strong>tecnología volvió a caer</strong> (Nasdaq -1,48%, QQQ -1,99%) mientras el <strong>Dow cerró arriba de 50.000</strong>, y esta mañana los <strong>futuros del Nasdaq-100 caen entre 1,4% y 2%</strong> antes del <strong>PCE de octubre</strong>, con el mercado descontando ~98% una <strong>suba de 25pb de la Fed en diciembre</strong>; el petróleo rebota y el oro cede. <strong>Para Argentina</strong>, la reapertura fue negativa: el <strong>riesgo país subió 59pb a 1.094pb</strong>, máximo del año, con los Globales ~-2% y el <strong>BCRA sin comprar</strong>, en un día en que el real se apreciaba: el castigo es local. La brecha se achicó a <strong>~12,8% (CCL)</strong>, pero por un <strong>mayorista más alto ($1.593)</strong>, no por más dólares. Mantenemos <strong>cobertura vía CCL/MEP</strong> en carteras en pesos (con el MEP en $1.695 la cobertura es más barata), <strong>prudencia en soberanos</strong> priorizando el tramo corto (GD30/AL30) frente al largo, y seguimos el PCE de hoy, las compras del BCRA y el <strong>vencimiento de la S30N6 del 30/11</strong>."
 }
