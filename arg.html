@@ -587,13 +587,15 @@ var D={
           v:[2.05,2.27,2.32,2.57,2.63,2.54,2.14,1.83,2.05,2.03,1.84,1.71]},
   // EMAE — INDEC · Julio 2026 (publicado 24/09/2026). Ago-25 a jul-26 revisados vs edición anterior (normal, INDEC revisa cada mes).
   // EMAE — INDEC · Agosto 2026 (publicado 21/10/2026). Serie completa reemplazada con la edición vigente (INDEC revisa cada mes: p.ej. mar-26 6,4→6,5, jul-26 -1,4→-1,5).
-  emae:{l:["Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26"],
-        v:[7.9,5.3,6.4,2.8,2.1,4.8,3.2,-0.1,3.5,2.0,-1.5,6.5,2.2,0.7,3.1,-1.5,-1.7]},
-  emaeDesest:{l:["Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26"],
-              v:[0.0,1.3,-2.7,2.1,0.0,-1.0,0.4,0.7,0.4,0.0,-0.2,2.0,-0.1,-2.0,2.7,-1.4,-0.6,0.3,-2.8,0.1]},
+  // EMAE — INDEC · Septiembre 2026 (publicado 24/11/2026). Serie completa reemplazada con la edición vigente (ago-26 revisado -1,7→-1,6 a/a y +0,1→+0,4 desest.).
+  emae:{l:["Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26"],
+        v:[7.9,5.3,6.4,2.8,2.1,4.8,3.2,-0.1,3.5,2.0,-1.5,6.4,2.1,0.7,3.1,-1.5,-1.6,-1.2]},
+  emaeDesest:{l:["Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26"],
+              v:[0.1,1.3,-2.8,1.8,0.0,-0.8,0.7,0.9,0.3,-0.2,-0.3,2.0,0.1,-2.0,2.5,-1.6,-0.7,0.5,-2.5,0.4,1.1]},
   sectEne26:{n:["Agro","Miner\u00eda","Pesca","Fin.","Construc.","Industria","Comercio"],v:[25.1,9.6,50.8,5.2,1.1,-2.6,-3.2]},
   sectMar26:{n:["Pesca","Agro","Miner\u00eda","Industria","Construc."],v:[30.9,17.9,16.3,4.6,7.6]},
   sectMay26:{n:["Miner\u00eda","Electr./Gas","Agro","Industria","Comercio","Pesca"],v:[15.7,8.0,4.6,-5.6,-4.3,-29.3]},
+  sectSep26:{n:["Miner\u00eda","Electr./Gas","Construcci\u00f3n","Hoteles","Industria","Interm. fin.","Pesca"],v:[11.1,4.0,3.5,3.4,-1.8,-11.5,-48.6]},  // INDEC EMAE sep-26, Cuadro 4 (a/a)
   sectAgo26:{n:["Miner\u00eda","Electr./Gas","Hoteles","Construcci\u00f3n","Industria","Comercio","Pesca"],v:[11.1,4.3,3.1,-2.5,-3.2,-3.5,-15.7]},
   sectJun26:{n:["Pesca","Miner\u00eda","Agro","Construcci\u00f3n","Industria","Adm. P\u00fablica"],v:[247.6,15.6,4.6,2.8,1.9,-1.5]},
   // Colch\u00f3n de Liquidez BCRA en Rueda REPO (ARS billones) \u2014 A3/MAE (volumen/tasas, live) + BCRA API id=198 "Otros" (rezago).
@@ -1034,8 +1036,8 @@ function buildINDEC(){
   $('kstrip').innerHTML=kpis([
     {l:'IPC Oct 26 MoM',v:'2.2%',c:'r',n:'N\u00facleo 1.5% \u00b7 Reg. 2.9%'},
     {l:'IPC Oct 26 YoY',v:'33.1%',c:'r',n:'Acum. 2026: 26.3%'},
-    {l:'EMAE Ago 26 YoY',v:'-1.7%',c:'r',n:'Desest. MoM +0.1%'},
-    {l:'EMAE Desest. Ago 26',v:'+0.1%',c:'g',n:'MoM sin estacionalidad'},
+    {l:'EMAE Sep 26 YoY',v:'-1.2%',c:'r',n:'Desest. MoM +1.1%'},
+    {l:'EMAE Desest. Sep 26',v:'+1.1%',c:'g',n:'MoM sin estacionalidad'},
     {l:'Desempleo Q2 26',v:'7.9%',c:'r',n:'EPH \u00b7 31 aglomerados'},
     {l:'ICA Oct 26 Super\u00e1vit',v:'$3.394M',c:'g',n:'+$2.581M vs oct-25'},
     {l:'Expo Oct 26',v:'$10.061M',c:'g',n:'+26.4% YoY \u00b7 precios +19.7%'},
@@ -1049,7 +1051,7 @@ function buildINDEC(){
       shdr('INDEC &mdash; Estad\u00edsticas Oficiales','Todos los indicadores publicados por el INDEC &middot; Agosto 2026','')+
       '<div class="og">'+
         ocard('om0','IPC \u00b7 Precios','&Iacute;ndice Precios Consumidor','MoM / YoY / Categor\u00edas','2.2%','r','Oct 2026','N\u00facleo 1.5%<br>Reg. 2.9%',1)+
-        ocard('om1','EMAE \u00b7 Actividad','Est. Mensual Actividad Ec.','YoY / Desestacionalizado','-1.7%','r','Ago 2026','Desest. +0.1%<br>Tend-ciclo 0.0%',2)+
+        ocard('om1','EMAE \u00b7 Actividad','Est. Mensual Actividad Ec.','YoY / Desestacionalizado','-1.2%','r','Sep 2026','Desest. +1.1%<br>Tend-ciclo 0.0%',2)+
         ocard('om2','EPH \u00b7 Laboral','Encuesta Perm. Hogares','Desempleo / Actividad / Empleo','7.9%','r','Q2 2026','Actividad 48.9%<br>Subocup. 11.5%',3)+
         ocard('om3','ICA \u00b7 Comercio','Intercambio Comercial','Bienes: Expo / Impo / Saldo','$3.394M','g','Oct 2026','Expo $10.061M<br>+26.4% YoY',4)+
         ocard('om4','ISAC · Construcción','Ind. Sintético Activ. Constr.','Variación YoY INDEC','+5.1%','g','Sep 2026','MoM desest +7.8% · acum +1.3%',5)+
@@ -1067,11 +1069,11 @@ function buildINDEC(){
       bx1('ci7','h220','IPC N\u00facleo vs N\u00facleo \u201cex-Carnes\u201d \u2014 Carnes pesa ~13.1% dentro de N\u00facleo (c\u00e1lculo Amberes)','c-indec'),
       cal)+
     panel2col('p2',
-      shdr('EMAE \u00b7 Actividad Econ\u00f3mica','INDEC \u2014 Var. interanual y desestacionalizada','-1.7%','Ago 2026 \u00b7 YoY','r')+
-      src('INDEC \u00b7 emae_10_263A9DC1ED2B.pdf \u00b7 Agosto 2026 (publicado 21/10/2026)')+
-      sr4([{l:'EMAE YoY Ago 26',v:'-1.7%',c:'r',n:'5/15 sectores en alza \u00b7 Miner\u00eda +11.1%',x:'indec'},{l:'Desest. MoM Ago 26',v:'+0.1%',c:'g',n:'Tend-ciclo 0.0%',x:'indec'},{l:'EMAE YoY Jul 26',v:'-1.5%',c:'r',n:'Desest. MoM -2.8% (revisado)',x:'indec'},{l:'EMAE YoY Jun 26',v:'+3.1%',c:'g',n:'Desest. MoM +0.3%',x:'indec'}])+
+      shdr('EMAE \u00b7 Actividad Econ\u00f3mica','INDEC \u2014 Var. interanual y desestacionalizada','-1.2%','Sep 2026 \u00b7 YoY','r')+
+      src('INDEC \u00b7 emae_11_26C3D902DB86.pdf \u00b7 Septiembre 2026 (publicado 24/11/2026)')+
+      sr4([{l:'EMAE YoY Sep 26',v:'-1.2%',c:'r',n:'5/15 sectores en alza \u00b7 Miner\u00eda +11.1% \u00b7 Pesca -48.6%',x:'indec'},{l:'Desest. MoM Sep 26',v:'+1.1%',c:'g',n:'Tend-ciclo 0.0% \u00b7 acum. 2026 +1.0%',x:'indec'},{l:'EMAE YoY Ago 26',v:'-1.6%',c:'r',n:'Desest. MoM +0.4% (revisado)',x:'indec'},{l:'EMAE YoY Jul 26',v:'-1.5%',c:'r',n:'Desest. MoM -2.5% (revisado)',x:'indec'}])+
       bx1('ea1','h240','EMAE Desestacionalizado MoM \u2014 Sin efecto estacionalidad','c-indec')+
-      bx2(['ea2','ea3'],['EMAE YoY \u2014 Crecimiento interanual mensual','Din\u00e1mica Sectorial YoY \u2014 Ago 2026 (principales)'],'h190',['c-indec','']),
+      bx2(['ea2','ea3'],['EMAE YoY \u2014 Crecimiento interanual mensual','Din\u00e1mica Sectorial YoY \u2014 Sep 2026 (principales)'],'h190',['c-indec','']),
       cal)+
     panel2col('p3',
       shdr('EPH \u00b7 Mercado de Trabajo','INDEC \u2014 31 aglomerados urbanos \u00b7 EPH Continua','7.9%','Q2 2026 \u00b7 Desempleo','r')+
@@ -1153,7 +1155,7 @@ function buildINDEC(){
     // EMAE
     bar('ea1',D.emaeDesest.l,D.emaeDesest.v,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ai});
     line('ea2',D.emae.l,[{label:'EMAE YoY',data:D.emae.v,borderColor:ai,fill:true,backgroundColor:ai+'18',tension:0.4,pointRadius:3,pointBackgroundColor:ai}],'%',undefined,ai);
-    bar('ea3',D.sectAgo26.n,D.sectAgo26.v,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ai});
+    bar('ea3',D.sectSep26.n,D.sectSep26.v,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ai});
     // EPH
     bar('lb1',D.eph.l,D.eph.desempleo,{cf:function(v){return v>8?C.RD:v>7?C.OR:C.G4;},ac:ai});
     line('lb2',D.eph.l,[
@@ -2643,21 +2645,21 @@ async function buildREM(){
 D.mkt = {
   isLive: false,
   fetchedAt: null,
-  spot: 1600,
-  spotFecha: '24/11/2026',
+  spot: 1615,
+  spotFecha: '25/11/2026',
   // Contratos activos (auto, update_rofex_dashboard.py)
   contratos: ['Nov 26','Dic 26','Ene 27','Feb 27','Mar 27','Abr 27','May 27','Jun 27'],
   venc:       ['2026-11-30','2026-12-31','2027-01-31','2027-02-28','2027-03-31','2027-04-30','2027-05-31','2027-06-30'],
-  precios:    [1584.0, 1623.0, 1656.5, 1688.0, 1722.0, 1757.0, 1787.0, 1833.0],
-  preciosPrev:[1572.5, 1608.0, 1641.0, 1670.0, 1709.0, 1740.0, 1773.0, 1805.5],
+  precios:    [1595.5, 1632.5, 1664.5, 1695.0, 1733.0, 1770.0, 1802.0, 1832.5],
+  preciosPrev:[1584.0, 1623.0, 1656.5, 1688.0, 1722.0, 1757.0, 1787.0, 1833.0],
   // OI en lots (IA de CEM MatbaRofex, un lot = USD 1.000)
-  oi:         [2136558, 894890, 660753, 216796, 273567, 183069, 145187, 25818],
-  oiPrev:     [2025486, 851406, 646664, 216402, 273193, 143400, 144671, 25724],
-  vol:        [867552, 596198, 357851, 14617, 3690, 153987, 1689, 846],
+  oi:         [2082276, 1137565, 687499, 219287, 272973, 192901, 143406, 26363],
+  oiPrev:     [2136558, 894890, 660753, 216796, 273567, 183069, 145187, 25818],
+  vol:        [840981, 1147792, 123081, 4842, 3833, 26640, 13863, 1888],
   // Historial OI total del mercado (todos los contratos DLR) — últimas 10 jornadas
   oiHist:{
-    l:['5/11','6/11','11/11','12/11','13/11','16/11','17/11','18/11','19/11','20/11'],
-    v:[3724756, 3725063, 3716459, 3806092, 3960710, 4069429, 4090930, 4330668, 4465545, 4675778]
+    l:['6/11','11/11','12/11','13/11','16/11','17/11','18/11','19/11','20/11','24/11'],
+    v:[3725063, 3716459, 3806092, 3960710, 4069429, 4090930, 4330668, 4465545, 4675778, 4900986]
   }
 };
 
