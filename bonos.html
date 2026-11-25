@@ -572,7 +572,7 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
           <option value="M31G6">M31G6 — LETAMAR vto 31/08/26</option>
         </optgroup>
         <optgroup label="Bonos TAMAR (cero cupón ajustado)">
-          <option value="TMF27">TMF27 — Bono TAMAR vto 28/02/27</option>
+          <option value="TMF27">TMF27 — Bono TAMAR vto 26/02/27</option>
           <option value="TML27">TML27 — Bono TAMAR vto 30/07/27</option>
           <option value="TMG27">TMG27 — Bono TAMAR vto 31/08/27</option>
           <option value="TMF28">TMF28 — Bono TAMAR vto 25/02/28</option>
@@ -2733,12 +2733,12 @@ const SEED_TAMAR_RATE = calcTamarTEM(22.8125); // ≈ 1.9001% (fórmula oficial 
 // piso_tna = tasa fija mínima garantizada del bono dual
 const TMR_INSTR = {
   M31G6: {tipo:'LETAMAR',    vtod:'31/08/26', vtoi:'2026-08-31', emision:'2025-08-29', piso_tem:null},
-  TMF27: {tipo:'BONO TAMAR', vtod:'28/02/27', vtoi:'2027-02-28', emision:'2025-02-28', piso_tem:null},
+  TMF27: {tipo:'BONO TAMAR', vtod:'26/02/27', vtoi:'2027-02-26', emision:'2026-02-13', piso_tem:null, margen:6.50}, // términos verificados 25/11/2026: emisión/vto A3 (api/emisiones/tp) y margen de la licitación original (RC 16/21/23 2026, comunicados Finanzas); margen 6,50% ficha A3
   // Agregados 01/09/2026 (ver memoria bonos-dashboard-cer-audit): faltaban, cotizan en vivo (data912) con volumen alto
-  TML27: {tipo:'BONO TAMAR', vtod:'30/07/27', vtoi:'2027-07-30', emision:'2026-06-30', piso_tem:null},
-  TMG27: {tipo:'BONO TAMAR', vtod:'31/08/27', vtoi:'2027-08-31', emision:'2025-08-29', piso_tem:null},
-  TMF28: {tipo:'BONO TAMAR', vtod:'25/02/28', vtoi:'2028-02-25', emision:'2026-04-15', piso_tem:null},
-  TMG28: {tipo:'BONO TAMAR', vtod:'31/08/28', vtoi:'2028-08-31', emision:'2026-05-28', piso_tem:null},
+  TML27: {tipo:'BONO TAMAR', vtod:'30/07/27', vtoi:'2027-07-30', emision:'2026-06-30', piso_tem:null, margen:5.40},   // margen 5,40% ficha A3
+  TMG27: {tipo:'BONO TAMAR', vtod:'31/08/27', vtoi:'2027-08-31', emision:'2026-04-01', piso_tem:null, margen:6.00},   // RC 16/2026 art. 6; margen 6,00% fijado en la conversión TZX26 del 27/03/2026
+  TMF28: {tipo:'BONO TAMAR', vtod:'25/02/28', vtoi:'2028-02-25', emision:'2026-04-20', piso_tem:null, margen:6.50},   // RC 21/2026 art. 10; margen 6,50% fijado en la licitación/conversión TTS26 del 15/04/2026
+  TMG28: {tipo:'BONO TAMAR', vtod:'31/08/28', vtoi:'2028-08-31', emision:'2026-04-30', piso_tem:null, margen:6.90},   // RC 23/2026; margen 6,90% (resultado oficial 28/04/2026, TMG28 nuevo)
   // Duales TAMAR/piso — emitidos 24/01/2025, piso TEM confirmado por prospecto
   TTJ26: {tipo:'DUAL',         vtod:'30/06/26', vtoi:'2026-06-30', emision:'2025-01-24', piso_tem:2.19/100, cer0:null},
   TTS26: {tipo:'DUAL',         vtod:'15/09/26', vtoi:'2026-09-15', emision:'2025-01-24', piso_tem:2.17/100, cer0:null}, // vto corregido 15/09/2026 (era 30/09/26, fecha real via bonistas/cohen/docta)
@@ -2771,10 +2771,16 @@ function tmrRow(d, tamarTEM) {
   const pCls      = 'color:#94adc8';
 
   if (instr.tipo === 'LETAMAR' || instr.tipo === 'BONO TAMAR') {
-    // VPV = precio_hoy × (1 + TAMAR_TEM)^(días_rest_30_360/30)
-    const vtVto   = precio * Math.pow(1 + tamarTEM, mesesRest);
-    const retDir  = vtVto / precio - 1;   // = (1+TAMAR_TEM)^meses - 1
-    const tnaEquiv= tamarTEM * 12 * 100;  // TNA ≈ TEM×12
+    // 25/11/2026: el pago al vto. es VNO×(1+TEM(TAMAR promedio + margen))^(días emisión→vto/30) (prospecto). Se proyecta con
+    // tamarDualCalc (TAMAR publicada + la actual para el resto) y la tasa es la implícita entre el precio de hoy y ese pago.
+    // Antes: precio×(1+TAMAR TEM)^meses → ignoraba el margen y lo ya devengado (spread siempre ≈0).
+    const T = tamarDualCalc(instr, today);
+    const vtVto   = T ? T.payVto : precio * Math.pow(1 + tamarTEM, mesesRest);
+    const retDir  = vtVto / precio - 1;
+    const temImp  = Math.pow(1 + retDir, 1 / mesesRest) - 1;
+    const tnaEquiv= temImp * 12 * 100;
+    const spread  = T ? tnaEquiv - T.tnaLast : null;   // TNA implícita − TAMAR TNA actual (pp)
+    const tipSp   = T ? `TAMAR prom. a la fecha ${T.avgNow.toFixed(2)}% · margen contractual ${(instr.margen||0).toFixed(2)}% · pago proyectado al vto. ${T.payVto.toFixed(2)} por 100 VNO` : 'sin historia TAMAR';
 
     return `<tr>
       <td>${d.symbol}<span style="font-size:8px;margin-left:4px;padding:1px 5px;border-radius:3px;background:rgba(244,114,182,.1);border:1px solid rgba(244,114,182,.3);color:#f472b6">${instr.tipo==='LETAMAR'?'LT':'BT'}</span></td>
@@ -2784,9 +2790,9 @@ function tmrRow(d, tamarTEM) {
       <td style="color:var(--mu)">${pr(d.ask)}</td>
       <td style="color:var(--mu)">${mesesRest.toFixed(2)} meses</td>
       <td style="color:var(--gr);font-weight:600">${p2(retDir*100)}</td>
-      <td style="color:#f472b6;font-weight:600">${p2(tamarTEM*100)}</td>
+      <td style="color:#f472b6;font-weight:600">${p2(temImp*100)}</td>
       <td style="color:var(--am)">${p2(tnaEquiv)}</td>
-      <td style="color:var(--mu)">≈ 0%</td>
+      <td style="color:${spread==null?'var(--mu)':spread>=0?'var(--gr)':'var(--rd)'}" title="${tipSp}">${spread==null?'—':(spread>=0?'+':'')+spread.toFixed(2)+'pp'}</td>
       <td style="${pchCls}">${d.pct!=null?(d.pct>=0?'+':'')+d.pct.toFixed(2)+'%':'—'}</td>
     </tr>`;
   }
@@ -2946,6 +2952,9 @@ function tamarDualCalc(instr, today){
 function tmrDualCTRender(){
   const L=window._tmrDualCTList; if(!L) return;
   document.getElementById('tmr-duales-cer').innerHTML=L.map(d=>tmrRow(d,tmrTamarTEM)).join('');
+  // los BONO TAMAR también dependen de la historia TAMAR (pago al vto. con margen): re-render cuando llega
+  const B=(window._tmrLast&&window._tmrLast.bonds)||[]; const el=document.getElementById('tmr-bonos');
+  if(el && B.length) el.innerHTML=B.filter(d=>TMR_INSTR[d.symbol]?.tipo==='BONO TAMAR').map(d=>tmrRow(d,tmrTamarTEM)).join('');
 }
 function tmrRender(notes, bonds, tamarTEM) {
   window._tmrLast = {notes: notes || [], bonds: bonds || []};
@@ -3058,11 +3067,11 @@ async function tmrRefresh(){
 
 const TSIM_INSTR = {
   M31G6: {tipo:'LETAMAR',    vtoi:'2026-08-31', vtod:'31/08/26', emision:'2025-08-01', piso_tem:null, vn_emision:100},
-  TMF27: {tipo:'BONO TAMAR', vtoi:'2027-02-28', vtod:'28/02/27', emision:'2025-02-01', piso_tem:null, vn_emision:100},
-  TML27: {tipo:'BONO TAMAR', vtoi:'2027-07-30', vtod:'30/07/27', emision:'2026-06-30', piso_tem:null, vn_emision:100},
-  TMG27: {tipo:'BONO TAMAR', vtoi:'2027-08-31', vtod:'31/08/27', emision:'2025-02-01', piso_tem:null, vn_emision:100},
-  TMF28: {tipo:'BONO TAMAR', vtoi:'2028-02-25', vtod:'25/02/28', emision:'2026-04-15', piso_tem:null, vn_emision:100},
-  TMG28: {tipo:'BONO TAMAR', vtoi:'2028-08-31', vtod:'31/08/28', emision:'2026-05-28', piso_tem:null, vn_emision:100},
+  TMF27: {tipo:'BONO TAMAR', vtoi:'2027-02-26', vtod:'26/02/27', emision:'2026-02-13', piso_tem:null, vn_emision:100, margen:6.50},
+  TML27: {tipo:'BONO TAMAR', vtoi:'2027-07-30', vtod:'30/07/27', emision:'2026-06-30', piso_tem:null, vn_emision:100, margen:5.40},
+  TMG27: {tipo:'BONO TAMAR', vtoi:'2027-08-31', vtod:'31/08/27', emision:'2026-04-01', piso_tem:null, vn_emision:100, margen:6.00},
+  TMF28: {tipo:'BONO TAMAR', vtoi:'2028-02-25', vtod:'25/02/28', emision:'2026-04-20', piso_tem:null, vn_emision:100, margen:6.50},
+  TMG28: {tipo:'BONO TAMAR', vtoi:'2028-08-31', vtod:'31/08/28', emision:'2026-04-30', piso_tem:null, vn_emision:100, margen:6.90},
   TTJ26: {tipo:'DUAL',       vtoi:'2026-06-30', vtod:'30/06/26', emision:'2025-01-24', piso_tem:2.19/100, vn_emision:100},
   TTS26: {tipo:'DUAL',       vtoi:'2026-09-15', vtod:'15/09/26', emision:'2025-01-24', piso_tem:2.17/100, vn_emision:100}, // vto corregido 15/09/2026
   TTD26: {tipo:'DUAL',       vtoi:'2026-12-15', vtod:'15/12/26', emision:'2025-01-24', piso_tem:2.14/100, vn_emision:100},
@@ -5342,7 +5351,7 @@ function cartTamarPay(i, A, margen){
 // pago proyectado al vencimiento de TAMAR y duales (por 100 VN, ARS)
 function cartProjPay(u, A){
   const i = u.instr, emi = new Date(i.emision+'T00:00:00'), vto = new Date(i.vtoi+'T00:00:00');
-  if(i.tipo === 'LETAMAR' || i.tipo === 'BONO TAMAR') return {pay: cartTamarPay(i, A, 0), leg:'TAMAR'};
+  if(i.tipo === 'LETAMAR' || i.tipo === 'BONO TAMAR') return {pay: cartTamarPay(i, A, i.margen || 0), leg:'TAMAR'};   // margen contractual (antes 0)
   if(i.tipo === 'DUAL'){ const t = cartTamarPay(i, A, 0), f = 100*Math.pow(1 + i.piso_tem, days30360(emi, vto)/30); return t >= f ? {pay:t, leg:'TAMAR'} : {pay:f, leg:'tasa fija'}; }
   if(i.tipo === 'DUAL TAMAR/USD'){
     // VN en USD (el precio cotiza en ARS por 100 USD de VN, como las letras DL). Paga el mayor entre:
