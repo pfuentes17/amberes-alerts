@@ -3585,7 +3585,7 @@ const SEED_HD_BP = [
 // desfasaje (ej. AL30 precio semilla 64.40 vs real 55.54, -13.7%) — como hdRenderAll() sólo
 // corrige el YTM mostrado por una aproximación de duración modificada respecto a ESTE ancla
 // (ΔYTM≈-ΔP/P/Dur), un ancla vieja producía un YTM sistemáticamente mal, no sólo desactualizado.
-// GD46 no está en el feed en vivo (rendimientos.co no lo cubre) — price_usd estimado por paridad
+// GD46 no está en rendimientos.co: en vivo se toma GD46D (USD MEP) de data912/arg_bonds en hdRefresh (desde 25/11/2026). Antes era un precio estimado por paridad
 // implícita ARS/USD de GD41 (mismo emisor/ley, duración similar) aplicada al precio ARS de
 // bonistas.com; ver hdRenderAll() para el fallback que evita que desaparezca de la tabla.
 const SEED_HD_SOB = [
@@ -3594,7 +3594,7 @@ const SEED_HD_SOB = [
   {symbol:'GD35',price_usd:78.71,bid:78.74,ask:78.80,pct_change:-0.56,  ytm:'9.60%',duration:'5.20',volume:2646730},
   {symbol:'GD38',price_usd:82.71,bid:82.52,ask:82.67,pct_change:0.49,   ytm:'9.44%',duration:'4.47',volume:406712},
   {symbol:'GD41',price_usd:73.07,bid:73.04,ask:73.11,pct_change:-0.94,  ytm:'9.79%',duration:'5.66',volume:916002},
-  {symbol:'GD46',price_usd:67.01,bid:66.90,ask:67.10,pct_change:0.0,    ytm:'9.68%',duration:'6.10',volume:0}, // estimado, ver nota arriba
+  {symbol:'GD46',price_usd:56.74,bid:55.97,ask:56.74,pct_change:0.0,    ytm:'9.68%',duration:'6.10',volume:0}, // seed 25/11/2026 = GD46D data912 (en vivo se toma GD46D, ver hdRefresh)
   {symbol:'AL29',price_usd:54.25,bid:54.22,ask:54.27,pct_change:-0.31,  ytm:'8.05%',duration:'1.45',volume:167699},
   {symbol:'AL30',price_usd:55.54,bid:55.53,ask:55.54,pct_change:-0.05,  ytm:'8.93%',duration:'1.86',volume:72364169},
   {symbol:'AL35',price_usd:74.75,bid:74.75,ask:74.78,pct_change:-0.66,  ytm:'10.71%',duration:'5.12',volume:951053},
@@ -3989,6 +3989,7 @@ const HDD_AMORT = {
   '29':hddSched(2025,1,10,10), '30':[['2024-07-09',4],...hddSched(2025,1,12,8)], '35':hddSched(2031,1,10,10),
   '38':hddSched(2027,7,22,100/22), '41':hddSched(2028,1,28,100/28), '46':hddSched(2025,1,44,100/44),
 };
+let HD_GD46_LIVE = false;  // true cuando el precio de GD46 viene en vivo (GD46D de data912)
 const HDD_BONDS = ['GD29','GD30','GD35','GD38','GD41','GD46','AL29','AL30','AL35','AE38','AL41'];
 const HDD_END_MANDATO = '2027-12-10';
 let hddLast = null, hddChart = null;
@@ -4124,6 +4125,12 @@ async function hdRefresh(){
     const sobData=(sobRes.data||sobRes).filter(d=>HD_CONFIG[d.symbol]);
     const allBonds=Array.isArray(bondsRes)?bondsRes:(bondsRes.data||[]);
     const bpData=allBonds.filter(d=>BP_CONFIG[d.symbol]);
+    // GD46 no viene en rendimientos.co: se toma GD46D (USD MEP) de data912/arg_bonds (25/11/2026; antes era un precio estimado fijo)
+    HD_GD46_LIVE=false;
+    if(!sobData.some(d=>d.symbol==='GD46')){
+      const g=allBonds.find(d=>d.symbol==='GD46D'), px=g&&(g.c>0?g.c:((g.px_bid>0&&g.px_ask>0)?(g.px_bid+g.px_ask)/2:0));
+      if(px>0){ sobData.push({symbol:'GD46',price_usd:px,bid:g.px_bid||null,ask:g.px_ask||null,pct_change:g.pct_change??0,volume:g.v||0}); HD_GD46_LIVE=true; }
+    }
     hdRenderAll(sobData, bpData);
     setStatus('live','En vivo · '+now8());
   }catch(e){
@@ -4615,7 +4622,7 @@ function onxFitPlain(pts){  // mismo modelo y = a + b·ln(1+x), sin descartar pu
 }
 function onxSovCurve(){
   const pts=[];
-  Object.keys(HD_CONFIG).forEach(k=>{ const y=HD_YTM[k], c=HD_CONFIG[k]; if(c.tipo==='GD'&&k!=='GD46'&&Number.isFinite(y)&&c.vto) pts.push({x:onxYears(c.vto),y}); });  // solo Globales (GD46 es estimado)
+  Object.keys(HD_CONFIG).forEach(k=>{ const y=HD_YTM[k], c=HD_CONFIG[k]; if(c.tipo==='GD'&&(k!=='GD46'||HD_GD46_LIVE)&&Number.isFinite(y)&&c.vto) pts.push({x:onxYears(c.vto),y}); });  // solo Globales (GD46 es estimado)
   pts.sort((a,b)=>a.x-b.x); return pts;
 }
 function onxInterp(pts,x){
@@ -5048,10 +5055,10 @@ const PVD_USD = [
   {sym:'AO28',vto:'31/10/2028',md:1.98,tir:9.30},{sym:'AO29',vto:'31/10/2029',md:2.81,tir:10.20},
   {sym:'GD41',vto:'09/07/2041',md:5.69,tir:9.60},
 ];
-const PVD_USD_LIVE = ['AO27','GD29','AO28','GD30','AO29','AN29','GD38','GD35','GD41'];   // ley NY + Bonares nuevos (GD46 excluido: precio estimado)
+const PVD_USD_LIVE = ['AO27','GD29','AO28','GD30','AO29','AN29','GD38','GD35','GD41','GD46'];   // ley NY + Bonares nuevos (GD46 solo si cotiza en vivo, ver HD_GD46_LIVE)
 const PVD_RSTAR_USD = 3.84;   // r* USD (d=69,76%, pb=2,25%, g=0,60%) — ver texto de la sección
 function pvdUsdRows(){
-  const live = PVD_USD_LIVE.filter(k => HD_EXACT[k] && Number.isFinite(HD_YTM[k]) && Number.isFinite(HD_MD[k]))
+  const live = PVD_USD_LIVE.filter(k => (k!=='GD46'||HD_GD46_LIVE) && HD_EXACT[k] && Number.isFinite(HD_YTM[k]) && Number.isFinite(HD_MD[k]))
     .map(k => { const c = HD_CONFIG[k] || {}, v = AO_TERMS[k] ? AO_TERMS[k].vto : (c.vto || ''); return {sym:k, vto:v ? v.split('-').reverse().join('/') : '—', md:HD_MD[k], tir:HD_YTM[k]}; })
     .sort((a,b) => a.md - b.md);
   return live.length >= 3 ? {rows:live, live:true} : {rows:PVD_USD, live:false};
