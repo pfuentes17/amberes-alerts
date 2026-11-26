@@ -225,6 +225,16 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
 .cp-t td.num{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;}
 .cp-tag{font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 6px;border-radius:3px;border:1px solid var(--c);color:var(--c);white-space:nowrap;}
 .cp-note{font-size:10.5px;color:var(--mu);line-height:1.6;margin-top:10px;}
+.cp-ch{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;}
+.cp-ch h4{font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;margin-bottom:6px;}
+.cp-cr{display:grid;grid-template-columns:minmax(0,1fr) auto 64px;gap:10px;align-items:center;padding:7px 0;border-top:1px solid rgba(255,255,255,.05);}
+.cp-cr .tk{font-family:'IBM Plex Mono',monospace;font-weight:600;color:#e8f0f8;font-size:12px;}
+.cp-cr .nm{font-size:10.5px;color:var(--mu);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.cp-cr .fr{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--mu);white-space:nowrap;text-align:right;}
+.cp-cr .dd{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;text-align:right;font-variant-numeric:tabular-nums;}
+.cp-mot{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.04em;padding:1px 6px;border-radius:3px;margin-top:3px;border:1px solid var(--c);color:var(--c);}
+.cp-sum{font-size:12px;color:#c9d8e8;line-height:1.6;margin-bottom:12px;}
+@media(max-width:860px){.cp-ch{grid-template-columns:minmax(0,1fr);}}
 @media(max-width:860px){.cp-grid{grid-template-columns:minmax(0,1fr);}.cp-cards{grid-template-columns:minmax(0,1fr);}.cp-row{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 52px 56px;}.cp-t td.nm{max-width:140px;}}
 </style>
 <script>/* tema Amberes: activo por defecto; ?theme=off lo desactiva, ?theme=amberes lo reactiva */var _t=1;try{var q=location.search;if(/theme=off/.test(q))localStorage.setItem("amb-theme","0");if(/theme=amberes/.test(q))localStorage.setItem("amb-theme","1");_t=localStorage.getItem("amb-theme")!=="0";}catch(e){}if(_t){var l=document.createElement("link");l.rel="stylesheet";l.href="/amberes-theme.css";document.head.appendChild(l);}</script>
@@ -285,7 +295,13 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
           <th data-k="t">Instrumento</th><th data-k="n">Nombre</th><th data-k="tipo">Tipo</th><th data-k="exp">Exposición</th><th data-k="pct" class="r">% cartera</th><th data-k="d" class="r">Var. pp</th>
         </tr></thead><tbody id="cp-tb"></tbody></table></div>
         <div class="cp-note" id="cp-salieron"></div>
-        <div class="cp-note">Fuente: export de tenencias de Inviu (todas las cuentas), consolidado por instrumento. Se actualiza los lunes. La página muestra solo porcentajes: los montos quedan en el Excel interno del CRO. Exposición: dólar linked y duales TAMAR/dólar linked se pagan en pesos pero ajustan por el tipo de cambio oficial; los CEDEARs se cuentan como dólares (siguen al CCL).</div>
+        <div class="cp-note">Fuente: export de tenencias de Inviu (todas las cuentas), consolidado por instrumento. Las posiciones en dólares (fondos en USD, cauciones en USD, especies en cable) se pasan a pesos con el mismo tipo de cambio que usa Inviu para el % de cada cliente. Se actualiza los lunes. La página muestra solo porcentajes: los montos quedan en el Excel interno del CRO. Exposición: dólar linked y duales TAMAR/dólar linked se pagan en pesos pero ajustan por el tipo de cambio oficial; los CEDEARs se cuentan como dólares (siguen al CCL).</div>
+      </div>
+      <div class="cp-box" id="cp-cambios-box" style="margin-top:14px">
+        <div class="cp-h" id="cp-cambios-h">Principales cambios</div>
+        <div class="cp-sub">En puntos porcentuales (pp) de la cartera total. El motivo sale de la cantidad total de cada instrumento sumando todas las cuentas: si cambió más de 2% fue por compras o ventas netas; si no, el % se movió por precio (o tipo de cambio).</div>
+        <div class="cp-sum" id="cp-cambios-sum"></div>
+        <div class="cp-ch"><div><h4 style="color:var(--cy)">Ganaron peso</h4><div id="cp-sube"></div></div><div><h4 style="color:var(--or)">Perdieron peso</h4><div id="cp-baja"></div></div></div>
       </div>
     </div>
   </div>
@@ -1338,16 +1354,32 @@ async function loadBenchmarks(d) {
 
   function render(){
     const pv=D.prev?fD(D.prev):null;
-    document.getElementById('cp-meta').innerHTML=`<div><span class="dot live"></span>Foto del <b>${D.fecha}</b></div><div>${pv?'Comparado con '+pv:'Primera foto'}</div><div>${D.n_inst} instrumentos · solo porcentajes</div>`;
+    document.getElementById('cp-meta').innerHTML=`<div><span class="dot live"></span>Foto del <b>${D.fecha}</b></div><div>${pv?'Comparado con '+pv:'Primera foto'}</div><div>${D.n_inst} instrumentos · solo porcentajes</div>${D.fx&&D.fx.USD?`<div>Dólares valuados a MEP $${Math.round(D.fx.USD).toLocaleString('es-AR')} · cable $${Math.round(D.fx.USDC).toLocaleString('es-AR')} (Inviu)</div>`:''}`;
     document.getElementById('cp-cards').innerHTML=D.por_moneda.map(m=>`<div class="cp-card" style="--c:${MON_C[m.k]}"><div class="l">${m.k}</div><div class="v">${f2(m.pct)}</div><div class="s">${m.prev==null?'':'vs '+pv+': '}${m.prev==null?'':dpp(m.pct,m.prev)+' pp'}</div></div>`).join('');
     const mt=Math.max(...D.por_tipo.map(x=>x.pct));
     document.getElementById('cp-tipo').innerHTML=D.por_tipo.filter(x=>x.pct>=0.01).map(x=>row(x.k,x.pct,x.prev,mt,TIPO_C[x.k]||'#4a6080')).join('');
     const me=Math.max(...D.por_exp.map(x=>x.pct)); let h='', g='';
     D.por_exp.filter(x=>x.pct>=0.01).forEach(x=>{ if(x.mon!==g){ g=x.mon; const tot=D.por_moneda.find(m=>m.k===g); h+=`<div class="cp-grp">${g} · ${f2(tot.pct)}</div>`; } h+=row(x.k,x.pct,x.prev,me,MON_C[x.mon]); });
     document.getElementById('cp-exp').innerHTML=h;
+    renderCambios(pv);
     renderEvo(); renderChips(); renderTable();
     const sal=D.salieron||[];
     document.getElementById('cp-salieron').innerHTML=sal.length?`<b style="color:#c9d8e8">Salieron de la cartera desde ${pv}:</b> `+sal.map(x=>`${esc(x.t)} (${f2(x.prev,2)})`).join(' · '):'';
+  }
+
+  function renderCambios(pv){
+    const C=D.cambios, box=document.getElementById('cp-cambios-box');
+    if(!C){ box.style.display='none'; return; }
+    document.getElementById('cp-cambios-h').textContent=`Principales cambios · ${pv} → ${D.fecha}`;
+    const MOT={'compras netas':'#22d3a0','ventas netas':'#fb923c','precio':'#94a3b8','entró':'#06b6d4','salió':'#f87171','s/d':'#4a6080'};
+    const motTxt=r=> r.mot==='compras netas'||r.mot==='ventas netas' ? `${r.mot} · cantidad ${r.dq>0?'+':''}${String(r.dq).replace('.',',')}%` : r.mot==='entró'?'entró a la cartera':r.mot==='salió'?'salió de la cartera':r.mot==='precio'?'por precio':'s/d';
+    const item=r=>`<div class="cp-cr"><div style="min-width:0"><div class="tk">${esc(r.t)}</div><div class="nm" title="${esc(r.n)}">${esc(r.n||'')}</div><span class="cp-mot" style="--c:${MOT[r.mot]||'#4a6080'}">${motTxt(r)}</span></div><div class="fr">${f2(r.prev,2)} → ${f2(r.pct,2)}</div><div class="dd" style="color:${r.d>0?'var(--cy)':'var(--or)'}">${r.d>0?'+':''}${r.d.toFixed(2).replace('.',',')}</div></div>`;
+    document.getElementById('cp-sube').innerHTML=C.sube.map(item).join('')||'<div class="cp-note">Sin subas relevantes.</div>';
+    document.getElementById('cp-baja').innerHTML=C.baja.map(item).join('')||'<div class="cp-note">Sin bajas relevantes.</div>';
+    const tp=D.por_tipo.filter(x=>x.prev!=null).map(x=>({k:x.k,d:x.pct-x.prev})).sort((a,b)=>Math.abs(b.d)-Math.abs(a.d)).filter(x=>Math.abs(x.d)>=0.1).slice(0,3);
+    const mn=D.por_moneda.filter(x=>x.prev!=null).map(x=>({k:x.k,d:x.pct-x.prev}));
+    const pp=x=>`${x.d>0?'+':''}${x.d.toFixed(2).replace('.',',')} pp`;
+    document.getElementById('cp-cambios-sum').innerHTML=`Por tipo de activo, lo que más se movió: ${tp.map(x=>`<b>${esc(x.k)}</b> ${pp(x)}`).join(' · ')||'sin cambios relevantes'}. Por moneda: ${mn.map(x=>`${x.k} ${pp(x)}`).join(' · ')}. Entre los instrumentos que más cambiaron hubo ${C.compras} con compras netas o entradas y ${C.ventas} con ventas netas o salidas.`;
   }
 
   function renderEvo(){

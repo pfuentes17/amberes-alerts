@@ -3,179 +3,369 @@
  "fecha_iso": "2026-11-26",
  "prev": "2026-11-24",
  "n_inst": 170,
+ "fx": {
+  "USD": 1664.2,
+  "USDC": 1759.7
+ },
+ "cambios": {
+  "sube": [
+   {
+    "t": "EWZ",
+    "n": "CEDEAR ISHARES MSCI BRAZIL CAP",
+    "tipo": "CEDEARs",
+    "prev": 5.67,
+    "pct": 6.32,
+    "d": 0.65,
+    "mot": "precio",
+    "dq": 1.6
+   },
+   {
+    "t": "NVDA",
+    "n": "CEDEAR NVIDIA CORPORATION",
+    "tipo": "CEDEARs",
+    "prev": 1.95,
+    "pct": 2.34,
+    "d": 0.39,
+    "mot": "precio",
+    "dq": 0.3
+   },
+   {
+    "t": "D15E7",
+    "n": "LETRA TESORO NACIONAL VINC. USD CERO CUPON Vto.15/01/2027",
+    "tipo": "Bonos y ONs",
+    "prev": 0.0,
+    "pct": 0.36,
+    "d": 0.36,
+    "mot": "entró",
+    "dq": null
+   },
+   {
+    "t": "SLV",
+    "n": "ETF ISHARES SILVER TRUST",
+    "tipo": "CEDEARs",
+    "prev": 4.36,
+    "pct": 4.63,
+    "d": 0.27,
+    "mot": "compras netas",
+    "dq": 3.4
+   },
+   {
+    "t": "Liquidez usd A",
+    "n": "MEGAINVER Liquidez usd A",
+    "tipo": "Fondos (FCI)",
+    "prev": 1.74,
+    "pct": 1.91,
+    "d": 0.17,
+    "mot": "compras netas",
+    "dq": 12.0
+   },
+   {
+    "t": "GLD",
+    "n": "ETF SPDR GOLD TRUST",
+    "tipo": "CEDEARs",
+    "prev": 4.66,
+    "pct": 4.79,
+    "d": 0.13,
+    "mot": "precio",
+    "dq": -0.3
+   },
+   {
+    "t": "VSCXO",
+    "n": "USD ON VISTA ENERGY ARG. VTO. 08/04/2038",
+    "tipo": "Bonos y ONs",
+    "prev": 0.0,
+    "pct": 0.08,
+    "d": 0.08,
+    "mot": "entró",
+    "dq": null
+   },
+   {
+    "t": "YPFD",
+    "n": "YPF S.A.",
+    "tipo": "Acciones",
+    "prev": 3.35,
+    "pct": 3.41,
+    "d": 0.07,
+    "mot": "precio",
+    "dq": -0.2
+   }
+  ],
+  "baja": [
+   {
+    "t": "USD",
+    "n": "US_DOLLARS",
+    "tipo": "Efectivo",
+    "prev": 4.17,
+    "pct": 3.33,
+    "d": -0.84,
+    "mot": "ventas netas",
+    "dq": -18.7
+   },
+   {
+    "t": "Liquidez usd B",
+    "n": "MEGAINVER Liquidez usd B",
+    "tipo": "Fondos (FCI)",
+    "prev": 2.64,
+    "pct": 2.34,
+    "d": -0.3,
+    "mot": "ventas netas",
+    "dq": -9.7
+   },
+   {
+    "t": "Balanceado A",
+    "n": "MEGA QM Balanceado A",
+    "tipo": "Fondos (FCI)",
+    "prev": 6.82,
+    "pct": 6.59,
+    "d": -0.23,
+    "mot": "ventas netas",
+    "dq": -3.5
+   },
+   {
+    "t": "SH",
+    "n": "PROSHARES SHORT S&P500",
+    "tipo": "CEDEARs",
+    "prev": 0.72,
+    "pct": 0.53,
+    "d": -0.19,
+    "mot": "ventas netas",
+    "dq": -20.5
+   },
+   {
+    "t": "BalanceadoB",
+    "n": "MEGA QM BalanceadoB",
+    "tipo": "Fondos (FCI)",
+    "prev": 0.24,
+    "pct": 0.09,
+    "d": -0.15,
+    "mot": "ventas netas",
+    "dq": -62.6
+   },
+   {
+    "t": "TZX28",
+    "n": "BONO REP ARG AJ CER V30/06/28",
+    "tipo": "Bonos y ONs",
+    "prev": 7.0,
+    "pct": 6.87,
+    "d": -0.13,
+    "mot": "precio",
+    "dq": -1.7
+   },
+   {
+    "t": "Parakeet LatamB",
+    "n": "PARAKEET Parakeet LatamB",
+    "tipo": "Fondos (FCI)",
+    "prev": 8.52,
+    "pct": 8.39,
+    "d": -0.13,
+    "mot": "precio",
+    "dq": 0.0
+   },
+   {
+    "t": "Retorno Total 4",
+    "n": "SCHRODERS Retorno Total 4",
+    "tipo": "Fondos (FCI)",
+    "prev": 6.95,
+    "pct": 6.83,
+    "d": -0.12,
+    "mot": "precio",
+    "dq": -0.0
+   }
+  ],
+  "compras": 5,
+  "ventas": 10
+ },
  "por_tipo": [
   {
+   "k": "Fondos (FCI)",
+   "pct": 39.23,
+   "prev": 40.16
+  },
+  {
    "k": "CEDEARs",
-   "pct": 42.1,
-   "prev": 40.11
+   "pct": 28.31,
+   "prev": 26.75
   },
   {
    "k": "Bonos y ONs",
-   "pct": 28.86,
-   "prev": 29.11
-  },
-  {
-   "k": "Fondos (FCI)",
-   "pct": 11.27,
-   "prev": 11.96
+   "pct": 19.36,
+   "prev": 19.37
   },
   {
    "k": "Acciones",
-   "pct": 10.28,
-   "prev": 9.94
+   "pct": 7.0,
+   "prev": 6.7
   },
   {
    "k": "Efectivo",
-   "pct": 7.46,
-   "prev": 8.86
-  },
-  {
-   "k": "Otros",
-   "pct": 0.03,
-   "prev": 0.03
+   "pct": 5.01,
+   "prev": 5.9
   },
   {
    "k": "Cauciones",
-   "pct": 0.0,
-   "prev": 0.0
+   "pct": 1.08,
+   "prev": 1.1
+  },
+  {
+   "k": "Otros",
+   "pct": 0.02,
+   "prev": 0.02
   }
  ],
  "por_moneda": [
   {
    "k": "Pesos",
-   "pct": 38.47,
-   "prev": 39.34
+   "pct": 25.8,
+   "prev": 26.18
   },
   {
    "k": "Dólares",
-   "pct": 60.57,
-   "prev": 60.19
+   "pct": 73.55,
+   "prev": 73.51
   },
   {
    "k": "Dólar linked",
-   "pct": 0.96,
-   "prev": 0.47
+   "pct": 0.65,
+   "prev": 0.31
   }
  ],
  "por_exp": [
   {
    "mon": "Pesos",
    "k": "Bonos CER",
-   "pct": 11.15,
-   "prev": 11.46
+   "pct": 7.48,
+   "prev": 7.63
   },
   {
    "mon": "Pesos",
    "k": "Acciones argentinas",
-   "pct": 10.28,
-   "prev": 9.94
+   "pct": 6.89,
+   "prev": 6.61
   },
   {
    "mon": "Pesos",
    "k": "Fondos en pesos (renta fija y mixtos)",
-   "pct": 10.19,
-   "prev": 10.85
+   "pct": 6.84,
+   "prev": 7.22
   },
   {
    "mon": "Pesos",
    "k": "Tasa fija (Lecap / Boncap)",
-   "pct": 2.9,
-   "prev": 2.93
+   "pct": 1.95,
+   "prev": 1.95
   },
   {
    "mon": "Pesos",
    "k": "Pesos en efectivo",
-   "pct": 2.09,
-   "prev": 2.25
+   "pct": 1.4,
+   "prev": 1.5
   },
   {
    "mon": "Pesos",
    "k": "Fondos money market",
-   "pct": 1.05,
-   "prev": 1.08
+   "pct": 0.7,
+   "prev": 0.72
   },
   {
    "mon": "Pesos",
    "k": "ONs en pesos",
-   "pct": 0.58,
-   "prev": 0.6
+   "pct": 0.39,
+   "prev": 0.4
   },
   {
    "mon": "Pesos",
    "k": "Duales tasa fija / TAMAR",
-   "pct": 0.21,
-   "prev": 0.21
+   "pct": 0.14,
+   "prev": 0.14
   },
   {
    "mon": "Pesos",
    "k": "Otros",
-   "pct": 0.03,
-   "prev": 0.03
-  },
-  {
-   "mon": "Dólares",
-   "k": "CEDEARs y ETFs",
-   "pct": 42.1,
-   "prev": 40.11
-  },
-  {
-   "mon": "Dólares",
-   "k": "ONs en dólares",
-   "pct": 11.46,
-   "prev": 11.78
-  },
-  {
-   "mon": "Dólares",
-   "k": "Dólares en efectivo",
-   "pct": 5.38,
-   "prev": 6.61
-  },
-  {
-   "mon": "Dólares",
-   "k": "Soberanos, provinciales y BOPREAL",
-   "pct": 1.6,
-   "prev": 1.66
+   "pct": 0.02,
+   "prev": 0.02
   },
   {
    "mon": "Dólares",
    "k": "Fondos en dólares",
-   "pct": 0.03,
-   "prev": 0.03
+   "pct": 31.69,
+   "prev": 32.22
   },
   {
    "mon": "Dólares",
-   "k": "Acciones del exterior",
-   "pct": 0.0,
-   "prev": 0.0
+   "k": "CEDEARs y ETFs",
+   "pct": 28.31,
+   "prev": 26.75
+  },
+  {
+   "mon": "Dólares",
+   "k": "ONs en dólares",
+   "pct": 7.69,
+   "prev": 7.84
+  },
+  {
+   "mon": "Dólares",
+   "k": "Dólares en efectivo",
+   "pct": 3.61,
+   "prev": 4.4
   },
   {
    "mon": "Dólares",
    "k": "Cauciones",
-   "pct": 0.0,
-   "prev": 0.0
+   "pct": 1.08,
+   "prev": 1.1
+  },
+  {
+   "mon": "Dólares",
+   "k": "Soberanos, provinciales y BOPREAL",
+   "pct": 1.07,
+   "prev": 1.1
+  },
+  {
+   "mon": "Dólares",
+   "k": "Acciones del exterior",
+   "pct": 0.1,
+   "prev": 0.09
   },
   {
    "mon": "Dólar linked",
    "k": "Letras y bonos dollar linked",
-   "pct": 0.63,
-   "prev": 0.1
+   "pct": 0.43,
+   "prev": 0.06
   },
   {
    "mon": "Dólar linked",
    "k": "Duales TAMAR / dollar linked",
-   "pct": 0.33,
-   "prev": 0.37
+   "pct": 0.22,
+   "prev": 0.25
   }
  ],
  "inst": [
+  {
+   "t": "Parakeet LatamB",
+   "n": "PARAKEET Parakeet LatamB",
+   "tipo": "Fondos (FCI)",
+   "mon": "Dólares",
+   "exp": "Fondos en dólares",
+   "pct": 8.393,
+   "prev": 8.52
+  },
   {
    "t": "TZX28",
    "n": "BONO REP ARG AJ CER V30/06/28",
    "tipo": "Bonos y ONs",
    "mon": "Pesos",
    "exp": "Bonos CER",
-   "pct": 10.24,
-   "prev": 10.52
+   "pct": 6.869,
+   "prev": 7.0
+  },
+  {
+   "t": "Retorno Total 4",
+   "n": "SCHRODERS Retorno Total 4",
+   "tipo": "Fondos (FCI)",
+   "mon": "Dólares",
+   "exp": "Fondos en dólares",
+   "pct": 6.828,
+   "prev": 6.952
   },
   {
    "t": "Balanceado A",
@@ -183,8 +373,8 @@
    "tipo": "Fondos (FCI)",
    "mon": "Pesos",
    "exp": "Fondos en pesos (renta fija y mixtos)",
-   "pct": 9.828,
-   "prev": 10.256
+   "pct": 6.593,
+   "prev": 6.824
   },
   {
    "t": "EWZ",
@@ -192,8 +382,26 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 9.42,
-   "prev": 8.521
+   "pct": 6.319,
+   "prev": 5.67
+  },
+  {
+   "t": "Ret Total 4 B",
+   "n": "SCHRODERS Ret Total 4 B",
+   "tipo": "Fondos (FCI)",
+   "mon": "Dólares",
+   "exp": "Fondos en dólares",
+   "pct": 6.304,
+   "prev": 6.415
+  },
+  {
+   "t": "Parakeet LatamA",
+   "n": "PARAKEET Parakeet LatamA",
+   "tipo": "Fondos (FCI)",
+   "mon": "Dólares",
+   "exp": "Fondos en dólares",
+   "pct": 4.804,
+   "prev": 4.83
   },
   {
    "t": "GLD",
@@ -201,8 +409,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 7.137,
-   "prev": 6.995
+   "pct": 4.788,
+   "prev": 4.655
   },
   {
    "t": "SLV",
@@ -210,8 +418,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 6.902,
-   "prev": 6.551
+   "pct": 4.63,
+   "prev": 4.359
   },
   {
    "t": "JPM",
@@ -219,8 +427,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 5.496,
-   "prev": 5.431
+   "pct": 3.687,
+   "prev": 3.614
   },
   {
    "t": "YPFD",
@@ -228,8 +436,8 @@
    "tipo": "Acciones",
    "mon": "Pesos",
    "exp": "Acciones argentinas",
-   "pct": 5.09,
-   "prev": 5.032
+   "pct": 3.414,
+   "prev": 3.349
   },
   {
    "t": "USD",
@@ -237,8 +445,17 @@
    "tipo": "Efectivo",
    "mon": "Dólares",
    "exp": "Dólares en efectivo",
-   "pct": 4.958,
-   "prev": 6.259
+   "pct": 3.326,
+   "prev": 4.165
+  },
+  {
+   "t": "Liquidez usd B",
+   "n": "MEGAINVER Liquidez usd B",
+   "tipo": "Fondos (FCI)",
+   "mon": "Dólares",
+   "exp": "Fondos en dólares",
+   "pct": 2.344,
+   "prev": 2.641
   },
   {
    "t": "NVDA",
@@ -246,8 +463,17 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 3.487,
-   "prev": 2.925
+   "pct": 2.339,
+   "prev": 1.947
+  },
+  {
+   "t": "Liquidez usd A",
+   "n": "MEGAINVER Liquidez usd A",
+   "tipo": "Fondos (FCI)",
+   "mon": "Dólares",
+   "exp": "Fondos en dólares",
+   "pct": 1.912,
+   "prev": 1.737
   },
   {
    "t": "VIST",
@@ -255,8 +481,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 2.799,
-   "prev": 2.742
+   "pct": 1.878,
+   "prev": 1.824
   },
   {
    "t": "MGCVO",
@@ -264,8 +490,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 2.243,
-   "prev": 2.337
+   "pct": 1.505,
+   "prev": 1.555
   },
   {
    "t": "ARS",
@@ -273,8 +499,8 @@
    "tipo": "Efectivo",
    "mon": "Pesos",
    "exp": "Pesos en efectivo",
-   "pct": 2.087,
-   "prev": 2.252
+   "pct": 1.4,
+   "prev": 1.498
   },
   {
    "t": "HJCIO",
@@ -282,8 +508,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 1.516,
-   "prev": 1.615
+   "pct": 1.017,
+   "prev": 1.075
   },
   {
    "t": "OLC6O",
@@ -291,8 +517,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 1.471,
-   "prev": 1.482
+   "pct": 0.987,
+   "prev": 0.986
   },
   {
    "t": "MGCUO",
@@ -300,8 +526,17 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 1.462,
-   "prev": 1.488
+   "pct": 0.981,
+   "prev": 0.99
+  },
+  {
+   "t": "Caución al 19/03",
+   "n": "Plazo 119 días",
+   "tipo": "Cauciones",
+   "mon": "Dólares",
+   "exp": "Cauciones",
+   "pct": 0.921,
+   "prev": 0.937
   },
   {
    "t": "TGSU2",
@@ -309,8 +544,17 @@
    "tipo": "Acciones",
    "mon": "Pesos",
    "exp": "Acciones argentinas",
-   "pct": 1.208,
-   "prev": 1.161
+   "pct": 0.81,
+   "prev": 0.772
+  },
+  {
+   "t": "Estra I A",
+   "n": "BALANZ Estra I A",
+   "tipo": "Fondos (FCI)",
+   "mon": "Dólares",
+   "exp": "Fondos en dólares",
+   "pct": 0.75,
+   "prev": 0.764
   },
   {
    "t": "PAMP",
@@ -318,8 +562,8 @@
    "tipo": "Acciones",
    "mon": "Pesos",
    "exp": "Acciones argentinas",
-   "pct": 1.077,
-   "prev": 1.032
+   "pct": 0.723,
+   "prev": 0.687
   },
   {
    "t": "CS51O",
@@ -327,8 +571,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 1.062,
-   "prev": 1.089
+   "pct": 0.713,
+   "prev": 0.725
   },
   {
    "t": "MELI",
@@ -336,8 +580,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.996,
-   "prev": 0.932
+   "pct": 0.668,
+   "prev": 0.62
   },
   {
    "t": "T30J7",
@@ -345,8 +589,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Pesos",
    "exp": "Tasa fija (Lecap / Boncap)",
-   "pct": 0.921,
-   "prev": 0.932
+   "pct": 0.618,
+   "prev": 0.62
   },
   {
    "t": "CRES",
@@ -354,8 +598,8 @@
    "tipo": "Acciones",
    "mon": "Pesos",
    "exp": "Acciones argentinas",
-   "pct": 0.919,
-   "prev": 0.879
+   "pct": 0.616,
+   "prev": 0.585
   },
   {
    "t": "T30A7",
@@ -363,8 +607,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Pesos",
    "exp": "Tasa fija (Lecap / Boncap)",
-   "pct": 0.91,
-   "prev": 0.918
+   "pct": 0.61,
+   "prev": 0.611
   },
   {
    "t": "T31Y7",
@@ -372,8 +616,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Pesos",
    "exp": "Tasa fija (Lecap / Boncap)",
-   "pct": 0.906,
-   "prev": 0.914
+   "pct": 0.608,
+   "prev": 0.608
   },
   {
    "t": "NPCCO",
@@ -381,8 +625,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 0.887,
-   "prev": 0.904
+   "pct": 0.595,
+   "prev": 0.602
   },
   {
    "t": "NU",
@@ -390,8 +634,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.808,
-   "prev": 0.747
+   "pct": 0.542,
+   "prev": 0.497
   },
   {
    "t": "SH",
@@ -399,8 +643,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.795,
-   "prev": 1.086
+   "pct": 0.533,
+   "prev": 0.723
   },
   {
    "t": "GN49O",
@@ -408,8 +652,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 0.747,
-   "prev": 0.765
+   "pct": 0.501,
+   "prev": 0.509
   },
   {
    "t": "TGNO4",
@@ -417,8 +661,8 @@
    "tipo": "Acciones",
    "mon": "Pesos",
    "exp": "Acciones argentinas",
-   "pct": 0.678,
-   "prev": 0.608
+   "pct": 0.455,
+   "prev": 0.405
   },
   {
    "t": "GGAL",
@@ -426,8 +670,8 @@
    "tipo": "Acciones",
    "mon": "Pesos",
    "exp": "Acciones argentinas",
-   "pct": 0.671,
-   "prev": 0.63
+   "pct": 0.45,
+   "prev": 0.419
   },
   {
    "t": "AO27",
@@ -435,8 +679,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "Soberanos, provinciales y BOPREAL",
-   "pct": 0.665,
-   "prev": 0.728
+   "pct": 0.446,
+   "prev": 0.484
   },
   {
    "t": "AL30",
@@ -444,8 +688,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "Soberanos, provinciales y BOPREAL",
-   "pct": 0.655,
-   "prev": 0.646
+   "pct": 0.439,
+   "prev": 0.43
   },
   {
    "t": "FXI",
@@ -453,8 +697,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.615,
-   "prev": 0.63
+   "pct": 0.412,
+   "prev": 0.419
   },
   {
    "t": "YM43O",
@@ -462,8 +706,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Pesos",
    "exp": "ONs en pesos",
-   "pct": 0.58,
-   "prev": 0.6
+   "pct": 0.389,
+   "prev": 0.399
   },
   {
    "t": "SUPV",
@@ -471,8 +715,8 @@
    "tipo": "Acciones",
    "mon": "Pesos",
    "exp": "Acciones argentinas",
-   "pct": 0.565,
-   "prev": 0.525
+   "pct": 0.379,
+   "prev": 0.349
   },
   {
    "t": "mq pesos A",
@@ -480,8 +724,8 @@
    "tipo": "Fondos (FCI)",
    "mon": "Pesos",
    "exp": "Fondos money market",
-   "pct": 0.543,
-   "prev": 0.547
+   "pct": 0.364,
+   "prev": 0.364
   },
   {
    "t": "D15E7",
@@ -489,7 +733,7 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólar linked",
    "exp": "Letras y bonos dollar linked",
-   "pct": 0.538,
+   "pct": 0.361,
    "prev": 0.0
   },
   {
@@ -498,8 +742,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.46,
-   "prev": 0.436
+   "pct": 0.309,
+   "prev": 0.29
   },
   {
    "t": "mq pesos B",
@@ -507,8 +751,8 @@
    "tipo": "Fondos (FCI)",
    "mon": "Pesos",
    "exp": "Fondos money market",
-   "pct": 0.425,
-   "prev": 0.454
+   "pct": 0.285,
+   "prev": 0.302
   },
   {
    "t": "USD.C",
@@ -516,8 +760,8 @@
    "tipo": "Efectivo",
    "mon": "Dólares",
    "exp": "Dólares en efectivo",
-   "pct": 0.417,
-   "prev": 0.352
+   "pct": 0.28,
+   "prev": 0.235
   },
   {
    "t": "DICP",
@@ -525,8 +769,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Pesos",
    "exp": "Bonos CER",
-   "pct": 0.412,
-   "prev": 0.421
+   "pct": 0.276,
+   "prev": 0.28
   },
   {
    "t": "YM42O",
@@ -534,8 +778,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 0.392,
-   "prev": 0.396
+   "pct": 0.263,
+   "prev": 0.263
   },
   {
    "t": "HBCFO",
@@ -543,8 +787,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 0.344,
-   "prev": 0.347
+   "pct": 0.231,
+   "prev": 0.231
   },
   {
    "t": "TZXM7",
@@ -552,8 +796,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Pesos",
    "exp": "Bonos CER",
-   "pct": 0.335,
-   "prev": 0.344
+   "pct": 0.225,
+   "prev": 0.229
   },
   {
    "t": "TMVE8",
@@ -561,8 +805,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólar linked",
    "exp": "Duales TAMAR / dollar linked",
-   "pct": 0.329,
-   "prev": 0.374
+   "pct": 0.221,
+   "prev": 0.249
   },
   {
    "t": "SMH",
@@ -570,8 +814,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.327,
-   "prev": 0.3
+   "pct": 0.22,
+   "prev": 0.2
   },
   {
    "t": "VSCZO",
@@ -579,8 +823,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 0.309,
-   "prev": 0.315
+   "pct": 0.207,
+   "prev": 0.209
   },
   {
    "t": "GOOGL",
@@ -588,8 +832,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.308,
-   "prev": 0.298
+   "pct": 0.207,
+   "prev": 0.199
   },
   {
    "t": "CS47O",
@@ -597,8 +841,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 0.302,
-   "prev": 0.309
+   "pct": 0.203,
+   "prev": 0.206
   },
   {
    "t": "MSFT",
@@ -606,8 +850,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.276,
-   "prev": 0.276
+   "pct": 0.185,
+   "prev": 0.184
   },
   {
    "t": "QQQ",
@@ -615,8 +859,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.258,
-   "prev": 0.249
+   "pct": 0.173,
+   "prev": 0.166
   },
   {
    "t": "DIA",
@@ -624,8 +868,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.253,
-   "prev": 0.246
+   "pct": 0.17,
+   "prev": 0.164
   },
   {
    "t": "IBM",
@@ -633,8 +877,26 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.249,
-   "prev": 0.242
+   "pct": 0.167,
+   "prev": 0.161
+  },
+  {
+   "t": "Caución al 20/01",
+   "n": "Plazo 120 días",
+   "tipo": "Cauciones",
+   "mon": "Dólares",
+   "exp": "Cauciones",
+   "pct": 0.162,
+   "prev": 0.165
+  },
+  {
+   "t": "schr ret tot a",
+   "n": "SCHRODERS schr ret tot a",
+   "tipo": "Fondos (FCI)",
+   "mon": "Dólares",
+   "exp": "Fondos en dólares",
+   "pct": 0.15,
+   "prev": 0.153
   },
   {
    "t": "TTD26",
@@ -642,8 +904,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Pesos",
    "exp": "Duales tasa fija / TAMAR",
-   "pct": 0.206,
-   "prev": 0.207
+   "pct": 0.138,
+   "prev": 0.138
   },
   {
    "t": "schrod rplus a",
@@ -651,8 +913,8 @@
    "tipo": "Fondos (FCI)",
    "mon": "Pesos",
    "exp": "Fondos en pesos (renta fija y mixtos)",
-   "pct": 0.191,
-   "prev": 0.192
+   "pct": 0.128,
+   "prev": 0.128
   },
   {
    "t": "NZC2O",
@@ -660,8 +922,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 0.18,
-   "prev": 0.181
+   "pct": 0.12,
+   "prev": 0.121
   },
   {
    "t": "ANT",
@@ -669,8 +931,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.165,
-   "prev": 0.172
+   "pct": 0.111,
+   "prev": 0.115
   },
   {
    "t": "BPOD7",
@@ -678,8 +940,17 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "Soberanos, provinciales y BOPREAL",
-   "pct": 0.162,
-   "prev": 0.164
+   "pct": 0.109,
+   "prev": 0.109
+  },
+  {
+   "t": "Global I",
+   "n": "STONEX Global I",
+   "tipo": "Fondos (FCI)",
+   "mon": "Dólares",
+   "exp": "Fondos en dólares",
+   "pct": 0.102,
+   "prev": 0.103
   },
   {
    "t": "VSCTO",
@@ -687,8 +958,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 0.147,
-   "prev": 0.154
+   "pct": 0.099,
+   "prev": 0.102
   },
   {
    "t": "XLF",
@@ -696,8 +967,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.147,
-   "prev": 0.142
+   "pct": 0.098,
+   "prev": 0.095
   },
   {
    "t": "BIDU",
@@ -705,8 +976,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.145,
-   "prev": 0.144
+   "pct": 0.097,
+   "prev": 0.096
   },
   {
    "t": "EEM",
@@ -714,8 +985,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.139,
-   "prev": 0.135
+   "pct": 0.093,
+   "prev": 0.09
   },
   {
    "t": "S30N6",
@@ -723,8 +994,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Pesos",
    "exp": "Tasa fija (Lecap / Boncap)",
-   "pct": 0.133,
-   "prev": 0.134
+   "pct": 0.09,
+   "prev": 0.089
   },
   {
    "t": "BalanceadoB",
@@ -732,8 +1003,8 @@
    "tipo": "Fondos (FCI)",
    "mon": "Pesos",
    "exp": "Fondos en pesos (renta fija y mixtos)",
-   "pct": 0.132,
-   "prev": 0.355
+   "pct": 0.089,
+   "prev": 0.237
   },
   {
    "t": "SPY",
@@ -741,8 +1012,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.128,
-   "prev": 0.123
+   "pct": 0.086,
+   "prev": 0.082
   },
   {
    "t": "PSQ",
@@ -750,8 +1021,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.126,
-   "prev": 0.133
+   "pct": 0.085,
+   "prev": 0.089
   },
   {
    "t": "MCD",
@@ -759,8 +1030,17 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.125,
-   "prev": 0.123
+   "pct": 0.084,
+   "prev": 0.082
+  },
+  {
+   "t": "TTWO_E",
+   "n": "Take-Two Interactive Software Inc.",
+   "tipo": "Acciones",
+   "mon": "Dólares",
+   "exp": "Acciones del exterior",
+   "pct": 0.079,
+   "prev": 0.069
   },
   {
    "t": "VSCXO",
@@ -768,8 +1048,17 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 0.115,
+   "pct": 0.077,
    "prev": 0.0
+  },
+  {
+   "t": "Income.",
+   "n": "GALILEO Income.",
+   "tipo": "Fondos (FCI)",
+   "mon": "Dólares",
+   "exp": "Fondos en dólares",
+   "pct": 0.074,
+   "prev": 0.075
   },
   {
    "t": "YM38O",
@@ -777,8 +1066,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 0.098,
-   "prev": 0.098
+   "pct": 0.066,
+   "prev": 0.065
   },
   {
    "t": "TZX27",
@@ -786,8 +1075,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Pesos",
    "exp": "Bonos CER",
-   "pct": 0.097,
-   "prev": 0.098
+   "pct": 0.065,
+   "prev": 0.065
   },
   {
    "t": "TZV27",
@@ -795,8 +1084,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólar linked",
    "exp": "Letras y bonos dollar linked",
-   "pct": 0.096,
-   "prev": 0.098
+   "pct": 0.065,
+   "prev": 0.065
   },
   {
    "t": "YM39O",
@@ -804,8 +1093,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 0.09,
-   "prev": 0.092
+   "pct": 0.06,
+   "prev": 0.061
   },
   {
    "t": "PAAS",
@@ -813,8 +1102,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.08,
-   "prev": 0.076
+   "pct": 0.053,
+   "prev": 0.051
   },
   {
    "t": "Liquidez",
@@ -822,8 +1111,17 @@
    "tipo": "Fondos (FCI)",
    "mon": "Pesos",
    "exp": "Fondos money market",
-   "pct": 0.073,
-   "prev": 0.073
+   "pct": 0.049,
+   "prev": 0.049
+  },
+  {
+   "t": "URA_E",
+   "n": "Global X Uranium ETF",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.04,
+   "prev": 0.038
   },
   {
    "t": "MU",
@@ -831,8 +1129,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.057,
-   "prev": 0.056
+   "pct": 0.038,
+   "prev": 0.037
   },
   {
    "t": "IBIT",
@@ -840,8 +1138,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.055,
-   "prev": 0.052
+   "pct": 0.037,
+   "prev": 0.035
   },
   {
    "t": "AVGO",
@@ -849,8 +1147,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.052,
-   "prev": 0.053
+   "pct": 0.035,
+   "prev": 0.035
   },
   {
    "t": "RUCDO",
@@ -858,8 +1156,17 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 0.052,
-   "prev": 0.053
+   "pct": 0.035,
+   "prev": 0.035
+  },
+  {
+   "t": "Multi Strategy",
+   "n": "GALILEO Multi Strategy",
+   "tipo": "Fondos (FCI)",
+   "mon": "Dólares",
+   "exp": "Fondos en dólares",
+   "pct": 0.029,
+   "prev": 0.029
   },
   {
    "t": "AO29",
@@ -867,8 +1174,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "Soberanos, provinciales y BOPREAL",
-   "pct": 0.043,
-   "prev": 0.044
+   "pct": 0.029,
+   "prev": 0.029
   },
   {
    "t": "PAGS",
@@ -876,8 +1183,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.042,
-   "prev": 0.041
+   "pct": 0.029,
+   "prev": 0.027
   },
   {
    "t": "URA",
@@ -885,8 +1192,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.042,
-   "prev": 0.042
+   "pct": 0.028,
+   "prev": 0.028
   },
   {
    "t": "UBER",
@@ -894,8 +1201,17 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.041,
-   "prev": 0.04
+   "pct": 0.028,
+   "prev": 0.027
+  },
+  {
+   "t": "EWZ_E",
+   "n": "Ishares Msci Brazil ETF",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.025,
+   "prev": 0.023
   },
   {
    "t": "GD35",
@@ -903,8 +1219,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "Soberanos, provinciales y BOPREAL",
-   "pct": 0.036,
-   "prev": 0.036
+   "pct": 0.024,
+   "prev": 0.024
   },
   {
    "t": "BBD",
@@ -912,8 +1228,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.035,
-   "prev": 0.031
+   "pct": 0.023,
+   "prev": 0.021
   },
   {
    "t": "DISN",
@@ -921,8 +1237,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.032,
-   "prev": 0.031
+   "pct": 0.021,
+   "prev": 0.02
   },
   {
    "t": "BMA",
@@ -930,8 +1246,8 @@
    "tipo": "Acciones",
    "mon": "Pesos",
    "exp": "Acciones argentinas",
-   "pct": 0.03,
-   "prev": 0.03
+   "pct": 0.02,
+   "prev": 0.02
   },
   {
    "t": "schrod rplus b",
@@ -939,8 +1255,8 @@
    "tipo": "Fondos (FCI)",
    "mon": "Pesos",
    "exp": "Fondos en pesos (renta fija y mixtos)",
-   "pct": 0.029,
-   "prev": 0.029
+   "pct": 0.019,
+   "prev": 0.019
   },
   {
    "t": "TZXD7",
@@ -948,8 +1264,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Pesos",
    "exp": "Bonos CER",
-   "pct": 0.028,
-   "prev": 0.042
+   "pct": 0.019,
+   "prev": 0.028
   },
   {
    "t": "IRSA",
@@ -957,8 +1273,17 @@
    "tipo": "Acciones",
    "mon": "Pesos",
    "exp": "Acciones argentinas",
-   "pct": 0.026,
-   "prev": 0.026
+   "pct": 0.017,
+   "prev": 0.017
+  },
+  {
+   "t": "TGS_E",
+   "n": "Transportadora de Gas del Sur SA",
+   "tipo": "Acciones",
+   "mon": "Dólares",
+   "exp": "Acciones del exterior",
+   "pct": 0.017,
+   "prev": 0.016
   },
   {
    "t": "ILF",
@@ -966,8 +1291,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.019,
-   "prev": 0.019
+   "pct": 0.012,
+   "prev": 0.012
   },
   {
    "t": "S29E7",
@@ -975,8 +1300,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Pesos",
    "exp": "Tasa fija (Lecap / Boncap)",
-   "pct": 0.018,
-   "prev": 0.019
+   "pct": 0.012,
+   "prev": 0.012
   },
   {
    "t": "RZ9BO",
@@ -984,8 +1309,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 0.017,
-   "prev": 0.018
+   "pct": 0.012,
+   "prev": 0.012
   },
   {
    "t": "AE38",
@@ -993,8 +1318,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "Soberanos, provinciales y BOPREAL",
-   "pct": 0.017,
-   "prev": 0.018
+   "pct": 0.012,
+   "prev": 0.012
   },
   {
    "t": "AO28",
@@ -1002,8 +1327,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "Soberanos, provinciales y BOPREAL",
-   "pct": 0.016,
-   "prev": 0.017
+   "pct": 0.011,
+   "prev": 0.011
   },
   {
    "t": "T15E7",
@@ -1011,8 +1336,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Pesos",
    "exp": "Tasa fija (Lecap / Boncap)",
-   "pct": 0.015,
-   "prev": 0.016
+   "pct": 0.01,
+   "prev": 0.01
   },
   {
    "t": "IVV",
@@ -1020,8 +1345,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.015,
-   "prev": 0.014
+   "pct": 0.01,
+   "prev": 0.009
   },
   {
    "t": "DB01Q",
@@ -1029,8 +1354,8 @@
    "tipo": "Otros",
    "mon": "Pesos",
    "exp": "Otros",
-   "pct": 0.014,
-   "prev": 0.014
+   "pct": 0.009,
+   "prev": 0.009
   },
   {
    "t": "TXMD8",
@@ -1038,8 +1363,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Pesos",
    "exp": "Bonos CER",
-   "pct": 0.014,
-   "prev": 0.014
+   "pct": 0.009,
+   "prev": 0.009
   },
   {
    "t": "MR46O",
@@ -1047,8 +1372,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 0.012,
-   "prev": 0.013
+   "pct": 0.008,
+   "prev": 0.008
   },
   {
    "t": "P. Coba Estra A",
@@ -1056,8 +1381,8 @@
    "tipo": "Fondos (FCI)",
    "mon": "Pesos",
    "exp": "Fondos en pesos (renta fija y mixtos)",
-   "pct": 0.012,
-   "prev": 0.012
+   "pct": 0.008,
+   "prev": 0.008
   },
   {
    "t": "DB01A",
@@ -1065,8 +1390,8 @@
    "tipo": "Otros",
    "mon": "Pesos",
    "exp": "Otros",
-   "pct": 0.012,
-   "prev": 0.012
+   "pct": 0.008,
+   "prev": 0.008
   },
   {
    "t": "TZXD6",
@@ -1074,8 +1399,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Pesos",
    "exp": "Bonos CER",
-   "pct": 0.011,
-   "prev": 0.011
+   "pct": 0.008,
+   "prev": 0.008
   },
   {
    "t": "BRKB",
@@ -1083,8 +1408,17 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.011,
-   "prev": 0.011
+   "pct": 0.007,
+   "prev": 0.007
+  },
+  {
+   "t": "LAC_E",
+   "n": "LITHIUM AMERS CORP CDA (LAC)",
+   "tipo": "Acciones",
+   "mon": "Dólares",
+   "exp": "Acciones del exterior",
+   "pct": 0.007,
+   "prev": 0.007
   },
   {
    "t": "MSTR",
@@ -1092,8 +1426,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.01,
-   "prev": 0.009
+   "pct": 0.007,
+   "prev": 0.006
   },
   {
    "t": "COME",
@@ -1101,8 +1435,8 @@
    "tipo": "Acciones",
    "mon": "Pesos",
    "exp": "Acciones argentinas",
-   "pct": 0.009,
-   "prev": 0.009
+   "pct": 0.006,
+   "prev": 0.006
   },
   {
    "t": "TXMJ9",
@@ -1110,17 +1444,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Pesos",
    "exp": "Bonos CER",
-   "pct": 0.008,
-   "prev": 0.008
-  },
-  {
-   "t": "Parakeet LatamB",
-   "n": "PARAKEET Parakeet LatamB",
-   "tipo": "Fondos (FCI)",
-   "mon": "Dólares",
-   "exp": "Fondos en dólares",
-   "pct": 0.008,
-   "prev": 0.008
+   "pct": 0.006,
+   "prev": 0.006
   },
   {
    "t": "PECGO",
@@ -1128,8 +1453,8 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 0.007,
-   "prev": 0.007
+   "pct": 0.005,
+   "prev": 0.0
   },
   {
    "t": "IBB",
@@ -1137,26 +1462,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.006,
-   "prev": 0.006
-  },
-  {
-   "t": "Retorno Total 4",
-   "n": "SCHRODERS Retorno Total 4",
-   "tipo": "Fondos (FCI)",
-   "mon": "Dólares",
-   "exp": "Fondos en dólares",
-   "pct": 0.006,
-   "prev": 0.006
-  },
-  {
-   "t": "Ret Total 4 B",
-   "n": "SCHRODERS Ret Total 4 B",
-   "tipo": "Fondos (FCI)",
-   "mon": "Dólares",
-   "exp": "Fondos en dólares",
-   "pct": 0.006,
-   "prev": 0.006
+   "pct": 0.004,
+   "prev": 0.0
   },
   {
    "t": "CVS",
@@ -1164,8 +1471,8 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.005,
-   "prev": 0.005
+   "pct": 0.004,
+   "prev": 0.0
   },
   {
    "t": "AAPL",
@@ -1173,16 +1480,7 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.005,
-   "prev": 0.0
-  },
-  {
-   "t": "Parakeet LatamA",
-   "n": "PARAKEET Parakeet LatamA",
-   "tipo": "Fondos (FCI)",
-   "mon": "Dólares",
-   "exp": "Fondos en dólares",
-   "pct": 0.004,
+   "pct": 0.003,
    "prev": 0.0
   },
   {
@@ -1191,7 +1489,7 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "Soberanos, provinciales y BOPREAL",
-   "pct": 0.004,
+   "pct": 0.003,
    "prev": 0.0
   },
   {
@@ -1200,7 +1498,7 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.004,
+   "pct": 0.003,
    "prev": 0.0
   },
   {
@@ -1209,7 +1507,7 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.004,
+   "pct": 0.003,
    "prev": 0.0
   },
   {
@@ -1218,7 +1516,7 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.003,
+   "pct": 0.002,
    "prev": 0.0
   },
   {
@@ -1227,7 +1525,7 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.003,
+   "pct": 0.002,
    "prev": 0.0
   },
   {
@@ -1236,7 +1534,7 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.003,
+   "pct": 0.002,
    "prev": 0.0
   },
   {
@@ -1245,7 +1543,7 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.003,
+   "pct": 0.002,
    "prev": 0.0
   },
   {
@@ -1254,7 +1552,7 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.003,
+   "pct": 0.002,
    "prev": 0.0
   },
   {
@@ -1263,7 +1561,7 @@
    "tipo": "Acciones",
    "mon": "Pesos",
    "exp": "Acciones argentinas",
-   "pct": 0.003,
+   "pct": 0.002,
    "prev": 0.0
   },
   {
@@ -1285,21 +1583,12 @@
    "prev": 0.0
   },
   {
-   "t": "Liquidez usd B",
-   "n": "MEGAINVER Liquidez usd B",
-   "tipo": "Fondos (FCI)",
-   "mon": "Dólares",
-   "exp": "Fondos en dólares",
-   "pct": 0.002,
-   "prev": 0.0
-  },
-  {
    "t": "Liquidez-B",
    "n": "COMPASS Liquidez-B",
    "tipo": "Fondos (FCI)",
    "mon": "Pesos",
    "exp": "Fondos money market",
-   "pct": 0.002,
+   "pct": 0.001,
    "prev": 0.0
   },
   {
@@ -1308,16 +1597,7 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.002,
-   "prev": 0.0
-  },
-  {
-   "t": "Liquidez usd A",
-   "n": "MEGAINVER Liquidez usd A",
-   "tipo": "Fondos (FCI)",
-   "mon": "Dólares",
-   "exp": "Fondos en dólares",
-   "pct": 0.002,
+   "pct": 0.001,
    "prev": 0.0
   },
   {
@@ -1326,7 +1606,7 @@
    "tipo": "Bonos y ONs",
    "mon": "Dólares",
    "exp": "ONs en dólares",
-   "pct": 0.002,
+   "pct": 0.001,
    "prev": 0.0
   },
   {
@@ -1335,7 +1615,7 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.002,
+   "pct": 0.001,
    "prev": 0.0
   },
   {
@@ -1344,7 +1624,7 @@
    "tipo": "Fondos (FCI)",
    "mon": "Pesos",
    "exp": "Fondos money market",
-   "pct": 0.002,
+   "pct": 0.001,
    "prev": 0.0
   },
   {
@@ -1353,7 +1633,7 @@
    "tipo": "Fondos (FCI)",
    "mon": "Pesos",
    "exp": "Fondos money market",
-   "pct": 0.002,
+   "pct": 0.001,
    "prev": 0.0
   },
   {
@@ -1362,7 +1642,7 @@
    "tipo": "CEDEARs",
    "mon": "Dólares",
    "exp": "CEDEARs y ETFs",
-   "pct": 0.002,
+   "pct": 0.001,
    "prev": 0.0
   },
   {
@@ -1373,75 +1653,12 @@
    "exp": "CEDEARs y ETFs",
    "pct": 0.001,
    "prev": 0.0
-  },
-  {
-   "t": "YMCIO",
-   "n": "ON YPF S.A. Vto 30/06/2029",
-   "tipo": "Bonos y ONs",
-   "mon": "Dólares",
-   "exp": "ONs en dólares",
-   "pct": 0.001,
-   "prev": 0.0
-  },
-  {
-   "t": "TX31",
-   "n": "BONO TESORO AJ CER VTO. 30/11/2031",
-   "tipo": "Bonos y ONs",
-   "mon": "Pesos",
-   "exp": "Bonos CER",
-   "pct": 0.001,
-   "prev": 0.0
-  },
-  {
-   "t": "EWY",
-   "n": "CEDEAR ISHARES MSCI SOUTH KOREA ETF",
-   "tipo": "CEDEARs",
-   "mon": "Dólares",
-   "exp": "CEDEARs y ETFs",
-   "pct": 0.001,
-   "prev": 0.0
-  },
-  {
-   "t": "ANET",
-   "n": "ARISTA NETWORKS INC",
-   "tipo": "CEDEARs",
-   "mon": "Dólares",
-   "exp": "CEDEARs y ETFs",
-   "pct": 0.001,
-   "prev": 0.0
-  },
-  {
-   "t": "BNY",
-   "n": "BANK OF NEW YORK MELLON",
-   "tipo": "CEDEARs",
-   "mon": "Dólares",
-   "exp": "CEDEARs y ETFs",
-   "pct": 0.001,
-   "prev": 0.0
-  },
-  {
-   "t": "RSP",
-   "n": "CEDEAR INVESCO S&P 500 EQUAL WEIGHT ETF",
-   "tipo": "CEDEARs",
-   "mon": "Dólares",
-   "exp": "CEDEARs y ETFs",
-   "pct": 0.001,
-   "prev": 0.0
-  },
-  {
-   "t": "ALUA",
-   "n": "Aluar",
-   "tipo": "Acciones",
-   "mon": "Pesos",
-   "exp": "Acciones argentinas",
-   "pct": 0.001,
-   "prev": 0.0
   }
  ],
  "salieron": [
   {
    "t": "VS1XO",
-   "prev": 0.114
+   "prev": 0.076
   }
  ]
 }
