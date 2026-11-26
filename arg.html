@@ -654,7 +654,7 @@ var D={
        43.97,40.01,46.07,50.17,62.47,71.94,93.74,91.48,101.96,92.43,94.6,105.0,
        90.41,90.82,102.78,118.33,115.17,125.07,108.31,104.23]},
   // Consumos con Tarjeta en el Exterior — BCRA, anexo Balance Cambiario (memorándum) · Dic 2020-Jun 2026 (agregado 12/08/2026)
-  tarjetas:{v:[84.39, 108.86, 85.45, 98.43, 69.47, 75.14, 83.61, 114.91, 114.90, 94.39, 138.73, 144.74, 207.55,
+  tarjetasExt:{v:[84.39, 108.86, 85.45, 98.43, 69.47, 75.14, 83.61, 114.91, 114.90, 94.39, 138.73, 144.74, 207.55,
               198.74, 202.95, 314.06, 236.92, 282.44, 249.03, 367.55, 343.05, 378.64, 358.60, 262.13, 244.00, 228.49,
               237.85, 290.00, 215.13, 237.33, 287.57, 270.63, 248.23, 282.09, 356.75, 318.96, 293.22, 144.31, 147.14,
               126.23, 119.77, 128.94, 120.29, 148.10, 173.90, 152.20, 148.59, 165.19, 156.33, 178.16, 248.33, 245.38,
@@ -959,6 +959,23 @@ var D={
   ]}
 };
 
+// Series sincronizadas desde el Excel (sync_arg_html.py, cierre diario) — no editar a mano
+/*SYNC-START*/(function(){var S={"ipcComp":{"l":["Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26","Oct 26"],"nucleo":[2.7,3.2,2.4,2.9,3.2,3.2,2.2,1.7,1.5,2.0,1.9,2.2,2.6,3.0,2.6,3.1,3.2,2.3,1.9,1.6,1.8,1.8,1.7,1.5],"regulados":[3.5,3.4,2.6,2.3,3.2,1.8,1.3,2.2,2.3,2.7,2.6,2.6,2.9,3.3,2.4,4.3,5.1,4.7,2.4,2.3,2.1,2.2,2.3,2.9],"estacion":[-1.2,-1.4,0.4,-0.8,8.4,1.9,-2.7,-0.2,4.1,-0.8,2.2,2.8,0.4,0.6,5.7,-1.3,1.0,0,3.5,3.4,4.5,-0.9,2.9,5.5]},"comprasMes2026":{"l":["Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26","Oct 26","Nov 26*"],"v":[3337,1058,1671,2770,2601,1418,2162,770,474,1396,345],"acum":[3337,4395,6066,8836,11437,12855,15017,15787,16261,17657,18002]},"dlkCobertura":{"l":["22-Jul","23-Jul","24-Jul","27-Jul","28-Jul","29-Jul","30-Jul","31-Jul","3-Ago","4-Ago","5-Ago","6-Ago","7-Ago","10-Ago","11-Ago","12-Ago","13-Ago","14-Ago","18-Ago","15-Sep","16-Sep","17-Sep","18-Sep","21-Sep","22-Sep","23-Sep","24-Sep","25-Sep","28-Sep","29-Sep","30-Sep","1-Oct","2-Oct","5-Oct","6-Oct","7-Oct","8-Oct","9-Oct","13-Oct","14-Oct","15-Oct","16-Oct","19-Oct","20-Oct","21-Oct","22-Oct","23-Oct","26-Oct","27-Oct","28-Oct","29-Oct","30-Oct","2-Nov","3-Nov","4-Nov","5-Nov","6-Nov","11-Nov","12-Nov","13-Nov","16-Nov","17-Nov","18-Nov","19-Nov","20-Nov","24-Nov","25-Nov"],"stock":[10897.9,10897.9,10897.9,10897.9,10897.9,11808.9,11808.9,9562,9562,9562,9562,9562,9562,9562,9562,10394,10394,10394,10404,11822.2,11822.2,11822.2,11822.2,11822.2,11822.2,11822.2,11855.5,11855.5,11855.5,11855.5,11969.4,11969.4,11969.4,11969.4,11969.4,11969.4,11969.4,11969.4,11969.4,11969.4,12687,12687,12687,12687,12687,12687,12687,12687,12687,12687,12687,12934.6,12934.6,12934.6,12934.6,12934.6,12934.6,12934.6,12934.6,13702.5,13702.5,13702.5,13702.5,13723.5,13723.5,13723.5,13723.5],"ratio":[28.42,28.6,28.84,28.75,28.83,30.21,29.63,23.07,23.75,24.07,24.01,23.96,24.49,25.25,25.14,26.84,26.82,26.99,27.34,29.43,29.84,29.83,29.91,30.1,30.19,30.55,30.66,30.73,30.76,30.21,27.63,27.68,27.96,28.26,28.28,28.48,28.59,29.53,29.66,29.78,31.29,31.61,32.06,32.1,32.11,32.06,32.27,32.75,33,32.46,31.94,29.45,30.13,30.59,30.27,29.68,29.68,30.5,30.3,32.51,33.52,33.83,34.28,34.94,35.73,36.54,37.72],"upd":"25/11/2026"},"courier":{"l":["Dic 20","Ene 21","Feb 21","Mar 21","Abr 21","May 21","Jun 21","Jul 21","Ago 21","Sep 21","Oct 21","Nov 21","Dic 21","Ene 22","Feb 22","Mar 22","Abr 22","May 22","Jun 22","Jul 22","Ago 22","Sep 22","Oct 22","Nov 22","Dic 22","Ene 23","Feb 23","Mar 23","Abr 23","May 23","Jun 23","Jul 23","Ago 23","Sep 23","Oct 23","Nov 23","Dic 23","Ene 24","Feb 24","Mar 24","Abr 24","May 24","Jun 24","Jul 24","Ago 24","Sep 24","Oct 24","Nov 24","Dic 24","Ene 25","Feb 25","Mar 25","Abr 25","May 25","Jun 25","Jul 25","Ago 25","Sep 25","Oct 25","Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26"],"v":[33.18,30.46,33.24,43.61,42.53,49.68,53.06,49.18,54.17,54.9,54.25,52.21,45.72,47.95,46.12,55.99,56.41,62.81,57.19,49.64,66.36,56.22,32.3,25.56,30.5,32.5,32.71,39.49,37.51,38.96,40.09,41.19,41.4,39.57,39.87,39.44,32.87,16.81,13.01,13.86,16.62,17.71,16.87,19.15,20.89,18.45,23.7,24.25,37.55,43.97,40.01,46.07,50.17,62.47,71.94,93.74,91.48,101.96,92.43,94.6,105,90.41,90.82,102.78,118.33,115.17,125.07,108.31,104.23,null]},"tarjetasExt":{"v":[84.39,108.86,85.45,98.43,69.47,75.14,83.61,114.91,114.9,94.39,138.73,144.74,207.55,198.74,202.95,314.06,236.92,282.44,249.03,367.55,343.05,378.64,358.6,262.13,244,228.49,237.85,290,215.13,237.33,287.57,270.63,248.23,282.09,356.75,318.96,293.22,144.31,147.14,126.23,119.77,128.94,120.29,148.1,173.9,152.2,148.59,165.19,156.33,178.16,248.33,245.38,224.16,219.68,213.19,200.95,229.75,202.75,209.63,176.44,187.86,209.92,222.97,228.79,198.27,215.06,204.3,222.36,208.46,190.24]},"construya":{"l":["Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26","Oct 26"],"mom":[-7.1,3.2,-11.6,15.9,1.3,5.0,1.9,-2.0,-0.8,-3.5,-0.6,-3.6],"yoy":[-5.5,3.2,-1.1,-2.6,11.1,-4.7,1.6,-0.6,-6.5,-5.3,-2.9,-9.0],"acum":-2.3},"acara":{"l":["Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26","Oct 26"],"unidades":[66768,42301,49582,48090,43256,47765,45350,45286,50546,46390],"yoy":[-4.3,-5.5,2.1,-12.9,-23.5,-9.8,-28.1,-17.8,-10.5,-11.7],"acumYoy":-12.6,"fuente":"DNRPA"},"adefa":{"l":["Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26","Oct 26"],"prod":[20998,29632,41716,37521,37762,37029,31189,39381,39747,40426],"expo":[9759,15991,26646,26887,25237,22373,23377,24589,28213,27793],"ventas":[34333,36292,41453,35976,null,null,34178,39068,43214,39333],"yoyProd":[-30.1,-30.1,0.4,-17.5,-21.5,-13.6,-16.0,-11.6,-15.6,-14.4],"yoyExpo":[-12.3,-28.9,9.7,18.8,-4.2,-1.7,28.3,-3.6,6.8,-6.2],"yoyVtas":[0.7,-20.4,-13.5,-31.6,null,null,-31.9,-24.5,-20.4,-12.2],"acumProd":-16.7,"acumExpo":0.6,"acumVtas":null},"came":{"l":["Nov 25","Dic 25","Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26","Oct 26"],"ivm":[96.7,96.3,87.1,89.4,98.2,93.4,89.2,77.9,77,82.7,85.3,102.2],"yoy":[-4.1,-5.2,-4.8,-5.6,-0.6,-3.1,-1.2,0.9,-3.8,-0.2,0.3,-1.6],"mom":[-9.1,5.2,-4.2,2.6,-0.4,-1.3,1.2,-1.3,-2.1,-2.7,-1.2,0.3],"acum":[3.4,2.5,null,-5.2,-3.6,-3.5,-3.1,-2.5,-2.7,-2.4,-2.1,-2]},"cemento":{"l":["Ene 26","Feb 26","Mar 26","Abr 26","May 26","Jun 26","Jul 26","Ago 26","Sep 26","Oct 26"],"desp":[792828,700872,830970,733505,809837,813196,817715,817082,964297,887386],"yoy":[-5.7,-5.8,11.1,-13.2,-1.5,-0.2,-8.2,-8.2,4.5,-8.9],"acum":8167688,"acumYoy":-3.8,"mom":-8.0},"_sync":"26/11/2026 15:51"};for(var k in S) D[k]=S[k];})();/*SYNC-END*/
+
+// Alinear series por etiqueta de mes ("Oct 26", "2026-10-01", "Q3 26") y no pisar datos nuevos con viejos — 26/11/2026
+function _lk(x){ if(x==null) return -1; x=String(x).replace('*','').trim(); var m=x.match(/^(\d{4})-(\d{2})/); if(m) return +m[1]*12+(+m[2]);
+  var M=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic']; m=x.match(/^([A-Za-záéíóú]{3})[a-záéíóú]*\.?\s+'?(\d{2,4})$/);
+  if(m){ var i=M.indexOf(m[1].toLowerCase()); if(i<0) return -1; var y=+m[2]; if(y<100) y+=2000; return y*12+i+1; }
+  m=x.match(/^Q(\d)\s+(\d{2})$/); if(m) return (2000+(+m[2]))*12+(+m[1])*3; return -1; }
+function alinear(L, sl, sv){ var mp={}; (sl||[]).forEach(function(l,i){ mp[_lk(l)]=sv[i]; }); return L.map(function(l){ var v=mp[_lk(l)]; return v===undefined?null:v; }); }
+function masNuevo(nv, ov){ if(!ov||!ov.l||!ov.l.length) return true; if(!nv||!nv.l||!nv.l.length) return false; return _lk(nv.l[nv.l.length-1]) >= _lk(ov.l[ov.l.length-1]); }
+function ultimo(a){ for(var i=a.length-1;i>=0;i--) if(a[i]!=null) return a[i]; return null; }
+function mesLargo(l){ var x=String(l).replace('*','').split(' '); return x.length===2&&x[1].length===2 ? x[0]+' 20'+x[1] : l; }
+function pf(x,d){ return x==null?'s/d':(x>0?'+':'')+x.toFixed(d==null?1:d)+'%'; }
+function nf(x){ return x==null?'s/d':Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.'); }
+function cl(x){ return x==null?'a':x>=0?'g':'r'; }
+
+
 // ══ CARGA DE DATOS EN VIVO ═══════════════════════════════════════
 async function loadLiveData() {
   try {
@@ -1003,12 +1020,13 @@ async function loadLiveData() {
       updated = true;
     }
     if (manual) {
-      if (manual.emae)         D.emae         = manual.emae;
-      if (manual.emaeDesest)   D.emaeDesest   = manual.emaeDesest;
+      // manual.json solo pisa si llega igual o más lejos (EPH ahí está en Q1 26 y el HTML en Q2 26)
+      if (manual.emae && masNuevo(manual.emae, D.emae))                   D.emae         = manual.emae;
+      if (manual.emaeDesest && masNuevo(manual.emaeDesest, D.emaeDesest)) D.emaeDesest   = manual.emaeDesest;
       if (manual.sectMar26)    D.sectMar26    = manual.sectMar26;
-      if (manual.eph)          D.eph          = manual.eph;
-      if (manual.isac)         D.isac         = manual.isac;
-      if (manual.ipi)          D.ipi          = manual.ipi;
+      if (manual.eph && masNuevo(manual.eph, D.eph))    D.eph  = manual.eph;
+      if (manual.isac && masNuevo(manual.isac, D.isac)) D.isac = manual.isac;
+      if (manual.ipi && masNuevo(manual.ipi, D.ipi))    D.ipi  = manual.ipi;
       // licitaciones y deuda: NO se pisan con manual.json (api/manual.json quedó
       // desactualizado desde 16/07/2026 — desde entonces ambas series se mantienen
       // a mano directamente en el objeto D de este archivo, con datos más nuevos
@@ -1089,7 +1107,7 @@ function buildINDEC(){
       sr4([{l:'Expo Oct 26',v:'$10.061M',c:'g',n:'+26.4% YoY \u00b7 cantidades +5.6% \u00b7 precios +19.7%',x:'indec'},{l:'Impo Oct 26',v:'$6.668M',c:'a',n:'-6.7% YoY \u00b7 precios +12.8% \u00b7 cantidades -17.3%',x:'indec'},{l:'Super\u00e1vit Oct 26',v:'$3.394M',c:'g',n:'+$2.581M vs oct-25 \u00b7 35\u00b0 mes consecutivo',x:'indec'},{l:'T\u00e9rminos intercambio',v:'+6.1%',c:'g',n:'Precios expo +19,7% vs impo +12,8% \u00b7 ganancia USD 514M',x:'indec'}])+
       bx1('bc1','h240','Exportaciones vs Importaciones \u2014 ICA INDEC \u2014 Jul 2025\u2013Oct 2026','c-indec')+
       bx2(['bc2','bc3'],['Super\u00e1vit Comercial Mensual','Exportaciones por Grandes Rubros \u2014 PP / MOA / MOI / CyE'],'h190',['c-indec',''])+
-      bx1('bc4','h220','Compras al Exterior: Courier (barras) vs. Consumos con Tarjeta (l\u00ednea) \u2014 USD millones \u2014 Dic 2020\u2013Ago 2026','c-indec')+
+      bx1('bc4','h220','Compras al Exterior: Courier (barras) vs. Consumos con Tarjeta (l\u00ednea) \u2014 USD millones \u2014 Dic 2020\u2013'+mesLargo(D.courier.l[D.courier.l.length-1])+' (courier: INDEC, se carga a mano; tarjeta: BCRA)','c-indec')+
       bx2(['bc5','bc6'],['Exportaciones por Grandes Rubros \u2014 Evoluci\u00f3n Mensual (USD MM)','Importaciones por Usos Econ\u00f3micos \u2014 Evoluci\u00f3n Mensual (USD MM)'],'h240',['c-indec','c-indec']),
       cal)+
     panel2col('p5',
@@ -1137,12 +1155,12 @@ function buildINDEC(){
     // IPC
     line('ci1',D.ipc.l,[
       {label:'General',data:D.ipc.v,borderColor:C.RD,fill:true,backgroundColor:C.RD+'18',tension:0.4,pointRadius:3,pointBackgroundColor:C.RD},
-      {label:'N\u00facleo',data:D.nucleo,borderColor:C.CELL,tension:0.4,pointRadius:3,pointBackgroundColor:C.CELL},
-      {label:'Regulados',data:D.regulados,borderColor:C.OR,tension:0.4,pointRadius:3,pointBackgroundColor:C.OR},
-      {label:'Estacionales',data:D.estacion,borderColor:C.G4,tension:0.4,pointRadius:3,pointBackgroundColor:C.G4}
+      {label:'N\u00facleo',data:alinear(D.ipc.l,D.ipcComp.l,D.ipcComp.nucleo),borderColor:C.CELL,tension:0.4,pointRadius:3,pointBackgroundColor:C.CELL},
+      {label:'Regulados',data:alinear(D.ipc.l,D.ipcComp.l,D.ipcComp.regulados),borderColor:C.OR,tension:0.4,pointRadius:3,pointBackgroundColor:C.OR},
+      {label:'Estacionales',data:alinear(D.ipc.l,D.ipcComp.l,D.ipcComp.estacion),borderColor:C.G4,tension:0.4,pointRadius:3,pointBackgroundColor:C.G4}
     ],'%',undefined,ai);
     line('ci2',D.ipcYoY.l,[{label:'IPC YoY %',data:D.ipcYoY.v,borderColor:C.RD,fill:true,backgroundColor:C.RD+'15',tension:0.4,pointRadius:3,pointBackgroundColor:C.RD}],'%',undefined,ai);
-    bar('ci3',['N\u00facleo','Regulados','Estac.','General'],[1.5,2.9,5.5,2.2],{cf:function(v,i){return [C.CELL,C.OR,C.G4,C.RD][i];},s:'%',ac:ai});
+    bar('ci3',['N\u00facleo','Regulados','Estac.','General'],[ultimo(D.ipcComp.nucleo),ultimo(D.ipcComp.regulados),ultimo(D.ipcComp.estacion),ultimo(D.ipc.v)],{cf:function(v,i){return [C.CELL,C.OR,C.G4,C.RD][i];},s:'%',ac:ai});
     bar('ci4',D.carnes.l,D.carnes.v,{cf:function(v){return v>=0?C.RD:C.G4;},s:'%',ac:ai});
     bar('ci5',D.combustibles.l,D.combustibles.v,{cf:function(v){return v>=0?C.OR:C.G4;},s:'%',ac:ai});
     line('ci6',D.ipcExCarnes.l,[
@@ -1179,7 +1197,7 @@ function buildINDEC(){
       var el=$('bc4'); if(!el) return;
       new Chart(el,{data:{labels:D.courier.l,datasets:[
         {type:'bar',label:'Courier',data:D.courier.v,backgroundColor:ai,borderWidth:0,borderRadius:2,yAxisID:'y'},
-        {type:'line',label:'Tarjeta exterior',data:D.tarjetas.v,borderColor:C.OR,backgroundColor:C.OR,borderWidth:2,pointRadius:2,tension:0.3,yAxisID:'y'}
+        {type:'line',label:'Tarjeta exterior',data:D.tarjetasExt.v,borderColor:C.OR,backgroundColor:C.OR,borderWidth:2,pointRadius:2,tension:0.3,yAxisID:'y'}
       ]},options:{responsive:true,maintainAspectRatio:false,
         plugins:{legend:{display:true,labels:{color:C.DM,font:{size:10},boxWidth:12,padding:8}},tooltip:{...tip(ai),callbacks:{label:function(c){return c.dataset.label+': $'+parseFloat(c.parsed.y.toFixed(1))+'M';}}}},
         scales:{x:{ticks:{color:C.DM,font:{size:9}},grid:{display:false},border:{color:'transparent'}},
@@ -1222,8 +1240,8 @@ function buildINDEC(){
     bar('is2',D.ipi.l,D.ipi.v,{cf:function(v){return v>=0?C.G4:C.RD;},ac:ai});
     line('is3',D.isac.l,[
       {label:'ISAC',data:D.isac.v,borderColor:ai,tension:0.3,pointRadius:3,pointBackgroundColor:ai},
-      {label:'IPI Mfg',data:D.ipi.v,borderColor:C.OR,tension:0.3,pointRadius:3,pointBackgroundColor:C.OR},
-      {label:'EMAE',data:D.emaeDesest.v.slice(-7),borderColor:C.G4,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4}
+      {label:'IPI Mfg',data:alinear(D.isac.l,D.ipi.l,D.ipi.v),borderColor:C.OR,tension:0.3,pointRadius:3,pointBackgroundColor:C.OR},
+      {label:'EMAE (desest. m/m)',data:alinear(D.isac.l,D.emaeDesest.l,D.emaeDesest.v),borderColor:C.G4,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4}
     ],'%',undefined,ai);
     // UCII — Utilización Capacidad Instalada Industria
     line('is3b',D.ucii.l,[
@@ -1846,7 +1864,7 @@ async function buildBCRA(){
       shdr('Reservas Internacionales','BCRA \u2014 Acumulaci\u00f3n de divisas','...','Cargando... (API BCRA)','g')+
       src('BCRA \u00b7 API Oficial api.bcra.gob.ar \u00b7 idVariable=1 \u00b7 Sin autenticaci\u00f3n')+
       '<div id="bcra-api-status" style="font-size:9px;letter-spacing:1px;margin-bottom:12px;color:var(--or);">Conectando a API BCRA...</div>'+
-      sr4([{l:'Reservas Brutas',v:'...',c:'g',n:'Cargando API BCRA',x:'bcra'},{l:'Var. Mensual',v:'...',c:'g',n:'Cargando...',x:'bcra'},{l:'Acum. 2026',v:'$9.8B',c:'g',n:'98% meta FMI anual',x:'bcra'},{l:'Reservas Netas',v:'~-$4B',c:'r',n:'Estimado',x:'bcra'}])+
+      sr4([{l:'Reservas Brutas',v:'...',c:'g',n:'Cargando API BCRA',x:'bcra'},{l:'Var. Mensual',v:'...',c:'g',n:'Cargando...',x:'bcra'},{l:'Compras acum. 2026',v:'$'+(ultimo(D.comprasMes2026.acum)/1000).toFixed(1)+'B',c:'g',n:Math.round(ultimo(D.comprasMes2026.acum)/100)+'% de la meta FMI ($10.000M) \u00b7 hasta '+D.comprasMes2026.l[D.comprasMes2026.l.length-1].replace('*',' (parcial)'),x:'bcra'},{l:'Reservas Netas',v:'~-$4B',c:'r',n:'Estimado',x:'bcra'}])+
       bx1('rv1','h240','Reservas Brutas BCRA \u2014 MM USD \u00b7 Dato diario BCRA API','c-bcra')+
       bx2(['rv2','rv3'],['Compra Neta BCRA \u2014 Mensual 2026 (M USD)','Acumulado Compras 2026 vs Meta FMI $10.000M (MM USD)'],'h190',['c-bcra','']),
       cal)+
@@ -2216,8 +2234,8 @@ function buildMECON(){
         '</div>'+
       '</div>'+
       bx2(['de1','de2'],['Deuda Bruta % PBI \u2014 Serie mensual 2019\u20132026 (Finanzas)','Vencimientos ME 2026 Mensual \u2014 A.3.2+A.3.3 \u00b7 MM USD (Jul 9: $4.9B pagado \u00b7 financiado $3.2B BBVA/DB)'],'h190',['c-rd','c-mecon'])+
-      shdr('D\u00f3lar Linked \u2014 Stock y Cobertura','Outstanding DLK + Inter\u00e9s Abierto ROFEX vs. M2 Privado','10,404',L(D.dlkCobertura.l)+' \u00b7 USD MM','a')+
-      src('Vencimientos - Detalle DLK \u00b7 Ratio Cobertura-M2 Diario \u2014 lic. 12-Ago + canje D31G6 18-Ago')+
+      shdr('D\u00f3lar Linked \u2014 Stock y Cobertura','Outstanding DLK + Inter\u00e9s Abierto ROFEX vs. M2 Privado',nf(ultimo(D.dlkCobertura.stock)),L(D.dlkCobertura.l)+' \u00b7 USD MM','a')+
+      src('Deuda y Cambiario ARG.xlsx \u00b7 Vencimientos - Detalle DLK \u00b7 Ratio Cobertura-M2 Diario (cierre diario) \u00b7 dato al '+(D.dlkCobertura.upd||L(D.dlkCobertura.l))+' \u00b7 sin dato de stock del 19/08 al 14/09')+
       bx2(['dc1','dc2'],['Stock DLK en Circulaci\u00f3n \u2014 USD MM','Ratio Cobertura (ROFEX+DLK) / M2 Privado \u2014 %'],'h190',['c-mecon','c-mecon']),
       cal)+
     panel2col('p4',
@@ -2320,36 +2338,44 @@ function buildMECON(){
 // ══ BUILD REAL ════════════════════════════════════════════════
 function buildREAL(){
   var ar=C.REAL;
+  // datos sincronizados desde el Excel (sync_arg_html.py): los textos se arman ac\u00e1
+  var CY=D.construya, nC=CY.l.length-1, PA=D.acara, nP=PA.l.length-1, AD=D.adefa, nA=AD.l.length-1, CA=D.came, nM=CA.l.length-1;
+  var mC=mesLargo(CY.l[nC]), mP=mesLargo(PA.l[nP]), mA=mesLargo(AD.l[nA]), mM=mesLargo(CA.l[nM]), mcC=CY.l[nC].split(' ')[0].toLowerCase();
+  var sum=function(a){ return a.reduce(function(x,y){ return x+(y||0); },0); };
+  var pTot=sum(PA.unidades), pMax=Math.max.apply(null,PA.unidades), pMin=Math.min.apply(null,PA.unidades);
+  var pMom=nP>0?(PA.unidades[nP]/PA.unidades[nP-1]-1)*100:null, cWorst=Math.min.apply(null,CY.mom), cWorstL=CY.l[CY.mom.indexOf(cWorst)];
+  var pMes=PA.l[nP].split(' ')[0].toLowerCase();
+  var CE=D.cemento, nE=CE.l.length-1, mE=mesLargo(CE.l[nE]), mPrevE=nE>0?mesLargo(CE.l[nE-1]):'mes anterior';
   $('kstrip').innerHTML=kpis([
     {l:'SIPA Priv. Jul 26 MoM',v:'-0.2%',c:'r',n:'SIPA · MCyH (desest.)'},
     {l:'SIPA Priv. YoY Jul 26',v:'-2.2%',c:'r',n:'vs julio 2025'},
-    {l:'\u00cdndice Construya Sep',v:'-0.7%',c:'r',n:'MoM desestacionalizado'},
-    {l:'Construya YoY Sep 26',v:'-2.9%',c:'r',n:'Acum. ene-sep -1.4%'},
-    {l:'Patentamientos Sep 26',v:'49.814',c:'r',n:'-11.4% YoY \u00b7 ACARA'},
-    {l:'Acum. Patent. 2026',v:'432.510',c:'a',n:'Ene-Sep 2026 \u00b7 ACARA'},
+    {l:'\u00cdndice Construya '+CY.l[nC],v:pf(CY.mom[nC]),c:cl(CY.mom[nC]),n:'MoM desestacionalizado'},
+    {l:'Construya YoY '+CY.l[nC],v:pf(CY.yoy[nC]),c:cl(CY.yoy[nC]),n:'Acum. ene-'+mcC+' '+pf(CY.acum)},
+    {l:'Patentamientos '+PA.l[nP],v:nf(PA.unidades[nP]),c:cl(PA.yoy[nP]),n:pf(PA.yoy[nP])+' YoY \u00b7 DNRPA'},
+    {l:'Acum. Patent. 20'+PA.l[nP].split(' ')[1],v:nf(pTot),c:cl(PA.acumYoy),n:'Ene-'+pMes+' '+pf(PA.acumYoy)+' a/a \u00b7 DNRPA'},
     {l:'ISAC Sep 26 YoY',v:'+5.1%',c:'g',n:'INDEC \u00b7 MoM +7.8%'},
     {l:'Sal. Real Jul 26 (IS)',v:'+0.2%',c:'g',n:'Priv. reg. · MoM real'},
     {l:'Monot. YoY Jul 26',v:'+58.800',c:'g',n:'SIPA · compensa priv. formal'},
     {l:'Asal.Priv. YoY Jul 26',v:'−134.500',c:'r',n:'SIPA · destrucción formal'},
-    {l:'Cemento Sep 26 YoY',v:'+4.5%',c:'g',n:'964.297 t \u00b7 AFCP'},
-    {l:'Cemento MoM',v:'+18.0%',c:'g',n:'vs Agosto 2026'},
-    {l:'Ventas Pyme May 26',v:'-1.2%',c:'r',n:'YoY \u00b7 CAME'},
-    {l:'Prod. ADEFA Sep 26',v:'39.747 u',c:'r',n:'-15.6% YoY \u00b7 ADEFA'}
+    {l:'Cemento '+CE.l[nE]+' YoY',v:pf(CE.yoy[nE]),c:cl(CE.yoy[nE]),n:nf(CE.desp[nE])+' t \u00b7 AFCP'},
+    {l:'Cemento MoM',v:pf(CE.mom),c:cl(CE.mom),n:'vs '+mPrevE},
+    {l:'Ventas Pyme '+CA.l[nM],v:pf(CA.yoy[nM]),c:cl(CA.yoy[nM]),n:'YoY \u00b7 CAME'},
+    {l:'Prod. ADEFA '+AD.l[nA],v:nf(AD.prod[nA])+' u',c:cl(AD.yoyProd[nA]),n:pf(AD.yoyProd[nA])+' YoY \u00b7 ADEFA'}
   ]);
-  $('tabrow').innerHTML=tabs(['Resumen','SIPA \u00b7 Empleo Registrado','\u00cdndice Construya','ACARA \u00b7 Patentamientos','Cemento \u00b7 CAME \u00b7 ADEFA','Comparativa Sectorial','Paritarias \u00b7 Convenios']);
+  $('tabrow').innerHTML=tabs(['Resumen','SIPA \u00b7 Empleo Registrado','\u00cdndice Construya','Patentamientos','Cemento \u00b7 CAME \u00b7 ADEFA','Comparativa Sectorial','Paritarias \u00b7 Convenios']);
   var cal=makeCal(D.cal.year,D.cal.month,D.cal.events);
   $('main').innerHTML=
     panel2col('p0',
       shdr('Econom\u00eda Real \u2014 Actividad e Industria','SIPA \u00b7 \u00cdndice Construya \u00b7 ACARA \u00b7 Octubre 2026','')+
       '<div class="og">'+
         ocard('rm0','SIPA \u00b7 Empleo','Empleo Registrado Privado','Variaci\u00f3n mensual s/e','-0.2%','r','Jul 2026','YoY: -2.2%<br>5 meses de ca\u00edda',1)+
-        ocard('rm1','\u00cdndice Construya','Construcci\u00f3n Privada','Despachos insumos sectoriales','-0.7%','r','Sep 2026 MoM','YoY: -2.9%<br>Acum: -1.4%',2)+
-        ocard('rm2','ACARA \u00b7 Patentamientos','Autos 0km \u2014 ACARA','Unidades patentadas mensuales','49.814','r','Sep 2026','-11.4% YoY<br>+10.7% vs agosto',3)+
+        ocard('rm1','\u00cdndice Construya','Construcci\u00f3n Privada','Despachos insumos sectoriales',pf(CY.mom[nC]),cl(CY.mom[nC]),mC+' MoM','YoY: '+pf(CY.yoy[nC])+'<br>Acum: '+pf(CY.acum),2)+
+        ocard('rm2','DNRPA \u00b7 Patentamientos','Autos 0km \u2014 DNRPA','Unidades patentadas mensuales',nf(PA.unidades[nP]),cl(PA.yoy[nP]),mP,pf(PA.yoy[nP])+' YoY<br>'+pf(pMom)+' vs mes anterior',3)+
         ocard('rm3','ISAC \u00b7 INDEC','Ind. Sint. Construcci\u00f3n','Variaci\u00f3n YoY INDEC','+5.1%','g','Sep 2026','MoM +7.8% \u00b7 acum +1.3%',4)+
         ocard('rm4','Sal. Real \u00b7 IS','Salario Real Priv. Reg.','Variaci\u00f3n mensual real IS INDEC','+0.0%','g','Sep 2026','Ago26 +1.1%<br>Jul26 +0.2%',1)+
-        ocard('rm5','Cemento \u00b7 AFCP','Despacho mensual nacional','Variaci\u00f3n interanual YoY','+4.5%','g','Sep 2026','964.297 t<br>MoM: +18.0%',2)+
-        ocard('rm6','Ventas Pyme \u00b7 CAME','\u00cdndice Ventas Minoristas','Variaci\u00f3n interanual real','-1.2%','r','May 2026','MoM: +1.2%<br>Acum: -3.1%',2)+
-        ocard('rm7','ADEFA \u00b7 Producci\u00f3n','Autom\u00f3viles y com. livianos','Unidades producidas','39.747','r','Sep 2026','-15.6% YoY<br>Acum: -16.9%',3)+
+        ocard('rm5','Cemento \u00b7 AFCP','Despacho mensual nacional','Variaci\u00f3n interanual YoY',pf(CE.yoy[nE]),cl(CE.yoy[nE]),mE,nf(CE.desp[nE])+' t<br>MoM: '+pf(CE.mom),2)+
+        ocard('rm6','Ventas Pyme \u00b7 CAME','\u00cdndice Ventas Minoristas','Variaci\u00f3n interanual real',pf(CA.yoy[nM]),cl(CA.yoy[nM]),mM,'MoM: '+pf(CA.mom[nM])+'<br>Acum: '+pf(CA.acum[nM]),2)+
+        ocard('rm7','ADEFA \u00b7 Producci\u00f3n','Autom\u00f3viles y com. livianos','Unidades producidas',nf(AD.prod[nA]),cl(AD.yoyProd[nA]),mA,pf(AD.yoyProd[nA])+' YoY<br>Acum: '+pf(AD.acumProd),3)+
         ocard('rm8','SIPA \u00b7 Composici\u00f3n','Empleo registrado Jul 2026','Asalariados priv. vs Monotributistas','-135K/+59K','r','Jul 2026','Sustituci\u00f3n formal<br>12.726.000 totales',3)+
       '</div>',
       cal,true)+
@@ -2369,42 +2395,42 @@ function buildREAL(){
       bx2(['sp4','sp5'],['SIPA \u2014 Variaci\u00f3n Absoluta YoY por Categor\u00eda (miles \u00b7 Jul26 vs Jul25)','SIPA \u2014 Asalariados Privados Nominales en miles \u00b7 Ago 25\u2013Jul 26'],'h230',['c-real','c-real']),
       cal)+
     panel2col('p2',
-      shdr('\u00cdndice Construya','Despachos de insumos para la construcci\u00f3n privada','-0.7%','Sep 2026 \u00b7 MoM Desest.','r')+
-      src('Grupo Construya \u00b7 \u00cdndice Construya Sep 2026')+
-      sr4([{l:'IC MoM Desest. Sep 26',v:'-0.7%',c:'r',n:'Desestacionalizado',x:'real'},{l:'IC YoY Sep 26',c:'r',v:'-2.9%',n:'vs Sep 2025',x:'real'},{l:'IC Acum. Ene-Sep 26',v:'-1.4%',c:'r',n:'vs Ene-Sep 2025',x:'real'},{l:'IC MoM Ene 26',v:'-11.6%',c:'r',n:'Peor mes de la serie reciente',x:'real'}])+
-      bx1('ib1','h240','\u00cdndice Construya \u2014 Variaci\u00f3n MoM Desestacionalizada \u2014 Oct 2025\u2013Sep 2026','c-real')+
+      shdr('\u00cdndice Construya','Despachos de insumos para la construcci\u00f3n privada',pf(CY.mom[nC]),mC+' \u00b7 MoM Desest.',cl(CY.mom[nC]))+
+      src('Grupo Construya \u00b7 \u00cdndice Construya '+mC+' \u00b7 m/m calculado del \u00edndice desestacionalizado (puede diferir 0,1 pp del informe por redondeo)')+
+      sr4([{l:'IC MoM Desest. '+CY.l[nC],v:pf(CY.mom[nC]),c:cl(CY.mom[nC]),n:'Desestacionalizado',x:'real'},{l:'IC YoY '+CY.l[nC],c:cl(CY.yoy[nC]),v:pf(CY.yoy[nC]),n:'vs '+CY.l[nC].split(' ')[0]+' 20'+(+CY.l[nC].split(' ')[1]-1),x:'real'},{l:'IC Acum. Ene-'+CY.l[nC],v:pf(CY.acum),c:cl(CY.acum),n:'vs mismo per\u00edodo a\u00f1o anterior',x:'real'},{l:'IC MoM '+cWorstL,v:pf(cWorst),c:'r',n:'Peor mes de los \u00faltimos 12',x:'real'}])+
+      bx1('ib1','h240','\u00cdndice Construya \u2014 Variaci\u00f3n MoM Desestacionalizada \u2014 '+mesLargo(CY.l[0])+'\u2013'+mC,'c-real')+
       bx2(['ib2','ib3'],['\u00cdndice Construya YoY \u2014 Variaci\u00f3n Interanual','ISAC vs Construya \u2014 Comparativa construcci\u00f3n'],'h190',['c-real','']),
       cal)+
     panel2col('p3',
-      shdr('ACARA \u00b7 Patentamientos Automotores','Autos 0km \u2014 ACARA \u00b7 Datos mensuales y acumulados','49.814','Unidades Sep 2026','r')+
-      src('ACARA \u00b7 Asociaci\u00f3n de Concesionarios de Automotores de la Rep. Argentina')+
-      sr4([{l:'Patentamientos Sep 26',v:'49.814',c:'r',n:'-11.4% YoY',x:'real'},{l:'Acum. Ene-Sep 26',v:'432.510',c:'a',n:'Ene-Sep 2026',x:'real'},{l:'Mejor mes 2026',v:'66.454',c:'g',n:'Enero 2026',x:'real'},{l:'Peor mes 2026',v:'41.921',c:'r',n:'Mayo 2026',x:'real'}])+
-      bx1('ac1','h240','Patentamientos Mensuales \u2014 Unidades \u2014 Ene\u2013Sep 2026','c-real')+
+      shdr('Patentamientos Automotores','Autos 0km \u2014 DNRPA (Registro Automotor) \u00b7 Datos mensuales y acumulados',nf(PA.unidades[nP]),'Unidades '+mP,cl(PA.yoy[nP]))+
+      src('DNRPA \u00b7 Registros de la Propiedad Automotor (datos abiertos, Ministerio de Justicia) \u00b7 hoja Patentamientos \u00b7 participaci\u00f3n por marca: ACARA')+
+      sr4([{l:'Patentamientos '+PA.l[nP],v:nf(PA.unidades[nP]),c:cl(PA.yoy[nP]),n:pf(PA.yoy[nP])+' YoY',x:'real'},{l:'Acum. Ene-'+PA.l[nP],v:nf(pTot),c:cl(PA.acumYoy),n:pf(PA.acumYoy)+' vs mismo per\u00edodo a\u00f1o anterior',x:'real'},{l:'Mejor mes 20'+PA.l[nP].split(' ')[1],v:nf(pMax),c:'g',n:mesLargo(PA.l[PA.unidades.indexOf(pMax)]),x:'real'},{l:'Peor mes 20'+PA.l[nP].split(' ')[1],v:nf(pMin),c:'r',n:mesLargo(PA.l[PA.unidades.indexOf(pMin)]),x:'real'}])+
+      bx1('ac1','h240','Patentamientos Mensuales \u2014 Unidades \u2014 Ene\u2013'+mP,'c-real')+
       bx2(['ac2','ac3'],['Variaci\u00f3n YoY \u2014 Patentamientos vs Mismo Mes 2025','Participaci\u00f3n por Marca \u2014 Acum. 2026'],'h190',['c-rd','']),
       cal)+
     panel2col('p4',
-      shdr('Cemento \u00b7 CAME \u00b7 ADEFA','AFCP y ADEFA \u2014 Septiembre 2026 \u00b7 Ventas Minoristas Pyme (CAME) \u2014 Mayo 2026','')+
-      src('AFCP (Asociaci\u00f3n Fabricantes Cemento Portland) \u00b7 CAME \u00b7 ADEFA \u00b7 Septiembre 2026 (CAME: Mayo 2026)')+
+      shdr('Cemento \u00b7 CAME \u00b7 ADEFA','AFCP \u2014 '+mesLargo(D.cemento.l[D.cemento.l.length-1])+' \u00b7 ADEFA \u2014 '+mA+' \u00b7 Ventas Minoristas Pyme (CAME) \u2014 '+mM,'')+
+      src('AFCP (Asociaci\u00f3n Fabricantes Cemento Portland) \u00b7 CAME \u00b7 ADEFA (gacetillas mensuales)')+
       sr4([
-        {l:'Cemento YoY Sep 26',v:'+4.5%',c:'g',n:'964.297 t despacho',x:'real'},
-        {l:'Cemento MoM Sep 26',v:'+18.0%',c:'g',n:'vs Agosto 2026',x:'real'},
-        {l:'Cemento Acum Ene-Sep',v:'-3.2%',c:'r',n:'7.280.301 t total',x:'real'},
-        {l:'Ventas Pyme YoY',v:'-1.2%',c:'r',n:'CAME \u00b7 \u00cdndice 89.2',x:'real'}
+        {l:'Cemento YoY '+CE.l[nE],v:pf(CE.yoy[nE]),c:cl(CE.yoy[nE]),n:nf(CE.desp[nE])+' t despacho',x:'real'},
+        {l:'Cemento MoM '+CE.l[nE],v:pf(CE.mom),c:cl(CE.mom),n:'vs '+mPrevE,x:'real'},
+        {l:'Cemento Acum Ene-'+CE.l[nE].split(' ')[0],v:pf(CE.acumYoy),c:cl(CE.acumYoy),n:nf(CE.acum)+' t total',x:'real'},
+        {l:'Ventas Pyme YoY '+CA.l[nM],v:pf(CA.yoy[nM]),c:cl(CA.yoy[nM]),n:'CAME \u00b7 \u00cdndice '+CA.ivm[nM],x:'real'}
       ])+
       bx2(['cm1','cm2'],['Cemento \u2014 Despacho Mensual YoY % 2026 (AFCP)','Cemento \u2014 Toneladas Mensuales 2026'],'h210',['c-real',''])+
       sr4([
-        {l:'ADEFA Prod. Sep 26',v:'39.747 u',c:'r',n:'-15.6% YoY',x:'real'},
-        {l:'ADEFA Expo Sep 26',v:'28.213 u',c:'g',n:'+6.8% YoY',x:'real'},
-        {l:'Ventas May. Sep 26',v:'43.214 u',c:'r',n:'-20.4% YoY',x:'real'},
-        {l:'CAME MoM May 26',v:'+1.2%',c:'g',n:'Intermensual',x:'real'}
+        {l:'ADEFA Prod. '+AD.l[nA],v:nf(AD.prod[nA])+' u',c:cl(AD.yoyProd[nA]),n:pf(AD.yoyProd[nA])+' YoY',x:'real'},
+        {l:'ADEFA Expo '+AD.l[nA],v:nf(AD.expo[nA])+' u',c:cl(AD.yoyExpo[nA]),n:pf(AD.yoyExpo[nA])+' YoY',x:'real'},
+        {l:'Ventas May. '+AD.l[nA],v:nf(AD.ventas[nA])+' u',c:cl(AD.yoyVtas[nA]),n:pf(AD.yoyVtas[nA])+' YoY',x:'real'},
+        {l:'CAME MoM '+CA.l[nM],v:pf(CA.mom[nM]),c:cl(CA.mom[nM]),n:'Intermensual desestacionalizada',x:'real'}
       ])+
       bx2(['ad1','ad2'],['ADEFA \u2014 Producci\u00f3n vs Exportaciones 2026 (unidades)','ADEFA \u2014 Var. YoY Producci\u00f3n 2026 (%)'],'h210',['','c-real']),
       cal)+
     panel2col('p5',
       shdr('Comparativa Sectorial \u2014 Econom\u00eda Real','SIPA \u00b7 Construya \u00b7 ACARA \u00b7 ISAC \u00b7 Cemento \u00b7 ADEFA','')+
       src('Fuentes combinadas \u00b7 Ver solapas individuales para detalle')+
-      bx3(['cp1','cp2','cp3'],['Empleo SIPA vs ISAC \u2014 Construcci\u00f3n','Patentamientos vs EMAE \u2014 Actividad general','Construya vs ISAC \u2014 Dos visiones del sector'],'h220',['c-real','','c-real'])+
-      bx2(['cp4','cp5'],['Cemento YoY vs ISAC \u2014 Construcci\u00f3n','ADEFA Producci\u00f3n vs Patentamientos ACARA'],'h220',['c-real','']),
+      bx3(['cp1','cp2','cp3'],['Empleo SIPA vs ISAC \u2014 Construcci\u00f3n','Patentamientos YoY vs EMAE YoY \u2014 Actividad general','Construya vs ISAC \u2014 Dos visiones del sector'],'h220',['c-real','','c-real'])+
+      bx2(['cp4','cp5'],['Cemento YoY vs ISAC \u2014 Construcci\u00f3n','ADEFA Producci\u00f3n vs Patentamientos (DNRPA)'],'h220',['c-real','']),
       cal)+
     panel2col('p6',
       shdr('Paritarias \u00b7 Convenios Colectivos','Aumentos homologados por gremio \u2014 \u00daltimo tramo y acumulado 2026','')+
@@ -2491,8 +2517,8 @@ function buildREAL(){
     // Construya
     bar('ib1',D.construya.l,D.construya.mom,{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
     bar('ib2',D.construya.l,D.construya.yoy,{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
-    line('ib3',D.isac.l,[
-      {label:'ISAC (INDEC)',data:D.isac.v,borderColor:C.CEL,tension:0.3,pointRadius:3,pointBackgroundColor:C.CEL},
+    line('ib3',D.construya.l,[
+      {label:'ISAC (INDEC)',data:alinear(D.construya.l,D.isac.l,D.isac.v),borderColor:C.CEL,tension:0.3,pointRadius:3,pointBackgroundColor:C.CEL},
       {label:'Construya',data:D.construya.mom,borderColor:ar,tension:0.3,pointRadius:3,pointBackgroundColor:ar}
     ],'%',undefined,ar);
     // ACARA
@@ -2506,11 +2532,11 @@ function buildREAL(){
     ],'%',undefined,ar);
     line('cp2',D.acara.l,[
       {label:'Patentamientos YoY',data:D.acara.yoy,borderColor:C.RD,tension:0.3,pointRadius:3,pointBackgroundColor:C.RD},
-      {label:'EMAE YoY',data:D.emae.v.slice(-5),borderColor:C.G4,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4}
+      {label:'EMAE YoY',data:alinear(D.acara.l,D.emae.l,D.emae.v),borderColor:C.G4,tension:0.3,pointRadius:3,pointBackgroundColor:C.G4}
     ],'%',undefined,ar);
     line('cp3',D.construya.l,[
       {label:'Construya MoM',data:D.construya.mom,borderColor:ar,tension:0.3,pointRadius:3,pointBackgroundColor:ar},
-      {label:'ISAC MoM',data:D.isac.v,borderColor:C.CEL,tension:0.3,pointRadius:3,pointBackgroundColor:C.CEL}
+      {label:'ISAC MoM',data:alinear(D.construya.l,D.isac.l,D.isac.v),borderColor:C.CEL,tension:0.3,pointRadius:3,pointBackgroundColor:C.CEL}
     ],'%',undefined,ar);
     // Cemento · CAME · ADEFA (tab p4)
     bar('cm1',D.cemento.l,D.cemento.yoy,{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
@@ -2524,7 +2550,7 @@ function buildREAL(){
     bar('cp4',D.cemento.l,D.cemento.yoy,{cf:function(v){return v>=0?ar:C.RD;},ac:ar});
     line('cp5',D.adefa.l,[
       {label:'ADEFA Prod.',data:D.adefa.prod,borderColor:C.CEL,tension:0.3,pointRadius:3,pointBackgroundColor:C.CEL},
-      {label:'ACARA Patent.',data:D.acara.unidades,borderColor:C.RD,tension:0.3,pointRadius:3,pointBackgroundColor:C.RD}
+      {label:'Patentamientos',data:alinear(D.adefa.l,D.acara.l,D.acara.unidades),borderColor:C.RD,tension:0.3,pointRadius:3,pointBackgroundColor:C.RD}
     ],' u',undefined,ar);
   },220);
 }
@@ -2998,6 +3024,8 @@ $('upd').textContent='Datos al '+new Date().toLocaleDateString('es-AR',{day:'num
       var nv = a[k]; if(nv === undefined) return;
       // seed.json trae algunas series {l,v} con l vacío/desalineado (ej. ucii): no pisar el literal bueno del HTML
       if(nv && typeof nv==='object' && Array.isArray(nv.l) && Array.isArray(nv.v) && (nv.l.length===0 || nv.l.length!==nv.v.length)) return;
+      // no pisar una serie del HTML que llega más lejos (ej. emae del seed a ago-26 vs literal a sep-26)
+      if(nv && typeof nv==='object' && Array.isArray(nv.l) && D[k] && D[k].l && !masNuevo(nv, D[k])) return;
       D[k] = nv;
     });
     if(s._meta) console.info('[seed] actualizado:', s._meta.updated);
