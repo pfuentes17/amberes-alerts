@@ -17,8 +17,7 @@
     "hhi": 0.0463,
     "sharpe": 0.27,
     "equity_pct": 0.5628,
-    "ccl": 1595,
-    "total_usd_m": 6.45
+    "ccl": 1595
   },
   {
     "fecha_iso": "20260928",
@@ -39,8 +38,7 @@
     "sharpe": 0.26,
     "max_drawdown": -0.0819,
     "equity_pct": 0.5712,
-    "ccl": 1623,
-    "total_usd_m": 6.7
+    "ccl": 1623
   },
   {
     "fecha_iso": "20261005",
@@ -61,8 +59,7 @@
     "sharpe": 0.25,
     "max_drawdown": -0.0694,
     "equity_pct": 0.4904,
-    "ccl": 1625,
-    "total_usd_m": 7.51
+    "ccl": 1625
   },
   {
     "fecha_iso": "20261019",
@@ -83,8 +80,7 @@
     "sharpe": 0.26,
     "max_drawdown": -0.0701,
     "equity_pct": 0.5581,
-    "ccl": 1611,
-    "total_usd_m": 7.15
+    "ccl": 1611
   },
   {
     "fecha_iso": "20261026",
@@ -105,8 +101,7 @@
     "sharpe": 0.27,
     "max_drawdown": -0.0707,
     "equity_pct": 0.5594,
-    "ccl": 1651,
-    "total_usd_m": 7.05
+    "ccl": 1651
   },
   {
     "fecha_iso": "20261124",
@@ -127,7 +122,6 @@
     "sharpe": 0.31,
     "max_drawdown": -0.1251,
     "equity_pct": 0.5005,
-    "ccl": 1802,
-    "total_usd_m": 6.13
+    "ccl": 1802
   }
 ]

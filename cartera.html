@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cartera | Amberes</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080c12;--s:#0d1420;--s2:#111827;--bdr:#1f2d40;--bdr2:#2d4060;--txt:#c9d8e8;--mu:#4a6080;--dim:#2a3f55;--accent:#f59e0b;--cy:#06b6d4;--gr:#22d3a0;--am:#f59e0b;--rd:#f87171;--or:#fb923c;--pu:#8b5cf6;--pk:#ec4899;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:'IBM Plex Sans',sans-serif;font-size:13px;min-height:100vh;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:linear-gradient(rgba(245,158,11,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,.015) 1px,transparent 1px);background-size:48px 48px;}
+/* NAV */
+.top-nav{position:sticky;top:0;z-index:200;background:#1e1e22;border-bottom:3px solid var(--accent);display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:58px;}
+.amb-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.amb-wordmark{font-family:'IBM Plex Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;}
+.amb-divider{width:1px;height:16px;background:rgba(255,255,255,.2);margin:0 6px;}
+.amb-section{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);}
+.subnav{background:#1e1e22;border-bottom:1px solid rgba(255,255,255,.08);padding:0 24px;display:flex;align-items:center;gap:5px;height:36px;position:sticky;top:58px;z-index:190;overflow-x:auto;scrollbar-width:none;}
+.subnav::-webkit-scrollbar{display:none;}
+.subnav-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-right:6px;white-space:nowrap;flex-shrink:0;}
+.snav-link{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.03em;color:rgba(255,255,255,.55);text-decoration:none;padding:4px 10px;border-radius:4px;white-space:nowrap;transition:all .15s;flex-shrink:0;}
+.snav-link:hover{color:#fff;background:rgba(255,255,255,.1);}
+.snav-link.active{color:#fff;background:rgba(255,255,255,.13);border-bottom:2px solid rgba(255,255,255,.7);}
+.nav-back{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.4);text-decoration:none;border:1px solid rgba(255,255,255,.12);border-radius:5px;padding:4px 10px;white-space:nowrap;transition:all .15s;}
+.nav-back:hover{color:#fff;border-color:rgba(255,255,255,.3);}
+.page{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:22px 28px 80px;}
+/* HEADER */
+.hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:6px;}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.15em;color:var(--mu);margin-bottom:6px;}
+h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
+.hdr-meta{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);text-align:right;line-height:1.8;}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block;vertical-align:middle;margin-right:4px;}
+.dot.live{background:var(--gr);box-shadow:0 0 8px var(--gr);}
+/* META BAR */
+.meta-bar{display:flex;gap:8px;margin:14px 0 20px;flex-wrap:wrap;}
+.mbk{background:var(--s);border:1px solid var(--bdr);border-radius:8px;padding:10px 16px;flex:1;min-width:130px;}
+.mbk-l{font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.12em;color:var(--mu);margin-bottom:4px;}
+.mbk-v{font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:600;color:#e8f0f8;}
+.mbk-s{font-size:10px;color:var(--mu);margin-top:2px;font-family:'IBM Plex Mono',monospace;}
+
+/* ═══ COMPOSICIÓN ═══════════════════════════════════════════ */
+.comp-card{background:var(--s);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.comp-hdr{display:flex;align-items:center;gap:10px;padding:14px 18px 12px;border-bottom:1px solid var(--bdr);}
+.comp-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:#e8f0f8;}
+.comp-sub{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);}
+.comp-body{padding:16px 18px 18px;}
+/* tipo bar */
+.tipo-bar-wrap{display:flex;height:14px;border-radius:7px;overflow:hidden;margin-bottom:10px;}
+.tipo-seg{height:100%;transition:width .4s;}
+.tipo-legend{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:20px;}
+.tipo-leg{display:flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--txt);}
+.tipo-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+/* holdings bar chart */
+.holdings-label{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:10px;}
+.holding-row{display:flex;align-items:center;gap:10px;margin-bottom:5px;}
+.holding-ticker{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:#e8f0f8;width:52px;flex-shrink:0;text-align:right;}
+.holding-bar-wrap{flex:1;height:18px;background:rgba(255,255,255,.04);border-radius:3px;overflow:hidden;position:relative;}
+.holding-bar{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:8px;transition:width .4s;}
+.holding-bar-label{font-size:10px;color:rgba(0,0,0,.7);font-family:'IBM Plex Mono',monospace;font-weight:600;white-space:nowrap;position:absolute;left:8px;top:50%;transform:translateY(-50%);}
+.holding-pct{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;width:40px;text-align:right;flex-shrink:0;}
+.holding-tipo-badge{font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border-radius:10px;border:1px solid;flex-shrink:0;white-space:nowrap;}
+
+/* ═══ GRID 2 COLUMNAS ════════════════════════════════════════ */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.bloque{background:var(--s);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;}
+.bloque-hdr{display:flex;align-items:center;gap:10px;padding:14px 18px 12px;border-bottom:1px solid var(--bdr);}
+.bloque-icon{font-size:15px;}
+.bloque-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;}
+.bloque-badge{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;border-radius:20px;border:1px solid;}
+.bloque-body{padding:16px 18px;}
+/* métricas */
+.metrics{display:grid;gap:8px;}
+.m2{grid-template-columns:repeat(2,1fr);}
+.m3{grid-template-columns:repeat(3,1fr);}
+.m4{grid-template-columns:repeat(4,1fr);}
+.metric{background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:10px 12px;}
+.metric-l{font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:4px;}
+.metric-v{font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:600;}
+.metric-s{font-size:10px;color:var(--mu);margin-top:3px;font-family:'IBM Plex Mono',monospace;}
+.bl-cy{border-left:3px solid var(--cy);}
+.bl-gr{border-left:3px solid var(--gr);}
+.bl-am{border-left:3px solid var(--am);}
+.bl-rd{border-left:3px solid var(--rd);}
+.bl-or{border-left:3px solid var(--or);}
+.bl-pu{border-left:3px solid var(--pu);}
+/* stress legacy (B1 sensibilidad) */
+.stress-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px;}
+.stress-row{background:var(--s2);border:1px solid var(--bdr);border-radius:7px;padding:9px 12px;display:flex;justify-content:space-between;align-items:center;}
+.stress-label{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;}
+.stress-sub{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--dim);}
+.stress-val{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;}
+/* ═══ B3 STRESS CARDS ════════════════════════════════════════ */
+.stress-section{background:var(--s);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.stress-section-hdr{display:flex;align-items:center;gap:10px;padding:14px 18px 12px;border-bottom:1px solid var(--bdr);}
+.stress-section-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--rd);}
+.stress-section-body{padding:16px 18px 18px;}
+.sc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+@media(max-width:1200px){.sc-grid{grid-template-columns:repeat(2,1fr);}}
+.sc-card{background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:12px 14px;}
+.sc-card.warn{border-color:rgba(248,113,113,.35);}
+.sc-card.ok{border-color:rgba(34,211,160,.25);}
+.sc-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:4px;}
+.sc-val{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;margin-bottom:3px;}
+.sc-ctx{font-family:'IBM Plex Sans',sans-serif;font-size:10px;color:var(--mu);line-height:1.4;margin-bottom:7px;}
+.sc-implication{font-family:'IBM Plex Sans',sans-serif;font-size:10px;font-style:italic;line-height:1.4;padding:5px 8px;border-radius:4px;margin-bottom:7px;}
+.sc-implication.neg{background:rgba(248,113,113,.06);color:var(--rd);}
+.sc-implication.pos{background:rgba(34,211,160,.06);color:var(--gr);}
+.sc-implication.neu{background:rgba(74,96,128,.15);color:var(--cy);}
+.sc-spark{margin-top:6px;}
+.lim-bar-wrap{margin-top:8px;margin-bottom:2px;}
+.lim-bar-track{height:3px;background:rgba(74,96,128,.2);border-radius:2px;overflow:hidden;}
+.lim-bar-fill{height:100%;border-radius:2px;transition:width .3s;}
+.lim-bar-label{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-top:2px;}
+/* stress tests expandidos */
+.st-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+/* escenarios combinados */
+.comb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.comb-card{background:rgba(248,113,113,.05);border:1px solid rgba(248,113,113,.25);border-radius:8px;padding:12px 14px;}
+.comb-card.extreme{background:rgba(248,113,113,.09);border-color:rgba(248,113,113,.45);}
+.comb-scenario{font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--rd);margin-bottom:4px;}
+.comb-val{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:700;color:var(--rd);margin-bottom:2px;}
+.comb-usd{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(248,113,113,.7);margin-bottom:6px;}
+.comb-shocks{font-family:'IBM Plex Sans',sans-serif;font-size:9.5px;color:var(--mu);line-height:1.5;margin-bottom:5px;}
+.comb-prob{font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);padding:3px 6px;border-radius:3px;background:rgba(74,96,128,.15);display:inline-block;}
+.st-card{background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:12px 14px;}
+.st-scenario{font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:4px;}
+.st-val{font-family:'IBM Plex Mono',monospace;font-size:17px;font-weight:700;margin-bottom:3px;}
+.st-usd{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);margin-bottom:6px;}
+.st-desc{font-family:'IBM Plex Sans',sans-serif;font-size:10px;color:var(--mu);line-height:1.4;}
+
+/* ═══ BENCHMARKS ════════════════════════════════════════════ */
+.bm-section{background:var(--s);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.bm-hdr{display:flex;align-items:center;gap:10px;padding:14px 18px 12px;border-bottom:1px solid var(--bdr);}
+.bm-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--pu);}
+.bm-body{padding:16px 18px 18px;}
+.bm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+.bm-card{background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:12px 14px;}
+.bm-card-title{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--bdr);}
+.bm-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
+.bm-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);}
+.bm-val{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;}
+.bm-table{width:100%;border-collapse:collapse;}
+.bm-table{table-layout:fixed;}
+.bm-table th{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--mu);padding:6px 10px;border-bottom:1px solid var(--bdr);text-align:left;white-space:nowrap;}
+.bm-table th.r{text-align:right;}
+.bm-table th:first-child{width:38%;}
+.bm-table th:not(:first-child){width:15.5%;}
+.bm-table td{padding:7px 10px;border-bottom:1px solid rgba(31,45,64,.5);font-family:'IBM Plex Mono',monospace;font-size:11px;}
+.bm-table tr:last-child td{border-bottom:none;}
+.bm-table td.r{text-align:right;}
+.bm-badge{display:inline-block;font-size:8px;padding:2px 6px;border-radius:10px;border:1px solid;}
+.bm-bar-wrap{width:100%;background:rgba(255,255,255,.04);border-radius:3px;height:5px;overflow:hidden;margin-top:3px;}
+.bm-bar-fill{height:100%;border-radius:3px;}
+/* ═══ SECCIÓN EQUITY EXPANDIDA ══════════════════════════════ */
+.eq-card{background:var(--s);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;margin-bottom:16px;}
+.eq-hdr{display:flex;align-items:center;gap:10px;padding:14px 18px 12px;border-bottom:1px solid var(--bdr);}
+.eq-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--gr);}
+.eq-body{padding:0;}
+/* tabla equity */
+.eq-table{width:100%;border-collapse:collapse;}
+.eq-table th{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);padding:8px 12px;border-bottom:1px solid var(--bdr);text-align:left;white-space:nowrap;}
+.eq-table th.r{text-align:right;}
+.eq-table td{padding:8px 12px;border-bottom:1px solid rgba(31,45,64,.6);font-family:'IBM Plex Mono',monospace;font-size:11px;vertical-align:middle;}
+.eq-table tr:last-child td{border-bottom:none;}
+.eq-table tr:hover td{background:rgba(255,255,255,.02);}
+.td-ticker{font-weight:600;color:#e8f0f8;white-space:nowrap;}
+.td-nombre{color:var(--mu);font-size:10px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.td-r{text-align:right;}
+.td-tipo{font-size:8.5px;padding:2px 7px;border-radius:10px;border:1px solid;display:inline-block;white-space:nowrap;}
+/* mini barra de peso */
+.w-bar-wrap{width:80px;display:inline-block;vertical-align:middle;}
+.w-bar{height:5px;background:rgba(6,182,212,.15);border-radius:3px;overflow:hidden;}
+.w-bar-fill{height:100%;border-radius:3px;background:var(--cy);}
+/* contrib barra */
+.c-bar-wrap{width:60px;display:inline-block;vertical-align:middle;}
+.c-bar{height:5px;background:rgba(248,113,113,.12);border-radius:3px;overflow:hidden;}
+.c-bar-fill{height:100%;border-radius:3px;}
+/* alertas */
+.alert-bar{background:rgba(248,113,113,.07);border:1px solid rgba(248,113,113,.3);border-radius:8px;padding:10px 16px;margin-bottom:12px;display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--rd);}
+.ok-bar{background:rgba(34,211,160,.07);border:1px solid rgba(34,211,160,.25);border-radius:8px;padding:10px 16px;margin-bottom:12px;display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gr);}
+/* footnote */
+.footnote{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);text-align:center;margin-top:24px;line-height:1.9;}
+.loading{text-align:center;padding:80px 20px;font-family:'IBM Plex Mono',monospace;color:var(--mu);font-size:12px;}
+.err{text-align:center;padding:80px 20px;font-family:'IBM Plex Mono',monospace;color:var(--rd);font-size:12px;}
+.section-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin:12px 0 8px;}
+@media(max-width:960px){.two-col{grid-template-columns:1fr;}.m4{grid-template-columns:repeat(2,1fr);}}
+
+/* ══ CARTERA · pestañas y composición (26/11/2026) ══ */
+.ctabs{display:flex;gap:6px;margin:0 0 18px;border-bottom:1px solid var(--bdr);}
+.ctab{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);background:none;border:0;border-bottom:2px solid transparent;padding:10px 14px;cursor:pointer;}
+.ctab:hover{color:#e8f0f8;}
+.ctab.on{color:#e8f0f8;border-bottom-color:var(--accent);}
+.cp-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0 18px;}
+.cp-card{background:var(--s);border:1px solid var(--bdr);border-radius:8px;padding:14px 16px;border-top:3px solid var(--c);}
+.cp-card .l{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--mu);}
+.cp-card .v{font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:600;color:#e8f0f8;margin:4px 0 2px;font-variant-numeric:tabular-nums;}
+.cp-card .s{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);}
+.cp-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin-bottom:14px;}
+.cp-box{background:var(--s);border:1px solid var(--bdr);border-radius:8px;padding:14px 16px;min-width:0;}
+.cp-h{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:#e8f0f8;margin-bottom:2px;}
+.cp-sub{font-size:10.5px;color:var(--mu);margin-bottom:12px;}
+.cp-row{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,2fr) 58px 62px;gap:8px;align-items:center;padding:5px 0;font-size:12px;}
+.cp-row .nm{color:#c9d8e8;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.cp-bar{height:10px;background:rgba(255,255,255,.04);border-radius:2px;overflow:hidden;}
+.cp-bar i{display:block;height:100%;border-radius:2px;}
+.cp-num{font-family:'IBM Plex Mono',monospace;text-align:right;color:#e8f0f8;font-variant-numeric:tabular-nums;}
+.cp-d{font-family:'IBM Plex Mono',monospace;text-align:right;font-size:10.5px;font-variant-numeric:tabular-nums;}
+.cp-d.up{color:var(--cy);} .cp-d.dn{color:var(--or);} .cp-d.eq{color:var(--mu);}
+.cp-grp{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--mu);margin:10px 0 2px;padding-top:8px;border-top:1px solid var(--bdr);}
+.cp-grp:first-child{border-top:0;margin-top:0;padding-top:0;}
+.cp-leg{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;font-size:10.5px;color:var(--mu);}
+.cp-leg span::before{content:'';display:inline-block;width:9px;height:9px;border-radius:2px;background:var(--c);margin-right:5px;vertical-align:-1px;}
+.cp-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px;}
+.cp-tools input{background:var(--s2);border:1px solid var(--bdr2);border-radius:5px;color:#e8f0f8;font-family:'IBM Plex Mono',monospace;font-size:11px;padding:6px 10px;min-width:200px;flex:1;max-width:320px;}
+.chip{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);background:none;border:1px solid var(--bdr2);border-radius:12px;padding:4px 10px;cursor:pointer;}
+.chip.on{color:#080c12;background:#e8f0f8;border-color:#e8f0f8;}
+.cp-tw{max-height:560px;overflow:auto;border:1px solid var(--bdr);border-radius:6px;}
+.cp-t{width:100%;border-collapse:collapse;font-size:12px;}
+.cp-t th{position:sticky;top:0;background:var(--s2);font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);text-align:left;padding:8px 10px;cursor:pointer;white-space:nowrap;border-bottom:1px solid var(--bdr);}
+.cp-t th.r,.cp-t td.r{text-align:right;}
+.cp-t td{padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.04);color:#c9d8e8;}
+.cp-t td.tk{font-family:'IBM Plex Mono',monospace;font-weight:600;color:#e8f0f8;white-space:nowrap;}
+.cp-t td.nm{max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--mu);}
+.cp-t td.num{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;}
+.cp-tag{font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 6px;border-radius:3px;border:1px solid var(--c);color:var(--c);white-space:nowrap;}
+.cp-note{font-size:10.5px;color:var(--mu);line-height:1.6;margin-top:10px;}
+@media(max-width:860px){.cp-grid{grid-template-columns:minmax(0,1fr);}.cp-cards{grid-template-columns:minmax(0,1fr);}.cp-row{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 52px 56px;}.cp-t td.nm{max-width:140px;}}
+</style>
+<script>/* tema Amberes: activo por defecto; ?theme=off lo desactiva, ?theme=amberes lo reactiva */var _t=1;try{var q=location.search;if(/theme=off/.test(q))localStorage.setItem("amb-theme","0");if(/theme=amberes/.test(q))localStorage.setItem("amb-theme","1");_t=localStorage.getItem("amb-theme")!=="0";}catch(e){}if(_t){var l=document.createElement("link");l.rel="stylesheet";l.href="/amberes-theme.css";document.head.appendChild(l);}</script>
+</head>
+<body>
+<nav class="top-nav">
+  <a href="/" class="amb-logo">
+    <span class="amb-wordmark">Amberes</span>
+    <span class="amb-divider"></span>
+    <span class="amb-section">Cartera</span>
+  </a>
+  <a href="/" class="nav-back">← Inicio</a>
+</nav>
+<div class="subnav">
+  <span class="subnav-label">Módulos</span>
+  <a href="/" class="snav-link">🏠 Inicio</a>
+  <a href="/arg.html" class="snav-link">🇦🇷 Argentina</a>
+  <a href="/agro.html" class="snav-link">📦 Commodities</a>
+  <a href="/gestion.html" class="snav-link">📊 Gestión</a>
+  <a href="/confianza.html" class="snav-link">🔵 Confianza</a>
+  <a href="/macro.html" class="snav-link">🌍 Macro Global</a>
+  <a href="/tc.html" class="snav-link">💱 Tipo de Cambio</a>
+  <a href="/bonos.html" class="snav-link">📈 Bonos</a>
+  <a href="/cartera.html" class="snav-link active">💼 Cartera</a>
+</div>
+
+<div class="page">
+  <div class="ctabs" role="tablist">
+    <button class="ctab on" data-t="comp" role="tab">Composición</button>
+    <button class="ctab" data-t="riesgo" role="tab">Riesgo</button>
+  </div>
+  <div id="tab-comp">
+    <div id="cp-loading" class="loading">Cargando composición de la cartera...</div>
+    <div id="cp-main" style="display:none">
+      <div class="hdr">
+        <div>
+          <div class="eyebrow">Cartera consolidada de clientes · todas las cuentas</div>
+          <h1>Composición de la cartera</h1>
+        </div>
+        <div class="hdr-meta" id="cp-meta"></div>
+      </div>
+      <div class="cp-cards" id="cp-cards"></div>
+      <div class="cp-grid">
+        <div class="cp-box"><div class="cp-h">Por tipo de activo</div><div class="cp-sub">% de la cartera total · variación en puntos porcentuales vs. la foto anterior</div><div id="cp-tipo"></div></div>
+        <div class="cp-box"><div class="cp-h">Por moneda y exposición</div><div class="cp-sub">A qué está expuesta cada parte de la cartera</div><div id="cp-exp"></div></div>
+      </div>
+      <div class="cp-box" style="margin-bottom:14px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap">
+          <div><div class="cp-h">Evolución</div><div class="cp-sub" id="cp-evo-sub">% de la cartera total en cada foto semanal</div></div>
+          <div><button class="chip on" data-evo="mon">Moneda</button> <button class="chip" data-evo="tipo">Tipo de activo</button></div>
+        </div>
+        <div id="cp-evo"></div><div class="cp-leg" id="cp-evo-leg"></div>
+      </div>
+      <div class="cp-box">
+        <div class="cp-h">Todos los instrumentos</div><div class="cp-sub" id="cp-inst-sub"></div>
+        <div class="cp-tools"><input id="cp-q" type="search" placeholder="Buscar ticker o nombre…" aria-label="Buscar instrumento"><span id="cp-chips"></span></div>
+        <div class="cp-tw"><table class="cp-t"><thead><tr>
+          <th data-k="t">Instrumento</th><th data-k="n">Nombre</th><th data-k="tipo">Tipo</th><th data-k="exp">Exposición</th><th data-k="pct" class="r">% cartera</th><th data-k="d" class="r">Var. pp</th>
+        </tr></thead><tbody id="cp-tb"></tbody></table></div>
+        <div class="cp-note" id="cp-salieron"></div>
+        <div class="cp-note">Fuente: export de tenencias de Inviu (todas las cuentas), consolidado por instrumento. Se actualiza los lunes. La página muestra solo porcentajes: los montos quedan en el Excel interno del CRO. Exposición: dólar linked y duales TAMAR/dólar linked se pagan en pesos pero ajustan por el tipo de cambio oficial; los CEDEARs se cuentan como dólares (siguen al CCL).</div>
+      </div>
+    </div>
+  </div>
+  <div id="tab-riesgo" hidden>
+  <div id="loading" class="loading">Cargando auditoría de riesgo...</div>
+  <div id="err" class="err" style="display:none"></div>
+  <div id="main" style="display:none">
+
+    <div class="hdr">
+      <div>
+        <div class="eyebrow">Cartera Consolidada — Solo Interno</div>
+        <h1>Auditoría CRO — Riesgo</h1>
+      </div>
+      <div class="hdr-meta" id="hdr-meta"></div>
+    </div>
+
+    <div class="meta-bar" id="meta-bar"></div>
+    <div id="alertas"></div>
+
+    <!-- ══ B3 TAIL RISK & STRESS TESTING ════════════════════ -->
+    <div class="stress-section">
+      <div class="stress-section-hdr">
+        <span style="font-size:15px">⚠️</span>
+        <span class="stress-section-title">B3 — Tail Risk & Stress Testing</span>
+        <span class="bloque-badge" id="b3-badge" style="color:var(--rd);border-color:rgba(248,113,113,.3);margin-left:8px"></span>
+        <span style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu)">Horizonte 1 año · Param. + Histórico 3a</span>
+      </div>
+      <div class="stress-section-body">
+        <div class="section-lbl">Métricas de riesgo de cola</div>
+        <div id="risk-evolution-panel" style="margin-bottom:10px"></div>
+        <div class="sc-grid" id="b3-sc-cards"></div>
+        <div class="section-lbl" style="margin-top:4px">Escenarios de stress  ·  individuales</div>
+        <div class="st-grid" id="b3-st-cards"></div>
+        <div class="section-lbl" style="margin-top:10px">Escenarios combinados  ·  multi-shock</div>
+        <div id="b3-combined-cards"></div>
+      </div>
+    </div>
+
+    <!-- ══ COMPOSICIÓN DE CARTERA ══════════════════════════ -->
+    <div class="comp-card">
+      <div class="comp-hdr">
+        <span style="font-size:15px">🗂</span>
+        <span class="comp-title">Composición de Cartera</span>
+        <span class="comp-sub" id="comp-sub"></span>
+      </div>
+      <div class="comp-body">
+        <div class="section-lbl">Por tipo de activo</div>
+        <div class="tipo-bar-wrap" id="tipo-bar"></div>
+        <div class="tipo-legend" id="tipo-legend"></div>
+        <div class="section-lbl">Mayores posiciones individuales (Top 15)</div>
+        <div id="holdings-chart"></div>
+      </div>
+    </div>
+
+    <!-- ══ B1 RENTA FIJA ════════════════════════════════════ -->
+    <div class="bloque" style="margin-bottom:16px">
+      <div class="bloque-hdr">
+        <span class="bloque-icon">📐</span>
+        <span class="bloque-title" style="color:var(--cy)">B1 — Renta Fija</span>
+        <span class="bloque-badge" id="b1-badge" style="color:var(--cy);border-color:rgba(6,182,212,.3)"></span>
+      </div>
+      <div class="bloque-body">
+        <div class="metrics m4" id="b1-metrics"></div>
+        <div class="section-lbl" style="margin-top:14px">Sensibilidad a tasas</div>
+        <div class="stress-grid" id="b1-stress"></div>
+      </div>
+    </div>
+
+    <!-- ══ BENCHMARKS ═══════════════════════════════════════ -->
+    <div class="bm-section">
+      <div class="bm-hdr">
+        <span style="font-size:15px">📊</span>
+        <span class="bm-title">Benchmarks — Portafolio vs S&P 500 vs Merval</span>
+        <span id="bm-badge" style="margin-left:8px;font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:var(--mu);border:1px solid var(--bdr);border-radius:20px;padding:2px 8px"></span>
+        <span style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu)">Retornos USD · 3 años · 252d rolling</span>
+      </div>
+      <div class="bm-body">
+        <div class="section-lbl">Resumen comparativo</div>
+        <div class="bm-grid" id="bm-cards"></div>
+        <div class="section-lbl" style="margin-top:4px">Métricas detalladas</div>
+        <div style="overflow-x:auto">
+          <table class="bm-table">
+            <thead>
+              <tr>
+                <th>Métrica</th>
+                <th class="r">Portafolio</th>
+                <th class="r">S&amp;P 500</th>
+                <th class="r">Merval USD</th>
+                <th class="r">vs S&amp;P 500</th>
+              </tr>
+            </thead>
+            <tbody id="bm-tbody"></tbody>
+          </table>
+        </div>
+        <div style="margin-top:12px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);line-height:1.8" id="bm-footnote"></div>
+      </div>
+    </div>
+
+    <!-- ══ RENTA VARIABLE EXPANDIDA ════════════════════════ -->
+    <div class="eq-card">
+      <div class="eq-hdr">
+        <span style="font-size:15px">📉</span>
+        <span class="eq-title">B2 — Renta Variable · Top 15 por incidencia en riesgo</span>
+        <span style="margin-left:auto;display:flex;gap:12px;align-items:center">
+          <span id="eq-kpi-weight" style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--gr)"></span>
+          <span id="eq-kpi-beta"   style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mu)"></span>
+          <span id="eq-kpi-vol"    style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--mu)"></span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.08em;padding:3px 8px;border-radius:20px;border:1px solid rgba(34,211,160,.3);color:var(--gr)">Yahoo Finance 252d</span>
+        </span>
+      </div>
+      <div style="display:flex;gap:0;padding:10px 14px 4px;align-items:flex-start">
+        <div id="corr-heatmap" style="flex-shrink:0"></div>
+        <div id="risk-attribution-panel" style="flex:1;min-width:0;padding-left:20px;border-left:1px solid var(--bdr);margin-left:16px"></div>
+      </div>
+      <div class="eq-body">
+        <table class="eq-table">
+          <thead>
+            <tr>
+              <th>Ticker</th>
+              <th>Nombre</th>
+              <th>Tipo</th>
+              <th class="r">Peso %</th>
+              <th class="r">σ anual</th>
+              <th class="r">β S&P500</th>
+              <th class="r">β Merval</th>
+              <th class="r">Contrib. riesgo</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="eq-tbody"></tbody>
+        </table>
+        <div style="padding:10px 18px;border-top:1px solid var(--bdr);display:flex;gap:24px;flex-wrap:wrap;" id="eq-totales"></div>
+      </div>
+    </div>
+
+    <!-- ══ CONCENTRACIÓN ════════════════════════════════════ -->
+    <div class="bloque" style="margin-bottom:16px">
+      <div class="bloque-hdr">
+        <span class="bloque-icon">🧩</span>
+        <span class="bloque-title" style="color:var(--am)">B4 — Concentración & Liquidez</span>
+        <span class="bloque-badge" id="b4-badge" style="color:var(--am);border-color:rgba(245,158,11,.3)"></span>
+      </div>
+      <div class="bloque-body">
+        <div class="metrics m4" id="b4-metrics"></div>
+      </div>
+    </div>
+
+    <div class="footnote" id="footnote"></div>
+  </div>
+  </div><!-- /tab-riesgo -->
+</div>
+
+<script>
+/* ─── Paleta por tipo ──────────────────────────────────────── */
+const TIPO_COLOR = {
+  'Cedears':'#06b6d4', 'cedears':'#06b6d4',
+  'Acciones':'#22d3a0','acciones':'#22d3a0',
+  'Bonos':'#f59e0b',   'bonos':'#f59e0b',
+  'Divisas':'#8b5cf6', 'divisas':'#8b5cf6',
+  'Liquidez':'#4a6080','liquidez':'#4a6080',
+  'ETF':'#06b6d4',
+};
+const PALETTE = ['#06b6d4','#22d3a0','#f59e0b','#8b5cf6','#fb923c','#f87171','#a3e635','#ec4899','#14b8a6'];
+function tipoColor(t){ return TIPO_COLOR[t] || TIPO_COLOR[t?.toLowerCase()] || '#4a6080'; }
+
+function pct(v,d=1){return (v*100).toFixed(d)+'%'}
+function usdK(v){return v>=1e6?'$'+(v/1e6).toFixed(2)+'M':'$'+Math.round(v/1e3)+'K'}
+function c(hex){ return `color:${hex}` }
+
+/* ─── render ───────────────────────────────────────────────── */
+async function load(){
+  try{
+    const r = await fetch('/api/riesgo', {cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    await render(await r.json());
+  }catch(e){
+    document.getElementById('loading').style.display='none';
+    const el=document.getElementById('err'); el.style.display='block';
+    el.textContent='No se pudieron cargar los datos: '+e.message;
+  }
+}
+
+async function render(d){
+  const {meta,b1_renta_fija:b1,b2_estadistico:b2,b3_tail_risk:b3,b4_concentracion:b4,equity_holdings:eqh=[]} = d;
+
+  /* header */
+  document.getElementById('hdr-meta').innerHTML =
+    `<div><span class="dot live"></span>${meta.ccl_fuente}</div>`+
+    `<div>Actualizado: <b>${meta.fecha}</b></div>`+
+    `<div>${meta.instrumentos} instrumentos · solo porcentajes</div>`;
+
+  /* meta bar — tres grupos: tamaño | composición | performance */
+  const cashPct = b2.cash_pct != null ? b2.cash_pct : Math.max(0, 1-b2.equity_pct-b1.bonds_pct);
+  const retornoEst = b2.retorno_usd_est != null ? b2.retorno_usd_est : b2.sharpe*b2.vol_portfolio+0.04;
+  const retCol = retornoEst > 0.08 ? 'var(--gr)' : retornoEst > 0.04 ? 'var(--am)' : 'var(--rd)';
+  const sharpeCol = b2.sharpe > 0.8 ? 'var(--gr)' : b2.sharpe > 0.3 ? 'var(--am)' : 'var(--rd)';
+  const divider = `<div style="width:1px;background:var(--bdr);align-self:stretch;margin:0 4px;flex-shrink:0"></div>`;
+  const mbk = (l,v,s,vc='#e8f0f8') => `<div class="mbk"><div class="mbk-l">${l}</div><div class="mbk-v" style="color:${vc}">${v}</div><div class="mbk-s">${s}</div></div>`;
+  document.getElementById('meta-bar').innerHTML =
+    mbk('Instrumentos', String(meta.instrumentos), 'cartera consolidada') +
+    mbk('CCL', '$'+meta.ccl.toLocaleString('es-AR'), 'referencia del cálculo') +
+    divider +
+    mbk('Equity',    pct(b2.equity_pct), 'CEDEARs + Acciones') +
+    mbk('Renta Fija',pct(b1.bonds_pct),  'del portafolio') +
+    mbk('Cash / Div',pct(cashPct),        'divisas + liquidez') +
+    divider +
+    mbk('Retorno est. USD', pct(retornoEst,1), 'anualizado estimado', retCol) +
+    mbk('Sharpe', b2.sharpe.toFixed(2), 'vs T-Bills 4% · Sortino '+b2.sortino.toFixed(2), sharpeCol);
+
+  /* alertas */
+  const alertas=[];
+  if(b4.top1_pct>0.08) alertas.push({t:'rd',m:`⚠ ${b4.top1_ticker} representa ${pct(b4.top1_pct)} del total (umbral 8%)`});
+  if(b2.beta_sp500>1.0) alertas.push({t:'am',m:`⚠ Beta S&P500 = ${b2.beta_sp500.toFixed(2)} — portafolio amplifica el mercado global`});
+  if(b3.var99_param<-0.05) alertas.push({t:'rd',m:`⚠ VaR 99% = ${pct(b3.var99_param)} — pérdida material en escenarios de stress`});
+  // Posición táctica short detectada automáticamente
+  const shPos = eqh && eqh.find(e=>e.beta_sp<-0.5 && e.pct>0.03);
+  if(shPos) alertas.push({t:'am',m:`⚡ ${shPos.ticker} (${pct(shPos.pct)}) — posición táctica SHORT β S&P ${shPos.beta_sp.toFixed(2)} · suprime el retorno esperado del portafolio`});
+  if(!alertas.length) alertas.push({t:'gr',m:'✓ Sin alertas críticas de concentración ni riesgo de cola en este período'});
+  document.getElementById('alertas').innerHTML = alertas.map(a=>
+    `<div class="${a.t==='gr'?'ok-bar':'alert-bar'}">${a.m}</div>`).join('');
+
+  /* ── COMPOSICIÓN: tipo bar ── */
+  const tipos = b4.por_tipo || [];
+  document.getElementById('comp-sub').textContent = `${meta.instrumentos} instrumentos`;
+  document.getElementById('tipo-bar').innerHTML = tipos.map(t=>
+    `<div class="tipo-seg" style="width:${(t.pct*100).toFixed(1)}%;background:${tipoColor(t.tipo)}" title="${t.tipo} ${pct(t.pct)}"></div>`
+  ).join('');
+  document.getElementById('tipo-legend').innerHTML = tipos.map(t=>
+    `<div class="tipo-leg"><div class="tipo-dot" style="background:${tipoColor(t.tipo)}"></div>${t.tipo} <b>${pct(t.pct)}</b></div>`
+  ).join('');
+
+  /* ── TOP 15 holdings chart ── */
+  const top15 = b4.top15 || b4.top5 || [];
+  const maxPct = Math.max(...top15.map(x=>x.pct));
+  document.getElementById('holdings-chart').innerHTML = top15.map(x=>{
+    const col = tipoColor(x.tipo);
+    const badgeBg = col+'22'; const badgeBorder = col+'55';
+    return `<div class="holding-row">
+      <span class="holding-ticker">${x.ticker}</span>
+      <div class="holding-bar-wrap">
+        <div class="holding-bar" style="width:${(x.pct/maxPct*100).toFixed(0)}%;background:${col}cc">
+          <span class="holding-bar-label">${x.nombre.length>28?x.nombre.slice(0,26)+'…':x.nombre}</span>
+        </div>
+      </div>
+      <span class="holding-pct" style="${c(col)}">${pct(x.pct,1)}</span>
+      <span class="holding-tipo-badge" style="color:${col};background:${badgeBg};border-color:${badgeBorder}">${x.tipo}</span>
+    </div>`;
+  }).join('');
+
+  /* ── Límites de riesgo (mandato interno) ── */
+  const LIMITS = {
+    var95_param:   { limit: -0.18, label: 'Límite VaR 95%',    lowerIsBetter: true,  fmt: v => pct(v)          },
+    var99_param:   { limit: -0.28, label: 'Límite VaR 99%',    lowerIsBetter: true,  fmt: v => pct(v)          },
+    cvar95:        { limit: -0.22, label: 'Límite CVaR 95%',   lowerIsBetter: true,  fmt: v => pct(v)          },
+    max_drawdown:  { limit: -0.20, label: 'Límite drawdown',   lowerIsBetter: true,  fmt: v => pct(v)          },
+    vol_portfolio: { limit: 0.25,  label: 'Límite vol',        lowerIsBetter: true,  fmt: v => pct(v)          },
+    duration_mod:  { limit: 3.5,   label: 'Límite duration',   lowerIsBetter: true,  fmt: v => v.toFixed(1)+'a'},
+    hhi:           { limit: 0.15,  label: 'Límite HHI',        lowerIsBetter: true,  fmt: v => v.toFixed(3)    },
+    sharpe:        { limit: 0.30,  label: 'Mínimo Sharpe',     lowerIsBetter: false, fmt: v => v.toFixed(2)    },
+  };
+  function limitBar(key, value) {
+    const cfg = LIMITS[key];
+    if (!cfg || value == null) return '';
+    const limit = cfg.limit;
+    let util, overLimit;
+    if (cfg.lowerIsBetter) {
+      util = Math.abs(value) / Math.abs(limit);
+      // Para negativos (VaR): breach si value < limit (más negativo). Para positivos (vol, hhi): breach si value > limit.
+      overLimit = limit < 0 ? value < limit : value > limit;
+    } else {
+      util = limit / Math.max(value, 0.01);
+      overLimit = value < limit;
+    }
+    const pctUsed = Math.min(util * 100, 100);
+    const fillColor = overLimit ? 'var(--rd)' : util > 0.85 ? 'var(--am)' : 'var(--gr)';
+    const utilLabel = overLimit ? `⚠ BREACH (${(util*100).toFixed(0)}%)` : `${pctUsed.toFixed(0)}% del límite`;
+    return `<div class="lim-bar-wrap">
+      <div class="lim-bar-track"><div class="lim-bar-fill" style="width:${pctUsed}%;background:${fillColor}"></div></div>
+      <div class="lim-bar-label"><span>${cfg.label}: ${cfg.fmt(limit)}</span><span style="color:${fillColor}">${utilLabel}</span></div>
+    </div>`;
+  }
+
+  /* ── B1 Renta Fija ── */
+  document.getElementById('b1-badge').textContent = pct(b1.bonds_pct)+' portafolio';
+  const b1m = [
+    ['YTM pond.',    pct(b1.ytm_ponderada),                                    'anual',       'bl-cy','var(--cy)'],
+    ['Duration Mod.',b1.duration_mod.toFixed(2)+' años',                        'modified',    '','#e8f0f8'],
+    ['DV01',        pct(b1.dv01_pct,4),          'de la cartera por pb',      'bl-am','var(--am)'],
+    ['PL +100bp',   '−'+pct(Math.abs(b1.pl_100bp_pct),2), 'de la cartera total','bl-rd','var(--rd)'],
+  ];
+  document.getElementById('b1-metrics').innerHTML = b1m.map(([l,v,s,cls,col], i)=>{
+    const bar = i === 1 ? limitBar('duration_mod', b1.duration_mod) : '';
+    return `<div class="metric ${cls}"><div class="metric-l">${l}</div><div class="metric-v" style="${c(col)}">${v}</div><div class="metric-s">${s}</div>${bar}</div>`;
+  }).join('');
+  document.getElementById('b1-stress').innerHTML = [
+    ['+100 bps','−'+pct(Math.abs(b1.pl_100bp_pct),2),'% de la cartera',false],
+    ['+400 bps','−'+pct(Math.abs(b1.pl_400bp_pct),2),'% de la cartera (stress)',false],
+  ].map(([l,v,s,good])=>`<div class="stress-row">
+    <div><div class="stress-label">${l}</div><div class="stress-sub">${s}</div></div>
+    <div class="stress-val" style="${c(good?'var(--gr)':'var(--rd)')}">${v}</div>
+  </div>`).join('');
+
+  /* ── B3 Tail Risk (con histórico) ── */
+  document.getElementById('b3-badge').textContent = 'Paramétrico · Normal multivariada';
+
+  function sparkSVG(values, isGood){
+    if(!values || values.length<2) return '';
+    const mn=Math.min(...values), mx=Math.max(...values);
+    const range = mx-mn || 0.001;
+    const W=80,H=22,pts=values.map((v,i)=>{
+      const x=(i/(values.length-1))*W;
+      const y=H-((v-mn)/range)*(H-4)-2;
+      return `${x},${y}`;
+    }).join(' ');
+    const last=values[values.length-1];
+    const lx=W, ly=H-((last-mn)/range)*(H-4)-2;
+    const col=isGood?'#22d3a0':'#f87171';
+    return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" fill="none">
+      <polyline points="${pts}" stroke="${col}55" stroke-width="1.5" fill="none"/>
+      <circle cx="${lx}" cy="${ly}" r="2.5" fill="${col}"/>
+    </svg>`;
+  }
+
+  // Carga histórico para sparklines
+  let hist = [];
+  try {
+    const hr = await fetch('/api/riesgo?history=1', {cache:'no-store'});
+    hist = await hr.json();
+  } catch(e){}
+
+  function hSeries(key){ return hist.map(h=>h[key]).filter(v=>v!=null); }
+
+  const hasHist = b3.var95_hist != null;
+  const totalUsdM = d.meta.total_usd_m;
+
+  // ── Cards VaR: columna paramétrica + histórica ──
+  function varCompareCard(label, paramVal, histVal, ctx, histCtx, key){
+    const col = v => v < -0.10 ? 'var(--rd)' : v < -0.04 ? 'var(--am)' : v < 0 ? '#e8f0f8' : 'var(--gr)';
+    const border = v => v < -0.10 ? 'warn' : v < 0 ? '' : 'ok';
+    const series = hSeries(key);
+    const histWarnBanner = (hasHist && histVal > 0)
+      ? `<div style="background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.4);border-radius:4px;padding:5px 8px;margin-top:5px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--am)">⚠ Histórico positivo: período 2024-2026 alcista. Subestima el riesgo estructural.</div>`
+      : '';
+    const histRow = hasHist
+      ? `<div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding-top:6px;border-top:1px solid var(--bdr)">
+           <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em">Histórico 3a</span>
+           <span style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:700;color:${col(histVal)}">${pct(histVal)}</span>
+         </div>
+         <div style="font-family:'IBM Plex Sans',sans-serif;font-size:9.5px;color:var(--mu);margin-top:3px;font-style:italic">${histCtx}</div>
+         ${histWarnBanner}`
+      : `<div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);margin-top:8px;font-style:italic">Histórico disponible desde la próxima semana</div>`;
+    return `<div class="sc-card ${border(paramVal)}">
+      <div class="sc-label">${label}</div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${col(paramVal)}">${pct(paramVal)}</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu)">Paramétrico</span>
+      </div>
+      <div class="sc-ctx">${ctx}</div>
+      ${histRow}
+      ${limitBar(key+'_param', paramVal)}
+      ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,false)}<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-left:4px">${series.length}w</span></div>`:''}
+    </div>`;
+  }
+
+  const colarCVaR = v => v < -0.15 ? 'var(--rd)' : v < -0.06 ? 'var(--am)' : 'var(--gr)';
+
+  const scCards = [
+    // VaR 95% — paramétrico vs histórico
+    () => varCompareCard(
+      'VaR 95%  ·  1 año',
+      b3.var95_param, b3.var95_hist,
+      'Pérdida máxima con 95% de confianza (distribución normal). No captura colas gordas.',
+      hasHist
+        ? `Retorno real en el percentil 5% de ${b3.n_windows} ventanas de 1 año. ${Math.abs(b3.var95_hist) > Math.abs(b3.var95_param) ? '⚠ La cola real es más pesada que lo normal.' : 'Cola real en línea con el modelo.'}`
+        : '',
+      'var95'
+    ),
+    // VaR 99% — paramétrico vs histórico
+    () => varCompareCard(
+      'VaR 99%  ·  1 año',
+      b3.var99_param, b3.var99_hist,
+      'Pérdida máxima en el 1% de peores escenarios. Más sensible a las colas de la distribución.',
+      hasHist
+        ? `Percentil 1% real. ${b3.worst_year != null ? 'Peor año observado: ' + pct(b3.worst_year) + '.' : ''}`
+        : '',
+      'var99'
+    ),
+    // CVaR 95%
+    () => {
+      const v = b3.cvar95;
+      const vh = b3.cvar95_hist;
+      const col = colarCVaR(v);
+      const series = hSeries('cvar95');
+      const histRow = hasHist
+        ? `<div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding-top:6px;border-top:1px solid var(--bdr)">
+             <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em">CVaR histórico 3a</span>
+             <span style="font-family:'IBM Plex Mono',monospace;font-size:14px;font-weight:700;color:${colarCVaR(vh)}">${pct(vh)}</span>
+           </div>
+           <div style="font-family:'IBM Plex Sans',sans-serif;font-size:9.5px;color:var(--mu);margin-top:3px;font-style:italic">Promedio de retornos en el 5% más extremo real.</div>`
+        : '';
+      return `<div class="sc-card ${v<-0.12?'warn':''}">
+        <div class="sc-label">CVaR 95%  ·  Expected Shortfall</div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${col}">${pct(v)}</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu)">Paramétrico</span>
+        </div>
+        <div class="sc-ctx">Promedio de pérdidas en el 5% más extremo. Siempre mayor (peor) que el VaR. No asume cola truncada.</div>
+        ${histRow}
+        ${limitBar('cvar95', v)}
+        ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,false)}<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-left:4px">${series.length}w</span></div>`:''}
+      </div>`;
+    },
+    // Sharpe + Sortino
+    () => {
+      const v = b2.sharpe;
+      const so = b2.sortino;
+      const series = hSeries('sharpe');
+      const col  = v<0?'var(--rd)':v>0.8?'var(--gr)':'var(--am)';
+      const soCol = so==null?'var(--mu)':so<0?'var(--rd)':so>1?'var(--gr)':'var(--am)';
+      // Sortino > Sharpe → más retornos positivos que negativos (downside vol < total vol)
+      const sortinoNote = so!=null && v>0
+        ? (so > v*1.15
+            ? `Sortino &gt; Sharpe: la volatilidad proviene mayoritariamente de días positivos.`
+            : `Sortino ≈ Sharpe: distribución de retornos relativamente simétrica.`)
+        : '';
+      return `<div class="sc-card ${v<0?'warn':v>1?'ok':''}">
+        <div class="sc-label">Sharpe / Sortino  ·  USD vs T-Bills 4%</div>
+        <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:4px">
+          <div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-bottom:1px">SHARPE</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${col}">${v.toFixed(2)}</div>
+          </div>
+          ${so!=null?`<div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-bottom:1px">SORTINO</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${soCol}">${so.toFixed(2)}</div>
+          </div>`:''}
+        </div>
+        ${(()=>{const r=b2.retorno_usd_est!=null?b2.retorno_usd_est:v*b2.vol_portfolio+0.04;const ex=r-0.04;const exCol=ex>0.04?'var(--gr)':ex>0?'var(--am)':'var(--rd)';return `<div style="display:flex;gap:20px;align-items:baseline;padding:7px 10px;background:rgba(255,255,255,.04);border-radius:6px;margin-bottom:8px;border-left:3px solid var(--cy)"><div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px">Retorno est. USD</div><div style="font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:700;color:#e8f0f8">${(r*100).toFixed(1)}%</div></div><div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px">Rf (T-Bills)</div><div style="font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:700;color:var(--mu)">4.0%</div></div><div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px">Exceso</div><div style="font-family:'IBM Plex Mono',monospace;font-size:15px;font-weight:700;color:${exCol}">${ex>=0?'+':''}${(ex*100).toFixed(1)}%</div></div></div>`;})()}
+        <div class="sc-ctx">Sharpe: excedente sobre Rf 4% / vol total. Sortino: ídem usando solo downside deviation — penaliza menos la volatilidad positiva.</div>
+        <div class="sc-implication ${v<0?'neg':v>0.5?'pos':'neu'}">${sortinoNote || (v<0?'No compensa el riesgo vs T-Bills.':v>1?'Excelente relación retorno/riesgo en USD.':'Ratio moderado para cartera con exposición argentina.')}</div>
+        ${limitBar('sharpe', v)}
+        ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,v>0)}<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-left:4px">${series.length}w</span></div>`:''}
+      </div>`;
+    },
+    // Distribución histórica de retornos anuales
+    () => {
+      if(!hasHist) return `<div class="sc-card"><div class="sc-label">Distribución anual histórica</div><div class="sc-ctx" style="margin-top:8px">Disponible desde la próxima semana (requiere 3 años de datos + 252d de ventana).</div></div>`;
+      const w = b3.worst_year, B = b3.best_year, p25 = b3.p25_year, p75 = b3.p75_year;
+      const nw = b3.n_windows, hd = b3.hist_days;
+      // Mini bar chart: peor / p25 / mediana / p75 / mejor
+      function barW(v){ return Math.round((v - w)/(B - w)*100); }
+      const items = [
+        {l:'Peor año',  v:w,  col:'#f87171'},
+        {l:'P25',       v:p25,col:'#fb923c'},
+        {l:'P75',       v:p75,col:'#22d3a0'},
+        {l:'Mejor año', v:B,  col:'#4ade80'},
+      ];
+      return `<div class="sc-card ok">
+        <div class="sc-label">Distribución anual histórica</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);margin-bottom:8px">${nw} ventanas · ${hd} días · proxy: equity real + EMB ajustado por duration</div>
+        ${items.map(x=>`<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);width:62px;flex-shrink:0">${x.l}</span>
+          <div style="flex:1;background:rgba(255,255,255,.06);border-radius:3px;height:8px;overflow:hidden">
+            <div style="width:${barW(x.v)}%;height:100%;background:${x.col}88;border-radius:3px"></div>
+          </div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;color:${x.col};width:44px;text-align:right">${pct(x.v)}</span>
+        </div>`).join('')}
+      </div>`;
+    },
+    // Max Drawdown
+    () => {
+      const v = b3.max_drawdown;
+      if(v == null) return `<div class="sc-card"><div class="sc-label">Max Drawdown  ·  3 años</div><div class="sc-ctx" style="margin-top:8px">Disponible desde la próxima actualización del script.</div></div>`;
+      const col = v < -0.20 ? 'var(--rd)' : v < -0.10 ? 'var(--am)' : 'var(--gr)';
+      const series = hSeries('max_drawdown');
+      return `<div class="sc-card ${v < -0.20 ? 'warn' : ''}">
+        <div class="sc-label">Max Drawdown  ·  3 años</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${col};margin-bottom:2px">${pct(v,1)}</div>
+        ${b3.max_drawdown_peak_date ? `<div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);margin-bottom:4px">pico ${b3.max_drawdown_peak_date} → fondo ${b3.max_drawdown_trough_date}</div>` : ''}
+        <div class="sc-ctx">Caída máxima pico-a-fondo observada (retornos diarios proxy equity+EMB). Complementa el VaR — muestra el dolor real durante el período.</div>
+        <div class="sc-implication ${v < -0.15 ? 'neg' : v < -0.05 ? 'neu' : 'pos'}">${v < -0.20 ? 'Drawdown significativo — revisar límites de riesgo activo.' : v < -0.10 ? 'Drawdown moderado para exposición argentina.' : 'Drawdown contenido en el período alcista 2024-2026.'}</div>
+        ${limitBar('max_drawdown', v)}
+        ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,false)}</div>`:''}
+      </div>`;
+    },
+    // σ Portfolio
+    () => {
+      const v = b2.vol_portfolio; const series = hSeries('vol_portfolio');
+      const col = v>0.25?'var(--am)':'var(--gr)';
+      return `<div class="sc-card ${v>0.30?'warn':''}">
+        <div class="sc-label">σ Portfolio  ·  anualizada</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:700;color:${col};margin-bottom:4px">${pct(v,1)}</div>
+        <div class="sc-ctx">Volatilidad del portfolio consolidado (Elton-Gruber, ρ≈0.4 entre activos). Incluye bonos con vol ~6.5% y equity con vol ponderada real.</div>
+        <div class="sc-implication ${v>0.25?'neg':'pos'}">Vol de ${pct(v,1)} — ${v>0.25?'alta para fondo balanceado. Refleja el '+pct(b2.equity_pct)+' en RV.':'razonable dado el '+pct(b2.equity_pct)+' en renta variable.'}</div>
+        ${limitBar('vol_portfolio', v)}
+        ${series.length>1?`<div class="sc-spark" style="margin-top:6px">${sparkSVG(series,false)}</div>`:''}
+      </div>`;
+    },
+  ];
+
+  document.getElementById('b3-sc-cards').innerHTML = scCards.map(fn=>fn()).join('');
+
+  /* ── Panel de evolución histórica de riesgo ── */
+  (function renderEvolutionPanel() {
+    const el = document.getElementById('risk-evolution-panel');
+    if (!el) return;
+
+    const MIN_POINTS = 4;
+    // Series que queremos graficar: {key, label, color, limit, isNeg}
+    const SERIES = [
+      { key: 'var95',        label: 'VaR 95%', color: '#f87171', limit: -0.18, isNeg: true  },
+      { key: 'cvar95',       label: 'CVaR 95%',color: '#fb923c', limit: -0.22, isNeg: true  },
+      { key: 'vol_portfolio',label: 'σ',        color: '#60a5fa', limit:  0.25, isNeg: false },
+      { key: 'sharpe',       label: 'Sharpe',   color: '#22d3a0', limit:  0.30, isNeg: false },
+    ];
+
+    // Extraer datos con fecha
+    const pts = hist.filter(h => h.fecha_iso).map(h => {
+      const f = h.fecha_iso; // "20260917"
+      const date = `${f.slice(6,8)}/${f.slice(4,6)}/${f.slice(0,4)}`;
+      return { date, ...h };
+    });
+
+    if (pts.length < MIN_POINTS) {
+      el.innerHTML = `<div style="background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:10px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);text-transform:uppercase;letter-spacing:.08em">Evolución de riesgo</div>
+        <div style="flex:1;height:1px;background:var(--bdr)"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu)">${pts.length}/4 snapshots · disponible desde la semana 4</div>
+        <div style="display:flex;gap:3px">${Array.from({length:4},(_,i)=>`<div style="width:8px;height:8px;border-radius:50%;background:${i<pts.length?'var(--cy)':'var(--bdr)'}"></div>`).join('')}</div>
+      </div>`;
+      return;
+    }
+
+    // Normalizar series para SVG — cada serie va de 0 a 1 en el eje Y
+    const W = 700, H = 110, PAD = { t: 14, r: 70, b: 22, l: 44 };
+    const cW = W - PAD.l - PAD.r, cH = H - PAD.t - PAD.b;
+    const n = pts.length;
+
+    // Calcular rango global por serie
+    function seriesSVG(s) {
+      const vals = pts.map(p => p[s.key]).filter(v => v != null);
+      if (vals.length < 2) return '';
+      const mn = Math.min(...vals, s.limit);
+      const mx = Math.max(...vals, s.limit);
+      const range = mx - mn || 0.01;
+      const toY = v => PAD.t + cH - ((v - mn) / range) * cH;
+      const toX = i => PAD.l + (i / (n - 1)) * cW;
+
+      const linePoints = pts.map((p, i) => p[s.key] != null ? `${toX(i)},${toY(p[s.key])}` : null).filter(Boolean).join(' ');
+      const limitY = toY(s.limit);
+      const lastVal = vals[vals.length - 1];
+      let lastIdx = 0; for(let i=0;i<pts.length;i++) if(pts[i][s.key]!=null) lastIdx=i;
+      const lastX = toX(lastIdx);
+
+      return `
+        <!-- límite ${s.label} -->
+        <line x1="${PAD.l}" y1="${limitY}" x2="${W - PAD.r}" y2="${limitY}"
+              stroke="${s.color}" stroke-width="0.7" stroke-dasharray="3,3" opacity="0.4"/>
+        <!-- línea serie -->
+        <polyline points="${linePoints}" stroke="${s.color}" stroke-width="1.8" fill="none" opacity="0.9"/>
+        <!-- punto último -->
+        <circle cx="${lastX}" cy="${toY(lastVal)}" r="3" fill="${s.color}"/>
+        <!-- label derecho -->
+        <text x="${W - PAD.r + 5}" y="${toY(lastVal) + 4}"
+              font-family="IBM Plex Mono,monospace" font-size="8" fill="${s.color}">${s.label} ${s.isNeg ? pct(lastVal) : lastVal.toFixed(2)}</text>`;
+    }
+
+    // Eje X: fechas
+    const xAxis = pts.map((p, i) => {
+      if (i !== 0 && i !== n - 1 && i !== Math.floor(n / 2)) return '';
+      return `<text x="${PAD.l + (i/(n-1))*cW}" y="${H - 4}" text-anchor="middle"
+              font-family="IBM Plex Mono,monospace" font-size="7.5" fill="rgba(148,163,184,.5)">${p.date}</text>`;
+    }).join('');
+
+    el.innerHTML = `<div style="background:var(--s2);border:1px solid var(--bdr);border-radius:8px;padding:10px 14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu)">Evolución de riesgo · ${n} semanas</div>
+        <div style="display:flex;gap:12px">${SERIES.map(s=>`<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:${s.color}">— ${s.label}</span>`).join('')}<span style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(148,163,184,.4)">··· límite</span></div>
+      </div>
+      <svg viewBox="0 0 ${W} ${H}" style="width:100%;height:${H}px;display:block">
+        <!-- fondo grid -->
+        ${[0.25,0.5,0.75].map(t=>`<line x1="${PAD.l}" y1="${PAD.t+cH*t}" x2="${W-PAD.r}" y2="${PAD.t+cH*t}" stroke="rgba(74,96,128,.12)" stroke-width="1"/>`).join('')}
+        ${SERIES.map(seriesSVG).join('')}
+        ${xAxis}
+      </svg>
+    </div>`;
+  })();
+
+  const stCards = [
+    {
+      scenario: 'RP Argentina +400 bp',
+      val: b3.stress_rp400_pct,
+      usdM: null,
+      good: false,
+      desc: 'Suba brusca del riesgo país argentino en 400 puntos básicos. Impacta directamente a bonos soberanos y corporativos en USD. Escenario: evento de crédito o deterioro macro severo.',
+    },
+    {
+      scenario: 'CCL +20%',
+      val: b3.stress_ccl20_pct,
+      usdM: null,
+      good: null,
+      desc: 'Revaluación nominal en ARS de activos dolarizados (bonos hard-dollar + CEDEARs). La ganancia contable en ARS no implica ganancia real: el poder adquisitivo en USD no cambia. Escenario: corrección cambiaria o brecha en aumento.',
+      descExtra: 'En USD el impacto neto es neutro — los activos valen lo mismo en dólares. El dato mide exposición dólar del portafolio, no una ganancia real.',
+    },
+    {
+      scenario: 'Renta Variable −10%',
+      val: b3.stress_rv10_pct,
+      usdM: null,
+      good: false,
+      desc: `Caída del 10% en toda la renta variable (CEDEARs + acciones). Con ${pct(b2.equity_pct)} en equity, este escenario es el principal driver de riesgo del portafolio. Escenario: corrección global o local.`,
+    },
+    {
+      scenario: 'Devaluación ARS 30%',
+      val: b3.stress_deval30_pct,
+      usdM: null,
+      good: false,
+      desc: 'Impacto en USD de una devaluación del 30% del ARS (CCL +30%). Bonos ARS tasa fija y CER pierden ~23% en USD a corto plazo. Acciones locales con pass-through parcial (~33%) pierden ~15% en USD. Bonos hard-dollar, CEDEARs y divisas USD son neutrales. Escenario: salto cambiario discreto.',
+      descExtra: 'El impacto en ARS nominal es positivo (los activos dolarizados se revalúan). Lo relevante es la pérdida en USD: mide cuánto capital real se destruye para el inversor dolarizado.',
+    },
+  ];
+
+  function fmtUsd(usdM) {
+    if (usdM == null) return null;
+    const abs = Math.abs(usdM);
+    const sign = usdM >= 0 ? '+' : '−';
+    if (abs >= 1) return `${sign}USD ${abs.toFixed(2)}M`;
+    return `${sign}USD ${(abs*1000).toFixed(0)}K`;
+  }
+
+  /* ── Escenarios combinados (multi-shock) ── */
+  (function renderCombinedScenarios() {
+    const rp  = b3.stress_rp400_pct;   // negativo
+    const rv  = b3.stress_rv10_pct;    // negativo
+    const dev = b3.stress_deval30_pct; // negativo
+    const TOTAL_USD = d.meta.total_usd_m;
+
+    const combined = [
+      {
+        name: 'Crisis Argentina',
+        emoji: '🇦🇷',
+        shocks: ['RP +400bp', 'Deval ARS 30%'],
+        val: rp + dev,
+        prob: 'Prob. baja · 1-2 veces por década',
+        desc: 'Deterioro fiscal + salto cambiario. El escenario típico de crisis argentina: spreads se amplían y el peso se devalúa simultáneamente.',
+        extreme: false,
+      },
+      {
+        name: 'Risk-off Global',
+        emoji: '🌐',
+        shocks: ['RV −10%', 'RP +200bp'],
+        val: rv + rp / 2,
+        prob: 'Prob. moderada · cada 3-5 años',
+        desc: 'Corrección global de activos de riesgo con contagio a EM. Equity cae y spreads EM se amplían, pero sin crisis local específica.',
+        extreme: false,
+      },
+      {
+        name: 'Perfect Storm',
+        emoji: '⛈',
+        shocks: ['RP +400bp', 'RV −10%', 'Deval ARS 30%'],
+        val: rp + rv + dev,
+        prob: 'Prob. muy baja · cola extrema',
+        desc: 'Colapso simultáneo de todos los factores. Crisis sistémica con contagio global + crisis local argentina. Usado para calibrar capital de emergencia.',
+        extreme: true,
+      },
+    ];
+
+    document.getElementById('b3-combined-cards').innerHTML = `<div class="comb-grid">${combined.map(c => {
+      const usdLabel = 'sobre la cartera total';
+      return `<div class="comb-card ${c.extreme ? 'extreme' : ''}">
+        <div class="comb-scenario">${c.emoji} ${c.name}</div>
+        <div class="comb-val">${pct(c.val,1)}</div>
+        <div class="comb-usd">${usdLabel}</div>
+        <div class="comb-shocks">${c.shocks.map(s=>`<span style="display:inline-block;padding:1px 5px;border-radius:3px;background:rgba(248,113,113,.12);margin-right:4px;margin-bottom:3px;font-size:8.5px">${s}</span>`).join('')}</div>
+        <div style="font-family:'IBM Plex Sans',sans-serif;font-size:9.5px;color:var(--mu);line-height:1.4;margin-bottom:7px">${c.desc}</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:7.5px;color:rgba(148,163,184,.45);border-top:1px solid var(--bdr);padding-top:5px">⚠ Aproximación aditiva lineal · no captura efectos de segunda vuelta<br>${c.prob}</div>
+      </div>`;
+    }).join('')}</div>`;
+  })();
+
+  document.getElementById('b3-st-cards').innerHTML = stCards.map(st=>{
+    const col = st.good === null ? 'var(--am)' : st.good ? 'var(--gr)' : 'var(--rd)';
+    const sign = st.val >= 0 ? '+' : '';
+    const usdLabel = st.good === null
+      ? `≈ neutro en USD · ${sign}${pct(st.val)} nominal ARS`
+      : 'impacto sobre la cartera total';
+    return `<div class="st-card">
+      <div class="st-scenario">${st.scenario}</div>
+      <div class="st-val" style="color:${col}">${sign}${pct(st.val)}</div>
+      <div class="st-usd" style="color:var(--mu)">${usdLabel}</div>
+      <div class="st-desc">${st.desc}</div>
+      ${st.descExtra ? `<div style="margin-top:6px;padding:5px 8px;border-radius:4px;background:rgba(245,158,11,.07);border-left:2px solid var(--am);font-family:'IBM Plex Sans',sans-serif;font-size:9.5px;color:var(--am);line-height:1.4">${st.descExtra}</div>` : ''}
+    </div>`;
+  }).join('');
+
+  /* ── EQUITY EXPANDIDA ── */
+  document.getElementById('eq-kpi-weight').textContent = pct(b2.equity_pct)+' del portafolio';
+  document.getElementById('eq-kpi-beta').textContent   = 'β S&P: '+b2.beta_sp500.toFixed(2);
+  document.getElementById('eq-kpi-vol').textContent    = 'σ: '+pct(b2.vol_portfolio);
+
+  /* ── Heatmap de correlaciones ── */
+  (function renderCorrHeatmap() {
+    const el = document.getElementById('corr-heatmap');
+    const cm = b2.correlation_matrix;
+    if (!el || !cm) return;
+    const labels = cm.labels;
+    const vals   = cm.values;
+    const N = labels.length;
+    const CELL = 52, PAD = 36, W = PAD + N * CELL, H = PAD + N * CELL;
+
+    // Color: -1 → rojo, 0 → neutro, +1 → verde
+    function corrColor(v) {
+      if (v >= 0.99) return 'rgba(148,163,184,.15)'; // diagonal — gris
+      const t = (v + 1) / 2; // 0..1
+      const r = Math.round(248 * (1 - t) + 34  * t);
+      const g = Math.round(113 * (1 - t) + 211 * t);
+      const b = Math.round(113 * (1 - t) + 160 * t);
+      return `rgba(${r},${g},${b},${0.15 + Math.abs(v) * 0.5})`;
+    }
+    function textCol(v) { return v >= 0.99 ? 'var(--mu)' : v > 0.3 ? 'var(--gr)' : v < -0.3 ? 'var(--rd)' : '#e8f0f8'; }
+
+    const cells = vals.flatMap((row, i) => row.map((v, j) => {
+      const x = PAD + j * CELL, y = PAD + i * CELL;
+      const isDiag = i === j;
+      if (v == null && !isDiag) return `<rect x="${x}" y="${y}" width="${CELL}" height="${CELL}" rx="3" fill="rgba(148,163,184,.06)" stroke="rgba(74,96,128,.15)" stroke-width="0.5"/><text x="${x+CELL/2}" y="${y+CELL/2+3}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="var(--mu)">s/d</text>`;
+      return `
+        <rect x="${x}" y="${y}" width="${CELL}" height="${CELL}" rx="3" fill="${corrColor(v)}" stroke="rgba(74,96,128,.15)" stroke-width="0.5"/>
+        <text x="${x+CELL/2}" y="${y+CELL/2-5}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="12" font-weight="600" fill="${textCol(v)}">${isDiag ? '—' : v.toFixed(2)}</text>
+        ${!isDiag ? `<text x="${x+CELL/2}" y="${y+CELL/2+9}" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="8" fill="${textCol(v)}" opacity="0.7">${v > 0.5 ? 'alta' : v > 0.2 ? 'mod.' : 'baja'}</text>` : ''}`;
+    }));
+
+    const rowLabels = labels.map((l,i) => `<text x="${PAD-4}" y="${PAD + i*CELL + CELL/2 + 4}" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="9" fill="var(--mu)">${l}</text>`);
+    const colLabels = labels.map((l,j) => `<text x="${PAD + j*CELL + CELL/2}" y="${PAD-6}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9" fill="var(--mu)">${l}</text>`);
+
+    el.innerHTML = `<div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:6px">Correlaciones · 3 años</div>
+      <svg viewBox="0 0 ${W} ${H}" style="width:${W}px;height:${H}px;max-width:100%">
+        ${rowLabels.join('')}${colLabels.join('')}${cells.join('')}
+      </svg>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(148,163,184,.4);margin-top:4px">ρ eq↔bond: ${vals[0][1].toFixed(2)} · retornos diarios reales</div>
+    </div>`;
+  })();
+
+  /* ── Risk Attribution por componente ── */
+  (function renderRiskAttribution() {
+    const el = document.getElementById('risk-attribution-panel');
+    const ra = b2.risk_attribution;
+    if (!el || !ra) return;
+
+    const COLORS = { Equity: 'var(--rd)', Bonos: 'var(--cy)', Cash: 'var(--mu)' };
+    const FILLS  = { Equity: 'rgba(248,113,113,.7)', Bonos: 'rgba(96,165,250,.7)', Cash: 'rgba(148,163,184,.4)' };
+
+    // Barra apilada: % de riesgo vs % de peso
+    function stackedBar(values, total, label) {
+      let x = 0;
+      const segs = ra.labels.map((l, i) => {
+        const w = (values[i] / total) * 100;
+        const seg = `<div style="width:${w.toFixed(1)}%;background:${FILLS[l]};height:100%;display:inline-block;position:relative" title="${l}: ${(values[i]*100).toFixed(1)}%"></div>`;
+        x += w;
+        return seg;
+      }).join('');
+      return `<div style="margin-bottom:3px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--mu);margin-bottom:2px">${label}</div>
+        <div style="height:14px;border-radius:3px;overflow:hidden;background:rgba(74,96,128,.15);display:flex">${segs}</div>
+      </div>`;
+    }
+
+    // Tabla de atribución
+    const rows = ra.labels.map((l, i) => {
+      const w    = ra.weight[i];
+      const v    = ra.vol[i];
+      const rc   = ra.pct[i];
+      const ratio = w > 0.01 ? rc / w : 0; // risk/weight ratio — >1 = genera más riesgo que peso
+      const ratioCol = ratio > 1.5 ? 'var(--rd)' : ratio > 1.0 ? 'var(--am)' : 'var(--gr)';
+      const color = COLORS[l] || 'var(--mu)';
+      return `<tr>
+        <td style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:${color};padding:4px 0;border-bottom:1px solid var(--bdr)">${l}</td>
+        <td class="r" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);border-bottom:1px solid var(--bdr)">${pct(w)}</td>
+        <td class="r" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--mu);border-bottom:1px solid var(--bdr)">${v > 0 ? pct(v) : '—'}</td>
+        <td class="r" style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;color:${color};border-bottom:1px solid var(--bdr)">${pct(rc)}</td>
+        <td class="r" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:${ratioCol};border-bottom:1px solid var(--bdr)">${w > 0.01 ? ratio.toFixed(1)+'×' : '—'}</td>
+      </tr>`;
+    }).join('');
+
+    el.innerHTML = `<div style="margin-top:10px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:8px">Risk Attribution  ·  contribución al riesgo por componente (Euler)</div>
+      ${stackedBar(ra.pct, 1, '% de riesgo')}
+      ${stackedBar(ra.weight, 1, '% de peso')}
+      <table style="width:100%;border-collapse:collapse;margin-top:10px">
+        <thead>
+          <tr style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:rgba(148,163,184,.5);text-transform:uppercase;letter-spacing:.06em">
+            <th style="text-align:left;padding:0 0 4px;border-bottom:1px solid var(--bdr)">Componente</th>
+            <th class="r" style="padding:0 0 4px;border-bottom:1px solid var(--bdr)">Peso</th>
+            <th class="r" style="padding:0 0 4px;border-bottom:1px solid var(--bdr)">Vol</th>
+            <th class="r" style="padding:0 0 4px;border-bottom:1px solid var(--bdr)">% Riesgo</th>
+            <th class="r" style="padding:0 0 4px;border-bottom:1px solid var(--bdr)">Risk/Weight</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+      <div style="font-family:'IBM Plex Sans',sans-serif;font-size:9px;color:rgba(148,163,184,.4);margin-top:6px">
+        Risk/Weight &gt; 1 = el componente genera más riesgo que su peso. Equity ${pct(ra.weight[0])} del portfolio → ${pct(ra.pct[0])} del riesgo total.
+      </div>
+    </div>`;
+  })();
+
+  // Top 15 por contribución al riesgo (pct × vol)
+  const eqhTop = [...eqh].sort((a,b)=>b.contrib_riesgo-a.contrib_riesgo).slice(0,15);
+  const maxContrib = eqhTop.length ? Math.max(...eqhTop.map(x=>x.contrib_riesgo)) : 1;
+  const maxW       = eqhTop.length ? Math.max(...eqhTop.map(x=>x.pct)) : 1;
+
+  document.getElementById('eq-tbody').innerHTML = eqhTop.map(e=>{
+    const col   = tipoColor(e.tipo);
+    const volCol= e.vol>0.45?'var(--rd)':e.vol>0.25?'var(--am)':'var(--gr)';
+    const bCol  = Math.abs(e.beta_sp)>1.2?'var(--rd)':Math.abs(e.beta_sp)>0.8?'var(--am)':'#c9d8e8';
+    const cFill = e.contrib_riesgo/maxContrib*100;
+    const wFill = e.pct/maxW*100;
+    return `<tr>
+      <td class="td-ticker">${e.ticker}</td>
+      <td class="td-nombre" title="${e.nombre}">${e.nombre}</td>
+      <td><span class="td-tipo" style="color:${col};background:${col}18;border-color:${col}44">${e.tipo}</span></td>
+      <td class="td-r">
+        <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end">
+          <span style="font-weight:600;color:#e8f0f8">${pct(e.pct,1)}</span>
+          <div class="w-bar-wrap"><div class="w-bar"><div class="w-bar-fill" style="width:${wFill.toFixed(0)}%"></div></div></div>
+        </div>
+      </td>
+      <td class="td-r" style="color:${volCol};font-weight:600">${pct(e.vol,1)}</td>
+      <td class="td-r" style="color:${bCol}">${e.beta_sp.toFixed(2)}</td>
+      <td class="td-r" style="color:var(--mu)">${e.beta_mrv.toFixed(2)}</td>
+      <td class="td-r">
+        <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end">
+          <span style="color:var(--rd)">${pct(e.contrib_riesgo,2)}</span>
+          <div class="c-bar-wrap"><div class="c-bar"><div class="c-bar-fill" style="width:${cFill.toFixed(0)}%;background:${volCol}"></div></div></div>
+        </div>
+      </td>
+      <td></td>
+    </tr>`;
+  }).join('');
+
+  const totalW = eqh.reduce((a,e)=>a+e.pct,0);
+  const wAvgBeta = eqh.reduce((a,e)=>a+(e.beta_sp*e.pct/totalW),0);
+  const wAvgVol  = eqh.reduce((a,e)=>a+(e.vol*e.pct/totalW),0);
+  const totalContrib = eqh.reduce((a,e)=>a+e.contrib_riesgo,0);
+  const top15Contrib = eqhTop.reduce((a,e)=>a+e.contrib_riesgo,0);
+  document.getElementById('eq-totales').innerHTML = [
+    ['Peso total equity', pct(totalW), 'var(--gr)'],
+    ['β S&P500 pond.',    wAvgBeta.toFixed(2), 'var(--cy)'],
+    ['σ promedio pond.',  pct(wAvgVol,1), 'var(--am)'],
+    ['Contrib. top 15',  pct(top15Contrib,2)+'  / '+pct(totalContrib,2)+' total', 'var(--rd)'],
+    ['Mostrando', eqhTop.length+' / '+eqh.length+' tickers', 'var(--mu)'],
+  ].map(([l,v,col])=>
+    `<div style="font-family:'IBM Plex Mono',monospace">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);margin-bottom:3px">${l}</div>
+      <div style="font-size:14px;font-weight:600;color:${col}">${v}</div>
+    </div>`).join('');
+
+  /* ── B4 Concentración ── */
+  document.getElementById('b4-badge').textContent = 'HHI · Eff N';
+  const hhiCol = b4.hhi>0.1?'var(--rd)':b4.hhi>0.06?'var(--am)':'var(--gr)';
+  document.getElementById('b4-metrics').innerHTML = [
+    ['HHI',     b4.hhi.toFixed(4),b4.hhi<0.1?'Diversificado':'Concentrado','bl-am',hhiCol],
+    ['Eff N',   b4.eff_n.toFixed(1)+' apuestas','por peso','','#e8f0f8'],
+    ['Liq. A',  pct(b4.liq_a_pct),'alta liquidez','bl-gr','var(--gr)'],
+    ['Exp. USD',pct(b4.usd_exposure_pct),'exposición dólar','bl-cy','var(--cy)'],
+  ].map(([l,v,s,cls,col], i)=>{
+    const bar = i === 0 ? limitBar('hhi', b4.hhi) : '';
+    return `<div class="metric ${cls}"><div class="metric-l">${l}</div><div class="metric-v" style="${c(col)}">${v}</div><div class="metric-s">${s}</div>${bar}</div>`;
+  }).join('');
+
+  document.getElementById('footnote').textContent =
+    `Fuentes: YTM/MD — amberes-alerts.vercel.app/bonos.html (Playwright) · Vol/Beta — Yahoo Finance 252 días · CCL — ${meta.ccl_fuente} · Actualización automática: lunes 8:00 AM`;
+
+  document.getElementById('loading').style.display='none';
+  document.getElementById('main').style.display='block';
+
+  loadBenchmarks(d);
+}
+
+async function loadBenchmarks(d) {
+  const {b1_renta_fija:b1, b2_estadistico:b2, b3_tail_risk:b3, meta} = d;
+  const PROXY = '/api/proxy';
+
+  // Benchmarks desde riesgo.json (actualizados semanalmente por update_cro_risk.py)
+  // Fallback a valores de sept-2026 si el campo no existe aún
+  const bmRaw = d.benchmarks || {};
+  function mergeBM(raw, defaults) {
+    return raw ? { ...defaults, ...raw } : defaults;
+  }
+  const BM = {
+    sp500: mergeBM(bmRaw.sp500, {
+      vol: 0.153, var95_p: -0.048, var99_p: -0.152, cvar95_p: -0.112,
+      var95_h: 0.104, var99_h: 0.048, cvar95_h: 0.067, worst: -0.030,
+      best: 0.436, p25: 0.075, p75: 0.280, sharpe: 1.07,
+    }),
+    merval: mergeBM(bmRaw.merval, {
+      vol: 0.480, var95_p: -0.106, var99_p: -0.433, cvar95_p: -0.306,
+      var95_h: 0.075, var99_h: -0.013, cvar95_h: 0.017, worst: -0.045,
+      best: 2.662, p25: -0.020, p75: 0.650, sharpe: 1.34,
+    }),
+  };
+  BM.sp500.name   = 'S&P 500';   BM.sp500.ticker  = 'SPY';       BM.sp500.color  = 'var(--or)'; BM.sp500.border  = 'rgba(251,146,60,.35)';
+  BM.merval.name  = 'Merval USD'; BM.merval.ticker = '^MERV/CCL'; BM.merval.color = 'var(--gr)'; BM.merval.border = 'rgba(34,211,160,.3)';
+
+  const port = {
+    name: 'Portafolio',
+    ticker: 'Consolidado',
+    vol:      b2.vol_portfolio,
+    var95_p:  b3.var95_param,
+    var99_p:  b3.var99_param,
+    cvar95_p: b3.cvar95,
+    var95_h:  b3.var95_hist,
+    var99_h:  b3.var99_hist,
+    cvar95_h: b3.cvar95_hist,
+    worst:    b3.worst_year,
+    best:     b3.best_year,
+    p25:      b3.p25_year,
+    p75:      b3.p75_year,
+    sharpe:   b2.sharpe,
+    color:   'var(--cy)',
+    border:  'rgba(6,182,212,.3)',
+  };
+
+  const sp = BM.sp500, mv = BM.merval;
+
+  // Badge
+  document.getElementById('bm-badge').textContent = `datos sept-2026 · ${b3.n_windows || 522} ventanas`;
+
+  // ── Cards resumen ────────────────────────────────────────────
+  function summaryCard(bm, isPort) {
+    const sharpeCol = bm.sharpe < 0 ? 'var(--rd)' : bm.sharpe > 1 ? 'var(--gr)' : 'var(--am)';
+    const volCol    = bm.vol > 0.30 ? 'var(--rd)' : bm.vol > 0.18 ? 'var(--am)' : 'var(--gr)';
+    const varCol    = v => v == null ? 'var(--mu)' : v < -0.10 ? 'var(--rd)' : v < -0.04 ? 'var(--am)' : v >= 0 ? 'var(--gr)' : 'var(--cy)';
+    const fmt       = v => v == null ? '—' : (v >= 0 ? '+' : '') + (v*100).toFixed(1) + '%';
+
+    const varHistRow = bm.var95_h != null
+      ? `<div class="bm-row" style="margin-top:8px;padding-top:8px;border-top:1px solid var(--bdr)">
+           <span class="bm-lbl">VaR 95% Hist 3a</span>
+           <span class="bm-val" style="color:${varCol(bm.var95_h)}">${fmt(bm.var95_h)}</span>
+         </div>
+         <div class="bm-row">
+           <span class="bm-lbl">Peor año obs.</span>
+           <span class="bm-val" style="color:${varCol(bm.worst)}">${fmt(bm.worst)}</span>
+         </div>`
+      : '';
+
+    // Mini barra vol comparativa (max merval ~48%)
+    const barW = Math.round(bm.vol / 0.55 * 100);
+    const barCol = bm.vol > 0.30 ? '#f87171' : bm.vol > 0.18 ? '#f59e0b' : '#22d3a0';
+
+    return `<div class="bm-card" style="border-color:${bm.border}">
+      <div class="bm-card-title" style="color:${bm.color}">${bm.name}
+        <span style="font-size:8px;color:var(--mu);margin-left:6px">${bm.ticker}</span>
+      </div>
+      <div class="bm-row">
+        <span class="bm-lbl">σ anualizada</span>
+        <span class="bm-val" style="color:${volCol}">${fmt(bm.vol)}</span>
+      </div>
+      <div class="bm-bar-wrap"><div class="bm-bar-fill" style="width:${barW}%;background:${barCol}"></div></div>
+      <div class="bm-row" style="margin-top:8px">
+        <span class="bm-lbl">VaR 95% Param.</span>
+        <span class="bm-val" style="color:${varCol(bm.var95_p)}">${fmt(bm.var95_p)}</span>
+      </div>
+      <div class="bm-row">
+        <span class="bm-lbl">VaR 99% Param.</span>
+        <span class="bm-val" style="color:${varCol(bm.var99_p)}">${fmt(bm.var99_p)}</span>
+      </div>
+      ${varHistRow}
+      <div class="bm-row" style="margin-top:8px;padding-top:8px;border-top:1px solid var(--bdr)">
+        <span class="bm-lbl">Sharpe (Rf 4%)</span>
+        <span class="bm-val" style="color:${sharpeCol}">${bm.sharpe.toFixed(2)}</span>
+      </div>
+      ${isPort ? `<div class="bm-row"><span class="bm-lbl">Beta S&amp;P500 / Merval</span><span class="bm-val" style="color:#e8f0f8">${b2.beta_sp500.toFixed(2)} / ${b2.beta_merval.toFixed(2)}</span></div>
+      <div class="bm-row"><span class="bm-lbl">EQ / RF / Cash</span><span class="bm-val" style="color:var(--mu)">${(b2.equity_pct*100).toFixed(0)}% / ${(b1.bonds_pct*100).toFixed(0)}% / ${((b2.cash_pct != null ? b2.cash_pct : Math.max(0,1-b2.equity_pct-b1.bonds_pct))*100).toFixed(0)}%</span></div>` : ''}
+    </div>`;
+  }
+
+  document.getElementById('bm-cards').innerHTML =
+    summaryCard(port, true) + summaryCard(sp, false) + summaryCard(mv, false);
+
+  // ── Tabla detallada ──────────────────────────────────────────
+  function diff(pv, bv, isRatio=false) {
+    if (pv == null || bv == null) return '<td class="r" style="color:var(--mu)">—</td>';
+    const d = pv - bv;
+    const col = d < 0 ? 'var(--rd)' : d > 0 ? 'var(--gr)' : 'var(--mu)';
+    const fmt = isRatio
+      ? `${d >= 0 ? '+' : ''}${d.toFixed(2)}`
+      : `${d >= 0 ? '+' : ''}${(d*100).toFixed(1)}pp`;
+    return `<td class="r" style="color:${col};font-size:10px">${fmt}</td>`;
+  }
+  function fmtV(v, goodIfPos) {
+    if (v == null) return '<span style="color:var(--mu)">—</span>';
+    const col = goodIfPos
+      ? (v > 0 ? 'var(--gr)' : v < -0.05 ? 'var(--rd)' : 'var(--am)')
+      : (v < -0.10 ? 'var(--rd)' : v < -0.04 ? 'var(--am)' : v >= 0 ? 'var(--gr)' : 'var(--cy)');
+    return `<span style="color:${col}">${v >= 0 ? '+' : ''}${(v*100).toFixed(1)}%</span>`;
+  }
+
+  const rows = [
+    { label: 'σ anualizada',        pv: port.vol,      sv: sp.vol,      mv: mv.vol,      goodIfPos: false, note: 'Vol más baja del portafolio refleja 44% en bonos+cash' },
+    { label: 'VaR 95% paramétrico', pv: port.var95_p,  sv: sp.var95_p,  mv: mv.var95_p,  goodIfPos: false, note: 'Asume distribución normal — downside simétrico' },
+    { label: 'VaR 99% paramétrico', pv: port.var99_p,  sv: sp.var99_p,  mv: mv.var99_p,  goodIfPos: false, note: '⚠ Portafolio más "negativo" que S&P por bajo retorno esperado en USD' },
+    { label: 'CVaR 95% paramétrico',pv: port.cvar95_p, sv: sp.cvar95_p, mv: mv.cvar95_p, goodIfPos: false, note: 'Expected Shortfall — cola más pesada en ARS por carry' },
+    { label: 'VaR 95% histórico 3a',pv: port.var95_h,  sv: sp.var95_h,  mv: mv.var95_h,  goodIfPos: true,  note: '2024-2026 alcista para activos AR — percentil 5% aún positivo' },
+    { label: 'VaR 99% histórico 3a',pv: port.var99_h,  sv: sp.var99_h,  mv: mv.var99_h,  goodIfPos: true,  note: 'Portafolio sin pérdida en ninguna ventana de 1 año en 3 años' },
+    { label: 'Peor año observado',  pv: port.worst,    sv: sp.worst,    mv: mv.worst,    goodIfPos: true,  note: 'Mínimo de todas las ventanas rolling 252d' },
+    { label: 'Mejor año observado', pv: port.best,     sv: sp.best,     mv: mv.best,     goodIfPos: true,  note: 'Máximo — Merval outlier por normalización 2023' },
+    { label: 'Sharpe (Rf USD 4%)',  pv: port.sharpe,   sv: sp.sharpe,   mv: mv.sharpe,   goodIfPos: true,  note: 'Portafolio: retorno/riesgo moderado vs benchmarks puros', isRatio: true },
+  ];
+
+  document.getElementById('bm-tbody').innerHTML = rows.map(r => {
+    const pFmt = r.label.includes('Sharpe') ? (v => v == null ? '—' : v.toFixed(2)) : (v => v == null ? '—' : (v>=0?'+':'')+(v*100).toFixed(1)+'%');
+    const spFmt = pFmt;
+    function cell(v, goodIfPos) {
+      if (v == null) return '<td class="r" style="color:var(--mu)">—</td>';
+      const formatted = pFmt(v);
+      const col = r.label.includes('Sharpe')
+        ? (v < 0 ? 'var(--rd)' : v > 1 ? 'var(--gr)' : 'var(--am)')
+        : goodIfPos
+          ? (v > 0.02 ? 'var(--gr)' : v < -0.05 ? 'var(--rd)' : 'var(--am)')
+          : (v < -0.10 ? 'var(--rd)' : v < -0.04 ? 'var(--am)' : v >= 0 ? 'var(--gr)' : 'var(--cy)');
+      return `<td class="r" style="color:${col};font-weight:500">${formatted}</td>`;
+    }
+    return `<tr title="${r.note}">
+      <td style="color:var(--mu)">${r.label}<span style="margin-left:6px;font-size:9px;color:rgba(74,96,128,.5)">${r.note}</span></td>
+      ${cell(r.pv, r.goodIfPos)}
+      ${cell(r.sv, r.goodIfPos)}
+      ${cell(r.mv, r.goodIfPos)}
+      ${diff(r.pv, r.sv, r.isRatio||false)}
+    </tr>`;
+  }).join('');
+
+  document.getElementById('bm-footnote').innerHTML =
+    `Benchmarks calculados con yfinance · 3 años de datos · rolling 252d compuesto · S&P 500 = SPY (ETF, USD) · Merval = ^MERV expresado en USD vía CCL $${meta.ccl || '~1.600'} · Sharpe vs T-Bills 4% · ⚠ Período 2024-2026 alcista para activos AR — VaR histórico del portafolio sobreestimado vs estructural`;
+}
+
+/* la pestaña Riesgo se carga recién cuando se abre (ver cartera.js abajo) */
+</script>
+<script>
+/* ══ CARTERA · Composición (26/11/2026) — datos: /api/riesgo?cartera=1 y ?cartera=hist (update_cartera.py, lunes) ══ */
+(function(){
+  const MON_C={'Pesos':'#06b6d4','Dólares':'#22d3a0','Dólar linked':'#f59e0b'};
+  const TIPO_C={'CEDEARs':'#22d3a0','Bonos y ONs':'#f59e0b','Fondos (FCI)':'#8b5cf6','Acciones':'#06b6d4','Efectivo':'#94a3b8','Cauciones':'#fb923c','Otros':'#4a6080'};
+  const f2=(v,d=1)=>v==null?'—':v.toFixed(d).replace('.',',')+'%';
+  const dpp=(v,p)=>{ if(p==null) return '<span class="cp-d eq">—</span>'; const d=v-p; const c=Math.abs(d)<0.05?'eq':d>0?'up':'dn'; return `<span class="cp-d ${c}">${d>0?'+':''}${d.toFixed(2).replace('.',',')}</span>`; };
+  const esc=x=>String(x).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+  const fD=iso=>{ if(!iso) return '—'; const [y,m,d]=iso.split('-'); return `${d}/${m}/${y}`; };
+  let D=null, H=[], sortK='pct', sortDir=-1, filt='Todos', evo='mon';
+
+  function row(nm,v,p,max,col){ return `<div class="cp-row"><div class="nm" title="${esc(nm)}">${esc(nm)}</div><div class="cp-bar"><i style="width:${Math.max(.5,v/max*100)}%;background:${col}"></i></div><div class="cp-num">${f2(v)}</div>${dpp(v,p)}</div>`; }
+
+  function render(){
+    const pv=D.prev?fD(D.prev):null;
+    document.getElementById('cp-meta').innerHTML=`<div><span class="dot live"></span>Foto del <b>${D.fecha}</b></div><div>${pv?'Comparado con '+pv:'Primera foto'}</div><div>${D.n_inst} instrumentos · solo porcentajes</div>`;
+    document.getElementById('cp-cards').innerHTML=D.por_moneda.map(m=>`<div class="cp-card" style="--c:${MON_C[m.k]}"><div class="l">${m.k}</div><div class="v">${f2(m.pct)}</div><div class="s">${m.prev==null?'':'vs '+pv+': '}${m.prev==null?'':dpp(m.pct,m.prev)+' pp'}</div></div>`).join('');
+    const mt=Math.max(...D.por_tipo.map(x=>x.pct));
+    document.getElementById('cp-tipo').innerHTML=D.por_tipo.filter(x=>x.pct>=0.01).map(x=>row(x.k,x.pct,x.prev,mt,TIPO_C[x.k]||'#4a6080')).join('');
+    const me=Math.max(...D.por_exp.map(x=>x.pct)); let h='', g='';
+    D.por_exp.filter(x=>x.pct>=0.01).forEach(x=>{ if(x.mon!==g){ g=x.mon; const tot=D.por_moneda.find(m=>m.k===g); h+=`<div class="cp-grp">${g} · ${f2(tot.pct)}</div>`; } h+=row(x.k,x.pct,x.prev,me,MON_C[x.mon]); });
+    document.getElementById('cp-exp').innerHTML=h;
+    renderEvo(); renderChips(); renderTable();
+    const sal=D.salieron||[];
+    document.getElementById('cp-salieron').innerHTML=sal.length?`<b style="color:#c9d8e8">Salieron de la cartera desde ${pv}:</b> `+sal.map(x=>`${esc(x.t)} (${f2(x.prev,2)})`).join(' · '):'';
+  }
+
+  function renderEvo(){
+    const el=document.getElementById('cp-evo');
+    if(H.length<2){ el.innerHTML='<div class="cp-note">La evolución aparece cuando haya más de una foto.</div>'; document.getElementById('cp-evo-leg').innerHTML=''; return; }
+    const keys = evo==='mon' ? ['Pesos','Dólares','Dólar linked'] : Object.keys(TIPO_C).filter(k=>H.some(h=>(h.tipo[k]||0)>=0.2));
+    const COL = evo==='mon' ? MON_C : TIPO_C;
+    const W=Math.max(320, el.clientWidth||700), Hh=220, padL=34, padB=22, n=H.length, bw=Math.min(46,(W-padL)/n*0.62), step=(W-padL)/n;
+    let svg=`<svg viewBox="0 0 ${W} ${Hh}" style="width:100%;height:${Hh}px;display:block" role="img" aria-label="Evolución de la composición">`;
+    [0,25,50,75,100].forEach(t=>{ const y=(Hh-padB)*(1-t/100); svg+=`<line x1="${padL}" x2="${W}" y1="${y}" y2="${y}" stroke="rgba(255,255,255,.06)"/><text x="${padL-6}" y="${y+3}" text-anchor="end" font-size="9" fill="#4a6080" font-family="IBM Plex Mono">${t}%</text>`; });
+    H.forEach((h,i)=>{ const x=padL+step*i+(step-bw)/2; let acc=0; const src=evo==='mon'?h.mon:h.tipo; const tot=keys.reduce((a,k)=>a+(src[k]||0),0)||100;
+      keys.forEach(k=>{ const v=(src[k]||0)/tot*100; const hh=(Hh-padB)*v/100; const y=(Hh-padB)*(1-(acc+v)/100); acc+=v;
+        if(hh>0) svg+=`<rect x="${x}" y="${y}" width="${bw}" height="${hh}" fill="${COL[k]}" opacity=".85"><title>${fD(h.f)} · ${k}: ${f2(src[k]||0)}</title></rect>`; });
+      const [yy,mm,dd]=h.f.split('-'); if(n<=16 || i%2===0) svg+=`<text x="${x+bw/2}" y="${Hh-6}" text-anchor="middle" font-size="9" fill="#4a6080" font-family="IBM Plex Mono">${dd}/${mm}</text>`; });
+    el.innerHTML=svg+'</svg>';
+    document.getElementById('cp-evo-leg').innerHTML=keys.map(k=>`<span style="--c:${COL[k]}">${k}</span>`).join('');
+    document.getElementById('cp-evo-sub').textContent=`% de la cartera total en cada foto (${H.length} fotos, ${fD(H[0].f)} a ${fD(H[H.length-1].f)}). Pasá el mouse por las barras para ver los valores.`;
+  }
+
+  function renderChips(){
+    const tipos=['Todos',...D.por_tipo.filter(x=>x.pct>=0.01).map(x=>x.k)];
+    document.getElementById('cp-chips').innerHTML=tipos.map(t=>`<button class="chip ${t===filt?'on':''}" data-f="${esc(t)}">${esc(t)}</button>`).join(' ');
+  }
+
+  function renderTable(){
+    const q=(document.getElementById('cp-q').value||'').toLowerCase();
+    let L=D.inst.filter(i=>(filt==='Todos'||i.tipo===filt)&&(!q||i.t.toLowerCase().includes(q)||i.n.toLowerCase().includes(q)));
+    L=L.map(i=>({...i,d:i.prev==null?null:i.pct-i.prev}));
+    L.sort((a,b)=>{ const x=a[sortK], y=b[sortK]; if(x==null) return 1; if(y==null) return -1; return (typeof x==='string'?x.localeCompare(y):x-y)*sortDir; });
+    const sum=L.reduce((a,i)=>a+i.pct,0);
+    document.getElementById('cp-inst-sub').textContent=`${L.length} instrumentos${filt!=='Todos'||q?' en el filtro':''} · suman ${f2(sum)} de la cartera · tocá un encabezado para ordenar`;
+    document.getElementById('cp-tb').innerHTML=L.map(i=>`<tr><td class="tk">${esc(i.t)}</td><td class="nm" title="${esc(i.n)}">${esc(i.n)}</td><td><span class="cp-tag" style="--c:${TIPO_C[i.tipo]||'#4a6080'}">${esc(i.tipo)}</span></td><td style="color:var(--mu);font-size:11px">${esc(i.exp)}</td><td class="r num" style="color:#e8f0f8">${f2(i.pct,i.pct<1?2:1)}</td><td class="r">${i.prev==null?'<span class="cp-d eq">—</span>':(i.prev===0?'<span class="cp-d up">nuevo</span>':dpp(i.pct,i.prev))}</td></tr>`).join('');
+  }
+
+  document.addEventListener('click',e=>{
+    const c=e.target.closest('[data-f]'); if(c){ filt=c.dataset.f; renderChips(); renderTable(); }
+    const th=e.target.closest('.cp-t th'); if(th){ const k=th.dataset.k; sortDir = sortK===k ? -sortDir : (k==='pct'||k==='d'?-1:1); sortK=k; renderTable(); }
+    const ev=e.target.closest('[data-evo]'); if(ev){ evo=ev.dataset.evo; document.querySelectorAll('[data-evo]').forEach(b=>b.classList.toggle('on',b===ev)); renderEvo(); }
+    const tb=e.target.closest('.ctab'); if(tb) showTab(tb.dataset.t);
+  });
+  document.getElementById('cp-q').addEventListener('input',renderTable);
+  window.addEventListener('resize',()=>{ if(D) renderEvo(); });
+
+  let riesgoCargado=false;
+  function showTab(t){
+    document.querySelectorAll('.ctab').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+    document.getElementById('tab-comp').hidden = t!=='comp';
+    document.getElementById('tab-riesgo').hidden = t!=='riesgo';
+    try{ history.replaceState(null,'',t==='riesgo'?'#riesgo':location.pathname+location.search); }catch(e){}
+    if(t==='riesgo' && !riesgoCargado){ riesgoCargado=true; load(); }
+    if(t==='comp' && D) renderEvo();
+  }
+
+  (async function(){
+    try{
+      const [r1,r2]=await Promise.all([fetch('/api/riesgo?cartera=1',{cache:'no-store'}),fetch('/api/riesgo?cartera=hist',{cache:'no-store'})]);
+      if(!r1.ok) throw new Error('HTTP '+r1.status);
+      D=await r1.json(); H=r2.ok?await r2.json():[];
+      document.getElementById('cp-loading').style.display='none'; document.getElementById('cp-main').style.display='block';
+      render();
+    }catch(e){ document.getElementById('cp-loading').textContent='No se pudo cargar la composición: '+e.message; }
+    if(location.hash==='#riesgo') showTab('riesgo');
+  })();
+})();
+</script>
+</body>
+</html>

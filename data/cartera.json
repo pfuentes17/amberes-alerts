@@ -1,0 +1,1458 @@
+{
+ "fecha": "24/11/2026",
+ "fecha_iso": "2026-11-24",
+ "prev": "2026-10-26",
+ "n_inst": 171,
+ "por_tipo": [
+  {
+   "k": "CEDEARs",
+   "pct": 40.11,
+   "prev": 42.96
+  },
+  {
+   "k": "Bonos y ONs",
+   "pct": 29.11,
+   "prev": 24.83
+  },
+  {
+   "k": "Fondos (FCI)",
+   "pct": 11.96,
+   "prev": 11.3
+  },
+  {
+   "k": "Acciones",
+   "pct": 9.94,
+   "prev": 12.98
+  },
+  {
+   "k": "Efectivo",
+   "pct": 8.86,
+   "prev": 7.91
+  },
+  {
+   "k": "Otros",
+   "pct": 0.03,
+   "prev": 0.03
+  },
+  {
+   "k": "Cauciones",
+   "pct": 0.0,
+   "prev": 0.0
+  }
+ ],
+ "por_moneda": [
+  {
+   "k": "Pesos",
+   "pct": 39.34,
+   "prev": 41.0
+  },
+  {
+   "k": "Dólares",
+   "pct": 60.19,
+   "prev": 58.56
+  },
+  {
+   "k": "Dólar linked",
+   "pct": 0.47,
+   "prev": 0.43
+  }
+ ],
+ "por_exp": [
+  {
+   "mon": "Pesos",
+   "k": "Bonos CER",
+   "pct": 11.46,
+   "prev": 10.69
+  },
+  {
+   "mon": "Pesos",
+   "k": "Fondos en pesos (renta fija y mixtos)",
+   "pct": 10.85,
+   "prev": 10.08
+  },
+  {
+   "mon": "Pesos",
+   "k": "Acciones argentinas",
+   "pct": 9.94,
+   "prev": 12.97
+  },
+  {
+   "mon": "Pesos",
+   "k": "Tasa fija (Lecap / Boncap)",
+   "pct": 2.93,
+   "prev": 3.13
+  },
+  {
+   "mon": "Pesos",
+   "k": "Pesos en efectivo",
+   "pct": 2.25,
+   "prev": 2.18
+  },
+  {
+   "mon": "Pesos",
+   "k": "Fondos money market",
+   "pct": 1.08,
+   "prev": 1.19
+  },
+  {
+   "mon": "Pesos",
+   "k": "ONs en pesos",
+   "pct": 0.6,
+   "prev": 0.54
+  },
+  {
+   "mon": "Pesos",
+   "k": "Duales tasa fija / TAMAR",
+   "pct": 0.21,
+   "prev": 0.19
+  },
+  {
+   "mon": "Pesos",
+   "k": "Otros",
+   "pct": 0.03,
+   "prev": 0.03
+  },
+  {
+   "mon": "Dólares",
+   "k": "CEDEARs y ETFs",
+   "pct": 40.11,
+   "prev": 42.96
+  },
+  {
+   "mon": "Dólares",
+   "k": "ONs en dólares",
+   "pct": 11.78,
+   "prev": 7.09
+  },
+  {
+   "mon": "Dólares",
+   "k": "Dólares en efectivo",
+   "pct": 6.61,
+   "prev": 5.72
+  },
+  {
+   "mon": "Dólares",
+   "k": "Soberanos, provinciales y BOPREAL",
+   "pct": 1.66,
+   "prev": 2.76
+  },
+  {
+   "mon": "Dólares",
+   "k": "Fondos en dólares",
+   "pct": 0.03,
+   "prev": 0.03
+  },
+  {
+   "mon": "Dólares",
+   "k": "Acciones del exterior",
+   "pct": 0.0,
+   "prev": 0.0
+  },
+  {
+   "mon": "Dólares",
+   "k": "Cauciones",
+   "pct": 0.0,
+   "prev": 0.0
+  },
+  {
+   "mon": "Dólar linked",
+   "k": "Duales TAMAR / dollar linked",
+   "pct": 0.37,
+   "prev": 0.35
+  },
+  {
+   "mon": "Dólar linked",
+   "k": "Letras y bonos dollar linked",
+   "pct": 0.1,
+   "prev": 0.09
+  }
+ ],
+ "inst": [
+  {
+   "t": "TZX28",
+   "n": "BONO REP ARG AJ CER V30/06/28",
+   "tipo": "Bonos y ONs",
+   "mon": "Pesos",
+   "exp": "Bonos CER",
+   "pct": 10.52,
+   "prev": 9.553
+  },
+  {
+   "t": "Balanceado A",
+   "n": "MEGA QM Balanceado A",
+   "tipo": "Fondos (FCI)",
+   "mon": "Pesos",
+   "exp": "Fondos en pesos (renta fija y mixtos)",
+   "pct": 10.256,
+   "prev": 9.427
+  },
+  {
+   "t": "EWZ",
+   "n": "CEDEAR ISHARES MSCI BRAZIL CAP",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 8.521,
+   "prev": 6.411
+  },
+  {
+   "t": "GLD",
+   "n": "ETF SPDR GOLD TRUST",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 6.995,
+   "prev": 7.35
+  },
+  {
+   "t": "SLV",
+   "n": "ETF ISHARES SILVER TRUST",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 6.551,
+   "prev": 7.562
+  },
+  {
+   "t": "USD",
+   "n": "US_DOLLARS",
+   "tipo": "Efectivo",
+   "mon": "Dólares",
+   "exp": "Dólares en efectivo",
+   "pct": 6.259,
+   "prev": 5.549
+  },
+  {
+   "t": "JPM",
+   "n": "CEDEAR JPMORGAN CHASE & CO",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 5.431,
+   "prev": 1.537
+  },
+  {
+   "t": "YPFD",
+   "n": "YPF S.A.",
+   "tipo": "Acciones",
+   "mon": "Pesos",
+   "exp": "Acciones argentinas",
+   "pct": 5.032,
+   "prev": 6.96
+  },
+  {
+   "t": "NVDA",
+   "n": "CEDEAR NVIDIA CORPORATION",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 2.925,
+   "prev": 3.268
+  },
+  {
+   "t": "VIST",
+   "n": "CEDEAR VISTA OIL & GAS",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 2.742,
+   "prev": 3.326
+  },
+  {
+   "t": "MGCVO",
+   "n": "USD ON PAMPA ENERGIA CL.29 Vto. 02/11/2030",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 2.337,
+   "prev": 0.0
+  },
+  {
+   "t": "ARS",
+   "n": "ARG_PESOS",
+   "tipo": "Efectivo",
+   "mon": "Pesos",
+   "exp": "Pesos en efectivo",
+   "pct": 2.252,
+   "prev": 2.183
+  },
+  {
+   "t": "HJCIO",
+   "n": "USD ON JOHN DEERE Vto. 27/05/2027",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 1.615,
+   "prev": 1.396
+  },
+  {
+   "t": "MGCUO",
+   "n": "USD ON PAMPA ENERGIA Vto. 21/08/2030",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 1.488,
+   "prev": 1.334
+  },
+  {
+   "t": "OLC6O",
+   "n": "USD ON OLEODUCTOS DEL VALLE Vto. 05/06/2029",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 1.482,
+   "prev": 0.0
+  },
+  {
+   "t": "TGSU2",
+   "n": "Transportadora de Gas Del Sur",
+   "tipo": "Acciones",
+   "mon": "Pesos",
+   "exp": "Acciones argentinas",
+   "pct": 1.161,
+   "prev": 1.417
+  },
+  {
+   "t": "CS51O",
+   "n": "USD ON CRESUD Vto. 20/01/2027",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 1.089,
+   "prev": 0.954
+  },
+  {
+   "t": "SH",
+   "n": "PROSHARES SHORT S&P500",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 1.086,
+   "prev": 0.66
+  },
+  {
+   "t": "PAMP",
+   "n": "Pampa Energia SA",
+   "tipo": "Acciones",
+   "mon": "Pesos",
+   "exp": "Acciones argentinas",
+   "pct": 1.032,
+   "prev": 1.111
+  },
+  {
+   "t": "MELI",
+   "n": "CEDEAR MERCADOLIBRE INC",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.932,
+   "prev": 1.33
+  },
+  {
+   "t": "T30J7",
+   "n": "ARS BONO TESORO NACIONAL CAPITALIZABLE VTO. 30/06/2027",
+   "tipo": "Bonos y ONs",
+   "mon": "Pesos",
+   "exp": "Tasa fija (Lecap / Boncap)",
+   "pct": 0.932,
+   "prev": 0.89
+  },
+  {
+   "t": "T30A7",
+   "n": "Bono Tesoro Nacional Capitalizable Vto. 30/04/2027",
+   "tipo": "Bonos y ONs",
+   "mon": "Pesos",
+   "exp": "Tasa fija (Lecap / Boncap)",
+   "pct": 0.918,
+   "prev": 0.863
+  },
+  {
+   "t": "T31Y7",
+   "n": "BONO TESORO NACIONAL CAPITALIZABLE Vto. 31/05/2027",
+   "tipo": "Bonos y ONs",
+   "mon": "Pesos",
+   "exp": "Tasa fija (Lecap / Boncap)",
+   "pct": 0.914,
+   "prev": 0.864
+  },
+  {
+   "t": "NPCCO",
+   "n": "USD ON CENTRAL PUERTO Vto. 25/08/2029",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 0.904,
+   "prev": 0.798
+  },
+  {
+   "t": "CRES",
+   "n": "CRESUD S.A. ORDS. 1 VOTO ESCRITURALES",
+   "tipo": "Acciones",
+   "mon": "Pesos",
+   "exp": "Acciones argentinas",
+   "pct": 0.879,
+   "prev": 1.115
+  },
+  {
+   "t": "GN49O",
+   "n": "USD ON GENNEIA SA Vto. 02/12/2033",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 0.765,
+   "prev": 0.699
+  },
+  {
+   "t": "NU",
+   "n": "NU Holdings Ltd",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.747,
+   "prev": 0.577
+  },
+  {
+   "t": "AO27",
+   "n": "USD BONO TESORO NACIONAL 6% Vto. 29/10/2027",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "Soberanos, provinciales y BOPREAL",
+   "pct": 0.728,
+   "prev": 0.643
+  },
+  {
+   "t": "AL30",
+   "n": "Bono USD 2030",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "Soberanos, provinciales y BOPREAL",
+   "pct": 0.646,
+   "prev": 1.347
+  },
+  {
+   "t": "FXI",
+   "n": "ISHARES TRUST FTSE CHINA 25 IF (FXI)",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.63,
+   "prev": 1.048
+  },
+  {
+   "t": "GGAL",
+   "n": "Grupo Financiero Galicia",
+   "tipo": "Acciones",
+   "mon": "Pesos",
+   "exp": "Acciones argentinas",
+   "pct": 0.63,
+   "prev": 0.822
+  },
+  {
+   "t": "TGNO4",
+   "n": "Transportadora de Gas del Norte",
+   "tipo": "Acciones",
+   "mon": "Pesos",
+   "exp": "Acciones argentinas",
+   "pct": 0.608,
+   "prev": 0.721
+  },
+  {
+   "t": "YM43O",
+   "n": "ARS ON YPF VTO. 14/04/2030",
+   "tipo": "Bonos y ONs",
+   "mon": "Pesos",
+   "exp": "ONs en pesos",
+   "pct": 0.6,
+   "prev": 0.535
+  },
+  {
+   "t": "mq pesos A",
+   "n": "MEGA QM mq pesos A",
+   "tipo": "Fondos (FCI)",
+   "mon": "Pesos",
+   "exp": "Fondos money market",
+   "pct": 0.547,
+   "prev": 0.688
+  },
+  {
+   "t": "SUPV",
+   "n": "Grupo Supervielle",
+   "tipo": "Acciones",
+   "mon": "Pesos",
+   "exp": "Acciones argentinas",
+   "pct": 0.525,
+   "prev": 0.78
+  },
+  {
+   "t": "mq pesos B",
+   "n": "MEGA QM mq pesos B",
+   "tipo": "Fondos (FCI)",
+   "mon": "Pesos",
+   "exp": "Fondos money market",
+   "pct": 0.454,
+   "prev": 0.424
+  },
+  {
+   "t": "ACWI",
+   "n": "ISHARES MSCI ACWI ETF",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.436,
+   "prev": 0.419
+  },
+  {
+   "t": "DICP",
+   "n": "BONO REP ARG Vto. 31/12/2033",
+   "tipo": "Bonos y ONs",
+   "mon": "Pesos",
+   "exp": "Bonos CER",
+   "pct": 0.421,
+   "prev": 0.434
+  },
+  {
+   "t": "YM42O",
+   "n": "USD ON YPF Vto 02/03/2029",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 0.396,
+   "prev": 0.354
+  },
+  {
+   "t": "TMVE8",
+   "n": "BONO TESORO NACIONAL MONEDA DUAL Vto. 31/01/2028",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólar linked",
+   "exp": "Duales TAMAR / dollar linked",
+   "pct": 0.374,
+   "prev": 0.345
+  },
+  {
+   "t": "BalanceadoB",
+   "n": "MEGA QM BalanceadoB",
+   "tipo": "Fondos (FCI)",
+   "mon": "Pesos",
+   "exp": "Fondos en pesos (renta fija y mixtos)",
+   "pct": 0.355,
+   "prev": 0.282
+  },
+  {
+   "t": "USD.C",
+   "n": "CABLE_DOLLARS",
+   "tipo": "Efectivo",
+   "mon": "Dólares",
+   "exp": "Dólares en efectivo",
+   "pct": 0.352,
+   "prev": 0.173
+  },
+  {
+   "t": "HBCFO",
+   "n": "USD ON BANCO HIPOTECARIO CL.14 Vto. 23/02/2027",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 0.347,
+   "prev": 0.329
+  },
+  {
+   "t": "TZXM7",
+   "n": "Bono Tesoro Nacional CER Vto. 31/03/2027",
+   "tipo": "Bonos y ONs",
+   "mon": "Pesos",
+   "exp": "Bonos CER",
+   "pct": 0.344,
+   "prev": 0.32
+  },
+  {
+   "t": "VSCZO",
+   "n": "USD ON VISTA ENERGY ARGENTINA Vto. 16/07/2029",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 0.315,
+   "prev": 0.281
+  },
+  {
+   "t": "CS47O",
+   "n": "USD ON CRESUD Vto. 15/11/2028",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 0.309,
+   "prev": 0.281
+  },
+  {
+   "t": "SMH",
+   "n": "CEDEAR VAN ECK VECTORS ETF TRUST",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.3,
+   "prev": 0.039
+  },
+  {
+   "t": "GOOGL",
+   "n": "CEDEAR GOOGLE INC.",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.298,
+   "prev": 0.026
+  },
+  {
+   "t": "MSFT",
+   "n": "CEDEAR MICROSOFT CORP.",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.276,
+   "prev": 0.261
+  },
+  {
+   "t": "QQQ",
+   "n": "CEDEAR INVESCO QQQ TRUST",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.249,
+   "prev": 0.867
+  },
+  {
+   "t": "DIA",
+   "n": "SPDR Dow Jones Industrial",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.246,
+   "prev": 0.017
+  },
+  {
+   "t": "IBM",
+   "n": "CEDEAR IBM CORP",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.242,
+   "prev": 0.213
+  },
+  {
+   "t": "TTD26",
+   "n": "ARS Bono Nacion Tasa Dual Vto 15/12/2026",
+   "tipo": "Bonos y ONs",
+   "mon": "Pesos",
+   "exp": "Duales tasa fija / TAMAR",
+   "pct": 0.207,
+   "prev": 0.193
+  },
+  {
+   "t": "schrod rplus a",
+   "n": "SCHRODERS schrod rplus a",
+   "tipo": "Fondos (FCI)",
+   "mon": "Pesos",
+   "exp": "Fondos en pesos (renta fija y mixtos)",
+   "pct": 0.192,
+   "prev": 0.18
+  },
+  {
+   "t": "NZC2O",
+   "n": "USD TD BANCO DE LA NACION ARGENTINA VTO. 11/05/2029",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 0.181,
+   "prev": 0.164
+  },
+  {
+   "t": "ANT",
+   "n": "CEDEAR ANTHROPIC PBC",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.172,
+   "prev": 0.0
+  },
+  {
+   "t": "BPOD7",
+   "n": "BOPREAL VTO. 31/10/2027",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "Soberanos, provinciales y BOPREAL",
+   "pct": 0.164,
+   "prev": 0.156
+  },
+  {
+   "t": "VSCTO",
+   "n": "USD ON VISTA ENERGY Vto. 10/12/2035",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 0.154,
+   "prev": 0.144
+  },
+  {
+   "t": "BIDU",
+   "n": "BAIDU INC.",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.144,
+   "prev": 0.157
+  },
+  {
+   "t": "XLF",
+   "n": "The Select Sector Financial",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.142,
+   "prev": 0.817
+  },
+  {
+   "t": "EEM",
+   "n": "iShares MSCI Emerging Market",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.135,
+   "prev": 0.136
+  },
+  {
+   "t": "S30N6",
+   "n": "BONO TESORO NACIONAL CAPITALIZABLE Vto. 30/11/2026",
+   "tipo": "Bonos y ONs",
+   "mon": "Pesos",
+   "exp": "Tasa fija (Lecap / Boncap)",
+   "pct": 0.134,
+   "prev": 0.182
+  },
+  {
+   "t": "PSQ",
+   "n": "ETF PROSHARES SHORT QQQ",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.133,
+   "prev": 0.101
+  },
+  {
+   "t": "MCD",
+   "n": "McDonalds Corp",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.123,
+   "prev": 5.768
+  },
+  {
+   "t": "SPY",
+   "n": "SPDR S&P 500",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.123,
+   "prev": 0.116
+  },
+  {
+   "t": "VS1XO",
+   "n": "ON VISTA ENERGIA VTO. 08/04/2038",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 0.114,
+   "prev": 0.106
+  },
+  {
+   "t": "YM38O",
+   "n": "USD ON YPF Vto. 22/07/2027",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 0.098,
+   "prev": 0.086
+  },
+  {
+   "t": "TZV27",
+   "n": "USD BONO TESORO NACIONAL Vto. 30/06/2027",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólar linked",
+   "exp": "Letras y bonos dollar linked",
+   "pct": 0.098,
+   "prev": 0.087
+  },
+  {
+   "t": "TZX27",
+   "n": "BONO REP ARG AJ CER V30/06/27",
+   "tipo": "Bonos y ONs",
+   "mon": "Pesos",
+   "exp": "Bonos CER",
+   "pct": 0.098,
+   "prev": 0.09
+  },
+  {
+   "t": "YM39O",
+   "n": "USD ON YPF Vto. 22/07/2030",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 0.092,
+   "prev": 0.082
+  },
+  {
+   "t": "PAAS",
+   "n": "Pan American Silver Corp",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.076,
+   "prev": 0.088
+  },
+  {
+   "t": "Liquidez",
+   "n": "COMPASS Liquidez",
+   "tipo": "Fondos (FCI)",
+   "mon": "Pesos",
+   "exp": "Fondos money market",
+   "pct": 0.073,
+   "prev": 0.068
+  },
+  {
+   "t": "MU",
+   "n": "CEDEAR MICRON TECHNOLOGY",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.056,
+   "prev": 0.202
+  },
+  {
+   "t": "RUCDO",
+   "n": "USD ON MSU Energy Vto. 05/12/2030",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 0.053,
+   "prev": 0.047
+  },
+  {
+   "t": "AVGO",
+   "n": "Broadcom Inc",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.053,
+   "prev": 0.0
+  },
+  {
+   "t": "IBIT",
+   "n": "ISHARES BITCOIN TR (IBIT)",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.052,
+   "prev": 0.032
+  },
+  {
+   "t": "AO29",
+   "n": "USD BONO TESORO NACIONAL 6% Vto. 31/10/2029",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "Soberanos, provinciales y BOPREAL",
+   "pct": 0.044,
+   "prev": 0.046
+  },
+  {
+   "t": "TZXD7",
+   "n": "Republic of Argentina Vto. 15/12/2027",
+   "tipo": "Bonos y ONs",
+   "mon": "Pesos",
+   "exp": "Bonos CER",
+   "pct": 0.042,
+   "prev": 0.04
+  },
+  {
+   "t": "URA",
+   "n": "CEDEAR GLOBAL X URANIUM ETF",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.042,
+   "prev": 0.048
+  },
+  {
+   "t": "PAGS",
+   "n": "Pagseguro Digital Ltd",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.041,
+   "prev": 0.055
+  },
+  {
+   "t": "UBER",
+   "n": "Uber Technologies Inc",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.04,
+   "prev": 0.048
+  },
+  {
+   "t": "GD35",
+   "n": "Bonos Globales de la Rep. Arg. 2035",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "Soberanos, provinciales y BOPREAL",
+   "pct": 0.036,
+   "prev": 0.036
+  },
+  {
+   "t": "BBD",
+   "n": "CEDEAR BANCO BRADESCO S.A.",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.031,
+   "prev": 0.05
+  },
+  {
+   "t": "DISN",
+   "n": "CEDEAR THE WALT DISNEY COMPANY",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.031,
+   "prev": 0.026
+  },
+  {
+   "t": "BMA",
+   "n": "Banco Macro",
+   "tipo": "Acciones",
+   "mon": "Pesos",
+   "exp": "Acciones argentinas",
+   "pct": 0.03,
+   "prev": 0.034
+  },
+  {
+   "t": "schrod rplus b",
+   "n": "SCHRODERS schrod rplus b",
+   "tipo": "Fondos (FCI)",
+   "mon": "Pesos",
+   "exp": "Fondos en pesos (renta fija y mixtos)",
+   "pct": 0.029,
+   "prev": 0.186
+  },
+  {
+   "t": "IRSA",
+   "n": "IRSA ESCRIT. ORD. 1 V",
+   "tipo": "Acciones",
+   "mon": "Pesos",
+   "exp": "Acciones argentinas",
+   "pct": 0.026,
+   "prev": 0.0
+  },
+  {
+   "t": "S29E7",
+   "n": "LETRA TESORO NACIONAL CAPITALIZABLE Vto. 29/01/2027",
+   "tipo": "Bonos y ONs",
+   "mon": "Pesos",
+   "exp": "Tasa fija (Lecap / Boncap)",
+   "pct": 0.019,
+   "prev": 0.0
+  },
+  {
+   "t": "ILF",
+   "n": "CEDEAR ISHARES LATIN AMERICA 40 ETF",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.019,
+   "prev": 0.021
+  },
+  {
+   "t": "RZ9BO",
+   "n": "USD ON RIZOBACTER VTO. 03/09/2029",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 0.018,
+   "prev": 0.017
+  },
+  {
+   "t": "AE38",
+   "n": "Bono USD 2038",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "Soberanos, provinciales y BOPREAL",
+   "pct": 0.018,
+   "prev": 0.017
+  },
+  {
+   "t": "AO28",
+   "n": "USD BONO TESORO NACIONAL VTO. 31/10/2028",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "Soberanos, provinciales y BOPREAL",
+   "pct": 0.017,
+   "prev": 0.022
+  },
+  {
+   "t": "T15E7",
+   "n": "Bono Tesoro Nacional CAP Vto. 15/01/2027",
+   "tipo": "Bonos y ONs",
+   "mon": "Pesos",
+   "exp": "Tasa fija (Lecap / Boncap)",
+   "pct": 0.016,
+   "prev": 0.014
+  },
+  {
+   "t": "IVV",
+   "n": "CEDEAR ISHARES CORE S&P 500 ETF",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.014,
+   "prev": 0.014
+  },
+  {
+   "t": "DB01Q",
+   "n": "CP FF DESARROLLO MIN MARTIN BRONCE",
+   "tipo": "Otros",
+   "mon": "Pesos",
+   "exp": "Otros",
+   "pct": 0.014,
+   "prev": 0.013
+  },
+  {
+   "t": "TXMD8",
+   "n": "BONO TESORO NACIONAL TASA DUAL CER TAMAR VTO. 15/12/2028",
+   "tipo": "Bonos y ONs",
+   "mon": "Pesos",
+   "exp": "Bonos CER",
+   "pct": 0.014,
+   "prev": 0.1
+  },
+  {
+   "t": "MR46O",
+   "n": "USD ON GENERACION MEDITERRANEA CL.46 Vto. 31/12/2034",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 0.013,
+   "prev": 0.012
+  },
+  {
+   "t": "P. Coba Estra A",
+   "n": "PARAKEET P. Coba Estra A",
+   "tipo": "Fondos (FCI)",
+   "mon": "Pesos",
+   "exp": "Fondos en pesos (renta fija y mixtos)",
+   "pct": 0.012,
+   "prev": 0.008
+  },
+  {
+   "t": "DB01A",
+   "n": "VD FF DES MINERO MARTIN BRONCE",
+   "tipo": "Otros",
+   "mon": "Pesos",
+   "exp": "Otros",
+   "pct": 0.012,
+   "prev": 0.013
+  },
+  {
+   "t": "TZXD6",
+   "n": "BONTES $ A DESC AJ CER V15/12/26",
+   "tipo": "Bonos y ONs",
+   "mon": "Pesos",
+   "exp": "Bonos CER",
+   "pct": 0.011,
+   "prev": 0.007
+  },
+  {
+   "t": "BRKB",
+   "n": "Berkshire Hathaway Inc.",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.011,
+   "prev": 0.035
+  },
+  {
+   "t": "MSTR",
+   "n": "CEDEAR MICROSTRATEGY INC",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.009,
+   "prev": 0.015
+  },
+  {
+   "t": "COME",
+   "n": "Sociedad Comercial del Plata",
+   "tipo": "Acciones",
+   "mon": "Pesos",
+   "exp": "Acciones argentinas",
+   "pct": 0.009,
+   "prev": 0.011
+  },
+  {
+   "t": "TXMJ9",
+   "n": "BONO TESORO NACIONAL TASA DUAL CER TAMAR VTO. 29/06/2029",
+   "tipo": "Bonos y ONs",
+   "mon": "Pesos",
+   "exp": "Bonos CER",
+   "pct": 0.008,
+   "prev": 0.008
+  },
+  {
+   "t": "Parakeet LatamB",
+   "n": "PARAKEET Parakeet LatamB",
+   "tipo": "Fondos (FCI)",
+   "mon": "Dólares",
+   "exp": "Fondos en dólares",
+   "pct": 0.008,
+   "prev": 0.007
+  },
+  {
+   "t": "PECGO",
+   "n": "USD ON Petrolera Aconcagua XV Vto. 28/10/2028",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 0.007,
+   "prev": 0.007
+  },
+  {
+   "t": "Retorno Total 4",
+   "n": "SCHRODERS Retorno Total 4",
+   "tipo": "Fondos (FCI)",
+   "mon": "Dólares",
+   "exp": "Fondos en dólares",
+   "pct": 0.006,
+   "prev": 0.006
+  },
+  {
+   "t": "IBB",
+   "n": "IShares NASDAQ BIOTECHNOLOGY ETF",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.006,
+   "prev": 0.005
+  },
+  {
+   "t": "Ret Total 4 B",
+   "n": "SCHRODERS Ret Total 4 B",
+   "tipo": "Fondos (FCI)",
+   "mon": "Dólares",
+   "exp": "Fondos en dólares",
+   "pct": 0.006,
+   "prev": 0.005
+  },
+  {
+   "t": "CVS",
+   "n": "CVS Health Corp",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.005,
+   "prev": 0.0
+  },
+  {
+   "t": "AAPL",
+   "n": "CEDEAR APPLE INC",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.004,
+   "prev": 0.0
+  },
+  {
+   "t": "Parakeet LatamA",
+   "n": "PARAKEET Parakeet LatamA",
+   "tipo": "Fondos (FCI)",
+   "mon": "Dólares",
+   "exp": "Fondos en dólares",
+   "pct": 0.004,
+   "prev": 0.005
+  },
+  {
+   "t": "BA37D",
+   "n": "Provincia de Buenos Aires USD 2037",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "Soberanos, provinciales y BOPREAL",
+   "pct": 0.004,
+   "prev": 0.0
+  },
+  {
+   "t": "AAL",
+   "n": "American Airlines Group Inc.",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.004,
+   "prev": 0.0
+  },
+  {
+   "t": "AMAT",
+   "n": "Applied Materials Inc",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.004,
+   "prev": 0.0
+  },
+  {
+   "t": "VEA",
+   "n": "Vanguard FTSE Developed Markets ETF",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.003,
+   "prev": 0.0
+  },
+  {
+   "t": "BABA",
+   "n": "CEDEAR ALIBABA GROUP HOLDING",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.003,
+   "prev": 0.0
+  },
+  {
+   "t": "SHEL",
+   "n": "Shell PLC",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.003,
+   "prev": 0.0
+  },
+  {
+   "t": "PG",
+   "n": "Procter & Gamble Co",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.003,
+   "prev": 0.0
+  },
+  {
+   "t": "CVX",
+   "n": "CEDEAR CHEVRON CORPORATION",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.003,
+   "prev": 0.0
+  },
+  {
+   "t": "LOMA",
+   "n": "Loma Negra",
+   "tipo": "Acciones",
+   "mon": "Pesos",
+   "exp": "Acciones argentinas",
+   "pct": 0.002,
+   "prev": 0.0
+  },
+  {
+   "t": "OTS6O",
+   "n": "USD ON OTAMERICA EBYTEM Vto. 29/07/2029",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 0.002,
+   "prev": 0.0
+  },
+  {
+   "t": "Premium.",
+   "n": "GALILEO Premium.",
+   "tipo": "Fondos (FCI)",
+   "mon": "Pesos",
+   "exp": "Fondos money market",
+   "pct": 0.002,
+   "prev": 0.0
+  },
+  {
+   "t": "Liquidez usd B",
+   "n": "MEGAINVER Liquidez usd B",
+   "tipo": "Fondos (FCI)",
+   "mon": "Dólares",
+   "exp": "Fondos en dólares",
+   "pct": 0.002,
+   "prev": 0.0
+  },
+  {
+   "t": "YFCOO",
+   "n": "USD ON YPF Energía Eléctrica Vto.15/12/2028",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 0.002,
+   "prev": 0.0
+  },
+  {
+   "t": "AMZN",
+   "n": "CEDEAR AMAZON INC",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.002,
+   "prev": 0.0
+  },
+  {
+   "t": "Liquidez-B",
+   "n": "COMPASS Liquidez-B",
+   "tipo": "Fondos (FCI)",
+   "mon": "Pesos",
+   "exp": "Fondos money market",
+   "pct": 0.002,
+   "prev": 0.0
+  },
+  {
+   "t": "Premium",
+   "n": "FIMA Premium",
+   "tipo": "Fondos (FCI)",
+   "mon": "Pesos",
+   "exp": "Fondos money market",
+   "pct": 0.002,
+   "prev": 0.0
+  },
+  {
+   "t": "PBR",
+   "n": "Petroleo Brasileiro SA Petrobras",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.002,
+   "prev": 0.0
+  },
+  {
+   "t": "Premium - B",
+   "n": "FIMA Premium - B",
+   "tipo": "Fondos (FCI)",
+   "mon": "Pesos",
+   "exp": "Fondos money market",
+   "pct": 0.002,
+   "prev": 0.0
+  },
+  {
+   "t": "Liquidez usd A",
+   "n": "MEGAINVER Liquidez usd A",
+   "tipo": "Fondos (FCI)",
+   "mon": "Dólares",
+   "exp": "Fondos en dólares",
+   "pct": 0.002,
+   "prev": 0.0
+  },
+  {
+   "t": "YMCIO",
+   "n": "ON YPF S.A. Vto 30/06/2029",
+   "tipo": "Bonos y ONs",
+   "mon": "Dólares",
+   "exp": "ONs en dólares",
+   "pct": 0.001,
+   "prev": 0.0
+  },
+  {
+   "t": "ABBV",
+   "n": "Abbvie Inc",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.001,
+   "prev": 0.0
+  },
+  {
+   "t": "UPST",
+   "n": "Upstart Holdings Inc",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.001,
+   "prev": 0.0
+  },
+  {
+   "t": "TX31",
+   "n": "BONO TESORO AJ CER VTO. 30/11/2031",
+   "tipo": "Bonos y ONs",
+   "mon": "Pesos",
+   "exp": "Bonos CER",
+   "pct": 0.001,
+   "prev": 0.0
+  },
+  {
+   "t": "EWY",
+   "n": "CEDEAR ISHARES MSCI SOUTH KOREA ETF",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.001,
+   "prev": 0.0
+  },
+  {
+   "t": "BNY",
+   "n": "BANK OF NEW YORK MELLON",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.001,
+   "prev": 0.0
+  },
+  {
+   "t": "ANET",
+   "n": "ARISTA NETWORKS INC",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.001,
+   "prev": 0.0
+  },
+  {
+   "t": "ALUA",
+   "n": "Aluar",
+   "tipo": "Acciones",
+   "mon": "Pesos",
+   "exp": "Acciones argentinas",
+   "pct": 0.001,
+   "prev": 0.0
+  },
+  {
+   "t": "RSP",
+   "n": "CEDEAR INVESCO S&P 500 EQUAL WEIGHT ETF",
+   "tipo": "CEDEARs",
+   "mon": "Dólares",
+   "exp": "CEDEARs y ETFs",
+   "pct": 0.001,
+   "prev": 0.0
+  }
+ ],
+ "salieron": [
+  {
+   "t": "AL29",
+   "prev": 0.486
+  },
+  {
+   "t": "S13N6",
+   "prev": 0.305
+  },
+  {
+   "t": "V",
+   "prev": 0.099
+  },
+  {
+   "t": "TXMJ8",
+   "prev": 0.072
+  },
+  {
+   "t": "X29E7",
+   "prev": 0.06
+  },
+  {
+   "t": "XLU",
+   "prev": 0.06
+  }
+ ]
+}
