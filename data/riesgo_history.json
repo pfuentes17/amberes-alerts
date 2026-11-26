@@ -123,5 +123,26 @@
     "max_drawdown": -0.1251,
     "equity_pct": 0.5005,
     "ccl": 1802
+  },
+  {
+    "fecha_iso": "20261126",
+    "var99": -0.2119,
+    "var95": -0.1273,
+    "cvar95": -0.1792,
+    "var99_hist": -0.0079,
+    "var95_hist": 0.1098,
+    "stress_rp400": -0.07,
+    "stress_ccl20": 0.1419,
+    "stress_rv10": -0.0524,
+    "stress_deval30": -0.0158,
+    "ytm": 0.096,
+    "duration": 2.01,
+    "beta_sp500": 0.73,
+    "vol_portfolio": 0.1242,
+    "hhi": 0.0522,
+    "sharpe": 0.3,
+    "max_drawdown": -0.132,
+    "equity_pct": 0.5238,
+    "ccl": 1783
   }
 ]
