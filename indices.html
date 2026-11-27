@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Índices | Amberes</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080c12;--s:#0d1420;--s2:#111827;--bdr:#1f2d40;--bdr2:#2d4060;--txt:#c9d8e8;--mu:#4a6080;--dim:#2a3f55;--accent:#f59e0b;--cy:#06b6d4;--gr:#22d3a0;--am:#f59e0b;--rd:#f87171;--or:#fb923c;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:'IBM Plex Sans',sans-serif;font-size:13px;min-height:100vh;}
+.top-nav{position:sticky;top:0;z-index:200;background:#1e1e22;border-bottom:3px solid var(--accent);display:flex;align-items:center;justify-content:space-between;padding:0 28px;height:58px;}
+.amb-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.amb-wordmark{font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;}
+.amb-divider{width:1px;height:16px;background:rgba(255,255,255,.2);margin:0 6px;}
+.amb-section{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);}
+.nav-back{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.4);text-decoration:none;border:1px solid rgba(255,255,255,.12);border-radius:5px;padding:4px 10px;white-space:nowrap;}
+.subnav{background:#1e1e22;border-bottom:1px solid rgba(255,255,255,.08);padding:0 24px;display:flex;align-items:center;gap:5px;height:36px;position:sticky;top:58px;z-index:190;overflow-x:auto;scrollbar-width:none;}
+.subnav::-webkit-scrollbar{display:none;}
+.subnav-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-right:6px;white-space:nowrap;flex-shrink:0;}
+.snav-link{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.03em;color:rgba(255,255,255,.55);text-decoration:none;padding:4px 10px;border-radius:4px;white-space:nowrap;flex-shrink:0;}
+.snav-link:hover{color:#fff;background:rgba(255,255,255,.1);}
+.snav-link.active{color:#fff;background:rgba(255,255,255,.13);border-bottom:2px solid rgba(255,255,255,.7);}
+.page{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:18px 28px 80px;}
+.ctabs{display:flex;gap:6px;margin:0 0 18px;border-bottom:1px solid var(--bdr);overflow-x:auto;scrollbar-width:none;}
+.ctab{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mu);background:none;border:0;border-bottom:2px solid transparent;padding:10px 14px;cursor:pointer;white-space:nowrap;}
+.ctab:hover{color:#e8f0f8;} .ctab.on{color:#e8f0f8;border-bottom-color:var(--accent);}
+.frame{width:100%;border:0;display:block;min-height:900px;background:transparent;}
+.loading{text-align:center;padding:80px 20px;font-family:'IBM Plex Mono',monospace;color:var(--mu);font-size:12px;}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.15em;color:var(--mu);margin-bottom:6px;}
+h1{font-size:24px;font-weight:600;color:#e8f0f8;}
+.lead{font-size:13px;color:var(--mu);max-width:860px;line-height:1.6;margin:6px 0 18px;}
+.box{background:var(--s);border:1px solid var(--bdr);border-radius:8px;padding:16px 18px;min-width:0;}
+.h{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:#e8f0f8;margin-bottom:2px;}
+.sub{font-size:10.5px;color:var(--mu);margin-bottom:12px;line-height:1.5;}
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:14px;margin-bottom:14px;}
+.gauge-wrap{display:flex;flex-direction:column;align-items:center;}
+.gauge-v{font-family:'IBM Plex Mono',monospace;font-size:54px;font-weight:600;color:#e8f0f8;line-height:1;margin-top:-6px;}
+.gauge-z{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;margin-top:6px;}
+.gauge-f{font-size:11px;color:var(--mu);margin-top:6px;}
+.prev{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+.pv{border:1px solid var(--bdr);border-radius:6px;padding:12px 14px;border-left:3px solid var(--c);}
+.pv .l{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--mu);}
+.pv .v{font-family:'IBM Plex Mono',monospace;font-size:24px;font-weight:600;color:#e8f0f8;margin:3px 0 1px;}
+.pv .z{font-size:11px;color:var(--c);}
+.read{font-size:12.5px;line-height:1.65;color:#c9d8e8;margin-top:14px;}
+.comps{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-bottom:14px;}
+.cm{background:var(--s);border:1px solid var(--bdr);border-radius:8px;padding:13px 15px;}
+.cm .t{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+.cm .n{font-weight:600;color:#e8f0f8;font-size:13px;}
+.cm .v{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:600;}
+.cm .d{font-size:10.5px;color:var(--mu);margin:2px 0 9px;line-height:1.45;min-height:30px;}
+.cm .bar{position:relative;height:8px;border-radius:4px;background:linear-gradient(90deg,#ff6b6b 0 25%,#f0b429 25% 45%,#9a9aa3 45% 55%,#42e894 55% 75%,#00e77f 75%);opacity:.35;}
+.cm .mk{position:absolute;top:-4px;width:3px;height:16px;border-radius:2px;background:#e8f0f8;transform:translateX(-1px);}
+.cm .mm{position:absolute;top:-2px;width:8px;height:8px;border-radius:50%;border:1.5px solid #e8f0f8;background:transparent;transform:translate(-4px,2px);opacity:.6;}
+.cm .det{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#c9d8e8;margin-top:9px;}
+.cm .zz{font-size:10.5px;margin-top:3px;}
+.rng{display:flex;gap:6px;}
+.chip{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--mu);background:none;border:1px solid var(--bdr2);border-radius:12px;padding:4px 10px;cursor:pointer;}
+.chip.on{color:#080c12;background:#e8f0f8;border-color:#e8f0f8;}
+.hh{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;}
+.tip{font-family:'IBM Plex Mono',monospace;font-size:11px;color:#e8f0f8;min-height:16px;margin-bottom:4px;}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin-top:14px;}
+.t{width:100%;border-collapse:collapse;font-size:12px;}
+.t th{font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);text-align:left;padding:7px 8px;border-bottom:1px solid var(--bdr);}
+.t th.r,.t td.r{text-align:right;}
+.t td{padding:7px 8px;border-bottom:1px solid rgba(255,255,255,.05);}
+.t td.num{font-family:'IBM Plex Mono',monospace;}
+.t tr:last-child td{border-bottom:0;}
+.note{font-size:11.5px;color:var(--mu);line-height:1.65;}
+.note b{color:#c9d8e8;}
+svg text{font-family:'IBM Plex Mono',monospace;}
+@media(max-width:900px){.hero,.grid2{grid-template-columns:minmax(0,1fr);}.page{padding:14px 16px 60px;}.top-nav{padding:0 16px;}.gauge-v{font-size:44px;}}
+</style>
+<script>/* tema Amberes: activo por defecto; ?theme=off lo desactiva, ?theme=amberes lo reactiva */var _t=1;try{var q=location.search;if(/theme=off/.test(q))localStorage.setItem("amb-theme","0");if(/theme=amberes/.test(q))localStorage.setItem("amb-theme","1");_t=localStorage.getItem("amb-theme")!=="0";}catch(e){}if(_t){var l=document.createElement("link");l.rel="stylesheet";l.href="/amberes-theme.css";document.head.appendChild(l);}</script>
+</head>
+<body>
+<nav class="top-nav">
+  <a href="/" class="amb-logo"><span class="amb-wordmark">Amberes</span><span class="amb-divider"></span><span class="amb-section">Índices</span></a>
+  <a href="/" class="nav-back">← Inicio</a>
+</nav>
+<div class="subnav">
+  <span class="subnav-label">Módulos</span>
+  <a href="/" class="snav-link">🏠 Inicio</a>
+  <a href="/arg.html" class="snav-link">🇦🇷 Argentina</a>
+  <a href="/agro.html" class="snav-link">📦 Commodities</a>
+  <a href="/indices.html" class="snav-link active">📐 Índices</a>
+  <a href="/macro.html" class="snav-link">🌍 Macro Global</a>
+  <a href="/tc.html" class="snav-link">💱 Tipo de Cambio</a>
+  <a href="/bonos.html" class="snav-link">📈 Bonos</a>
+  <a href="/cartera.html" class="snav-link">💼 Cartera</a>
+</div>
+<div class="page">
+  <div class="ctabs" role="tablist">
+    <button class="ctab" data-t="confianza" role="tab">Confianza</button>
+    <button class="ctab" data-t="gestion" role="tab">Gestión</button>
+    <button class="ctab" data-t="fng" role="tab">Miedo y Codicia</button>
+  </div>
+  <div id="tab-confianza" hidden><iframe class="frame" id="fr-confianza" title="Índice de confianza en la continuidad" loading="lazy"></iframe></div>
+  <div id="tab-gestion" hidden><iframe class="frame" id="fr-gestion" title="Índice de gestión" loading="lazy"></iframe></div>
+
+  <div id="tab-fng" hidden>
+    <div id="fg-loading" class="loading">Cargando índice...</div>
+    <div id="fg-main" style="display:none">
+      <div class="eyebrow">Índice propio Amberes · se actualiza al cierre de cada día</div>
+      <h1>Miedo y Codicia — Argentina</h1>
+      <p class="lead">Resume en un número de 0 a 100 el ánimo del mercado argentino: 0 es miedo extremo (todos quieren salir) y 100 es codicia extrema (todos quieren entrar). Combina siete indicadores de acciones, deuda y dólar, y compara cada uno con sus propios últimos dos años.</p>
+      <div class="hero">
+        <div class="box gauge-wrap"><div id="fg-gauge" style="width:100%;max-width:440px"></div><div class="gauge-v" id="fg-v"></div><div class="gauge-z" id="fg-z"></div><div class="gauge-f" id="fg-f"></div></div>
+        <div class="box"><div class="h">Cómo venía</div><div class="sub">Valor del índice en cada fecha</div><div class="prev" id="fg-prev"></div><div class="read" id="fg-read"></div></div>
+      </div>
+      <div class="h" style="margin:4px 0 2px">Los siete componentes</div>
+      <div class="sub">Cada barra va de miedo extremo (izquierda) a codicia extrema (derecha). La raya blanca es hoy; el círculo, hace un mes.</div>
+      <div class="comps" id="fg-comps"></div>
+      <div class="box">
+        <div class="hh"><div><div class="h">Historia del índice</div><div class="sub">Promedio de 5 ruedas · pasá el mouse para ver cada fecha · los puntos marcan episodios conocidos</div></div>
+          <div class="rng" id="fg-rng"><button class="chip" data-r="365">1 año</button><button class="chip" data-r="1095">3 años</button><button class="chip on" data-r="0">Desde 2019</button></div></div>
+        <div class="tip" id="fg-tip"></div>
+        <div id="fg-hist"></div>
+      </div>
+      <div class="grid2">
+        <div class="box"><div class="h">Episodios de referencia</div><div class="sub">Cómo marcó el índice en momentos que todos recordamos (promedio de 5 ruedas y el valor más extremo de los 10 días siguientes)</div><div id="fg-ep"></div></div>
+        <div class="box"><div class="h">Cómo se calcula</div><div class="note" id="fg-met"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  const $=id=>document.getElementById(id);
+  const esc=x=>String(x==null?'':x).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+  const nf=(v,d=0)=>v==null?'—':Number(v).toLocaleString('es-AR',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const ZC=[[25,'#ff6b6b','Miedo extremo'],[45,'#f0b429','Miedo'],[55.0001,'#9a9aa3','Neutral'],[75.0001,'#42e894','Codicia'],[101,'#00e77f','Codicia extrema']];
+  const zc=v=>v==null?['#62626b','—']:(ZC.find(z=>v<z[0])||ZC[4]).slice(1);
+  const fD=iso=>{ const [y,m,d]=iso.split('-'); return `${d}/${m}/${y}`; };
+  let F=null, rng=0, fngCargado=false;
+
+  /* ── pestañas ── */
+  const SRC={confianza:'/confianza.html?embed=1',gestion:'/gestion.html?embed=1'};
+  function show(t){
+    if(!['confianza','gestion','fng'].includes(t)) t='confianza';
+    document.querySelectorAll('.ctab').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+    ['confianza','gestion','fng'].forEach(k=>$('tab-'+k).hidden=k!==t);
+    try{ history.replaceState(null,'','#'+t); }catch(e){}
+    if(SRC[t]){ const fr=$('fr-'+t); if(!fr.src){ fr.src=SRC[t]; fr.addEventListener('load',()=>ajustar(fr)); } else ajustar(fr); }
+    if(t==='fng') cargarFng();
+  }
+  function ajustar(fr){
+    try{ const d=fr.contentDocument; if(!d) return;
+      const fit=()=>{ const h=Math.max(d.documentElement.scrollHeight,d.body?d.body.scrollHeight:0); if(h&&Math.abs(fr.offsetHeight-h)>4) fr.style.height=h+'px'; };
+      fit(); if(!fr._ro&&d.body){ fr._ro=new ResizeObserver(fit); fr._ro.observe(d.body); }
+    }catch(e){}
+  }
+  document.addEventListener('click',e=>{ const b=e.target.closest('.ctab'); if(b) show(b.dataset.t);
+    const r=e.target.closest('[data-r]'); if(r){ rng=+r.dataset.r; document.querySelectorAll('[data-r]').forEach(x=>x.classList.toggle('on',x===r)); hist(); } });
+
+  /* ── Miedo y Codicia ── */
+  function gauge(v){
+    const w=440,h=240,cx=220,cy=220,R=190,r=130;
+    const pt=(val,rad)=>{ const a=Math.PI*(1-val/100); return [cx+rad*Math.cos(a), cy-rad*Math.sin(a)]; };
+    let g=`<svg viewBox="0 0 ${w} ${h}" style="width:100%;display:block" role="img" aria-label="Índice ${nf(v)} de 100">`;
+    let a0=0; [[25,'#ff6b6b'],[45,'#f0b429'],[55,'#9a9aa3'],[75,'#42e894'],[100,'#00e77f']].forEach(([a1,c])=>{
+      const [x1,y1]=pt(a0,R),[x2,y2]=pt(a1,R),[x3,y3]=pt(a1,r),[x4,y4]=pt(a0,r);
+      g+=`<path d="M${x1},${y1} A${R},${R} 0 0 1 ${x2},${y2} L${x3},${y3} A${r},${r} 0 0 0 ${x4},${y4}Z" fill="${c}" opacity="${c===zc(v)[0]?.95:.28}" stroke="#1c1c1e" stroke-width="2"/>`; a0=a1; });
+    [0,25,45,55,75,100].forEach(t=>{ const [x,y]=pt(t,R+14); g+=`<text x="${x}" y="${y+4}" text-anchor="middle" font-size="10" fill="#9a9aa3">${t}</text>`; });
+    const [nx,ny]=pt(v,R-8); g+=`<line x1="${cx}" y1="${cy}" x2="${nx}" y2="${ny}" stroke="#e8f0f8" stroke-width="4" stroke-linecap="round"/><circle cx="${cx}" cy="${cy}" r="9" fill="#e8f0f8"/>`;
+    return g+'</svg>';
+  }
+
+  function hist(){
+    const H=F.hist, el=$('fg-hist'); let i0=0;
+    if(rng){ const lim=new Date(new Date(F.fecha)-rng*864e5).toISOString().slice(0,10); i0=H.d.findIndex(d=>d>=lim); }
+    const D=H.d.slice(i0), S=H.s.slice(i0), V=H.v.slice(i0), n=D.length;
+    const w=Math.max(320,el.clientWidth||900), h=320, pl=30, pr=8, pt=10, pb=24;
+    const x=i=>pl+(w-pl-pr)*i/(n-1), y=v=>pt+(h-pt-pb)*(1-v/100);
+    let g=`<svg id="fg-svg" viewBox="0 0 ${w} ${h}" style="width:100%;height:${h}px;display:block">`;
+    [[0,25,'#ff6b6b'],[25,45,'#f0b429'],[45,55,'#9a9aa3'],[55,75,'#42e894'],[75,100,'#00e77f']].forEach(([a,b,c])=>g+=`<rect x="${pl}" y="${y(b)}" width="${w-pl-pr}" height="${y(a)-y(b)}" fill="${c}" opacity=".07"/>`);
+    [0,25,45,55,75,100].forEach(t=>g+=`<text x="${pl-5}" y="${y(t)+3}" text-anchor="end" font-size="9" fill="#9a9aa3">${t}</text>`);
+    let lastY=''; D.forEach((d,i)=>{ const yy=d.slice(0,4), mm=d.slice(5,7);
+      const lab = rng&&rng<=365 ? (d.slice(8)<= '07' && D[i-1] && D[i-1].slice(5,7)!==mm ? ['','Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'][+mm] : null) : (yy!==lastY&&i>0?yy:null);
+      if(yy!==lastY) lastY=yy;
+      if(lab){ g+=`<line x1="${x(i)}" x2="${x(i)}" y1="${pt}" y2="${h-pb}" stroke="rgba(255,255,255,.05)"/><text x="${x(i)}" y="${h-7}" text-anchor="middle" font-size="9.5" fill="#9a9aa3">${lab}</text>`; } });
+    g+=`<polyline fill="none" stroke="#24cbfc" stroke-width="1.6" points="${S.map((v,i)=>`${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ')}"/>`;
+    F.episodios.forEach((e,k)=>{ const i=D.findIndex(d=>d>=e.f); if(i<0||e.f<D[0]) return; const yy=y(S[i]);
+      g+=`<circle cx="${x(i)}" cy="${yy}" r="3.5" fill="#e8f0f8"><title>${esc(e.n)} (${fD(e.f)}): ${nf(e.v)}</title></circle>`;
+      if(n>200) g+=`<text x="${x(i)}" y="${k%2?yy-9:yy+16}" text-anchor="${i>n*.93?'end':i<n*.05?'start':'middle'}" font-size="9" fill="#e8f0f8">${esc(e.n)}</text>`; });
+    g+=`<line id="fg-cross" x1="0" x2="0" y1="${pt}" y2="${h-pb}" stroke="#e8f0f8" stroke-dasharray="3 3" opacity="0"/><circle id="fg-dot" r="4" fill="#24cbfc" stroke="#e8f0f8" opacity="0"/>`;
+    el.innerHTML=g+'</svg>';
+    const svg=$('fg-svg'), tip=$('fg-tip');
+    const def=()=>{ tip.innerHTML=`${fD(D[n-1])}: <b style="color:${zc(S[n-1])[0]}">${nf(S[n-1])}</b> (${zc(S[n-1])[1].toLowerCase()}) · dato del día ${nf(V[n-1])}`; };
+    def();
+    svg.onmousemove=ev=>{ const r=svg.getBoundingClientRect(); const px=(ev.clientX-r.left)*w/r.width; const i=Math.max(0,Math.min(n-1,Math.round((px-pl)/(w-pl-pr)*(n-1))));
+      $('fg-cross').setAttribute('x1',x(i)); $('fg-cross').setAttribute('x2',x(i)); $('fg-cross').setAttribute('opacity',.5);
+      $('fg-dot').setAttribute('cx',x(i)); $('fg-dot').setAttribute('cy',y(S[i])); $('fg-dot').setAttribute('opacity',1);
+      tip.innerHTML=`${fD(D[i])}: <b style="color:${zc(S[i])[0]}">${nf(S[i])}</b> (${zc(S[i])[1].toLowerCase()}) · dato del día ${nf(V[i])}`; };
+    svg.onmouseleave=()=>{ $('fg-cross').setAttribute('opacity',0); $('fg-dot').setAttribute('opacity',0); def(); };
+  }
+
+  function render(){
+    const c=zc(F.valor)[0], z=F.zona||zc(F.valor)[1];
+    $('fg-gauge').innerHTML=gauge(F.valor); $('fg-v').textContent=nf(F.valor); $('fg-z').textContent=z; $('fg-z').style.color=c;
+    $('fg-f').textContent=`Cierre del ${fD(F.fecha)} · promedio de 5 ruedas: ${nf(F.suave)}`;
+    const P=[['Ayer',F.prev.ayer],['Hace una semana',F.prev.semana],['Hace un mes',F.prev.mes],['Hace un año',F.prev.anio]];
+    $('fg-prev').innerHTML=P.map(([l,v])=>{ const [cc,zz]=zc(v); return `<div class="pv" style="--c:${cc}"><div class="l">${l}</div><div class="v">${nf(v)}</div><div class="z">${zz}</div></div>`; }).join('');
+    const ord=[...F.componentes].filter(x=>x.v!=null).sort((a,b)=>a.v-b.v);
+    const lo=ord.slice(0,2), hi=ord.slice(-2).reverse();
+    $('fg-read').innerHTML=`<b>Lectura:</b> el índice está en <b style="color:${c}">${z.toLowerCase()}</b>${F.prev.mes!=null?` (hace un mes estaba en ${nf(F.prev.mes)})`:''}. Lo que más empuja hacia el miedo: ${lo.map(x=>`<b>${esc(x.n.toLowerCase())}</b> (${x.v})`).join(' y ')}. Lo que más empuja hacia la codicia: ${hi.map(x=>`<b>${esc(x.n.toLowerCase())}</b> (${x.v})`).join(' y ')}. Promedio histórico desde 2019: ${nf(F.stats.media)}.`;
+    $('fg-comps').innerHTML=F.componentes.map(x=>{ const [cc,zz]=zc(x.v); return `<div class="cm"><div class="t"><div class="n">${esc(x.n)}</div><div class="v" style="color:${cc}">${x.v==null?'—':x.v}</div></div><div class="d">${esc(x.d)}</div><div class="bar">${x.v_mes!=null?`<span class="mm" style="left:${x.v_mes}%"></span>`:''}${x.v!=null?`<span class="mk" style="left:${x.v}%"></span>`:''}</div><div class="det">${esc(x.det)}</div><div class="zz" style="color:${cc}">${esc(zz)}${x.v_mes!=null&&x.v!=null?` · hace un mes ${x.v_mes}`:''}</div></div>`; }).join('');
+    hist();
+    $('fg-ep').innerHTML=`<table class="t"><thead><tr><th>Episodio</th><th>Fecha</th><th class="r">Índice</th><th class="r">Extremo 10 días</th></tr></thead><tbody>${F.episodios.map(e=>{ const [cc]=zc(e.v),[cm]=zc(e.min5); return `<tr><td style="color:#e8f0f8">${esc(e.n)}</td><td class="num">${fD(e.f)}</td><td class="r num" style="color:${cc}">${nf(e.v)}</td><td class="r num" style="color:${cm}">${nf(e.min5)}</td></tr>`; }).join('')}</tbody></table>`;
+    $('fg-met').innerHTML=`<p style="margin-bottom:8px">Cada componente se ubica en un <b>percentil de 0 a 100</b> respecto de sus propios valores de los últimos dos años (504 ruedas): 0 es el peor registro del período y 100 el mejor. El índice es el <b>promedio simple</b> de los componentes disponibles.</p>
+      <p style="margin-bottom:8px"><b>Acciones:</b> canasta equiponderada de 13 ADRs argentinos en dólares (GGAL, YPF, PAM, BMA, BBAR, CEPU, TGS, LOMA, TEO, CRESY, SUPV, EDN, IRS). La volatilidad solo cuenta las caídas, para que los rallies fuertes no se lean como miedo. <b>Deuda:</b> riesgo país. <b>Dólar:</b> movimiento de la brecha CCL/mayorista, devaluación implícita en los futuros de MatbaRofex (desde 2020) y depósitos privados en dólares del BCRA.</p>
+      <p style="margin-bottom:8px">Zonas: 0–25 miedo extremo · 25–45 miedo · 45–55 neutral · 55–75 codicia · 75–100 codicia extrema.</p>
+      <p>Es un termómetro del ánimo, no una predicción: los saltos políticos o cambiarios no se anticipan. Las crisis puramente cambiarias con acciones y bonos tranquilos (como oct-2020) pesan menos. Actualizado ${esc(F.actualizado)}.</p>`;
+  }
+
+  async function cargarFng(){
+    if(fngCargado){ if(F) hist(); return; } fngCargado=true;
+    try{ const r=await fetch('/api/riesgo?indice=fng',{cache:'no-store'}); if(!r.ok) throw new Error('HTTP '+r.status);
+      F=await r.json(); $('fg-loading').style.display='none'; $('fg-main').style.display='block'; render();
+    }catch(e){ $('fg-loading').textContent='No se pudo cargar el índice: '+e.message; }
+  }
+  window.addEventListener('resize',()=>{ if(F&&!$('tab-fng').hidden) hist(); });
+  show((location.hash||'').slice(1)||'confianza');
+})();
+</script>
+</body>
+</html>
