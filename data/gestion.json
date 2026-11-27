@@ -1,0 +1,1138 @@
+{
+ "actualizado": "27/11/2026 13:23",
+ "mov_file": "inviu-reporte-movimientos-de-dinero-2026-11-27T14_19_56.222Z.xlsx",
+ "mep_hoy": 1666.4,
+ "meses": [
+  {
+   "m": "2026-09",
+   "l": "Septiembre 2026",
+   "lc": "Sep-26",
+   "parcial": false,
+   "aum": 10051986,
+   "aum_fecha": "2026-09-30",
+   "aum_fuente": "tablero",
+   "aum_prev": 9988491,
+   "aum_onshore": 98.78,
+   "clientes": 402,
+   "clientes_prev": 395,
+   "pf": 93.03,
+   "pj": 6.97,
+   "cuentas": 406,
+   "cuentas_prev": 397,
+   "cuentas_aum": 334,
+   "aperturas": 9,
+   "facturacion": 14274,
+   "facturacion_prev": 14180,
+   "fact_onshore": 99.26,
+   "clientes_fact": 264,
+   "roa_m": 0.142,
+   "fact_12m": 580970,
+   "roa_12m": 2.62,
+   "clientes_fact_12m": 372,
+   "rend": {
+    "dietz": -3.11,
+    "desde": "2026-08-31",
+    "hasta": "2026-09-30",
+    "fuente_ini": "tablero",
+    "fuente_fin": "tablero",
+    "flujo": 375155,
+    "dep": 949060,
+    "ret": -573904,
+    "mercado": -311660
+   },
+   "rend_informe": -2.84,
+   "rend_informe_ars": -2.14,
+   "export": {
+    "fecha": "2026-09-28",
+    "mep": 1551.0,
+    "aum": 10085206,
+    "clientes_saldo": 260
+   },
+   "top": [
+    {
+     "t": "Parakeet LatamB",
+     "n": "PARAKEET Parakeet LatamB",
+     "tipo": "Fondos",
+     "usd": 829244,
+     "pct": 8.22,
+     "prev": null
+    },
+    {
+     "t": "Balanceado A",
+     "n": "MEGA QM Balanceado A",
+     "tipo": "Fondos",
+     "usd": 673507,
+     "pct": 6.68,
+     "prev": 6414
+    },
+    {
+     "t": "SLV",
+     "n": "ETF ISHARES SILVER TRUST",
+     "tipo": "Cedears",
+     "usd": 669618,
+     "pct": 6.64,
+     "prev": 698488
+    },
+    {
+     "t": "Ret Total 4 B",
+     "n": "SCHRODERS Ret Total 4 B",
+     "tipo": "Fondos",
+     "usd": 626308,
+     "pct": 6.21,
+     "prev": null
+    },
+    {
+     "t": "Parakeet LatamA",
+     "n": "PARAKEET Parakeet LatamA",
+     "tipo": "Fondos",
+     "usd": 608887,
+     "pct": 6.04,
+     "prev": 475321
+    },
+    {
+     "t": "TZX28",
+     "n": "BONO REP ARG AJ CER V30/06/28",
+     "tipo": "Bonos",
+     "usd": 568168,
+     "pct": 5.63,
+     "prev": 565926
+    },
+    {
+     "t": "Liquidez usd B",
+     "n": "MEGAINVER Liquidez usd B",
+     "tipo": "Fondos",
+     "usd": 529323,
+     "pct": 5.25,
+     "prev": 91093
+    },
+    {
+     "t": "GLD",
+     "n": "ETF SPDR GOLD TRUST",
+     "tipo": "Cedears",
+     "usd": 514855,
+     "pct": 5.11,
+     "prev": 148144
+    },
+    {
+     "t": "YPFD",
+     "n": "YPF S.A.",
+     "tipo": "Acciones",
+     "usd": 461218,
+     "pct": 4.57,
+     "prev": 170884
+    },
+    {
+     "t": "USD",
+     "n": "US_DOLLARS",
+     "tipo": "Saldos líquidos",
+     "usd": 455006,
+     "pct": 4.51,
+     "prev": 511508
+    }
+   ],
+   "tipo": {
+    "Fondos": 38.08,
+    "Cedears": 30.56,
+    "Bonos": 16.46,
+    "Acciones": 9.32,
+    "Saldos líquidos": 5.3,
+    "Otros": 0.27
+   },
+   "tipo_prev": {
+    "Cedears": 40.06,
+    "Bonos": 28.64,
+    "Fondos": 14.42,
+    "Saldos líquidos": 8.44,
+    "Acciones": 8.33,
+    "Otros": 0.11
+   },
+   "rangos": [
+    {
+     "k": "Hasta 10 mil",
+     "n": 156,
+     "usd": 379419,
+     "pct": 3.76
+    },
+    {
+     "k": "10 a 50 mil",
+     "n": 63,
+     "usd": 1726589,
+     "pct": 17.12
+    },
+    {
+     "k": "50 a 100 mil",
+     "n": 20,
+     "usd": 1367027,
+     "pct": 13.55
+    },
+    {
+     "k": "100 a 250 mil",
+     "n": 13,
+     "usd": 1832654,
+     "pct": 18.17
+    },
+    {
+     "k": "250 mil a 1 M",
+     "n": 7,
+     "usd": 2916598,
+     "pct": 28.92
+    },
+    {
+     "k": "Más de 1 M",
+     "n": 1,
+     "usd": 1862900,
+     "pct": 18.47
+    }
+   ],
+   "tablero": null,
+   "informe": {
+    "titulo": "Informe mensual de gestión · Septiembre 2026",
+    "fecha": "05/10/2026",
+    "resumen": [
+     "Septiembre cerró con un AuM de USD 10.051.986 (+0,6% vs. agosto) y 402 clientes activos (+7). El AuM creció pese a un rendimiento de la cartera de −2,84% en USD MEP, gracias a ingresos netos de fondos.",
+     "La facturación fue de USD 14.274 (+0,7%), con un ROA neto mensual de 0,14% (−21,2%): la base de AuM creció más que la actividad comisionable. La operatoria local explica cerca de 9 de cada 10 dólares facturados.",
+     "Fue un mes adverso para casi todos los activos de referencia: la Fed subió la tasa por primera vez en tres años y el Treasury a 10 años llegó a 5,29%; oro −8,5%, plata −10%, Merval −9% en dólares y SPY −0,4%. La cartera cayó menos que los metales, el Merval y los bonos argentinos, aunque quedó por debajo del SPY.",
+     "El AuM superó por primera vez los USD 10 M y se abrieron 9 cuentas, el máximo del año junto con enero."
+    ],
+    "referencias": [
+     [
+      "Plata",
+      -13.5
+     ],
+     [
+      "Merval (en USD)",
+      -9.0
+     ],
+     [
+      "Oro",
+      -8.5
+     ],
+     [
+      "Globales largos (GD41, GD46)",
+      -7.0
+     ],
+     [
+      "Russell 2000",
+      -5.3
+     ],
+     [
+      "Dow Jones",
+      -4.1
+     ],
+     [
+      "Cartera Amberes (USD MEP)",
+      -2.84
+     ],
+     [
+      "SPY (S&P 500)",
+      -0.4
+     ],
+     [
+      "Nasdaq-100",
+      3.3
+     ],
+     [
+      "Ibovespa (en reales)",
+      5.0
+     ]
+    ],
+    "composicion": [
+     [
+      "Fondos",
+      39.03,
+      33.5
+     ],
+     [
+      "Cedears",
+      29.86,
+      31.1
+     ],
+     [
+      "Bonos",
+      16.56,
+      22.4
+     ],
+     [
+      "Acciones",
+      9.06,
+      6.9
+     ],
+     [
+      "Saldos líquidos y otros",
+      5.5,
+      6.1
+     ]
+    ],
+    "movimientos": {
+     "compras": "GLD, YPFD, MegaQM Balanceado (A), Parakeet LatAm (A) y recompra de SLV.",
+     "ventas": "SH, MCD, BRKB, MegaQM Liquidez Dólar (B) y bonos.",
+     "nota": "Se ejecutó la rotación aprobada en agosto: más metales y petróleo, menos posiciones defensivas y menos liquidez en money market. Salen del top 10 SH, MCD y BRKB; las dos clases de Parakeet LatAm suman USD 1,43 M (14% del AuM)."
+    },
+    "objetivos": [
+     [
+      "AuM",
+      "USD 10,5 M",
+      "USD 10,05 M",
+      "No cumplido (96%)",
+      "no"
+     ],
+     [
+      "Facturación",
+      "USD 15.000–16.000",
+      "USD 14.274",
+      "No cumplido (95% del piso)",
+      "no"
+     ],
+     [
+      "Clientes activos",
+      "~400",
+      "402",
+      "Cumplido",
+      "si"
+     ],
+     [
+      "Sumar metales",
+      "Aumentar",
+      "GLD entra al top 10 (USD 498 mil)",
+      "Cumplido",
+      "si"
+     ],
+     [
+      "Sumar petróleo",
+      "Aumentar",
+      "YPFD entra al top 10 (USD 439 mil)",
+      "Cumplido",
+      "si"
+     ],
+     [
+      "Sumar financiero",
+      "Aumentar",
+      "Sin evidencia en el top 10",
+      "A confirmar",
+      "parcial"
+     ],
+     [
+      "Bajar SH y MCD",
+      "Reducir",
+      "Ambas salen del top 10",
+      "En curso",
+      "parcial"
+     ],
+     [
+      "Bajar liquidez",
+      "Reducir",
+      "MegaQM Liquidez Dólar −188 mil; saldo U$S 402 mil",
+      "Parcial",
+      "parcial"
+     ]
+    ],
+    "proximos": [
+     [
+      "Mantenemos",
+      "Sumar metales",
+      "Cobertura ante tasas altas por más tiempo y volatilidad en renta variable; las nuevas compras entran a precios más bajos que en agosto."
+     ],
+     [
+      "Mantenemos",
+      "Sumar petróleo",
+      "Ormuz con tránsito restringido y márgenes de refinación récord; crudo cerca de USD 95 a fin de septiembre."
+     ],
+     [
+      "Agregamos",
+      "Sumar Brasil",
+      "Ibovespa a ~8,4x ganancias, baja de la Selic en marcha y balotaje del 25/10 como catalizador. Núcleo en EWZ, complemento en bancos (ITUB, BBD, NU), entrada escalonada antes y después del balotaje."
+     ],
+     [
+      "Mantenemos",
+      "Bajar SH, MCD y liquidez",
+      "Moderar el sesgo defensivo de agosto y usar la liquidez (saldo U$S y money market) para financiar Brasil."
+     ]
+    ],
+    "objetivo_sig": "Octubre: AuM USD 10,4 M · facturación USD 15.000 · ~408 clientes activos · 7 o más cuentas nuevas."
+   }
+  },
+  {
+   "m": "2026-10",
+   "l": "Octubre 2026",
+   "lc": "Oct-26",
+   "parcial": false,
+   "aum": 11264811,
+   "aum_fecha": "2026-10-26",
+   "aum_fuente": "export",
+   "aum_prev": 10051986,
+   "aum_onshore": null,
+   "clientes": 407,
+   "clientes_prev": 402,
+   "pf": null,
+   "pj": null,
+   "cuentas": 411,
+   "cuentas_prev": 406,
+   "cuentas_aum": 339,
+   "aperturas": 5,
+   "facturacion": 14839,
+   "facturacion_prev": 14274,
+   "fact_onshore": 99.25,
+   "clientes_fact": 255,
+   "roa_m": 0.132,
+   "fact_12m": null,
+   "roa_12m": null,
+   "clientes_fact_12m": null,
+   "rend": {
+    "dietz": -0.4,
+    "desde": "2026-09-30",
+    "hasta": "2026-10-26",
+    "fuente_ini": "tablero",
+    "fuente_fin": "export",
+    "flujo": 1258104,
+    "dep": 1451267,
+    "ret": -193164,
+    "mercado": -45279
+   },
+   "rend_informe": null,
+   "rend_informe_ars": null,
+   "export": {
+    "fecha": "2026-10-26",
+    "mep": 1559.1,
+    "aum": 11264811,
+    "clientes_saldo": 257
+   },
+   "top": [
+    {
+     "t": "Parakeet LatamB",
+     "n": "PARAKEET Parakeet LatamB",
+     "tipo": "Fondos",
+     "usd": 834884,
+     "pct": 7.41,
+     "prev": 829244
+    },
+    {
+     "t": "TZX28",
+     "n": "BONO REP ARG AJ CER V30/06/28",
+     "tipo": "Bonos",
+     "usd": 713603,
+     "pct": 6.33,
+     "prev": 568168
+    },
+    {
+     "t": "Balanceado A",
+     "n": "MEGA QM Balanceado A",
+     "tipo": "Fondos",
+     "usd": 704138,
+     "pct": 6.25,
+     "prev": 673507
+    },
+    {
+     "t": "Retorno Total 4",
+     "n": "SCHRODERS Retorno Total 4",
+     "tipo": "Fondos",
+     "usd": 659322,
+     "pct": 5.85,
+     "prev": 115650
+    },
+    {
+     "t": "Ret Total 4 B",
+     "n": "SCHRODERS Ret Total 4 B",
+     "tipo": "Fondos",
+     "usd": 627588,
+     "pct": 5.57,
+     "prev": 626308
+    },
+    {
+     "t": "Parakeet LatamA",
+     "n": "PARAKEET Parakeet LatamA",
+     "tipo": "Fondos",
+     "usd": 599371,
+     "pct": 5.32,
+     "prev": 608887
+    },
+    {
+     "t": "SLV",
+     "n": "ETF ISHARES SILVER TRUST",
+     "tipo": "Cedears",
+     "usd": 564828,
+     "pct": 5.01,
+     "prev": 669618
+    },
+    {
+     "t": "Liquidez usd B",
+     "n": "MEGAINVER Liquidez usd B",
+     "tipo": "Fondos",
+     "usd": 562705,
+     "pct": 5.0,
+     "prev": 529323
+    },
+    {
+     "t": "GLD",
+     "n": "ETF SPDR GOLD TRUST",
+     "tipo": "Cedears",
+     "usd": 549036,
+     "pct": 4.87,
+     "prev": 514855
+    },
+    {
+     "t": "YPFD",
+     "n": "YPF S.A.",
+     "tipo": "Acciones",
+     "usd": 519875,
+     "pct": 4.62,
+     "prev": 461218
+    }
+   ],
+   "tipo": {
+    "Fondos": 40.8,
+    "Cedears": 28.49,
+    "Bonos": 16.46,
+    "Acciones": 8.77,
+    "Saldos líquidos": 5.24,
+    "Otros": 0.24
+   },
+   "tipo_prev": {
+    "Fondos": 38.08,
+    "Cedears": 30.56,
+    "Bonos": 16.46,
+    "Acciones": 9.32,
+    "Saldos líquidos": 5.3,
+    "Otros": 0.27
+   },
+   "rangos": [
+    {
+     "k": "Hasta 10 mil",
+     "n": 151,
+     "usd": 348663,
+     "pct": 3.1
+    },
+    {
+     "k": "10 a 50 mil",
+     "n": 65,
+     "usd": 1736776,
+     "pct": 15.42
+    },
+    {
+     "k": "50 a 100 mil",
+     "n": 19,
+     "usd": 1332208,
+     "pct": 11.83
+    },
+    {
+     "k": "100 a 250 mil",
+     "n": 14,
+     "usd": 2166048,
+     "pct": 19.23
+    },
+    {
+     "k": "250 mil a 1 M",
+     "n": 6,
+     "usd": 2292228,
+     "pct": 20.35
+    },
+    {
+     "k": "Más de 1 M",
+     "n": 2,
+     "usd": 3388868,
+     "pct": 30.08
+    }
+   ],
+   "tablero": null,
+   "informe": null,
+   "objetivos": [
+    [
+     "AuM",
+     "USD 10,40 M",
+     "USD 11,26 M",
+     "si"
+    ],
+    [
+     "Facturación",
+     "USD 15.000",
+     "USD 14.839",
+     "parcial"
+    ],
+    [
+     "Clientes activos",
+     "~408",
+     "407",
+     "parcial"
+    ],
+    [
+     "Cuentas nuevas",
+     "7 o más",
+     "5",
+     "no"
+    ]
+   ]
+  },
+  {
+   "m": "2026-11",
+   "l": "Noviembre 2026",
+   "lc": "Nov-26",
+   "parcial": true,
+   "aum": 9976370,
+   "aum_fecha": "2026-11-26",
+   "aum_fuente": "export",
+   "aum_prev": 11264811,
+   "aum_onshore": 98.87,
+   "clientes": 408,
+   "clientes_prev": 407,
+   "pf": 92.89,
+   "pj": 7.11,
+   "cuentas": null,
+   "cuentas_prev": 411,
+   "cuentas_aum": null,
+   "aperturas": 1,
+   "facturacion": null,
+   "facturacion_prev": 14839,
+   "fact_onshore": null,
+   "clientes_fact": null,
+   "roa_m": null,
+   "fact_12m": null,
+   "roa_12m": null,
+   "clientes_fact_12m": null,
+   "rend": {
+    "dietz": -7.63,
+    "desde": "2026-10-26",
+    "hasta": "2026-11-26",
+    "fuente_ini": "export",
+    "fuente_fin": "export",
+    "flujo": -445108,
+    "dep": 234755,
+    "ret": -679863,
+    "mercado": -843333
+   },
+   "rend_informe": null,
+   "rend_informe_ars": null,
+   "export": {
+    "fecha": "2026-11-26",
+    "mep": 1664.2,
+    "aum": 9976370,
+    "clientes_saldo": 256
+   },
+   "top": [
+    {
+     "t": "Parakeet LatamB",
+     "n": "PARAKEET Parakeet LatamB",
+     "tipo": "Fondos",
+     "usd": 837318,
+     "pct": 8.39,
+     "prev": 834884
+    },
+    {
+     "t": "TZX28",
+     "n": "BONO REP ARG AJ CER V30/06/28",
+     "tipo": "Bonos",
+     "usd": 685260,
+     "pct": 6.87,
+     "prev": 713603
+    },
+    {
+     "t": "Retorno Total 4",
+     "n": "SCHRODERS Retorno Total 4",
+     "tipo": "Fondos",
+     "usd": 681150,
+     "pct": 6.83,
+     "prev": 659322
+    },
+    {
+     "t": "Balanceado A",
+     "n": "MEGA QM Balanceado A",
+     "tipo": "Fondos",
+     "usd": 657706,
+     "pct": 6.59,
+     "prev": 704138
+    },
+    {
+     "t": "EWZ",
+     "n": "CEDEAR ISHARES MSCI BRAZIL CAP",
+     "tipo": "Cedears",
+     "usd": 630391,
+     "pct": 6.32,
+     "prev": 478839
+    },
+    {
+     "t": "Ret Total 4 B",
+     "n": "SCHRODERS Ret Total 4 B",
+     "tipo": "Fondos",
+     "usd": 628877,
+     "pct": 6.3,
+     "prev": 627588
+    },
+    {
+     "t": "Parakeet LatamA",
+     "n": "PARAKEET Parakeet LatamA",
+     "tipo": "Fondos",
+     "usd": 479304,
+     "pct": 4.8,
+     "prev": 599371
+    },
+    {
+     "t": "GLD",
+     "n": "ETF SPDR GOLD TRUST",
+     "tipo": "Cedears",
+     "usd": 477619,
+     "pct": 4.79,
+     "prev": 549036
+    },
+    {
+     "t": "SLV",
+     "n": "ETF ISHARES SILVER TRUST",
+     "tipo": "Cedears",
+     "usd": 461906,
+     "pct": 4.63,
+     "prev": 564828
+    },
+    {
+     "t": "JPM",
+     "n": "CEDEAR JPMORGAN CHASE & CO",
+     "tipo": "Cedears",
+     "usd": 367785,
+     "pct": 3.69,
+     "prev": 114817
+    }
+   ],
+   "tipo": {
+    "Fondos": 39.23,
+    "Cedears": 28.24,
+    "Bonos": 19.36,
+    "Acciones": 7.0,
+    "Saldos líquidos": 5.01,
+    "Otros": 1.17
+   },
+   "tipo_prev": {
+    "Fondos": 40.8,
+    "Cedears": 28.49,
+    "Bonos": 16.46,
+    "Acciones": 8.77,
+    "Saldos líquidos": 5.24,
+    "Otros": 0.24
+   },
+   "rangos": [
+    {
+     "k": "Hasta 10 mil",
+     "n": 158,
+     "usd": 393245,
+     "pct": 3.94
+    },
+    {
+     "k": "10 a 50 mil",
+     "n": 64,
+     "usd": 1693190,
+     "pct": 16.97
+    },
+    {
+     "k": "50 a 100 mil",
+     "n": 14,
+     "usd": 1026162,
+     "pct": 10.29
+    },
+    {
+     "k": "100 a 250 mil",
+     "n": 15,
+     "usd": 2418150,
+     "pct": 24.24
+    },
+    {
+     "k": "250 mil a 1 M",
+     "n": 3,
+     "usd": 1353006,
+     "pct": 13.56
+    },
+    {
+     "k": "Más de 1 M",
+     "n": 2,
+     "usd": 3092596,
+     "pct": 31.0
+    }
+   ],
+   "tablero": {
+    "fecha": "2026-11-26",
+    "aum": 10090394,
+    "aum_onshore": 98.87,
+    "fact_12m": 595809,
+    "roa_12m": 2.36,
+    "clientes_fact_12m": 377
+   },
+   "informe": null
+  }
+ ],
+ "flujos": [
+  {
+   "m": "2025-11",
+   "l": "Nov-25",
+   "dep": 239623,
+   "ret": -320182,
+   "neto": -80560,
+   "n_dep": 62,
+   "n_ret": 65
+  },
+  {
+   "m": "2025-12",
+   "l": "Dic-25",
+   "dep": 312016,
+   "ret": -514840,
+   "neto": -202824,
+   "n_dep": 101,
+   "n_ret": 127
+  },
+  {
+   "m": "2026-01",
+   "l": "Ene-26",
+   "dep": 608235,
+   "ret": -375395,
+   "neto": 232841,
+   "n_dep": 122,
+   "n_ret": 137
+  },
+  {
+   "m": "2026-02",
+   "l": "Feb-26",
+   "dep": 540247,
+   "ret": -475392,
+   "neto": 64855,
+   "n_dep": 103,
+   "n_ret": 112
+  },
+  {
+   "m": "2026-03",
+   "l": "Mar-26",
+   "dep": 452647,
+   "ret": -402579,
+   "neto": 50068,
+   "n_dep": 100,
+   "n_ret": 100
+  },
+  {
+   "m": "2026-04",
+   "l": "Abr-26",
+   "dep": 332653,
+   "ret": -436163,
+   "neto": -103510,
+   "n_dep": 97,
+   "n_ret": 115
+  },
+  {
+   "m": "2026-05",
+   "l": "May-26",
+   "dep": 343678,
+   "ret": -432406,
+   "neto": -88727,
+   "n_dep": 96,
+   "n_ret": 93
+  },
+  {
+   "m": "2026-06",
+   "l": "Jun-26",
+   "dep": 741985,
+   "ret": -682996,
+   "neto": 58989,
+   "n_dep": 106,
+   "n_ret": 100
+  },
+  {
+   "m": "2026-07",
+   "l": "Jul-26",
+   "dep": 648272,
+   "ret": -472498,
+   "neto": 175774,
+   "n_dep": 126,
+   "n_ret": 134
+  },
+  {
+   "m": "2026-08",
+   "l": "Ago-26",
+   "dep": 2747541,
+   "ret": -278179,
+   "neto": 2469362,
+   "n_dep": 108,
+   "n_ret": 108
+  },
+  {
+   "m": "2026-09",
+   "l": "Sep-26",
+   "dep": 949060,
+   "ret": -573904,
+   "neto": 375155,
+   "n_dep": 94,
+   "n_ret": 135
+  },
+  {
+   "m": "2026-10",
+   "l": "Oct-26",
+   "dep": 1604142,
+   "ret": -339860,
+   "neto": 1264282,
+   "n_dep": 98,
+   "n_ret": 120
+  },
+  {
+   "m": "2026-11",
+   "l": "Nov-26",
+   "dep": 81880,
+   "ret": -533441,
+   "neto": -451562,
+   "n_dep": 65,
+   "n_ret": 109
+  }
+ ],
+ "cuentas_total": [
+  {
+   "m": "2025-05",
+   "l": "May-25",
+   "v": 320
+  },
+  {
+   "m": "2025-06",
+   "l": "Jun-25",
+   "v": 321
+  },
+  {
+   "m": "2025-07",
+   "l": "Jul-25",
+   "v": 324
+  },
+  {
+   "m": "2025-08",
+   "l": "Ago-25",
+   "v": 330
+  },
+  {
+   "m": "2025-09",
+   "l": "Sep-25",
+   "v": 334
+  },
+  {
+   "m": "2025-10",
+   "l": "Oct-25",
+   "v": 339
+  },
+  {
+   "m": "2025-11",
+   "l": "Nov-25",
+   "v": 344
+  },
+  {
+   "m": "2025-12",
+   "l": "Dic-25",
+   "v": 349
+  },
+  {
+   "m": "2026-01",
+   "l": "Ene-26",
+   "v": 358
+  },
+  {
+   "m": "2026-02",
+   "l": "Feb-26",
+   "v": 364
+  },
+  {
+   "m": "2026-03",
+   "l": "Mar-26",
+   "v": 370
+  },
+  {
+   "m": "2026-04",
+   "l": "Abr-26",
+   "v": 377
+  },
+  {
+   "m": "2026-05",
+   "l": "May-26",
+   "v": 384
+  },
+  {
+   "m": "2026-06",
+   "l": "Jun-26",
+   "v": 387
+  },
+  {
+   "m": "2026-07",
+   "l": "Jul-26",
+   "v": 390
+  },
+  {
+   "m": "2026-08",
+   "l": "Ago-26",
+   "v": 397
+  },
+  {
+   "m": "2026-09",
+   "l": "Sep-26",
+   "v": 406
+  },
+  {
+   "m": "2026-10",
+   "l": "Oct-26",
+   "v": 411
+  }
+ ],
+ "aperturas": [
+  {
+   "m": "2025-01",
+   "l": "Ene-25",
+   "v": 10
+  },
+  {
+   "m": "2025-02",
+   "l": "Feb-25",
+   "v": 13
+  },
+  {
+   "m": "2025-03",
+   "l": "Mar-25",
+   "v": 3
+  },
+  {
+   "m": "2025-04",
+   "l": "Abr-25",
+   "v": 7
+  },
+  {
+   "m": "2025-05",
+   "l": "May-25",
+   "v": 3
+  },
+  {
+   "m": "2025-06",
+   "l": "Jun-25",
+   "v": 5
+  },
+  {
+   "m": "2025-07",
+   "l": "Jul-25",
+   "v": 2
+  },
+  {
+   "m": "2025-08",
+   "l": "Ago-25",
+   "v": 3
+  },
+  {
+   "m": "2025-09",
+   "l": "Sep-25",
+   "v": 6
+  },
+  {
+   "m": "2025-10",
+   "l": "Oct-25",
+   "v": 4
+  },
+  {
+   "m": "2025-11",
+   "l": "Nov-25",
+   "v": 5
+  },
+  {
+   "m": "2025-12",
+   "l": "Dic-25",
+   "v": 5
+  },
+  {
+   "m": "2026-01",
+   "l": "Ene-26",
+   "v": 9
+  },
+  {
+   "m": "2026-02",
+   "l": "Feb-26",
+   "v": 6
+  },
+  {
+   "m": "2026-03",
+   "l": "Mar-26",
+   "v": 7
+  },
+  {
+   "m": "2026-04",
+   "l": "Abr-26",
+   "v": 7
+  },
+  {
+   "m": "2026-05",
+   "l": "May-26",
+   "v": 7
+  },
+  {
+   "m": "2026-06",
+   "l": "Jun-26",
+   "v": 3
+  },
+  {
+   "m": "2026-07",
+   "l": "Jul-26",
+   "v": 3
+  },
+  {
+   "m": "2026-08",
+   "l": "Ago-26",
+   "v": 7
+  },
+  {
+   "m": "2026-09",
+   "l": "Sep-26",
+   "v": 9
+  },
+  {
+   "m": "2026-10",
+   "l": "Oct-26",
+   "v": 5
+  },
+  {
+   "m": "2026-11",
+   "l": "Nov-26",
+   "v": 1
+  }
+ ],
+ "aum_hist": [
+  {
+   "m": "2026-07",
+   "l": "Jul-26",
+   "v": 7296523,
+   "fecha": "2026-07-30",
+   "fuente": "export"
+  },
+  {
+   "m": "2026-08",
+   "l": "Ago-26",
+   "v": 9988491,
+   "fecha": "2026-08-31",
+   "fuente": "tablero"
+  },
+  {
+   "m": "2026-09",
+   "l": "Sep-26",
+   "v": 10051986,
+   "fecha": "2026-09-30",
+   "fuente": "tablero"
+  },
+  {
+   "m": "2026-10",
+   "l": "Oct-26",
+   "v": 11264811,
+   "fecha": "2026-10-26",
+   "fuente": "export"
+  },
+  {
+   "m": "2026-11",
+   "l": "Nov-26",
+   "v": 9976370,
+   "fecha": "2026-11-26",
+   "fuente": "export"
+  }
+ ],
+ "facturacion_hist": [
+  {
+   "m": "2026-08",
+   "l": "Ago-26",
+   "v": 14180
+  },
+  {
+   "m": "2026-09",
+   "l": "Sep-26",
+   "v": 14274
+  },
+  {
+   "m": "2026-10",
+   "l": "Oct-26",
+   "v": 14839
+  }
+ ]
+}

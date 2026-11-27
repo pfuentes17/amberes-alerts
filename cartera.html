@@ -236,6 +236,36 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
 .cp-sum{font-size:12px;color:#c9d8e8;line-height:1.6;margin-bottom:12px;}
 @media(max-width:860px){.cp-ch{grid-template-columns:minmax(0,1fr);}}
 @media(max-width:860px){.cp-grid{grid-template-columns:minmax(0,1fr);}.cp-cards{grid-template-columns:minmax(0,1fr);}.cp-row{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 52px 56px;}.cp-t td.nm{max-width:140px;}}
+
+/* ══ CARTERA · Gestión (27/11/2026) ══ */
+.gs-top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+.gs-top h2{font-size:22px;font-weight:600;color:#e8f0f8;}
+.gs-mes{display:flex;gap:6px;flex-wrap:wrap;}
+.gs-kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-bottom:14px;}
+.gs-k{background:var(--s);border:1px solid var(--bdr);border-top:3px solid var(--c,var(--accent));border-radius:8px;padding:12px 14px;min-width:0;}
+.gs-k .l{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--mu);}
+.gs-k .v{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:600;color:#e8f0f8;margin:5px 0 3px;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.gs-k .s{font-size:10.5px;color:var(--mu);line-height:1.45;}
+.gs-up{color:var(--gr);} .gs-dn{color:var(--rd);} .gs-eq{color:var(--mu);}
+.gs-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin-bottom:14px;}
+.gs-svg{width:100%;display:block;}
+.gs-svg text{font-family:'IBM Plex Mono',monospace;}
+.gs-t{width:100%;border-collapse:collapse;font-size:12px;}
+.gs-t th{font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--mu);text-align:left;padding:7px 8px;border-bottom:1px solid var(--bdr);white-space:nowrap;}
+.gs-t th.r,.gs-t td.r{text-align:right;}
+.gs-t td{padding:7px 8px;border-bottom:1px solid rgba(255,255,255,.05);color:#c9d8e8;vertical-align:top;}
+.gs-t td.num{font-family:'IBM Plex Mono',monospace;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.gs-t tr:last-child td{border-bottom:0;}
+.gs-st{font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 7px;border-radius:3px;border:1px solid var(--c);color:var(--c);white-space:nowrap;}
+.gs-inf{background:var(--s);border:1px solid var(--bdr);border-radius:8px;padding:18px 20px;margin-top:6px;}
+.gs-inf h3{font-size:17px;font-weight:600;color:#e8f0f8;margin-bottom:2px;}
+.gs-inf h4{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:#e8f0f8;margin:20px 0 8px;padding-top:14px;border-top:1px solid var(--bdr);}
+.gs-inf p{font-size:13px;line-height:1.65;color:#c9d8e8;margin-bottom:8px;max-width:920px;}
+.gs-pl{display:grid;grid-template-columns:110px 190px minmax(0,1fr);gap:10px;padding:8px 0;border-top:1px solid rgba(255,255,255,.05);font-size:12.5px;line-height:1.55;}
+.gs-pl:first-child{border-top:0;}
+.gs-pend{font-size:12.5px;color:var(--mu);line-height:1.6;padding:14px 16px;border:1px dashed var(--bdr2);border-radius:6px;}
+@media(max-width:1100px){.gs-kpis{grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media(max-width:860px){.gs-grid{grid-template-columns:minmax(0,1fr);}.gs-kpis{grid-template-columns:repeat(2,minmax(0,1fr));}.gs-pl{grid-template-columns:minmax(0,1fr);gap:2px;}}
 </style>
 <script>/* tema Amberes: activo por defecto; ?theme=off lo desactiva, ?theme=amberes lo reactiva */var _t=1;try{var q=location.search;if(/theme=off/.test(q))localStorage.setItem("amb-theme","0");if(/theme=amberes/.test(q))localStorage.setItem("amb-theme","1");_t=localStorage.getItem("amb-theme")!=="0";}catch(e){}if(_t){var l=document.createElement("link");l.rel="stylesheet";l.href="/amberes-theme.css";document.head.appendChild(l);}</script>
 </head>
@@ -265,6 +295,7 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
   <div class="ctabs" role="tablist">
     <button class="ctab on" data-t="comp" role="tab">Composición</button>
     <button class="ctab" data-t="riesgo" role="tab">Riesgo</button>
+    <button class="ctab" data-t="gestion" role="tab">Gestión</button>
   </div>
   <div id="tab-comp">
     <div id="cp-loading" class="loading">Cargando composición de la cartera...</div>
@@ -303,6 +334,37 @@ h1{font-size:22px;font-weight:600;color:#e8f0f8;letter-spacing:-.01em;}
         <div class="cp-sum" id="cp-cambios-sum"></div>
         <div class="cp-ch"><div><h4 style="color:var(--cy)">Ganaron peso</h4><div id="cp-sube"></div></div><div><h4 style="color:var(--or)">Perdieron peso</h4><div id="cp-baja"></div></div></div>
       </div>
+    </div>
+  </div>
+  <div id="tab-gestion" hidden>
+    <div id="gs-loading" class="loading">Cargando gestión...</div>
+    <div id="gs-main" style="display:none">
+      <div class="gs-top">
+        <div><div class="eyebrow">Gestión de la consultora · cifras en USD MEP</div><h2 id="gs-h"></h2></div>
+        <div class="gs-mes" id="gs-mes"></div>
+      </div>
+      <div class="gs-kpis" id="gs-kpis"></div>
+      <div class="gs-grid">
+        <div class="cp-box"><div class="cp-h">De dónde vino la variación del AuM</div><div class="cp-sub" id="gs-wf-sub"></div><div id="gs-wf"></div></div>
+        <div class="cp-box"><div class="cp-h">AuM a cierre de mes</div><div class="cp-sub">Millones de USD MEP · barras grises: dato del export de tenencias más cercano al cierre</div><div id="gs-aum"></div></div>
+      </div>
+      <div class="gs-grid">
+        <div class="cp-box"><div class="cp-h">Ingresos y egresos de fondos</div><div class="cp-sub">Depósitos y retiros de dinero de todas las cuentas por mes (miles de USD MEP; los pesos se pasan al MEP del día). No incluye transferencias de títulos.</div><div id="gs-fl"></div><div class="cp-leg"><span style="--c:var(--gr)">Depósitos</span><span style="--c:var(--rd)">Retiros</span><span style="--c:#e8f0f8">Neto</span></div></div>
+        <div class="cp-box"><div class="cp-h">Rendimiento mensual de la cartera</div><div class="cp-sub">USD MEP, neto de ingresos y egresos (Dietz modificado)</div><div id="gs-rd"></div><div class="cp-note" id="gs-rd-note"></div></div>
+      </div>
+      <div class="gs-grid">
+        <div class="cp-box"><div class="cp-h">Facturación mensual</div><div class="cp-sub">USD · arriba de cada barra, el ROA neto del mes (facturación / AuM)</div><div id="gs-fa"></div><div id="gs-fa-12"></div></div>
+        <div class="cp-box"><div class="cp-h">Cuentas</div><div class="cp-sub">Línea: total de cuentas abiertas · barras: aperturas de cada mes</div><div id="gs-cu"></div></div>
+      </div>
+      <div class="gs-grid">
+        <div class="cp-box"><div class="cp-h" id="gs-top-h">Top 10 posiciones</div><div class="cp-sub" id="gs-top-sub"></div><div id="gs-top"></div></div>
+        <div class="cp-box">
+          <div class="cp-h">Composición por tipo de activo</div><div class="cp-sub" id="gs-tipo-sub"></div><div id="gs-tipo"></div>
+          <div class="cp-h" style="margin-top:18px">Clientes por tamaño de cartera</div><div class="cp-sub" id="gs-rg-sub"></div><div id="gs-rg"></div>
+        </div>
+      </div>
+      <div class="gs-inf" id="gs-inf"></div>
+      <div class="cp-note" id="gs-foot"></div>
     </div>
   </div>
   <div id="tab-riesgo" hidden>
@@ -1428,7 +1490,9 @@ async function loadBenchmarks(d) {
     document.querySelectorAll('.ctab').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
     document.getElementById('tab-comp').hidden = t!=='comp';
     document.getElementById('tab-riesgo').hidden = t!=='riesgo';
-    try{ history.replaceState(null,'',t==='riesgo'?'#riesgo':location.pathname+location.search); }catch(e){}
+    document.getElementById('tab-gestion').hidden = t!=='gestion';
+    try{ history.replaceState(null,'',t==='riesgo'||t==='gestion'?'#'+t:location.pathname+location.search); }catch(e){}
+    if(t==='gestion') window.Gestion.show();
     if(t==='riesgo' && !riesgoCargado){ riesgoCargado=true; load(); }
     if(t==='comp' && D) renderEvo();
   }
@@ -1442,7 +1506,174 @@ async function loadBenchmarks(d) {
       render();
     }catch(e){ document.getElementById('cp-loading').textContent='No se pudo cargar la composición: '+e.message; }
     if(location.hash==='#riesgo') showTab('riesgo');
+    if(location.hash==='#gestion') showTab('gestion');
   })();
+})();
+
+/* ══ CARTERA · Gestión (27/11/2026) — datos: /api/riesgo?cartera=gestion (update_gestion.py + gestion_manual.json) ══ */
+window.Gestion=(function(){
+  let G=null, sel=null, cargado=false;
+  const $=id=>document.getElementById(id);
+  const esc=x=>String(x==null?'':x).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+  const nf=(v,d=0)=>v==null?'—':v.toLocaleString('es-AR',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const pc=(v,d=2,sg=true)=>v==null?'—':(sg&&v>0?'+':'')+v.toFixed(d).replace('.',',')+'%';
+  const mUSD=v=>v==null?'—':'USD '+(v/1e6).toFixed(2).replace('.',',')+' M';
+  const kUSD=v=>v==null?'—':(v<0?'−':'')+'USD '+nf(Math.abs(v)/1e3,0)+' mil';
+  const fD=iso=>{ if(!iso) return '—'; const [y,m,d]=iso.split('-'); return `${d}/${m}`; };
+  const cls=v=>v==null?'gs-eq':v>0?'gs-up':v<0?'gs-dn':'gs-eq';
+  const varp=(a,b)=>a!=null&&b?(a/b-1)*100:null;
+  const C={gr:'#00e77f',rd:'#ff6b6b',cy:'#24cbfc',am:'#f0b429',mu:'#9a9aa3',tx:'#e8f0f8',grid:'rgba(255,255,255,.07)'};
+  const TIPO_C={'Fondos':'#8b5cf6','Cedears':'#00e77f','Bonos':'#f0b429','Acciones':'#24cbfc','Saldos líquidos':'#9a9aa3','Otros':'#62626b'};
+  const W=el=>Math.max(300,(el.clientWidth||600));
+
+  // barras simples: L=[{l,v,c,lab,tt}]
+  function bars(el,L,{h=200,fmt=v=>nf(v),zero=true,top=null}={}){
+    const vs=L.map(x=>x.v).filter(v=>v!=null); let mx=Math.max(0,...vs), mn=Math.min(0,...vs); if(mx===mn) mx=mn+1;
+    const w=W(el), pl=8, pb=mn<0?36:22, pt=L.some(x=>x.top)?32:18, n=L.length, st=(w-pl*2)/n, bw=Math.min(48,st*.6);
+    const y=v=>pt+(h-pt-pb)*(mx-v)/(mx-mn);
+    let g=`<svg class="gs-svg" viewBox="0 0 ${w} ${h}" style="height:${h}px"><line x1="0" x2="${w}" y1="${y(0)}" y2="${y(0)}" stroke="${C.grid}"/>`;
+    L.forEach((x,i)=>{ const cx=pl+st*i+st/2; if(x.v!=null){ const y0=y(0), y1=y(x.v);
+      g+=`<rect x="${cx-bw/2}" y="${Math.min(y0,y1)}" width="${bw}" height="${Math.max(1,Math.abs(y1-y0))}" fill="${x.c||C.gr}" opacity="${x.op||.9}" rx="1"><title>${esc(x.tt||x.l+': '+fmt(x.v))}</title></rect>`;
+      g+=`<text x="${cx}" y="${x.v>=0?y1-5:y1+12}" text-anchor="middle" font-size="10" fill="${C.tx}">${esc(x.lab!=null?x.lab:fmt(x.v))}</text>`; }
+      if(x.top) g+=`<text x="${cx}" y="11" text-anchor="middle" font-size="9" fill="${C.mu}">${esc(x.top)}</text>`;
+      g+=`<text x="${cx}" y="${h-6}" text-anchor="middle" font-size="9.5" fill="${x.hl?C.tx:C.mu}" font-weight="${x.hl?600:400}">${esc(x.l)}</text>`; });
+    el.innerHTML=g+'</svg>';
+  }
+
+  function waterfall(o){
+    const r=o.rend, el=$('gs-wf');
+    if(!r){ el.innerHTML='<div class="cp-note">Falta el AuM de inicio o de cierre para este mes.</div>'; $('gs-wf-sub').textContent=''; return; }
+    const a0=o.aum_prev, steps=[['AuM '+fD(r.desde),a0,'base'],['Depósitos',r.dep,'d'],['Retiros',r.ret,'d'],['Mercado',r.mercado,'d'],['AuM '+fD(r.hasta),o.aum,'base']];
+    const w=W(el), h=220, pb=22, pt=18, n=steps.length, st=w/n, bw=Math.min(70,st*.62);
+    let acc=0; const seg=steps.map(([l,v,t])=>{ if(t==='base'){ const s={l,v,lo:0,hi:v,t}; acc=v; return s; } const lo=Math.min(acc,acc+v), hi=Math.max(acc,acc+v); acc+=v; return {l,v,lo,hi,t}; });
+    const mx=Math.max(...seg.map(s=>s.hi)), mn=Math.min(...seg.filter(s=>s.t!=='base').map(s=>s.lo))*0.97;
+    const y=v=>pt+(h-pt-pb)*(mx-v)/(mx-mn);
+    let g=`<svg class="gs-svg" viewBox="0 0 ${w} ${h}" style="height:${h}px">`;
+    seg.forEach((s,i)=>{ const cx=st*i+st/2; const c=s.t==='base'?C.cy:s.v>=0?C.gr:C.rd; const yt=y(s.hi), yb=s.t==='base'?h-pb:y(s.lo);
+      g+=`<rect x="${cx-bw/2}" y="${yt}" width="${bw}" height="${Math.max(1,yb-yt)}" fill="${c}" opacity="${s.t==='base'?.55:.9}" rx="1"><title>${esc(s.l)}: ${s.t==='base'?mUSD(s.v):kUSD(s.v)}</title></rect>`;
+      g+=`<text x="${cx}" y="${yt-5}" text-anchor="middle" font-size="10.5" fill="${C.tx}" font-weight="600">${s.t==='base'?(s.v/1e6).toFixed(2).replace('.',',')+' M':(s.v>=0?'+':'−')+nf(Math.abs(s.v)/1e3)+' mil'}</text>`;
+      g+=`<text x="${cx}" y="${h-6}" text-anchor="middle" font-size="9.5" fill="${C.mu}">${esc(s.l)}</text>`; });
+    el.innerHTML=g+'</svg>';
+    $('gs-wf-sub').innerHTML=`Del ${fD(r.desde)} al ${fD(r.hasta)}: entraron ${kUSD(r.dep)}, salieron ${kUSD(-r.ret)} y el mercado ${r.mercado>=0?'sumó':'restó'} ${kUSD(Math.abs(r.mercado))}.`+' El eje vertical no arranca en cero.'+(r.fuente_fin==='export'||r.fuente_ini==='export'?' Hay AuM tomado de un export de tenencias, no del cierre exacto del mes.':'');
+  }
+
+  function line(el,L,B,{h=210}={}){
+    const w=W(el), pl=8, pb=22, pt=16, n=L.length, st=(w-pl*2)/n;
+    const lv=L.map(x=>x.v), lmx=Math.max(...lv), lmn=Math.min(...lv)*0.97, bmx=Math.max(...B.map(x=>x.v||0),1);
+    const yl=v=>pt+(h-pt-pb-40)*(lmx-v)/(lmx-lmn), yb=v=>(h-pb)-(36*(v/bmx));
+    let g=`<svg class="gs-svg" viewBox="0 0 ${w} ${h}" style="height:${h}px">`;
+    const bw=Math.min(18,st*.55);
+    L.forEach((x,i)=>{ const cx=pl+st*i+st/2; const b=B.find(z=>z.m===x.m);
+      if(b&&b.v!=null){ g+=`<rect x="${cx-bw/2}" y="${yb(b.v)}" width="${bw}" height="${(h-pb)-yb(b.v)}" fill="${C.am}" opacity=".75"><title>${x.l}: ${b.v} aperturas</title></rect><text x="${cx}" y="${yb(b.v)-3}" text-anchor="middle" font-size="8.5" fill="${C.am}">${b.v}</text>`; }
+      if(n<=12||i%2===(n-1)%2) g+=`<text x="${cx}" y="${h-6}" text-anchor="middle" font-size="9" fill="${C.mu}">${esc(x.l)}</text>`; });
+    g+=`<polyline fill="none" stroke="${C.cy}" stroke-width="2" points="${L.map((x,i)=>`${pl+st*i+st/2},${yl(x.v)}`).join(' ')}"/>`;
+    L.forEach((x,i)=>{ const cx=pl+st*i+st/2; g+=`<circle cx="${cx}" cy="${yl(x.v)}" r="2.6" fill="${C.cy}"><title>${x.l}: ${x.v} cuentas</title></circle>`;
+      if(i===0||i===n-1||i%3===(n-1)%3) g+=`<text x="${cx}" y="${yl(x.v)-7}" text-anchor="middle" font-size="9.5" fill="${C.tx}">${x.v}</text>`; });
+    el.innerHTML=g+'</svg>';
+  }
+
+  function flows(el,L,selM){
+    const w=W(el), h=220, pl=8, pb=22, pt=18, n=L.length, st=(w-pl*2)/n, bw=Math.min(26,st*.6);
+    const mx=Math.max(...L.map(x=>x.dep)), mn=Math.min(...L.map(x=>x.ret));
+    const y=v=>pt+(h-pt-pb)*(mx-v)/(mx-mn);
+    let g=`<svg class="gs-svg" viewBox="0 0 ${w} ${h}" style="height:${h}px"><line x1="0" x2="${w}" y1="${y(0)}" y2="${y(0)}" stroke="${C.grid}"/>`;
+    L.forEach((x,i)=>{ const cx=pl+st*i+st/2, hl=x.m===selM;
+      g+=`<rect x="${cx-bw/2}" y="${y(x.dep)}" width="${bw}" height="${y(0)-y(x.dep)}" fill="${C.gr}" opacity="${hl?1:.55}"><title>${x.l} · depósitos ${kUSD(x.dep)} (${x.n_dep})</title></rect>`;
+      g+=`<rect x="${cx-bw/2}" y="${y(0)}" width="${bw}" height="${y(x.ret)-y(0)}" fill="${C.rd}" opacity="${hl?1:.55}"><title>${x.l} · retiros ${kUSD(-x.ret)} (${x.n_ret})</title></rect>`;
+      g+=`<line x1="${cx-bw/2-3}" x2="${cx+bw/2+3}" y1="${y(x.neto)}" y2="${y(x.neto)}" stroke="${C.tx}" stroke-width="2"><title>${x.l} · neto ${kUSD(x.neto)}</title></line>`;
+      if(hl||Math.abs(x.neto)>=1e6) g+=`<text x="${cx}" y="${x.neto>=0?y(x.dep)-4:y(x.ret)+11}" text-anchor="middle" font-size="9.5" fill="${C.tx}">${x.neto>=0?'+':'−'}${nf(Math.abs(x.neto)/1e3)}k</text>`;
+      if(n<=13||i%2===(n-1)%2) g+=`<text x="${cx}" y="${h-6}" text-anchor="middle" font-size="9" fill="${hl?C.tx:C.mu}" font-weight="${hl?600:400}">${esc(x.l)}</text>`; });
+    el.innerHTML=g+'</svg>';
+  }
+
+  function kpis(o){
+    const r=o.rend, K=[];
+    K.push(['AuM total',mUSD(o.aum),`<span class="${cls(varp(o.aum,o.aum_prev))}">${pc(varp(o.aum,o.aum_prev),1)}</span> vs. mes anterior · ${o.aum_fuente==='export'?'export del '+fD(o.aum_fecha):'cierre '+fD(o.aum_fecha)}${o.aum_onshore?' · Argentina '+nf(o.aum_onshore,2)+'%':''}`,C.cy]);
+    K.push(['Rendimiento del mes',r?pc(r.dietz):'—',(o.rend_informe!=null?`Informe: <b>${pc(o.rend_informe)}</b> · `:'')+(r?`${fD(r.desde)} → ${fD(r.hasta)}, neto de flujos`:''),r&&r.dietz<0?C.rd:C.gr]);
+    K.push(['Ingresos netos',r?kUSD(r.flujo):'—',r?`Depósitos ${kUSD(r.dep)} · retiros ${kUSD(-r.ret)}`:'',r&&r.flujo<0?C.rd:C.gr]);
+    K.push(['Clientes activos',nf(o.clientes),(o.clientes_prev?`<span class="${cls(o.clientes-o.clientes_prev)}">${o.clientes-o.clientes_prev>0?'+':''}${o.clientes-o.clientes_prev}</span> vs. mes anterior`:'')+(o.pf?` · PF ${nf(o.pf,1)}% / PJ ${nf(o.pj,1)}%`:''),C.am]);
+    K.push(['Cuentas',nf(o.cuentas),(o.aperturas!=null?`${o.aperturas} aperturas en el mes`:'')+(o.cuentas_aum?` · ${o.cuentas_aum} con AuM`:''),C.am]);
+    K.push(['Facturación',o.facturacion?'USD '+nf(o.facturacion):'—',o.facturacion?`<span class="${cls(varp(o.facturacion,o.facturacion_prev))}">${pc(varp(o.facturacion,o.facturacion_prev),1)}</span> · ROA mensual ${pc(o.roa_m,2,false)}${o.clientes_fact?' · '+o.clientes_fact+' clientes facturando':''}`:'Pendiente de carga',C.gr]);
+    $('gs-kpis').innerHTML=K.map(([l,v,s,c])=>`<div class="gs-k" style="--c:${c}"><div class="l">${l}</div><div class="v">${v}</div><div class="s">${s}</div></div>`).join('');
+  }
+
+  function topTable(o){
+    if(!o.top){ $('gs-top').innerHTML='<div class="cp-note">Sin export de tenencias para este mes.</div>'; return; }
+    $('gs-top-h').textContent='Top 10 posiciones';
+    $('gs-top-sub').textContent=`Export del ${fD(o.export.fecha)} · miles de USD MEP (MEP $${nf(o.export.mep)}) · variación vs. el export del mes anterior`;
+    $('gs-top').innerHTML=`<table class="gs-t"><thead><tr><th>Posición</th><th>Tipo</th><th class="r">Miles USD</th><th class="r">% AuM</th><th class="r">Var.</th></tr></thead><tbody>${o.top.map(t=>{ const d=t.prev==null?null:(t.usd-t.prev)/1e3;
+      return `<tr><td><b style="color:#e8f0f8;font-family:'IBM Plex Mono',monospace">${esc(t.t)}</b><div style="font-size:10.5px;color:var(--mu)">${esc(t.n)}</div></td><td><span class="cp-tag" style="--c:${TIPO_C[t.tipo]||'#62626b'}">${esc(t.tipo)}</span></td><td class="r num" style="color:#e8f0f8">${nf(t.usd/1e3)}</td><td class="r num">${nf(t.pct,1)}%</td><td class="r num ${d==null?'gs-up':cls(d)}">${d==null?'nueva':(d>0?'+':'')+nf(d)}</td></tr>`; }).join('')}</tbody></table>`;
+  }
+
+  function tipoRangos(o){
+    if(!o.tipo){ $('gs-tipo').innerHTML=''; $('gs-rg').innerHTML=''; return; }
+    $('gs-tipo-sub').textContent=`% del AuM onshore (export del ${fD(o.export.fecha)}) · variación en pp vs. el mes anterior`;
+    const mx=Math.max(...Object.values(o.tipo));
+    $('gs-tipo').innerHTML=Object.entries(o.tipo).filter(([,v])=>v>=0.05).map(([k,v])=>{ const p=o.tipo_prev?o.tipo_prev[k]:null, d=p==null?null:v-p;
+      return `<div class="cp-row"><div class="nm">${esc(k)}</div><div class="cp-bar"><i style="width:${v/mx*100}%;background:${TIPO_C[k]||'#62626b'}"></i></div><div class="cp-num">${nf(v,1)}%</div><span class="cp-d ${d==null?'eq':Math.abs(d)<0.05?'eq':d>0?'up':'dn'}">${d==null?'—':(d>0?'+':'')+d.toFixed(1).replace('.',',')}</span></div>`; }).join('');
+    const tc=o.rangos.reduce((a,x)=>a+x.n,0);
+    $('gs-rg-sub').textContent=`${tc} clientes con saldo en el export del ${fD(o.export.fecha)} · cuántos hay en cada tramo y qué parte del AuM explican`;
+    $('gs-rg').innerHTML=`<table class="gs-t"><thead><tr><th>Cartera (USD)</th><th class="r">Clientes</th><th class="r">AuM</th><th class="r">% AuM</th></tr></thead><tbody>${o.rangos.map(x=>`<tr><td>${esc(x.k)}</td><td class="r num">${x.n}</td><td class="r num">${mUSD(x.usd)}</td><td class="r num" style="color:#e8f0f8">${nf(x.pct,1)}%</td></tr>`).join('')}</tbody></table>`;
+  }
+
+  const ST={si:['Cumplido',C.gr],no:['No cumplido',C.rd],parcial:['Cerca / en curso',C.am]};
+  function objetivos(L,auto){
+    return `<table class="gs-t"><thead><tr><th>Objetivo</th><th>Meta</th><th>Resultado</th><th>Estado</th></tr></thead><tbody>${L.map(x=>{ const st=auto?x[3]:x[4], txt=auto?(ST[st]||['—',C.mu])[0]:x[3]; const c=(ST[st]||['',C.mu])[1];
+      return `<tr><td style="color:#e8f0f8">${esc(x[0])}</td><td>${esc(x[1])}</td><td>${esc(x[2])}</td><td><span class="gs-st" style="--c:${c}">${esc(txt)}</span></td></tr>`; }).join('')}</tbody></table>`;
+  }
+
+  function informe(o){
+    const I=o.informe, el=$('gs-inf');
+    if(!I){
+      el.innerHTML=`<h3>Informe de ${esc(o.l.toLowerCase())}</h3><div class="cp-sub">${o.parcial?'Mes en curso':'Pendiente'}</div>`+
+        `<div class="gs-pend">${o.parcial?'El mes todavía no cerró: los números de arriba son al '+fD(o.aum_fecha)+' y se van a actualizar con el cierre.':'El texto del informe de este mes todavía no está cargado. Los indicadores de arriba ya usan los datos del mes.'}</div>`+
+        (o.objetivos?`<h4>Objetivos del mes (fijados en el informe anterior)</h4>${objetivos(o.objetivos,true)}<div class="cp-note">El estado se calcula solo con los datos cargados. "Cerca" = al menos 95% de la meta.${o.aum_fuente==='export'?' El AuM sale del export del '+fD(o.aum_fecha)+', no del cierre exacto.':''}</div>`:'');
+      return;
+    }
+    let h=`<h3>${esc(I.titulo)}</h3><div class="cp-sub">Publicado el ${esc(I.fecha)} · cifras al cierre del mes, en USD MEP</div>`;
+    h+=`<h4>Resumen</h4>`+I.resumen.map(p=>`<p>${esc(p)}</p>`).join('');
+    if(I.referencias){ h+=`<h4>La cartera frente a sus referencias</h4><div id="gs-ref"></div>`; }
+    if(I.movimientos){ h+=`<h4>Movimientos del mes</h4><p><b style="color:var(--gr)">Compras:</b> ${esc(I.movimientos.compras)}</p><p><b style="color:var(--rd)">Ventas / reducciones:</b> ${esc(I.movimientos.ventas)}</p><p style="color:var(--mu)">${esc(I.movimientos.nota)}</p>`; }
+    if(I.objetivos) h+=`<h4>Cumplimiento de los objetivos del mes</h4>${objetivos(I.objetivos,false)}`;
+    if(I.proximos) h+=`<h4>Próximos pasos</h4>`+I.proximos.map(x=>`<div class="gs-pl"><div><span class="gs-st" style="--c:${x[0]==='Agregamos'?C.cy:C.mu}">${esc(x[0])}</span></div><div style="color:#e8f0f8;font-weight:600">${esc(x[1])}</div><div>${esc(x[2])}</div></div>`).join('');
+    if(I.objetivo_sig) h+=`<h4>Objetivo del mes siguiente</h4><p>${esc(I.objetivo_sig)}</p>`;
+    el.innerHTML=h;
+    if(I.referencias){ const R=[...I.referencias].sort((a,b)=>a[1]-b[1]);
+      const rel=$('gs-ref'); const w=Math.min(760,W(rel)), rh=22, hh=R.length*rh+6, lw=Math.min(210,w*.42), mn=Math.min(...R.map(x=>x[1]),0), mx=Math.max(...R.map(x=>x[1]),0), x=v=>lw+(w-lw-50)*(v-mn)/(mx-mn);
+      let g=`<svg class="gs-svg" viewBox="0 0 ${w} ${hh}" style="height:${hh}px;max-width:${w}px"><line x1="${x(0)}" x2="${x(0)}" y1="0" y2="${hh}" stroke="${C.grid}"/>`;
+      R.forEach(([k,v],i)=>{ const yy=i*rh+4, me=/Amberes/.test(k); g+=`<text x="${lw-8}" y="${yy+13}" text-anchor="end" font-size="10.5" fill="${me?C.tx:C.mu}" font-weight="${me?600:400}">${esc(k)}</text><rect x="${Math.min(x(0),x(v))}" y="${yy+3}" width="${Math.abs(x(v)-x(0))}" height="13" fill="${me?C.cy:v<0?C.rd:C.gr}" opacity="${me?1:.6}"/><text x="${v<0?x(v)-4:x(v)+4}" y="${yy+13}" text-anchor="${v<0?'end':'start'}" font-size="10" fill="${C.tx}">${pc(v,1)}</text>`; });
+      rel.innerHTML=g+'</svg>'; }
+  }
+
+  function render(){
+    const o=G.meses.find(x=>x.m===sel);
+    $('gs-mes').innerHTML=G.meses.map(x=>`<button class="chip ${x.m===sel?'on':''}" data-gm="${x.m}">${x.lc}${x.parcial?' · en curso':''}</button>`).join('');
+    $('gs-h').textContent=o.l+(o.parcial?' (en curso)':'');
+    kpis(o); waterfall(o);
+    bars($('gs-aum'),G.aum_hist.map(x=>({l:x.l,v:x.v/1e6,c:x.fuente==='export'?C.mu:C.cy,hl:x.m===sel,lab:(x.v/1e6).toFixed(2).replace('.',','),tt:`${x.l}: ${mUSD(x.v)} (${x.fuente==='export'?'export del '+fD(x.fecha):'cierre '+fD(x.fecha)})`})),{fmt:v=>v.toFixed(2)});
+    flows($('gs-fl'),G.flujos,sel);
+    const RD=G.meses.filter(x=>x.rend).map(x=>({l:x.lc+(x.parcial?'*':''),v:x.rend.dietz,c:x.rend.dietz<0?C.rd:C.gr,hl:x.m===sel,lab:pc(x.rend.dietz),top:x.rend_informe!=null?'inf. '+pc(x.rend_informe):null,tt:`${x.l}: ${pc(x.rend.dietz)} (${fD(x.rend.desde)} → ${fD(x.rend.hasta)})`}));
+    bars($('gs-rd'),RD,{h:200});
+    $('gs-rd-note').innerHTML='Arriba de cada barra, el rendimiento del informe mensual cuando existe. La diferencia con el cálculo puede venir de transferencias de títulos (no están en el reporte de dinero), cupones y dividendos cobrados, o de que el AuM se tome de un export que no coincide con el último día del mes.'+(G.meses.some(x=>x.parcial)?' * mes en curso.':'');
+    bars($('gs-fa'),G.facturacion_hist.map(x=>{ const mm=G.meses.find(z=>z.m===x.m); const a=G.aum_hist.find(z=>z.m===x.m); const roa=a?x.v/a.v*100:null; return {l:x.l,v:x.v,c:C.gr,hl:x.m===sel,lab:nf(x.v/1e3,1).replace(',0','')+'k',top:roa?'ROA '+roa.toFixed(2).replace('.',',')+'%':null}; }),{h:200});
+    const o12=o.fact_12m?o:(o.tablero||null);
+    $('gs-fa-12').innerHTML=o12&&o12.fact_12m?`<div class="cp-note">Últimos 12 meses${o.tablero&&!o.fact_12m?' (tablero al '+fD(o.tablero.fecha)+')':''}: facturación <b style="color:#e8f0f8">USD ${nf(o12.fact_12m)}</b> · ROA neto <b style="color:#e8f0f8">${pc(o12.roa_12m,2,false)}</b> · ${o12.clientes_fact_12m} clientes facturando.${o.fact_onshore?' Onshore: '+nf(o.fact_onshore,2)+'% de la facturación del mes.':''}</div>`:(o.fact_onshore?`<div class="cp-note">Onshore: ${nf(o.fact_onshore,2)}% de la facturación del mes.</div>`:'');
+    line($('gs-cu'),G.cuentas_total,G.aperturas);
+    topTable(o); tipoRangos(o); informe(o);
+    $('gs-foot').innerHTML=`<b style="color:#c9d8e8">Cómo se calcula.</b> Rendimiento = (AuM final − AuM inicial − ingresos netos) / (AuM inicial + ingresos ponderados por los días que estuvieron invertidos), método Dietz modificado. Ingresos y egresos: reporte de movimientos de dinero de Inviu (${esc(G.mov_file)}). AuM: cierre del tablero cuando está cargado; si no, el último export de tenencias del mes valuado al MEP que usa Inviu. Top 10, composición y tramos salen del export de tenencias. Actualizado ${esc(G.actualizado)}.`;
+  }
+
+  document.addEventListener('click',e=>{ const b=e.target.closest('[data-gm]'); if(b){ sel=b.dataset.gm; render(); } });
+  window.addEventListener('resize',()=>{ if(G&&!$('tab-gestion').hidden) render(); });
+
+  return { async show(){
+    if(cargado){ if(G) render(); return; }
+    cargado=true;
+    try{ const r=await fetch('/api/riesgo?cartera=gestion',{cache:'no-store'}); if(!r.ok) throw new Error('HTTP '+r.status);
+      G=await r.json(); const cer=G.meses.filter(x=>!x.parcial); sel=(cer.length?cer[cer.length-1]:G.meses[G.meses.length-1]).m;
+      $('gs-loading').style.display='none'; $('gs-main').style.display='block'; render();
+    }catch(e){ $('gs-loading').textContent='No se pudo cargar la gestión: '+e.message; }
+  }};
 })();
 </script>
 </body>
