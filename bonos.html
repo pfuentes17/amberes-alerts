@@ -1341,8 +1341,8 @@ hr.dv{border:none;border-top:1px solid var(--bdr);}
   </div>
     <div class="cbox-cer" style="height:260px"><canvas id="ladderChart"></canvas></div>
     <div style="padding:0 16px 14px;font-size:11px;color:var(--mu);line-height:1.5">
-      Índice de concentración (HHI): <strong style="color:var(--txt)">0,1517 actual</strong> vs. <strong style="color:var(--gr)">0,0833 si estuviera perfectamente laddeado</strong> (más bajo = más parejo = menor riesgo de refinanciación puntual).
-      El trimestre más sobrecargado es <strong style="color:#f87171">2027 T2 (28,9% del stock, $63,0 billones; el canje del 25-nov le sumó $13,1 billones de T30J7 y la licitación del 26-nov otros $6,9 billones)</strong> — redirigir ahí menos emisión nueva y priorizar los trimestres hoy más vacíos (2030 T2, 2029 T2, 2028 T2) permitiría bajar la concentración <strong style="color:var(--txt)">sin cambiar de moneda</strong>, solo reordenando el calendario de licitaciones.
+      Índice de concentración (HHI): <strong style="color:var(--txt)">0,1471 actual</strong> vs. <strong style="color:var(--gr)">0,0833 si estuviera perfectamente laddeado</strong> (más bajo = más parejo = menor riesgo de refinanciación puntual).
+      El trimestre más sobrecargado es <strong style="color:#f87171">2027 T2 (28,1% del stock, $63,0 billones; el canje del 25-nov le sumó $13,1 billones de T30J7 y la licitación del 26-nov otros $6,9 billones)</strong> — redirigir ahí menos emisión nueva y priorizar los trimestres hoy más vacíos (2030 T2, 2029 T2, 2028 T2) permitiría bajar la concentración <strong style="color:var(--txt)">sin cambiar de moneda</strong>, solo reordenando el calendario de licitaciones.
     </div>
   </div>
 
@@ -5135,8 +5135,8 @@ function pvdRender(){
 }
 // Laddering — vencimientos por trimestre, deuda en pesos (Tasa Fija+CER+TAMAR+Duales)
 const LADDER_L = ['2026 T4','2027 T1','2027 T2','2027 T3','2027 T4','2028 T1','2028 T2','2028 T3','2028 T4','2029 T2','2029 T4','2030 T2'];
-const LADDER_ACTUAL = [11475.8,38299.1,62985.6,15716.7,24598.7,17968.8,7009.1,15358.0,8949.9,4095.8,8774.1,2705.5];  // 26/11/2026: conversión 25-nov (S30N6 -28,7; T30J7 +13.122,5 en 27T2) + licitación 26-nov (S16F7 +7.000 en 27T1; S16L7 +3.795 en 27T3; M10Y7 +6.101 y TZXY7 +816 en 27T2; TZX28 +1.586 en 28T2); ref. 26/11 (S13N6 ya vencida). Antes:  // 11/11/2026: licitación 11-nov (S29E7 +2.032 en 27T1; T30J7 +1.224 y LETAM M30A7 +3.514 en 27T2; TZX28 a circulación oficial 5.423); incluye T30Z7 ($12,1 bn, vto. 30-dic-2027 inferido por el código, no confirmado)
-const LADDER_TARGET = 18161.4;
+const LADDER_ACTUAL = [17617.6,38299.1,62985.6,15716.7,24598.7,17968.8,7009.1,15358.0,8949.9,4095.8,8774.1,2705.5];  // 26/11/2026 (+27/11: TZXD6 2.641,7 y TTD26 3.500,0 en 26T4, post canje A3 #14.803): conversión 25-nov (S30N6 -28,7; T30J7 +13.122,5 en 27T2) + licitación 26-nov (S16F7 +7.000 en 27T1; S16L7 +3.795 en 27T3; M10Y7 +6.101 y TZXY7 +816 en 27T2; TZX28 +1.586 en 28T2); ref. 26/11 (S13N6 ya vencida). Antes:  // 11/11/2026: licitación 11-nov (S29E7 +2.032 en 27T1; T30J7 +1.224 y LETAM M30A7 +3.514 en 27T2; TZX28 a circulación oficial 5.423); incluye T30Z7 ($12,1 bn, vto. 30-dic-2027 inferido por el código, no confirmado)
+const LADDER_TARGET = 18673.2;
 let ladderChart=null;
 function ladderInit(){
   const el = document.getElementById('ladderChart');
